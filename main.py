@@ -22,7 +22,6 @@ but it can span multiple lines, surrounded by three double-quotes
 # a variable must start with letters or _ and
 # can include letters, numbers, _
 example_variable = "value"
-_variable = "abc"
 
 # strings are defined with either ' or ""
 something = "nothing"
@@ -30,14 +29,14 @@ something = 'nothing'
 
 # boolean values are defined as True or False
 # they are not surrounded by quotes, and must be capatilized
-isFun = True
-isFun = False
+is_fun = True
+is_work = False
 """
 function calls are done like <functionName>(<arguments>)
 Some functions don't take any arguments, like this:
-  doThing()
+  do_thing()
 Some take multiple arguments seperated by commas like this:
-  setBirthdate(1988, 7, 12)
+  set_birthdate(1988, 7, 12)
 Here the function name is print
   the argument is "Welcome to PyPet"
 """
@@ -67,25 +66,13 @@ else:
     print("Good evening.")
 
 
-print("-----------------")
-print()
-
-
 #  this is a function definition
 #  the structure is
 #  def <function-name>(<optional-arguments>):
 #   <block>
 #  the function starts here
-def feed(pet):
-    # this is an if statement
-    if pet["isHungry"]:
-        # these lines will only run if the above is true
-        print("Feeding: " + pet["name"])
-        pet["isHungry"] = False
-        pet["weight"] = pet["weight"] + 1
-    else:
-        # otherwise, this line will run
-        print(pet["name"] + "is not hungry, thanks anyway.")
+def hr():
+    print("--------------------------")
 #  the function ends here
 #  a function ends when the indentation is reduced
 #  or when it is followed by two blank lines
@@ -93,15 +80,86 @@ def feed(pet):
 #  and it works the same for if-statements, for-loops, while-loops and more
 
 
-def boolToWord(boolean):
+hr()
+print()
+
+
+"""
+this is a dictionary
+The structure is
+<variableName> = {
+  <key>: <value>,
+}
+It must be surrounded by {},
+  have a : between each key and value,
+  and each pair is seperated by commas
+In this case, the keys are strings,
+  so the keys must be quoted.
+"""
+cat = {
+    "menu": "f",
+    "name": "Flufosourus",
+    "is_happy": True,
+    "age": 5,
+    "weight": 7,
+    "is_hungry": True,
+    "pic": "(=^o.o^=)__",
+}
+
+fish = {
+    "menu": "s",
+    "name": "Scaley",
+    "age": 1,
+    "is_happy": False,
+    "weight": 0.5,
+    "is_hungry": False,
+    "pic": "<`)))><",
+}
+
+
+"""
+this is a list
+The structure is
+  <variableName> = [ <value>, <value> ]
+The values in the list are seperated with
+  commas like in a dictionary
+  except in a list, there are no keys
+"""
+pets = [cat, fish]
+
+
+"""
+this is a for-loop
+the structure is
+for <list-item> in <list>:
+ <block>
+Just like in functions and if-statements
+  the lines that are run as a part of the loop
+  are the ones that are indented
+"""
+for familiar in pets:
+    print("Hello from " + familiar["name"] + "!" + "  " + familiar["pic"])
+
+print()
+
+
+def bool_to_word(boolean):
     if boolean:
         return "Yes!"
     else:
         return "Nope"
 
 
-def hr():
-    print("--------------------------")
+def feed(pet):
+    # this is an if statement
+    if pet["is_hungry"]:
+        # these lines will only run if the above is true
+        print("Feeding: " + pet["name"])
+        pet["is_hungry"] = False
+        pet["weight"] = pet["weight"] + 1
+    else:
+        # otherwise, this line will run
+        print(pet["name"] + "is not hungry, thanks anyway.")
 
 
 def see(pet):
@@ -110,8 +168,8 @@ def see(pet):
     print(pet["name"] + "  " + pet["pic"])
     print("Weight  : " + str(pet["weight"]))
     print("Age     : " + str(pet["age"]))
-    print("Happy?  : " + boolToWord(pet["isHappy"]))
-    print("Hungry? : " + boolToWord(pet["isHungry"]))
+    print("Happy?  : " + bool_to_word(pet["is_happy"]))
+    print("Hungry? : " + bool_to_word(pet["is_hungry"]))
     hr()
     print()
 
@@ -122,17 +180,17 @@ def exercise(pet):
     #   this is called string concatenation
     print("Taking " + pet["name"] + " for some exercise")
     pet["weight"] = pet["weight"] - 1
-    pet["isHungry"] = True
+    pet["is_hungry"] = True
 
 
 def punish(pet):
     print("Bad " + pet["name"] + "!")
-    pet["isHappy"] = False
+    pet["is_happy"] = False
 
 
 def treat(pet):
     print("Good " + pet["name"] + "!")
-    pet["isHappy"] = True
+    pet["is_happy"] = True
     pet["weight"] = pet["weight"] + 2
 
 
@@ -170,66 +228,13 @@ def pet_menu():
         if response.lower() == pet["menu"]:
             return pet
         elif response.lower() == "q":
-            return { "menu": "q" }
+            return {"menu": "q"}
 
     print("Sorry, I don't know what you mean. Try again.")
     print()
     return pet_menu()
 
 
-"""
-this is a dictionary
-The structure is
-<variableName> = {
-  <key>: <value>,
-}
-It must be surrounded by {},
-  have a : between each key and value,
-  and each pair is seperated by commas
-In this case, the keys are strings,
-  so the keys must be quoted.
-"""
-cat = {
-    "menu": "f",
-    "name": "Flufosourus",
-    "isHappy": True,
-    "age": 5,
-    "weight": 7,
-    "isHungry": True,
-    "pic": "(=^o.o^=)__",
-}
-
-fish = {
-    "menu": "s",
-    "name": "Scaley",
-    "age": 1,
-    "isHappy": False,
-    "weight": 0.5,
-    "isHungry": False,
-    "pic": "<`)))><",
-}
-"""
-this is a list
-The structure is
-  <variableName> = [ <value>, <value> ]
-The values in the list are seperated with
-  commas like in a dictionary
-  except in a list, there are no keys
-"""
-pets = [cat, fish]
-"""
-this is a for-loop
-the structure is
-for <list-item> in <list>:
- <block>
-Just like in functions and if-statements
-  the lines that are run as a part of the loop
-  are the ones that are indented
-"""
-for familiar in pets:
-    print("Hello from " + familiar["name"] + "!" + "  " + familiar["pic"])
-
-print()
 response = ""
 """
 this is a while-loop
