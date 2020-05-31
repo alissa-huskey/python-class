@@ -100,13 +100,19 @@ def boolToWord(boolean):
         return "Nope"
 
 
+def hr():
+    print("--------------------------")
+
+
 def see(pet):
     print()
+    hr()
     print(pet["name"] + "  " + pet["pic"])
     print("Weight  : " + str(pet["weight"]))
     print("Age     : " + str(pet["age"]))
     print("Happy?  : " + boolToWord(pet["isHappy"]))
     print("Hungry? : " + boolToWord(pet["isHungry"]))
+    hr()
     print()
 
 
