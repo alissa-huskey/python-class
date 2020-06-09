@@ -12,8 +12,12 @@ from datetime import datetime
 
 # this is a comment
 """
-this is also a comment
-but it can span multiple lines, surrounded by three double-quotes
+this is a docstring, which is another way to add a comment
+
+it can span multiple lines, surrounded by three double-quotes
+
+it's often used at the beginning of a function, class, or module
+to document its arguments, expected behavior, or quirks
 """
 
 # variables are assigned with
