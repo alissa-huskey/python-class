@@ -55,7 +55,7 @@ number, the second is the maximum number.
 ### Try it in the Python Shell
 
 In the right pane of your repl.it, if you see only one `>` open a python
-shell by typing `python` then hitting enter. The prompt will change to
+shell by typing `python3` then hitting enter. The prompt will change to
 `>>>`.
 
 ```bash
@@ -69,7 +69,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 Now in the Python shell:
 
 ```python3
->>> imort random
+>>> import random
 >>> random.randint(1,20)
 ```
 
@@ -252,11 +252,11 @@ for guess_count in range(1, max_guesses):
 
 if guess == number:
     guess_count = str(guess_count)
-    print('Good job, ' + player + '! You guessed my number in ' + guess_count + ' guesses!')
+    print("Good job, " + player + "! You guessed my number in " + guess_count + " guesses!")
 
 else:
     number = str(number)
-    print('Nope. The number I was thinking of was ' + number + '.')
+    print("Nope. The number I was thinking of was " + number + ".")
 ```
 
 
@@ -292,5 +292,5 @@ What we've learned
 - How to convert between strings and integers.
 - How to use the `range()` function in a for loop.
 - How to pass a prompt argument to the `input()` function.
-- How to pass multiple string arguments to the `print()` function to
+- How to pass multiple arguments to the `print()` function to
   easily print spaces between them.

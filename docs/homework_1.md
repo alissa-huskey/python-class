@@ -49,6 +49,23 @@ Here you can type simple expressions to see what they will do. Here are a few th
 >>> print("Hello " + name + ". What a nice " + clothing + " you are wearing!")
 ```
 
+It can be helpful to test out ***conditionals*** that you would want to put in an if-statement.
+
+```python3
+>>> False == 0
+True
+>>> 2.0 == 2
+True
+>>> 2 + 2 == 4
+True
+>>> 2 + 2 + 2 == 2 * 3
+True
+>>> min_age = 21
+>>> age = 28
+>>> age >= min_age
+True
+```
+
 Type some expressions of your own.
 
 
