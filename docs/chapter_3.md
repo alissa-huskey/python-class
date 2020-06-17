@@ -18,7 +18,7 @@ from now on we’ll call the user the player.
 Part 1. Create a New Script
 ----------------------------
 
-Follow the instructions in [Repl.it Tips](#docs/replit-tips.md) to create
+Follow the instructions in [Repl.it Tips](replit-tips.md) to create
 a new file called "guess.py" and change your `.replit` file to run it.
 
 Add a comment to the first line of the script to describe it:
