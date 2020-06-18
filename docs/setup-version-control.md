@@ -36,24 +36,24 @@ Part 1: First Create a Github Account
 Part 2: Connect it to your Repl.it
 ----------------------------------
 
-2. Open your your Repl.it repl.
+1. Open your your Repl.it repl.
 
-3. On the left side-nav click the second icon down: ![fork](code-branch.png)
+2. On the left side-nav click the second icon down: ![fork](code-branch.png)
    **Version Control**.
 
-4. At the top of the new left-most pane, click the button that says "Connect
+3. At the top of the new left-most pane, click the button that says "Connect
    to..."
 
-5. It will ask you to Connect to Github. Click the button that says "Connect
+4. It will ask you to Connect to Github. Click the button that says "Connect
    Repl.it to your GitHubAccount"
 
-6. A new page will appear titled "Install & Authorize Repl.it Online IDE".
+5. A new page will appear titled "Install & Authorize Repl.it Online IDE".
    Click Save.
 
-7. The new window will close and you'll be back at your repl. Click the
+6. The new window will close and you'll be back at your repl. Click the
    "Connect to..." button again.
 
-8. A dialog will appear titled "Create a new GitHub repository". Choose a repo
+7. A dialog will appear titled "Create a new GitHub repository". Choose a repo
    name (perhaps "python-class"?) and click "Create GitHub repository".
 
 
