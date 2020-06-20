@@ -7,27 +7,19 @@ Dragon Realm - A game where the player decides between two caves, which hold
   Inspired by: http://inventwithpython.com/invent4thed/chapter5.html
 """
 
-import random
 import time
 import textwrap
+import random
 
-CAVES = ["right", "left"]
-DELAY = 1
 WIDTH = 60
 WRAP = 50
-DEBUG = False
-
-PREFIX = '\x1b'
-YELLOW = f'{PREFIX}[33m'
-NORMAL = f'{PREFIX}[0m'
+DELAY = 1
+CAVES = ["right", "left"]
 
 
-def debug(*messages):
-    if not DEBUG:
-        return
-
-    message = " ".join([str(m) for m in messages])
-    print(" ", f"{PREFIX}{YELLOW}", message, f"{PREFIX}{NORMAL}")
+def valid_cave(response):
+    """Return true if response is in the list of valid CAVES"""
+    return response in CAVES
 
 
 def describe(message):
@@ -35,34 +27,11 @@ def describe(message):
         print("  ", line)
 
 
-def valid_cave(response):
-    """Return cave matching response or first letter of response, or False"""
-    response = str(response)
-    for cave in CAVES:
-        if response == cave or response == cave[0]:
-            return cave
-
-    return False
-
-
 def is_friendly(dragon):
     """Return True if dragon is in the randomly chosen friendly one"""
     friendly = random.randint(0, 1)
-    debug("Your dragon is", dragon)
-    debug("The friendly dragon is:", friendly)
-    debug("The friendly dragon is:", CAVES[friendly])
+    print("The friendly dragon is:", CAVES[friendly])
     return dragon == CAVES[friendly]
-
-
-def dragon(is_friendly):
-    """Print the dragon action for a friendly or unfriendly dragon"""
-    actions = {
-        True: "Gives you his treasure! 💰",
-        False: "Gobbles you down in one bite! 💀",
-    }
-    print()
-    describe(actions[is_friendly])
-    print()
 
 
 def intro():
@@ -79,12 +48,11 @@ def choose():
     cave = ""
     while not valid_cave(cave):
         print("Do you enter the cave on the right or left?")
-
         cave = input("(right, left): ").lower()
+
         if cave in ["q", "quit", "exit"]:
             exit()
 
-        cave = valid_cave(cave)
         if not valid_cave(cave):
             print('Type "right" or "left". \n')
 
@@ -105,23 +73,17 @@ def enter(cave):
         time.sleep(DELAY)
 
     nature = is_friendly(cave)
-    dragon(nature)
-
-
-def play():
-    """Play the game"""
-    intro()
-    cave = choose()
-    enter(cave)
 
 
 def main():
     """Keep playing the game until the user doesn't say yes"""
-    print("\nWelcome to Dragon Realm!")
+    print("Welcome to Dragon Realm!")
     again = "yes"
     while again.lower() in ["y", "yes"]:
         print("-" * WIDTH, "\n")
-        play()
+        intro()
+        cave = choose()
+        enter(cave)
         again = input("Play again? ")
 
 

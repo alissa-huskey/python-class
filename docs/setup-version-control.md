@@ -38,7 +38,7 @@ Part 2: Connect it to your Repl.it
 
 1. Open your your Repl.it repl.
 
-2. On the left side-nav click the second icon down: ![fork](code-branch.png)
+2. On the left side-nav click the second icon down: ![fork](assets/code-branch.png)
    **Version Control**.
 
 3. At the top of the new left-most pane, click the button that says "Connect
@@ -202,7 +202,7 @@ In git a ***commit*** is a record of a set of changes. The repository for your
 code exists both on repl.it and on github. In order to update the repo on
 github with your commits on repl.it the changes will be ***pushed*** to Github.
 
-1. On the left side-nav, Click the![fork](code-branch.png) **Version Control**
+1. On the left side-nav, Click the![fork](assets/code-branch.png) **Version Control**
    icon again. In the left-most Version Control pane, it should now display a
    link to your newly created repository next to the github icon.
 

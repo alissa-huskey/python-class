@@ -28,7 +28,7 @@ Add a comment to the first line of the script to describe it:
 ***guess.py***
 
 ```python3
-# This is a Guess the Number game.
+"""This is a Guess the Number game."""
 ```
 
 
@@ -86,7 +86,7 @@ Let's also set the maximum number of guesses.
 ***guess.py***
 
 ```python3
-# This is a Guess the Number game.
+"""This is a Guess the Number game."""
 import random
 
 number = random.randint(1, 20)
@@ -109,7 +109,7 @@ then use `print()` to greet them.
 ***guess.py***
 
 ```python3
-# This is a Guess the Number game.
+"""This is a Guess the Number game."""
 import random
 
 number = random.randint(1, 20)
@@ -144,7 +144,7 @@ in-between. Let's use this handy way to print the guess number each round.
 ***guess.py***
 
 ```python3
-# This is a Guess the Number game.
+"""This is a Guess the Number game."""
 import random
 
 number = random.randint(1, 20)
@@ -170,7 +170,7 @@ Once it is converted, we can use an ***if statement*** to check it. We'll
 use the `break` keyword to exit the loop early if the guess is correct.
 
 ```python3
-# This is a Guess the Number game.
+"""This is a Guess the Number game."""
 import random
 
 number = random.randint(1, 20)
@@ -221,7 +221,7 @@ we print at the of the game. To convert an int to a string use the
 ***guess.py***
 
 ```python3
-# This is a Guess the Number game.
+"""This is a Guess the Number game."""
 import random
 
 number = random.randint(1, 20)
