@@ -243,9 +243,8 @@ Additionally you can type:
   python are `for`, `if`, and `def`.
 - `symbols` - A list of punctuation symbols that have special meanings. For
   example `=`, `,`, and `+`.
-- `modules` - A list of available modules. (Don't worry about this for now,
-  since we haven't learned about modules yet. Also, it's a little buggy in
-  repl.it.)
+- `modules` - (NOTE: Do not run this in repl.it, as it's buggy and might mess up your
+  repl.) A list of available modules.
 
 
 ```python3

@@ -47,7 +47,7 @@ Here the function name is print
 print("Welcome to PyPet!")
 """
 this is an if statement
-the structure is
+the syntax is
   if <condition>:
     <block>
   elif <condition>:
@@ -71,7 +71,7 @@ else:
 
 
 #  this is a function definition
-#  the structure is
+#  the syntax is
 #  def <function-name>(<optional-arguments>):
 #   <block>
 #  the function starts here
@@ -90,7 +90,7 @@ print()
 
 """
 this is a dictionary
-The structure is
+The syntax is
 <variableName> = {
   <key>: <value>,
 }
@@ -101,29 +101,29 @@ In this case, the keys are strings,
   so the keys must be quoted.
 """
 cat = {
-    "menu": "f",
-    "name": "Flufosourus",
-    "is_happy": True,
-    "age": 5,
-    "weight": 7,
-    "is_hungry": True,
-    "pic": "(=^o.o^=)__",
+    'menu': "f",
+    'name': "Flufosourus",
+    'is_happy': True,
+    'age': 5,
+    'weight': 7,
+    'is_hungry': True,
+    'pic': "(=^o.o^=)__",
 }
 
 fish = {
-    "menu": "s",
-    "name": "Scaley",
-    "age": 1,
-    "is_happy": False,
-    "weight": 0.5,
-    "is_hungry": False,
-    "pic": "<`)))><",
+    'menu': "s",
+    'name': "Scaley",
+    'age': 1,
+    'is_happy': False,
+    'weight': 0.5,
+    'is_hungry': False,
+    'pic': "<`)))><",
 }
 
 
 """
 this is a list
-The structure is
+The syntax is
   <variableName> = [ <value>, <value> ]
 The values in the list are seperated with
   commas like in a dictionary
@@ -134,7 +134,7 @@ pets = [cat, fish]
 
 """
 this is a for-loop
-the structure is
+the syntax is
 for <list-item> in <list>:
  <block>
 Just like in functions and if-statements
@@ -242,7 +242,7 @@ def pet_menu():
 response = ""
 """
 this is a while-loop
-the structure is
+the syntax is
 while <condition>:
  <block>
 Like a for-loop, it will keep looping over the same block of code

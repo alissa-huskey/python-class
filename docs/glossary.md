@@ -20,7 +20,7 @@ Programming Concepts
 * **Conditional**: A valid piece of code that, when evaluated, results in boolean
   value (True or False).
 
-* ***Define***: The code that specifies the data or code block that an
+* **Define**: The code that specifies the data or code block that an
   identifier refers to. A variable is defined when it is assigned. A function
   is defined by the statements that form the body of the function. In Python a
   function definition starts with the keyword `def`.
@@ -86,9 +86,9 @@ Programming Concepts
   if-statement, a while-loop, or a function. In Python, blocks are called
   suites and are indicated by indentation level.
 
-* **Type (Data Type)**: The classification of a value which tells the
-  computer how it will be used and what operations can be performed on it. Some
-  examples include, strings, integers, lists, dictionaries, and user-defined
+* **Type (Data Type)**: The classification of a value which tells the computer
+  how it will be used and what operations can be performed on it. Some examples
+  include, strings, integers, lists, dictionaries, and programmer-defined
   classes.
 
 * **Value**: A piece of data which can be numbers, strings, and more.
@@ -137,11 +137,42 @@ Types
 Software Development Concepts
 -----------------------------
 
+* **Code Editor**: A text editing program specifically for code with features
+  like syntax highlighting and code formatting. Some examples include VS Code,
+  Atom, Sublime and Vim.
+
+* **Command Line**: In casual use, people usually mean accessing the operating
+  system's shell, usually with a terminal emulator. See also, Console,
+  Terminal.
+
+* **Compile**: The process by which the computer translates source code from
+  one programming language to a lower-level language to create an executable
+  program. A language that must be compiled is called a *compiled language* and
+  the program that does this for a particular programming language is called a
+  *compiler*. Python is an interpreted language, so it does not need to be
+  compiled. Some compiled langauges include C/C++, Java and Go.
+
 * **Console, System console**: Comes from a time when early text-based
   computer systems with a keyboard and monitor interface were used to interact
   with servers or mainframes.  In modern usage people usually mean accessing
   the operating system's shell, usually with a terminal emulator. In repl.it,
   the right-most pane is referred to as the console.
+
+* **IDE, Integrated Development Environment**: A program dedicated to software
+  development usually including a code editor, debugger, version control
+  management, and build/execution features. Examples include repl.it, Eclipse,
+  Thonny, and Pycharm.
+
+* **Interpret**: The process by which the computer directly executes source
+  code without that code needing to be compiled first. The program that does
+  this for a particluar programming language is called an *intrepreter*. A
+  programming language that does not need to be compiled is called an
+  *interpreted language* or sometimes a *scripting language*. Python is an
+  interpreted language and Python code is executed by the Python Interprter.
+  Some other interpreted languages include Ruby, PHP and Perl.
+
+* **Prompt**: Characters displayed by the interpreter to indicate that it is
+  ready to take input from the user.
 
 * **REPL (Read-Evaluate-Print-Loop)**: An interactive tool or environment
   that takes code input, evaluates (executes) it, and displays the results to
@@ -167,21 +198,6 @@ Software Development Concepts
   The term "console" and "terminal" are often used interchangaby, both
   historically to refer to a hardware server interface as well as the more
   modern colloqual meaning of accessing the operating system's shell.
-
-* **Interpret**: The process by which the computer directly executes source
-  code without that code needing to be compiled first. The program that does
-  this for a particluar programming language is called an *intrepreter*. A
-  programming language that does not need to be compiled is called an
-  *interpreted language* or sometimes a *scripting language*. Python is an
-  interpreted language and Python code is executed by the Python Interprter.
-  Some other interpreted languages include Ruby, PHP and Perl.
-
-* **Compile**: The process by which the computer translates source code from
-  one programming language to a lower-level language to create an executable
-  program. A language that must be compiled is called a *compiled language* and
-  the program that does this for a particular programming language is called a
-  *compiler*. Python is an interpreted language, so it does not need to be
-  compiled. Some compiled langauges include C/C++, Java and Go.
 
 
 Version Control
