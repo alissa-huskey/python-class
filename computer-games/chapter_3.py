@@ -1,4 +1,9 @@
-# This is a Guess the Number game.
+#!/usr/bin/env python3
+"""
+This is a Guess the Number game
+Inspired by:  http://inventwithpython.com/invent4thed/chapter3.html
+"""
+
 import random
 
 number = random.randint(1, 20)
