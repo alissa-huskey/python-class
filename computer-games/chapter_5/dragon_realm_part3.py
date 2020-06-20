@@ -7,7 +7,7 @@ Dragon Realm - A game where the player decides between two caves, which hold
   Inspired by: http://inventwithpython.com/invent4thed/chapter5.html
 """
 
-WIDTH = 60
+WIDTH = 58
 CAVES = ["right", "left"]
 
 

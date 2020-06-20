@@ -10,7 +10,7 @@ Dragon Realm - A game where the player decides between two caves, which hold
 import time
 import textwrap
 
-WIDTH = 60
+WIDTH = 58
 WRAP = 50
 DELAY = 1
 CAVES = ["right", "left"]

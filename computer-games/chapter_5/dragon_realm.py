@@ -13,7 +13,7 @@ import textwrap
 
 CAVES = ["right", "left"]
 DELAY = 1
-WIDTH = 60
+WIDTH = 58
 WRAP = 50
 DEBUG = False
 

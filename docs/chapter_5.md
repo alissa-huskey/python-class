@@ -138,7 +138,7 @@ Add the `WIDTH` global variable, the `intro()` function, and change the
 ***dragon_realm.py***
 
 ```python3
-WIDTH = 60
+WIDTH = 58
 
 
 def intro():
@@ -167,10 +167,10 @@ Python does not provide any way to make sure that a variable is never changed,
 but the convention is to define variables that you intend to never be changed
 at the top of the file and to name them with `ALL_CAPS`.
 
-Here we're defining the width of the screen (or really, just the line) to 60.
+Here we're defining the width of the screen (or really, just the line) to 58.
 
 ```python3
-WIDTH = 60
+WIDTH = 58
 ```
 
 #### Multiline Strings

@@ -11,7 +11,7 @@ import time
 import textwrap
 import random
 
-WIDTH = 60
+WIDTH = 58
 WRAP = 50
 DELAY = 1
 CAVES = ["right", "left"]
