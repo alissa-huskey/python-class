@@ -6,7 +6,7 @@ Chapter 5: Dragon Realm
 The game you will create in this chapter is called Dragon Realm. The player
 decides between two caves, which hold either treasure or certain doom.
 
-![demo](render1592653243115.gif "demo")
+![demo](assets/dragon_realm.gif "demo")
 
 
 Table of Contents
