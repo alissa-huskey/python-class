@@ -705,6 +705,10 @@ Change the game to make it your own. Here are some ideas.
 
 * Add a third cave in the middle with a silly dragon who does a little jig.
 
+* Make a dictionary for each dragon and give them other details like names,
+  colors, sizes, if they breath fire. Print the additional values when you walk
+  in the cave.
+
 * If the player gets treasure from the dragon, add another level to the game.
   Perhaps the player encounters a well and can either make a wish with coin, or
   take a drink. Randomly decide if the wish is granted, or if the water is
