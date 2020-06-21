@@ -20,6 +20,8 @@ Table of Contents
 - [Part 6: Wrap text using the textwrap module](#part-6-wrap-text-using-the-textwrap-module)
 - [Part 7: Pick the Friendly Dragon](#part-7-pick-the-friendly-dragon)
 - [Part 8: The Dragon Acts](#part-8-the-dragon-acts)
+- [Make it Your Own](#make-it-your-own)
+- [What we've learned](#what-weve-learned)
 
 
 Part 1: A Script Template: Shebang, Docstring, Scope
@@ -59,7 +61,7 @@ if __name__ == '__main__':
     main()
 ```
 
-#### Shebang, Encoding
+#### Part 1.1: Shebang, Encoding
 
 The very first line of any executable file (script) is the ***shebang*** line.
 The line starts with a `#!` then is immediately followed (without a space) by
@@ -75,7 +77,7 @@ example, we were going to include Chinese characters.
 # -*- coding: utf-8 -*-
 ```
 
-#### Docstrings
+#### Part 1.2: Docstrings
 
 The first ***expression*** in a Python script should always be a
 ***Docstring***. A Docstring, surrounded by `"""` or `'''`, is similar to a
@@ -91,7 +93,7 @@ Dragon Realm - A game where the player decides between two caves, which hold
 """
 ```
 
-#### Scope, `__main__` and `main()`
+#### Part 1.3: Scope, `__main__` and `main()`
 
 Up until now we have been writing all our code in the body of the file. (Aside
 from a few functions in the PyPet project.) This is what is referred to as the
@@ -160,7 +162,7 @@ def main():
         again = input("Play again? ")
 ```
 
-#### Global Variables
+#### Part 2.1: Global Variables
 
 In programming a variable that cannot be changed is called a ***constant***.
 Python does not provide any way to make sure that a variable is never changed,
@@ -173,7 +175,7 @@ Here we're defining the width of the screen (or really, just the line) to 58.
 WIDTH = 58
 ```
 
-#### Multiline Strings
+#### Part 2.2: Multiline Strings
 
 The `intro()` function will print out a paragraph to the player that describes
 the surroundings. It starts with a docstring to say what the function does.
@@ -196,7 +198,7 @@ and will share his treasure with you. The other dragon
 is greedy and hungry, and will eat you on sight.\n""")
 ```
 
-#### Objects and `str.lower()`
+#### Part 2.3: Objects and `str.lower()`
 
 In Python, all values are ***objects***. An object is data that can have values
 and functions attached to it. An objects values are called ***attributes*** and
@@ -212,7 +214,7 @@ more information about the `lower()` function.
 again.lower()
 ```
 
-#### Boolean and Membership Operators
+#### Part 2.4: Boolean and Membership Operators
 
 In programming, sometimes we don't just want to see if something is the same as
 something else, but the same as a couple of things. One way that we could do
@@ -233,7 +235,7 @@ So the following is has exactly the same result as above.
 again.lower() in ["y", "yes"]
 ```
 
-#### Repeating with `*`
+#### Part 2.5: Repeating with `*`
 
 An easy way to repeat a string is by using the `*` operator. At your Python
 shell, try typing `""hello " * 3"`.
@@ -299,7 +301,7 @@ Then edit your `main()` function to add `cave = choose()`.
         again = input("Play again? ")
 ```
 
-#### Conditionals Expressions Resolve to Boolean Values
+#### Part 3.1: Conditionals Expressions Resolve to Boolean Values
 
 We have used conditional expressions in if-statements
 
@@ -338,7 +340,7 @@ function.
 return response in CAVES
 ```
 
-#### Method Chaining
+#### Part 3.2: Method Chaining
 
 Since all values are objects in Python, all values may have methods. ***Method
 chaining*** is a way to take advantage of that to write less code.
@@ -532,7 +534,7 @@ Add a line to the end of your `enter()` function to save the resulting value
 nature = is_friendly(cave)
 ```
 
-#### Accessing List Elements
+#### Part 7.1 Accessing List Elements
 
 You may recall that dictionaries have keys. Dictionary elements can be accessed
 by adding square brackets to the end of the variable name containing the key.
@@ -626,7 +628,7 @@ Finally, remove or comment out the `print()` line in your `is_friendly()` functi
     #  print("The friendly dragon is:", CAVES[friendly])
 ```
 
-#### Dictonary Keys
+#### Part 8.1: Dictonary Keys
 
 In the past we've used strings for dictionary keys, but other types can be other
 keys too.
@@ -696,7 +698,7 @@ the `is_friendly` variable.
 
 ---
 
-Part 9: Make it Your Own
+Make it Your Own
 ------------------------
 
 Change the game to make it your own. Here are some ideas.
