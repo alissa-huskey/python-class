@@ -12,7 +12,7 @@ CAVES = ["right", "left"]
 
 
 def valid_cave(response):
-    """Return true if response is in the list of valid CAVES"""
+    """Return True if response is in the list of valid CAVES"""
     return response in CAVES
 
 

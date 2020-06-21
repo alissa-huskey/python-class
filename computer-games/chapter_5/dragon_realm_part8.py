@@ -18,7 +18,7 @@ CAVES = ["right", "left"]
 
 
 def valid_cave(response):
-    """Return true if response is in the list of valid CAVES"""
+    """Return True if response is in the list of valid CAVES"""
     return response in CAVES
 
 
@@ -37,6 +37,7 @@ def is_friendly(dragon):
 def dragon(is_friendly):
     """Print the dragon action for a friendly or unfriendly dragon"""
     actions = {
+        # friendlyness: action
         True: "Gives you his treasure!",
         False: "Gobbles you down in one bite!",
     }

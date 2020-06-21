@@ -57,6 +57,7 @@ def is_friendly(dragon):
 def dragon(is_friendly):
     """Print the dragon action for a friendly or unfriendly dragon"""
     actions = {
+        # friendlyness: action
         True: "Gives you his treasure! 💰",
         False: "Gobbles you down in one bite! 💀",
     }
