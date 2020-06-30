@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
+
 """
-This is a Guess the Number game
+Invent Your Own Computer Games with Python
+Chapther 3:  Guess the Number
+
 Inspired by:  http://inventwithpython.com/invent4thed/chapter3.html
+
+This is a Guess the Number Game
 """
 
 import random

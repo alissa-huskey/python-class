@@ -23,6 +23,8 @@ NORMAL = f'{PREFIX}[0m'
 
 
 def debug(*messages):
+    """If DEBUG global variable is True, print one line for each element of
+       messages list in debug style: indented, yellow"""
     if not DEBUG:
         return
 
@@ -31,6 +33,7 @@ def debug(*messages):
 
 
 def describe(message):
+    """Prints string message in special description style, indented"""
     for line in textwrap.wrap(message, WRAP):
         print("  ", line)
 
@@ -68,6 +71,7 @@ def dragon(is_friendly):
 
 def intro():
     """Display the introduction description to the player"""
+
     describe("""You are in a land full of dragons. In front of you,
 you see two caves. In one cave, the dragon is friendly
 and will share his treasure with you. The other dragon
@@ -94,6 +98,9 @@ def choose():
 
 
 def enter(cave):
+    """Prints description of what happens when the user enters the cave based
+      on value of cave: "right" or "left" """
+
     messages = [
         "You approach the cave...",
         "It is dark and spooky...",
