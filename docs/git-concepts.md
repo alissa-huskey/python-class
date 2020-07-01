@@ -41,23 +41,28 @@ Every repository contains:
 
 Conceptually, your repository looks a little something like this:
 
-
 ```
-                        +------------------------+
-                        |    object-db           |
-                        |  +---------------------+
-   HEAD ---> master ----+->| c331b4d gitign...--------+----------------+  +----------------+
-                        |  | 6a338d8 Format... | |    | c331b4d tree   ---| index          |
-                        |  | 02c7a7a Minor ... | |    +----------------+  +----------------+
-                        |  | 382421e Finish... | |    | pypet.py       |  | pypet.py       |
-                        |  | fa69673 Clean ... | |    | README.md      |  | README.md      |
-                        |  | 92241db Reorga... | |    | .replit        |  | .replit        |
-                        |  | fb090a5 Add Py... | |    | ...            |  | ...            |
-                        |  | ...               | |    +----------------+  | +LICENCE.md    |
-                        |  +-------------------+ |                        | +bin/          |
-                        +------------------------+                        +----------------+
+                        +------------------------+     +----------------------+
+                        |    object-db           |     |  index               |
+                        |  +---------------------+     +----------------------+
+   HEAD ---> master ----+->| c331b4d gitign...------------+----------------+  |
+   (ref)     (branch)   |  | 6a338d8 Format... | |     |  | c331b4d tree   |  |
+                        |  | 02c7a7a Minor ... | |     |  +----------------+  |
+                        |  | 382421e Finish... | |     |  | pypet.py       |  |
+                        |  | fa69673 Clean ... | |     |  | README.md      |  |
+                        |  | 92241db Reorga... | |     |  | .replit        |  |
+                        |  | fb090a5 Add Py... | |     |  | ...            |  |
+                        |  | ...               | |     |  +----------------+  |
+                        |  +-------------------+ |     |                      |
+                        +------------------------+     |  +----------------+  |
+                                                       |  | staging        |  |
+                                                       |  +----------------+  |
+                                                       |  | +LICENCE.md    |  |
+                                                       |  | +bin/          |  |
+                                                       |  | ...            |  |
+                                                       |  +----------------+  |
+                                                       +----------------------+
 ```
-
 
 Mo' repos, mo' versions
 -----------------------
@@ -127,28 +132,35 @@ remote repo.
 So it turns out, our repo actually looks more like this.
 
 ```
-                          +------------------------+
-                          |    object-db           |
-                          |  +---------------------+
-   HEAD ---> master ------+->| c331b4d gitign...--------+----------------+  +----------------+
-                          |  | 6a338d8 Format... | |    | c331b4d tree   ---| index          |
-                          |  | 02c7a7a Minor ... | |    +----------------+  +----------------+
-                          |  | 382421e Finish... | |    | pypet.py       |  | pypet.py       |
-                          |  | fa69673 Clean ... | |    | README.md      |  | README.md      |
-                          |  | 92241db Reorga... | |    | .replit        |  | .replit        |
-                          |  | fb090a5 Add Py... | |    | ...            |  | ...            |
-                          |  | ...               | |    +----------------+  | +LICENCE.md    |
-                          |  +-------------------+ |                        | +bin/          |
-                          |                        |                        | ...            |
-                          |  +---------------------+                        +----------------+
-   remotes/origin/head ---+->| 112e375 Add ca..--------+-----------------+
-                          |  | 6a338d8 Format... | |    | 112e375 tree   |
-                          |  | 02c7a7a Minor ... | |    +----------------+
-                          |  | 382421e Finish... | |    | pypet.py       |
-                          |  | fa69673 Clean ... | |    | docs/          |
-                          |  | 92241db Reorga... | |    | .replit        |
-                          |  | fb090a5 Add Py... | |    | ...            |
-                          |  | ...               | |    +----------------+
+                          +------------------------+     +----------------------+
+                          |    object-db           |     |  index               |
+                          |  +-------------------+ |     +----------------------+
+   HEAD ---> master ------+->| c331b4d gitign...------------+----------------+  |
+   (ref)     (branch)     |  | 6a338d8 Format... | |     |  | c331b4d tree   |  |
+                          |  | 02c7a7a Minor ... | |     |  +----------------+  |
+                          |  | 382421e Finish... | |     |  | pypet.py       |  |
+                          |  | fa69673 Clean ... | |     |  | README.md      |  |
+                          |  | 92241db Reorga... | |     |  | .replit        |  |
+                          |  | fb090a5 Add Py... | |     |  | ...            |  |
+                          |  | ...               | |     |  +----------------+  |
+                          |  +-------------------+ |     |                      |
+                          |                        |     |  +----------------+  |
+                          |                        |     |  | staging        |  |
+                          |                        |     |  +----------------+  |
+                          |                        |     |  | +LICENCE.md    |  |
+                          |                        |     |  | +bin/          |  |
+                          |                        |     |  | ...            |  |
+                          |                        |     |  +----------------+  |
+                          |                        |     +----------------------+
+                          |  +-------------------+ |
+   remotes/origin/head ---+->| 112e375 Add ca..------------+-----------------+
+   (tracking branch)      |  | 6a338d8 Format... | |        | 112e375 tree   |
+                          |  | 02c7a7a Minor ... | |        +----------------+
+                          |  | 382421e Finish... | |        | pypet.py       |
+                          |  | fa69673 Clean ... | |        | docs/          |
+                          |  | 92241db Reorga... | |        | .replit        |
+                          |  | fb090a5 Add Py... | |        | ...            |
+                          |  | ...               | |        +----------------+
                           |  +-------------------+ |
                           +------------------------+
 ```
@@ -178,7 +190,7 @@ Altered States
 --------------
 
 Now that you are a little more familiar with the pieces and how they fit
-togther, let's talk about what that means. 
+togther, let's talk about what that means.
 
 There are now potentially many different versions of your files that may exist
 at any given time:
@@ -189,13 +201,13 @@ at any given time:
     - `HEAD`, the ref
     - its *tree*
     - its *object-database*
-      - its *master* branch
-      - its *tracking branch* to remotes/origin/master
+      - for the *master* branch
+      - for the *tracking branch* to remotes/origin/master
 - *origin*
     - `HEAD`
     - its *tree*
     - its `object-database`
-      - its *master* branch
+      - for the *master* branch
 
 
 ### Local States
@@ -235,7 +247,6 @@ Here are the possible states of the local repository relative to the remote repo
 ```
 
 ### State Changes
-
 
 And finally, here is the workflow and how states change for each action.
 

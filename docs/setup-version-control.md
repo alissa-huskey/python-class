@@ -36,14 +36,11 @@ Repl.it has an integration with Github that tucks away a lot of the complexity
 behind a web interface.
 
 
-
 Part 1: First Create a Github Account
 -------------------------------------
 
 1. Create an account on [Github.com](http://github.com) or sign into your
    existing account.
-
-2. Create a new repository by going to [here](http://github.com/new).
 
 
 Part 2: Connect it to your Repl.it
