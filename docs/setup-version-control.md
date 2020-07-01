@@ -1,6 +1,18 @@
 Setup Version Control
 =====================
 
+* [Introduction](#introduction)
+* [Part 1: First Create a Github Account](#part-1-first-create-a-github-account)
+* [Part 2: Connect it to your Repl.it](#part-2-connect-it-to-your-replit)
+* [Part 3: Update the Repl.it Github Authorization](#part-3-update-the-replit-github-authorization)
+* [Part 4: Review your changes](#part-4-review-your-changes)
+* [Part 5: Commit &amp; Push Your Code](#part-5-commit--push-your-code)
+* [Congratulations!](#congratulations)
+
+
+Introduction
+-----------------
+
 ***Version control*** refers to a system for keeping track of and managing
 changes to a set of files. The most popular ***version control system*** today
 is `git`, which is what we will be using.
@@ -22,6 +34,7 @@ benefits include:
 [Github](http://github.com/) is a service that provides hosting for git repos.
 Repl.it has an integration with Github that tucks away a lot of the complexity
 behind a web interface.
+
 
 
 Part 1: First Create a Github Account
@@ -195,7 +208,7 @@ and edit the file then repeat the `git add` and `git diff` steps to review it
 again.
 
 
-Part 4: Commit & Push Your Code
+Part 5: Commit & Push Your Code
 -------------------------------
 
 In git a ***commit*** is a record of a set of changes. The repository for your
