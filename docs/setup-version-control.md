@@ -54,20 +54,20 @@ Part 2: Connect it to your Repl.it
 2. On the left side-nav click the second icon down: ![fork](assets/code-branch.png)
    **Version Control**.
 
-3. At the top of the new left-most pane, click the button that says "Connect
-   to..."
+3. At the top of the new left-most pane, click the button that says **Connect
+   to...**
 
-4. It will ask you to Connect to Github. Click the button that says "Connect
-   Repl.it to your GitHubAccount"
+4. It will ask you to Connect to Github. Click the button that says **Connect
+   Repl.it to your GitHubAccount**
 
-5. A new page will appear titled "Install & Authorize Repl.it Online IDE".
+5. A new page will appear titled **Install & Authorize Repl.it Online IDE**.
    Click Save.
 
 6. The new window will close and you'll be back at your repl. Click the
-   "Connect to..." button again.
+   **Connect to...** button again.
 
-7. A dialog will appear titled "Create a new GitHub repository". Choose a repo
-   name (perhaps "python-class"?) and click "Create GitHub repository".
+7. A dialog will appear titled **Create a new GitHub repository**. Choose a repo
+   name (perhaps "python-class"?) and click **Create GitHub repository**.
 
 
 Part 3: Update the Repl.it Github Authorization
@@ -83,20 +83,20 @@ settings so that Repl.it only has access to that repo.
 
 2. In the top right corner, click your avatar to bring up the user menu.
 
-3. Click the "Settings" link.
+3. Click the **Settings** link.
 
-4. On the left side, click the "Applications" link.
+4. On the left side, click the **Applications** link.
 
-5. Under "Installed Github Apps" you should see "Repl.it Online IDE.". Click
-   the "Configure" button.
+5. Under **Installed Github Apps** you should see **Repl.it Online IDE.**. Click
+   the **Configure** button.
 
-6. Under "Repository Access", select the radio button next to "Only select
-   repositories".
+6. Under **Repository Access**, select the radio button next to **Only select
+   repositories**.
 
-7. Click the "Select repositories" drop-down. Click your newly created
+7. Click the **Select repositories** drop-down. Click your newly created
    repository.
 
-8. Click the "Save" button.
+8. Click the **Save** button.
 
 
 Part 4: Review your changes
@@ -113,6 +113,8 @@ control. But you can skip it for now if you'd prefer.)
 
 The `git status` tool shows you a list of files that have been changed since
 your last commit.
+
+##### In the Console
 
 In the right-most Console pane, type:
 
@@ -147,6 +149,8 @@ The `git diff` tool shows the details of what you have changed.
 The `diff` tool only shows changes to ***tracked*** files--ones that have been
 previously added to your repository. To make sure that all of your changes show
 up in the diff, we'll first need to add them.
+
+##### In the Console
 
 In the Console pane type:
 
@@ -215,17 +219,17 @@ In git a ***commit*** is a record of a set of changes. The repository for your
 code exists both on repl.it and on github. In order to update the repo on
 github with your commits on repl.it the changes will be ***pushed*** to Github.
 
-1. On the left side-nav, Click the![fork](assets/code-branch.png) **Version Control**
-   icon again. In the left-most Version Control pane, it should now display a
-   link to your newly created repository next to the github icon.
+1. On the left side-nav, Click the![fork](assets/code-branch.png) **Version
+   Control** icon again. In the left-most **Version Control** pane, it should
+   now display a link to your newly created repository next to the github icon.
 
-2. In the text-area that says "What did you change?" write a brief description
+2. In the text-area that says **What did you change?** write a brief description
    of your changes. (If this first commit is a lot of files, you may want to
-   put something like "First push from repl.it". In the future, it's a good
+   put something like `First push from repl.it`. In the future, it's a good
    idea to commit frequently, ideally at logical stopping points.)
 
-3. Click the "commit & push" button. If all goes well, your new commit will
-   appear under "Previous Commits" and the "commit & push" button will
+3. Click the **commit & push** button. If all goes well, your new commit will
+   appear under **Previous Commits** and the **commit & push** button will
    dissappear.
 
 
