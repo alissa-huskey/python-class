@@ -259,6 +259,9 @@ And finally, here is the workflow and how states change for each action.
   |              |              |            |          |              |        |          |         |
   | [git add ----------->]      |            |          |              |        |          |         |
   |              |              |            |          |              |        |          |         |
+  | [git commit -a ----->|----------->|----------->|----------->]      |        |          |         |
+  |              |              |            |          |              |        |          |         |
+  |              |              |            |          |              |        |          |         |
   |              | [git commit ---------->|--+---->|----+------>]      |        |          |         |
   |              |              |            |          |              |        |          |         |
   |              |              |            |          | [git fetch <--------] |          |         |
