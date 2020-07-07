@@ -203,11 +203,53 @@ Software Development Concepts
 Version Control
 ---------------
 
+* **branch** -- a container that has a name and stores set of commits.  Every
+  repository is created with a default branch named **master**.
+
 * **Codebase**: A set source code files that make up a software system,
   application, component or project.
 
+* **commit**, **revsion** or **change log** is a set of changes recorded in
+  version control.
+
+ * **distributed version control**. As opposed to **Centralized Version Control
+   Systems** that have one central repository that all other repositories were
+   required to communicate with in order to commit changes. In distributed
+   version control , every repo is self contained. Not only that, but any repo
+   send changes to or receive changes from any other compatable repository.
+
+* **HEAD** -- a reference to the current commit on the current branch. A
+  reference is like a bookmark to a commit. Since we're not doing anything
+  fancy, `HEAD` will point to the most recent commit on the `master` branch for
+  the forseeable future.
+
+* the **index** -- a snapshot of your files at the time of the `HEAD` commit
+  plus the changes you've staged for commit.
+
+* **master**: the default branch
+
+* **object database** -- the history of all commits and the relationships
+  between them.
+
+* **origin**: the default remote repository
+
+* a **patch** -- the file detailing the exact changes that were made in a format
+  that git and other programs understand. It's very similar to the output of
+  `git diff`.
+
+* **reference**: pointer to a specific commit
+
+* **remote repository** or **upstream repo** -- a repository that you send
+  changes to
+
 * **Repository (aka repo)**: The container for version-control information for
   a set of files.
+
+- a **SHA** or **hash** -- a 40-character unique identifier that points to a
+  the rest of the data related to the commit. Basically, a commit ID. Here's an
+  example: `d16085b3b913e5bc5e351c0a7461051e9973629a`
+
+* **tree** -- a snapshot of your files at the time of the `HEAD` commit.
 
 * **Version Control (Source Control, Revision Control)**: A method for
   keeping track of and managing changes to a set of files.
