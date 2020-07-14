@@ -733,7 +733,8 @@ Run your script and see what you've got!
 Part 8: Outline the `fight()` function
 -------------
 
-See the complete script for this section here: [battle_part08.py](https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/battle/battle_part08.py)
+[battle_part08.py](https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/battle/battle_part08.py) |
+[raw download](https://raw.githubusercontent.com/alissa-huskey/python-class/master/pythonclass/lessons/battle/battle_part08.py)
 
 The `fight()` function has a lot to do, so we'll start by writing a bit of an
 outline for it.
@@ -871,7 +872,8 @@ def fight(fighters):
 Part 9: Print the fighter health
 --------------------------------
 
-See the complete script for this section here: [battle_part09.py](https://github.com/alissa-huskey/python-class/blob/master/pythonclass/gamesbook/battle/battle_part09.py)
+[battle_part09.py](https://github.com/alissa-huskey/python-class/blob/master/pythonclass/gamesbook/battle/battle_part09.py)
+[raw download](https://raw.githubusercontent.com/alissa-huskey/python-class/master/pythonclass/lessons/battle/battle_part09.py)
 
 In this section we will print out the fighters health for each round. Here's
 what the game output will look like when we're done:
@@ -1121,6 +1123,9 @@ Now run the script and see how it looks.
 Part 10: Choose who attacks
 ---------------------------
 
+[battle_part10.py](https://github.com/alissa-huskey/python-class/blob/master/pythonclass/gamesbook/battle/battle_part10.py)
+[raw download](https://raw.githubusercontent.com/alissa-huskey/python-class/master/pythonclass/lessons/battle/battle_part10.py)
+
 Continuing with the `fight()` function, we need switch back and forth between
 the two fighters for who attacks each round.
 
@@ -1186,6 +1191,7 @@ this: `mylist[0]`.
 Add the `current` variable to the top of the `fight()` function, before the
 `while` loop and set it to `0`.
 
+*battle.py: fight()*
 ```python
 # the index in the fighters list of the attacker in each round
 current = 0
@@ -1225,17 +1231,17 @@ and `not 0` always evalutes to `1`.
 
 ---
 
-We're going to use this trick to pick who attacks for each round. 
+We're going to use this trick to pick who attacks for each round.
 
 We'll set the `attacker` to `fighters[current]` and the `rival` to
 `fighters[not current]`.
-
 
 ##### Edit `battle.py`
 
 In the `fight()` function, at the `top of the `while` loop under line `104`
 add:
 
+*battle.py: fight()*
 ```python
 # set the roles for this round
 #
@@ -1254,6 +1260,7 @@ and forth between the two fighters.
 
 In the `fight()` function at the end of the `while` loop, under line `121` add:
 
+*battle.py: fight()*
 ```python
 # flip current to the other fighter for the next round
 current = not current
@@ -1270,6 +1277,7 @@ something--we don't do anything with the input.
 
 In the `fight()` function just under the `rival =` line, add:
 
+*battle.py: fight()*
 ```python
 # pause for input
 input(f"\n{attacker['name']} FIGHT>")
@@ -1280,8 +1288,12 @@ Now run your script!
 Part 11: Attack
 ---------------
 
-Preview of code:
+[battle_part11.py](https://github.com/alissa-huskey/python-class/blob/master/pythonclass/gamesbook/battle/battle_part11.py)
+[raw download](https://raw.githubusercontent.com/alissa-huskey/python-class/master/pythonclass/lessons/battle/battle_part11.py)
 
+In this section we'll be adding the `attack()` function and making changes to the `fight()` function.
+
+*battle.py: attack()*
 ```python
 # ### game event functions ###
 #
@@ -1290,8 +1302,10 @@ def attack(foe):
     """Inflict a random amount of damage is inflicted on foe, then return the
        damage and attack used"""
     return 10, "smacks upside the head"
-...
+```
 
+*battle.py: fight()*
+```python
 def fight(fighters):
     """Repeat rounds of the fight until one wins then
        Take a list of two PETs and return the winning PET"""
@@ -1348,7 +1362,6 @@ def fight(fighters):
 
     # return the winner
     return winner
-
 ```
 
 ### Part 11.1: The `attack()` function
@@ -1363,6 +1376,7 @@ the `rival`.
 
 In the `fight()` function just under the attacker prompt on line `122` add:
 
+*battle.py: fight()*
 ```python
 # the attack
 damage, act = attack(rival)
@@ -1381,6 +1395,7 @@ Under the `Functions` section, add a new subsection for `game event functions`.
 Add the `attack` function in this new subsection. Have it return a hardcoded
 damage value and string for the attack description.
 
+*battle.py: attack()*
 ```python
 # ### game event functions ###
 #
@@ -1408,6 +1423,7 @@ Now we just need to print out all of the details of the attack.
 
 In the `fight()` function under the `attack()` statement on line `125` add:
 
+*battle.py: fight()*
 ```python
 # pause for effect, then print attack details
 time.sleep(DELAY)
