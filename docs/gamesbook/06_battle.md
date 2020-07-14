@@ -4,11 +4,20 @@ PyPet Battle
 The game you're going to make takes our old PyPets and has them battle until
 one of them wins.
 
-You will learn:
+Table of Contents
+-----------------
 
-* How to make your own modules.
-* More about sequences.
-* New string tricks: f-strings, `center()` and `rjust()`
+* [Part 1. A Brief Tour of the Console](#part-1-a-brief-tour-of-the-console)
+* [Part 2. Update your repo](#part-2-update-your-repo)
+* [Part 3. Create a New Script](#part-3-create-a-new-script)
+* [Part 4: Make a function outline](#part-4-make-a-function-outline)
+* [Part 5: pets module](#part-5-pets-module)
+* [Part 6: Fill in the lotto() function](#part-6-fill-in-the-lotto-function)
+* [Part 7: Fill in the intro() function](#part-7-fill-in-the-intro-function)
+* [Part 8: Outline the fight() function](#part-8-outline-the-fight-function)
+* [Part 9: Print the fighter health](#part-9-print-the-fighter-health)
+* [Part 10: Choose who attacks](#part-10-choose-who-attacks)
+* [Part 11: Attack](#part-11-attack)
 
 Part 1. A Brief Tour of the Console
 -----------------------------------
@@ -427,7 +436,8 @@ pretty good idea of how the script will end up working and what each part will
 do.
 
 
-### Part 5: `pets` module
+Part 5: `pets` module
+---------------------
 
 One of the handy things about code is that it is reusable. So we're going to
 make a pets module that we could reuse in future projects.
@@ -534,7 +544,7 @@ import pets
 import random
 ```
 
-### Part 5.2: Write the `lotto()` function
+### Part 6.2: Write the `lotto()` function
 
 Then we'll fill in the `lotto()` function.
 
@@ -1249,8 +1259,7 @@ def fight(fighters):
 
 ```
 
-Part 10.1: The `attack()` function
-----------------------------------
+### Part 11.1: The `attack()` function
 
 We'll need a function that picks what kind of attack to do, calculates damage
 the damage and modifies the `health` of the `rival`.
@@ -1267,7 +1276,7 @@ In the `fight()` function just under the attacker prompt on line `122` add:
 damage, act = attack(rival)
 ```
 
-### Part 10.2: Add the placeholder `attack()` functoin
+### Part 11.2: Add the placeholder `attack()` functoin
 
 Then let's add a placholder `attack()` function. We'll have it return some
 hardcoded values until we fill in the rest.
@@ -1299,7 +1308,7 @@ The syntax when returning multple values is: `return <val1>, <val2>`.
 
 The syntax when assigning the results is: `<var1>, <var2> = fun()`
 
-### Part 10.3: Print attack details
+### Part 11.3: Print attack details
 
 Now we just need to print out all of the details of the attack.
 
