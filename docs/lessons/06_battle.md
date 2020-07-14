@@ -733,11 +733,14 @@ Run your script and see what you've got!
 Part 8: Outline the `fight()` function
 -------------
 
+See the complete script for this section here: [battle_part08.py](pythonclass/gamesbook/battle/battle_part08.py)
+
 The `fight()` function has a lot to do, so we'll start by writing a bit of an
 outline for it.
 
-Here's a preview of the `fight()` function for now:
+Here's a preview of what those functions will look like when we're done.
 
+*battle.py: fight()*
 ```python
 def fight(fighters):
     """Repeat rounds of the fight until one wins then
@@ -784,7 +787,7 @@ Here is a handy picture to help clarify.
 
 ##### Edit `battle.py`
 
-Start your `fight() function by setting the variable `winner` to `None`.
+Start your `fight()` function by setting the variable `winner` to `None`.
 
 ```python
     winner = None
@@ -868,7 +871,96 @@ def fight(fighters):
 Part 9: Print the fighter health
 --------------------------------
 
-Let's continue filling out the `fight()` function.
+See the complete script for this section here: [battle_part09.py](pythonclass/gamesbook/battle/battle_part09.py)
+
+In this section we will print out the fighters health for each round. Here's
+what the game output will look like when we're done:
+
+> stdout
+```
+Welcome to the THUNDERDOME!
+
+  Tonight...
+
+       *** Count Chocula -vs- Curious George ***
+
+
+ARE YOU READY TO RUMBLE?!
+........................................................
+
+
+Count Chocula /|\^..^/|\                      100 of 100
+Curious George @('_')@                        100 of 100
+--------------------------------------------------------
+```
+
+We'll make changes to the `fight()` and `main()` functions and add `show()` and
+`setup()` functions.
+
+Here's a preview of what those functions will look like when we're done.
+
+*battle.py: fight()*
+```python
+def fight(fighters):
+    """Repeat rounds of the fight until one wins then
+       Take a list of two PETs and return the winning PET"""
+
+    winner = None
+
+    # ### rounds of the fight
+    #
+    while winner is None:
+
+        # check for a loser (placeholder)
+        winner = random.choice(fighters)
+
+        # print updated fighter health
+        print()
+        for combatant in fighters:
+            show(combatant)
+
+        # print a line at the end of every round
+        print("-" * WIDTH, "\n")
+
+    #
+    # ### end of fighting rounds
+
+    # return the winner
+    return winner
+```
+
+*battle.py: main()*
+```
+def main():
+    """PyPet Battle Game"""
+    print("\nWelcome to the THUNDERDOME!")
+
+    fighters = lotto()
+    setup(fighters)
+
+    intro(fighters)
+    winner = fight(fighters)
+    endgame(winner)
+```
+
+*battle.py: setup()*
+```
+def setup(pets):
+    """Takes a list of pets and sets initial attributes"""
+    for pet in pets:
+        pet['health'] = MAX_HEALTH
+        pet['pic'] = PICS[pet['species']]
+```
+
+*battle.py: show()*
+```
+def show(pet):
+    """Takes a pet and prints health and details about them"""
+    name_display = f"{pet['name']} {pet['pic']}"
+    health_display = f"{pet['health']} of {MAX_HEALTH}"
+    rcol_width = WIDTH - len(name_display) - 1
+    print(name_display, health_display.rjust(rcol_width))
+```
 
 ### Part 9.1: Print each fighter's info
 
