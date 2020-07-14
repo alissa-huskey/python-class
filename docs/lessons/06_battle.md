@@ -733,7 +733,7 @@ Run your script and see what you've got!
 Part 8: Outline the `fight()` function
 -------------
 
-See the complete script for this section here: [battle_part08.py](pythonclass/gamesbook/battle/battle_part08.py)
+See the complete script for this section here: [battle_part08.py](https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/battle/battle_part08.py)
 
 The `fight()` function has a lot to do, so we'll start by writing a bit of an
 outline for it.
@@ -871,7 +871,7 @@ def fight(fighters):
 Part 9: Print the fighter health
 --------------------------------
 
-See the complete script for this section here: [battle_part09.py](pythonclass/gamesbook/battle/battle_part09.py)
+See the complete script for this section here: [battle_part09.py](https://github.com/alissa-huskey/python-class/blob/master/pythonclass/gamesbook/battle/battle_part09.py)
 
 In this section we will print out the fighters health for each round. Here's
 what the game output will look like when we're done:
