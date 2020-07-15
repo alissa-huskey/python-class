@@ -33,13 +33,33 @@ from pets import PICS, PETS
 
 # ## Global Variables ########################################################
 
+# the range of damage each player can do
+#
+#   this is a data type called a tuple
+#   it is just like a list, except it is
+#   immutable, meaning it cannot be changed
+
+POWER = (10, 30)
+
 # the number of seconds to pause for dramatic effect
-DELAY = 1
+DELAY = 0.5
 
 # the max width of the screen
 WIDTH = 56
 
 MAX_HEALTH = 100
+
+# a list attacks
+FIGHTIN_WORDS = (
+    "nips at",
+    "takes a swipe at",
+    "glares sternly at",
+    "ferociously smacks",
+    "savagely boofs",
+    "is awfully mean to",
+    "can't even believe",
+    "throws mad shade at",
+)
 
 
 # ## Functions ###############################################################
@@ -68,7 +88,17 @@ def show(pet):
 def attack(foe):
     """Inflict a random amount of damage is inflicted on foe, then return the
        damage and attack used"""
-    return 10, "smacks upside the head"
+    # choose an attack
+    act = random.choice(FIGHTIN_WORDS)
+
+    # randomly set damage
+    damage = random.randint(POWER[0], POWER[1])
+
+    # inflict damage
+    foe['health'] -= damage
+
+    # return the amount of damage attack and description
+    return damage, act
 
 
 # ### top-level game functions ###
@@ -135,8 +165,12 @@ def fight(fighters):
         # one more pause before the round ends
         time.sleep(DELAY)
 
-        # check for a loser (placeholder)
-        winner = random.choice(fighters)
+        # check for a loser
+        if rival['health'] <= 0:
+            # don't let health drop below zero
+            rival['health'] = 0
+            # set the winner, this is now the last round
+            winner = attacker
 
         # print updated fighter health
         print()
@@ -158,7 +192,10 @@ def fight(fighters):
 
 def endgame(winner):
     """Takes a PET (winner) and announce that they won the fight"""
-
+    print()
+    print(f"{winner['name']} is Victorious!".center(WIDTH), "\n")
+    print(winner['pic'].center(WIDTH), "\n")
+    print("-" * WIDTH, "\n")
 
 # The main() function should be at the last function defined
 #

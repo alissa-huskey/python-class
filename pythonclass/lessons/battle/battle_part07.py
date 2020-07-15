@@ -37,10 +37,30 @@ import time
 DELAY = 1
 
 # the max width of the screen
-WIDTH = 55
+WIDTH = 56
 
+MAX_HEALTH = 100
 
 # ## Functions ###############################################################
+
+# ### pet functions ###
+#
+
+
+def setup(pets):
+    """Takes a list of pets and sets initial attributes"""
+    for pet in pets:
+        pet['health'] = MAX_HEALTH
+        pet['pic'] = PICS[pet['species']]
+
+
+def show(pet):
+    """Takes a pet and prints health and details about them"""
+    name_display = f"{pet['name']} {pet['pic']}"
+    health_display = f"{pet['health']} of {MAX_HEALTH}"
+    rcol_width = WIDTH - len(name_display) - 1
+    print(name_display, health_display.rjust(rcol_width))
+
 
 # ### top-level game functions ###
 #
@@ -72,7 +92,29 @@ def intro(fighters):
 def fight(fighters):
     """Repeat rounds of the fight until one wins then
        Take a list of two PETs and return the winning PET"""
-    return {}
+
+    winner = None
+
+    # ### rounds of the fight
+    #
+    while winner is None:
+
+        # check for a loser (placeholder)
+        winner = random.choice(fighters)
+
+        # print updated fighter health
+        print()
+        for combatant in fighters:
+            show(combatant)
+
+        # print a line at the end of every round
+        print("-" * WIDTH, "\n")
+
+    #
+    # ### end of fighting rounds
+
+    # return the winner
+    return winner
 
 
 def endgame(winner):
@@ -87,6 +129,8 @@ def main():
     print("\nWelcome to the THUNDERDOME!")
 
     fighters = lotto()
+    setup(fighters)
+
     intro(fighters)
     winner = fight(fighters)
     endgame(winner)

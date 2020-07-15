@@ -27,17 +27,12 @@ PyPet Battle Game:
 
 # ### Imports ################################################################
 
-from pets import PICS, PETS
-import random
-import time
 
 # ## Global Variables ########################################################
 
-# the number of seconds to pause for dramatic effect
-DELAY = 1
-
-# the max width of the screen
-WIDTH = 55
+# The convention is to name global variables using ALL_CAPS_WITH_UNDERSCORE
+#
+# GLOBAL_VARIABLE = 2
 
 
 # ## Functions ###############################################################
@@ -47,26 +42,11 @@ WIDTH = 55
 
 def lotto():
     """Return two randomly chosen PETs"""
-    # randomly reorder the PETS list
-    random.shuffle(PETS)
-
-    # return the first two items in the PETS list
-    return [PETS[0], PETS[1]]
+    return []
 
 
 def intro(fighters):
     """Takes a list of two PETs (fighters) and prints their details"""
-
-    print("\n  Tonight...\n")
-    time.sleep(DELAY)
-
-    # announce the fighters
-    header = f"*** {fighters[0]['name']} -vs- {fighters[1]['name']} ***"
-    print(header.center(WIDTH, " "), "\n\n")
-
-    # pause for input
-    input("ARE YOU READY TO RUMBLE?!")
-    print("." * WIDTH, "\n")
 
 
 def fight(fighters):
@@ -84,7 +64,7 @@ def endgame(winner):
 
 def main():
     """PyPet Battle Game"""
-    print("\nWelcome to the THUNDERDOME!")
+    print("Welcome to the THUNDERDOME!")
 
     fighters = lotto()
     intro(fighters)

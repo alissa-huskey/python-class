@@ -4,7 +4,7 @@
 """
 PyPet Battle Game:
 * Two fighters are randomly chosen from a list of PETS, each starting with a
-health of 100
+  health of 100
 * Print out details about the chosen fighters
 * Each fighter takes a turn attacking the other until one fighter wins.
     - Each attack will have a description and do randomly selected amount of
@@ -27,24 +27,33 @@ health of 100
 
 # ### Imports ################################################################
 
+from pets import PICS, PETS
 
 # ## Global Variables ########################################################
-
-# The convention is to name global variables using ALL_CAPS_WITH_UNDERSCORE
-#
-# GLOBAL_VARIABLE = 2
 
 
 # ## Functions ###############################################################
 
-# The convention is to name functions, arguments, and local varibales using
-# lower_case_with_underscore
+# ### top-level game functions ###
 #
 
-#  def some_func():
-#      """Short description of the function, including info about any arguments
-#         and/or return values"""
-#      ...
+def lotto():
+    """Return two randomly chosen PETs"""
+    return []
+
+
+def intro(fighters):
+    """Takes a list of two PETs (fighters) and prints their details"""
+
+
+def fight(fighters):
+    """Repeat rounds of the fight until one wins then
+       Take a list of two PETs and return the winning PET"""
+    return {}
+
+
+def endgame(winner):
+    """Takes a PET (winner) and announce that they won the fight"""
 
 
 # The main() function should be at the last function defined
@@ -53,6 +62,11 @@ health of 100
 def main():
     """PyPet Battle Game"""
     print("Welcome to the THUNDERDOME!")
+
+    fighters = lotto()
+    intro(fighters)
+    winner = fight(fighters)
+    endgame(winner)
 
 
 # ## Runner ##################################################################

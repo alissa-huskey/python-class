@@ -4,202 +4,32 @@ PyPet Battle
 The game you're going to make takes our old PyPets and has them battle until
 one of them wins.
 
-Table of Contents
------------------
-
-* [Part 1. A Brief Tour of the Console](#part-1-a-brief-tour-of-the-console)
-* [Part 2. Update your repo](#part-2-update-your-repo)
-* [Part 3. Create a New Script](#part-3-create-a-new-script)
-* [Part 4: Make a function outline](#part-4-make-a-function-outline)
-* [Part 5: pets module](#part-5-pets-module)
-* [Part 6: Fill in the lotto() function](#part-6-fill-in-the-lotto-function)
-* [Part 7: Fill in the intro() function](#part-7-fill-in-the-intro-function)
-* [Part 8: Outline the fight() function](#part-8-outline-the-fight-function)
-* [Part 9: Print the fighter health](#part-9-print-the-fighter-health)
-* [Part 10: Choose who attacks](#part-10-choose-who-attacks)
-* [Part 11: Attack](#part-11-attack)
-
-Part 1. A Brief Tour of the Console
------------------------------------
-
-We've talked about the **Python Shell** -- it is an interface where you can
-type in python code, and it will run it and print out the results.
-
-When people use the term ***console***, ***command-line*** or ***shell***, they
-mean the ***Operating System Shell***. Here the input we type is in a language
-called ***bash*** then run by the underlying operating system.
-
-### Part 1.1: Open "The Shell"
-
-We're going to learn a new way to access the console, and that is using a
-Repl.it feature they call "The Shell".  You can open it by by pressing
-`ctrl+shift+S` or `cmd+shift+S`.
-
-Go ahead and collapse the left two panes so you only see The Console and The
-Shell panes.
-
-You should see something like this in the new pane:
-
-```bash
-~$
-```
-
-This is the ***bash prompt***, which is the same thing you get in the Console
-pane when you see `>`.
+* [Part 1. Create a New Script](#part-1-create-a-new-script)
+* [Part 2. Make a function outline](#part-2-make-a-function-outline)
+* [Part 3. `pets` module](#part-3-pets-module)
+* [Part 4. Fill in the `lotto()` function](#part-4-fill-in-the-lotto-function)
+* [Part 5. Fill in the `intro()` function](#part-5-fill-in-the-intro-function)
+* [Part 6. Outline the `fight()` function](#part-6-outline-the-fight-function)
+* [Part 7. Print the fighter health](#part-7-print-the-fighter-health)
+* [Part 8. Choose who attacks](#part-8-choose-who-attacks)
+* [Part 9. Attack](#part-9-attack)
+* [Part 10. Attack, For Realsies](#part-10-attack-for-realsies)
+* [Part 11. Find The Winner](#part-11-find-the-winner)
+* [Part 12. Endgame](#part-12-endgame)
 
 
-### Part 1.2: Anatomy of A Command
-
-The most basic kind of command has the form of:
-
-`<program-name> [<argument> <argument>...]`
-
-For example, to start the Python shell we use the command:
-
-```bash
-python3
-```
-
-* `python3` is the name of the program
-* in this case there are no arguments
-
-Or, to run our PyPet script, the command would be:
-
-```bash
-python3 pypet.py
-```
-
-* `python3` is the program name
-* `pypet.py` is an argument -- in this case, the filename for our script
-
-This tells the Python Interpreter (`python3`) to run the code found inside the
-file `pypet.py`.
-
-
-This, by the way, is exactly how the Run button works. It reads our `.replit`
-file and takes the value of the `run` variable inside of it, and sends it to
-the bash prompt in the Console pane.
-
-
-### Part 1.2: Subcommands and Flags
-
-A program may take all sorts of arguments or none at all.
-
-Some programs have their own set of commands, known as `subcommands`.
-
-`git` is one such command. For example in the command:
-
-```bash
-git status
-```
-
-* `git` is the name of the program
-* `status` is a subcommand argument
-
-When an argument starts with a `-` or `--` it is called a ***flag*** or an
-***option flag***. Usually this tells a program or its subcommand to set an
-option so that it behaves in a certian way.
-
-For example, in the command:
-
-```bash
-git diff --staged
-```
-
-* `git` is the name of the program
-* `diff` is a subcommand argument
-* `--staged` is an option flag argument
-
-Flags take a number of common forms.
-
-`git status -s               #` Short flags start with one dash (`-`) and a single letter
-`git log --oneline           #` Long flags have two dashes (`--`) followed by a word
-`git log --pretty=oneline    #` Sometimes option flags take a value following the equal sign (`=`)
-`python3 -c 'print("hello")' #` Sometimes option flags take the next argument passed as a value
-
-
-### Part 1.3: Common Arguments
-
-
-* `-h` \| `--help` show usage information for this command
-* `<program> help <subcommand>` show the usage information for the <subcommand>
-* `-V` \| `--version` show the programs version
-* `-v` \| `--verbose` print extra detailed information while running a command
-* `-q` \| `--quiet` print less detailed information or none at all while running a command
-* `--` this means that any arguments following it should not be considered options
-
-### Part 1.2: Try Some Commands
-
-Here are some commands. Pick a few and try them for yourself.
-
-* `cal`
-* `cal -h`
-* `cal -3`
-* `ncal -e`
-* `file pypet.py`
-* `whoami`
-* `uname -a`
-* `uptime`
-* `date`
-* `echo hello`
-
-Part 2. Update your repo
-------------------------
-
-Before we start coding, we want to make sure there are no uncommitted changes.
-Check this by using the `git status` command.
-
-### Part 2.1: Review the Repo Status
-
-#### In the Console or Shell:
-
-```bash
-~$ git status
-On branch master
-Your branch is behind 'origin/master' by 4 commits, and can be fast-forwarded.
-  (use "git pull" to update your local branch)
-
-nothing to commit, working tree clean
-```
-
-If you have no local changes it will say `nothing to commit`.
-
-If there are new changes in the `remote` branch, it will say `Your branch is behind 'origin/master' by...`.
-
-### Part 2.2: Pull any Changes
-
-If there were changes to your remote branch `pull` them:
-
-#### In the Version Control Pane
-
-1. Click the Fork icon / Version Control link in the sidebar.
-
-2. If there are any changes, you will see a `Pull` button. Click the Pull button.
-
-Alternately, you could do this at the console:
-
-#### In the Console or Shell
-
-```bash
-~$ git pull
-Updating 19620c4..add2dea
-Fast-forward
- .replit                       |  3 +--
- docs/git-concepts.md          | 98 ++++++++++++++++++++++++++++++++++++++++++-------------------------------
- docs/setup-version-control.md |  3 ---
- 3 files changed, 57 insertions(+), 47 deletions(-)
-```
-
-
-Part 3. Create a New Script
+Part 1. Create a New Script
 ----------------------------
+
+[battle_part01.py](https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/battle/battle_part01.py)
+[raw download](https://raw.githubusercontent.com/alissa-huskey/python-class/master/pythonclass/lessons/battle/battle_part01.py)
 
 First, we're going to create a new script based off of the template we worked
 on in the Dragon Realm lesson.
 
-### Part 3.1: Download the Template
+### Part 1.1: Download the Template
 
-#### In the Console:
+**In the Console**
 
 We'll use a program called `curl` which is used to communicate with web
 servers.
@@ -208,23 +38,11 @@ servers.
 curl -O https://raw.githubusercontent.com/alissa-huskey/python-class/master/pythonclass/template.py
 ```
 
-### Part 3.2 Commit & Push
-
-Let's commit and push this right away.
-
-#### In the Version Control Pane
-
-1. Click the Fork icon / Version Control link in the sidebar.
-
-2. Type a description in the `What did you change` text area like, `Add script template.`
-
-3. Click the `commit & push` button.
-
-### Part 3.3: Add the Script
+### Part 1.2: Add the Script
 
 Now we'll use the `cp` command to copy the script.
 
-#### In the Console:
+**In the Console**
 
 ```bash
 cp template.py battle.py
@@ -233,7 +51,7 @@ cp template.py battle.py
 Then follow the instructions in [Repl.it Tips](replit-tips.md) to edit your
 `.replit` file to point to your new script.
 
-### Part 3.4: Basic script setup
+### Part 1.3: Basic script setup
 
 Now let's change the script docstring on line `4` to a description of the game.
 Copy these rules rules from here:
@@ -270,8 +88,11 @@ print("Welcome to the THUNDERDOME!")
 Now run your script and let's see it go!
 
 
-Part 4: Make a function outline
+Part 2. Make a function outline
 -------------------------------
+
+[battle_part02.py](https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/battle/battle_part02.py)
+[raw download](https://raw.githubusercontent.com/alissa-huskey/python-class/master/pythonclass/lessons/battle/battle_part02.py)
 
 We're going to approach this a little differently--we're going to take a guess
 at what we think the game will look like and write minimal functions for those
@@ -281,7 +102,7 @@ for now the functions will be placeholders where we will put future code.
 If we look at the game description in the script docstring, we get a pretty
 good idea of how the script might look.
 
-### Part 4.1: Choose the fighters
+### Part 2.1: Choose the fighters
 
 We need a function that will choose two PETs and return them.
 
@@ -323,7 +144,7 @@ def lotto():
 ```
 
 
-### Part 4.2: Introduce the fighters
+### Part 2.2: Introduce the fighters
 
 Next we'll need a function to introduce the fighters.
 
@@ -357,7 +178,7 @@ def intro(fighters):
 ```
 
 
-### Part 4.3: The fight
+### Part 2.3: The fight
 
 Now the fighters fight!
 
@@ -395,7 +216,7 @@ def fight(fighters):
 ```
 
 
-### Part 4.4: Winner, winner
+### Part 2.4: Winner, winner
 
 Now we wrap up the game by announcing the winner.
 
@@ -436,13 +257,16 @@ pretty good idea of how the script will end up working and what each part will
 do.
 
 
-Part 5: `pets` module
+Part 3. `pets` module
 ---------------------
+
+[battle_part03.py](https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/battle/battle_part03.py)
+[raw download](https://raw.githubusercontent.com/alissa-huskey/python-class/master/pythonclass/lessons/battle/battle_part03.py)
 
 One of the handy things about code is that it is reusable. So we're going to
 make a pets module that we could reuse in future projects.
 
-#### Part 5.1: Create a `pets.py` file
+### Part 3.1: Create a `pets.py` file
 
 Make a new file named `pets.py`. Add the shebang, the encoding line, and the
 docstring. And copy the PICS dictionary into it.
@@ -463,14 +287,14 @@ PICS = {
     'bat': "/|\\^..^/|\\",
     'monkey': "@('_')@",
     'pig': "^(*(oo)*)^",
-    'mouse': "<:3 )~~~",
+    'mouse': "<:3 )~~",
     'bird': ",(u°)>",
     'cthulhu': "^(;,;)^",
     'fox': "-^^,--,~",
 }
 ```
 
-### Part 5.2: Add your pets list
+### Part 3.2: Add your pets list
 
 In the pypet project, we wrote a list by adding one pet at a time.
 
@@ -489,12 +313,12 @@ pets = [cat, fish]
 We've also added simple strings or integers to lists all at once:
 
 ```python
-caves = ["right, "left"]
+caves = ["right", "left"]
 ```
 
 We can also add dictionary items to a list all at once.
 
-##### In `pets.py`
+**Edit `pets.py`**
 
 Add your list of pets to the end of your `pets.py` file. For this game we only
 need the `name` and `species`.
@@ -508,7 +332,7 @@ PETS = [
 ]
 ```
 
-### Part 5.3: Import your module
+### Part 3.3: Import your module
 
 We're going to call `import` in a new way this time. The syntax is:
 
@@ -518,7 +342,7 @@ This allows you to only import part of a module, and also imports it into the
 global namespace. That means that when we refer to the imported functions (or
 in this case, variables) we don't need to use the module name.
 
-##### Edit `battle.py`
+**Edit `battle.py`**
 
 In the `Imports` section at the top of `battle.py` under line `30` add:
 
@@ -526,13 +350,16 @@ In the `Imports` section at the top of `battle.py` under line `30` add:
 from pets import PICS, PETS
 ```
 
-Part 6: Fill in the `lotto()` function
+Part 4. Fill in the `lotto()` function
 --------------------------------------
+
+[battle_part04.py](https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/battle/battle_part04.py)
+[raw download](https://raw.githubusercontent.com/alissa-huskey/python-class/master/pythonclass/lessons/battle/battle_part04.py)
 
 Now let's start making the our functions actually do things, starting with the
 `lotto()` function.
 
-### Part 6.1: Import the `random` module
+### Part 4.1: Import the `random` module
 
 For it, we'll need to import the `random` module.
 
@@ -540,11 +367,11 @@ At the end of our `Imports` section under line `30` add a line to import our
 well-known `random` module.
 
 ```python
-import pets
+from pets import PICS, PETS
 import random
 ```
 
-### Part 6.2: Write the `lotto()` function
+### Part 4.2: Write the `lotto()` function
 
 Then we'll fill in the `lotto()` function.
 
@@ -567,8 +394,11 @@ def lotto():
 Run your script to make sure it works.
 
 
-Part 7: Fill in the `intro()` function
+Part 5. Fill in the `intro()` function
 --------------------------------------
+
+[battle_part05.py](https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/battle/battle_part05.py)
+[raw download](https://raw.githubusercontent.com/alissa-huskey/python-class/master/pythonclass/lessons/battle/battle_part05.py)
 
 Here's a preview of what our new `intro()` function will look like.
 
@@ -591,7 +421,7 @@ def intro(fighters):
 Now I'll explain.
 
 
-### Part 7.1: Import `time`
+### Part 5.1: Import `time`
 
 We'll use the `time` module to add some suspense to our announcement. At the
 end of the `Imports` section on like `31` add:
@@ -600,7 +430,7 @@ end of the `Imports` section on like `31` add:
 import time
 ```
 
-### Part 7.1: Add `DELAY` and `WIDTH`
+### Part 5.2: Add `DELAY` and `WIDTH`
 
 Then we'll need `DELAY` and `WIDTH` global variables. Add these to the end of
 the `Global Variables` section under line `34`.
@@ -613,7 +443,7 @@ DELAY = 1
 WIDTH = 55
 ```
 
-### Part 7.2: Print "Tonight..." then sleep
+### Part 5.3: Print "Tonight..." then sleep
 
 The first part of the `intro()` function prints out the word "Tonight..." then
 calls the `time.sleep()` function.
@@ -625,7 +455,7 @@ Add this to the end of the `intro()` function on line `58`.
     time.sleep(DELAY)
 ```
 
-### Part 7.3: Announce the fighters using f-strings
+### Part 5.4: Announce the fighters using f-strings
 
 We've learned how to concatonate strings using the `+` opearator.
 
@@ -685,7 +515,7 @@ Then the value of the `header` variable would be:
 *** Ol' Yeller -vs- Curious George ***
 ```
 
-### Part 7.4: Print the announcement using `str.center()`
+### Part 5.5: Print the announcement using `str.center()`
 
 Python has a handy function on the `str` object for centering text. It takes
 a width argument, for the total length of the resulting string.  We'll use the
@@ -699,7 +529,7 @@ At the end of the `intro()` function under line `64` add:
     print(header.center(WIDTH), "\n\n")
 ```
 
-### Part 7.5: Pause for input
+### Part 5.6: Pause for input
 
 Let's give the player a chance to do something before the game continues.  We
 won't actually do anything with the player feedback in this game. We just want
@@ -714,7 +544,7 @@ At the end of the `intro()` function under line `64` add:
 input("ARE YOU READY TO RUMBLE?!")
 ```
 
-### Part 7.6: Draw a line
+### Part 5.7: Draw a line
 
 Python has a neat way to repeat a string, with the `*` opeartor. We'll use this
 handy trick to easily draw a line of a particular size. In this case, we'll
@@ -730,7 +560,7 @@ print("." * WIDTH, "\n")
 Run your script and see what you've got!
 
 
-Part 8: Outline the `fight()` function
+Part 6. Outline the `fight()` function
 -------------
 
 [battle_part08.py](https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/battle/battle_part08.py) |
@@ -767,7 +597,7 @@ def fight(fighters):
 ```
 
 
-### 8.1: The `None` type
+### Part 6.1: The `None` type
 
 Python has a special type called `None`, which is what is known in programming
 as a ***null*** value.
@@ -786,7 +616,7 @@ Here is a handy picture to help clarify.
 
 ![Null Visualization](null.png "Null as described by toilet paper")
 
-##### Edit `battle.py`
+**Edit `battle.py`**
 
 Start your `fight()` function by setting the variable `winner` to `None`.
 
@@ -795,7 +625,7 @@ Start your `fight()` function by setting the variable `winner` to `None`.
 ```
 
 
-### Part 8.2: Keep going until there's a winnner
+### Part 6.2: Keep going until there's a winnner
 
 We're going to write a `while` loop, using the `None` type.
 
@@ -804,7 +634,7 @@ for as long as the condition is met.
 
 The condition of this `while` loop is `winner is None`.
 
-##### Edit `pets.py`
+**Edit `pets.py`**
 
 Add to your `fight()` function:
 
@@ -812,7 +642,7 @@ Add to your `fight()` function:
     while winner is None:
 ```
 
-### Part 8.3: Add a placeholder winner
+### Part 6.3: Add a placeholder winner
 
 
 Just so we can test our script without looping forever, we'll put a placeholder
@@ -822,7 +652,7 @@ means that the loop will only run once for now.)
 We'll use the `random.choice()` function, which randomly selects an element
 from a list.
 
-##### Edit `pets.py`
+**Edit `pets.py`**
 
 Add to your `fight()` function inside the `while` loop:
 
@@ -831,11 +661,11 @@ Add to your `fight()` function inside the `while` loop:
 winner = random.choice(fighters)
 ```
 
-### Part 8.4: Print a round-end line
+### Part 6.4: Print a round-end line
 
 So we can see that when a round happens, we'll add a line at the end of every loop.
 
-##### Edit `pets.py`
+**Edit `pets.py`**
 
 Add to your `fight()` function inside the `while` loop:
 
@@ -844,12 +674,12 @@ Add to your `fight()` function inside the `while` loop:
 print("-" * WIDTH, "\n")
 ```
 
-### Part 8.5: return the `winner`
+### Part 6.5: return the `winner`
 
 Finally, add a comment showing where the fighting rounds end, then change the
 return line to `return winner`.
 
-##### Edit `battle.py`
+**Edit `battle.py`**
 
 This is how the end of the `fight()` function should look (trimmed):
 
@@ -869,11 +699,11 @@ def fight(fighters):
 ```
 
 
-Part 9: Print the fighter health
+Part 7. Print the fighter health
 --------------------------------
 
-[battle_part09.py](https://github.com/alissa-huskey/python-class/blob/master/pythonclass/gamesbook/battle/battle_part09.py)
-[raw download](https://raw.githubusercontent.com/alissa-huskey/python-class/master/pythonclass/lessons/battle/battle_part09.py)
+[battle_part07.py](https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/battle/battle_part07.py)
+[raw download](https://raw.githubusercontent.com/alissa-huskey/python-class/master/pythonclass/lessons/battle/battle_part07.py)
 
 In this section we will print out the fighters health for each round. Here's
 what the game output will look like when we're done:
@@ -932,7 +762,7 @@ def fight(fighters):
 ```
 
 *battle.py: main()*
-```
+```python
 def main():
     """PyPet Battle Game"""
     print("\nWelcome to the THUNDERDOME!")
@@ -946,7 +776,7 @@ def main():
 ```
 
 *battle.py: setup()*
-```
+```python
 def setup(pets):
     """Takes a list of pets and sets initial attributes"""
     for pet in pets:
@@ -955,7 +785,7 @@ def setup(pets):
 ```
 
 *battle.py: show()*
-```
+```python
 def show(pet):
     """Takes a pet and prints health and details about them"""
     name_display = f"{pet['name']} {pet['pic']}"
@@ -964,7 +794,7 @@ def show(pet):
     print(name_display, health_display.rjust(rcol_width))
 ```
 
-### Part 9.1: Print each fighter's info
+### Part 7.1: Print each fighter's info
 
 We'll want to print out the health for each fighter at the end of every round.
 We'll use a `for` loop to loop through each fighter, then we'll want a function
@@ -979,9 +809,9 @@ for combatant in fighters:
     show(combatant)
 ```
 
-### Part 9.2: Add the `show()` function
+### Part 7.2: Add the `show()` function
 
-At the top of the `Functions` section under line `44, let's add a new comment
+At the top of the `Functions` section under line `44`, let's add a new comment
 section for `pet functions`.
 
 Then add a placeholder functions for `setup()` and `show()`.
@@ -1000,7 +830,7 @@ def setup(pets):
     """Takes a list of pets and sets initial attributes"""
 
 
-### Part 9.3: `MAX_HEALTH`
+### Part 7.3: `MAX_HEALTH`
 
 It looks like we'll need a `MAX_HEALTH` variable. At the end of the `Global
 Variables` section under line `42` add:
@@ -1009,13 +839,13 @@ Variables` section under line `42` add:
 MAX_HEALTH = 100
 ```
 
-### Part 9.5: Initialize fighter health
+### Part 7.4: Initialize fighter health
 
 Turns out we'll also need to set the fighter's health and pic. We'll add a new
 function called `setup()`, and we'll call it from `main()` right before we call
 `fight()`.
 
-##### Edit `battle.py`
+**Edit `battle.py`**
 
 This is what the new `main()` function should look like.
 
@@ -1032,7 +862,7 @@ def main():
     endgame(winner)
 ```
 
-### Part 9.4: Fill in the `setup()` function
+### Part 7.5: Fill in the `setup()` function
 
 In the `setup()` function, we'll uses a `for` loop to loop through the list of
 `pets`. (The `fighters` passed from ) `main()`.
@@ -1043,7 +873,7 @@ Then we're going to use the `species` value to get the `pic` from the `PICS`
 dictionary in the `pets` module.
 
 
-##### Edit `battle.py`
+**Edit `battle.py`**
 
 ```python
 def setup(pets):
@@ -1067,7 +897,7 @@ species = pet['species']
 ```
 
 
-### Part 9.4: Fill in the `show()` function
+### Part 7.6: Fill in the `show()` function
 
 Now we can print the name, pic and health.
 
@@ -1085,7 +915,7 @@ def show(pet):
 ```
 
 
-### Part 9.5: Make columns with `str.rjust()`
+### Part 7.7: Make columns with `str.rjust()`
 
 Now to get a little fancy let's right-align the health display using the
 `str.rjust()` function. Like `str.center()` it takes a width variable.
@@ -1100,7 +930,7 @@ Under line `59` add:
 rcol_width = WIDTH - len(name_display) - 1
 ```
 
-Then change the `print()` line on line `61 to add the `rjust()` call to the end
+Then change the `print()` line on line `61` to add the `rjust()` call to the end
 of the `health_display` variable:
 
 ```python
@@ -1120,11 +950,11 @@ def show(pet):
 
 Now run the script and see how it looks.
 
-Part 10: Choose who attacks
+Part 8. Choose who attacks
 ---------------------------
 
-[battle_part10.py](https://github.com/alissa-huskey/python-class/blob/master/pythonclass/gamesbook/battle/battle_part10.py)
-[raw download](https://raw.githubusercontent.com/alissa-huskey/python-class/master/pythonclass/lessons/battle/battle_part10.py)
+[battle_part08.py](https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/battle/battle_part08.py)
+[raw download](https://raw.githubusercontent.com/alissa-huskey/python-class/master/pythonclass/lessons/battle/battle_part08.py)
 
 Continuing with the `fight()` function, we need switch back and forth between
 the two fighters for who attacks each round.
@@ -1177,7 +1007,7 @@ def fight(fighters):
     return winner
 ```
 
-### Part 10.1: Set a `current` variable
+### Part 8.1: Set a `current` variable
 
 We're going to use a variable `current` to keep track of the index number in
 the `fighters` list of the current attacker.
@@ -1186,7 +1016,7 @@ Remember, lists have index numbers that start at 0. and can be accessed like
 this: `mylist[0]`.
 
 
-##### Edit `battle.py`
+**Edit `battle.py`**
 
 Add the `current` variable to the top of the `fight()` function, before the
 `while` loop and set it to `0`.
@@ -1197,7 +1027,7 @@ Add the `current` variable to the top of the `fight()` function, before the
 current = 0
 ```
 
-### 10.2: Pick the `attacker` and `rival`
+### Part 8.2: Pick the `attacker` and `rival`
 
 We've used the `not` operator in if statements before. The `not` operator can
 also be used to switch between `1` and `0` values. Here's how it works.
@@ -1236,9 +1066,9 @@ We're going to use this trick to pick who attacks for each round.
 We'll set the `attacker` to `fighters[current]` and the `rival` to
 `fighters[not current]`.
 
-##### Edit `battle.py`
+**Edit `battle.py`**
 
-In the `fight()` function, at the `top of the `while` loop under line `104`
+In the `fight()` function, at the top of the `while` loop under line `104`
 add:
 
 *battle.py: fight()*
@@ -1251,12 +1081,12 @@ attacker = fighters[current]
 rival = fighters[not current]
 ```
 
-### Part 10.2: Switch fighter's turn
+### Part 8.3: Switch fighter's turn
 
 We'll use the `not` trick again at the end of the `while` loop to switch back
 and forth between the two fighters.
 
-##### Edit `battle.py`
+**Edit `battle.py`**
 
 In the `fight()` function at the end of the `while` loop, under line `121` add:
 
@@ -1266,14 +1096,14 @@ In the `fight()` function at the end of the `while` loop, under line `121` add:
 current = not current
 ```
 
-### Part 10.3: Print the attacker
+### Part 8.4: Print the attacker
 
 Finally we want to print out the attacker for each round. We prompt for input
 again, but once again this is just to give the player a chance to do
 something--we don't do anything with the input.
 
 
-##### Edit `battle.py`
+**Edit `battle.py`**
 
 In the `fight()` function just under the `rival =` line, add:
 
@@ -1285,11 +1115,11 @@ input(f"\n{attacker['name']} FIGHT>")
 
 Now run your script!
 
-Part 11: Attack
+Part 9. Attack
 ---------------
 
-[battle_part11.py](https://github.com/alissa-huskey/python-class/blob/master/pythonclass/gamesbook/battle/battle_part11.py)
-[raw download](https://raw.githubusercontent.com/alissa-huskey/python-class/master/pythonclass/lessons/battle/battle_part11.py)
+[battle_part09.py](https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/battle/battle_part09.py)
+[raw download](https://raw.githubusercontent.com/alissa-huskey/python-class/master/pythonclass/lessons/battle/battle_part09.py)
 
 In this section we'll be adding the `attack()` function and making changes to the `fight()` function.
 
@@ -1364,7 +1194,7 @@ def fight(fighters):
     return winner
 ```
 
-### Part 11.1: The `attack()` function
+### Part 9.1: The `attack()` function
 
 We'll need a function that picks what kind of attack to do, calculates damage
 the damage and modifies the `health` of the `rival`.
@@ -1372,7 +1202,7 @@ the damage and modifies the `health` of the `rival`.
 We're going to call this the `attack()` function, which will take one argument,
 the `rival`.
 
-##### Edit `battle.py`
+**Edit `battle.py`**
 
 In the `fight()` function just under the attacker prompt on line `122` add:
 
@@ -1382,13 +1212,13 @@ In the `fight()` function just under the attacker prompt on line `122` add:
 damage, act = attack(rival)
 ```
 
-### Part 11.2: Add the placeholder `attack()` functoin
+### Part 9.2: Add the placeholder `attack()` functoin
 
 Then let's add a placholder `attack()` function. We'll have it return some
 hardcoded values until we fill in the rest.
 
 
-##### Edit `battle.py`
+**Edit `battle.py`**
 
 Under the `Functions` section, add a new subsection for `game event functions`.
 
@@ -1415,11 +1245,11 @@ The syntax when returning multple values is: `return <val1>, <val2>`.
 
 The syntax when assigning the results is: `<var1>, <var2> = fun()`
 
-### Part 11.3: Print attack details
+### Part 9.3: Print attack details
 
 Now we just need to print out all of the details of the attack.
 
-##### Edit `battle.py`
+**Edit `battle.py`**
 
 In the `fight()` function under the `attack()` statement on line `125` add:
 
@@ -1435,4 +1265,354 @@ print(f"-{damage} {rival['name']}".center(WIDTH), "\n")
 
 # one more pause before the round ends
 time.sleep(DELAY)
+```
+
+Part 10. Attack, For Realsies
+-----------------------------
+
+[battle_part10.py](https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/battle/battle_part10.py)
+[raw download](https://raw.githubusercontent.com/alissa-huskey/python-class/master/pythonclass/lessons/battle/battle_part10.py)
+
+In this section we'll make the attack actually do something. Here's what the
+game output will look like when we're done.
+
+*stdout*
+```
+Welcome to the THUNDERDOME!
+
+  Tonight...
+
+           *** Scaley -vs- Curious George ***
+
+
+ARE YOU READY TO RUMBLE?!
+........................................................
+
+
+Scaley FIGHT>
+
+  Scaley throws some serious shade at Curious George...
+
+                   -28 Curious George
+
+
+Scaley <`)))><                                100 of 100
+Curious George @('_')@                         72 of 100
+--------------------------------------------------------
+```
+
+We'll be adding global variables `POWER` and `FIGHTIN_WORDS` and filling in the
+`attack()` function.
+
+Here's what the code will look like when we're done.
+
+
+*battle.py: global variables*
+```python
+# the range of damage each player can do
+#
+#   this is a data type called a tuple
+#   it is just like a list, except it is
+#   immutable, meaning it cannot be changed
+
+POWER = (10, 30)
+
+# a list attacks
+FIGHTIN_WORDS = (
+    "nips at",
+    "takes a swipe at",
+    "glares sternly at",
+    "ferociously smacks",
+    "savagely boofs",
+    "is awfully mean to",
+    "can't even believe",
+    "throws mad shade at",
+    "throws some serious shade at",
+    )
+```
+
+*battle.py: attack()*
+```python
+def attack(foe):
+    """Inflict a random amount of damage is inflicted on foe, then return the
+       damage and attack used"""
+    # choose an attack
+    act = random.choice(FIGHTIN_WORDS)
+
+    # randomly set damage
+    damage = random.randint(POWER[0], POWER[1])
+
+    # inflict damage
+    foe['health'] -= damage
+
+    # return the amount of damage and attack description
+    return damage, act
+```
+
+### Part 10.1: The `tuple` type
+
+We've learned about lists and dictionaries already. These are both
+***collections*** or ***container*** types. That means that they contain some
+number of children elements.
+
+The `tuple` is another container type. It is very similar to a list, except
+that it is ***immutable*** meaning that once it is defined it cannot be
+changed. This is handy for global variables where only intend to read the data
+in the script and never to modify it. They're also faster and consume less
+memory.
+
+Tuples are defined using parenthesis `(` `)` and elements are accessed with
+index numbers.
+
+*Python Shell*
+```python
+>>> CAVES = ( "right", "left", "middle" )
+>>> print(CAVES[0])
+right
+```
+
+To review Python container types:
+
+```python
+# keyword   creating                                             accessing              attributes
+# -------   --------                                             ---------              ----------
+
+  list    ; groceries = ["eggs", "milk", "shampoo"]           ;  groceries[0]         # ordered, mutable
+  tuple   ; menu      = ("prev", "next", "quit")              ;  menu[0]              # ordered, immutable
+  dict    ; favs      = {'color': "purple", 'season': "fall"} ;  favs['color']        # unordered, mutable
+```
+
+
+### Part 10.2: Them's Fightin' Words
+
+Let's add our list of attacks using the tuple type we just learned about. At
+the end of the global variables section add the following. Feel free to change
+these or get creative and add your own.
+
+*battle.py: global variables*
+```python
+# a list attacks
+FIGHTIN_WORDS = (
+    "nips at",
+    "takes a swipe at",
+    "glares sternly at",
+    "ferociously smacks",
+    "savagely boofs",
+    "is awfully mean to",
+    "can't even believe",
+    "throws mad shade at",
+)
+```
+
+### Part 10.3: Pick an attack
+
+Now that we have some attacks to choose from, let's edit our `attack()`
+function to pick one.
+
+Use the `random.choice()` function to pick from the new `FIGHTING_WORDS` list,
+then return it.
+
+**Edit `battle.py`**
+
+*battle.py: attack()*
+```python
+def attack(foe):
+    """Inflict a random amount of damage is inflicted on foe, then return the
+       damage and attack used"""
+    # choose an attack
+    act = random.choice(FIGHTIN_WORDS)
+
+    return 10, act
+```
+
+### Part 10.4: What's your damage
+
+Now we need to figure out how much damage the attack will do. First we'll add a
+global variable POWER to set the possible damage range for each attack.
+
+**Edit `battle.py`**
+
+*battle.py: global variables*
+```python
+# the range of damage each player can do
+#
+#   this is a data type called a tuple
+#   it is just like a list, except it is
+#   immutable, meaning it cannot be changed
+
+POWER = (10, 30)
+```
+
+Now we can use the good old `randint` function to randomly select a value in
+that range.
+
+In your `attack()` function, add
+
+**Edit `battle.py`**
+
+*battle.py: attack()*
+```python
+# randomly set damage
+damage = random.randint(POWER[0], POWER[1])
+```
+
+Now that we have the `damage` value set, we can finally inflict it upon our
+the `foe`.
+
+We'll learn about two operators: `-=` and `+=`.
+
+* `<varname> += 1` is the same as `<varname> = <varname> + 1`
+* `<varname> -= 1` is the same as `<varname> = <varname> - 1`
+
+Let's use this operator to reduce the health of `foe`.
+
+**Edit `battle.py`**
+
+Add to the end of the `attack()` function:
+
+*battle.py: attack()*
+```python
+# inflict damage
+foe['health'] -= damage
+```
+
+Finally we can return the `damage` value.
+
+**Edit `battle.py`**
+
+Change the last line of the `attack()` function to:
+
+*battle.py: attack()*
+```python
+# return the amount of damage and attack description
+return damage, act
+```
+
+Now run your script!
+
+
+Part 11. Find The Winner
+------------------------
+
+[battle_part11.py](https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/battle/battle_part11.py)
+[raw download](https://raw.githubusercontent.com/alissa-huskey/python-class/master/pythonclass/lessons/battle/battle_part11.py)
+
+In this section we're going to finish the `fight()` function by picking the
+winner.
+
+Here's how the function will look at the end:
+
+```python
+def fight(fighters):
+    """Repeat rounds of the fight until one wins then
+       Take a list of two PETs and return the winning PET"""
+
+    # winning fighter
+    winner = None
+
+    # the index in the fighters list of the attacker in each round
+    current = 0
+
+    # ### rounds of the fight
+    #
+    while winner is None:
+        # set the roles for this round
+        #
+        # `not <value>` is a handy way to switch 0 and 1
+        #   it is the same as `<value> == False`
+        attacker = fighters[current]
+        rival = fighters[not current]
+
+        # pause for input
+        input(f"\n{attacker['name']} FIGHT>")
+
+        # the attack
+        damage, act = attack(rival)
+
+        # pause for effect, then print attack details
+        time.sleep(DELAY)
+        print(f"\n  {attacker['name']} {act} {rival['name']}...\n")
+
+        # pause for effect, then print damage
+        time.sleep(DELAY)
+        print(f"-{damage} {rival['name']}".center(WIDTH), "\n")
+
+        # one more pause before the round ends
+        time.sleep(DELAY)
+
+        # check for a loser
+        if rival['health'] <= 0:
+            # don't let health drop below zero
+            rival['health'] = 0
+            # set the winner, this is now the last round
+            winner = attacker
+
+        # print updated fighter health
+        print()
+        for combatant in fighters:
+            show(combatant)
+
+        # print a line at the end of every round
+        print("-" * WIDTH, "\n")
+
+        # flip current to the other fighter for the next round
+        current = not current
+
+    #
+    # ### end of fighting rounds
+
+    # return the winner
+    return winner
+```
+
+### Part 11.1: Check `rival` health
+
+Let's replace the placeholder `winner =` line with the real thing.
+
+Fist, we want to check if the `health` of the `rival` who was just attacked has
+reached zero. If it has, then we know that the `winner` is the other guy (the
+`attacker`).
+
+Also, we don't want `health` be a negative number so we'll use the `<=`
+operator, which means "less than or equal to". Then to account for when it is a
+negative number, we'll set it to zero within the body of the if statement.
+
+**Edit `battle.py`**
+
+In the `fight()` function, find the `winner =` line just above where we print
+the updated fighter health.
+
+Change that line to:
+
+*battle.py*
+```python
+# check for a loser
+if rival['health'] <= 0:
+    # don't let health drop below zero
+    rival['health'] = 0
+    # set the winner, this is now the last round
+    winner = attacker
+```
+
+Part 12. Endgame
+----------------
+
+[battle_part12.py](https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/battle/battle_part12.py)
+[raw download](https://raw.githubusercontent.com/alissa-huskey/python-class/master/pythonclass/lessons/battle/battle_part12.py)
+
+Now that we have a winner, we can announce them.
+
+We'll use a few concepts we've already learned: f-strings, the `str.center()`
+function, and drawing a line using the `*` operator.
+
+**Edit `battle.py`**
+
+
+```python
+def endgame(winner):
+    """Takes a PET (winner) and announce that they won the fight"""
+    print()
+    print(f"{winner['name']} is Victorious!".center(WIDTH), "\n")
+    print(winner['pic'].center(WIDTH), "\n")
+    print("-" * WIDTH, "\n")
 ```

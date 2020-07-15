@@ -27,11 +27,19 @@ PyPet Battle Game:
 
 # ### Imports ################################################################
 
-from pets import PICS, PETS
 import random
 import time
+from pets import PICS, PETS
 
 # ## Global Variables ########################################################
+
+# the range of damage each player can do
+#
+#   this is a data type called a tuple
+#   it is just like a list, except it is
+#   immutable, meaning it cannot be changed
+
+POWER = (10, 30)
 
 # the number of seconds to pause for dramatic effect
 DELAY = 1
@@ -41,11 +49,23 @@ WIDTH = 56
 
 MAX_HEALTH = 100
 
+# a list attacks
+FIGHTIN_WORDS = (
+    "nips at",
+    "takes a swipe at",
+    "glares sternly at",
+    "ferociously smacks",
+    "savagely boofs",
+    "is awfully mean to",
+    "can't even believe",
+    "throws mad shade at",
+)
+
+
 # ## Functions ###############################################################
 
 # ### pet functions ###
 #
-
 
 def setup(pets):
     """Takes a list of pets and sets initial attributes"""
@@ -60,6 +80,25 @@ def show(pet):
     health_display = f"{pet['health']} of {MAX_HEALTH}"
     rcol_width = WIDTH - len(name_display) - 1
     print(name_display, health_display.rjust(rcol_width))
+
+
+# ### game event functions ###
+#
+
+def attack(foe):
+    """Inflict a random amount of damage is inflicted on foe, then return the
+       damage and attack used"""
+    # choose an attack
+    act = random.choice(FIGHTIN_WORDS)
+
+    # randomly set damage
+    damage = random.randint(POWER[0], POWER[1])
+
+    # inflict damage
+    foe['health'] -= damage
+
+    # return the amount of damage attack and description
+    return damage, act
 
 
 # ### top-level game functions ###
@@ -111,6 +150,20 @@ def fight(fighters):
 
         # pause for input
         input(f"\n{attacker['name']} FIGHT>")
+
+        # the attack
+        damage, act = attack(rival)
+
+        # pause for effect, then print attack details
+        time.sleep(DELAY)
+        print(f"\n  {attacker['name']} {act} {rival['name']}...\n")
+
+        # pause for effect, then print damage
+        time.sleep(DELAY)
+        print(f"-{damage} {rival['name']}".center(WIDTH), "\n")
+
+        # one more pause before the round ends
+        time.sleep(DELAY)
 
         # check for a loser (placeholder)
         winner = random.choice(fighters)

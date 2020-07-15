@@ -21,11 +21,11 @@ Howtos
 Lessons
 -------
 
-* Chapter 2: Writing Programs [(chapter)](http://inventwithpython.com/invent4thed/chapter2.html) [(code)](pythonclass/gamesbook/gamesbook/hello_world.py)
+* Chapter 2: Writing Programs [(chapter)](http://inventwithpython.com/invent4thed/chapter2.html) [(code)](pythonclass/lessons/lessons/hello_world.py)
   This program prints the chapter name and title, then says hello and asks for the users name
-* [Chapter 3: Guess The Number](docs/gamesbook/03_guess_the_number.md) [(chapter)](http://inventwithpython.com/invent4thed/chapter3.html) [(code)](pythonclass/gamesbook/guess.py)
+* [Chapter 3: Guess The Number](docs/lessons/03_guess_the_number.md) [(chapter)](http://inventwithpython.com/invent4thed/chapter3.html) [(code)](pythonclass/lessons/guess.py)
    A guess the number game
-* [Chapter 5: Dragon Realm](docs/gamesbook/05_dragon_realm.md) [(chapter)](http://inventwithpython.com/invent4thed/chapter5.html) [(code)](pythonclass/gamesbook/dragonrealm/dragon_realm.py)
+* [Chapter 5: Dragon Realm](docs/lessons/05_dragon_realm.md) [(chapter)](http://inventwithpython.com/invent4thed/chapter5.html) [(code)](pythonclass/lessons/dragonrealm/dragon_realm.py)
    The player enters a dragon realm where they must choose between two caves
-* [Lesson 6: Pypet Battle](docs/gamesbook/06_battle.md) [(code)](pythonclass/gamesbook/battle.py
+* [Lesson 6: Pypet Battle](docs/lessons/06_battle.md) [(code)](pythonclass/lessons/battle.py
   Our PyPet's battle it out

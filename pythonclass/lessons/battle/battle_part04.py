@@ -27,12 +27,10 @@ PyPet Battle Game:
 
 # ### Imports ################################################################
 
+from pets import PICS, PETS
+import random
 
 # ## Global Variables ########################################################
-
-# The convention is to name global variables using ALL_CAPS_WITH_UNDERSCORE
-#
-# GLOBAL_VARIABLE = 2
 
 
 # ## Functions ###############################################################
@@ -42,7 +40,11 @@ PyPet Battle Game:
 
 def lotto():
     """Return two randomly chosen PETs"""
-    return []
+    # randomly reorder the PETS list
+    random.shuffle(PETS)
+
+    # return the first two items in the PETS list
+    return [PETS[0], PETS[1]]
 
 
 def intro(fighters):

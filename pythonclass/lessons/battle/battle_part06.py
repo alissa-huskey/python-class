@@ -29,14 +29,21 @@ PyPet Battle Game:
 
 from pets import PICS, PETS
 import random
+import time
 
 # ## Global Variables ########################################################
 
+# the number of seconds to pause for dramatic effect
+DELAY = 1
+
+# the max width of the screen
+WIDTH = 55
 
 # ## Functions ###############################################################
 
 # ### top-level game functions ###
 #
+
 
 def lotto():
     """Return two randomly chosen PETs"""
@@ -50,11 +57,39 @@ def lotto():
 def intro(fighters):
     """Takes a list of two PETs (fighters) and prints their details"""
 
+    print("\n  Tonight...\n")
+    time.sleep(DELAY)
+
+    # announce the fighters
+    header = f"*** {fighters[0]['name']} -vs- {fighters[1]['name']} ***"
+    print(header.center(WIDTH, " "), "\n\n")
+
+    # pause for input
+    input("ARE YOU READY TO RUMBLE?!")
+    print("." * WIDTH, "\n")
+
 
 def fight(fighters):
     """Repeat rounds of the fight until one wins then
        Take a list of two PETs and return the winning PET"""
-    return {}
+
+    winner = None
+
+    # ### rounds of the fight
+    #
+    while winner is None:
+
+        # check for a loser (placeholder)
+        winner = random.choice(fighters)
+
+        # print a line at the end of every round
+        print("-" * WIDTH, "\n")
+
+    #
+    # ### end of fighting rounds
+
+    # return the winner
+    return winner
 
 
 def endgame(winner):
@@ -66,9 +101,10 @@ def endgame(winner):
 
 def main():
     """PyPet Battle Game"""
-    print("Welcome to the THUNDERDOME!")
+    print("\nWelcome to the THUNDERDOME!")
 
     fighters = lotto()
+
     intro(fighters)
     winner = fight(fighters)
     endgame(winner)
