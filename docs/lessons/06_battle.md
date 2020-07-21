@@ -563,8 +563,8 @@ Run your script and see what you've got!
 Part 6. Outline the `fight()` function
 -------------
 
-[battle_part08.py](https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/battle/battle_part08.py) |
-[raw download](https://raw.githubusercontent.com/alissa-huskey/python-class/master/pythonclass/lessons/battle/battle_part08.py)
+[battle_part06.py](https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/battle/battle_part06.py) |
+[raw download](https://raw.githubusercontent.com/alissa-huskey/python-class/master/pythonclass/lessons/battle/battle_part06.py)
 
 The `fight()` function has a lot to do, so we'll start by writing a bit of an
 outline for it.
