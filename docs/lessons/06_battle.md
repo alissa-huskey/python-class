@@ -634,7 +634,7 @@ for as long as the condition is met.
 
 The condition of this `while` loop is `winner is None`.
 
-**Edit `pets.py`**
+**Edit `battle.py`**
 
 Add to your `fight()` function:
 
@@ -652,7 +652,7 @@ means that the loop will only run once for now.)
 We'll use the `random.choice()` function, which randomly selects an element
 from a list.
 
-**Edit `pets.py`**
+**Edit `battle.py`**
 
 Add to your `fight()` function inside the `while` loop:
 
@@ -665,7 +665,7 @@ winner = random.choice(fighters)
 
 So we can see that when a round happens, we'll add a line at the end of every loop.
 
-**Edit `pets.py`**
+**Edit `battle.py`**
 
 Add to your `fight()` function inside the `while` loop:
 
@@ -800,6 +800,8 @@ We'll want to print out the health for each fighter at the end of every round.
 We'll use a `for` loop to loop through each fighter, then we'll want a function
 that will handle printing out the information. Let's call it `show()`.
 
+**Edit `battle.py`**
+
 Add this in the `fight()` function under the `winner =` placeholder on line `100`.
 
 ```python
@@ -810,6 +812,8 @@ for combatant in fighters:
 ```
 
 ### Part 7.2: Add the `show()` function
+
+**Edit `battle.py`**
 
 At the top of the `Functions` section under line `44`, let's add a new comment
 section for `pet functions`.
@@ -823,11 +827,11 @@ Then add a placeholder functions for `setup()` and `show()`.
 
 def show(pet):
     """Takes a pet and prints health and details about them"""
-```
 
 
 def setup(pets):
     """Takes a list of pets and sets initial attributes"""
+```
 
 
 ### Part 7.3: `MAX_HEALTH`
