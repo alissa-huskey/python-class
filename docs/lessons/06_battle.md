@@ -836,8 +836,11 @@ def setup(pets):
 
 ### Part 7.3: `MAX_HEALTH`
 
-It looks like we'll need a `MAX_HEALTH` variable. At the end of the `Global
-Variables` section under line `42` add:
+It looks like we'll need a `MAX_HEALTH` variable.
+
+**Edit `battle.py`**
+
+At the end of the `Global Variables` section add:
 
 ```python
 MAX_HEALTH = 100
@@ -887,17 +890,17 @@ def setup(pets):
         pet['pic'] = PICS[pet['species']]
 ```
 
-The syntax for geetting the `pic` might look a little confusing.
+The syntax for getting the `pic` might look a little confusing.
 
 ```python
-`PICS[pet['species']]`
+PICS[pet['species']]
 ```
 
 This is the same as:
 
 ```python
 species = pet['species']
-`PICS[species]`
+PICS[species]
 ```
 
 
