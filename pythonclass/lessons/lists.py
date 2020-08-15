@@ -13,7 +13,7 @@ def header(msg):
 
 mylist = list()
 mylist = []
-mylist = [1, 2, 3, 4, 5]
+mylist = ['a', 'b', 'c', 'd', 'e']
 
 # list index addresses ------------------------------------------------
 
@@ -23,19 +23,22 @@ mylist[-1]            # last list item
 
 # example: list index addresses ---------------------------------------
 
+from datetime import datetime
 days = [
-    "sunday",
-    "monday",
-    "tuesday",
-    "wednesday",
-    "thursday",
-    "friday",
-    "saturday",
-    "sunday"
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday"
 ]
 
 header("example: list index addresses")
-print("today is:", days[2])
+today = datetime.now().weekday()
+
+print("the third day of the week is:", days[2])
+print("today is:", days[today])
 
 # list iteration ------------------------------------------------------
 
