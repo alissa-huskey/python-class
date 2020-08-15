@@ -55,7 +55,7 @@ Reformat CSV Line
 1. Start with the string: `"smith,john,415-555-5555"`
 2. Split it into a list on `,` \
     Hint: To split on a different delimiter use `str.split(<delim>)`
-3. Print out a string that looks like this: \
+3. Print the full name capitalized, then the phone number. \
     Hint: Access list elements with `varname[<index-number>]`
 
 **OUTPUT**
