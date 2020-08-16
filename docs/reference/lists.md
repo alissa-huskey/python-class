@@ -2,8 +2,24 @@ Lists
 =====
 
 
-Creating Lists
---------------
+Table of Contents
+-----------------
+
+* [Creating](#creating)
+* [Accessing Elements](#accessing-elements)
+* [Changing Elements](#changing-elements)
+* [Checking Membership](#checking-membership)
+* [Iteration](#iteration)
+* [Ordering](#ordering)
+* [List Information](#list-information)
+* [Copying](#copying)
+* [Transformation](#transformation)
+* [Convert To List](#convert-to-list)
+* [Convert From List](#convert-from-list)
+
+
+Creating
+--------
 
 ```python
 mylist = list()                           # create an empty list
@@ -11,8 +27,8 @@ mylist = []                               # create an empty list
 mylist = [1, 2, 3]                        # create a list with elements 1, 2 and 3
 ```
 
-Accessing List Elements
------------------------
+Accessing Elements
+------------------
 
 ```python
 # by index address
@@ -28,8 +44,8 @@ mylist[3:6:2]                             # slice with every other element betwe
 mylist.index("bacon")                     # get the index number of value "bacon"
 ```
 
-Changing List Elements
-----------------------
+Changing Elements
+-----------------
 
 ```python
 # set value
@@ -51,8 +67,8 @@ mylist.pop()                              # remove and return the last element
 mylist.clear()                            # remove all elements
 ```
 
-Checking List Membership
-------------------------
+Checking Membership
+-------------------
 
 ```python
 val in mylist                             # check if list contains val
@@ -66,8 +82,8 @@ for elm in mylist:                        # iterate over each element value
 for i, elm in enumerate(mylist):          # iterate over each index number and element value
 ```
 
-List Order
-----------
+Ordering
+--------
 
 ```python
 mylist = [2,4,1,3,5]
@@ -93,8 +109,8 @@ mylist.count("purple")                    # number of times value occurs in list
 sum(mylist)                               # sum of all list values
 ```
 
-Copying Lists
--------------
+Copying
+-------
 
 ```python
 mylist = otherlist                        # create a reference to otherlist
@@ -103,12 +119,13 @@ mylist = otherlist[:]                     # create a new list with references to
 mylist = copy.deepcopy(otherlist)         # create a new list with the contents of otherlist
 ```
 
-List Transformation
--------------------
+Transformation
+--------------
 
 ```python
 [ int(x) for x in mylist ]                # list comprehension: mapping
 [ x for x in mylist if x ]                # list comprehension: filtering
+map(int, mylist)                          # mapping
 ```
 
 Convert To List
