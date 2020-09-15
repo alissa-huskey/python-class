@@ -9,6 +9,7 @@ import textwrap
 import os
 import sys
 from pprint import pprint
+import shutil
 
 # ===========================================================================
 # script meta--ignore all this
@@ -32,19 +33,7 @@ def print_info(msg, val):
     print(first[26:], *lines)
 
 
-def get_width():
-    WIDTH = os.environ.get('COLUMNS', "")
-    if WIDTH:
-        return WIDTH
-    if os.name == "posix":
-        WIDTH = os.popen('tput cols', 'r').readline()
-    if WIDTH:
-        return WIDTH
-    WIDTH = 80
-    return WIDTH
-
-
-WIDTH = int(get_width())
+WIDTH, _ = shutil.get_terminal_size()
 
 
 # ===========================================================================
@@ -182,7 +171,3 @@ for key, val in stats.items():
         stats[key] = default_val
 
 pprint(stats)
-
-
-print_info("Your terminal width is: ", WIDTH)
-print("  * Use the COLUMNS environemnt variable to specify your width.\n")
