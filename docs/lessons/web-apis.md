@@ -431,7 +431,15 @@ file.
 
 #### Step 1: Create the `private` module
 
-Create a new file called `private.py`.
+We have made our own modules before -- back in our pypet battle project, we
+made a `pets` module. You may recall that a module is simply a python file that
+can be imported.
+
+So we're going to add a `private` module by creating a new file called
+`private.py`.
+
+Most of this should be familiar -- docstring and global variables. I'll explain
+the unfamiliar bits soon.
 
 *private.py*
 ```python
@@ -445,7 +453,7 @@ LNG = "-118.26"      # replace with your longitude
 
 #### Step 2: Ignore it in git
 
-In the same directory create or edit the file `.gitignore` and add the following line:
+In the same directory create or edit the file `.gitignore` and add the filename to it.
 
 *.gitignore*
 ```
@@ -516,7 +524,7 @@ from private import LAT as latitude
 print("latitude:", latitude)
 ```
 
-To import more multiple items from a module put them in a comma separated list.
+To import multiple items from a module put them in a comma separated list.
 
 ```python
 from private import LAT, LNG
@@ -543,7 +551,8 @@ Finally you can use the `*` operator to import everything that is in the
 > practice. This is for a number of reasons, such as that not all modules
 > define the `__all__` variable, that you rarely need or want the entire module
 > in the global namespace, and that it makes it more difficult to tell where a
-> particular variable, function or class came from.
+> particular variable, function or class came from. There are cases where it's
+> useful, but probably best to steer clear if it for now.
 
 ```python
 from private import *
@@ -564,7 +573,7 @@ A few of the more common standard request headers include:
 
 * `Accept`: what kind of content we want back (its media-type), for example `text/plain` or `image/png`
 * `Accept-Encoding`: how we want the response compressed, for example `gzip` or `identity` (uncompressed)
-* `Content-Type`: the media-type of the request data, for example `text/json` or `image/jpeg`
+* `Content-Type`: the media-type of the data we're sending, for example `text/json` or `image/jpeg`
 
 One of the most common use of headers is for authentication and that's what
 we'll be doing today using the `openuv.io` API.
