@@ -680,9 +680,57 @@ our lessons.
   Endpoint URL: `https://quotable-quotes.p.rapidapi.com/randomQuotes` \
   Print: `quote` and `author`
 
+
+Part 9: Request Types
+---------------------
+
+So far we've been doing *GET* requests. This is one of several *HTTP request
+methods*. The GET method is for making retrieving data, or making read-only
+requests.
+
+As you've already learned, you use the `requests.get` method to make a get
+request in Python. The `requests` module has methods that coorespond to each of
+the other request methods as well.
+
+Here are the other commonly used request methods.
+
+
+| method   | requests   | r/w     | description                     |
+|----------|------------|---------|---------------------------------|
+| GET      | get        | read    | retrieve data                   |
+| HEAD     | head       | read    | retrieve headers                |
+| OPTIONS  | options    | read    | retreive options for resource   |
+| POST     | post       | write   | create a new record             |
+| PUT      | put        | write   | update a record                 |
+| PATCH    | patch      | write   | minor update of a record        |
+| DELETE   | delete     | write   | delete a record                 |
+
+
+Part 9.1: POST, PUT, and DELETE Requests
+----------------------------------------
+
+The [jsonplaceholder](https://jsonplaceholder.typicode.com/) API.
+
+```python
+response = requests.post(
+  "https://jsonplaceholder.typicode.com/todos",
+  data = {
+    'title': "laundry",
+    'userId': 1
+  },
+  headers = {
+    'Content-type': "application/json; charset=UTF-8"
+  }
+)
+
+data = response.json()
+```
+
+
 See Also
 --------
 
 * [URL Syntax](https://en.wikipedia.org/wiki/URL#Syntax)
 * [List of HTTP header fields](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields)
 * [List of HTTP status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
+* [HTTP request methods](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods)
