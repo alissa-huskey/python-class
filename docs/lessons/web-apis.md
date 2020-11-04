@@ -16,22 +16,26 @@ Table of Contents
 * [Part 6: Parameters](#part-6-parameters)
 * [Part 6.1 Parameters in URLs](#part-61-parameters-in-urls)
 * [Part 6.2 API Parameters](#part-62-api-parameters)
-  * [Step 1: Try it using curl](#step-1-try-it-using-curl)
-  * [Step 2: Add it to apis.py](#step-2-add-it-to-apispy)
+   * [Step 1: Try it using curl](#step-1-try-it-using-curl)
+   * [Step 2: Add it to apis.py](#step-2-add-it-to-apispy)
 * [Part 6.3: Solo Exercise - Parameters](#part-63-solo-exercise---parameters)
 * [Part 7: Private Data](#part-7-private-data)
-  * [Step 1: Create the private module](#step-1-create-the-private-module)
-  * [Step 2: Ignore it in git](#step-2-ignore-it-in-git)
-  * [Step 3: Import it](#step-3-import-it)
+      * [Step 1: Create the private module](#step-1-create-the-private-module)
+      * [Step 2: Ignore it in git](#step-2-ignore-it-in-git)
+      * [Step 3: Import it](#step-3-import-it)
 * [Part 7.1: Import Syntax Varieties](#part-71-import-syntax-varieties)
 * [Part 8: Headers](#part-8-headers)
 * [Part 8.1: Get Your API Key](#part-81-get-your-api-key)
-  * [Step 1: Sign up](#step-1-sign-up)
-  * [Step 2: Add it to private.py](#step-2-add-it-to-privatepy)
-  * [Step 3: Import it in apis.py](#step-3-import-it-in-apispy)
+      * [Step 1: Sign up](#step-1-sign-up)
+      * [Step 2: Add it to private.py](#step-2-add-it-to-privatepy)
+      * [Step 3: Import it in apis.py](#step-3-import-it-in-apispy)
 * [Part 8.2: Sending the x-access-token Header](#part-82-sending-the-x-access-token-header)
 * [Part 8.3: Solo Exercise - RapidAPI](#part-83-solo-exercise---rapidapi)
-  * [Exercise Options:](#exercise-options)
+* [Part 9: Request Methods](#part-9-request-methods)
+* [Part 9.1: Request methods in Python](#part-91-request-methods-in-python)
+* [Part 9.2 POST, PUT and PATCH](#part-93-post-put-and-patch)
+* [Part 9.3 Request methods using curl](#part-93-request-methods-using-curl)
+* [Part 9.4 Solo Exercise](#part-94-solo-exercise)
 * [See Also](#see-also)
 
 
@@ -663,7 +667,7 @@ our lessons.
    Parameters`.
    > It is probably easier to copy the API key from the code samples right pane.
 
-#### Exercise Options:
+**Exercise Options:**
 
 * Use the [Shakespere API](https://rapidapi.com/orthosie/api/shakespeare1?endpoint=apiendpoint_01bc580b-1a71-406e-b97a-817bc71fc96e) to generate a random insult \
   Endpoint URL: `https://shakespeare1.p.rapidapi.com/shakespeare/generate/insult`  \
@@ -681,50 +685,248 @@ our lessons.
   Print: `quote` and `author`
 
 
-Part 9: Request Types
----------------------
+Part 9: Request Methods
+-----------------------
 
-So far we've been doing *GET* requests. This is one of several *HTTP request
-methods*. The GET method is for making retrieving data, or making read-only
-requests.
+So far we've been doing `GET` requests. This is one of several *HTTP request
+methods*.
 
-As you've already learned, you use the `requests.get` method to make a get
-request in Python. The `requests` module has methods that coorespond to each of
-the other request methods as well.
+The GET method is for retrieving (getting) data. Another example is the POST
+method which is for adding a new data record. Or the DELETE method which is for
+deleting data.
 
-Here are the other commonly used request methods.
+Here are the most commonly used request methods.
 
-
-| method   | requests   | r/w     | description                     |
-|----------|------------|---------|---------------------------------|
-| GET      | get        | read    | retrieve data                   |
-| HEAD     | head       | read    | retrieve headers                |
-| OPTIONS  | options    | read    | retreive options for resource   |
-| POST     | post       | write   | create a new record             |
-| PUT      | put        | write   | update a record                 |
-| PATCH    | patch      | write   | minor update of a record        |
-| DELETE   | delete     | write   | delete a record                 |
+| method   | r/w     | description                                                      |
+|----------| --------|------------------------------------------------------------------|
+| GET      | read    | retrieve data                                                    |
+| POST     | write   | add/create a new record                                          |
+|          | either  | general processing                                               |
+| PUT      | write   | replace all data for a specific record                           |
+|          |         | create a new specific record                                     |
+| PATCH    | write   | partial update to specific record                                |
+| DELETE   | write   | delete a specific record                                         |
 
 
-Part 9.1: POST, PUT, and DELETE Requests
-----------------------------------------
+If you think of the resource as the noun, you can think of the request method
+as the verb--that is, the action to take.
 
-The [jsonplaceholder](https://jsonplaceholder.typicode.com/) API.
+Here is an imaginary address book API. In this example, the noun would be the `contact(s)`.
 
+| endpoint                       | method     | description                                                    |
+|--------------------------------|------------|----------------------------------------------------------------|
+| /contacts                      | GET        | get a list of all contacts                                     |
+| /contact/{id}                  | GET        | get all of the details about a specific contact                |
+| /contacts                      | POST       | add a new contact                                              |
+| /contact/{id}                  | PUT        | create or replace all data for contact                         |
+| /contact/{id}                  | PATCH      | update only the parts contact data that is submitted           |
+| /contact/{id}                  | DELETE     | delete the contact                                             |
+
+Part 9.1: Request methods in Python
+-----------------------------------
+
+As you've already learned, you use the `requests.get()` method to make a `GET`
+request in Python.
+
+The `requests` module has methods that coorespond to each of the other HTTP
+request methods as well. So, to make a `POST` method you would call
+`requests.post()`.  To make a `PUT` method, you call `requests.put()` and so
+on.
+
+Whereas the `requests.get()` method uses the `params` keyword argument, the
+`requests.post()`, `requests.put()` and `requests.patch()` methods use the
+`data` keyword argument.
+
+
+The [jsonplaceholder API](https://jsonplaceholder.typicode.com/) exists for the
+explicit purpose of making fake JSON requests or generating fake data.
+
+I recommend taking a look at the **Resources** and **Routes** sections on that
+page and maybe checking out the
+[guide](https://jsonplaceholder.typicode.com/guide/) to get an idea of how web
+APIs are sometimes structured.
+
+For this exercise we'll be using the jsonplaceholder API to add a fake to-do.
+Add a new method `request_todo()`.
+
+*apis.py*
 ```python
-response = requests.post(
-  "https://jsonplaceholder.typicode.com/todos",
-  data = {
-    'title': "laundry",
-    'userId': 1
-  },
-  headers = {
-    'Content-type': "application/json; charset=UTF-8"
-  }
-)
+def request_todo():
+    """Use the jsonplaceholder API to add a fake to-do."""
+    response = requests.post(
+        "https://jsonplaceholder.typicode.com/todos",
+        data = {
+            'title': "laundry",
+            'userId': 1
+        }
+    )
 
-data = response.json()
+    if not response.ok:
+        print(f"ERROR: Request failed: {response.status_code} {response.reason}")
+        return
+
+    data = response.json()
+    print(f"SUCCESS Added new to-do ID: {data['id']}")
 ```
+
+Part 9.2 `POST`, `PUT` and `PATCH`
+----------------------------------
+
+* The `POST` method is intended for requests that will *add a new record* to a
+  *collection* of records. Endpoints should be *plural*, for example
+  `/contacts` or `/contacts/42/addresses`.
+
+* The `PUT` method is intended for requests that will replace the *all of the
+  data* of a *single, specific record*. It may be used to *create a new record*
+  if the record for that endpoint does not exist. Endpoints should be
+  *singular*, for example `/contact/42` or `/contact/42/usernames/twitter`.
+
+* The `PATCH` method is for requests that will *update only* the *part(s)* of
+  *a single, specific record* that are included in the request data while
+  leaving the rest of the record data alone. Endpoints should be *singluar*,
+  for example `/contact/42` or `/contact/42/addresses/work`.
+
+The difference between `PUT` and `PATCH` can be confusing, so I'll use our
+imaginary contacts API to demostrate. 
+
+First we'll use the `GET` method to take a look at an (imaginary) contact.
+
+*Python shell*
+```python
+>>> import request
+>>> from pprint import pprint
+
+>>> response = requests.get(f"http://api.fake-contacts.com/contacts/1")
+>>> print("Joe's contact info")
+>>> pprint(response.json())
+```
+
+*output*
+```
+Joe's contact info
+{
+  "id": 1,
+  "name": "Joe Smith",
+  "phone": "555-5555",
+  "email": "joe.smith@gfake.com"
+}
+```
+
+Then we'll use the `PUT` method and submit a new `phone` number and print the
+updated data after another `GET` request.
+
+*Python shell*
+```python
+>>> response = requests.put(
+>>>  f"http://api.fake-contacts.com/contacts/{id}"
+>>>  data={'phone': "555-5556"}
+>>>)
+
+>>> response = requests.get(f"http://api.fake-contacts.com/contacts/1")
+>>> print("Joe's contact info")
+>>> pprint(response.json())
+```
+
+*output*
+```
+Joe's contact info
+{
+  "id": 1,
+  "name": null,
+  "phone": "555-5556",
+  "email": null
+}
+```
+
+Since the the request only included the `phone` data, all of the other fields
+were replaced with `null` (which is like Python's `None`). Some APIs might
+instead refuse to process the update and respond with a `400 (Bad Request)`
+status if all expected data fields are not present in the request.
+
+Here's what it would have looked like if we had instead used a `PATCH` request instead.
+
+*Python shell*
+```python
+>>> response = requests.patch(
+>>>  f"http://api.fake-contacts.com/contacts/{id}"
+>>>  data={'phone': "555-5556"}
+>>>)
+
+>>> response = requests.get(f"http://api.fake-contacts.com/contacts/1")
+>>> print("Joe's contact info")
+>>> pprint(response.json())
+```
+
+*output*
+```
+Joe's contact info
+{
+  "id": 1,
+  "name": "Joe Smith",
+  "phone": "555-5556",
+  "email": "joe.smith@fake.com"
+}
+```
+
+***Important***
+
+While I have described the intended purpose of each method according to both
+the HTTP specification and modern best practices, there is nothing in the
+technology to enforce this behavior. The behavior of any given API depends
+entirely on its implementation.
+
+In reality, you'll see all kinds of things--partial updates that respond to
+`POST` requests, endpoints that look like `/update_phone` and respond to `GET`
+requests, deletes that respond to `POST` methods, and anything else you can
+imagine.
+
+**You can't count on APIs to behave according to best practices.** Start by
+look to an APIs documentation. Ultimately though, test its behavior yourself
+with dummy data before relying on it for anything you care about.
+
+
+
+Part 9.3 Request methods using `curl`
+-------------------------------------
+
+Curl defaults to the `GET` request methods for `http[s]` requests but you can
+also use the `-X` or `--request` flag to specify the request method.
+
+For example
+
+```sh
+$ curl -X DELETE "https://jsonplaceholder.typicode.com/todos/2"
+```
+
+You can also use the `-d` or `--data` flag  to pass data along with the `-H` or
+`--header` flag to specify the `Content-Type`. For example, you could do the
+same `to-do` exercise from above using curl.
+
+> Sidenote: You can use `\` on the command line to break a command into multiple lines.
+
+```sh
+curl -X POST \
+     --data '{"title": "laundry", "userId": 1}' \
+     --header 'Content-Type: application/json'  \
+     "https://jsonplaceholder.typicode.com/todos"
+```
+
+Part 9.4 Solo Exercise
+----------------------
+
+Use the [Pirate Translator API](https://rapidapi.com/orthosie/api/pirate-translator) translate text into pirate-speak. \
+Endpoint URL: `https://piratespeak.p.rapidapi.com/pirate.json`  \
+Method: `POST` \
+Data: `text` = `"Hello friend."` \
+Print: `contents` -> `translated`
+
+> Sidenote: You may have noticed that this API does not conform to the practice
+> of the `POST` method being used for adding new data. Another common use of
+> the `POST` method is for cases when a large amount of data may need to be
+> submitted, due to browser and web server limits on URI length.
+
+
+
 
 
 See Also
@@ -734,3 +936,4 @@ See Also
 * [List of HTTP header fields](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields)
 * [List of HTTP status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
 * [HTTP request methods](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods)
+* [Requests: HTTP for Humans](https://requests.readthedocs.io/en/master/) - docs for the Python `requests` module
