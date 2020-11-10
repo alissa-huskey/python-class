@@ -48,7 +48,8 @@ Pig Latin Translator
 2. Split the result into a list of words
 3. Iterate over every word and change it according to the following rules:
     a. if the first letter is a consonant, move it to the end and add "ay"
-    b. if the first letter is a vowel just add "way" to the end 4. Join the words back into a sentence and print it.  
+    b. if the first letter is a vowel just add "way" to the end
+4. Join the words back into a sentence and print it.
 
 Pirate Translator
 1. As the user for a input
@@ -77,12 +78,14 @@ Make a todo list
 2. Print each item on the list on a line, with a number next to it
 3. Ask the user for input
 4. If the user replies with a number, delete that item from the list using
-   hint: you will need to convert the string to an int using 
+   hint: you will need to convert the string to an int using
    mylist.pop(<index-number>)
 5. Otherwise, add their item to the list using
    mylist.append()
 6. Print the revised list
 See also: https://www.tutorialspoint.com/python/python_lists.htm
+
+
 Emoji Translator
 1. Take a sentence and split it into words.
 2. Use a for loop to iterate over the list.

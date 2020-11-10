@@ -5,6 +5,7 @@ https://docs.python.org/3/library/string.html
 
 
 class Printer:
+    """."""
     elements: list
     width: int = 80
     head: str
@@ -21,8 +22,8 @@ class Printer:
         return max([len(v) for v in list(args)])
 
     def print(self):
-        HeadPrinter(self.head).print()
         """Format a the contents of a dict"""
+        HeadPrinter(self.head).print()
         for item in self.elements:
             if isinstance(item, dict):
                 DictPrinter(item).print()
@@ -30,6 +31,7 @@ class Printer:
 
 
 class DictPrinter(Printer):
+    """."""
     PADDING: int = 2
 
     items: dict
@@ -48,10 +50,11 @@ class DictPrinter(Printer):
 
 
 class ValuePrinter(Printer):
+    """."""
     val: any
 
     def __init__(self, val):
-        self.val= val
+        self.val = val
 
     def print(self) -> str:
         if isinstance(self.val, bool):
@@ -61,6 +64,7 @@ class ValuePrinter(Printer):
 
 
 class HeadPrinter(Printer):
+    """."""
     val: str
 
     def print(self) -> str:
@@ -69,6 +73,7 @@ class HeadPrinter(Printer):
 
 
 class BoolPrinter(ValuePrinter):
+    """."""
     val: bool
 
     def print(self) -> str:
@@ -79,6 +84,7 @@ class BoolPrinter(ValuePrinter):
 
 
 class TitlePrinter(ValuePrinter):
+    """."""
     val: str
 
     def print(self) -> str:

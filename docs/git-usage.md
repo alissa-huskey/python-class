@@ -17,7 +17,7 @@ Here are the steps to follow in Repl.it.
 1. `git status` : Review which files have changed to make sure there is nothing unexpected.
 2. `git add .` : Stage all changes.
 3. `git status` : Sanity check to ensure that all changes are now staged.
-4. `git diff --staged` : Review your changes to check for mistakes.\
+4. `git diff --staged` : Review your changes to check for mistakes.
     Make any neccessary change then repeat from step 1.
 
 **In Repl.it**

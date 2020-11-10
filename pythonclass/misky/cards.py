@@ -2,7 +2,7 @@
 """
 cards.py - Deal a hand of cards to 4 players.
 Inspired by: https://realpython.com/python-type-checking/
-            http://openbookproject.net/thinkcs/python/english3e/collections.html
+             http://openbookproject.net/thinkcs/python/english3e/collections.html
 Wherein I mess around a bit with function annotations and OOP.
 """
 

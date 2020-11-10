@@ -1,5 +1,5 @@
-List Exercises
-==============
+List String Exercises
+=====================
 
 Emoji Translator
 ----------------

@@ -92,35 +92,6 @@ print_info("section, transformed:", section)
 mylist[8:15] = section
 print_info("mylist, different:", mylist)
 
-# ===========================================================================
-# strings as lists
-# ===========================================================================
-#
-
-# just your average string --------------------------------------------------
-#
-mystr = "hello world"
-print_info("mystr:", mystr)
-
-# and yet! characters can be accessed like a list ---------------------------
-#   strings are really just lists of characters under the hood
-#
-print_info("a mystr character:", mystr[3])
-
-# make a new list with the contents of mystr ---------------------------------
-#
-newstr = list(mystr)
-
-# iterate over the characters of mysstr, without converting it to a list -----
-#
-for i, c in enumerate(mystr):
-    if random.randint(0, 1):
-        # change the newstr character at the same index as mystr -------------
-        #
-        newstr[i] = mystr[i].swapcase()
-
-print_info("newstr:", "".join(newstr))
-
 
 # ===========================================================================
 # DND stats

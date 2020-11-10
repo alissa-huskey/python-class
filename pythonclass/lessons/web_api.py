@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
+"""For the web APIs lesson
+https://github.com/alissa-huskey/python-class/blob/master/docs/lessons/web-apis.md"""
 
 from pprint import pprint
 import requests
-
+from private import OPENUV_KEY, LAT, LNG
+from sys import stderr
 
 def request_demo():
     """Explore how web request work"""
@@ -70,28 +73,44 @@ def request_beer():
 
 
 def request_uv():
-    """Print UV and Ozone info for today"""
-    response = requests.get("https://freegeoip.app/json/")
-    key = "7b327b7c40c6a425a5bfcca325ae33ac"
-    loc = response.json()
+    """Print realtime UV-index and Ozone info from the openuv.io API"""
 
     response = requests.get(
         "https://api.openuv.io/api/v1/uv",
-        params={
-            'lat': loc['latitude'],
-            'lng': loc['longitude'],
-        },
-        headers={'x-access-token': key}
+        params={'lat': LAT, 'lng': LNG},
+        headers={'x-access-token': OPENUV_KEY}
     )
+
     data = response.json()
     print("UV Index:", data['result']['uv'])
-    print("Ozone:", data['result']['ozone'], 'du')
+    print("Ozone:", data['result']['ozone'], "du")
 
 
 def request_weather():
     """Print the weather"""
     response = requests.get("http://wttr.in")
     print(resonse.text)
+
+
+def request_todo():
+    """Use the jsonplaceholder API to add a fake to-do."""
+    response = requests.post(
+        "https://jsonplaceholder.typicode.com/todos",
+        data = {
+            'title': "laundry",
+            'userId': 1
+        }
+    )
+
+    if not response.ok:
+        print(
+            f"ERROR: Request failed: {response.status_code} {response.reason}",
+            file=stderr
+        )
+        return
+
+    data = response.json()
+    print(f"SUCCESS Added new to-do ID: {data['id']}")
 
 
 def main():
@@ -101,6 +120,7 @@ def main():
     # request_hello()
     # request_beer()
     # request_uv()
+    request_todo()
 
 
 if __name__ == "__main__":

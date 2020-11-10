@@ -1,4 +1,4 @@
-Web APIS
+Web APIs
 ========
 
 Table of Contents
@@ -33,7 +33,7 @@ Table of Contents
 * [Part 8.3: Solo Exercise - RapidAPI](#part-83-solo-exercise---rapidapi)
 * [Part 9: Request Methods](#part-9-request-methods)
 * [Part 9.1: Request methods in Python](#part-91-request-methods-in-python)
-* [Part 9.2 POST, PUT and PATCH](#part-93-post-put-and-patch)
+* [Part 9.2 POST, PUT and PATCH](#part-92-post-put-and-patch)
 * [Part 9.3 Request methods using curl](#part-93-request-methods-using-curl)
 * [Part 9.4 Solo Exercise](#part-94-solo-exercise)
 * [See Also](#see-also)
@@ -703,7 +703,7 @@ Here are the most commonly used request methods.
 | POST     | write   | add/create a new record                                          |
 |          | either  | general processing                                               |
 | PUT      | write   | replace all data for a specific record                           |
-|          |         | create a new specific record                                     |
+|          | write   | create a new specific record                                     |
 | PATCH    | write   | partial update to specific record                                |
 | DELETE   | write   | delete a specific record                                         |
 
@@ -881,7 +881,7 @@ requests, deletes that respond to `POST` methods, and anything else you can
 imagine.
 
 **You can't count on APIs to behave according to best practices.** Start by
-look to an APIs documentation. Ultimately though, test its behavior yourself
+looking to an APIs documentation. Ultimately though, test its behavior yourself
 with dummy data before relying on it for anything you care about.
 
 

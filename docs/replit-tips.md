@@ -46,6 +46,9 @@ After creating a new script, you will need to change what happens when you click
 
 3. Add the line:
 
-    run = "python3 \<filename\>"
+*.replit*
+```
+run = "python3 <filename>"
+```
 
   But replace "\<filename\>" with the name of the file you created.
