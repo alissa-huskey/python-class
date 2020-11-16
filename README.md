@@ -1,11 +1,19 @@
 Python Class
 ============
 
+Table of Contents
+-----------------
+
+* [Reference](#reference)
+* [Lessons](#lessons)
+* [Tool Guides](#tool-guides)
+* [Exercises](#exercises)
+
 
 Reference
 ---------
 
-* [Glossary](docs/glossary/glossary.md)
+* [Glossary](docs/reference/glossary.md)
 * [dicts](docs/reference/dicts.md)
 * [lists](docs/reference/lists.md)
 * [template.py](pythonclass/template.py)
@@ -26,7 +34,7 @@ Lessons
 ### Others
 
 * **[Create a Pypet](https://www.thinkful.com/learn/intro-to-python-tutorial/)** [(pypet.py)](pythonclass/lessons/pypet.py) Programming Fundamentals in Python
-* **[Pypet Battle](docs/lessons/battle.md)** [battle.py](pythonclass/lessons/battle.py) [(pets.py)](pythonclass/lessons/pets.py) Our PyPet's battle it out.
+* **[Pypet Battle](docs/lessons/battle.md)** [(battle.py)](pythonclass/lessons/battle.py) [(pets.py)](pythonclass/lessons/pets.py) Our PyPet's battle it out.
 * **[Web APIs](docs/lessons/web-apis.md)** [(web_apis.py)](pythonclass/lessons/web_apis.py) Wherein we learn about web requests, JSON, and the `requests` Python module.
 * **Lists** [(lists.py)](pythonclass/lessons/lists.py)
 * **Dicts** [(dicts.py)](pythonclass/lessons/dicts.py)
@@ -37,7 +45,6 @@ Tool Guides
 -----------
 
 * [Git: Concepts](docs/guides/git-concepts.md)
-* [Git: Usage](docs/guides/git-usage.md)
 * [VS Code Intro](docs/guides/vscode-intro.md)
 * [A Brief Tour of the Console](docs/guides/console.md)
 * [The Python Shell](docs/guides/python_shell.md)

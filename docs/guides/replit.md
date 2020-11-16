@@ -1,6 +1,14 @@
 Repl.it Tips
 ============
 
+
+Table of Contents
+-----------------
+
+* [Creating New Scripts](#creating-new-scripts)
+* [Running New Scripts](#running-new-scripts)
+
+
 Recommended Settings
 --------------------
 

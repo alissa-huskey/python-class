@@ -1,6 +1,18 @@
 Dictionaries
 ============
 
+
+Table of Contents
+-----------------
+
+* [Creating](#creating)
+* [Accessing Elements](#accessing-elements)
+* [Changing Elements](#changing-elements)
+* [Checking Membership](#checking-membership)
+* [Iteration](#iteration)
+* [Ordering](#ordering)
+* [Printing](#printing)
+
 Creating
 --------
 
@@ -32,9 +44,11 @@ mydict.popitem()                                               # delete the last
 Checking Membership
 -------------------
 
+```python
 mydict.has_key('k')                                            # check for key membership using has_key()
 'somekey' in mydict                                            # check for key membership using in
 'someval' in mydict.values()                                   # check for value membership
+```
 
 Iteration
 ---------

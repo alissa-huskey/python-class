@@ -1,6 +1,17 @@
 A Brief Tour of the Console
 ===========================
 
+
+Table of Contents
+-----------------
+
+* [Part 1.1: Open "The Shell"](#part-11-open-the-shell)
+* [Part 1.2: Anatomy of A Command](#part-12-anatomy-of-a-command)
+* [Part 1.2: Subcommands and Flags](#part-12-subcommands-and-flags)
+* [Part 1.3: Common Arguments](#part-13-common-arguments)
+* [Part 1.2: Try Some Commands](#part-12-try-some-commands)
+
+
 We've talked about the **Python Shell** -- it is an interface where you can
 type in python code, and it will run it and print out the results.
 

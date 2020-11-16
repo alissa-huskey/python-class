@@ -9,6 +9,17 @@ the shell is open.
 You can access it from a few places but here I want to show you how to use it
 from repl.it.
 
+Table of Contents
+-----------------
+
+* [Part 1. Open the Python Shell](#part-1-open-the-python-shell)
+* [Part 2. Simple expressions](#part-2-simple-expressions)
+* [Part 3. The semicolon shorthand](#part-3-the-semicolon-shorthand)
+* [Part 4. Use Up-arrow and Down-arrow to repeat history](#part-4-use-up-arrow-and-down-arrow-to-repeat-history)
+* [Part 5. Tab completion](#part-5-tab-completion)
+* [Part 6. Inspect thyself](#part-6-inspect-thyself)
+* [Part 7. Get help](#part-7-get-help)
+
 
 Part 1. Open the Python Shell
 -----------------------------

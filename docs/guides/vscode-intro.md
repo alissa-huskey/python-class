@@ -5,17 +5,16 @@ VS Code Intro
 Table of Contents
 -----------------
 
-* [VS Code Intro](#vs-code-intro)
-  * [Reference](#reference)
-  * [User Interface](#user-interface)
-  * [Tools](#tools)
-  * [Editor](#editor)
-    * [Breadcrumbs](#breadcrumbs)
-    * [Minimap](#minimap)
-    * [Keyboard Shortcut](#keyboard-shortcut)
-  * [Recommended Extensions](#recommended-extensions)
-  * [Recommended Settings](#recommended-settings)
-  * [Recommended Themes](#recommended-themes)
+* [Reference](#reference)
+* [User Interface](#user-interface)
+* [Tools](#tools)
+* [Editor](#editor)
+  * [Breadcrumbs](#breadcrumbs)
+  * [Minimap](#minimap)
+  * [Keyboard Shortcut](#keyboard-shortcut)
+* [Recommended Extensions](#recommended-extensions)
+* [Recommended Settings](#recommended-settings)
+* [Recommended Themes](#recommended-themes)
 
 Reference
 ---------
