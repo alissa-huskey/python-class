@@ -614,7 +614,7 @@ apples, or if the user hadn't yet told us how many they have. That's where
 
 Here is a handy picture to help clarify.
 
-![Null Visualization](null.png "Null as described by toilet paper")
+![Null Visualization](../assets/null.png "Null as described by toilet paper")
 
 **Edit `battle.py`**
 

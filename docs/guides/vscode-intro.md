@@ -2,6 +2,21 @@ VS Code Intro
 =============
 
 
+Table of Contents
+-----------------
+
+* [VS Code Intro](#vs-code-intro)
+  * [Reference](#reference)
+  * [User Interface](#user-interface)
+  * [Tools](#tools)
+  * [Editor](#editor)
+    * [Breadcrumbs](#breadcrumbs)
+    * [Minimap](#minimap)
+    * [Keyboard Shortcut](#keyboard-shortcut)
+  * [Recommended Extensions](#recommended-extensions)
+  * [Recommended Settings](#recommended-settings)
+  * [Recommended Themes](#recommended-themes)
+
 Reference
 ---------
 
@@ -13,17 +28,17 @@ Reference
 User Interface
 --------------
 
-**Layout**
+#### Layout
 
 ![layout](https://code.visualstudio.com/assets/docs/getstarted/userinterface/hero.png)
 
-* *(A) Activity Bar*: Links to open and close panels. 
-* *(B) Side Bar*: The panel where activity bar links are opened.
-* *(C) Editor Groups*: Where you edit your files
-* *(D) Panel*: Panels for interacting with your code live here, notibly the Terminal.
-* *(E) Status Bar*: Information and links related to your current open files and state.
+* **(A) Activity Bar**: Links to open and close panels.
+* **(B) Side Bar**: The panel where activity bar links are opened.
+* **(C) Editor Groups**: Where you edit your files
+* **(D) Panel**: Panels for interacting with your code live here, notibly the Terminal.
+* **(E) Status Bar**: Information and links related to your current open files and state.
 
-**Sidebar** [ Cmd/Ctrl + B]
+#### Sidebar [ `Cmd`/`Ctrl` + `B` ]
 * File Explorer [ Ctrl/Cmd+Shift+E ]
   - Workspace: File Browser
   - Outline: TOC for open file (headers, functions, etc)
@@ -34,13 +49,13 @@ User Interface
 
 > _Note_ I keep hidden: Run, Search
 
-**Panel** [ Cmd/Ctrl +J ]
-* Terminal [ Cmd/Ctrl + ` ]: Access the operating systemm command line.
+#### Panel [ `Cmd`/`Ctrl` + `J` ]
+* Terminal [ `Ctrl` + \` ]: Access the operating system command line.
 * Problems: Display errors
 * Output: View the output of the code you ran
 * Debug: Run your code
 
-**Editor**
+#### Editor
 * Tabs
   - Preview Mode: (shown in italics) A file was opened reusing an existing tab (single-click from File Browser.)
   - Unsaved Changes (shown with a white dot)
@@ -49,9 +64,9 @@ User Interface
 Tools
 -----
 
-* Command Palette [ Ctrl/Cmd+Shift+P ]: - Run VS Code commands
-* Quick Open [ Ctrl/Cmd+P ]: - Open files
-* Zen Mode [ Ctrl/Cmd, Z ]: Hide all panels except editor. [ Esc, Esc ] To exit
+* Command Palette [ `Ctrl`/`Cmd` + `Shift` + `P` ]: Run VS Code commands
+* Quick Open [ `Ctrl`/`Cmd` + `P` ]: Open files
+* Toggle Zen Mode [ `Ctrl`/`Cmd` + `K`, `Z` ]: Hide all panels except editor.
 
 Editor
 ------
@@ -64,22 +79,23 @@ Editor
 
 ### Keyboard Shortcut
 
-* `Cmd/Ctrl+/`: Toggle comment out line
-* `shift+cmd+k`: Delete Line
-* `Cmd/Ctrl+` ( `[` | `]` ): Decrease | Increase indentation
-* `Alt/Option+` ( `Up` | `Down` ): Move line above | below
-* `Shift+Alt/Option+` ( `Up` | `Down` ): Copy line above | below
-* `Cmd/Ctrl+Enter`: Insert line after
-* `Shift+Cmd/Ctrl+Enter`: Insert line Before
-* `Cmd/Ctrl+J`: Join lines
+* [ `Cmd/Ctrl` + `/` ]: Toggle comment out line
+* [ `shift` + `cmd` + `k` ]: Delete Line
+* [ `Cmd`/`Ctrl` + ( `[` | `]` ) ]: Decrease | Increase indentation
+* [ `Alt`/`Option` + ( `Up` | `Down` ) ]: Move line above | below
+* [ `Shift` + `Alt`/`Option` + ( `Up` | `Down` ) ]: Copy line above | below
+* [ `Cmd`/`Ctrl` + `Enter` ]: Insert line after
+* [ `Shift` + `Cmd`/`Ctrl` + `Enter` ]: Insert line Before
+* [ `Cmd`/`Ctrl` + `J` ]: Join lines
 
 Recommended Extensions
 ----------------------
 
 * [LiveShare](https://marketplace.visualstudio.com/items?itemName=ms-vsliveshare.vsliveshare)
-* [LiveShare Audio](https://marketplace.visualstudio.com/items?itemName=ms-vsliveshare.vsliveshare-audio)
 * [Editor Config](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
   Ensures consistent code formatting.
+
+### EditorConfig file
 
   Create a file in your project dir or home dir named `.editorconfig` and append at least the following:
 
@@ -94,9 +110,9 @@ indent_size = 4
 Recommended Settings
 --------------------
 
-`Ctrl+Shift+P` > `Preferences: Open Settings (JSON)`
+[ `Ctrl` + `Shift` + `P` ] > `Preferences: Open Settings (JSON)`
 
-```json
+```jsonc
 {
     "files.trimTrailingWhitespace": false, // interfers with EditorConfig extension
     // Suggestions ---------------------------------------------------------------------
@@ -138,7 +154,7 @@ Recommended Settings
 Recommended Themes
 ------------------
 
-[ Cmd/Ctrl+K, Cmd/Ctrl+T ] To Change Themes
+[ `Cmd`/`Ctrl` + `K`, `Cmd`/`Ctrl` + `T` ] To Change Themes
 
 Dark
 * [One Dark Pro Monokai Darker](https://marketplace.visualstudio.com/items?itemName=eserozvataf.one-dark-pro-monokai-darker)

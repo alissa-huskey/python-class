@@ -1,5 +1,5 @@
-Setup Version Control
-=====================
+Git on Repl.it
+==============
 
 * [Introduction](#introduction)
 * [Part 1: First Create a Github Account](#part-1-first-create-a-github-account)
