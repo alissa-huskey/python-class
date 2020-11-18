@@ -36,6 +36,7 @@ Table of Contents
 * [Part 9.2 POST, PUT and PATCH](#part-92-post-put-and-patch)
 * [Part 9.3 Request methods using curl](#part-93-request-methods-using-curl)
 * [Part 9.4 Solo Exercise](#part-94-solo-exercise)
+* [Part 10: Final Project](#part-10-final-project)
 * [See Also](#see-also)
 
 
@@ -926,8 +927,149 @@ Print: `contents` -> `translated`
 > submitted, due to browser and web server limits on URI length.
 
 
+Part 10. Final Project
+----------------------
 
+Use the Trello API to build a personal Trello CLI.
 
+- [Trello API Docs](https://developer.atlassian.com/cloud/trello/rest/api-group-actions/)
+- [Trello API Intro](https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/)
+- [help](http://www.trello.org/help.html)
+
+### Phase 1: Print the open cards from your `To Do` list.
+
+1. Sign into your Trello account and get an API key and token by visiting
+   [trello.com/app-key](https://trello.com/app-key).
+
+   Each API request will use:
+
+   - **Base URL**: `https://api.trello.com/1`
+   - **Params**: `key` and `token`
+
+2. Find the `id` of your `To Do` list.
+
+   Use the `/members/{id}/boards` endpoint and the special member `id` of `me`
+   to get a list of your open boards.
+
+   - Filter to only open boards by passing the `filter`
+     parameter with the value `open`.
+
+   - Include the board `lists` in the results by passing the `lists` param with the
+     value `open`.
+
+   - Find your board with the `name` `QCC: {your name}`, then the list with the
+     `name` `To Do` on that board. Save the `id` of that list.
+
+3. Get the cards on your `To Do` list.
+
+   Use the `/lists/{id}/cards` endpoint.
+
+   - Filter to only open cards by passing the `cards`
+     parameter with the value `visible`.
+
+4. Print the card info.
+
+   For each card:
+
+   - Optional: Skip any that you are not a member of by checking if `subscribed`
+     is `true`.
+
+   - Print the card `name`, `shortUrl`, `due` date and `labels` `name`.
+
+### Phase 2: Show card details
+
+1. Use the `enumerate()` function to print a number next to each card name.
+
+2. After printing the list of cards, get input from the user.
+
+   - If they enter a number of a listed card, print the `desc`, any `checklist`
+     items and any other card details you would like to see for the chosen
+     card.
+
+  - If they enter `q` (or some other command for quit) exit the program.
+
+### Phase 3: Card actions
+
+1. After printing the card list, provide a menu of card actions that a user can
+   take on a card, giving each a letter or command word.
+
+   - **Show card**: print card info (from Phase 2)
+   - **Mark as in-progress**: move the card to the `In-Progress` list.
+   - **Mark as Done**: move card to the `Done` list and set `dueComplete` to `true`.
+
+2. If the user includes the letter or command word in the input, use the API to
+   take the appropriate action for that card.
+
+### Phase 4: More card views
+
+Provide a way for the user to optionally view more or different card views. For example:
+
+* Make the default view a dashboard that prints a simplified list of cards from
+  each of the  `Done`, `In-Progress`, `To Do` and `Coming Up` lists.
+
+* Add an option to specify which list(s) to include. (For example,
+  `In-Progress` and `To Do`.)
+
+* Add a search option, that allows the user to specify a part of a name and/or
+  description to search for. 
+
+* Allow the user to filter cards by fields, such as the `label`(s), if you are
+  `subscribed`, `due` date (overdue, due soon), etc.
+
+### More Info
+
+This will be a medium-term project.
+
+I expect the project to follow the requirements for **Phase 1** fairly closely
+and it is the only one that I provided detailed instructions for.
+
+From there on, you will need to dig through the API docs to figure out the best
+way to accomplish your goals.
+
+You can also consider the rest more guidelines or suggestions. The goal is to
+make a tool that you will use on a regular basis. Focus on what will make it
+most useful to make you more productive.
+
+### Tips and Reminders
+
+* Choose a goal for each week. **Phase 1** should be doable in a week or maybe
+  two. After that, your goal choices will be your own. Consider posting your
+  goal for the week to discord to help keep you on track.
+
+* Break your immediate work into bite-sized pieces. Think of the easiest thing
+  you can do that will mean making a step forward with tangible, visible
+  progress. If it doesn't feel almost *too* easy, figure out how to break it
+  down further.
+
+* Save your progress and run your script frequently after any change, even when
+  the change seem insignifigent. You want to catch errors and unexpected
+  results as soon as they happen.
+
+* Don't be shy about asking for help from me or your fellow classmates.
+  **Everyone gets stuck sometimes.** Don't let yourself spiral or stall.
+
+* I suggest starting a new repo for this project.
+
+* Commit and push frequently, at a minimum at the end of each coding session,
+  ideally after any feature addition, behavior change, or refactor (code
+  improvement that does not change the behavior). Review the diff of your
+  changes before each commit, as well as at the beginning of every coding
+  session. (Hopefully there are none for the latter most of the time.)
+
+* Consider adding your own Trello cards for the next bite-size step or two.
+  You could even make a new board if you'd like. But be careful not to spend
+  too much time planning your project--you should be spending no more than a
+  few minutes a day gardening your tasks/cards/whatever. And don't plan too far
+  ahead--your goals and plans will change as the project matures, so planning
+  too far into the future is counter-productive.
+
+* Consider a DEBUG mode that can print out additional details to help with
+  debugging.
+
+* Give me the opportunity to review your code when you're done with any major
+  step. Perhaps also give your classmate(s) an opportunity to review your code
+  as well. Code reviews are a good way to get feedback and course-correct
+  early, as well as learning from each other.
 
 See Also
 --------

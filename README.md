@@ -41,6 +41,10 @@ Lessons
 * **Slices** [(slices.py)](pythonclass/lessons/slices.py)
 * **Strings and Lists** [(slices.py)](pythonclass/lessons/strings_lists.py)
 
+## Fundamentals
+
+* **[Expressions](https://mybinder.org/v2/gh/alissa-huskey/python-class/HEAD?filepath=docs%2Flessons%2Fexpressions.ipynb)**
+
 Tool Guides
 -----------
 
