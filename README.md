@@ -54,6 +54,7 @@ Tool Guides
 * [The Python Shell](docs/guides/python_shell.md)
 * [Repl.it](docs/guides/replit.md)
 * [Git on Repl.it](docs/guides/git-on-replit.md)
+* [Poetry](docs/guides/poetry.md)
 
 Exercises
 ---------
