@@ -59,6 +59,11 @@ Fundamentals
 [ ] exceptions
 [ ] arguments
 
+[ ] game analogy
+  [ ] if-statement: fork in the road
+  [ ] variables: inventory, items
+  [ ] functions: weapons, 
+
 Exercises / Docs
 ----------------
 
