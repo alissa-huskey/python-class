@@ -43,8 +43,8 @@ Lessons
 
 ## Fundamentals
 
-* **[Expressions](https://mybinder.org/v2/gh/alissa-huskey/python-class/HEAD?filepath=docs%2Flessons%2Fexpressions.ipynb)**
-* **[Statements](https://mybinder.org/v2/gh/alissa-huskey/python-class/HEAD?filepath=docs%2Flessons%2Fstatements.ipynb)**
+* **[Expressions](https://nbviewer.jupyter.org/github/alissa-huskey/python-class/blob/master/docs/lessons/expressions.ipynb)**
+* **[Statements](https://nbviewer.jupyter.org/github/alissa-huskey/python-class/blob/master/docs/lessons/statements.ipynb)**
 
 Tool Guides
 -----------
@@ -56,6 +56,7 @@ Tool Guides
 * [Repl.it](docs/guides/replit.md)
 * [Git on Repl.it](docs/guides/git-on-replit.md)
 * [Poetry](docs/guides/poetry.md)
+* [Mac Dev Env for Python](docs/guides/mac.md)
 
 Exercises
 ---------
