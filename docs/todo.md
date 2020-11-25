@@ -1,6 +1,64 @@
 To Do
 =====
 
+Fundamentals
+------------
+
+[ ] stack
+  [ ] https://sites.cs.ucsb.edu/~pconrad/cs8/topics.beta/theStack/06/
+  [ ] https://sites.cs.ucsb.edu/~pconrad/cs8/topics.beta/theStack/02/
+
+[ ] declaration
+  [ ] function definition
+  [ ] variable assignment
+
+[ ] syntax
+  [ ] comments
+  [ ] blocks
+  [ ] keywords
+
+[x] expressions
+  [x] operator
+  [x] order of operation
+  [x] evaluate
+
+  [ ] atom
+  [ ] assignment
+  [ ] variable
+  [ ] identifier
+  [ ] literal
+
+  [ ] attribute reference (dot-notation) <atom>.<member>
+  [ ] subscripting  <atom>[<name>]
+
+  [ ] functions
+
+[ ] data types
+   [ ] string
+   [ ] int
+   [ ] float
+   [ ] bool
+   [ ] sequences
+     [ ] list
+     [ ] dict
+
+[ ] flow control
+  [ ] if-statements
+
+
+[ ] iterables -- an object capable of returning its members one at a time
+  [ ] containers: (sequence: list, set, range, string), (mapping: dict)
+  [ ] file
+  [ ] enumerate
+
+[ ] loops
+  [ ] while
+  [ ] for
+  [ ] break, continue
+
+[ ] exceptions
+[ ] arguments
+
 Exercises / Docs
 ----------------
 
@@ -15,7 +73,7 @@ Concepts
 
 ### Python
 
-[ ] f-string: String literals prefixed with 'f' or 'F' are commonly called
+[.] f-string: String literals prefixed with 'f' or 'F' are commonly called
     "f-strings" which is short for formatted string literals.
 [ ] Functions
   [ ] annotations
