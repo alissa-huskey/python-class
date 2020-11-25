@@ -5,11 +5,8 @@ For our purposes, [Poetry](https://python-poetry.org/docs) provides:
 
 * **dependency management**: keep track of Python modules that you need for
   a project and easily install them in any environment.
-* **virtual environments**: ensure you are using the correct dependency
-  versions even if other versions exist on your system. Also manage the
-  paths Python uses to find modules so that your project source files can be
-  found.
-* **standardization**: tools for starting new projects according to
+* **virtual environments**: operating with an isolated set of dependencies.
+  * **standardization**: tools for starting new projects according to
   best practices.
 
 Additionally, Poetry is used for:
@@ -36,8 +33,9 @@ Table of Contents
   * [Adding, removing and installing](#adding-removing-and-installing)
 * [Using Poetry](#using-poetry)
 * [Getting info](#getting-info)
-* [Scripts](#scripts)
+* [Executable Scripts](#executable-scripts)
 * [Installing your package](#installing-your-package)
+* [Using Poetry with VS Code](#using-poetry-with-vs-code)
 
 
 Quickref
@@ -111,8 +109,6 @@ command to interactively generate the `pyproject.toml` file.
 Project configuration
 ---------------------
 
-* [python-poetry.org: The pyproject.toml file](https://python-poetry.org/docs/pyproject/)
-
 The heart of Poetry is in the `pyproject.toml` file.
 
 Here are the contents of the `pyproject.toml` file from the `python-demo` project:
@@ -148,8 +144,14 @@ Here is some information on some of the configuration parameters available.
 * `[build-system]`: details needed by Poetry. (You should rarely if ever need to change this section.)
 * `[tool.poetry.scripts]`: (optional) python executable scripts to be generated and installed as part of your package. See [Scripts](#Scripts) below.
 
+### More info
+
+* [python-poetry.org: The pyproject.toml file](https://python-poetry.org/docs/pyproject/)
+
 Managing Dependencies
 ---------------------
+
+### Adding, removing and installing
 
 Dependencies in the `[tool.poetry.dependencies]` and
 `[tool.poetry.dev-dependencies]` sections of `pyproject.toml` have the format
@@ -157,29 +159,9 @@ of:
 
 `<package> = <version>`
 
-### Versions
-
-* [Semantic Versioning](https://semver.org/)
-* [python-poetry.org: Versions and constraints](https://python-poetry.org/docs/versions/)
-
-Most Python packages use semantic versioning, which has the form of:
-
-`<major>`.`<minor>`.`<patch>`
-
-In `pyproject.toml` versions can have formats like:
-
-* `1.2.3`: only version `1.2.3`
-* `^1.2`: at least `1.2` and updates allowed within version `1`
-* `~1.2`: at least `1.2` and updates allowed within version `1.2`
-* `1.2.*`: at least `1.2` and updates allowed within version `1.2`
-* `>= 1.2, < 1.5`: at least `1.2` and less than `1.5`
-* `>= 1.2, ! 1.2.5`: at least `1.2` but not `1.2.5`
-
-### Adding, removing and installing
-
 You can edit the `pyproject.toml` file directly but it is probably easiest to
-use the `poetry add` and `poetry remove` commands. They both update the
-`pyproject.toml` file and install or uninstall the modules in the virtual
+use the `poetry add` and `poetry remove` commands. They update the
+`pyproject.toml` file and also install or uninstall the modules in the virtual
 environment.
 
 For example:
@@ -200,6 +182,26 @@ dependencies but not your own package.
 $ poetry install --no-root   # install dependencies in the virtual env
 $ poetry install             # install dependencies and your package in the virtual env
 ```
+
+### Versions
+
+Most Python packages use semantic versioning, which has the form of:
+
+`<major>`.`<minor>`.`<patch>`
+
+In `pyproject.toml` versions can have formats like:
+
+* `1.2.3`: only version `1.2.3`
+* `^1.2`: at least `1.2` and updates allowed within version `1`
+* `~1.2`: at least `1.2` and updates allowed within version `1.2`
+* `1.2.*`: at least `1.2` and updates allowed within version `1.2`
+* `>= 1.2, < 1.5`: at least `1.2` and less than `1.5`
+* `>= 1.2, ! 1.2.5`: at least `1.2` but not `1.2.5`
+
+#### More info
+
+* [Semantic Versioning](https://semver.org/)
+* [python-poetry.org: Versions and constraints](https://python-poetry.org/docs/versions/)
 
 Using Poetry
 ------------
@@ -236,7 +238,7 @@ if __name__ == "__main__":
     main()
 ```
 
-Here I run the `astros.py` script from normal shell, where the `requests`
+Here I run the `astros.py` script from normal shell where the `requests`
 module is not installed.
 
 ```bash
@@ -249,7 +251,7 @@ Traceback (most recent call last):
 ModuleNotFoundError: No module named 'requests'
 ```
 
-Similiarly, here I call `xdoctest` which is installed through the `xdoctest`
+Similarly, here I call `xdoctest` which is installed through the `xdoctest`
 module. It is not found in the normal shell because that module is only
 installed in the virtual environment.
 
@@ -261,9 +263,9 @@ zsh: command not found: xdoctest
 ```
 
 The easiest way to run commands from the virtual environment is to use the
-`poetry shell` command. It will update all of your paths so that Python is able
-to find all of your dependencies, executables installed from modules (like
-`ipython`), and your own package scripts and code.
+`poetry shell` command. It will update all of your paths so that your
+dependencies, executables installed from modules (like `ipython`), and your own
+package scripts and code can be found.
 
 ```bash
 $ poetry shell
@@ -356,10 +358,11 @@ $ poetry env info --path
 .../virtualenvs/demo-IDGvf4ns-py3.8
 ```
 
-Scripts
--------
+Executable scripts
+------------------
 
-The `[tool.poetry.scripts]` section allows us to specify a list of executables to be generated and installed as part of the package.
+The `[tool.poetry.scripts]` section of `pyproject.toml` lets us specify a list
+of executables to be generated and installed as part of the package.
 
 It takes the form of:
 
@@ -391,7 +394,7 @@ $ python demo/hello.py
 hello world
 ```
 
-We can use Poetry to create a `hello` executable by adding a line to the `[tool.poetry.scripts]` section.
+We can use Poetry to create a `hello` executable by the `[tool.poetry.scripts]` section.
 
 *pyproject.toml*
 ```toml
@@ -403,7 +406,7 @@ name = "demo"
 hello = "demo.hello:main"
 ```
 
-This generates a script that is equilivant to:
+Poetry will generate a script that is equivalent to:
 
 ```python
 from demo.hello import main
@@ -476,3 +479,54 @@ Uninstalling demo-0.1.0:
 Proceed (y/n)? y
   Successfully uninstalled demo-0.1.0
 ```
+
+Using Poetry with VS Code
+-------------------------
+
+Get the path where Poetry keeps virtual environments by using the `poetry env`
+command.
+
+```bash
+$ poetry env info -p
+```
+
+Copy the path up to the `virualenvs` dir and add it to the `python.venvPath` in
+the `settings.json` file. (From the command palette: `Preferences: Open
+Settings (JSON)`.)
+
+*VS Code settings.json*
+```
+{
+    "python.venvPath": ".../virtualenvs"
+}
+```
+
+Start VS Code from a terminal in your project root directory with the `poetry
+shell` command.
+
+```bash
+$ poetry shell
+Spawning shell within .../virtualenvs/demo-IDGvf4ns-py3.8
+(demo-IDGvf4ns-py3.8) $ code .
+```
+
+You may also need to set the `python.pythonPath` in the workspace
+`settings.json`. (From the command palette: `Preferences: Open Workspace
+Settings (JSON)`.)
+
+*.vscode/settings.json*
+```json
+{
+    "python.pythonPath": ".../virtualenvs/demo-IDGvf4ns-py3.8/bin/python3.8"
+}
+```
+
+More info
+---------
+
+* [Poetry docs](https://python-poetry.org/docs)
+* [VS Code Docs: Using Python environments in VS Code](https://code.visualstudio.com/docs/python/environments)
+* [Getting Started with Python Poetry](https://dev.to/bowmanjd/getting-started-with-python-poetry-3ica)
+* [Developing Python Projects with poetry](https://ron.sh/developing-python-projects-with-poetry/)
+* [Get started with pyenv & poetry](https://blog.jayway.com/2019/12/28/pyenv-poetry-saviours-in-the-python-chaos/)
+* Python projects with Poetry and VSCode [Part 1](https://www.pythoncheatsheet.org/blog/python-projects-with-poetry-and-vscode-part-1/),  [Part 2](https://www.pythoncheatsheet.org/blog/python-projects-with-poetry-and-vscode-part-2/)
