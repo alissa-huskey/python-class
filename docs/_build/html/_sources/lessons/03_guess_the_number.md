@@ -14,16 +14,17 @@ a short program. You’ll learn how to convert values to different data
 types and when you would need to do this. Since this program is a game,
 from now on we’ll call the user the player.
 
+{lesson_py}`guess.py`
 
 Part 1. Create a New Script
 ----------------------------
 
-Follow the instructions in [Repl.it Tips](replit-tips.md) to create
+Follow the instructions in [Repl.it Tips](../guides/replit.md) to create
 a new file called "guess.py" and change your `.replit` file to run it.
 
 Add a comment to the first line of the script to describe it:
 
-#### Edit Your Script
+**Edit Your Script**
 
 ***guess.py***
 
@@ -76,7 +77,7 @@ Now in the Python shell:
 Hint: In the Python shell, you can hit the up arrow to fill in the last line you typed again.
 
 
-#### Edit Your Script
+**Edit Your Script**
 
 Now that you understand how importing works, import the module, then save
 a random number to the `number` variable by calling `random.randint()`.
@@ -104,7 +105,7 @@ the user as a prompt just to the left of their cursor.
 Let's use this new way of calling `input()` to get the players name and
 then use `print()` to greet them.
 
-#### Edit Your Script
+**Edit Your Script**
 
 ***guess.py***
 
@@ -139,7 +140,7 @@ it will convert them each to strings and then print them with spaces
 in-between. Let's use this handy way to print the guess number each round.
 
 
-#### Edit Your Script
+**Edit Your Script**
 
 ***guess.py***
 
@@ -216,7 +217,7 @@ need them to be strings in order to ***concatonate*** them in the message
 we print at the of the game. To convert an int to a string use the
 `str()` function.
 
-#### Edit Your Script
+**Edit Your Script**
 
 ***guess.py***
 

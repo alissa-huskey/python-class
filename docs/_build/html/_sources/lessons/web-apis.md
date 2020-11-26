@@ -39,6 +39,8 @@ Table of Contents
 * [Part 10: Final Project](#part-10-final-project)
 * [See Also](#see-also)
 
+{lesson_py}`web_apis.py`
+
 
 Part 1: Setup
 -------------
@@ -434,7 +436,7 @@ file.
 > You'll want your `latitude` and `longitude` values from [Part 5.3](#part-53-solo-exercise---latitude-and-longitude).
 > If you don't have them available run the `request_location()` function again.
 
-#### Step 1: Create the `private` module
+### Step 1: Create the `private` module
 
 We have made our own modules before -- back in our pypet battle project, we
 made a `pets` module. You may recall that a module is simply a python file that
@@ -456,7 +458,7 @@ LAT = "34.06"        # replace with your latitude
 LNG = "-118.26"      # replace with your longitude
 ```
 
-#### Step 2: Ignore it in git
+### Step 2: Ignore it in git
 
 In the same directory create or edit the file `.gitignore` and add the filename to it.
 
@@ -465,7 +467,7 @@ In the same directory create or edit the file `.gitignore` and add the filename 
 private.py
 ```
 
-#### Step 3: Import it
+### Step 3: Import it
 
 Now we need to import it. Add the following to the imports section (somewhere
 near the top) of your `apis.py` file.
@@ -586,7 +588,7 @@ we'll be doing today using the `openuv.io` API.
 Part 8.1: Get Your API Key
 ------------------------------
 
-#### Step 1: Sign up
+### Step 1: Sign up
 
 In your web browser visit [openuv.io](https://www.openuv.io/). Click on **Get My API Key**
 then sign into a Google account.
@@ -599,7 +601,7 @@ To authorise your client just add your API Key _______ to "x-access-token"
 header for each request.
 ```
 
-#### Step 2: Add it to `private.py`
+### Step 2: Add it to `private.py`
 
 Copy the API key shown then add it to `private.py`. Don't forget to add
 `OPENUV_KEY` to the `__all__` list.
@@ -615,7 +617,7 @@ LNG = "-118.26"
 OPENUV_KEY = ""      # your API key here
 ```
 
-#### Step 3: Import it in `apis.py`
+### Step 3: Import it in `apis.py`
 
 Then add `OPENUV_KEY` to the `import` statement in `apis.py`.
 

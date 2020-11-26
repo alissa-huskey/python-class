@@ -1,4 +1,5 @@
-# Fundamentals: Expressions
+Fundamentals: Expressions
+=========================
 
 An *expression* is a unit of code that can be solved to a single value.
 
@@ -78,7 +79,8 @@ print(today-1)
 print(input())
 ```
 
-## Self-Quiz
+Self-Quiz
+---------
 
 1. What is the operator in this expression?
 

@@ -67,7 +67,7 @@
 <meta property="og:url"         content="file:///Users/alissahuskey/Dropbox/projects/python-class/lessons/statements.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Fundamentals: Statements" />
-<meta property="og:description" content="Fundamentals: Statements  A statement is a valid unit of code that serve as an instruction to Python.  When a statement is run, it is called executing the code." />
+<meta property="og:description" content="Fundamentals: Statements  A statement is an instruction that Python can run or execute as a unit.  Like grammar in prose, statements follow syntax rules telling" />
 
 
 <meta name="twitter:card" content="summary" />
@@ -257,7 +257,10 @@
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
+        <a class="dropdown-buttons"
+            href="../_sources/lessons/statements.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="../_sources/lessons/statements.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
@@ -292,6 +295,26 @@
 
         <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/alissa-huskey/python-class/master?urlpath=lab/tree/docs/lessons/statements.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
     </div>
 
     <!-- Table of contents -->
@@ -306,6 +329,23 @@
   <a class="reference internal nav-link" href="#simple-statements">
    Simple Statements
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#single-line-statements">
+     Single line statements
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multi-line-statements">
+     Multi-line statements
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multi-statement-lines">
+     Multi-statement lines
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#compound-statements">
@@ -335,27 +375,78 @@
                 
   <div class="section" id="fundamentals-statements">
 <h1>Fundamentals: Statements<a class="headerlink" href="#fundamentals-statements" title="Permalink to this headline">¶</a></h1>
-<p>A <em>statement</em> is a valid unit of code that serve as an instruction to Python.</p>
-<p>When a statement is run, it is called <em>executing</em> the code.</p>
+<p>A <em>statement</em> is an instruction that Python can run or <em>execute</em> as a unit.</p>
+<p>Like grammar in prose, statements follow syntax rules telling Python where they
+begin and end as well as how they should be handled.</p>
+<p>Python’s syntax rules define statements as either a single logical line of
+code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">debug_mode</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>Or a block of code grouping multiple statements together:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">result</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Positive number required, try again.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="section" id="simple-statements">
 <h2>Simple Statements<a class="headerlink" href="#simple-statements" title="Permalink to this headline">¶</a></h2>
-<p>Most statements are a single line of code.</p>
-<p>For example:</p>
+<p>A <em>simple statement</em> is a single instruction, one that does not group together
+other statements. In comprison to prose a simple statement is like a sentence.
+While there are exceptions, a simple statements is essentially a line of code.</p>
+<p>To be more accurate, a simple statement is a single instruction that could be
+written on one line by itself, even if it is actually written differently.
+This is referred to as a <em>logical line</em>.</p>
+<div class="section" id="single-line-statements">
+<h3>Single line statements<a class="headerlink" href="#single-line-statements" title="Permalink to this headline">¶</a></h3>
+<p>Most of the time simple statements are written one per line. The newline
+character tells Python that the statement is complete.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number">Listing 1 </span><span class="caption-text">examles of simple statements, each on one physical line</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Alissa&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
 <span class="kn">import</span> <span class="nn">random</span>
 <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>You can break up part of a statement that is inside of parentheses, square
-brackets or curly braces after delimiters (seperator symbols) or operators.
-This is called <em>implicit line continuation</em>.</p>
-<blockquote>
-<div><p>Even though these examples are broken up into multiple lines, the
-<code class="docutils literal notranslate"><span class="pre">address</span> <span class="pre">=</span></code> lines make up a single statement and the <code class="docutils literal notranslate"><span class="pre">print()</span></code> lines
-make up another single statement.</p>
-</div></blockquote>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">address</span> <span class="o">=</span> <span class="p">{</span>
+</div>
+</div>
+<div class="section" id="multi-line-statements">
+<h3>Multi-line statements<a class="headerlink" href="#multi-line-statements" title="Permalink to this headline">¶</a></h3>
+<p>A statement can be broken into multiple lines after operators or delimiters
+(seperator symbols), as long as they are inside of parentheses, square brackets
+or curly braces.</p>
+<p>This is called <em>implicit line continuation</em>.</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number">Listing 2 </span><span class="caption-text">the same simple statement, shown on single and multiple physical lines</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s2">&quot;red&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;green&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-number">Listing 3 </span><span class="caption-text">two simple statements split via implicit line continuation</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">address</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;street&#39;</span><span class="p">:</span> <span class="s2">&quot;1600 Pennsylvania Ave NW&quot;</span><span class="p">,</span>
     <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="s2">&quot;Washington&quot;</span><span class="p">,</span>
     <span class="s1">&#39;state&#39;</span><span class="p">:</span> <span class="s2">&quot;DC&quot;</span><span class="p">,</span>
@@ -363,41 +454,51 @@ make up another single statement.</p>
     <span class="s1">&#39;country&#39;</span><span class="p">:</span> <span class="s2">&quot;United States&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="nb">print</span><span class="p">(</span>
-    <span class="s2">&quot;The White House: &quot;</span> <span class="o">+</span>
-    <span class="n">address</span><span class="p">[</span><span class="s1">&#39;street&#39;</span><span class="p">]</span> <span class="o">+</span>
-    <span class="s2">&quot;, &quot;</span> <span class="o">+</span>
-    <span class="n">address</span><span class="p">[</span><span class="s1">&#39;city&#39;</span><span class="p">]</span> <span class="o">+</span>
-     <span class="s2">&quot;, &quot;</span> <span class="o">+</span>
-    <span class="n">address</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span> <span class="o">+</span>
-     <span class="s2">&quot;, &quot;</span> <span class="o">+</span>
-    <span class="n">address</span><span class="p">[</span><span class="s1">&#39;zip&#39;</span><span class="p">]</span>
-<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The White House: &quot;</span> <span class="o">+</span>
+      <span class="n">address</span><span class="p">[</span><span class="s1">&#39;street&#39;</span><span class="p">]</span>   <span class="o">+</span> <span class="s2">&quot;, &quot;</span> <span class="o">+</span>
+      <span class="n">address</span><span class="p">[</span><span class="s1">&#39;city&#39;</span><span class="p">]</span>     <span class="o">+</span> <span class="s2">&quot;, &quot;</span> <span class="o">+</span>
+      <span class="n">address</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span>    <span class="o">+</span> <span class="s2">&quot;, &quot;</span> <span class="o">+</span>
+      <span class="n">address</span><span class="p">[</span><span class="s1">&#39;zip&#39;</span><span class="p">])</span>
 </pre></div>
+</td></tr></table></div>
 </div>
-<p>Where implicit continuation won’t work, you can break up a statement into
-multiple lines by adding a <code class="docutils literal notranslate"><span class="pre">\</span></code> to the end of each line. This is called
-<em>explicit line continuation</em>.</p>
-<blockquote>
-<div><p>Even though this example is broken up into multiple lines it is still a
-single statement</p>
-</div></blockquote>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">+</span> \
+<p>If the operators or delimiters are not within braces or parenthesis you can
+still can break up a statement into multiple lines by adding a <code class="docutils literal notranslate"><span class="pre">\</span></code> to the end
+of each line.</p>
+<p>This is called <em>explicit line continuation</em>.</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-number">Listing 4 </span><span class="caption-text">a single assignment statement, split via explicit line continuation</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">+</span> \
     <span class="mi">4</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">6</span> <span class="o">+</span> \
     <span class="mi">7</span> <span class="o">+</span> <span class="mi">8</span> <span class="o">+</span> <span class="mi">9</span>
 </pre></div>
+</td></tr></table></div>
 </div>
-<p>You can also put multiple statements on one line by putting a <code class="docutils literal notranslate"><span class="pre">;</span></code> between
-each statement. (Though it’s not recommended in your saved code, it’s
-sometimes handy in the Python shell.)</p>
+</div>
+<div class="section" id="multi-statement-lines">
+<h3>Multi-statement lines<a class="headerlink" href="#multi-statement-lines" title="Permalink to this headline">¶</a></h3>
+<p>You can put multiple statements on one line by putting a <code class="docutils literal notranslate"><span class="pre">;</span></code> between each
+statement.</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-number">Listing 5 </span><span class="caption-text">two statements on one physical line</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Steve&quot;</span> <span class="p">;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
 <blockquote>
-<div><p>Even though this example is on one line there are two statements.</p>
+<div><p>While this is considered poor practice, it’s fine for the Python shell and
+can be a a handy shortcut.</p>
 </div></blockquote>
+</div>
 </div>
 <div class="section" id="compound-statements">
 <h2>Compound Statements<a class="headerlink" href="#compound-statements" title="Permalink to this headline">¶</a></h2>
 <p>There are some cases where a number of statements are grouped together to be
 executed as a single unit. This is called a <em>compound statement</em>.</p>
+<p>If a simple statement like a sentence, a compound statement is like a paragraph
+in its simplest form.</p>
 <p>A compound statement always has at least one <em>header</em> line that that ends in
 a <code class="docutils literal notranslate"><span class="pre">:</span></code> and controls one or more <em>body</em> statement lines that are at the same
 indentation level.</p>
@@ -411,24 +512,29 @@ indentation level.</p>
 </pre></div>
 </div>
 <p>Another example is an if-statatement.</p>
-<blockquote>
-<div><p>An if-statement can include multiple headers, but it is still all one statement.</p>
-</div></blockquote>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">answer</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-number">Listing 6 </span><span class="caption-text">this is a single if-statement though it contains three headers (the <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">elif</span></code>, and <code class="docutils literal notranslate"><span class="pre">else</span></code> lines)</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">answer</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Answer must be a positive number&quot;</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">answer</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Answer must be less than five.&quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Your answer was:&quot;</span><span class="p">,</span> <span class="n">answer</span><span class="p">)</span>
 </pre></div>
+</td></tr></table></div>
 </div>
 </div>
 <div class="section" id="self-quiz">
 <h2>Self-Quiz<a class="headerlink" href="#self-quiz" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
-<li><p>How many statements are in the following:</p></li>
-</ol>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">favs</span> <span class="o">=</span> <span class="p">{</span>
+<p>1. How many statements are in the following:</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">favs</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s2">&quot;purple&quot;</span><span class="p">,</span>
     <span class="s1">&#39;season&#39;</span><span class="p">:</span> <span class="s2">&quot;Fall&quot;</span><span class="p">,</span>
     <span class="s1">&#39;food&#39;</span><span class="p">:</span> <span class="s2">&quot;cheese&quot;</span>
@@ -436,35 +542,69 @@ indentation level.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;My favorite color is:&quot;</span><span class="p">,</span> <span class="n">favs</span><span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>What is wrong with the following:</p></li>
-</ol>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>My favorite color is: purple
+</pre></div>
+</div>
+</div>
+</div>
+<p>2. What is wrong with the following:</p>
+<div class="cell tag_raises-exception tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 <span class="n">num</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>What is wrong with the following:</p></li>
-</ol>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_header</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-2-45b9a87981c3&gt;&quot;</span><span class="gt">, line </span><span class="mi">4</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+    <span class="o">^</span>
+<span class="ne">IndentationError</span>: expected an indented block
+</pre></div>
+</div>
+</div>
+</div>
+<p>3. What is wrong with the following:</p>
+<div class="cell tag_raises-exception tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_header</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;============================================&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>How many statements are in the following:</p></li>
-</ol>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Jack&quot;</span> <span class="p">;</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">24</span> <span class="p">;</span> <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;is&quot;</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="s2">&quot;years old&quot;</span><span class="p">)</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-3-86e0c4cc9e48&gt;&quot;</span><span class="gt">, line </span><span class="mi">1</span>
+    <span class="k">def</span> <span class="nf">print_header</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+                           <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
 </pre></div>
+</div>
+</div>
+</div>
+<p>4. How many statements are in the following:</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Jack&quot;</span> <span class="p">;</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">24</span> <span class="p">;</span> <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;is&quot;</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="s2">&quot;years old&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jack is 24 years old
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="today-we-learned">
 <h2>Today we learned<a class="headerlink" href="#today-we-learned" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><strong>statement</strong>: is a valid unit of code that serve as an instruction to Python</p></li>
-<li><p><strong>execute</strong>: when Python runs a piece of code</p></li>
+<li><p><strong>statement</strong>: an instruction to Python</p></li>
+<li><p><strong>execute</strong>: when Python runs a statement</p></li>
 <li><p><strong>simple-statement</strong>: a statement that can be written on a single line by itself, even if it is not actually written that way</p></li>
 <li><p><strong>compound-statement</strong>: a number of statements grouped together as a single unit</p></li>
 <li><p><strong>implicit line continuation</strong>: when a simple statement is broken into multiple lines inside of <code class="docutils literal notranslate"><span class="pre">(</span></code> <code class="docutils literal notranslate"><span class="pre">)</span></code>, <code class="docutils literal notranslate"><span class="pre">[</span></code> <code class="docutils literal notranslate"><span class="pre">]</span></code> or <code class="docutils literal notranslate"><span class="pre">{</span></code> <code class="docutils literal notranslate"><span class="pre">}</span></code> after operators.</p></li>
