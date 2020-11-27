@@ -26,6 +26,6 @@ Development Notes
 | dev       | `poetry install --no-root`                     | install dependencies                               |
 | dev       | `poetry shell`                                 | start virtual env shell                            |
 | build     | `jb build docs`                                | generate jupyter book from source                  |
-| publish   | `cd docs && ghp-import -n -p -f _build/html`   | publish to GitHub Pages ([more info][jb-pages])    |
+| publish   | `ghp-import -n -p -f docs/_build/html`         | publish to GitHub Pages ([more info][jb-pages])    |
 
 [jb-pages]: https://jupyterbook.org/publish/gh-pages.html
