@@ -1,5 +1,5 @@
-Fundamentals: Expressions
-=========================
+Expressions
+===========
 
 An *expression* is a unit of code that can be solved to a single value.
 
@@ -55,8 +55,7 @@ Here are some examples of expressions
 ```python
 3                        # a stand-alone vaue is the simplest expression
 "hello"                  # a stand-alone string value
-today = 16               # evaluates to 16
-today                    # a variable
+today                    # a variable (when assigned)
 yesterday = today - 1    # two expressions: #1: today - 1, #2: yesterday = 15
 input()                  # functions with a return value also evaluate to a value
 ```
@@ -101,11 +100,32 @@ print("Hello " + name)
 1 == 2
 ```
 
-## Today we learned
+Reference
+----------------
 
-* **value**: a piece of data or information
-* **expression**: a unit of code that can be solved to a single value
-* **evaluate**: the process of solving an expression to its resulting value
-* **left-hand value**: the value to the left of an operator
-* **right-hand value**: the value to the right of an operator
-* **operator**: a symbol that has special meaning, telling Python to do something with the values on either side
+### Glossary
+
+```{glossary}
+
+value
+  a piece of data or information
+
+expression
+  a unit of code that can be solved to a single value
+
+evaluate
+  the process of solving an expression to its resulting value
+
+left-hand value
+  the value to the left of an operator
+
+right-hand value
+  the value to the right of an operator
+
+operator
+  a symbol that has special meaning, telling Python to do something with the values on either side
+```
+
+### More info
+
+* [The Python Language Reference » Expressions](https://docs.python.org/3/reference/expressions.html)
