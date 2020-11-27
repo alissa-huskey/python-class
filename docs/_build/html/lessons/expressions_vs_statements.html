@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Expressions &#8212; Python Class</title>
+    <title>Expressions vs. Statements &#8212; Python Class</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -55,21 +55,21 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://alissa-huskey.github.io/python-class/lessons/expressions.html" />
+    <link rel="canonical" href="https://alissa-huskey.github.io/python-class/lessons/expressions_vs_statements.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Statements" href="statements.html" />
-    <link rel="prev" title="Fundamentals" href="fundamentals.html" />
+    <link rel="next" title="Misc" href="misc.html" />
+    <link rel="prev" title="Statements" href="statements.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
 
 
 <!-- Opengraph tags -->
-<meta property="og:url"         content="https://alissa-huskey.github.io/python-class/lessons/expressions.html" />
+<meta property="og:url"         content="https://alissa-huskey.github.io/python-class/lessons/expressions_vs_statements.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Expressions" />
-<meta property="og:description" content="Expressions  An expression is a unit of code that can be solved to a single value.  This process is called evaluating the expression.  Take the following simple" />
+<meta property="og:title"       content="Expressions vs. Statements" />
+<meta property="og:description" content="Expressions vs. Statements  An expression is any piece of code that evaluates to a value.  A statement is a logical line of code or group of statements that giv" />
 
 
 <meta name="twitter:card" content="summary" />
@@ -114,8 +114,8 @@
    Fundamentals
   </a>
   <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="expressions.html">
      Expressions
     </a>
    </li>
@@ -124,8 +124,8 @@
      Statements
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="expressions_vs_statements.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Expressions vs. Statements
     </a>
    </li>
@@ -301,37 +301,6 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#self-quiz">
-   Self-Quiz
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reference">
-   Reference
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#glossary">
-     Glossary
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#more-info">
-     More info
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-        </nav>
-        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -339,114 +308,153 @@
         
               <div>
                 
-  <div class="section" id="expressions">
-<h1>Expressions<a class="headerlink" href="#expressions" title="Permalink to this headline">¶</a></h1>
-<p>An <em>expression</em> is a unit of code that can be solved to a single value.</p>
-<p>This process is called <em>evaluating</em> the expression.</p>
-<p>Take the following simple expression that resolves to <code class="docutils literal notranslate"><span class="pre">30</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">10</span> <span class="o">*</span> <span class="mi">3</span>
-</pre></div>
-</div>
-<p>It is comprised of:</p>
+  <div class="section" id="expressions-vs-statements">
+<h1>Expressions vs. Statements<a class="headerlink" href="#expressions-vs-statements" title="Permalink to this headline">¶</a></h1>
+<p>An expression is any piece of code that evaluates to a value.</p>
+<p>A statement is a logical line of code or group of statements that gives
+instructions to Python.</p>
+<p>The difference can be confusing, especially since in Python there is a fair bit
+of overlap.</p>
+<p>One way to think of it is:</p>
 <ul class="simple">
-<li><p>the <em>left-hand value</em> (<em>LHV</em>)</p></li>
-<li><p>an <em>operator</em></p></li>
-<li><p>the <em>right-hand value</em> (<em>RHV</em>)</p></li>
+<li><p>if you can save the the result of the code to a variable, then it is an expression</p></li>
+<li><p>if the result of the code causes something to happen it is a statement</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># LHV    Operator   RHV</span>
-<span class="mi">10</span>       <span class="o">*</span>          <span class="mi">3</span>
-</pre></div>
+<p>The string <code class="docutils literal notranslate"><span class="pre">&quot;hello&quot;</span></code> on a line by itself is does not cause anything to
+happen, therefore it is not a statement. Whereas <code class="docutils literal notranslate"><span class="pre">message</span> <span class="pre">=</span> <span class="pre">&quot;hello&quot;</span></code> causes the
+variable <code class="docutils literal notranslate"><span class="pre">message</span></code> to be assigned the value <code class="docutils literal notranslate"><span class="pre">&quot;hello&quot;</span></code>.</p>
+<p>A function call may or may not be an expression. But a function call on a line
+by itself is always a valid statement, since it causes the statements inside
+the function to be executed.</p>
+<div class="sphinx-bs container pb-4 docutils">
+<div class="row docutils">
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-header docutils">
+<p class="card-text">Expressions</p>
 </div>
-<p>An <em>operator</em> is a symbol with special meaning that tells Python to do
-something. Some examples of operators include <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">=</span></code>, and <code class="docutils literal notranslate"><span class="pre">==</span></code>.</p>
-<p>When an expression includes an operator involved in Python, there is always a
-<em>left-hand value</em> and a <em>right-hand value</em>.</p>
-<p>Let’s take a more complicated example.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">6</span>
-</pre></div>
-</div>
-<p>In this case we have 2 operators: <code class="docutils literal notranslate"><span class="pre">+</span></code> and <code class="docutils literal notranslate"><span class="pre">*</span></code>. So then which is the left-hand
-value, and which the right-hand?</p>
-<p>The answer is that Python evaluates this the same way we would solve a math
-problem. That is, it breaks it down into multiple expressions.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Expression 1: (3 * 6)</span>
-<span class="c1">#   LHV    Operator   RHV</span>
-<span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span>      <span class="o">*</span>           <span class="mi">6</span>
-
-<span class="c1"># Expression 2: (2 + 18)</span>
-<span class="c1"># LHV    Operator   RHV</span>
-<span class="mi">2</span>        <span class="o">+</span>          <span class="mi">18</span>
-</pre></div>
-</div>
-<p>Here are some examples of expressions</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span>                        <span class="c1"># a stand-alone vaue is the simplest expression</span>
-<span class="s2">&quot;hello&quot;</span>                  <span class="c1"># a stand-alone string value</span>
-<span class="n">today</span>                    <span class="c1"># a variable (when assigned)</span>
-<span class="n">yesterday</span> <span class="o">=</span> <span class="n">today</span> <span class="o">-</span> <span class="mi">1</span>    <span class="c1"># two expressions: #1: today - 1, #2: yesterday = 15</span>
-<span class="nb">input</span><span class="p">()</span>                  <span class="c1"># functions with a return value also evaluate to a value</span>
-</pre></div>
-</div>
-<p>Anywhere that we can use a value, we can also use an expression. Python will
-first evaluate the expression, then use the resulting value in its place.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># using stand-alone values</span>
-<span class="nb">print</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">yesterday</span><span class="p">)</span>
-
-<span class="c1"># first, evaluates today-1</span>
-<span class="c1"># then sends 15 as an argument to print()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">today</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="c1"># first calls the input() function and waits for the user response</span>
-<span class="c1"># then sends the result to print()</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
-</pre></div>
-</div>
-<div class="section" id="self-quiz">
-<h2>Self-Quiz<a class="headerlink" href="#self-quiz" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
-<li><p>What is the operator in this expression?</p></li>
-</ol>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;hello &quot;</span> <span class="o">*</span> <span class="mi">3</span>
-</pre></div>
-</div>
-<ol class="simple">
-<li><p>If the value of <code class="docutils literal notranslate"><span class="pre">name</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;Joe&quot;</span></code>, what is the argument that is sent to the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function?</p></li>
-</ol>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello &quot;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
-</pre></div>
-</div>
-<ol class="simple">
-<li><p>What does the following expression evaluate to?</p></li>
-</ol>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">==</span> <span class="mi">2</span>
-</pre></div>
+<div class="card-body docutils">
+<p class="card-text">evaluated</p>
+<p class="card-text">resolves to a value</p>
+<p class="card-text">smallest unit is a single literal value</p>
+<p class="card-text">are sometimes statements</p>
+<p class="card-text">can contain expressions</p>
+<p class="card-text">cannot contain statements</p>
 </div>
 </div>
-<div class="section" id="reference">
-<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="glossary">
-<h3>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h3>
-<dl class="glossary simple">
-<dt id="term-value">value</dt><dd><p>a piece of data or information</p>
-</dd>
-<dt id="term-expression">expression</dt><dd><p>a unit of code that can be solved to a single value</p>
-</dd>
-<dt id="term-evaluate">evaluate</dt><dd><p>the process of solving an expression to its resulting value</p>
-</dd>
-<dt id="term-left-hand-value">left-hand value</dt><dd><p>the value to the left of an operator</p>
-</dd>
-<dt id="term-right-hand-value">right-hand value</dt><dd><p>the value to the right of an operator</p>
-</dd>
-<dt id="term-operator">operator</dt><dd><p>a symbol that has special meaning, telling Python to do something with the values on either side</p>
-</dd>
-</dl>
 </div>
-<div class="section" id="more-info">
-<h3>More info<a class="headerlink" href="#more-info" title="Permalink to this headline">¶</a></h3>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-header docutils">
+<p class="card-text">Statements</p>
+</div>
+<div class="card-body docutils">
+<p class="card-text">executed</p>
+<p class="card-text">an instruction to Python</p>
+<p class="card-text">smallest unit is a logical line of code</p>
+<p class="card-text">are sometimes expressions</p>
+<p class="card-text">can contain expressions</p>
+<p class="card-text">contain statements when compound</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-header docutils">
+<p class="card-text">Expressions</p>
+</div>
+<div class="card-body docutils">
+<p class="card-text">include:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://docs.python.org/3/reference/expressions.html">The Python Language Reference » Expressions</a></p></li>
+<li><p class="card-text">literal values</p></li>
+<li><p class="card-text">variables</p></li>
+<li><p class="card-text">the result of an operator between values</p></li>
+<li><p class="card-text">subscripting a list or dict using <code class="docutils literal notranslate"><span class="pre">[</span></code> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></li>
 </ul>
+<p class="card-text">may include:</p>
+<ul class="simple">
+<li><p class="card-text">function calls</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-header docutils">
+<p class="card-text">Statements</p>
+</div>
+<div class="card-body docutils">
+<p class="card-text">include:</p>
+<ul class="simple">
+<li><p class="card-text">assignments</p></li>
+<li><p class="card-text">function calls</p></li>
+<li><p class="card-text">lines that start with non-operator keywords</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-header docutils">
+<p class="card-text">Expressions</p>
+</div>
+<div class="card-body docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">random</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Last index:&quot;</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">is_even</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-header docutils">
+<p class="card-text">Statements</p>
+</div>
+<div class="card-body docutils">
+<div class="break"><br></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Last index:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">is_even</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -479,8 +487,8 @@ first evaluate the expression, then use the resulting value in its place.</p>
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="fundamentals.html" title="previous page">Fundamentals</a>
-    <a class='right-next' id="next-link" href="statements.html" title="next page">Statements</a>
+    <a class='left-prev' id="prev-link" href="statements.html" title="previous page">Statements</a>
+    <a class='right-next' id="next-link" href="misc.html" title="next page">Misc</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

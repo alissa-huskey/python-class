@@ -1,22 +1,26 @@
 # jupyter-book settings
-# Learn more at https://jupyterbook.org/customize/config.html
+# https://jupyterbook.org/customize/config.html
 
 title                       : Python Class
 author                      : Alissa Huskey <alissa.huskey@gmail.com>
 
-execute:
-  execute_notebooks         : force
-
 # NOTE: Also in _ext/myroles.py
 repository:
   url                       : https://github.com/alissa-huskey/python-class
-  branch                    : master
+# branch                    : master
+  branch                    : jupyter-book
   path_to_book              : docs
 
+exclude_patterns            : [ todo.md, misky/*, reference/string-formatting.md, _ext/* ]
+
+execute:
+  execute_notebooks         : force
+
 html:
+# baseurl                   : file:///Users/alissahuskey/Dropbox/projects/python-class/docs/_build/html/
+  baseurl                   : https://alissa-huskey.github.io/python-class/
   use_repository_button     : true
-  extra_navbar              : ""
-  baseurl                   : file:///Users/alissahuskey/Dropbox/projects/python-class/
+  use_edit_page_button      : true   # suggested edits
 
 parse:
   myst_extended_syntax      : true
@@ -26,9 +30,16 @@ launch_buttons:
   binderhub_url             : https://mybinder.org
   thebe                     : true
 
-exclude_patterns            : [ todo.md, misky/*, reference/string-formatting.md, _ext/* ]
-
 sphinx:
-  local_extensions:
-    myroles: _ext
-  language: en
+# https://www.sphinx-doc.org/en/master/templating.html#
+  local_extensions          :
+    myroles                 : _ext
+  language                  : en
+  config                    :
+    html_theme_options      :
+    # spinx-book-theme config
+    # https://sphinx-book-theme.readthedocs.io/en/latest/configure.html
+      show_navbar_depth     : 3
+      extra_navbar          : ""     # text under left navbar (removes "Theme by ..." message)
+      use_download_button   : false
+      home_page_in_toc      : true
