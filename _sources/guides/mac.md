@@ -68,13 +68,13 @@ xcode-select --install
 | `brew uninstall {package}`                     | uninstall {package}                            |
 | `brew cask install {package}`                  | install GUI {package}                          |
 | `brew cask install {package}`                  | uninstall GUI {package}                        |
-| `brew list --versions \| column`               | list all installed packages, columnized        |
+| `brew list --versions | column`               | list all installed packages, columnized        |
 | `brew list --versions {package}`               | list installed package versions                |
 | `brew bundle dump`                             | make a Brewfile of installed packages          |
 | `brew bundle --global install`                 | install all packages from ~/.Brewfile          |
 | `brew home {package}`                          | open the homepage for package                  |
 | `brew leaves`                                  | list installed top-level formula               |
-| `brew leaves \| column`                        | list installed top-level formula, columnized   |
+| `brew leaves | column`                        | list installed top-level formula, columnized   |
 | `brew help`                                    | show brief Homebrew help                       |
 | `brew help {command}`                          | show help info for {command}                   |
 | `man brew`                                     | show Homebrew manpage                          |
@@ -189,7 +189,7 @@ Then close your terminal and start a new one.
 | command                                 | description                                   |
 |-----------------------------------------|-----------------------------------------------|
 | `pyenv install --list`                    | list all available Python versions            |
-| `pyenv install --list \| grep '^\s*3.*'`  | list available Python versions >= 3.0         |
+| `pyenv install --list | grep '^\s*3.*'`  | list available Python versions >= 3.0         |
 | `pyenv install {version}`                 | install a version of Python                   |
 | `pyenv uninstall {version}`               | uninstall a version of Python                 |
 | `pyenv versions`                          | list installed Python versions                |
