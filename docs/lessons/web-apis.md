@@ -39,7 +39,7 @@ Table of Contents
 * [Part 10: Final Project](#part-10-final-project)
 * [See Also](#see-also)
 
-{lesson_py}`web_apis.py`
+{lesson}`web_apis.py`
 
 
 Part 1: Setup

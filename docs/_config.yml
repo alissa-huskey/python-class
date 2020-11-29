@@ -32,11 +32,14 @@ launch_buttons:
 
 sphinx:
 # https://www.sphinx-doc.org/en/master/templating.html#
-  extensions                : [ sphinx_thebe ]
-  local_extensions          :
-    myroles                 : _ext
+  extra_extensions          : [ sphinx_thebe, sphinx.ext.extlinks ]
   language                  : en
   config                    :
+    extlinks                :
+      github                : [ http://github.com/alissa-huskey/python-class/blob/master/%s, "" ]
+      rawfile               : [ http://raw.githubusercontent.com/alissa-huskey/python-class/master/%s, "" ]
+      lesson                : [ http://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/%s, "" ]
+    html_add_permalinks     : ""
     html_show_copyright     : false
     html_theme_options      :
     # spinx-book-theme config

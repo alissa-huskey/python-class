@@ -27,7 +27,7 @@ Table of Contents
 Part 1: A Script Template: Shebang, Docstring, Scope
 ----------------------------------------------------
 
-{lesson_py}`dragonrealm/dragon_realm_part1.py`
+{lesson}`dragonrealm/dragon_realm_part1.py`
 
 We're going to start with a bare bones script that will serve as a template for
 all future scripts.
@@ -130,7 +130,7 @@ if __name__ == '__main__':
 Part 2: Print `intro()` and Keep Playing
 ----------------------------------------
 
-{lesson_py}`dragonrealm/dragon_realm_part2.py`
+{lesson}`dragonrealm/dragon_realm_part2.py`
 
 **Edit Your Script**
 
@@ -254,7 +254,7 @@ Part 3: Player, `choose()` a Cave
 We need to prompt the player to choose a cave, then make sure their response is
 a valid cave.
 
-{lesson_py}`dragonrealm/dragon_realm_part3.py`
+{lesson}`dragonrealm/dragon_realm_part3.py`
 
 **Edit Your Script**
 
@@ -365,7 +365,7 @@ Now that the player has picked a cave, it's time to tell them what happens when
 they enter it. We'll add a new `enter()` function and use the `sleep()`
 function in the `time` module to add a delay between messages.
 
-{lesson_py}`dragonrealm/dragon_realm_part4.py`
+{lesson}`dragonrealm/dragon_realm_part4.py`
 
 **Edit Your Script**
 
@@ -414,7 +414,7 @@ And change your `main()` function to add the `enter()` line
 Part 5: Prettier output with `describe()`
 -----------------------------------------
 
-{lesson_py}`dragonrealm/dragon_realm_part5.py`
+{lesson}`dragonrealm/dragon_realm_part5.py`
 
 It is getting a little hard to tell which lines of the game are description and
 which parts are prompts. Lets make that clearer by indenting the text. To do
@@ -455,7 +455,7 @@ And call `describe()` in your `message()` function
 Part 6: Wrap text using the `textwrap` module
 ---------------------------------------------
 
-{lesson_py}`dragonrealm/dragon_realm_part6.py`
+{lesson}`dragonrealm/dragon_realm_part6.py`
 
 That looks nicer, but the intro looks funky because only the first line is
 indented. Let's fix that by using the `textwrap` module's `wrap()` function. It
@@ -504,7 +504,7 @@ is greedy and hungry, and will eat you on sight.""")
 Part 7: Pick the Friendly Dragon
 --------------------------------
 
-{lesson_py}`dragonrealm/dragon_realm_part7.py`
+{lesson}`dragonrealm/dragon_realm_part7.py`
 
 Next we need to randomly pick a dragon to be the friendly one.
 
@@ -593,7 +593,7 @@ returns.
 Part 8: The Dragon Acts
 -----------------------
 
-{lesson_py}`dragonrealm/dragon_realm_part8.py`
+{lesson}`dragonrealm/dragon_realm_part8.py`
 
 Finally, we'll tell the player what the dragon does.
 

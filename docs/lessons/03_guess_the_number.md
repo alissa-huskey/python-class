@@ -14,7 +14,7 @@ a short program. You’ll learn how to convert values to different data
 types and when you would need to do this. Since this program is a game,
 from now on we’ll call the user the player.
 
-{lesson_py}`guess.py`
+{lesson}`guess.py`
 
 Part 1. Create a New Script
 ----------------------------

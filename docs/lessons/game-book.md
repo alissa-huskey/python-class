@@ -9,7 +9,7 @@ Chapter 2: Writing Programs
 This program prints the chapter name and title, then says hello and asks for the users name.
 
 * [Book chapter](http://inventwithpython.com/invent4thed/chapter2.html)
-* {lesson_py}`hello_world.py`
+* {lesson}`hello_world.py`
 
 Chapter 3: Guess The Number
 ---------------------------
@@ -18,7 +18,7 @@ A guess the number game.
 
 * [Lesson](03_guess_the_number.md)
 * [Book chapter](http://inventwithpython.com/invent4thed/chapter3.html)
-* {lesson_py}`guess.py`
+* {lesson}`guess.py`
 
 Chapter 5: Dragon Realm
 -----------------------
@@ -27,4 +27,4 @@ The player enters a dragon realm where they must choose between two caves.
 
 * [Lesson](05_dragon_realm.md)
 * [Book chapter](http://inventwithpython.com/invent4thed/chapter5.html)
-* {lesson_py}`dragonrealm/dragon_realm.py`
+* {lesson}`dragonrealm/dragon_realm.py`

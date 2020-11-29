@@ -26,8 +26,10 @@
     - https://protips.readthedocs.io/link-roles.html
     - https://repo.or.cz/docutils.git/tree/refs/heads/master:/docutils
     - https://repo.or.cz/docutils.git/blob/refs/heads/master:/docutils/docutils/parsers/rst/roles.py
+    - https://www.sphinx-doc.org/en/1.4.6/domains.html#the-restructuredtext-domain
 """
 import docutils.nodes as nodes
+from sphinx import roles
 import re
 
 REPO = "alissa-huskey/python-class"
@@ -35,6 +37,7 @@ BRANCH = "master"
 SCHEMA = "http"
 
 def setup(app):
+    # print("DEBUG myroles.setup()>", app.config.overrides)
     app.add_role("lesson_py", lesson_py_role)
     app.add_role("repo", repo_role)
     app.add_role("repo_raw", repo_raw_role)
@@ -44,6 +47,7 @@ def setup(app):
         "parallel_read_safe": True,
         "parallel_write_safe": True,
     }
+
 
 def repo_url(text, relroot="", raw=False):
     """Return (title, url) to the file in the repo for text
@@ -128,6 +132,27 @@ def repo_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
     title, url = repo_url(text)
     node = nodes.reference(rawtext, title, refuri=url, **options)
     return [node], []
+
+def lesson_py_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
+    """lessons_py role
+       Add a link to the python script in the repo associated with a lesson.
+
+       Usage
+       -----
+
+       # MyST
+       {lesson_py}`path`
+       {lesson_py}`title <path>`
+
+       # reStructuredText
+       :lesson_py:`path`
+       :lesson_py:`title <path>`
+
+    """
+    title, url = repo_url(text, relroot="pythonclass/lessons")
+    node = nodes.reference(rawtext, title, refuri=url, **options)
+    return [node], []
+
 
 def lesson_py_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
     """lessons_py role
