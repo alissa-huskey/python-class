@@ -27,7 +27,7 @@ Table of Contents
 Part 1: A Script Template: Shebang, Docstring, Scope
 ----------------------------------------------------
 
-{lesson_py}`dragonrealm/dragon_realm_part1.py`
+{lesson}`dragonrealm/dragon_realm_part1.py`
 
 We're going to start with a bare bones script that will serve as a template for
 all future scripts.
@@ -37,9 +37,11 @@ a new file called `dragon_realm.py` and change your `.replit` file to run it.
 
 **Edit Your Script**
 
-***dragon_realm.py***
-
-```python3
+```{code-block} python
+---
+caption: dragon_realm.py -- Part 1 Overview
+linenos:
+---
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
@@ -72,7 +74,11 @@ The next line tells Python (as well as some editors) what the ***encoding*** to
 expect. That is, what kinds of characters. This line might be different if, for
 example, we were going to include Chinese characters.
 
-```python3
+```{code-block} python
+---
+caption: dragon_realm.py
+linenos:
+---
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 ```
@@ -85,7 +91,12 @@ comment in that its contents will not be executed. Docstrings however, are
 stored by the interpreter as documentation for a particular file, module,
 class, or function.
 
-```python3
+```{code-block} python
+---
+caption: dragon_realm.py
+linenos:
+lineno-start: 4
+---
 """
 Dragon Realm - A game where the player decides between two caves, which hold
   either treasure or certain doom.
@@ -114,7 +125,12 @@ write a function called `main()` and call it when your script is executed.
 Note that `main()` has a docstring too. This will describe the purpose of the
 function.
 
-```python3
+```{code-block} python
+---
+caption: dragon_realm.py
+linenos:
+lineno-start: 11
+---
 def main():
     """The Dragon Realm Game"""
     print("Welcome to Dragon Realm!")
@@ -130,16 +146,19 @@ if __name__ == '__main__':
 Part 2: Print `intro()` and Keep Playing
 ----------------------------------------
 
-{lesson_py}`dragonrealm/dragon_realm_part2.py`
+{lesson}`dragonrealm/dragon_realm_part2.py`
 
 **Edit Your Script**
 
 Add the `WIDTH` global variable, the `intro()` function, and change the
 `main()` function.
 
-***dragon_realm.py***
-
-```python3
+```{code-block} python
+---
+caption: dragon_realm.py -- Part 2 Overview
+linenos:
+lineno-start: 10
+---
 WIDTH = 58
 
 
@@ -171,7 +190,12 @@ at the top of the file and to name them with `ALL_CAPS`.
 
 Here we're defining the width of the screen (or really, just the line) to 58.
 
-```python3
+```{code-block} python
+---
+caption: dragon_realm.py
+linenos:
+lineno-start: 10
+---
 WIDTH = 58
 ```
 
@@ -189,7 +213,12 @@ The intro string ends with a `\n`. The backslash (`\`) tells the interpreter
 that the next character has special meaning. In this case, `\n` means add a
 newline.
 
-```python3
+```{code-block} python
+---
+caption: dragon_realm.py
+linenos:
+lineno-start: 13
+---
 def intro():
     """Display the introduction description to the player"""
     print("""You are in a land full of dragons. In front of you,
@@ -254,7 +283,7 @@ Part 3: Player, `choose()` a Cave
 We need to prompt the player to choose a cave, then make sure their response is
 a valid cave.
 
-{lesson_py}`dragonrealm/dragon_realm_part3.py`
+{lesson}`dragonrealm/dragon_realm_part3.py`
 
 **Edit Your Script**
 
@@ -262,9 +291,12 @@ Add a global variable `CAVES` to the top of your script where
 `WIDTH` is defined, then add the `choose()` and `valid_cave()`
 functions.
 
-***dragon_realm.py***
-
-```python3
+```{code-block} python
+---
+caption: dragon_realm.py -- Part 3 Overview
+linenos:
+lineno-start: 11
+---
 CAVES = ["right", "left"]
 
 
@@ -293,7 +325,12 @@ def choose():
 Then edit your `main()` function to add `cave = choose()`.
 
 
-```python3
+```{code-block} python
+---
+caption: dragon_realm.py -- Part 3 Overview
+linenos:
+lineno-start: 48
+---
     while again.lower() in ["y", "yes"]:
         print("-" * WIDTH, "\n")
         intro()
@@ -365,7 +402,7 @@ Now that the player has picked a cave, it's time to tell them what happens when
 they enter it. We'll add a new `enter()` function and use the `sleep()`
 function in the `time` module to add a delay between messages.
 
-{lesson_py}`dragonrealm/dragon_realm_part4.py`
+{lesson}`dragonrealm/dragon_realm_part4.py`
 
 **Edit Your Script**
 
@@ -414,7 +451,7 @@ And change your `main()` function to add the `enter()` line
 Part 5: Prettier output with `describe()`
 -----------------------------------------
 
-{lesson_py}`dragonrealm/dragon_realm_part5.py`
+{lesson}`dragonrealm/dragon_realm_part5.py`
 
 It is getting a little hard to tell which lines of the game are description and
 which parts are prompts. Lets make that clearer by indenting the text. To do
@@ -455,7 +492,7 @@ And call `describe()` in your `message()` function
 Part 6: Wrap text using the `textwrap` module
 ---------------------------------------------
 
-{lesson_py}`dragonrealm/dragon_realm_part6.py`
+{lesson}`dragonrealm/dragon_realm_part6.py`
 
 That looks nicer, but the intro looks funky because only the first line is
 indented. Let's fix that by using the `textwrap` module's `wrap()` function. It
@@ -504,7 +541,7 @@ is greedy and hungry, and will eat you on sight.""")
 Part 7: Pick the Friendly Dragon
 --------------------------------
 
-{lesson_py}`dragonrealm/dragon_realm_part7.py`
+{lesson}`dragonrealm/dragon_realm_part7.py`
 
 Next we need to randomly pick a dragon to be the friendly one.
 
@@ -593,17 +630,18 @@ returns.
 Part 8: The Dragon Acts
 -----------------------
 
-{lesson_py}`dragonrealm/dragon_realm_part8.py`
+{lesson}`dragonrealm/dragon_realm_part8.py`
 
 Finally, we'll tell the player what the dragon does.
 
 **Edit Your Script**
 
-***dragon_realm.py***
-
 Add a `dragon()` function
 
-```python3
+```{code-block} python
+---
+caption: dragon_realm.py
+---
 def dragon(is_friendly):
     """Print the dragon action for a friendly or unfriendly dragon"""
     actions = {

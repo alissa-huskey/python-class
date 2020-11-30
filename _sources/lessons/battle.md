@@ -21,7 +21,7 @@ one of them wins.
 Part 1. Create a New Script
 ----------------------------
 
-{lesson_py}`battle/battle_part01.py`
+{lesson}`battle/battle_part01.py`
 
 First, we're going to create a new script based off of the template we worked
 on in the Dragon Realm lesson.
@@ -90,7 +90,7 @@ Now run your script and let's see it go!
 Part 2. Make a function outline
 -------------------------------
 
-{lesson_py}`battle/battle_part02.py`
+{lesson}`battle/battle_part02.py`
 
 We're going to approach this a little differently--we're going to take a guess
 at what we think the game will look like and write minimal functions for those
@@ -258,7 +258,7 @@ do.
 Part 3. `pets` module
 ---------------------
 
-{lesson_py}`battle/battle_part03.py`
+{lesson}`battle/battle_part03.py`
 
 One of the handy things about code is that it is reusable. So we're going to
 make a pets module that we could reuse in future projects.
@@ -350,7 +350,7 @@ from pets import PICS, PETS
 Part 4. Fill in the `lotto()` function
 --------------------------------------
 
-{lesson_py}`battle/battle_part04.py`
+{lesson}`battle/battle_part04.py`
 
 Now let's start making the our functions actually do things, starting with the
 `lotto()` function.
@@ -393,7 +393,7 @@ Run your script to make sure it works.
 Part 5. Fill in the `intro()` function
 --------------------------------------
 
-{lesson_py}`battle/battle_part05.py`
+{lesson}`battle/battle_part05.py`
 
 Here's a preview of what our new `intro()` function will look like.
 
@@ -558,7 +558,7 @@ Run your script and see what you've got!
 Part 6. Outline the `fight()` function
 -------------
 
-{lesson_py}`battle/battle_part06.py`
+{lesson}`battle/battle_part06.py`
 
 The `fight()` function has a lot to do, so we'll start by writing a bit of an
 outline for it.
@@ -696,7 +696,7 @@ def fight(fighters):
 Part 7. Print the fighter health
 --------------------------------
 
-{lesson_py}`battle/battle_part07.py`
+{lesson}`battle/battle_part07.py`
 
 In this section we will print out the fighters health for each round. Here's
 what the game output will look like when we're done:
@@ -953,7 +953,7 @@ Now run the script and see how it looks.
 Part 8. Choose who attacks
 ---------------------------
 
-{lesson_py}`battle/battle_part08.py`
+{lesson}`battle/battle_part08.py`
 
 Continuing with the `fight()` function, we need switch back and forth between
 the two fighters for who attacks each round.
@@ -1117,7 +1117,7 @@ Now run your script!
 Part 9. Attack
 ---------------
 
-{lesson_py}`battle/battle_part09.py`
+{lesson}`battle/battle_part09.py`
 
 In this section we'll be adding the `attack()` function and making changes to the `fight()` function.
 
@@ -1268,7 +1268,7 @@ time.sleep(DELAY)
 Part 10. Attack, For Realsies
 -----------------------------
 
-{lesson_py}`battle/battle_part10.py`
+{lesson}`battle/battle_part10.py`
 
 In this section we'll make the attack actually do something. Here's what the
 game output will look like when we're done.
@@ -1491,7 +1491,7 @@ Now run your script!
 Part 11. Find The Winner
 ------------------------
 
-{lesson_py}`battle/battle_part11.py`
+{lesson}`battle/battle_part11.py`
 
 In this section we're going to finish the `fight()` function by picking the
 winner.
@@ -1593,7 +1593,7 @@ if rival['health'] <= 0:
 Part 12. Endgame
 ----------------
 
-{lesson_py}`battle/battle_part12.py`
+{lesson}`battle/battle_part12.py`
 
 Now that we have a winner, we can announce them.
 
