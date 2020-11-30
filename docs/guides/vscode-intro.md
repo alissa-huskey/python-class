@@ -27,7 +27,7 @@ Reference
 User Interface
 --------------
 
-#### Layout
+### Layout
 
 ![layout](https://code.visualstudio.com/assets/docs/getstarted/userinterface/hero.png)
 
@@ -37,7 +37,7 @@ User Interface
 * **(D) Panel**: Panels for interacting with your code live here, notibly the Terminal.
 * **(E) Status Bar**: Information and links related to your current open files and state.
 
-#### Sidebar [ `Cmd`/`Ctrl` + `B` ]
+### Sidebar [ `Cmd`/`Ctrl` + `B` ]
 * File Explorer [ Ctrl/Cmd+Shift+E ]
   - Workspace: File Browser
   - Outline: TOC for open file (headers, functions, etc)
@@ -48,13 +48,13 @@ User Interface
 
 > _Note_ I keep hidden: Run, Search
 
-#### Panel [ `Cmd`/`Ctrl` + `J` ]
+### Panel [ `Cmd`/`Ctrl` + `J` ]
 * Terminal [ `Ctrl` + \` ]: Access the operating system command line.
 * Problems: Display errors
 * Output: View the output of the code you ran
 * Debug: Run your code
 
-#### Editor
+### Editor
 * Tabs
   - Preview Mode: (shown in italics) A file was opened reusing an existing tab (single-click from File Browser.)
   - Unsaved Changes (shown with a white dot)
@@ -111,7 +111,7 @@ Recommended Settings
 
 [ `Ctrl` + `Shift` + `P` ] > `Preferences: Open Settings (JSON)`
 
-```jsonc
+```javascript
 {
     "files.trimTrailingWhitespace": false, // interfers with EditorConfig extension
     // Suggestions ---------------------------------------------------------------------

@@ -27,19 +27,21 @@ Table of Contents
 Part 1: A Script Template: Shebang, Docstring, Scope
 ----------------------------------------------------
 
-[dragon_realm_part1.py](../computer-games/chapter_5/dragon_realm_part1.py)
+{lesson}`dragonrealm/dragon_realm_part1.py`
 
 We're going to start with a bare bones script that will serve as a template for
 all future scripts.
 
-Follow the instructions in [Repl.it Tips](replit-tips.md) to create
+Follow the instructions in [Repl.it Tips](../guides/replit.md) to create
 a new file called `dragon_realm.py` and change your `.replit` file to run it.
 
-#### Edit Your Script
+**Edit Your Script**
 
-***dragon_realm.py***
-
-```python3
+```{code-block} python
+---
+caption: dragon_realm.py -- Part 1 Overview
+linenos:
+---
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
@@ -61,7 +63,7 @@ if __name__ == '__main__':
     main()
 ```
 
-#### Part 1.1: Shebang, Encoding
+### Part 1.1: Shebang, Encoding
 
 The very first line of any executable file (script) is the ***shebang*** line.
 The line starts with a `#!` then is immediately followed (without a space) by
@@ -72,12 +74,16 @@ The next line tells Python (as well as some editors) what the ***encoding*** to
 expect. That is, what kinds of characters. This line might be different if, for
 example, we were going to include Chinese characters.
 
-```python3
+```{code-block} python
+---
+caption: dragon_realm.py
+linenos:
+---
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 ```
 
-#### Part 1.2: Docstrings
+### Part 1.2: Docstrings
 
 The first ***expression*** in a Python script should always be a
 ***Docstring***. A Docstring, surrounded by `"""` or `'''`, is similar to a
@@ -85,7 +91,12 @@ comment in that its contents will not be executed. Docstrings however, are
 stored by the interpreter as documentation for a particular file, module,
 class, or function.
 
-```python3
+```{code-block} python
+---
+caption: dragon_realm.py
+linenos:
+lineno-start: 4
+---
 """
 Dragon Realm - A game where the player decides between two caves, which hold
   either treasure or certain doom.
@@ -93,7 +104,7 @@ Dragon Realm - A game where the player decides between two caves, which hold
 """
 ```
 
-#### Part 1.3: Scope, `__main__` and `main()`
+### Part 1.3: Scope, `__main__` and `main()`
 
 Up until now we have been writing all our code in the body of the file. (Aside
 from a few functions in the PyPet project.) This is what is referred to as the
@@ -114,7 +125,12 @@ write a function called `main()` and call it when your script is executed.
 Note that `main()` has a docstring too. This will describe the purpose of the
 function.
 
-```python3
+```{code-block} python
+---
+caption: dragon_realm.py
+linenos:
+lineno-start: 11
+---
 def main():
     """The Dragon Realm Game"""
     print("Welcome to Dragon Realm!")
@@ -130,16 +146,19 @@ if __name__ == '__main__':
 Part 2: Print `intro()` and Keep Playing
 ----------------------------------------
 
-[dragon_realm_part2.py](../computer-games/chapter_5/dragon_realm_part2.py)
+{lesson}`dragonrealm/dragon_realm_part2.py`
 
-#### Edit Your Script
+**Edit Your Script**
 
 Add the `WIDTH` global variable, the `intro()` function, and change the
 `main()` function.
 
-***dragon_realm.py***
-
-```python3
+```{code-block} python
+---
+caption: dragon_realm.py -- Part 2 Overview
+linenos:
+lineno-start: 10
+---
 WIDTH = 58
 
 
@@ -162,7 +181,7 @@ def main():
         again = input("Play again? ")
 ```
 
-#### Part 2.1: Global Variables
+### Part 2.1: Global Variables
 
 In programming a variable that cannot be changed is called a ***constant***.
 Python does not provide any way to make sure that a variable is never changed,
@@ -171,11 +190,16 @@ at the top of the file and to name them with `ALL_CAPS`.
 
 Here we're defining the width of the screen (or really, just the line) to 58.
 
-```python3
+```{code-block} python
+---
+caption: dragon_realm.py
+linenos:
+lineno-start: 10
+---
 WIDTH = 58
 ```
 
-#### Part 2.2: Multiline Strings
+### Part 2.2: Multiline Strings
 
 The `intro()` function will print out a paragraph to the player that describes
 the surroundings. It starts with a docstring to say what the function does.
@@ -189,7 +213,12 @@ The intro string ends with a `\n`. The backslash (`\`) tells the interpreter
 that the next character has special meaning. In this case, `\n` means add a
 newline.
 
-```python3
+```{code-block} python
+---
+caption: dragon_realm.py
+linenos:
+lineno-start: 13
+---
 def intro():
     """Display the introduction description to the player"""
     print("""You are in a land full of dragons. In front of you,
@@ -198,7 +227,7 @@ and will share his treasure with you. The other dragon
 is greedy and hungry, and will eat you on sight.\n""")
 ```
 
-#### Part 2.3: Objects and `str.lower()`
+### Part 2.3: Objects and `str.lower()`
 
 In Python, all values are ***objects***. An object is data that can have values
 and functions attached to it. An objects values are called ***attributes*** and
@@ -214,7 +243,7 @@ more information about the `lower()` function.
 again.lower()
 ```
 
-#### Part 2.4: Boolean and Membership Operators
+### Part 2.4: Boolean and Membership Operators
 
 In programming, sometimes we don't just want to see if something is the same as
 something else, but the same as a couple of things. One way that we could do
@@ -235,7 +264,7 @@ So the following is has exactly the same result as above.
 again.lower() in ["y", "yes"]
 ```
 
-#### Part 2.5: Repeating with `*`
+### Part 2.5: Repeating with `*`
 
 An easy way to repeat a string is by using the `*` operator. At your Python
 shell, try typing `""hello " * 3"`.
@@ -254,17 +283,20 @@ Part 3: Player, `choose()` a Cave
 We need to prompt the player to choose a cave, then make sure their response is
 a valid cave.
 
-[dragon_realm_part3.py](../computer-games/chapter_5/dragon_realm_part3.py)
+{lesson}`dragonrealm/dragon_realm_part3.py`
 
-#### Edit Your Script
+**Edit Your Script**
 
 Add a global variable `CAVES` to the top of your script where
 `WIDTH` is defined, then add the `choose()` and `valid_cave()`
 functions.
 
-***dragon_realm.py***
-
-```python3
+```{code-block} python
+---
+caption: dragon_realm.py -- Part 3 Overview
+linenos:
+lineno-start: 11
+---
 CAVES = ["right", "left"]
 
 
@@ -293,7 +325,12 @@ def choose():
 Then edit your `main()` function to add `cave = choose()`.
 
 
-```python3
+```{code-block} python
+---
+caption: dragon_realm.py -- Part 3 Overview
+linenos:
+lineno-start: 48
+---
     while again.lower() in ["y", "yes"]:
         print("-" * WIDTH, "\n")
         intro()
@@ -301,7 +338,7 @@ Then edit your `main()` function to add `cave = choose()`.
         again = input("Play again? ")
 ```
 
-#### Part 3.1: Conditionals Expressions Resolve to Boolean Values
+### Part 3.1: Conditionals Expressions Resolve to Boolean Values
 
 We have used conditional expressions in if-statements
 
@@ -340,7 +377,7 @@ function.
 return response in CAVES
 ```
 
-#### Part 3.2: Method Chaining
+### Part 3.2: Method Chaining
 
 Since all values are objects in Python, all values may have methods. ***Method
 chaining*** is a way to take advantage of that to write less code.
@@ -365,9 +402,9 @@ Now that the player has picked a cave, it's time to tell them what happens when
 they enter it. We'll add a new `enter()` function and use the `sleep()`
 function in the `time` module to add a delay between messages.
 
-[dragon_realm_part4.py](../computer-games/chapter_5/dragon_realm_part4.py)
+{lesson}`dragonrealm/dragon_realm_part4.py`
 
-#### Edit Your Script
+**Edit Your Script**
 
 ***dragon_realm.py***
 
@@ -414,14 +451,14 @@ And change your `main()` function to add the `enter()` line
 Part 5: Prettier output with `describe()`
 -----------------------------------------
 
-[dragon_realm_part5.py](../computer-games/chapter_5/dragon_realm_part5.py)
+{lesson}`dragonrealm/dragon_realm_part5.py`
 
 It is getting a little hard to tell which lines of the game are description and
 which parts are prompts. Lets make that clearer by indenting the text. To do
 that we're going to add a function `describe()` which we'll use to print
 anything that is not related to getting input.
 
-#### Edit Your Script
+**Edit Your Script**
 
 ***dragon_realm.py***
 
@@ -455,14 +492,14 @@ And call `describe()` in your `message()` function
 Part 6: Wrap text using the `textwrap` module
 ---------------------------------------------
 
-[dragon_realm_part6.py](../computer-games/chapter_5/dragon_realm_part6.py)
+{lesson}`dragonrealm/dragon_realm_part6.py`
 
 That looks nicer, but the intro looks funky because only the first line is
 indented. Let's fix that by using the `textwrap` module's `wrap()` function. It
 takes two arguments, the string to wrap, and the width to wrap it to. It
 returns a list where each item in the list is one line of the string.
 
-#### Edit Your Script
+**Edit Your Script**
 
 ***dragon_realm.py***
 
@@ -504,11 +541,11 @@ is greedy and hungry, and will eat you on sight.""")
 Part 7: Pick the Friendly Dragon
 --------------------------------
 
-[dragon_realm_part7.py](../computer-games/chapter_5/dragon_realm_part7.py)
+{lesson}`dragonrealm/dragon_realm_part7.py`
 
 Next we need to randomly pick a dragon to be the friendly one.
 
-#### Edit Your Script
+**Edit Your Script**
 
 ***dragon_realm.py***
 
@@ -534,7 +571,7 @@ Add a line to the end of your `enter()` function to save the resulting value
 nature = is_friendly(cave)
 ```
 
-#### Part 7.1 Accessing List Elements
+### Part 7.1 Accessing List Elements
 
 You may recall that dictionaries have keys. Dictionary elements can be accessed
 by adding square brackets to the end of the variable name containing the key.
@@ -575,7 +612,7 @@ z
 
 The CAVES list defined earlier contains the elements `[ "right", "left"
 ]`, which means that the value of `CAVES[0]` is `"right"` and the value of
-`CAVES[1] is `"left"`.
+`CAVES[1]` is `"left"`.
 
 Here we generate a random number between `0` and `1` to use as the index in the
 `CAVES` list, so `CAVES[friendly]` will be either `"right"` or `"left"`.
@@ -593,17 +630,18 @@ returns.
 Part 8: The Dragon Acts
 -----------------------
 
-[dragon_realm_part8.py](../computer-games/chapter_5/dragon_realm_part8.py)
+{lesson}`dragonrealm/dragon_realm_part8.py`
 
 Finally, we'll tell the player what the dragon does.
 
-#### Edit Your Script
-
-***dragon_realm.py***
+**Edit Your Script**
 
 Add a `dragon()` function
 
-```python3
+```{code-block} python
+---
+caption: dragon_realm.py
+---
 def dragon(is_friendly):
     """Print the dragon action for a friendly or unfriendly dragon"""
     actions = {
@@ -628,7 +666,7 @@ Finally, remove or comment out the `print()` line in your `is_friendly()` functi
     #  print("The friendly dragon is:", CAVES[friendly])
 ```
 
-#### Part 8.1: Dictonary Keys
+### Part 8.1: Dictonary Keys
 
 In the past we've used strings for dictionary keys, but other types can be other
 keys too.
