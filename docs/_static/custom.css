@@ -6,6 +6,38 @@
   margin-bottom: 15px;
 }
 
+/********************
+/* glossary terms
+/********************/
+
+/* term reference -- all
+ * glossary terms references
+ * */
+
+a.reference span.std-term,
+a.reference:hover span.std-term {
+  color: #212529;
+}
+
+/* term reference -- resolved
+ * found glossary terms references
+ * */
+
+a.reference span.std-term,
+a.reference:hover span.std-term {
+  text-decoration: underline double black;
+}
+
+/* term reference -- unresolved
+ * missing glossary terms references
+ * */
+
+a.reference.term-missing,
+a.reference.term-missing:hover,
+a.reference.term-missing span.std-term {
+  text-decoration: underline red;
+}
+
 /****************
 /* code blocks
 /****************/
@@ -22,16 +54,21 @@ div.literal-block-wrapper {
   padding-left: 0;
 }
 
+div.literal-block-wrapper div.full-width {
+  width: 100%;
+}
+
 
 /* code-block container
  * - remove the space between the code block and caption
  * */
 div.literal-block-wrapper div.highlight-python div.highlight,
+div.literal-block-wrapper div div.highlight,
 div.literal-block-wrapper div.highlight-python table.highlighttable {
   margin-bottom: 0;
 }
 
-/* code block line numbers 
+/* code block line numbers
  * - align line numbers with code-block
  * */
 td.linenos {

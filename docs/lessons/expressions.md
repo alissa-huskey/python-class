@@ -1,9 +1,9 @@
 Expressions
 ===========
 
-An *expression* is a unit of code that can be solved to a single value.
+An {term}`expression` is a unit of code that can be solved to a single value.
 
-This process is called *evaluating* the expression.
+This process is called {term}`evaluating` the expression.
 
 Take the following simple expression that resolves to `30`.
 
@@ -13,20 +13,20 @@ Take the following simple expression that resolves to `30`.
 
 It is comprised of:
 
-* the *left-hand value* (*LHV*)
-* an *operator*
-* the *right-hand value* (*RHV*)
+* the {term}`left-hand value` ({term}`LHV`)
+* an {term}`operator`
+* the {term}`right-hand value` ({term}`RHV`)
 
 ```python
 # LHV    Operator   RHV
 10       *          3
 ```
 
-An *operator* is a symbol with special meaning that tells Python to do
+An {term}`operator` is a symbol with special meaning that tells Python to do
 something. Some examples of operators include `+`, `=`, and `==`.
 
 When an expression includes an operator involved in Python, there is always a
-*left-hand value* and a *right-hand value*.
+{term}`left-hand value` and a {term}`right-hand value`.
 
 Let's take a more complicated example.
 

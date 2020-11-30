@@ -37,9 +37,11 @@ a new file called `dragon_realm.py` and change your `.replit` file to run it.
 
 **Edit Your Script**
 
-***dragon_realm.py***
-
-```python3
+```{code-block} python
+---
+caption: dragon_realm.py -- Part 1 Overview
+linenos:
+---
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
@@ -72,7 +74,11 @@ The next line tells Python (as well as some editors) what the ***encoding*** to
 expect. That is, what kinds of characters. This line might be different if, for
 example, we were going to include Chinese characters.
 
-```python3
+```{code-block} python
+---
+caption: dragon_realm.py
+linenos:
+---
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 ```
@@ -85,7 +91,12 @@ comment in that its contents will not be executed. Docstrings however, are
 stored by the interpreter as documentation for a particular file, module,
 class, or function.
 
-```python3
+```{code-block} python
+---
+caption: dragon_realm.py
+linenos:
+lineno-start: 4
+---
 """
 Dragon Realm - A game where the player decides between two caves, which hold
   either treasure or certain doom.
@@ -114,7 +125,12 @@ write a function called `main()` and call it when your script is executed.
 Note that `main()` has a docstring too. This will describe the purpose of the
 function.
 
-```python3
+```{code-block} python
+---
+caption: dragon_realm.py
+linenos:
+lineno-start: 11
+---
 def main():
     """The Dragon Realm Game"""
     print("Welcome to Dragon Realm!")
@@ -137,9 +153,12 @@ Part 2: Print `intro()` and Keep Playing
 Add the `WIDTH` global variable, the `intro()` function, and change the
 `main()` function.
 
-***dragon_realm.py***
-
-```python3
+```{code-block} python
+---
+caption: dragon_realm.py -- Part 2 Overview
+linenos:
+lineno-start: 10
+---
 WIDTH = 58
 
 
@@ -171,7 +190,12 @@ at the top of the file and to name them with `ALL_CAPS`.
 
 Here we're defining the width of the screen (or really, just the line) to 58.
 
-```python3
+```{code-block} python
+---
+caption: dragon_realm.py
+linenos:
+lineno-start: 10
+---
 WIDTH = 58
 ```
 
@@ -189,7 +213,12 @@ The intro string ends with a `\n`. The backslash (`\`) tells the interpreter
 that the next character has special meaning. In this case, `\n` means add a
 newline.
 
-```python3
+```{code-block} python
+---
+caption: dragon_realm.py
+linenos:
+lineno-start: 13
+---
 def intro():
     """Display the introduction description to the player"""
     print("""You are in a land full of dragons. In front of you,
@@ -262,9 +291,12 @@ Add a global variable `CAVES` to the top of your script where
 `WIDTH` is defined, then add the `choose()` and `valid_cave()`
 functions.
 
-***dragon_realm.py***
-
-```python3
+```{code-block} python
+---
+caption: dragon_realm.py -- Part 3 Overview
+linenos:
+lineno-start: 11
+---
 CAVES = ["right", "left"]
 
 
@@ -293,7 +325,12 @@ def choose():
 Then edit your `main()` function to add `cave = choose()`.
 
 
-```python3
+```{code-block} python
+---
+caption: dragon_realm.py -- Part 3 Overview
+linenos:
+lineno-start: 48
+---
     while again.lower() in ["y", "yes"]:
         print("-" * WIDTH, "\n")
         intro()
@@ -599,11 +636,12 @@ Finally, we'll tell the player what the dragon does.
 
 **Edit Your Script**
 
-***dragon_realm.py***
-
 Add a `dragon()` function
 
-```python3
+```{code-block} python
+---
+caption: dragon_realm.py
+---
 def dragon(is_friendly):
     """Print the dragon action for a friendly or unfriendly dragon"""
     actions = {
