@@ -1,0 +1,802 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chapter 3: Guess the Number &#8212; Python Class</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://alissa-huskey.github.io/python-class/lessons/03_guess_the_number.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 5: Dragon Realm" href="05_dragon_realm.html" />
+    <link rel="prev" title="Invent Games Book" href="game-book.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://alissa-huskey.github.io/python-class/lessons/03_guess_the_number.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Chapter 3: Guess the Number" />
+<meta property="og:description" content="Chapter 3: Guess the Number  Based on: http://inventwithpython.com/invent4thed/chapter3.html  In this chapter, you’re going to make a Guess the Number game. The" />
+
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Python Class</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Python Class
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Lessons
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="fundamentals.html">
+   Fundamentals
+  </a>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="expressions.html">
+     Expressions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="statements.html">
+     Statements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="expressions_vs_statements.html">
+     Expressions vs. Statements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="flow.html">
+     Program Flow
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-up">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="misc.html">
+   Misc
+  </a>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="web-apis.html">
+     Web APIs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="battle.html">
+     PyPet Battle
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-up">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="game-book.html">
+   Invent Games Book
+  </a>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Chapter 3: Guess the Number
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_dragon_realm.html">
+     Chapter 5: Dragon Realm
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-up">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Tool Guides
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../guides/git-concepts.html">
+   Git Concepts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../guides/vscode-intro.html">
+   VS Code Intro
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../guides/console.html">
+   A Brief Tour of the Console
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../guides/python_shell.html">
+   Python Shell
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../guides/replit.html">
+   Repl.it Tips
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../guides/git-on-replit.html">
+   Git on Repl.it
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../guides/poetry.html">
+   Poetry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../guides/mac.html">
+   Mac Dev Env for Python
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/dicts.html">
+   Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/lists.html">
+   Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/template.py">
+   Script Template
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Exercises
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/list-exercises.html">
+   List Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/list-string-exercises.html">
+   List String Exercises
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/alissa-huskey/python-class"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/alissa-huskey/python-class/edit/master/docs/lessons/03_guess_the_number.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-1-create-a-new-script">
+   Part 1. Create a New Script
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-2-use-the-random-module">
+   Part 2. Use the
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     random
+    </span>
+   </code>
+   Module
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#try-it-in-the-python-shell">
+     Try it in the Python Shell
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-3-welcome-the-player">
+   Part 3: Welcome the Player
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-4-let-the-player-guess">
+   Part 4: Let the Player Guess
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-5-check-the-guess">
+   Part 5: Check the Guess
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-6-check-if-the-player-won">
+   Part 6: Check if the Player Won
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-7-make-it-your-own">
+   Part 7: Make it your own
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-we-ve-learned">
+   What we’ve learned
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="chapter-3-guess-the-number">
+<h1>Chapter 3: Guess the Number</h1>
+<blockquote>
+<div><p>Based on: http://inventwithpython.com/invent4thed/chapter3.html</p>
+</div></blockquote>
+<p>In this chapter, you’re going to make a Guess the Number game. The
+computer will think of a secret number from 1 to 20 and ask the user to
+guess it. After each guess, the computer will tell the user whether the
+number is too high or too low. The user wins if they can guess the number
+within six tries.</p>
+<p>This is a good game to code because it covers many programming concepts in
+a short program. You’ll learn how to convert values to different data
+types and when you would need to do this. Since this program is a game,
+from now on we’ll call the user the player.</p>
+<p><a class="reference external" href="http://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/guess.py">guess.py</a></p>
+<div class="section" id="part-1-create-a-new-script">
+<h2>Part 1. Create a New Script</h2>
+<p>Follow the instructions in <a class="reference internal" href="../guides/replit.html"><span class="doc std std-doc">Repl.it Tips</span></a> to create
+a new file called <code class="docutils literal notranslate"><span class="pre">guess.py</span></code> and change your <code class="docutils literal notranslate"><span class="pre">.replit</span></code> file to run it.</p>
+<p>Add a comment to the first line of the script to describe it:</p>
+<p><strong>Edit Your Script</strong></p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number">Listing 17 </span><span class="caption-text">guess.py</span></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;This is a Guess the Number game.&quot;&quot;&quot;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="part-2-use-the-random-module">
+<h2>Part 2. Use the <code class="docutils literal notranslate"><span class="pre">random</span></code> Module</h2>
+<p>Python has a limited set of functions built into the language like the
+<code class="docutils literal notranslate"><span class="pre">print()</span></code> function that you are already familiar with. More functions can
+be accessed through <a class="term-missing reference internal" href="#" title=""><span class="xref std std-term">modules</span></a>.</p>
+<p>A <a class="reference internal" href="../reference/glossary.html#term-Module"><span class="xref std std-term">module</span></a> is a kind of reusable code that can be loaded into your scripts
+using the <code class="docutils literal notranslate"><span class="pre">import</span></code> keyword.</p>
+<p>We are going to use the <code class="docutils literal notranslate"><span class="pre">random</span></code> module in this script. It has a function
+<code class="docutils literal notranslate"><span class="pre">randint()</span></code> which we will use to get a random number.</p>
+<p>To call a function that is part of a module, put the module
+<a class="reference internal" href="../reference/glossary.html#term-Namespace"><span class="xref std std-term">namespace</span></a> in front of the function followed by a dot, then the
+function name.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">randint()</span></code> function takes two arguments. The first is the minimum
+number, the second is the maximum number.</p>
+<div class="section" id="try-it-in-the-python-shell">
+<h3>Try it in the Python Shell</h3>
+<p>In the right pane of your repl.it, if you see only one <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> open a python
+shell by typing <code class="docutils literal notranslate"><span class="pre">python3</span></code> then hitting enter. The prompt will change to
+<code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number">Listing 18 </span><span class="caption-text">at the command line</span></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; python3                                      
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-number">Listing 19 </span><span class="caption-text">the Python interactive shell</span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Python</span> <span class="mf">3.8</span><span class="o">.</span><span class="mi">3</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">May</span> <span class="mi">14</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">20</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mi">43</span><span class="p">)</span>
+<span class="p">[</span><span class="n">GCC</span> <span class="mf">7.5</span><span class="o">.</span><span class="mi">0</span><span class="p">]</span> <span class="n">on</span> <span class="n">linux</span>
+<span class="n">Type</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright&quot;</span><span class="p">,</span> <span class="s2">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s2">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">random</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Hint: In the Python shell, you can hit the up arrow to fill in the last line you typed again.</p>
+<p><strong>Edit Your Script</strong></p>
+<p>Now that you understand how importing works, import the module, then save
+a random number to the <code class="docutils literal notranslate"><span class="pre">number</span></code> variable by calling <code class="docutils literal notranslate"><span class="pre">random.randint()</span></code>.</p>
+<p>Let’s also set the maximum number of guesses.</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-number">Listing 20 </span><span class="caption-text">guess.py</span></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;This is a Guess the Number game.&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">number</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">max_guesses</span> <span class="o">=</span> <span class="mi">6</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+<div class="section" id="part-3-welcome-the-player">
+<h2>Part 3: Welcome the Player</h2>
+<p>We’ve used the <code class="docutils literal notranslate"><span class="pre">input()</span></code> function before to get feedback from the user. It
+can take an optional <a class="reference internal" href="../reference/glossary.html#term-Argument"><span class="xref std std-term">argument</span></a>, a string that will be presented to
+the user as a prompt just to the left of their cursor.</p>
+<p>Let’s use this new way of calling <code class="docutils literal notranslate"><span class="pre">input()</span></code> to get the players name and
+then use <code class="docutils literal notranslate"><span class="pre">print()</span></code> to greet them.</p>
+<p><strong>Edit Your Script</strong></p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-number">Listing 21 </span><span class="caption-text">guess.py</span></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;This is a Guess the Number game.&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">number</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">max_guesses</span> <span class="o">=</span> <span class="mi">6</span>
+
+<span class="n">player</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Hello! What is your name? &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello &quot;</span> <span class="o">+</span> <span class="n">player</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I am thinking of a number between 1 and 20.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>Note the space after the <code class="docutils literal notranslate"><span class="pre">?</span></code> in the <code class="docutils literal notranslate"><span class="pre">input()</span></code> line. This way there will be
+a space between the prompt and the cursor.</p>
+</div>
+<div class="section" id="part-4-let-the-player-guess">
+<h2>Part 4: Let the Player Guess</h2>
+<p>We’ve used a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop before to loop over items in a list. Here we will
+use the <code class="docutils literal notranslate"><span class="pre">range()</span></code> function, which allows us to easily repeat the loop
+a specific number of times. We will give it two arguments: the starting
+number and the <code class="docutils literal notranslate"><span class="pre">max_guesses</span></code> that we defined earlier.</p>
+<p>We’ve also the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function before but in the past we’ve always
+passed it only one argument. It can take as many arguments as you want and
+it will convert them each to strings and then print them with spaces
+in-between. Let’s use this handy way to print the guess number each round.</p>
+<p><strong>Edit Your Script</strong></p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-number">Listing 22 </span><span class="caption-text">guess.py</span></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;This is a Guess the Number game.&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">number</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">max_guesses</span> <span class="o">=</span> <span class="mi">6</span>
+
+<span class="n">player</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Hello! What is your name? &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello &quot;</span> <span class="o">+</span> <span class="n">player</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I am thinking of a number between 1 and 20.&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">guess_count</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_guesses</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Guess&quot;</span><span class="p">,</span> <span class="n">guess_count</span><span class="p">,</span> <span class="s2">&quot;of&quot;</span><span class="p">,</span> <span class="n">max_guesses</span><span class="p">)</span>
+    <span class="n">guess</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Your guess: &quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="part-5-check-the-guess">
+<h2>Part 5: Check the Guess</h2>
+<p>The value in the <code class="docutils literal notranslate"><span class="pre">guess</span></code> variable is a string, because <code class="docutils literal notranslate"><span class="pre">input()</span></code> always
+returns a string. But we need a number variable to check the guess. To
+convert a string to an integer, we will use the <code class="docutils literal notranslate"><span class="pre">int()</span></code> function.</p>
+<p>Once it is converted, we can use an <a class="term-missing reference internal" href="#" title=""><span class="xref std std-term">if statement</span></a> to check it. We’ll
+use the <code class="docutils literal notranslate"><span class="pre">break</span></code> keyword to exit the loop early if the guess is correct.</p>
+<p><strong>Edit Your Script</strong></p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-number">Listing 23 </span><span class="caption-text">guess.py</span></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;This is a Guess the Number game.&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">number</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">max_guesses</span> <span class="o">=</span> <span class="mi">6</span>
+
+<span class="n">player</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Hello! What is your name? &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello &quot;</span> <span class="o">+</span> <span class="n">player</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I am thinking of a number between 1 and 20.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">guess_count</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_guesses</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Guess&quot;</span><span class="p">,</span> <span class="n">guess_count</span><span class="p">,</span> <span class="s2">&quot;of&quot;</span><span class="p">,</span> <span class="n">max_guesses</span><span class="p">)</span>
+
+    <span class="n">guess</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Your guess: &quot;</span><span class="p">)</span>
+    <span class="n">guess</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">guess</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">guess</span> <span class="o">&lt;</span> <span class="n">number</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Your guess is too low.&#39;</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">guess</span> <span class="o">&gt;</span> <span class="n">number</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Your guess is too high.&#39;</span><span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">break</span>
+
+    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="part-6-check-if-the-player-won">
+<h2>Part 6: Check if the Player Won</h2>
+<p>When the code runs to the point where it exits the <a class="term-missing reference internal" href="#" title=""><span class="xref std std-term">for loop</span></a> both the
+<code class="docutils literal notranslate"><span class="pre">guess</span></code> and the <code class="docutils literal notranslate"><span class="pre">guess_count</span></code> variables will still be the last value each
+was set to when the loop ran for the final time.</p>
+<p>We’ll use an <a class="term-missing reference internal" href="#" title=""><span class="xref std std-term">if statement</span></a> to check the <code class="docutils literal notranslate"><span class="pre">guess</span></code> value to determine if
+the player won or not and print out a message for each case.</p>
+<p>Both the <code class="docutils literal notranslate"><span class="pre">guess</span></code> variable and the <code class="docutils literal notranslate"><span class="pre">number</span></code> variable are integers but we
+need them to be strings in order to <a class="term-missing reference internal" href="#" title=""><span class="xref std std-term">concatonate</span></a> them in the message
+we print at the of the game. To convert an int to a string use the
+<code class="docutils literal notranslate"><span class="pre">str()</span></code> function.</p>
+<p><strong>Edit Your Script</strong></p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-number">Listing 24 </span><span class="caption-text">guess.py</span></div>
+<div class="full-width highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;This is a Guess the Number game.&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">number</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">max_guesses</span> <span class="o">=</span> <span class="mi">6</span>
+
+<span class="n">player</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Hello! What is your name? &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello &quot;</span> <span class="o">+</span> <span class="n">player</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I am thinking of a number between 1 and 20.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">guess_count</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_guesses</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Guess&quot;</span><span class="p">,</span> <span class="n">guess_count</span><span class="p">,</span> <span class="s2">&quot;of&quot;</span><span class="p">,</span> <span class="n">max_guesses</span><span class="p">)</span>
+
+    <span class="n">guess</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Your guess: &quot;</span><span class="p">)</span>
+    <span class="n">guess</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">guess</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">guess</span> <span class="o">&lt;</span> <span class="n">number</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Your guess is too low.&#39;</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">guess</span> <span class="o">&gt;</span> <span class="n">number</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Your guess is too high.&#39;</span><span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">break</span>
+
+    <span class="nb">print</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="n">guess</span> <span class="o">==</span> <span class="n">number</span><span class="p">:</span>
+    <span class="n">guess_count</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">guess_count</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Good job, &quot;</span> <span class="o">+</span> <span class="n">player</span> <span class="o">+</span> <span class="s2">&quot;! You guessed my number in &quot;</span> <span class="o">+</span> <span class="n">guess_count</span> <span class="o">+</span> <span class="s2">&quot; guesses!&quot;</span><span class="p">)</span>
+
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">number</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nope. The number I was thinking of was &quot;</span> <span class="o">+</span> <span class="n">number</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="part-7-make-it-your-own">
+<h2>Part 7: Make it your own</h2>
+<p>Change the game to make it your own. Here are some ideas.</p>
+<ul class="simple">
+<li><p>Check to see if the player name is your own. If it is, let yourself
+cheat by printing out the number.</p></li>
+<li><p>Make two lists of strings called <code class="docutils literal notranslate"><span class="pre">winner_messages</span></code> and <code class="docutils literal notranslate"><span class="pre">loser_messages</span></code>.
+Randomly choose an item from the appropriate list and print it at the
+end of the game. Hint: You can use the <code class="docutils literal notranslate"><span class="pre">len()</span></code> function to find the
+length of a list.</p></li>
+<li><p>Ask the user if they want to play on easy, normal or hard mode when they
+start, then change the number of guesses or the range of possible
+numbers based on their answer.</p></li>
+<li><p>Keep track of how far away each guess is from the right number. If they
+get further away, print out an extra message to let them know.</p></li>
+<li><p>Don’t end after the player wins or loses, but instead offer them the
+chance to play again. Keep track of their wins, losses and total number
+of games played and print it at the end of each round.</p></li>
+</ul>
+</div>
+<div class="section" id="what-we-ve-learned">
+<h2>What we’ve learned</h2>
+<ul class="simple">
+<li><p>How to import a module and call its functions.</p></li>
+<li><p>How to convert between strings and integers.</p></li>
+<li><p>How to use the <code class="docutils literal notranslate"><span class="pre">range()</span></code> function in a for loop.</p></li>
+<li><p>How to pass a prompt argument to the <code class="docutils literal notranslate"><span class="pre">input()</span></code> function.</p></li>
+<li><p>How to pass multiple arguments to the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function to
+easily print spaces between them.</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "alissa-huskey/python-class",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lessons"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="game-book.html" title="previous page">Invent Games Book</a>
+    <a class='right-next' id="next-link" href="05_dragon_realm.html" title="next page">Chapter 5: Dragon Realm</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
