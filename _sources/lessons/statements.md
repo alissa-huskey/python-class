@@ -11,6 +11,7 @@ kernelspec:
 ---
 Statements
 ==========
+```
 
 A {term}`statement` is an instruction that Python can run or {term}`execute` as
 a unit.

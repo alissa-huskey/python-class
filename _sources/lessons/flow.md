@@ -121,8 +121,7 @@ greeting = formal_greeting("John", "Smith")
 print(formal_greeting("Jane", "Doe"))
 ```
 
-If-Statements
--------------
+### If-Statements
 
 An {term}`if-statement` is a way to change what happens depending on the
 circumstances.
@@ -263,12 +262,6 @@ def pick_up(name):
 
 ### Calling functions
 
-```{image} assets/breath-of-fire-skills.png
----
-alt: skills
-align: left
----
-```
 
 If executing Python was like playing a video game, the step of calling
 functions would be like using your skills or abilities.
@@ -276,10 +269,6 @@ functions would be like using your skills or abilities.
 Let's walk through an example.
 
 
-```{div} clear
-.
-
-```
 ````{sidebar} Game
 ---
 class: game-info
