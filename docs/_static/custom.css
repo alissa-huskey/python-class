@@ -6,6 +6,16 @@
   margin-bottom: 15px;
 }
 
+.clear {
+  clear: both;
+}
+
+td.text-align\:right p,
+td.text-align\:right code,
+td.text-align\:right .pre {
+  text-align: right;
+}
+
 /********************
 /* glossary terms
 /********************/
@@ -95,5 +105,67 @@ div.code-block-caption {
  * */
 div.code-block-caption > span.caption-number {
   font-weight: bold;
+  display: none;
+}
+
+/********************
+/* individual pages
+/********************/
+
+/* program flow
+/*------------------*/
+
+body#flow h3 {
+  page-break-before: always;
+  clear: both;
+}
+
+
+/* game info sidebar: hide sidebar title */
+div.sidebar.game-info p.sidebar-title {
+  display: none;
+  line-height: 0;
+  font-size: 0;
+}
+
+/* game info inventory admonition: remove title icon */
+div.sidebar.game-info div.admonition {
+  border-left: .2rem solid var(--indigo);
+}
+
+/* game info inventory admonition: ... */
+div.sidebar.game-info div.admonition table {
+  display: table;
+}
+
+div.sidebar.game-info div.admonition table,
+div.sidebar.game-info div.admonition tbody,
+div.sidebar.game-info div.admonition tr {
+  padding: .1em;
+  width: 100%;
+}
+
+div.sidebar.game-info div.admonition td p {
+  display: inline;
+}
+
+/* game info inventory admonition: remove title icon */
+div.sidebar.game-info p.admonition-title::before {
+  content: none;
+}
+
+/* game info inventory admonition: adjust title position without icon */
+div.sidebar.game-info p.admonition-title {
+  padding: .4rem .6rem .4rem .6rem;
+  background-color: var(--md-deep-purple-50);
+}
+
+/* game info inventory admonition: remove top margin */
+div.admonition.inventory {
+  margin-top: 0
+}
+
+/* ... */
+div.admonition thead {
   display: none;
 }
