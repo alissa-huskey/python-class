@@ -23,7 +23,6 @@ TODAY = datetime.today().strftime("%Y-%m-%d-%s")
 VERBOSE = False  ; VERBOSE = True
 
 
-
 def rget(source, keys):
     """Get a value from nested dictionaries.
        Params
@@ -91,11 +90,12 @@ class Style():
 
     def header(self, title):
         """Return a styled header"""
-        title = style(title, bold=True) 
+        title = style(title, bold=True)
         return f"\n{title}\n"
 
     def status(self, status):
         """Return a colored unicode symbol cooresponding to the Status object"""
+        if not status: return ""
         return self.success if status.ok else self.fail
 
     @property
@@ -109,6 +109,9 @@ class Style():
         return style(self.FAILURE_SYMBOL, fg="red")
 
 
+# error, failure, pending, in_progress, queued, or success
+# queued, in_progress, or completed.
+# success, failure, neutral, cancelled, skipped, timed_out, or action_require
 class AbstractState(Enum):
     """Abstract class for state-like Enum objects.
        Provides instanciation by name and an abstract ok() method.
@@ -124,18 +127,11 @@ class AbstractState(Enum):
             return matches[0]
         super()._missing_(value)
 
-
     @property
     @abstractmethod
     def ok(self) -> bool:
         """Return True if the object indicates success."""
 
-
-# conclusion: success, failure, neutral, cancelled, skipped, timed_out, or action_require
-# DeployStatuse: (states: error, failure, pending, in_progress, queued, or success)
-# Run: "status" queued, in_progress, or completed.
-# Run: "conclusion" ..? "success"
-# Step: "conclusion" ...?
 
 class Progress(AbstractState):
     """Class for progress statuses."""
@@ -144,6 +140,16 @@ class Progress(AbstractState):
     @property
     def ok(self):
         return self == Progress.completed
+
+
+class BuildStatus(AbstractState):
+    """Class for build statuses."""
+    null, queued, building, built, errored = [auto() for _ in range(5)]
+
+    @property
+    def ok(self):
+        return self == Progress.built
+
 
 class Status(AbstractState):
     """Class for success statuses."""
@@ -252,8 +258,7 @@ class Object(ABC):
         """Return True if all attrs progress and status are True"""
         states = [ getattr(self, attr).ok
                   for attr in ("progress", "status")
-                  if hasattr(self, attr) ]
-        self.APP.info(states, name=f"{self.__class__.__name__} ok(): states")
+                  if hasattr(self, attr) and getattr(self, attr) ]
         return all(states)
 
     @property
@@ -340,6 +345,7 @@ class Run(Object):
         res = [d for d in deploys if d.master_sha == self.sha]
         return res[0] if res else None
 
+
 class Step(ChildObject):
     """Object class for steps, child of Job."""
 
@@ -350,6 +356,23 @@ class Step(ChildObject):
           status=("conclusion", True, Status),
           desc=("name", True),
       )
+
+
+class Pages(Object):
+    """Object class for Github Pages info."""
+
+    @property
+    def fields(self) -> dict:
+      return dict(
+        url=("html_url", True),
+        branch=("source.branch", True),
+        path=("source.path", True),
+        status=("status", True, BuildStatus),
+      )
+
+    @property
+    def steps(self) -> list:
+      return [Step(x, self) for x in self.request_data["steps"]]
 
 
 class Job(ChildObject):
@@ -460,14 +483,15 @@ class GithubRequest(ABC):
     """The parsed data received from the Github API."""
     data: list
 
-    def __init__(self):
+    def __init__(self, force=False):
         """Initializer
            Requests and stores a file if needed, then loads the data from
            either an existing file or the one just created.
         """
+        self.force = force
         if not self.dirpath.is_dir():
           self.dirpath.mkdir(parents=True)
-        if not self.exists():
+        if force or (not self.exists()):
             self.get()
         self.load()
 
@@ -554,12 +578,12 @@ class ChildRequest(GithubRequest):
 
     parent: None
 
-    def __init__(self, parent):
+    def __init__(self, parent, force=False):
         """Initializer
            Assigns self.parent.
         """
         self.parent = parent
-        super().__init__()
+        super().__init__(force)
 
     def exists(self):
       """Return True if there are files downoaded for this request type."""
@@ -569,6 +593,23 @@ class ChildRequest(GithubRequest):
     def filepath(self):
         """Filename is the `{self.parent.id}.json`.'"""
         return self.dirpath.joinpath(f"{self.parent.id}.json")
+
+
+class PagesRequest(GithubRequest):
+    """Class for github pages requests.
+       https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#pages
+    """
+    dirname: str = "pages"
+
+    @property
+    def data(self):
+        """Returns a Pages object."""
+        return Pages(self.request_data)
+
+    @property
+    def endpoint(self):
+      """API endpoint following REPO"""
+      return "pages"
 
 
 class StatusRequest(ChildRequest):
@@ -613,7 +654,7 @@ class CommitRequest(GithubRequest):
 
     dirname: str = "commits"
 
-    def __init__(self, ref):
+    def __init__(self, ref, force=False):
         """Initializer
            Assigns self.ref.
         """
@@ -621,7 +662,7 @@ class CommitRequest(GithubRequest):
           ref = ref.full
 
         self.ref = ref
-        super().__init__()
+        super().__init__(force)
 
     @cached_property
     def filepath(self):
@@ -679,7 +720,6 @@ class RunsRequest(GithubRequest):
       return "actions/runs"
 
 
-
 def debug(app):
     deploys = DeploysRequest()
     statuses = StatusRequest(deploys.data[0])
@@ -732,8 +772,12 @@ def main():
     app = Object.APP = GithubRequest.APP = App()
     # debug(app)
 
-    deploys = DeploysRequest()
-    runs = RunsRequest()
+    force = False
+    pages = PagesRequest(force)
+    deploys = DeploysRequest(force)
+    runs = RunsRequest(force)
+
+    app.info(pages.data, name="Pages")
 
     rows = []
     for run in runs.data:
@@ -742,8 +786,9 @@ def main():
             "#": run.number,
             "OK": app.style.status(run.status),
             "date": run.date,
+            "id": run.id,
             "commit": run.sha,
-            "message": run.message,
+            "message": run.message.splitlines()[0][0:50],
             "step": f"#{run.last_step.number:>2} {app.style.status(run.last_step)} {run.last_step.desc}",
             "deploy": f"{app.style.status(deploy.status)} {deploy.sha}" if deploy else ""
         })
@@ -752,7 +797,7 @@ def main():
     print(tabulate(rows, headers="keys"))
 
     rows = []
-    for deploy in deploys.data:
+    for deploy in deploys.data[:5]:
         rows.append({
             "OK": app.style.status(deploy.status),
             "date": deploy.date,
@@ -764,6 +809,7 @@ def main():
 
     print(app.style.header("Deploys"))
     print(tabulate(rows, headers="keys"))
+
 
 if __name__ == "__main__":
     main()
