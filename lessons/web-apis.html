@@ -1,0 +1,1681 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web APIs &#8212; Python Class</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://alissa-huskey.github.io/python-class/lessons/web-apis.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PyPet Battle" href="battle.html" />
+    <link rel="prev" title="Misc" href="misc.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://alissa-huskey.github.io/python-class/lessons/web-apis.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Web APIs" />
+<meta property="og:description" content="Web APIs  Table of Contents  Part 1: Setup  Part 2: Introduction  Part 3: How web requests work  Part 4: The parts of an API response  Part 4.1: Solo Exercise -" />
+
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Python Class</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Python Class
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Lessons
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="fundamentals.html">
+   Fundamentals
+  </a>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="expressions.html">
+     Expressions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="statements.html">
+     Statements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="expressions_vs_statements.html">
+     Expressions vs. Statements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="flow.html">
+     Program Flow
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-up">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="misc.html">
+   Misc
+  </a>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Web APIs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="battle.html">
+     PyPet Battle
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-up">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="game-book.html">
+   Invent Games Book
+  </a>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_guess_the_number.html">
+     Chapter 3: Guess the Number
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_dragon_realm.html">
+     Chapter 5: Dragon Realm
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-up">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Tool Guides
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../guides/git-concepts.html">
+   Git Concepts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../guides/vscode-intro.html">
+   VS Code Intro
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../guides/console.html">
+   A Brief Tour of the Console
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../guides/python_shell.html">
+   Python Shell
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../guides/replit.html">
+   Repl.it Tips
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../guides/git-on-replit.html">
+   Git on Repl.it
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../guides/poetry.html">
+   Poetry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../guides/mac.html">
+   Mac Dev Env for Python
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/dicts.html">
+   Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/lists.html">
+   Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/template.py">
+   Script Template
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Exercises
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/list-exercises.html">
+   List Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/list-string-exercises.html">
+   List String Exercises
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/alissa-huskey/python-class"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/alissa-huskey/python-class/edit/master/docs/lessons/web-apis.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#table-of-contents">
+   Table of Contents
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-1-setup">
+   Part 1: Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-2-introduction">
+   Part 2: Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-3-how-web-requests-work">
+   Part 3: How web requests work
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-4-the-parts-of-an-api-response">
+   Part 4: The parts of an API response
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-4-1-solo-exercise-print-the-weather">
+   Part 4.1: Solo Exercise - Print the Weather
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-5-getting-data-from-an-api">
+   Part 5: Getting data from an API
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-5-1-what-is-json">
+   Part 5.1: What is JSON
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-5-2-accessing-json-data">
+   Part 5.2: Accessing JSON data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-5-3-solo-exercise-latitude-and-longitude">
+   Part 5.3: Solo Exercise - Latitude and Longitude
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-6-parameters">
+   Part 6: Parameters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-6-1-parameters-in-urls">
+   Part 6.1 Parameters in URLs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-6-2-api-parameters">
+   Part 6.2 API Parameters
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-1-try-it-using-curl">
+     Step 1: Try it using
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       curl
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-2-add-it-to-apis-py">
+     Step 2: Add it to
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       apis.py
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-6-3-solo-exercise-parameters">
+   Part 6.3: Solo Exercise - Parameters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-7-private-data">
+   Part 7: Private Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-1-create-the-private-module">
+     Step 1: Create the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       private
+      </span>
+     </code>
+     module
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-2-ignore-it-in-git">
+     Step 2: Ignore it in git
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-3-import-it">
+     Step 3: Import it
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-7-1-import-syntax-varieties">
+   Part 7.1: Import Syntax Varieties
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-8-headers">
+   Part 8: Headers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-8-1-get-your-api-key">
+   Part 8.1: Get Your API Key
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-1-sign-up">
+     Step 1: Sign up
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-2-add-it-to-private-py">
+     Step 2: Add it to
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       private.py
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-3-import-it-in-apis-py">
+     Step 3: Import it in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       apis.py
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-8-2-sending-the-x-access-token-header">
+   Part 8.2: Sending the
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     x-access-token
+    </span>
+   </code>
+   Header
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-8-3-solo-exercise-rapidapi">
+   Part 8.3: Solo Exercise - RapidAPI
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-9-request-methods">
+   Part 9: Request Methods
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-9-1-request-methods-in-python">
+   Part 9.1: Request methods in Python
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-9-2-post-put-and-patch">
+   Part 9.2
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     POST
+    </span>
+   </code>
+   ,
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     PUT
+    </span>
+   </code>
+   and
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     PATCH
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-9-3-request-methods-using-curl">
+   Part 9.3 Request methods using
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     curl
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-9-4-solo-exercise">
+   Part 9.4 Solo Exercise
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-10-final-project">
+   Part 10. Final Project
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#phase-1-print-the-open-cards-from-your-to-do-list">
+     Phase 1: Print the open cards from your
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       To
+      </span>
+      <span class="pre">
+       Do
+      </span>
+     </code>
+     list.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#phase-2-show-card-details">
+     Phase 2: Show card details
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#phase-3-card-actions">
+     Phase 3: Card actions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#phase-4-more-card-views">
+     Phase 4: More card views
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#more-info">
+     More Info
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tips-and-reminders">
+     Tips and Reminders
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#see-also">
+   See Also
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="web-apis">
+<h1>Web APIs</h1>
+<div class="section" id="table-of-contents">
+<h2>Table of Contents</h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#part-1-setup">Part 1: Setup</a></p></li>
+<li><p><a class="reference external" href="#part-2-introduction">Part 2: Introduction</a></p></li>
+<li><p><a class="reference external" href="#part-3-how-web-requests-work">Part 3: How web requests work</a></p></li>
+<li><p><a class="reference external" href="#part-4-the-parts-of-an-api-response">Part 4: The parts of an API response</a></p></li>
+<li><p><a class="reference external" href="#part-41-solo-exercise---print-the-weather">Part 4.1: Solo Exercise - Print the Weather</a></p></li>
+<li><p><a class="reference external" href="#part-5-getting-data-from-an-api">Part 5: Getting data from an API</a></p></li>
+<li><p><a class="reference external" href="#part-51-what-is-json">Part 5.1: What is JSON</a></p></li>
+<li><p><a class="reference external" href="#part-52-accessing-json-data">Part 5.2: Accessing JSON data</a></p></li>
+<li><p><a class="reference external" href="#part-53-solo-exercise---latitude-and-longitude">Part 5.3: Solo Exercise - Latitude and Longitude</a></p></li>
+<li><p><a class="reference external" href="#part-6-parameters">Part 6: Parameters</a></p></li>
+<li><p><a class="reference external" href="#part-61-parameters-in-urls">Part 6.1 Parameters in URLs</a></p></li>
+<li><p><a class="reference external" href="#part-62-api-parameters">Part 6.2 API Parameters</a></p></li>
+<li><p><a class="reference external" href="#step-1-try-it-using-curl">Step 1: Try it using curl</a></p></li>
+<li><p><a class="reference external" href="#step-2-add-it-to-apispy">Step 2: Add it to apis.py</a></p></li>
+<li><p><a class="reference external" href="#part-63-solo-exercise---parameters">Part 6.3: Solo Exercise - Parameters</a></p></li>
+<li><p><a class="reference external" href="#part-7-private-data">Part 7: Private Data</a></p>
+<ul>
+<li><p><a class="reference external" href="#step-1-create-the-private-module">Step 1: Create the private module</a></p></li>
+<li><p><a class="reference external" href="#step-2-ignore-it-in-git">Step 2: Ignore it in git</a></p></li>
+<li><p><a class="reference external" href="#step-3-import-it">Step 3: Import it</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#part-71-import-syntax-varieties">Part 7.1: Import Syntax Varieties</a></p></li>
+<li><p><a class="reference external" href="#part-8-headers">Part 8: Headers</a></p></li>
+<li><p><a class="reference external" href="#part-81-get-your-api-key">Part 8.1: Get Your API Key</a></p>
+<ul>
+<li><p><a class="reference external" href="#step-1-sign-up">Step 1: Sign up</a></p></li>
+<li><p><a class="reference external" href="#step-2-add-it-to-privatepy">Step 2: Add it to private.py</a></p></li>
+<li><p><a class="reference external" href="#step-3-import-it-in-apispy">Step 3: Import it in apis.py</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#part-82-sending-the-x-access-token-header">Part 8.2: Sending the x-access-token Header</a></p></li>
+<li><p><a class="reference external" href="#part-83-solo-exercise---rapidapi">Part 8.3: Solo Exercise - RapidAPI</a></p></li>
+<li><p><a class="reference external" href="#part-9-request-methods">Part 9: Request Methods</a></p></li>
+<li><p><a class="reference external" href="#part-91-request-methods-in-python">Part 9.1: Request methods in Python</a></p></li>
+<li><p><a class="reference external" href="#part-92-post-put-and-patch">Part 9.2 POST, PUT and PATCH</a></p></li>
+<li><p><a class="reference external" href="#part-93-request-methods-using-curl">Part 9.3 Request methods using curl</a></p></li>
+<li><p><a class="reference external" href="#part-94-solo-exercise">Part 9.4 Solo Exercise</a></p></li>
+<li><p><a class="reference external" href="#part-10-final-project">Part 10: Final Project</a></p></li>
+<li><p><a class="reference external" href="#see-also">See Also</a></p></li>
+</ul>
+<p><a class="reference external" href="http://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/web_apis.py">web_apis.py</a></p>
+</div>
+<div class="section" id="part-1-setup">
+<h2>Part 1: Setup</h2>
+<p>First, you’ll need to install the requests module.</p>
+<p><strong>repl.it</strong></p>
+<p>Click the icon that looks like a box on the left <code class="docutils literal notranslate"><span class="pre">Packages</span></code>. Search for
+<code class="docutils literal notranslate"><span class="pre">requests</span></code> then click the plus sign next to it to add the package.</p>
+<p><strong>otherwise</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">requests</span></code> at the command line</p>
+<p>Then create a new file named <code class="docutils literal notranslate"><span class="pre">apis.py</span></code> and add a line <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">requests</span></code> at the
+top. Also, we’re going to use the <code class="docutils literal notranslate"><span class="pre">pprint</span></code> module today, so add the line below
+to import that.</p>
+<p><em>apis.py</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="part-2-introduction">
+<h2>Part 2: Introduction</h2>
+<p>An API, or Application Programming Interface, is a server that
+you can use to retrieve and send data to using code. APIs are most commonly
+used to retrieve data, and that will be the focus of this beginner tutorial.</p>
+<p>When we want to receive data from an API, we need to make a request. Requests
+are used all over the web. For instance, when you visited this page, your web
+browser made a request to the web server, which responded with the content of
+this web page.</p>
+<p><img alt="api requests" src="https://www.dataquest.io/wp-content/uploads/2019/09/api-request.svg" /></p>
+<p>API requests work in exactly the same way – you make a request to an API server
+for data, and it responds to your request.</p>
+<p>Today we’ll be interacting with APIs in three ways:</p>
+<ol class="simple">
+<li><p>From the browser</p></li>
+<li><p>From the command line, using <code class="docutils literal notranslate"><span class="pre">curl</span></code></p></li>
+<li><p>In Python using the <code class="docutils literal notranslate"><span class="pre">requests</span></code> module.</p></li>
+</ol>
+</div>
+<div class="section" id="part-3-how-web-requests-work">
+<h2>Part 3: How web requests work</h2>
+<p>For our first experiment with APIs, I’ve added a file to my github account
+which you can view in your browser:
+<a class="reference external" href="https://raw.githubusercontent.com/alissa-huskey/python-class/master/hello.txt">hello.txt</a>.</p>
+<p>You should see the text:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Hello</span> <span class="pre">python</span> <span class="pre">class!</span></code></p>
+<p>Now, you can do the same thing at the command line. At the shell, copy and paste the following:</p>
+<p><strong>At the command line</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl <span class="s2">&quot;https://raw.githubusercontent.com/alissa-huskey/python-class/master/hello.txt&quot;</span>
+</pre></div>
+</div>
+<p>Finally, we can do the same thing in Python.</p>
+<p><em>apis.py</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+
+<span class="k">def</span> <span class="nf">request_demo</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Explore how web request work&quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/alissa-huskey/python-class/master/hello.txt&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+    <span class="c1"># this shows us the body of the response</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+
+
+<span class="n">request_demo</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="part-4-the-parts-of-an-api-response">
+<h2>Part 4: The parts of an API response</h2>
+<p>The response that we get back from the server consists of three main parts:</p>
+<ol class="simple">
+<li><p><strong>status</strong> – a number that indicates if the request worked, and if not, what went wrong</p></li>
+<li><p><strong>headers</strong> – metadata about the content (like the size and type) and the connection</p></li>
+<li><p><strong>body</strong> – the content of the reply</p></li>
+</ol>
+<p>We can use python to look at each of these. Modify your <code class="docutils literal notranslate"><span class="pre">request_demo()</span></code> function.</p>
+<p><em>apis.py</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">request_demo</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Explore how web request work&quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/alissa-huskey/python-class/master/hello.txt&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+    <span class="c1"># this shows us the body of the response</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+
+    <span class="c1"># this should show 200: the status code for SUCCESS</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+
+    <span class="c1"># this converts the headers value into a dictionary for pprint</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
+
+    <span class="c1"># here we can see the headers. For example, the</span>
+    <span class="c1"># &#39;Content-Length&#39; tells us that the size is 40 bytes and</span>
+    <span class="c1"># &#39;Content-Type&#39; tells us that it was plain text</span>
+    <span class="n">pprint</span><span class="p">(</span><span class="n">headers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="part-4-1-solo-exercise-print-the-weather">
+<h2>Part 4.1: Solo Exercise - Print the Weather</h2>
+<p>First, comment out the call to <code class="docutils literal notranslate"><span class="pre">request_demo()</span></code>.</p>
+<p>Write a new function called <code class="docutils literal notranslate"><span class="pre">request_weather()</span></code>. Call the url <code class="docutils literal notranslate"><span class="pre">http://wttr.in</span></code>
+then print <code class="docutils literal notranslate"><span class="pre">response.text</span></code>. Be sure to call the new function!</p>
+</div>
+<div class="section" id="part-5-getting-data-from-an-api">
+<h2>Part 5: Getting data from an API</h2>
+<p>Getting data from an API is exactly the same. The only difference is that the
+data is structured in a way to make it easy for code to work with.</p>
+<p>Let’s do an exercise with a real API.</p>
+<p>For this exercise we’ll be using the NASA astros API.</p>
+<p>First, let’s see it in the browser:
+<a class="reference external" href="http://api.open-notify.org/astros.json">api.open-notify.org/astros.json</a>.</p>
+<p>Next, at the command line:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl <span class="s2">&quot;http://api.open-notify.org/astros.json&quot;</span>
+</pre></div>
+</div>
+<p>And finally, in Python. Make a new function <code class="docutils literal notranslate"><span class="pre">request_astros()</span></code>. For now, it
+will be just the same as <code class="docutils literal notranslate"><span class="pre">request_demo()</span></code>, but with a different URL.</p>
+<p><em>apis.py</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">request_astros</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Print out the astronauts currently in space using NASAs astros API</span>
+<span class="sd">    https://api.nasa.gov/</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://api.open-notify.org/astros.json&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+    <span class="c1"># this shows us the body of the response</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then comment out the line where we call <code class="docutils literal notranslate"><span class="pre">request_demo()</span></code> and replace add a new
+line to call <code class="docutils literal notranslate"><span class="pre">request_astros()</span></code>.</p>
+<p><em>apis.py</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># request_demo()</span>
+    <span class="n">request_astros</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="part-5-1-what-is-json">
+<h2>Part 5.1: What is JSON</h2>
+<p>JSON stands for JavaScript Object Notation. It is the way that JavaScript
+represents data objects. It is the most common way for APIs to format their
+data because it is easy for programming languages to read and write.</p>
+<p>Usually we would need to download a library to parse the text and convert it to
+JSON. (The word “parse” basically means reading data of one form and
+translating it to another, usable form.) But happily the requests API takes
+care of that for us by providing the <code class="docutils literal notranslate"><span class="pre">response.json()</span></code> function.</p>
+<p>This returns an object that works just like the Python data type that is in the
+JSON.  Most often, as in this case, APIs respond with a dictionary.</p>
+</div>
+<div class="section" id="part-5-2-accessing-json-data">
+<h2>Part 5.2: Accessing JSON data</h2>
+<p>Accessing elements works just the same way as it does with a normal dictionary
+– using the syntax <code class="docutils literal notranslate"><span class="pre">variable['key']</span></code>.</p>
+<p>Let’s say we want to print out the number of people in space.  Comment out the
+<code class="docutils literal notranslate"><span class="pre">print</span></code> line from before and add the last two lines here to the end of your
+<code class="docutils literal notranslate"><span class="pre">request_astros()</span></code> function:</p>
+<p><em>apis.py</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">request_astros</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Print out the astronauts currently in space using NASAs astros API</span>
+<span class="sd">    https://api.nasa.gov/</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://api.open-notify.org/astros.json&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+    <span class="c1"># this shows us the body of the response</span>
+    <span class="c1"># print(response.text)</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;There are </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;number&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> people in space today.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now let’s say we want to print out the names of our astronauts. Add the
+following two lines to the end of your <code class="docutils literal notranslate"><span class="pre">request_astros()</span></code> function:</p>
+<p><em>apis.py</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">request_astros</span><span class="p">():</span>
+    <span class="o">...</span>
+
+    <span class="k">for</span> <span class="n">astro</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;people&#39;</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">astro</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="part-5-3-solo-exercise-latitude-and-longitude">
+<h2>Part 5.3: Solo Exercise - Latitude and Longitude</h2>
+<p>Write a new function called <code class="docutils literal notranslate"><span class="pre">request_location()</span></code>.</p>
+<p>Get the URL <code class="docutils literal notranslate"><span class="pre">https://freegeoip.app/json/</span></code>. Print the
+<code class="docutils literal notranslate"><span class="pre">latitude</span></code> and <code class="docutils literal notranslate"><span class="pre">longitude</span></code> from the response <code class="docutils literal notranslate"><span class="pre">json()</span></code>.</p>
+<p>Be sure to call your new function and comment out the old one.</p>
+<p>Copy the resulting values and paste them into a comment in
+your script for future reference.</p>
+</div>
+<div class="section" id="part-6-parameters">
+<h2>Part 6: Parameters</h2>
+<p>Just like functions have arguments, APIs can have <code class="docutils literal notranslate"><span class="pre">parameters</span></code>.</p>
+</div>
+<div class="section" id="part-6-1-parameters-in-urls">
+<h2>Part 6.1 Parameters in URLs</h2>
+<p>(No code in this section, just going over some concepts. Feel free to play
+around in <code class="docutils literal notranslate"><span class="pre">curl</span></code> or your web browser though.)</p>
+<p>The simplified syntax for a basic URL is something like:</p>
+<p><code class="docutils literal notranslate"><span class="pre">http[s]://</span></code> <code class="docutils literal notranslate"><span class="pre">host</span></code> <code class="docutils literal notranslate"><span class="pre">/[path]</span></code></p>
+<p>In its most basic form, this is called a <em>resource</em>. This means that it points
+to something–a web site, an image, a program–sitting on a computer somewhere
+so that people can access it though the network. This is where the acronym URL
+comes from – Uniform Resource Locator. One kind of resource is the things you
+pull up in your web browser every day, a <code class="docutils literal notranslate"><span class="pre">web</span> <span class="pre">page</span></code>.</p>
+<p>This simple form of URL works well for images and static web pages. But just
+like the <code class="docutils literal notranslate"><span class="pre">print</span></code> function would be rather less useful if we couldn’t pass it
+the strings to print, so would the web be a good deal more dull if we didn’t
+have a way to pass parameters.</p>
+<p>Happily paramaters can be passed as part of the URL. A <code class="docutils literal notranslate"><span class="pre">?</span></code> is used to seperate
+the resource from the parameters. Then the <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> is used between parameters.</p>
+<p>For example, to search google we need to submit a search query.  Google uses
+the parameter <code class="docutils literal notranslate"><span class="pre">q</span></code> for the query.  So if you felt like it you could skip the
+search box and type directly into the URL bar:</p>
+<p><code class="docutils literal notranslate"><span class="pre">http://google.com/search?q=urls</span></code></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">wttr.in</span></code> service that we used before has an extensive query language
+(which you can retrieve by calling <code class="docutils literal notranslate"><span class="pre">wttr.in/:help</span></code>). A couple of examples:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">http://wttr.in/moon?lang=de</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">http://wttr.in/SFO?lang=de&amp;format=j1</span></code></p></li>
+</ul>
+<p>(Much of the <code class="docutils literal notranslate"><span class="pre">wttr.in</span></code> query language is fairly non-standard, so in some ways
+it’s not the best example. On the other hand, it does show the flexability.
+Plus, it’s fun to play around with.)</p>
+<p>Keep an eye on your URL bar over the next few days to see what jumps out at
+you. I use this knowledge often to bypass slow pages and occationally to get
+around a bug.</p>
+<blockquote>
+<div><p><strong>Sidenote</strong> <br />
+In modern browsers you can usually type in spaces and other special
+characters directly into the URL bar. After you hit enter you may notice
+that your spaces have been changed to <code class="docutils literal notranslate"><span class="pre">+</span></code> or <code class="docutils literal notranslate"><span class="pre">%20</span></code>.  The browser is URL
+encoding it for you–that is, changing some characters so that they’ll be
+understood correctly by the server on the other end. <br />
+<br />
+Many modern APIs can handle spaces and other special characters too but some
+only accept encoded values. The <code class="docutils literal notranslate"><span class="pre">requests</span></code> module handles much of this for
+you, but you may run into occasional problems when passing unencoded
+parameters at the command line. If your curl requests are mysteriously
+failing, try replacing any spaces with <code class="docutils literal notranslate"><span class="pre">+</span></code>.</p>
+</div></blockquote>
+</div>
+<div class="section" id="part-6-2-api-parameters">
+<h2>Part 6.2 API Parameters</h2>
+<p>Now let’s put this knowledge to use to pass parameters to an API.</p>
+<p>We talked about how the resources you access through the browser are known as
+<code class="docutils literal notranslate"><span class="pre">web</span> <span class="pre">pages</span></code>. API resources commonly referred to as <code class="docutils literal notranslate"><span class="pre">endpoints</span></code>.</p>
+<p>For this exercise, we’ll use the
+<a class="reference external" href="https://fourtonfish.com/hellosalut/hello/">hellosalut</a> API, which tells you
+how to say “hello” in a given language.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">endpoint</span></code> is <code class="docutils literal notranslate"><span class="pre">https://fourtonfish.com/hellosalut/</span></code>. We’ll pass it the
+<code class="docutils literal notranslate"><span class="pre">lang</span></code> parameter, starting with the language code <code class="docutils literal notranslate"><span class="pre">de</span></code> for German.</p>
+<div class="section" id="step-1-try-it-using-curl">
+<h3>Step 1: Try it using <code class="docutils literal notranslate"><span class="pre">curl</span></code></h3>
+<p><em>At the command line</em></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl <span class="s2">&quot;https://fourtonfish.com/hellosalut/?lang=de&quot;</span>
+</pre></div>
+</div>
+<p>Now we’ll do the same thing in Python using the <code class="docutils literal notranslate"><span class="pre">requests</span></code> module. The
+<code class="docutils literal notranslate"><span class="pre">requests.get</span></code> function takes an optional argument <code class="docutils literal notranslate"><span class="pre">params</span></code> which acceps a
+hash.</p>
+</div>
+<div class="section" id="step-2-add-it-to-apis-py">
+<h3>Step 2: Add it to <code class="docutils literal notranslate"><span class="pre">apis.py</span></code></h3>
+<p><em>apis.py</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">request_hello</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Say &quot;hello&quot; in another language using the hellosalut API</span>
+<span class="sd">    https://fourtonfish.com/hellosalut/hello/</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://fourtonfish.com/hellosalut/&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;lang&#39;</span><span class="p">:</span> <span class="s1">&#39;de&#39;</span><span class="p">})</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="c1"># print(data)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>Sidenote: The syntax for sending <code class="docutils literal notranslate"><span class="pre">params</span></code> is called <code class="docutils literal notranslate"><span class="pre">keyword</span> <span class="pre">arguments</span></code> or
+occationally <code class="docutils literal notranslate"><span class="pre">named</span> <span class="pre">arguments</span></code>.  It referrs to when an argument is passed
+with <code class="docutils literal notranslate"><span class="pre">name=value</span></code> instead of just the <code class="docutils literal notranslate"><span class="pre">value</span></code>.</p>
+<p>We’ve come across it before – the <code class="docutils literal notranslate"><span class="pre">print</span></code> function has a keyword argument
+<code class="docutils literal notranslate"><span class="pre">end</span></code> that lets you change or remove the newline that is usually added. For
+example: <code class="docutils literal notranslate"><span class="pre">print(&quot;Your</span> <span class="pre">name:</span> <span class="pre">&quot;,</span> <span class="pre">end=&quot;&quot;)</span></code>. This is useful when a function has a
+bunch of arguments that are optional. Just like our <code class="docutils literal notranslate"><span class="pre">get</span></code> function.</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="part-6-3-solo-exercise-parameters">
+<h2>Part 6.3: Solo Exercise - Parameters</h2>
+<p>Pick one of the following:</p>
+<ul class="simple">
+<li><p>Get an activity from the <a class="reference external" href="https://www.boredapi.com/documentation">Bored API</a> <br />
+Endpoint URL: <code class="docutils literal notranslate"><span class="pre">https://www.boredapi.com/api/activity</span></code> <br />
+Parameters: <code class="docutils literal notranslate"><span class="pre">participants</span></code> = <code class="docutils literal notranslate"><span class="pre">1</span></code> <br />
+Print: <code class="docutils literal notranslate"><span class="pre">activity</span></code></p></li>
+<li><p>Get insulted by the <a class="reference external" href="https://evilinsult.com/api/">Evil Insult API</a> <br />
+Endpoint URL: <code class="docutils literal notranslate"><span class="pre">https://evilinsult.com/generate_insult.php</span></code> <br />
+Parameters: <code class="docutils literal notranslate"><span class="pre">lang</span></code> = <code class="docutils literal notranslate"><span class="pre">en</span></code>, <code class="docutils literal notranslate"><span class="pre">type</span></code> = <code class="docutils literal notranslate"><span class="pre">json</span></code> <br />
+Print: <code class="docutils literal notranslate"><span class="pre">insult</span></code></p></li>
+<li><p>Guess someone’s age using the <a class="reference external" href="https://agify.io/">Agify API</a> <br />
+Endpoint URL: <code class="docutils literal notranslate"><span class="pre">https://api.agify.io</span></code> <br />
+Parameters: <code class="docutils literal notranslate"><span class="pre">name</span></code> = your (or someone else’s) first name <br />
+Print: <code class="docutils literal notranslate"><span class="pre">age</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="part-7-private-data">
+<h2>Part 7: Private Data</h2>
+<blockquote>
+<div><p>Note: Private data should not be stored on repl.it since all repls are public
+and can be forked by anyone. For the purposes of this lesson it’s acceptable
+since the data is not particularly sensitive.</p>
+</div></blockquote>
+<p>Here we’re going to take a little detour to learn how to safely use private
+data in code.</p>
+<p>It is best practice to avoid storing private data, such as API keys, in GitHub
+where our account could be hacked or the repo may someday become public.
+Instead we’re going to create a <code class="docutils literal notranslate"><span class="pre">private</span></code> module then add it to our git ignore
+file.</p>
+<blockquote>
+<div><p>You’ll want your <code class="docutils literal notranslate"><span class="pre">latitude</span></code> and <code class="docutils literal notranslate"><span class="pre">longitude</span></code> values from <a class="reference external" href="#part-53-solo-exercise---latitude-and-longitude">Part 5.3</a>.
+If you don’t have them available run the <code class="docutils literal notranslate"><span class="pre">request_location()</span></code> function again.</p>
+</div></blockquote>
+<div class="section" id="step-1-create-the-private-module">
+<h3>Step 1: Create the <code class="docutils literal notranslate"><span class="pre">private</span></code> module</h3>
+<p>We have made our own modules before – back in our pypet battle project, we
+made a <code class="docutils literal notranslate"><span class="pre">pets</span></code> module. You may recall that a module is simply a python file that
+can be imported.</p>
+<p>So we’re going to add a <code class="docutils literal notranslate"><span class="pre">private</span></code> module by creating a new file called
+<code class="docutils literal notranslate"><span class="pre">private.py</span></code>.</p>
+<p>Most of this should be familiar – docstring and global variables. I’ll explain
+the unfamiliar bits soon.</p>
+<p><em>private.py</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Private data such as API keys that should not be committed in git&quot;&quot;&quot;</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;LAT&quot;</span><span class="p">,</span> <span class="s2">&quot;LNG&quot;</span><span class="p">]</span>
+
+<span class="n">LAT</span> <span class="o">=</span> <span class="s2">&quot;34.06&quot;</span>        <span class="c1"># replace with your latitude</span>
+<span class="n">LNG</span> <span class="o">=</span> <span class="s2">&quot;-118.26&quot;</span>      <span class="c1"># replace with your longitude</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-2-ignore-it-in-git">
+<h3>Step 2: Ignore it in git</h3>
+<p>In the same directory create or edit the file <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> and add the filename to it.</p>
+<p><em>.gitignore</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">private</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-3-import-it">
+<h3>Step 3: Import it</h3>
+<p>Now we need to import it. Add the following to the imports section (somewhere
+near the top) of your <code class="docutils literal notranslate"><span class="pre">apis.py</span></code> file.</p>
+<p><em>apis.py</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">private</span> <span class="kn">import</span> <span class="n">LAT</span><span class="p">,</span> <span class="n">LNG</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="part-7-1-import-syntax-varieties">
+<h2>Part 7.1: Import Syntax Varieties</h2>
+<blockquote>
+<div><p>This is a digression to explain the different ways to import modules and what
+they mean. If you’d like you can skip ahead to <a class="reference external" href="#part-8-headers">Part 8</a>
+where we get back to the topic at hand.</p>
+</div></blockquote>
+<p>There are a number of ways to import modules. The one we have usually used up
+to this point is the plain ol’ import.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">private</span>
+</pre></div>
+</div>
+<p>This imports the whole module under the <em>namespace</em> of private. So to
+access the <code class="docutils literal notranslate"><span class="pre">LAT</span></code> and <code class="docutils literal notranslate"><span class="pre">LNG</span></code> values we would use:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;latitude:&quot;</span><span class="p">,</span> <span class="n">private</span><span class="o">.</span><span class="n">LAT</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;longitude:&quot;</span><span class="p">,</span> <span class="n">private</span><span class="o">.</span><span class="n">LNG</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To change the namespace use the <code class="docutils literal notranslate"><span class="pre">as</span></code> keyword.</p>
+<blockquote>
+<div><p>This is often done when a module name is particularly long or if it might
+overlap with variable or function names.</p>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">private</span> <span class="k">as</span> <span class="nn">keychain</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;latitude:&quot;</span><span class="p">,</span> <span class="n">keychain</span><span class="o">.</span><span class="n">LAT</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;longitude:&quot;</span><span class="p">,</span> <span class="n">keychain</span><span class="o">.</span><span class="n">LNG</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To import only part of a module use the <code class="docutils literal notranslate"><span class="pre">from</span></code> keyword. This has the side
+effect of putting the imported item(s) into the <em>global namespace</em>. That means
+we no longer need to add the <code class="docutils literal notranslate"><span class="pre">namespace.</span></code> prefix to access the imported
+items.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">private</span> <span class="kn">import</span> <span class="n">LAT</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;latitude:&quot;</span><span class="p">,</span> <span class="n">LAT</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Just like when renaming the namspace, you can rename the import items using the
+<code class="docutils literal notranslate"><span class="pre">as</span></code> keyword.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">private</span> <span class="kn">import</span> <span class="n">LAT</span> <span class="k">as</span> <span class="n">latitude</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;latitude:&quot;</span><span class="p">,</span> <span class="n">latitude</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To import multiple items from a module put them in a comma separated list.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">private</span> <span class="kn">import</span> <span class="n">LAT</span><span class="p">,</span> <span class="n">LNG</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;latitude:&quot;</span><span class="p">,</span> <span class="n">LAT</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;longitude:&quot;</span><span class="p">,</span> <span class="n">LNG</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To split the import statement into multiple lines use the <code class="docutils literal notranslate"><span class="pre">tuple</span></code> syntax by
+surrounding the import items with <code class="docutils literal notranslate"><span class="pre">(</span></code> <code class="docutils literal notranslate"><span class="pre">)</span></code> and add newlines after the commas.</p>
+<blockquote>
+<div><p>This is useful when either there are lots of items to import or the module
+name is especially long.</p>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">private</span> <span class="kn">import</span> <span class="p">(</span><span class="n">LAT</span><span class="p">,</span>
+                     <span class="n">LNG</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally you can use the <code class="docutils literal notranslate"><span class="pre">*</span></code> operator to import everything that is in the
+<code class="docutils literal notranslate"><span class="pre">__all__</span></code> list.</p>
+<blockquote>
+<div><p>This is known as star or wildcard imports and is usually considered bad
+practice. This is for a number of reasons, such as that not all modules
+define the <code class="docutils literal notranslate"><span class="pre">__all__</span></code> variable, that you rarely need or want the entire module
+in the global namespace, and that it makes it more difficult to tell where a
+particular variable, function or class came from. There are cases where it’s
+useful, but probably best to steer clear if it for now.</p>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">private</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;latitude:&quot;</span><span class="p">,</span> <span class="n">LAT</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;longitude:&quot;</span><span class="p">,</span> <span class="n">LNG</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="part-8-headers">
+<h2>Part 8: Headers</h2>
+<p>We’ve looked at headers that are received in the response already. We can also
+use headers in the request to provide information about the request we’re
+sending or about what we want back in the response.</p>
+<p>A few of the more common standard request headers include:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Accept</span></code>: what kind of content we want back (its media-type), for example <code class="docutils literal notranslate"><span class="pre">text/plain</span></code> or <code class="docutils literal notranslate"><span class="pre">image/png</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Accept-Encoding</span></code>: how we want the response compressed, for example <code class="docutils literal notranslate"><span class="pre">gzip</span></code> or <code class="docutils literal notranslate"><span class="pre">identity</span></code> (uncompressed)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Content-Type</span></code>: the media-type of the data we’re sending, for example <code class="docutils literal notranslate"><span class="pre">text/json</span></code> or <code class="docutils literal notranslate"><span class="pre">image/jpeg</span></code></p></li>
+</ul>
+<p>One of the most common use of headers is for authentication and that’s what
+we’ll be doing today using the <code class="docutils literal notranslate"><span class="pre">openuv.io</span></code> API.</p>
+</div>
+<div class="section" id="part-8-1-get-your-api-key">
+<h2>Part 8.1: Get Your API Key</h2>
+<div class="section" id="step-1-sign-up">
+<h3>Step 1: Sign up</h3>
+<p>In your web browser visit <a class="reference external" href="https://www.openuv.io/">openuv.io</a>. Click on <strong>Get My API Key</strong>
+then sign into a Google account.</p>
+<p>You will be directed to the API docs for the <code class="docutils literal notranslate"><span class="pre">uv</span></code> endpoint. Under the
+<code class="docutils literal notranslate"><span class="pre">Authorisation</span></code> header, you should see the text:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">To</span> <span class="n">authorise</span> <span class="n">your</span> <span class="n">client</span> <span class="n">just</span> <span class="n">add</span> <span class="n">your</span> <span class="n">API</span> <span class="n">Key</span> <span class="n">_______</span> <span class="n">to</span> <span class="s2">&quot;x-access-token&quot;</span>
+<span class="n">header</span> <span class="k">for</span> <span class="n">each</span> <span class="n">request</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-2-add-it-to-private-py">
+<h3>Step 2: Add it to <code class="docutils literal notranslate"><span class="pre">private.py</span></code></h3>
+<p>Copy the API key shown then add it to <code class="docutils literal notranslate"><span class="pre">private.py</span></code>. Don’t forget to add
+<code class="docutils literal notranslate"><span class="pre">OPENUV_KEY</span></code> to the <code class="docutils literal notranslate"><span class="pre">__all__</span></code> list.</p>
+<p><em>private.py</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Private data such as API keys that should not be committed&quot;&quot;&quot;</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;LAT&quot;</span><span class="p">,</span> <span class="s2">&quot;LNG&quot;</span><span class="p">,</span> <span class="s2">&quot;OPENUV_KEY&quot;</span><span class="p">]</span>
+
+<span class="n">LAT</span> <span class="o">=</span> <span class="s2">&quot;34.06&quot;</span>
+<span class="n">LNG</span> <span class="o">=</span> <span class="s2">&quot;-118.26&quot;</span>
+<span class="n">OPENUV_KEY</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>      <span class="c1"># your API key here</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-3-import-it-in-apis-py">
+<h3>Step 3: Import it in <code class="docutils literal notranslate"><span class="pre">apis.py</span></code></h3>
+<p>Then add <code class="docutils literal notranslate"><span class="pre">OPENUV_KEY</span></code> to the <code class="docutils literal notranslate"><span class="pre">import</span></code> statement in <code class="docutils literal notranslate"><span class="pre">apis.py</span></code>.</p>
+<p><em>apis.py</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">private</span> <span class="kn">import</span> <span class="n">LAT</span><span class="p">,</span> <span class="n">LNG</span><span class="p">,</span> <span class="n">OPENUV_API</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="part-8-2-sending-the-x-access-token-header">
+<h2>Part 8.2: Sending the <code class="docutils literal notranslate"><span class="pre">x-access-token</span></code> Header</h2>
+<p>Now that latitude, longitude, and API key imported from <code class="docutils literal notranslate"><span class="pre">private.py</span></code> we can use
+them in our request to <code class="docutils literal notranslate"><span class="pre">openuv.io</span></code>.</p>
+<p>The openuv API uses a custom header <code class="docutils literal notranslate"><span class="pre">x-access-token</span></code> for authentication. We’ll
+send it as part of the <code class="docutils literal notranslate"><span class="pre">headers</span></code> argument in the <code class="docutils literal notranslate"><span class="pre">get()</span></code> function.</p>
+<p><em>apis.py</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">request_uv</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Print UV and Ozone info for today&quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+        <span class="s2">&quot;https://api.openuv.io/api/v1/uv&quot;</span><span class="p">,</span>
+        <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;lat&#39;</span><span class="p">:</span> <span class="n">LAT</span><span class="p">,</span> <span class="s1">&#39;lng&#39;</span><span class="p">:</span> <span class="n">LNG</span><span class="p">},</span>
+        <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;x-access-token&#39;</span><span class="p">:</span> <span class="n">KEY</span><span class="p">}</span>
+    <span class="p">)</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;UV Index:&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">][</span><span class="s1">&#39;uv&#39;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ozone:&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">][</span><span class="s1">&#39;ozone&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="part-8-3-solo-exercise-rapidapi">
+<h2>Part 8.3: Solo Exercise - RapidAPI</h2>
+<p>RapidAPI is a platform and marketplace for APIs, so it’s a good resource for
+our lessons.</p>
+<ol>
+<li><p>Sign up for an account on <a class="reference external" href="https://rapidapi.com/signup">RapidAPI</a>.</p></li>
+<li><p>Choose one of the exercises below then click the link for your chosen
+exercise to open the relevant RapidAPI page.</p></li>
+<li><p>If there is a blue <code class="docutils literal notranslate"><span class="pre">Subscribe</span> <span class="pre">to</span> <span class="pre">Test</span></code> button in the bottom center pane
+click it then click through the steps to subscribe to the free pricing plan.</p></li>
+<li><p>RapidAPI uses two headers for authentication: <code class="docutils literal notranslate"><span class="pre">x-rapidapi-key</span></code> and
+<code class="docutils literal notranslate"><span class="pre">x-rapidapi-host</span></code>. Both values are shown in the middle pane under <code class="docutils literal notranslate"><span class="pre">Header</span> <span class="pre">Parameters</span></code>. Additional parameters will be listed below that under <code class="docutils literal notranslate"><span class="pre">Optional</span> <span class="pre">Parameters</span></code>.</p>
+<blockquote>
+<div><p>It is probably easier to copy the API key from the code samples right pane.</p>
+</div></blockquote>
+</li>
+</ol>
+<p><strong>Exercise Options:</strong></p>
+<ul>
+<li><p>Use the <a class="reference external" href="https://rapidapi.com/orthosie/api/shakespeare1?endpoint=apiendpoint_01bc580b-1a71-406e-b97a-817bc71fc96e">Shakespere API</a> to generate a random insult <br />
+Endpoint URL: <code class="docutils literal notranslate"><span class="pre">https://shakespeare1.p.rapidapi.com/shakespeare/generate/insult</span></code>  <br />
+Parameters: <code class="docutils literal notranslate"><span class="pre">limit</span></code> = <code class="docutils literal notranslate"><span class="pre">1</span></code> <br />
+Print: <code class="docutils literal notranslate"><span class="pre">contents</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">quote</span></code></p></li>
+<li><p>Use the <a class="reference external" href="https://rapidapi.com/aldair.sr99/api/world-population?endpoint=apiendpoint_4edc9a8e-1609-4dcc-9c83-aefe45b51a5f">WorldPopulation API</a> to find out the population of a country <br />
+Endpoint URL: <code class="docutils literal notranslate"><span class="pre">https://world-population.p.rapidapi.com/population</span></code> <br />
+Parameters: <code class="docutils literal notranslate"><span class="pre">country_name</span></code> = <code class="docutils literal notranslate"><span class="pre">Iceland</span></code> <br />
+Print: <code class="docutils literal notranslate"><span class="pre">body</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">population</span></code></p>
+<blockquote>
+<div><p>Note: Country names are capitalized.</p>
+</div></blockquote>
+</li>
+<li><p>Use the <a class="reference external" href="https://rapidapi.com/dev.jpsison/api/quotable-quotes?endpoint=apiendpoint_20722ca2-124e-44d6-ac21-ae384ee5c69d">Quotable Quotes API</a> to get a random quote <br />
+Endpoint URL: <code class="docutils literal notranslate"><span class="pre">https://quotable-quotes.p.rapidapi.com/randomQuotes</span></code> <br />
+Print: <code class="docutils literal notranslate"><span class="pre">quote</span></code> and <code class="docutils literal notranslate"><span class="pre">author</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="part-9-request-methods">
+<h2>Part 9: Request Methods</h2>
+<p>So far we’ve been doing <code class="docutils literal notranslate"><span class="pre">GET</span></code> requests. This is one of several <em>HTTP request
+methods</em>.</p>
+<p>The GET method is for retrieving (getting) data. Another example is the POST
+method which is for adding a new data record. Or the DELETE method which is for
+deleting data.</p>
+<p>Here are the most commonly used request methods.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>method</p></th>
+<th class="head"><p>r/w</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>GET</p></td>
+<td><p>read</p></td>
+<td><p>retrieve data</p></td>
+</tr>
+<tr class="row-odd"><td><p>POST</p></td>
+<td><p>write</p></td>
+<td><p>add/create a new record</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>either</p></td>
+<td><p>general processing</p></td>
+</tr>
+<tr class="row-odd"><td><p>PUT</p></td>
+<td><p>write</p></td>
+<td><p>replace all data for a specific record</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>write</p></td>
+<td><p>create a new specific record</p></td>
+</tr>
+<tr class="row-odd"><td><p>PATCH</p></td>
+<td><p>write</p></td>
+<td><p>partial update to specific record</p></td>
+</tr>
+<tr class="row-even"><td><p>DELETE</p></td>
+<td><p>write</p></td>
+<td><p>delete a specific record</p></td>
+</tr>
+</tbody>
+</table>
+<p>If you think of the resource as the noun, you can think of the request method
+as the verb–that is, the action to take.</p>
+<p>Here is an imaginary address book API. In this example, the noun would be the <code class="docutils literal notranslate"><span class="pre">contact(s)</span></code>.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>endpoint</p></th>
+<th class="head"><p>method</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>/contacts</p></td>
+<td><p>GET</p></td>
+<td><p>get a list of all contacts</p></td>
+</tr>
+<tr class="row-odd"><td><p>/contact/{id}</p></td>
+<td><p>GET</p></td>
+<td><p>get all of the details about a specific contact</p></td>
+</tr>
+<tr class="row-even"><td><p>/contacts</p></td>
+<td><p>POST</p></td>
+<td><p>add a new contact</p></td>
+</tr>
+<tr class="row-odd"><td><p>/contact/{id}</p></td>
+<td><p>PUT</p></td>
+<td><p>create or replace all data for contact</p></td>
+</tr>
+<tr class="row-even"><td><p>/contact/{id}</p></td>
+<td><p>PATCH</p></td>
+<td><p>update only the parts contact data that is submitted</p></td>
+</tr>
+<tr class="row-odd"><td><p>/contact/{id}</p></td>
+<td><p>DELETE</p></td>
+<td><p>delete the contact</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="part-9-1-request-methods-in-python">
+<h2>Part 9.1: Request methods in Python</h2>
+<p>As you’ve already learned, you use the <code class="docutils literal notranslate"><span class="pre">requests.get()</span></code> method to make a <code class="docutils literal notranslate"><span class="pre">GET</span></code>
+request in Python.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">requests</span></code> module has methods that coorespond to each of the other HTTP
+request methods as well. So, to make a <code class="docutils literal notranslate"><span class="pre">POST</span></code> method you would call
+<code class="docutils literal notranslate"><span class="pre">requests.post()</span></code>.  To make a <code class="docutils literal notranslate"><span class="pre">PUT</span></code> method, you call <code class="docutils literal notranslate"><span class="pre">requests.put()</span></code> and so
+on.</p>
+<p>Whereas the <code class="docutils literal notranslate"><span class="pre">requests.get()</span></code> method uses the <code class="docutils literal notranslate"><span class="pre">params</span></code> keyword argument, the
+<code class="docutils literal notranslate"><span class="pre">requests.post()</span></code>, <code class="docutils literal notranslate"><span class="pre">requests.put()</span></code> and <code class="docutils literal notranslate"><span class="pre">requests.patch()</span></code> methods use the
+<code class="docutils literal notranslate"><span class="pre">data</span></code> keyword argument.</p>
+<p>The <a class="reference external" href="https://jsonplaceholder.typicode.com/">jsonplaceholder API</a> exists for the
+explicit purpose of making fake JSON requests or generating fake data.</p>
+<p>I recommend taking a look at the <strong>Resources</strong> and <strong>Routes</strong> sections on that
+page and maybe checking out the
+<a class="reference external" href="https://jsonplaceholder.typicode.com/guide/">guide</a> to get an idea of how web
+APIs are sometimes structured.</p>
+<p>For this exercise we’ll be using the jsonplaceholder API to add a fake to-do.
+Add a new method <code class="docutils literal notranslate"><span class="pre">request_todo()</span></code>.</p>
+<p><em>apis.py</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">request_todo</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Use the jsonplaceholder API to add a fake to-do.&quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="s2">&quot;https://jsonplaceholder.typicode.com/todos&quot;</span><span class="p">,</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s2">&quot;laundry&quot;</span><span class="p">,</span>
+            <span class="s1">&#39;userId&#39;</span><span class="p">:</span> <span class="mi">1</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">response</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ERROR: Request failed: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">reason</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SUCCESS Added new to-do ID: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="part-9-2-post-put-and-patch">
+<h2>Part 9.2 <code class="docutils literal notranslate"><span class="pre">POST</span></code>, <code class="docutils literal notranslate"><span class="pre">PUT</span></code> and <code class="docutils literal notranslate"><span class="pre">PATCH</span></code></h2>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">POST</span></code> method is intended for requests that will <em>add a new record</em> to a
+<em>collection</em> of records. Endpoints should be <em>plural</em>, for example
+<code class="docutils literal notranslate"><span class="pre">/contacts</span></code> or <code class="docutils literal notranslate"><span class="pre">/contacts/42/addresses</span></code>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">PUT</span></code> method is intended for requests that will replace the <em>all of the
+data</em> of a <em>single, specific record</em>. It may be used to <em>create a new record</em>
+if the record for that endpoint does not exist. Endpoints should be
+<em>singular</em>, for example <code class="docutils literal notranslate"><span class="pre">/contact/42</span></code> or <code class="docutils literal notranslate"><span class="pre">/contact/42/usernames/twitter</span></code>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">PATCH</span></code> method is for requests that will <em>update only</em> the <em>part(s)</em> of
+<em>a single, specific record</em> that are included in the request data while
+leaving the rest of the record data alone. Endpoints should be <em>singluar</em>,
+for example <code class="docutils literal notranslate"><span class="pre">/contact/42</span></code> or <code class="docutils literal notranslate"><span class="pre">/contact/42/addresses/work</span></code>.</p></li>
+</ul>
+<p>The difference between <code class="docutils literal notranslate"><span class="pre">PUT</span></code> and <code class="docutils literal notranslate"><span class="pre">PATCH</span></code> can be confusing, so I’ll use our
+imaginary contacts API to demostrate.</p>
+<p>First we’ll use the <code class="docutils literal notranslate"><span class="pre">GET</span></code> method to take a look at an (imaginary) contact.</p>
+<p><em>Python shell</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">request</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;http://api.fake-contacts.com/contacts/1&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Joe&#39;s contact info&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</pre></div>
+</div>
+<p><em>output</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Joe</span><span class="s1">&#39;s contact info</span>
+<span class="p">{</span>
+  <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Joe Smith&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;phone&quot;</span><span class="p">:</span> <span class="s2">&quot;555-5555&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;joe.smith@gfake.com&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Then we’ll use the <code class="docutils literal notranslate"><span class="pre">PUT</span></code> method and submit a new <code class="docutils literal notranslate"><span class="pre">phone</span></code> number and print the
+updated data after another <code class="docutils literal notranslate"><span class="pre">GET</span></code> request.</p>
+<p><em>Python shell</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="sa">f</span><span class="s2">&quot;http://api.fake-contacts.com/contacts/</span><span class="si">{</span><span class="nb">id</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;phone&#39;</span><span class="p">:</span> <span class="s2">&quot;555-5556&quot;</span><span class="p">}</span>
+<span class="go">&gt;&gt;&gt;)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;http://api.fake-contacts.com/contacts/1&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Joe&#39;s contact info&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</pre></div>
+</div>
+<p><em>output</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Joe</span><span class="s1">&#39;s contact info</span>
+<span class="p">{</span>
+  <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+  <span class="s2">&quot;phone&quot;</span><span class="p">:</span> <span class="s2">&quot;555-5556&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="n">null</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Since the the request only included the <code class="docutils literal notranslate"><span class="pre">phone</span></code> data, all of the other fields
+were replaced with <code class="docutils literal notranslate"><span class="pre">null</span></code> (which is like Python’s <code class="docutils literal notranslate"><span class="pre">None</span></code>). Some APIs might
+instead refuse to process the update and respond with a <code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">(Bad</span> <span class="pre">Request)</span></code>
+status if all expected data fields are not present in the request.</p>
+<p>Here’s what it would have looked like if we had instead used a <code class="docutils literal notranslate"><span class="pre">PATCH</span></code> request instead.</p>
+<p><em>Python shell</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="sa">f</span><span class="s2">&quot;http://api.fake-contacts.com/contacts/</span><span class="si">{</span><span class="nb">id</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;phone&#39;</span><span class="p">:</span> <span class="s2">&quot;555-5556&quot;</span><span class="p">}</span>
+<span class="go">&gt;&gt;&gt;)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;http://api.fake-contacts.com/contacts/1&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Joe&#39;s contact info&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</pre></div>
+</div>
+<p><em>output</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Joe</span><span class="s1">&#39;s contact info</span>
+<span class="p">{</span>
+  <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Joe Smith&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;phone&quot;</span><span class="p">:</span> <span class="s2">&quot;555-5556&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;joe.smith@fake.com&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><em><strong>Important</strong></em></p>
+<p>While I have described the intended purpose of each method according to both
+the HTTP specification and modern best practices, there is nothing in the
+technology to enforce this behavior. The behavior of any given API depends
+entirely on its implementation.</p>
+<p>In reality, you’ll see all kinds of things–partial updates that respond to
+<code class="docutils literal notranslate"><span class="pre">POST</span></code> requests, endpoints that look like <code class="docutils literal notranslate"><span class="pre">/update_phone</span></code> and respond to <code class="docutils literal notranslate"><span class="pre">GET</span></code>
+requests, deletes that respond to <code class="docutils literal notranslate"><span class="pre">POST</span></code> methods, and anything else you can
+imagine.</p>
+<p><strong>You can’t count on APIs to behave according to best practices.</strong> Start by
+looking to an APIs documentation. Ultimately though, test its behavior yourself
+with dummy data before relying on it for anything you care about.</p>
+</div>
+<div class="section" id="part-9-3-request-methods-using-curl">
+<h2>Part 9.3 Request methods using <code class="docutils literal notranslate"><span class="pre">curl</span></code></h2>
+<p>Curl defaults to the <code class="docutils literal notranslate"><span class="pre">GET</span></code> request methods for <code class="docutils literal notranslate"><span class="pre">http[s]</span></code> requests but you can
+also use the <code class="docutils literal notranslate"><span class="pre">-X</span></code> or <code class="docutils literal notranslate"><span class="pre">--request</span></code> flag to specify the request method.</p>
+<p>For example</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ curl -X DELETE <span class="s2">&quot;https://jsonplaceholder.typicode.com/todos/2&quot;</span>
+</pre></div>
+</div>
+<p>You can also use the <code class="docutils literal notranslate"><span class="pre">-d</span></code> or <code class="docutils literal notranslate"><span class="pre">--data</span></code> flag  to pass data along with the <code class="docutils literal notranslate"><span class="pre">-H</span></code> or
+<code class="docutils literal notranslate"><span class="pre">--header</span></code> flag to specify the <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code>. For example, you could do the
+same <code class="docutils literal notranslate"><span class="pre">to-do</span></code> exercise from above using curl.</p>
+<blockquote>
+<div><p>Sidenote: You can use <code class="docutils literal notranslate"><span class="pre">\</span></code> on the command line to break a command into multiple lines.</p>
+</div></blockquote>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>curl -X POST <span class="se">\</span>
+     --data <span class="s1">&#39;{&quot;title&quot;: &quot;laundry&quot;, &quot;userId&quot;: 1}&#39;</span> <span class="se">\</span>
+     --header <span class="s1">&#39;Content-Type: application/json&#39;</span>  <span class="se">\</span>
+     <span class="s2">&quot;https://jsonplaceholder.typicode.com/todos&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="part-9-4-solo-exercise">
+<h2>Part 9.4 Solo Exercise</h2>
+<p>Use the <a class="reference external" href="https://rapidapi.com/orthosie/api/pirate-translator">Pirate Translator API</a> translate text into pirate-speak. <br />
+Endpoint URL: <code class="docutils literal notranslate"><span class="pre">https://piratespeak.p.rapidapi.com/pirate.json</span></code>  <br />
+Method: <code class="docutils literal notranslate"><span class="pre">POST</span></code> <br />
+Data: <code class="docutils literal notranslate"><span class="pre">text</span></code> = <code class="docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">friend.&quot;</span></code> <br />
+Print: <code class="docutils literal notranslate"><span class="pre">contents</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">translated</span></code></p>
+<blockquote>
+<div><p>Sidenote: You may have noticed that this API does not conform to the practice
+of the <code class="docutils literal notranslate"><span class="pre">POST</span></code> method being used for adding new data. Another common use of
+the <code class="docutils literal notranslate"><span class="pre">POST</span></code> method is for cases when a large amount of data may need to be
+submitted, due to browser and web server limits on URI length.</p>
+</div></blockquote>
+</div>
+<div class="section" id="part-10-final-project">
+<h2>Part 10. Final Project</h2>
+<p>Use the Trello API to build a personal Trello CLI.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://developer.atlassian.com/cloud/trello/rest/api-group-actions/">Trello API Docs</a></p></li>
+<li><p><a class="reference external" href="https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/">Trello API Intro</a></p></li>
+<li><p><a class="reference external" href="http://www.trello.org/help.html">help</a></p></li>
+</ul>
+<div class="section" id="phase-1-print-the-open-cards-from-your-to-do-list">
+<h3>Phase 1: Print the open cards from your <code class="docutils literal notranslate"><span class="pre">To</span> <span class="pre">Do</span></code> list.</h3>
+<ol>
+<li><p>Sign into your Trello account and get an API key and token by visiting
+<a class="reference external" href="https://trello.com/app-key">trello.com/app-key</a>.</p>
+<p>Each API request will use:</p>
+<ul class="simple">
+<li><p><strong>Base URL</strong>: <code class="docutils literal notranslate"><span class="pre">https://api.trello.com/1</span></code></p></li>
+<li><p><strong>Params</strong>: <code class="docutils literal notranslate"><span class="pre">key</span></code> and <code class="docutils literal notranslate"><span class="pre">token</span></code></p></li>
+</ul>
+</li>
+<li><p>Find the <code class="docutils literal notranslate"><span class="pre">id</span></code> of your <code class="docutils literal notranslate"><span class="pre">To</span> <span class="pre">Do</span></code> list.</p>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">/members/{id}/boards</span></code> endpoint and the special member <code class="docutils literal notranslate"><span class="pre">id</span></code> of <code class="docutils literal notranslate"><span class="pre">me</span></code>
+to get a list of your open boards.</p>
+<ul class="simple">
+<li><p>Filter to only open boards by passing the <code class="docutils literal notranslate"><span class="pre">filter</span></code>
+parameter with the value <code class="docutils literal notranslate"><span class="pre">open</span></code>.</p></li>
+<li><p>Include the board <code class="docutils literal notranslate"><span class="pre">lists</span></code> in the results by passing the <code class="docutils literal notranslate"><span class="pre">lists</span></code> param with the
+value <code class="docutils literal notranslate"><span class="pre">open</span></code>.</p></li>
+<li><p>Find your board with the <code class="docutils literal notranslate"><span class="pre">name</span></code> <code class="docutils literal notranslate"><span class="pre">QCC:</span> <span class="pre">{your</span> <span class="pre">name}</span></code>, then the list with the
+<code class="docutils literal notranslate"><span class="pre">name</span></code> <code class="docutils literal notranslate"><span class="pre">To</span> <span class="pre">Do</span></code> on that board. Save the <code class="docutils literal notranslate"><span class="pre">id</span></code> of that list.</p></li>
+</ul>
+</li>
+<li><p>Get the cards on your <code class="docutils literal notranslate"><span class="pre">To</span> <span class="pre">Do</span></code> list.</p>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">/lists/{id}/cards</span></code> endpoint.</p>
+<ul class="simple">
+<li><p>Filter to only open cards by passing the <code class="docutils literal notranslate"><span class="pre">cards</span></code>
+parameter with the value <code class="docutils literal notranslate"><span class="pre">visible</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Print the card info.</p>
+<p>For each card:</p>
+<ul class="simple">
+<li><p>Optional: Skip any that you are not a member of by checking if <code class="docutils literal notranslate"><span class="pre">subscribed</span></code>
+is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
+<li><p>Print the card <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">shortUrl</span></code>, <code class="docutils literal notranslate"><span class="pre">due</span></code> date and <code class="docutils literal notranslate"><span class="pre">labels</span></code> <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="phase-2-show-card-details">
+<h3>Phase 2: Show card details</h3>
+<ol class="simple">
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> function to print a number next to each card name.</p></li>
+<li><p>After printing the list of cards, get input from the user.</p>
+<ul class="simple">
+<li><p>If they enter a number of a listed card, print the <code class="docutils literal notranslate"><span class="pre">desc</span></code>, any <code class="docutils literal notranslate"><span class="pre">checklist</span></code>
+items and any other card details you would like to see for the chosen
+card.</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p>If they enter <code class="docutils literal notranslate"><span class="pre">q</span></code> (or some other command for quit) exit the program.</p></li>
+</ul>
+</div>
+<div class="section" id="phase-3-card-actions">
+<h3>Phase 3: Card actions</h3>
+<ol class="simple">
+<li><p>After printing the card list, provide a menu of card actions that a user can
+take on a card, giving each a letter or command word.</p>
+<ul class="simple">
+<li><p><strong>Show card</strong>: print card info (from Phase 2)</p></li>
+<li><p><strong>Mark as in-progress</strong>: move the card to the <code class="docutils literal notranslate"><span class="pre">In-Progress</span></code> list.</p></li>
+<li><p><strong>Mark as Done</strong>: move card to the <code class="docutils literal notranslate"><span class="pre">Done</span></code> list and set <code class="docutils literal notranslate"><span class="pre">dueComplete</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
+</ul>
+</li>
+<li><p>If the user includes the letter or command word in the input, use the API to
+take the appropriate action for that card.</p></li>
+</ol>
+</div>
+<div class="section" id="phase-4-more-card-views">
+<h3>Phase 4: More card views</h3>
+<p>Provide a way for the user to optionally view more or different card views. For example:</p>
+<ul class="simple">
+<li><p>Make the default view a dashboard that prints a simplified list of cards from
+each of the  <code class="docutils literal notranslate"><span class="pre">Done</span></code>, <code class="docutils literal notranslate"><span class="pre">In-Progress</span></code>, <code class="docutils literal notranslate"><span class="pre">To</span> <span class="pre">Do</span></code> and <code class="docutils literal notranslate"><span class="pre">Coming</span> <span class="pre">Up</span></code> lists.</p></li>
+<li><p>Add an option to specify which list(s) to include. (For example,
+<code class="docutils literal notranslate"><span class="pre">In-Progress</span></code> and <code class="docutils literal notranslate"><span class="pre">To</span> <span class="pre">Do</span></code>.)</p></li>
+<li><p>Add a search option, that allows the user to specify a part of a name and/or
+description to search for.</p></li>
+<li><p>Allow the user to filter cards by fields, such as the <code class="docutils literal notranslate"><span class="pre">label</span></code>(s), if you are
+<code class="docutils literal notranslate"><span class="pre">subscribed</span></code>, <code class="docutils literal notranslate"><span class="pre">due</span></code> date (overdue, due soon), etc.</p></li>
+</ul>
+</div>
+<div class="section" id="more-info">
+<h3>More Info</h3>
+<p>This will be a medium-term project.</p>
+<p>I expect the project to follow the requirements for <strong>Phase 1</strong> fairly closely
+and it is the only one that I provided detailed instructions for.</p>
+<p>From there on, you will need to dig through the API docs to figure out the best
+way to accomplish your goals.</p>
+<p>You can also consider the rest more guidelines or suggestions. The goal is to
+make a tool that you will use on a regular basis. Focus on what will make it
+most useful to make you more productive.</p>
+</div>
+<div class="section" id="tips-and-reminders">
+<h3>Tips and Reminders</h3>
+<ul class="simple">
+<li><p>Choose a goal for each week. <strong>Phase 1</strong> should be doable in a week or maybe
+two. After that, your goal choices will be your own. Consider posting your
+goal for the week to discord to help keep you on track.</p></li>
+<li><p>Break your immediate work into bite-sized pieces. Think of the easiest thing
+you can do that will mean making a step forward with tangible, visible
+progress. If it doesn’t feel almost <em>too</em> easy, figure out how to break it
+down further.</p></li>
+<li><p>Save your progress and run your script frequently after any change, even when
+the change seem insignifigent. You want to catch errors and unexpected
+results as soon as they happen.</p></li>
+<li><p>Don’t be shy about asking for help from me or your fellow classmates.
+<strong>Everyone gets stuck sometimes.</strong> Don’t let yourself spiral or stall.</p></li>
+<li><p>I suggest starting a new repo for this project.</p></li>
+<li><p>Commit and push frequently, at a minimum at the end of each coding session,
+ideally after any feature addition, behavior change, or refactor (code
+improvement that does not change the behavior). Review the diff of your
+changes before each commit, as well as at the beginning of every coding
+session. (Hopefully there are none for the latter most of the time.)</p></li>
+<li><p>Consider adding your own Trello cards for the next bite-size step or two.
+You could even make a new board if you’d like. But be careful not to spend
+too much time planning your project–you should be spending no more than a
+few minutes a day gardening your tasks/cards/whatever. And don’t plan too far
+ahead–your goals and plans will change as the project matures, so planning
+too far into the future is counter-productive.</p></li>
+<li><p>Consider a DEBUG mode that can print out additional details to help with
+debugging.</p></li>
+<li><p>Give me the opportunity to review your code when you’re done with any major
+step. Perhaps also give your classmate(s) an opportunity to review your code
+as well. Code reviews are a good way to get feedback and course-correct
+early, as well as learning from each other.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="see-also">
+<h2>See Also</h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/URL#Syntax">URL Syntax</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/List_of_HTTP_header_fields">List of HTTP header fields</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">List of HTTP status codes</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods">HTTP request methods</a></p></li>
+<li><p><a class="reference external" href="https://requests.readthedocs.io/en/master/">Requests: HTTP for Humans</a> - docs for the Python <code class="docutils literal notranslate"><span class="pre">requests</span></code> module</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "alissa-huskey/python-class",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lessons"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="misc.html" title="previous page">Misc</a>
+    <a class='right-next' id="next-link" href="battle.html" title="next page">PyPet Battle</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
