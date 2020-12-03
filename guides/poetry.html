@@ -1,0 +1,988 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Poetry &#8212; Python Class</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://alissa-huskey.github.io/python-class/guides/poetry.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Mac Dev Env for Python" href="mac.html" />
+    <link rel="prev" title="Git on Repl.it" href="git-on-replit.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://alissa-huskey.github.io/python-class/guides/poetry.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Poetry" />
+<meta property="og:description" content="Poetry  For our purposes, Poetry provides:  dependency management: keep track of Python modules that you need for a project and easily install them in any envir" />
+
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Python Class</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Python Class
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Lessons
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../lessons/fundamentals.html">
+   Fundamentals
+  </a>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/expressions.html">
+     Expressions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/statements.html">
+     Statements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/expressions_vs_statements.html">
+     Expressions vs. Statements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/flow.html">
+     Program Flow
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-up">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../lessons/misc.html">
+   Misc
+  </a>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/web-apis.html">
+     Web APIs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/battle.html">
+     PyPet Battle
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-up">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../lessons/game-book.html">
+   Invent Games Book
+  </a>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/03_guess_the_number.html">
+     Chapter 3: Guess the Number
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/05_dragon_realm.html">
+     Chapter 5: Dragon Realm
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-up">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Tool Guides
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="git-concepts.html">
+   Git Concepts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="vscode-intro.html">
+   VS Code Intro
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="console.html">
+   A Brief Tour of the Console
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_shell.html">
+   Python Shell
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="replit.html">
+   Repl.it Tips
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="git-on-replit.html">
+   Git on Repl.it
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Poetry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mac.html">
+   Mac Dev Env for Python
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/dicts.html">
+   Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/lists.html">
+   Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/template.py">
+   Script Template
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Exercises
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/list-exercises.html">
+   List Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/list-string-exercises.html">
+   List String Exercises
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/alissa-huskey/python-class"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/alissa-huskey/python-class/edit/master/docs/guides/poetry.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#table-of-contents">
+   Table of Contents
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quickref">
+   Quickref
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#project-setup">
+   Project Setup
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#new-projects">
+     New projects
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#existing-projects">
+     Existing projects
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#project-configuration">
+   Project configuration
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#more-info">
+     More info
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#managing-dependencies">
+   Managing Dependencies
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adding-removing-and-installing">
+     Adding, removing and installing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#versions">
+     Versions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       More info
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-poetry">
+   Using Poetry
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-info">
+   Getting info
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#executable-scripts">
+   Executable scripts
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     More info
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installing-your-package">
+   Installing your package
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-poetry-with-vs-code">
+   Using Poetry with VS Code
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   More info
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="poetry">
+<h1>Poetry</h1>
+<p>For our purposes, <a class="reference external" href="https://python-poetry.org/docs">Poetry</a> provides:</p>
+<ul class="simple">
+<li><p><strong>dependency management</strong>: keep track of Python modules that you need for
+a project and easily install them in any environment.</p></li>
+<li><p><strong>virtual environments</strong>: operating with an isolated set of dependencies.</p>
+<ul>
+<li><p><strong>standardization</strong>: tools for starting new projects according to
+best practices.</p></li>
+</ul>
+</li>
+</ul>
+<p>Additionally, Poetry is used for:</p>
+<ul class="simple">
+<li><p><strong>packaging</strong>: building a Python module and publishing it to
+<a class="reference external" href="https://pypi.org/">PyPi</a>.</p></li>
+</ul>
+<blockquote>
+<div><p>Note: Poetry does not manage installing or switching between Python versions.
+It just make sure that the <code class="docutils literal notranslate"><span class="pre">python</span></code> command points to the right version, or
+prints an error if it cannot be found.
+For managing Python versions, use <a class="reference external" href="https://github.com/pyenv/pyenv">pyenv</a> or <a class="reference external" href="https://github.com/pyenv-win/pyenv-win">pyenv-win</a>.</p>
+</div></blockquote>
+<div class="section" id="table-of-contents">
+<h2>Table of Contents</h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#quickref">Quickref</a></p></li>
+<li><p><a class="reference external" href="#project-setup">Project Setup</a></p>
+<ul>
+<li><p><a class="reference external" href="#new-projects">New projects</a></p></li>
+<li><p><a class="reference external" href="#existing-projects">Existing projects</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#project-configuration">Project configuration</a></p></li>
+<li><p><a class="reference external" href="#managing-dependencies">Managing Dependencies</a></p>
+<ul>
+<li><p><a class="reference external" href="#versions">Versions</a></p></li>
+<li><p><a class="reference external" href="#adding-removing-and-installing">Adding, removing and installing</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#using-poetry">Using Poetry</a></p></li>
+<li><p><a class="reference external" href="#getting-info">Getting info</a></p></li>
+<li><p><a class="reference external" href="#executable-scripts">Executable Scripts</a></p></li>
+<li><p><a class="reference external" href="#installing-your-package">Installing your package</a></p></li>
+<li><p><a class="reference external" href="#using-poetry-with-vs-code">Using Poetry with VS Code</a></p></li>
+</ul>
+</div>
+<div class="section" id="quickref">
+<h2>Quickref</h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry new <span class="o">[</span>--name &lt;package-name&gt;<span class="o">]</span> &lt;path&gt;   <span class="c1"># create a directory structure and generate files</span>
+poetry init                                 <span class="c1"># interactively generate pyproject.toml</span>
+
+poetry add <span class="o">[</span>--dev<span class="o">]</span> &lt;module&gt;                 <span class="c1"># add a dependency to pyproject.toml and install it in the virtual env</span>
+poetry remove <span class="o">[</span>--dev<span class="o">]</span> &lt;module&gt;              <span class="c1"># remove a dependency from pyproject.toml and uninstall it from the virtual env</span>
+poetry install <span class="o">[</span>--no-root<span class="o">]</span>                  <span class="c1"># install the dependencies [and the package] in the virtual env</span>
+
+poetry shell                                <span class="c1"># start a virtual environment shell</span>
+poetry run &lt;cmd&gt; <span class="o">[</span>&lt;arg&gt;...<span class="o">]</span>                 <span class="c1"># run the command [with args] in the virtual environment</span>
+
+poetry show <span class="o">[</span>--tree<span class="o">]</span> <span class="o">[</span>&lt;package&gt;<span class="o">]</span>            <span class="c1"># list dependencies for a package</span>
+poetry env <span class="o">[</span>info <span class="o">[</span>--path<span class="o">]]</span>                  <span class="c1"># display information about the current virtual env</span>
+
+pip install .                               <span class="c1"># do a system-wide install of your project</span>
+pip uninstall &lt;package-name&gt;                <span class="c1"># uninstall package from your system</span>
+
+poetry <span class="nb">help</span> <span class="o">[</span>command<span class="o">]</span>                       <span class="c1"># show poetry help</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="project-setup">
+<h2>Project Setup</h2>
+<div class="section" id="new-projects">
+<h3>New projects</h3>
+<p>When starting a project from scratch, use the <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">new</span></code> command to create a
+directory and generate files.</p>
+<p>Usage: <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">new</span> <span class="pre">[--name</span> <span class="pre">&lt;package-name&gt;]</span> <span class="pre">&lt;path&gt;</span></code></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">--name</span></code> flag is optional. If it is not passed, the package name defaults
+to the directory name.</p>
+<p>For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ poetry new --name demo poetry-demo
+</pre></div>
+</div>
+<p>Will create the following files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>poetry-demo
+├── README.rst
+├── demo
+│   └── __init__.py
+├── pyproject.toml
+└── tests
+    ├── __init__.py
+    └── test_demo.py
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">README.rst</span></code>: an empty README file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>: the Poetry config file for this project</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">demo/</span></code>: the directory where your code should go</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tests/</span></code>: the directory where your tests should go</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tests/test_demo.py</span></code>: a test skeleton</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">*/__init__.py</span></code>: a special file that indicates that all the files in the same directory are part of a package</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">poetry.lock</span></code>: (created later, do not edit) generated based on the contents of <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>. This includes dependency details for the specific versions installed by poetry.</p></li>
+</ul>
+</div>
+<div class="section" id="existing-projects">
+<h3>Existing projects</h3>
+<p>To start using Poetry on an existing project, use the <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">init</span></code>
+command to interactively generate the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file.</p>
+</div>
+</div>
+<div class="section" id="project-configuration">
+<h2>Project configuration</h2>
+<p>The heart of Poetry is in the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file.</p>
+<p>Here are the contents of the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file from the <code class="docutils literal notranslate"><span class="pre">python-demo</span></code> project:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.poetry]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s">&quot;demo&quot;</span>
+<span class="n">version</span> <span class="o">=</span> <span class="s">&quot;0.1.0&quot;</span>
+<span class="n">description</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+<span class="n">authors</span> <span class="o">=</span> <span class="k">[&quot;... &lt;...@gmail.com&gt;&quot;]</span>
+
+<span class="k">[tool.poetry.dependencies]</span>
+<span class="n">python</span> <span class="o">=</span> <span class="s">&quot;^3.8&quot;</span>
+
+<span class="k">[tool.poetry.dev-dependencies]</span>
+<span class="n">pytest</span> <span class="o">=</span> <span class="s">&quot;^5.2&quot;</span>
+
+<span class="k">[build-system]</span>
+<span class="n">requires</span> <span class="o">=</span> <span class="k">[&quot;poetry&gt;=0.12&quot;]</span>
+<span class="n">build-backend</span> <span class="o">=</span> <span class="s">&quot;poetry.masonry.api&quot;</span>
+</pre></div>
+</div>
+<p>Here is some information on some of the configuration parameters available.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[tool.poetry]</span></code>: This section includes details about your project.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">readme</span></code>: (optional) readme file path</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">repository</span></code>: (optional) repository URL</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">documentation</span></code>: (optional) documentation URL</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[tool.poetry.dependencies]</span></code>:</p>
+<ul>
+<li><p>the version of Python to use</p></li>
+<li><p>a list of Python modules that this project depends on. (For example <code class="docutils literal notranslate"><span class="pre">requests</span></code>.)</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[tool.poetry.dev-dependencies]</span></code>: a list of Python modules that this project uses during development. (For example <code class="docutils literal notranslate"><span class="pre">ipython</span></code>.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[build-system]</span></code>: details needed by Poetry. (You should rarely if ever need to change this section.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[tool.poetry.scripts]</span></code>: (optional) python executable scripts to be generated and installed as part of your package. See <a class="reference external" href="#Scripts">Scripts</a> below.</p></li>
+</ul>
+<div class="section" id="more-info">
+<h3>More info</h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://python-poetry.org/docs/pyproject/">python-poetry.org: The pyproject.toml file</a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="managing-dependencies">
+<h2>Managing Dependencies</h2>
+<div class="section" id="adding-removing-and-installing">
+<h3>Adding, removing and installing</h3>
+<p>Dependencies in the <code class="docutils literal notranslate"><span class="pre">[tool.poetry.dependencies]</span></code> and
+<code class="docutils literal notranslate"><span class="pre">[tool.poetry.dev-dependencies]</span></code> sections of <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> have the format
+of:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;package&gt;</span> <span class="pre">=</span> <span class="pre">&lt;version&gt;</span></code></p>
+<p>You can edit the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file directly but it is probably easiest to
+use the <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">add</span></code> and <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">remove</span></code> commands. They update the
+<code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file and also install or uninstall the modules in the virtual
+environment.</p>
+<p>For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ poetry add --dev ipython
+$ poetry add requests
+$ poetry remove --dev xdoctest
+$ poetry remove pandas
+</pre></div>
+</div>
+<p>If you edit the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file directly or if you check out a project
+on a new computer, use the <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">install</span></code> command to install all modules in
+the virtual environment. The optional <code class="docutils literal notranslate"><span class="pre">--no-root</span></code> flag will install only the
+dependencies but not your own package.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ poetry install --no-root   <span class="c1"># install dependencies in the virtual env</span>
+$ poetry install             <span class="c1"># install dependencies and your package in the virtual env</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="versions">
+<h3>Versions</h3>
+<p>Most Python packages use semantic versioning, which has the form of:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;major&gt;</span></code>.<code class="docutils literal notranslate"><span class="pre">&lt;minor&gt;</span></code>.<code class="docutils literal notranslate"><span class="pre">&lt;patch&gt;</span></code></p>
+<p>In <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> versions can have formats like:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">1.2.3</span></code>: only version <code class="docutils literal notranslate"><span class="pre">1.2.3</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">^1.2</span></code>: at least <code class="docutils literal notranslate"><span class="pre">1.2</span></code> and updates allowed within version <code class="docutils literal notranslate"><span class="pre">1</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">~1.2</span></code>: at least <code class="docutils literal notranslate"><span class="pre">1.2</span></code> and updates allowed within version <code class="docutils literal notranslate"><span class="pre">1.2</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1.2.*</span></code>: at least <code class="docutils literal notranslate"><span class="pre">1.2</span></code> and updates allowed within version <code class="docutils literal notranslate"><span class="pre">1.2</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span> <span class="pre">1.2,</span> <span class="pre">&lt;</span> <span class="pre">1.5</span></code>: at least <code class="docutils literal notranslate"><span class="pre">1.2</span></code> and less than <code class="docutils literal notranslate"><span class="pre">1.5</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span> <span class="pre">1.2,</span> <span class="pre">!</span> <span class="pre">1.2.5</span></code>: at least <code class="docutils literal notranslate"><span class="pre">1.2</span></code> but not <code class="docutils literal notranslate"><span class="pre">1.2.5</span></code></p></li>
+</ul>
+<div class="section" id="id1">
+<h4>More info</h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://semver.org/">Semantic Versioning</a></p></li>
+<li><p><a class="reference external" href="https://python-poetry.org/docs/versions/">python-poetry.org: Versions and constraints</a></p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="using-poetry">
+<h2>Using Poetry</h2>
+<p>Once you have all of your dependencies installed you will need to run your
+code and executables from the virtual environment.</p>
+<p>Say I have a file <code class="docutils literal notranslate"><span class="pre">astros.py</span></code> that uses the <code class="docutils literal notranslate"><span class="pre">requests</span></code> module.</p>
+<p><em>demo/astros.py</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Print out the astronauts currently in space using NASAs astros API</span>
+<span class="sd">    https://api.nasa.gov/</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://api.open-notify.org/astros.json&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">response</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ERROR: Request failed: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">reason</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;There are </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;number&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> people in space today.&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">astro</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;people&#39;</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">astro</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Here I run the <code class="docutils literal notranslate"><span class="pre">astros.py</span></code> script from normal shell where the <code class="docutils literal notranslate"><span class="pre">requests</span></code>
+module is not installed.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python demo/astros.py
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;demo/astros.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="kn">import</span> <span class="nn">requests</span>
+<span class="ne">ModuleNotFoundError</span><span class="p">:</span> <span class="n">No</span> <span class="n">module</span> <span class="n">named</span> <span class="s1">&#39;requests&#39;</span>
+</pre></div>
+</div>
+<p>Similarly, here I call <code class="docutils literal notranslate"><span class="pre">xdoctest</span></code> which is installed through the <code class="docutils literal notranslate"><span class="pre">xdoctest</span></code>
+module. It is not found in the normal shell because that module is only
+installed in the virtual environment.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ xdoctest --version
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">zsh</span><span class="p">:</span> <span class="n">command</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span> <span class="n">xdoctest</span>
+</pre></div>
+</div>
+<p>The easiest way to run commands from the virtual environment is to use the
+<code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">shell</span></code> command. It will update all of your paths so that your
+dependencies, executables installed from modules (like <code class="docutils literal notranslate"><span class="pre">ipython</span></code>), and your own
+package scripts and code can be found.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ poetry shell
+Spawning shell within .../virtualenvs/demo-IDGvf4ns-py3.8
+<span class="o">(</span>demo-IDGvf4ns-py3.8<span class="o">)</span> $
+</pre></div>
+</div>
+<p>Now if I run the same commands they work as expected until you exit the shell.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>demo-IDGvf4ns-py3.8<span class="o">)</span> $ python demo/astros.py
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">There</span> <span class="n">are</span> <span class="mi">7</span> <span class="n">people</span> <span class="ow">in</span> <span class="n">space</span> <span class="n">today</span><span class="o">.</span>
+<span class="o">-</span> <span class="n">Sergey</span> <span class="n">Ryzhikov</span>
+<span class="o">-</span> <span class="n">Kate</span> <span class="n">Rubins</span>
+<span class="o">-</span> <span class="n">Sergey</span> <span class="n">Kud</span><span class="o">-</span><span class="n">Sverchkov</span>
+<span class="o">-</span> <span class="n">Mike</span> <span class="n">Hopkins</span>
+<span class="o">-</span> <span class="n">Victor</span> <span class="n">Glover</span>
+<span class="o">-</span> <span class="n">Shannon</span> <span class="n">Walker</span>
+<span class="o">-</span> <span class="n">Soichi</span> <span class="n">Noguchi</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>demo-IDGvf4ns-py3.8<span class="o">)</span> $ xdoctest --version
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">0.15</span><span class="o">.</span><span class="mi">0</span>
+</pre></div>
+</div>
+<p>Alternately, you can also use the <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">run</span></code> command from a normal shell to
+run any command from the virtual environment.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ poetry run xdoctest --version
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">0.15</span><span class="o">.</span><span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="getting-info">
+<h2>Getting info</h2>
+<p>To list the currently installed packages use the <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">show</span></code> command.  The
+<code class="docutils literal notranslate"><span class="pre">--tree</span></code> flag formats the list as a dependency tree.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ poetry show --tree
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ipython 7.19.0 IPython: Productive Interactive Computing
+├── appnope *
+├── backcall *
+...
+pytest 5.4.3 pytest: simple powerful testing with Python
+├── atomicwrites &gt;=1.0
+...
+requests 2.25.0 Python HTTP for Humans.
+├── certifi &gt;=2017.4.17
+...
+xdoctest 0.15.0 A rewrite of the builtin doctest module
+└── six *
+</pre></div>
+</div>
+<p>To get information about the virtual environment for the current project use
+the <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">env</span> <span class="pre">info</span></code> command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ poetry env info
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Virtualenv</span>
+<span class="n">Python</span><span class="p">:</span>         <span class="mf">3.8</span><span class="o">.</span><span class="mi">1</span>
+<span class="n">Implementation</span><span class="p">:</span> <span class="n">CPython</span>
+<span class="n">Path</span><span class="p">:</span>           <span class="o">.../</span><span class="n">virtualenvs</span><span class="o">/</span><span class="n">demo</span><span class="o">-</span><span class="n">IDGvf4ns</span><span class="o">-</span><span class="n">py3</span><span class="o">.</span><span class="mi">8</span>
+<span class="n">Valid</span><span class="p">:</span>          <span class="kc">True</span>
+
+<span class="n">System</span>
+<span class="n">Platform</span><span class="p">:</span> <span class="n">darwin</span>
+<span class="n">OS</span><span class="p">:</span>       <span class="n">posix</span>
+<span class="n">Python</span><span class="p">:</span>   <span class="o">.../.</span><span class="n">pyenv</span><span class="o">/</span><span class="n">versions</span><span class="o">/</span><span class="mf">3.8</span><span class="o">.</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">--path</span></code> flag will print just the path to the virtual env.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ poetry env info --path
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.../</span><span class="n">virtualenvs</span><span class="o">/</span><span class="n">demo</span><span class="o">-</span><span class="n">IDGvf4ns</span><span class="o">-</span><span class="n">py3</span><span class="o">.</span><span class="mi">8</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="executable-scripts">
+<h2>Executable scripts</h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">[tool.poetry.scripts]</span></code> section of <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> lets us specify a list
+of executables to be generated and installed as part of the package.</p>
+<p>It takes the form of:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;command&gt;</span> <span class="pre">=</span> <span class="pre">&lt;python</span> <span class="pre">object</span> <span class="pre">reference&gt;</span></code></p>
+<p>Where <code class="docutils literal notranslate"><span class="pre">&lt;python</span> <span class="pre">object</span> <span class="pre">reference&gt;</span></code> can take the form of:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;package&gt;.&lt;module&gt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;package&gt;.&lt;module&gt;:&lt;function&gt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;package&gt;.&lt;module&gt;:&lt;object&gt;.&lt;method&gt;</span></code></p></li>
+</ul>
+<p>Imagine we have the file <code class="docutils literal notranslate"><span class="pre">demo/hello.py</span></code>.</p>
+<p><em>demo/hello.py</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+  <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>We can run this command like usual from the command line:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python demo/hello.py
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hello</span> <span class="n">world</span>
+</pre></div>
+</div>
+<p>We can use Poetry to create a <code class="docutils literal notranslate"><span class="pre">hello</span></code> executable by the <code class="docutils literal notranslate"><span class="pre">[tool.poetry.scripts]</span></code> section.</p>
+<p><em>pyproject.toml</em></p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.poetry]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s">&quot;demo&quot;</span>
+<span class="c1"># ...</span>
+
+<span class="k">[tool.poetry.scripts]</span>
+<span class="n">hello</span> <span class="o">=</span> <span class="s">&quot;demo.hello:main&quot;</span>
+</pre></div>
+</div>
+<p>Poetry will generate a script that is equivalent to:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">demo.hello</span> <span class="kn">import</span> <span class="n">main</span>
+<span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>After running <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">install</span></code> we can then run the <code class="docutils literal notranslate"><span class="pre">hello</span></code> command from a poetry shell.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ poetry install
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Installing</span> <span class="n">dependencies</span> <span class="kn">from</span> <span class="nn">lock</span> <span class="n">file</span>
+
+<span class="n">No</span> <span class="n">dependencies</span> <span class="n">to</span> <span class="n">install</span> <span class="ow">or</span> <span class="n">update</span>
+
+  <span class="o">-</span> <span class="n">Installing</span> <span class="n">demo</span> <span class="p">(</span><span class="mf">0.1</span><span class="o">.</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>demo-IDGvf4ns-py3.8<span class="o">)</span> $ hello
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hello</span> <span class="n">world</span>
+</pre></div>
+</div>
+<div class="section" id="id2">
+<h3>More info</h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html#the-console-scripts-entry-point">python-packaging: The console_scripts Entry Point</a></p></li>
+<li><p><a class="reference external" href="https://packaging.python.org/guides/distributing-packages-using-setuptools/#setup-args">Packaging and distributing projects: console_scripts</a></p></li>
+<li><p><a class="reference external" href="https://packaging.python.org/specifications/entry-points/">Entry points specification</a></p></li>
+<li><p><a class="reference external" href="https://setuptools.readthedocs.io/en/latest/userguide/entry_point.html#entry-points">setuptools docs: Entry Points</a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="installing-your-package">
+<h2>Installing your package</h2>
+<p>To install your package in the virtual environment use the <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">install</span></code>
+command as described above.</p>
+<p>To install your package system-wide use <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> from your project root
+directory. The <code class="docutils literal notranslate"><span class="pre">.</span></code> argument tells pip to install the package in the current
+directory.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install .
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Processing</span> <span class="o">.../</span><span class="n">poetry</span><span class="o">-</span><span class="n">demo</span>
+  <span class="n">Installing</span> <span class="n">build</span> <span class="n">dependencies</span> <span class="o">...</span> <span class="n">done</span>
+  <span class="n">Getting</span> <span class="n">requirements</span> <span class="n">to</span> <span class="n">build</span> <span class="n">wheel</span> <span class="o">...</span> <span class="n">done</span>
+    <span class="n">Preparing</span> <span class="n">wheel</span> <span class="n">metadata</span> <span class="o">...</span> <span class="n">done</span>
+<span class="o">...</span>
+<span class="n">Successfully</span> <span class="n">built</span> <span class="n">demo</span>
+<span class="n">Installing</span> <span class="n">collected</span> <span class="n">packages</span><span class="p">:</span> <span class="n">requests</span><span class="p">,</span> <span class="n">demo</span>
+<span class="n">Successfully</span> <span class="n">installed</span> <span class="n">demo</span><span class="o">-</span><span class="mf">0.1</span><span class="o">.</span><span class="mi">0</span> <span class="n">requests</span><span class="o">-</span><span class="mf">2.25</span><span class="o">.</span><span class="mi">0</span>
+</pre></div>
+</div>
+<p>To uninstall it, use the <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">uninstall</span></code> command with the name of your package.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip uninstall demo
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Found existing installation: demo 0.1.0
+Uninstalling demo-0.1.0:
+  Would remove:
+    ~/.pyenv/versions/3.8.1/bin/hello
+    ~/.pyenv/versions/3.8.1/lib/python3.8/site-packages/demo-0.1.0.dist-info/*
+    ~/.pyenv/versions/3.8.1/lib/python3.8/site-packages/demo/*
+Proceed (y/n)? y
+  Successfully uninstalled demo-0.1.0
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-poetry-with-vs-code">
+<h2>Using Poetry with VS Code</h2>
+<p>Get the path where Poetry keeps virtual environments by using the <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">env</span></code>
+command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ poetry env info -p
+</pre></div>
+</div>
+<p>Copy the path up to the <code class="docutils literal notranslate"><span class="pre">virualenvs</span></code> dir and add it to the <code class="docutils literal notranslate"><span class="pre">python.venvPath</span></code> in
+the <code class="docutils literal notranslate"><span class="pre">settings.json</span></code> file. (From the command palette: <code class="docutils literal notranslate"><span class="pre">Preferences:</span> <span class="pre">Open</span> <span class="pre">Settings</span> <span class="pre">(JSON)</span></code>.)</p>
+<p><em>VS Code settings.json</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;python.venvPath&quot;</span><span class="p">:</span> <span class="s2">&quot;.../virtualenvs&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Start VS Code from a terminal in your project root directory with the <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">shell</span></code> command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ poetry shell
+Spawning shell within .../virtualenvs/demo-IDGvf4ns-py3.8
+<span class="o">(</span>demo-IDGvf4ns-py3.8<span class="o">)</span> $ code .
+</pre></div>
+</div>
+<p>You may also need to set the <code class="docutils literal notranslate"><span class="pre">python.pythonPath</span></code> in the workspace
+<code class="docutils literal notranslate"><span class="pre">settings.json</span></code>. (From the command palette: <code class="docutils literal notranslate"><span class="pre">Preferences:</span> <span class="pre">Open</span> <span class="pre">Workspace</span> <span class="pre">Settings</span> <span class="pre">(JSON)</span></code>.)</p>
+<p><em>.vscode/settings.json</em></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;python.pythonPath&quot;</span><span class="p">:</span> <span class="s2">&quot;.../virtualenvs/demo-IDGvf4ns-py3.8/bin/python3.8&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>More info</h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://python-poetry.org/docs">Poetry docs</a></p></li>
+<li><p><a class="reference external" href="https://code.visualstudio.com/docs/python/environments">VS Code Docs: Using Python environments in VS Code</a></p></li>
+<li><p><a class="reference external" href="https://dev.to/bowmanjd/getting-started-with-python-poetry-3ica">Getting Started with Python Poetry</a></p></li>
+<li><p><a class="reference external" href="https://ron.sh/developing-python-projects-with-poetry/">Developing Python Projects with poetry</a></p></li>
+<li><p><a class="reference external" href="https://blog.jayway.com/2019/12/28/pyenv-poetry-saviours-in-the-python-chaos/">Get started with pyenv &amp; poetry</a></p></li>
+<li><p>Python projects with Poetry and VSCode <a class="reference external" href="https://www.pythoncheatsheet.org/blog/python-projects-with-poetry-and-vscode-part-1/">Part 1</a>,  <a class="reference external" href="https://www.pythoncheatsheet.org/blog/python-projects-with-poetry-and-vscode-part-2/">Part 2</a></p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "alissa-huskey/python-class",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./guides"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="git-on-replit.html" title="previous page">Git on Repl.it</a>
+    <a class='right-next' id="next-link" href="mac.html" title="next page">Mac Dev Env for Python</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
