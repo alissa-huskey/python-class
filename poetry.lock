@@ -15,7 +15,7 @@ python-versions = "*"
 version = "1.4.4"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Disable App Nap on OS X 10.9"
 marker = "sys_platform == \"darwin\" or platform_system == \"Darwin\" or python_version >= \"3.3\" and sys_platform == \"darwin\""
 name = "appnope"
@@ -74,7 +74,7 @@ version = "2.9.0"
 pytz = ">=2015.7"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Specifications for callback functions passed in to an API"
 name = "backcall"
 optional = false
@@ -161,7 +161,7 @@ python-versions = "*"
 version = "3.0.4"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Composable command line interface toolkit"
 name = "click"
 optional = false
@@ -169,7 +169,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 version = "7.1.2"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Cross-platform colored terminal text."
 name = "colorama"
 optional = false
@@ -177,7 +177,18 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 version = "0.4.4"
 
 [[package]]
-category = "dev"
+category = "main"
+description = "Terminal string styling done right, in Python."
+name = "colorful"
+optional = false
+python-versions = "*"
+version = "0.5.4"
+
+[package.dependencies]
+colorama = "*"
+
+[[package]]
+category = "main"
 description = "Decorators for Humans"
 name = "decorator"
 optional = false
@@ -294,7 +305,7 @@ traitlets = ">=4.1.0"
 test = ["pytest (!=5.3.4)", "pytest-cov", "flaky", "nose"]
 
 [[package]]
-category = "dev"
+category = "main"
 description = "IPython: Productive Interactive Computing"
 name = "ipython"
 optional = false
@@ -326,7 +337,7 @@ qtconsole = ["qtconsole"]
 test = ["nose (>=0.10.1)", "requests", "testpath", "pygments", "nbformat", "ipykernel", "numpy (>=1.14)"]
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Vestigial utilities from IPython"
 name = "ipython-genutils"
 optional = false
@@ -355,7 +366,7 @@ version = ">=4.0.0"
 test = ["pytest (>=3.6.0)", "pytest-cov", "mock"]
 
 [[package]]
-category = "dev"
+category = "main"
 description = "An autocompletion tool for Python that can be used for text editors."
 name = "jedi"
 optional = false
@@ -396,10 +407,6 @@ attrs = ">=17.4.0"
 pyrsistent = ">=0.14.0"
 setuptools = "*"
 six = ">=1.11.0"
-
-[package.dependencies.importlib-metadata]
-python = "<3.8"
-version = "*"
 
 [package.extras]
 format = ["idna", "jsonpointer (>1.13)", "rfc3987", "strict-rfc3339", "webcolors"]
@@ -792,7 +799,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 version = "1.4.3"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "A Python Parser"
 name = "parso"
 optional = false
@@ -811,7 +818,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 version = "0.8.1"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Pexpect allows easy control of interactive console applications."
 marker = "python_version >= \"3.3\" and sys_platform != \"win32\" or sys_platform != \"win32\""
 name = "pexpect"
@@ -823,7 +830,7 @@ version = "4.8.0"
 ptyprocess = ">=0.5"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Tiny 'shelve'-like database with concurrency support"
 name = "pickleshare"
 optional = false
@@ -842,7 +849,7 @@ version = "0.9.0"
 twisted = ["twisted"]
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Library for building powerful interactive command lines in Python"
 name = "prompt-toolkit"
 optional = false
@@ -853,7 +860,7 @@ version = "3.0.8"
 wcwidth = "*"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Run a subprocess in a pseudo terminal"
 marker = "python_version >= \"3.3\" and sys_platform != \"win32\" or sys_platform != \"win32\" or os_name != \"nt\" or python_version >= \"3.3\" and sys_platform != \"win32\" and (python_version >= \"3.3\" and sys_platform != \"win32\" or sys_platform != \"win32\")"
 name = "ptyprocess"
@@ -919,7 +926,7 @@ version = "0.4.1"
 sphinx = "*"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Pygments is a syntax highlighting package written in Python."
 name = "pygments"
 optional = false
@@ -1336,6 +1343,17 @@ postgresql_psycopg2cffi = ["psycopg2cffi"]
 pymysql = ["pymysql"]
 
 [[package]]
+category = "main"
+description = "Pretty-print tabular data"
+name = "tabulate"
+optional = false
+python-versions = "*"
+version = "0.8.7"
+
+[package.extras]
+widechars = ["wcwidth"]
+
+[[package]]
 category = "dev"
 description = "Tornado websocket backend for the Xterm.js Javascript terminal emulator library."
 name = "terminado"
@@ -1376,7 +1394,7 @@ python-versions = ">= 3.5"
 version = "6.1"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Traitlets Python configuration system"
 name = "traitlets"
 optional = false
@@ -1419,7 +1437,7 @@ secure = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "cer
 socks = ["PySocks (>=1.5.6,<1.5.7 || >1.5.7,<2.0)"]
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Measures the displayed width of unicode strings in a terminal"
 name = "wcwidth"
 optional = false
@@ -1487,8 +1505,8 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["pytest (>=3.5,<3.7.3 || >3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake8", "pytest-cov", "jaraco.test (>=3.2.0)", "jaraco.itertools", "func-timeout", "pytest-black (>=0.3.7)", "pytest-mypy"]
 
 [metadata]
-content-hash = "4f710fb2b3544f4ee521062237e69c08a924e7a5d87339c7f47eae5cfbfeac25"
-python-versions = "^3.7"
+content-hash = "1a08fc40995db83617ccd1133327f5cf2327c075f4942909fb166445ced23522"
+python-versions = "^3.8"
 
 [metadata.files]
 alabaster = [
@@ -1601,6 +1619,10 @@ click = [
 ]
 colorama = [
     {file = "colorama-0.4.4-py2.py3-none-any.whl", hash = "sha256:9f47eda37229f68eee03b24b9748937c7dc3868f906e8ba69fbcbdd3bc5dc3e2"},
+]
+colorful = [
+    {file = "colorful-0.5.4-py2.py3-none-any.whl", hash = "sha256:8d264b52a39aae4c0ba3e2a46afbaec81b0559a99be0d2cfe2aba4cf94531348"},
+    {file = "colorful-0.5.4.tar.gz", hash = "sha256:86848ad4e2eda60cd2519d8698945d22f6f6551e23e95f3f14dfbb60997807ea"},
 ]
 decorator = [
     {file = "decorator-4.4.2-py2.py3-none-any.whl", hash = "sha256:41fa54c2a0cc4ba648be4fd43cff00aedf5b9465c9bf18d64325bc225f08f760"},
@@ -2094,6 +2116,10 @@ sqlalchemy = [
     {file = "SQLAlchemy-1.3.20-cp39-cp39-win32.whl", hash = "sha256:0cca1844ba870e81c03633a99aa3dc62256fb96323431a5dec7d4e503c26372d"},
     {file = "SQLAlchemy-1.3.20-cp39-cp39-win_amd64.whl", hash = "sha256:d05cef4a164b44ffda58200efcb22355350979e000828479971ebca49b82ddb1"},
     {file = "SQLAlchemy-1.3.20.tar.gz", hash = "sha256:d2f25c7f410338d31666d7ddedfa67570900e248b940d186b48461bd4e5569a1"},
+]
+tabulate = [
+    {file = "tabulate-0.8.7-py3-none-any.whl", hash = "sha256:ac64cb76d53b1231d364babcd72abbb16855adac7de6665122f97b593f1eb2ba"},
+    {file = "tabulate-0.8.7.tar.gz", hash = "sha256:db2723a20d04bcda8522165c73eea7c300eda74e0ce852d9022e0159d7895007"},
 ]
 terminado = [
     {file = "terminado-0.9.1-py3-none-any.whl", hash = "sha256:c55f025beb06c2e2669f7ba5a04f47bb3304c30c05842d4981d8f0fc9ab3b4e3"},
