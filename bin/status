@@ -13,6 +13,7 @@ import json
 import colorful
 import click
 from click import style
+import tabulate as tabulate_module
 from tabulate import tabulate
 
 
@@ -186,10 +187,11 @@ class Style():
          Ok.error: (ERROR_SYMBOL, "red"),
     }
 
-    def header(self, title):
+    def header(self, title, newlines=1):
         """Return a styled header"""
         title = style(title, bold=True)
-        return f"\n{title}\n"
+        after = "\n"*newlines
+        return f"\n{title}{after}"
 
     def status(self, obj):
         """Return a colored unicode symbol cooresponding to the Status object"""
@@ -578,7 +580,7 @@ class Dynamic(Downloadable):
 
     def should_refresh(self):
         """."""
-        return self.APP.refresh
+        return not self.downloaded and self.APP.refresh
 
 
 class Finite(Downloadable):
@@ -587,7 +589,7 @@ class Finite(Downloadable):
 
     def should_refresh(self):
         """."""
-        if self.APP.force_local:
+        if self.APP.force_local or self.downloaded:
             return False
 
         return self.is_open()
@@ -598,7 +600,7 @@ class Additive(Downloadable):
 
     def should_refresh(self):
         """."""
-        if self.APP.force_local:
+        if self.APP.force_local or self.downloaded:
             return False
 
         return self.is_open() or self.APP.refresh
@@ -623,11 +625,15 @@ class GithubRequest(ABC, Downloadable):
     """The parsed data received from the Github API."""
     data: list
 
+    """Indicates if the json file has been downloaded during this run."""
+    downloaded: bool
+
     def __init__(self):
         """Initializer
            Create any missing directories and load JSON data, making an API
            request to download it first if needed.
         """
+        self.downloaded = False
         if not self.dirpath.is_dir():
           self.dirpath.mkdir(parents=True)
         self.get()
@@ -635,7 +641,6 @@ class GithubRequest(ABC, Downloadable):
     def __repr__(self):
         return f"{self.__class__.__name__}({self.endpoint})"
 
-    # TODO: Don't refresh if freshly downloaded
     def get(self):
         """Load JSON data, making an API request to download it first if
            needed.
@@ -652,7 +657,7 @@ class GithubRequest(ABC, Downloadable):
             self.load()
 
     def is_open(self) -> bool:
-        """."""
+        """Return True if any self.data objects are open"""
         if hasattr(self.data, "is_open"):
             return self.is_open
         else:
@@ -949,12 +954,10 @@ def cli(**kwargs):
     deploys = DeploysRequest()
     runs = RunsRequest()
 
-    # app.info(pages.data, name="Pages")
-
-    rows = []
+    runs_table = []
     for run in runs.data:
         deploy = run.deploy(deploys.data)
-        rows.append({
+        runs_table.append({
             "#": run.number,
             "OK": app.style.status(run.status),
             "date": run.date,
@@ -965,12 +968,10 @@ def cli(**kwargs):
             "deploy": f"{app.style.status(deploy.status)} {deploy.sha}" if deploy else ""
         })
 
-    print(app.style.header("Github Action Runs"))
-    print(tabulate(rows, headers="keys"))
 
-    rows = []
+    deploys_table = []
     for deploy in deploys.data[:5]:
-        rows.append({
+        deploys_table.append({
             "OK": app.style.status(deploy.status),
             "date": deploy.date,
             "id": deploy.id,
@@ -979,8 +980,22 @@ def cli(**kwargs):
             "message": deploy.message.splitlines()[0][0:50],
         })
 
+    tabulate_module.PRESERVE_WHITESPACE = True
+    app.info(pages.data, name="Pages")
+    page = pages.data
+    table = [
+        [f"{app.style.status(page.status)} {page.url}"],
+        [f"  branch: {page.branch}, path: {page.path}"],
+    ]
+
+    print(app.style.header("Pages", newlines=0))
+    print(tabulate(table, tablefmt="rst")) # fancy_grid, grid, pretty, rst
+
+    print(app.style.header("Github Action Runs"))
+    print(tabulate(runs_table, headers="keys"))
+
     print(app.style.header("Deploys"))
-    print(tabulate(rows, headers="keys"))
+    print(tabulate(deploys_table, headers="keys"))
 
 
 if __name__ == "__main__":
