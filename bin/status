@@ -26,14 +26,12 @@ TODAY = datetime.today().strftime("%Y-%m-%d-%s")
 
 # TODO: ensure consistent deploy status naming
 # TODO: replace Style class with templating
-# TODO: add --debug flag and make different from --verbose
-# TODO: request prod URL and check for <title>Python Class .*</title>
 # TODO: Style.header() should work directly with Writer
+# TODO: add --quiet flag and disable App.msg() messages
 # TODO: Add --dry-run flag
-# TODO: Make Downloadable ABC class
-# TODO: get rid of all self.APP calls, and just refer to App.app
-# TODO: Rename GithubRequest to Request
+
 # TODO: Consistent request.object, request.object_request, request.data naming
+# TODO: request prod URL and check for <title>Python Class .*</title>
 # TODO: Make this a legit module already
 
 # TODO: Make these env vars/flags
@@ -95,7 +93,7 @@ class App():
         """Initializer
            Set option attrubites and print messages about enabled options.
         """
-        self.__class__.APP = Object.APP = GithubRequest.APP =  self
+        self.__class__.APP = self
 
         self.term = Terminal()
         self.writer = Writer()
@@ -107,8 +105,6 @@ class App():
         if self.force_local and self.refresh:
             abort("--local and --refresh are exclusive")
 
-        # TODO: This should probably only be printed in verbose mode, or at
-        #       least not quite.
         self.msg(self.style.mode("verbose", self.verbose))
         self.msg(self.style.mode("local", self.force_local))
         self.msg(self.style.mode("refresh", self.refresh))
@@ -868,7 +864,7 @@ class Dynamic(Downloadable):
     @property
     def should_refresh(self):
         """True if --refresh unless just downloaded"""
-        return not self.downloaded and self.APP.refresh
+        return not self.downloaded and App.APP.refresh
 
 
 class Finite(Downloadable):
@@ -878,7 +874,7 @@ class Finite(Downloadable):
     @property
     def should_refresh(self):
         """True for open objects unless --local or just downloaded"""
-        if self.APP.force_local or self.downloaded:
+        if App.APP.force_local or self.downloaded:
             return False
 
         return self.is_open
@@ -892,10 +888,10 @@ class Additive(Downloadable):
     def should_refresh(self):
         """True if --refresh or if any member objects are open, unless --local
            or just downloaded."""
-        if self.APP.force_local or self.downloaded:
+        if App.APP.force_local or self.downloaded:
             return False
 
-        return self.is_open or self.APP.refresh
+        return self.is_open or App.APP.refresh
 
 
 class Static(Downloadable):
@@ -907,7 +903,7 @@ class Static(Downloadable):
         return False
 
 
-class GithubRequest(ABC, Downloadable):
+class Request(ABC, Downloadable):
     """Abstract base class for requests to the Github API."""
 
     """Application object"""
@@ -946,7 +942,7 @@ class GithubRequest(ABC, Downloadable):
         self.load()
 
         if self.should_refresh:
-            self.APP.info(self.__class__.__name__, "from endpoint:", self.endpoint, prefix="Refreshing")
+            App.APP.msg("Refreshing", self.endpoint)
             self.download()
             self.load()
 
@@ -1035,7 +1031,7 @@ class GithubRequest(ABC, Downloadable):
           json.dump(data, fp)
 
 
-class ChildRequest(GithubRequest):
+class ChildRequest(Request):
     """Base class for github requests that need to keep track of their parent
        object."""
 
@@ -1058,7 +1054,7 @@ class ChildRequest(GithubRequest):
         return self.dirpath.joinpath(f"{self.parent.id}.json")
 
 
-class PagesRequest(GithubRequest, Dynamic):
+class PagesRequest(Request, Dynamic):
     """Class for github pages requests.
        https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#pages
     """
@@ -1287,7 +1283,7 @@ class JobsRequest(ChildRequest, Finite):
         return f"actions/runs/{self.parent.id}/jobs"
 
 
-class CommitRequest(GithubRequest, Static):
+class CommitRequest(Request, Static):
     """Class for requesting a commit.
        https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#get-a-commit
     """
@@ -1324,7 +1320,7 @@ class CommitRequest(GithubRequest, Static):
         return f"commits/{self.ref}"
 
 
-class PagesBuildsRequest(GithubRequest, Additive):
+class PagesBuildsRequest(Request, Additive):
     """Class for requesting a list of Github Pages builds.
        https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#list-github-pages-builds
     """
@@ -1342,7 +1338,7 @@ class PagesBuildsRequest(GithubRequest, Additive):
         return "pages/builds"
 
 
-class DeploysRequest(GithubRequest, Additive):
+class DeploysRequest(Request, Additive):
     """Class for requesting a list of deployments.
        https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#deployments
     """
@@ -1360,7 +1356,7 @@ class DeploysRequest(GithubRequest, Additive):
         return "deployments"
 
 
-class RunsRequest(GithubRequest, Additive):
+class RunsRequest(Request, Additive):
     """Class for requesting a list workflow runs.
        https://docs.github.com/en/free-pro-team@latest/rest/reference/actions#workflow-runs
     """
@@ -1495,7 +1491,7 @@ def show_runs(runs, deploys, builds, count: int=8):
             "date": run.date,
             "id": run.id,
             "commit": run.sha,
-            "message": run.message.splitlines()[0][0:40],
+            "message": run.message.splitlines()[0][0:30],
             "job": app.style.job(run.last_job),
             "deploy": f"{app.style.status(run.deploy.status)} {run.deploy.sha}" if run.deploy else "",
             "build": f"{app.style.status(run.build.status)} {run.build.id}" if run.build else "",
@@ -1643,7 +1639,6 @@ def show_failed_job_stats(job):
     app.writer.dedent(reset=True)
 
 
-# TODO: Add pages build info
 @click.command()
 @click.option("--local", "-l", is_flag=True, default=False,
               help="Don't download updates, even for pending states.'")
