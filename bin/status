@@ -13,12 +13,13 @@ from itertools import chain
 import json
 import re
 
+from blessed.terminal import Terminal
 import colorful
 import click
 from click import style
 import tabulate as tabulate_module
 from tabulate import tabulate
-from more_itertools import first, always_iterable
+from more_itertools import first, last, always_iterable
 
 
 TODAY = datetime.today().strftime("%Y-%m-%d-%s")
@@ -96,6 +97,7 @@ class App():
         """
         self.__class__.APP = Object.APP = GithubRequest.APP =  self
 
+        self.term = Terminal()
         self.writer = Writer()
         self.width, self.height = click.get_terminal_size()
         self.force_local = local
@@ -321,6 +323,15 @@ class Writer():
         """Add a block of multiline text"""
         self.add_lines(text.splitlines())
 
+    def paginate(self):
+        """Output buffer with pagination."""
+        click.echo_via_pager(self.buf, color=True)
+
+    def print(self):
+        """Print buffer."""
+        for line in self.buf:
+            print(line, end="")
+
 
 class Style():
     """Class for styling output"""
@@ -536,6 +547,31 @@ class DeployStatus(Object):
         }
 
 
+class Missing():
+    """Class to indicate an item was not found.
+
+       Examples
+       --------
+       >>> missing = Missing()
+       >>> missing == None
+       False
+       >>> not missing
+       True
+    """
+
+    def __bool__(self) -> bool:
+        """Missing is falsy"""
+        return False
+
+    def __str__(self) -> str:
+        """Return empty string"""
+        return ""
+
+    def __repr__(self) -> str:
+        """Return string containing class name"""
+        return "Missing()"
+
+
 class Run(Object):
     """Object class for workflow runs."""
 
@@ -555,6 +591,12 @@ class Run(Object):
             message=("head_commit.message", False),
         )
 
+    def __init__(self, *args):
+        """Initialize attrs"""
+        super().__init__(*args)
+        self.build = None
+        self.deploy = None
+
     @cached_property
     def jobs(self):
         """Return a JobRequest."""
@@ -572,15 +614,26 @@ class Run(Object):
             return
         if not self.is_ok:
             failed = [job for job in self.jobs if not job.is_ok]
-            if failed:
-                return failed[0]
-        return self.jobs[-1]
+            return first(failed, None)
+        return last(self.jobs, None)
 
-    def deploy(self, deploys: list) -> str:
+    def find_build(self, builds: list) -> str:
+        """Return Build object from list of {builds} with sha matching
+           self.sha"""
+        if not self.deploy:
+            self.build = Missing()
+            return
+
+        res = [x for x in builds if x.sha == self.deploy.sha]
+        self.build = first(res, Missing())
+        return self.build
+
+    def find_deploy(self, deploys: list) -> str:
         """Return Deploy object from list of {deploys} with master_sha matching
            self.sha"""
         res = [d for d in deploys if d.master_sha == self.sha]
-        return res[0] if res else None
+        self.deploy = first(res, Missing())
+        return self.deploy
 
 
 class Step(ChildObject):
@@ -594,6 +647,62 @@ class Step(ChildObject):
             status=("conclusion", True, Status),
             desc=("name", True),
         )
+
+
+class PagesBuild(Object):
+    """Object class for Github Pages build."""
+
+    @property
+    def fields(self) -> dict:
+        """Mapping of object attrs to (json field, include in repr, instance type)"""
+        return dict(
+            id=(None, True),
+            sha=("commit", True, Sha),
+            date=("created_at", True, Date),
+            status=("status", True, BuildStatus),
+            message=("error.message", False),
+            pushed_by=("pusher.login", False),
+        )
+
+    @cached_property
+    def id(self):
+        """Parse the build id from the `url` request_data field."""
+        return last(self.request_data.get("url").split("/"))
+
+    @cached_property
+    def message_parts(self) -> tuple:
+        """Return error message partitioned into (message, _, more_info_url)"""
+        if not self.message:
+            return
+        sep = "For more information, see"
+        parts = self.message.partition(sep)
+        assert len(parts) == 3, \
+            f"Failed to partiton error message:\nUsing: '{sep}'\n'Message: {self.message}'"
+        return parts
+
+    @cached_property
+    def more_info(self) -> str:
+        """Return more_info url from error message"""
+        if not self.message:
+            return
+        return last(self.message_parts).strip()
+
+    @cached_property
+    def error(self) -> str:
+        """Return error message"""
+        if not self.message:
+            return ""
+        return first(self.message_parts).strip()
+
+    @cached_property
+    def commit_request(self):
+        """Return CommitRequest object"""
+        return CommitRequest(self.sha)
+
+    @cached_property
+    def commit(self):
+        """Return Commit object"""
+        return self.commit_request.data
 
 
 class Pages(Object):
@@ -667,11 +776,16 @@ class Commit(Object):
             date=("commit.author.date", True, Date),
             author=("commit.author.name", True),
             committer=("commit.committer.name", False),
-            message=("commit.message", False),
+            body=("commit.message", False),
             tree=("commit.tree.sha", False, Sha),
             stats=("stats", False),
             files=("files", False),
         )
+
+    @property
+    def message(self) -> str:
+        """Return the first line of the commit message body"""
+        return first(self.body.splitlines(), "")
 
 
 class Deploy(Object):
@@ -704,7 +818,7 @@ class Deploy(Object):
         """Return commit.message without self.master_sha"""
         if not self.master_sha:
             return self.commit.message
-        if end := self.commit.message.rindex(f" {self.master_sha.full}"):
+        if end := self.commit.message.rfind(f" {self.master_sha.full}"):
             return self.commit.message[0:end]
         return self.commit.message
 
@@ -713,9 +827,9 @@ class Deploy(Object):
         """Returns a string with the sha from the master branch, parsed from the
             message of the deploy commit
         """
-        if not self.commit.message:
+        if not self.commit.body:
             return
-        sha = self.commit.message.split()[-1]
+        sha = self.commit.body.split()[-1]
         if len(sha) == 40:
             return Sha(sha)
 
@@ -1210,6 +1324,24 @@ class CommitRequest(GithubRequest, Static):
         return f"commits/{self.ref}"
 
 
+class PagesBuildsRequest(GithubRequest, Additive):
+    """Class for requesting a list of Github Pages builds.
+       https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#list-github-pages-builds
+    """
+
+    dirname: str = "builds"
+
+    @property
+    def data(self):
+        """Returns a list of Deploy objects."""
+        return [ PagesBuild(x) for x in self.request_data ]
+
+    @property
+    def endpoint(self):
+        """pages builds endpoint"""
+        return "pages/builds"
+
+
 class DeploysRequest(GithubRequest, Additive):
     """Class for requesting a list of deployments.
        https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#deployments
@@ -1258,6 +1390,8 @@ def debug(app):
     commit = commit_req.data
     status = Status("success")
     progress = Progress("completed")
+    builds = PagesBuildsRequest()
+    build = builds.data[0]
 
     app.info(DATA_DIR, prefix="DATA_DIR")
     app.info(deploys.dirname, prefix="deploys.dirname")
@@ -1293,6 +1427,7 @@ def debug(app):
     app.info(Ok.ok, prefix="Ok")
     app.info(status, status.ok, prefix="Status")
     app.info(progress, progress.ok, prefix="Progress")
+    app.info(build, prefix="Build")
 
 
 def show_pages(obj):
@@ -1315,7 +1450,7 @@ def show_pages(obj):
     app.writer.dedent(reset=True)
 
 
-def show_deploys(deploys, count: int):
+def show_deploys(deploys, count: int=3):
     """Print list of {count} recent deploys to buffer.
     Params
     ------
@@ -1331,16 +1466,17 @@ def show_deploys(deploys, count: int):
             "id": deploy.id,
             "commit": deploy.sha,
             "master": deploy.master_sha or " "*Sha.SHORT_LENGTH,
-            "message": deploy.message.splitlines()[0][0:50],
+            "message": deploy.message[0:50],
         })
 
-    app.writer.add_block(app.style.header("Deploys"))
+    app.writer.add_block(app.style.header("Repo Deploys"))
+    app.writer.add_line()
     app.writer.indent()
     app.writer.add_block(tabulate(deploys_table, headers="keys"))
     app.writer.dedent(reset=True)
 
 
-def show_runs(runs, deploys):
+def show_runs(runs, deploys, builds, count: int=8):
     """Print the recent Github Action Workflow Runs to the buffer.
     Params
     ------
@@ -1349,30 +1485,58 @@ def show_runs(runs, deploys):
     """
     app = App.APP
     runs_table = []
-    for run in runs:
-        deploy = run.deploy(deploys)
+    for run in runs[:count]:
+        run.find_deploy(deploys)
+        run.find_build(builds)
+
+
         runs_table.append({
             "#": run.number,
-            "OK": app.style.status(run.status),
             "date": run.date,
             "id": run.id,
             "commit": run.sha,
             "message": run.message.splitlines()[0][0:40],
             "job": app.style.job(run.last_job),
-            "deploy": f"{app.style.status(deploy.status)} {deploy.sha}" if deploy else ""
+            "deploy": f"{app.style.status(run.deploy.status)} {run.deploy.sha}" if run.deploy else "",
+            "build": f"{app.style.status(run.build.status)} {run.build.id}" if run.build else "",
         })
 
     app.writer.add_block(app.style.header("Github Action Runs"))
-    app.writer.indent()
+    app.writer.add_line()
     app.writer.add_block(tabulate(runs_table, headers="keys"))
+
+
+def show_builds(builds, count: int=3):
+    """Print the recent Github Pages builds to the buffer.
+    Params
+    ------
+    """
+    app = App.APP
+    table = []
+    margin = len("  ✔     2020-12-05  219342206  2b45940   ") + 4
+    wrap_width = app.width - margin
+
+    for build in builds[:count]:
+        table.append({
+            "OK": app.style.status(build.status),
+            "date": build.date,
+            "id": build.id,
+            "commit": build.sha,
+            "message": build.commit.message,
+        })
+
+    app.writer.add_block(app.style.header("Github Pages Builds"))
+    app.writer.add_line()
+    app.writer.indent()
+    app.writer.add_block(tabulate(table, headers="keys"))
     app.writer.dedent(reset=True)
 
 
-def show_failing(job):
-    """Print the stats and error messages if {job} failed.
+def show_failed_job_errors(job):
+    """Print the error messages if {job} failed.
     Params
     ------
-    jobs (Job): workflow run Job object
+    job (Job): workflow run Job object
     """
     if job.ok != Ok.fail:
         return
@@ -1381,17 +1545,8 @@ def show_failing(job):
     margin = len(f"| 959 | section | {''} |") + 2
     wrap_width, idt = app.width - margin, " " * 2
     log = job.log
-    errors_table = []
+    table = []
     last_sec, last_group = LogLine(), LogLine()
-
-    failure_table = [
-        ("Workflow", job.parent.workflow_id),
-        ("Run", f"[{style(job.parent.status.name, fg='red')}] {job.parent.id}"),
-        ("Job", f"[{style(job.status.name, fg='red')}] {job.id}"),
-        ("Step", f"[{style(job.last_step.status.name, fg='red')}] {app.style.step(job.last_step, len(str(job.last_step.number)))}"),
-        ("Log", job.log_request.filepath.relative_to(Path.cwd())),
-        ("URL", job.url),
-    ]
 
     for err in log.errors:
         sec = log.belongs_to(err, "section")
@@ -1399,12 +1554,13 @@ def show_failing(job):
 
         if sec != last_sec:
             last_sec = sec
-            errors_table.append((sec.num, sec.category, f"{sec.msg} >"))
+            table.append((sec.num, sec.category, f"{sec.msg} >"))
 
         if group != last_group:
             last_group = group
-            errors_table.append((group.num, group.category, f"{idt}{group.msg} >"))
-        errors_table.append((
+            table.append((group.num, group.category, f"{idt}{group.msg} >"))
+
+        table.append((
             err.num, "error",
             click.wrap_text(
                 f"- {err.msg}",
@@ -1415,15 +1571,77 @@ def show_failing(job):
             )
         ))
 
-    app.writer.add_block(app.style.header("\u2757 Last Run Failed"))
+    app.writer.add_block(app.style.header("Errors"))
     app.writer.indent()
-    app.writer.add_block(tabulate(failure_table, tablefmt="rst"))
+    app.writer.add_block(tabulate(table, tablefmt="grid", colalign=("right",)))
     app.writer.dedent(reset=True)
 
-    app.writer.add_block(app.style.header("Errors", newlines=0))
+
+def show_failed_build(build):
+    """Print the stats and error message if {build} failed.
+    Params
+    ------
+    build (Build): build object
+    """
+    if build.ok != Ok.fail:
+        return
+
+    app = App.APP
+    app.info(build)
+
+    ctx = click.get_current_context()
+
+    table = [
+        ("Build", f"[{style(build.status.name, fg='red')}] {build.date} {build.id}"),
+        ("Error", build.error),
+        ("More info", app.term.link(build.more_info, "Troubleshooting Github Pages Sites")),
+    ]
+
+    app.writer.add_block(app.style.header("\u2757 Last Build Failed"))
     app.writer.indent()
-    app.writer.add_block(tabulate(errors_table, tablefmt="grid", colalign=("right",)))
+    app.writer.add_block(tabulate(table, tablefmt="rst"))
     app.writer.dedent(reset=True)
+
+
+def show_failed_job(job):
+    """Print the stats and error messages if {job} failed.
+    Params
+    ------
+    job (Job): workflow run Job object
+    """
+    if job.ok != Ok.fail:
+        return
+
+    app = App.APP
+    app.writer.add_block(app.style.header("\u2757 Last Run Failed"))
+    show_failed_job_stats(job)
+    show_failed_job_errors(job)
+
+
+def show_failed_job_stats(job):
+    """Print the stats if {job} failed.
+    Params
+    ------
+    job (Job): workflow run Job object
+    """
+    if job.ok != Ok.fail:
+        return
+
+    minwidth = len("alissa-huskey/python-class > actions") + 2
+    app = App.APP
+    table = [
+        ("Workflow", job.parent.workflow_id),
+        ("Run", f"[{style(job.parent.status.name, fg='red')}] {job.parent.id}"),
+        ("Job", f"[{style(job.status.name, fg='red')}] {job.id}"),
+        ("Step", f"[{style(job.last_step.status.name, fg='red')}] {app.style.step(job.last_step, len(str(job.last_step.number)))}"),
+        ("Log", str(job.log_request.filepath.relative_to(Path.cwd())).ljust(minwidth)),
+        ("URL", app.term.link(job.url, f"{USER}/{REPO} > actions")),
+    ]
+
+    app.writer.indent()
+    app.writer.add_block(tabulate(table, tablefmt="rst"))
+    app.writer.dedent(reset=True)
+
 
 # TODO: Add pages build info
 @click.command()
@@ -1435,20 +1653,22 @@ def show_failing(job):
               help="Enable verbose mode.")
 def cli(**kwargs):
     """Show status information about Gihub Pages and Actions"""
-    # debug(app)
     app = App(**kwargs)
     tabulate_module.PRESERVE_WHITESPACE = True
+    #  debug(app)
 
     pages = PagesRequest()
     deploys = DeploysRequest()
     runs = RunsRequest()
+    builds = PagesBuildsRequest()
+    build = builds.data[0]
 
     show_pages(pages.data)
-    show_runs(runs.data, deploys.data)
-    show_deploys(deploys.data, 5)
-    show_failing(runs.data[0].last_job)
+    show_runs(runs.data, deploys.data, builds.data)
+    show_failed_job(runs.data[0].last_job)
+    show_failed_build(build)
 
-    click.echo_via_pager(app.writer.buf, color=True)
+    app.writer.paginate()
 
 
 if __name__ == "__main__":
