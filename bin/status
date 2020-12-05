@@ -8,19 +8,41 @@ from datetime import datetime
 from functools import cached_property
 from abc import ABC, abstractmethod
 from enum import Enum, IntEnum
+from typing import Any
+from itertools import chain
 import json
+import re
 
 import colorful
 import click
 from click import style
 import tabulate as tabulate_module
 from tabulate import tabulate
+from more_itertools import first, always_iterable
 
 
+TODAY = datetime.today().strftime("%Y-%m-%d-%s")
+
+# TODO: ensure consistent deploy status naming
+# TODO: replace Style class with templating
+# TODO: add --debug flag and make different from --verbose
+# TODO: request prod URL and check for <title>Python Class .*</title>
+# TODO: Style.header() should work directly with Writer
+# TODO: Add --dry-run flag
+# TODO: Make Downloadable ABC class
+# TODO: get rid of all self.APP calls, and just refer to App.app
+# TODO: Rename GithubRequest to Request
+# TODO: Consistent request.object, request.object_request, request.data naming
+# TODO: Make this a legit module already
+
+# TODO: Make these env vars/flags
+DATA_DIR = Path(__file__).absolute().parent.parent.joinpath("tmp", "github-data")
+# TODO: and/or parse from git config
+#       git config remote.origin.url or ./.git/config
+#       git remote get-url origin
+#       remote.origin.url=git@github.com:alissa-huskey/python-class.git
 USER = "alissa-huskey"
 REPO = "python-class"
-DATA_DIR = Path(__file__).absolute().parent.parent.joinpath("tmp", "github-data")
-TODAY = datetime.today().strftime("%Y-%m-%d-%s")
 
 
 def rget(source, keys):
@@ -61,13 +83,21 @@ def rget(source, keys):
     else:
         return source.get(this_key)
 
+
 class App():
     """Class for the top level app."""
+
+    """Application object"""
+    APP: Any
 
     def __init__(self, local=False, refresh=False, verbose=False,):
         """Initializer
            Set option attrubites and print messages about enabled options.
         """
+        self.__class__.APP = Object.APP = GithubRequest.APP =  self
+
+        self.writer = Writer()
+        self.width, self.height = click.get_terminal_size()
         self.force_local = local
         self.refresh = refresh
         self.verbose = verbose
@@ -82,23 +112,36 @@ class App():
         self.msg(self.style.mode("refresh", self.refresh))
 
     def msg(self, *args):
-        """Print message
-           If optional {name} is passed, put it at the beginning of the message highlighted.
-        """
+        """Print user message"""
+        # don't print empty args
         if not [a for a in args if a]:
             return
+
         print(style(">", fg="cyan"), *args)
 
-    def info(self, *args, name=None):
-        """Print info message
-           If optional {name} is passed, put it at the beginning of the message highlighted.
+    def info(self, *args, multi=False, prefix=None):
+        """Print info message if in verbose mode.
+
+           Params
+           ------
+           *args (Any): to be printed
+           prefix  (str, default=None): prefix string, will be highlighted in output
+           multi (bool, default=False):
+              - if True:  treat each arg as an individual info() call
+              - if False: pass *args to print() to be " " joined
         """
-        if not self.verbose:
+        if not self.verbose: return
+
+        if multi:
+            for i,a in enumerate(args):
+                prefix = prefix or ""
+                self.info(a, prefix=f"{prefix}[{i}]")
             return
-        prefix = [style("[Info]", fg="cyan")]
-        if name:
-            prefix.append(f"{colorful.yellow}{name:<12}{colorful.reset}:")
-        print(*prefix, *args, file=stderr)
+
+        line = [style("[Info]", fg="cyan")]
+        if prefix:
+            line.append(f"{colorful.yellow}{prefix:<12}{colorful.reset}:")
+        print(*line, *args, file=stderr)
 
     def abort(self, *args):
         """Print an error message and exit with status code 1"""
@@ -107,6 +150,7 @@ class App():
 
     @cached_property
     def style(self):
+        """Return Style object"""
         return Style()
 
 
@@ -126,7 +170,8 @@ class AbstractState(bytes, Enum):
        Provides instanciation by name and an abstract ok() method.
     """
 
-    def __new__(cls, value, is_ok=None):
+    def __new__(cls, value, is_ok: Ok=None):
+        """Initialize value and optional is_ok Ok object"""
         obj = bytes.__new__(cls, [value])
         obj._value_ = value
         obj.ok = is_ok
@@ -134,11 +179,13 @@ class AbstractState(bytes, Enum):
 
     @classmethod
     def _missing_(cls, value):
+        """Allow instantiation by case-insenstive name"""
         matches = [match for name, match in cls.__members__.items()
                     if name.lower() == value.lower()]
         if matches:
             return matches[0]
         super()._missing_(value)
+
 
 class Progress(AbstractState):
     """Class for progress statuses."""
@@ -170,6 +217,109 @@ class Status(AbstractState):
     in_progress  = (4, Ok.busy)
     queued       = (5, Ok.busy)
     success      = (6, Ok.ok)
+
+
+class Writer():
+    """Writer class to manage indentation and keep a buffer of text to print."""
+
+    """Number of spaces to increment per indentation level."""
+    INDENT_INCR: int = 2
+
+    def __init__(self):
+        """Intitialize attrs"""
+        self.buf = []
+        self.level = 0
+        self.indentation = None
+
+    @property
+    def indentation(self):
+        """(str) The literal spaces that make up the current indentation.
+           Can be set to override the current indentation level.
+
+        Returns either:
+            - the value of _indentation if set
+            - or the computed value from self.level
+        """
+
+        if self._indentation:
+            return self._indentation
+        return " " * self.INDENT_INCR * self.level
+
+    @indentation.setter
+    def indentation(self, value):
+        """Indentation setter"""
+        self._indentation = value
+
+    def indent(self, level:int =1, to:int =None):
+        """Add to either the current indentation level, or set the specific
+           number of spaces.
+        Params
+        ------
+        level (int, default=1)   : Number of levels to add to the current indentation level
+        to    (int, default=None): Number of spaces to indent to
+        """
+        if to:
+            self.indentation = " " * to
+            return
+        self.level += level
+
+    def dedent(self, level: int=1, reset=False, clear=False, zero=False):
+        """Reduce or zero out the current level of indentation, and/or clear
+           the current value of self.indentation.
+        Params
+        ------
+        level (int,  default=1)    : Number to remove from current indentation level
+        zero  (bool, default=False): Set the current indentation level to zero
+        clear (bool, default=False): Clear indentation value
+        reset (bool, default=False): same as zero and clear
+        """
+        self.level -= level
+        if clear or reset:
+            self.indentation = None
+        if zero or reset:
+            self.level = 0
+
+    def add(self, *args, sep=""):
+        """Add to the buffer.
+        Params
+        ------
+        - *args                    : text to be added
+        -  sep (str, default="")   : inserted between args
+        """
+        self.buf.append(sep.join(args))
+
+    def add_line(self, *args, sep="", before=0, after=1, ensure=False):
+        """Add indented line to the buffer.
+        Params
+        ------
+        - *args                          : text to be added
+        -  sep (str, default="")         : inserted between args
+        -  before (int, default=0)       : number of newlines to prepend
+        -  after (int, default=1)        : number of newlines to append
+        -  ensure (bool, default=False)  : when True, append a newline only if missing from end
+        """
+        args = [self.indentation] + list(args)
+        text = sep.join(args)
+
+        if ensure and text.endswith("\n") and after > 0:
+            after -= 1
+
+        self.add("\n"*before, text, "\n"*after)
+
+    def add_lines(self, lines, *args):
+        """Add indented lines to the buffer.
+        Examples
+        --------
+        >>> writer = Writer()
+        >>> writer.add_lines(["one", "two", "three"])
+        >>> writer.add_lines("one", "two", "three")
+        """
+        for line in chain(always_iterable(lines), args):
+            self.add_line(line)
+
+    def add_block(self, text):
+        """Add a block of multiline text"""
+        self.add_lines(text.splitlines())
 
 
 class Style():
@@ -213,12 +363,12 @@ class Style():
         if enabled:
             return f"{name.capitalize()} mode enabled."
 
-    def step(self, step) -> str:
-        """."""
+    def step(self, step, width=2) -> str:
+        """Format a job step"""
         num, desc = "-", "-"
         if step:
             num, desc = step.number, step.desc[0:20]
-        return f"{num:>2} {desc}"
+        return f"{num:>{width}} {desc}"
 
 
 class Date(datetime):
@@ -228,16 +378,28 @@ class Date(datetime):
     INPUT_FORMAT: str = "%Y-%m-%dT%H:%M:%SZ"
 
     def __new__(cls, *args):
+        """Initialize like with a date string or like a datetime object.
+
+        Examples
+        --------
+        >>> Date("2020-12-01T08:20:09Z")
+        Date(2020-12-01)
+
+        >>> Date(2020, 12, 1)
+        Date(2020-12-01)
+        """
         if isinstance(datestr := args[0], str):
             return super(Date, cls).strptime(datestr, cls.INPUT_FORMAT)
         else:
             return super().__new__(cls, *args)
 
     def __repr__(self):
+        """Return repr string"""
         return f"Date({self})"
 
     def __str__(self):
-        return(str(self.date()))
+        """Return the nicely formatted date string"""
+        return str(self.date())
 
 
 class Sha(str):
@@ -254,6 +416,8 @@ class Sha(str):
     SHORT_LENGTH: int = 7
 
     def __new__(cls, content):
+        """Return a string like object with an added `full` property containing
+           the original 40-character sha string."""
         inst = str.__new__(cls, content)
         inst.full = content
         return inst
@@ -334,13 +498,13 @@ class Object(ABC):
     @property
     @abstractmethod
     def fields(self) -> dict:
-      """Return a dict, where
-         * key (str): object attribute to set
-         * value (tuple):
-           * (str) key to the cooresponding field from the JSON dict
-           * (bool) if it should be included in the repr
-           * (type, optional) type to instantiate attr as
-      """
+        """Return a dict, where
+            * key (str): object attribute to set
+            * value (tuple):
+                * (str) key to the cooresponding field from the JSON dict
+                * (bool) if it should be included in the repr
+                * (type, optional) type to instantiate attr as
+        """
 
 
 class ChildObject(Object):
@@ -364,11 +528,12 @@ class DeployStatus(Object):
 
     @property
     def fields(self) -> dict:
-      return {
-        'id': ("id", True),
-        'date': ("created_at", True, Date),
-        'status': ("state", True, Status),
-      }
+        """Mapping of object attrs to (json field, include in repr, instance type)"""
+        return {
+            'id': ("id", True),
+            'date': ("created_at", True, Date),
+            'status': ("state", True, Status),
+        }
 
 
 class Run(Object):
@@ -376,28 +541,29 @@ class Run(Object):
 
     @property
     def fields(self) -> dict:
-      return dict(
-          id=("id", True),
-          workflow_id=("workflow_id", False),
-          number=("run_number", True),
-          date=("created_at", True, Date),
-          sha=("head_sha", False, Sha),
-          job=("name", False),
-          progress=("status", False, Progress),
-          status=("conclusion", True, Status),
-          branch=("head_branch", False),
-          message=("head_commit.message", False),
-      )
+        """Mapping of object attrs to (json field, include in repr, instance type)"""
+        return dict(
+            id=("id", True),
+            workflow_id=("workflow_id", False),
+            number=("run_number", True),
+            date=("created_at", True, Date),
+            sha=("head_sha", False, Sha),
+            job=("name", False),
+            progress=("status", False, Progress),
+            status=("conclusion", True, Status),
+            branch=("head_branch", False),
+            message=("head_commit.message", False),
+        )
 
     @cached_property
     def jobs(self):
-      """Return a JobRequest."""
-      return self.jobs_request.data
+        """Return a JobRequest."""
+        return self.jobs_request.data
 
     @cached_property
     def jobs_request(self):
-      """Return a JobRequest."""
-      return JobsRequest(self)
+        """Return a JobRequest."""
+        return JobsRequest(self)
 
     @property
     def last_job(self) -> str:
@@ -422,11 +588,12 @@ class Step(ChildObject):
 
     @property
     def fields(self) -> dict:
-      return dict(
-          number=("number", True),
-          status=("conclusion", True, Status),
-          desc=("name", True),
-      )
+        """Mapping of object attrs to (json field, include in repr, instance type)"""
+        return dict(
+            number=("number", True),
+            status=("conclusion", True, Status),
+            desc=("name", True),
+        )
 
 
 class Pages(Object):
@@ -434,16 +601,13 @@ class Pages(Object):
 
     @property
     def fields(self) -> dict:
-      return dict(
-        url=("html_url", True),
-        branch=("source.branch", True),
-        path=("source.path", True),
-        status=("status", True, BuildStatus),
-      )
-
-    @property
-    def steps(self) -> list:
-      return [Step(x, self) for x in self.request_data["steps"]]
+        """Mapping of object attrs to (json field, include in repr, instance type)"""
+        return dict(
+            url=("html_url", True),
+            branch=("source.branch", True),
+            path=("source.path", True),
+            status=("status", True, BuildStatus),
+        )
 
 
 class Job(ChildObject):
@@ -451,18 +615,20 @@ class Job(ChildObject):
 
     @property
     def fields(self) -> dict:
-      return dict(
-        id=("id", True),
-        progress=("status", False, Progress),
-        status=("conclusion", False, Status),
-        sha=("head_sha", True, Sha),
-        name=("name", False),
-        ok=(None, True),
-      )
+        """Mapping of object attrs to (json field, include in repr, instance type)"""
+        return dict(
+            id=("id", True),
+            progress=("status", False, Progress),
+            status=("conclusion", False, Status),
+            sha=("head_sha", True, Sha),
+            name=("name", False),
+            ok=(None, True),
+        )
 
     @property
     def steps(self) -> list:
-      return [Step(x, self) for x in self.request_data["steps"]]
+        """Return list of Step objects for this job"""
+        return [Step(x, self) for x in self.request_data["steps"]]
 
     @property
     def last_step(self) -> str:
@@ -470,10 +636,24 @@ class Job(ChildObject):
         if not self.steps:
             return
         if not self.is_ok:
-            failed = [s for s in self.steps if not s.is_ok]
-            if failed:
-                return failed[0]
+            failed = (s for s in self.steps if not s.is_ok)
+            return first(failed, self.steps[-1])
         return self.steps[-1]
+
+    @property
+    def url(self):
+        """Return the URL to view the Job on github.com"""
+        return f"https://github.com/{USER}/{REPO}/runs/{self.id}?check_suite_focus=true"
+
+    @cached_property
+    def log_request(self):
+        """Return the JobLogRequest object for this job."""
+        return JobLogRequest(self)
+
+    @cached_property
+    def log(self):
+        """Return the Log object for this Job"""
+        return self.log_request.data
 
 
 class Commit(Object):
@@ -481,16 +661,17 @@ class Commit(Object):
 
     @property
     def fields(self) -> dict:
-      return dict(
-        sha=("sha", True, Sha),
-        date=("commit.author.date", True, Date),
-        author=("commit.author.name", True),
-        committer=("commit.committer.name", False),
-        message=("commit.message", False),
-        tree=("commit.tree.sha", False, Sha),
-        stats=("stats", False),
-        files=("files", False),
-      )
+        """Mapping of object attrs to (json field, include in repr, instance type)"""
+        return dict(
+            sha=("sha", True, Sha),
+            date=("commit.author.date", True, Date),
+            author=("commit.author.name", True),
+            committer=("commit.committer.name", False),
+            message=("commit.message", False),
+            tree=("commit.tree.sha", False, Sha),
+            stats=("stats", False),
+            files=("files", False),
+        )
 
 
 class Deploy(Object):
@@ -498,14 +679,15 @@ class Deploy(Object):
 
     @property
     def fields(self) -> dict:
-      return dict(
-        id=("id", True),
-        sha=("sha", True, Sha),
-        date=("created_at", True, Date),
-        creator=("creator.login", False),
-        status=(None, True, Status),
-        master_sha=(None, True, Sha),
-      )
+        """Mapping of object attrs to (json field, include in repr, instance type)"""
+        return dict(
+            id=("id", True),
+            sha=("sha", True, Sha),
+            date=("created_at", True, Date),
+            creator=("creator.login", False),
+            status=(None, True, Status),
+            master_sha=(None, True, Sha),
+        )
 
     @cached_property
     def commit_request(self):
@@ -528,88 +710,86 @@ class Deploy(Object):
 
     @property
     def master_sha(self) -> str:
-      """Returns a string with the sha from the master branch, parsed from the
-         message of the deploy commit
-      """
-      if not self.commit.message:
-        return
-      sha = self.commit.message.split()[-1]
-      if len(sha) == 40:
-        return Sha(sha)
+        """Returns a string with the sha from the master branch, parsed from the
+            message of the deploy commit
+        """
+        if not self.commit.message:
+            return
+        sha = self.commit.message.split()[-1]
+        if len(sha) == 40:
+            return Sha(sha)
 
     @property
     def status(self) -> str:
-      if not self.statuses:
-        return
-      return Status(self.statuses[0].status)
+        """Return Status object of first DeployStatus"""
+        if not self.statuses:
+            return
+        return Status(self.statuses[0].status)
 
     @cached_property
     def statuses(self):
-      """Returns list of Status objects"""
-      return self.statuses_request.data
+        """Returns list of Status objects"""
+        return self.statuses_request.data
 
     @cached_property
     def statuses_request(self):
-      """Returns a StatusRequest"""
-      return StatusRequest(self)
+        """Returns a StatusRequest"""
+        return StatusRequest(self)
 
 
-# TODO: Add docstrings
 class Downloadable():
     """Abstract base class to provide should_refresh method."""
 
-    def APP(self):
-        """."""
-        raise Exception("Should be inherited from GithubRequest class, not Downloadable.")
-
-    def is_open(self) -> bool:
-        """."""
-        raise Exception("Should be inherited from GithubRequest class, not Downloadable.")
-
-    def exists(self) -> bool:
-        """."""
-        raise Exception("Should be inherited from GithubRequest class, not Downloadable.")
-
+    @property
+    @abstractmethod
     def should_refresh(self):
-        """."""
-        raise Exception("Should be inherited from GithubRequest class, not Downloadable.")
+        """Return True if this particular the file for this particular request
+           should be re-downloaded."""
+        raise Exception("Should be defined in inherting classes.")
 
 
 class Dynamic(Downloadable):
     """For requests that respond with data that is a snapshot in time."""
 
+    @property
     def should_refresh(self):
-        """."""
+        """True if --refresh unless just downloaded"""
         return not self.downloaded and self.APP.refresh
 
 
 class Finite(Downloadable):
-    """For requests that respond with data for a single object may be updated
-       until it is closed."""
+    """For requests that respond with data for a single object which may be
+       modified until it is closed."""
 
+    @property
     def should_refresh(self):
-        """."""
+        """True for open objects unless --local or just downloaded"""
         if self.APP.force_local or self.downloaded:
             return False
 
-        return self.is_open()
+        return self.is_open
 
 
 class Additive(Downloadable):
-    """For requests respond with a list of Finite members which may be added to."""
+    """For requests that respond with a list of Finite object which may be
+       added to."""
 
+    @property
     def should_refresh(self):
-        """."""
+        """True if --refresh or if any member objects are open, unless --local
+           or just downloaded."""
         if self.APP.force_local or self.downloaded:
             return False
 
-        return self.is_open() or self.APP.refresh
+        return self.is_open or self.APP.refresh
 
 
 class Static(Downloadable):
     """For requests that do not change once downloaded."""
+
+    @property
     def should_refresh(self):
-        """."""
+        """Never refresh."""
         return False
 
 
@@ -639,6 +819,7 @@ class GithubRequest(ABC, Downloadable):
         self.get()
 
     def __repr__(self):
+        """Return repr string containing endpoint"""
         return f"{self.__class__.__name__}({self.endpoint})"
 
     def get(self):
@@ -650,12 +831,12 @@ class GithubRequest(ABC, Downloadable):
 
         self.load()
 
-        if self.should_refresh():
-            d = [t for t in self.__class__.mro() if not t is Downloadable and issubclass(t, Downloadable) ]
-            self.APP.info(self.__class__.__name__, d[-1].__name__, self.endpoint, name="Refreshing")
+        if self.should_refresh:
+            self.APP.info(self.__class__.__name__, "from endpoint:", self.endpoint, prefix="Refreshing")
             self.download()
             self.load()
 
+    @property
     def is_open(self) -> bool:
         """Return True if any self.data objects are open"""
         if hasattr(self.data, "is_open"):
@@ -675,14 +856,14 @@ class GithubRequest(ABC, Downloadable):
     @property
     @abstractmethod
     def endpoint(self) -> str:
-      """A string containing the part of the Github API endpoint for this
-         request type that follows {REPO}.
+        """A string containing the part of the Github API endpoint for this
+           request type that follows {REPO}.
 
-         For example, if the full endpoint for the class was:
-         /repos/{owner}/{repo}/commits/{ref}
+           For example, if the full endpoint for the class was:
+           /repos/{owner}/{repo}/commits/{ref}
 
-         This method would return:
-         f"commits/{ref}"
+           This method would return:
+           f"commits/{ref}"
          """
 
     @cached_property
@@ -692,8 +873,8 @@ class GithubRequest(ABC, Downloadable):
         return DATA_DIR.joinpath(self.dirname)
 
     def exists(self):
-      """Return True if there are files downoaded for this request type."""
-      return bool(self.files)
+        """Return True if there are files downoaded for this request type."""
+        return bool(self.files)
 
     @property
     def files(self):
@@ -754,8 +935,8 @@ class ChildRequest(GithubRequest):
         super().__init__()
 
     def exists(self):
-      """Return True if there are files downoaded for this request type."""
-      return self.filepath.is_file()
+        """Return True if there are files downoaded for this request type."""
+        return self.filepath.is_file()
 
     @property
     def filepath(self):
@@ -776,8 +957,8 @@ class PagesRequest(GithubRequest, Dynamic):
 
     @property
     def endpoint(self):
-      """API endpoint following REPO"""
-      return "pages"
+        """API endpoint following REPO"""
+        return "pages"
 
 
 class StatusRequest(ChildRequest, Finite):
@@ -793,8 +974,185 @@ class StatusRequest(ChildRequest, Finite):
 
     @property
     def endpoint(self):
-      """API endpoint following REPO"""
-      return f"deployments/{self.parent.id}/statuses"
+        """API endpoint following REPO"""
+        return f"deployments/{self.parent.id}/statuses"
+
+
+class JobLogRequest(ChildRequest, Finite):
+    """Class for requesting job logs
+       https://docs.github.com/en/free-pro-team@latest/rest/reference/actions#download-job-logs-for-a-workflow-run
+    """
+
+    dirname: str = "logs"
+
+    @property
+    def endpoint(self):
+        """The job logs endpoint."""
+        return f"actions/jobs/{self.parent.id}/logs"
+
+    @property
+    def is_open(self):
+        """Logs may be updated as if the parent job is updated."""
+        return self.parent.is_open
+
+    @cached_property
+    def data(self):
+        """Return Log object"""
+        return Log(self.parent, self.request_data)
+
+    def download(self):
+        """Make a request to the Github API then save the resulting text file.
+           Uses the `gh` CLI tool to avoid dealing with authentication.
+           Raises CalledProcessError if the request fails.
+        """
+        with self.filepath.open("w") as fp:
+            result = shell_run(
+                ["gh", "api", f"/repos/{USER}/{REPO}/{self.endpoint}"],
+                stdout=fp)
+            result.check_returncode()
+
+    @property
+    def filepath(self):
+        """Filename is the `{self.parent.id}.log`.'"""
+        return super().filepath.with_suffix(".log")
+
+    def load(self):
+        """Read the logfile lines into self.request_data"""
+        if not self.filepath.is_file():
+          return
+        with self.filepath.open() as fp:
+            self.request_data = fp.readlines()
+
+
+class LogLine():
+    """Class to handle parsing and comparison of Log lines"""
+    PATTERN = r"^(?P<date>[-0-9:.ZT]+)[ ]?(?:##\[(?P<cat>[a-z]+)\])?(?P<msg>.*)$"
+    REGEX = re.compile(PATTERN)
+
+    def __init__(self, num=0, text=""):
+        """Initialize kwargs and parse."""
+        self.num = num
+        self.text = text
+        self.parse()
+
+    def __eq__(self, other):
+        """Use line number and text for equivalence."""
+        assert isinstance(other, self.__class__), \
+            f"Unable to compare {self.__class__.__name__} and {other.__class__.__name__}"
+        return (self.num, self.text) == (other.num, other.text)
+
+    def __lt__(self, other):
+        """Use line number for comparisons."""
+        assert isinstance(other, self.__class__), \
+            f"Unable to compare {self.__class__.__name__} and {other.__class__.__name__}"
+        return self.num < other.num
+
+    def parse(self, text=None):
+        """Parse text of log line and assign to attributes date, category, msg.
+           category is based on any text in ##[], defaulting to "normal" or
+           "empty" if text contains only whitespace
+
+        Params
+        ------
+        text (str, default=None): if present parse this instead of self.text
+
+        Examples
+        --------
+        >>> l1 = "2020-12-01T08:20:01.7355988Z ##[section]Finishing: Request a runner to run this job"
+        >>> l2 = "2020-12-01T08:20:09.6944852Z Current runner version: '2.274.2'"
+        >>> l3 = "2020-12-01T08:20:43.8183495Z "
+        >>> l4 = "\n"
+        >>> line = LogLine()
+
+        >>> line.parse(l1)
+        >>> line.date
+        '2020-12-01T08:20:01.7355988Z'
+        >>> line.category
+        'section'
+        >>> line.msg
+        'Finishing: Request a runner to run this job'
+
+        >>> line.parse(l2)
+        >>> line.date
+        '2020-12-01T08:20:09.6944852Z'
+        >>> line.category
+        'normal'
+        >>> line.msg
+        "Current runner version: '2.274.2'"
+
+        >>> line.parse(l3)
+        >>> line.date
+        '2020-12-01T08:20:43.8183495Z'
+        >>> line.category
+        'normal'
+        >>> line.msg
+        ''
+
+        >>> line.parse(l4)
+        >>> (line.category, line.date, line.msg)
+        ('empty', None, None)
+        """
+        text = (text or self.text).strip()
+        if not text:
+            self.category, self.date, self.msg = "empty", None, None
+            return
+
+        match = self.REGEX.search(text)
+        assert match, f"LogLine Unable to parse text #{self.num}:\n  '{text}'"
+        self.date = match.group("date")
+        self.category = match.group("cat") or "normal"
+        self.msg = match.group("msg")
+
+
+class Log():
+    """Class for job Logs"""
+    def __init__(self, parent, lines):
+        """Initialize attrs"""
+        self.parent = parent
+        self.input_lines = lines
+
+    @property
+    def lines(self):
+        """Return generator of LogLine objects"""
+        return (LogLine(i+1, line) for i, line in enumerate(self.input_lines))
+
+    @property
+    def is_open(self):
+        """True if parent Job is open"""
+        return self.parent.is_open
+
+    def filter(self, category, reverse=False):
+        """Return filtered LogLine objects
+        Params
+        ------
+        category (str)                 : category of lines to filter to
+                                         (containing "##[{category}]")
+        reversed (bool, default=False) : return reversed results
+        """
+        matches = (line for line in self.lines if line.category == category)
+        if reverse:
+            return sorted(matches, key=lambda l: l.num, reverse=True)
+        return matches
+
+    @cached_property
+    def errors(self):
+        """Return a generator yielding all error LogLines"""
+        return self.filter("error")
+
+    def belongs_to(self, child, category):
+        """Returns the first {category} LogLine preceeding {child}.
+        Params
+        ------
+        child (LogLine) : the LogLine in question
+        category (str)  : the category of line to find
+                          valid=["group", "section"]
+        """
+        assert category in ("group", "section"), \
+            f"Argument 2, category, must be 'group' or 'section' not '{category}'"
+
+        matches = (line for line in self.filter(category, reverse=True)
+                   if line.num < child.num)
+        return first(matches)
 
 
 class JobsRequest(ChildRequest, Finite):
@@ -811,8 +1169,8 @@ class JobsRequest(ChildRequest, Finite):
 
     @property
     def endpoint(self):
-      """The job runs endpoint."""
-      return f"actions/runs/{self.parent.id}/jobs"
+        """The job runs endpoint."""
+        return f"actions/runs/{self.parent.id}/jobs"
 
 
 class CommitRequest(GithubRequest, Static):
@@ -834,8 +1192,8 @@ class CommitRequest(GithubRequest, Static):
 
     @cached_property
     def filepath(self):
-      """Filename uses {self.ref}"""
-      return self.dirpath.joinpath(f"{self.ref}.json")
+        """Filename uses {self.ref}"""
+        return self.dirpath.joinpath(f"{self.ref}.json")
 
     def exists(self):
         """Return True if there are files downoaded for this request type."""
@@ -866,8 +1224,8 @@ class DeploysRequest(GithubRequest, Additive):
 
     @property
     def endpoint(self):
-      """deployments endpoint"""
-      return "deployments"
+        """deployments endpoint"""
+        return "deployments"
 
 
 class RunsRequest(GithubRequest, Additive):
@@ -884,11 +1242,12 @@ class RunsRequest(GithubRequest, Additive):
 
     @property
     def endpoint(self):
-      """Runs endpoint."""
-      return "actions/runs"
+        """Runs endpoint."""
+        return "actions/runs"
 
 
 def debug(app):
+    """Print a bunch of debug info."""
     deploys = DeploysRequest()
     statuses = StatusRequest(deploys.data[0])
     runs = RunsRequest()
@@ -900,63 +1259,98 @@ def debug(app):
     status = Status("success")
     progress = Progress("completed")
 
-    app.info(DATA_DIR, name="DATA_DIR")
-    app.info(deploys.dirname, name="deploys.dirname")
-    app.info(deploys.dirpath, name="deploys.dirpath")
-    app.info(deploys.filepath, name="deploys.filepath")
-    app.info(deploys.endpoint, name="deploys.endpoint")
-    app.info(deploys.data[0], name="Deploy")
+    app.info(DATA_DIR, prefix="DATA_DIR")
+    app.info(deploys.dirname, prefix="deploys.dirname")
+    app.info(deploys.dirpath, prefix="deploys.dirpath")
+    app.info(deploys.filepath, prefix="deploys.filepath")
+    app.info(deploys.endpoint, prefix="deploys.endpoint")
+    app.info(deploys.data[0], prefix="Deploy")
 
-    app.info(statuses.dirname, name="statuses.dirname")
-    app.info(statuses.dirpath, name="statuses.dirpath")
-    app.info(statuses.filepath, name="statuses.filepath")
-    app.info(statuses.endpoint, name="statuses.endpoint")
-    app.info(statuses.data[0], name="DeployStatus")
+    app.info(statuses.dirname, prefix="statuses.dirname")
+    app.info(statuses.dirpath, prefix="statuses.dirpath")
+    app.info(statuses.filepath, prefix="statuses.filepath")
+    app.info(statuses.endpoint, prefix="statuses.endpoint")
+    app.info(statuses.data[0], prefix="DeployStatus")
 
-    app.info(runs.dirname, name="runs.dirname")
-    app.info(runs.dirpath, name="runs.dirpath")
-    app.info(runs.filepath, name="runs.filepath")
-    app.info(runs.endpoint, name="runs.endpoint")
-    app.info(runs.data[0], name="Run")
+    app.info(runs.dirname, prefix="runs.dirname")
+    app.info(runs.dirpath, prefix="runs.dirpath")
+    app.info(runs.filepath, prefix="runs.filepath")
+    app.info(runs.endpoint, prefix="runs.endpoint")
+    app.info(runs.data[0], prefix="Run")
 
-    app.info( run.jobs_request.dirname, name="jobs.dirname")
-    app.info( run.jobs_request.dirpath, name="jobs.dirpath")
-    app.info(run.jobs_request.filepath, name="jobs.filepath")
-    app.info(run.jobs_request.endpoint, name="jobs.endpoint")
-    app.info(job, name="Job")
+    app.info( run.jobs_request.dirname, prefix="jobs.dirname")
+    app.info( run.jobs_request.dirpath, prefix="jobs.dirpath")
+    app.info(run.jobs_request.filepath, prefix="jobs.filepath")
+    app.info(run.jobs_request.endpoint, prefix="jobs.endpoint")
+    app.info(job, prefix="Job")
 
-    app.info( run.jobs_request.dirname, name="jobs.dirname")
-    app.info( run.jobs_request.dirpath, name="jobs.dirpath")
-    app.info(run.jobs_request.filepath, name="jobs.filepath")
-    app.info(run.jobs_request.endpoint, name="jobs.endpoint")
-    app.info(step, name="Step")
-    app.info(commit, name="Commit")
-    app.info(Ok.ok, name="Ok")
-    app.info(status, status.ok, name="Status")
-    app.info(progress, progress.ok, name="Progress")
+    app.info( run.jobs_request.dirname, prefix="jobs.dirname")
+    app.info( run.jobs_request.dirpath, prefix="jobs.dirpath")
+    app.info(run.jobs_request.filepath, prefix="jobs.filepath")
+    app.info(run.jobs_request.endpoint, prefix="jobs.endpoint")
+    app.info(step, prefix="Step")
+    app.info(commit, prefix="Commit")
+    app.info(Ok.ok, prefix="Ok")
+    app.info(status, status.ok, prefix="Status")
+    app.info(progress, progress.ok, prefix="Progress")
 
 
-# TODO: Format pages status
-# TODO: Add pages build info
-@click.command()
-@click.option("--local", "-l", is_flag=True, default=False,
-              help="Don't download updates, even for pending states.'")
-@click.option("--refresh", "-r", is_flag=True, default=False,
-              help="Download updates.")
-@click.option("--verbose", "-v", is_flag=True, default=False,
-              help="Enable verbose mode.")
-def cli(**kwargs):
-    """Show status information about Gihub Pages and Actions"""
-    # debug(app)
-    app = Object.APP = GithubRequest.APP = App(**kwargs)
+def show_pages(obj):
+    """Print the Github Pages details to buffer.
+    Params
+    ------
+    obj (Pages): Pages object
+    """
+    app = App.APP
+    rows = [
+        [f"{app.style.status(obj.status)} {obj.url}"],
+        [f"  branch: {obj.branch}, path: {obj.path}"],
+    ]
 
-    pages = PagesRequest()
-    deploys = DeploysRequest()
-    runs = RunsRequest()
+    title = "Pages"
+    table = tabulate(rows, tablefmt="rst").splitlines()
+    app.writer.add_line(style(title, bold=True), "  ", table.pop(0), before=1)
+    app.writer.indent(to=len(title)+2)
+    app.writer.add_lines(table)
+    app.writer.dedent(reset=True)
 
+
+def show_deploys(deploys, count: int):
+    """Print list of {count} recent deploys to buffer.
+    Params
+    ------
+    deploys (List[Deploy]) : List of Deploy objects
+    count (int)            : Max number to print
+    """
+    app = App.APP
+    deploys_table = []
+    for deploy in deploys[:count]:
+        deploys_table.append({
+            "OK": app.style.status(deploy.status),
+            "date": deploy.date,
+            "id": deploy.id,
+            "commit": deploy.sha,
+            "master": deploy.master_sha or " "*Sha.SHORT_LENGTH,
+            "message": deploy.message.splitlines()[0][0:50],
+        })
+
+    app.writer.add_block(app.style.header("Deploys"))
+    app.writer.indent()
+    app.writer.add_block(tabulate(deploys_table, headers="keys"))
+    app.writer.dedent(reset=True)
+
+
+def show_runs(runs, deploys):
+    """Print the recent Github Action Workflow Runs to the buffer.
+    Params
+    ------
+    runs (List[Run])       : List of workflow Run objects
+    deploys (List[Deploy]) : List of repo Deploy objects
+    """
+    app = App.APP
     runs_table = []
-    for run in runs.data:
-        deploy = run.deploy(deploys.data)
+    for run in runs:
+        deploy = run.deploy(deploys)
         runs_table.append({
             "#": run.number,
             "OK": app.style.status(run.status),
@@ -968,34 +1362,93 @@ def cli(**kwargs):
             "deploy": f"{app.style.status(deploy.status)} {deploy.sha}" if deploy else ""
         })
 
+    app.writer.add_block(app.style.header("Github Action Runs"))
+    app.writer.indent()
+    app.writer.add_block(tabulate(runs_table, headers="keys"))
+    app.writer.dedent(reset=True)
 
-    deploys_table = []
-    for deploy in deploys.data[:5]:
-        deploys_table.append({
-            "OK": app.style.status(deploy.status),
-            "date": deploy.date,
-            "id": deploy.id,
-            "commit": deploy.sha,
-            "master": deploy.master_sha or " "*Sha.SHORT_LENGTH,
-            "message": deploy.message.splitlines()[0][0:50],
-        })
 
-    tabulate_module.PRESERVE_WHITESPACE = True
-    app.info(pages.data, name="Pages")
-    page = pages.data
-    table = [
-        [f"{app.style.status(page.status)} {page.url}"],
-        [f"  branch: {page.branch}, path: {page.path}"],
+def show_failing(job):
+    """Print the stats and error messages if {job} failed.
+    Params
+    ------
+    jobs (Job): workflow run Job object
+    """
+    if job.ok != Ok.fail:
+        return
+
+    app = App.APP
+    margin = len(f"| 959 | section | {''} |") + 2
+    wrap_width, idt = app.width - margin, " " * 2
+    log = job.log
+    errors_table = []
+    last_sec, last_group = LogLine(), LogLine()
+
+    failure_table = [
+        ("Workflow", job.parent.workflow_id),
+        ("Run", f"[{style(job.parent.status.name, fg='red')}] {job.parent.id}"),
+        ("Job", f"[{style(job.status.name, fg='red')}] {job.id}"),
+        ("Step", f"[{style(job.last_step.status.name, fg='red')}] {app.style.step(job.last_step, len(str(job.last_step.number)))}"),
+        ("Log", job.log_request.filepath.relative_to(Path.cwd())),
+        ("URL", job.url),
     ]
 
-    print(app.style.header("Pages", newlines=0))
-    print(tabulate(table, tablefmt="rst")) # fancy_grid, grid, pretty, rst
+    for err in log.errors:
+        sec = log.belongs_to(err, "section")
+        group = log.belongs_to(err, "group")
 
-    print(app.style.header("Github Action Runs"))
-    print(tabulate(runs_table, headers="keys"))
+        if sec != last_sec:
+            last_sec = sec
+            errors_table.append((sec.num, sec.category, f"{sec.msg} >"))
 
-    print(app.style.header("Deploys"))
-    print(tabulate(deploys_table, headers="keys"))
+        if group != last_group:
+            last_group = group
+            errors_table.append((group.num, group.category, f"{idt}{group.msg} >"))
+        errors_table.append((
+            err.num, "error",
+            click.wrap_text(
+                f"- {err.msg}",
+                width=wrap_width,
+                initial_indent=(idt*3),
+                subsequent_indent=idt*4,
+                preserve_paragraphs=True
+            )
+        ))
+
+    app.writer.add_block(app.style.header("\u2757 Last Run Failed"))
+    app.writer.indent()
+    app.writer.add_block(tabulate(failure_table, tablefmt="rst"))
+    app.writer.dedent(reset=True)
+
+    app.writer.add_block(app.style.header("Errors", newlines=0))
+    app.writer.indent()
+    app.writer.add_block(tabulate(errors_table, tablefmt="grid", colalign=("right",)))
+    app.writer.dedent(reset=True)
+
+# TODO: Add pages build info
+@click.command()
+@click.option("--local", "-l", is_flag=True, default=False,
+              help="Don't download updates, even for pending states.'")
+@click.option("--refresh", "-r", is_flag=True, default=False,
+              help="Download updates.")
+@click.option("--verbose", "-v", is_flag=True, default=False,
+              help="Enable verbose mode.")
+def cli(**kwargs):
+    """Show status information about Gihub Pages and Actions"""
+    # debug(app)
+    app = App(**kwargs)
+    tabulate_module.PRESERVE_WHITESPACE = True
+
+    pages = PagesRequest()
+    deploys = DeploysRequest()
+    runs = RunsRequest()
+
+    show_pages(pages.data)
+    show_runs(runs.data, deploys.data)
+    show_deploys(deploys.data, 5)
+    show_failing(runs.data[0].last_job)
+
+    click.echo_via_pager(app.writer.buf, color=True)
 
 
 if __name__ == "__main__":
