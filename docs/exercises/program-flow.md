@@ -194,3 +194,21 @@ character_info("Max", "mage", 5)
 
 You'll notice that we didn't need to assign new `name`, `level` and `trade`
 variables. We just passed the values in directly.
+
+
+### Step 3: Make a character_level function
+
+The message for when a character changes levels is different, so make a
+function for that too.
+
+* Function name: `character_level`
+* Arguments:
+  * `character_name` (`str`)
+  * `character_level` (`int`)
+* Example output: `Max is now level 8`
+
+Add it near the top of your program, just under where you define
+`character_info` on lines `3`-`4`.
+
+Then replace your print statement on line `14` with a call to your new
+`character_level` function.
