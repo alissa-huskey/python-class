@@ -25,4 +25,7 @@ title = "Mage"
 level = 2
 
 
-character_info("Xena", "warrior", 3)
+
+character_info("Shay", "warrior", 7)
+character_info("Quinn", "thief", 3)
+character_info("Max", "mage", 5)

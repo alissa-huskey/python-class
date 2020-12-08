@@ -129,8 +129,7 @@ Last week we discussed that...
 * When calling functions, arguments are passed inside the parenthisis of the
   calling line with commas seperating them.
 
-Step 1: Make a character info function
---------------------------------------
+### Step 1: Make a character info function
 
 Let's make it easier to print out character information by turning it into a function.
 
@@ -159,3 +158,39 @@ level = level + 2
 
 print(name, "is now level", level)
 ```
+
+### Step 2: Print out more characters
+
+The thing that makes functions useful is that you can call them multiple times.
+For functions that take arguments, you can call them with different arguments.
+
+Lets call our new function with different values for all three arguments.
+
+```{code-block} python
+---
+caption: character.py
+linenos:
+emphasize-lines: 16-18
+---
+import random
+
+def character_info(character_name, character_title, character_level):
+    print(character_name, "is a level", character_level, character_title)
+
+name = "Ash"
+level = random.randint(1,5)
+title = "thief"
+
+character_info(name, level, title)
+
+level = level + 2
+
+print(name, "is now level", level)
+
+character_info("Shay", "warrior", 7)
+character_info("Quinn", "thief", 3)
+character_info("Max", "mage", 5)
+```
+
+You'll notice that we didn't need to assign new `name`, `level` and `trade`
+variables. We just passed the values in directly.
