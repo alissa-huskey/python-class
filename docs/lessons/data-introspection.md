@@ -1,5 +1,5 @@
-Part X: Data Introspection
-----------------------------
+Data Introspection
+==================
 
 API Documentation is not always readily available or easy to understand. So we
 often end up just diving into the data to figure out what it contains and how
@@ -7,13 +7,6 @@ to best use it.
 
 This lesson is going to be almost entirly in the Python interpreter, ideally
 IPython.
-
-* http://api.punkapi.com/v2/beers/random
-* https://wordsapiv1.p.rapidapi.com/words/grok
-* https://restcountries.eu/rest/v2/name/germany
-* http://api.zippopotam.us/us/80201
-* https://api.spacexdata.com/v4/launches/latest
-* https://superhero-search.p.rapidapi.com/?hero=batman
 
 For this lesson we're going to use the [Punk
 API](http://api.punkapi.com/v2/beers/random) which searches BrewDog's catalog
@@ -25,8 +18,10 @@ list of the ingredients.
 We'll be using the `requests` module as usual, as well `pprint` for looking at
 the data.
 
-*[I]Python shell*
-```python
+```{code-block} python
+---
+caption: ipython shell
+---
 >>> from pprint import pprint
 >>> import requests
 >>> response = requests.get("http://api.punkapi.com/v2/beers/random")
@@ -37,8 +32,10 @@ the data.
 It's a good idea to check to make sure nothing went wrong with the request.
 There are a few ways to do this.
 
-*[I]Python shell*
-```python
+```{code-block} python
+---
+caption: ipython shell
+---
 >>> response.ok                     # True if the request succeeded, False otherwise
 True
 
@@ -56,26 +53,31 @@ True
 
 It may be a good idea to look at the response headers to see if there is any useful information.
 
-*[I]Python shell*
-```python
->>> pprint(response.headers)
-{'Date': 'Wed, 11 Nov 2020 00:30:49 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'access-control-allow-origin': '*', 'cache-control': 'public, max-age=0, must-revalidate', 'x-dns-prefetch-control': 'off', 'etag': 'W/"a52-eLifbD7LOeHVKy02nKxMUNsJspk"', 'x-download-options': 'noopen'...}
+```{code-block} python
+---
+caption: ipython shell
+---
+>>> pprint(response.headers) {'Connection': 'keep-alive', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Wed, 11 Nov 2020 00:30:49 GMT', 'Transfer-Encoding': 'chunked', 'access-control-allow-origin': '*', 'cache-control': 'public, max-age=0, must-revalidate', 'etag': 'W/"a52-eLifbD7LOeHVKy02nKxMUNsJspk"', 'x-dns-prefetch-control': 'off', 'x-download-options': 'noopen'...}
 ```
 
 Well that is not pretty printing like it should. `pprint` only knows how to
 handle a few data types, so sometimes it fails when there's an unexpected type
 of data. We can check this using the `type` function.
 
-*[I]Python shell*
-```python
+```{code-block} python
+---
+caption: ipython shell
+---
 >>> type(response.headers)
 requests.structures.CaseInsensitiveDict
 ```
 
 Ok, then first we need to convert it to a type that `pprint` knows using the `dict` function.
 
-*[I]Python shell*
-```python
+```{code-block} python
+---
+caption: ipython shell
+---
 >>> headers = dict(response.headers)
 >>> pprint(headers)
 {'CF-Cache-Status': 'MISS',
@@ -94,8 +96,10 @@ The first things I usually do is check are the `type` of the top-level `json()`
 data, and use `pprint` to print it all out. For this exercise I'm going to make
 a `dict` to store the data I want to keep track of called `final`.
 
-*[I]Python shell*
-```python
+```{code-block} python
+---
+caption: ipython shell
+---
 >>> final = {}
 >>> data = response.json()
 >>> type(data)
@@ -112,8 +116,10 @@ list
 Ok, so we now know that `data` is a `list`. Let's see how many elements are in
 the list using the `len` function.
 
-*[I]Python shell*
-```python
+```{code-block} python
+---
+caption: ipython shell
+---
 >>> len(data)
 1
 ```
@@ -123,7 +129,10 @@ Just one item. Let's take a look at
 Now that we know it's a dictionary, the next thing we want to know is what its
 keys are. All `dict` objects have a `keys()` function for just this purpose.
 
-```python
+```{code-block} python
+---
+caption: ipython shell
+---
 >>> d.keys()
 dict_keys(['current_condition', 'nearest_area', 'request', 'weather'])
 ```
@@ -133,7 +142,10 @@ know it's broken down into four categories.
 
 Now we need to know the same thing for each of these.
 
-```python
+```{code-block} python
+---
+caption: ipython shell
+---
 >>> type(d['current_condition'])
 list
 ```
@@ -142,7 +154,10 @@ The `dict_keys` type works like a list, which means that we can iterate over it
 just like we would a list. That way we can print out the type for each key,
 without having to type each one out manually.
 
-```python
+```{code-block} python
+---
+caption: ipython shell
+---
 >>> for k in d.keys():
 >>>     # here we are using the `k` variable, which is the key name
 >>>     # to access the cooresponding value in the `d` dictionary
@@ -162,7 +177,10 @@ arrow keys to move around within the text.
 
 Add one more argument to the end of the print statement `len(d[k])`.
 
-```python
+```{code-block} python
+---
+caption: ipython shell
+---
 >>> for k in d.keys():
 >>>     print(k, type(d[k]), len(d[k]))
 
@@ -179,7 +197,10 @@ I'm guessing that the `request` value has information about what we sent it.
 Let's take a look at its contents and see if it's short enough to take in at a
 glance.
 
-```python
+```{code-block} python
+---
+caption: ipython shell
+---
 >>> req = d['request']
 >>> req[0]
 {'query': 'Lat 39.74 and Lon -104.98', 'type': 'LatLon'}
@@ -187,7 +208,10 @@ glance.
 
 Another way to do the same thing is this:
 
-```python
+```{code-block} python
+---
+caption: ipython shell
+---
 >>> d['request'][0]
 {'query': 'Lat 39.74 and Lon -104.98', 'type': 'LatLon'}
 ```
@@ -197,7 +221,10 @@ what `wttr.in` sent to the service that it gets its data from.
 
 Moving on, let's take a look at the `current_condition` value.
 
-```python
+```{code-block} python
+---
+caption: ipython shell
+---
 >>> d['current_condition'][0]
 {'FeelsLikeC': '23',
  'FeelsLikeF': '74',
@@ -225,7 +252,10 @@ Now we're getting to some real data. I see here that we have the `uvIndex` and
 
 Let's take a look at `nearest_area` now.
 
-```python
+```{code-block} python
+---
+caption: ipython shell
+---
 >>> d['nearest_area'][0]
 {'areaName': [{'value': 'Altura'}],
  'country': [{'value': 'United States of America'}],
@@ -243,7 +273,10 @@ Finally, the longest list, `weather`, with its `3` elements. We'll still look
 at the `0` element though, since we can assume that it is representative of the
 other elements.
 
-```python
+```{code-block} python
+---
+caption: ipython shell
+---
 >>> d['weather'][0]
 {'astronomy': [{'moon_illumination': '34',
    'moon_phase': 'First Quarter',
@@ -267,7 +300,10 @@ I'm going to save this element so I don't have to type `d['weather'][0]` every
 time. I can already see from the initial ouput that it's a dictionary, so I'll
 skip ahead to looking at its keys.
 
-```python
+```{code-block} python
+---
+caption: ipython shell
+---
 >>> w = d['weather'][0]
 >>> w.keys()
 
@@ -277,7 +313,10 @@ dict_keys(['astronomy', 'date', 'hourly', 'maxtempC', 'maxtempF', 'mintempC', 'm
 That's a little long. The `dict_keys` object is like a list, so we can convert
 it to one. If we do that, then iPython will pretty-print it for us.
 
-```python
+```{code-block} python
+---
+caption: ipython shell
+---
 >>> list(w.keys())
 ['astronomy',
  'date',
@@ -299,7 +338,10 @@ data. Let's delete that from the `w` dictionary.
 Let's make the `w` value a copy of `d['weather'][0]` instead of a `reference` to it as it is now.
 
 
-```python
+```{code-block} python
+---
+caption: ipython shell
+---
 >>> w = d['weather'][0].copy()
 ```
 
@@ -307,7 +349,10 @@ Now we can delete the `hourly` value, but still have it available for us back
 in the `d` dictionary.
 
 
-```python
+```{code-block} python
+---
+caption: ipython shell
+---
 >>> del w['hourly']                         # this deletes 'hourly' from the `w` dict
 >>> type(d['weather'][0]['hourly'])         # just to confirm that it's still there in `d`
 list
