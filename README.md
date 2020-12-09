@@ -1,65 +1,66 @@
 Python Class
 ============
 
-Table of Contents
+This repo is for the lessons and code related to the Python class that I've
+been teaching to a few friends and family.
+
+<h2 align="center"><a href="https://alissa-huskey.github.io/python-class/">» :book: Go to the lessons »</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
+
+Development Notes
 -----------------
 
-* [Reference](#reference)
-* [Lessons](#lessons)
-* [Tool Guides](#tool-guides)
-* [Exercises](#exercises)
+* [Poetry](https://python-poetry.org/): dependency management
 
 
-Reference
----------
-
-* [Glossary](docs/reference/glossary.md)
-* [dicts](docs/reference/dicts.md)
-* [lists](docs/reference/lists.md)
-* [template.py](pythonclass/template.py)
+| command                        | description                    |
+|--------------------------------|--------------------------------|
+| `poetry install --no-root`       | install dependencies           |
+| `poetry shell`                   | start virtual env shell        |
 
 
-Lessons
--------
+### Docs
 
-### Invent Your Own Computer Games with Python
+* [Jupyter Book](https://jupyterbook.org/): document formatting and generation
+  > note: current release is at 8.3 but manually pulled at f32176e
+  > to get support for `local_extensions` config variable
+* [The Sphinx Book Theme](https://sphinx-book-theme.readthedocs.io/en/latest/index.html): theme
 
-* **Chapter 2: Writing Programs** [(chapter)](http://inventwithpython.com/invent4thed/chapter2.html) [(hello_world.py)](pythonclass/lessons/hello_world.py)
-  This program prints the chapter name and title, then says hello and asks for the users name.
-* **[Chapter 3: Guess The Number](docs/lessons/03_guess_the_number.md)** [(chapter)](http://inventwithpython.com/invent4thed/chapter3.html) [(guess.py)](pythonclass/lessons/guess.py)
-   A guess the number game.
-* **[Chapter 5: Dragon Realm](docs/lessons/05_dragon_realm.md)** [(chapter)](http://inventwithpython.com/invent4thed/chapter5.html) [(dragon_realm.py)](pythonclass/lessons/dragonrealm/dragon_realm.py)
-   The player enters a dragon realm where they must choose between two caves.
 
-### Others
+#### Build
 
-* **[Create a Pypet](https://www.thinkful.com/learn/intro-to-python-tutorial/)** [(pypet.py)](pythonclass/lessons/pypet.py) Programming Fundamentals in Python
-* **[Pypet Battle](docs/lessons/battle.md)** [(battle.py)](pythonclass/lessons/battle.py) [(pets.py)](pythonclass/lessons/pets.py) Our PyPet's battle it out.
-* **[Web APIs](docs/lessons/web-apis.md)** [(web_apis.py)](pythonclass/lessons/web_apis.py) Wherein we learn about web requests, JSON, and the `requests` Python module.
-* **Lists** [(lists.py)](pythonclass/lessons/lists.py)
-* **Dicts** [(dicts.py)](pythonclass/lessons/dicts.py)
-* **Slices** [(slices.py)](pythonclass/lessons/slices.py)
-* **Strings and Lists** [(slices.py)](pythonclass/lessons/strings_lists.py)
+Generate Static HTML files with `jupyter-book`.
 
-## Fundamentals
+```bash
+jupyter-book build docs
+```
 
-* **[Expressions](https://nbviewer.jupyter.org/github/alissa-huskey/python-class/blob/master/docs/lessons/expressions.ipynb)**
-* **[Statements](https://nbviewer.jupyter.org/github/alissa-huskey/python-class/blob/master/docs/lessons/statements.ipynb)**
+#### Deploy
 
-Tool Guides
------------
+* [GitHub Pages](https://pages.github.com/): hosting
+* [peaceiris/actions-gh-pages][actions-gh-pages] via [Github Actions][github-actions]: automatic deploy on push to master
 
-* [Git: Concepts](docs/guides/git-concepts.md)
-* [VS Code Intro](docs/guides/vscode-intro.md)
-* [A Brief Tour of the Console](docs/guides/console.md)
-* [The Python Shell](docs/guides/python_shell.md)
-* [Repl.it](docs/guides/replit.md)
-* [Git on Repl.it](docs/guides/git-on-replit.md)
-* [Poetry](docs/guides/poetry.md)
-* [Mac Dev Env for Python](docs/guides/mac.md)
 
-Exercises
----------
+Python modules needed for production docs are stored in `docs/.requirements.txt`.
 
-* [List Exercises](docs/exercises/list-exercises.md)
-* [List String Exercises](docs/exercises/list-string-exercises.md)
+To manually deploy the current build of `docs/` in `docs/_build/` to
+`gh-import` branch:
+
+```bash
+ghp-import -n -p -f docs/_build/html
+```
+
+##### Github Settings
+
+* Pages:
+  * Branch: `gh-pages`
+  * Folder: `/ (root)`
+* Secrets & Deploy Key `ACTIONS_PAGES_DEPLOY_KEY`
+
+See also: [GitHub Pages and Actions][jb-pages] on jupyterbook.org.
+
+<!-- references -->
+
+[jb-pages]: https://jupyterbook.org/publish/gh-pages.html
+[github-pages]: https://pages.github.com/
+[github-actions]: https://github.com/features/actions
+[actions-gh-pages]: https://github.com/peaceiris/actions-gh-pages

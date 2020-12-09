@@ -1,0 +1,45 @@
+# Github Action to trigger automatically build and deploy docs
+name: deploy-docs
+
+# trigger when the master branch changes
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - master
+    paths:
+    - "docs/**"
+    - .github/workflows/docs.yml
+
+jobs:
+  deploy-docs:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    # install dependencies
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+
+    - name: Install dependencies
+      run: |
+        pip install -r docs/.requirements.txt
+
+    # generate static HTML files
+    - name: Build the book
+      run: |
+        jupyter-book build docs
+
+    # push build to gh-pages branch
+    - name: Deploy Docs
+      uses: peaceiris/actions-gh-pages@v3.7.3
+      with:
+        # https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-set-ssh-private-key-deploy_key
+        # https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-create-ssh-deploy-key
+        deploy_key: ${{ secrets.ACTIONS_PAGES_DEPLOY_KEY }}
+        publish_dir: ./docs/_build/html
+        user_name: 'peaceiris/actions-gh-pages[bot]'
+        user_email: 'actions-gh-pages[bot]@users.noreply.github.com'
+        commit_message: ${{ github.event.head_commit.message }}

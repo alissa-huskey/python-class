@@ -61,7 +61,7 @@ Here are the steps to follow in Repl.it.
 **In Repl.it**
 
 5. Commit & Push : In Repl.it:
-   - Click the ![fork](../assets/code-branch.png) **Version Control** link in the left-nav.
+   - Click the ![fork][fork] **Version Control** link in the left-nav.
    - Add a brief description of your changes in the **What did you change?** text area.
    - Click **commit & push**.
 
@@ -78,7 +78,7 @@ Part 2: Connect it to your Repl.it
 
 1. Open your your Repl.it repl.
 
-2. On the left side-nav click the second icon down: ![fork](assets/code-branch.png)
+2. On the left side-nav click the second icon down: ![fork][fork]
    **Version Control**.
 
 3. At the top of the new left-most pane, click the button that says **Connect
@@ -136,12 +136,12 @@ we'll have to use the command line.
 control. But you can skip it for now if you'd prefer.)
 
 
-#### Use `git status`
+**Use `git status`**
 
 The `git status` tool shows you a list of files that have been changed since
 your last commit.
 
-##### In the Console
+**In the Console**
 
 In the right-most Console pane, type:
 
@@ -169,7 +169,7 @@ Untracked files:
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
-#### Use `git diff`
+**Use `git diff`**
 
 The `git diff` tool shows the details of what you have changed.
 
@@ -177,7 +177,7 @@ The `diff` tool only shows changes to ***tracked*** files--ones that have been
 previously added to your repository. To make sure that all of your changes show
 up in the diff, we'll first need to add them.
 
-##### In the Console
+** In the Console**
 
 In the Console pane type:
 
@@ -246,7 +246,7 @@ In git a ***commit*** is a record of a set of changes. The repository for your
 code exists both on repl.it and on github. In order to update the repo on
 github with your commits on repl.it the changes will be ***pushed*** to Github.
 
-1. On the left side-nav, Click the![fork](assets/code-branch.png) **Version
+1. On the left side-nav, Click the![fork][fork] **Version
    Control** icon again. In the left-most **Version Control** pane, it should
    now display a link to your newly created repository next to the github icon.
 
@@ -265,3 +265,5 @@ Congratulations!
 
 You've successfully created a git repository, reviewed your changes, commited
 them, and pushed them to github!
+
+[fork]: ../assets/code-branch.png "fork"
