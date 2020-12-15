@@ -108,7 +108,7 @@ print(name, "is now level", level)
 ```
 
 Part 2: Function definition and calling
-=======================================
+---------------------------------------
 
 Last week we discussed that...
 
@@ -212,3 +212,4 @@ Add it near the top of your program, just under where you define
 
 Then replace your print statement on line `14` with a call to your new
 `character_level` function.
+
