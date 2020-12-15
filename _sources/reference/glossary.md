@@ -47,6 +47,10 @@ Escaping
 Expression
   A valid piece of code that, when evaluated, results in a value.
 
+Falsy
+  A value that is False when evaluated in a `boolean` context, or when converted
+  to a boolean using the `bool()` function.
+
 Function
   A named block of reusable code. A function may or may not take arguments, and
   may or may not return a value. In Python it is recommended to use the
@@ -101,7 +105,8 @@ Syntax
   computer. Grammar, but for code.
 
 Truthy
-  A value that is True when evaluated in a `boolean` context.
+  A value that is True when evaluated in a `boolean` context, or when converted
+  to a boolean using the `bool()` function.
 
 Type
 Data Type

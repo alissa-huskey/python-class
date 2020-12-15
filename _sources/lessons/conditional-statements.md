@@ -138,7 +138,7 @@ Some examples of expressions using comparison operators:
 
 Open up a {term}`Python shell` and use comparison operators to answer each of the following.
 
-1. Is `F` (capital A) greater than `z` (lower case z)?
+1. Is `F` (capital F) greater than `z` (lower case z)?
 2. Is `0.0` equal to `0`
 3. Is `[1, 2, 3, 4]` greater than `[5, 6, 7]`?
 4. Is the letter `"z"` in the string `"zebra"`?
@@ -179,7 +179,7 @@ while a `Falsy` value is one that Python considers to be the equivalent of
 `False`. It determies this by first converting it to a `boolean` value, which
 can be done using the `bool()` function.
 
-Some examples of `Falsy` values are 
+Some examples of `Falsy` values are
 
 * `0` zero
 * `""` an empty string
@@ -216,3 +216,31 @@ each of the following is `Truthy` or `Falsy`.
 2. `" "` a space
 3. `{}` an empty dictionary
 4. `[0]` a list containing the value `0`
+
+Exercises
+---------
+
+**Exercise 1: Flip a coin**
+
+  1. Pick a random number between `0` and `1` and assign it to a variable `coin`.
+  2. Print "You tossed", and the value of `coin`.
+  3. If the value of `coin` is Truthy, print "You win the coin toss!"
+
+**Exercise 2: Computer guessing game**
+
+  1. Pick a number between `1` and `100` and assign it to the variable `pick`. (Note: not random.)
+  2. Get a random number between between `1` and `100` and assign it to the variable `guess`.
+  3. Print `"The computer guessed`" and the value of `guess`.
+  4. If `guess` is the same as pick print `"The computer got it right!"`
+  5. If guess is within `30` of pick print `"The computer was close."`  (Hint: You'll need the `and` operator.)
+  6. Otherwise print `"The computer got it wrong."`
+
+**Exercise 3: Heads or Tails**
+
+In this exercise use the `and` operator and determine the Truthiness of a value.
+
+1. Ask the user `"heads or tails?"`
+2. If the answer is blank, tell them they have to enter something.
+3. If the answer is not `"heads"` or `"tails"`, tell them they need to pick
+   `"heads"` or `"tails"`.  (Bonus: Make this case-insensitive.)
+4. Randomly decide if they won the coin toss.
