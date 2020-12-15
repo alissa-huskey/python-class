@@ -1,0 +1,759 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Introspection &#8212; Python Class</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://alissa-huskey.github.io/python-class/lessons/data-introspection.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Web APIs" href="web-apis.html" />
+    <link rel="prev" title="Misc" href="misc.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://alissa-huskey.github.io/python-class/lessons/data-introspection.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Data Introspection" />
+<meta property="og:description" content="Data Introspection  API Documentation is not always readily available or easy to understand. So we often end up just diving into the data to figure out what it " />
+
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Python Class</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Python Class
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Lessons
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="fundamentals.html">
+   Fundamentals
+  </a>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="expressions.html">
+     Expressions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="statements.html">
+     Statements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="expressions_vs_statements.html">
+     Expressions vs. Statements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="flow.html">
+     Program Flow
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="conditional-statements.html">
+     Flow Control
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-up">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="misc.html">
+   Misc
+  </a>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Data Introspection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="web-apis.html">
+     Web APIs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="battle.html">
+     PyPet Battle
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-up">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="game-book.html">
+   Invent Games Book
+  </a>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_guess_the_number.html">
+     Chapter 3: Guess the Number
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_dragon_realm.html">
+     Chapter 5: Dragon Realm
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-up">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Tool Guides
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../guides/git-concepts.html">
+   Git Concepts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../guides/vscode-intro.html">
+   VS Code Intro
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../guides/console.html">
+   A Brief Tour of the Console
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../guides/python_shell.html">
+   Python Shell
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../guides/replit.html">
+   Repl.it Tips
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../guides/git-on-replit.html">
+   Git on Repl.it
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../guides/poetry.html">
+   Poetry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../guides/mac.html">
+   Mac Dev Env for Python
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/dicts.html">
+   Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/lists.html">
+   Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/template.py">
+   Script Template
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Exercises
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/program-flow.html">
+   Program Flow Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/list-exercises.html">
+   List Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/list-string-exercises.html">
+   List String Exercises
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/alissa-huskey/python-class"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/alissa-huskey/python-class/edit/master/docs/lessons/data-introspection.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-1-imports-and-request">
+   Step 1: Imports and request
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-2-check-the-status">
+   Step 2: Check the status
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-2-check-the-headers">
+   Step 2: Check the headers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-3-look-at-the-data">
+   Step 3: Look at the data
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="data-introspection">
+<h1>Data Introspection</h1>
+<p>API Documentation is not always readily available or easy to understand. So we
+often end up just diving into the data to figure out what it contains and how
+to best use it.</p>
+<p>This lesson is going to be almost entirly in the Python interpreter, ideally
+IPython.</p>
+<p>For this lesson we’re going to use the <a class="reference external" href="http://api.punkapi.com/v2/beers/random">Punk
+API</a> which searches BrewDog’s catalog
+of beers. The goal will be to get a random beer and print its name and a simple
+list of the ingredients.</p>
+<div class="section" id="step-1-imports-and-request">
+<h2>Step 1: Imports and request</h2>
+<p>We’ll be using the <code class="docutils literal notranslate"><span class="pre">requests</span></code> module as usual, as well <code class="docutils literal notranslate"><span class="pre">pprint</span></code> for looking at
+the data.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number">Listing 20 </span><span class="caption-text">ipython shell</span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://api.punkapi.com/v2/beers/random&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="step-2-check-the-status">
+<h2>Step 2: Check the status</h2>
+<p>It’s a good idea to check to make sure nothing went wrong with the request.
+There are a few ways to do this.</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number">Listing 21 </span><span class="caption-text">ipython shell</span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">response</span><span class="o">.</span><span class="n">ok</span>                     <span class="c1"># True if the request succeeded, False otherwise</span>
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span>            <span class="c1"># The numeric status code</span>
+<span class="go">200</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span><span class="o">.</span><span class="n">reason</span>                 <span class="c1"># The text status description</span>
+<span class="go">&#39;OK&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>     <span class="c1"># Raise an exception if request failed, do nothing otherwise</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="step-2-check-the-headers">
+<h2>Step 2: Check the headers</h2>
+<p>It may be a good idea to look at the response headers to see if there is any useful information.</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-number">Listing 22 </span><span class="caption-text">ipython shell</span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span> <span class="p">{</span><span class="s1">&#39;Connection&#39;</span><span class="p">:</span> <span class="s1">&#39;keep-alive&#39;</span><span class="p">,</span> <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json; charset=utf-8&#39;</span><span class="p">,</span> <span class="s1">&#39;Date&#39;</span><span class="p">:</span> <span class="s1">&#39;Wed, 11 Nov 2020 00:30:49 GMT&#39;</span><span class="p">,</span> <span class="s1">&#39;Transfer-Encoding&#39;</span><span class="p">:</span> <span class="s1">&#39;chunked&#39;</span><span class="p">,</span> <span class="s1">&#39;access-control-allow-origin&#39;</span><span class="p">:</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;cache-control&#39;</span><span class="p">:</span> <span class="s1">&#39;public, max-age=0, must-revalidate&#39;</span><span class="p">,</span> <span class="s1">&#39;etag&#39;</span><span class="p">:</span> <span class="s1">&#39;W/&quot;a52-eLifbD7LOeHVKy02nKxMUNsJspk&quot;&#39;</span><span class="p">,</span> <span class="s1">&#39;x-dns-prefetch-control&#39;</span><span class="p">:</span> <span class="s1">&#39;off&#39;</span><span class="p">,</span> <span class="s1">&#39;x-download-options&#39;</span><span class="p">:</span> <span class="s1">&#39;noopen&#39;</span><span class="o">...</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>Well that is not pretty printing like it should. <code class="docutils literal notranslate"><span class="pre">pprint</span></code> only knows how to
+handle a few data types, so sometimes it fails when there’s an unexpected type
+of data. We can check this using the <code class="docutils literal notranslate"><span class="pre">type</span></code> function.</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-number">Listing 23 </span><span class="caption-text">ipython shell</span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
+<span class="go">requests.structures.CaseInsensitiveDict</span>
+</pre></div>
+</div>
+</div>
+<p>Ok, then first we need to convert it to a type that <code class="docutils literal notranslate"><span class="pre">pprint</span></code> knows using the <code class="docutils literal notranslate"><span class="pre">dict</span></code> function.</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-number">Listing 24 </span><span class="caption-text">ipython shell</span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">headers</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span><span class="p">(</span><span class="n">headers</span><span class="p">)</span>
+<span class="go">{&#39;CF-Cache-Status&#39;: &#39;MISS&#39;,</span>
+<span class="go"> ...</span>
+<span class="go"> &#39;x-ratelimit-limit&#39;: &#39;3600&#39;,</span>
+<span class="go"> &#39;x-ratelimit-remaining&#39;: &#39;3551&#39;,</span>
+<span class="go"> &#39;x-ratelimit-reset&#39;: &#39;1605058644&#39;</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+</div>
+<p>Rate-limit information is often found in the headers, so it’s a good thing to keep an eye out for.</p>
+</div>
+<div class="section" id="step-3-look-at-the-data">
+<h2>Step 3: Look at the data</h2>
+<p>The first things I usually do is check are the <code class="docutils literal notranslate"><span class="pre">type</span></code> of the top-level <code class="docutils literal notranslate"><span class="pre">json()</span></code>
+data, and use <code class="docutils literal notranslate"><span class="pre">pprint</span></code> to print it all out. For this exercise I’m going to make
+a <code class="docutils literal notranslate"><span class="pre">dict</span></code> to store the data I want to keep track of called <code class="docutils literal notranslate"><span class="pre">final</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-number">Listing 25 </span><span class="caption-text">ipython shell</span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">final</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="go">list</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="go">[{&#39;abv&#39;: 5.2,</span>
+<span class="go">  &#39;attenuation_level&#39;: 85,</span>
+<span class="go">  &#39;boil_volume&#39;: {&#39;unit&#39;: &#39;litres&#39;, &#39;value&#39;: 25},</span>
+<span class="go">  ...</span>
+<span class="go">  }]</span>
+</pre></div>
+</div>
+</div>
+<p>Ok, so we now know that <code class="docutils literal notranslate"><span class="pre">data</span></code> is a <code class="docutils literal notranslate"><span class="pre">list</span></code>. Let’s see how many elements are in
+the list using the <code class="docutils literal notranslate"><span class="pre">len</span></code> function.</p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-number">Listing 26 </span><span class="caption-text">ipython shell</span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+</div>
+<p>Just one item. Let’s take a look at</p>
+<p>Now that we know it’s a dictionary, the next thing we want to know is what its
+keys are. All <code class="docutils literal notranslate"><span class="pre">dict</span></code> objects have a <code class="docutils literal notranslate"><span class="pre">keys()</span></code> function for just this purpose.</p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-number">Listing 27 </span><span class="caption-text">ipython shell</span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="go">dict_keys([&#39;current_condition&#39;, &#39;nearest_area&#39;, &#39;request&#39;, &#39;weather&#39;])</span>
+</pre></div>
+</div>
+</div>
+<p>That’s helpful! So even though there was a ton of information returned, we now
+know it’s broken down into four categories.</p>
+<p>Now we need to know the same thing for each of these.</p>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-number">Listing 28 </span><span class="caption-text">ipython shell</span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;current_condition&#39;</span><span class="p">])</span>
+<span class="go">list</span>
+</pre></div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">dict_keys</span></code> type works like a list, which means that we can iterate over it
+just like we would a list. That way we can print out the type for each key,
+without having to type each one out manually.</p>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-number">Listing 29 </span><span class="caption-text">ipython shell</span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="c1"># here we are using the `k` variable, which is the key name</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="c1"># to access the cooresponding value in the `d` dictionary</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">]))</span>
+
+<span class="go">current_condition &lt;class &#39;list&#39;&gt;</span>
+<span class="go">nearest_area &lt;class &#39;list&#39;&gt;</span>
+<span class="go">request &lt;class &#39;list&#39;&gt;</span>
+<span class="go">weather &lt;class &#39;list&#39;&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>Now we know that we have a bunch of lists. Let’s add to that <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to find
+out how long each list is.</p>
+<p>Hit the <strong>up arrow</strong> until the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop is filled in. You can then use the
+arrow keys to move around within the text.</p>
+<p>Add one more argument to the end of the print statement <code class="docutils literal notranslate"><span class="pre">len(d[k])</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-number">Listing 30 </span><span class="caption-text">ipython shell</span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">]),</span> <span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">]))</span>
+
+<span class="go">current_condition &lt;class &#39;list&#39;&gt; 1</span>
+<span class="go">nearest_area &lt;class &#39;list&#39;&gt; 1</span>
+<span class="go">request &lt;class &#39;list&#39;&gt; 1</span>
+<span class="go">weather &lt;class &#39;list&#39;&gt; 3</span>
+</pre></div>
+</div>
+</div>
+<p>Now we can see that the <code class="docutils literal notranslate"><span class="pre">current_condition</span></code>, <code class="docutils literal notranslate"><span class="pre">nearest_area</span></code> and <code class="docutils literal notranslate"><span class="pre">request</span></code>
+values have one element in each list, and the <code class="docutils literal notranslate"><span class="pre">weather</span></code> value has <code class="docutils literal notranslate"><span class="pre">3</span></code> elements.</p>
+<p>I’m guessing that the <code class="docutils literal notranslate"><span class="pre">request</span></code> value has information about what we sent it.
+Let’s take a look at its contents and see if it’s short enough to take in at a
+glance.</p>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-number">Listing 31 </span><span class="caption-text">ipython shell</span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">req</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;request&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">req</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">{&#39;query&#39;: &#39;Lat 39.74 and Lon -104.98&#39;, &#39;type&#39;: &#39;LatLon&#39;}</span>
+</pre></div>
+</div>
+</div>
+<p>Another way to do the same thing is this:</p>
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-number">Listing 32 </span><span class="caption-text">ipython shell</span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;request&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">{&#39;query&#39;: &#39;Lat 39.74 and Lon -104.98&#39;, &#39;type&#39;: &#39;LatLon&#39;}</span>
+</pre></div>
+</div>
+</div>
+<p>Interesting! That isn’t what we sent to <code class="docutils literal notranslate"><span class="pre">wttr.in</span></code>. I’m guessing then that it is
+what <code class="docutils literal notranslate"><span class="pre">wttr.in</span></code> sent to the service that it gets its data from.</p>
+<p>Moving on, let’s take a look at the <code class="docutils literal notranslate"><span class="pre">current_condition</span></code> value.</p>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-number">Listing 33 </span><span class="caption-text">ipython shell</span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;current_condition&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">{&#39;FeelsLikeC&#39;: &#39;23&#39;,</span>
+<span class="go"> &#39;FeelsLikeF&#39;: &#39;74&#39;,</span>
+<span class="go"> &#39;cloudcover&#39;: &#39;75&#39;,</span>
+<span class="go"> &#39;humidity&#39;: &#39;25&#39;,</span>
+<span class="go"> &#39;localObsDateTime&#39;: &#39;2020-09-22 06:15 PM&#39;,</span>
+<span class="go"> &#39;observation_time&#39;: &#39;12:15 AM&#39;,</span>
+<span class="go"> &#39;precipMM&#39;: &#39;0.0&#39;,</span>
+<span class="go"> &#39;pressure&#39;: &#39;1021&#39;,</span>
+<span class="go"> &#39;temp_C&#39;: &#39;24&#39;,</span>
+<span class="go"> &#39;temp_F&#39;: &#39;75&#39;,</span>
+<span class="go"> &#39;uvIndex&#39;: &#39;8&#39;,</span>
+<span class="go"> &#39;visibility&#39;: &#39;16&#39;,</span>
+<span class="go"> &#39;weatherCode&#39;: &#39;116&#39;,</span>
+<span class="go"> &#39;weatherDesc&#39;: [{&#39;value&#39;: &#39;Partly cloudy&#39;}],</span>
+<span class="go"> &#39;weatherIconUrl&#39;: [{&#39;value&#39;: &#39;&#39;}],</span>
+<span class="go"> &#39;winddir16Point&#39;: &#39;W&#39;,</span>
+<span class="go"> &#39;winddirDegree&#39;: &#39;260&#39;,</span>
+<span class="go"> &#39;windspeedKmph&#39;: &#39;24&#39;,</span>
+<span class="go"> &#39;windspeedMiles&#39;: &#39;15&#39;}</span>
+</pre></div>
+</div>
+</div>
+<p>Now we’re getting to some real data. I see here that we have the <code class="docutils literal notranslate"><span class="pre">uvIndex</span></code> and
+<code class="docutils literal notranslate"><span class="pre">visibility</span></code> and <code class="docutils literal notranslate"><span class="pre">humidity</span></code> that are not shown in the other format.</p>
+<p>Let’s take a look at <code class="docutils literal notranslate"><span class="pre">nearest_area</span></code> now.</p>
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-number">Listing 34 </span><span class="caption-text">ipython shell</span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;nearest_area&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">{&#39;areaName&#39;: [{&#39;value&#39;: &#39;Altura&#39;}],</span>
+<span class="go"> &#39;country&#39;: [{&#39;value&#39;: &#39;United States of America&#39;}],</span>
+<span class="go"> &#39;latitude&#39;: &#39;39.740&#39;,</span>
+<span class="go"> &#39;longitude&#39;: &#39;-104.804&#39;,</span>
+<span class="go"> &#39;population&#39;: &#39;0&#39;,</span>
+<span class="go"> &#39;region&#39;: [{&#39;value&#39;: &#39;Colorado&#39;}],</span>
+<span class="go"> &#39;weatherUrl&#39;: [{&#39;value&#39;: &#39;&#39;}]}</span>
+</pre></div>
+</div>
+</div>
+<p>Huh. I have no idea where <code class="docutils literal notranslate"><span class="pre">Altura</span></code> is or why it has a population of <code class="docutils literal notranslate"><span class="pre">0</span></code>. Not
+super useful.</p>
+<p>Finally, the longest list, <code class="docutils literal notranslate"><span class="pre">weather</span></code>, with its <code class="docutils literal notranslate"><span class="pre">3</span></code> elements. We’ll still look
+at the <code class="docutils literal notranslate"><span class="pre">0</span></code> element though, since we can assume that it is representative of the
+other elements.</p>
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-number">Listing 35 </span><span class="caption-text">ipython shell</span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">{&#39;astronomy&#39;: [{&#39;moon_illumination&#39;: &#39;34&#39;,</span>
+<span class="go">   &#39;moon_phase&#39;: &#39;First Quarter&#39;,</span>
+<span class="go">   &#39;moonrise&#39;: &#39;01:00 PM&#39;,</span>
+<span class="go">   &#39;moonset&#39;: &#39;10:42 PM&#39;,</span>
+<span class="go">   &#39;sunrise&#39;: &#39;06:48 AM&#39;,</span>
+<span class="go">   &#39;sunset&#39;: &#39;06:56 PM&#39;}],</span>
+<span class="go"> &#39;date&#39;: &#39;2020-09-22&#39;,</span>
+<span class="go"> &#39;hourly&#39;: [{&#39;DewPointC&#39;: &#39;5&#39;,</span>
+<span class="go">   &#39;DewPointF&#39;: &#39;40&#39;,</span>
+<span class="go">   &#39;FeelsLikeC&#39;: &#39;24&#39;,</span>
+<span class="go">   ...</span>
+<span class="go">    &#39;sunHour&#39;: &#39;10.2&#39;,</span>
+<span class="go">    &#39;totalSnow_cm&#39;: &#39;0.0&#39;,</span>
+<span class="go">    &#39;uvIndex&#39;: &#39;6&#39;}</span>
+</pre></div>
+</div>
+</div>
+<p>Yikes, that’s a lot of data! Ok, let’s do some more introspection.</p>
+<p>I’m going to save this element so I don’t have to type <code class="docutils literal notranslate"><span class="pre">d['weather'][0]</span></code> every
+time. I can already see from the initial ouput that it’s a dictionary, so I’ll
+skip ahead to looking at its keys.</p>
+<div class="literal-block-wrapper docutils container" id="id17">
+<div class="code-block-caption"><span class="caption-number">Listing 36 </span><span class="caption-text">ipython shell</span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+
+<span class="go">dict_keys([&#39;astronomy&#39;, &#39;date&#39;, &#39;hourly&#39;, &#39;maxtempC&#39;, &#39;maxtempF&#39;, &#39;mintempC&#39;, &#39;mintempF&#39;, &#39;sunHour&#39;, &#39;totalSnow_cm&#39;, &#39;uvIndex&#39;])</span>
+</pre></div>
+</div>
+</div>
+<p>That’s a little long. The <code class="docutils literal notranslate"><span class="pre">dict_keys</span></code> object is like a list, so we can convert
+it to one. If we do that, then iPython will pretty-print it for us.</p>
+<div class="literal-block-wrapper docutils container" id="id18">
+<div class="code-block-caption"><span class="caption-number">Listing 37 </span><span class="caption-text">ipython shell</span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="go">[&#39;astronomy&#39;,</span>
+<span class="go"> &#39;date&#39;,</span>
+<span class="go"> &#39;hourly&#39;,</span>
+<span class="go"> &#39;maxtempC&#39;,</span>
+<span class="go"> &#39;maxtempF&#39;,</span>
+<span class="go"> &#39;mintempC&#39;,</span>
+<span class="go"> &#39;mintempF&#39;,</span>
+<span class="go"> &#39;sunHour&#39;,</span>
+<span class="go"> &#39;totalSnow_cm&#39;,</span>
+<span class="go"> &#39;uvIndex&#39;]</span>
+</pre></div>
+</div>
+</div>
+<p>Much better!</p>
+<p>Ok, so now I’m guessing that the <code class="docutils literal notranslate"><span class="pre">hourly</span></code> value is the reason there’s so much
+data. Let’s delete that from the <code class="docutils literal notranslate"><span class="pre">w</span></code> dictionary.</p>
+<p>Let’s make the <code class="docutils literal notranslate"><span class="pre">w</span></code> value a copy of <code class="docutils literal notranslate"><span class="pre">d['weather'][0]</span></code> instead of a <code class="docutils literal notranslate"><span class="pre">reference</span></code> to it as it is now.</p>
+<div class="literal-block-wrapper docutils container" id="id19">
+<div class="code-block-caption"><span class="caption-number">Listing 38 </span><span class="caption-text">ipython shell</span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>Now we can delete the <code class="docutils literal notranslate"><span class="pre">hourly</span></code> value, but still have it available for us back
+in the <code class="docutils literal notranslate"><span class="pre">d</span></code> dictionary.</p>
+<div class="literal-block-wrapper docutils container" id="id20">
+<div class="code-block-caption"><span class="caption-number">Listing 39 </span><span class="caption-text">ipython shell</span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">w</span><span class="p">[</span><span class="s1">&#39;hourly&#39;</span><span class="p">]</span>                         <span class="c1"># this deletes &#39;hourly&#39; from the `w` dict</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;hourly&#39;</span><span class="p">])</span>         <span class="c1"># just to confirm that it&#39;s still there in `d`</span>
+<span class="go">list</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span>                                       <span class="c1"># now let&#39;s take a look at the `w` contents without &#39;hourly&#39;</span>
+<span class="go">{&#39;astronomy&#39;: [{&#39;moon_illumination&#39;: &#39;34&#39;,</span>
+<span class="go">   &#39;moon_phase&#39;: &#39;First Quarter&#39;,</span>
+<span class="go">   &#39;moonrise&#39;: &#39;01:00 PM&#39;,</span>
+<span class="go">   &#39;moonset&#39;: &#39;10:42 PM&#39;,</span>
+<span class="go">   &#39;sunrise&#39;: &#39;06:48 AM&#39;,</span>
+<span class="go">   &#39;sunset&#39;: &#39;06:56 PM&#39;}],</span>
+<span class="go"> &#39;date&#39;: &#39;2020-09-22&#39;,</span>
+<span class="go"> &#39;maxtempC&#39;: &#39;31&#39;,</span>
+<span class="go"> &#39;maxtempF&#39;: &#39;87&#39;,</span>
+<span class="go"> &#39;mintempC&#39;: &#39;19&#39;,</span>
+<span class="go"> &#39;mintempF&#39;: &#39;67&#39;,</span>
+<span class="go"> &#39;sunHour&#39;: &#39;10.2&#39;,</span>
+<span class="go"> &#39;totalSnow_cm&#39;: &#39;0.0&#39;,</span>
+<span class="go"> &#39;uvIndex&#39;: &#39;6&#39;}</span>
+</pre></div>
+</div>
+</div>
+<p>Now we’re getting somewhere!</p>
+<p>We’ve got all kinds of new and fun data including the <code class="docutils literal notranslate"><span class="pre">sunrise</span></code> and <code class="docutils literal notranslate"><span class="pre">sunset</span></code> for the day.</p>
+<p>Now that we know what’s in each list element, let’s print out just the <code class="docutils literal notranslate"><span class="pre">date</span></code>,
+<code class="docutils literal notranslate"><span class="pre">sunrise</span></code> and <code class="docutils literal notranslate"><span class="pre">sunset</span></code> for each day.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "alissa-huskey/python-class",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lessons"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="misc.html" title="previous page">Misc</a>
+    <a class='right-next' id="next-link" href="web-apis.html" title="next page">Web APIs</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

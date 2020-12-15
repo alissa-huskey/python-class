@@ -22,6 +22,10 @@ Comment
   comment text to the end of an expression. It is recommended to follow the `#`
   by a single space before the text of the comment.
 
+Comparison Operator
+  An operator that compares the left-hand value to the right-hand value then
+  evalutes to either True or False.
+
 Conditional
   A valid piece of code that, when evaluated, results in
   {term}`boolean<Boolean>` value.
@@ -64,6 +68,10 @@ Keyword
   they cannot be used as an identifier. Some examples of keywords in Python are
   `for`, `if`, and `def`.
 
+Logical Operator
+  An operator that considers both left-hand value and right-hand value then
+  evalutes to either True or False.
+
 Module
   A file containing of reusable code that can be imported into other programs.
 
@@ -91,6 +99,9 @@ Concatenate
 Syntax
   A set of rules that determine how a programming language is understood by the
   computer. Grammar, but for code.
+
+Truthy
+  A value that is True when evaluated in a `boolean` context.
 
 Type
 Data Type
