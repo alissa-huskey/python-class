@@ -9,19 +9,9 @@ kernelspec:
   language: python
   name: python3
 ---
-Flow Control
-============
+Conditional Statements
+======================
 
-In this lesson we are going to learn about some of the ways to control the flow
-of a program.
-
-When you run a program, the Python interpreter reads and executes each
-statement in a very orderly fashion, from top to bottom, one statement at a time.
-
-With flow control statements, we can guide Python along different paths
-depending on the circumstances. Like a choose-your-own-adventure, we can have
-some statements only execute in in certain cases. Or we can have statements
-executed multiple times.
 
 If-Statements
 -------------
