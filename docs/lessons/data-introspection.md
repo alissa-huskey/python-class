@@ -21,11 +21,16 @@ This lesson is going to be almost entirly in the Python interpreter, ideally
 IPython.
 
 For this lesson we're going to use the [Punk
-API](http://api.punkapi.com/v2/beers/random) which searches BrewDog's catalog
-of beers. The goal will be to get a random beer and print its name and a simple
-list of the ingredients.
+API](https://punkapi.com/documentation/v2) which searches BrewDog's catalog
+of beers. The goal will be to the name and a simple list of ingredients for the
+beer.
 
-Step 1: Imports and request
+:::{seealso}
+* [Punk API](https://punkapi.com/documentation/v2)
+  Documentation
+:::
+
+Part 1: Imports and request
 ---------------------------
 
 We'll be using the `requests` module as usual, as well `pprint` for looking at
@@ -40,7 +45,7 @@ caption: ipython shell
 >>> response = requests.get("http://api.punkapi.com/v2/beers/random")
 ```
 
-Step 2: Check the status
+Part 2: Check the status
 ------------------------
 
 It's a good idea to check to make sure nothing went wrong with the request.
@@ -63,7 +68,7 @@ True
 
 ```
 
-Step 2: Check the headers
+Part 3: Check the headers
 -------------------------
 
 It may be a good idea to look at the response headers to see if there is any useful information.
@@ -110,8 +115,10 @@ If you're using ipython, you probably don't need the pprint function, since
 ipython automatically pretty-prints all data.
 ```
 
-Step 3: Look at the data
+Part 4: Look at the data
 ------------------------
+
+### Step 1: Check the `type()`
 
 The first things I usually do is check are the `type` of the top-level `json()`
 data, and use `pprint` to print it all out. For this exercise I'm going to make
@@ -133,6 +140,8 @@ list
   ...
   }]
 ```
+
+### Step 2: Check the `len()`
 
 Ok, so we now know that `data` is a `list`. Let's see how many elements are in
 the list using the `len` function.
@@ -158,6 +167,8 @@ dict
 >>> len(data[0])
 21
 ```
+
+### Step 3: Look at the dict `.keys()`
 
 Now that we know it's a dictionary, the next thing we want to know is what its
 keys are. All `dict` objects have a `keys()` function for just this purpose.
@@ -201,9 +212,12 @@ caption: ipython shell
  'contributed_by']
 ```
 
+### Step 4: Save `beer` and the `final` `name` and `description`
+
 Now we're getting somewhere. This looks like the `dict` for the beer, so let's
 save this as `beer` so we don't have to type `data[0]` over and over. Then we
-can take a look at a couple of the obvious values `name` and `description`.
+can take a look at a couple of the more interesting values `name` and
+`description`.
 
 ```{code-block} python
 ---
@@ -218,240 +232,442 @@ caption: ipython shell
 "A variant on the 2008 release of Bad Pixie, but hoppier. ..."
 ```
 
----
-
-```{centered} Here ends the part that's done.
-```
-
-
-which means that we can iterate over it
-just like we would a list. That way we can print out the type for each key,
-without having to type each one out manually.
+Now let's save the `name` and `description` in our `final` dictionary and
+review the results.
 
 ```{code-block} python
 ---
 caption: ipython shell
 ---
->>> for k in d.keys():
->>>     # here we are using the `k` variable, which is the key name
->>>     # to access the cooresponding value in the `d` dictionary
->>>     print(k, type(d[k]))
-
-current_condition <class 'list'>
-nearest_area <class 'list'>
-request <class 'list'>
-weather <class 'list'>
+>>> final['name'] = beer['name']
+>>> final['description'] = beer['description']
+>>> pprint(final)
+{'description': 'Punk IPA. Amplified. In 2010 we finally got our paws on the '
+                'equipment we needed to dry hop our beers. We focused all our '
+                'energy on dry hopping, amping up the aroma and flavour of our '
+                'flagship beer to create a relentless explosion of tropical '
+                'fruits, and adding a hint of Caramalt to balance out the '
+                'insane amount of hops.',
+ 'name': 'Punk IPA 2010 - Current'}
 ```
 
-Now we know that we have a bunch of lists. Let's add to that `for` loop to find
-out how long each list is.
+### Step 5: Inspect ingredients
 
-Hit the **up arrow** until the `for` loop is filled in. You can then use the
-arrow keys to move around within the text.
-
-Add one more argument to the end of the print statement `len(d[k])`.
+Now let's dig into the `beer['ingredients']`.
 
 ```{code-block} python
 ---
 caption: ipython shell
 ---
->>> for k in d.keys():
->>>     print(k, type(d[k]), len(d[k]))
-
-current_condition <class 'list'> 1
-nearest_area <class 'list'> 1
-request <class 'list'> 1
-weather <class 'list'> 3
+>>> type(beer['ingredients'])
+dict
 ```
 
-Now we can see that the `current_condition`, `nearest_area` and `request`
-values have one element in each list, and the `weather` value has `3` elements.
-
-I'm guessing that the `request` value has information about what we sent it.
-Let's take a look at its contents and see if it's short enough to take in at a
-glance.
+Ok, it's a `dict`. That means we'll want to check out its `.keys()`.
 
 ```{code-block} python
 ---
 caption: ipython shell
 ---
->>> req = d['request']
->>> req[0]
-{'query': 'Lat 39.74 and Lon -104.98', 'type': 'LatLon'}
+>>> beer['ingredients'].keys()
+dict_keys(['malt', 'hops', 'yeast'])
 ```
 
-Another way to do the same thing is this:
+Let's save `beer['ingredients']` as `ing` so we don't have to type as much.
+Then let's take a look at `malt`.
 
 ```{code-block} python
 ---
 caption: ipython shell
 ---
->>> d['request'][0]
-{'query': 'Lat 39.74 and Lon -104.98', 'type': 'LatLon'}
-```
-
-Interesting! That isn't what we sent to `wttr.in`. I'm guessing then that it is
-what `wttr.in` sent to the service that it gets its data from.
-
-Moving on, let's take a look at the `current_condition` value.
-
-```{code-block} python
----
-caption: ipython shell
----
->>> d['current_condition'][0]
-{'FeelsLikeC': '23',
- 'FeelsLikeF': '74',
- 'cloudcover': '75',
- 'humidity': '25',
- 'localObsDateTime': '2020-09-22 06:15 PM',
- 'observation_time': '12:15 AM',
- 'precipMM': '0.0',
- 'pressure': '1021',
- 'temp_C': '24',
- 'temp_F': '75',
- 'uvIndex': '8',
- 'visibility': '16',
- 'weatherCode': '116',
- 'weatherDesc': [{'value': 'Partly cloudy'}],
- 'weatherIconUrl': [{'value': ''}],
- 'winddir16Point': 'W',
- 'winddirDegree': '260',
- 'windspeedKmph': '24',
- 'windspeedMiles': '15'}
-```
-
-Now we're getting to some real data. I see here that we have the `uvIndex` and
-`visibility` and `humidity` that are not shown in the other format.
-
-Let's take a look at `nearest_area` now.
-
-```{code-block} python
----
-caption: ipython shell
----
->>> d['nearest_area'][0]
-{'areaName': [{'value': 'Altura'}],
- 'country': [{'value': 'United States of America'}],
- 'latitude': '39.740',
- 'longitude': '-104.804',
- 'population': '0',
- 'region': [{'value': 'Colorado'}],
- 'weatherUrl': [{'value': ''}]}
-```
-
-Huh. I have no idea where `Altura` is or why it has a population of `0`. Not
-super useful.
-
-Finally, the longest list, `weather`, with its `3` elements. We'll still look
-at the `0` element though, since we can assume that it is representative of the
-other elements.
-
-```{code-block} python
----
-caption: ipython shell
----
->>> d['weather'][0]
-{'astronomy': [{'moon_illumination': '34',
-   'moon_phase': 'First Quarter',
-   'moonrise': '01:00 PM',
-   'moonset': '10:42 PM',
-   'sunrise': '06:48 AM',
-   'sunset': '06:56 PM'}],
- 'date': '2020-09-22',
- 'hourly': [{'DewPointC': '5',
-   'DewPointF': '40',
-   'FeelsLikeC': '24',
-   ...
-    'sunHour': '10.2',
-    'totalSnow_cm': '0.0',
-    'uvIndex': '6'}
-```
-
-Yikes, that's a lot of data! Ok, let's do some more introspection.
-
-I'm going to save this element so I don't have to type `d['weather'][0]` every
-time. I can already see from the initial ouput that it's a dictionary, so I'll
-skip ahead to looking at its keys.
-
-```{code-block} python
----
-caption: ipython shell
----
->>> w = d['weather'][0]
->>> w.keys()
-
-dict_keys(['astronomy', 'date', 'hourly', 'maxtempC', 'maxtempF', 'mintempC', 'mintempF', 'sunHour', 'totalSnow_cm', 'uvIndex'])
-```
-
-That's a little long. The `dict_keys` object is like a list, so we can convert
-it to one. If we do that, then iPython will pretty-print it for us.
-
-```{code-block} python
----
-caption: ipython shell
----
->>> list(w.keys())
-['astronomy',
- 'date',
- 'hourly',
- 'maxtempC',
- 'maxtempF',
- 'mintempC',
- 'mintempF',
- 'sunHour',
- 'totalSnow_cm',
- 'uvIndex']
-```
-
-Much better!
-
-Ok, so now I'm guessing that the `hourly` value is the reason there's so much
-data. Let's delete that from the `w` dictionary.
-
-Let's make the `w` value a copy of `d['weather'][0]` instead of a `reference` to it as it is now.
-
-
-```{code-block} python
----
-caption: ipython shell
----
->>> w = d['weather'][0].copy()
-```
-
-Now we can delete the `hourly` value, but still have it available for us back
-in the `d` dictionary.
-
-
-```{code-block} python
----
-caption: ipython shell
----
->>> del w['hourly']                         # this deletes 'hourly' from the `w` dict
->>> type(d['weather'][0]['hourly'])         # just to confirm that it's still there in `d`
+>>> ing = beer['ingredients']
+>>> type(ing['malt'])
 list
->>> w                                       # now let's take a look at the `w` contents without 'hourly'
-{'astronomy': [{'moon_illumination': '34',
-   'moon_phase': 'First Quarter',
-   'moonrise': '01:00 PM',
-   'moonset': '10:42 PM',
-   'sunrise': '06:48 AM',
-   'sunset': '06:56 PM'}],
- 'date': '2020-09-22',
- 'maxtempC': '31',
- 'maxtempF': '87',
- 'mintempC': '19',
- 'mintempF': '67',
- 'sunHour': '10.2',
- 'totalSnow_cm': '0.0',
- 'uvIndex': '6'}
 ```
 
-Now we're getting somewhere!
-
-We've got all kinds of new and fun data including the `sunrise` and `sunset` for the day.
-
-Now that we know what's in each list element, let's print out just the `date`,
-`sunrise` and `sunset` for each day.
+Now that we know it's a list, we'll want to check out its length using the
+`len()` function.
 
 
+```{code-block} python
+---
+caption: ipython shell
+---
+>>> len(ing['malt'])
+2
+```
+
+Ok, let's look at the first item on the list.
+
+```{code-block} python
+---
+caption: ipython shell
+---
+>>> ing['malt'][0]
+{'name': 'Extra Pale', 'amount': {'value': 4.38, 'unit': 'kilograms'}}
+```
+
+So to get to the `name` value we'll use its key.
+
+```{code-block} python
+---
+caption: ipython shell
+---
+>>> ing['malt'][0]['name']
+'Extra Pale'
+```
+
+### Step 6: Save the `final` malt ingredients
+
+Now that we've figured out how to drill down to the malt ingredients name,
+let's save them to our `final` dictionary.
+
+First, let's set `final['ingredients']` to an empty list.
+
+
+```{code-block} python
+---
+caption: ipython shell
+---
+final['ingredients'] = []
+```
+
+Now we'll loop through all of the elements in the `ing['malt']` list and add
+each `name` to our `final['ingredients']` list after appending the string `" Malt"`.
+
+Then we'll check the length of `final['ingredients']` which should be the same
+as the length of `ing['malts']`. And take a peek at our `final` dictionary just
+to confirm.
+
+```{code-block} python
+---
+caption: ipython shell
+---
+
+>>> for malt in ing['malt']:
+      name = malt['name'] + " Malt"
+      final['ingredients'].append(name)
+
+>>> len(final['ingredients'])
+2
+
+>>> final
+{'name': 'Punk IPA 2010 - Current',
+ 'description': 'Punk IPA. Amplified. In 2010 we finally got our paws on the equipment we needed to dry hop our beers. We focused all our energy on dry hopping, amping up the aroma and flavour of our flagship beer to create a relentless explosion of tropical fruits, and adding a hint of Caramalt to balance out the insane amount of hops.',
+ 'ingredients': ['Extra Pale Malt', 'Caramalt Malt']}
+```
+
+### Step 7: Inspect the hops ingredients
+
+Let's take a look at our `ing` keys again.
+
+```{code-block} python
+---
+caption: ipython shell
+---
+>>> ing.keys()
+dict_keys(['malt', 'hops', 'yeast'])
+```
+
+Next on our list is `hops`. As usual, we'll want to check the `type` first.
+
+```{code-block} python
+---
+caption: ipython shell
+---
+>>> type(ing['hops'])
+list
+```
+
+Ok, we know what to do with a `list` then. We need to check the `len()` and
+then take a peek at the first item.
+
+```{code-block} python
+---
+caption: ipython shell
+---
+>>> len(ing['hops'])
+14
+
+>>> ing['hops'][0]
+{'name': 'Chinook',
+ 'amount': {'value': 20, 'unit': 'grams'},
+ 'add': 'start',
+ 'attribute': 'bitter'}
+```
+
+### Step 8: Save the malt ingredients
+
+This looks almost exactly like the malt ingredients. So we can repeat nearly
+the same loop to append each `name` to our `final['ingredients']` list, and
+check it the same way.
+
+```{code-block} python
+---
+caption: ipython shell
+---
+
+>>> for hop in ing['hops']:
+      name = hop['name'] + " Hops"
+      final['ingredients'].append(name)
+
+>>> len(final['ingredients'])
+16
+
+>>> final
+{'name': 'Punk IPA 2010 - Current',
+ 'description': 'Punk IPA. Amplified. In 2010 we finally got our paws on the equipment we needed to dry hop our beers. We focused all our energy on dry hopping, amping up the aroma and flavour of our flagship beer to create a relentless explosion of tropical fruits, and adding a hint of Caramalt to balance out the insane amount of hops.',
+ 'ingredients': ['Extra Pale Malt',
+  'Caramalt Malt',
+  'Chinook Hops',
+  'Ahtanum Hops',
+  'Chinook Hops',
+  'Ahtanum Hops',
+  'Chinook Hops',
+  'Ahtanum Hops',
+  'Simcoe Hops',
+  'Nelson Sauvin Hops',
+  'Chinook Hops',
+  'Ahtanum Hops',
+  'Simcoe Hops',
+  'Nelson Sauvin Hops',
+  'Cascade Hops',
+  'Amarillo Hops']}
+```
+
+### Step 9: Save the yeast ingredients
+
+Let's review our `ing.keys()` again.
+
+```{code-block} python
+---
+caption: ipython shell
+---
+>>> ing.keys()
+dict_keys(['malt', 'hops', 'yeast'])
+```
+
+One more to check, the `yeast`. You should know the drill by now--start by
+checking the `type()`.
+
+```{code-block} python
+---
+caption: ipython shell
+---
+>>> type(ing['yeast'])
+str
+```
+
+A string is much more simple. Let's take a look at the value.
+
+```{code-block} python
+---
+caption: ipython shell
+---
+>>> ing['yeast']
+'Wyeast 1056 - American Ale™'
+```
+
+Let's append this to our `final` ingredients list then check the length and
+final dict.
+
+
+```{code-block} python
+---
+caption: ipython shell
+---
+>>> final['ingredients'].append(ing['yeast'] + " Yeast")
+
+>>> len(final['ingredients'])
+17
+
+>>> final
+{'name': 'Punk IPA 2010 - Current',
+ 'description': 'Punk IPA. Amplified. In 2010 we finally got our paws on the equipment we needed to dry hop our beers. We focused all our energy on dry hopping, amping up the aroma and flavour of our flagship beer to create a relentless explosion of tropical fruits, and adding a hint of Caramalt to balance out the insane amount of hops.',
+ 'ingredients': ['Extra Pale Malt',
+  'Caramalt Malt',
+  'Chinook Hops',
+  'Ahtanum Hops',
+  'Chinook Hops',
+  'Ahtanum Hops',
+  'Chinook Hops',
+  'Ahtanum Hops',
+  'Simcoe Hops',
+  'Nelson Sauvin Hops',
+  'Chinook Hops',
+  'Ahtanum Hops',
+  'Simcoe Hops',
+  'Nelson Sauvin Hops',
+  'Cascade Hops',
+  'Amarillo Hops',
+  'Wyeast 1056 - American Ale™ Yeast']}
+```
+
+### Step 10: De-duplicate the ingredients
+
+We can easily filter out duplicates by converting the `list` to a `set`, which
+is unique. Let's see how it looks.
+
+```{code-block} python
+---
+caption: ipython shell
+---
+>>> set(final['ingredients'])
+{'Ahtanum Hops',
+ 'Amarillo Hops',
+ 'Caramalt Malt',
+ 'Cascade Hops',
+ 'Chinook Hops',
+ 'Extra Pale Malt',
+ 'Nelson Sauvin Hops',
+ 'Simcoe Hops',
+ 'Wyeast 1056 - American Ale™ Yeast'}
+```
+
+If we want to keep it as a list for some reason, we can just convert it back to
+a list again.
+
+```{code-block} python
+---
+caption: ipython shell
+---
+>>> list(set(final['ingredients']))
+['Extra Pale Malt',
+ 'Caramalt Malt',
+ 'Cascade Hops',
+ 'Amarillo Hops',
+ 'Nelson Sauvin Hops',
+ 'Ahtanum Hops',
+ 'Simcoe Hops',
+ 'Wyeast 1056 - American Ale™ Yeast',
+ 'Chinook Hops']
+```
+
+Ok, let's save this to our `final` dictionary.
+
+```{code-block} python
+---
+caption: ipython shell
+---
+>>> final['ingredients'] = list(set(final['ingredients']))
+['Extra Pale Malt',
+ 'Caramalt Malt',
+ 'Cascade Hops',
+ 'Amarillo Hops',
+ 'Nelson Sauvin Hops',
+ 'Ahtanum Hops',
+ 'Simcoe Hops',
+ 'Wyeast 1056 - American Ale™ Yeast',
+ 'Chinook Hops']
+```
+
+Part 5: IPython tips
+--------------------
+
+If you're using `ipython`, here are a few tips.
+
+### Tip 1: %history
+
+Use the `%history` magic command to see the all of the commands you typed in
+your last ipython session. (Change the `~1` to `~2` go get the second to last,
+and so on.) You can also use `%hist` for short.
+
+You can use this to review everything you typed during data introspection
+exercise.
+
+```{code-block} python
+---
+caption: ipython shell
+---
+>>> %history ~1/
+import requests
+response = requests.get("http://api.punkapi.com/v2/beers/random")
+response.ok
+response.status_code
+response.reason
+response.raise_for_status()
+response.headers
+...
+```
+
+### Tip 2: %quickref
+
+You can use the `%quickref` magic command to get a a quick introduction to
+IPythons features.
+
+```{code-block} python
+---
+caption: ipython shell
+---
+>>> %quickref
+IPython -- An enhanced Interactive Python - Quick Reference Card
+================================================================
+
+obj?, obj??      : Get help, or more help for object (also works as
+                   ?obj, ??obj).
+?foo.*abc*       : List names in 'foo' containing 'abc' in them.
+%magic           : Information about IPython's 'magic' % functions.
+...
+```
+
+### Tip 3: %history help
+
+You can add a `?` after the `%history` magic command to show detailed help
+and usage information.
+
+
+```{code-block}
+---
+caption: ipython shell
+---
+>>> %history?
+Docstring:
+::
+
+  %history [-n] [-o] [-p] [-t] [-f FILENAME] [-g [PATTERN [PATTERN ...]]] [-l [LIMIT]] [-u] [range [range ...]]
+
+Print input history (_i<n> variables), with most recent last.
+...
+```
+
+### Tip 4: %save
+
+You can save the history from your last session to the file in the directory
+you were in when you started `ipython` by using the `%save` magic command.
+
+```{code-block} python
+---
+caption: ipython shell -- save to a file named session.py
+---
+>>> %save session ~1/
+The following commands were written to file `session.py`:
+import requests
+response = requests.get("http://api.punkapi.com/v2/beers/random")
+response.ok
+response.status_code
+response.reason
+...
+```
+
+
+Part 6: Exercise
+----------------
+
+Now that we have a good handle on the data that we get back from the `random`
+endpoint of the Punk API, we can use this information in our code. The exercise
+for this lesson involves taking the data that we've been exploring and printing
+it out nicely.
+
+:::{admonition,hint,details}
+* Get a random beer from the Punk API `random` endpoint:
+   `http://api.punkapi.com/v2/beers/random`
+
+* Print the beer `name` and `description`
+
+* Print the list of unique `ingredients`.
+:::
+
+:::{seealso}
+* [Punk API](https://punkapi.com/documentation/v2)
+  Documentation
+:::
