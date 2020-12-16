@@ -1,28 +1,52 @@
+(introduction)=
 Poetry
 ======
 
-For our purposes, [Poetry](https://python-poetry.org/docs) provides:
+Poetry is the go-to dependency management and packaging tool used by Python
+developers. It takes the long and compicated toolchain available in the Python
+world and wraps it in a few easy to use best practices.
 
-* **dependency management**: keep track of Python modules that you need for
+[Poetry](https://python-poetry.org/docs) provides...
+
+```{highlights}
+* **Dependency management**: keep track of Python modules that you need for
   a project and easily install them in any environment.
-* **virtual environments**: operating with an isolated set of dependencies.
-  * **standardization**: tools for starting new projects according to
+* **Virtual environments**: run your code with an isolated set of dependencies.
+* **Standardization**: tools for starting new projects according to
   best practices.
+* **Packaging**: building a Python package and publishing it to repositories
+  like [PyPi](https://pypi.org/).
+```
 
-Additionally, Poetry is used for:
+```{seealso}
+* [Poetry docs](https://python-poetry.org/docs)
+  Official Poetry documentation.
 
-* **packaging**: building a Python module and publishing it to
-  [PyPi](https://pypi.org/).
+* [Getting Started with Python Poetry](https://dev.to/bowmanjd/getting-started-with-python-poetry-3ica)
+  Article with a friendly Poetry intro, with both Windows and MacOS commands.
 
-> Note: Poetry does not manage installing or switching between Python versions.
-> It just make sure that the `python` command points to the right version, or
-> prints an error if it cannot be found.
-> For managing Python versions, use [pyenv](https://github.com/pyenv/pyenv) or [pyenv-win](https://github.com/pyenv-win/pyenv-win).
+* [Developing Python Projects with poetry](https://ron.sh/developing-python-projects-with-poetry/)
+  Article with a friendly Poetry intro, including a section on console scripts.
 
+* [Get started with pyenv & poetry](https://blog.jayway.com/2019/12/28/pyenv-poetry-saviours-in-the-python-chaos/)
+  Article with a friendly intro to both Poetry and pyenv.
+
+* Python projects with Poetry and VSCode [Part 1](https://www.pythoncheatsheet.org/blog/python-projects-with-poetry-and-vscode-part-1/)
+  Article covering installing Poetry, starting a project and managing dependencies.
+```
+
+```{attention}
+Poetry does not manage installing or switching between Python versions.
+It just make sure that the `python` command points to the right version or
+prints an error if it cannot be found.
+For managing Python versions use [pyenv](https://github.com/pyenv/pyenv) or [pyenv-win](https://github.com/pyenv-win/pyenv-win).
+```
 
 Table of Contents
 -----------------
 
+* [Introduction](#introduction)
+* [Table of Contents](#table-of-contents)
 * [Quickref](#quickref)
 * [Project Setup](#project-setup)
   * [New projects](#new-projects)
@@ -41,25 +65,21 @@ Table of Contents
 Quickref
 --------
 
-```bash
-poetry new [--name <package-name>] <path>   # create a directory structure and generate files
-poetry init                                 # interactively generate pyproject.toml
-
-poetry add [--dev] <module>                 # add a dependency to pyproject.toml and install it in the virtual env
-poetry remove [--dev] <module>              # remove a dependency from pyproject.toml and uninstall it from the virtual env
-poetry install [--no-root]                  # install the dependencies [and the package] in the virtual env
-
-poetry shell                                # start a virtual environment shell
-poetry run <cmd> [<arg>...]                 # run the command [with args] in the virtual environment
-
-poetry show [--tree] [<package>]            # list dependencies for a package
-poetry env [info [--path]]                  # display information about the current virtual env
-
-pip install .                               # do a system-wide install of your project
-pip uninstall <package-name>                # uninstall package from your system
-
-poetry help [command]                       # show poetry help
-```
+| Command                                     | Description                                                     |
+|---------------------------------------------|-----------------------------------------------------------------|
+| `poetry new [--name <package-name>] <path>` | generate directory for a new project                            |
+| `poetry init`                               | interactively generate pyproject.toml                           |
+| `poetry add [--dev] <module>`               | add and install dependency to the virtual env                   |
+| `poetry remove [--dev] <module>`            | remove and install dependency to the virtual env                |
+| `poetry update [--dev] <module>`            | update virtual env to reflect changes to pyproject.py           |
+| `poetry install [--no-root]`                | install the dependencies [and the package] in the virtual env   |
+| `poetry shell`                              | start a virtual env shell                                       |
+| `poetry run <cmd> [<arg>...]`               | run the command [with args] in the virtual environment          |
+| `poetry show [--tree] [<package>]`          | list dependencies for a package                                 |
+| `poetry env [info [--path]]`                | display information about the current virtual env               |
+| `pip install .`                             | do a system-wide install of your project                        |
+| `pip uninstall <package-name>`              | uninstall package from your system                              |
+| `poetry help [command]`                     | show poetry help [for command]                                  |
 
 Project Setup
 -------------
@@ -76,7 +96,10 @@ to the directory name.
 
 For example:
 
-```bash
+```{code-block} bash
+---
+caption: command line
+---
 $ poetry new --name demo poetry-demo
 ```
 
@@ -113,7 +136,10 @@ The heart of Poetry is in the `pyproject.toml` file.
 
 Here are the contents of the `pyproject.toml` file from the `python-demo` project:
 
-```toml
+```{code-block} toml
+---
+caption: pyproject.toml
+---
 [tool.poetry]
 name = "demo"
 version = "0.1.0"
@@ -144,9 +170,10 @@ Here is some information on some of the configuration parameters available.
 * `[build-system]`: details needed by Poetry. (You should rarely if ever need to change this section.)
 * `[tool.poetry.scripts]`: (optional) python executable scripts to be generated and installed as part of your package. See [Scripts](#Scripts) below.
 
-### More info
-
+```{seealso}
 * [python-poetry.org: The pyproject.toml file](https://python-poetry.org/docs/pyproject/)
+  Poetry documentation on the `[tool.poetry]` sections of the `pyproject.toml` file.
+```
 
 Managing Dependencies
 ---------------------
@@ -166,7 +193,10 @@ environment.
 
 For example:
 
-```bash
+```{code-block} bash
+---
+caption: command line
+---
 $ poetry add --dev ipython
 $ poetry add requests
 $ poetry remove --dev xdoctest
@@ -178,7 +208,10 @@ on a new computer, use the `poetry install` command to install all modules in
 the virtual environment. The optional `--no-root` flag will install only the
 dependencies but not your own package.
 
-```bash
+```{code-block} bash
+---
+caption: command line
+---
 $ poetry install --no-root   # install dependencies in the virtual env
 $ poetry install             # install dependencies and your package in the virtual env
 ```
@@ -198,10 +231,14 @@ In `pyproject.toml` versions can have formats like:
 * `>= 1.2, < 1.5`: at least `1.2` and less than `1.5`
 * `>= 1.2, ! 1.2.5`: at least `1.2` but not `1.2.5`
 
-#### More info
 
+```{seealso}
 * [Semantic Versioning](https://semver.org/)
+  The semantic versioning specification.
+
 * [python-poetry.org: Versions and constraints](https://python-poetry.org/docs/versions/)
+  Poetry documentation on specifying dependency version constraints.
+```
 
 Using Poetry
 ------------
@@ -211,8 +248,10 @@ code and executables from the virtual environment.
 
 Say I have a file `astros.py` that uses the `requests` module.
 
-*demo/astros.py*
-```python
+```{code-block} python
+---
+caption: demo/astros.py
+---
 import requests
 
 def main():
@@ -241,10 +280,11 @@ if __name__ == "__main__":
 Here I run the `astros.py` script from normal shell where the `requests`
 module is not installed.
 
-```bash
+```{code-block} bash
+---
+caption: command line
+---
 $ python demo/astros.py
-```
-```
 Traceback (most recent call last):
   File "demo/astros.py", line 1, in <module>
     import requests
@@ -255,10 +295,11 @@ Similarly, here I call `xdoctest` which is installed through the `xdoctest`
 module. It is not found in the normal shell because that module is only
 installed in the virtual environment.
 
-```bash
+```{code-block} bash
+---
+caption: command line
+---
 $ xdoctest --version
-```
-```
 zsh: command not found: xdoctest
 ```
 
@@ -267,7 +308,10 @@ The easiest way to run commands from the virtual environment is to use the
 dependencies, executables installed from modules (like `ipython`), and your own
 package scripts and code can be found.
 
-```bash
+```{code-block} bash
+---
+caption: command line
+---
 $ poetry shell
 Spawning shell within .../virtualenvs/demo-IDGvf4ns-py3.8
 (demo-IDGvf4ns-py3.8) $
@@ -275,10 +319,11 @@ Spawning shell within .../virtualenvs/demo-IDGvf4ns-py3.8
 
 Now if I run the same commands they work as expected until you exit the shell.
 
-```bash
+```{code-block} bash
+---
+caption: command line
+---
 (demo-IDGvf4ns-py3.8) $ python demo/astros.py
-```
-```
 There are 7 people in space today.
 - Sergey Ryzhikov
 - Kate Rubins
@@ -289,20 +334,22 @@ There are 7 people in space today.
 - Soichi Noguchi
 ```
 
-```bash
+```{code-block} bash
+---
+caption: command line
+---
 (demo-IDGvf4ns-py3.8) $ xdoctest --version
-```
-```
 0.15.0
 ```
 
 Alternately, you can also use the `python run` command from a normal shell to
 run any command from the virtual environment.
 
-```bash
+```{code-block} bash
+---
+caption: command line
+---
 $ poetry run xdoctest --version
-```
-```
 0.15.0
 ```
 
@@ -312,10 +359,11 @@ Getting info
 To list the currently installed packages use the `poetry show` command.  The
 `--tree` flag formats the list as a dependency tree.
 
-```bash
+```{code-block} bash
+---
+caption: command line
+---
 $ poetry show --tree
-```
-```
 ipython 7.19.0 IPython: Productive Interactive Computing
 ├── appnope *
 ├── backcall *
@@ -333,10 +381,11 @@ xdoctest 0.15.0 A rewrite of the builtin doctest module
 To get information about the virtual environment for the current project use
 the `poetry env info` command.
 
-```bash
+```{code-block} bash
+---
+caption: command line
+---
 $ poetry env info
-```
-```
 Virtualenv
 Python:         3.8.1
 Implementation: CPython
@@ -351,10 +400,11 @@ Python:   .../.pyenv/versions/3.8.1
 
 The `--path` flag will print just the path to the virtual env.
 
-```bash
+```{code-block} bash
+---
+caption: command line
+---
 $ poetry env info --path
-```
-```
 .../virtualenvs/demo-IDGvf4ns-py3.8
 ```
 
@@ -376,8 +426,10 @@ Where `<python object reference>` can take the form of:
 
 Imagine we have the file `demo/hello.py`.
 
-*demo/hello.py*
-```python
+```{code-block} python
+---
+caption: demo/hello.py
+---
 def main():
     print("hello world")
 
@@ -387,17 +439,21 @@ if __name__ == "__main__":
 
 We can run this command like usual from the command line:
 
-```bash
+```{code-block} bash
+---
+caption: command line
+---
 $ python demo/hello.py
-```
-```
 hello world
 ```
 
-We can use Poetry to create a `hello` executable by the `[tool.poetry.scripts]` section.
+We can use Poetry to create a `hello` executable by adding it to the
+`[tool.poetry.scripts]` section.
 
-*pyproject.toml*
-```toml
+```{code-block} toml
+---
+caption: pyproject.toml
+---
 [tool.poetry]
 name = "demo"
 # ...
@@ -408,17 +464,22 @@ hello = "demo.hello:main"
 
 Poetry will generate a script that is equivalent to:
 
-```python
+```{code-block} python
+---
+caption: generated script equivalent
+---
 from demo.hello import main
 main()
 ```
 
-After running `poetry install` we can then run the `hello` command from a poetry shell.
+After running `poetry install` we can then run the `hello` command from a
+poetry shell or using the `poetry run` command.
 
-```bash
+```{code-block} bash
+---
+caption: command line
+---
 $ poetry install
-```
-```
 Installing dependencies from lock file
 
 No dependencies to install or update
@@ -426,19 +487,42 @@ No dependencies to install or update
   - Installing demo (0.1.0)
 ```
 
-```bash
-(demo-IDGvf4ns-py3.8) $ hello
-```
-```
+```{code-block} bash
+---
+caption: command line -- not in a poetry shell
+---
+$ poetry run hello
 hello world
 ```
 
-### More info
+```{code-block} bash
+---
+caption: command line -- from a poetry shell
+---
+(demo-IDGvf4ns-py3.8) $ hello
+hello world
+```
 
-* [python-packaging: The console_scripts Entry Point](https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html#the-console-scripts-entry-point)
-* [Packaging and distributing projects: console_scripts](https://packaging.python.org/guides/distributing-packages-using-setuptools/#setup-args)
+
+```{seealso}
+* [The console_scripts Entry Point](https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html#the-console-scripts-entry-point)
+  From the python-packaging tutorial. Documentation on using Setuptools
+  `console_scripts` Entry Point, the mechanism underlying
+  `[tool.poetry.scripts]`.
+
+* [setup() args > entry_points > console_scripts](https://packaging.python.org/guides/distributing-packages-using-setuptools/#console-scripts)
+  From the Python.org user guide on Packaging and distributing projects.
+  Documentation on the `entry_points = {'console_scripts': ...` argument to
+  `setup()` function the `setup.py` file.
+
 * [Entry points specification](https://packaging.python.org/specifications/entry-points/)
-* [setuptools docs: Entry Points](https://setuptools.readthedocs.io/en/latest/userguide/entry_point.html#entry-points)
+  From the Python.org user guide on Packaging and distributing projects.
+  The specification for defining Entry Points.
+
+* [Entry Points](https://setuptools.readthedocs.io/en/latest/userguide/entry_point.html#entry-points)
+  From the setuptools docs. Documentation on Entry Points.
+```
+
 
 Installing your package
 -----------------------
@@ -450,10 +534,11 @@ To install your package system-wide use `pip install` from your project root
 directory. The `.` argument tells pip to install the package in the current
 directory.
 
-```bash
+```{code-block} bash
+---
+caption: command line
+---
 $ pip install .
-```
-```
 Processing .../poetry-demo
   Installing build dependencies ... done
   Getting requirements to build wheel ... done
@@ -466,10 +551,11 @@ Successfully installed demo-0.1.0 requests-2.25.0
 
 To uninstall it, use the `pip uninstall` command with the name of your package.
 
-```bash
+```{code-block} bash
+---
+caption: command line
+---
 $ pip uninstall demo
-```
-```
 Found existing installation: demo 0.1.0
 Uninstalling demo-0.1.0:
   Would remove:
@@ -486,7 +572,10 @@ Using Poetry with VS Code
 Get the path where Poetry keeps virtual environments by using the `poetry env`
 command.
 
-```bash
+```{code-block} bash
+---
+caption: command line
+---
 $ poetry env info -p
 ```
 
@@ -494,8 +583,10 @@ Copy the path up to the `virualenvs` dir and add it to the `python.venvPath` in
 the `settings.json` file. (From the command palette: `Preferences: Open
 Settings (JSON)`.)
 
-*VS Code settings.json*
-```
+```{code-block} json
+---
+caption: VS Code settings.json
+---
 {
     "python.venvPath": ".../virtualenvs"
 }
@@ -504,7 +595,10 @@ Settings (JSON)`.)
 Start VS Code from a terminal in your project root directory with the `poetry
 shell` command.
 
-```bash
+```{code-block} bash
+---
+caption: command line
+---
 $ poetry shell
 Spawning shell within .../virtualenvs/demo-IDGvf4ns-py3.8
 (demo-IDGvf4ns-py3.8) $ code .
@@ -514,19 +608,19 @@ You may also need to set the `python.pythonPath` in the workspace
 `settings.json`. (From the command palette: `Preferences: Open Workspace
 Settings (JSON)`.)
 
-*.vscode/settings.json*
-```json
+```{code-block} json
+---
+caption: .vscode/settings.json
+---
 {
     "python.pythonPath": ".../virtualenvs/demo-IDGvf4ns-py3.8/bin/python3.8"
 }
 ```
 
-More info
----------
+```{seealso}
+* [Using Python environments in VS Code](https://code.visualstudio.com/docs/python/environments)
+  VS Code documentation on Python Environments.
 
-* [Poetry docs](https://python-poetry.org/docs)
-* [VS Code Docs: Using Python environments in VS Code](https://code.visualstudio.com/docs/python/environments)
-* [Getting Started with Python Poetry](https://dev.to/bowmanjd/getting-started-with-python-poetry-3ica)
-* [Developing Python Projects with poetry](https://ron.sh/developing-python-projects-with-poetry/)
-* [Get started with pyenv & poetry](https://blog.jayway.com/2019/12/28/pyenv-poetry-saviours-in-the-python-chaos/)
-* Python projects with Poetry and VSCode [Part 1](https://www.pythoncheatsheet.org/blog/python-projects-with-poetry-and-vscode-part-1/),  [Part 2](https://www.pythoncheatsheet.org/blog/python-projects-with-poetry-and-vscode-part-2/)
+* Python projects with Poetry and VSCode [Part 2](https://www.pythoncheatsheet.org/blog/python-projects-with-poetry-and-vscode-part-2/)
+  Article covering starting and setting up VSCode when using Poetry.
+```
