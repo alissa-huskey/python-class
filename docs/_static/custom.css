@@ -1,139 +1,29 @@
-table thead,
-table thead tr,
-table thead tr th,
-table {
+/********************
+/* data tables
+/********************/
+
+table.table thead,
+table.table thead tr,
+table.table thead tr th,
+table.table {
   border-top: 0 !important;
 }
 
-tbody tr {
+table.table tbody tr {
   border-bottom: 1px solid #dee2e6;
 }
 
-/* code-block fill-in
- *   for column alignment */
-.break {
-  padding: 11px;
-  line-height: 17px;
-  margin-bottom: 15px;
-}
-
-.clear {
-  clear: both;
-}
-
-td.text-align\:right p,
-td.text-align\:right code,
-td.text-align\:right .pre {
+table.table td.text-align\:right p,
+table.table td.text-align\:right code,
+table.table td.text-align\:right .pre {
   text-align: right;
 }
 
-/********************
-/* glossary terms
-/********************/
-
-/* term reference -- all
- * glossary terms references
- * */
-
-a.reference span.std-term,
-a.reference:hover span.std-term {
-  color: #212529;
-}
-
-/* term reference -- resolved
- * found glossary terms references
- * */
-
-a.reference span.std-term,
-a.reference:hover span.std-term {
-  text-decoration: underline double black;
-}
-
-/* term reference -- unresolved
- * missing glossary terms references
- * */
-
-a.reference.term-missing,
-a.reference.term-missing:hover,
-a.reference.term-missing span.std-term {
-  text-decoration: underline red;
-}
-
-/****************
-/* code blocks
-/****************/
-
-/* wrapper
- * - unindent code blocks
- * - shrink the width and height to the content size
- *   so captions are centered and wrapped correctly
- * */
-div.literal-block-wrapper {
-  width: max-content;
-  height: max-content;
-  margin-left: 0;
-  padding-left: 0;
-}
-
-div.literal-block-wrapper div.full-width {
-  width: 100%;
-}
-
-
-/* code-block container
- * - remove the space between the code block and caption
- * */
-div.literal-block-wrapper div.highlight-python div.highlight,
-div.literal-block-wrapper div div.highlight,
-div.literal-block-wrapper div div.highlight pre,
-div.literal-block-wrapper div.highlight-python table.highlighttable {
-  margin-bottom: 0;
-}
-
-/* code block line numbers
- * - align line numbers with code-block
- * */
-td.linenos {
-  vertical-align: top;
-}
-
-/* caption container
- * - font size for number and text
- * - shrink to the width of the code-block
- * - leave some space around the edges
- * - add a margin after the caption
- * */
-div.code-block-caption {
-  line-height: 0.9rem;
-  margin-top: 0;
-  font-size: .9rem;
-  padding: 0 .75em;
-  margin-bottom: 1.5em;
-  max-width: fit-content;
-  text-align: center;
-}
-
-/* caption number ("Listing {n}")
- * - hide
- * - bold if shown
- * */
-div.code-block-caption > span.caption-number {
-  font-weight: bold;
-  display: none;
-}
+.clear { clear: both; }
 
 /********************
-/* individual pages
+/* sidebars
 /********************/
-
-/* program flow
-/*--------------------------------------*/
-
-body#flow h3 {
-  page-break-before: always;
-  clear: both;
-}
-
 
 /* game info sidebar: hide sidebar title */
 div.sidebar.game-info p.sidebar-title {
@@ -184,13 +74,194 @@ div.admonition thead {
   display: none;
 }
 
-/* flow-control
-/*--------------------------------------*/
+/********************
+/* glossary terms
+/********************/
 
-body#flow-control table p {
+/* term reference -- all
+ * glossary terms references
+ * */
+
+a.reference span.std-term,
+a.reference:hover span.std-term {
+  color: #212529;
+}
+
+/* term reference -- resolved
+ * found glossary terms references
+ * */
+
+a.reference span.std-term,
+a.reference:hover span.std-term {
+  text-decoration: underline double black;
+}
+
+/* term reference -- unresolved
+ * missing glossary terms references
+ * */
+
+a.reference.term-missing,
+a.reference.term-missing:hover,
+a.reference.term-missing span.std-term {
+  text-decoration: underline red;
+}
+
+/****************
+/* code blocks
+/****************/
+
+/* code-block fill-in
+ *   for column alignment */
+.break {
+  padding: 11px;
+  line-height: 17px;
+  margin-bottom: 15px;
+}
+
+/* wrapper
+ * - unindent code blocks
+ * - shrink the width and height to the content size
+ *   so captions are centered and wrapped correctly
+ * */
+div.literal-block-wrapper {
+  width: max-content;
+  height: max-content;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+div.literal-block-wrapper div.full-width {
+  width: 100%;
+}
+
+/* code-block container
+ * - remove the space between the code block and caption
+ * */
+div.literal-block-wrapper div.highlight-python div.highlight,
+div.literal-block-wrapper div div.highlight,
+div.literal-block-wrapper div div.highlight pre,
+div.literal-block-wrapper div.highlight-python pre,
+div.literal-block-wrapper div.highlight table.highlighttable,
+div.literal-block-wrapper div.highlight-python table.highlighttable {
   margin-bottom: 0;
 }
 
-body#flow-control table td {
+div.literal-block-wrapper table td {
+  padding-bottom: 0;
+}
+
+/* code block
+ * - align line numbers with code-block
+ * */
+td.linenos,
+td.code {
+  vertical-align: top;
+}
+
+/* caption container
+ * - font size for number and text
+ * - shrink to the width of the code-block
+ * - leave some space around the edges
+ * - add a margin after the caption
+ * */
+div.code-block-caption {
+  line-height: 0.9rem;
+  margin-top: 0;
+  font-size: .9rem;
+  padding: 0 .75em;
+  margin-bottom: 1.5em;
+  max-width: fit-content;
+  text-align: center;
+  color: #6c757d;
+}
+
+/* caption number ("Listing {n}")
+ * - hide
+ * - bold if shown
+ * */
+div.code-block-caption > span.caption-number {
+  font-weight: bold;
+  display: none;
+}
+
+/********************
+/* individual pages
+/********************/
+
+/* program flow
+/*--------------------------------------*/
+
+body#flow h3 {
+  page-break-before: always;
+  clear: both;
+}
+
+/*__sidebars____________________________ */
+
+/* hide sidebar title */
+body#flow div.sidebar.game-info p.sidebar-title {
+  display: none;
+  line-height: 0;
+  font-size: 0;
+}
+
+/*__admonitions_________________________ */
+
+/* remove title icon */
+body#flow div.sidebar.game-info div.admonition {
+  border-left: .2rem solid var(--indigo);
+}
+
+/* ... */
+body#flow div.sidebar.game-info div.admonition table {
+  display: table;
+}
+
+body#flow div.sidebar.game-info div.admonition table,
+body#flow div.sidebar.game-info div.admonition tbody,
+body#flow div.sidebar.game-info div.admonition tr {
+  padding: .1em .1em .1em .25em;
+  width: 100%;
+}
+
+body#flow div.sidebar.game-info div.admonition td p {
+  display: inline;
+}
+
+/* remove title icon */
+body#flow div.sidebar.game-info p.admonition-title::before {
+  content: none;
+}
+
+/* adjust title position without icon */
+body#flow div.sidebar.game-info p.admonition-title {
+  padding: .4rem .6rem .4rem .6rem;
+  background-color: var(--md-deep-purple-50);
+}
+
+/* remove top margin */
+body#flow div.admonition.inventory {
+  margin-top: 0
+}
+
+/* remove border between empty thead and tbody */
+body#flow div.admonition tbody {
+  border-top: 0;
+}
+
+/* hide empty thead */
+body#flow div.admonition thead {
+  display: none;
+}
+
+
+/* flow-control
+/*--------------------------------------*/
+
+body#conditional-statements table.table p {
+  margin-bottom: 0;
+}
+
+body#conditional-statements table.table td {
   padding-bottom: .25em !important;
 }
