@@ -1,3 +1,15 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
 Data Introspection
 ==================
 
@@ -13,7 +25,8 @@ API](http://api.punkapi.com/v2/beers/random) which searches BrewDog's catalog
 of beers. The goal will be to get a random beer and print its name and a simple
 list of the ingredients.
 
-### Step 1: Imports and request
+Step 1: Imports and request
+---------------------------
 
 We'll be using the `requests` module as usual, as well `pprint` for looking at
 the data.
@@ -27,7 +40,8 @@ caption: ipython shell
 >>> response = requests.get("http://api.punkapi.com/v2/beers/random")
 ```
 
-### Step 2: Check the status
+Step 2: Check the status
+------------------------
 
 It's a good idea to check to make sure nothing went wrong with the request.
 There are a few ways to do this.
@@ -49,7 +63,8 @@ True
 
 ```
 
-### Step 2: Check the headers
+Step 2: Check the headers
+-------------------------
 
 It may be a good idea to look at the response headers to see if there is any useful information.
 
@@ -90,7 +105,13 @@ caption: ipython shell
 
 Rate-limit information is often found in the headers, so it's a good thing to keep an eye out for.
 
-### Step 3: Look at the data
+```{tip}
+If you're using ipython, you probably don't need the pprint function, since
+ipython automatically pretty-prints all data.
+```
+
+Step 3: Look at the data
+------------------------
 
 The first things I usually do is check are the `type` of the top-level `json()`
 data, and use `pprint` to print it all out. For this exercise I'm going to make
@@ -124,7 +145,19 @@ caption: ipython shell
 1
 ```
 
-Just one item. Let's take a look at 
+Just one item. Let's repeat the same process, but this time with the first item
+on the list.
+
+```{code-block} python
+---
+caption: ipython shell
+---
+>>> type(data[0])
+dict
+
+>>> len(data[0])
+21
+```
 
 Now that we know it's a dictionary, the next thing we want to know is what its
 keys are. All `dict` objects have a `keys()` function for just this purpose.
@@ -133,24 +166,65 @@ keys are. All `dict` objects have a `keys()` function for just this purpose.
 ---
 caption: ipython shell
 ---
->>> d.keys()
-dict_keys(['current_condition', 'nearest_area', 'request', 'weather'])
+>>> data[0].keys()
+dict_keys(['id', 'name', 'tagline', ...])
 ```
 
-That's helpful! So even though there was a ton of information returned, we now
-know it's broken down into four categories.
-
-Now we need to know the same thing for each of these.
+The `dict_keys` type looks a lot like a list, which means we can convert it to
+a list if we want to `pprint` it.
 
 ```{code-block} python
 ---
 caption: ipython shell
 ---
->>> type(d['current_condition'])
-list
+>>> list(data[0].keys())
+['id',
+ 'name',
+ 'tagline',
+ 'first_brewed',
+ 'description',
+ 'image_url',
+ 'abv',
+ 'ibu',
+ 'target_fg',
+ 'target_og',
+ 'ebc',
+ 'srm',
+ 'ph',
+ 'attenuation_level',
+ 'volume',
+ 'boil_volume',
+ 'method',
+ 'ingredients',
+ 'food_pairing',
+ 'brewers_tips',
+ 'contributed_by']
 ```
 
-The `dict_keys` type works like a list, which means that we can iterate over it
+Now we're getting somewhere. This looks like the `dict` for the beer, so let's
+save this as `beer` so we don't have to type `data[0]` over and over. Then we
+can take a look at a couple of the obvious values `name` and `description`.
+
+```{code-block} python
+---
+caption: ipython shell
+---
+>>> beer = data[0]
+
+>>> beer['name']
+'Juniper Wheat Beer'
+
+>>> beer['description']
+"A variant on the 2008 release of Bad Pixie, but hoppier. ..."
+```
+
+---
+
+```{centered} Here ends the part that's done.
+```
+
+
+which means that we can iterate over it
 just like we would a list. That way we can print out the type for each key,
 without having to type each one out manually.
 
