@@ -338,6 +338,26 @@
 
         <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/alissa-huskey/python-class/master?urlpath=lab/tree/docs/lessons/data-introspection.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
     </div>
 
     <!-- Table of contents -->
@@ -457,6 +477,11 @@ of data. We can check this using the <code class="docutils literal notranslate">
 </div>
 </div>
 <p>Rate-limit information is often found in the headers, so it’s a good thing to keep an eye out for.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you’re using ipython, you probably don’t need the pprint function, since
+ipython automatically pretty-prints all data.</p>
+</div>
 </div>
 <div class="section" id="step-3-look-at-the-data">
 <h2>Step 3: Look at the data</h2>
@@ -488,31 +513,78 @@ the list using the <code class="docutils literal notranslate"><span class="pre">
 </pre></div>
 </div>
 </div>
-<p>Just one item. Let’s take a look at</p>
-<p>Now that we know it’s a dictionary, the next thing we want to know is what its
-keys are. All <code class="docutils literal notranslate"><span class="pre">dict</span></code> objects have a <code class="docutils literal notranslate"><span class="pre">keys()</span></code> function for just this purpose.</p>
+<p>Just one item. Let’s repeat the same process, but this time with the first item
+on the list.</p>
 <div class="literal-block-wrapper docutils container" id="id8">
 <div class="code-block-caption"><span class="caption-number">Listing 30 </span><span class="caption-text">ipython shell</span></div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-<span class="go">dict_keys([&#39;current_condition&#39;, &#39;nearest_area&#39;, &#39;request&#39;, &#39;weather&#39;])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">dict</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">21</span>
 </pre></div>
 </div>
 </div>
-<p>That’s helpful! So even though there was a ton of information returned, we now
-know it’s broken down into four categories.</p>
-<p>Now we need to know the same thing for each of these.</p>
+<p>Now that we know it’s a dictionary, the next thing we want to know is what its
+keys are. All <code class="docutils literal notranslate"><span class="pre">dict</span></code> objects have a <code class="docutils literal notranslate"><span class="pre">keys()</span></code> function for just this purpose.</p>
 <div class="literal-block-wrapper docutils container" id="id9">
 <div class="code-block-caption"><span class="caption-number">Listing 31 </span><span class="caption-text">ipython shell</span></div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;current_condition&#39;</span><span class="p">])</span>
-<span class="go">list</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="go">dict_keys([&#39;id&#39;, &#39;name&#39;, &#39;tagline&#39;, ...])</span>
 </pre></div>
 </div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">dict_keys</span></code> type works like a list, which means that we can iterate over it
-just like we would a list. That way we can print out the type for each key,
-without having to type each one out manually.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">dict_keys</span></code> type looks a lot like a list, which means we can convert it to
+a list if we want to <code class="docutils literal notranslate"><span class="pre">pprint</span></code> it.</p>
 <div class="literal-block-wrapper docutils container" id="id10">
 <div class="code-block-caption"><span class="caption-number">Listing 32 </span><span class="caption-text">ipython shell</span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="go">[&#39;id&#39;,</span>
+<span class="go"> &#39;name&#39;,</span>
+<span class="go"> &#39;tagline&#39;,</span>
+<span class="go"> &#39;first_brewed&#39;,</span>
+<span class="go"> &#39;description&#39;,</span>
+<span class="go"> &#39;image_url&#39;,</span>
+<span class="go"> &#39;abv&#39;,</span>
+<span class="go"> &#39;ibu&#39;,</span>
+<span class="go"> &#39;target_fg&#39;,</span>
+<span class="go"> &#39;target_og&#39;,</span>
+<span class="go"> &#39;ebc&#39;,</span>
+<span class="go"> &#39;srm&#39;,</span>
+<span class="go"> &#39;ph&#39;,</span>
+<span class="go"> &#39;attenuation_level&#39;,</span>
+<span class="go"> &#39;volume&#39;,</span>
+<span class="go"> &#39;boil_volume&#39;,</span>
+<span class="go"> &#39;method&#39;,</span>
+<span class="go"> &#39;ingredients&#39;,</span>
+<span class="go"> &#39;food_pairing&#39;,</span>
+<span class="go"> &#39;brewers_tips&#39;,</span>
+<span class="go"> &#39;contributed_by&#39;]</span>
+</pre></div>
+</div>
+</div>
+<p>Now we’re getting somewhere. This looks like the <code class="docutils literal notranslate"><span class="pre">dict</span></code> for the beer, so let’s
+save this as <code class="docutils literal notranslate"><span class="pre">beer</span></code> so we don’t have to type <code class="docutils literal notranslate"><span class="pre">data[0]</span></code> over and over. Then we
+can take a look at a couple of the obvious values <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">description</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-number">Listing 33 </span><span class="caption-text">ipython shell</span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">beer</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">beer</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+<span class="go">&#39;Juniper Wheat Beer&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">beer</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span>
+<span class="go">&quot;A variant on the 2008 release of Bad Pixie, but hoppier. ...&quot;</span>
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<p class="centered">
+<strong>Here ends the part that’s done.</strong></p><p>which means that we can iterate over it
+just like we would a list. That way we can print out the type for each key,
+without having to type each one out manually.</p>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-number">Listing 34 </span><span class="caption-text">ipython shell</span></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="c1"># here we are using the `k` variable, which is the key name</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="c1"># to access the cooresponding value in the `d` dictionary</span>
@@ -530,8 +602,8 @@ out how long each list is.</p>
 <p>Hit the <strong>up arrow</strong> until the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop is filled in. You can then use the
 arrow keys to move around within the text.</p>
 <p>Add one more argument to the end of the print statement <code class="docutils literal notranslate"><span class="pre">len(d[k])</span></code>.</p>
-<div class="literal-block-wrapper docutils container" id="id11">
-<div class="code-block-caption"><span class="caption-number">Listing 33 </span><span class="caption-text">ipython shell</span></div>
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-number">Listing 35 </span><span class="caption-text">ipython shell</span></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">]),</span> <span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">]))</span>
 
@@ -547,8 +619,8 @@ values have one element in each list, and the <code class="docutils literal notr
 <p>I’m guessing that the <code class="docutils literal notranslate"><span class="pre">request</span></code> value has information about what we sent it.
 Let’s take a look at its contents and see if it’s short enough to take in at a
 glance.</p>
-<div class="literal-block-wrapper docutils container" id="id12">
-<div class="code-block-caption"><span class="caption-number">Listing 34 </span><span class="caption-text">ipython shell</span></div>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-number">Listing 36 </span><span class="caption-text">ipython shell</span></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">req</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;request&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">req</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="go">{&#39;query&#39;: &#39;Lat 39.74 and Lon -104.98&#39;, &#39;type&#39;: &#39;LatLon&#39;}</span>
@@ -556,8 +628,8 @@ glance.</p>
 </div>
 </div>
 <p>Another way to do the same thing is this:</p>
-<div class="literal-block-wrapper docutils container" id="id13">
-<div class="code-block-caption"><span class="caption-number">Listing 35 </span><span class="caption-text">ipython shell</span></div>
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-number">Listing 37 </span><span class="caption-text">ipython shell</span></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;request&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 <span class="go">{&#39;query&#39;: &#39;Lat 39.74 and Lon -104.98&#39;, &#39;type&#39;: &#39;LatLon&#39;}</span>
 </pre></div>
@@ -566,8 +638,8 @@ glance.</p>
 <p>Interesting! That isn’t what we sent to <code class="docutils literal notranslate"><span class="pre">wttr.in</span></code>. I’m guessing then that it is
 what <code class="docutils literal notranslate"><span class="pre">wttr.in</span></code> sent to the service that it gets its data from.</p>
 <p>Moving on, let’s take a look at the <code class="docutils literal notranslate"><span class="pre">current_condition</span></code> value.</p>
-<div class="literal-block-wrapper docutils container" id="id14">
-<div class="code-block-caption"><span class="caption-number">Listing 36 </span><span class="caption-text">ipython shell</span></div>
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-number">Listing 38 </span><span class="caption-text">ipython shell</span></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;current_condition&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 <span class="go">{&#39;FeelsLikeC&#39;: &#39;23&#39;,</span>
 <span class="go"> &#39;FeelsLikeF&#39;: &#39;74&#39;,</span>
@@ -594,8 +666,8 @@ what <code class="docutils literal notranslate"><span class="pre">wttr.in</span>
 <p>Now we’re getting to some real data. I see here that we have the <code class="docutils literal notranslate"><span class="pre">uvIndex</span></code> and
 <code class="docutils literal notranslate"><span class="pre">visibility</span></code> and <code class="docutils literal notranslate"><span class="pre">humidity</span></code> that are not shown in the other format.</p>
 <p>Let’s take a look at <code class="docutils literal notranslate"><span class="pre">nearest_area</span></code> now.</p>
-<div class="literal-block-wrapper docutils container" id="id15">
-<div class="code-block-caption"><span class="caption-number">Listing 37 </span><span class="caption-text">ipython shell</span></div>
+<div class="literal-block-wrapper docutils container" id="id17">
+<div class="code-block-caption"><span class="caption-number">Listing 39 </span><span class="caption-text">ipython shell</span></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;nearest_area&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 <span class="go">{&#39;areaName&#39;: [{&#39;value&#39;: &#39;Altura&#39;}],</span>
 <span class="go"> &#39;country&#39;: [{&#39;value&#39;: &#39;United States of America&#39;}],</span>
@@ -612,8 +684,8 @@ super useful.</p>
 <p>Finally, the longest list, <code class="docutils literal notranslate"><span class="pre">weather</span></code>, with its <code class="docutils literal notranslate"><span class="pre">3</span></code> elements. We’ll still look
 at the <code class="docutils literal notranslate"><span class="pre">0</span></code> element though, since we can assume that it is representative of the
 other elements.</p>
-<div class="literal-block-wrapper docutils container" id="id16">
-<div class="code-block-caption"><span class="caption-number">Listing 38 </span><span class="caption-text">ipython shell</span></div>
+<div class="literal-block-wrapper docutils container" id="id18">
+<div class="code-block-caption"><span class="caption-number">Listing 40 </span><span class="caption-text">ipython shell</span></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 <span class="go">{&#39;astronomy&#39;: [{&#39;moon_illumination&#39;: &#39;34&#39;,</span>
 <span class="go">   &#39;moon_phase&#39;: &#39;First Quarter&#39;,</span>
@@ -636,8 +708,8 @@ other elements.</p>
 <p>I’m going to save this element so I don’t have to type <code class="docutils literal notranslate"><span class="pre">d['weather'][0]</span></code> every
 time. I can already see from the initial ouput that it’s a dictionary, so I’ll
 skip ahead to looking at its keys.</p>
-<div class="literal-block-wrapper docutils container" id="id17">
-<div class="code-block-caption"><span class="caption-number">Listing 39 </span><span class="caption-text">ipython shell</span></div>
+<div class="literal-block-wrapper docutils container" id="id19">
+<div class="code-block-caption"><span class="caption-number">Listing 41 </span><span class="caption-text">ipython shell</span></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">w</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 
@@ -647,8 +719,8 @@ skip ahead to looking at its keys.</p>
 </div>
 <p>That’s a little long. The <code class="docutils literal notranslate"><span class="pre">dict_keys</span></code> object is like a list, so we can convert
 it to one. If we do that, then iPython will pretty-print it for us.</p>
-<div class="literal-block-wrapper docutils container" id="id18">
-<div class="code-block-caption"><span class="caption-number">Listing 40 </span><span class="caption-text">ipython shell</span></div>
+<div class="literal-block-wrapper docutils container" id="id20">
+<div class="code-block-caption"><span class="caption-number">Listing 42 </span><span class="caption-text">ipython shell</span></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 <span class="go">[&#39;astronomy&#39;,</span>
 <span class="go"> &#39;date&#39;,</span>
@@ -667,16 +739,16 @@ it to one. If we do that, then iPython will pretty-print it for us.</p>
 <p>Ok, so now I’m guessing that the <code class="docutils literal notranslate"><span class="pre">hourly</span></code> value is the reason there’s so much
 data. Let’s delete that from the <code class="docutils literal notranslate"><span class="pre">w</span></code> dictionary.</p>
 <p>Let’s make the <code class="docutils literal notranslate"><span class="pre">w</span></code> value a copy of <code class="docutils literal notranslate"><span class="pre">d['weather'][0]</span></code> instead of a <code class="docutils literal notranslate"><span class="pre">reference</span></code> to it as it is now.</p>
-<div class="literal-block-wrapper docutils container" id="id19">
-<div class="code-block-caption"><span class="caption-number">Listing 41 </span><span class="caption-text">ipython shell</span></div>
+<div class="literal-block-wrapper docutils container" id="id21">
+<div class="code-block-caption"><span class="caption-number">Listing 43 </span><span class="caption-text">ipython shell</span></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <p>Now we can delete the <code class="docutils literal notranslate"><span class="pre">hourly</span></code> value, but still have it available for us back
 in the <code class="docutils literal notranslate"><span class="pre">d</span></code> dictionary.</p>
-<div class="literal-block-wrapper docutils container" id="id20">
-<div class="code-block-caption"><span class="caption-number">Listing 42 </span><span class="caption-text">ipython shell</span></div>
+<div class="literal-block-wrapper docutils container" id="id22">
+<div class="code-block-caption"><span class="caption-number">Listing 44 </span><span class="caption-text">ipython shell</span></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">w</span><span class="p">[</span><span class="s1">&#39;hourly&#39;</span><span class="p">]</span>                         <span class="c1"># this deletes &#39;hourly&#39; from the `w` dict</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;hourly&#39;</span><span class="p">])</span>         <span class="c1"># just to confirm that it&#39;s still there in `d`</span>
 <span class="go">list</span>
