@@ -43,6 +43,7 @@ Let's take a look at some examples.
 ```{code-block} python
 ---
 caption: one `if` clause
+linenos:
 ---
 if status == "failed":
   print("Sorry, you don't have access.")
@@ -52,6 +53,7 @@ if status == "failed":
 ```{code-block} python
 ---
 caption: an `if` and `else` clause
+linenos:
 ---
 if winner == player:
   print("Congratulations, you win!")
@@ -64,6 +66,7 @@ else:
 ```{code-block} python
 ---
 caption: an `if` clause, multipe `elif` clauses, and an `else` clause
+linenos:
 ---
 if choice == "left":
   print("You decide to take the path to the left.")
@@ -76,11 +79,12 @@ else:
 ```
 
 
-### Questions
+### Exercises and questions
 
 1\. What is the value of `options` if `level` is `"moderator"`.
 
 ```{code-block} python
+:linenos:
 options = ["view", "list", "exit"]
 
 if level == "admin":
@@ -95,10 +99,13 @@ elif level == "owner":
 2\. Fix the following.
 
 ```{code-cell} python
-:tags: ["raises-exception", "hide-output"]
-if choice > max:
+---
+linenos:
+tags: ["raises-exception", "hide-output"]
+---
+if choice > highest:
   print("Sorry, your pick choice is too high.")
-else choice < min:
+else choice < lowest:
   print("Sorry, your pick choice is too low.")
 ```
 
@@ -134,7 +141,7 @@ Some examples of expressions using comparison operators:
 | `not in`    | is not a member of        | `"a" not in "hello  "`  | `2 not in [1, 3, 5, 7, 9]`    |
 ```
 
-#### Questions
+#### Exercises and questions
 
 Open up a {term}`Python shell` and use comparison operators to answer each of the following.
 
@@ -158,44 +165,74 @@ Some examples of expressions using logical operators:
 
 ```{table} Logical operators
 
-| operator    | meaning                   | example                            |
-|-------------|---------------------------|------------------------------------|
-| `and`       | both conditions are true  | `choice > min and choice < max`    |
-| `or`        | either condition is true  | `choice < min or choice > max`     |
-| `not`       | the following is not true | `not something`                    |
+| operator    | meaning                   | example                                   |
+|-------------|---------------------------|-------------------------------------------|
+| `and`       | both conditions are true  | `choice > lowest and choice < highest`    |
+| `or`        | either condition is true  | `choice < lowest or choice > highest`     |
+| `not`       | the following is not true | `not something`                           |
 ```
 
 The `not` operator is special in that it does not include a `left-hand value`.
 You can think of it like the opposite of the value that follows.
 
+#### Exercises and questions
+
+```{admonition} Tip: Check if a number is divisible by another
+---
+class: tip
+---
+To test if a number is divisible by another number use the modulo operator `%`
+which will give you the division remainder.
+
+For example, `5/2` is `2.5`, or `2` with a remainder of `1`. \
+So `5%2` is `1`.
+
+And so to check if a number is divisible by another, just check if the
+remainder is zero.
+
+`num % 2 == 0`
+```
+
+For each of the following get a random number using `random.randint()`.
+
+1. Get a random number between `1` and `100` then check to see if it is greater
+than `50` or if it's an even number.
+
+
+2. Get a random number between `1` and `100` then check to see if it is an even
+number and divisible by ten.
+
+
+3. Use the `input()` function to ask for a number and save it to a variable
+called `num`. Check `num.isnumeric()` and print an error message if it is not.
 
 ### Truthy and Falsy
 
 Python evaluates conditional expressions in a {term}`boolean context` which
 determines if the resulting value is {term}`Truthy` or {term}`Falsy`.
 
-A `Truthy` value is one that Python considers to be the equivalent of `True`,
-while a `Falsy` value is one that Python considers to be the equivalent of
+A truthy value is one that Python considers to be the equivalent of `True`,
+while a falsy value is one that Python considers to be the equivalent of
 `False`. It determies this by first converting it to a `boolean` value, which
 can be done using the `bool()` function.
 
-Some examples of `Falsy` values are
+Some examples of falsy values are
 
 * `0` zero
 * `""` an empty string
 * `[]` an empty list
 
-Some examples of `Truthy` values are:
+Some examples of truthy values are:
 
-* `5` a non-zero number
-* `"hello"` a non-blank string
-* `[35, 32, 89]` a non-empty list
+* `5` (a non-zero number)
+* `"hello"` (a non-blank string)
+* `[35, 32, 89]` (a non-empty list)
 
 Here are details for each data type.
 
-```{table} Truthy and Falsy examples for each data type
+```{table} truthy examples and falsy values for each data type
 
-| type       | name         | Falsy         | Truthy         |
+| Type       | Name         | Falsy         | Truthy         |
 |------------|--------------|---------------|----------------|
 | `str`      | string       | `""`          | `"a"`          |
 | `int`      | integer      | `0`           | `1`            |
@@ -206,11 +243,58 @@ Here are details for each data type.
 | `bool`     | boolean      | `False`       | `True`         |
 | `None`     | none         | `None`        |                |
 ```
+Since conditions are evaluated in a boolean context (meaning the result of
+the expression is converted to a `bool`) you can use a value as condition for
+truthiness, or add the `not` operator for falsiness.
 
-#### Questions
+In this example we check the truthiness of an integer which we know will be
+either `1` or `0`.
+
+```{code-block} python
+---
+caption: the truthiness of an int
+linenos:
+---
+is_winner = random.randint(0, 1)
+if is_winner:
+  print("Contgratulations, you win!")
+```
+
+This example checks to make sure that a user response is not blank.
+
+```{code-block} python
+---
+caption: the falsyness of a string
+linenos:
+---
+response = input("What's your name? ")
+if not response:
+  print("Didn't get that. Try again.")
+```
+
+This example function expects a list of items. It checks to make sure the list
+is not empty first.
+
+```{code-block} python
+---
+caption: the falsyness of a list
+linenos:
+---
+def buy_items(items):
+  if not items:
+    print("Oops, the list of items is empty.")
+    return
+
+  print("You are buying", len(items), "items.")
+  for item in items:
+    buy(item)
+```
+
+
+#### Exercises and questions
 
 Open up a {term}`Python shell` and use the `bool()` function to find out if
-each of the following is `Truthy` or `Falsy`.
+each of the following is truthy or falsy.
 
 1. `-1` negative one
 2. `" "` a space
@@ -224,7 +308,7 @@ Exercises
 
   1. Pick a random number between `0` and `1` and assign it to a variable `coin`.
   2. Print "You tossed", and the value of `coin`.
-  3. If the value of `coin` is Truthy, print "You win the coin toss!"
+  3. If the value of `coin` is truthy, print "You win the coin toss!"
 
 **Exercise 2: Computer guessing game**
 
@@ -237,7 +321,7 @@ Exercises
 
 **Exercise 3: Heads or Tails**
 
-In this exercise use the `and` operator and determine the Truthiness of a value.
+In this exercise use the `and` operator and determine the truthiness of a value.
 
 1. Ask the user `"heads or tails?"`
 2. If the answer is blank, tell them they have to enter something.
