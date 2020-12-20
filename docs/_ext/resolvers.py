@@ -4,8 +4,56 @@
 from sys import stderr
 
 import docutils.nodes as nodes
+from more_itertools import first
+
+def normalize(text):
+    """Normalize terms for comparison"""
+    return text.lower().replace("-", " ").rstrip("s")
+
+
+def mkref(app, ident, doc, textnode):
+    """Make a referenc node"""
+    if ident:
+        refuri, refid = app.builder.get_relative_uri(doc, ident), None
+    else:
+        refuri, refid = None, ident
+
+    # create new refnode
+    refnode = nodes.reference("", "",
+                              internal=True,
+                              reftitle="",
+                              refuri=refuri,
+                              refid=refid)
+    if not ident:
+        refnode['classes'].append("term-missing")
+
+    refnode.append(textnode)
+    return refnode
+
+def find_matching_term(identifier, objects):
+    """Find a term in the registry"""
+    #   registry objects look like this:
+    #   ('term', 'Loop'): ('reference/glossary', 'term-Loop')
+    # terms = (k[1] for k in std.objects if k[0] == "term")
+    matches = [(label, doc) for (cat, label), (doc, _) in objects.items()
+               if cat == "term" and
+               normalize(label) == normalize(identifier)]
+    match = first(matches, (None, None))
+
+    if len(matches):
+        echo_debug(f"term_resolver> '{identifier}' FOUND ({len(matches)})")
+
+    return match
+
+
+def echo_debug(*args):
+    """Print debug message to stderr"""
+    print("\033[33mDEBUG>\033[0m", *args, file=stderr)
+
 
 def setup(app):
+    echo_debug("resolvers.py", "setup()")
+
     # on missing-reference event, call the term_resolver function
     app.connect("missing-reference", term_resolver)
 
@@ -47,28 +95,11 @@ def term_resolver(app, env, orphan, textnode):
         return
 
     identifier = orphan.astext()
-    # print("DEBUG> term_resolver>", "====================================", file=stderr)
-    # print("DEBUG> term_resolver>", "FOUND MISSING TERM", identifier, file=stderr)
 
     std = env.domains["std"]
+    match, doc = find_matching_term(identifier, std.objects)
+    if not match:
+        # add to missing-term registry
+        std.add_object('term-missing', identifier, env.docname, "#")
 
-    # add term to registry
-    #   registry objects look like this:
-    #   ('term', 'Loop'): ('reference/glossary', 'term-Loop')
-    std.add_object('term-missing', identifier, env.docname, "#")
-
-    # missing_terms = { k:v for k,v in std.objects.items() if k[0] == "term-missing" }
-    # print("DEBUG> term_resolver>", "missing-terms", missing_terms, file=stderr)
-
-    # print("DEBUG> term_resolver>", "objects", std.objects, file=stderr)
-    # print("DEBUG> term_resolver>", "textnode", type(textnode),
-          # textnode.attributes, file=stderr)
-
-    # create new refnode
-    refnode = nodes.reference("", "", internal=True, refuri="#", reftitle="")
-    refnode['classes'].append("term-missing")
-
-    refnode.append(textnode)
-
-    return refnode
-
+    return mkref(app, match, doc, textnode)

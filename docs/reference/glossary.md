@@ -5,38 +5,38 @@ Programming Concepts
 --------------------
 
 ```{glossary}
-Argument
+argument
   A {term}`value` that is sent as input to a function.
 
-Assign
+assign
   A {term}`statement` that sets the {term}`value` of a variable name.
 
-Call
+call
   Code that tells the computer to {term}`execute` the code within a previously
   defined function.
 
-Comment
+comment
   Parts in a source-code file which are ignored when the program is run. In
   Python add a `#` to the beginning a line to indicate that it is a comment.
   You can also comment out only part of a line by adding `#` followed by the
   comment text to the end of an expression. It is recommended to follow the `#`
   by a single space before the text of the comment.
 
-Comparison Operator
+comparison Operator
   An operator that compares the left-hand value to the right-hand value then
   evalutes to either True or False.
 
-Conditional
+conditional
   A valid piece of code that, when evaluated, results in
-  {term}`boolean<Boolean>` value.
+  {term}`boolean` value.
 
-Docstring
+docstring
   Similar to a comment parts of code that are not executed but are used to
   document a segment of code. In Python it is surrounded by tripple
   double-quotes `"""` or tripple single-quotes `'''` and appears at the first
   expression in a file, module, class, or function.
 
-Escaping
+escaping
   How to indicate to the computer that an operator inside of a string should
   not be interpreted but instead be treated be treated as part of the string.
   For example, you would need to escape a single-quote in a string surrounded
@@ -44,94 +44,94 @@ Escaping
   the escape character in any sring. In Python (and many other languages) the
   escape character is a backslash (`\`).
 
-Expression
+expression
   A valid piece of code that, when evaluated, results in a value.
 
-Falsy
+falsy
   A value that is False when evaluated in a `boolean` context, or when converted
   to a boolean using the `bool()` function.
 
-Function
+function
   A named block of reusable code. A function may or may not take arguments, and
   may or may not return a value. In Python it is recommended to use the
   `lower_case_with_underscores` for function names.
 
-Identifier
+identifier
   The name that refers to a some programming element, such as a variable,
   class, function or module.
 
-Iterate
+iterate
   To repeat over a unit of code, usually within a loop. Each repetition is
   called an *iteration*.
 
-Key
-  A value used to retrieve another value from a {term}`dictionary<Dictionary>`.
+key
+  A value used to retrieve another value from a {term}`dictionary`.
 
-Keyword
+keyword
   Reserved words that have special meanings in a programming language so that
   they cannot be used as an identifier. Some examples of keywords in Python are
   `for`, `if`, and `def`.
 
-Logical Operator
+logical operator
   An operator that considers both left-hand value and right-hand value then
   evalutes to either True or False.
 
-Module
+module
   A file containing of reusable code that can be imported into other programs.
 
-Namespace
+namespace
   The group that a variable or function is part of. `print()` is part of the
   **global namespace** whereas `randint()` is part of the `random` module, and
   therefore part of the `random` namespace.
 
-Operator
+operator
   A symbol with special meaning that tells the computer to do something (for
   example `=`, `+`, or `==`).
 
-Parameters
+parameters
   The named variables that appear in a function definition to specify what
   arguments it can accept.
 
-Statement
+statement
   An instruction that Python can {term}`execute` as a unit.
 
-String Concatenation
-Concatenation
-Concatenate
+string concatenation
+concatenation
+concatenate
   Joining two or more strings together.
 
-Syntax
+syntax
   A set of rules that determine how a programming language is understood by the
   computer. Grammar, but for code.
 
-Truthy
+truthy
   A value that is True when evaluated in a `boolean` context, or when converted
   to a boolean using the `bool()` function.
 
-Type
-Data Type
+type
+data type
   The classification of a value which tells Python what operations can be
-  performed on it. Some examples include {term}`strings<String>`,
-  {term}`integers<Integer>`, {term}`lists<List>`, and
-  {term}`dictionaries<Dictionary>`.
+  performed on it. Some examples include {term}`strings`,
+  {term}`integers`, {term}`lists`, and
+  {term}`dictionaries`.
 
-Value
-  A piece of data such as {term}`strings<String>`, {term}`integers<Integer>`
+value
+  A piece of data such as {term}`strings`, {term}`integers`
   and more.
 
-Variable
+variable
   A name given to a value.
 
-Loop
+loop
   A block of code that will repeat until a specified condition is reached. For
   example *for-loops* and *while-loops*. An *infinite-loop* occurs if there is
   no condition or the condition can never be met.
 
-Immutable
+immutable
   A value that cannot be changed. In Python these include numbers, strings and
   tuples.
 
-Mutable
+mutable
   A value that can be changed.
 ```
 
@@ -139,33 +139,33 @@ Data Types
 -----
 
 ```{glossary}
-Boolean
+boolean
 bool
   True or False values.
 
-Dictionary
+dictionary
 dict
   A collection of key-value pairs.
 
-Floating-Point Number
+floating-point number
 float
   Fractions or numbers with decimal points.
 
-Integer
+integer
 int
   Whole numbers values.
 
-List
+list
   A collection of values. In Python lists are mutable and they are defined by
   surrounding the comma-seperated values with square-bracket (`[]`).
 
-String
+string
 str
   Text values. They are surrounded by single or double quotes. In Python, there
   is no difference between using single or double quotes, except which
   characters you have to escape.
 
-None
+none
 null
   A special value that indicates nothingness which is different from the value
   zero or an empty string. In Python it is referred to as None without quotes.
@@ -177,17 +177,17 @@ Software Development Concepts
 -----------------------------
 
 ```{glossary}
-Code Editor
+code editor
   A text editing program specifically for code with features like syntax
   highlighting and code formatting. Some examples include VS Code, Atom,
   Sublime, Textmate and Vim.
 
-Command Line
+command line
   In casual use, people usually mean accessing the operating system's shell,
-  usually with a terminal emulator. See also, {term}`Console`,
-  {term}`Terminal`.
+  usually with a terminal emulator. See also, {term}`console`,
+  {term}`terminal`.
 
-Compile
+compile
   The process by which the computer translates source code from one programming
   language to a lower-level language to create an executable program. A
   language that must be compiled is called a compiled language and the
@@ -195,21 +195,21 @@ Compile
   compiler. Python is an interpreted language, so it does not need to be
   compiled. Some compiled langauges include C/C++, Java and Go.
 
-Console
-System console
+console
+system console
   Comes from a time when early text-based computer systems with a keyboard and
   monitor interface were used to interact with servers or mainframes.  In
   modern usage people usually mean accessing the operating system's shell,
   usually with a terminal emulator. In repl.it, the right-most pane is referred
   to as the console.
 
-Integrated Development Environment
+integrated development environment
 IDE
   A program dedicated to software development usually including a code editor,
   debugger, version control management, and build/execution features. Examples
   include repl.it, Eclipse, Thonny, and Pycharm.
 
-Interpret
+interpret
   The process by which the computer directly executes source code without that
   code needing to be compiled first. The program that does this for a
   particluar programming language is called an intrepreter. A programming
@@ -218,31 +218,31 @@ Interpret
   language and Python code is executed by the Python Interprter.  Some other
   interpreted languages include Ruby, PHP and Perl.
 
-Prompt
+prompt
   Characters displayed by the interpreter to indicate that it is ready to take
   input from the user.
 
-Read-Evaluate-Print-Loop
+read-evaluate-print-loop
 REPL
   An interactive tool or environment that takes code input,
-  {term}`evaluates<evaluate>` or {term}`executes<execute>` it, and displays the
-  output or resulting value to the user. {term}`Shells<Shell>` are a subset of
+  {term}`evaluates` or {term}`executes` it, and displays the
+  output or resulting value to the user. {term}`shells` are a subset of
   REPLs. More advanced REPL tools and systems are comprised of an input or
   editor pane, and an output or results pane. Many online REPLs exist such as
   play.golang.org for Go, pythonfiddle.com for Python, try.ruby-lang.org for
   Ruby and repl.it.
 
-Shell
-Interactive Shell
-Command Line Interpreter
+shell
+interactive shell
+command line interpreter
   A text-based interface that runs code or command input. Operating systems
   have shells for system administration and operation such as Bash or Zsh in
   Unix-like systems or Powershell or the DOS Command Prompt in Windows. Some
   languages provide shells that execute code such as the Python Interactive
-  Shell or the :abbr:`IRB (Interactive Ruby Shell)`.
+  Shell or the {abbr}`IRB (Interactive Ruby Shell)`.
 
-Terminal
-Terminal emulator
+terminal
+terminal emulator
   In modern computing, an application that provides a text-based interface to
   the operating system's shell. Some examples include konsole and the Gnome
   Terminal in Unix-like systems, Terminal and iTerm2 on MacOs, and PuTTY,
@@ -261,7 +261,7 @@ branch
   A container that has a name and stores set of commits. Every repository is
   created with a default branch named {term}`master`.
 
-Codebase
+codebase
   A set source code files that make up a software system, application,
   component or project.
 
@@ -308,7 +308,7 @@ remote repository
 upstream repo
   A repository that you send changes to.
 
-Repository
+repository
 repo
   The container for version-control information for a set of files.
 
@@ -321,15 +321,15 @@ hash
 tree
   A snapshot of your files at the time of the {term}`HEAD` {term}`commit`.
 
-Version Control
-Source Control
-Revision Control
+version control
+source control
+revision control
   A method for keeping track of and managing changes to a set of files.
 
-Version Control System
+version control system
 VCS
-Revision Control System
-Source Control Management System
+revision control system
+source control management system
 SCM
   A tool or set of tools for version control. The most popular today is Git,
   but some other examples include Mercurial, Subversion, CVS and Perforce.

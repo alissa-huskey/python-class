@@ -25,8 +25,9 @@ ipython = "^7.19.0"
 # docs
 # ---------------------------------------------------------------------
 
-ghp = { path = "../gh-pages-cli", develop = true, optional = true }
-jupyter-book = { version = "^0.8.3", optional = true }
+ghp = { path = "vendor/gh-pages-cli", develop = true, optional = true }
+# jupyter-book = { git = "https://github.com/executablebooks/jupyter-book.git" }
+jupyter-book = { file = "vendor/jupyter-book/dist/jupyter_book-0.8.3-py3-none-any.whl", optional = true }
 docutils = { version = "^0.16", optional = true }
 sphinx = { version = "^3.3.1", optional = true }
 
@@ -47,7 +48,8 @@ docs = [
   "zipp",
 ]
 
-
 [build-system]
-requires = ["poetry>=0.12"]
-build-backend = "poetry.masonry.api"
+# requires = ["poetry>=0.12"]
+# build-backend = "poetry.masonry.api"
+requires = ["poetry-core>=1.0.0a5"]
+build-backend = "poetry.core.masonry.api"
