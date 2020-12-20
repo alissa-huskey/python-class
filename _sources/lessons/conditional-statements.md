@@ -112,7 +112,7 @@ else choice < lowest:
 Conditions
 ----------
 
-The {term}`expressions<expression>` following the `if` and `elif`
+The {term}`expressions` following the `if` and `elif`
 {term}`keyword` in an if-statement are called conditions. This is what tells
 Python whether to execute the {term}`suite` of statements in this clause.
 
@@ -209,7 +209,7 @@ called `num`. Check `num.isnumeric()` and print an error message if it is not.
 ### Truthy and Falsy
 
 Python evaluates conditional expressions in a {term}`boolean context` which
-determines if the resulting value is {term}`Truthy` or {term}`Falsy`.
+determines if the resulting value is {term}`truthy` or {term}`falsy`.
 
 A truthy value is one that Python considers to be the equivalent of `True`,
 while a falsy value is one that Python considers to be the equivalent of

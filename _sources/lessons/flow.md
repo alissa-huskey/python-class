@@ -163,7 +163,7 @@ Let's walk through the following example code.
 ```
 
 
-````{sidebar} Game 
+````{sidebar} Game
 ---
 class: game-info
 ---
@@ -202,7 +202,7 @@ align: left
 ---
 ```
 
-If executing Python was like playing a video game, the step of defining 
+If executing Python was like playing a video game, the step of defining
 functions would be like acquiring skills or abilities.
 
 Let's walk through an example.
@@ -250,11 +250,11 @@ objects = [
 ]
 
 def hide():
-  print("You cast a concealment spell. *poof* Nobody can see you")   
+  print("You cast a concealment spell. *poof* Nobody can see you")
 
 def pick_up(name):
   objects.append(name)
-  print("You picked up a", name, ".")   
+  print("You picked up a", name, ".")
 
 
 ```
@@ -315,11 +315,11 @@ objects = [
 ]
 
 def hide():
-  print("You cast a concealment spell. *poof* Nobody can see you")   
+  print("You cast a concealment spell. *poof* Nobody can see you")
 
 def pick_up(name):
   objects.append(name)
-  print("You picked up a", name, ".")   
+  print("You picked up a", name, ".")
 
 hide()
 ```
@@ -379,11 +379,11 @@ objects = [
 ]
 
 def hide():
-  print("You cast a concealment spell. *poof* Nobody can see you")   
+  print("You cast a concealment spell. *poof* Nobody can see you")
 
 def pick_up(name):
   objects.append(name)
-  print("You picked up a", name, ".")   
+  print("You picked up a", name, ".")
 
 hide()
 pick_up("silver key")
@@ -446,11 +446,11 @@ objects = [
 ]
 
 def hide():
-  print("You cast a concealment spell. *poof* Nobody can see you")   
+  print("You cast a concealment spell. *poof* Nobody can see you")
 
 def pick_up(name):
   objects.append(name)
-  print("You picked up a", name, ".")   
+  print("You picked up a", name, ".")
 
 hide()
 pick_up("silver key")
