@@ -128,7 +128,8 @@ class Logger():
         """Create logging methods for levels"""
         for lvl in list(self.LEVELS.keys())[1:]:
             level= getattr(logging, lvl)
-            method = self.mklog_fn(name:=lvl.lower(), level)
+            name = lvl.lower()
+            method = self.mklog_fn(name, level)
             setattr(self, name, method)
 
     def _init_log_(self):
