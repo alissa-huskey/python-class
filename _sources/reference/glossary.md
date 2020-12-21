@@ -1,10 +1,7 @@
 Glossary
 =========
 
-Programming Concepts
---------------------
-
-```{glossary}
+```{glossary} programming-concepts
 argument
   A {term}`value` that is sent as input to a function.
 
@@ -22,7 +19,7 @@ comment
   comment text to the end of an expression. It is recommended to follow the `#`
   by a single space before the text of the comment.
 
-comparison Operator
+comparison operator
   An operator that compares the left-hand value to the right-hand value then
   evalutes to either True or False.
 
@@ -81,14 +78,14 @@ module
 
 namespace
   The group that a variable or function is part of. `print()` is part of the
-  **global namespace** whereas `randint()` is part of the `random` module, and
+  {term}`global namespace` whereas `randint()` is part of the `random` module, and
   therefore part of the `random` namespace.
 
 operator
   A symbol with special meaning that tells the computer to do something (for
   example `=`, `+`, or `==`).
 
-parameters
+parameter
   The named variables that appear in a function definition to specify what
   arguments it can accept.
 
@@ -135,10 +132,7 @@ mutable
   A value that can be changed.
 ```
 
-Data Types
------
-
-```{glossary}
+```{glossary} data-types
 boolean
 bool
   True or False values.
@@ -172,11 +166,7 @@ null
   In other languages: null, nil.
 ```
 
-
-Software Development Concepts
------------------------------
-
-```{glossary}
+```{glossary} software-development
 code editor
   A text editing program specifically for code with features like syntax
   highlighting and code formatting. Some examples include VS Code, Atom,
@@ -253,10 +243,7 @@ terminal emulator
   modern colloqual meaning of accessing the operating system's shell.
 ```
 
-Version Control
----------------
-
-```{glossary}
+```{glossary} version-control
 branch
   A container that has a name and stores set of commits. Every repository is
   created with a default branch named {term}`master`.
@@ -266,12 +253,12 @@ codebase
   component or project.
 
 commit
-revsion
+revision
 change log
   A set of changes recorded in version control.
 
 distributed version control
-   As opposed to **Centralized Version Control Systems** that have one central
+   As opposed to {term}`centralized version control` systems that have one central
    repository that all other repositories were required to communicate with in
    order to commit changes. In distributed version control, every repo is self
    contained and any repo send changes to or receive changes from any other
