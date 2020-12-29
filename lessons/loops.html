@@ -57,6 +57,8 @@
     <link rel="canonical" href="https://alissa-huskey.github.io/python-class/lessons/loops.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Misc" href="misc.html" />
+    <link rel="prev" title="Conditional Statements" href="conditional-statements.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -66,7 +68,7 @@
 <meta property="og:url"         content="https://alissa-huskey.github.io/python-class/lessons/loops.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Loops" />
-<meta property="og:description" content="Loops  while loop intro  else  i=0; i&lt;x; i++  break  continue  pass  infinte loops  draw a line  manual for loops  the stack?  countdown  count = 10 while count" />
+<meta property="og:description" content="Loops  Normally Python reads one statement at a time, one at a time. But loops give us the ability to repeat a set of statements.  While loops  A while loop is " />
 
 
 <meta name="twitter:card" content="summary" />
@@ -105,12 +107,12 @@
   Lessons
  </span>
 </p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1 collapsible-parent">
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="fundamentals.html">
    Fundamentals
   </a>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="expressions.html">
      Expressions
@@ -134,6 +136,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="conditional-statements.html">
      Conditional Statements
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Loops
     </a>
    </li>
   </ul>
@@ -335,10 +342,61 @@
 
         <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/alissa-huskey/python-class/master?urlpath=lab/tree/docs/lessons/loops.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
     </div>
 
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#while-loops">
+   While loops
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#infinite-loops">
+     Infinite loops
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#quitting-a-loop">
+     Quitting a loop
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#skipping-part-of-an-iteration">
+     Skipping part of an iteration
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
         
     </div>
 </div>
@@ -349,60 +407,146 @@
                 
   <div class="section" id="loops">
 <h1>Loops</h1>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="k">while</span> <span class="n">count</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">count</span> <span class="o">-=</span> <span class="mi">1</span>
+<p>Normally Python reads one statement at a time, one at a time. But loops give us
+the ability to repeat a set of statements.</p>
+<div class="section" id="while-loops">
+<h2>While loops</h2>
+<p>A <a class="term-missing reference internal" href="#" title=""><span class="xref std std-term">while loop</span></a> is a <a class="reference internal" href="statements.html#term-compound-statement"><span class="xref std std-term">compound statement</span></a>. Like an <a class="term-missing reference internal" href="#" title=""><span class="xref std std-term">if statement</span></a>
+while loops include a conditional expression and a <a class="reference internal" href="statements.html#term-suite"><span class="xref std std-term">suite</span></a> of
+statements that will be repeated until the expression evaluates to false.</p>
+<p>Each time that the suite of statements is repeated in a loop it is called an
+<a class="term-missing reference internal" href="#" title=""><span class="xref std std-term">iteration</span></a>. Likewise, the process of repeating a loop is called
+<a class="term-missing reference internal" href="#" title=""><span class="xref std std-term">iterating</span></a>.</p>
+<p>Here’s a simple example that will keep asking the user for their name until
+they answer.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number">Listing 23 </span><span class="caption-text">a simple while loop example</span></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">reply</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+<span class="k">while</span> <span class="ow">not</span> <span class="n">reply</span><span class="p">:</span>
+  <span class="n">reply</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What is your name? &quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Name:&quot;</span><span class="p">,</span> <span class="n">reply</span><span class="p">)</span>
 </pre></div>
+</td></tr></table></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="n">cols</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="n">rnum</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">;</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="k">while</span> <span class="n">rnum</span> <span class="o">&lt;=</span> <span class="n">rows</span><span class="p">:</span>
-    <span class="n">cnum</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">while</span> <span class="n">cnum</span> <span class="o">&lt;=</span> <span class="n">cols</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
-        <span class="n">cnum</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="n">num</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="nb">print</span><span class="p">()</span>
-    <span class="n">rnum</span> <span class="o">+=</span> <span class="mi">1</span>
+<div class="hint details exercise admonition">
+<p class="admonition-title"></p>
+<ol class="simple">
+<li><p>Write a while loop that asks the user <code class="docutils literal notranslate"><span class="pre">&quot;Heads</span> <span class="pre">or</span> <span class="pre">tails?&quot;</span></code> until they answer
+with either <code class="docutils literal notranslate"><span class="pre">&quot;heads&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;tails&quot;</span></code>. <em>Hint: Use the <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">in</span></code> operator.</em></p></li>
+<li><p>Write a while loop that prints a random number between <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">100</span></code> until
+the answer is greater than <code class="docutils literal notranslate"><span class="pre">50</span></code>.</p></li>
+</ol>
+</div>
+<div class="section" id="infinite-loops">
+<h3>Infinite loops</h3>
+<p>When a program is written in such a way that the loop condition is always met
+the result is called an <a class="term-missing reference internal" href="#" title=""><span class="xref std std-term">infinite loop</span></a>. These are easy to cause by
+mistake.</p>
+<p>Here are a couple examples:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number">Listing 24 </span><span class="caption-text">forgetting to increment <code class="docutils literal notranslate"><span class="pre">i</span></code></span></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Iteration:&quot;</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
+</td></tr></table></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">()</span>
-<span class="n">x</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">9</span>
-<span class="k">while</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">size</span><span class="p">:</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-  <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
-  <span class="k">while</span> <span class="n">y</span> <span class="o">&lt;=</span> <span class="n">size</span><span class="p">:</span>
-    <span class="n">val</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
-    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;  &quot;</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">+=</span> <span class="mi">1</span>
-  <span class="n">x</span><span class="o">+=</span><span class="mi">1</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-number">Listing 25 </span><span class="caption-text">value of <code class="docutils literal notranslate"><span class="pre">num</span></code> will never get to <code class="docutils literal notranslate"><span class="pre">15</span></code></span></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">15</span><span class="p">:</span>
+  <span class="n">num</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The number is:&quot;</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span>
 </pre></div>
+</td></tr></table></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">words</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="s2">&quot;goodbye&quot;</span><span class="p">,</span> <span class="s2">&quot;secret&quot;</span><span class="p">,</span> <span class="s2">&quot;satisfy&quot;</span><span class="p">,</span> <span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;bear&quot;</span> <span class="p">]</span>
-<span class="n">turn</span><span class="p">,</span> <span class="n">chances</span><span class="p">,</span> <span class="n">word</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
-<span class="n">guess</span> <span class="o">=</span> <span class="s2">&quot;_&quot;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
-<span class="k">while</span> <span class="n">guess</span> <span class="o">!=</span> <span class="n">word</span> <span class="ow">and</span> <span class="n">turn</span> <span class="o">&lt;=</span> <span class="n">chances</span><span class="p">:</span>
-    <span class="n">char</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Guess a letter: &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">char</span><span class="p">:</span>
+</div>
+<div class="section" id="quitting-a-loop">
+<h3>Quitting a loop</h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">break</span></code> statement can be used to stop loop iteration.</p>
+<p>This example intentionally creates an infinite loop then in each iteration asks
+the user if they would like to keep going and uses the <code class="docutils literal notranslate"><span class="pre">break</span></code> statement if
+they reply with <code class="docutils literal notranslate"><span class="pre">&quot;n&quot;</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-number">Listing 26 </span><span class="caption-text">stopping a loop with <code class="docutils literal notranslate"><span class="pre">break</span></code></span></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The number is:&quot;</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span>
+    <span class="n">reply</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Keep going? &quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">reply</span> <span class="o">==</span> <span class="s2">&quot;n&quot;</span><span class="p">:</span>
+        <span class="k">break</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="hint details exercise admonition">
+<p class="admonition-title"></p>
+<p>Write a loop that repeats <code class="docutils literal notranslate"><span class="pre">10</span></code> times. In each iteration print a random number,
+then ask the user if they would like to keep going. Exit the loop if they
+answer with a <code class="docutils literal notranslate"><span class="pre">&quot;n&quot;</span></code>.</p>
+</div>
+</div>
+<div class="section" id="skipping-part-of-an-iteration">
+<h3>Skipping part of an iteration</h3>
+<p>You can skip the rest of the statements in a loop iteration by using the
+<code class="docutils literal notranslate"><span class="pre">continue</span></code> statement.</p>
+<p>This example uses the <code class="docutils literal notranslate"><span class="pre">continue</span></code> statement to skip the rest of the iteration if
+the user does not enter a number.</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-number">Listing 27 </span><span class="caption-text">using the <code class="docutils literal notranslate"><span class="pre">continue</span></code> statement</span></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">balance</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="k">while</span> <span class="n">balance</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">reply</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;amount: &quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">reply</span><span class="o">.</span><span class="n">isnumeric</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Numbers only.&quot;</span><span class="p">)</span>
         <span class="k">continue</span>
-    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">char</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; Just one letter!&quot;</span><span class="p">)</span>
-        <span class="k">continue</span>
-    <span class="k">if</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
-        <span class="n">letters</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">guess</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="n">char</span><span class="p">:</span>
-                <span class="n">letters</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span>
-        <span class="n">guess</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">letters</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">*</span><span class="mi">40</span><span class="p">,</span> <span class="s2">&quot;chances:&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="o">*</span><span class="n">turn</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="o">*</span><span class="p">(</span><span class="n">chances</span><span class="o">-</span><span class="n">turn</span><span class="p">)),</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">),</span> <span class="s2">&quot;letters:&quot;</span><span class="p">,</span> <span class="n">guess</span><span class="p">)</span>
-    <span class="n">turn</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="k">if</span> <span class="n">guess</span> <span class="o">==</span> <span class="n">word</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You win!!&quot;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Too bad. The word was:&quot;</span><span class="p">,</span> <span class="n">word</span><span class="p">)</span>
+    <span class="n">balance</span> <span class="o">=</span> <span class="n">balance</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">reply</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Your balance is:&quot;</span><span class="p">,</span> <span class="n">balance</span><span class="p">)</span>
 </pre></div>
+</td></tr></table></div>
+</div>
+<div class="hint details exercise admonition">
+<p class="admonition-title"></p>
+<p>Make an empty <code class="docutils literal notranslate"><span class="pre">rolls</span></code> list then write a loop that repeats <code class="docutils literal notranslate"><span class="pre">10</span></code> times. In each
+iteration:</p>
+<ul class="simple">
+<li><p>Get a random number between <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">6</span></code></p></li>
+<li><p>print <code class="docutils literal notranslate"><span class="pre">&quot;You</span> <span class="pre">rolled:&quot;</span></code> followed by the number.</p></li>
+<li><p>Ask the user if they want to keep the roll.</p></li>
+<li><p>If they reply with <code class="docutils literal notranslate"><span class="pre">&quot;n&quot;</span></code>, use the <code class="docutils literal notranslate"><span class="pre">continue</span></code> statement to skip the rest of
+the iteration</p></li>
+<li><p>Append the number to a list of <code class="docutils literal notranslate"><span class="pre">rolls</span></code></p></li>
+<li><p>print the <code class="docutils literal notranslate"><span class="pre">rolls</span></code> list</p></li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 
@@ -434,6 +578,8 @@
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="conditional-statements.html" title="previous page">Conditional Statements</a>
+    <a class='right-next' id="next-link" href="misc.html" title="next page">Misc</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

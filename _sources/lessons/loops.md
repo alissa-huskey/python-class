@@ -1,83 +1,157 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
 Loops
 =====
 
+Normally Python reads one statement at a time, one at a time. But loops give us
+the ability to repeat a set of statements.
 
-% while loop intro
-% else
-% i=0; i<x; i++
-% break
-% continue
-% pass
-% infinte loops
-% draw a line
+While loops
+-----------
 
-% manual for loops
-% the stack?
+A {term}`while loop` is a {term}`compound statement`. Like an {term}`if statement`
+while loops include a conditional expression and a {term}`suite` of
+statements that will be repeated until the expression evaluates to false.
 
-% countdown
-```python
-count = 10
-while count:
-    print(f"{count}...")
-    time.sleep(1)
-    count -= 1
+Each time that the suite of statements is repeated in a loop it is called an
+{term}`iteration`. Likewise, the process of repeating a loop is called
+{term}`iterating`.
+
+
+Here's a simple example that will keep asking the user for their name until
+they answer.
+
+```{code-block} python
+---
+caption: a simple while loop example
+linenos:
+---
+
+reply = ""
+
+while not reply:
+  reply = input("What is your name? ")
+
+print("Name:", reply)
 ```
 
-% print a grid of numbers
-```python
-rows = 4; cols = 4; rnum = 1 ; num = 1
-while rnum <= rows:
-    cnum = 1
-    while cnum <= cols:
-        print(str(num).rjust(3), end=" ")
-        cnum += 1
-        num += 1
-    print()
-    rnum += 1
+:::{admonition,hint,details,exercise}
+
+1. Write a while loop that asks the user `"Heads or tails?"` until they answer
+with either `"heads"` or `"tails"`. *Hint: Use the `not in` operator.*
+
+2. Write a while loop that prints a random number between `1` and `100` until
+   the answer is greater than `50`.
+
+:::
+
+### Infinite loops
+
+When a program is written in such a way that the loop condition is always met
+the result is called an {term}`infinite loop`. These are easy to cause by
+mistake.
+
+Here are a couple examples:
+
+```{code-block} python
+---
+caption: forgetting to increment `i`
+linenos:
+---
+
+i = 0
+
+while i < 10:
+  print("Iteration:", i+1)
 ```
 
-% multiplication table
-```python
-print()
-x, size = 1, 9
-while x <= size:
-  print("  ", end="")
-  y = 1
-  while y <= size:
-    val = x * y
-    print(str(val).rjust(4), end="  ")
-    y += 1
-  x+=1
-  print("\n")
+```{code-block} python
+---
+caption: value of `num` will never get to `15`
+linenos:
+---
+
+num = 0
+
+while i < 15:
+  num = random.randint(0, 10)
+  print("The number is:", num)
+
 ```
 
-% hangman
+### Quitting a loop
+
+The `break` statement can be used to stop loop iteration.
+
+This example intentionally creates an infinite loop then in each iteration asks
+the user if they would like to keep going and uses the `break` statement if
+they reply with `"n"`.
+
+```{code-block} python
+---
+caption: stopping a loop with `break`
+linenos:
+---
+while True:
+    num = random.randint(1, 10)
+    print("The number is:", num)
+    reply = input("Keep going? ")
+    if reply == "n":
+        break
 ```
-words = [ "hello", "goodbye", "secret", "satisfy", "apple", "bear" ]
-turn, chances, word = 1, 6, random.choice(words)
-guess = "_" * len(word)
-while guess != word and turn <= chances:
-    char = input("Guess a letter: ").lower()
-    if not char:
+
+:::{admonition,hint,details,exercise}
+
+Write a loop that repeats `10` times. In each iteration print a random number,
+then ask the user if they would like to keep going. Exit the loop if they
+answer with a `"n"`.
+
+:::
+
+
+### Skipping part of an iteration
+
+You can skip the rest of the statements in a loop iteration by using the
+`continue` statement.
+
+This example uses the `continue` statement to skip the rest of the iteration if
+the user does not enter a number.
+
+```{code-block} python
+---
+caption: using the `continue` statement
+linenos:
+---
+balance = 100
+while balance > 0:
+    reply = input("amount: ")
+    if not reply.isnumeric():
+        print("Numbers only.")
         continue
-    elif len(char) > 1:
-        print(" Just one letter!")
-        continue
-    if char in word:
-        letters = list(guess)
-        for i,c in enumerate(word):
-            if c == char:
-                letters[i] = c
-        guess = "".join(letters)
-    print(" "*40, "chances:", ("x"*turn)+("_"*(chances-turn)), len(word), "letters:", guess)
-    turn += 1
-if guess == word:
-    print("You win!!")
-else:
-    print("Too bad. The word was:", word)
+    balance = balance - int(reply)
+    print("Your balance is:", balance)
 ```
 
-% print the number of characters from input
-% Bunco
-% https://en.wikipedia.org/wiki/Bunco
+:::{admonition,hint,details,exercise}
 
+Make an empty `rolls` list then write a loop that repeats `10` times. In each
+iteration:
+
+- Get a random number between `1` and `6`
+- print `"You rolled:"` followed by the number.
+- Ask the user if they want to keep the roll.
+- If they reply with `"n"`, use the `continue` statement to skip the rest of
+  the iteration
+- Append the number to a list of `rolls`
+- print the `rolls` list
+
+:::
