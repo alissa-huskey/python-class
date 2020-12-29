@@ -394,6 +394,23 @@
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loop-patterns">
+   Loop patterns
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#incrementing">
+     Incrementing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#iterating-over-a-list">
+     Iterating over a list
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
         </nav>
@@ -470,7 +487,7 @@ mistake.</p>
 4
 5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
 
-<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">15</span><span class="p">:</span>
+<span class="k">while</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">15</span><span class="p">:</span>
   <span class="n">num</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The number is:&quot;</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span>
 </pre></div>
@@ -490,7 +507,11 @@ they reply with <code class="docutils literal notranslate"><span class="pre">&qu
 3
 4
 5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="n">num</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The number is:&quot;</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span>
     <span class="n">reply</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Keep going? &quot;</span><span class="p">)</span>
@@ -501,9 +522,8 @@ they reply with <code class="docutils literal notranslate"><span class="pre">&qu
 </div>
 <div class="hint details exercise admonition">
 <p class="admonition-title"></p>
-<p>Write a loop that repeats <code class="docutils literal notranslate"><span class="pre">10</span></code> times. In each iteration print a random number,
-then ask the user if they would like to keep going. Exit the loop if they
-answer with a <code class="docutils literal notranslate"><span class="pre">&quot;n&quot;</span></code>.</p>
+<p>Write a loop that prints a random number, then ask the user if they would like
+to keep going. Exit the loop if they answer with a <code class="docutils literal notranslate"><span class="pre">&quot;n&quot;</span></code>.</p>
 </div>
 </div>
 <div class="section" id="skipping-part-of-an-iteration">
@@ -545,6 +565,91 @@ the iteration</p></li>
 <li><p>Append the number to a list of <code class="docutils literal notranslate"><span class="pre">rolls</span></code></p></li>
 <li><p>print the <code class="docutils literal notranslate"><span class="pre">rolls</span></code> list</p></li>
 </ul>
+</div>
+</div>
+</div>
+<div class="section" id="loop-patterns">
+<h2>Loop patterns</h2>
+<p>In this section we’re going to go over some of the ways that loops are commonly used.</p>
+<div class="section" id="incrementing">
+<h3>Incrementing</h3>
+<p>Often in programming we want to repeat a suite of statements a specific number
+of times.</p>
+<p>One way to do this is to keep track of which iteration the loop is currently
+executing by incrementing (or decrementing) a number.</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-number">Listing 28 </span><span class="caption-text">incrementing the <code class="docutils literal notranslate"><span class="pre">i</span></code> variable</span></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Iteration:&quot;</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="hint details exercise admonition">
+<p class="admonition-title"></p>
+<p>Write a loop that counts down from <code class="docutils literal notranslate"><span class="pre">3</span></code> to <code class="docutils literal notranslate"><span class="pre">1</span></code>. In each iteration print out the
+current number then use the <code class="docutils literal notranslate"><span class="pre">time.sleep</span></code> function to pause for one second.</p>
+</div>
+</div>
+<div class="section" id="iterating-over-a-list">
+<h3>Iterating over a list</h3>
+<p>You can use a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop to iterate over the items in a list. To do this
+we’ll increment an <code class="docutils literal notranslate"><span class="pre">i</span></code> variable just like we did above but we’ll use the
+<code class="docutils literal notranslate"><span class="pre">len()</span></code> function to determine the length of the list and therfore how many
+times the loop should repeat.</p>
+<p>Then we can use the <code class="docutils literal notranslate"><span class="pre">i</span></code> variable to access each item in the list.</p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-number">Listing 29 </span><span class="caption-text">iterating over a list</span></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
+
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">colors</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Color&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s2">&quot;is:&quot;</span><span class="p">,</span> <span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+  <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="hint details exercise admonition">
+<p class="admonition-title"></p>
+<p>Print a lunch menu. Make a list of lunch <code class="docutils literal notranslate"><span class="pre">choices</span></code> on a menu. Use a while loop
+to print out each item in the list with the number next to it.</p>
+</div>
+<p>You can also use this to iterate over list-like values. For example, a string
+can be used like a list of characters. So we can use the same pattern to
+iterate over all of the characters in a string.</p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-number">Listing 30 </span><span class="caption-text">iterating over the characters in a string</span></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">word</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a word: &quot;</span><span class="p">)</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Letter&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s2">&quot;is:&quot;</span><span class="p">,</span> <span class="n">word</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="hint details exercise admonition">
+<p class="admonition-title"></p>
+<p>Print the vowels in a word. Ask the user for a word then iterate over each
+letter. If the letter is not a vowel, (<em>hint: make a list of vowels the use
+<code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">in</span></code></em>) use a <code class="docutils literal notranslate"><span class="pre">continue</span></code> statement to skip the rest of the iteration. Then
+print the character number and the character.</p>
 </div>
 </div>
 </div>
