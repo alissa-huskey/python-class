@@ -82,7 +82,7 @@ linenos:
 
 num = 0
 
-while i < 15:
+while num < 15:
   num = random.randint(0, 10)
   print("The number is:", num)
 
@@ -101,6 +101,8 @@ they reply with `"n"`.
 caption: stopping a loop with `break`
 linenos:
 ---
+import random
+
 while True:
     num = random.randint(1, 10)
     print("The number is:", num)
@@ -111,9 +113,8 @@ while True:
 
 :::{admonition,hint,details,exercise}
 
-Write a loop that repeats `10` times. In each iteration print a random number,
-then ask the user if they would like to keep going. Exit the loop if they
-answer with a `"n"`.
+Write a loop that prints a random number, then ask the user if they would like
+to keep going. Exit the loop if they answer with a `"n"`.
 
 :::
 
@@ -153,5 +154,95 @@ iteration:
   the iteration
 - Append the number to a list of `rolls`
 - print the `rolls` list
+
+:::
+
+Loop patterns
+-------------
+
+In this section we're going to go over some of the ways that loops are commonly used.
+
+### Incrementing
+
+Often in programming we want to repeat a suite of statements a specific number
+of times.
+
+One way to do this is to keep track of which iteration the loop is currently
+executing by incrementing (or decrementing) a number.
+
+```{code-block} python
+---
+caption: incrementing the `i` variable
+linenos:
+---
+
+i = 0
+
+while i < 10:
+  print("Iteration:", i+1)
+  i = i + 1
+```
+
+:::{admonition,hint,details,exercise}
+
+Write a loop that counts down from `3` to `1`. In each iteration print out the
+current number then use the `time.sleep` function to pause for one second.
+
+:::
+
+### Iterating over a list
+
+You can use a `while` loop to iterate over the items in a list. To do this
+we'll increment an `i` variable just like we did above but we'll use the
+`len()` function to determine the length of the list and therfore how many
+times the loop should repeat.
+
+Then we can use the `i` variable to access each item in the list.
+
+```{code-block} python
+---
+caption: iterating over a list
+linenos:
+---
+
+i = 0
+colors = ["red", "green", "blue"]
+
+while i < len(colors):
+  print("Color", i, "is:", colors[i])
+  i += 1
+```
+
+:::{admonition,hint,details,exercise}
+
+Print a lunch menu. Make a list of lunch `choices` on a menu. Use a while loop
+to print out each item in the list with the number next to it.
+
+:::
+
+You can also use this to iterate over list-like values. For example, a string
+can be used like a list of characters. So we can use the same pattern to
+iterate over all of the characters in a string.
+
+```{code-block} python
+---
+caption: iterating over the characters in a string
+linenos:
+---
+
+word = input("Enter a word: ")
+
+i = 0
+while i < len(word):
+    print("Letter", i, "is:", word[i])
+    i += 1
+```
+
+:::{admonition,hint,details,exercise}
+
+Print the vowels in a word. Ask the user for a word then iterate over each
+letter. If the letter is not a vowel, (*hint: make a list of vowels the use
+`not in`*) use a `continue` statement to skip the rest of the iteration. Then
+print the character number and the character.
 
 :::
