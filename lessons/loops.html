@@ -409,6 +409,11 @@
      Iterating over a list
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nested-loops">
+     Nested loops
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -650,6 +655,75 @@ iterate over all of the characters in a string.</p>
 letter. If the letter is not a vowel, (<em>hint: make a list of vowels the use
 <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">in</span></code></em>) use a <code class="docutils literal notranslate"><span class="pre">continue</span></code> statement to skip the rest of the iteration. Then
 print the character number and the character.</p>
+</div>
+</div>
+<div class="section" id="nested-loops">
+<h3>Nested loops</h3>
+<p>Just like you can have an if statement inside of another if statement, you can
+also have a while loop inside of another while loop.</p>
+<p>This example prints out a score card for three rounds of three players each.</p>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-number">Listing 31 </span><span class="caption-text">score card</span></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">rounds</span><span class="p">,</span> <span class="n">players</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span>
+<span class="n">r</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="n">rounds</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Round:&quot;</span><span class="p">,</span> <span class="n">r</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">p</span> <span class="o">&lt;</span> <span class="n">players</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Player&quot;</span><span class="p">,</span> <span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;score:&quot;</span><span class="p">,</span> <span class="s2">&quot;______________&quot;</span><span class="p">)</span>
+        <span class="n">p</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">()</span>
+    <span class="n">r</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>A few things to pay attention to with nested loops:</p>
+<ul class="simple">
+<li><p>The child <code class="docutils literal notranslate"><span class="pre">p</span></code> counter needs to be set to <code class="docutils literal notranslate"><span class="pre">0</span></code> in each parent iteration. If
+you forget this, the score line for each player will only be printed in the
+first round.</p></li>
+<li><p>The child <code class="docutils literal notranslate"><span class="pre">p</span></code> counter must be incremented inside of the child loop.</p></li>
+<li><p>In this case it doesn’t matter, but you generally want to increment the <code class="docutils literal notranslate"><span class="pre">r</span></code>
+counter at the end of the parent loop, just in case you need to use the
+current value of <code class="docutils literal notranslate"><span class="pre">r</span></code> inside of the child loop.</p></li>
+</ul>
+<p>Here’s another example that prints out a grid of <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span></code> coordinates.</p>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-number">Listing 32 </span><span class="caption-text">coordinates grid</span></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span>
+<span class="n">r</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="n">rows</span><span class="p">:</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">c</span> <span class="o">&lt;</span> <span class="n">cols</span><span class="p">:</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;   &quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">c</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="hint details exercise admonition">
+<p class="admonition-title"></p>
+<p>Print a multiplication table grid with <code class="docutils literal notranslate"><span class="pre">9</span></code> rows and <code class="docutils literal notranslate"><span class="pre">9</span></code> columns.</p>
 </div>
 </div>
 </div>
