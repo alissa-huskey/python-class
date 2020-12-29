@@ -246,3 +246,66 @@ letter. If the letter is not a vowel, (*hint: make a list of vowels the use
 print the character number and the character.
 
 :::
+
+### Nested loops
+
+Just like you can have an if statement inside of another if statement, you can
+also have a while loop inside of another while loop.
+
+This example prints out a score card for three rounds of three players each.
+
+```{code-block} python
+---
+caption: score card
+linenos:
+---
+
+rounds, players = 3, 3
+r = 0
+while r < rounds:
+    print("Round:", r+1, "\n")
+    p = 0
+    while p < players:
+        print("Player", p+1, "score:", "______________")
+        p += 1
+    print()
+    r += 1
+```
+
+A few things to pay attention to with nested loops:
+
+- The child `p` counter needs to be set to `0` in each parent iteration. If
+  you forget this, the score line for each player will only be printed in the
+  first round.
+
+- The child `p` counter must be incremented inside of the child loop.
+
+- In this case it doesn't matter, but you generally want to increment the `r`
+  counter at the end of the parent loop, just in case you need to use the
+  current value of `r` inside of the child loop.
+
+Here's another example that prints out a grid of `x, y` coordinates.
+
+```{code-block} python
+---
+caption: coordinates grid
+linenos:
+---
+
+rows, cols = 5, 5
+r = 0
+while r < rows:
+    c = 0
+    while c < cols:
+        output = str(r) + "," + str(c) + "   "
+        print(output, end="")
+        c += 1
+    print("\n")
+    r += 1
+```
+
+:::{admonition,hint,details,exercise}
+
+Print a multiplication table grid with `9` rows and `9` columns.
+
+:::
