@@ -8,11 +8,24 @@ Exercise from the Data Introspection lesson:
 """
 
 import requests
+import colorful
+from sys import stderr
+
+def abort(*messages):
+    """Print message to stderr and exit"""
+    print(colorful.red("Error"), *messages, file=stderr)
+    exit()
 
 
 def main():
     """Fetch a random beer and print the name, description, and ingredients"""
     response = requests.get("http://api.punkapi.com/v2/beers/random")
+    if not response.ok:
+        abort(
+            "Request failed:",
+            response.status_code,
+            response.reason)
+
     data = response.json()
 
     beer = data[0]
