@@ -659,6 +659,11 @@ endpoint of the Punk API, we can use this information in our code. The exercise
 for this lesson involves taking the data that we've been exploring and printing
 it out nicely.
 
+:::{seealso}
+* [Punk API](https://punkapi.com/documentation/v2)
+  Documentation
+:::
+
 :::{admonition,hint,details}
 * Get a random beer from the Punk API `random` endpoint:
    `http://api.punkapi.com/v2/beers/random`
@@ -668,7 +673,20 @@ it out nicely.
 * Print the list of unique `ingredients`.
 :::
 
-:::{seealso}
-* [Punk API](https://punkapi.com/documentation/v2)
-  Documentation
-:::
+**Example output:**
+
+```
+Barley Wine - Russian Doll
+--------------------------
+
+Russian Doll was an experimental set of brews showcasing the effects of varying the amount and ratio of malts in the grist. The barley wine had rich, chewy dark fruit aromas balanced with a spike of zesty hops. Toffee, apricot jam and grapefruit pith, crammed into the head of our little Russian Doll family.
+
+  * Caramalt Malt
+  * Centennial Hops
+  * Citra Hops
+  * Dark Crystal Malt
+  * Extra Pale Malt
+  * Simcoe Hops
+  * Wyeast 1272 - American Ale II™
+
+```
