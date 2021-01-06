@@ -13,9 +13,9 @@ import textwrap
 from sys import stderr
 
 
-def abort(*messages):
-    """Print message to stderr and exit"""
-    print(colorful.red("Error"), *messages, file=stderr)
+def abort(*text):
+    """Print error message to stderr and exit"""
+    print(colorful.red("Error"), *text, file=stderr)
     exit()
 
 
