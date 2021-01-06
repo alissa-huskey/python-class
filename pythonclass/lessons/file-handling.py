@@ -30,13 +30,17 @@ def download():
     response = requests.get(URL)
 
     # open the file in write mode
-    fp = open(FILENAME, "w")
+    # basic file handling -- write the raw data to the file
+    # fh.write(response.text)
 
-    # write the file contents
-    fp.write(response.text)
+    # fancy json file handling
+    # convert the json data to an indented string with newlines
+    # and write the resulting string to the file
+    json.dump(response.json(), fh, indent=2)
 
-    # close the file
-    fp.close()
+    # close the file handler
+    # note: contents may not actually get written until this is called
+    fh.close()
 
     # print the data
     say("Here's your downloaded data:\n")
@@ -54,13 +58,13 @@ def load():
         abort("File does not exist:", FILENAME)
 
     # open the file in read mode
-    fp = open(FILENAME)
+    fh = open(FILENAME)
 
     # read the file contents
-    text = fp.read()
+    text = fh.read()
 
     # close the file
-    fp.close()
+    fh.close()
 
     # parse and print the json data
     say("Here's your loaded data:\n")
