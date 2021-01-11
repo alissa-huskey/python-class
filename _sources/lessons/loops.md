@@ -254,10 +254,11 @@ also have a while loop inside of another while loop.
 
 This example prints out a score card for three rounds of three players each.
 
-```{code-block} python
+```{code-cell} python
 ---
 caption: score card
 linenos:
+tags: [hide-output]
 ---
 
 rounds, players = 3, 3
@@ -274,22 +275,23 @@ while r < rounds:
 
 A few things to pay attention to with nested loops:
 
-- The child `p` counter needs to be set to `0` in each parent iteration. If
+- The child `p` counter needs to be set to `0` **inside the parent loop**. If
   you forget this, the score line for each player will only be printed in the
   first round.
 
-- The child `p` counter must be incremented inside of the child loop.
+- The child `p` counter must be incremented **inside of the child loop**.
 
 - In this case it doesn't matter, but you generally want to increment the `r`
-  counter at the end of the parent loop, just in case you need to use the
+  counter **at the end** of the parent loop, just in case you need to use the
   current value of `r` inside of the child loop.
 
 Here's another example that prints out a grid of `x, y` coordinates.
 
-```{code-block} python
+```{code-cell} python
 ---
 caption: coordinates grid
 linenos:
+tags: [ hide-output ]
 ---
 
 rows, cols = 5, 5
@@ -309,3 +311,28 @@ while r < rows:
 Print a multiplication table grid with `9` rows and `9` columns.
 
 :::
+
+
+Practice exercises
+------------------
+
+Here are some more practice exercises with loops you can work on.
+
+1. Print a cheer for your name. For each letter print {samp}`"Gimme a {letter}!"`.
+   Then end it with, {samp}`"What does it spell? {name}!"`
+
+2. Print the lyrics to the jolly good fellow song. "For he's a jolly good
+   fellow..." three times, then "Which nobody can deny!" once.
+
+3. Print the 12 Days of Christmas song. Use a nested list with a list for each
+   lyric containing the ordinal word for the day (ie "second") and the gift for
+   that day.
+
+4. Write a hangman game.
+     - choose a short word, give the player 6 chances to guess letters
+     - each turn:
+       - print their chances with `x` to show used chances, and `_` to show remaining \
+         example: `chances: xx____`
+       - print the word, but replace `_` for unguessed letters \
+         example: `5 letters: _e___`
+    - tell the user at the end if they won or lost

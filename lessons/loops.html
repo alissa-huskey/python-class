@@ -416,6 +416,11 @@
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practice-exercises">
+   Practice exercises
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -662,18 +667,9 @@ print the character number and the character.</p>
 <p>Just like you can have an if statement inside of another if statement, you can
 also have a while loop inside of another while loop.</p>
 <p>This example prints out a score card for three rounds of three players each.</p>
-<div class="literal-block-wrapper docutils container" id="id9">
-<div class="code-block-caption"><span class="caption-number">Listing 31 </span><span class="caption-text">score card</span></div>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">rounds</span><span class="p">,</span> <span class="n">players</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rounds</span><span class="p">,</span> <span class="n">players</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span>
 <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">while</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="n">rounds</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Round:&quot;</span><span class="p">,</span> <span class="n">r</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -684,31 +680,44 @@ also have a while loop inside of another while loop.</p>
     <span class="nb">print</span><span class="p">()</span>
     <span class="n">r</span> <span class="o">+=</span> <span class="mi">1</span>
 </pre></div>
-</td></tr></table></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Round: 1 
+
+Player 1 score: ______________
+Player 2 score: ______________
+Player 3 score: ______________
+
+Round: 2 
+
+Player 1 score: ______________
+Player 2 score: ______________
+Player 3 score: ______________
+
+Round: 3 
+
+Player 1 score: ______________
+Player 2 score: ______________
+Player 3 score: ______________
+</pre></div>
+</div>
+</div>
 </div>
 <p>A few things to pay attention to with nested loops:</p>
 <ul class="simple">
-<li><p>The child <code class="docutils literal notranslate"><span class="pre">p</span></code> counter needs to be set to <code class="docutils literal notranslate"><span class="pre">0</span></code> in each parent iteration. If
+<li><p>The child <code class="docutils literal notranslate"><span class="pre">p</span></code> counter needs to be set to <code class="docutils literal notranslate"><span class="pre">0</span></code> <strong>inside the parent loop</strong>. If
 you forget this, the score line for each player will only be printed in the
 first round.</p></li>
-<li><p>The child <code class="docutils literal notranslate"><span class="pre">p</span></code> counter must be incremented inside of the child loop.</p></li>
+<li><p>The child <code class="docutils literal notranslate"><span class="pre">p</span></code> counter must be incremented <strong>inside of the child loop</strong>.</p></li>
 <li><p>In this case it doesn’t matter, but you generally want to increment the <code class="docutils literal notranslate"><span class="pre">r</span></code>
-counter at the end of the parent loop, just in case you need to use the
+counter <strong>at the end</strong> of the parent loop, just in case you need to use the
 current value of <code class="docutils literal notranslate"><span class="pre">r</span></code> inside of the child loop.</p></li>
 </ul>
 <p>Here’s another example that prints out a grid of <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span></code> coordinates.</p>
-<div class="literal-block-wrapper docutils container" id="id10">
-<div class="code-block-caption"><span class="caption-number">Listing 32 </span><span class="caption-text">coordinates grid</span></div>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span>
 <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">while</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="n">rows</span><span class="p">:</span>
     <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span>
@@ -719,13 +728,54 @@ current value of <code class="docutils literal notranslate"><span class="pre">r<
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">r</span> <span class="o">+=</span> <span class="mi">1</span>
 </pre></div>
-</td></tr></table></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0,0   0,1   0,2   0,3   0,4   
+
+1,0   1,1   1,2   1,3   1,4   
+
+2,0   2,1   2,2   2,3   2,4   
+
+3,0   3,1   3,2   3,3   3,4   
+
+4,0   4,1   4,2   4,3   4,4   
+</pre></div>
+</div>
+</div>
 </div>
 <div class="hint details exercise admonition">
 <p class="admonition-title"></p>
 <p>Print a multiplication table grid with <code class="docutils literal notranslate"><span class="pre">9</span></code> rows and <code class="docutils literal notranslate"><span class="pre">9</span></code> columns.</p>
 </div>
 </div>
+</div>
+<div class="section" id="practice-exercises">
+<h2>Practice exercises</h2>
+<p>Here are some more practice exercises with loops you can work on.</p>
+<ol class="simple">
+<li><p>Print a cheer for your name. For each letter print <code class="samp docutils literal notranslate"><span class="pre">&quot;Gimme</span> <span class="pre">a</span> <em><span class="pre">letter</span></em><span class="pre">!&quot;</span></code>.
+Then end it with, <code class="samp docutils literal notranslate"><span class="pre">&quot;What</span> <span class="pre">does</span> <span class="pre">it</span> <span class="pre">spell?</span> <em><span class="pre">name</span></em><span class="pre">!&quot;</span></code></p></li>
+<li><p>Print the lyrics to the jolly good fellow song. “For he’s a jolly good
+fellow…” three times, then “Which nobody can deny!” once.</p></li>
+<li><p>Print the 12 Days of Christmas song. Use a nested list with a list for each
+lyric containing the ordinal word for the day (ie “second”) and the gift for
+that day.</p></li>
+<li><p>Write a hangman game.</p>
+<ul class="simple">
+<li><p>choose a short word, give the player 6 chances to guess letters</p></li>
+<li><p>each turn:</p>
+<ul>
+<li><p>print their chances with <code class="docutils literal notranslate"><span class="pre">x</span></code> to show used chances, and <code class="docutils literal notranslate"><span class="pre">_</span></code> to show remaining <br />
+example: <code class="docutils literal notranslate"><span class="pre">chances:</span> <span class="pre">xx____</span></code></p></li>
+<li><p>print the word, but replace <code class="docutils literal notranslate"><span class="pre">_</span></code> for unguessed letters <br />
+example: <code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">letters:</span> <span class="pre">_e___</span></code></p></li>
+</ul>
+</li>
+<li><p>tell the user at the end if they won or lost</p></li>
+</ul>
+</li>
+</ol>
 </div>
 </div>
 
