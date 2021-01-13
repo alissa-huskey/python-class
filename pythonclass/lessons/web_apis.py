@@ -4,7 +4,7 @@ https://github.com/alissa-huskey/python-class/blob/master/docs/lessons/web-apis.
 
 from pprint import pprint
 import requests
-from private import OPENUV_KEY, LAT, LNG
+from .private import OPENUV_KEY, LAT, LNG
 from sys import stderr
 
 def request_demo():

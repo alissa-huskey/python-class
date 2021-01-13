@@ -305,10 +305,12 @@ while r < rows:
     print("\n")
     r += 1
 ```
+[^ref]: completed script: {lesson}`multiplaction.py`
 
 :::{admonition,hint,details,exercise}
 
-Print a multiplication table grid with `9` rows and `9` columns.
+Print a multiplication table grid with `9` rows and `9` columns. [^ref]
+
 
 :::
 
@@ -335,4 +337,13 @@ Here are some more practice exercises with loops you can work on.
          example: `chances: xx____`
        - print the word, but replace `_` for unguessed letters \
          example: `5 letters: _e___`
+       - ask the player to guess a letter
+       - bonus: make sure the user enters exactly one character
     - tell the user at the end if they won or lost
+
+After finishing you can reference my completed versions of the exercises in this lesson here.
+
+* {lesson}`name_cheer.py`
+* {lesson}`jolly.py`
+* {lesson}`days_of_xmas.py`
+* {lesson}`hangman.py`
