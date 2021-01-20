@@ -8,34 +8,34 @@ Table of Contents
 * [Part 2: Introduction](#part-2-introduction)
 * [Part 3: How web requests work](#part-3-how-web-requests-work)
 * [Part 4: The parts of an API response](#part-4-the-parts-of-an-api-response)
-* [Part 4.1: Solo Exercise - Print the Weather](#part-41-solo-exercise---print-the-weather)
+    * [Part 4.1: Solo Exercise - Print the Weather](#part-41-solo-exercise---print-the-weather)
 * [Part 5: Getting data from an API](#part-5-getting-data-from-an-api)
-* [Part 5.1: What is JSON](#part-51-what-is-json)
-* [Part 5.2: Accessing JSON data](#part-52-accessing-json-data)
-* [Part 5.3: Solo Exercise - Latitude and Longitude](#part-53-solo-exercise---latitude-and-longitude)
+    * [Part 5.1: What is JSON](#part-51-what-is-json)
+    * [Part 5.2: Accessing JSON data](#part-52-accessing-json-data)
+    * [Part 5.3: Solo Exercise - Latitude and Longitude](#part-53-solo-exercise---latitude-and-longitude)
 * [Part 6: Parameters](#part-6-parameters)
-* [Part 6.1 Parameters in URLs](#part-61-parameters-in-urls)
-* [Part 6.2 API Parameters](#part-62-api-parameters)
- * [Step 1: Try it using curl](#step-1-try-it-using-curl)
- * [Step 2: Add it to apis.py](#step-2-add-it-to-apispy)
-* [Part 6.3: Solo Exercise - Parameters](#part-63-solo-exercise---parameters)
+    * [Part 6.1 Parameters in URLs](#part-61-parameters-in-urls)
+    * [Part 6.2 API Parameters](#part-62-api-parameters)
+       * [Step 1: Try it using curl](#step-1-try-it-using-curl)
+       * [Step 2: Add it to apis.py](#step-2-add-it-to-apispy)
+    * [Part 6.3: Solo Exercise - Parameters](#part-63-solo-exercise---parameters)
 * [Part 7: Private Data](#part-7-private-data)
   * [Step 1: Create the private module](#step-1-create-the-private-module)
   * [Step 2: Ignore it in git](#step-2-ignore-it-in-git)
   * [Step 3: Import it](#step-3-import-it)
-* [Part 7.1: Import Syntax Varieties](#part-71-import-syntax-varieties)
+  * [Part 7.1: Import Syntax Varieties](#part-71-import-syntax-varieties)
 * [Part 8: Headers](#part-8-headers)
-* [Part 8.1: Get Your API Key](#part-81-get-your-api-key)
-  * [Step 1: Sign up](#step-1-sign-up)
-  * [Step 2: Add it to private.py](#step-2-add-it-to-privatepy)
-  * [Step 3: Import it in apis.py](#step-3-import-it-in-apispy)
-* [Part 8.2: Sending the x-access-token Header](#part-82-sending-the-x-access-token-header)
-* [Part 8.3: Solo Exercise - RapidAPI](#part-83-solo-exercise---rapidapi)
+    * [Part 8.1: Get Your API Key](#part-81-get-your-api-key)
+      * [Step 1: Sign up](#step-1-sign-up)
+      * [Step 2: Add it to private.py](#step-2-add-it-to-privatepy)
+      * [Step 3: Import it in apis.py](#step-3-import-it-in-apispy)
+    * [Part 8.2: Sending the x-access-token Header](#part-82-sending-the-x-access-token-header)
+    * [Part 8.3: Solo Exercise - RapidAPI](#part-83-solo-exercise---rapidapi)
 * [Part 9: Request Methods](#part-9-request-methods)
-* [Part 9.1: Request methods in Python](#part-91-request-methods-in-python)
-* [Part 9.2 POST, PUT and PATCH](#part-92-post-put-and-patch)
-* [Part 9.3 Request methods using curl](#part-93-request-methods-using-curl)
-* [Part 9.4 Solo Exercise](#part-94-solo-exercise)
+    * [Part 9.1: Request methods in Python](#part-91-request-methods-in-python)
+    * [Part 9.2 POST, PUT and PATCH](#part-92-post-put-and-patch)
+    * [Part 9.3 Request methods using curl](#part-93-request-methods-using-curl)
+    * [Part 9.4 Solo Exercise](#part-94-solo-exercise)
 * [Part 10: Final Project](#part-10-final-project)
 * [See Also](#see-also)
 
@@ -60,8 +60,10 @@ Then create a new file named `apis.py` and add a line `import requests` at the
 top. Also, we're going to use the `pprint` module today, so add the line below
 to import that.
 
-*apis.py*
-```python
+```{code-block} python
+---
+caption: apis.py
+---
 from pprint import pprint
 import requests
 ```
@@ -103,16 +105,19 @@ You should see the text:
 
 Now, you can do the same thing at the command line. At the shell, copy and paste the following:
 
-**At the command line**
-
-```bash
+```{code-block} bash
+---
+caption: command line
+---
 curl "https://raw.githubusercontent.com/alissa-huskey/python-class/master/hello.txt"
 ```
 
 Finally, we can do the same thing in Python.
 
-*apis.py*
-```python
+```{code-block} python
+---
+caption: apis.py
+---
 from pprint import pprint
 import requests
 
@@ -140,8 +145,10 @@ The response that we get back from the server consists of three main parts:
 
 We can use python to look at each of these. Modify your `request_demo()` function.
 
-*apis.py*
-```python
+```{code-block} python
+---
+caption: apis.py
+---
 def request_demo():
     """Explore how web request work"""
     url = "https://raw.githubusercontent.com/alissa-huskey/python-class/master/hello.txt"
@@ -162,13 +169,16 @@ def request_demo():
     pprint(headers)
 ```
 
-Part 4.1: Solo Exercise - Print the Weather
--------------------------------------------
+### Part 4.1: Solo Exercise - Print the Weather
+
+:::{admonition,hint,details,exercise}
 
 First, comment out the call to `request_demo()`.
 
 Write a new function called `request_weather()`. Call the url `http://wttr.in`
 then print `response.text`. Be sure to call the new function!
+
+:::
 
 
 Part 5: Getting data from an API
@@ -186,7 +196,10 @@ First, let's see it in the browser:
 
 Next, at the command line:
 
-```bash
+```{code-block} bash
+---
+caption: command line
+---
 curl "http://api.open-notify.org/astros.json"
 ```
 
@@ -194,8 +207,10 @@ And finally, in Python. Make a new function `request_astros()`. For now, it
 will be just the same as `request_demo()`, but with a different URL.
 
 
-*apis.py*
-```python
+```{code-block} python
+---
+caption: apis.py
+---
 def request_astros():
     """Print out the astronauts currently in space using NASAs astros API
     https://api.nasa.gov/
@@ -211,14 +226,15 @@ def request_astros():
 Then comment out the line where we call `request_demo()` and replace add a new
 line to call `request_astros()`.
 
-*apis.py*
-```python
+```{code-block} python
+---
+caption: apis.py
+---
     # request_demo()
     request_astros()
 ```
 
-Part 5.1: What is JSON
-----------------------
+### Part 5.1: What is JSON
 
 JSON stands for JavaScript Object Notation. It is the way that JavaScript
 represents data objects. It is the most common way for APIs to format their
@@ -232,8 +248,7 @@ care of that for us by providing the `response.json()` function.
 This returns an object that works just like the Python data type that is in the
 JSON.  Most often, as in this case, APIs respond with a dictionary.
 
-Part 5.2: Accessing JSON data
------------------------------
+### Part 5.2: Accessing JSON data
 
 Accessing elements works just the same way as it does with a normal dictionary
 -- using the syntax `variable['key']`.
@@ -242,8 +257,10 @@ Let's say we want to print out the number of people in space.  Comment out the
 `print` line from before and add the last two lines here to the end of your
 `request_astros()` function:
 
-*apis.py*
-```python
+```{code-block} python
+---
+caption: apis.py
+---
 def request_astros():
     """Print out the astronauts currently in space using NASAs astros API
     https://api.nasa.gov/
@@ -262,8 +279,10 @@ def request_astros():
 Now let's say we want to print out the names of our astronauts. Add the
 following two lines to the end of your `request_astros()` function:
 
-*apis.py*
-```python
+```{code-block} python
+---
+caption: apis.py
+---
 def request_astros():
     ...
 
@@ -271,8 +290,9 @@ def request_astros():
         print(f"- {astro['name']}")
 ```
 
-Part 5.3: Solo Exercise - Latitude and Longitude
-------------------------------------------------
+### Part 5.3: Solo Exercise - Latitude and Longitude
+
+:::{admonition,hint,details,exercise}
 
 Write a new function called `request_location()`.
 
@@ -284,21 +304,21 @@ Be sure to call your new function and comment out the old one.
 Copy the resulting values and paste them into a comment in
 your script for future reference.
 
+:::
 
 Part 6: Parameters
 ------------------
 
 Just like functions have arguments, APIs can have `parameters`.
 
-Part 6.1 Parameters in URLs
----------------------------
+### Part 6.1 Parameters in URLs
 
 (No code in this section, just going over some concepts. Feel free to play
 around in `curl` or your web browser though.)
 
 The simplified syntax for a basic URL is something like:
 
-`http[s]://` `host` `/[path]`
+{samp}`http[{s}]://{host}/[{path}]`
 
 In its most basic form, this is called a *resource*. This means that it points
 to something--a web site, an image, a program--sitting on a computer somewhere
@@ -334,21 +354,20 @@ Keep an eye on your URL bar over the next few days to see what jumps out at
 you. I use this knowledge often to bypass slow pages and occationally to get
 around a bug.
 
-> **Sidenote** \
-> In modern browsers you can usually type in spaces and other special
-> characters directly into the URL bar. After you hit enter you may notice
-> that your spaces have been changed to `+` or `%20`.  The browser is URL
-> encoding it for you--that is, changing some characters so that they'll be
-> understood correctly by the server on the other end. \
->  \
-> Many modern APIs can handle spaces and other special characters too but some
-> only accept encoded values. The `requests` module handles much of this for
-> you, but you may run into occasional problems when passing unencoded
-> parameters at the command line. If your curl requests are mysteriously
-> failing, try replacing any spaces with `+`.
+:::{admonition} Sidenote
+In modern browsers you can usually type in spaces and other special
+characters directly into the URL bar. After you hit enter you may notice
+that your spaces have been changed to `+` or `%20`.  The browser is URL
+encoding it for you--that is, changing some characters so that they'll be
+understood correctly by the server on the other end.
 
-Part 6.2 API Parameters
------------------------
+Many modern APIs can handle spaces and other special characters too but some
+only accept encoded values. The `requests` module handles much of this for
+you, but you may run into occasional problems when passing unencoded
+parameters at the command line. If your curl requests are mysteriously
+failing, try replacing any spaces with `+`.
+
+### Part 6.2 API Parameters
 
 Now let's put this knowledge to use to pass parameters to an API.
 
@@ -364,8 +383,10 @@ The `endpoint` is `https://fourtonfish.com/hellosalut/`. We'll pass it the
 
 ### Step 1: Try it using `curl`
 
-*At the command line*
-```bash
+```{code-block} bash
+---
+caption: command line
+---
 curl "https://fourtonfish.com/hellosalut/?lang=de"
 ```
 
@@ -375,8 +396,10 @@ hash.
 
 ### Step 2: Add it to `apis.py`
 
-*apis.py*
-```python
+```{code-block} python
+---
+caption: apis.py
+---
 def request_hello():
     """Say "hello" in another language using the hellosalut API
     https://fourtonfish.com/hellosalut/hello/
@@ -388,17 +411,22 @@ def request_hello():
     print(data['hello'])
 ```
 
-> Sidenote: The syntax for sending `params` is called `keyword arguments` or
-> occationally `named arguments`.  It referrs to when an argument is passed
-> with `name=value` instead of just the `value`.
->
-> We've come across it before -- the `print` function has a keyword argument
-> `end` that lets you change or remove the newline that is usually added. For
-> example: `print("Your name: ", end="")`. This is useful when a function has a
-> bunch of arguments that are optional. Just like our `get` function.
+:::{admonition} Sidenote
 
-Part 6.3: Solo Exercise - Parameters
-------------------------------------
+The syntax for sending `params` is called `keyword arguments` or
+occationally `named arguments`.  It referrs to when an argument is passed
+with {samp}`{name}={value}` instead of just the `value`.
+
+We've come across it before -- the `print` function has a keyword argument
+`end` that lets you change or remove the newline that is usually added. For
+example: `print("Your name: ", end="")`. This is useful when a function has a
+bunch of arguments that are optional. Just like our `get` function.
+
+:::
+
+### Part 6.3: Solo Exercise - Parameters
+
+:::{admonition,hint,details,exercise}
 
 Pick one of the following:
 
@@ -417,6 +445,7 @@ Pick one of the following:
   Parameters: `name` = your (or someone else's) first name \
   Print: `age`
 
+:::
 
 Part 7: Private Data
 --------------------
@@ -433,7 +462,7 @@ where our account could be hacked or the repo may someday become public.
 Instead we're going to create a `private` module then add it to our git ignore
 file.
 
-> You'll want your `latitude` and `longitude` values from [Part 5.3](#part-53-solo-exercise---latitude-and-longitude).
+> Note: You'll want your `latitude` and `longitude` values from [Part 5.3](#part-53-solo-exercise---latitude-and-longitude).
 > If you don't have them available run the `request_location()` function again.
 
 ### Step 1: Create the `private` module
@@ -448,8 +477,10 @@ So we're going to add a `private` module by creating a new file called
 Most of this should be familiar -- docstring and global variables. I'll explain
 the unfamiliar bits soon.
 
-*private.py*
-```python
+```{code-block} python
+---
+caption: private.py
+---
 """Private data such as API keys that should not be committed in git"""
 
 __all__ = ["LAT", "LNG"]
@@ -462,8 +493,10 @@ LNG = "-118.26"      # replace with your longitude
 
 In the same directory create or edit the file `.gitignore` and add the filename to it.
 
-*.gitignore*
-```
+```{code-block}
+---
+caption: .gitignore
+---
 private.py
 ```
 
@@ -472,13 +505,14 @@ private.py
 Now we need to import it. Add the following to the imports section (somewhere
 near the top) of your `apis.py` file.
 
-*apis.py*
-```python
+```{code-block} python
+---
+caption: apis.py
+---
 from private import LAT, LNG
 ```
 
-Part 7.1: Import Syntax Varieties
----------------------------------
+### Part 7.1: Import Syntax Varieties
 
 > This is a digression to explain the different ways to import modules and what
 > they mean. If you'd like you can skip ahead to [Part 8](#part-8-headers)
@@ -585,8 +619,7 @@ A few of the more common standard request headers include:
 One of the most common use of headers is for authentication and that's what
 we'll be doing today using the `openuv.io` API.
 
-Part 8.1: Get Your API Key
-------------------------------
+### Part 8.1: Get Your API Key
 
 ### Step 1: Sign up
 
@@ -596,7 +629,7 @@ then sign into a Google account.
 You will be directed to the API docs for the `uv` endpoint. Under the
 `Authorisation` header, you should see the text:
 
-```
+```text
 To authorise your client just add your API Key _______ to "x-access-token"
 header for each request.
 ```
@@ -606,8 +639,10 @@ header for each request.
 Copy the API key shown then add it to `private.py`. Don't forget to add
 `OPENUV_KEY` to the `__all__` list.
 
-*private.py*
-```python
+```{code-block} python
+---
+caption: private.py
+---
 """Private data such as API keys that should not be committed"""
 
 __all__ = ["LAT", "LNG", "OPENUV_KEY"]
@@ -621,13 +656,14 @@ OPENUV_KEY = ""      # your API key here
 
 Then add `OPENUV_KEY` to the `import` statement in `apis.py`.
 
-*apis.py*
-```python
+```{code-block} python
+---
+caption: apis.py
+---
 from private import LAT, LNG, OPENUV_API
 ```
 
-Part 8.2: Sending the `x-access-token` Header
----------------------------------------------
+### Part 8.2: Sending the `x-access-token` Header
 
 Now that latitude, longitude, and API key imported from `private.py` we can use
 them in our request to `openuv.io`.
@@ -635,8 +671,10 @@ them in our request to `openuv.io`.
 The openuv API uses a custom header `x-access-token` for authentication. We'll
 send it as part of the `headers` argument in the `get()` function.
 
-*apis.py*
-```python
+```{code-block} python
+---
+caption: apis.py
+---
 def request_uv():
     """Print UV and Ozone info for today"""
     response = requests.get(
@@ -650,8 +688,9 @@ def request_uv():
     print("Ozone:", data['result']['ozone'])
 ```
 
-Part 8.3: Solo Exercise - RapidAPI
-----------------------------------
+### Part 8.3: Solo Exercise - RapidAPI
+
+:::{admonition,hint,details,exercise}
 
 RapidAPI is a platform and marketplace for APIs, so it's a good resource for
 our lessons.
@@ -668,7 +707,7 @@ our lessons.
    `x-rapidapi-host`. Both values are shown in the middle pane under `Header
    Parameters`. Additional parameters will be listed below that under `Optional
    Parameters`.
-   > It is probably easier to copy the API key from the code samples right pane.
+   > Note: It is probably easier to copy the API key from the code samples right pane.
 
 **Exercise Options:**
 
@@ -686,6 +725,8 @@ our lessons.
 * Use the [Quotable Quotes API](https://rapidapi.com/dev.jpsison/api/quotable-quotes?endpoint=apiendpoint_20722ca2-124e-44d6-ac21-ae384ee5c69d) to get a random quote \
   Endpoint URL: `https://quotable-quotes.p.rapidapi.com/randomQuotes` \
   Print: `quote` and `author`
+
+:::
 
 
 Part 9: Request Methods
@@ -725,8 +766,7 @@ Here is an imaginary address book API. In this example, the noun would be the `c
 | /contact/{id}                  | PATCH      | update only the parts contact data that is submitted           |
 | /contact/{id}                  | DELETE     | delete the contact                                             |
 
-Part 9.1: Request methods in Python
------------------------------------
+### Part 9.1: Request methods in Python
 
 As you've already learned, you use the `requests.get()` method to make a `GET`
 request in Python.
@@ -752,8 +792,10 @@ APIs are sometimes structured.
 For this exercise we'll be using the jsonplaceholder API to add a fake to-do.
 Add a new method `request_todo()`.
 
-*apis.py*
-```python
+```{code-block} python
+---
+caption: apis.py
+---
 def request_todo():
     """Use the jsonplaceholder API to add a fake to-do."""
     response = requests.post(
@@ -772,8 +814,7 @@ def request_todo():
     print(f"SUCCESS Added new to-do ID: {data['id']}")
 ```
 
-Part 9.2 `POST`, `PUT` and `PATCH`
-----------------------------------
+### Part 9.2 `POST`, `PUT` and `PATCH`
 
 * The `POST` method is intended for requests that will *add a new record* to a
   *collection* of records. Endpoints should be *plural*, for example
@@ -794,8 +835,10 @@ imaginary contacts API to demostrate.
 
 First we'll use the `GET` method to take a look at an (imaginary) contact.
 
-*Python shell*
-```python
+```{code-block} python
+---
+caption: Python shell
+---
 >>> import request
 >>> from pprint import pprint
 
@@ -804,8 +847,10 @@ First we'll use the `GET` method to take a look at an (imaginary) contact.
 >>> pprint(response.json())
 ```
 
-*output*
-```
+```{code-block} text
+---
+caption: output
+---
 Joe's contact info
 {
   "id": 1,
@@ -818,20 +863,24 @@ Joe's contact info
 Then we'll use the `PUT` method and submit a new `phone` number and print the
 updated data after another `GET` request.
 
-*Python shell*
-```python
+```{code-block} python
+---
+caption: Python shell
+---
 >>> response = requests.put(
 >>>  f"http://api.fake-contacts.com/contacts/{id}"
 >>>  data={'phone': "555-5556"}
->>>)
+>>> )
 
 >>> response = requests.get(f"http://api.fake-contacts.com/contacts/1")
 >>> print("Joe's contact info")
 >>> pprint(response.json())
 ```
 
-*output*
-```
+```{code-block} text
+---
+caption: output
+---
 Joe's contact info
 {
   "id": 1,
@@ -848,8 +897,10 @@ status if all expected data fields are not present in the request.
 
 Here's what it would have looked like if we had instead used a `PATCH` request instead.
 
-*Python shell*
-```python
+```{code-block} python
+---
+caption: Python shell
+---
 >>> response = requests.patch(
 >>>  f"http://api.fake-contacts.com/contacts/{id}"
 >>>  data={'phone': "555-5556"}
@@ -860,8 +911,10 @@ Here's what it would have looked like if we had instead used a `PATCH` request i
 >>> pprint(response.json())
 ```
 
-*output*
-```
+```{code-block} text
+---
+caption: output
+---
 Joe's contact info
 {
   "id": 1,
@@ -871,7 +924,7 @@ Joe's contact info
 }
 ```
 
-***Important***
+:::{important}
 
 While I have described the intended purpose of each method according to both
 the HTTP specification and modern best practices, there is nothing in the
@@ -887,18 +940,21 @@ imagine.
 looking to an APIs documentation. Ultimately though, test its behavior yourself
 with dummy data before relying on it for anything you care about.
 
+:::
 
 
-Part 9.3 Request methods using `curl`
--------------------------------------
+### Part 9.3 Request methods using `curl`
 
 Curl defaults to the `GET` request methods for `http[s]` requests but you can
 also use the `-X` or `--request` flag to specify the request method.
 
-For example
+For example:
 
-```sh
-$ curl -X DELETE "https://jsonplaceholder.typicode.com/todos/2"
+```{code-block} sh
+---
+caption: command line
+---
+curl -X DELETE "https://jsonplaceholder.typicode.com/todos/2"
 ```
 
 You can also use the `-d` or `--data` flag  to pass data along with the `-H` or
@@ -907,15 +963,19 @@ same `to-do` exercise from above using curl.
 
 > Sidenote: You can use `\` on the command line to break a command into multiple lines.
 
-```sh
+```{code-block} sh
+---
+caption: command line
+---
 curl -X POST \
      --data '{"title": "laundry", "userId": 1}' \
      --header 'Content-Type: application/json'  \
      "https://jsonplaceholder.typicode.com/todos"
 ```
 
-Part 9.4 Solo Exercise
-----------------------
+### Part 9.4 Solo Exercise
+
+:::{admonition,hint,details,exercise}
 
 Use the [Pirate Translator API](https://rapidapi.com/orthosie/api/pirate-translator) translate text into pirate-speak. \
 Endpoint URL: `https://piratespeak.p.rapidapi.com/pirate.json`  \
@@ -928,15 +988,20 @@ Print: `contents` -> `translated`
 > the `POST` method is for cases when a large amount of data may need to be
 > submitted, due to browser and web server limits on URI length.
 
+:::
 
 Part 10. Final Project
 ----------------------
 
 Use the Trello API to build a personal Trello CLI.
 
+:::{seealso}
+
 - [Trello API Docs](https://developer.atlassian.com/cloud/trello/rest/api-group-actions/)
 - [Trello API Intro](https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/)
-- [help](http://www.trello.org/help.html)
+- [Using the Trello API](http://www.trello.org/help.html)
+
+:::
 
 ### Phase 1: Print the open cards from your `To Do` list.
 
@@ -950,7 +1015,7 @@ Use the Trello API to build a personal Trello CLI.
 
 2. Find the `id` of your `To Do` list.
 
-   Use the `/members/{id}/boards` endpoint and the special member `id` of `me`
+   Use the {samp}`/members/{id}/boards` endpoint and the special member `id` of `me`
    to get a list of your open boards.
 
    - Filter to only open boards by passing the `filter`
@@ -959,12 +1024,12 @@ Use the Trello API to build a personal Trello CLI.
    - Include the board `lists` in the results by passing the `lists` param with the
      value `open`.
 
-   - Find your board with the `name` `QCC: {your name}`, then the list with the
+   - Find your board with the `name` {samp}`QCC: {your name}`, then the list with the
      `name` `To Do` on that board. Save the `id` of that list.
 
 3. Get the cards on your `To Do` list.
 
-   Use the `/lists/{id}/cards` endpoint.
+   Use the {samp}`/lists/{id}/cards` endpoint.
 
    - Filter to only open cards by passing the `cards`
      parameter with the value `visible`.
@@ -1018,7 +1083,7 @@ Provide a way for the user to optionally view more or different card views. For 
 * Allow the user to filter cards by fields, such as the `label`(s), if you are
   `subscribed`, `due` date (overdue, due soon), etc.
 
-### More Info
+:::{admonition,note} More Info
 
 This will be a medium-term project.
 
@@ -1032,7 +1097,9 @@ You can also consider the rest more guidelines or suggestions. The goal is to
 make a tool that you will use on a regular basis. Focus on what will make it
 most useful to make you more productive.
 
-### Tips and Reminders
+:::
+
+:::{admonition,tip}Tips and Reminders
 
 * Choose a goal for each week. **Phase 1** should be doable in a week or maybe
   two. After that, your goal choices will be your own. Consider posting your
@@ -1076,8 +1143,12 @@ most useful to make you more productive.
 See Also
 --------
 
+:::{seealso}
+
 * [URL Syntax](https://en.wikipedia.org/wiki/URL#Syntax)
 * [List of HTTP header fields](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields)
 * [List of HTTP status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
 * [HTTP request methods](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods)
 * [Requests: HTTP for Humans](https://requests.readthedocs.io/en/master/) - docs for the Python `requests` module
+
+:::
