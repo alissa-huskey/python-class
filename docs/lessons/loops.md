@@ -148,7 +148,7 @@ Make an empty `rolls` list then write a loop that repeats `10` times. In each
 iteration:
 
 - Get a random number between `1` and `6`
-- print `"You rolled:"` followed by the number.
+- print {samp}`"You rolled: {number}"`.
 - Ask the user if they want to keep the roll.
 - If they reply with `"n"`, use the `continue` statement to skip the rest of
   the iteration
@@ -305,12 +305,10 @@ while r < rows:
     print("\n")
     r += 1
 ```
-[^ref]: completed script: {lesson}`multiplaction.py`
 
 :::{admonition,hint,details,exercise}
 
-Print a multiplication table grid with `9` rows and `9` columns. [^ref]
-
+Print a multiplication table grid with `9` rows and `9` columns. [^script_multiplication]
 
 :::
 
@@ -321,16 +319,16 @@ Practice exercises
 Here are some more practice exercises with loops you can work on.
 
 1. Print a cheer for your name. For each letter print {samp}`"Gimme a {letter}!"`.
-   Then end it with, {samp}`"What does it spell? {name}!"`
+   Then end it with, {samp}`"What does it spell? {name}!"` [^script_name_cheer]
 
 2. Print the lyrics to the jolly good fellow song. "For he's a jolly good
-   fellow..." three times, then "Which nobody can deny!" once.
+   fellow..." three times, then "Which nobody can deny!" once. [^script_jolly]
 
 3. Print the 12 Days of Christmas song. Use a nested list with a list for each
    lyric containing the ordinal word for the day (ie "second") and the gift for
-   that day.
+   that day. [^script_days_of_xmas]
 
-4. Write a hangman game.
+4. Write a hangman game. [^script_hangman]
      - choose a short word, give the player 6 chances to guess letters
      - each turn:
        - print their chances with `x` to show used chances, and `_` to show remaining \
@@ -341,9 +339,8 @@ Here are some more practice exercises with loops you can work on.
        - bonus: make sure the user enters exactly one character
     - tell the user at the end if they won or lost
 
-After finishing you can reference my completed versions of the exercises in this lesson here.
-
-* {lesson}`name_cheer.py`
-* {lesson}`jolly.py`
-* {lesson}`days_of_xmas.py`
-* {lesson}`hangman.py`
+[^script_multiplication]: completed script: {lesson}`multiplication.py`
+[^script_name_cheer]: completed script: {lesson}`name_cheer.py`
+[^script_jolly]: completed script: {lesson}`jolly.py`
+[^script_days_of_xmas]: completed script: {lesson}`days_of_xmas.py`
+[^script_hangman]: completed script: {lesson}`hangman.py`

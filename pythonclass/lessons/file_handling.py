@@ -52,7 +52,6 @@ def download():
 
 def load():
     """load saved json file"""
-
     say("Ok, loading...")
 
     # make sure the file exists
