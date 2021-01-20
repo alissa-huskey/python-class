@@ -23,7 +23,6 @@ Table of Contents
   * [Step 1: Create the private module](#step-1-create-the-private-module)
   * [Step 2: Ignore it in git](#step-2-ignore-it-in-git)
   * [Step 3: Import it](#step-3-import-it)
-  * [Part 7.1: Import Syntax Varieties](#part-71-import-syntax-varieties)
 * [Part 8: Headers](#part-8-headers)
     * [Part 8.1: Get Your API Key](#part-81-get-your-api-key)
       * [Step 1: Sign up](#step-1-sign-up)
@@ -450,9 +449,12 @@ Pick one of the following:
 Part 7: Private Data
 --------------------
 
-> Note: Private data should not be stored on repl.it since all repls are public
-> and can be forked by anyone. For the purposes of this lesson it's acceptable
-> since the data is not particularly sensitive.
+:::{note}
+
+You'll need your `latitude` and `longitude` values from [Part 5.3](#part-53-solo-exercise---latitude-and-longitude).
+If you don't have them available run the `request_location()` function again.
+
+:::
 
 Here we're going to take a little detour to learn how to safely use private
 data in code.
@@ -462,8 +464,13 @@ where our account could be hacked or the repo may someday become public.
 Instead we're going to create a `private` module then add it to our git ignore
 file.
 
-> Note: You'll want your `latitude` and `longitude` values from [Part 5.3](#part-53-solo-exercise---latitude-and-longitude).
-> If you don't have them available run the `request_location()` function again.
+:::{caution}
+
+Private data should not be stored on repl.it since all repls are public and can
+be forked by anyone. For the purposes of this lesson it's acceptable since the
+data is not particularly sensitive.
+
+:::
 
 ### Step 1: Create the `private` module
 
@@ -502,6 +509,13 @@ private.py
 
 ### Step 3: Import it
 
+(part-71-import-syntax-varieties)=
+:::{seealso}
+
+[](imports.md)
+
+:::
+
 Now we need to import it. Add the following to the imports section (somewhere
 near the top) of your `apis.py` file.
 
@@ -510,96 +524,6 @@ near the top) of your `apis.py` file.
 caption: apis.py
 ---
 from private import LAT, LNG
-```
-
-### Part 7.1: Import Syntax Varieties
-
-> This is a digression to explain the different ways to import modules and what
-> they mean. If you'd like you can skip ahead to [Part 8](#part-8-headers)
-> where we get back to the topic at hand.
-
-There are a number of ways to import modules. The one we have usually used up
-to this point is the plain ol' import.
-
-```python
-import private
-```
-
-This imports the whole module under the *namespace* of private. So to
-access the `LAT` and `LNG` values we would use:
-
-```python
-print("latitude:", private.LAT)
-print("longitude:", private.LNG)
-```
-
-To change the namespace use the `as` keyword.
-
-> This is often done when a module name is particularly long or if it might
-> overlap with variable or function names.
-
-```python
-import private as keychain
-
-print("latitude:", keychain.LAT)
-print("longitude:", keychain.LNG)
-```
-
-To import only part of a module use the `from` keyword. This has the side
-effect of putting the imported item(s) into the *global namespace*. That means
-we no longer need to add the `namespace.` prefix to access the imported
-items.
-
-```python
-from private import LAT
-
-print("latitude:", LAT)
-```
-
-Just like when renaming the namspace, you can rename the import items using the
-`as` keyword.
-
-```python
-from private import LAT as latitude
-
-print("latitude:", latitude)
-```
-
-To import multiple items from a module put them in a comma separated list.
-
-```python
-from private import LAT, LNG
-
-print("latitude:", LAT)
-print("longitude:", LNG)
-```
-
-To split the import statement into multiple lines use the `tuple` syntax by
-surrounding the import items with `(` `)` and add newlines after the commas.
-
-> This is useful when either there are lots of items to import or the module
-> name is especially long.
-
-```python
-from private import (LAT,
-                     LNG)
-```
-
-Finally you can use the `*` operator to import everything that is in the
-`__all__` list.
-
-> This is known as star or wildcard imports and is usually considered bad
-> practice. This is for a number of reasons, such as that not all modules
-> define the `__all__` variable, that you rarely need or want the entire module
-> in the global namespace, and that it makes it more difficult to tell where a
-> particular variable, function or class came from. There are cases where it's
-> useful, but probably best to steer clear if it for now.
-
-```python
-from private import *
-
-print("latitude:", LAT)
-print("longitude:", LNG)
 ```
 
 

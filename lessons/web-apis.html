@@ -167,6 +167,11 @@
      PyPet Battle
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="imports.html">
+     Import Syntax Varities
+    </a>
+   </li>
   </ul>
   <i class="fas fa-chevron-up">
   </i>
@@ -474,11 +479,6 @@
      Step 3: Import it
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-7-1-import-syntax-varieties">
-     Part 7.1: Import Syntax Varieties
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -672,7 +672,6 @@
 <li><p><a class="reference external" href="#step-1-create-the-private-module">Step 1: Create the private module</a></p></li>
 <li><p><a class="reference external" href="#step-2-ignore-it-in-git">Step 2: Ignore it in git</a></p></li>
 <li><p><a class="reference external" href="#step-3-import-it">Step 3: Import it</a></p></li>
-<li><p><a class="reference external" href="#part-71-import-syntax-varieties">Part 7.1: Import Syntax Varieties</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="#part-8-headers">Part 8: Headers</a></p>
@@ -1044,21 +1043,23 @@ Print: <code class="docutils literal notranslate"><span class="pre">age</span></
 </div>
 <div class="section" id="part-7-private-data">
 <h2>Part 7: Private Data</h2>
-<blockquote>
-<div><p>Note: Private data should not be stored on repl.it since all repls are public
-and can be forked by anyone. For the purposes of this lesson it’s acceptable
-since the data is not particularly sensitive.</p>
-</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You’ll need your <code class="docutils literal notranslate"><span class="pre">latitude</span></code> and <code class="docutils literal notranslate"><span class="pre">longitude</span></code> values from <a class="reference external" href="#part-53-solo-exercise---latitude-and-longitude">Part 5.3</a>.
+If you don’t have them available run the <code class="docutils literal notranslate"><span class="pre">request_location()</span></code> function again.</p>
+</div>
 <p>Here we’re going to take a little detour to learn how to safely use private
 data in code.</p>
 <p>It is best practice to avoid storing private data, such as API keys, in GitHub
 where our account could be hacked or the repo may someday become public.
 Instead we’re going to create a <code class="docutils literal notranslate"><span class="pre">private</span></code> module then add it to our git ignore
 file.</p>
-<blockquote>
-<div><p>Note: You’ll want your <code class="docutils literal notranslate"><span class="pre">latitude</span></code> and <code class="docutils literal notranslate"><span class="pre">longitude</span></code> values from <a class="reference external" href="#part-53-solo-exercise---latitude-and-longitude">Part 5.3</a>.
-If you don’t have them available run the <code class="docutils literal notranslate"><span class="pre">request_location()</span></code> function again.</p>
-</div></blockquote>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Private data should not be stored on repl.it since all repls are public and can
+be forked by anyone. For the purposes of this lesson it’s acceptable since the
+data is not particularly sensitive.</p>
+</div>
 <div class="section" id="step-1-create-the-private-module">
 <h3>Step 1: Create the <code class="docutils literal notranslate"><span class="pre">private</span></code> module</h3>
 <p>We have made our own modules before – back in our pypet battle project, we
@@ -1092,6 +1093,10 @@ the unfamiliar bits soon.</p>
 </div>
 <div class="section" id="step-3-import-it">
 <h3>Step 3: Import it</h3>
+<div class="admonition seealso" id="part-71-import-syntax-varieties">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="imports.html"><span class="doc std std-doc">Import Syntax Varities</span></a></p>
+</div>
 <p>Now we need to import it. Add the following to the imports section (somewhere
 near the top) of your <code class="docutils literal notranslate"><span class="pre">apis.py</span></code> file.</p>
 <div class="literal-block-wrapper docutils container" id="id14">
@@ -1099,85 +1104,6 @@ near the top) of your <code class="docutils literal notranslate"><span class="pr
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">private</span> <span class="kn">import</span> <span class="n">LAT</span><span class="p">,</span> <span class="n">LNG</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="part-7-1-import-syntax-varieties">
-<h3>Part 7.1: Import Syntax Varieties</h3>
-<blockquote>
-<div><p>This is a digression to explain the different ways to import modules and what
-they mean. If you’d like you can skip ahead to <a class="reference external" href="#part-8-headers">Part 8</a>
-where we get back to the topic at hand.</p>
-</div></blockquote>
-<p>There are a number of ways to import modules. The one we have usually used up
-to this point is the plain ol’ import.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">private</span>
-</pre></div>
-</div>
-<p>This imports the whole module under the <em>namespace</em> of private. So to
-access the <code class="docutils literal notranslate"><span class="pre">LAT</span></code> and <code class="docutils literal notranslate"><span class="pre">LNG</span></code> values we would use:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;latitude:&quot;</span><span class="p">,</span> <span class="n">private</span><span class="o">.</span><span class="n">LAT</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;longitude:&quot;</span><span class="p">,</span> <span class="n">private</span><span class="o">.</span><span class="n">LNG</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>To change the namespace use the <code class="docutils literal notranslate"><span class="pre">as</span></code> keyword.</p>
-<blockquote>
-<div><p>This is often done when a module name is particularly long or if it might
-overlap with variable or function names.</p>
-</div></blockquote>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">private</span> <span class="k">as</span> <span class="nn">keychain</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;latitude:&quot;</span><span class="p">,</span> <span class="n">keychain</span><span class="o">.</span><span class="n">LAT</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;longitude:&quot;</span><span class="p">,</span> <span class="n">keychain</span><span class="o">.</span><span class="n">LNG</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>To import only part of a module use the <code class="docutils literal notranslate"><span class="pre">from</span></code> keyword. This has the side
-effect of putting the imported item(s) into the <em>global namespace</em>. That means
-we no longer need to add the <code class="docutils literal notranslate"><span class="pre">namespace.</span></code> prefix to access the imported
-items.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">private</span> <span class="kn">import</span> <span class="n">LAT</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;latitude:&quot;</span><span class="p">,</span> <span class="n">LAT</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Just like when renaming the namspace, you can rename the import items using the
-<code class="docutils literal notranslate"><span class="pre">as</span></code> keyword.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">private</span> <span class="kn">import</span> <span class="n">LAT</span> <span class="k">as</span> <span class="n">latitude</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;latitude:&quot;</span><span class="p">,</span> <span class="n">latitude</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>To import multiple items from a module put them in a comma separated list.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">private</span> <span class="kn">import</span> <span class="n">LAT</span><span class="p">,</span> <span class="n">LNG</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;latitude:&quot;</span><span class="p">,</span> <span class="n">LAT</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;longitude:&quot;</span><span class="p">,</span> <span class="n">LNG</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>To split the import statement into multiple lines use the <code class="docutils literal notranslate"><span class="pre">tuple</span></code> syntax by
-surrounding the import items with <code class="docutils literal notranslate"><span class="pre">(</span></code> <code class="docutils literal notranslate"><span class="pre">)</span></code> and add newlines after the commas.</p>
-<blockquote>
-<div><p>This is useful when either there are lots of items to import or the module
-name is especially long.</p>
-</div></blockquote>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">private</span> <span class="kn">import</span> <span class="p">(</span><span class="n">LAT</span><span class="p">,</span>
-                     <span class="n">LNG</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Finally you can use the <code class="docutils literal notranslate"><span class="pre">*</span></code> operator to import everything that is in the
-<code class="docutils literal notranslate"><span class="pre">__all__</span></code> list.</p>
-<blockquote>
-<div><p>This is known as star or wildcard imports and is usually considered bad
-practice. This is for a number of reasons, such as that not all modules
-define the <code class="docutils literal notranslate"><span class="pre">__all__</span></code> variable, that you rarely need or want the entire module
-in the global namespace, and that it makes it more difficult to tell where a
-particular variable, function or class came from. There are cases where it’s
-useful, but probably best to steer clear if it for now.</p>
-</div></blockquote>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">private</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;latitude:&quot;</span><span class="p">,</span> <span class="n">LAT</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;longitude:&quot;</span><span class="p">,</span> <span class="n">LNG</span><span class="p">)</span>
-</pre></div>
 </div>
 </div>
 </div>
