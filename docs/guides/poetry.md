@@ -18,7 +18,7 @@ world and wraps it in a few easy to use best practices.
   like [PyPi](https://pypi.org/).
 ```
 
-```{seealso}
+:::{seealso}
 * [Poetry docs](https://python-poetry.org/docs)
   Official Poetry documentation.
 
@@ -33,14 +33,14 @@ world and wraps it in a few easy to use best practices.
 
 * Python projects with Poetry and VSCode [Part 1](https://www.pythoncheatsheet.org/blog/python-projects-with-poetry-and-vscode-part-1/)
   Article covering installing Poetry, starting a project and managing dependencies.
-```
+:::
 
-```{attention}
+:::{attention}
 Poetry does not manage installing or switching between Python versions.
 It just make sure that the `python` command points to the right version or
 prints an error if it cannot be found.
 For managing Python versions use [pyenv](https://github.com/pyenv/pyenv) or [pyenv-win](https://github.com/pyenv-win/pyenv-win).
-```
+:::
 
 Table of Contents
 -----------------
@@ -170,10 +170,10 @@ Here is some information on some of the configuration parameters available.
 * `[build-system]`: details needed by Poetry. (You should rarely if ever need to change this section.)
 * `[tool.poetry.scripts]`: (optional) python executable scripts to be generated and installed as part of your package. See [Scripts](#Scripts) below.
 
-```{seealso}
+:::{seealso}
 * [python-poetry.org: The pyproject.toml file](https://python-poetry.org/docs/pyproject/)
   Poetry documentation on the `[tool.poetry]` sections of the `pyproject.toml` file.
-```
+:::
 
 Managing Dependencies
 ---------------------
@@ -232,13 +232,13 @@ In `pyproject.toml` versions can have formats like:
 * `>= 1.2, ! 1.2.5`: at least `1.2` but not `1.2.5`
 
 
-```{seealso}
+:::{seealso}
 * [Semantic Versioning](https://semver.org/)
   The semantic versioning specification.
 
 * [python-poetry.org: Versions and constraints](https://python-poetry.org/docs/versions/)
   Poetry documentation on specifying dependency version constraints.
-```
+:::
 
 Using Poetry
 ------------
@@ -617,10 +617,10 @@ caption: .vscode/settings.json
 }
 ```
 
-```{seealso}
+:::{seealso}
 * [Using Python environments in VS Code](https://code.visualstudio.com/docs/python/environments)
   VS Code documentation on Python Environments.
 
 * Python projects with Poetry and VSCode [Part 2](https://www.pythoncheatsheet.org/blog/python-projects-with-poetry-and-vscode-part-2/)
   Article covering starting and setting up VSCode when using Poetry.
-```
+:::

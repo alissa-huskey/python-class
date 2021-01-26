@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """For the web APIs lesson
-https://github.com/alissa-huskey/python-class/blob/master/docs/lessons/web-apis.md"""
+https://github.com/alissa-huskey/python-class/blob/master/docs/lessons/loops.md"""
 
 from pprint import pprint
 import requests
