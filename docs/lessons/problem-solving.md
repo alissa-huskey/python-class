@@ -77,9 +77,9 @@ def is_true(number):
 ![South Park Underpants Gnomes](assets/underpants.jpeg)
 
 This is the part where you figure out how to solve the problem. You're not
-writing code yet, but rather thinking through.
+writing code yet, but rather thinking it through.
 
-Keep the plan as simple as possible, while still covering all the steps. You
+Keep the plan as simple as possible while still covering all the steps. You
 can drill down into each part as you go.  It is sometimes helpful to using a
 pen and paper or whiteboard to sketch out a visual representation of the
 problem.
@@ -96,9 +96,9 @@ A single-user game where the player is given 6 chances to guess all of the lette
 
 1. choose a short word, give the player 6 chances to guess letters
 2. each turn:
-    - print their chances with `x` to show used chances, and `_` to show remaining \
+    - print their chances with `x` to show used chances, and `_` to show remaining
       example: `chances: xx____`
-    - print the word, but replace `_` for unguessed letters \
+    - print the word, but replace `_` for unguessed letters
       example: `5 letters: _e___`
     - ask the player to guess a letter
 3. tell the user at the end if they won or lost
@@ -121,6 +121,7 @@ def is_true(number):
   >>> is_prime(4)
   False
   """
+
   # iterate through each number less than the input number, starting at 2
   # for each:
   #    - if the number is whole, return False
@@ -132,30 +133,30 @@ def is_true(number):
 Pick a part of your plan to start at. (Sometimes it makes more sense to start
 at the middle.)
 
-#### 1. Simplify
+#### A. Simplify
 
 Ask yourself if this needs to be broken down further. If so, start back at at
 the first step for this new problem.
 
-Once you've got the problem already broken down into a discreet chunk, simplify
-it if neccessary.
+Once you've got the problem broken down into a discreet chunk, simplify it if
+neccessary.
 
-- Solve the easiest or most normal case first.
 - Isolate it from other code by using use hardcoded placeholders. This can be
   especially helpful when other parts of the program aren't written yet, if
   you're not certian they are working, or if the data can be unpredictable.
+- Solve the easiest or most normal case first.
 
-#### 3. Write psudocode
+#### B. Write psudocode
 
 Write a plain english description of what the code should do. This can be a
 list of steps in comments. For simpler problems this may be the same as your
 plan.
 
-#### 4. Write the code
+#### C. Write the code
 
 Fill in the actual code under the psudocode comments.
 
-#### 5. Verify
+#### D. Verify
 
 Make sure the code works as expected.
 
@@ -338,7 +339,7 @@ Now that the rest is filled in, it's easier to figure out what needs to happen i
 
 You might do more iterations now. For example, perhaps you might add a "Preheat
 the stove" to step 1. Or specify the number and size of slices in step 2. Or
-approximate time and heat level in step 3. 
+approximate time and heat level in step 3.
 
 Exercises
 ---------
@@ -356,6 +357,7 @@ Exercises
 
 * [The Beginner Programmer's guide to Problem Solving](https://www.codeproject.com/tips/833768/the-beginner-programmers-guide-to-problem-solving)
 * [10 Steps to Solving a Programming Problem](https://codeburst.io/10-steps-to-solving-a-programming-problem-8a32d1e96d74)
+* [The best programming problem solving technique](https://www.jesuisundev.com/en/problem-solving/)
 
 ::::
 
