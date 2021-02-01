@@ -58,8 +58,8 @@ A single-user game where the player is given 6 chances to guess all of the lette
 ```
 
 ```{code-block} python
-:caption: is_true() function with docstring including description and examples
-def is_true(number):
+:caption: is_prime() function with docstring including description and examples
+def is_prime(number):
   """Return True if the number is a prime. Takes a positive whole number and returns True or False.
 
   Examples
@@ -109,8 +109,8 @@ For more tightly scoped problems, solve the problem manually then describe each
 step in plain english.
 
 ```{code-block} python
-:caption: updated is_true() function, now including the plan in comments
-def is_true(number):
+:caption: updated is_prime() function, now including the plan in comments
+def is_prime(number):
   """Return True if the number is a prime. Takes a positive whole number and returns True or False.
 
   Examples
@@ -124,6 +124,7 @@ def is_true(number):
 
   # iterate through each number less than the input number, starting at 2
   # for each:
+      # divide the numbers
   #    - if the number is whole, return False
   # if all numbers have been iterated through without returning, return True
 ```
@@ -146,7 +147,7 @@ neccessary.
   you're not certian they are working, or if the data can be unpredictable.
 - Solve the easiest or most normal case first.
 
-#### B. Write psudocode
+#### B. Write pseudocode
 
 Write a plain english description of what the code should do. This can be a
 list of steps in comments. For simpler problems this may be the same as your
@@ -154,7 +155,7 @@ plan.
 
 #### C. Write the code
 
-Fill in the actual code under the psudocode comments.
+Fill in the actual code under the pseudocode comments.
 
 #### D. Verify
 
@@ -171,14 +172,14 @@ you have too much going on, it will be hard to figure out which part isn't worki
 
 #### Example
 
-Here's an example of the is_true() function:
+Here's an example of the is_prime() function:
 
 ```{code-cell} python
 ---
-caption: updated is_true() function, now including plan in comments
+caption: updated is_prime() function, now including plan in comments
 ---
 
-def is_true(number):
+def is_prime(number):
   """Return True if the number is a prime. Takes a positive whole number and returns True or False.
 
   Examples
@@ -194,8 +195,7 @@ def is_true(number):
   for i in range(2, number):
 
     # if the number is whole, return False
-      # divide the numbers
-      quotient = i / number
+      quotient = number/i
 
       # convert the float to an int
       # return False if the float is equal to the int
@@ -204,6 +204,9 @@ def is_true(number):
 
   # if all numbers have been iterated through without returning, return True
   return True
+
+  print("is_prime(3):", is_prime(3))
+  print("is_prime(4):", is_prime(4))
 ```
 
 

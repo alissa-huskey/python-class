@@ -408,8 +408,8 @@
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#b-write-psudocode">
-       B. Write psudocode
+      <a class="reference internal nav-link" href="#b-write-pseudocode">
+       B. Write pseudocode
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
@@ -505,8 +505,8 @@ often end up being the docstring for your script or function.</p>
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-number">Listing 32 </span><span class="caption-text">is_true() function with docstring including description and examples</span></div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_true</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+<div class="code-block-caption"><span class="caption-number">Listing 32 </span><span class="caption-text">is_prime() function with docstring including description and examples</span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_prime</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;Return True if the number is a prime. Takes a positive whole number and returns True or False.</span>
 
 <span class="sd">  Examples</span>
@@ -553,8 +553,8 @@ A single-user game where the player is given 6 chances to guess all of the lette
 <p>For more tightly scoped problems, solve the problem manually then describe each
 step in plain english.</p>
 <div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-number">Listing 34 </span><span class="caption-text">updated is_true() function, now including the plan in comments</span></div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_true</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+<div class="code-block-caption"><span class="caption-number">Listing 34 </span><span class="caption-text">updated is_prime() function, now including the plan in comments</span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_prime</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;Return True if the number is a prime. Takes a positive whole number and returns True or False.</span>
 
 <span class="sd">  Examples</span>
@@ -568,6 +568,7 @@ step in plain english.</p>
 
   <span class="c1"># iterate through each number less than the input number, starting at 2</span>
   <span class="c1"># for each:</span>
+      <span class="c1"># divide the numbers</span>
   <span class="c1">#    - if the number is whole, return False</span>
   <span class="c1"># if all numbers have been iterated through without returning, return True</span>
 </pre></div>
@@ -591,15 +592,15 @@ you’re not certian they are working, or if the data can be unpredictable.</p><
 <li><p>Solve the easiest or most normal case first.</p></li>
 </ul>
 </div>
-<div class="section" id="b-write-psudocode">
-<h4>B. Write psudocode</h4>
+<div class="section" id="b-write-pseudocode">
+<h4>B. Write pseudocode</h4>
 <p>Write a plain english description of what the code should do. This can be a
 list of steps in comments. For simpler problems this may be the same as your
 plan.</p>
 </div>
 <div class="section" id="c-write-the-code">
 <h4>C. Write the code</h4>
-<p>Fill in the actual code under the psudocode comments.</p>
+<p>Fill in the actual code under the pseudocode comments.</p>
 </div>
 <div class="section" id="d-verify">
 <h4>D. Verify</h4>
@@ -615,10 +616,10 @@ you have too much going on, it will be hard to figure out which part isn’t wor
 </div>
 <div class="section" id="example">
 <h4>Example</h4>
-<p>Here’s an example of the is_true() function:</p>
+<p>Here’s an example of the is_prime() function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_true</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_prime</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;Return True if the number is a prime. Takes a positive whole number and returns True or False.</span>
 
 <span class="sd">  Examples</span>
@@ -634,8 +635,7 @@ you have too much going on, it will be hard to figure out which part isn’t wor
   <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">number</span><span class="p">):</span>
 
     <span class="c1"># if the number is whole, return False</span>
-      <span class="c1"># divide the numbers</span>
-      <span class="n">quotient</span> <span class="o">=</span> <span class="n">i</span> <span class="o">/</span> <span class="n">number</span>
+      <span class="n">quotient</span> <span class="o">=</span> <span class="n">number</span><span class="o">/</span><span class="n">i</span>
 
       <span class="c1"># convert the float to an int</span>
       <span class="c1"># return False if the float is equal to the int</span>
@@ -644,6 +644,9 @@ you have too much going on, it will be hard to figure out which part isn’t wor
 
   <span class="c1"># if all numbers have been iterated through without returning, return True</span>
   <span class="k">return</span> <span class="kc">True</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;is_prime(3):&quot;</span><span class="p">,</span> <span class="n">is_prime</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;is_prime(4):&quot;</span><span class="p">,</span> <span class="n">is_prime</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
