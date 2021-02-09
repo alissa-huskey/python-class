@@ -331,7 +331,7 @@ print("The total is:", total)
 :caption: steps to evaluate line
 :class: full-width
 >>> i < 3
->>> 0 < 3  # True, so go to line 4
+>>> 0 < 3  # True, so go to line 4True  # True, so go to line 4
 ```
 
 % output ------------------------------
@@ -631,6 +631,7 @@ print("The total is:", total)
 :class: full-width
 >>> i < 3
 >>> 1 < 3  # True, so go to line 4
+>>> True  # True, so go to line 4
 ```
 
 % output ------------------------------
@@ -694,7 +695,7 @@ print("The total is:", total)
 |         |     |
 |---------|-----|
 | `total` | `0` |
-| `i`     | `0` |
+| `i`     | `1` |
 
 ```
 
@@ -936,6 +937,7 @@ print("The total is:", total)
 :class: full-width
 >>> i < 3
 >>> 2 < 3  # True, go to line 4
+>>> True  # True, go to line 4
 ```
 
 % output ------------------------------
@@ -1000,8 +1002,8 @@ print("The total is:", total)
 
 |         |     |
 |---------|-----|
-| `total` | `0` |
-| `i`     | `0` |
+| `total` | `1` |
+| `i`     | `2` |
 
 ```
 
@@ -1170,6 +1172,7 @@ print("The total is:", total)
 >>> i = i + 1
 >>> i = 2 + 1
 >>> i = 3
+>>> # end of loop, go to line 3
 ```
 
 % output ------------------------------
@@ -1218,6 +1221,85 @@ print("The total is:", total)
 
 % -------------------------------------
 % END LOOP 2, LINE 6
+% =====================================
+
+% =====================================
+% START LOOP 3, LINE 3
+% -------------------------------------
+
+% ~~~~~~~~~~~~~
+% start sidebar
+% ~~~~~~~~~~~~~
+
+`````{sidebar} loop 3, line 3
+
+% start context -----------------------
+
+```{admonition} variables
+
+|         |     |
+|---------|-----|
+| `total` | `3` |
+| `i`     | `3` |
+
+```
+
+% evaluation steps --------------------
+
+```{code-block} python
+:caption: steps to evaluate line
+:class: full-width
+>>> i < 3
+>>> 3 < 3
+>>> False  # False, so go to line 7
+```
+
+% output ------------------------------
+
+```{panels}
+:container: m-0 p-0
+:body: text-monospace text-white bg-dark
+:card: shadow-none m-0 p-0
+:footer: text-white-50 bg-secondary
+
+loop 0
+
+loop 1
+
+loop 2
+
+++++++++++++++
+output
+```
+
+`````
+
+% ~~~~~~~~~~~
+% end sidebar
+% ~~~~~~~~~~~
+
+% code --------------------------------
+
+```{code-block} python
+:linenos:
+:emphasize-lines: 3, 3
+
+total = 0
+i = 0
+while i < 3:
+    print("loop", i)
+    total = total + i
+    i = i + 1
+print("The total is:", total)
+
+```
+
+{{clear}}
+
+---
+
+% -------------------------------------
+% END LOOP 3, LINE 3
 % =====================================
 
 % =====================================
@@ -1300,30 +1382,3 @@ print("The total is:", total)
 % END LINE 7
 % =====================================
 
-
-
-Exercises
----------
-
-`````{exercise}
-
-In the following code sample, what is the value of `name` on line `12`?
-
-```{code-block} python
-:linenos:
-characters = [
-    "mario",
-    "luigi",
-    "yoshi",
-    "bowser"
-]
-
-i = 0
-
-while i < len(characters):
-    name = characters[i].upper()
-    print(i+1, name)
-    i += 1
-```
-
-`````
