@@ -58,7 +58,7 @@ knowing how to read and understand code. So for this exercise we're going to
 practice reading code.
 
 We'll step through a small code sample, similar to how we did in in our
-[](program-flow.md) lesson. For each line that we walk through, you'll see a
+file:///Users/alissahuskey/Dropbox/projects/python-class/docs/_build/html/index.html[](flow.md) lesson. For each line that we walk through, you'll see a
 section that looks like this. (Labels in blue are just for this example.)
 
 
@@ -1382,3 +1382,29 @@ print("The total is:", total)
 % END LINE 7
 % =====================================
 
+
+Exercises
+---------
+
+`````{exercise}
+
+In the following code sample, what is the value of `name` on line `12`?
+
+```{code-block} python
+:linenos:
+characters = [
+    "mario",
+    "luigi",
+    "yoshi",
+    "bowser"
+]
+
+i = 0
+
+while i < len(characters):
+    name = characters[i].upper()
+    print(i+1, name)
+    i += 1
+```
+
+`````

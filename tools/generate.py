@@ -208,7 +208,7 @@ def mkpage(filename, code, *sections):
 def main():
     """."""
     markdown = mkpage(
-        "reading-code.tpl.md",
+        "tools/reading-code.tpl.md",
         CODE,
         dict(line=1, steps=["total = 0"]),
         dict(line=2, variables={"total": 0}, steps=["i = 0"]),
