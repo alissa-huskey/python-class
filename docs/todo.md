@@ -4,6 +4,13 @@ To Do
 Fundamentals
 ------------
 
+[ ] git/nila
+    [ ] [git for windows](https://gitforwindows.org/)
+    [ ] [How To Install Git Bash On Windows](https://www.stanleyulili.com/git/how-to-install-git-bash-on-windows/)
+    [ ] [git bash the easy way](https://www.sitereq.com/post/easiest-way-to-install-git-bash-commands-on-windows)
+    [ ] [How to Install Git Bash on Windows](https://www.techoism.com/how-to-install-git-bash-on-windows/)
+    [ ] [Working on Git Bash](https://www.geeksforgeeks.org/working-on-git-bash/)
+
 [ ] stack
   [ ] https://sites.cs.ucsb.edu/~pconrad/cs8/topics.beta/theStack/06/
   [ ] https://sites.cs.ucsb.edu/~pconrad/cs8/topics.beta/theStack/02/

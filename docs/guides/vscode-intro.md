@@ -19,9 +19,13 @@ Table of Contents
 Reference
 ---------
 
+:::{seealso}
+
 * [Official Documentation](https://code.visualstudio.com/docs)
 * [Documentation on readthedocs.io](https://vscode.readthedocs.io/en/latest/)
 * [Keyboard Shortcuts](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)
+
+:::
 
 
 User Interface
