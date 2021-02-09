@@ -1305,6 +1305,25 @@ print("The total is:", total)
 Exercises
 ---------
 
-* What is the value of x on line y
-* What will be printed on line y
-* What will it produce if you send arg x
+`````{exercise}
+
+In the following code sample, what is the value of `name` on line `12`?
+
+```{code-block} python
+:linenos:
+characters = [
+    "mario",
+    "luigi",
+    "yoshi",
+    "bowser"
+]
+
+i = 0
+
+while i < len(characters):
+    name = characters[i].upper()
+    print(i+1, name)
+    i += 1
+```
+
+`````
