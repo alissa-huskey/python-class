@@ -8,7 +8,6 @@ author                      : ""  # this goes in the footer
 repository:
   url                       : https://github.com/alissa-huskey/python-class
   branch                    : master
-# branch                    : jupyter-book
   path_to_book              : docs
 
 exclude_patterns            : [ todo.md, misky/*, reference/string-formatting.md, _ext/* ]
@@ -17,15 +16,19 @@ execute:
   execute_notebooks         : force
 
 html:
-# baseurl                   : file:///Users/alissahuskey/Dropbox/projects/python-class/docs/_build/html/
   baseurl                   : https://alissa-huskey.github.io/python-class/
   use_repository_button     : true
   use_edit_page_button      : true   # suggested edits
 
 parse:
-  myst_extended_syntax      : true
   # https://myst-parser.readthedocs.io/en/latest/using/syntax-optional.html#syntax-header-anchors
   myst_heading_anchors      : 3
+  myst_enable_extensions    :
+                              - linkify
+                              - substitution
+                              - colon_fence
+                              - deflist
+  myst_substitutions        : { "clear": '<div class="clearfix"></div>' }
 
 launch_buttons:
   notebook_interface        : jupyterlab
@@ -34,15 +37,25 @@ launch_buttons:
 
 sphinx:
 # https://www.sphinx-doc.org/en/master/templating.html#
-  extra_extensions          : [ sphinx_thebe, sphinx.ext.extlinks ]
+  extra_extensions          : 
+                              - sphinx_thebe
+                              - sphinx.ext.extlinks
+                              - sphinx_exercise
+                              - sphinx_panels
   local_extensions          :
     lexicon                 : _ext
   language                  : en
   config                    :
+    myst_enable_extensions  :
+                              - linkify
+                              - substitution
+                              - colon_fence
+                              - deflist
     extlinks                :
       github                : [ http://github.com/alissa-huskey/python-class/blob/master/%s, "" ]
       rawfile               : [ http://raw.githubusercontent.com/alissa-huskey/python-class/master/%s, "" ]
       lesson                : [ http://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/%s, "" ]
+    html_css_files          : [ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css ]
     html_add_permalinks     : ""
     html_show_copyright     : false
     html_theme_options      :

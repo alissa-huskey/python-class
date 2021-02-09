@@ -24,6 +24,29 @@ function fixCaptions() {
   }
 }
 
+// add "full-width" class to literal-block-wrappers that contain a full-width div
+function fixFullWidth() {
+  console.log("fixFullWidth()")
+
+  var divs = $("div.full-width");
+
+  for(var i = 0; i < divs.length; i+=1) {
+    var div = divs[i];
+    var parent = div.parentElement;
+
+    if (!parent) {
+      continue
+    }
+
+    if (parent.classList.contains("literal-block-wrapper")) {
+      parent.classList.add("full-width");
+      console.log("classes:", parent.className)
+    }
+
+  }
+}
+
 document.addEventListener("DOMContentLoaded", fixCaptions);
 document.addEventListener("DOMContentLoaded", addBodyId);
+document.addEventListener("DOMContentLoaded", fixFullWidth);
 
