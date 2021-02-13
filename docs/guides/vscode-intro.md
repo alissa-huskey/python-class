@@ -1,126 +1,350 @@
-VS Code Intro
-=============
+---
+substitutions:
+  mktbtn: |
+    <a href="https://marketplace.visualstudio.com/items?itemName=ID" class="btn btn-small btn-outline-info bg-white text-info btn-block" role="button">Marketplace</a>
+  theme: |
+    <div role="navigation" class="mt-5 position-static navbar navbar-light bg-light align-bottom shadow-none">
+      <h4 role="span" class="navbar-brand m-0">NAME</h4>
+      <a href="https://vscodethemes.com/e/ID" class="btn btn-small btn-outline-info text-info bg-white" role="button">VSCodeThemes</a>
+      <a href="https://marketplace.visualstudio.com/items?itemName=ID" class="btn btn-small btn-outline-info bg-white text-info" role="button">Marketplace</a>
+    </div>
 
+    ![NAME][NAME]
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+VS Code
+=======
 
 Table of Contents
 -----------------
 
-* [Reference](#reference)
-* [User Interface](#user-interface)
-* [Tools](#tools)
-* [Editor](#editor)
-  * [Breadcrumbs](#breadcrumbs)
-  * [Minimap](#minimap)
-  * [Keyboard Shortcut](#keyboard-shortcut)
-* [Recommended Extensions](#recommended-extensions)
-* [Recommended Settings](#recommended-settings)
-* [Recommended Themes](#recommended-themes)
+* [Resources](#resources)
+* [Extensions](#extensions)
+* [Suggested Settings](#suggested-settings)
+* [Themes](#themes)
 
-Reference
+
+Resources
 ---------
 
 :::{seealso}
 
-* [Official Documentation](https://code.visualstudio.com/docs)
-* [Documentation on readthedocs.io](https://vscode.readthedocs.io/en/latest/)
-* [Keyboard Shortcuts](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)
+```{centered} Visual Studio Code Docs
+```
+
+* [Intro > Getting Started Video](https://code.visualstudio.com/docs/introvideos/basics) \
+  Five minute hello world tour which happens to use Python.
+
+* [User Guide > User Interface](https://code.visualstudio.com/docs/getstarted/userinterface) \
+  High level guide to the layout and what each part does.
+
+* [Getting Started > Tips and Tricks](https://code.visualstudio.com/docs/getstarted/tips-and-tricks) \
+  Introduction to some of the most essential features such as the command
+  palette, quick open, zen mode; editor shortcuts like how to select a line or
+  quickly move or copy it up or down; and navigating around and between files
+  via code symbols and history.
+
+* [User Guide > Basic Editing](https://code.visualstudio.com/docs/editor/codebasics) \
+  Oddly focuses less on editing than the Tips and Tricks page. Searching and
+  replacing within and across files, advanced selection, formatting and
+  indentation.
+
+* [Getting Started > Default Keyboard Shortcuts](https://code.visualstudio.com/docs/getstarted/keybindings#_default-keyboard-shortcuts) \
+  Covers how to access currently defined keyboard shortcuts, as well as listing
+  the default shortcuts for (I presume) your detected OS. This is also where to
+  find out how to make your own keyboards shortcuts (keybindings) and
+  troubleshoot them if needed.
+
+* [User Guide > Code Navigation](https://code.visualstudio.com/docs/editor/editingevolved) \
+  Covers the powerful features for quickly finding and getting to the right
+  parts of your codebase via quick open, toggling history and open editors,
+  breadcrumbs, and code navigation. Briefly mentions navigating errors and
+  quick fixes.
+
+
+* [Python Tutorial](https://code.visualstudio.com/docs/python/python-tutorial#_create-a-python-hello-world-source-code-file) \
+  The tutorial for writing Python using VS Code. A great deal of it is either
+  installation and setup or focused on features we aren't using like Jupyter
+  Notebooks or Django. However, following the Hello World steps could be
+  helpful.
+
+* [Editing Python in Visual Studio Code](https://code.visualstudio.com/docs/python/editing) \
+  Covers the editor features provided by the Python extension.
+
+* (PDF) Keyboard shortcuts for [Windows](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf), [macOS](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf), [Linux](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf) \
+  Keyboard shortcut cheat sheet for each OS.
+
+* [Visual Studio Code Docs](https://code.visualstudio.com/docs) \
+  VS Code documentation home page.
+
+```{centered} Third party tutorials
+```
+
+* [Visual Studio Code Python for Beginners: Hello World & Beyond](https://www.youtube.com/watch?v=dGeUH_bqNpA) \
+  An intro to VS Code for Python beginners. It's made by a professional
+  programmer who doesn't know Python so you get to see him figure things out as
+  he goes along. (Recorded by a Windows user.)
+
+* [Learn Python 3: Visual Studio Code for Beginners](https://www.youtube.com/watch?v=RdD47NPku30) \
+  An in-depth walk-through via a Python hello world script. Covers core
+  features like the activity bar, file explorer, terminal, split editors,
+  command palette, settings, and workspaces.
+  Python specific topics selecting an interpreter, linter, and formatter using
+  virtual environments. (Recorded by a Windows user.)
+
+* [Visual Studio Code Crash Course](https://www.youtube.com/watch?v=WPqXP_kLzpo) \
+  An in-depth walk-through of core features like layout, search and replace,
+  file navigation, keyboard shortcuts, customizations, the terminal and SCM.
+  It's detailed with well labled time markers so it's easy to skip around.
+  (Recorded by a Mac user.)
 
 :::
 
 
-User Interface
---------------
 
-### Layout
+Extensions
+----------
 
-![layout](https://code.visualstudio.com/assets/docs/getstarted/userinterface/hero.png)
+`````{panels}
 
-* **(A) Activity Bar**: Links to open and close panels.
-* **(B) Side Bar**: The panel where activity bar links are opened.
-* **(C) Editor Groups**: Where you edit your files
-* **(D) Panel**: Panels for interacting with your code live here, notibly the Terminal.
-* **(E) Status Bar**: Information and links related to your current open files and state.
+  <span class="card-title h4">Python</span>
+  ^^^^^^^^^^^^^^
 
-### Sidebar [ `Cmd`/`Ctrl` + `B` ]
-* File Explorer [ Ctrl/Cmd+Shift+E ]
-  - Workspace: File Browser
-  - Outline: TOC for open file (headers, functions, etc)
-  - Timeline: File History
-* Source Control: Git tools
-* Extensions [ Cmd/Ctrl+Shift+X ]: Manage extensions
-* Live Share: Manage LiveShare Sessions
+  Support for the Python language.
 
-> _Note_ I keep hidden: Run, Search
+  {{ mktbtn | replace("ID", "ms-python.python") }}
 
-### Panel [ `Cmd`/`Ctrl` + `J` ]
-* Terminal [ `Ctrl` + \` ]: Access the operating system command line.
-* Problems: Display errors
-* Output: View the output of the code you ran
-* Debug: Run your code
+  ---
 
-### Editor
-* Tabs
-  - Preview Mode: (shown in italics) A file was opened reusing an existing tab (single-click from File Browser.)
-  - Unsaved Changes (shown with a white dot)
+  <span class="card-title h4">Live Share</span>
+  ^^^^^^^^^^^^^^
 
+  Features for remote collaboratively editing.
 
-Tools
------
+  {{ mktbtn | replace("ID", "ms-vsliveshare.vsliveshare") }}
 
-* Command Palette [ `Ctrl`/`Cmd` + `Shift` + `P` ]: Run VS Code commands
-* Quick Open [ `Ctrl`/`Cmd` + `P` ]: Open files
-* Toggle Zen Mode [ `Ctrl`/`Cmd` + `K`, `Z` ]: Hide all panels except editor.
+  ---
 
-Editor
-------
+  <span class="card-title h4">Editor Config</span>
+  ^^^^^^^^^^^^^^
 
-### Breadcrumbs
-![breadcrumbs](https://code.visualstudio.com/assets/docs/getstarted/userinterface/breadcrumbs.png)
+  Ensure consistent code formatting among different editors that employ it as
+  well as among multiple project contributors.
 
-### Minimap
-![minimap](https://code.visualstudio.com/assets/docs/getstarted/userinterface/minimap.png)
+  Create a file in your project dir or home dir named `.editorconfig` and append
+  at least the following:
 
-### Keyboard Shortcut
+  ```{code-block} ini
+  :caption: .editorconfig
+  root = true
 
-* [ `Cmd/Ctrl` + `/` ]: Toggle comment out line
-* [ `shift` + `cmd` + `k` ]: Delete Line
-* [ `Cmd`/`Ctrl` + ( `[` | `]` ) ]: Decrease | Increase indentation
-* [ `Alt`/`Option` + ( `Up` | `Down` ) ]: Move line above | below
-* [ `Shift` + `Alt`/`Option` + ( `Up` | `Down` ) ]: Copy line above | below
-* [ `Cmd`/`Ctrl` + `Enter` ]: Insert line after
-* [ `Shift` + `Cmd`/`Ctrl` + `Enter` ]: Insert line Before
-* [ `Cmd`/`Ctrl` + `J` ]: Join lines
+  [*.py]
+  indent_style = space
+  indent_size = 4
+  tab_width = 4
+  ```
 
-Recommended Extensions
-----------------------
+  {{ mktbtn | replace("ID", "EditorConfig.EditorConfig") }}
 
-* [LiveShare](https://marketplace.visualstudio.com/items?itemName=ms-vsliveshare.vsliveshare)
-* [Editor Config](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
-  Ensures consistent code formatting.
+`````
 
-### EditorConfig file
+Suggested Settings
+------------------
 
-  Create a file in your project dir or home dir named `.editorconfig` and append at least the following:
+### Hide Open Editors
 
-```ini
-root = true
+In the Explorer, don't show the "open editors" section.
 
-[*.py]
-indent_style = space
-indent_size = 4
+````{sidebar} Settings (UI)
+
+{menuselection}`Features --> Explorer --> Explorer › Open Editors`
+
+````
+
+```{code-block} javascript
+:caption: settings.json
+{
+    "explorer.openEditors.visible": 0
+}
 ```
 
-Recommended Settings
---------------------
+{{ clear }}
 
-[ `Ctrl` + `Shift` + `P` ] > `Preferences: Open Settings (JSON)`
+---
 
-```javascript
+### Minimap
+
+Make the minimap prettier and hide it by default. (Open with {guilabel}`View: Toggle Minimap`.)
+
+````{sidebar} Settings (UI)
+
+{menuselection}`Text Editor --> Minimap -->`
+
+* {menuselection}`Editor › Minimap: Enabled`
+* {menuselection}`Editor › Minimap: Render Characters`
+* {menuselection}`Editor › Minimap: Max Column`
+* {menuselection}`Editor › Minimap: Show Slider`
+
+````
+
+```{code-block} javascript
+:caption: settings.json
 {
-    "files.trimTrailingWhitespace": false, // interfers with EditorConfig extension
-    // Suggestions ---------------------------------------------------------------------
-    //   disable auto suggestions, but they can still be triggered with alt+esc or ctrl+space
-    //
+    "editor.minimap.enabled": false,
+    "editor.minimap.renderCharacters": false,
+    "editor.minimap.maxColumn": 200,
+    "editor.minimap.showSlider": "always"
+}
+```
+
+{{ clear }}
+
+---
+
+### Reduce preview mode
+
+When opening files via {kbd}`⌘P` don't start in [preview mode](https://code.visualstudio.com/docs/getstarted/userinterface#_preview-mode).
+
+````{sidebar} Settings (UI)
+
+{menuselection}`Workbench --> Editor Management --> Workbench › Editor: Enable Preview From Quick Open`
+
+````
+
+```{code-block} javascript
+:caption: settings.json
+{
+    "workbench.editor.enablePreviewFromQuickOpen": false
+}
+```
+
+{{ clear }}
+
+---
+
+### Autosave
+
+Enable auto-save.
+
+````{sidebar} Settings (UI)
+
+{menuselection}`Text Editor --> Files --> Files: Auto Save`
+
+````
+
+```{code-block} javascript
+:caption: settings.json
+{
+    "files.autoSave": "afterDelay"
+}
+```
+
+{{ clear }}
+
+---
+
+### Disable notices
+
+Disable tips and startup pages.
+
+````{sidebar} Settings (UI)
+
+* {menuselection}`Workbench --> Workbench: Startup Editor`
+* {menuselection}`Workbench --> Appearance --> Workbench › Tips: Enabled`
+* {menuselection}`Extensions --> Python --> Python: Show Start Page`
+
+````
+
+```{code-block} javascript
+:caption: settings.json
+{
+    "workbench.startupEditor": "none",
+    "workbench.tips.enabled": false,
+    "python.showStartPage": false
+}
+```
+
+{{ clear }}
+
+---
+
+
+### Live Share
+
+Don't add Live Share guests names to your git commit messages.
+
+````{sidebar} Settings (UI)
+
+{menuselection}`Extensions --> Visual Studio Live Share --> Liveshare: Populate Git Co Authors`
+
+````
+
+```{code-block} javascript
+:caption: settings.json
+{
+    "liveshare.populateGitCoAuthors": "never"
+}
+```
+
+{{ clear }}
+
+---
+
+### Highlight cursor line
+
+In the editor highlight the line your cursor is currently on.
+
+````{sidebar} Settings (UI)
+
+{menuselection}`Text Editor -->`
+
+* {menuselection}`Editor: Render Line Highlight`
+* {menuselection}`Editor: Render Line Highlight Only When Focus`
+
+````
+
+```{code-block} javascript
+:caption: settings.json
+{
+    "editor.renderLineHighlight": "all",
+    "editor.renderLineHighlightOnlyWhenFocus": true
+}
+```
+
+{{ clear }}
+
+---
+
+### Disable suggestions
+
+Suggestions are a great feature but they may interfere with retaining
+information as you're learning. They can make the interface a bit noisy. These
+settings disable them, though they can still be triggered using a shortcut key.
+
+````{sidebar} Settings (UI)
+
+{menuselection}`Text Editor --> Editor › Parameter Hints`
+
+{menuselection}`Text Editor --> Suggestions`
+
+* {menuselection}`Editor: Suggest On Trigger Characters`
+* {menuselection}`Editor: Quick Suggestions`
+* {menuselection}`Editor: Accept Suggestion On Commit Character`
+
+````
+
+```{code-block} javascript
+:caption: settings.json
+{
+    "editor.acceptSuggestionOnCommitCharacter": false,
     "editor.suggestOnTriggerCharacters": false,
     "editor.parameterHints.enabled": false,
     "editor.quickSuggestions": {
@@ -128,50 +352,88 @@ Recommended Settings
         "comments": false,
         "strings": false
     },
-    // Explorer ------------------------------------------------------------------------
-    //   Don't show the "open editors" section in the Explorer
-    //
-    "explorer.openEditors.visible": 0,
-    // minimap -------------------------------------------------------------------------
-    //   Make the minimap prettier and hide it by default
-    //   (open with `View: Toggle Minimap`)
-    //
-    "editor.minimap.enabled": false,
-    "editor.minimap.renderCharacters": false,
-    "editor.minimap.maxColumn": 200,
-    "editor.minimap.showSlider": "always",
-    // Python -------------------------------------------------------------------------
-    //
-    "python.showStartPage": false,
-    "python.workspaceSymbols.exclusionPatterns": [
-        "**/site-packages/**",
-        "__pycache__/"
-    ],
-    // misc ----------------------------------------------------------------------------
-    //
-    // cmd+P: don't open files in preview mode
-    "workbench.editor.enablePreviewFromQuickOpen": false,
 }
 ```
 
-Recommended Themes
-------------------
+{{ clear }}
 
-[ `Cmd`/`Ctrl` + `K`, `Cmd`/`Ctrl` + `T` ] To Change Themes
+---
 
-Dark
-* [One Dark Pro Monokai Darker](https://marketplace.visualstudio.com/items?itemName=eserozvataf.one-dark-pro-monokai-darker)
-* [Dolch Dark](https://marketplace.visualstudio.com/items?itemName=be5invis.theme-dolch)
-* [Verdandi](https://marketplace.visualstudio.com/items?itemName=Shirayuki.verdandi-alter-customized)
-* [Azure Dark](https://marketplace.visualstudio.com/items?itemName=eddyw.azure-dark-theme)
-* [Black Ocean](https://marketplace.visualstudio.com/items?itemName=zamerick.black-ocean)
-* [Nord Extra Dark](https://marketplace.visualstudio.com/items?itemName=yamenarahman.nord-extra-dark)
 
-Medium
-* [Subliminal](https://marketplace.visualstudio.com/items?itemName=gaearon.subliminal)
-* [Pretentious Name](https://marketplace.visualstudio.com/items?itemName=zhiayang.pretentious-name)
-* [Mario Color](https://marketplace.visualstudio.com/items?itemName=alphatr.mario-theme)
+### EditorConfig compatability
 
-Light
-* [One Dark Raincoat Light](https://marketplace.visualstudio.com/items?itemName=ginfuru.ginfuru-onedark-raincoat-theme)
-* [Dolch Light](https://marketplace.visualstudio.com/items?itemName=be5invis.theme-dolch)
+If you use the EditorConfig extension, disable the built-in whitespace handling features as they interfere.
+
+````{sidebar} Settings (UI)
+
+{menuselection}`Text Editor --> Files --> Files: Trim Trailing Whitespace`
+
+````
+
+```{code-block} javascript
+:caption: settings.json
+{
+    "files.trimTrailingWhitespace": false
+}
+```
+
+{{ clear }}
+
+---
+
+Themes
+------
+
+### Dark
+
+* [One Dark Pro Monokai Darker](#one-dark-pro-monokai-darker)
+* [Dolch Dark](#dolch-dark)
+* [Verdandi Alter Customized](#verdandi-alter-customized)
+* [Azure Dark](#azure-dark)
+* [Black Ocean](#black-ocean)
+
+{{ theme | replace("NAME", "One Dark Pro Monokai Darker") | replace("ID", "eserozvataf.one-dark-pro-monokai-darker") }}
+
+{{ theme | replace("NAME", "Dolch Dark") | replace("ID", "be5invis.theme-dolch") }}
+
+{{ theme | replace("NAME", "Verdandi Alter Customized") | replace("ID", "Shirayuki.verdandi-alter-customized") }}
+
+{{ theme | replace("NAME", "Azure Dark") | replace("ID", "eddyw.azure-dark-theme") }}
+
+{{ theme | replace("NAME", "Black Ocean") | replace("ID", "zamerick.black-ocean") }}
+
+### Medium
+
+* [Nord Extra Dark](#nord-extra-dark)
+* [Subliminal](#subliminal)
+* [Pretentious Name](#pretentious-name)
+* [Mario Color](#mario-color)
+
+{{ theme | replace("NAME", "Nord Extra Dark") | replace("ID", "yamenarahman.nord-extra-dark") }}
+
+{{ theme | replace("NAME", "Subliminal") | replace("ID", "gaearon.subliminal") }}
+
+{{ theme | replace("NAME", "Pretentious Name") | replace("ID", "zhiayang.pretentious-name") }}
+
+{{ theme | replace("NAME", "Mario Color") | replace("ID", "alphatr.mario-theme") }}
+
+### Light
+
+* [One Dark Raincoat Light](#one-dark-raincoat-light)
+* [Dolch Light](#dolch-light)
+
+{{ theme | replace("NAME", "One Dark Raincoat Light") | replace("ID", "ginfuru.ginfuru-onedark-raincoat-theme") }}
+
+{{ theme | replace("NAME", "Dolch Light") | replace("ID", "be5invis.theme-dolch") }}
+
+[One Dark Pro Monokai Darker]: ../assets/monokai-darker.png
+[Dolch Dark]: https://raw.githubusercontent.com/be5invis/vscode-theme-dolch/master/images/dolch.png
+[Verdandi Alter Customized]: ../assets/verdandi.png
+[Azure Dark]: https://raw.githubusercontent.com/eddyw/vscode-azuredark-theme/master/themes/screenshot.png
+[Black Ocean]: https://raw.githubusercontent.com/Zamerick/black-ocean/master/img/BlackOcean.png
+[Nord Extra Dark]: ../assets/nord.png
+[Subliminal]: https://raw.githubusercontent.com/gaearon/subliminal/master/screenshot.png
+[Pretentious Name]: ../assets/pretentious.png
+[Mario Color]: ../assets/mario.png
+[One Dark Raincoat Light]: ../assets/raincoat-light.png
+[Dolch Light]: ../assets/dolch-light.png
