@@ -9,6 +9,8 @@ kernelspec:
   language: python
   name: python3
 ---
+<!-- markdownlint-disable no-inline-html no-alt-text -->
+
 Testing
 =======
 
@@ -16,6 +18,7 @@ Testing
 
 * [Getting Started With Testing in Python](https://realpython.com/python-testing/)
 * [pytest introduction](https://pythontesting.net/framework/pytest/pytest-introduction/)
+* [Python testing in Visual Studio Code](https://code.visualstudio.com/docs/python/testing#_example-test-walkthroughs)
 
 ```
 
@@ -147,7 +150,6 @@ AssertionError: The number: 78 should be less than 50.
 >>> assert num < 50, f"The number: {num} should be less than 50."
 ```
 
-
 Part 2: Unit tests
 ------------------
 
@@ -192,14 +194,15 @@ def test_greeting():
 Let's break that down.
 
 The assertion on line `10` has three parts.
+
 * It begins with the `assert` keyword.
 
 * The expression `greeting("buffy") == "Welcome Buffy."` is the heart of the
   test:
-  - It calls the `greeting()` function with the argument `"buffy"`.
-  - The return value is compared to the string `"Welcome Buffy"` using the `==`
+  * It calls the `greeting()` function with the argument `"buffy"`.
+  * The return value is compared to the string `"Welcome Buffy"` using the `==`
     operator which will evaluate to either `True` or `False`.
-  - The assertion will pass if this evaluates to `True`. Otherwise, the
+  * The assertion will pass if this evaluates to `True`. Otherwise, the
     assertion will fail.
 
 * The string `'should return "Welcome Buffy."'` is a description of what is being
@@ -256,7 +259,6 @@ test_endgame()
 ```
 
 `````
-
 
 ### Part 2.3: Testing more cases
 
@@ -403,7 +405,6 @@ formatted report of the results. Runners also often include a library that
 can be imported in your tests provide tools and/or frameworks to aid in
 writing tests.
 
-
 Part 3.1: Install `pytest`
 --------------------------
 
@@ -415,6 +416,13 @@ For `poetry` users:
 ```{code-block} bash
 :caption: command line
 poetry add --dev pytest
+```
+
+Otherwise:
+
+```{code-block} bash
+:caption: command line
+python -m pip install pytest
 ```
 
 Part 3.2: Migrate to Pytest
@@ -465,7 +473,9 @@ greeting.py .                                        [100%]
 ==================== 1 passed in 0.08s =====================
 ```
 
-</div></div>{{ clear }}
+</div></div>
+
+{{ clear }}
 
 Let's add a failing assertion so we can see what that looks like.
 
@@ -537,7 +547,9 @@ FAILED greeting.py::test_greeting - AssertionError: demo ...
 ==================== 1 failed in 0.22s =====================
 ```
 
-</div></div>{{clear}}
+</div></div>
+
+{{ clear }}
 
 Part 4: Test best practices
 ---------------------------
@@ -626,7 +638,9 @@ FAILED greeting.py::test_greeting - AssertionError: demo ...
 ==================== 1 failed in 0.22s =====================
 ```
 
-</div></div>{{clear}}
+</div></div>
+
+{{ clear }}
 
 ### Part 4.2: One case per test function
 
@@ -637,9 +651,48 @@ bit more difficult to tell exactly which test failed.
 
 It's generally a good idea to have one use case per function.
 
-Let's split our `test_greeting()` function up.
+Let's split the `test_greeting()` function up.
 
-```{literalinclude} ../../pythonclass/lessons/test_greeting.py
+```{code-block} python
+:linenos:
+:caption: test_greeting.py
+
+from greeting import greeting
+
+def test_greeting_fail():
+    assert greeting("buffy") == "", \
+        'demo of a test failure'
+
+
+def test_greeting_lower():
+    assert greeting("buffy") == "Welcome Buffy.", \
+        'should return "Welcome Buffy." with the lowercase name capitalized.'
+
+
+def test_greeting_upper_to_title():
+    assert greeting("XANDER") == "Welcome Xander.", \
+        'should return "Welcome Xander." with all caps name capitalized.'
+
+
+def test_greeting_multi_word():
+    assert greeting("SpongeBob SquarePants") == "Welcome Spongebob Squarepants.", \
+        'should return "Welcome Spongebob Squarepants." with all words capitalized.'
+
+
+def test_greeting_empty_string():
+    assert greeting("") == "Welcome.", \
+        'should return "Welcome." if name is empty.'
+
+
+def test_greeting_blank():
+    assert greeting("  ") == "Welcome.", \
+        'should return "Welcome." if name just whitespace.'
+
+
+def test_greeting_number():
+    assert greeting("42") == "Welcome 42.", \
+        'should return "Welcome 42." no special handling for numbers.'
+
 ```
 
 Now we can run the tests using the `-v` flag to get verbose output. This will
@@ -652,6 +705,93 @@ show us the status of each individual test.
 caption: command line
 ---
 pytest -v test_greeting.py
+```
+
+</div><div class="col-8">
+
+```{code-block} pytest
+:caption: output
+=================== test session starts ====================
+platform darwin -- Python 3.8.1, pytest-6.2.2, ...
+rootdir: ..., configfile: pyproject.toml, testpaths: tests
+collected 7 items                                          
+
+tests/test_greeting.py F......                       [100%]
+
+========================= FAILURES =========================
+____________________ test_greeting_fail ____________________
+
+    def test_greeting_fail():
+>       assert greeting("buffy") == "", \
+            'demo of a test failure'
+E       AssertionError: demo of a test failure
+E       assert 'Welcome Buffy.' == ''
+E         + Welcome Buffy.
+
+tests/test_greeting.py:4: AssertionError
+================= short test summary info ==================
+FAILED tests/test_greeting.py::test_greeting_fail - Asser...
+=============== 1 failed, 6 passed in 0.20s ================
+
+```
+
+</div></div>
+
+{{ clear }}
+
+### Part 4.3: File locations
+
+For simple projects with just one or two Python modules it's fine to keep
+your test files in the same directory (folder) as your python files. However,
+there's a standard structure that is recommended for Python projects.
+
+If you use Poetry and started your project with the `poetry new` command,
+then the correct directory structure was already created for you and looks
+something like this.
+
+```{code-block} text
+:caption: example directory layout
+├── README.md
+├── poetry.lock
+├── pyproject.toml
+├── testing_demo
+│   └── __init__.py
+└── tests
+    ├── __init__.py
+    └── test_testing_demo.py
+```
+
+I won't go into all of the details, but here are the things you need to know
+that are related to tests:
+
+* Your Python files should be in a directory with your project name in `lowercase_with_underscores` style.
+* Python files should also be named with `lowercase_with_underscores` style.
+* Your test files should be in a directory named `tests`.
+* Each test file should start with `test_` and usually correlate with the file
+  that contains the code being tested, also in `lowercase_with_underscores`
+  style.
+* Both {file}`__init__.py` files can be empty, they just need to exist.
+
+Once you've moved your files where they should be, you'll need to change the
+`import` statement in your test file so that it includes the name of the
+parent directory followed by a `.` before the module name.
+
+```{code-block} python
+:caption: test_greeting.py
+
+from pythonclass.greeting import greeting
+```
+
+Now you can run all the test files in that directory at the same time by
+using the directory name instead of a specific file.
+
+<div class="row"><div class="col-4">
+
+```{code-block} bash
+---
+caption: command line
+---
+pytest -v tests
 ```
 
 </div><div class="col-8">
@@ -689,8 +829,90 @@ FAILED test_greeting.py::test_greeting_fail - AssertionEr...
 
 ```
 
-</div></div>{{clear}}
+</div></div>
 
+{{ clear }}
+
+### Part 4.4: Configure pytest
+
+```{seealso}
+
+* [pytests > Configuration](https://docs.pytest.org/en/stable/customize.html)
+* [pytests > Settings](https://docs.pytest.org/en/stable/reference.html#ini-options-ref)
+
+```
+
+If you use Poetry, you can configure `pytest` by adding a
+`tool.pytest.ini_options` section to your {file}`pyproject.toml` file.
+
+```{code-block} toml
+:caption: pyproject.toml
+
+# ...
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+```
+
+Alternately you can add a {file}`pytest.ini` file to your project root directory.
+
+```{code-block} ini
+:caption: pytest.ini
+
+testpaths =
+    tests
+```
+
+This will ensure that pytest is always run using the `tests` directory
+without needing to include the path in your command.
+
+<div class="row"><div class="col-4">
+
+```{code-block} bash
+---
+caption: command line
+---
+pytest -v
+```
+
+</div><div class="col-8">
+
+```{code-block} pytest
+:caption: output
+=================== test session starts ====================
+platform darwin -- Python 3.8.1, pytest-6.2.1, py-1.10.0, ...
+cachedir: .pytest_cache
+rootdir: ...
+collected 7 items                                          
+
+test_greeting.py::test_greeting_fail FAILED          [ 14%]
+test_greeting.py::test_greeting PASSED               [ 28%]
+test_greeting.py::test_greeting_upper_to_title PASSED [ 42%]
+test_greeting.py::test_greeting_multi_word PASSED    [ 57%]
+test_greeting.py::test_greeting_empty_string PASSED  [ 71%]
+test_greeting.py::test_greeting_blank PASSED         [ 85%]
+test_greeting.py::test_greeting_number PASSED        [100%]
+
+========================= FAILURES =========================
+____________________ test_greeting_fail ____________________
+
+    def test_greeting_fail():
+>       assert greeting("buffy") == "", \
+            'demo of a test failure'
+E       AssertionError: demo of a test failure
+E       assert 'Welcome Buffy.' == ''
+E         + Welcome Buffy.
+
+test_greeting.py:4: AssertionError
+================= short test summary info ==================
+FAILED test_greeting.py::test_greeting_fail - AssertionEr...
+=============== 1 failed, 6 passed in 0.21s ================
+
+```
+
+</div></div>
+
+{{ clear }}
 
 Part 5: Writing code for testing
 --------------------------------
@@ -710,7 +932,6 @@ separate from the functions that determine behavior.
   little else, and calls to other functions.
 * Anywhere else, use `return` instead of `print` and arguments instead of
   `input()`.
-
 
 ```{centered} BEFORE
 ```
@@ -762,7 +983,6 @@ def main():
 if __name__ == "__main__":
     main()
 ```
-
 
 ### Part 5.2: Isolate external services / dependencies
 
@@ -824,3 +1044,81 @@ if __name__ == "__main__":
     main()
 
 ```
+
+Part 6: Testing in VS Code
+--------------------------
+
+### Part 6.1: Setup
+
+From the {guilabel}`Command Palette` select {guilabel}`Python: Configure Tests`.
+
+![](assets/test-configure.png)
+
+Select {guilabel}`pytest` from the dropdown.
+
+![](assets/test-configure-pytest.png)
+
+Select the {guilabel}`tests` directory from the dropdown.
+
+![](assets/test-configure-testdir.png)
+
+### Part 6.2: Running tests
+
+#### Step 1: Click Tests
+
+Click the Test icon from the activity bar.
+
+![](assets/test-activitybar.png)
+
+#### Step 2: Review list of tests
+
+You will see the {guilabel}`TESTING` sidebar panel, where your tests will be
+listed grouped by directory and file.
+
+![](assets/test-sidebar-list.png)
+
+#### Step 3: Run tests
+
+You can run all tests by selecting {guilabel}`Python: Run All Tests` from the
+{guilabel}`Command Palette`
+
+![](assets/test-run-all.png)
+
+Or clicking the play icon at the top of the {guilabel}`TESTING` sidebar.
+
+![](assets/test-sidebar-actions-run-all.png)
+
+Once your tests have run the failing and passing tests will be marked
+accordingly.
+
+![](assets/test-sidebar-list-marked.png)
+
+#### Step 4: View test output
+
+Details about any test failures as well as any other pytest output can be
+seen in the {guilabel}`Python Test Log` which you can access by selecting
+{guilabel}`Python: Show Test Output` from the {guilabel}`Command Palette`:
+
+![](assets/test-show-output.png)
+
+Or by clicking the icon at the top of the {guilabel}`TESTING` sidebar:
+
+![](assets/test-sidebar-actions-output.png)
+
+Or by clicking the {guilabel}`OUTPUT` tab on the panel then selecting
+{guilabel}`Python Test Log` from the dropdown.
+
+![](https://code.visualstudio.com/assets/docs/python/testing/python-test-log-output.png)
+
+### Part 6.3: Changing tests
+
+If you make changes to your tests, you may need to nudge VS Code so that they
+are reflected.
+
+You can run {guilabel}`Python: Discover Tests` from the {guilabel}`Command Palette`:
+
+![](assets/test-discover.png)
+
+Or by clicking the icon at the top of the {guilabel}`TESTING` sidebar:
+
+![](assets/test-sidebar-actions-discover.png)
