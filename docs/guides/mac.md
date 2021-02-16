@@ -150,7 +150,7 @@ code --install-extension ms-python.python              # Python extension
 code --install-extension ms-vsliveshare.vsliveshare    # LiveShare
 ```
 
-See the [VS Code Intro](vscode-intro.md).
+See the [VS Code Intro](vscode.md).
 
 
 pyenv

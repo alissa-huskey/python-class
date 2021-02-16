@@ -44,7 +44,7 @@ while not reply:
 print("Name:", reply)
 ```
 
-:::{admonition,hint,details,exercise}
+```{exercise}
 
 1. Write a while loop that asks the user `"Heads or tails?"` until they answer
 with either `"heads"` or `"tails"`. *Hint: Use the `not in` operator.*
@@ -52,7 +52,7 @@ with either `"heads"` or `"tails"`. *Hint: Use the `not in` operator.*
 2. Write a while loop that prints a random number between `1` and `100` until
    the answer is greater than `50`.
 
-:::
+```
 
 ### Infinite loops
 
@@ -111,12 +111,12 @@ while True:
         break
 ```
 
-:::{admonition,hint,details,exercise}
+```{exercise}
 
 Write a loop that prints a random number, then ask the user if they would like
 to keep going. Exit the loop if they answer with a `"n"`.
 
-:::
+```
 
 
 ### Skipping part of an iteration
@@ -142,7 +142,7 @@ while balance > 0:
     print("Your balance is:", balance)
 ```
 
-:::{admonition,hint,details,exercise}
+```{exercise}
 
 Make an empty `rolls` list then write a loop that repeats `10` times. In each
 iteration:
@@ -155,7 +155,7 @@ iteration:
 - Append the number to a list of `rolls`
 - print the `rolls` list
 
-:::
+```
 
 Loop patterns
 -------------
@@ -183,12 +183,12 @@ while i < 10:
   i = i + 1
 ```
 
-:::{admonition,hint,details,exercise}
+```{exercise}
 
 Write a loop that counts down from `3` to `1`. In each iteration print out the
 current number then use the `time.sleep` function to pause for one second.
 
-:::
+```
 
 ### Iterating over a list
 
@@ -213,12 +213,12 @@ while i < len(colors):
   i += 1
 ```
 
-:::{admonition,hint,details,exercise}
+```{exercise}
 
 Print a lunch menu. Make a list of lunch `choices` on a menu. Use a while loop
 to print out each item in the list with the number next to it.
 
-:::
+```
 
 You can also use this to iterate over list-like values. For example, a string
 can be used like a list of characters. So we can use the same pattern to
@@ -238,14 +238,14 @@ while i < len(word):
     i += 1
 ```
 
-:::{admonition,hint,details,exercise}
+```{exercise}
 
 Print the vowels in a word. Ask the user for a word then iterate over each
 letter. If the letter is not a vowel, (*hint: make a list of vowels the use
 `not in`*) use a `continue` statement to skip the rest of the iteration. Then
 print the character number and the character.
 
-:::
+```
 
 ### Nested loops
 
@@ -306,11 +306,11 @@ while r < rows:
     r += 1
 ```
 
-:::{admonition,hint,details,exercise}
+```{exercise}
 
 Print a multiplication table grid with `9` rows and `9` columns. [^script_multiplication]
 
-:::
+```
 
 
 Practice exercises

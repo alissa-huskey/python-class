@@ -664,14 +664,14 @@ it out nicely.
   Documentation
 :::
 
-:::{admonition,hint,details}
+```{exercise} 
 * Get a random beer from the Punk API `random` endpoint:
    `http://api.punkapi.com/v2/beers/random`
 
 * Print the beer `name` and `description`
 
 * Print the list of unique `ingredients`.
-:::
+```
 
 **Example output:**
 

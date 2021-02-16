@@ -1,5 +1,6 @@
 ---
 substitutions:
+  ctrltick: <kbd class="kbd docutils literal notranslate">⌃`</kbd>
   mktbtn: |
     <a href="https://marketplace.visualstudio.com/items?itemName=ID" class="btn btn-small btn-outline-info bg-white text-info btn-block" role="button">Marketplace</a>
   theme: |
@@ -27,6 +28,7 @@ Table of Contents
 -----------------
 
 * [Resources](#resources)
+* [Essential Keyboard Shortcuts](#essential-keyboard-shortcuts)
 * [Extensions](#extensions)
 * [Suggested Settings](#suggested-settings)
 * [Themes](#themes)
@@ -108,6 +110,135 @@ Resources
 
 :::
 
+Essential Keyboard Shortcuts
+----------------------------
+
+`````{tabbed} macOS
+
+````{panels}
+:card: shadow-none
+
+Editor
+^^^^^^
+
+| Shortcut       | Action                    |
+|----------------|---------------------------|
+| {kbd}`⌘L`      | Select line               |
+| {kbd}`⇧⌘K`     | Delete line               |
+| {kbd}`⌘/`      | Toggle (un/)comment line  |
+
+---
+
+Navigation
+^^^^^^^^^^
+
+| Shortcut       | Action                    |
+|----------------|---------------------------|
+| {kbd}`⇧⌘P`     | Command Palette           |
+| {kbd}`⌘P`      | Quick Open File           |
+| {kbd}`⌘B`      | Toggle Sidebar            |
+| {kbd}`⌘J`      | Toggle Panel              |
+| {{ ctrltick }} | Toggle Terminal           |
+
+---
+
+Editor
+^^^^^^
+
+| Shortcut       | Reverse        | Action                    |
+|----------------|----------------|---------------------------|
+| {kbd}`⌘Enter`  | {kbd}`⇧⌘Enter` | Add line (above, below)   |
+| {kbd}`⌥↑`      | {kbd}`⌥↓`      | Move line (up, down)      |
+| {kbd}`⇧⌥↑`     | {kbd}`⇧⌥↓`     | Copy line (up, down)      |
+| {kbd}`⌘]`      | {kbd}`⌘[`      | (Indent, Outdent)         |
+| {kbd}`⌘Z`      | {kbd}`⇧⌘Z`     | (Undo, Redo)              |
+
+---
+:card: border-0
+:body: p-0
+
+```{dropdown} Key
+:title: text-muted bg-white font-weight-bold
+:body: kbd-symbol-key no-headers
+
+|       |                    |
+|-------|--------------------|
+| `⌘`   | {kbd}`Command`     |
+| `⌃`   | {kbd}`Control`     |
+| `⌥`   | {kbd}`Option`      |
+| `⇧`   | {kbd}`Shift`       |
+| `↑`   | {kbd}`Up arrow`    |
+| `↓`   | {kbd}`Down arrow`  |
+
+
+```
+
+````
+
+`````
+
+`````{tabbed} Windows
+
+````{panels}
+:card: shadow-none
+
+Editor
+^^^^^^
+
+| Shortcut       | Action                    |
+|----------------|---------------------------|
+| {kbd}`⌃L`      | Select line               |
+| {kbd}`⇧⌃K`     | Delete line               |
+| {kbd}`⌃/`      | Toggle (un/)comment line  |
+
+---
+
+Navigation
+^^^^^^^^^^
+
+| Shortcut       | Action                      |
+|----------------|-----------------------------|
+| {kbd}`⇧⌃P`     | Command Palette             |
+| {kbd}`⌃P`      | Quick Open File             |
+| {kbd}`⌃B`      | Toggle Sidebar              |
+| {kbd}`⌃J`      | Toggle Panel {sup}`(unconfirmed)` |
+| {{ ctrltick }} | Toggle Terminal             |
+
+[^1]: Unconfirmed
+
+---
+
+Editor
+^^^^^^
+
+| Shortcut       | Reverse        | Action                    |
+|----------------|----------------|---------------------------|
+| {kbd}`⌃Enter`  | {kbd}`⇧⌃Enter` | Add line (above, below)   |
+| {kbd}`Alt↑`    | {kbd}`Alt↓`    | Move line (up, down)      |
+| {kbd}`⇧Alt↑`   | {kbd}`⇧Alt↓`   | Copy line (up, down)      |
+| {kbd}`⌃]`      | {kbd}`⌃[`      | (Indent, Outdent)         |
+| {kbd}`⌃Z`      | {kbd}`⇧⌃Z`     | (Undo, Redo)  {sup}`(unconfirmed)` |
+
+---
+:card: border-0
+:body: p-0
+
+```{dropdown} Key
+:title: text-muted bg-white font-weight-bold
+:body: kbd-symbol-key no-headers
+
+|       |                    |
+|-------|--------------------|
+| `⌃`   | {kbd}`Control`     |
+| `⇧`   | {kbd}`Shift`       |
+| `↑`   | {kbd}`Up arrow`    |
+| `↓`   | {kbd}`Down arrow`  |
+
+```
+
+````
+
+`````
 
 
 Extensions

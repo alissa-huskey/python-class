@@ -170,14 +170,14 @@ def request_demo():
 
 ### Part 4.1: Solo Exercise - Print the Weather
 
-:::{admonition,hint,details,exercise}
+```{exercise}
 
 First, comment out the call to `request_demo()`.
 
 Write a new function called `request_weather()`. Call the url `http://wttr.in`
 then print `response.text`. Be sure to call the new function!
 
-:::
+```
 
 
 Part 5: Getting data from an API
@@ -291,7 +291,7 @@ def request_astros():
 
 ### Part 5.3: Solo Exercise - Latitude and Longitude
 
-:::{admonition,hint,details,exercise}
+```{exercise}
 
 Write a new function called `request_location()`.
 
@@ -303,7 +303,7 @@ Be sure to call your new function and comment out the old one.
 Copy the resulting values and paste them into a comment in
 your script for future reference.
 
-:::
+```
 
 Part 6: Parameters
 ------------------
@@ -425,7 +425,7 @@ bunch of arguments that are optional. Just like our `get` function.
 
 ### Part 6.3: Solo Exercise - Parameters
 
-:::{admonition,hint,details,exercise}
+```{exercise}
 
 Pick one of the following:
 
@@ -444,7 +444,7 @@ Pick one of the following:
   Parameters: `name` = your (or someone else's) first name \
   Print: `age`
 
-:::
+```
 
 Part 7: Private Data
 --------------------
@@ -614,7 +614,7 @@ def request_uv():
 
 ### Part 8.3: Solo Exercise - RapidAPI
 
-:::{admonition,hint,details,exercise}
+```{exercise}
 
 RapidAPI is a platform and marketplace for APIs, so it's a good resource for
 our lessons.
@@ -650,7 +650,7 @@ our lessons.
   Endpoint URL: `https://quotable-quotes.p.rapidapi.com/randomQuotes` \
   Print: `quote` and `author`
 
-:::
+```
 
 
 Part 9: Request Methods
@@ -897,9 +897,10 @@ curl -X POST \
      "https://jsonplaceholder.typicode.com/todos"
 ```
 
-### Part 9.4 Solo Exercise
+Exercise
 
-:::{admonition,hint,details,exercise}
+```{exercise}
+
 
 Use the [Pirate Translator API](https://rapidapi.com/orthosie/api/pirate-translator) translate text into pirate-speak. \
 Endpoint URL: `https://piratespeak.p.rapidapi.com/pirate.json`  \
@@ -912,7 +913,7 @@ Print: `contents` -> `translated`
 > the `POST` method is for cases when a large amount of data may need to be
 > submitted, due to browser and web server limits on URI length.
 
-:::
+```
 
 Part 10. Final Project
 ----------------------
@@ -1007,7 +1008,8 @@ Provide a way for the user to optionally view more or different card views. For 
 * Allow the user to filter cards by fields, such as the `label`(s), if you are
   `subscribed`, `due` date (overdue, due soon), etc.
 
-:::{admonition,note} More Info
+:::{admonition} More Info
+:class: note
 
 This will be a medium-term project.
 
@@ -1023,7 +1025,8 @@ most useful to make you more productive.
 
 :::
 
-:::{admonition,tip}Tips and Reminders
+:::{admonition}Tips and Reminders
+:class: tip
 
 * Choose a goal for each week. **Phase 1** should be doable in a week or maybe
   two. After that, your goal choices will be your own. Consider posting your
