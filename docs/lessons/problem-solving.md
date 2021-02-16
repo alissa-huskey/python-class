@@ -347,13 +347,13 @@ approximate time and heat level in step 3.
 Exercises
 ---------
 
-:::{admonition,hint,details}
+```{exercise}
 
 1. Write a function that returns True if a word is a palindrome.
 2. Write a function that will return a letter grade when given a number.
 3. Write a function to calculate the tip for a bill.
 
-:::
+```
 
 
 ::::{seealso}
