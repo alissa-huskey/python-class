@@ -414,7 +414,7 @@ For `poetry` users:
 
 ```{code-block} bash
 :caption: command line
-poerty add --dev pytest
+poetry add --dev pytest
 ```
 
 Part 3.2: Migrate to Pytest
@@ -465,7 +465,7 @@ greeting.py .                                        [100%]
 ==================== 1 passed in 0.08s =====================
 ```
 
-</div></div>{{clear}}
+</div></div>{{ clear }}
 
 Let's add a failing assertion so we can see what that looks like.
 
@@ -719,13 +719,13 @@ separate from the functions that determine behavior.
 
 def main():
     """Ask the user for text, then print a message telling the user if it is
-       an anagram or not."""
+       an palindrome or not."""
 
-    text = input("Enter a word to determine if it's an anagram: ")
+    text = input("Enter a word to determine if it's an palindrome: ")
     if text == "".join(reversed(text)):
-        print(f"Yes, {text} is an anagram.")
+        print(f"Yes, {text} is an palindrome.")
     else:
-        print(f"No, {text} is not an anagram.")
+        print(f"No, {text} is not an palindrome.")
 
 
 main()
@@ -736,27 +736,27 @@ main()
 
 ```{code-block} python
 
-def is_anagram(text):
+def is_palindrome(text):
     """Return True if text is the same forward and backwards."""
 
     return text == "".join(reversed(text))
 
 def message(result):
     if result:
-        text = f"Yes, {text} is an anagram."
+        text = f"Yes, {text} is an palindrome."
     else:
-        text = f"No, {text} is not an anagram."
+        text = f"No, {text} is not an palindrome."
 
     return text
 
 
 def main():
     """Ask the user for text, then print a message telling the user if it is
-       an anagram or not."""
+       an palindrome or not."""
 
-    text = input("Enter a word to determine if it's an anagram: ")
-    word_is_anagram = is_anagram(text)
-    output = message(word_is_anagram)
+    text = input("Enter a word to determine if it's an palindrome: ")
+    word_is_palindrome = is_palindrome(text)
+    output = message(word_is_palindrome)
     print(output)
 
 if __name__ == "__main__":
@@ -820,8 +820,7 @@ def main():
     text = format_weather(weather["temp"], weather["desc"])
     print(text)
 
-main()
+if __name__ == "__main__":
+    main()
 
 ```
-
-
