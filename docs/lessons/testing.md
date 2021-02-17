@@ -1155,7 +1155,8 @@ def test_format_weather():
 -25 Overcast
 """
 
-    assert format_weather(-25, "Overcast") == text, "should return formatted weather"
+    assert format_weather(-25, "Overcast") == text, \
+         "should return formatted weather"
 
 def test_get_weather():
     data = {
