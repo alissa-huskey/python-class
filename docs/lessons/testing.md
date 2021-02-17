@@ -745,6 +745,8 @@ For simple projects with just one or two Python modules it's fine to keep
 your test files in the same directory (folder) as your python files. However,
 there's a standard structure that is recommended for Python projects.
 
+#### Step 1: Move your files
+
 If you use Poetry and started your project with the `poetry new` command,
 then the correct directory structure was already created for you and looks
 something like this.
@@ -772,6 +774,8 @@ that are related to tests:
   style.
 * Both {file}`__init__.py` files can be empty, they just need to exist.
 
+#### Step 2: Change your import in your test file
+
 Once you've moved your files where they should be, you'll need to change the
 `import` statement in your test file so that it includes the name of the
 parent directory followed by a `.` before the module name.
@@ -781,6 +785,48 @@ parent directory followed by a `.` before the module name.
 
 from pythonclass.greeting import greeting
 ```
+
+#### Step 3: Change any local imports
+
+If you are importing any code from your own files you will need to change the way
+they are imported so that pytest can find them.
+
+Here's an example of how you would change an import from a {file}`private.py`
+file.
+
+<div class="row"><div class="col-6">
+
+```{centered} BEFORE
+```
+
+```{code-block} python
+:caption: local import example
+
+from private import KEY, TOKEN
+```
+
+
+</div><div class="col-6">
+
+```{centered} AFTER
+```
+
+```{code-block} python
+:caption: local import example
+
+from .private import KEY, TOKEN
+```
+
+</div></div>
+
+{{ clear }}
+
+The `.` in front of `private` means that the module is part of the same
+package. Which is essentially the same as saying that the file is in same
+directory.
+
+#### Step 4: Run the tests
+
 
 Now you can run all the test files in that directory at the same time by
 using the directory name instead of a specific file.
