@@ -556,7 +556,7 @@ Part 4: Test best practices
 
 `````{margin}
 
-<a class="btn btn-sm btn-outline-info text-info bg-white" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/test_greeting.py"><i class="fa fa-file-code text-info bg-white"></i> test_greeting.py</a>
+<a class="btn btn-sm btn-outline-info text-info bg-white" href="https://github.com/alissa-huskey/python-class/blob/master/tests/test_greeting.py"><i class="fa fa-file-code text-info bg-white"></i> test_greeting.py</a>
 
 `````
 
