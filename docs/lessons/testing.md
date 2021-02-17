@@ -1,4 +1,11 @@
 ---
+substitutions:
+  file: |
+    ```{margin}
+
+    <a class="btn btn-sm btn-outline-info text-info bg-white" href="https://github.com/alissa-huskey/python-class/blob/master/PATH/NAME"><i class="fa fa-file-code text-info bg-white"></i> NAME</a>
+
+    ```
 jupytext:
   formats: md:myst
   text_representation:
@@ -48,6 +55,7 @@ assert True
 It is equivalent to:
 
 ```{code-block} python
+:linenos:
 if not True:
     raise AssertionError()
 ```
@@ -79,6 +87,7 @@ returns `True` or `False`, such as comparison operators or even function
 calls.
 
 ```{code-block} python
+:linenos:
 :caption: python shell
 assert 2 + 2 == 4
 assert 3 < 10
@@ -88,6 +97,7 @@ assert "Python".startswith("P")
 The {term}`boolean context` also means that {term}`Truthiness` and {term}`Falsiness` apply.
 
 ```{code-block} python
+:linenos:
 :caption: python shell
 assert "hello", "a non-empty string is Truthy"
 assert "", "an empty string is Falsy"
@@ -153,11 +163,7 @@ AssertionError: The number: 78 should be less than 50.
 Part 2: Unit tests
 ------------------
 
-`````{margin}
-
-<a class="btn btn-sm btn-outline-info text-info bg-white" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/greeting.py"><i class="fa fa-file-code text-info bg-white"></i> greeting.py</a>
-
-`````
+{{ file | replace("PATH", "tests") | replace("NAME", "test_greeting.py") }}
 
 While there are many kinds of tests, this lesson will primarily focus on unit
 tests. A unit tests is one that tests one part of our code--for our purposes
@@ -226,7 +232,8 @@ test_greeting()
 
 1\. Copy the following function into a script.
 
-```python
+```{code-block} python
+:linenos:
 def endgame(is_winner):
     """Return a string to tell the player if they won or lost."""
     if is_winner:
@@ -244,7 +251,8 @@ def endgame(is_winner):
 `````{solution} unit-test
 :class: dropdown
 
-```python
+```{code-block} python
+:linenos:
 def endgame(is_winner):
     """Return a string to tell the player if they won or lost."""
     if is_winner:
@@ -333,7 +341,8 @@ def test_greeting():
 
 1\. Copy the following function into a script.
 
-```python
+```{code-block} python
+:linenos:
 def letter_grade(score):
     """Return the letter grade for a particular number score"""
     ranges = {
@@ -362,7 +371,8 @@ def letter_grade(score):
 `````{solution} detailed-unit-test
 :class: dropdown
 
-```python
+```{code-block} python
+:linenos:
 def letter_grade(score):
     """Return the letter grade for a particular number score"""
     ranges = {
@@ -554,11 +564,7 @@ FAILED greeting.py::test_greeting - AssertionError: demo ...
 Part 4: Test best practices
 ---------------------------
 
-`````{margin}
-
-<a class="btn btn-sm btn-outline-info text-info bg-white" href="https://github.com/alissa-huskey/python-class/blob/master/tests/test_greeting.py"><i class="fa fa-file-code text-info bg-white"></i> test_greeting.py</a>
-
-`````
+{{ file | replace("PATH", "pythonclass/lessons") | replace("NAME", "greeting.py") }}
 
 ### Part 4.1: Make a test file
 
@@ -983,6 +989,7 @@ separate from the functions that determine behavior.
 ```
 
 ```{code-block} python
+:caption: palindrome.py
 
 def main():
     """Ask the user for text, then print a message telling the user if it is
@@ -990,9 +997,9 @@ def main():
 
     text = input("Enter a word to determine if it's an palindrome: ")
     if text == "".join(reversed(text)):
-        print(f"Yes, {text} is an palindrome.")
+        print(f'Yes, "{text}" is an palindrome.')
     else:
-        print(f"No, {text} is not an palindrome.")
+        print(f'No, "{text}" is not an palindrome.')
 
 
 main()
@@ -1001,20 +1008,23 @@ main()
 ```{centered} AFTER
 ```
 
+{{ file | replace("PATH", "pythonclass/lessons") | replace("NAME", "palindrome.py") }}
+
 ```{code-block} python
+:caption: palindrome.py
 
 def is_palindrome(text):
     """Return True if text is the same forward and backwards."""
 
     return text == "".join(reversed(text))
 
-def message(result):
-    if result:
-        text = f"Yes, {text} is an palindrome."
+def message(isit, text):
+    if isit:
+        msg = f'Yes, "{text}" is a palindrome.'
     else:
-        text = f"No, {text} is not an palindrome."
+        msg = f'No, "{text}" is not a palindrome.'
 
-    return text
+    return msg
 
 
 def main():
@@ -1023,11 +1033,42 @@ def main():
 
     text = input("Enter a word to determine if it's an palindrome: ")
     word_is_palindrome = is_palindrome(text)
-    output = message(word_is_palindrome)
+    output = message(word_is_palindrome, text)
     print(output)
 
 if __name__ == "__main__":
     main()
+
+```
+
+{{ file | replace("PATH", "tests") | replace("NAME", "test_palindrome.py") }}
+
+```{code-block} python
+:caption: test_palindrome.py
+:linenos:
+
+from pythonclass.lessons.palindrome import is_palindrome, message
+
+def test_is_palindrome_true():
+    assert is_palindrome("radar"), \
+        "should return True if text is the same forwards and backwards"
+
+
+def test_is_palindrome_false():
+    assert not is_palindrome("something"), \
+        "should return False if text is not the same forwards and backwards"
+
+
+def test_message_no():
+    assert message(False, "nope") == 'No, "nope" is not a palindrome.', \
+        "should return a message saying text is not a palindrome if isit is False"
+
+
+
+def test_message_yes():
+    assert message(True, "level") == 'Yes, "level" is a palindrome.', \
+        "should return a message saying text is a palindrome if isit is True"
+
 ```
 
 ### Part 5.2: Isolate external services / dependencies
@@ -1040,6 +1081,8 @@ code that deals with the resulting data.
 ```
 
 ```{code-block} python
+:caption: palindrome.py
+:linenos:
 
 import requests
 
@@ -1050,7 +1093,8 @@ def main():
     weather = response.json()
     print("Current weather")
     print("---------------")
-    print(weather["current_condition"][0]["temp_F"], weather["current_condition"][0]["weatherDesc"][0]["value"])
+    print(weather["current_condition"][0]["temp_F"],
+     weather["current_condition"][0]["weatherDesc"][0]["value"])
 
 main()
 ```
@@ -1058,7 +1102,11 @@ main()
 ```{centered} AFTER
 ```
 
+{{ file | replace("PATH", "tests") | replace("NAME", "test_palindrome.py") }}
+
 ```{code-block} python
+:caption: weather.py
+:linenos:
 
 import requests
 
@@ -1090,6 +1138,56 @@ if __name__ == "__main__":
     main()
 
 ```
+
+{{ file | replace("PATH", "tests") | replace("NAME", "test_weather.py") }}
+{{ file | replace("PATH", "tests") | replace("NAME", "weather.json") }}
+
+```{code-block} python
+:linenos:
+:caption: test_weather.py
+
+from pythonclass.lessons.weather import format_weather, get_weather
+
+def test_format_weather():
+
+    text = """Current weather
+---------------
+-25 Overcast
+"""
+
+    assert format_weather(-25, "Overcast") == text, "should return formatted weather"
+
+def test_get_weather():
+    data = {
+        "current_condition": [
+            {
+                "temp_F": -29,
+                "weatherDesc": [
+                    {
+                        "value": "Overcast"
+                    }
+                ]
+            }
+        ]
+    }
+
+    assert get_weather(data) == {"temp": -29, "desc": "Overcast"}, \
+       "should extract a dict with temp and desc from request data"
+
+
+def test_get_weather_from_file():
+    testdir = Path(__file__).parent
+    filepath = testdir.joinpath("weather.json")
+
+    fp = open(filepath)
+    data = json.load(fp)
+    fp.close()
+
+    assert get_weather(data) == {"temp": "27", "desc": "Partly cloudy"}, \
+       "should extract a dict with temp and desc from request data"
+
+```
+
 
 Part 6: Testing in VS Code
 --------------------------
