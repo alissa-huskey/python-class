@@ -412,7 +412,7 @@ common to use a test runner.
 
 A test runner is a CLI tool that will run your tests and print a nicely
 formatted report of the results. Runners also often include a library that
-can be imported in your tests provide tools and/or frameworks to aid in
+can be imported in your tests to provide tools and/or frameworks to aid in
 writing tests.
 
 Part 3.1: Install `pytest`
@@ -440,7 +440,7 @@ Part 3.2: Migrate to Pytest
 
 To use the runner part of `pytest` we only have to make a minor change to the
 script to make it work with `pytest`. Simply put your `main()` call under a
-`if __name__ == "main"` statement. This allows `pytest` to import your file
+`if __name__ == "__main__"` statement. This allows `pytest` to import your file
 as a module without running the script by calling `main()`.
 
 We also no longer need to call the `test_greeting()` function in the script
