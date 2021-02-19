@@ -1,10 +1,10 @@
-from greeting import greeting
+from pythonclass.lessons.greeting import greeting
 
 def test_greeting_fail():
     assert greeting("buffy") == "", \
         'demo of a test failure'
 
-def test_greeting():
+def test_greeting_lower():
     assert greeting("buffy") == "Welcome Buffy.", \
         'should return "Welcome Buffy." with the lowercase name capitalized.'
 

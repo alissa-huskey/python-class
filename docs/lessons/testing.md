@@ -1,4 +1,11 @@
 ---
+substitutions:
+  file: |
+    ```{margin}
+
+    <a class="btn btn-sm btn-outline-info text-info bg-white" href="https://github.com/alissa-huskey/python-class/blob/master/PATH/NAME"><i class="fa fa-file-code text-info bg-white"></i> NAME</a>
+
+    ```
 jupytext:
   formats: md:myst
   text_representation:
@@ -9,6 +16,8 @@ kernelspec:
   language: python
   name: python3
 ---
+<!-- markdownlint-disable no-inline-html no-alt-text -->
+
 Testing
 =======
 
@@ -16,6 +25,7 @@ Testing
 
 * [Getting Started With Testing in Python](https://realpython.com/python-testing/)
 * [pytest introduction](https://pythontesting.net/framework/pytest/pytest-introduction/)
+* [Python testing in Visual Studio Code](https://code.visualstudio.com/docs/python/testing#_example-test-walkthroughs)
 
 ```
 
@@ -45,6 +55,7 @@ assert True
 It is equivalent to:
 
 ```{code-block} python
+:linenos:
 if not True:
     raise AssertionError()
 ```
@@ -76,6 +87,7 @@ returns `True` or `False`, such as comparison operators or even function
 calls.
 
 ```{code-block} python
+:linenos:
 :caption: python shell
 assert 2 + 2 == 4
 assert 3 < 10
@@ -85,6 +97,7 @@ assert "Python".startswith("P")
 The {term}`boolean context` also means that {term}`Truthiness` and {term}`Falsiness` apply.
 
 ```{code-block} python
+:linenos:
 :caption: python shell
 assert "hello", "a non-empty string is Truthy"
 assert "", "an empty string is Falsy"
@@ -147,15 +160,10 @@ AssertionError: The number: 78 should be less than 50.
 >>> assert num < 50, f"The number: {num} should be less than 50."
 ```
 
-
 Part 2: Unit tests
 ------------------
 
-`````{margin}
-
-<a class="btn btn-sm btn-outline-info text-info bg-white" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/greeting.py"><i class="fa fa-file-code text-info bg-white"></i> greeting.py</a>
-
-`````
+{{ file | replace("PATH", "tests") | replace("NAME", "test_greeting.py") }}
 
 While there are many kinds of tests, this lesson will primarily focus on unit
 tests. A unit tests is one that tests one part of our code--for our purposes
@@ -192,14 +200,15 @@ def test_greeting():
 Let's break that down.
 
 The assertion on line `10` has three parts.
+
 * It begins with the `assert` keyword.
 
 * The expression `greeting("buffy") == "Welcome Buffy."` is the heart of the
   test:
-  - It calls the `greeting()` function with the argument `"buffy"`.
-  - The return value is compared to the string `"Welcome Buffy"` using the `==`
+  * It calls the `greeting()` function with the argument `"buffy"`.
+  * The return value is compared to the string `"Welcome Buffy"` using the `==`
     operator which will evaluate to either `True` or `False`.
-  - The assertion will pass if this evaluates to `True`. Otherwise, the
+  * The assertion will pass if this evaluates to `True`. Otherwise, the
     assertion will fail.
 
 * The string `'should return "Welcome Buffy."'` is a description of what is being
@@ -223,7 +232,8 @@ test_greeting()
 
 1\. Copy the following function into a script.
 
-```python
+```{code-block} python
+:linenos:
 def endgame(is_winner):
     """Return a string to tell the player if they won or lost."""
     if is_winner:
@@ -241,7 +251,8 @@ def endgame(is_winner):
 `````{solution} unit-test
 :class: dropdown
 
-```python
+```{code-block} python
+:linenos:
 def endgame(is_winner):
     """Return a string to tell the player if they won or lost."""
     if is_winner:
@@ -256,7 +267,6 @@ test_endgame()
 ```
 
 `````
-
 
 ### Part 2.3: Testing more cases
 
@@ -331,7 +341,8 @@ def test_greeting():
 
 1\. Copy the following function into a script.
 
-```python
+```{code-block} python
+:linenos:
 def letter_grade(score):
     """Return the letter grade for a particular number score"""
     ranges = {
@@ -360,7 +371,8 @@ def letter_grade(score):
 `````{solution} detailed-unit-test
 :class: dropdown
 
-```python
+```{code-block} python
+:linenos:
 def letter_grade(score):
     """Return the letter grade for a particular number score"""
     ranges = {
@@ -400,9 +412,8 @@ common to use a test runner.
 
 A test runner is a CLI tool that will run your tests and print a nicely
 formatted report of the results. Runners also often include a library that
-can be imported in your tests provide tools and/or frameworks to aid in
+can be imported in your tests to provide tools and/or frameworks to aid in
 writing tests.
-
 
 Part 3.1: Install `pytest`
 --------------------------
@@ -414,7 +425,14 @@ For `poetry` users:
 
 ```{code-block} bash
 :caption: command line
-poerty add --dev pytest
+poetry add --dev pytest
+```
+
+Otherwise:
+
+```{code-block} bash
+:caption: command line
+python -m pip install pytest
 ```
 
 Part 3.2: Migrate to Pytest
@@ -422,7 +440,7 @@ Part 3.2: Migrate to Pytest
 
 To use the runner part of `pytest` we only have to make a minor change to the
 script to make it work with `pytest`. Simply put your `main()` call under a
-`if __name__ == "main"` statement. This allows `pytest` to import your file
+`if __name__ == "__main__"` statement. This allows `pytest` to import your file
 as a module without running the script by calling `main()`.
 
 We also no longer need to call the `test_greeting()` function in the script
@@ -465,7 +483,9 @@ greeting.py .                                        [100%]
 ==================== 1 passed in 0.08s =====================
 ```
 
-</div></div>{{clear}}
+</div></div>
+
+{{ clear }}
 
 Let's add a failing assertion so we can see what that looks like.
 
@@ -537,16 +557,14 @@ FAILED greeting.py::test_greeting - AssertionError: demo ...
 ==================== 1 failed in 0.22s =====================
 ```
 
-</div></div>{{clear}}
+</div></div>
+
+{{ clear }}
 
 Part 4: Test best practices
 ---------------------------
 
-`````{margin}
-
-<a class="btn btn-sm btn-outline-info text-info bg-white" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/test_greeting.py"><i class="fa fa-file-code text-info bg-white"></i> test_greeting.py</a>
-
-`````
+{{ file | replace("PATH", "pythonclass/lessons") | replace("NAME", "greeting.py") }}
 
 ### Part 4.1: Make a test file
 
@@ -626,7 +644,9 @@ FAILED greeting.py::test_greeting - AssertionError: demo ...
 ==================== 1 failed in 0.22s =====================
 ```
 
-</div></div>{{clear}}
+</div></div>
+
+{{ clear }}
 
 ### Part 4.2: One case per test function
 
@@ -637,9 +657,48 @@ bit more difficult to tell exactly which test failed.
 
 It's generally a good idea to have one use case per function.
 
-Let's split our `test_greeting()` function up.
+Let's split the `test_greeting()` function up.
 
-```{literalinclude} ../../pythonclass/lessons/test_greeting.py
+```{code-block} python
+:linenos:
+:caption: test_greeting.py
+
+from greeting import greeting
+
+def test_greeting_fail():
+    assert greeting("buffy") == "", \
+        'demo of a test failure'
+
+
+def test_greeting_lower():
+    assert greeting("buffy") == "Welcome Buffy.", \
+        'should return "Welcome Buffy." with the lowercase name capitalized.'
+
+
+def test_greeting_upper_to_title():
+    assert greeting("XANDER") == "Welcome Xander.", \
+        'should return "Welcome Xander." with all caps name capitalized.'
+
+
+def test_greeting_multi_word():
+    assert greeting("SpongeBob SquarePants") == "Welcome Spongebob Squarepants.", \
+        'should return "Welcome Spongebob Squarepants." with all words capitalized.'
+
+
+def test_greeting_empty_string():
+    assert greeting("") == "Welcome.", \
+        'should return "Welcome." if name is empty.'
+
+
+def test_greeting_blank():
+    assert greeting("  ") == "Welcome.", \
+        'should return "Welcome." if name just whitespace.'
+
+
+def test_greeting_number():
+    assert greeting("42") == "Welcome 42.", \
+        'should return "Welcome 42." no special handling for numbers.'
+
 ```
 
 Now we can run the tests using the `-v` flag to get verbose output. This will
@@ -652,6 +711,139 @@ show us the status of each individual test.
 caption: command line
 ---
 pytest -v test_greeting.py
+```
+
+</div><div class="col-8">
+
+```{code-block} pytest
+:caption: output
+=================== test session starts ====================
+platform darwin -- Python 3.8.1, pytest-6.2.2, ...
+rootdir: ..., configfile: pyproject.toml, testpaths: tests
+collected 7 items                                          
+
+tests/test_greeting.py F......                       [100%]
+
+========================= FAILURES =========================
+____________________ test_greeting_fail ____________________
+
+    def test_greeting_fail():
+>       assert greeting("buffy") == "", \
+            'demo of a test failure'
+E       AssertionError: demo of a test failure
+E       assert 'Welcome Buffy.' == ''
+E         + Welcome Buffy.
+
+tests/test_greeting.py:4: AssertionError
+================= short test summary info ==================
+FAILED tests/test_greeting.py::test_greeting_fail - Asser...
+=============== 1 failed, 6 passed in 0.20s ================
+
+```
+
+</div></div>
+
+{{ clear }}
+
+### Part 4.3: File locations
+
+For simple projects with just one or two Python modules it's fine to keep
+your test files in the same directory (folder) as your python files. However,
+there's a standard structure that is recommended for Python projects.
+
+#### Step 1: Move your files
+
+If you use Poetry and started your project with the `poetry new` command,
+then the correct directory structure was already created for you and looks
+something like this.
+
+```{code-block} text
+:caption: example directory layout
+├── README.md
+├── poetry.lock
+├── pyproject.toml
+├── testing_demo
+│   └── __init__.py
+└── tests
+    ├── __init__.py
+    └── test_testing_demo.py
+```
+
+I won't go into all of the details, but here are the things you need to know
+that are related to tests:
+
+* Your Python files should be in a directory with your project name in `lowercase_with_underscores` style.
+* Python files should also be named with `lowercase_with_underscores` style.
+* Your test files should be in a directory named `tests`.
+* Each test file should start with `test_` and usually correlate with the file
+  that contains the code being tested, also in `lowercase_with_underscores`
+  style.
+* Both {file}`__init__.py` files can be empty, they just need to exist.
+
+#### Step 2: Change your import in your test file
+
+Once you've moved your files where they should be, you'll need to change the
+`import` statement in your test file so that it includes the name of the
+parent directory followed by a `.` before the module name.
+
+```{code-block} python
+:caption: test_greeting.py
+
+from pythonclass.greeting import greeting
+```
+
+#### Step 3: Change any local imports
+
+If you are importing any code from your own files you will need to change the way
+they are imported so that pytest can find them.
+
+Here's an example of how you would change an import from a {file}`private.py`
+file.
+
+<div class="row"><div class="col-6">
+
+```{centered} BEFORE
+```
+
+```{code-block} python
+:caption: local import example
+
+from private import KEY, TOKEN
+```
+
+
+</div><div class="col-6">
+
+```{centered} AFTER
+```
+
+```{code-block} python
+:caption: local import example
+
+from .private import KEY, TOKEN
+```
+
+</div></div>
+
+{{ clear }}
+
+The `.` in front of `private` means that the module is part of the same
+package. Which is essentially the same as saying that the file is in same
+directory.
+
+#### Step 4: Run the tests
+
+
+Now you can run all the test files in that directory at the same time by
+using the directory name instead of a specific file.
+
+<div class="row"><div class="col-4">
+
+```{code-block} bash
+---
+caption: command line
+---
+pytest -v tests
 ```
 
 </div><div class="col-8">
@@ -689,8 +881,90 @@ FAILED test_greeting.py::test_greeting_fail - AssertionEr...
 
 ```
 
-</div></div>{{clear}}
+</div></div>
 
+{{ clear }}
+
+### Part 4.4: Configure pytest
+
+```{seealso}
+
+* [pytests > Configuration](https://docs.pytest.org/en/stable/customize.html)
+* [pytests > Settings](https://docs.pytest.org/en/stable/reference.html#ini-options-ref)
+
+```
+
+If you use Poetry, you can configure `pytest` by adding a
+`tool.pytest.ini_options` section to your {file}`pyproject.toml` file.
+
+```{code-block} toml
+:caption: pyproject.toml
+
+# ...
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+```
+
+Alternately you can add a {file}`pytest.ini` file to your project root directory.
+
+```{code-block} ini
+:caption: pytest.ini
+
+testpaths =
+    tests
+```
+
+This will ensure that pytest is always run using the `tests` directory
+without needing to include the path in your command.
+
+<div class="row"><div class="col-4">
+
+```{code-block} bash
+---
+caption: command line
+---
+pytest -v
+```
+
+</div><div class="col-8">
+
+```{code-block} pytest
+:caption: output
+=================== test session starts ====================
+platform darwin -- Python 3.8.1, pytest-6.2.1, py-1.10.0, ...
+cachedir: .pytest_cache
+rootdir: ...
+collected 7 items                                          
+
+test_greeting.py::test_greeting_fail FAILED          [ 14%]
+test_greeting.py::test_greeting PASSED               [ 28%]
+test_greeting.py::test_greeting_upper_to_title PASSED [ 42%]
+test_greeting.py::test_greeting_multi_word PASSED    [ 57%]
+test_greeting.py::test_greeting_empty_string PASSED  [ 71%]
+test_greeting.py::test_greeting_blank PASSED         [ 85%]
+test_greeting.py::test_greeting_number PASSED        [100%]
+
+========================= FAILURES =========================
+____________________ test_greeting_fail ____________________
+
+    def test_greeting_fail():
+>       assert greeting("buffy") == "", \
+            'demo of a test failure'
+E       AssertionError: demo of a test failure
+E       assert 'Welcome Buffy.' == ''
+E         + Welcome Buffy.
+
+test_greeting.py:4: AssertionError
+================= short test summary info ==================
+FAILED test_greeting.py::test_greeting_fail - AssertionEr...
+=============== 1 failed, 6 passed in 0.21s ================
+
+```
+
+</div></div>
+
+{{ clear }}
 
 Part 5: Writing code for testing
 --------------------------------
@@ -711,21 +985,21 @@ separate from the functions that determine behavior.
 * Anywhere else, use `return` instead of `print` and arguments instead of
   `input()`.
 
-
 ```{centered} BEFORE
 ```
 
 ```{code-block} python
+:caption: palindrome.py
 
 def main():
     """Ask the user for text, then print a message telling the user if it is
-       an anagram or not."""
+       an palindrome or not."""
 
-    text = input("Enter a word to determine if it's an anagram: ")
+    text = input("Enter a word to determine if it's an palindrome: ")
     if text == "".join(reversed(text)):
-        print(f"Yes, {text} is an anagram.")
+        print(f'Yes, "{text}" is an palindrome.')
     else:
-        print(f"No, {text} is not an anagram.")
+        print(f'No, "{text}" is not an palindrome.')
 
 
 main()
@@ -734,35 +1008,68 @@ main()
 ```{centered} AFTER
 ```
 
-```{code-block} python
+{{ file | replace("PATH", "pythonclass/lessons") | replace("NAME", "palindrome.py") }}
 
-def is_anagram(text):
+```{code-block} python
+:caption: palindrome.py
+
+def is_palindrome(text):
     """Return True if text is the same forward and backwards."""
 
     return text == "".join(reversed(text))
 
-def message(result):
-    if result:
-        text = f"Yes, {text} is an anagram."
+def message(isit, text):
+    if isit:
+        msg = f'Yes, "{text}" is a palindrome.'
     else:
-        text = f"No, {text} is not an anagram."
+        msg = f'No, "{text}" is not a palindrome.'
 
-    return text
+    return msg
 
 
 def main():
     """Ask the user for text, then print a message telling the user if it is
-       an anagram or not."""
+       an palindrome or not."""
 
-    text = input("Enter a word to determine if it's an anagram: ")
-    word_is_anagram = is_anagram(text)
-    output = message(word_is_anagram)
+    text = input("Enter a word to determine if it's an palindrome: ")
+    word_is_palindrome = is_palindrome(text)
+    output = message(word_is_palindrome, text)
     print(output)
 
 if __name__ == "__main__":
     main()
+
 ```
 
+{{ file | replace("PATH", "tests") | replace("NAME", "test_palindrome.py") }}
+
+```{code-block} python
+:caption: test_palindrome.py
+:linenos:
+
+from pythonclass.lessons.palindrome import is_palindrome, message
+
+def test_is_palindrome_true():
+    assert is_palindrome("radar"), \
+        "should return True if text is the same forwards and backwards"
+
+
+def test_is_palindrome_false():
+    assert not is_palindrome("something"), \
+        "should return False if text is not the same forwards and backwards"
+
+
+def test_message_no():
+    assert message(False, "nope") == 'No, "nope" is not a palindrome.', \
+        "should return a message saying text is not a palindrome if isit is False"
+
+
+
+def test_message_yes():
+    assert message(True, "level") == 'Yes, "level" is a palindrome.', \
+        "should return a message saying text is a palindrome if isit is True"
+
+```
 
 ### Part 5.2: Isolate external services / dependencies
 
@@ -774,6 +1081,8 @@ code that deals with the resulting data.
 ```
 
 ```{code-block} python
+:caption: palindrome.py
+:linenos:
 
 import requests
 
@@ -784,7 +1093,8 @@ def main():
     weather = response.json()
     print("Current weather")
     print("---------------")
-    print(weather["current_condition"][0]["temp_F"], weather["current_condition"][0]["weatherDesc"][0]["value"])
+    print(weather["current_condition"][0]["temp_F"],
+     weather["current_condition"][0]["weatherDesc"][0]["value"])
 
 main()
 ```
@@ -792,7 +1102,11 @@ main()
 ```{centered} AFTER
 ```
 
+{{ file | replace("PATH", "tests") | replace("NAME", "test_palindrome.py") }}
+
 ```{code-block} python
+:caption: weather.py
+:linenos:
 
 import requests
 
@@ -820,8 +1134,136 @@ def main():
     text = format_weather(weather["temp"], weather["desc"])
     print(text)
 
-main()
+if __name__ == "__main__":
+    main()
+
+```
+
+{{ file | replace("PATH", "tests") | replace("NAME", "test_weather.py") }}
+{{ file | replace("PATH", "tests") | replace("NAME", "weather.json") }}
+
+```{code-block} python
+:linenos:
+:caption: test_weather.py
+
+from pythonclass.lessons.weather import format_weather, get_weather
+
+def test_format_weather():
+
+    text = """Current weather
+---------------
+-25 Overcast
+"""
+
+    assert format_weather(-25, "Overcast") == text, \
+         "should return formatted weather"
+
+def test_get_weather():
+    data = {
+        "current_condition": [
+            {
+                "temp_F": -29,
+                "weatherDesc": [
+                    {
+                        "value": "Overcast"
+                    }
+                ]
+            }
+        ]
+    }
+
+    assert get_weather(data) == {"temp": -29, "desc": "Overcast"}, \
+       "should extract a dict with temp and desc from request data"
+
+
+def test_get_weather_from_file():
+    testdir = Path(__file__).parent
+    filepath = testdir.joinpath("weather.json")
+
+    fp = open(filepath)
+    data = json.load(fp)
+    fp.close()
+
+    assert get_weather(data) == {"temp": "27", "desc": "Partly cloudy"}, \
+       "should extract a dict with temp and desc from request data"
 
 ```
 
 
+Part 6: Testing in VS Code
+--------------------------
+
+### Part 6.1: Setup
+
+From the {guilabel}`Command Palette` select {guilabel}`Python: Configure Tests`.
+
+![](assets/test-configure.png)
+
+Select {guilabel}`pytest` from the dropdown.
+
+![](assets/test-configure-pytest.png)
+
+Select the {guilabel}`tests` directory from the dropdown.
+
+![](assets/test-configure-testdir.png)
+
+### Part 6.2: Running tests
+
+#### Step 1: Click Tests
+
+Click the Test icon from the activity bar.
+
+![](assets/test-activitybar.png)
+
+#### Step 2: Review list of tests
+
+You will see the {guilabel}`TESTING` sidebar panel, where your tests will be
+listed grouped by directory and file.
+
+![](assets/test-sidebar-list.png)
+
+#### Step 3: Run tests
+
+You can run all tests by selecting {guilabel}`Python: Run All Tests` from the
+{guilabel}`Command Palette`
+
+![](assets/test-run-all.png)
+
+Or clicking the play icon at the top of the {guilabel}`TESTING` sidebar.
+
+![](assets/test-sidebar-actions-run-all.png)
+
+Once your tests have run the failing and passing tests will be marked
+accordingly.
+
+![](assets/test-sidebar-list-marked.png)
+
+#### Step 4: View test output
+
+Details about any test failures as well as any other pytest output can be
+seen in the {guilabel}`Python Test Log` which you can access by selecting
+{guilabel}`Python: Show Test Output` from the {guilabel}`Command Palette`:
+
+![](assets/test-show-output.png)
+
+Or by clicking the icon at the top of the {guilabel}`TESTING` sidebar:
+
+![](assets/test-sidebar-actions-output.png)
+
+Or by clicking the {guilabel}`OUTPUT` tab on the panel then selecting
+{guilabel}`Python Test Log` from the dropdown.
+
+![](https://code.visualstudio.com/assets/docs/python/testing/python-test-log-output.png)
+
+### Part 6.3: Changing tests
+
+If you make changes to your tests, you may need to nudge VS Code so that they
+are reflected.
+
+You can run {guilabel}`Python: Discover Tests` from the {guilabel}`Command Palette`:
+
+![](assets/test-discover.png)
+
+Or by clicking the icon at the top of the {guilabel}`TESTING` sidebar:
+
+![](assets/test-sidebar-actions-discover.png)
