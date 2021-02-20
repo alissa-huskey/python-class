@@ -15,8 +15,8 @@ what is in the scope at that point and experiment with code in the context of
 that line. From there you can go forward or backwards in the code or continue
 on until the next breakpoint.
 
-Debugging Hello World
----------------------
+Part 1: Setup
+-------------
 
 ### Step 1: Create Hello World
 
@@ -30,34 +30,175 @@ msg = "Hello World"
 print(msg)
 ```
 
-### Step 2: Add a breakpoint
+### Step 2: Configure
 
-The debugger will run the program normally until it hits a
-{term}`breakpoint`, the place where we tell it to pause the program. So in
-order to make a debugger useful we have to start by adding a breakpoint.
+The first time you run the debugger for a particular project you'll need to
+configure it for that project. These settings are saved in the
+{file}`.vscode/launch.json` file which can be generated for you.
 
-Hover over the gutter on line `2` just to the left of the line number until
-you see a dim red dot. Click the dot to add the breakpoint and it will turn
-into a solid red dot.
-
-![](https://code.visualstudio.com/assets/docs/python/tutorial/breakpoint-set.png)
-
-### Step 3: Run the debugger
-
-Click the {guilabel}`Run` icon on the activity bar to show the
+I. Click the {guilabel}`Run` icon on the activity bar to show the
 {guilabel}`Run` view in the sidebar.
 
 ![](https://code.visualstudio.com/assets/docs/editor/debugging/run.png)
 
-Click the {guilabel}`Run and Debug` button at the top of the sidebar then select
- {guilabel}`Python File` from the dropdown, or just hit enter.
+II. Click the {guilabel}`create a launch.json file` link.
 
- ![](https://code.visualstudio.com/assets/docs/editor/debugging/debug-start.png)
+![](https://code.visualstudio.com/assets/docs/python/debugging/debug-start.png)
 
-![](https://code.visualstudio.com/assets/docs/python/tutorial/debug-configurations.png)
+III. Select {guilabel}`Python File` from the menu that appears under the Command
+Palette.
+
+![](https://code.visualstudio.com/assets/docs/python/debugging/debug-configurations.png)
+
+The {file}`launch.json` file will be created and opened for you.
+
+![](https://code.visualstudio.com/assets/docs/python/debugging/configuration-json.png)
+
+IV. Add a comma to the end of the line that starts with `"console"`, then add a
+new line `"redirectedOutput": true`.
+
+```{code-block} javascript
+:caption: launch.json
+:linenos:
+:emphasize-lines: 12-13
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Python: Current File",
+			"type": "python",
+			"request": "launch",
+			"program": "${file}",
+			"console": "integratedTerminal",
+			"redirectOutput": true
+		}
+	]
+}
+```
+
+```{warning}
+
+The `launch.json` file is JSON, which looks a lot like Python but does have
+some differences. The things you need to know for now are:
+
+* Single quotes are not allowed for strings. Be sure to use double quotes (`"`)
+  around `redirectedOutput`.
+* `true` should be all lowercase, not capitalized
+
+```
+
+V. Save the file then close it.
+
+Part 2: Run the debugger
+------------------------
+
+### Step 1: Add a breakpoint
+
+The debugger will run the program normally until it hits a
+{term}`breakpoint`, the place where we tell it to pause the program. Without
+any breakpoints the program will run normally. So we'll start by adding a
+breakpoint.
+
+Hover over the gutter on line `2` just to the left of the line number until
+you see a dim red dot. To add a breakpoint click the dot. It will change to
+solid red and stay there after you move your cursor.
+
+![](https://code.visualstudio.com/assets/docs/python/tutorial/breakpoint-set.png)
+
+### Step 2: Start the debugger
+
+```{admonition} Shortcut Key
+:class: tip
+
+| macOS      | Windows      | Command                        |
+|------------|--------------|--------------------------------|
+| {kbd}`F5`  |  {kbd}`F5`   | Debug: Start Debugging         |
+
+```
+
+I. Click the {guilabel}`Run` icon on the activity bar to open the
+   {guilabel}`Run` view in the sidebar.
+
+![](https://code.visualstudio.com/assets/docs/editor/debugging/run.png)
 
 
-### Step 4: Look at the variables
+
+II. Next to the {guilabel}`RUN` sidebar title you will see the launch
+    configuration you just created.Click the play button to the left of
+    {guilabel}`Python: Current File`.
+
+![](assets/debug-start.png)
+
+### Step 3: Open the debug console
+
+```{admonition} Shortcut Key
+:class: tip
+
+| macOS      | Windows      | Command                        |
+|------------|--------------|--------------------------------|
+| {kbd}`⇧⌘P` |  {kbd}`⇧⌃P`  | Debug Console                  |
+
+```
+
+Once you've started the debugger, click the {guilabel}`DEBUG CONSOLE` in the
+bottom panel.
+
+Part 3: Overview
+----------------
+
+![](assets/debug-parts-marked.png)
+
+```{centered} Debug Toolbar
+```
+
+* **Continue**
+* **Step**
+* **Step In**
+* **Step Out**
+* **Restart**
+* **Stop**
+
+```{centered} Editor
+```
+
+* current line
+* add to watch
+* current value of variable
+
+```{centered} Run Activity Bar Icon
+```
+
+* breakpoint count
+
+```{centered} Run sidebar
+```
+
+* **Variables** -- lists the the variables that are defined at this point in
+  the code execution, just like the Variables box from the [](reading-code.md)
+  lesson
+
+* **Watch** -- 
+
+* **Call Stack** -- shows where you are in the code stack.
+
+* **Breakpoints** -- lists your breakpoints and tools for managing them.
+
+```{centered} Debug console
+```
+
+* **Input**
+* **Output**
+
+```{centered} Debug status
+```
+
+* **Input**
+* **Output**
+
+### Step 3: Variables
 
 The debugger will stop at the first breakpoint in the program, and you will
 see a yellow arrow next to that line in your file.
@@ -81,6 +222,9 @@ currently being run.
 Since our script has no functions, the global scope is the same as the local
 scope. You will see the the `msg` variable listed both places the value of
 `"Hello World"`.
+
+Part 3: Navigation
+------------------
 
 ### Step 5: Stepping through the code
 
@@ -149,6 +293,15 @@ msg.split()
 ![](https://code.visualstudio.com/assets/docs/python/tutorial/debug-step-03.png)
 
 
+See Also
+--------
+
+```{seealso}
+
+* [VS Code User Guide > Debugging](https://code.visualstudio.com/docs/editor/debugging)
+* [VS Code > Python > Debugging](https://code.visualstudio.com/docs/python/debugging)
+
+```
 
 
 Glossary
