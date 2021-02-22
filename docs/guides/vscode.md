@@ -105,7 +105,7 @@ Resources
 * [Visual Studio Code Crash Course](https://www.youtube.com/watch?v=WPqXP_kLzpo) \
   An in-depth walk-through of core features like layout, search and replace,
   file navigation, keyboard shortcuts, customizations, the terminal and SCM.
-  It's detailed with well labled time markers so it's easy to skip around.
+  It's detailed with well labeled time markers so it's easy to skip around.
   (Recorded by a Mac user.)
 
 :::
@@ -201,10 +201,8 @@ Navigation
 | {kbd}`⇧⌃P`     | Command Palette             |
 | {kbd}`⌃P`      | Quick Open File             |
 | {kbd}`⌃B`      | Toggle Sidebar              |
-| {kbd}`⌃J`      | Toggle Panel {sup}`(unconfirmed)` |
+| {kbd}`⌃J`      | Toggle Panel                |
 | {{ ctrltick }} | Toggle Terminal             |
-
-[^1]: Unconfirmed
 
 ---
 
@@ -217,7 +215,7 @@ Editor
 | {kbd}`Alt↑`    | {kbd}`Alt↓`    | Move line (up, down)      |
 | {kbd}`⇧Alt↑`   | {kbd}`⇧Alt↓`   | Copy line (up, down)      |
 | {kbd}`⌃]`      | {kbd}`⌃[`      | (Indent, Outdent)         |
-| {kbd}`⌃Z`      | {kbd}`⇧⌃Z`     | (Undo, Redo)  {sup}`(unconfirmed)` |
+| {kbd}`⌃Z`      | {kbd}`⇧⌃Z`     | (Undo, Redo)              |
 
 ---
 :card: border-0
@@ -290,13 +288,79 @@ Extensions
 Suggested Settings
 ------------------
 
+Below are some of the settings that I prefer and recommend. Each section
+includes a description of what the change will do followed by the setting(s)
+to change.
+
+### Instructions
+
+You can change your settings by either modifying your {file}`settings.json`
+file or using the Settings UI, whichever you find easiest.
+
+`````{tabbed} Settings (JSON)
+
+On the left side of each section is a JSON dictionary containing the relevant
+settings for the {file}`settings.json` file.
+
+Add the contents of the dictionary for the setting you want to change from this
+document into the dictionary in your {file}`settings.json` file.
+
+1. Use the {guilabel}`Preferences: Open Settings (JSON)` command from the
+   command palette to open your {file}`settings.json` file.
+
+2. Make sure there's a `,` at the end of the last line inside the dictionary in
+   the {file}`settings.json` file.
+
+3. Copy the the part of the JSON from this document that is inside the `{` `}`.
+
+4. Paste it inside the dictionary in the {file}`settings.json` file, just above
+   the last `}` in the file.
+
+`````
+
+`````{tabbed} Settings (UI)
+
+On the right side of each section is a list of relevant settings from the
+Settings UI.
+
+Each shows the category that the setting is listed under from left of the
+Settings UI followed by the setting name and value.
+
+```{image} assets/vscode-settings-ui.png
+:class: mb-4
+```
+
+1. Use the {guilabel}`Preferences: Open Settings (UI)` command from the
+   command palette.
+
+2. Copy the setting title from this document and paste it in the
+   {guilabel}`Search settings` input box.
+   > You can confirm that it is the correct setting by checking the categories on
+   > the left of the Settings UI against the path listed to the setting in this
+   > document.
+
+3. Change the value of the setting to match value show on the right of the
+   setting in this document.
+
+`````
+
+```{seealso}
+
+* [User and Workspace Settings](https://code.visualstudio.com/docs/getstarted/settings)
+
+```
+
+
 ### Hide Open Editors
 
-In the Explorer, don't show the "open editors" section.
+In the {file}`Explorer` don't show the "open editors" section.
 
 ````{sidebar} Settings (UI)
+:class: no-headers
 
-{menuselection}`Features --> Explorer --> Explorer › Open Editors`
+|                                                                |     |
+|----------------------------------------------------------------|-----|
+| {menuselection}`Features --> Explorer › Open Editors: Visible` | `0` |
 
 ````
 
@@ -313,16 +377,19 @@ In the Explorer, don't show the "open editors" section.
 
 ### Minimap
 
-Make the minimap prettier and hide it by default. (Open with {guilabel}`View: Toggle Minimap`.)
+Make the minimap prettier and hide it by default. (You can open it using the
+{guilabel}`View: Toggle Minimap` command.)
 
 ````{sidebar} Settings (UI)
+:class: no-headings
 
-{menuselection}`Text Editor --> Minimap -->`
-
-* {menuselection}`Editor › Minimap: Enabled`
-* {menuselection}`Editor › Minimap: Render Characters`
-* {menuselection}`Editor › Minimap: Max Column`
-* {menuselection}`Editor › Minimap: Show Slider`
+|                                                             |                           |
+|-------------------------------------------------------------|---------------------------|
+| {menuselection}`Text Editor --> Minimap -->`                | ` `                       |
+| `   ` {menuselection}`Editor › Minimap: Enabled`            | <input type="checkbox"> |
+| `   ` {menuselection}`Editor › Minimap: Render Characters`  | <input type="checkbox"> |
+| `   ` {menuselection}`Editor › Minimap: Max Column`         | `200`                     |
+| `   ` {menuselection}`Editor › Minimap: Show Slider`        | `always`                  |
 
 ````
 
@@ -342,11 +409,14 @@ Make the minimap prettier and hide it by default. (Open with {guilabel}`View: To
 
 ### Reduce preview mode
 
-When opening files via {kbd}`⌘P` don't start in [preview mode](https://code.visualstudio.com/docs/getstarted/userinterface#_preview-mode).
+When opening files via Quick Open ({kbd}`⌘P` / {kbd}`⌃P`) don't start in [preview mode](https://code.visualstudio.com/docs/getstarted/userinterface#_preview-mode).
 
 ````{sidebar} Settings (UI)
+:class: no-headers
 
-{menuselection}`Workbench --> Editor Management --> Workbench › Editor: Enable Preview From Quick Open`
+|                                                                                                         |     |
+|---------------------------------------------------------------------------------------------------------|-----|
+| {menuselection}`Workbench --> Editor Management --> Workbench › Editor: Enable Preview From Quick Open` | <input type="checkbox"> |
 
 ````
 
@@ -366,8 +436,11 @@ When opening files via {kbd}`⌘P` don't start in [preview mode](https://code.vi
 Enable auto-save.
 
 ````{sidebar} Settings (UI)
+:class: no-headers
 
-{menuselection}`Text Editor --> Files --> Files: Auto Save`
+|                                                                        |              |
+|------------------------------------------------------------------------|--------------|
+| {menuselection}`Text Editor --> Files --> Files: Auto Save`            | `afterDelay` |
 
 ````
 
@@ -387,10 +460,13 @@ Enable auto-save.
 Disable tips and startup pages.
 
 ````{sidebar} Settings (UI)
+:class: no-headers
 
-* {menuselection}`Workbench --> Workbench: Startup Editor`
-* {menuselection}`Workbench --> Appearance --> Workbench › Tips: Enabled`
-* {menuselection}`Extensions --> Python --> Python: Show Start Page`
+|                                                                          |                         |
+|--------------------------------------------------------------------------|-------------------------|
+| {menuselection}`Workbench --> Workbench: Startup Editor`                 | `none`                  |
+| {menuselection}`Workbench --> Appearance --> Workbench › Tips: Enabled`  | <input type="checkbox"> |
+| {menuselection}`Extensions --> Python --> Python: Show Start Page`       | <input type="checkbox"> |
 
 ````
 
@@ -413,8 +489,11 @@ Disable tips and startup pages.
 Don't add Live Share guests names to your git commit messages.
 
 ````{sidebar} Settings (UI)
+:class: no-headers
 
-{menuselection}`Extensions --> Visual Studio Live Share --> Liveshare: Populate Git Co Authors`
+|                                                                                                  |         |
+|--------------------------------------------------------------------------------------------------|---------|
+| {menuselection}`Extensions --> Visual Studio Live Share --> Liveshare: Populate Git Co Authors`  | `never` |
 
 ````
 
@@ -434,11 +513,13 @@ Don't add Live Share guests names to your git commit messages.
 In the editor highlight the line your cursor is currently on.
 
 ````{sidebar} Settings (UI)
+:class: no-headers
 
-{menuselection}`Text Editor -->`
-
-* {menuselection}`Editor: Render Line Highlight`
-* {menuselection}`Editor: Render Line Highlight Only When Focus`
+|                                                                      |                                 |
+|----------------------------------------------------------------------|---------------------------------|
+| {menuselection}`Text Editor -->`                                     | ` `                             |
+| `   ` {menuselection}`Editor: Render Line Highlight`                 | `all`                           |
+| `   ` {menuselection}`Editor: Render Line Highlight Only When Focus` | <input type="checkbox" checked> |
 
 ````
 
@@ -461,14 +542,15 @@ information as you're learning. They can make the interface a bit noisy. These
 settings disable them, though they can still be triggered using a shortcut key.
 
 ````{sidebar} Settings (UI)
+:class: no-headers
 
-{menuselection}`Text Editor --> Editor › Parameter Hints`
-
-{menuselection}`Text Editor --> Suggestions`
-
-* {menuselection}`Editor: Suggest On Trigger Characters`
-* {menuselection}`Editor: Quick Suggestions`
-* {menuselection}`Editor: Accept Suggestion On Commit Character`
+|                                                                      |                         |
+|----------------------------------------------------------------------|-------------------------|
+| {menuselection}`Text Editor --> Editor › Parameter Hints: Enabled`   | <input type="checkbox"> |
+| {menuselection}`Text Editor --> Suggestions`                         | ` `                     |
+| `   ` {menuselection}`Editor: Suggest On Trigger Characters`         | <input type="checkbox"> |
+| `   ` {menuselection}`Editor: Quick Suggestions`                     | [^json]                 |
+| `   ` {menuselection}`Editor: Accept Suggestion On Commit Character` | <input type="checkbox"> |
 
 ````
 
@@ -491,13 +573,41 @@ settings disable them, though they can still be triggered using a shortcut key.
 ---
 
 
-### EditorConfig compatability
+### Git
+
+If you use the EditorConfig extension, disable the built-in whitespace handling features as it is not compatible.
+
+````{sidebar} Settings (UI)
+:class: no-headers
+
+|                                                        |        |
+|--------------------------------------------------------|--------|
+| {menuselection}`Extensions --> Git --> Git: Autofetch` | `true` |
+
+````
+
+```{code-block} javascript
+:caption: settings.json
+{
+    "git.autofetch": true,
+}
+```
+
+{{ clear }}
+
+---
+
+
+### EditorConfig compatibility
 
 If you use the EditorConfig extension, disable the built-in whitespace handling features as they interfere.
 
 ````{sidebar} Settings (UI)
+:class: no-headers
 
-{menuselection}`Text Editor --> Files --> Files: Trim Trailing Whitespace`
+|                                                                                       |                         |
+|---------------------------------------------------------------------------------------|-------------------------|
+| {menuselection}`Text Editor --> Files --> Files: Trim Trailing Whitespace`            | <input type="checkbox"> |
 
 ````
 
@@ -511,6 +621,8 @@ If you use the EditorConfig extension, disable the built-in whitespace handling 
 {{ clear }}
 
 ---
+
+[^json]: edit in {file}`settings.json`
 
 Themes
 ------
@@ -568,3 +680,4 @@ Themes
 [Mario Color]: ../assets/mario.png
 [One Dark Raincoat Light]: ../assets/raincoat-light.png
 [Dolch Light]: ../assets/dolch-light.png
+
