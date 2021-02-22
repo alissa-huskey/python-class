@@ -246,10 +246,10 @@ print(msg)
 ```
 
 Now save the file and restart the debugger by clicking
-![debug-action-restart][] on the debug toolbar or using the {kbd}`⇧⌘F5` /
+![debug-action-restart][] on the debug toolbar or by using the {kbd}`⇧⌘F5` /
 {kbd}`⇧⌃F5` keyboard shortcut.
 
-### Step 4.2: Step Into -- Line 4
+### Step 4.2: Step Into -- Line `4`
 
 For this exercise we'll be using the Step Into tool, which will step through the
 code one line at a time *in the order that they are executed*. The line highlighted in the
@@ -266,7 +266,7 @@ Notice that:
 
 ![](assets/debug-basic-stepping-a.png)
 
-### Step 4.3: Step Into -- Line 5
+### Step 4.3: Step Into -- Line `5`
 
 Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
 keyboard shortcut to go to the next line.
@@ -280,7 +280,7 @@ Notice that:
 
 ![](assets/debug-basic-stepping-b.png)
 
-### Step 4.4: Step Into -- Line 7
+### Step 4.4: Step Into -- Line `7`
 
 Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
 keyboard shortcut to go to the next line.
@@ -293,7 +293,7 @@ Notice that:
 
 ![](assets/debug-basic-stepping-c.png)
 
-### Step 4.5: Step Into -- Line 8
+### Step 4.5: Step Into -- Line `8`
 
 Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
 keyboard shortcut to go to the next line.
@@ -360,11 +360,11 @@ Remove the breakpoint from line `2` then add a breakpoint to line `1`.
 
 ### Step 5.3: Run the debugger
 
-Run the debugger by clicking ![debug-action-run][] in the **sidebar** or using the {kbd}`F5` keyboard shortcut.
+Run the debugger by clicking ![debug-action-run][] in the **sidebar** or by using the {kbd}`F5` keyboard shortcut.
 
 ![](assets/debug-step-loops-run.png)
 
-### Step 5.4: Step Into -- Loop 1, Line 7
+### Step 5.4: Step Into -- Loop `1`, Line `7`
 
 Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
 keyboard shortcut to go to the next line.
@@ -382,7 +382,7 @@ Click that to expand the section to see more details.
 
 ![](assets/debug-step-loops-variables-expand.png)
 
-### Step 5.5: Step Into -- Loop 1, Line 8
+### Step 5.5: Step Into -- Loop `1`, Line `8`
 
 Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
 keyboard shortcut to go to the next line.
@@ -395,7 +395,7 @@ Notice that:
 
 ![](assets/debug-step-loops-b.png)
 
-### Step 5.6: Step Into -- Loop 2, Line 7
+### Step 5.6: Step Into -- Loop `2`, Line `7`
 
 Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
 keyboard shortcut to go to the next line.
@@ -411,7 +411,7 @@ Notice that:
 
 ![](assets/debug-step-loops-c.png)
 
-### Step 5.7: Step Into -- Loop 2, Line 8
+### Step 5.7: Step Into -- Loop `2`, Line `8`
 
 Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
 keyboard shortcut to go to the next line.
@@ -424,7 +424,7 @@ Notice that:
 
 ![](assets/debug-step-loops-d.png)
 
-### Step 5.8: Step Into -- Loop 3, Line 7
+### Step 5.8: Step Into -- Loop `3`, Line `7`
 
 Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
 keyboard shortcut to go to the next line.
@@ -438,7 +438,7 @@ Notice that:
 * Lines `8` **from the previous loop** has been executed the output of `It's a lovely day for coding, isn't it?`
   appears in the {guilabel}`DEBUG CONSOLE`.
 
-### Step 5.9: Step Into -- Loop 3, Line 8
+### Step 5.9: Step Into -- Loop `3`, Line `8`
 
 Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
 keyboard shortcut to go to the next line.
@@ -451,7 +451,7 @@ Notice that:
 
 ![](assets/debug-step-loops-f.png)
 
-### Step 5.10: Step Into -- Line 10
+### Step 5.10: Step Into -- Line `10`
 
 Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
 keyboard shortcut to go to the next line.
@@ -471,7 +471,151 @@ of the program in the debugger.
 
 :::
 
+### Step 5.11: Stop the debugger
+
+Click ![debug-action-stop][] on the debug toolbar or use the {kbd}`⇧F5`
+keyboard shortcut to stop the debugger.
+
+
+Part 6: Stepping through functions
+----------------------------------
+
+Let's see what happens when we do the same exercise, but this time with
+functions.
+
+### Step 6.1: Setup
+
+Let's change {file}`hello_world.py` so that it uses functions.
+
+Change the {file}`hello_world.py` file so that it contains the following.
+
+```{code-block} python
+:linenos:
+:caption: hello_world.py
+MESSAGES = [
+    "Hello World",
+    "It's a lovely day for coding, isn't it?",
+    "Farewell.",
+]
+
+def message(num):
+    print(MESSAGES[num])
+
+def main():
+    message(0)
+    message(1)
+    message(2)
+
+main()
+```
+
+Save the file and make sure your breakpoint is on line `1`.
+
+### Step 6.2: Run the debugger
+
+Run the debugger by clicking ![debug-action-run][] in the **sidebar** or by using the {kbd}`F5` keyboard shortcut.
+
+![](assets/debug-step-functions-a.png)
+
+### Step 6.3: Line `7`
+
+Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
+keyboard shortcut to go to the next line.
+
+![](assets/debug-step-functions-b.png)
+
+### Step 6.4: Line `10`
+
+Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
+keyboard shortcut to go to the next line.
+
+![](assets/debug-step-functions-c.png)
+
+### Step 6.5: Line `15`
+
+Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
+keyboard shortcut to go to the next line.
+
+![](assets/debug-step-functions-d.png)
+
+### Step 6.6: `main()` > Line `11`
+
+Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
+keyboard shortcut to go to the next line.
+
+![](assets/debug-step-functions-e.png)
+
+### Step 6.7: `main()` > `message()` > Line `8`
+
+Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
+keyboard shortcut to go to the next line.
+
+![](assets/debug-step-functions-f.png)
+
+### Step 6.8: `main()` > Line `11`
+
+Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
+keyboard shortcut to go to the next line.
+
+![](assets/debug-step-functions-g.png)
+
+### Step 6.9: `main()` > Line `12`
+
+Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
+keyboard shortcut to go to the next line.
+
+![](assets/debug-step-functions-h.png)
+
+### Step 6.10: `main()` > `message()` > Line `8`
+
+Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
+keyboard shortcut to go to the next line.
+
+![](assets/debug-step-functions-i.png)
+
+### Step 6.11: `main()` > Line `12`
+
+Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
+keyboard shortcut to go to the next line.
+
+![](assets/debug-step-functions-j.png)
+
+### Step 6.12: `main()` > Line `13`
+
+Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
+keyboard shortcut to go to the next line.
+
+![](assets/debug-step-functions-k.png)
+
+### Step 6.13: `main()` > `message()` > Line `8`
+
+Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
+keyboard shortcut to go to the next line.
+
+![](assets/debug-step-functions-l.png)
+
+### Step 6.14: `main()` > Line `13`
+
+Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
+keyboard shortcut to go to the next line.
+
+![](assets/debug-step-functions-m.png)
+
+### Step 6.15: Line `15`
+
+Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
+keyboard shortcut to go to the next line.
+
+![](assets/debug-step-functions-n.png)
+
+### Step 16.16: Stop the debugger
+
+Click ![debug-action-stop][] on the debug toolbar or use the {kbd}`⇧F5`
+keyboard shortcut to stop the debugger.
+
+
 ---
+
 
 
 
@@ -536,6 +680,10 @@ top of the editor.
 [debug-action-step-out]: assets/debug-action-step-out.png
 [debug-action-restart]: assets/debug-action-restart.png
 [debug-action-stop]: assets/debug-action-stop.png
+
+### Debug Console
+
+![](assets/debug-console-detail.png)
 
 
 See Also
