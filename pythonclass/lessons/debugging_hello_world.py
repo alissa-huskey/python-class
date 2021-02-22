@@ -1,8 +1,10 @@
-msg = "Hello World"
-print(msg)
+messages = [
+    "Hello World",
+    "It's a lovely day for coding, isn't it?",
+    "Farewell.",
+]
 
-msg = "It's a lovely day for coding, isn't it?"
-print(msg)
+for msg in messages:
+    print(msg)
 
-msg = "Farewell."
-print(msg)
+pass

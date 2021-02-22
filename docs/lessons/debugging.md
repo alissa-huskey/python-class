@@ -125,12 +125,16 @@ I. Click the {guilabel}`Run` icon on the activity bar to open the
 ![](https://code.visualstudio.com/assets/docs/editor/debugging/run.png)
 
 
-
-II. Next to the {guilabel}`RUN` sidebar title you will see the launch
-    configuration you just created.Click the play button to the left of
+II. Next to the {guilabel}`Run` sidebar title you will see the launch
+    configuration you just created. Click the play button to the left of
     {guilabel}`Python: Current File`.
 
 ![](assets/debug-start.png)
+
+The debugger will stop at the first breakpoint in the program. The current line
+will be highlighted with a yellow arrow in the gutter.
+
+![](assets/debug-editor-current.png)
 
 ### Step 3: Open the debug console
 
@@ -143,95 +147,89 @@ II. Next to the {guilabel}`RUN` sidebar title you will see the launch
 
 ```
 
-Once you've started the debugger, click the {guilabel}`DEBUG CONSOLE` in the
-bottom panel.
+If it's not already open click the {guilabel}`DEBUG CONSOLE` title in the bottom
+panel.
 
-Part 3: Overview
-----------------
+![](assets/debug-console.png)
 
-![](assets/debug-parts-marked.png)
 
-```{centered} Debug Toolbar
-```
+Your program output will be shown here in addition to in the
+{guilabel}`Terminal` while the debugger is running. (This behavior can be
+changed via the `redirectOutput` setting in the {file}`launch.json` file.)
 
-* **Continue**
-* **Step**
-* **Step In**
-* **Step Out**
-* **Restart**
-* **Stop**
 
-```{centered} Editor
-```
+Part 3: Inspecting data
+-----------------------
 
-* current line
-* add to watch
-* current value of variable
+### Step 1: Variables in the sidebar
 
-```{centered} Run Activity Bar Icon
-```
+The {guilabel}`Variables` section in the sidebar is just like the Variables box
+from the [](reading-code.md) lesson. It lists everything that is defined at
+this point in the code execution and shows what it is set to.
 
-* breakpoint count
-
-```{centered} Run sidebar
-```
-
-* **Variables** -- lists the the variables that are defined at this point in
-  the code execution, just like the Variables box from the [](reading-code.md)
-  lesson
-
-* **Watch** -- 
-
-* **Call Stack** -- shows where you are in the code stack.
-
-* **Breakpoints** -- lists your breakpoints and tools for managing them.
-
-```{centered} Debug console
-```
-
-* **Input**
-* **Output**
-
-```{centered} Debug status
-```
-
-* **Input**
-* **Output**
-
-### Step 3: Variables
-
-The debugger will stop at the first breakpoint in the program, and you will
-see a yellow arrow next to that line in your file.
-
-The {guilabel}`Variables` section in the sidebar shows you the variables that
-are defined at this point in the code execution, just like the Variables box
-from the [](reading-code.md) lesson.
+In our {file}`hello_world.py` debugging seession, you can see that the `msg`
+variable listed with the value of `"Hello World"`.
 
 ![](https://code.visualstudio.com/assets/docs/python/tutorial/debug-step-02.png)
 
-The variables has two sections.
+### Step 2: Editor hover
 
-The {guilabel}`Globals` section lists variables defined in the {term}`global scope`.
- Your global variables will be listed here and so will any modules you've
- imported.
+You can also use the editor to see the current value of a variable. If you
+hover your cursor over the variable name `msg`, a tooltip will pop up showing
+you its current value.
 
-The {guilabel}`Locals` section lists variables defined in the {term}`local scope`.
-This is where you will find variables that are inside of the function
-currently being run.
+![](assets/debug-editor-hover.png)
 
-Since our script has no functions, the global scope is the same as the local
-scope. You will see the the `msg` variable listed both places the value of
-`"Hello World"`.
+### Step 3: The debug console
 
-Part 3: Navigation
-------------------
+Finally, you can use the {guilabel}`DEBUG CONSOLE` to get more information
+about your data and more.
 
-### Step 5: Stepping through the code
+The {guilabel}`DEBUG CONSOLE` is where you will see your programs output if
+`redirectOutput` is set in the {file}`launch.json` file.  It is also a fully
+functional Python REPL that operates in the context of the current line in the
+program.
 
-#### Step 5.1: Add some lines
+At the bottom of the {guilabel}`DEBUG CONSOLE` is a prompt where you can type
+input just like you would at a {command}`Python` or {command}`IPython` shell.
+The results will appear in the larger area above.
 
-This file is a bit too short to step through so let's make it a tad more
-interesting. Add the following lines.
+![](assets/debug-console-detail.png)
+
+Let's use this to get more information about the `msg` variable.
+
+At the {guilabel}`DEBUG CONSOLE` prompt, type the the following commands and
+then hit enter after each.
+
+```{code-block} python
+:caption: debug console prompt
+msg
+type(msg)
+len(msg)
+msg.istitle()
+msg.isdigit()
+```
+
+![](assets/debug-console-repl.png)
+
+You can also use the {guilabel}`DEBUG CONSOLE` to see available variables,
+functions and methods. Suggestions will appear as you type, and you can use the
+up or down arrows to scroll through the list.
+
+![](assets/debug-console-suggestions.png)
+
+Part 4: Basic stepping
+----------------------
+
+Let's learn how to use the debugger to walk through the code just like we did
+in the [](reading-code.md) lesson.
+
+### Step 4.1: Modify {file}`hello_world.py`
+
+Let's start by adding to the {file}`hello_world.py` file so we have a little
+more to work with.
+
+Add the following to the {file}`hello_world.py` file.
 
 ```{code-block} python
 :linenos:
@@ -247,50 +245,297 @@ msg = "Farewell."
 print(msg)
 ```
 
-Save the file, then add breakpoints to lines `5` and `8`.
+Now save the file and restart the debugger by clicking
+![debug-action-restart][] on the debug toolbar or using the {kbd}`⇧⌘F5` /
+{kbd}`⇧⌃F5` keyboard shortcut.
 
-#### Step 5.2: The debug toolbar
+### Step 4.2: Step Into -- Line 4
 
-When the debugger is running you will see the debug toolbar.
+For this exercise we'll be using the Step Into tool, which will step through the
+code one line at a time *in the order that they are executed*. The line highlighted in the
+debugger is the line that is *about* to execute.
 
-![](https://code.visualstudio.com/assets/docs/python/tutorial/debug-toolbar.png)
+Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
+keyboard shortcut to go to the next line.
 
-For now you only need to worry about these three buttons.
+Notice that:
 
-| Button               | Shortcut   | Action                               |
-|----------------------|------------|--------------------------------------|
-| ![debug-continue][]  | {kbd}`F5`  | Continue to the next breakpoint      |
-| ![debug-step-in][]   | {kbd}`F11` | Step down in the program             |
-| ![debug-stop][]      | {kbd}`⇧F5` | Stop the debugger                    |
+* Line `4` is now highlighted in the editor.
+* Line `2` has been executed so the output of `Hello World` appears in the
+  {guilabel}`DEBUG CONSOLE`.
+
+![](assets/debug-basic-stepping-a.png)
+
+### Step 4.3: Step Into -- Line 5
+
+Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
+keyboard shortcut to go to the next line.
+
+Notice that:
+
+* Line `5` is now highlighted in the editor.
+* Line `4` has been executed so the value of the `msg` variable is now set to
+  `"It's a lovely day for coding, isn't it?"` in the {guilabel}`Variables`
+  section of the sidebar.
+
+![](assets/debug-basic-stepping-b.png)
+
+### Step 4.4: Step Into -- Line 7
+
+Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
+keyboard shortcut to go to the next line.
+
+Notice that:
+
+* Line `7` is now highlighted in the editor.
+* Line `5` has been executed so the output of `It's a lovely day for coding, isn't it?`
+  appears in the {guilabel}`DEBUG CONSOLE`.
+
+![](assets/debug-basic-stepping-c.png)
+
+### Step 4.5: Step Into -- Line 8
+
+Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
+keyboard shortcut to go to the next line.
+
+Notice that:
+
+* Line `8` is now highlighted in the editor.
+* Line `4` has been executed so the value of the `msg` variable is now set to
+  `"Farewell."` in the {guilabel}`Variables` section of the sidebar.
+
+![](assets/debug-basic-stepping-d.png)
 
 
-[debug-continue]: assets/debug-continue.png
-[debug-step-in]: assets/debug-step-in.png
-[debug-stop]: assets/debug-stop.png
+### Step 4.6: Continue
 
-Now that we have a few more lines of code to walk through, hit the 
+Since this is the last line of the program use Continue to finish the progam.
 
-### Step 5: Run code in the local context
+Click ![debug-action-continue][] on the debug toolbar or use the {kbd}`F5` keyboard
+shortcut to go to continue to the end of the program.
 
-Let's say we want to play around with the `msg` variable. For that we can use
-the {guilabel}`Debug Console`.
+Notice that:
 
-From the bottom pane click the {guilabel}`Debug Console` header.
+* Line `8` has been executed so the output of `Farewell.` appears in the
+  {guilabel}`DEBUG CONSOLE`.
+* The debugger has finished.
 
-At the bottom of the pane you will see a prompt that works just like a Python
-shell, but in the context of the current line. The results will appear in the
-pane above the prompt.
+![](assets/debug-basic-stepping-e.png)
 
-In this case we have the `msg` variable defined. Let's play around with that
-variable by typing the following three lines one at a time.
 
-```python
-msg
-msg.capitalize()
-msg.split()
+Part 5: Steeping through loops
+------------------------------
+
+Let's see what happens when we do the same exercise, but this time with a for
+loop.
+
+### Step 5.1: Modify {file}`hello_world.py`
+
+Let's change {file}`hello_world.py` so that it uses a for loop.
+
+Change the {file}`hello_world.py` file so that it contains the following.
+
+```{code-block} python
+:linenos:
+:caption: hello_world.py
+messages = [
+    "Hello World",
+    "It's a lovely day for coding, isn't it?",
+    "Farewell.",
+]
+
+for msg in messages:
+    print(msg)
+
+pass
 ```
 
-![](https://code.visualstudio.com/assets/docs/python/tutorial/debug-step-03.png)
+Save the file.
+
+### Step 5.2: Modify your breakpoints
+
+Remove the breakpoint from line `2` then add a breakpoint to line `1`.
+
+![](assets/debug-step-loops-breakpoints.png)
+
+### Step 5.3: Run the debugger
+
+Run the debugger by clicking ![debug-action-run][] in the **sidebar** or using the {kbd}`F5` keyboard shortcut.
+
+![](assets/debug-step-loops-run.png)
+
+### Step 5.4: Step Into -- Loop 1, Line 7
+
+Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
+keyboard shortcut to go to the next line.
+
+Notice that:
+
+* Line `7` is now highlighted in the editor.
+* Lines `1` through `5` have been executed so the `messages` variable is now
+  listed in the {guilabel}`VARIABLES` section of the sidebar.
+
+![](assets/debug-step-loops-a.png)
+
+The `messages` variable in the sidebar now has a `>` symbol to the left of it.
+Click that to expand the section to see more details.
+
+![](assets/debug-step-loops-variables-expand.png)
+
+### Step 5.5: Step Into -- Loop 1, Line 8
+
+Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
+keyboard shortcut to go to the next line.
+
+Notice that:
+
+* Line `8` is now highlighted in the editor.
+* Lines `7` has been executed so the `msg` variable is now
+  listed in the {guilabel}`VARIABLES` section of the sidebar.
+
+![](assets/debug-step-loops-b.png)
+
+### Step 5.6: Step Into -- Loop 2, Line 7
+
+Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
+keyboard shortcut to go to the next line.
+
+This time, instead of going to the next line in the file, the debugger goes to
+line `7` again for the next iteration of the for loop.
+
+Notice that:
+
+* Line `7` is now highlighted in the editor.
+* Lines `8` **from the previous loop** has been executed the output of `Hello World`
+  appears in the {guilabel}`DEBUG CONSOLE`.
+
+![](assets/debug-step-loops-c.png)
+
+### Step 5.7: Step Into -- Loop 2, Line 8
+
+Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
+keyboard shortcut to go to the next line.
+
+Notice that:
+
+* Line `8` is now highlighted in the editor.
+* Lines `7` has been executed so the `msg` variable is now
+  updated in the {guilabel}`VARIABLES` section of the sidebar.
+
+![](assets/debug-step-loops-d.png)
+
+### Step 5.8: Step Into -- Loop 3, Line 7
+
+Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
+keyboard shortcut to go to the next line.
+
+This time, instead of going to the next line in the file, the debugger goes to
+line `7` again for the next iteration of the for loop.
+
+Notice that:
+
+* Line `7` is now highlighted in the editor.
+* Lines `8` **from the previous loop** has been executed the output of `It's a lovely day for coding, isn't it?`
+  appears in the {guilabel}`DEBUG CONSOLE`.
+
+### Step 5.9: Step Into -- Loop 3, Line 8
+
+Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
+keyboard shortcut to go to the next line.
+
+Notice that:
+
+* Line `8` is now highlighted in the editor.
+* Lines `7` has been executed so the `msg` variable is now
+  updated in the {guilabel}`VARIABLES` section of the sidebar.
+
+![](assets/debug-step-loops-f.png)
+
+### Step 5.10: Step Into -- Line 10
+
+Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
+keyboard shortcut to go to the next line.
+
+Notice that:
+
+* Line `10` is now highlighted in the editor.
+* Lines `8` **from the final loop** has been executed the output of `Farewell.`
+  appears in the {guilabel}`DEBUG CONSOLE`.
+
+![](assets/debug-step-loops-g.png)
+
+:::{hint}
+
+The `pass` statement does nothing. I added it here so we can see the last line
+of the program in the debugger.
+
+:::
+
+---
+
+
+
+
+Reference
+---------
+
+### Overview
+
+![](assets/debug-parts-marked.png)
+
+```{table}
+:class: no-headers
+
+| Area                                  | Description                                                         |
+|---------------------------------------|---------------------------------------------------------------------|
+| ![][FF4014] **Debug toolbar**         | Controller for stopping, starting and stepping through the code.    |
+| ![][F6EC00] **Editor**                | The editor has additonal debug features.                            |
+| ![][00FCFF] **Run activity bar icon** | Button for opening the {guilabel}`Run` sidebar.                     |
+| ![][BF38F3] **Run sidebar**           | Tools for managing breakpoints and inspecting data.                 |
+| ![][95D360] **Debug console**         | Python REPL and program output.                                     |
+| ![][00A3D7] **Debug status**          | Debugger can be started from here as well.                          |
+
+```
+
+[FF4014]: https://placehold.it/20/FF4014/?text=+
+[F6EC00]: https://placehold.it/20/F6EC00/?text=+
+[00FCFF]: https://placehold.it/20/00FCFF/?text=+
+[BF38F3]: https://placehold.it/20/BF38F3/?text=+
+[95D360]: https://placehold.it/20/95D360/?text=+
+[00A3D7]: https://placehold.it/20/00A3D7/?text=+
+
+
+### The debug toolbar
+
+The debug toolbar is a controller widget that's usually found hovering near the
+top of the editor.
+
+![](assets/debug-toolbar.png)
+
+```{centered} Debug Actions
+```
+
+```{table} Debug Actions
+:class: no-headers
+
+| Button                      | Shortcut                     | Name      | Action                                     |
+|-----------------------------|------------------------------|-----------|--------------------------------------------|
+| ![debug-action-continue][]  | {kbd}`F5`                    | Continue  | Continue to the next breakpoint.           |
+| ![debug-action-step-over][] | {kbd}`F10`                   | Step Over | Go to the next line in the current scope.  |
+| ![debug-action-step-in][]   | {kbd}`F11`                   | Step Into | Go to the next line to be executed.        |
+| ![debug-action-step-out][]  | {kbd}`⇧F11`                  | Step Out  | Go to the line that called this function.  |
+| ![debug-action-restart][]   | {kbd}`⇧⌘F5` <br> {kbd}`⇧⌃F5` | Restart   | Restart the debugger.                      |
+| ![debug-action-stop][]      | {kbd}`⇧F5`                   | Stop      | Stop the debugger.                         |
+
+```
+
+[debug-action-run]: assets/debug-action-run.png
+[debug-action-continue]: assets/debug-action-continue.png
+[debug-action-step-over]: assets/debug-action-step-over.png
+[debug-action-step-in]: assets/debug-action-step-in.png
+[debug-action-step-out]: assets/debug-action-step-out.png
+[debug-action-restart]: assets/debug-action-restart.png
+[debug-action-stop]: assets/debug-action-stop.png
 
 
 See Also
@@ -314,23 +559,3 @@ breakpoint
   A place for the debugger to pause the program.
 
 ```
-
----
-
-* [ ] debugging terms
-	  * [ ] breakpoint
-* [ ] debugger in vs code
-	* [ ] run view from activity bar
-
-
-	* [ ] debugger actions
-		* [ ] continue/pause
-		* [ ] step over
-		* [ ] step over
-		* [ ] step into
-		* [ ] step out
-
-	* [ ] variables
-			* changing variables
-	* [ ] call stack
-	* [ ] debug console
