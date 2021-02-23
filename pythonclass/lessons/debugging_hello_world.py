@@ -1,10 +1,15 @@
-messages = [
+MESSAGES = [
     "Hello World",
     "It's a lovely day for coding, isn't it?",
     "Farewell.",
 ]
 
-for msg in messages:
-    print(msg)
+def message(num):
+    print(MESSAGES[num])
 
-pass
+def main():
+    message(0)
+    message(1)
+    message(2)
+
+main()
