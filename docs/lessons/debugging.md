@@ -6,8 +6,8 @@ step and figure out how a line is evaluated and what the value of a variable
 is are at a given point.
 
 Thinking through code like this is a fundamental skill to develop. However,
-there's also a tool that we can use to do this process called. Usually it's
-used for figuring out problems in code, which is why it's called a debugger.
+there's also a tool can help us with this process.  Usually it's used for
+figuring out problems in code, which is why it's called a debugger.
 
 A debugger allows you to run a program normally until you reach a particular
 point you want to know more about. Then the program is paused so you can see
@@ -55,7 +55,7 @@ The {file}`launch.json` file will be created and opened for you.
 ![](https://code.visualstudio.com/assets/docs/python/debugging/configuration-json.png)
 
 IV. Add a comma to the end of the line that starts with `"console"`, then add a
-new line `"redirectedOutput": true`.
+new line `"redirectOutput": true`.
 
 ```{code-block} javascript
 :caption: launch.json
@@ -85,7 +85,7 @@ The `launch.json` file is JSON, which looks a lot like Python but does have
 some differences. The things you need to know for now are:
 
 * Single quotes are not allowed for strings. Be sure to use double quotes (`"`)
-  around `redirectedOutput`.
+  around `redirectOutput`.
 * `true` should be all lowercase, not capitalized
 
 ```
@@ -529,14 +529,32 @@ keyboard shortcut to go to the next line.
 Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
 keyboard shortcut to go to the next line.
 
+Notice that under {guilabel}`VARIABLES --> Locals` there is a new listing:
+{guilabel}`function variables`. Expand it by clicking the {guilabel}`>` on the
+left.
+
 ![](assets/debug-step-functions-c.png)
+
+You will see the `message` function listed. This is because lines `7`-`8`,
+where the `message()` function was defined, have been executed.
+
+![](assets/debug-step-functions-function-vars.png)
 
 ### Step 6.5: Line `15`
 
 Click ![debug-action-step-in][] on the debug toolbar or use the {kbd}`F11`
 keyboard shortcut to go to the next line.
 
+Notice that under {guilabel}`VARIABLES --> Locals` there is a new listing:
+{guilabel}`function variables`. Expand it by clicking the {guilabel}`>` on the
+left.
+
 ![](assets/debug-step-functions-d.png)
+
+You will see the `main` function listed. This is because lines `10`-`13`,
+where the `main()` function was defined, have been executed.
+
+![](assets/debug-step-functions-d-function-vars.png)
 
 ### Step 6.6: `main()` > Line `11`
 
