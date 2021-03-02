@@ -39,6 +39,48 @@ print("=========")
 print(contents)
 ```
 
+### Exercise
+
+`````{exercise}
+
+1\. Paste the following text into a file named {file}`mug-brownie.md` in your working directory.
+
+```md
+Mug Brownie
+===========
+
+Ingredients
+-----------
+1/4 cup flour (30 g)
+1/4 cup sugar (50 g)
+2 tablespoons (13 g) cocoa (natural, unsweetened)
+Pinch of salt
+Tiny pinch of cinnamon
+1/4 cup water (60 ml)
+2 tablespoons (30 ml) melted butter, or neutral oil
+1/8 teaspoon vanilla extract
+1 small scoop of ice cream or 1 or 2 teaspoons heavy whipping cream to serve
+
+Instructions
+------------
+
+1. **Add the dry ingredients to the mug and stir** \
+Place flour, sugar, cocoa, salt, and cinnamon in a microwave safe ceramic mug. Stir with a fork or spoon to mix well and break up any clumps.
+
+2. **Add the wet ingredients and stir** \
+Add the butter or oil, water, and vanilla to the cup and stir until the mixture is smooth and there are no lumps.
+
+3. **Zap in microwave** \
+Place in microwave and heat on high until the mixture is cooked through, about a 1 minute and 40 seconds for a 1000 watt microwave, or 1 minute 10 seconds on a 1650 watt microwave.
+You may have to experiment and adjust the time for less or more powerful microwaves. If you don't know the power level on your microwave, start with 60 seconds and increase until the brownie is done. It should still be moist when cooked through, not dry.
+
+
+```
+
+2\. Read the file contents then print them to the screen.
+
+`````
+
 ### Reading lines
 
 Often we want to read files one line at a time. The `readlines()` method on
@@ -64,6 +106,23 @@ printing double lines use the `end` keyword argument in the `print()`
 function.
 
 :::
+
+### Exercise
+
+`````{exercise}
+
+1\. Paste the following text into a file named {file}`todo.txt` in your working directory.
+
+```text
+dishes
+laundry
+homework
+```
+
+2\. Read and print each line to the screen, starting with `"* "`.
+
+`````
+
 
 Writing Files
 -------------
@@ -92,6 +151,14 @@ for item in todos:
 fh.close() 
 ```
 
+### Exercise
+
+```{exercise}
+
+Make a `list` of groceries then write them to a {file}`groceries.txt` file.
+
+```
+
 ### Adding to files
 
 Instead of writing a file from scratch we can instead just add to the end of
@@ -103,6 +170,12 @@ the `open()` function.
 fh = open("todo.txt", "a")
 fh.write("vacuum\n")
 fh.close() 
+```
+
+```{exercise}
+
+Add an item to your {file}`groceries.txt` file.
+
 ```
 
 Automatic file closing
@@ -128,6 +201,12 @@ with open("groceries.txt") as fp:
 print("Groceries")
 print("=========")
 print(contents)
+```
+
+```{exercise}
+
+Read your {file}`mug-brownie.md` file and print it to the screen, this time using a `with` statement.
+
 ```
 
 Reference
