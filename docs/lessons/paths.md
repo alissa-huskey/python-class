@@ -158,6 +158,37 @@ On a Unix-like operating system what is the path for each of the following?
 
 ```
 
+Paths in Python
+---------------
+
+### Path strings in `open()`
+
+The first argument to the `open()` function in Python is the path to a file.
+So far we've been using a simple filename. In the following example, a file
+named {file}`contacts.txt` in the working directory is opened.
+
+```{code-block} python
+:caption: python example
+fh = open("contacts.txt")
+contents = fh.read()
+fh.close()
+print(fh)
+```
+
+But what if you want to open a file somewhere other than the working
+directory? In that case, you can include the path in the argument. In the
+following example the {file}`contacts.txt` file is in a {file}`data`
+directory in the working directory.
+
+```{code-block} python
+:caption: python example
+fh = open("data/contacts.txt")
+contents = fh.read()
+fh.close()
+print(fh)
+```
+
+
 Reference
 ---------
 
@@ -175,11 +206,11 @@ Reference
 
 ### Special directories
 
-| Directory  | CLI Symbol   | Python                |
-|------------|--------|-----------------------|
-| home       | `~`    | `Path.home()`         |
-| working    | `.`    | `Path.cwd()`          |
-| parent     | `..`   | {samp}`{path}.parent` |
+| Directory  | CLI Symbol   |
+|------------|--------|
+| home       | `~`    |
+| working    | `.`    |
+| parent     | `..`   |
 
 ### Glossary
 
@@ -224,3 +255,5 @@ CWD
 
 * [LinuxCommand.org > Navigation](https://linuxcommand.org/lc3_lts0020.php)
 * [LinuxCommand.org > Looking Around](https://linuxcommand.org/lc3_lts0030.php)
+
+:::
