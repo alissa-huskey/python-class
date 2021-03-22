@@ -136,7 +136,7 @@ Adobe Autodesk
 ### Exercise
 
 ```{exercise} command-line-paths
-:class: notitles
+:class: notitle
 :label: command-line-paths
 
 On a Unix-like operating system what is the path for each of the following?
@@ -172,7 +172,7 @@ named {file}`contacts.txt` in the working directory is opened.
 fh = open("contacts.txt")
 contents = fh.read()
 fh.close()
-print(fh)
+print(contents)
 ```
 
 But what if you want to open a file somewhere other than the working
@@ -185,9 +185,254 @@ directory in the working directory.
 fh = open("data/contacts.txt")
 contents = fh.read()
 fh.close()
-print(fh)
+print(contents)
 ```
 
+### `Path` objects
+
+Python provides a `pathlib.Path` object which makes it easier to construct
+and manipulate cross-platform paths, provides handy methods for filesystem
+operations, and can be used in many of the places that string paths are used.
+
+First import the `Path` class from the `pathlib` module. Then call `Path`
+with a string path argument. For example, here's how you create a `Path`
+object for the `README.md` file.
+
+```{code-block} python
+:caption: python example
+
+from pathlib import Path
+
+path = Path("README.md")
+```
+
+### Using `Path` objects in `open()`
+
+You can use a `Path` object instead of a string for the first argument of the
+`open()` function.
+
+```{code-block} python
+:caption: python example
+
+from pathlib import Path
+
+path = Path("README.md")
+fh = open(path)
+contents = fh.read()
+fh.close()
+print(contents)
+```
+
+### Validation methods
+
+`Path` objects provide some handy boolean methods for checking the status of
+a file or directory.
+
+* {samp}`{path}.exists()`
+* {samp}`{path}.is_file()`
+* {samp}`{path}.is_dir()`
+
+The following example checks to be sure that the a {file}`README.md` file
+exists and that it is a normal file before trying to read it.
+
+```{code-block} python
+:caption: python example
+
+from pathlib import Path
+
+def main():
+  path = Path("README.md")
+  if not path.exists():
+    print("Sorry, no file named README.md")
+    return
+
+  if not path.is_file():
+    print("Unable to read file: README.md")
+    return
+
+  fh = open(path)
+  contents = fh.read()
+  fh.close()
+  print(contents)
+```
+
+### Exercise
+
+```{exercise} Validating paths
+:class: notitle
+:label: validating-paths
+
+Write a function to print the contents of the {file}`contacts.txt` file.
+Before reading it, check to make sure the file exists. If it does not, tell
+the user the file does not exist and return.
+
+```
+
+`````{solution} validating-paths
+:class: dropdown
+
+```python
+from pathlib import Path
+
+FILENAME = "data/contacts.txt"
+
+def show():
+  """Print all contacts"""
+  path = Path(FILENAME)
+
+  if not path.exists():
+    print(f"No such file: {FILENAME}")
+    return
+
+  with open(path):
+    contents = fh.read()
+
+  print(contents)
+```
+
+`````
+
+### Canonical path
+
+`Path` objects provide methods for handling absolute versus relative paths as
+well as converting symbols for the current operating system.
+
+| Method          | Type   | Description                                                                               |
+|-----------------|--------|-------------------------------------------------------------------------------------------|
+| `is_absolute()` | `bool` | Return True if path is absolute.                                                          |
+| `absolute()`    | `Path` | Return the absolute path.                                                                 |
+| `resolve()`     | `Path` | Return the normalized absolute path. (Convert shortcuts and slashes, resolve symlinks.)   |
+
+For example, here is what each method returns for `path = Path("../t.py")`.
+
+| Method               | Returns                                                            |
+|----------------------|--------------------------------------------------------------------|
+| `path`               | `PosixPath('../t.py')`                                             |
+| `path.is_absolute()` | `False`                                                            |
+| `path.absolute()`    | `PosixPath('/Users/pythonclass/projects/python-class/../t.py')`    |
+| `path.resolve()`     | `PosixPath('/Users/pythonclass/projects/t.py')`                    |
+
+### Parts of a path
+
+Python `Path` objects make it easy to access parts of a path without
+having to worry about which operating system is being used.
+
+| Property   | Type      | Description                                          |
+|------------|-----------|------------------------------------------------------|
+| `parent`   | `Path`    | Parent directory.                                    |
+| `parts`    | `tuple`   | Sequence of directories and filename if any.         |
+| `parents`  | `tuple`   | Sequence of parent directories.                      |
+| `name`     | `str`     | Filename.                                            |
+| `stem`     | `str`     | Filename without extension.                          |
+| `suffix`   | `str`     | Filename extension including `.`                     |
+
+The following example prints the filename minus the extension using the
+`stem` property above the file contents.
+
+```{code-block} python
+:caption: python example
+
+from pathlib import Path
+
+def main():
+  path = Path("README.md")
+
+  with open(path):
+    contents = fh.read()
+
+  print(f"*** {path.stem} ***\n")
+  print(contents)
+```
+
+### Constructing paths
+
+One way to construct paths in a way that will work on all operating systems
+is to use the `joinpath()` method to add a subdirectory or filename to an
+existing path.
+
+In the following example the file {file}`~/Documents/groceries.txt` is
+printed to the screen.
+
+```{code-block} python
+:caption: python example
+
+from pathlib import Path
+
+def main():
+  home = Path.home()
+  basedir = home.joinpath("Documents")
+  path = basedir.joinpath("groceries.txt")
+
+  with open(path):
+    contents = fh.read()
+
+  print(f"*** {path.stem} ***\n")
+  print(contents)
+```
+
+You can also chain the method calls together like this:
+
+```{code-block} python
+:caption: python example
+
+from pathlib import Path
+
+def main():
+  path = Path.home().joinpath("Documents").joinpath("groceries.txt")
+
+  with open(path):
+    contents = fh.read()
+
+  print(f"*** {path.stem} ***\n")
+  print(contents)
+```
+
+Finally, you can use the `/` operator on `Path` objects as a shorthand for the `joinpath()` method.
+
+```{code-block} python
+:caption: python example
+
+from pathlib import Path
+
+def main():
+  path = Path.home() / "Documents" / "groceries.txt"
+
+  with open(path):
+    contents = fh.read()
+
+  print(f"*** {path.stem} ***\n")
+  print(contents)
+```
+
+### Paths relative to current file
+
+The working directory in Python is the directory the current program was
+launched from. This can make using relative paths problematic because if the
+user runs the program from a different directory, the location of any
+relative paths will change.
+
+Instead you may want to make a path relative to the file that is being run.
+
+Python provides a special variable `__file__` that contains a string with the
+path of the current file. When used to create a `Path` object, you can use
+the `parent` property to get the directory the file is in.
+
+The following example opens the file {file}`.vscode/launch.json` in the same
+directory as the current file.
+
+```{code-block} python
+:caption: python example
+
+from pathlib import Path
+
+def main():
+  basedir = Path(__file__).parent / ".vscode" / "launch.json"
+
+  with open(path):
+    contents = fh.read()
+
+  print(contents)
+```
 
 Reference
 ---------
@@ -206,11 +451,11 @@ Reference
 
 ### Special directories
 
-| Directory  | CLI Symbol   |
-|------------|--------|
-| home       | `~`    |
-| working    | `.`    |
-| parent     | `..`   |
+| Directory  | CLI Symbol   | Python                |
+|------------|--------------|-----------------------|
+| home       | `~`          | `Path.home()`         |
+| working    | `.`          | `Path.cwd()`          |
+| parent     | `..`         | {samp}`{path}.parent` |
 
 ### Glossary
 
