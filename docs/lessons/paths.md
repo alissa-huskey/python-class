@@ -434,6 +434,35 @@ def main():
   print(contents)
 ```
 
+### Exercise
+
+```{exercise} Constructing paths
+:class: notitle
+:label: constructing-paths-exercise
+
+Write a function to print the contents of a different Python script in your project.
+
+```
+
+`````{solution} constructing-paths-exercise
+:class: dropdown
+
+```python
+from pathlib import Path
+
+def print_script():
+  path = Path(__file__).parent / "pythonclass" / "template.py"
+
+  with open(path) as fp:
+    contents = fp.read()
+
+  print(f"{path.name}\n")
+  print(contents)
+```
+
+`````
+
+
 Reference
 ---------
 
