@@ -284,7 +284,7 @@ def show():
     print(f"No such file: {FILENAME}")
     return
 
-  with open(path):
+  with open(path) as fh:
     contents = fh.read()
 
   print(contents)
@@ -337,7 +337,7 @@ from pathlib import Path
 def main():
   path = Path("README.md")
 
-  with open(path):
+  with open(path) as fh:
     contents = fh.read()
 
   print(f"*** {path.stem} ***\n")
@@ -363,7 +363,7 @@ def main():
   basedir = home.joinpath("Documents")
   path = basedir.joinpath("groceries.txt")
 
-  with open(path):
+  with open(path) as fh:
     contents = fh.read()
 
   print(f"*** {path.stem} ***\n")
@@ -380,7 +380,7 @@ from pathlib import Path
 def main():
   path = Path.home().joinpath("Documents").joinpath("groceries.txt")
 
-  with open(path):
+  with open(path) as fh:
     contents = fh.read()
 
   print(f"*** {path.stem} ***\n")
@@ -397,7 +397,7 @@ from pathlib import Path
 def main():
   path = Path.home() / "Documents" / "groceries.txt"
 
-  with open(path):
+  with open(path) as fh:
     contents = fh.read()
 
   print(f"*** {path.stem} ***\n")
@@ -428,7 +428,7 @@ from pathlib import Path
 def main():
   basedir = Path(__file__).parent / ".vscode" / "launch.json"
 
-  with open(path):
+  with open(path) as fh:
     contents = fh.read()
 
   print(contents)
