@@ -23,8 +23,6 @@ align: left
 ---
 ```
 
-To continue with our video game analogy, if-statements are like a fork in the road.
-
 An if-statement is a way to change what happens depending on the circumstances.
 
 <div class="clear"></div>
@@ -243,6 +241,7 @@ Here are details for each data type.
 | `bool`     | boolean      | `False`       | `True`         |
 | `None`     | none         | `None`        |                |
 ```
+
 Since conditions are evaluated in a boolean context (meaning the result of
 the expression is converted to a `bool`) you can use a value as condition for
 truthiness, or add the `not` operator for falsiness.
@@ -290,7 +289,6 @@ def buy_items(items):
     buy(item)
 ```
 
-
 #### Exercises and questions
 
 Open up a {term}`Python shell` and use the `bool()` function to find out if
@@ -304,13 +302,15 @@ each of the following is truthy or falsy.
 Exercises
 ---------
 
-**Exercise 1: Flip a coin**
+```{exercise} Flip a coin
 
-  1. Pick a random number between `0` and `1` and assign it to a variable `coin`.
-  2. Print "You tossed", and the value of `coin`.
-  3. If the value of `coin` is truthy, print "You win the coin toss!"
+1. Pick a random number between `0` and `1` and assign it to a variable `coin`.
+2. Print "You tossed", and the value of `coin`.
+3. If the value of `coin` is truthy, print "You win the coin toss!"
 
-**Exercise 2: Computer guessing game**
+```
+
+```{exercise} Computer guessing game
 
   1. Pick a number between `1` and `100` and assign it to the variable `pick`. (Note: not random.)
   2. Get a random number between between `1` and `100` and assign it to the variable `guess`.
@@ -319,7 +319,9 @@ Exercises
   5. If guess is within `30` of pick print `"The computer was close."`  (Hint: You'll need the `and` operator.)
   6. Otherwise print `"The computer got it wrong."`
 
-**Exercise 3: Heads or Tails**
+```
+
+```{exercise} Heads or Tails
 
 In this exercise use the `and` operator and determine the truthiness of a value.
 
@@ -328,3 +330,5 @@ In this exercise use the `and` operator and determine the truthiness of a value.
 3. If the answer is not `"heads"` or `"tails"`, tell them they need to pick
    `"heads"` or `"tails"`.  (Bonus: Make this case-insensitive.)
 4. Randomly decide if they won the coin toss.
+
+```

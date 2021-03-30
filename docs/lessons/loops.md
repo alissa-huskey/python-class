@@ -312,7 +312,6 @@ Print a multiplication table grid with `9` rows and `9` columns. [^script_multip
 
 ```
 
-
 Practice exercises
 ------------------
 
@@ -337,7 +336,7 @@ Here are some more practice exercises with loops you can work on.
          example: `5 letters: _e___`
        - ask the player to guess a letter
        - bonus: make sure the user enters exactly one character
-    - tell the user at the end if they won or lost
+     - tell the user at the end if they won or lost
 
 [^script_multiplication]: completed script: {lesson}`multiplication.py`
 [^script_name_cheer]: completed script: {lesson}`name_cheer.py`

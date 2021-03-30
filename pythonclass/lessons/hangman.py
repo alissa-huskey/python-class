@@ -9,7 +9,7 @@ import random
 WORDS = [ "hello", "goodbye", "secret", "satisfy", "apple", "bear" ]
 
 def info(turn, chances, guess):
-    """print the used vs unused chances and guessed vs unguess letters
+    """print the used vs unused chances and guessed vs unguessed letters
        example:
            chances: xx____ 7 letters: _e_____
     """

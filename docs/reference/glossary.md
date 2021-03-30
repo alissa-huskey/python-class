@@ -2,6 +2,7 @@ Glossary
 =========
 
 ```{glossary} programming-concepts
+
 argument
   A {term}`value` that is sent as input to a function.
 
@@ -21,16 +22,17 @@ comment
 
 comparison operator
   An operator that compares the left-hand value to the right-hand value then
-  evalutes to either True or False.
+  evaluates to either True or False.
 
+condition
 conditional
   A valid piece of code that, when evaluated, results in
   {term}`boolean` value.
 
 docstring
   Similar to a comment parts of code that are not executed but are used to
-  document a segment of code. In Python it is surrounded by tripple
-  double-quotes `"""` or tripple single-quotes `'''` and appears at the first
+  document a segment of code. In Python it is surrounded by triple
+  double-quotes `"""` or triple single-quotes `'''` and appears at the first
   expression in a file, module, class, or function.
 
 escaping
@@ -38,7 +40,7 @@ escaping
   not be interpreted but instead be treated be treated as part of the string.
   For example, you would need to escape a single-quote in a string surrounded
   by single-quotes, a double-quote in a string surrounded by double-quotes, and
-  the escape character in any sring. In Python (and many other languages) the
+  the escape character in any string. In Python (and many other languages) the
   escape character is a backslash (`\`).
 
 expression
@@ -57,7 +59,12 @@ identifier
   The name that refers to a some programming element, such as a variable,
   class, function or module.
 
+if statement
+  a compound statement that changes what code is executed depending on its conditions
+
 iterate
+iteration
+iterating
   To repeat over a unit of code, usually within a loop. Each repetition is
   called an *iteration*.
 
@@ -71,7 +78,7 @@ keyword
 
 logical operator
   An operator that considers both left-hand value and right-hand value then
-  evalutes to either True or False.
+  evaluates to either True or False.
 
 module
   A file containing of reusable code that can be imported into other programs.
@@ -151,7 +158,7 @@ int
 
 list
   A collection of values. In Python lists are mutable and they are defined by
-  surrounding the comma-seperated values with square-bracket (`[]`).
+  surrounding the comma-separated values with square-bracket (`[]`).
 
 string
 str
@@ -183,7 +190,7 @@ compile
   language that must be compiled is called a compiled language and the
   program that does this for a particular programming language is called a
   compiler. Python is an interpreted language, so it does not need to be
-  compiled. Some compiled langauges include C/C++, Java and Go.
+  compiled. Some compiled languages include C/C++, Java and Go.
 
 console
 system console
@@ -202,10 +209,10 @@ IDE
 interpret
   The process by which the computer directly executes source code without that
   code needing to be compiled first. The program that does this for a
-  particluar programming language is called an intrepreter. A programming
+  particular programming language is called an interpreter. A programming
   language that does not need to be compiled is called an interpreted
   language or sometimes a scripting language. Python is an interpreted
-  language and Python code is executed by the Python Interprter.  Some other
+  language and Python code is executed by the Python Interpreter.  Some other
   interpreted languages include Ruby, PHP and Perl.
 
 prompt
@@ -240,7 +247,7 @@ terminal emulator
 
   The term "console" and "terminal" are often used interchangaby, both
   historically to refer to a hardware server interface as well as the more
-  modern colloqual meaning of accessing the operating system's shell.
+  modern colloquial meaning of accessing the operating system's shell.
 ```
 
 ```{glossary} version-control
@@ -262,7 +269,7 @@ distributed version control
    repository that all other repositories were required to communicate with in
    order to commit changes. In distributed version control, every repo is self
    contained and any repo send changes to or receive changes from any other
-   compatable repository.
+   compatible repository.
 
 HEAD
   A reference to the current commit on the current branch. A reference is like

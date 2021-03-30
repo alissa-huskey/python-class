@@ -2,7 +2,7 @@ Program Flow Exercises
 ======================
 
 Today we're going to write some code for game characters, working with the
-concepts of {term}`variables` and {term}`functions` that we
+concepts of {term}`variables <variable>` and {term}`functions <function>` that we
 discussed last week.
 
 Start by making a new file `character.py`. We're going to use the `random`
@@ -31,7 +31,7 @@ Last week we discussed that...
 
 ### Step 1: Setup your character
 
-Let's start by {term}`assigning` two new variables:
+Let's start by {term}`assigning <assign>` two new variables:
 
 * `name` a string (`str`)
 * `level` an integer (`int`) that is a random number between `1` and `5`.
