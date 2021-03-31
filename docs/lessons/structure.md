@@ -138,8 +138,7 @@ def abort(message):
 
 ### Relative imports
 
-When importing from within the same package, you can use the shorthand `.` or
-to import from the same package.
+When importing from within the same package, you can use the shorthand `.`.
 
 ```{code-block} python
 :caption: main.py
@@ -176,17 +175,29 @@ The `sys.path` contains a list of path strings loaded from:
 * the environment variable `PYTHONPATH`
 * any file ending in `.pth` located in the search path
 
-Importing your own package
---------------------------
+Executable scripts
+------------------
+
+When your code is in a package, it can be a little confusing how to go about
+running it in a reliable way. In this part of the lesson we'll walk through
+how to create an executable script that imports your own package.
+
+Here's what our file structure will look like when we're done.
 
 ```
 hangman/
 |-- words.py
 |-- game.py
 |-- main.py
-|-- bin/
-    | -- play
+bin/
+| -- play
 ```
+
+### Boil it down
+
+You first want to provide a minimal interface, a single function if possible,
+that will be used by your script. So first we'll create a `main.py` file that
+contains a single a `main()` function.
 
 ```{code-block} python
 :caption: main.py
@@ -198,6 +209,11 @@ def main():
 	play(WORDS)
 ```
 
+### The script
+
+Traditionally the `bin` directory (or `Scripts` on Windows) is used to store
+executable scripts. We'll create the `play` script there.
+
 ```{code-block} python
 :caption: bin/play
 #!/usr/bin/env python3
@@ -207,6 +223,44 @@ def main():
 
 from hangman.main import main
 main()
+```
+
+This will only work when run from the project directory. However, we can
+modify the `sys.path` to include the project directory.
+
+```{code-block} python
+:caption: bin/play
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""Executable to play the hangman game"""
+
+import sys
+from pathlib import Path
+
+rootdir = Path(__file__).parent.parent
+sys.path.append(str(rootdir))
+
+from hangman.main import main
+main()
+```
+
+### Making the script executable
+
+Make it executable by running the `chmod` command.
+
+```{code-block} console
+:caption: command line
+$ chmod +x bin/play
+```
+
+### Running the script
+
+To run the script:
+
+```{code-block} console
+:caption: command line
+$ bin/play
 ```
 
 See also
@@ -240,5 +294,6 @@ package
 % [x] PYTHON_PATH
 % [x] relative imports
 % [x] __init__.py
+% [ ] tests
 % [ ] __main__
 % [ ] __all__
