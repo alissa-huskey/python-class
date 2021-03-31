@@ -284,9 +284,10 @@ Exercise
 
 ```{exercise} Goodbye
 
-1. Add a `goodbye` module that contains a function `goodbye()` that prints "Goodbye cruel world!"
+1. Add a `goodbye` module that contains a function `goodbye()` that prints `"Goodbye cruel world!"`
 2. Import the `goodbye()` function in the `hello` module
 3. In the `main()` function, after printing `"Hello World"`, call `goodbye()`.
+4. Modify your `hello` script to import from the `main` module instead of `hello`
 
 ```
 
@@ -294,8 +295,8 @@ Exercise
 
 Refactor your code so that you end up with:
 
-* a `goodbye` module that contains a `goodbye` function
-* a `hello` module that contains a `hello` function that prints `"Hello World!"
+* a `goodbye` module that contains a `goodbye()` function
+* a `hello` module that contains a `hello()` function that just prints `"Hello World!"`
 * a new `main` module that 
     * imports the `hello()` and `goodbye()` functions from their respective modules
     * contains a `main()` function that calls `hello()` and `goodbye()`
