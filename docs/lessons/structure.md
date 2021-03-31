@@ -269,23 +269,36 @@ Exercise
 ```{exercise} Hello World package
 
 1. Create a new directory called `helloworld`
-1. Create a subdirectory called `helloworld`
-2. Create a `hello.py` script in that directory
-3. Create a `main` function that prints `"Hello World"`
-4. Create an executable `hello` script in a directory named `bin` or `scripts`
+2. Create a subdirectory called `helloworld`
+3. Create an empty {file}`__init__.py` file in that directory.
+3. Create a `hello.py` script in that directory
+4. Create a `main` function that prints `"Hello World"`
+5. Create an executable `hello` script in a directory named `bin` or `scripts`
     - Add the project root directory to the `sys.path`.
     - Import and call your your `main` function 
-5. Make the file executable
-6. Run it
-7. Bonus: Add the `helloworld/bin` directory to your `PATH`, then run `hello` from a different directory.
+6. Make the file executable
+7. Run it
+8. Bonus: Add the `helloworld/bin` directory to your `PATH`, then run `hello` from a different directory.
 
 ```
 
 ```{exercise} Goodbye
 
-1. Add a `goodbye.py` module that contains a function `goodbye()` that prints "Goodbye cruel world!"
-2. Import the `goodbye()` function in the `main` module
+1. Add a `goodbye` module that contains a function `goodbye()` that prints "Goodbye cruel world!"
+2. Import the `goodbye()` function in the `hello` module
 3. In the `main()` function, after printing `"Hello World"`, call `goodbye()`.
+
+```
+
+```{exercise} Refactor
+
+Refactor your code so that you end up with:
+
+* a `goodbye` module that contains a `goodbye` function
+* a `hello` module that contains a `hello` function that prints `"Hello World!"
+* a new `main` module that 
+    * imports the `hello()` and `goodbye()` functions from their respective modules
+    * contains a `main()` function that calls `hello()` and `goodbye()`
 
 ```
 
@@ -318,6 +331,8 @@ package
 % [x] PYTHON_PATH
 % [x] relative imports
 % [x] __init__.py
+% [ ] .gitignore
+% [ ] .vscode-exclude
 % [ ] tests
 % [ ] __main__
 % [ ] __all__
