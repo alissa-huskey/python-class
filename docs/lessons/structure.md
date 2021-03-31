@@ -263,6 +263,24 @@ To run the script:
 $ bin/play
 ```
 
+Exercise
+--------
+
+```{exercise}
+
+1. Create a new directory called `helloworld`
+1. Create a subdirectory called `helloworld`
+2. Create a `hello.py` script in that directory
+3. Create a `main` function that prints `"Hello World"`
+4. Create an executable `hello` script in a directory named `bin` or `scripts`
+    - Add the project root directory to the `sys.path`.
+    - Import and call your your `main` function 
+5. Make the file executable
+6. Run it
+7. Bonus: Add the `helloworld/bin` directory to your `PATH`, then run `hello` from a different directory.
+
+```
+
 See also
 --------
 
@@ -275,15 +293,13 @@ See also
 Glossary
 --------
 
-```{glossary}
+```{glossary} structure
 
 module
     a file containing Python definitions and statements
 
 package
     a directory containing a {file}`__init__.py` file and other Python modules
-
-
 
 ```
 
