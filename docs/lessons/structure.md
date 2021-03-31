@@ -266,7 +266,7 @@ $ bin/play
 Exercise
 --------
 
-```{exercise}
+```{exercise} Hello World package
 
 1. Create a new directory called `helloworld`
 1. Create a subdirectory called `helloworld`
@@ -278,6 +278,14 @@ Exercise
 5. Make the file executable
 6. Run it
 7. Bonus: Add the `helloworld/bin` directory to your `PATH`, then run `hello` from a different directory.
+
+```
+
+```{exercise} Goodbye
+
+1. Add a `goodbye.py` module that contains a function `goodbye()` that prints "Goodbye cruel world!"
+2. Import the `goodbye()` function in the `main` module
+3. In the `main()` function, after printing `"Hello World"`, call `goodbye()`.
 
 ```
 
