@@ -287,7 +287,6 @@ Exercise
 1. Add a `goodbye` module that contains a function `goodbye()` that prints `"Goodbye cruel world!"`
 2. Import the `goodbye()` function in the `hello` module
 3. In the `main()` function, after printing `"Hello World"`, call `goodbye()`.
-4. Modify your `hello` script to import from the `main` module instead of `hello`
 
 ```
 
@@ -300,6 +299,7 @@ Refactor your code so that you end up with:
 * a new `main` module that 
     * imports the `hello()` and `goodbye()` functions from their respective modules
     * contains a `main()` function that calls `hello()` and `goodbye()`
+* Modify your `hello` script to import from the `main` module instead of `hello`
 
 ```
 
