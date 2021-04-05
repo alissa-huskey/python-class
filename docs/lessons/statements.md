@@ -36,7 +36,7 @@ Simple Statements
 -----------------
 
 A {term}`simple statement` is a single instruction, one that does not group together
-other statements. In comprison to prose a simple statement is like a sentence.
+other statements. In comparison to prose a simple statement is like a sentence.
 While there are exceptions, a simple statements is essentially a line of code.
 
 To be more accurate, a simple statement is a single instruction that *could* be
