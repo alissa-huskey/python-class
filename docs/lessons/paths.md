@@ -6,8 +6,12 @@ to click through to each folder and eventually find the file you want. When
 we want to do the same thing through code we use file paths.
 
 A {term}`path` is a way to represent the location of a file or folder using
-text. Not only are they used in pretty much all programming languages, but
-paths are also used to on the command line.
+text. You can think of it like an address; where a street address points to a
+physical location in the real world, a path points to a location on a
+computer.
+
+Paths are used in pretty much all programming languages as well as on the
+command line, which we'll be learning about today.
 
 Exploring files on the command line
 -----------------------------------
