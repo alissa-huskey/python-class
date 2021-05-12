@@ -1,53 +1,117 @@
-"""Flashcards exercise"""
+"""Flashcards
+    Setup
+    -----
+    1. Create a folder data/flashcards if it doesn't exist
+    2. Make flashcard csv files
+
+    Exercise
+    --------
+"""
 
 from pathlib import Path
+import random
+import time
 
-def run_flashcard():
-    ...
+from blessed import Terminal
 
-def create_card():
-    dirpath = Path(__file__).parent.parent / "data" / "cards"
-    dirpath.mkdir(exist_ok=True)
-    question = input("Question: ")
-    answer = input("Answer: ")
+FLASHCARDS_DIR = Path(__file__).parent.parent.parent / "data" / "flashcards"
+TERM = Terminal()
 
-    print(f"Question: {question}")
-    print(f"Answer: {answer}")
+POSITIONS = {
+    "top": 1,
+    "midpoint": TERM.height // 2,
+    "mid-bottom": (TERM.height // 2) + (TERM.height // 4),
+    "input": TERM.height - 5,
+    "bottom": TERM.height - 2,
+}
 
-    ok = input("Is this correct? [y/N] ")
-    if not ok:
-        return
+def get_flashcards(path):
+    """Return a list of flashcards for path"""
+    cards = []
+    with open(path) as fp:
+        for line in fp.readlines():
+            card = {}
+            card["back"], card["front"] = line.strip().split(",")
+            cards.append(card)
 
-    card_num = len(list(dirpath.iterdir())) + 1
-    card_path = dirpath / f"card_{card_num}.txt"
-    with open(card_path, "w") as fp:
-        fp.write(f"{question}\n")
-        fp.write(f"{answer}\n")
+    return cards
 
-    print(f"Created card #{card_num}")
+def output(text):
+    """print to screen without newline"""
+    print(text, end="")
+
+def goto(position, down=0):
+    """Move to vertical position on screen"""
+    lineno = POSITIONS[position] + down
+    output(TERM.move_y(lineno))
+
+def clear():
+    """Clear the screen"""
+    output(TERM.home + TERM.clear)
+
+def run(cards, title):
+    """Run through flashcards, return (score, total)"""
+    score, count, total = 0, 1, len(cards)
+
+    while cards:
+        card = random.choice(cards)
+        cards.remove(card)
+
+        clear()
+        output(title)
+        output(TERM.rjust(f"{count} of {total}", width=TERM.width-len(title)))
+
+        goto("midpoint")
+        output(TERM.center(card["front"]))
+
+        goto("input")
+        answer = input("> ")
+
+        if answer == card["back"]:
+            feedback = TERM.green("\u2714")  # ✔
+            score += 1
+        else:
+            feedback = TERM.red("\u2716")    # ✖
+
+        goto("input", 1)
+        output(feedback)
+
+        goto("mid-bottom")
+        output(TERM.black_on_green(TERM.center(f"{card['back']}",
+                                               width=TERM.width - 1)))
+
+        goto("bottom")
+        if count == total:
+            message = "[done]"
+        else:
+            message = "[next]"
+
+        output(TERM.cyan(TERM.center(message)))
+
+        with TERM.cbreak(), TERM.hidden_cursor():
+            TERM.inkey()
+
+        count += 1
+
+    return score, total
+
+def endgame(score, total):
+    """Print the score"""
+    percent = int((score / total) * 100)
+
+    clear()
+    goto("midpoint")
+    output(TERM.center(f"{percent}% - {score} of {total}"))
+    goto("bottom", -2)
 
 def main():
-    menu = [
-        "create card",
-        "run flashcards",
-    ]
+    path = FLASHCARDS_DIR / "paths.csv"
+    cards = get_flashcards(path)
+    score, total = run(cards, path.stem)
+    endgame(score, total)
 
-    options = { x[0]: x for x in menu }
-
-    while True:
-        for option in menu:
-            print(f"[{option[0]}]{option[1:]}")
-
-        reply = input("> ")
-        choice = reply.lower()
-
-        if choice not in menu:
-            choice = options.get(choice, None)
-
-        if not choice:
-            print(f"Invalid option: {reply}")
-            continue
-        fn = globals()[choice.replace(" ", "_")]
-        fn()
-
-main()
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        ...
