@@ -669,7 +669,7 @@ Reference
 
 ### Glossary
 
-```{glossary} something
+```{glossary} file-system-operations
 
 glob
 globbing
