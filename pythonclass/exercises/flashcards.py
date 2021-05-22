@@ -1,95 +1,184 @@
 """Flashcards
+
+   A program for running through flashcards. It will load csv files from the
+   data/flashcards directory.  Each line of a csv file is one card--the text
+   for the front of the card, a comma, then the text for the back.
+
+   The program will then
+
     Setup
     -----
     1. Create a folder data/flashcards if it doesn't exist
     2. Make flashcard csv files
+       [ ] In the data/flashcards directory manually make file called ending in .csv
+       [ ] Each line should be one card with the format: "text for front, text for back".
+       Here is my "paths.csv" example:
+
+       import the Path class, from pathlib import Path
+       check if Path object path exists, path.exists()
+       check if Path object path is a file, path.is_file()
+       check if Path object path is a directory, path.is_dir()
 
     Exercise
     --------
+    1. Start your flashcards.py file
+       [ ] write a main() function, and in it print something, then call it
+    2. Write a load_csv() function
+       [ ] open the csv file you made using the `open()` function
+       [ ] use `fp.readlines()` to iterate through each line in the file
+       [ ] use the `.split()` method on each
 """
 
 from pathlib import Path
 import random
 import time
+from os import _exit as exit
+from sys import stderr, stdout
 
-from blessed import Terminal
+from pythonclass.exercises import cli
 
-FLASHCARDS_DIR = Path(__file__).parent.parent.parent / "data" / "flashcards"
-TERM = Terminal()
+from pythonclass.exercises.cli import (
+    abort,
+    quit,
+    WIDTH,
+    TERM
+)
 
-POSITIONS = {
-    "top": 1,
-    "midpoint": TERM.height // 2,
-    "mid-bottom": (TERM.height // 2) + (TERM.height // 4),
-    "input": TERM.height - 5,
-    "bottom": TERM.height - 2,
-}
+PRIZES   = (
+    (100,  cli.symbols.hundred   ) ,      # 💯
+    ( 95,  cli.symbols.trophy    ) ,      # 🏆
+    ( 90,  cli.symbols.medal     ) ,      # 🏅
+    ( 85,  cli.symbols.sparkles  ) ,      # ✨
+    ( 80,  cli.symbols.start3    ) ,      # 💫
+    ( 75,  cli.symbols.start2    ) ,      # 🌟
+    ( 70,  cli.symbols.star      ) ,      # ⭐
+    ( 65,  cli.symbols.rock      ) ,      # 🤘
+    ( 60,  cli.symbols.clap      ) ,      # 👏
+    ( 55,  cli.symbols.thumbsup  ) ,      # 👍
+    ( 50,  cli.symbols.ok        ) ,      # 👌
+)
 
-def get_flashcards(path):
-    """Return a list of flashcards for path"""
-    cards = []
+MESSAGES   = (
+    ( 95,  "Amazing!"                            ) ,
+    ( 90,  "Fantastic!"                          ) ,
+    ( 85,  "Supurb"                              ) ,
+    ( 80,  "WOW"                                 ) ,
+    ( 75,  "Great job!"                          ) ,
+    ( 70,  "Astounding!"                         ) ,
+    ( 65,  "Impressive work"                     ) ,
+    ( 60,  "Excellent"                           ) ,
+    ( 55,  "Wowzers",                            ) ,
+    ( 50,  "Your hard work is paying off!"       ) ,
+    ( 40,  "Nice work today!"                    ) ,
+    ( 30,  "Great practice!"                     ) ,
+    ( 20,  "Done for the day!"                   ) ,
+    ( 10,  "Mark coding practice off your list!" ) ,
+    (  0,  "Good for you!"                       ) ,
+)
+
+
+def prize(score: int):
+    """Return a symbol and message for a 0-100 score"""
+    symbol = ""
+
+    for level, s in PRIZES:
+        print(level, s)
+        if score >= level:
+            symbol = s
+            break
+
+    for level, m in MESSAGES:
+        if score >= level:
+            message = m
+            break
+
+    return (message, symbol)
+
+CARDS_DIR = Path(__file__).parent.parent.parent / "data" / "cards"
+
+def load_cards(path, cards=[]):
+    """Return list of cards in a csv file at path
+       Skips optional header row "front, back".
+
+       Return
+       ------
+       a list of dicts, where each dict has keys "front" and "back"
+
+       for example:
+       [
+          {
+             'front': "life the universe and everything?",
+             'back': "42"
+          },
+          {
+            'front': "most famous classic blunder",
+            'back': "never get involved in a land war in Asia"
+          },
+       ]
+
+    """
+    if not path.exists():
+        abort(f"No file found: {path}")
+
+    if path.suffix.lower() != ".csv":
+        abort(f"Not a csv file: {path}")
+
     with open(path) as fp:
-        for line in fp.readlines():
+        for lineno, line in enumerate(fp.readlines()):
+            if lineno == 0 and line.startswith("front"):
+                continue
+
             card = {}
-            card["back"], card["front"] = line.strip().split(",")
+            card["front"], card["back"] = [ text.strip() for text in line.split(",") ]
             cards.append(card)
 
     return cards
 
-def output(text):
-    """print to screen without newline"""
-    print(text, end="")
-
-def goto(position, down=0):
-    """Move to vertical position on screen"""
-    lineno = POSITIONS[position] + down
-    output(TERM.move_y(lineno))
-
-def clear():
-    """Clear the screen"""
-    output(TERM.home + TERM.clear)
-
-def run(cards, title):
+def play(cards, category):
     """Run through flashcards, return (score, total)"""
     score, count, total = 0, 1, len(cards)
 
     while cards:
+        cli.clear()
+
         card = random.choice(cards)
         cards.remove(card)
 
-        clear()
-        output(title)
-        output(TERM.rjust(f"{count} of {total}", width=TERM.width-len(title)))
+        cli.output(category, end="")
+        cli.output(f"{count} of {total}",
+                   align="right",
+                   width=WIDTH-len(category))
 
-        goto("midpoint")
-        output(TERM.center(card["front"]))
+        cli.goto_middle()
+        cli.output(card["front"], align="center")
 
-        goto("input")
-        answer = input("> ")
+        cli.goto_bottom(5)
+        with cli.goback():
+            answer = input("> ")
 
-        if answer == card["back"]:
-            feedback = TERM.green("\u2714")  # ✔
-            score += 1
-        else:
-            feedback = TERM.red("\u2716")    # ✖
+            if answer == card["back"]:
+                feedback = cli.symbols.right
+                score += 1
+            else:
+                feedback = cli.symbols.wrong
 
-        goto("input", 1)
-        output(feedback)
+        cli.output(feedback)
 
-        goto("mid-bottom")
-        output(TERM.black_on_green(TERM.center(f"{card['back']}",
-                                               width=TERM.width - 1)))
+        cli.goto_middle(3)
+        cli.output(f"{card['back']}",
+                   align="center",
+                   width=WIDTH - 1,
+                   color="green_reverse")
+        cli.goto_bottom(2)
 
-        goto("bottom")
         if count == total:
             message = "[done]"
         else:
             message = "[next]"
 
-        output(TERM.cyan(TERM.center(message)))
+        cli.output(message, color="cyan", align="center")
 
-        with TERM.cbreak(), TERM.hidden_cursor():
-            TERM.inkey()
+        cli.await_keypress()
 
         count += 1
 
@@ -98,20 +187,29 @@ def run(cards, title):
 def endgame(score, total):
     """Print the score"""
     percent = int((score / total) * 100)
+    message, symbol = prize(percent)
 
-    clear()
-    goto("midpoint")
-    output(TERM.center(f"{percent}% - {score} of {total}"))
-    goto("bottom", -2)
+    cli.clear()
+    cli.goto_middle()
+    cli.output(f"{percent}% - {score} of {total}", align="center")
+
+    cli.goto_middle(2)
+    cli.output(f"{symbol:<2}{message}", align="center")
+    cli.goto_bottom()
 
 def main():
-    path = FLASHCARDS_DIR / "paths.csv"
-    cards = get_flashcards(path)
-    score, total = run(cards, path.stem)
+    path = CARDS_DIR / "paths.csv"
+    cards = load_cards(path)
+    score, total = play(cards, path.stem)
     endgame(score, total)
 
 if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        ...
+        print()
+    except (cli.GracefulExit, cli.FatalError) as e:
+        if e.message:
+            out = stderr if e.code else stdout
+            print(f"{e.prefix}{e.message}", file=out)
+        exit(e.code)
