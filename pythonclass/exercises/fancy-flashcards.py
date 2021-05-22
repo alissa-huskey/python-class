@@ -27,12 +27,6 @@
        [ ] open the csv file you made using the `open()` function
        [ ] use `fp.readlines()` to iterate through each line in the file
        [ ] use the `.split()` method on each
-
-    TODO
-    ----
-    [ ] test in vscode web, figure out width/height issue
-        [ ] test with env var $COLUMNS, $LINES
-    [ ] write more instructions / description
 """
 
 from pathlib import Path
@@ -48,6 +42,56 @@ from pythonclass.exercises.cli import (
     quit,
     WIDTH,
 )
+
+PRIZES   = (
+    (100,  cli.symbols.hundred   ) ,      # 💯
+    ( 95,  cli.symbols.trophy    ) ,      # 🏆
+    ( 90,  cli.symbols.medal     ) ,      # 🏅
+    ( 85,  cli.symbols.sparkles  ) ,      # ✨
+    ( 80,  cli.symbols.start3    ) ,      # 💫
+    ( 75,  cli.symbols.start2    ) ,      # 🌟
+    ( 70,  cli.symbols.star      ) ,      # ⭐
+    ( 65,  cli.symbols.rock      ) ,      # 🤘
+    ( 60,  cli.symbols.clap      ) ,      # 👏
+    ( 55,  cli.symbols.thumbsup  ) ,      # 👍
+    ( 50,  cli.symbols.ok        ) ,      # 👌
+)
+
+MESSAGES   = (
+    ( 95,  "Amazing!"                            ) ,
+    ( 90,  "Fantastic!"                          ) ,
+    ( 85,  "Supurb"                              ) ,
+    ( 80,  "WOW"                                 ) ,
+    ( 75,  "Great job!"                          ) ,
+    ( 70,  "Astounding!"                         ) ,
+    ( 65,  "Impressive work"                     ) ,
+    ( 60,  "Excellent"                           ) ,
+    ( 55,  "Wowzers",                            ) ,
+    ( 50,  "Your hard work is paying off!"       ) ,
+    ( 40,  "Nice work today!"                    ) ,
+    ( 30,  "Great practice!"                     ) ,
+    ( 20,  "Done for the day!"                   ) ,
+    ( 10,  "Mark coding practice off your list!" ) ,
+    (  0,  "Good for you!"                       ) ,
+)
+
+
+def prize(score: int):
+    """Return a symbol and message for a 0-100 score"""
+    symbol = ""
+
+    for level, s in PRIZES:
+        print(level, s)
+        if score >= level:
+            symbol = s
+            break
+
+    for level, m in MESSAGES:
+        if score >= level:
+            message = m
+            break
+
+    return (message, symbol)
 
 CARDS_DIR = Path(__file__).parent.parent.parent / "data" / "cards"
 
@@ -80,106 +124,77 @@ def load_cards(path, cards=[]):
 
     with open(path) as fp:
         for lineno, line in enumerate(fp.readlines()):
-            # strip the newline from the end
-            # plus any other leading and trailing whitespace
-            line = line.strip()
-
-            # skip the header row
-            if lineno == 0 and line.replace(" ", "").lower() == "front,back":
+            if lineno == 0 and line.startswith("front"):
                 continue
 
-            # make a cards dict
             card = {}
-
-            # split the line at the "," delimiter
-            card["front"], card["back"] = line.split(",")
-
-            # strip trailing and leading whitespace
-            card["front"] = card["front"].strip()
-            card["back"] = card["back"].strip()
-
-            # add to the cards list
+            card["front"], card["back"] = [ text.strip() for text in line.split(",") ]
             cards.append(card)
 
     return cards
 
 def play(cards, category):
     """Run through flashcards, return (score, total)"""
-    # initialize values
     score, count, total = 0, 1, len(cards)
 
     while cards:
-        # clear the screen before printing each card
         cli.clear()
 
-        # pick a random card and remove it from the deck
         card = random.choice(cards)
         cards.remove(card)
 
-        # print x of y (right aligned)
-        cli.output(f"{count} of {total}", align="right")
-        cli.newline(3)
+        cli.output(category, end="")
+        cli.output(f"{count} of {total}",
+                   align="right",
+                   width=WIDTH-len(category))
 
-        # print the front of the card
+        cli.goto_middle()
         cli.output(card["front"], align="center")
-        cli.newline(2)
 
-        # ask the user for input, then return the cursor to the
-        # beginning of the same line
+        cli.goto_bottom(5)
         with cli.goback():
             answer = input("> ")
 
-        # figure out if their answer was right or wrong
-        # and set their score and feedback symbol appropriately
-        if answer == card["back"]:
-            feedback = cli.symbols.right
-            score += 1
-        else:
-            feedback = cli.symbols.wrong
+            if answer == card["back"]:
+                feedback = cli.symbols.right
+                score += 1
+            else:
+                feedback = cli.symbols.wrong
 
-        # print the check mark or x over where the prompt was
-        # then go down a few lines
         cli.output(feedback)
-        cli.newline(3)
 
-
-        # print the correct answer
-        # then go down a bit
+        cli.goto_middle(3)
         cli.output(f"{card['back']}",
                    align="center",
                    width=WIDTH - 1,
                    color="green_reverse")
-        cli.newline(2)
+        cli.goto_bottom(2)
 
-        # print something to let the user know
-        # they're done with this card
-        action = "[next]"
         if count == total:
-            action = "[done]"
-        cli.output(action, color="cyan", align="center")
+            message = "[done]"
+        else:
+            message = "[next]"
 
-        # wait for them to press any key before
-        # moving onto the next card
+        cli.output(message, color="cyan", align="center")
+
         cli.await_keypress()
 
-        # increment the counter
         count += 1
 
     return score, total
 
 def endgame(score, total):
     """Print the score"""
-
-    # calculate the percentage score
     percent = int((score / total) * 100)
+    message, symbol = prize(percent)
 
-    # clear the screen then go down a bit
     cli.clear()
-    cli.newline(3)
-
-    # print the score
+    cli.goto_middle()
     cli.output(f"{percent}% - {score} of {total}", align="center")
-    cli.newline(3)
+
+    cli.goto_middle(2)
+    cli.output(f"{symbol:<2}{message}", align="center")
+    cli.goto_bottom()
 
 def main():
     path = CARDS_DIR / "paths.csv"
@@ -187,26 +202,13 @@ def main():
     score, total = play(cards, path.stem)
     endgame(score, total)
 
-# only call main() if the script is being run, not imported
 if __name__ == "__main__":
     try:
         main()
-
-    # this suppresses errors when the user hits CTRL+C
     except KeyboardInterrupt:
         print()
-
-    # this suppress traceback message for some normal exits
-    except SystemExit:
-        ...
-
-    # suppress traceback messages for normal usage
     except (cli.GracefulExit, cli.FatalError) as e:
-
-        # if there's a message, print it nicely
         if e.message:
             out = stderr if e.code else stdout
             print(f"{e.prefix}{e.message}", file=out)
-
-        # exits 0 if no errors, nonzero otherwise
         exit(e.code)

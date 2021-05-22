@@ -59,6 +59,10 @@ def colorize(text, colors: str):
    func = getattr(TERM, colors)
    return func(text)
 
+def newline(num=1):
+    """Print a new line"""
+    print("\n"*num, end="")
+
 def align_horiz(text: str, alignment: str=None, width=WIDTH, **kwargs):
     """Return horizontally aligned text
 
