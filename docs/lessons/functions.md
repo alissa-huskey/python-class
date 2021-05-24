@@ -26,10 +26,33 @@ followed by `(``)`.
 
 ```{code-block} python
 ---
-caption: executes `print("Hello.")`
+caption: 'executes `print("Hello.")`'
+class: full-width
+
 ---
 hello()
 ```
+
+
+```{exercise} horizontal line function
+:label: hr-exercise
+
+Write a function called `hr` to print a line of dashes 100 characters wide, like so:
+
+`--------------------------------------------------`
+
+
+```
+
+`````{solution} hr-exercise
+:class: dropdown
+
+```{code-block} python
+def hr():
+  print("-" * 100)
+```
+
+`````
 
 Parameters and arguments
 ------------------------
@@ -60,8 +83,7 @@ assigned to variables with the same names as the parameters in the function
 definition.
 
 ```{code-block} python
----
----
+:linenos:
 hello("John")
 hello("Mary")
 
@@ -90,6 +112,80 @@ caption: Now the return value can be assigned to a variable, or used anywhere el
 
 greeting = formal_greeting("John", "Smith")
 print(formal_greeting("Jane", "Doe"))
+```
+
+Docstrings
+----------
+
+Docstrings are a special kind of string in Python that are enclosed with three
+single `'''` or double `"""` quotes.  They can be used as a normal string that
+has the added bonus of being able to span multiple lines.
+
+Their namesake, and the reason we are interested in them today, comes from the
+fact that when a docstring is the very first line of a file, function, or
+class, it serves as documentation.
+
+```{code-block} python
+:linenos:
+def formal_greeting(first_name, last_name):
+  """Returns a string to start a letter"""
+  return "Dear" + first_name + last_name + ","
+```
+
+You can see this works like a comment while looking at the code. Niftier still,
+a functions docstring is saved by Python and can be used from the interpreters
+`help()` function.
+
+Say we have the following {file}`greetings.py` file:
+
+```{code-block} python
+:caption: greetings.py
+:linenos:
+"""Functions for greeting people"""
+
+def hello(name):
+  """Print hello to name"""
+  print("Hello", name, ".")
+
+def formal_greeting(first_name, last_name):
+  """Returns a string to start a letter"""
+  return "Dear" + first_name + last_name + ","
+```
+
+We could then import our functions from a Python shell, and call the `help()` on
+our own `hello` function.
+
+```{code-block} python
+:caption: Python shell
+
+>>> from greetings import hello
+>>> help(hello)
+Help on function hello in module greetings:
+
+hello(name)
+    Print hello to name
+```
+
+Or we could do the same thing for the whole `greetings` module:
+
+```{code-block} python
+:caption: Python shell
+>>> import greetings
+>>> help(greetings)
+Help on module greetings:
+
+NAME
+    greetings - Functions for greeting people
+
+FUNCTIONS
+    formal_greeting(first_name, last_name)
+        Returns a string to start a letter
+
+    hello(name)
+        Print hello to name
+
+FILE
+    .../greetings.py
 ```
 
 % [ ] returning multiple values

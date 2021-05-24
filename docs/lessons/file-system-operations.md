@@ -403,9 +403,9 @@ else:
 
 1. Use `.touch()` to make an empty file `xxx.txt`
 2. Make a new `Path` object to {file}`data/xxx.txt`
-2. Check to make sure `data/xxx.txt` does not exist, and print an error if it does.
-4. Print a message {samp}"Moving '{from}' to '{to}'."
-4. Use `.replace()` to move the file.
+3. Check to make sure `data/xxx.txt` does not exist, and print an error if it does.
+4. Print a message {samp}`"Moving '{from}' to '{to}'."`
+5. Use `.replace()` to move the file.
 
 ```
 
