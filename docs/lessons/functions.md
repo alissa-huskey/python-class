@@ -91,6 +91,42 @@ formal_greeting("John", "Smith")
 formal_greeting("Jane", "Doe")
 ```
 
+```{code-block} python
+---
+caption: 'executes `print("Hello.")`'
+class: full-width
+
+---
+hello()
+```
+
+
+`````{exercise} header function
+:label: header-exercise
+
+Write a `header()` function that takes one string parameter `title` and prints
+the title followed by a line of dashes the same length of the title, like so:
+
+```{code-block} python
+:caption: Python shell
+>>> header("Chapter One")
+Chapter One
+-----------
+```
+
+`````
+
+`````{solution} header-exercise
+:class: dropdown
+
+```{code-block} python
+def header(title):
+  print(title)
+  print("-" * len(title))
+```
+
+`````
+
 Returning values
 ----------------
 
