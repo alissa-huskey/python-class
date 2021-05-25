@@ -300,13 +300,61 @@ FILE
     .../greetings.py
 ```
 
+Ideally all functions should have a simple doctring describing what the
+function does, any parameters, and any return value. For a simple functions a
+one line brief description will do the trick.
+
+For more complicated functions, you can take advantage of the multiline
+abilities of docstrings to add detailed information. Here's a long docstring example.
+
+```{code-block} python
+def prettify(message, align, width):
+    """Return a formatted message
+
+    Params
+    ------
+    message (str): Message to format
+    align (str): Alignment of text (left, center, right)
+    width (int): Width of text
+
+    Returns
+    -------
+    message (str): formatted message
+
+    Examples
+    --------
+    >>> prettify("hello", "center", 100)
+    '            hello             '
+    >>> prettify("goodbye", "right", 100)
+    '                       goodbye'
+    """
+
+    if align not in ("left", "center", "right"):
+      print(f"Invalid argument for align: {align}")
+
+    if align == "center":
+      message = message.center(width)
+    elif align == "right":
+      message = message.rjust(width)
+
+    return message
+```
+
+```{exercise} docstrings
+:label: docstrings-exercise
+
+Add a simple docstring to your file and all of the functions you've written
+today. Import them into a Python shell and use the `help()` function to view them.
+
+```
+
 % [ ] returning multiple values
 % [ ] default arguments
 % [ ] keyword arguments
 % [ ] arbitrary argument list
 % [ ] arbitrary keyword argument list
 % [ ] unpacking arguments
-% [ ] docstrings
+% [x] docstrings
 % [ ] annotations
 
 
