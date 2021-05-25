@@ -130,25 +130,101 @@ def header(title):
 Returning values
 ----------------
 
-Functions can {term}`return` a value.
+The {term}`return` statement is used to leave a function.
+
+By itself `return` works similar to the `break` statement in a for loop. No
+other code in the function will be executed.
 
 ```{code-block} python
----
-caption: returns instead of printing
----
+:linenos:
 
-def formal_greeting(first_name, last_name):
-  return "Dear" + first_name + last_name + ","
+def print_stuff():
+  print("this will be printed")
+  return
+  print("this will never be printed")
+```
+
+It's common to return inside an if statement, for example, to avoid errors.
+
+```{code-block} python
+:linenos:
+
+def hr(width):
+  if width < 0:
+    print("width can't be negative'")
+    return
+
+  print("=" * width)
+```
+
+The return statement can optionally send a value back to the caller, so that
+the function call will then evaluate to that value.
+
+Lets take a look at the difference between printing in the function, and returning.
+
+<div class="row"><div class="col">
+
+```{code-block} python
+:linenos:
+:caption: prints a string
+def hello(name):
+  print(f"hello {name}")
 ```
 
 ```{code-block} python
----
-caption: Now the return value can be assigned to a variable, or used anywhere else we need an expression.
----
-
-greeting = formal_greeting("John", "Smith")
-print(formal_greeting("Jane", "Doe"))
+:caption: python shell
+>>> text = hello("you")
+hello you
+>>> print(type(text))
+<class 'NoneType'>
+>>> print(text)
+None
 ```
+
+When the function is called, the string `"hello you"` is
+printed. Since nothing is returned, `text` is `None`.
+
+</div><div class="col">
+
+```{code-block} python
+:caption: returns a string
+def hello(name):
+  return f"hello {name}"
+```
+
+```{code-block} python
+:caption: python shell
+>>> text = hello("you")
+>>> print(type(text))
+<class 'str'>
+>>> print(text)
+hello you
+```
+
+Nothing is printed when the function is called and `text` is assigned the
+string `"hello you"`.
+
+</div></div>
+
+```{exercise} random function
+:label: random-function-exercise
+
+Write a `number()` function to return a random number between 1 and 100.
+
+```
+
+`````{solution} random-function-exercise
+:class: dropdown
+
+```{code-block} python
+import random
+
+def number():
+  return random.randint(1, 100)
+```
+
+`````
+
 
 Docstrings
 ----------
