@@ -301,7 +301,7 @@ FILE
 ```
 
 Ideally all functions should have a simple doctring describing what the
-function does, any parameters, and any return value. For a simple functions a
+function does, any parameters, and any return value. For simple functions a
 one line brief description will do the trick.
 
 For more complicated functions, you can take advantage of the multiline
@@ -330,7 +330,8 @@ def prettify(message, align, width):
     """
 
     if align not in ("left", "center", "right"):
-      print(f"Invalid argument for align: {align}")
+      print(f"Invalid align argument: '{align}'")
+      return
 
     if align == "center":
       message = message.center(width)
