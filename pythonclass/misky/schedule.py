@@ -1,15 +1,15 @@
 #!/usr/bin/env python
 """
 Parse CSV results from google form "Python Class Schedule Survey":
-https://forms.gle/TzK1MnzoLo5iF1fH9
+https://docs.google.com/forms/d/1iLeT_ucQj1-3CR1o9zwL3J3ZG66sLbN-swczFEpop4I/edit
 """
 
 import datetime
+from dateutil.parser import parse
 from pathlib import Path
 from pprint import pprint
 import pytz
 import time
-from dateutil.parser import parse
 
 from blessed import Terminal
 import pandas
@@ -67,16 +67,8 @@ def parse_csv(filepath):
     data = pandas.read_csv(filepath, index_col=1)
     data.columns = pandas.MultiIndex.from_tuples(
         headers, names=["header", "subheader"])
-    #  breakpoint()
-    #  data.index = data.index.str.extract(r"^([a-zA-Z]*)", expand=False)
     data.index = data["name"].str.lower().str.extract(r"^([a-zA-Z]*)",
                                                       expand=False)
-
-    #  table = data.loc[:, idx[:, "start"]]
-    #  print(table.T)
-
-    #  print(col.T)
-    #  return data
 
     for day in WEEKDAYS:
         col = data.xs(day, axis=1, level="header")
@@ -111,8 +103,8 @@ def has_period(row, period):
         start=row["start_time"],
         end=row["end_time"],
         freq=PER_HOUR,
-    )
-    available_hours = available_hours.floor(PER_HOUR)
+    ).floor(PER_HOUR)
+
     time = TZ.localize(period.to_timestamp())
 
     return time in available_hours
@@ -127,8 +119,9 @@ def normalize_time(time_str, tz_str):
     return dt.astimezone(TZ)
 
 def hourly(data):
-    """Generate data frame with per-hour boolean values for availability"""
-    frames = []
+    """Return a dict of key: df, where df is a DataFrame containing per-hour
+       boolean values for availability"""
+    frames = {}
 
     for day in WEEKDAYS:
         start_range = data[(day, "start_time")].min()
@@ -141,61 +134,48 @@ def hourly(data):
                 end_range,
                 freq=PER_HOUR)
 
-        # pretty printed hour
+        # pretty printed hour strings
         hours = periods.map(lambda x: x.start_time.strftime("%I:%M%p"))
 
-        #  df.columns = ts.index.map(
-        #      lambda x: x.start_time.strftime("%I:%M%p"))
-
-        # generate a (day, hour) MultiIndex
-        cols = pandas.MultiIndex.from_tuples(
-            zip([day]*len(hours), hours),
-            names=["day", "hour"]
-        )
-
-        # generate a matrix of boolean values for availability in period
+        # generate a matrix of boolean values for availability in each period
         matrix = data[day].apply(
             periods.map(
                 lambda period: lambda row: has_period(row, period)
             ), axis=1
         ).to_numpy()
 
-
         # create dataframe
-        df = pandas.DataFrame(matrix, index=data.index, columns=cols)
+        df = pandas.DataFrame(matrix, index=data.index, columns=hours)
 
-        # change the index to include the availbility symbol
+        # add availbility symbol to index
         width = df.index.map(len).max()
         df.index = data[day].apply(lambda x: f"{x.name:>{width}} {x['available']}", axis=1)
 
-        # append to master dataframe
-        #  frame = frame + df
-        frames.append(df)
+        # add to frames dict
+        frames[day] = df
 
     return frames
 
-def visualize(table):
+def visualize(day, table):
     """Print a bar graph for dataframe"""
 
-    # get the data for this day
-    #  table = hours[day]
-    day = table.columns.get_level_values("day")[0]
-    table = table[day]
+    margin = 3                         # screen safety margin
+    idx_padding = 2                    # padding between index label and values
+    nonprinting_length = 11            # number of nonprinting chars in index
 
-    margin = 5
-    idx_padding = 2
-    nonprinting_length = 11
-    real_idx_width = table.index.map(len).max()
-    idx_width = real_idx_width - nonprinting_length + idx_padding
-    max_width = TERM.width - margin
-    col_width = 7
-    #  header_width = col_width  + 3
-    space = " " * col_width
+    max_width = TERM.width - margin    # maximum screen width
+    col_width = len("HH:MMAP")         # width of each column
 
-    bool_to_color = lambda is_true: (TERM.on_black(space),
-                                        TERM.on_green(space))[int(is_true)]
+    # number of printable characters in the index
+    idx_width = table.index.map(len).max() - nonprinting_length + idx_padding
 
-    # convert True/False to ascii colored strings
+    bar = " " * col_width              # spaces to fill each cell with
+
+    # return ascii colored string associated with boolean is_true
+    bool_to_color = lambda is_true: (TERM.on_black(bar),
+                                        TERM.on_green(bar))[int(is_true)]
+
+    # convert all True/False values to ascii colored strings
     table = table.applymap(bool_to_color)
 
     # print the day title
@@ -207,21 +187,20 @@ def visualize(table):
     headers = " ".join(table.columns.to_list())
     print(left_margin, headers, "\n", sep="")
 
+    # print the name and availbility bars for each person
     for row in table.iterrows():
         name = row[0]
         padding = " " * idx_padding
         bars = " ".join(row[1])
         print( name, padding, bars, "\n", sep="")
 
-    #  print( (" " *idx_width), " ".join([f"{c:>{col_width}}" for c in table.columns.values]), sep="")
-    #  print(table.to_string(header=False))
-
     print()
 
+
 def show(frames):
-    """Print all days"""
-    for df in frames:
-        visualize(df)
+    """Print visualizations for all hourly dataframes"""
+    for day, df in frames.items():
+        visualize(day, df)
 
 def main():
     filepath = DATADIR / "schedule.csv"
