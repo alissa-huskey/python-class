@@ -4,8 +4,8 @@ Parse CSV results from google form "Python Class Schedule Survey":
 https://docs.google.com/forms/d/1iLeT_ucQj1-3CR1o9zwL3J3ZG66sLbN-swczFEpop4I/edit
 """
 
-import datetime
-from dateutil.parser import parse
+from datetime import datetime
+from dateutil.parser import parse, parserinfo
 from pathlib import Path
 from pprint import pprint
 import pytz
@@ -13,22 +13,17 @@ import time
 
 from blessed import Terminal
 import pandas
+import click
 
 TERM = Terminal()
 DATADIR = Path(__file__).parent.parent.parent / "data"
-TODAY = datetime.datetime.today()
 TZ = pytz.timezone("US/Mountain")
 PER_HOUR = pandas.offsets.Hour(1)
 
-WEEKDAYS = [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday",
-]
+WEEKDAY_ABBR = dict(parserinfo.WEEKDAYS)
+WEEKDAYS = WEEKDAY_ABBR.values()
+
+VALID_WEEKDAYS = list(WEEKDAYS) + list(WEEKDAY_ABBR.keys())
 
 AVAILABILITY = {
     "Preferred":    TERM.green("\u2605"),    # ★
@@ -38,7 +33,7 @@ AVAILABILITY = {
 }
 
 
-def parse_csv(filepath):
+def parse_csv(filepath, students=None, days=None):
     """Return DataFrame object for csv file at filepath"""
     idx = pandas.IndexSlice
     weekday_headers = pandas.MultiIndex.from_product(
@@ -91,6 +86,14 @@ def parse_csv(filepath):
             lambda row: normalize_time(row[(day, "end")], row[("timezone", "")]),
             axis=1)
 
+    # filter to selected students
+    if students:
+        data = data.loc[list(students)]
+
+    # filter to selected days
+    if days != WEEKDAYS:
+        data = data[days]
+
     return data
 
 
@@ -123,7 +126,11 @@ def hourly(data):
        boolean values for availability"""
     frames = {}
 
-    for day in WEEKDAYS:
+    # get the list of days in this dataset
+    days = [d for d in set(data.columns.get_level_values("header"))
+            if d in WEEKDAYS]
+
+    for day in days:
         start_range = data[(day, "start_time")].min()
         end_range = data[(day, "end_time")].max()
 
@@ -183,9 +190,10 @@ def visualize(day, table):
     print(title, "\n")
 
     # print the header row
-    left_margin = " " * idx_width
+    tz = datetime.now(TZ).tzname()
+    timezone = f"({tz})  ".rjust(idx_width)
     headers = " ".join(table.columns.to_list())
-    print(left_margin, headers, "\n", sep="")
+    print(timezone, headers, "\n", sep="")
 
     # print the name and availbility bars for each person
     for row in table.iterrows():
@@ -202,13 +210,48 @@ def show(frames):
     for day, df in frames.items():
         visualize(day, df)
 
-def main():
+def process_weekdays(ctx, values):
+    """Convert all weekdays to titlecase, convert abbreviations to full day
+       names, and sort chronologicly. (click option callback)"""
+    days = []
+
+    for v in values:
+        day = v.title()
+        if day not in WEEKDAYS:
+            day = WEEKDAY_ABBR[day]
+        days.append(day)
+
+    chrono = lambda d: [i for i, wd in enumerate(parserinfo.WEEKDAYS) if d in wd ][0]
+    return sorted(days, key=chrono)
+
+
+@click.command()
+@click.option("-d", "--day", multiple=True, default=WEEKDAYS,
+              type=click.Choice(VALID_WEEKDAYS, case_sensitive=False),
+              callback=process_weekdays,
+              help="filter to listed days (multiple ok)")
+@click.option("-t", "--timezone", default="Mountain",
+              type=click.Choice(
+                  [ t[3:] for t in pytz.all_timezones if t.startswith("US") ],
+                  case_sensitive=False
+              ),
+              callback=lambda ctx, value: value.title(),
+              help="convert all times to this timezone")
+@click.option("-s", "--student", multiple=True,
+              callback = lambda ctx, values: [v.lower() for v in values],
+              help="filter to listed students (multiple ok)")
+def cli(day, timezone, student):
+    """print visualization of schedule.csv"""
+    global TZ
+    if timezone:
+        TZ = pytz.timezone(f"US/{timezone}")
     filepath = DATADIR / "schedule.csv"
-    data = parse_csv(filepath)
+
+    data = parse_csv(filepath, student, day)
     frames = hourly(data)
     show(frames)
     return data, frames
 
 
 if __name__ == "__main__":
-    main()
+    cli()
