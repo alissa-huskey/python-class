@@ -13,15 +13,6 @@ comment
   comment text to the end of an expression. It is recommended to follow the `#`
   by a single space before the text of the comment.
 
-comparison operator
-  An operator that compares the left-hand value to the right-hand value then
-  evaluates to either True or False.
-
-condition
-conditional
-  A valid piece of code that, when evaluated, results in
-  {term}`boolean` value.
-
 escaping
   How to indicate to the computer that an operator inside of a string should
   not be interpreted but instead be treated be treated as part of the string.
@@ -30,19 +21,9 @@ escaping
   the escape character in any string. In Python (and many other languages) the
   escape character is a backslash (`\`).
 
-expression
-  A valid piece of code that, when evaluated, results in a value.
-
-falsy
-  A value that is False when evaluated in a `boolean` context, or when converted
-  to a boolean using the `bool()` function.
-
 identifier
   The name that refers to a some programming element, such as a variable,
   class, function or module.
-
-if statement
-  a compound statement that changes what code is executed depending on its conditions
 
 iterate
 iteration
@@ -58,25 +39,6 @@ keyword
   they cannot be used as an identifier. Some examples of keywords in Python are
   `for`, `if`, and `def`.
 
-logical operator
-  An operator that considers both left-hand value and right-hand value then
-  evaluates to either True or False.
-
-module
-  A file containing of reusable code that can be imported into other programs.
-
-namespace
-  The group that a variable or function is part of. `print()` is part of the
-  {term}`global namespace` whereas `randint()` is part of the `random` module, and
-  therefore part of the `random` namespace.
-
-operator
-  A symbol with special meaning that tells the computer to do something (for
-  example `=`, `+`, or `==`).
-
-statement
-  An instruction that Python can {term}`execute` as a unit.
-
 string concatenation
 concatenation
 concatenate
@@ -86,20 +48,12 @@ syntax
   A set of rules that determine how a programming language is understood by the
   computer. Grammar, but for code.
 
-truthy
-  A value that is True when evaluated in a `boolean` context, or when converted
-  to a boolean using the `bool()` function.
-
 type
 data type
   The classification of a value which tells Python what operations can be
   performed on it. Some examples include {term}`strings`,
   {term}`integers`, {term}`lists`, and
   {term}`dictionaries`.
-
-value
-  A piece of data such as {term}`strings`, {term}`integers`
-  and more.
 
 variable
   A name given to a value.

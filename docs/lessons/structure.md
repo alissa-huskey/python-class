@@ -543,11 +543,16 @@ Glossary
 ```{glossary} structure
 
 module
-    a file containing Python definitions and statements
+    a file containing of reusable code, like function definitions and global
+    variables, that can be imported into other programs
 
 package
     a directory containing a {file}`__init__.py` file and other Python modules
 
+namespace
+  The group that a variable or function is part of. `print()` is part of the
+  {term}`global namespace` whereas `randint()` is part of the `random` module, and
+  therefore part of the `random` namespace.
 ```
 
 % TODO

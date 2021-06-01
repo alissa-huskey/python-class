@@ -441,13 +441,13 @@ name = "Jack" ; age = 24 ; print(name, "is", age, "years old")
 ```
 
 Reference
-----------------
+---------
 
 ### Glossary
 
-```{glossary}
+```{glossary} statements
 statement
-  an instruction that Python can execute as a unit
+  An instruction that Python can {term}`execute` as a unit.
 
 physical line
   a line of code, the way it was written
