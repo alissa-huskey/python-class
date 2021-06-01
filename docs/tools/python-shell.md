@@ -19,13 +19,14 @@ Table of Contents
 * [Part 5. Tab completion](#part-5-tab-completion)
 * [Part 6. Inspect thyself](#part-6-inspect-thyself)
 * [Part 7. Get help](#part-7-get-help)
-
+* [Glossary](#glossary)
 
 Part 1. Open the Python Shell
 -----------------------------
 
 1. Open repl.it
-2. In the right pane, you will see the following and your prompt will be an orange '>'.
+2. In the right pane, you will see the following and your {term}`prompt` will
+   be an orange `>`.
 
 ```
 Python 3.8.2 (default, Feb 26 2020, 02:56:10)
@@ -51,7 +52,7 @@ Part 2. Simple expressions
 Here you can type simple expressions to see what they will do. Here are a few things to try.
 
 
-```python3
+```python
 >>> age = 28
 >>> age * 365
 
@@ -62,7 +63,7 @@ Here you can type simple expressions to see what they will do. Here are a few th
 
 It can be helpful to test out ***conditionals*** that you would want to put in an if-statement.
 
-```python3
+```python
 >>> False == 0
 True
 >>> 2.0 == 2
@@ -89,7 +90,7 @@ shorthand in the Python Shell.
 
 For example, we could change the above to:
 
-```python3
+```python
 >>> name = "Jayson" ; clothing = "hat"
 >>> print("Hello " + name + ". What a nice " + clothing + " you are wearing!")
 ```
@@ -101,7 +102,7 @@ Part 4. Use Up-arrow and Down-arrow to repeat history
 You can use the up arrow to fill in previously typed lines in your history.
 Imagine we made a mistake.
 
-```python3
+```python
 >>> print("Hello world)
   File "<stdin>", line 1
     print("Hello world)
@@ -112,7 +113,7 @@ SyntaxError: EOL while scanning string literal
 We can hit the up-arrow once to bring the last line back, then fix the misake
 and press enter.
 
-```python3
+```python
 >>> print("Hello world")
 Hello world
 ```
@@ -125,7 +126,7 @@ the `name` and `clothing` variables and change their values. After pressing
 enter, we could use the up-arrow again to bring back the `print` line to repeat
 it with the new values.
 
-```python3
+```python
 >>> name = "Cody" ; clothing = "shirt"
 >>> print("Hello " + name + ". What a nice " + clothing + " you are wearing!")
 Hello Cody. What a nice shirt you are wearing!
@@ -145,7 +146,7 @@ and it will attempt to guess the rest.
 
 Try typing `pri` and then hit the tab key.
 
-```python3
+```python
 >>> print(
 ```
 
@@ -155,7 +156,7 @@ a list of the matches. For example, if we had `favorite_color` and
 `favorite_season` defined, and then we typed `fav` followed by the tab key we
 would see:
 
-```python3
+```python
 >>> favorite_color = "black"
 >>> favorite_season = "fall"
 >>> fav
@@ -175,7 +176,7 @@ information about the things you have defined.
 
 The `type()` function will tell you what type a variable is.
 
-```python3
+```python
 >>> five = 5
 >>> type(five)
 <class 'int'>
@@ -191,7 +192,7 @@ The `type()` function will tell you what type a variable is.
 
 The `callable()` function will tell you if an object is a function or not.
 
-```python3
+```python
 >>> callable(five)
 False
 >>> callable(print)
@@ -209,7 +210,7 @@ You can pass it a string with the name of a funciton you would like more informa
 (You may find it helpful to expand the right pane by clicking the middle of the
 bar between the right and left panes, and dragging to the left.)
 
-```python3
+```python
 >>> help("print")
 >>> help("input")
 >>> help("if")
@@ -218,7 +219,7 @@ bar between the right and left panes, and dragging to the left.)
 You can also call `help()` without arguments to get Python's Interactive Help.
 This will change the prompt to `help>`.
 
-```python3
+```python
 >>> help()
 
 Welcome to Python 3.8's help utility!
@@ -232,7 +233,7 @@ function. For example, typing `print` at the `help>` prompt is the same as
 typing `help("print")` at the Python prompt.
 
 
-```python3
+```python
 help> print
 Help on built-in function print in module builtins:
 
@@ -258,7 +259,7 @@ Additionally you can type:
   repl.) A list of available modules.
 
 
-```python3
+```python
 help> keywords
 
 Here is a list of the Python keywords.  Enter any keyword to get more help.
@@ -269,4 +270,30 @@ True                def                 if                  raise
 ...
 ```
 
-To get back to the normal Python shell type `quit` or press `Ctrl-D`.
+To get back to the normal Python shell type `quit()` or press `Ctrl-D`.
+
+Glossary
+--------
+
+```{glossary} python-shell
+
+prompt
+  Characters displayed by the interpreter to indicate that it is ready to take
+  input from the user.
+
+Python shell
+  a {term}`REPL` for Python code
+
+  an interface where you can type in python code, and it will run it and print
+  out the results
+
+read-evaluate-print-loop
+REPL
+  An interactive tool or environment that takes code input,
+  {term}`evaluates` or {term}`executes` it, and displays the
+  output or resulting value to the user. {term}`shells` are a subset of
+  REPLs. More advanced REPL tools and systems are comprised of an input or
+  editor pane, and an output or results pane. Many online REPLs exist such as
+  play.golang.org for Go, pythonfiddle.com for Python, try.ruby-lang.org for
+  Ruby and repl.it.
+```

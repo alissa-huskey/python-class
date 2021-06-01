@@ -22,3 +22,20 @@ To {term}`reference` a variable, or retrieve the data you stored, use the variab
 y = x + 3
 print("Hello", name)
 ```
+
+Glossary
+--------
+
+```{glossary} variables
+
+assign
+  A {term}`statement` that sets the {term}`value` of a variable name.
+
+identifier
+  The name that refers to a some programming element, such as a variable,
+  class, function or module.
+
+variable
+  A name given to a value.
+
+```

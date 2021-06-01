@@ -490,7 +490,9 @@ clause
 ```
 ---
 
-### More info
+### See also
+
+```{seealso}
 
 **The Python Language Reference**
 
@@ -498,3 +500,4 @@ clause
 * [Simple statements](https://docs.python.org/3/reference/simple_stmts.html)
 * [Compound statements](https://docs.python.org/3/reference/compound_stmts.html)
 
+```
