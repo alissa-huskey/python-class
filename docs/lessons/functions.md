@@ -132,7 +132,7 @@ def header(title):
 
 ### Positional Arguments
 
-Most of the time functions are called using {term}`positional arguments`. That
+Most of the time functions are called using {term}`positional arguments <positional argument>`. That
 is, each argument is assigned based on its position in the argument list.
 
 Lets look at the following function as an example.
@@ -168,7 +168,7 @@ The third place winner is: Bob
 
 ### Keyword Arguments
 
-You can also use {term}`keyword arguments` when calling a function to make it
+You can also use {term}`keyword arguments <keyword argument>` when calling a function to make it
 clear which argument is which. Just put the parameter name followed by an `=`
 in front of the argument value.
 
@@ -315,7 +315,7 @@ Lisa Simpsons birthday is on May 9, 1986.
 Returning values
 ----------------
 
-The `return` statement is used to leave a function.
+The {term}`return` statement is used to leave a function.
 
 By itself `return` works similar to the `break` statement in a for loop. No
 other code in the function will be executed.
@@ -535,6 +535,50 @@ def prettify(message, align, width):
 
 Add a simple docstring to your file and all of the functions you've written
 today. Import them into a Python shell and use the `help()` function to view them.
+
+```
+
+Glossary
+--------
+
+```{glossary} functions
+
+argument
+  A {term}`value` that is passed as input to a function.
+
+call
+  code that tells the computer to {term}`execute` the code within a previously
+  defined function or method by using the function name followed by `(` `)`,
+  with any arguments inside the parenthisis.
+
+docstring
+  a special kind of string surrounded by triple double-quotes `"""` or triple
+  single-quotes `'''` that can span multiple lines. When a docstring appears as
+  the first expression in a file, module, class, or function it is stored by
+  Python as documentation and can be seen by using the `help()` function in the
+  {term}`Python shell`.
+
+function
+  a named block of reusable code. A function may or may not take arguments, and
+  may or may not return a value. In Python it is recommended to use the
+  `lower_case_with_underscores` for function names.
+
+keyword argument
+  when arguments passed to a function are preceeded by the paramater name and
+  an equals sign (`=`) so that they are assigned to the specified parameter
+  regardless of the order in which they appear
+
+parameter
+  The named variables that appear in a function definition to specify the
+  arguments it can accept.
+
+positional argument
+  when arguments are passed to a function so that they are assigned based on
+  the order in which they appear
+
+return
+  a statement that can be used in a function to exit the function and
+  optionally send a value to the caller
 
 ```
 

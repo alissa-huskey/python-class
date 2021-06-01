@@ -3,15 +3,8 @@ Glossary
 
 ```{glossary} programming-concepts
 
-argument
-  A {term}`value` that is sent as input to a function.
-
 assign
   A {term}`statement` that sets the {term}`value` of a variable name.
-
-call
-  Code that tells the computer to {term}`execute` the code within a previously
-  defined function.
 
 comment
   Parts in a source-code file which are ignored when the program is run. In
@@ -29,12 +22,6 @@ conditional
   A valid piece of code that, when evaluated, results in
   {term}`boolean` value.
 
-docstring
-  Similar to a comment parts of code that are not executed but are used to
-  document a segment of code. In Python it is surrounded by triple
-  double-quotes `"""` or triple single-quotes `'''` and appears at the first
-  expression in a file, module, class, or function.
-
 escaping
   How to indicate to the computer that an operator inside of a string should
   not be interpreted but instead be treated be treated as part of the string.
@@ -49,11 +36,6 @@ expression
 falsy
   A value that is False when evaluated in a `boolean` context, or when converted
   to a boolean using the `bool()` function.
-
-function
-  A named block of reusable code. A function may or may not take arguments, and
-  may or may not return a value. In Python it is recommended to use the
-  `lower_case_with_underscores` for function names.
 
 identifier
   The name that refers to a some programming element, such as a variable,
@@ -91,10 +73,6 @@ namespace
 operator
   A symbol with special meaning that tells the computer to do something (for
   example `=`, `+`, or `==`).
-
-parameter
-  The named variables that appear in a function definition to specify what
-  arguments it can accept.
 
 statement
   An instruction that Python can {term}`execute` as a unit.
