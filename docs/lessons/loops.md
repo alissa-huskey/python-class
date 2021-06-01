@@ -353,3 +353,55 @@ Then end it with, {samp}`"What does it spell? {name}!"` [^script_name_cheer]
 [^script_jolly]: completed script: {lesson}`jolly.py`
 [^script_days_of_xmas]: completed script: {lesson}`days_of_xmas.py`
 [^script_hangman]: completed script: {lesson}`hangman.py`
+
+
+For Loops
+---------
+
+A while loop continues for as long as a condition is met, a for loop on the
+other hand repeats for every item in a a list or a list-like object.
+
+You've already learned how to iterate over a list using a while loop. Let's
+take a look at another example.
+
+<div class="row"><div class="col">
+
+```{code-block-hl} python
+:linenos:
+dwarves = [
+  "Bashful",
+  "Dopey",
+  "Happy",
+  "Grumpy",
+  "Sleepy",
+  "Sneezy",
+  "Doc",
+]
+
+i = 0
+while i < len(!!!dwarves!!!):
+  !!!name!!! = dwarves[i]
+  print(f"{name}s Room")
+  i += 1
+```
+
+</div><div class="col">
+
+```{code-block-hl} python
+:linenos:
+dwarves = [
+  "Bashful",
+  "Dopey",
+  "Happy",
+  "Grumpy",
+  "Sleepy",
+  "Sneezy",
+  "Doc",
+]
+
+for name in dwarves:
+  print(f"{name}s Room")
+```
+
+</div></div>
+
