@@ -57,7 +57,7 @@ def hr():
 Parameters and arguments
 ------------------------
 
-Functions can be written to accept data as one or more {term}`parameters` separated by `,`.
+Functions can be written with one or more {term}`parameters` separated by `,`.
 
 ```{code-block} python
 ---
@@ -127,10 +127,190 @@ def header(title):
 
 `````
 
+### Positional Arguments
+
+Most of the time functions are called using {term}`positional arguments`. That
+is, each argument is assigned based on its position in the argument list.
+
+Lets look at the following function as an example.
+
+```{code-block} python
+def winners(first, second, third):
+  """Print the contest winners"""
+  print(f"The first place winner is: {first}")
+  print(f"The second place winner is: {second}")
+  print(f"The third place winner is: {third}")
+```
+
+When we call it below, `"Alex"` is assigned to the variable `first` because
+that argument is the first one passed; `"Bob"` is assigned to `second` because
+that argument is the second passed, and so on.
+
+```python
+>>> winners("Alex", "Bob", "Celeste")
+The first place winner is: Alex
+The second place winner is: Bob
+The third place winner is: Celeste
+```
+
+When calling functions this way, changing the order of the arguments will
+change the parameters they are assigned to.
+
+```python
+>>> winners("Celeste", "Alex", "Bob")
+The first place winner is: Celeste
+The second place winner is: Alex
+The third place winner is: Bob
+```
+
+### Keyword Arguments
+
+You can also use {term}`keyword arguments` when calling a function to make it
+clear which argument is which. Just put the parameter name followed by an `=`
+in front of the argument value.
+
+```python
+>>> winners(first="Alex", second="Bob", third="Celeste")
+The first place winner is: Alex
+The second place winner is: Bob
+The third place winner is: Celeste
+```
+
+You can even mix and match positional arguments and keyword arguments, as long
+as you put all of the positional arguments first.
+
+```python
+>>> winners("Alex", second="Bob", third="Celeste")
+The first place winner is: Alex
+The second place winner is: Bob
+The third place winner is: Celeste
+```
+
+When using keyword arguments, you can change the order of your arguments
+without effecting how they are assigned.
+
+```python
+>>> winners(second="Bob", first="Alex", third="Celeste")
+The first place winner is: Alex
+The second place winner is: Bob
+The third place winner is: Celeste
+```
+
+It can also be useful to use keyword arguments to make your code more clear.
+For example, imagine a `calculate_cost` function that takes a bunch of numeric
+arguments.
+
+```{code-block} python
+def calculate_cost(price, quantity, tax, tip):
+  ...
+```
+
+Which of the following lines of code do you think is easier to understand?
+
+```{code-block} python
+>>> cost = calculate_cost(4.75, 30, 0.08, 0.2)
+>>> cost = calculate_cost(price=4.75, quantity=30, tax=0.08, tip=0.2)
+```
+
+Some functions have default values for arguments, making them optional. When
+there are multiple arguments with default values, you can use keyword arguments
+to pass some arguments while skipping others.
+
+For example, the `print()` function can take the optional keyword arguments
+`end`, for what string to append to the end of the text (default `"\n"`), and
+`sep`, for what string to put between each argument when printed (default: `" "`).
+
+You can use keyword arguments to specify either or both.
+
+```python
+>>> # called normally without keyword arguments
+>>> print("hello") ; print("there")
+hello
+there
+
+>>> # passing the `end` keyword argument
+>>> print("hello", end=" ") ; print("there", end=".")
+hello there.
+
+>>> # called normally without keyword arguments
+>>> print("555", "555", "5555")
+555 555 5555
+
+>>> # passing the `sep` keyword argument
+>>> print("555", "555", "5555", sep="-")
+555-555-5555
+```
+
+```{exercise} keyword arguments
+:label: keyword-arguments-exercise
+
+1. Call the `print()` function with the arguments `"a"`, `"b"`, and `"c"` with
+   a value of `"\n"` for the `sep` keyword argument.
+2. Call the `print()` function multiple times in a row, with the value of `"... "`
+   for the `end` keyword argument.
+3. a. Write a function called `birthday` that takes the arguments `name`, `month`,
+   `day` and `year`, and prints `"____s birthday is on ___ __, ____."`
+
+   For example:
+   "Homer Simpsons birthday is on May 12, 1956."
+
+   b. Call it with multiple names and birthdays, using positional arguments and
+      keyword arguments.
+```
+
+`````{solution} keyword-arguments-exercise
+:class: dropdown
+
+
+1\. Call the `print()` function with the arguments `"a"`, `"b"`, and `"c"` with
+   a value of `"\n"` for the `sep` keyword argument.
+
+```{code-block} python
+>>> print("a", "b", "c", sep="\n")
+a
+b
+c
+```
+
+2\. Call the `print()` function multiple times in a row, with the value of `"... "`
+   for the `end` keyword argument.
+
+```{code-block} python
+>>> print("x", end="... ") ; print("y", end="... ") ; print("z", end="... ")
+x... y... z...
+```
+
+3a. Write a function called `birthday` that takes the arguments `name`, `month`,
+   `day` and `year`, and prints `"____s birthday is on ___ __, ____."`
+
+```{code-block} python
+def birthday(name, month, day, year):
+   print(f"{name}s birthday is on {month} {day}, {year}.")
+```
+
+3b. Call it with multiple names and birthdays, using positional arguments and
+    keyword arguments.
+
+```python
+>>> birthday("Homer Simpson", "May", 12, 1956)
+Homer Simpsons birthday is on May 12, 1956.
+
+>>> birthday(name="Homer Simpson", month="May", day=12, year=1956)
+Homer Simpsons birthday is on May 12, 1956.
+
+>>> birthday(year=1984, month="April", day=1, name="Bart Simpson")
+Bart Simpsons birthday is on April 1, 1984.
+
+>>> birthday(month="May", day=9, year=1986, name="Lisa Simpson")
+Lisa Simpsons birthday is on May 9, 1986.
+```
+
+`````
+
 Returning values
 ----------------
 
-The {term}`return` statement is used to leave a function.
+The `return` statement is used to leave a function.
 
 By itself `return` works similar to the `break` statement in a for loop. No
 other code in the function will be executed.
@@ -349,13 +529,21 @@ today. Import them into a Python shell and use the `help()` function to view the
 
 ```
 
+
 % [ ] returning multiple values
 % [ ] default arguments
-% [ ] keyword arguments
 % [ ] arbitrary argument list
 % [ ] arbitrary keyword argument list
 % [ ] unpacking arguments
-% [x] docstrings
 % [ ] annotations
+
+% [x] keyword arguments
+% [x] docstrings
+
+% glossary
+% --------
+% [ ] return
+% [ ] positional arguments
+% [ ] keyword arguments
 
 
