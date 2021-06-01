@@ -1,7 +1,7 @@
 Using a Debugger
 ================
 
-In the [](reading-code.md) lesson we learned how to walk through code step by
+In the [](../lessons/reading-code.md) lesson we learned how to walk through code step by
 step and figure out how a line is evaluated and what the value of a variable
 is are at a given point.
 
@@ -164,7 +164,7 @@ Part 3: Inspecting data
 ### Step 1: Variables in the sidebar
 
 The {guilabel}`Variables` section in the sidebar is just like the Variables box
-from the [](reading-code.md) lesson. It lists everything that is defined at
+from the [](../lessons/reading-code.md) lesson. It lists everything that is defined at
 this point in the code execution and shows what it is set to.
 
 In our {file}`hello_world.py` debugging seession, you can see that the `msg`
@@ -222,7 +222,7 @@ Part 4: Basic stepping
 ----------------------
 
 Let's learn how to use the debugger to walk through the code just like we did
-in the [](reading-code.md) lesson.
+in the [](../lessons/reading-code.md) lesson.
 
 ### Step 4.1: Modify {file}`hello_world.py`
 

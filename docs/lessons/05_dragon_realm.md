@@ -32,7 +32,7 @@ Part 1: A Script Template: Shebang, Docstring, Scope
 We're going to start with a bare bones script that will serve as a template for
 all future scripts.
 
-Follow the instructions in [Repl.it Tips](../guides/replit.md) to create
+Follow the instructions in [Repl.it Tips](../tools/replit.md) to create
 a new file called `dragon_realm.py` and change your `.replit` file to run it.
 
 **Edit Your Script**

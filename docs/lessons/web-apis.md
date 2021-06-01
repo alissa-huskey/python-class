@@ -512,7 +512,7 @@ private.py
 (part-71-import-syntax-varieties)=
 :::{seealso}
 
-[](imports.md)
+[](in-depth/imports.md)
 
 :::
 

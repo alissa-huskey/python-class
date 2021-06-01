@@ -15,7 +15,7 @@ Python Class
 
 Welcome to the new and improved Python class.
 
-**Tips**
+:::{tip}
 
 * Use the left sidebar to navigate lessons, guides and all of the other class content.
 
@@ -25,6 +25,13 @@ Welcome to the new and improved Python class.
 
 * ![launch][] Look for this icon at the top of the page to launch interactive mode.
 
+:::
+
+Contents
+========
+
+```{tableofcontents}
+```
 
 [collapse]: assets/collapse-icon.png
 [fullscreen]: assets/fullscreen-icon.png

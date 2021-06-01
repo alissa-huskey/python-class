@@ -1,7 +1,7 @@
-Import Syntax Varities
-======================
+Imports
+=======
 
-There are a number of ways to import modules. 
+There are a number of ways to import modules.
 
 Whole Module Import
 -------------------

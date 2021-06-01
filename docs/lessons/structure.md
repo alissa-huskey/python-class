@@ -114,10 +114,45 @@ You can further divide your code into subpackages, for example:
 ```
 hangman/
 |-- words/
+    |-- __init__.py
     |-- easy.py
     |-- medium.py
     |-- hard.py
+|-- __init__.py
 |-- game.py
+```
+
+Variables and functions that are defined in your {file}`__init__.py` will be
+available as part of your package.
+
+```{code-block} python
+:caption: game.py
+
+from . import abort
+```
+
+### Relative imports
+
+When importing from within the same package, you can use the shorthand `.`.
+
+```{code-block} python
+:caption: main.py
+
+from .words.easy import WORDS
+from .game import play
+
+def main():
+    play(WORDS)
+```
+
+If you're importing from a subpackage you can reference the parent package by
+using `..`. For example, from one of the `words` modules we could import
+the `abort` function:
+
+```{code-block} python
+:caption: easy.py
+
+from .. import abort
 ```
 
 ### The `__init__.py` file
@@ -134,31 +169,6 @@ __version__ = "0.0.1"
 def abort(message):
     print(f"ERROR: {message}")
     exit(1)
-```
-
-### Relative imports
-
-When importing from within the same package, you can use the shorthand `.`.
-
-```{code-block} python
-:caption: main.py
-
-from . import abort
-from .words.easy import WORDS
-from .game import play
-
-def main():
-    play(WORDS)
-```
-
-If you're importing from a subpackage you can reference the parent package by
-using `..`. For example, from one of the `words` modules we could import
-the `abort` function:
-
-```{code-block} python
-:caption: easy.py
-
-from .. import abort
 ```
 
 The Python Search Path
@@ -186,6 +196,7 @@ Here's what our file structure will look like when we're done.
 
 ```
 hangman/
+|-- __init__.py
 |-- words.py
 |-- game.py
 |-- main.py
@@ -206,7 +217,7 @@ from .words import WORDS
 from .game import play
 
 def main():
-	play(WORDS)
+      play(WORDS)
 ```
 
 ### The script
@@ -303,12 +314,226 @@ Refactor your code so that you end up with:
 
 ```
 
+Directory structure
+-------------------
+
+```{seealso}
+
+* [Hitchhiker's Guide > Structuring your Project](https://docs.python-guide.org/writing/structure/)
+* [OpenAstronomy Python Packaging Guide](https://packaging-guide.openastronomy.org/en/latest/index.html)
+
+```
+
+``` text
+|-- .git/
+    |-- config
+    |-- ...
+|-- .venv/
+    |-- bin/
+        |-- ipython
+        |-- pip
+        |-- pytest
+        |-- python
+        |-- ...
+    |-- ...
+|-- .vscode/
+    |-- settings.json
+    |-- ...
+|-- bin/
+    | -- play
+|-- docs/
+|-- hangman/
+    |-- __init__.py
+    |-- words.py
+    |-- game.py
+    |-- main.py
+|-- tests/
+    |-- __init__.py
+    |-- test_words.py
+    |-- test_game.py
+    |-- test_main.py
+|-- .editorconfig
+|-- .env
+|-- .gitignore
+|-- README.md
+|-- LICENSE
+```
+
+### Directories
+
+#### .git
+
+This is the folder that is created when you use the `git init` command and
+contains all of your repository data. You will rarely deal with the files in
+this directory directly, but the one file that is useful to know about is the
+{file}`config` file.
+
+```ini
+[core]
+    repositoryformatversion = 0
+    filemode = true
+    bare = false
+    logallrefupdates = true
+    ignorecase = true
+    precomposeunicode = true
+[remote "origin"]
+    url = https://github.com/alissa-huskey/python-class.git
+    fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+    remote = origin
+    merge = refs/heads/master
+```
+
+#### .venv/
+
+Your virtual environment is stored in this directory if you set up
+{command}`poetry` to store your virtual environment in your project
+directories, and it is the standard directory for some other virtual
+environment tools.
+
+The executable scripts `python`, `pip`, and any installed modules are located
+in the `.venv/bin` directory.
+
+This directory also contains a {file}`.venv/bin/activate`. This file which is
+used to start your virtual environment shell with the command
+`source .venv/bin/activate`, upon which it defines a `deactivate` command.
+
+VS Code will automatically activate source the {file}`.venv/bin/activate`
+file in some cases, though not consistently enough to avoid the need to
+launch VS Code from a `poetry` shell.
+
+VS Code may also prompt you upon finding a `.venv` directory to select it for
+the workspace. This will automatically configure some of the settings in your
+per-project {file}`settings.json` file.
+
+##### Poetry setup
+
+To set up `poetry` to store your virtual env in your project directories.
+
+```console
+$ poetry config virtualenvs.in-project true
+```
+
+You will need to move the existing virtual env directory.
+
+```console
+$ mv $(poetry env info -p) ./.venv
+```
+
+#### .vscode/
+
+This is the directory where the vscode settings for this project are stored.
+Here is an example that that sets the Python interpreter for this project to
+your projects `.venv` directory.
+
+```json
+{
+    "python.venvPath": "${workspaceFolder}/.venv",
+    "python.pythonPath": "${workspaceFolder}/.venv/bin/python",
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.pytestEnabled": true,
+}
+```
+
+#### bin/
+
+As previously mentioned, this is generally where executable scripts are
+stored.
+
+#### docs/
+
+This is generally where any project documentation is stored.
+
+
+#### hangman/
+
+This is the directory for the `hangman` package. Package names should have
+short lowercase named without underscores.
+
+The module file should have short all lowercase names with underscores as
+needed.
+
+#### tests/
+
+Tests are stored in here. Test files should be named
+{samp}`test_{module_or_topic}.py`.
+
+### Files
+
+#### .editorconfig
+
+Used in conjunction with the [EditorConfig VS Code extension][editorconfig],
+this file configures code style settings for the project to ensure
+consistency amongst different tools, environments and developers. Here is a
+comprehensive example for Python files.
+
+```ini
+# EditorConfig: https://EditorConfig.org
+# Plugins for:
+#  - Vim: https://github.com/editorconfig/editorconfig
+#  - VS Code: https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig
+
+# top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+[*.py]
+indent_style = space
+indent_size = 4
+tab_width = 4
+charset = utf-8
+insert_final_newline = true
+trim_trailing_whitespace = true
+max_line_length = 88
+quote_type = double
+spaces_around_operators = true
+```
+
+You can keep a master {file}`.editorconfig` file in your home directory, then
+in your per-project file either inherit selective settings by removing the
+`root = true` line, or keep it to override all settings.
+
+[editorconfig]: https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig
+
+#### .env
+
+This is a shell script file that allows you to configure environment
+variables or run other commands for this project.
+
+
+
+
+
+* README.md
+      * [Make a README](https://www.makeareadme.com/)
+
+* .gitignore
+      * [github Python template](https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore)
+      * [github/gitignore](https://github.com/github/gitignore)
+      * [github.io Python template](https://www.toptal.com/developers/gitignore/api/python)
+      * [gitignore.io](http://gitignore.io/)
+      * [man page](https://git-scm.com/docs/gitignore)
+      * [The Git Book > Ignoring Files](https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository#_ignoring)
+
+* .vscode-exclude
+
+
 See also
 --------
 
 ```{seealso}
 
 * [Python.org Tutorial > Modules & Packages](https://docs.python.org/3/tutorial/modules.html)
+* [PEP 8 -- the Style Guide for Python Code > Packages and Modules](https://pep8.org/#package-and-module-names)
+* [Using Python environments in VS Code](https://code.visualstudio.com/docs/python/environments)
 
 ```
 
@@ -332,8 +557,10 @@ package
 % [x] PYTHON_PATH
 % [x] relative imports
 % [x] __init__.py
+% [ ] __main__
+% [ ] __all__
 % [ ] .gitignore
 % [ ] .vscode-exclude
 % [ ] tests
-% [ ] __main__
-% [ ] __all__
+% [ ] virtual environments
+% [ ] installing your package

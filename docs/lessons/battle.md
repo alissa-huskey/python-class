@@ -47,7 +47,7 @@ Now we'll use the `cp` command to copy the script.
 cp template.py battle.py
 ```
 
-Then follow the instructions in [Repl.it Tips](../guides/replit.md) to edit your
+Then follow the instructions in [Repl.it Tips](../tools/replit.md) to edit your
 `.replit` file to point to your new script.
 
 ### Part 1.3: Basic script setup

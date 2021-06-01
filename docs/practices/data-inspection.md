@@ -11,8 +11,8 @@ kernelspec:
 ---
 
 
-Data Introspection
-==================
+Data Inspection
+===============
 
 API Documentation is not always readily available or easy to understand. So we
 often end up just diving into the data to figure out what it contains and how
@@ -573,7 +573,7 @@ Use the `%history` magic command to see the all of the commands you typed in
 your last ipython session. (Change the `~1` to `~2` go get the second to last,
 and so on.) You can also use `%hist` for short.
 
-You can use this to review everything you typed during data introspection
+You can use this to review everything you typed during data inspection
 exercise.
 
 ```{code-block} python

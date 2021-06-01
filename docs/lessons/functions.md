@@ -802,21 +802,3 @@ The final total on a $500 bill including a 10% tip is: $550.0
 ```
 
 `````
-
-% [ ] returning multiple values
-% [ ] default arguments
-% [ ] arbitrary argument list
-% [ ] arbitrary keyword argument list
-% [ ] unpacking arguments
-% [ ] annotations
-
-% [x] keyword arguments
-% [x] docstrings
-
-% glossary
-% --------
-% [ ] return
-% [ ] positional arguments
-% [ ] keyword arguments
-
-

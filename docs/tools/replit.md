@@ -1,21 +1,78 @@
-Git on Repl.it
-==============
+Repl.it Tips
+============
 
 Table of Contents
 -----------------
 
-* [Introduction](#introduction)
-* [Quickref: Review, Commit &amp; Push Steps](#quickref-review-commit--push-steps)
-* [Part 1: First Create a Github Account](#part-1-first-create-a-github-account)
-* [Part 2: Connect it to your Repl.it](#part-2-connect-it-to-your-replit)
-* [Part 3: Update the Repl.it Github Authorization](#part-3-update-the-replit-github-authorization)
-* [Part 4: Review your changes](#part-4-review-your-changes)
-* [Part 5: Commit &amp; Push Your Code](#part-5-commit--push-your-code)
-* [Congratulations!](#congratulations)
+* [Recommended Settings](#recommended-settings)
+* [Creating New Scripts](#creating-new-scripts)
+* [Running New Scripts](#running-new-scripts)
+* [Using Git](#using-git)
+   * [Introduction](#introduction)
+   * [Quickref: Review, Commit &amp; Push Steps](#quickref-review-commit--push-steps)
+   * [Part 1: First Create a Github Account](#part-1-first-create-a-github-account)
+   * [Part 2: Connect it to your Repl.it](#part-2-connect-it-to-your-replit)
+   * [Part 3: Update the Repl.it Github Authorization](#part-3-update-the-replit-github-authorization)
+   * [Part 4: Review your changes](#part-4-review-your-changes)
+   * [Part 5: Commit &amp; Push Your Code](#part-5-commit--push-your-code)
+   * [Congratulations!](#congratulations)
+
+Recommended Settings
+--------------------
+
+On the left side, click the gear icon to change your settings.
+
+These are the settings I recommend:
+
+    indent type: spaces
+    indent size: 4 spaces
+    wrapping: none
+    code intelligence: off
 
 
-Introduction
------------------
+Creating New Scripts
+--------------------
+
+We'll be creating lots of scripts during our lessons.
+Each script will be in a different file.
+
+To create a new file:
+
+1. Click the "Files" icon on the left side. (It looks like a page.)
+   The "Files" pane will open with a list of your files.
+
+2. At the top of the "Files" pane, click the "Add file" icon
+   (It looks like a page with a green + sign.)
+
+3. A new line will appear in your file list. Type a name for the file then hit enter.
+   The name should have no spaces and end in ".py".
+   For example "my_script.py" or "helloWorld.py".
+
+
+Running New Scripts
+------------------
+
+After creating a new script, you will need to change what happens when you click "run >" at the top of the page.
+
+1. Click the "Files" icon on the left side. (It looks like a page.)
+   The "Files" pane will open with a list of your files.
+
+2. Click on the file named ".replit" to edit it.
+   (Or if it does not exist, create it using the instructions above.)
+
+3. Add the line:
+
+*.replit*
+```
+run = "python3 <filename>"
+```
+
+  But replace "\<filename\>" with the name of the file you created.
+
+Using Git
+---------
+
+### Introduction
 
 ***Version control*** refers to a system for keeping track of and managing
 changes to a set of files. The most popular ***version control system*** today
@@ -39,8 +96,7 @@ benefits include:
 Repl.it has an integration with Github that tucks away a lot of the complexity
 behind a web interface.
 
-Quickref: Review, Commit & Push Steps
--------------------------------------
+### Quickref: Review, Commit & Push Steps
 
 Reviewing your changes then committing and pushing them is kind of like a fancy
 `ctrl+s`--that is, a best practice to get in the habit of doing so regularly
@@ -66,15 +122,13 @@ Here are the steps to follow in Repl.it.
    - Click **commit & push**.
 
 
-Part 1: First Create a Github Account
--------------------------------------
+### Part 1: First Create a Github Account
 
 1. Create an account on [Github.com](http://github.com) or sign into your
    existing account.
 
 
-Part 2: Connect it to your Repl.it
-----------------------------------
+### Part 2: Connect it to your Repl.it
 
 1. Open your your Repl.it repl.
 
@@ -97,8 +151,7 @@ Part 2: Connect it to your Repl.it
    name (perhaps "python-class"?) and click **Create GitHub repository**.
 
 
-Part 3: Update the Repl.it Github Authorization
------------------------------------------------
+### Part 3: Update the Repl.it Github Authorization
 
 When you authorized Repl.it for Github, you gave it blanket access to all
 current and future repos. Now that the repo is created, you can change the
@@ -126,8 +179,7 @@ settings so that Repl.it only has access to that repo.
 8. Click the **Save** button.
 
 
-Part 4: Review your changes
----------------------------
+### Part 4: Review your changes
 
 The web interface does not include any features to review your changes, so
 we'll have to use the command line.
@@ -239,8 +291,7 @@ and edit the file then repeat the `git add` and `git diff` steps to review it
 again.
 
 
-Part 5: Commit & Push Your Code
--------------------------------
+### Part 5: Commit & Push Your Code
 
 In git a ***commit*** is a record of a set of changes. The repository for your
 code exists both on repl.it and on github. In order to update the repo on
@@ -260,8 +311,7 @@ github with your commits on repl.it the changes will be ***pushed*** to Github.
    dissappear.
 
 
-Congratulations!
-----------------
+### Congratulations!
 
 You've successfully created a git repository, reviewed your changes, commited
 them, and pushed them to github!

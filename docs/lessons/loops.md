@@ -9,6 +9,7 @@ kernelspec:
   language: python
   name: python3
 ---
+
 Loops
 =====
 
@@ -209,6 +210,7 @@ i = 0
 colors = ["red", "green", "blue"]
 
 while i < len(colors):
+  color = colors[i]
   print("Color", i, "is:", colors[i])
   i += 1
 ```
@@ -311,14 +313,22 @@ while r < rows:
 Print a multiplication table grid with `9` rows and `9` columns. [^script_multiplication]
 
 ```
+```
 
 Practice exercises
 ------------------
 
 Here are some more practice exercises with loops you can work on.
 
-1. Print a cheer for your name. For each letter print {samp}`"Gimme a {letter}!"`.
-   Then end it with, {samp}`"What does it spell? {name}!"` [^script_name_cheer]
+```{exercise} Cheer
+
+Print a cheer for your name. For each letter print {samp}`"Gimme a {letter}!"`.
+Then end it with, {samp}`"What does it spell? {name}!"` [^script_name_cheer]
+
+```
+
+
+
 
 2. Print the lyrics to the jolly good fellow song. "For he's a jolly good
    fellow..." three times, then "Which nobody can deny!" once. [^script_jolly]

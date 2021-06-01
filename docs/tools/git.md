@@ -1,5 +1,5 @@
-Git Concepts
-============
+Git
+===
 
 Locally Grown
 -------------
