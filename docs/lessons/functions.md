@@ -33,6 +33,7 @@ class: full-width
 hello()
 ```
 
+### Exercise
 
 ```{exercise} horizontal line function
 :label: hr-exercise
@@ -99,6 +100,8 @@ class: full-width
 ---
 hello()
 ```
+
+### Exercise
 
 
 `````{exercise} header function
@@ -240,6 +243,8 @@ hello there.
 >>> print("555", "555", "5555", sep="-")
 555-555-5555
 ```
+
+### Exercises
 
 ```{exercise} keyword arguments
 :label: keyword-arguments-exercise
@@ -386,6 +391,8 @@ string `"hello you"`.
 
 </div></div>
 
+### Exercise
+
 ```{exercise} random function
 :label: random-function-exercise
 
@@ -521,6 +528,8 @@ def prettify(message, align, width):
     return message
 ```
 
+### Exercise
+
 ```{exercise} docstrings
 :label: docstrings-exercise
 
@@ -529,6 +538,226 @@ today. Import them into a Python shell and use the `help()` function to view the
 
 ```
 
+Exercises
+---------
+
+### `welcome()` function
+
+`````{exercise} welcome
+:label: extra-exercise-a
+
+Write a function named `welcome` that prints `"Welcome to coding class!"`
+
+```python
+>>> welcome()
+```
+
+`````
+
+`````{solution} extra-exercise-a
+:class: dropdown
+
+```{code-block} python
+:linenos:
+def welcome():
+   print("Welcome to coding class!")
+```
+
+```python
+>>> welcome()
+Welcome to coding class!
+```
+
+`````
+
+### `letter_count()` function
+
+`````{exercise} letter_count
+:label: extra-exercise-b
+
+Write a function called `letter_count` that takes one argument `text` and
+prints `"There are __ characters in '___'."`  Call it multiple times with
+different arguments.
+
+`````
+
+`````{solution} extra-exercise-b
+:class: dropdown
+
+```{code-block} python
+:linenos:
+def letter_count(text):
+  print(f"There are {len(text)} characters in '{text}'.")
+```
+
+```python
+>>> letter_count("hello")
+There are 5 characters in 'hello'.
+
+>>> letter_count("goodbye")
+There are 7 characters in 'goodbye'.
+
+>>> letter_count("many thanks")
+There are 11 characters in 'many thanks'.
+
+>>> letter_count("")
+There are 0 characters in ''.
+```
+
+`````
+
+### `is_vowel()` function
+
+`````{exercise} is_vowel
+:label: extra-exercise-c
+
+a. Write a function named `is_vowel` that returns `True` if a character is a
+   vowel and `False` otherwise. Don't print anything in the function. Bonus:
+   make it case-insensitive.
+
+```python
+>>> is_vowel("a")
+True
+
+>>> is_vowel("E")
+True
+
+>>> is_vowel("c")
+False
+
+>>> is_vowel("something")
+False
+```
+
+b. Call the function with a letter assign the result to a variable like
+`answer`.  Print `"is '_____' a vowel?: ___"`. (Note: this should be
+__outside__ of the function.) Do this same thing with multiple arguments.
+
+`````
+
+`````{solution} extra-exercise-c
+:class: dropdown
+
+```{code-block} python
+:linenos:
+def is_vowel(letter):
+   return letter.lower() in ["a", "e", "i", "o", "u"]
+```
+
+```python
+>>> ltr = "a" ; answer = is_vowel(ltr)
+>>> print(f"is '{ltr}' a vowel?: {answer}")
+is 'a' a vowel?: True
+
+>>> ltr = "z" ; answer = is_vowel(ltr)
+>>> print(f"is '{ltr}' a vowel?: {answer}")
+is 'z' a vowel?: False
+
+>>> ltr = "E" ; answer = is_vowel(ltr)
+>>> print(f"is '{ltr}' a vowel?: {answer}")
+is 'E' a vowel?: True
+
+>>> ltr = "word" ; answer = is_vowel(ltr)
+>>> print(f"is '{ltr}' a vowel?: {answer}")
+is 'word' a vowel?: False
+
+>>> ltr = "" ; answer = is_vowel(ltr)
+>>> print(f"is '{ltr}' a vowel?: {answer}")
+is '' a vowel?: False
+```
+
+`````
+
+### `tip()` function
+
+`````{exercise} tip
+:label: extra-exercise-d
+a. Write a function `tip` that takes the arguments, `cost` and `percent`, and
+returns the tip amount. Do not print anything inside the function.
+
+```python
+>>> tip(100, 20)
+20.0
+```
+
+b. Call the function with an argument for `cost` and `percent` and assign the
+result to a variable like `amount`.  Print the result like: `"A ____% tip on a
+$_____ bill is: $_____"`. (Note: this should be __outside__ of the function.)
+Do this same thing with multiple arguments.
+
+`````
+
+`````{solution} extra-exercise-d
+:class: dropdown
+
+```{code-block} python
+:linenos:
+def tip(cost, percent):
+   return cost * (percent/100)
+```
+
+```python
+>>> c, p = 100, 20 ; amount = tip(c, p)
+>>> print(f"A {p}% tip on a ${c} bill is: ${amount}")
+A 20% tip on a $100 bill is: $20.0
+
+>>> c, p = 10, 15 ; amount = tip(c, p)
+>>> print(f"A {p}% tip on a ${c} bill is: ${amount}")
+A 15% tip on a $10 bill is: $1.5
+
+>>> c, p = 500, 10 ; amount = tip(c, p)
+>>> print(f"A {p}% tip on a ${c} bill is: ${amount}")
+A 10% tip on a $500 bill is: $50.0
+```
+
+`````
+
+### `total()` function
+
+`````{exercise} total
+:label: extra-exercise-e
+a. Write a function `total` that takes the arguments, `bill` and `tip_percent`,
+and returns the total including the tip. To calculate the tip call your
+`tip()` function from the `total()` function. Do not print anything inside the
+function.
+
+```python
+>>> total(100, 20)
+120.0
+```
+
+b. Call the function with an argument for `bill` and `tip_percent` and assign the
+result to a variable like `final`.  Print the result like:
+`"The final total on a $___ bill including a __% tip is: $_____"`.
+(Note: this should be __outside__ of the function.) Do this same thing with
+multiple arguments.
+
+`````
+
+`````{solution} extra-exercise-e
+:class: dropdown
+
+```{code-block} python
+:linenos:
+def total(bill, tip_percent):
+   return bill + tip(bill, tip_percent)
+```
+
+```python
+>>> b = 100 ; t = 20 ; final = total(b, t)
+>>> print(f"The final total on a ${b} bill including a {t}% tip is: ${final}")
+The final total on a $100 bill including a 20% tip is: $120.0
+
+>>> b = 10 ; t = 15 ; final = total(b, t)
+>>> print(f"The final total on a ${b} bill including a {t}% tip is: ${final}")
+The final total on a $10 bill including a 15% tip is: $11.5
+
+>>> b = 500 ; t = 10 ; final = total(b, t)
+>>> print(f"The final total on a ${b} bill including a {t}% tip is: ${final}")
+The final total on a $500 bill including a 10% tip is: $550.0
+```
+
+`````
 
 % [ ] returning multiple values
 % [ ] default arguments
