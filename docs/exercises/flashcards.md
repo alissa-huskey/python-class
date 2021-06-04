@@ -38,7 +38,7 @@ Start your {file}`flashcards.py` file.
 1. [ ] print any temporary debug message in it
 1. [ ] call it
 
-#### Part 3: start `load_csv()`
+### Part 3: Start `load_csv()`
 
 The `load_csv()` function should take one argument, a `Path` object to a csv
 file. Eventually it will return a `list` where each item is a `dict` with `"front"`
@@ -62,7 +62,7 @@ the location, and makes sure the file exists.
 1. [ ] call your `load_csv()` function, passing it your `Path` object as the
       argument, and assign the returned value to a variable named `cards`
 
-#### Part 4: Read each line of the csv file
+### Part 4: Read each line of the csv file
 
 Expand the `load_csv()` function to read and print every line in the file.
 
