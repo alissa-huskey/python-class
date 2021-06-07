@@ -1,0 +1,1286 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paths &#8212; Python Class</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://alissa-huskey.github.io/python-class/lessons/paths.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File System Operations" href="file-system-operations.html" />
+    <link rel="prev" title="File I/O" href="file-io.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Python Class</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Python Class
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Lessons
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="fundamentals.html">
+   Fundamentals
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="syntax.html">
+     Syntax
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="expressions.html">
+       Expressions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="statements.html">
+       Statements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="variables.html">
+       Variables
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="flow-control.html">
+     Flow Control
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="conditional-statements.html">
+       Conditional Statements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="functions.html">
+       Functions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="loops.html">
+       Loops
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="flow.html">
+       Program Flow
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="reading-code.html">
+       Reading Code
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data-types/index.html">
+     Data Types
+    </a>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="files.html">
+     Files
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3">
+      <a class="reference internal" href="file-io.html">
+       File I/O
+      </a>
+     </li>
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       Paths
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="file-system-operations.html">
+       File System Operations
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="in-depth/index.html">
+   In Depth
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="in-depth/imports.html">
+     Imports
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="in-depth/structure.html">
+     Structuring Python Projects
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="misc.html">
+   Misc
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="web-apis.html">
+     Web APIs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="battle.html">
+     PyPet Battle
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="game-book.html">
+   Invent Games Book
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_guess_the_number.html">
+     Chapter 3: Guess the Number
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_dragon_realm.html">
+     Chapter 5: Dragon Realm
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Practices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../practices/problem-solving.html">
+   Problem Solving
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../practices/testing.html">
+   Testing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../practices/debugging.html">
+   Using a Debugger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../practices/data-inspection.html">
+   Data Inspection
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tools
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/terminal.html">
+   Terminal
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/git.html">
+   Git
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/vscode.html">
+   VS Code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/python-shell.html">
+   Python Shell
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/ipython.html">
+   IPython
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/poetry.html">
+   Poetry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/mac.html">
+   Mac Dev Env for Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/replit.html">
+   Repl.it Tips
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/dicts.html">
+   Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/lists.html">
+   Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/template.py">
+   Script Template
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Exercises
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/program-flow.html">
+   Program Flow Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/list-exercises.html">
+   List Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/list-string-exercises.html">
+   List String Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/flashcards.html">
+   Flashcards Project
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/alissa-huskey/python-class"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/alissa-huskey/python-class/edit/master/docs/lessons/paths.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exploring-files-on-the-command-line">
+   Exploring files on the command line
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#directory-separators">
+     Directory separators
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-working-directory">
+     The working directory
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#parent-directory">
+     Parent directory
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#absolute-paths">
+     Absolute paths
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-home-directory">
+     The home directory
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise">
+     Exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#paths-in-python">
+   Paths in Python
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#path-strings-in-open">
+     Path strings in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       open()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#path-objects">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Path
+      </span>
+     </code>
+     objects
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-path-objects-in-open">
+     Using
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Path
+      </span>
+     </code>
+     objects in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       open()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#validation-methods">
+     Validation methods
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Exercise
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#canonical-path">
+     Canonical path
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#parts-of-a-path">
+     Parts of a path
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#constructing-paths">
+     Constructing paths
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paths-relative-to-current-file">
+     Paths relative to current file
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reference">
+   Reference
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#path-examples">
+     Path examples
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#special-directories">
+     Special directories
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#glossary">
+     Glossary
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#glossary-paths">
+       Paths
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#see-also">
+     See also
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="paths">
+<h1>Paths<a class="headerlink" href="#paths" title="Permalink to this headline">¶</a></h1>
+<p>When you open a file on your computer you may use the Finder or File Explorer
+to click through to each folder and eventually find the file you want. When
+we want to do the same thing through code we use file paths.</p>
+<p>A <a class="reference internal" href="#term-path"><span class="xref std std-term">path</span></a> is a way to represent the location of a file or folder using
+text. You can think of it like an address; where a street address points to a
+physical location in the real world, a path points to a location on a
+computer.</p>
+<p>Paths are used in pretty much all programming languages as well as on the
+command line, which we’ll be learning about today.</p>
+<div class="section" id="exploring-files-on-the-command-line">
+<h2>Exploring files on the command line<a class="headerlink" href="#exploring-files-on-the-command-line" title="Permalink to this headline">¶</a></h2>
+<p>For this lesson, open a terminal. We’ll use the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command which lists
+files to experiment with different paths. (On Windows you may need to use
+<code class="docutils literal notranslate"><span class="pre">dir</span></code> instead.) With no arguments it lists the files in the
+<a class="reference internal" href="#term-working-directory"><span class="xref std std-term">working directory</span></a> which is the directory (or folder) that you are
+currently in.</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-number">Listing 70 </span><span class="caption-text">command line</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls
+<span class="go">README.md  contacts.py  hello.txt    pyproject.toml  tests  tools</span>
+<span class="go">bin        docs         poetry.lock  pythonclass     tmp    vendor</span>
+</pre></div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">ls</span></code> command takes paths as arguments. When passed, it will list only the
+matching files.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Commands on the command line can take arguments but there are some
+differences from Python. Arguments are separated by spaces, no parenthesis or
+commas. Single or double quotes are only required if the argument contains
+special characters, like a filename with spaces.</p>
+</div>
+<p>The simplest path is just a filename.</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-number">Listing 71 </span><span class="caption-text">command line</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls README.md
+<span class="go">README.md</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="directory-separators">
+<h3>Directory separators<a class="headerlink" href="#directory-separators" title="Permalink to this headline">¶</a></h3>
+<p>Directories are separated with a slash (<code class="docutils literal notranslate"><span class="pre">/</span></code>) or backslash (<code class="docutils literal notranslate"><span class="pre">\</span></code>) on
+Windows. For example here’s how I would list the <code class="docutils literal notranslate"><span class="pre">template.py</span></code> file inside
+the <code class="docutils literal notranslate"><span class="pre">pythonclass</span></code> directory.</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-number">Listing 72 </span><span class="caption-text">command line</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls pythonclass/template.py
+<span class="go">pythonclass/template.py</span>
+</pre></div>
+</div>
+</div>
+<p>On Windows the <a class="reference internal" href="#term-directory-separator"><span class="xref std std-term">directory separator</span></a> is a backslash (<code class="docutils literal notranslate"><span class="pre">\</span></code>). A slash
+(<code class="docutils literal notranslate"><span class="pre">/</span></code>) might work too, depending on which version of Windows and terminal
+you’re using. Otherwise the same command would be:</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-number">Listing 73 </span><span class="caption-text">command line</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="p">&gt;</span> <span class="nb">ls </span><span class="n">pythonclass</span><span class="p">\</span><span class="n">template</span><span class="p">.</span><span class="n">py</span>
+<span class="n">pythonclass</span><span class="p">\</span><span class="n">template</span><span class="p">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="the-working-directory">
+<h3>The working directory<a class="headerlink" href="#the-working-directory" title="Permalink to this headline">¶</a></h3>
+<p>So far all of these examples have been <a class="reference internal" href="#term-relative-path"><span class="xref std std-term">relative</span></a>
+meaning that they start from the working directory.</p>
+<p>You can explicitly specify the working directory with a <code class="docutils literal notranslate"><span class="pre">.</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-number">Listing 74 </span><span class="caption-text">command line</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls ./pythonclass/template.py
+<span class="go">./pythonclass/template.py</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="parent-directory">
+<h3>Parent directory<a class="headerlink" href="#parent-directory" title="Permalink to this headline">¶</a></h3>
+<p>You can use <code class="docutils literal notranslate"><span class="pre">..</span></code> to indicate the parent directory. For example, I have an
+<code class="file docutils literal notranslate"><span class="pre">arduino</span></code> directory in the same directory as my working directory
+<code class="docutils literal notranslate"><span class="pre">python-class</span></code>. Here’s how I would list its contents.</p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-number">Listing 75 </span><span class="caption-text">command line</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls ../arduino
+<span class="go">config  docs  examples  sketchbook  tools</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="absolute-paths">
+<h3>Absolute paths<a class="headerlink" href="#absolute-paths" title="Permalink to this headline">¶</a></h3>
+<p>When a path starts with a <code class="docutils literal notranslate"><span class="pre">/</span></code> or the drive (like <code class="docutils literal notranslate"><span class="pre">C:</span></code>) it is an
+<a class="reference internal" href="#term-absolute-path"><span class="xref std std-term">absolute</span></a> path. That means that it starts at the
+computers root directory and contains all of the information to get from
+there to the file.</p>
+<p>Sometimes it’s easier not to start in the working directory, but instead use
+the complete file location. This is called the <a class="reference internal" href="#term-absolute-path"><span class="xref std std-term">absolute path</span></a> and
+starts from the <a class="reference internal" href="#term-root-directory"><span class="xref std std-term">root directory</span></a>, or top-most directory in the file
+system, indicated by a single <code class="docutils literal notranslate"><span class="pre">/</span></code>.</p>
+<p>So start absolute paths with a slash (<code class="docutils literal notranslate"><span class="pre">/</span></code>).</p>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-number">Listing 76 </span><span class="caption-text">command line</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls /etc/group
+<span class="go">/etc/group</span>
+</pre></div>
+</div>
+</div>
+<p>On Windows you may need to start with the drive letter.</p>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-number">Listing 77 </span><span class="caption-text">command line</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&gt; ls C:\Windows\system32
+C:\Windows\system32
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="the-home-directory">
+<h3>The home directory<a class="headerlink" href="#the-home-directory" title="Permalink to this headline">¶</a></h3>
+<p>Operating systems designed to support multiple users usually keep each users
+files in their own directory not accessible to other users. This is called
+the <a class="reference internal" href="#term-home-directory"><span class="xref std std-term">home directory</span></a> and on most operating systems the tilde (<code class="docutils literal notranslate"><span class="pre">~</span></code>) is a
+shortcut to the home directory for the current user.</p>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-number">Listing 78 </span><span class="caption-text">command line</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls ~/Documents
+<span class="go">Adobe Autodesk</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise">
+<h3>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h3>
+<div class="exercise notitle admonition" id="command-line-paths">
+<p class="admonition-title"><span class="caption-number">Exercise 18 </span>(command-line-paths)</p>
+<div class="section" id="exercise-content">
+<p>On a Unix-like operating system what is the path for each of the following?</p>
+<ol class="simple">
+<li><p>A file named <code class="docutils literal notranslate"><span class="pre">blueberry-muffins.md</span></code> in a folder named Recipes` in the working directory?</p></li>
+<li><p>An absolute path to the <code class="docutils literal notranslate"><span class="pre">Music</span></code> directory of the <code class="docutils literal notranslate"><span class="pre">guest</span></code> user located under the <code class="docutils literal notranslate"><span class="pre">Users</span></code> directory.</p></li>
+<li><p>A file named <code class="docutils literal notranslate"><span class="pre">letter.doc</span></code> in the parent directory of the working directory.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Pictures</span></code> directory in the home directory of the current user.</p></li>
+</ol>
+</div>
+</div>
+<div class="solution dropdown admonition" id="lessons/paths-solution-1">
+<p class="admonition-title">Solution to <a class="reference external" href="#command-line-paths"><span>Exercise 18</span></a></p>
+<div class="section" id="solution-content">
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">./Recipes/blueberry-muffins.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/Users/guest/Music</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">../letter.doc</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">~/Pictures</span></code></p></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="paths-in-python">
+<h2>Paths in Python<a class="headerlink" href="#paths-in-python" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="path-strings-in-open">
+<h3>Path strings in <code class="docutils literal notranslate"><span class="pre">open()</span></code><a class="headerlink" href="#path-strings-in-open" title="Permalink to this headline">¶</a></h3>
+<p>The first argument to the <code class="docutils literal notranslate"><span class="pre">open()</span></code> function in Python is the path to a file.
+So far we’ve been using a simple filename. In the following example, a file
+named <code class="file docutils literal notranslate"><span class="pre">contacts.txt</span></code> in the working directory is opened.</p>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-number">Listing 79 </span><span class="caption-text">python example</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fh</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;contacts.txt&quot;</span><span class="p">)</span>
+<span class="n">contents</span> <span class="o">=</span> <span class="n">fh</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">fh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>But what if you want to open a file somewhere other than the working
+directory? In that case, you can include the path in the argument. In the
+following example the <code class="file docutils literal notranslate"><span class="pre">contacts.txt</span></code> file is in a <code class="file docutils literal notranslate"><span class="pre">data</span></code>
+directory in the working directory.</p>
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-number">Listing 80 </span><span class="caption-text">python example</span><a class="headerlink" href="#id13" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fh</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data/contacts.txt&quot;</span><span class="p">)</span>
+<span class="n">contents</span> <span class="o">=</span> <span class="n">fh</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">fh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="path-objects">
+<h3><code class="docutils literal notranslate"><span class="pre">Path</span></code> objects<a class="headerlink" href="#path-objects" title="Permalink to this headline">¶</a></h3>
+<p>Python provides a <code class="docutils literal notranslate"><span class="pre">pathlib.Path</span></code> object which makes it easier to construct
+and manipulate cross-platform paths, provides handy methods for filesystem
+operations, and can be used in many of the places that string paths are used.</p>
+<p>First import the <code class="docutils literal notranslate"><span class="pre">Path</span></code> class from the <code class="docutils literal notranslate"><span class="pre">pathlib</span></code> module. Then call <code class="docutils literal notranslate"><span class="pre">Path</span></code>
+with a string path argument. For example, here’s how you create a <code class="docutils literal notranslate"><span class="pre">Path</span></code>
+object for the <code class="docutils literal notranslate"><span class="pre">README.md</span></code> file.</p>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-number">Listing 81 </span><span class="caption-text">python example</span><a class="headerlink" href="#id14" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;README.md&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="using-path-objects-in-open">
+<h3>Using <code class="docutils literal notranslate"><span class="pre">Path</span></code> objects in <code class="docutils literal notranslate"><span class="pre">open()</span></code><a class="headerlink" href="#using-path-objects-in-open" title="Permalink to this headline">¶</a></h3>
+<p>You can use a <code class="docutils literal notranslate"><span class="pre">Path</span></code> object instead of a string for the first argument of the
+<code class="docutils literal notranslate"><span class="pre">open()</span></code> function.</p>
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-number">Listing 82 </span><span class="caption-text">python example</span><a class="headerlink" href="#id15" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;README.md&quot;</span><span class="p">)</span>
+<span class="n">fh</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="n">contents</span> <span class="o">=</span> <span class="n">fh</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">fh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="validation-methods">
+<h3>Validation methods<a class="headerlink" href="#validation-methods" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Path</span></code> objects provide some handy boolean methods for checking the status of
+a file or directory.</p>
+<ul class="simple">
+<li><p><code class="samp docutils literal notranslate"><em><span class="pre">path</span></em><span class="pre">.exists()</span></code></p></li>
+<li><p><code class="samp docutils literal notranslate"><em><span class="pre">path</span></em><span class="pre">.is_file()</span></code></p></li>
+<li><p><code class="samp docutils literal notranslate"><em><span class="pre">path</span></em><span class="pre">.is_dir()</span></code></p></li>
+</ul>
+<p>The following example checks to be sure that the a <code class="file docutils literal notranslate"><span class="pre">README.md</span></code> file
+exists and that it is a normal file before trying to read it.</p>
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-number">Listing 83 </span><span class="caption-text">python example</span><a class="headerlink" href="#id16" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+  <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;README.md&quot;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sorry, no file named README.md&quot;</span><span class="p">)</span>
+    <span class="k">return</span>
+
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unable to read file: README.md&quot;</span><span class="p">)</span>
+    <span class="k">return</span>
+
+  <span class="n">fh</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+  <span class="n">contents</span> <span class="o">=</span> <span class="n">fh</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+  <span class="n">fh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>Exercise<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="exercise notitle admonition" id="validating-paths">
+<p class="admonition-title"><span class="caption-number">Exercise 19 </span>(Validating paths)</p>
+<div class="section" id="exercise-content">
+<p>Write a function to print the contents of the <code class="file docutils literal notranslate"><span class="pre">contacts.txt</span></code> file.
+Before reading it, check to make sure the file exists. If it does not, tell
+the user the file does not exist and return.</p>
+</div>
+</div>
+<div class="solution dropdown admonition" id="lessons/paths-solution-3">
+<p class="admonition-title">Solution to <a class="reference external" href="#validating-paths"><span>Exercise 19</span></a></p>
+<div class="section" id="solution-content">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">FILENAME</span> <span class="o">=</span> <span class="s2">&quot;data/contacts.txt&quot;</span>
+
+<span class="k">def</span> <span class="nf">show</span><span class="p">():</span>
+  <span class="sd">&quot;&quot;&quot;Print all contacts&quot;&quot;&quot;</span>
+  <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">FILENAME</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No such file: </span><span class="si">{</span><span class="n">FILENAME</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span>
+
+  <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
+    <span class="n">contents</span> <span class="o">=</span> <span class="n">fh</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="canonical-path">
+<h3>Canonical path<a class="headerlink" href="#canonical-path" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Path</span></code> objects provide methods for handling absolute versus relative paths as
+well as converting symbols for the current operating system.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">is_absolute()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p>Return True if path is absolute.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">absolute()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Path</span></code></p></td>
+<td><p>Return the absolute path.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">resolve()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Path</span></code></p></td>
+<td><p>Return the normalized absolute path. (Convert shortcuts and slashes, resolve symlinks.)</p></td>
+</tr>
+</tbody>
+</table>
+<p>For example, here is what each method returns for <code class="docutils literal notranslate"><span class="pre">path</span> <span class="pre">=</span> <span class="pre">Path(&quot;../t.py&quot;)</span></code>.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Returns</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PosixPath('../t.py')</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path.is_absolute()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path.absolute()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PosixPath('/Users/pythonclass/projects/python-class/../t.py')</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path.resolve()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PosixPath('/Users/pythonclass/projects/t.py')</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="parts-of-a-path">
+<h3>Parts of a path<a class="headerlink" href="#parts-of-a-path" title="Permalink to this headline">¶</a></h3>
+<p>Python <code class="docutils literal notranslate"><span class="pre">Path</span></code> objects make it easy to access parts of a path without
+having to worry about which operating system is being used.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">parent</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Path</span></code></p></td>
+<td><p>Parent directory.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">parts</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tuple</span></code></p></td>
+<td><p>Sequence of directories and filename if any.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">parents</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tuple</span></code></p></td>
+<td><p>Sequence of parent directories.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">name</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Filename.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">stem</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Filename without extension.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">suffix</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Filename extension including <code class="docutils literal notranslate"><span class="pre">.</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>The following example prints the filename minus the extension using the
+<code class="docutils literal notranslate"><span class="pre">stem</span></code> property above the file contents.</p>
+<div class="literal-block-wrapper docutils container" id="id17">
+<div class="code-block-caption"><span class="caption-number">Listing 84 </span><span class="caption-text">python example</span><a class="headerlink" href="#id17" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+  <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;README.md&quot;</span><span class="p">)</span>
+
+  <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
+    <span class="n">contents</span> <span class="o">=</span> <span class="n">fh</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;*** </span><span class="si">{</span><span class="n">path</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2"> ***</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="constructing-paths">
+<h3>Constructing paths<a class="headerlink" href="#constructing-paths" title="Permalink to this headline">¶</a></h3>
+<p>One way to construct paths in a way that will work on all operating systems
+is to use the <code class="docutils literal notranslate"><span class="pre">joinpath()</span></code> method to add a subdirectory or filename to an
+existing path.</p>
+<p>In the following example the file <code class="file docutils literal notranslate"><span class="pre">~/Documents/groceries.txt</span></code> is
+printed to the screen.</p>
+<div class="literal-block-wrapper docutils container" id="id18">
+<div class="code-block-caption"><span class="caption-number">Listing 85 </span><span class="caption-text">python example</span><a class="headerlink" href="#id18" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+  <span class="n">home</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span>
+  <span class="n">basedir</span> <span class="o">=</span> <span class="n">home</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;Documents&quot;</span><span class="p">)</span>
+  <span class="n">path</span> <span class="o">=</span> <span class="n">basedir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;groceries.txt&quot;</span><span class="p">)</span>
+
+  <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
+    <span class="n">contents</span> <span class="o">=</span> <span class="n">fh</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;*** </span><span class="si">{</span><span class="n">path</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2"> ***</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>You can also chain the method calls together like this:</p>
+<div class="literal-block-wrapper docutils container" id="id19">
+<div class="code-block-caption"><span class="caption-number">Listing 86 </span><span class="caption-text">python example</span><a class="headerlink" href="#id19" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+  <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;Documents&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;groceries.txt&quot;</span><span class="p">)</span>
+
+  <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
+    <span class="n">contents</span> <span class="o">=</span> <span class="n">fh</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;*** </span><span class="si">{</span><span class="n">path</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2"> ***</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Finally, you can use the <code class="docutils literal notranslate"><span class="pre">/</span></code> operator on <code class="docutils literal notranslate"><span class="pre">Path</span></code> objects as a shorthand for the <code class="docutils literal notranslate"><span class="pre">joinpath()</span></code> method.</p>
+<div class="literal-block-wrapper docutils container" id="id20">
+<div class="code-block-caption"><span class="caption-number">Listing 87 </span><span class="caption-text">python example</span><a class="headerlink" href="#id20" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+  <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;Documents&quot;</span> <span class="o">/</span> <span class="s2">&quot;groceries.txt&quot;</span>
+
+  <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
+    <span class="n">contents</span> <span class="o">=</span> <span class="n">fh</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;*** </span><span class="si">{</span><span class="n">path</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2"> ***</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="paths-relative-to-current-file">
+<h3>Paths relative to current file<a class="headerlink" href="#paths-relative-to-current-file" title="Permalink to this headline">¶</a></h3>
+<p>The working directory in Python is the directory the current program was
+launched from. This can make using relative paths problematic because if the
+user runs the program from a different directory, the location of any
+relative paths will change.</p>
+<p>Instead you may want to make a path relative to the file that is being run.</p>
+<p>Python provides a special variable <code class="docutils literal notranslate"><span class="pre">__file__</span></code> that contains a string with the
+path of the current file. When used to create a <code class="docutils literal notranslate"><span class="pre">Path</span></code> object, you can use
+the <code class="docutils literal notranslate"><span class="pre">parent</span></code> property to get the directory the file is in.</p>
+<p>The following example opens the file <code class="file docutils literal notranslate"><span class="pre">.vscode/launch.json</span></code> in the same
+directory as the current file.</p>
+<div class="literal-block-wrapper docutils container" id="id21">
+<div class="code-block-caption"><span class="caption-number">Listing 88 </span><span class="caption-text">python example</span><a class="headerlink" href="#id21" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+  <span class="n">basedir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;.vscode&quot;</span> <span class="o">/</span> <span class="s2">&quot;launch.json&quot;</span>
+
+  <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
+    <span class="n">contents</span> <span class="o">=</span> <span class="n">fh</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>Exercise<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="exercise notitle admonition" id="constructing-paths-exercise">
+<p class="admonition-title"><span class="caption-number">Exercise 20 </span>(Constructing paths)</p>
+<div class="section" id="exercise-content">
+<p>Write a function to print the contents of a different Python script in your project.</p>
+</div>
+</div>
+<div class="solution dropdown admonition" id="lessons/paths-solution-5">
+<p class="admonition-title">Solution to <a class="reference external" href="#constructing-paths-exercise"><span>Exercise 20</span></a></p>
+<div class="section" id="solution-content">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="k">def</span> <span class="nf">print_script</span><span class="p">():</span>
+  <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;pythonclass&quot;</span> <span class="o">/</span> <span class="s2">&quot;template.py&quot;</span>
+
+  <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+    <span class="n">contents</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="path-examples">
+<h3>Path examples<a class="headerlink" href="#path-examples" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Example</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">groceries.txt</span></code></p></td>
+<td><p>a file in the working directory</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">./groceries.txt</span></code></p></td>
+<td><p>same as above</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Documents/groceries.txt</span></code></p></td>
+<td><p>a file in the Documents folder in the working directory</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/Users/pythonclass/Documents/groceries.txt</span></code></p></td>
+<td><p>absolute path to the <code class="docutils literal notranslate"><span class="pre">pythonclass</span></code> user’s Documents folder</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/home/pythonclass/Documents/groceries.txt</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">C:\Documents\groceries.txt</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="special-directories">
+<h3>Special directories<a class="headerlink" href="#special-directories" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Directory</p></th>
+<th class="head"><p>CLI Symbol</p></th>
+<th class="head"><p>Python</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>home</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">~</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Path.home()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>working</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">.</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Path.cwd()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>parent</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">..</span></code></p></td>
+<td><p><code class="samp docutils literal notranslate"><em><span class="pre">path</span></em><span class="pre">.parent</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="glossary">
+<h3>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="glossary-paths">
+<h4>Paths<a class="headerlink" href="#glossary-paths" title="Permalink to this headline">¶</a></h4>
+<dl class="glossary">
+<dt id="term-absolute-path">absolute path<a class="headerlink" href="#term-absolute-path" title="Permalink to this term">¶</a></dt><dd><p>A complete path starting from the <a class="reference internal" href="#term-root-directory"><span class="xref std std-term">root directory</span></a>.</p>
+</dd>
+<dt id="term-directory-separator">directory separator<a class="headerlink" href="#term-directory-separator" title="Permalink to this term">¶</a></dt><dd><p>The symbol used to separate directories in a <a class="reference internal" href="#term-path"><span class="xref std std-term">path</span></a>, either a slash
+<code class="docutils literal notranslate"><span class="pre">/</span></code> or a backslash (<code class="docutils literal notranslate"><span class="pre">\</span></code>) on Windows.</p>
+</dd>
+<dt id="term-home-directory">home directory<a class="headerlink" href="#term-home-directory" title="Permalink to this term">¶</a></dt><dd><p>On operating systems that support multiple users, the directory created
+for and with access restricted to a given user which is intended to
+contain all of the users files.</p>
+<p>On the command line in most systems the shorthand is the tilde character
+(<code class="docutils literal notranslate"><span class="pre">~</span></code>). It is usually stored in the environment variable <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> or on
+Windows <code class="docutils literal notranslate"><span class="pre">%USERPROFILE%</span></code> or <code class="docutils literal notranslate"><span class="pre">%HOMEDRIVE%%HOMEPATH%</span></code>.</p>
+</dd>
+<dt id="term-path">path<a class="headerlink" href="#term-path" title="Permalink to this term">¶</a></dt><dd><p>A text representation of a file location.</p>
+</dd>
+<dt id="term-relative-path">relative path<a class="headerlink" href="#term-relative-path" title="Permalink to this term">¶</a></dt><dd><p>A path starting from the <a class="reference internal" href="#term-working-directory"><span class="xref std std-term">working directory</span></a>.</p>
+</dd>
+<dt id="term-root-directory">root directory<a class="headerlink" href="#term-root-directory" title="Permalink to this term">¶</a></dt><dd><p>The top-most directory in the file system.</p>
+</dd>
+<dt id="term-working-directory">working directory<a class="headerlink" href="#term-working-directory" title="Permalink to this term">¶</a></dt><dt id="term-current-working-directory">current working directory<a class="headerlink" href="#term-current-working-directory" title="Permalink to this term">¶</a></dt><dt id="term-CWD">CWD<a class="headerlink" href="#term-CWD" title="Permalink to this term">¶</a></dt><dd><p>On the command line, the current directory. In a Python script or shell,
+the directory that the shell or script was started from.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="see-also">
+<h3>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://linuxcommand.org/lc3_lts0020.php">LinuxCommand.org &gt; Navigation</a></p></li>
+<li><p><a class="reference external" href="https://linuxcommand.org/lc3_lts0030.php">LinuxCommand.org &gt; Looking Around</a></p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "alissa-huskey/python-class",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lessons"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="file-io.html" title="previous page">File I/O</a>
+    <a class='right-next' id="next-link" href="file-system-operations.html" title="next page">File System Operations</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

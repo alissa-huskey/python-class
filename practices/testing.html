@@ -1,0 +1,2155 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Testing &#8212; Python Class</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://alissa-huskey.github.io/python-class/practices/testing.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Using a Debugger" href="debugging.html" />
+    <link rel="prev" title="Problem Solving" href="problem-solving.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Python Class</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Python Class
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Lessons
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/fundamentals.html">
+   Fundamentals
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../lessons/syntax.html">
+     Syntax
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/expressions.html">
+       Expressions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/statements.html">
+       Statements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/variables.html">
+       Variables
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../lessons/flow-control.html">
+     Flow Control
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/conditional-statements.html">
+       Conditional Statements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/functions.html">
+       Functions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/loops.html">
+       Loops
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/flow.html">
+       Program Flow
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/reading-code.html">
+       Reading Code
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/data-types/index.html">
+     Data Types
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../lessons/files.html">
+     Files
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/file-io.html">
+       File I/O
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/paths.html">
+       Paths
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/file-system-operations.html">
+       File System Operations
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/in-depth/index.html">
+   In Depth
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/in-depth/imports.html">
+     Imports
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/in-depth/structure.html">
+     Structuring Python Projects
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/misc.html">
+   Misc
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/web-apis.html">
+     Web APIs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/battle.html">
+     PyPet Battle
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/game-book.html">
+   Invent Games Book
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/03_guess_the_number.html">
+     Chapter 3: Guess the Number
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/05_dragon_realm.html">
+     Chapter 5: Dragon Realm
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Practices
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="problem-solving.html">
+   Problem Solving
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Testing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="debugging.html">
+   Using a Debugger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="data-inspection.html">
+   Data Inspection
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tools
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/terminal.html">
+   Terminal
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/git.html">
+   Git
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/vscode.html">
+   VS Code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/python-shell.html">
+   Python Shell
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/ipython.html">
+   IPython
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/poetry.html">
+   Poetry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/mac.html">
+   Mac Dev Env for Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/replit.html">
+   Repl.it Tips
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/dicts.html">
+   Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/lists.html">
+   Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/template.py">
+   Script Template
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Exercises
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/program-flow.html">
+   Program Flow Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/list-exercises.html">
+   List Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/list-string-exercises.html">
+   List String Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/flashcards.html">
+   Flashcards Project
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/alissa-huskey/python-class"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/alissa-huskey/python-class/edit/master/docs/practices/testing.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/alissa-huskey/python-class/master?urlpath=lab/tree/docs/practices/testing.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-1-assertions">
+   Part 1: Assertions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-1-1-examples">
+     Part 1.1 Examples
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-1-2-exercise-1">
+     Part 1.2: Exercise 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-2-unit-tests">
+   Part 2: Unit tests
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-2-1-a-basic-unit-test">
+     Part 2.1: A basic unit test
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-2-2-exercise-2">
+     Part 2.2: Exercise 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-2-3-testing-more-cases">
+     Part 2.3: Testing more cases
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-2-4-exercise-3">
+     Part 2.4: Exercise 3
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-3-pytest">
+   Part 3: Pytest
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-3-1-install-pytest">
+   Part 3.1: Install
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pytest
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-3-2-migrate-to-pytest">
+   Part 3.2: Migrate to Pytest
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-4-test-best-practices">
+   Part 4: Test best practices
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-4-1-make-a-test-file">
+     Part 4.1: Make a test file
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-4-2-one-case-per-test-function">
+     Part 4.2: One case per test function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-4-3-file-locations">
+     Part 4.3: File locations
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-1-move-your-files">
+       Step 1: Move your files
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-2-change-your-import-in-your-test-file">
+       Step 2: Change your import in your test file
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-3-change-any-local-imports">
+       Step 3: Change any local imports
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-4-run-the-tests">
+       Step 4: Run the tests
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-4-4-configure-pytest">
+     Part 4.4: Configure pytest
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-5-writing-code-for-testing">
+   Part 5: Writing code for testing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-5-1-keep-your-interface-separate">
+     Part 5.1: Keep your interface separate
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-5-2-isolate-external-services-dependencies">
+     Part 5.2: Isolate external services / dependencies
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-6-testing-in-vs-code">
+   Part 6: Testing in VS Code
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-6-1-setup">
+     Part 6.1: Setup
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-6-2-running-tests">
+     Part 6.2: Running tests
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-1-click-tests">
+       Step 1: Click Tests
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-2-review-list-of-tests">
+       Step 2: Review list of tests
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-3-run-tests">
+       Step 3: Run tests
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-4-view-test-output">
+       Step 4: View test output
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-6-3-changing-tests">
+     Part 6.3: Changing tests
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <!-- markdownlint-disable no-inline-html no-alt-text -->
+<div class="section" id="testing">
+<h1>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h1>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://realpython.com/python-testing/">Getting Started With Testing in Python</a></p></li>
+<li><p><a class="reference external" href="https://pythontesting.net/framework/pytest/pytest-introduction/">pytest introduction</a></p></li>
+<li><p><a class="reference external" href="https://code.visualstudio.com/docs/python/testing#_example-test-walkthroughs">Python testing in Visual Studio Code</a></p></li>
+</ul>
+</div>
+<p><img alt="" src="../_images/indicator-lights.jpg" /></p>
+<p>A key part of writing code is figuring out why it isn’t working and a key
+tool for debugging is testing. As code gets more complicated making sure
+that things stay in working order becomes both increasingly important and
+increasingly difficult to eyeball.</p>
+<div class="section" id="part-1-assertions">
+<h2>Part 1: Assertions<a class="headerlink" href="#part-1-assertions" title="Permalink to this headline">¶</a></h2>
+<p>Python provides a builtin assert <a class="reference internal" href="../lessons/statements.html#term-statement"><span class="xref std std-term">statement</span></a>. Conceptually, the assert
+statement means, “the following must be true”. Or “if the following is not
+true raise an error.”</p>
+<p>The assert statement is a <a class="reference internal" href="../lessons/statements.html#term-simple-statement"><span class="xref std std-term">simple statement</span></a> that takes a boolean
+expression and an optional message to print if the assertion fails.</p>
+<p>The most basic (albeit not terribly useful) assert statement is:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>It is equivalent to:</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+<p>As long as the assertion passes, nothing happens. If it fails though, you’ll
+see an <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code>.</p>
+<p>Here’s what it looks like when an assert statement fails.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="n">a871fdc9ebee</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="k">assert</span> <span class="kc">False</span>
+
+<span class="ne">AssertionError</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+<p>And when an assert statement fails with a failure message.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;Silly, False is not True.&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="mi">14181708</span><span class="n">a04f</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="k">assert</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;Silly, False is not True.&quot;</span>
+
+<span class="ne">AssertionError</span>: Silly, False is not True.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="part-1-1-examples">
+<h3>Part 1.1 Examples<a class="headerlink" href="#part-1-1-examples" title="Permalink to this headline">¶</a></h3>
+<p>Like an <a class="reference internal" href="../if%20statement.html" title=""><span class="xref std std-term">if-statement</span></a> or a <a class="term-missing reference internal" href="#" title=""><span class="xref std std-term">while-loop</span></a>, the first expression is
+evaluated in a <a class="term-missing reference internal" href="#" title=""><span class="xref std std-term">boolean context</span></a>. You can use any expression that
+returns <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>, such as comparison operators or even function
+calls.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number">Listing 156 </span><span class="caption-text">python shell</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">4</span>
+<span class="k">assert</span> <span class="mi">3</span> <span class="o">&lt;</span> <span class="mi">10</span>
+<span class="k">assert</span> <span class="s2">&quot;Python&quot;</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>The <a class="term-missing reference internal" href="#" title=""><span class="xref std std-term">boolean context</span></a> also means that <a class="term-missing reference internal" href="#" title=""><span class="xref std std-term">Truthiness</span></a> and <a class="term-missing reference internal" href="#" title=""><span class="xref std std-term">Falsiness</span></a> apply.</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number">Listing 157 </span><span class="caption-text">python shell</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="s2">&quot;a non-empty string is Truthy&quot;</span>
+<span class="k">assert</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;an empty string is Falsy&quot;</span>
+<span class="k">assert</span> <span class="mi">100</span><span class="p">,</span> <span class="s2">&quot;an non-zero number is Truthy&quot;</span>
+<span class="k">assert</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;zero is Falsy&quot;</span>
+<span class="k">assert</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="s2">&quot;a non-empty string is Truthy&quot;</span>
+<span class="k">assert</span> <span class="p">[],</span> <span class="s2">&quot;an empty list is Falsy&quot;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="part-1-2-exercise-1">
+<h3>Part 1.2: Exercise 1<a class="headerlink" href="#part-1-2-exercise-1" title="Permalink to this headline">¶</a></h3>
+<div class="exercise admonition" id="assertions">
+<p class="admonition-title"><span class="caption-number">Exercise 34 </span>(Assertions)</p>
+<div class="section" id="exercise-content">
+<p>In a IPython shell, see what happens when you assert the following.</p>
+<ol class="simple">
+<li><p>An empty dictionary.</p></li>
+<li><p>Your name lowercase is equal to your name capitalized.</p></li>
+<li><p>Save a random number between <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">100</span></code> to the <code class="docutils literal notranslate"><span class="pre">num</span></code> variable. Assert
+that it is less than 50. Have the assert message say
+<code class="samp docutils literal notranslate"><span class="pre">The</span> <span class="pre">number:</span> <em><span class="pre">num</span></em> <span class="pre">should</span> <span class="pre">be</span> <span class="pre">less</span> <span class="pre">than</span> <span class="pre">50</span></code>. Repeat with different
+random numbers until you’ve gotten the assertion to pass and fail at least
+once each.</p></li>
+</ol>
+</div>
+</div>
+<div class="solution dropdown admonition" id="practices/testing-solution-1">
+<p class="admonition-title">Solution to <a class="reference external" href="#assertions"><span>Exercise 34</span></a></p>
+<div class="section" id="solution-content">
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-number">Listing 158 </span><span class="caption-text">python shell</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="p">{}</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">AssertionError                            Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-16-226d154452a0&gt; in &lt;module&gt;</span>
+<span class="go">----&gt; 1 assert {}</span>
+
+<span class="go">AssertionError:</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="s2">&quot;gaz&quot;</span> <span class="o">==</span> <span class="s2">&quot;Gaz&quot;</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">AssertionError                            Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-17-f9c022e29283&gt; in &lt;module&gt;</span>
+<span class="go">----&gt; 1 assert &quot;gaz&quot; == &quot;Gaz&quot;</span>
+
+<span class="go">AssertionError: </span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">random</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">num</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;The number: </span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s2"> should be less than 50.&quot;</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">AssertionError                            Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-15-43237227605e&gt; in &lt;module&gt;</span>
+<span class="go">      1 num = random.randint(1, 100)</span>
+<span class="go">----&gt; 2 assert num &lt; 50, f&quot;The number: {num} should be less than 50.&quot;</span>
+
+<span class="go">AssertionError: The number: 78 should be less than 50.</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">num</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;The number: </span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s2"> should be less than 50.&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="part-2-unit-tests">
+<h2>Part 2: Unit tests<a class="headerlink" href="#part-2-unit-tests" title="Permalink to this headline">¶</a></h2>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p><a class="btn btn-sm btn-outline-info text-info bg-white" href="https://github.com/alissa-huskey/python-class/blob/master/tests/test_greeting.py"><i class="fa fa-file-code text-info bg-white"></i> test_greeting.py</a></p>
+</div>
+<p>While there are many kinds of tests, this lesson will primarily focus on unit
+tests. A unit tests is one that tests one part of our code–for our purposes
+a single function.</p>
+<div class="section" id="part-2-1-a-basic-unit-test">
+<h3>Part 2.1: A basic unit test<a class="headerlink" href="#part-2-1-a-basic-unit-test" title="Permalink to this headline">¶</a></h3>
+<p>Say we have the following function.</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-number">Listing 159 </span><span class="caption-text"><a class="reference external" href="http://greeting.py">greeting.py</a></span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">greeting</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a welcome message string, including formatted name unless it&#39;s blank.&quot;&quot;&quot;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Welcome.&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Welcome </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.&quot;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>Here’s a simple unit test for the function.</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-number">Listing 160 </span><span class="caption-text"><a class="reference external" href="http://greeting.py">greeting.py</a></span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_greeting</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;buffy&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome Buffy.&quot;</span><span class="p">,</span> <span class="s1">&#39;should return &quot;Welcome Buffy.&quot;&#39;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>Let’s break that down.</p>
+<p>The assertion on line <code class="docutils literal notranslate"><span class="pre">10</span></code> has three parts.</p>
+<ul class="simple">
+<li><p>It begins with the <code class="docutils literal notranslate"><span class="pre">assert</span></code> keyword.</p></li>
+<li><p>The expression <code class="docutils literal notranslate"><span class="pre">greeting(&quot;buffy&quot;)</span> <span class="pre">==</span> <span class="pre">&quot;Welcome</span> <span class="pre">Buffy.&quot;</span></code> is the heart of the
+test:</p>
+<ul>
+<li><p>It calls the <code class="docutils literal notranslate"><span class="pre">greeting()</span></code> function with the argument <code class="docutils literal notranslate"><span class="pre">&quot;buffy&quot;</span></code>.</p></li>
+<li><p>The return value is compared to the string <code class="docutils literal notranslate"><span class="pre">&quot;Welcome</span> <span class="pre">Buffy&quot;</span></code> using the <code class="docutils literal notranslate"><span class="pre">==</span></code>
+operator which will evaluate to either <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p>The assertion will pass if this evaluates to <code class="docutils literal notranslate"><span class="pre">True</span></code>. Otherwise, the
+assertion will fail.</p></li>
+</ul>
+</li>
+<li><p>The string <code class="docutils literal notranslate"><span class="pre">'should</span> <span class="pre">return</span> <span class="pre">&quot;Welcome</span> <span class="pre">Buffy.&quot;'</span></code> is a description of what is being
+tested. This will be shown in the event that the test fails.</p></li>
+</ul>
+<p>Now we can run the test by calling the test function.</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-number">Listing 161 </span><span class="caption-text"><a class="reference external" href="http://greeting.py">greeting.py</a></span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">test_greeting</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="part-2-2-exercise-2">
+<h3>Part 2.2: Exercise 2<a class="headerlink" href="#part-2-2-exercise-2" title="Permalink to this headline">¶</a></h3>
+<div class="exercise admonition" id="unit-test">
+<p class="admonition-title"><span class="caption-number">Exercise 35 </span>(Unit Test)</p>
+<div class="section" id="exercise-content">
+<p>1. Copy the following function into a script.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">endgame</span><span class="p">(</span><span class="n">is_winner</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a string to tell the player if they won or lost.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">is_winner</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Congratulations, you won!&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;You lost. Better luck next time!&quot;</span>
+</pre></div>
+</td></tr></table></div>
+<p>2. Write a test function to assert that when <code class="docutils literal notranslate"><span class="pre">True</span></code> is passed to the
+<code class="docutils literal notranslate"><span class="pre">endgame()</span></code> function it should return <code class="docutils literal notranslate"><span class="pre">&quot;Congratulations,</span> <span class="pre">you</span> <span class="pre">won!&quot;</span></code>.</p>
+<p>3. Don’t forget to call the test function!</p>
+</div>
+</div>
+<div class="solution dropdown admonition" id="practices/testing-solution-3">
+<p class="admonition-title">Solution to <a class="reference external" href="#unit-test"><span>Exercise 35</span></a></p>
+<div class="section" id="solution-content">
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">endgame</span><span class="p">(</span><span class="n">is_winner</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a string to tell the player if they won or lost.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">is_winner</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Congratulations, you won!&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;You lost. Better luck next time!&quot;</span>
+
+<span class="k">def</span> <span class="nf">test_endgame</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">endgame</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Congratulations, you won!&quot;</span>
+
+<span class="n">test_endgame</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+<div class="section" id="part-2-3-testing-more-cases">
+<h3>Part 2.3: Testing more cases<a class="headerlink" href="#part-2-3-testing-more-cases" title="Permalink to this headline">¶</a></h3>
+<p>As is often the case, the <code class="docutils literal notranslate"><span class="pre">greeting()</span></code> function may return different kinds of
+results depending on its arguments. So we should be sure to test the
+different behavior that we expect.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>You can put the failure message on the next line by adding a <code class="docutils literal notranslate"><span class="pre">\</span></code> at the end of the previous one.</p>
+</div>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-number">Listing 162 </span><span class="caption-text"><a class="reference external" href="http://greeting.py">greeting.py</a></span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_greeting</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;buffy&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome Buffy.&quot;</span><span class="p">,</span> \
+     <span class="s1">&#39;should return &quot;Welcome Buffy.&quot; with the lowercase name capitalized.&#39;</span>
+<span class="hll">
+</span><span class="hll">    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;XANDER&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome Xander.&quot;</span><span class="p">,</span> \
+</span><span class="hll">        <span class="s1">&#39;should return &quot;Welcome Xander.&quot; with all caps name capitalized.&#39;</span>
+</span><span class="hll">
+</span><span class="hll">    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;SpongeBob SquarePants&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome Spongebob Squarepants.&quot;</span><span class="p">,</span> \
+</span><span class="hll">        <span class="s1">&#39;should return &quot;Welcome Spongebob Squarepants.&quot; with all words capitalized.&#39;</span>
+</span><span class="hll">
+</span><span class="hll">    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome.&quot;</span><span class="p">,</span> \
+</span><span class="hll">        <span class="s1">&#39;should return &quot;Welcome.&quot; if name is blank.&#39;</span>
+</span><span class="hll">
+</span><span class="hll">    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome.&quot;</span><span class="p">,</span> \
+</span><span class="hll">        <span class="s1">&#39;should return &quot;Welcome.&quot; if name is only whitespace.&#39;</span>
+</span></pre></div>
+</td></tr></table></div>
+</div>
+<p>Testing can also be a sort of documentation. For example, what would happen
+if we pass a number to the <code class="docutils literal notranslate"><span class="pre">greeting()</span></code> function?</p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-number">Listing 163 </span><span class="caption-text"><a class="reference external" href="http://greeting.py">greeting.py</a></span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_greeting</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;buffy&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome Buffy.&quot;</span><span class="p">,</span> \
+     <span class="s1">&#39;should return &quot;Welcome Buffy.&quot; with the lowercase name capitalized.&#39;</span>
+
+    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;XANDER&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome Xander.&quot;</span><span class="p">,</span> \
+        <span class="s1">&#39;should return &quot;Welcome Xander.&quot; with all caps name capitalized.&#39;</span>
+
+    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;SpongeBob SquarePants&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome Spongebob Squarepants.&quot;</span><span class="p">,</span> \
+        <span class="s1">&#39;should return &quot;Welcome Spongebob Squarepants.&quot; with all words capitalized.&#39;</span>
+
+    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome.&quot;</span><span class="p">,</span> \
+        <span class="s1">&#39;should return &quot;Welcome.&quot; if name is blank.&#39;</span>
+
+    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome.&quot;</span><span class="p">,</span> \
+        <span class="s1">&#39;should return &quot;Welcome.&quot; if name just whitespace.&#39;</span>
+
+<span class="hll">    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;42&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome 42.&quot;</span><span class="p">,</span> \
+</span><span class="hll">        <span class="s1">&#39;should return &quot;Welcome 42.&quot; with no special handling for numbers.&#39;</span>
+</span></pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="part-2-4-exercise-3">
+<h3>Part 2.4: Exercise 3<a class="headerlink" href="#part-2-4-exercise-3" title="Permalink to this headline">¶</a></h3>
+<div class="exercise admonition" id="detailed-unit-test">
+<p class="admonition-title"><span class="caption-number">Exercise 36 </span>(Detailed Unit Test)</p>
+<div class="section" id="exercise-content">
+<p>1. Copy the following function into a script.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">letter_grade</span><span class="p">(</span><span class="n">score</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the letter grade for a particular number score&quot;&quot;&quot;</span>
+    <span class="n">ranges</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">100</span><span class="p">):</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span>
+        <span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">89</span><span class="p">):</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span>
+        <span class="p">(</span><span class="mi">70</span><span class="p">,</span> <span class="mi">79</span><span class="p">):</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span>
+        <span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">69</span><span class="p">):</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span>
+        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">59</span><span class="p">):</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="n">score_range</span><span class="p">,</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">ranges</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">min_score</span><span class="p">,</span> <span class="n">max_score</span> <span class="o">=</span> <span class="n">score_range</span>
+        <span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="n">min_score</span> <span class="ow">and</span> <span class="n">score</span> <span class="o">&lt;=</span> <span class="n">max_score</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">letter</span>
+    
+    <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</td></tr></table></div>
+<p>2. Write a test function that includes assertions for each of the following
+arguments:</p>
+<ul class="simple">
+<li><p>a score for that returns each of the letters <code class="docutils literal notranslate"><span class="pre">A</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>, <code class="docutils literal notranslate"><span class="pre">C</span></code>, <code class="docutils literal notranslate"><span class="pre">D</span></code>, and <code class="docutils literal notranslate"><span class="pre">F</span></code></p></li>
+<li><p>that <code class="docutils literal notranslate"><span class="pre">110</span></code> returns False</p></li>
+<li><p>that <code class="docutils literal notranslate"><span class="pre">-5</span></code> returns False</p></li>
+</ul>
+</div>
+</div>
+<div class="solution dropdown admonition" id="practices/testing-solution-5">
+<p class="admonition-title">Solution to <a class="reference external" href="#detailed-unit-test"><span>Exercise 36</span></a></p>
+<div class="section" id="solution-content">
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">letter_grade</span><span class="p">(</span><span class="n">score</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the letter grade for a particular number score&quot;&quot;&quot;</span>
+    <span class="n">ranges</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">100</span><span class="p">):</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span>
+        <span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">89</span><span class="p">):</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span>
+        <span class="p">(</span><span class="mi">70</span><span class="p">,</span> <span class="mi">79</span><span class="p">):</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span>
+        <span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">69</span><span class="p">):</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span>
+        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">59</span><span class="p">):</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="n">score_range</span><span class="p">,</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">ranges</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">min_score</span><span class="p">,</span> <span class="n">max_score</span> <span class="o">=</span> <span class="n">score_range</span>
+        <span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="n">min_score</span> <span class="ow">and</span> <span class="n">score</span> <span class="o">&lt;=</span> <span class="n">max_score</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">letter</span>
+    
+    <span class="k">return</span> <span class="kc">False</span>
+
+<span class="k">def</span> <span class="nf">test_letter_grade</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">letter_grade</span><span class="p">(</span><span class="mi">22</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="s2">&quot;number scores between 0-59 should return F&quot;</span>
+    <span class="k">assert</span> <span class="n">letter_grade</span><span class="p">(</span><span class="mi">61</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;number scores between 60-69 should return D&quot;</span>
+    <span class="k">assert</span> <span class="n">letter_grade</span><span class="p">(</span><span class="mi">70</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;number scores between 70-79 should return C&quot;</span>
+    <span class="k">assert</span> <span class="n">letter_grade</span><span class="p">(</span><span class="mi">89</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;number scores between 80-89 should return B&quot;</span>
+    <span class="k">assert</span> <span class="n">letter_grade</span><span class="p">(</span><span class="mi">95</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;number scores between 90-100 should return A&quot;</span>
+    <span class="k">assert</span> <span class="ow">not</span> <span class="n">letter_grade</span><span class="p">(</span><span class="mi">110</span><span class="p">),</span> <span class="s2">&quot;number scores over 100 should return False&quot;</span>
+    <span class="k">assert</span> <span class="ow">not</span> <span class="n">letter_grade</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">),</span> <span class="s2">&quot;number scores under 0 should return False&quot;</span>
+
+<span class="n">test_letter_grade</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="part-3-pytest">
+<h2>Part 3: Pytest<a class="headerlink" href="#part-3-pytest" title="Permalink to this headline">¶</a></h2>
+<p>While it’s easy to run tests by calling them from inside a script, it’s more
+common to use a test runner.</p>
+<p>A test runner is a CLI tool that will run your tests and print a nicely
+formatted report of the results. Runners also often include a library that
+can be imported in your tests to provide tools and/or frameworks to aid in
+writing tests.</p>
+</div>
+<div class="section" id="part-3-1-install-pytest">
+<h2>Part 3.1: Install <code class="docutils literal notranslate"><span class="pre">pytest</span></code><a class="headerlink" href="#part-3-1-install-pytest" title="Permalink to this headline">¶</a></h2>
+<p>For this lesson we’ll be using the <code class="docutils literal notranslate"><span class="pre">pytest</span></code> runner. It’s a Python module, so
+you can install it as you normally do modules.</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">poetry</span></code> users:</p>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-number">Listing 164 </span><span class="caption-text">command line</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry add --dev pytest
+</pre></div>
+</div>
+</div>
+<p>Otherwise:</p>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-number">Listing 165 </span><span class="caption-text">command line</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m pip install pytest
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="part-3-2-migrate-to-pytest">
+<h2>Part 3.2: Migrate to Pytest<a class="headerlink" href="#part-3-2-migrate-to-pytest" title="Permalink to this headline">¶</a></h2>
+<p>To use the runner part of <code class="docutils literal notranslate"><span class="pre">pytest</span></code> we only have to make a minor change to the
+script to make it work with <code class="docutils literal notranslate"><span class="pre">pytest</span></code>. Simply put your <code class="docutils literal notranslate"><span class="pre">main()</span></code> call under a
+<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;</span></code> statement. This allows <code class="docutils literal notranslate"><span class="pre">pytest</span></code> to import your file
+as a module without running the script by calling <code class="docutils literal notranslate"><span class="pre">main()</span></code>.</p>
+<p>We also no longer need to call the <code class="docutils literal notranslate"><span class="pre">test_greeting()</span></code> function in the script
+itself, because <code class="docutils literal notranslate"><span class="pre">pytest</span></code> will handle that.</p>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-number">Listing 166 </span><span class="caption-text"><a class="reference external" href="http://greeting.py">greeting.py</a></span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># test_greeting()</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>Now you can run the tests at the command line with the <code class="docutils literal notranslate"><span class="pre">pytest</span></code> command
+followed by the filename.</p>
+<div class="row"><div class="col-4">
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-number">Listing 167 </span><span class="caption-text">command line</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest greeting.py
+</pre></div>
+</div>
+</div>
+</div><div class="col-8">
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-number">Listing 168 </span><span class="caption-text">output</span><a class="headerlink" href="#id13" title="Permalink to this code">¶</a></div>
+<div class="highlight-pytest notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">=================== test session starts ====================</span>
+platform darwin -- Python 3.8.1, pytest-6.2.1, py-1.10.0, ...
+rootdir: ...
+collected 1 item                                           
+
+greeting.py <span class=" -Color -Color-Green">.</span>                                        <span class=" -Color -Color-Green">[100%]</span>
+
+<span class=" -Color -Color-Green">==================== </span><span class=" -Color -Color-Bold -Color-Bold-Green">1 passed</span><span class=" -Color -Color-Green"> in 0.08s =====================</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+<div class="clearfix"></div>
+<p>Let’s add a failing assertion so we can see what that looks like.</p>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-number">Listing 169 </span><span class="caption-text"><a class="reference external" href="http://greeting.py">greeting.py</a></span><a class="headerlink" href="#id14" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_greeting</span><span class="p">():</span>
+<span class="hll">    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;buffy&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> \
+</span><span class="hll">        <span class="s1">&#39;demo of a test failure&#39;</span>
+</span>
+    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;buffy&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome Buffy.&quot;</span><span class="p">,</span> \
+        <span class="s1">&#39;should return &quot;Welcome Buffy.&quot; with the lowercase name capitalized.&#39;</span>
+
+    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;XANDER&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome Xander.&quot;</span><span class="p">,</span> \
+        <span class="s1">&#39;should return &quot;Welcome Xander.&quot; with all caps name capitalized.&#39;</span>
+
+    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;SpongeBob SquarePants&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome Spongebob Squarepants.&quot;</span><span class="p">,</span> \
+        <span class="s1">&#39;should return &quot;Welcome Spongebob Squarepants.&quot; with all words capitalized.&#39;</span>
+
+    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome.&quot;</span><span class="p">,</span> \
+        <span class="s1">&#39;should return &quot;Welcome.&quot; if name is blank.&#39;</span>
+
+    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome.&quot;</span><span class="p">,</span> \
+        <span class="s1">&#39;should return &quot;Welcome.&quot; if name just whitespace.&#39;</span>
+
+    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;42&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome 42.&quot;</span><span class="p">,</span> \
+        <span class="s1">&#39;should return &quot;Welcome 42.&quot; no special handling for numbers.&#39;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>Now rerun the tests at the command line.</p>
+<div class="row"><div class="col-4">
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-number">Listing 170 </span><span class="caption-text">command line</span><a class="headerlink" href="#id15" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest greeting.py
+</pre></div>
+</div>
+</div>
+</div><div class="col-8">
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-number">Listing 171 </span><span class="caption-text">output</span><a class="headerlink" href="#id16" title="Permalink to this code">¶</a></div>
+<div class="highlight-pytest notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">=================== test session starts ====================</span>
+platform darwin -- Python 3.8.1, pytest-6.2.1, py-1.10.0, ...
+rootdir: ...
+collected 1 item                                           
+
+greeting.py <span class=" -Color -Color-Red">F</span>                                        <span class=" -Color -Color-Red">[100%]</span>
+
+========================= FAILURES =========================
+<span class=" -Color -Color-Bold -Color-Bold-Red">______________________ test_greeting _______________________</span>
+
+    def test_greeting():
+&gt;       assert greeting(&quot;buffy&quot;) == &quot;&quot;, \
+            &#39;demo of a test failure&#39;
+<span class=" -Color -Color-Bold -Color-Bold-Red">E       AssertionError: demo of a test failure</span>
+<span class=" -Color -Color-Bold -Color-Bold-Red">E       assert &#39;Welcome Buffy.&#39; == &#39;&#39;</span>
+<span class=" -Color -Color-Bold -Color-Bold-Red">E         + Welcome Buffy.</span>
+
+<span class=" -Color -Color-Bold -Color-Bold-Red">greeting.py</span>:10: AssertionError
+================= short test summary info ==================
+FAILED greeting.py::test_greeting - AssertionError: demo ...
+<span class=" -Color -Color-Red">==================== </span><span class=" -Color -Color-Bold -Color-Bold-Red">1 failed</span><span class=" -Color -Color-Red"> in 0.22s =====================</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+<div class="clearfix"></div>
+</div>
+<div class="section" id="part-4-test-best-practices">
+<h2>Part 4: Test best practices<a class="headerlink" href="#part-4-test-best-practices" title="Permalink to this headline">¶</a></h2>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p><a class="btn btn-sm btn-outline-info text-info bg-white" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/greeting.py"><i class="fa fa-file-code text-info bg-white"></i> greeting.py</a></p>
+</div>
+<div class="section" id="part-4-1-make-a-test-file">
+<h3>Part 4.1: Make a test file<a class="headerlink" href="#part-4-1-make-a-test-file" title="Permalink to this headline">¶</a></h3>
+<p>In Python tests are usually kept in a separate file starting with <code class="docutils literal notranslate"><span class="pre">test_</span></code>.</p>
+<p>Let’s move our <code class="docutils literal notranslate"><span class="pre">test_greeting()</span></code> function to a new file named
+<code class="docutils literal notranslate"><span class="pre">test_greeting.py</span></code> file.</p>
+<p>Now that it’s in a separate file, we’ll need to import the greeting function
+from our <code class="docutils literal notranslate"><span class="pre">greeting.py</span></code> file.</p>
+<div class="literal-block-wrapper docutils container" id="id17">
+<div class="code-block-caption"><span class="caption-number">Listing 172 </span><span class="caption-text">test_greeting.py</span><a class="headerlink" href="#id17" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">greeting</span> <span class="kn">import</span> <span class="n">greeting</span>
+
+<span class="k">def</span> <span class="nf">test_greeting</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;buffy&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> \
+        <span class="s1">&#39;demo of a test failure&#39;</span>
+
+    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;buffy&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome Buffy.&quot;</span><span class="p">,</span> \
+        <span class="s1">&#39;should return &quot;Welcome Buffy.&quot; with the lowercase name capitalized.&#39;</span>
+
+    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;XANDER&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome Xander.&quot;</span><span class="p">,</span> \
+        <span class="s1">&#39;should return &quot;Welcome Xander.&quot; with all caps name capitalized.&#39;</span>
+
+    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;SpongeBob SquarePants&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome Spongebob Squarepants.&quot;</span><span class="p">,</span> \
+        <span class="s1">&#39;should return &quot;Welcome Spongebob Squarepants.&quot; with all words capitalized.&#39;</span>
+
+    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome.&quot;</span><span class="p">,</span> \
+        <span class="s1">&#39;should return &quot;Welcome.&quot; if name is blank.&#39;</span>
+
+    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome.&quot;</span><span class="p">,</span> \
+        <span class="s1">&#39;should return &quot;Welcome.&quot; if name just whitespace.&#39;</span>
+
+    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;42&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome 42.&quot;</span><span class="p">,</span> \
+        <span class="s1">&#39;should return &quot;Welcome 42.&quot; no special handling for numbers.&#39;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>To run the tests we’ll use <code class="docutils literal notranslate"><span class="pre">test_greeting.py</span></code> for the filename instead of <code class="docutils literal notranslate"><span class="pre">greeting.py</span></code>.</p>
+<div class="row"><div class="col-4">
+<div class="literal-block-wrapper docutils container" id="id18">
+<div class="code-block-caption"><span class="caption-number">Listing 173 </span><span class="caption-text">command line</span><a class="headerlink" href="#id18" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest test_greeting.py
+</pre></div>
+</div>
+</div>
+</div><div class="col-8">
+<div class="literal-block-wrapper docutils container" id="id19">
+<div class="code-block-caption"><span class="caption-number">Listing 174 </span><span class="caption-text">output</span><a class="headerlink" href="#id19" title="Permalink to this code">¶</a></div>
+<div class="highlight-pytest notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">=================== test session starts ====================</span>
+platform darwin -- Python 3.8.1, pytest-6.2.1, py-1.10.0, ...
+rootdir: ...
+collected 1 item                                           
+
+greeting.py <span class=" -Color -Color-Red">F</span>                                        <span class=" -Color -Color-Red">[100%]</span>
+
+========================= FAILURES =========================
+<span class=" -Color -Color-Bold -Color-Bold-Red">______________________ test_greeting _______________________</span>
+
+    def test_greeting():
+&gt;       assert greeting(&quot;buffy&quot;) == &quot;&quot;, \
+            &#39;demo of a test failure&#39;
+<span class=" -Color -Color-Bold -Color-Bold-Red">E       AssertionError: demo of a test failure</span>
+<span class=" -Color -Color-Bold -Color-Bold-Red">E       assert &#39;Welcome Buffy.&#39; == &#39;&#39;</span>
+<span class=" -Color -Color-Bold -Color-Bold-Red">E         + Welcome Buffy.</span>
+
+<span class=" -Color -Color-Bold -Color-Bold-Red">greeting.py</span>:10: AssertionError
+================= short test summary info ==================
+FAILED greeting.py::test_greeting - AssertionError: demo ...
+<span class=" -Color -Color-Red">==================== </span><span class=" -Color -Color-Bold -Color-Bold-Red">1 failed</span><span class=" -Color -Color-Red"> in 0.22s =====================</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+<div class="clearfix"></div>
+</div>
+<div class="section" id="part-4-2-one-case-per-test-function">
+<h3>Part 4.2: One case per test function<a class="headerlink" href="#part-4-2-one-case-per-test-function" title="Permalink to this headline">¶</a></h3>
+<p>One test function with a bunch of assert messages is fine for a quick and
+dirty test. There are a few downsides though. For one thing, if one assertion
+fails, none of the others in the function will be run. It also can make it a
+bit more difficult to tell exactly which test failed.</p>
+<p>It’s generally a good idea to have one use case per function.</p>
+<p>Let’s split the <code class="docutils literal notranslate"><span class="pre">test_greeting()</span></code> function up.</p>
+<div class="literal-block-wrapper docutils container" id="id20">
+<div class="code-block-caption"><span class="caption-number">Listing 175 </span><span class="caption-text">test_greeting.py</span><a class="headerlink" href="#id20" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">greeting</span> <span class="kn">import</span> <span class="n">greeting</span>
+
+<span class="k">def</span> <span class="nf">test_greeting_fail</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;buffy&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> \
+        <span class="s1">&#39;demo of a test failure&#39;</span>
+
+
+<span class="k">def</span> <span class="nf">test_greeting_lower</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;buffy&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome Buffy.&quot;</span><span class="p">,</span> \
+        <span class="s1">&#39;should return &quot;Welcome Buffy.&quot; with the lowercase name capitalized.&#39;</span>
+
+
+<span class="k">def</span> <span class="nf">test_greeting_upper_to_title</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;XANDER&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome Xander.&quot;</span><span class="p">,</span> \
+        <span class="s1">&#39;should return &quot;Welcome Xander.&quot; with all caps name capitalized.&#39;</span>
+
+
+<span class="k">def</span> <span class="nf">test_greeting_multi_word</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;SpongeBob SquarePants&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome Spongebob Squarepants.&quot;</span><span class="p">,</span> \
+        <span class="s1">&#39;should return &quot;Welcome Spongebob Squarepants.&quot; with all words capitalized.&#39;</span>
+
+
+<span class="k">def</span> <span class="nf">test_greeting_empty_string</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome.&quot;</span><span class="p">,</span> \
+        <span class="s1">&#39;should return &quot;Welcome.&quot; if name is empty.&#39;</span>
+
+
+<span class="k">def</span> <span class="nf">test_greeting_blank</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome.&quot;</span><span class="p">,</span> \
+        <span class="s1">&#39;should return &quot;Welcome.&quot; if name just whitespace.&#39;</span>
+
+
+<span class="k">def</span> <span class="nf">test_greeting_number</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;42&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome 42.&quot;</span><span class="p">,</span> \
+        <span class="s1">&#39;should return &quot;Welcome 42.&quot; no special handling for numbers.&#39;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>Now we can run the tests using the <code class="docutils literal notranslate"><span class="pre">-v</span></code> flag to get verbose output. This will
+show us the status of each individual test.</p>
+<div class="row"><div class="col-4">
+<div class="literal-block-wrapper docutils container" id="id21">
+<div class="code-block-caption"><span class="caption-number">Listing 176 </span><span class="caption-text">command line</span><a class="headerlink" href="#id21" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest -v test_greeting.py
+</pre></div>
+</div>
+</div>
+</div><div class="col-8">
+<div class="literal-block-wrapper docutils container" id="id22">
+<div class="code-block-caption"><span class="caption-number">Listing 177 </span><span class="caption-text">output</span><a class="headerlink" href="#id22" title="Permalink to this code">¶</a></div>
+<div class="highlight-pytest notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">=================== test session starts ====================</span>
+platform darwin -- Python 3.8.1, pytest-6.2.2, ...
+rootdir: ..., configfile: pyproject.toml, testpaths: tests
+collected 7 items                                          
+
+tests/test_greeting.py <span class=" -Color -Color-Red">F</span><span class=" -Color -Color-Green">......</span>                       <span class=" -Color -Color-Red">[100%]</span>
+
+========================= FAILURES =========================
+<span class=" -Color -Color-Bold -Color-Bold-Red">____________________ test_greeting_fail ____________________</span>
+
+    def test_greeting_fail():
+&gt;       assert greeting(&quot;buffy&quot;) == &quot;&quot;, \
+            &#39;demo of a test failure&#39;
+<span class=" -Color -Color-Bold -Color-Bold-Red">E       AssertionError: demo of a test failure</span>
+<span class=" -Color -Color-Bold -Color-Bold-Red">E       assert &#39;Welcome Buffy.&#39; == &#39;&#39;</span>
+<span class=" -Color -Color-Bold -Color-Bold-Red">E         + Welcome Buffy.</span>
+
+<span class=" -Color -Color-Bold -Color-Bold-Red">tests/test_greeting.py</span>:4: AssertionError
+================= short test summary info ==================
+FAILED tests/test_greeting.py::test_greeting_fail - Asser...
+<span class=" -Color -Color-Red">=============== </span><span class=" -Color -Color-Bold -Color-Bold-Red">1 failed</span>, <span class=" -Color -Color-Green">6 passed</span><span class=" -Color -Color-Red"> in 0.20s ================</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+<div class="clearfix"></div>
+</div>
+<div class="section" id="part-4-3-file-locations">
+<h3>Part 4.3: File locations<a class="headerlink" href="#part-4-3-file-locations" title="Permalink to this headline">¶</a></h3>
+<p>For simple projects with just one or two Python modules it’s fine to keep
+your test files in the same directory (folder) as your python files. However,
+there’s a standard structure that is recommended for Python projects.</p>
+<div class="section" id="step-1-move-your-files">
+<h4>Step 1: Move your files<a class="headerlink" href="#step-1-move-your-files" title="Permalink to this headline">¶</a></h4>
+<p>If you use Poetry and started your project with the <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">new</span></code> command,
+then the correct directory structure was already created for you and looks
+something like this.</p>
+<div class="literal-block-wrapper docutils container" id="id23">
+<div class="code-block-caption"><span class="caption-number">Listing 178 </span><span class="caption-text">example directory layout</span><a class="headerlink" href="#id23" title="Permalink to this code">¶</a></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>├── README.md
+├── poetry.lock
+├── pyproject.toml
+├── testing_demo
+│   └── __init__.py
+└── tests
+    ├── __init__.py
+    └── test_testing_demo.py
+</pre></div>
+</div>
+</div>
+<p>I won’t go into all of the details, but here are the things you need to know
+that are related to tests:</p>
+<ul class="simple">
+<li><p>Your Python files should be in a directory with your project name in <code class="docutils literal notranslate"><span class="pre">lowercase_with_underscores</span></code> style.</p></li>
+<li><p>Python files should also be named with <code class="docutils literal notranslate"><span class="pre">lowercase_with_underscores</span></code> style.</p></li>
+<li><p>Your test files should be in a directory named <code class="docutils literal notranslate"><span class="pre">tests</span></code>.</p></li>
+<li><p>Each test file should start with <code class="docutils literal notranslate"><span class="pre">test_</span></code> and usually correlate with the file
+that contains the code being tested, also in <code class="docutils literal notranslate"><span class="pre">lowercase_with_underscores</span></code>
+style.</p></li>
+<li><p>Both <code class="file docutils literal notranslate"><span class="pre">__init__.py</span></code> files can be empty, they just need to exist.</p></li>
+</ul>
+</div>
+<div class="section" id="step-2-change-your-import-in-your-test-file">
+<h4>Step 2: Change your import in your test file<a class="headerlink" href="#step-2-change-your-import-in-your-test-file" title="Permalink to this headline">¶</a></h4>
+<p>Once you’ve moved your files where they should be, you’ll need to change the
+<code class="docutils literal notranslate"><span class="pre">import</span></code> statement in your test file so that it includes the name of the
+parent directory followed by a <code class="docutils literal notranslate"><span class="pre">.</span></code> before the module name.</p>
+<div class="literal-block-wrapper docutils container" id="id24">
+<div class="code-block-caption"><span class="caption-number">Listing 179 </span><span class="caption-text">test_greeting.py</span><a class="headerlink" href="#id24" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pythonclass.greeting</span> <span class="kn">import</span> <span class="n">greeting</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="step-3-change-any-local-imports">
+<h4>Step 3: Change any local imports<a class="headerlink" href="#step-3-change-any-local-imports" title="Permalink to this headline">¶</a></h4>
+<p>If you are importing any code from your own files you will need to change the way
+they are imported so that pytest can find them.</p>
+<p>Here’s an example of how you would change an import from a <code class="file docutils literal notranslate"><span class="pre">private.py</span></code>
+file.</p>
+<div class="row"><div class="col-6">
+<p class="centered">
+<strong>BEFORE</strong></p><div class="literal-block-wrapper docutils container" id="id25">
+<div class="code-block-caption"><span class="caption-number">Listing 180 </span><span class="caption-text">local import example</span><a class="headerlink" href="#id25" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">private</span> <span class="kn">import</span> <span class="n">KEY</span><span class="p">,</span> <span class="n">TOKEN</span>
+</pre></div>
+</div>
+</div>
+</div><div class="col-6">
+<p class="centered">
+<strong>AFTER</strong></p><div class="literal-block-wrapper docutils container" id="id26">
+<div class="code-block-caption"><span class="caption-number">Listing 181 </span><span class="caption-text">local import example</span><a class="headerlink" href="#id26" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.private</span> <span class="kn">import</span> <span class="n">KEY</span><span class="p">,</span> <span class="n">TOKEN</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+<div class="clearfix"></div>
+<p>The <code class="docutils literal notranslate"><span class="pre">.</span></code> in front of <code class="docutils literal notranslate"><span class="pre">private</span></code> means that the module is part of the same
+package. Which is essentially the same as saying that the file is in same
+directory.</p>
+</div>
+<div class="section" id="step-4-run-the-tests">
+<h4>Step 4: Run the tests<a class="headerlink" href="#step-4-run-the-tests" title="Permalink to this headline">¶</a></h4>
+<p>Now you can run all the test files in that directory at the same time by
+using the directory name instead of a specific file.</p>
+<div class="row"><div class="col-4">
+<div class="literal-block-wrapper docutils container" id="id27">
+<div class="code-block-caption"><span class="caption-number">Listing 182 </span><span class="caption-text">command line</span><a class="headerlink" href="#id27" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest -v tests
+</pre></div>
+</div>
+</div>
+</div><div class="col-8">
+<div class="literal-block-wrapper docutils container" id="id28">
+<div class="code-block-caption"><span class="caption-number">Listing 183 </span><span class="caption-text">output</span><a class="headerlink" href="#id28" title="Permalink to this code">¶</a></div>
+<div class="highlight-pytest notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">=================== test session starts ====================</span>
+platform darwin -- Python 3.8.1, pytest-6.2.1, py-1.10.0, ...
+cachedir: .pytest_cache
+rootdir: ...
+collected 7 items                                          
+
+test_greeting.py::test_greeting_fail <span class=" -Color -Color-Red">FAILED</span>          <span class=" -Color -Color-Red">[ 14%]</span>
+test_greeting.py::test_greeting <span class=" -Color -Color-Green">PASSED</span>               <span class=" -Color -Color-Red">[ 28%]</span>
+test_greeting.py::test_greeting_upper_to_title <span class=" -Color -Color-Green">PASSED</span> <span class=" -Color -Color-Red">[ 42%]</span>
+test_greeting.py::test_greeting_multi_word <span class=" -Color -Color-Green">PASSED</span>    <span class=" -Color -Color-Red">[ 57%]</span>
+test_greeting.py::test_greeting_empty_string <span class=" -Color -Color-Green">PASSED</span>  <span class=" -Color -Color-Red">[ 71%]</span>
+test_greeting.py::test_greeting_blank <span class=" -Color -Color-Green">PASSED</span>         <span class=" -Color -Color-Red">[ 85%]</span>
+test_greeting.py::test_greeting_number <span class=" -Color -Color-Green">PASSED</span>        <span class=" -Color -Color-Red">[100%]</span>
+
+========================= FAILURES =========================
+<span class=" -Color -Color-Bold -Color-Bold-Red">____________________ test_greeting_fail ____________________</span>
+
+    def test_greeting_fail():
+&gt;       assert greeting(&quot;buffy&quot;) == &quot;&quot;, \
+            &#39;demo of a test failure&#39;
+<span class=" -Color -Color-Bold -Color-Bold-Red">E       AssertionError: demo of a test failure</span>
+<span class=" -Color -Color-Bold -Color-Bold-Red">E       assert &#39;Welcome Buffy.&#39; == &#39;&#39;</span>
+<span class=" -Color -Color-Bold -Color-Bold-Red">E         + Welcome Buffy.</span>
+
+<span class=" -Color -Color-Bold -Color-Bold-Red">test_greeting.py</span>:4: AssertionError
+================= short test summary info ==================
+FAILED test_greeting.py::test_greeting_fail - AssertionEr...
+<span class=" -Color -Color-Red">=============== </span><span class=" -Color -Color-Bold -Color-Bold-Red">1 failed</span>, <span class=" -Color -Color-Green">6 passed</span><span class=" -Color -Color-Red"> in 0.21s ================</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+<div class="clearfix"></div>
+</div>
+</div>
+<div class="section" id="part-4-4-configure-pytest">
+<h3>Part 4.4: Configure pytest<a class="headerlink" href="#part-4-4-configure-pytest" title="Permalink to this headline">¶</a></h3>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.pytest.org/en/stable/customize.html">pytests &gt; Configuration</a></p></li>
+<li><p><a class="reference external" href="https://docs.pytest.org/en/stable/reference.html#ini-options-ref">pytests &gt; Settings</a></p></li>
+</ul>
+</div>
+<p>If you use Poetry, you can configure <code class="docutils literal notranslate"><span class="pre">pytest</span></code> by adding a
+<code class="docutils literal notranslate"><span class="pre">tool.pytest.ini_options</span></code> section to your <code class="file docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file.</p>
+<div class="literal-block-wrapper docutils container" id="id29">
+<div class="code-block-caption"><span class="caption-number">Listing 184 </span><span class="caption-text">pyproject.toml</span><a class="headerlink" href="#id29" title="Permalink to this code">¶</a></div>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="c1"># ...</span>
+
+<span class="k">[tool.pytest.ini_options]</span>
+<span class="n">testpaths</span> <span class="o">=</span> <span class="k">[&quot;tests&quot;]</span>
+</pre></div>
+</div>
+</div>
+<p>Alternately you can add a <code class="file docutils literal notranslate"><span class="pre">pytest.ini</span></code> file to your project root directory.</p>
+<div class="literal-block-wrapper docutils container" id="id30">
+<div class="code-block-caption"><span class="caption-number">Listing 185 </span><span class="caption-text">pytest.ini</span><a class="headerlink" href="#id30" title="Permalink to this code">¶</a></div>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">testpaths</span> <span class="o">=</span>
+    <span class="na">tests</span>
+</pre></div>
+</div>
+</div>
+<p>This will ensure that pytest is always run using the <code class="docutils literal notranslate"><span class="pre">tests</span></code> directory
+without needing to include the path in your command.</p>
+<div class="row"><div class="col-4">
+<div class="literal-block-wrapper docutils container" id="id31">
+<div class="code-block-caption"><span class="caption-number">Listing 186 </span><span class="caption-text">command line</span><a class="headerlink" href="#id31" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest -v
+</pre></div>
+</div>
+</div>
+</div><div class="col-8">
+<div class="literal-block-wrapper docutils container" id="id32">
+<div class="code-block-caption"><span class="caption-number">Listing 187 </span><span class="caption-text">output</span><a class="headerlink" href="#id32" title="Permalink to this code">¶</a></div>
+<div class="highlight-pytest notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">=================== test session starts ====================</span>
+platform darwin -- Python 3.8.1, pytest-6.2.1, py-1.10.0, ...
+cachedir: .pytest_cache
+rootdir: ...
+collected 7 items                                          
+
+test_greeting.py::test_greeting_fail <span class=" -Color -Color-Red">FAILED</span>          <span class=" -Color -Color-Red">[ 14%]</span>
+test_greeting.py::test_greeting <span class=" -Color -Color-Green">PASSED</span>               <span class=" -Color -Color-Red">[ 28%]</span>
+test_greeting.py::test_greeting_upper_to_title <span class=" -Color -Color-Green">PASSED</span> <span class=" -Color -Color-Red">[ 42%]</span>
+test_greeting.py::test_greeting_multi_word <span class=" -Color -Color-Green">PASSED</span>    <span class=" -Color -Color-Red">[ 57%]</span>
+test_greeting.py::test_greeting_empty_string <span class=" -Color -Color-Green">PASSED</span>  <span class=" -Color -Color-Red">[ 71%]</span>
+test_greeting.py::test_greeting_blank <span class=" -Color -Color-Green">PASSED</span>         <span class=" -Color -Color-Red">[ 85%]</span>
+test_greeting.py::test_greeting_number <span class=" -Color -Color-Green">PASSED</span>        <span class=" -Color -Color-Red">[100%]</span>
+
+========================= FAILURES =========================
+<span class=" -Color -Color-Bold -Color-Bold-Red">____________________ test_greeting_fail ____________________</span>
+
+    def test_greeting_fail():
+&gt;       assert greeting(&quot;buffy&quot;) == &quot;&quot;, \
+            &#39;demo of a test failure&#39;
+<span class=" -Color -Color-Bold -Color-Bold-Red">E       AssertionError: demo of a test failure</span>
+<span class=" -Color -Color-Bold -Color-Bold-Red">E       assert &#39;Welcome Buffy.&#39; == &#39;&#39;</span>
+<span class=" -Color -Color-Bold -Color-Bold-Red">E         + Welcome Buffy.</span>
+
+<span class=" -Color -Color-Bold -Color-Bold-Red">test_greeting.py</span>:4: AssertionError
+================= short test summary info ==================
+FAILED test_greeting.py::test_greeting_fail - AssertionEr...
+<span class=" -Color -Color-Red">=============== </span><span class=" -Color -Color-Bold -Color-Bold-Red">1 failed</span>, <span class=" -Color -Color-Green">6 passed</span><span class=" -Color -Color-Red"> in 0.21s ================</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+<div class="clearfix"></div>
+</div>
+</div>
+<div class="section" id="part-5-writing-code-for-testing">
+<h2>Part 5: Writing code for testing<a class="headerlink" href="#part-5-writing-code-for-testing" title="Permalink to this headline">¶</a></h2>
+<p>One of the benefits of writing tests it that it encourages you to write
+better code. However, this can take a bit of getting used to. So in this part
+of the lesson we’ll go over a few tips for writing code so that it’s easier
+to test.</p>
+<div class="section" id="part-5-1-keep-your-interface-separate">
+<h3>Part 5.1: Keep your interface separate<a class="headerlink" href="#part-5-1-keep-your-interface-separate" title="Permalink to this headline">¶</a></h3>
+<p>Things like <code class="docutils literal notranslate"><span class="pre">input()</span></code> and <code class="docutils literal notranslate"><span class="pre">print()</span></code> statements are not easy to tests via unit
+tests. So keep the parts that take user input or display output to the user
+separate from the functions that determine behavior.</p>
+<ul class="simple">
+<li><p>Put any calls to <code class="docutils literal notranslate"><span class="pre">input()</span></code> and <code class="docutils literal notranslate"><span class="pre">print()</span></code> in a <code class="docutils literal notranslate"><span class="pre">main()</span></code> function that does
+little else, and calls to other functions.</p></li>
+<li><p>Anywhere else, use <code class="docutils literal notranslate"><span class="pre">return</span></code> instead of <code class="docutils literal notranslate"><span class="pre">print</span></code> and arguments instead of
+<code class="docutils literal notranslate"><span class="pre">input()</span></code>.</p></li>
+</ul>
+<p class="centered">
+<strong>BEFORE</strong></p><div class="literal-block-wrapper docutils container" id="id33">
+<div class="code-block-caption"><span class="caption-number">Listing 188 </span><span class="caption-text"><a class="reference external" href="http://palindrome.py">palindrome.py</a></span><a class="headerlink" href="#id33" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Ask the user for text, then print a message telling the user if it is</span>
+<span class="sd">       an palindrome or not.&quot;&quot;&quot;</span>
+
+    <span class="n">text</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a word to determine if it&#39;s an palindrome: &quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">text</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">text</span><span class="p">)):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Yes, &quot;</span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s1">&quot; is an palindrome.&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;No, &quot;</span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s1">&quot; is not an palindrome.&#39;</span><span class="p">)</span>
+
+
+<span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p class="centered">
+<strong>AFTER</strong></p><div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p><a class="btn btn-sm btn-outline-info text-info bg-white" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/palindrome.py"><i class="fa fa-file-code text-info bg-white"></i> palindrome.py</a></p>
+</div>
+<div class="literal-block-wrapper docutils container" id="id34">
+<div class="code-block-caption"><span class="caption-number">Listing 189 </span><span class="caption-text"><a class="reference external" href="http://palindrome.py">palindrome.py</a></span><a class="headerlink" href="#id34" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_palindrome</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return True if text is the same forward and backwards.&quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">text</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">message</span><span class="p">(</span><span class="n">isit</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">isit</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Yes, &quot;</span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s1">&quot; is a palindrome.&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;No, &quot;</span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s1">&quot; is not a palindrome.&#39;</span>
+
+    <span class="k">return</span> <span class="n">msg</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Ask the user for text, then print a message telling the user if it is</span>
+<span class="sd">       an palindrome or not.&quot;&quot;&quot;</span>
+
+    <span class="n">text</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a word to determine if it&#39;s an palindrome: &quot;</span><span class="p">)</span>
+    <span class="n">word_is_palindrome</span> <span class="o">=</span> <span class="n">is_palindrome</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">message</span><span class="p">(</span><span class="n">word_is_palindrome</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p><a class="btn btn-sm btn-outline-info text-info bg-white" href="https://github.com/alissa-huskey/python-class/blob/master/tests/test_palindrome.py"><i class="fa fa-file-code text-info bg-white"></i> test_palindrome.py</a></p>
+</div>
+<div class="literal-block-wrapper docutils container" id="id35">
+<div class="code-block-caption"><span class="caption-number">Listing 190 </span><span class="caption-text">test_palindrome.py</span><a class="headerlink" href="#id35" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pythonclass.lessons.palindrome</span> <span class="kn">import</span> <span class="n">is_palindrome</span><span class="p">,</span> <span class="n">message</span>
+
+<span class="k">def</span> <span class="nf">test_is_palindrome_true</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">is_palindrome</span><span class="p">(</span><span class="s2">&quot;radar&quot;</span><span class="p">),</span> \
+        <span class="s2">&quot;should return True if text is the same forwards and backwards&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">test_is_palindrome_false</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="ow">not</span> <span class="n">is_palindrome</span><span class="p">(</span><span class="s2">&quot;something&quot;</span><span class="p">),</span> \
+        <span class="s2">&quot;should return False if text is not the same forwards and backwards&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">test_message_no</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">message</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;nope&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;No, &quot;nope&quot; is not a palindrome.&#39;</span><span class="p">,</span> \
+        <span class="s2">&quot;should return a message saying text is not a palindrome if isit is False&quot;</span>
+
+
+
+<span class="k">def</span> <span class="nf">test_message_yes</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">message</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;level&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;Yes, &quot;level&quot; is a palindrome.&#39;</span><span class="p">,</span> \
+        <span class="s2">&quot;should return a message saying text is a palindrome if isit is True&quot;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="part-5-2-isolate-external-services-dependencies">
+<h3>Part 5.2: Isolate external services / dependencies<a class="headerlink" href="#part-5-2-isolate-external-services-dependencies" title="Permalink to this headline">¶</a></h3>
+<p>When running tests you rarely want to modify real data or make live calls to
+external services. Instead, separate the code that makes those calls from the
+code that deals with the resulting data.</p>
+<p class="centered">
+<strong>BEFORE</strong></p><div class="literal-block-wrapper docutils container" id="id36">
+<div class="code-block-caption"><span class="caption-number">Listing 191 </span><span class="caption-text"><a class="reference external" href="http://palindrome.py">palindrome.py</a></span><a class="headerlink" href="#id36" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Print the local weather&quot;&quot;&quot;</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://wttr.in/&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;j1&quot;</span><span class="p">})</span>
+    <span class="n">weather</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Current weather&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">weather</span><span class="p">[</span><span class="s2">&quot;current_condition&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;temp_F&quot;</span><span class="p">],</span>
+     <span class="n">weather</span><span class="p">[</span><span class="s2">&quot;current_condition&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;weatherDesc&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;value&quot;</span><span class="p">])</span>
+
+<span class="n">main</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p class="centered">
+<strong>AFTER</strong></p><div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p><a class="btn btn-sm btn-outline-info text-info bg-white" href="https://github.com/alissa-huskey/python-class/blob/master/tests/test_palindrome.py"><i class="fa fa-file-code text-info bg-white"></i> test_palindrome.py</a></p>
+</div>
+<div class="literal-block-wrapper docutils container" id="id37">
+<div class="code-block-caption"><span class="caption-number">Listing 192 </span><span class="caption-text"><a class="reference external" href="http://weather.py">weather.py</a></span><a class="headerlink" href="#id37" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="k">def</span> <span class="nf">get_weather</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a dictionary containing the temperature and description from</span>
+<span class="sd">       wttr.in response data&quot;&quot;&quot;</span>
+    <span class="n">conditions</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">conditions</span><span class="p">[</span><span class="s2">&quot;temp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;current_condition&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;temp_F&quot;</span><span class="p">]</span>
+    <span class="n">conditions</span><span class="p">[</span><span class="s2">&quot;desc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;current_condition&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;weatherDesc&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;value&quot;</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">conditions</span>
+
+<span class="k">def</span> <span class="nf">format_weather</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="n">desc</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the formatted weather string to display.&quot;&quot;&quot;</span>
+    <span class="n">text</span>  <span class="o">=</span> <span class="s2">&quot;Current weather</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">text</span> <span class="o">+=</span> <span class="s2">&quot;---------------</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">text</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">temp</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">desc</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="k">return</span> <span class="n">text</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Print the local weather&quot;&quot;&quot;</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://wttr.in/&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;j1&quot;</span><span class="p">})</span>
+    <span class="n">weather</span> <span class="o">=</span> <span class="n">get_weather</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">format_weather</span><span class="p">(</span><span class="n">weather</span><span class="p">[</span><span class="s2">&quot;temp&quot;</span><span class="p">],</span> <span class="n">weather</span><span class="p">[</span><span class="s2">&quot;desc&quot;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p><a class="btn btn-sm btn-outline-info text-info bg-white" href="https://github.com/alissa-huskey/python-class/blob/master/tests/test_weather.py"><i class="fa fa-file-code text-info bg-white"></i> test_weather.py</a></p>
+</div>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p><a class="btn btn-sm btn-outline-info text-info bg-white" href="https://github.com/alissa-huskey/python-class/blob/master/tests/weather.json"><i class="fa fa-file-code text-info bg-white"></i> weather.json</a></p>
+</div>
+<div class="literal-block-wrapper docutils container" id="id38">
+<div class="code-block-caption"><span class="caption-number">Listing 193 </span><span class="caption-text">test_weather.py</span><a class="headerlink" href="#id38" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pythonclass.lessons.weather</span> <span class="kn">import</span> <span class="n">format_weather</span><span class="p">,</span> <span class="n">get_weather</span>
+
+<span class="k">def</span> <span class="nf">test_format_weather</span><span class="p">():</span>
+
+    <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Current weather</span>
+<span class="s2">---------------</span>
+<span class="s2">-25 Overcast</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+    <span class="k">assert</span> <span class="n">format_weather</span><span class="p">(</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="s2">&quot;Overcast&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">text</span><span class="p">,</span> \
+         <span class="s2">&quot;should return formatted weather&quot;</span>
+
+<span class="k">def</span> <span class="nf">test_get_weather</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;current_condition&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;temp_F&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">29</span><span class="p">,</span>
+                <span class="s2">&quot;weatherDesc&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Overcast&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="k">assert</span> <span class="n">get_weather</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;temp&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">29</span><span class="p">,</span> <span class="s2">&quot;desc&quot;</span><span class="p">:</span> <span class="s2">&quot;Overcast&quot;</span><span class="p">},</span> \
+       <span class="s2">&quot;should extract a dict with temp and desc from request data&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">test_get_weather_from_file</span><span class="p">():</span>
+    <span class="n">testdir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span>
+    <span class="n">filepath</span> <span class="o">=</span> <span class="n">testdir</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;weather.json&quot;</span><span class="p">)</span>
+
+    <span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
+    <span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">assert</span> <span class="n">get_weather</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;temp&quot;</span><span class="p">:</span> <span class="s2">&quot;27&quot;</span><span class="p">,</span> <span class="s2">&quot;desc&quot;</span><span class="p">:</span> <span class="s2">&quot;Partly cloudy&quot;</span><span class="p">},</span> \
+       <span class="s2">&quot;should extract a dict with temp and desc from request data&quot;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+<div class="section" id="part-6-testing-in-vs-code">
+<h2>Part 6: Testing in VS Code<a class="headerlink" href="#part-6-testing-in-vs-code" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="part-6-1-setup">
+<h3>Part 6.1: Setup<a class="headerlink" href="#part-6-1-setup" title="Permalink to this headline">¶</a></h3>
+<p>From the <span class="guilabel">Command Palette</span> select <span class="guilabel">Python: Configure Tests</span>.</p>
+<p><img alt="" src="../_images/test-configure.png" /></p>
+<p>Select <span class="guilabel">pytest</span> from the dropdown.</p>
+<p><img alt="" src="../_images/test-configure-pytest.png" /></p>
+<p>Select the <span class="guilabel">tests</span> directory from the dropdown.</p>
+<p><img alt="" src="../_images/test-configure-testdir.png" /></p>
+</div>
+<div class="section" id="part-6-2-running-tests">
+<h3>Part 6.2: Running tests<a class="headerlink" href="#part-6-2-running-tests" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="step-1-click-tests">
+<h4>Step 1: Click Tests<a class="headerlink" href="#step-1-click-tests" title="Permalink to this headline">¶</a></h4>
+<p>Click the Test icon from the activity bar.</p>
+<p><img alt="" src="../_images/test-activitybar.png" /></p>
+</div>
+<div class="section" id="step-2-review-list-of-tests">
+<h4>Step 2: Review list of tests<a class="headerlink" href="#step-2-review-list-of-tests" title="Permalink to this headline">¶</a></h4>
+<p>You will see the <span class="guilabel">TESTING</span> sidebar panel, where your tests will be
+listed grouped by directory and file.</p>
+<p><img alt="" src="../_images/test-sidebar-list.png" /></p>
+</div>
+<div class="section" id="step-3-run-tests">
+<h4>Step 3: Run tests<a class="headerlink" href="#step-3-run-tests" title="Permalink to this headline">¶</a></h4>
+<p>You can run all tests by selecting <span class="guilabel">Python: Run All Tests</span> from the
+<span class="guilabel">Command Palette</span></p>
+<p><img alt="" src="../_images/test-run-all.png" /></p>
+<p>Or clicking the play icon at the top of the <span class="guilabel">TESTING</span> sidebar.</p>
+<p><img alt="" src="../_images/test-sidebar-actions-run-all.png" /></p>
+<p>Once your tests have run the failing and passing tests will be marked
+accordingly.</p>
+<p><img alt="" src="../_images/test-sidebar-list-marked.png" /></p>
+</div>
+<div class="section" id="step-4-view-test-output">
+<h4>Step 4: View test output<a class="headerlink" href="#step-4-view-test-output" title="Permalink to this headline">¶</a></h4>
+<p>Details about any test failures as well as any other pytest output can be
+seen in the <span class="guilabel">Python Test Log</span> which you can access by selecting
+<span class="guilabel">Python: Show Test Output</span> from the <span class="guilabel">Command Palette</span>:</p>
+<p><img alt="" src="../_images/test-show-output.png" /></p>
+<p>Or by clicking the icon at the top of the <span class="guilabel">TESTING</span> sidebar:</p>
+<p><img alt="" src="../_images/test-sidebar-actions-output.png" /></p>
+<p>Or by clicking the <span class="guilabel">OUTPUT</span> tab on the panel then selecting
+<span class="guilabel">Python Test Log</span> from the dropdown.</p>
+<p><img alt="" src="https://code.visualstudio.com/assets/docs/python/testing/python-test-log-output.png" /></p>
+</div>
+</div>
+<div class="section" id="part-6-3-changing-tests">
+<h3>Part 6.3: Changing tests<a class="headerlink" href="#part-6-3-changing-tests" title="Permalink to this headline">¶</a></h3>
+<p>If you make changes to your tests, you may need to nudge VS Code so that they
+are reflected.</p>
+<p>You can run <span class="guilabel">Python: Discover Tests</span> from the <span class="guilabel">Command Palette</span>:</p>
+<p><img alt="" src="../_images/test-discover.png" /></p>
+<p>Or by clicking the icon at the top of the <span class="guilabel">TESTING</span> sidebar:</p>
+<p><img alt="" src="../_images/test-sidebar-actions-discover.png" /></p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "alissa-huskey/python-class",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./practices"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="problem-solving.html" title="previous page">Problem Solving</a>
+    <a class='right-next' id="next-link" href="debugging.html" title="next page">Using a Debugger</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

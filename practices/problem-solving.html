@@ -1,0 +1,947 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Problem Solving &#8212; Python Class</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://alissa-huskey.github.io/python-class/practices/problem-solving.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Testing" href="testing.html" />
+    <link rel="prev" title="Chapter 5: Dragon Realm" href="../lessons/05_dragon_realm.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Python Class</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Python Class
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Lessons
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/fundamentals.html">
+   Fundamentals
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../lessons/syntax.html">
+     Syntax
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/expressions.html">
+       Expressions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/statements.html">
+       Statements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/variables.html">
+       Variables
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../lessons/flow-control.html">
+     Flow Control
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/conditional-statements.html">
+       Conditional Statements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/functions.html">
+       Functions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/loops.html">
+       Loops
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/flow.html">
+       Program Flow
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/reading-code.html">
+       Reading Code
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/data-types/index.html">
+     Data Types
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../lessons/files.html">
+     Files
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/file-io.html">
+       File I/O
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/paths.html">
+       Paths
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/file-system-operations.html">
+       File System Operations
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/in-depth/index.html">
+   In Depth
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/in-depth/imports.html">
+     Imports
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/in-depth/structure.html">
+     Structuring Python Projects
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/misc.html">
+   Misc
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/web-apis.html">
+     Web APIs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/battle.html">
+     PyPet Battle
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/game-book.html">
+   Invent Games Book
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/03_guess_the_number.html">
+     Chapter 3: Guess the Number
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/05_dragon_realm.html">
+     Chapter 5: Dragon Realm
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Practices
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Problem Solving
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="testing.html">
+   Testing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="debugging.html">
+   Using a Debugger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="data-inspection.html">
+   Data Inspection
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tools
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/terminal.html">
+   Terminal
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/git.html">
+   Git
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/vscode.html">
+   VS Code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/python-shell.html">
+   Python Shell
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/ipython.html">
+   IPython
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/poetry.html">
+   Poetry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/mac.html">
+   Mac Dev Env for Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/replit.html">
+   Repl.it Tips
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/dicts.html">
+   Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/lists.html">
+   Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/template.py">
+   Script Template
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Exercises
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/program-flow.html">
+   Program Flow Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/list-exercises.html">
+   List Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/list-string-exercises.html">
+   List String Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/flashcards.html">
+   Flashcards Project
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/alissa-huskey/python-class"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/alissa-huskey/python-class/edit/master/docs/practices/problem-solving.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/alissa-huskey/python-class/master?urlpath=lab/tree/docs/practices/problem-solving.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-solving-process">
+   Problem solving process
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#define-the-problem">
+     1. Define the problem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#make-a-plan">
+     2. Make a plan
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implement">
+     3. Implement
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#a-simplify">
+       A. Simplify
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#b-write-pseudocode">
+       B. Write pseudocode
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#c-write-the-code">
+       C. Write the code
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#d-verify">
+       D. Verify
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example">
+       Example
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#iterate">
+     4. Iterate
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Example
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#make-lunch">
+     Make lunch
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="problem-solving">
+<h1>Problem Solving<a class="headerlink" href="#problem-solving" title="Permalink to this headline">¶</a></h1>
+<p>The process of transforming a concept into code is the art of problem solving
+and it starts before you write a single line of code.</p>
+<p>Programming is writing out instructions for the computer. So in order for our
+programs to work as expected, we must first know ourselves what it is that we
+are want the computer to do.</p>
+<blockquote class="epigraph">
+<div><p>“The hardest single part of building a software system is deciding precisely what to build.”
+– Fred Brooks, The mythical man-month</p>
+</div></blockquote>
+<div class="section" id="problem-solving-process">
+<h2>Problem solving process<a class="headerlink" href="#problem-solving-process" title="Permalink to this headline">¶</a></h2>
+<p>This lesson will provide one approach to problem solving.</p>
+<div class="section" id="define-the-problem">
+<h3>1. Define the problem<a class="headerlink" href="#define-the-problem" title="Permalink to this headline">¶</a></h3>
+<p>The first step is to make sure you understand the problem you are trying to
+solve.</p>
+<p>Write a short description of the problem you are trying to solve.  This will
+often end up being the docstring for your script or function.</p>
+<p>Your description should answer questions like:</p>
+<ul class="simple">
+<li><p>Who will use this?</p></li>
+<li><p>Why do they need it?</p></li>
+<li><p>What does it do?</p></li>
+<li><p>What are the inputs?</p></li>
+<li><p>What are the outputs?</p></li>
+<li><p>What are the side effects?</p></li>
+<li><p>What is an example of when this might be used?</p></li>
+</ul>
+<p>Here are a couple of examples:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number">Listing 152 </span><span class="caption-text">docstring for a hangman script</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Hangman game</span>
+
+<span class="sd">A single-user game where the player is given 6 chances to guess all of the letters in a word.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-number">Listing 153 </span><span class="caption-text">is_prime() function with docstring including description and examples</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_prime</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Return True if the number is a prime. Takes a positive whole number and returns True or False.</span>
+
+<span class="sd">  Examples</span>
+<span class="sd">  --------</span>
+<span class="sd">  &gt;&gt;&gt; is_prime(3)</span>
+<span class="sd">  True</span>
+
+<span class="sd">  &gt;&gt;&gt; is_prime(4)</span>
+<span class="sd">  False</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="make-a-plan">
+<h3>2. Make a plan<a class="headerlink" href="#make-a-plan" title="Permalink to this headline">¶</a></h3>
+<p><img alt="South Park Underpants Gnomes" src="../_images/underpants.jpeg" /></p>
+<p>This is the part where you figure out how to solve the problem. You’re not
+writing code yet, but rather thinking it through.</p>
+<p>Keep the plan as simple as possible while still covering all the steps. You
+can drill down into each part as you go.  It is sometimes helpful to using a
+pen and paper or whiteboard to sketch out a visual representation of the
+problem.</p>
+<p>For larger problems, you’ll want to start by breaking it down into logical
+parts. Think in terms of how it will be used.</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-number">Listing 154 </span><span class="caption-text">docstring for the hangman script, now including the plan</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&quot;&quot;&quot;Hangman game
+
+A single-user game where the player is given 6 chances to guess all of the letters in a word.
+
+1. choose a short word, give the player 6 chances to guess letters
+2. each turn:
+    - print their chances with `x` to show used chances, and `_` to show remaining
+      example: `chances: xx____`
+    - print the word, but replace `_` for unguessed letters
+      example: `5 letters: _e___`
+    - ask the player to guess a letter
+3. tell the user at the end if they won or lost
+&quot;&quot;&quot;
+</pre></div>
+</div>
+</div>
+<p>For more tightly scoped problems, solve the problem manually then describe each
+step in plain english.</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-number">Listing 155 </span><span class="caption-text">updated is_prime() function, now including the plan in comments</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_prime</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Return True if the number is a prime. Takes a positive whole number and returns True or False.</span>
+
+<span class="sd">  Examples</span>
+<span class="sd">  --------</span>
+<span class="sd">  &gt;&gt;&gt; is_prime(3)</span>
+<span class="sd">  True</span>
+
+<span class="sd">  &gt;&gt;&gt; is_prime(4)</span>
+<span class="sd">  False</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="c1"># iterate through each number less than the input number, starting at 2</span>
+  <span class="c1"># for each:</span>
+      <span class="c1"># divide the numbers</span>
+  <span class="c1">#    - if the number is whole, return False</span>
+  <span class="c1"># if all numbers have been iterated through without returning, return True</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="implement">
+<h3>3. Implement<a class="headerlink" href="#implement" title="Permalink to this headline">¶</a></h3>
+<p>Pick a part of your plan to start at. (Sometimes it makes more sense to start
+at the middle.)</p>
+<div class="section" id="a-simplify">
+<h4>A. Simplify<a class="headerlink" href="#a-simplify" title="Permalink to this headline">¶</a></h4>
+<p>Ask yourself if this needs to be broken down further. If so, start back at at
+the first step for this new problem.</p>
+<p>Once you’ve got the problem broken down into a discreet chunk, simplify it if
+neccessary.</p>
+<ul class="simple">
+<li><p>Isolate it from other code by using use hardcoded placeholders. This can be
+especially helpful when other parts of the program aren’t written yet, if
+you’re not certian they are working, or if the data can be unpredictable.</p></li>
+<li><p>Solve the easiest or most normal case first.</p></li>
+</ul>
+</div>
+<div class="section" id="b-write-pseudocode">
+<h4>B. Write pseudocode<a class="headerlink" href="#b-write-pseudocode" title="Permalink to this headline">¶</a></h4>
+<p>Write a plain english description of what the code should do. This can be a
+list of steps in comments. For simpler problems this may be the same as your
+plan.</p>
+</div>
+<div class="section" id="c-write-the-code">
+<h4>C. Write the code<a class="headerlink" href="#c-write-the-code" title="Permalink to this headline">¶</a></h4>
+<p>Fill in the actual code under the pseudocode comments.</p>
+</div>
+<div class="section" id="d-verify">
+<h4>D. Verify<a class="headerlink" href="#d-verify" title="Permalink to this headline">¶</a></h4>
+<p>Make sure the code works as expected.</p>
+<p>A few different ways to check the output:</p>
+<ul class="simple">
+<li><p>run your program with extra print statements</p></li>
+<li><p>paste the code into a shell</p></li>
+<li><p>write and run a test</p></li>
+</ul>
+<p>This is where it is especially important to make sure your code is isolated. If
+you have too much going on, it will be hard to figure out which part isn’t working.</p>
+</div>
+<div class="section" id="example">
+<h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
+<p>Here’s an example of the is_prime() function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_prime</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Return True if the number is a prime. Takes a positive whole number and returns True or False.</span>
+
+<span class="sd">  Examples</span>
+<span class="sd">  --------</span>
+<span class="sd">  &gt;&gt;&gt; is_prime(3)</span>
+<span class="sd">  True</span>
+
+<span class="sd">  &gt;&gt;&gt; is_prime(4)</span>
+<span class="sd">  False</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="c1"># iterate through each number less than the input number, starting at 2</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">number</span><span class="p">):</span>
+
+    <span class="c1"># if the number is whole, return False</span>
+      <span class="n">quotient</span> <span class="o">=</span> <span class="n">number</span><span class="o">/</span><span class="n">i</span>
+
+      <span class="c1"># convert the float to an int</span>
+      <span class="c1"># return False if the float is equal to the int</span>
+      <span class="k">if</span> <span class="n">quotient</span> <span class="o">==</span> <span class="nb">int</span><span class="p">(</span><span class="n">quotient</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+  <span class="c1"># if all numbers have been iterated through without returning, return True</span>
+  <span class="k">return</span> <span class="kc">True</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;is_prime(3):&quot;</span><span class="p">,</span> <span class="n">is_prime</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;is_prime(4):&quot;</span><span class="p">,</span> <span class="n">is_prime</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="iterate">
+<h3>4. Iterate<a class="headerlink" href="#iterate" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="https://en.wikipedia.org/wiki/Turtles_all_the_way_down"><img alt="Turtles all the way down" class="align-right" src="../_images/turtles.jpg" style="width: 244.99999999999997px; height: 309.4px;" /></a>
+<p>Now that you’ve solved one piece of the problem, it’s time to take a step back
+and figure out what’s next.</p>
+<p>Focus on getting simple version of the end-to-end program working on the first
+pass. Then go through and fill in more detail on each part. For example:</p>
+<ul class="simple">
+<li><p>handle edge cases</p></li>
+<li><p>make the output prettier</p></li>
+<li><p>fill in previously hard-coded parts</p></li>
+<li><p>add data validation</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="make-lunch">
+<h3>Make lunch<a class="headerlink" href="#make-lunch" title="Permalink to this headline">¶</a></h3>
+<img alt="../_images/rosie.png" class="align-right" src="../_images/rosie.png" />
+<p>Imagine that we’re writing a program so that Rosie can make us a grilled cheese
+sandwich. We’ll use this exercise to go through the overall problem solving
+exercise, but we’ll skip the implementation since it’s pretend.</p>
+<ol class="simple">
+<li><p>Define the problem</p></li>
+</ol>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Make a grilled cheese sandwich.
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Make a plan</p></li>
+</ol>
+<p>The major steps are:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1. Gather ingredients and tools
+2. Assemble sandwich
+3. Grill
+4. Serve
+</pre></div>
+</div>
+<p>Let’s start with step 2, and drill down further.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1. Gather ingredients and tools
+2. Assemble sandwich
+    - slice cheese
+    - butter the bread
+    - combine bread and cheese
+
+3. Grill
+4. Serve
+</pre></div>
+</div>
+<p>Next let’s move onto grilling the sandwich.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1. Gather ingredients and tools
+2. Assemble sandwich
+    - slice cheese
+    - butter the bread
+    - combine bread and cheese
+
+3. Grill
+  - heat skillet on stovetop
+  - place sandwich in skillet
+  - grill until lightly brown
+  - flip over
+  - grill until lightly brown and cheese is melted
+
+4. Serve
+</pre></div>
+</div>
+<p>Now let’s go onto serving the sandwich.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1. Gather ingredients and tools
+2. Assemble sandwich
+    - slice cheese
+    - butter the bread
+    - combine bread and cheese
+
+3. Grill
+    - heat skillet on stovetop
+    - place sandwich in skillet
+    - grill until lightly brown
+    - flip over
+    - grill until lightly brown and cheese is melted
+
+4. Serve
+    - move sandwich from skillet to plate
+    - move plate to table
+</pre></div>
+</div>
+<p>Now that the rest is filled in, it’s easier to figure out what needs to happen in step 1.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1. Gather ingredients and tools
+     - Get butter and cheese from fridge.
+     - Get bread from cupboard.
+     - Get skillet from cabinet.
+     - Get butter knife and cheese knife from utensil drawer.
+     - Get plate from cabinet.
+
+2. Assemble sandwich
+    - slice cheese
+    - butter the bread
+    - combine bread and cheese
+
+3. Grill
+    - heat skillet on stovetop
+    - place sandwich in skillet
+    - grill until lightly brown
+    - flip over
+    - grill until lightly brown and cheese is melted
+
+4. Serve
+    - move sandwich from skillet to plate
+    - move plate to table
+</pre></div>
+</div>
+<p>You might do more iterations now. For example, perhaps you might add a “Preheat
+the stove” to step 1. Or specify the number and size of slices in step 2. Or
+approximate time and heat level in step 3.</p>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<div class="exercise admonition" id="practices/problem-solving-exercise-0">
+<p class="admonition-title"></p>
+<div class="section" id="exercise-content">
+<ol class="simple">
+<li><p>Write a function that returns True if a word is a palindrome.</p></li>
+<li><p>Write a function that will return a letter grade when given a number.</p></li>
+<li><p>Write a function to calculate the tip for a bill.</p></li>
+</ol>
+</div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.codeproject.com/tips/833768/the-beginner-programmers-guide-to-problem-solving">The Beginner Programmer’s guide to Problem Solving</a></p></li>
+<li><p><a class="reference external" href="https://codeburst.io/10-steps-to-solving-a-programming-problem-8a32d1e96d74">10 Steps to Solving a Programming Problem</a></p></li>
+<li><p><a class="reference external" href="https://www.jesuisundev.com/en/problem-solving/">The best programming problem solving technique</a></p></li>
+</ul>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "alissa-huskey/python-class",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./practices"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="../lessons/05_dragon_realm.html" title="previous page">Chapter 5: Dragon Realm</a>
+    <a class='right-next' id="next-link" href="testing.html" title="next page">Testing</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

@@ -1,0 +1,1505 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File System Operations &#8212; Python Class</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://alissa-huskey.github.io/python-class/lessons/file-system-operations.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="In Depth" href="in-depth/index.html" />
+    <link rel="prev" title="Paths" href="paths.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Python Class</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Python Class
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Lessons
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="fundamentals.html">
+   Fundamentals
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="syntax.html">
+     Syntax
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="expressions.html">
+       Expressions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="statements.html">
+       Statements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="variables.html">
+       Variables
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="flow-control.html">
+     Flow Control
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="conditional-statements.html">
+       Conditional Statements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="functions.html">
+       Functions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="loops.html">
+       Loops
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="flow.html">
+       Program Flow
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="reading-code.html">
+       Reading Code
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data-types/index.html">
+     Data Types
+    </a>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="files.html">
+     Files
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3">
+      <a class="reference internal" href="file-io.html">
+       File I/O
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="paths.html">
+       Paths
+      </a>
+     </li>
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       File System Operations
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="in-depth/index.html">
+   In Depth
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="in-depth/imports.html">
+     Imports
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="in-depth/structure.html">
+     Structuring Python Projects
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="misc.html">
+   Misc
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="web-apis.html">
+     Web APIs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="battle.html">
+     PyPet Battle
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="game-book.html">
+   Invent Games Book
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_guess_the_number.html">
+     Chapter 3: Guess the Number
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_dragon_realm.html">
+     Chapter 5: Dragon Realm
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Practices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../practices/problem-solving.html">
+   Problem Solving
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../practices/testing.html">
+   Testing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../practices/debugging.html">
+   Using a Debugger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../practices/data-inspection.html">
+   Data Inspection
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tools
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/terminal.html">
+   Terminal
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/git.html">
+   Git
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/vscode.html">
+   VS Code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/python-shell.html">
+   Python Shell
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/ipython.html">
+   IPython
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/poetry.html">
+   Poetry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/mac.html">
+   Mac Dev Env for Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/replit.html">
+   Repl.it Tips
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/dicts.html">
+   Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/lists.html">
+   Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/template.py">
+   Script Template
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Exercises
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/program-flow.html">
+   Program Flow Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/list-exercises.html">
+   List Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/list-string-exercises.html">
+   List String Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/flashcards.html">
+   Flashcards Project
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/alissa-huskey/python-class"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/alissa-huskey/python-class/edit/master/docs/lessons/file-system-operations.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/alissa-huskey/python-class/master?urlpath=lab/tree/docs/lessons/file-system-operations.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#listing-files">
+   Listing files
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#directory-contents">
+     Directory contents
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#searching-files">
+     Searching files
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#directory-operations">
+   Directory operations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-directories">
+     Creating directories
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deleting-directories">
+     Deleting directories
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#file-operations">
+   File operations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-empty-files">
+     Creating empty files
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#removing-files">
+     Removing files
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#moving-files">
+     Moving files
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#renaming-files">
+     Renaming files
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reference">
+   Reference
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#glossary">
+     Glossary
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#glossary-file-system-operations">
+       File System Operations
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#globbing">
+     Globbing
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#wildcards">
+       Wildcards
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#character-ranges">
+       Character ranges
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#examples">
+       Examples
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="file-system-operations">
+<h1>File System Operations<a class="headerlink" href="#file-system-operations" title="Permalink to this headline">¶</a></h1>
+<p>This lesson will go over how to use <code class="docutils literal notranslate"><span class="pre">Path</span></code> objects to preform common
+operations on files and directories.</p>
+<p>This part of the lesson is about the ways to get a list of files on your
+local computer.</p>
+<div class="section" id="listing-files">
+<h2>Listing files<a class="headerlink" href="#listing-files" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="directory-contents">
+<h3>Directory contents<a class="headerlink" href="#directory-contents" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Path</span></code> objects provide an <code class="docutils literal notranslate"><span class="pre">iterdir()</span></code> method for iterating through the
+contents of a directory. Here’s a simple example that prints contents of the
+working directory.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">cwd</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">cwd</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>Each of the elements yielded by <code class="docutils literal notranslate"><span class="pre">iterdir()</span></code> is a <code class="docutils literal notranslate"><span class="pre">Path</span></code> object, so we have
+access to all of its methods and properties. For example, the following code
+iterates through the contents of the working directory and uses
+<code class="samp docutils literal notranslate"><em><span class="pre">path</span></em><span class="pre">.name</span></code> and <code class="samp docutils literal notranslate"><em><span class="pre">path</span></em><span class="pre">.is_dir()</span></code> to print just the directory
+names.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">cwd</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">cwd</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>Here’s another example that iterates through the contents of the working
+directory and prints any files with <code class="docutils literal notranslate"><span class="pre">&quot;recipe&quot;</span></code> in the name that are either
+text or markdown.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">cwd</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">cwd</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">suffix</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;.md&quot;</span><span class="p">,</span> <span class="s2">&quot;.txt&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;recipe&quot;</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<div class="exercise admonition" id="print-working-dir">
+<p class="admonition-title"><span class="caption-number">Exercise 21 </span>(Print the contents of the working directory.)</p>
+<div class="section" id="exercise-content">
+<p>Iterate over the contents of the working directory and:</p>
+<ul class="simple">
+<li><p>skip over files or directories with names that begin with <code class="docutils literal notranslate"><span class="pre">.</span></code> or <code class="docutils literal notranslate"><span class="pre">__</span></code></p></li>
+<li><p>print the name of any directories followed by a <code class="docutils literal notranslate"><span class="pre">/</span></code></p></li>
+<li><p>print the name of everything else</p></li>
+</ul>
+</div>
+</div>
+<div class="solution dropdown admonition" id="lessons/file-system-operations-solution-1">
+<p class="admonition-title">Solution to <a class="reference external" href="#print-working-dir"><span>Exercise 21</span></a></p>
+<div class="section" id="solution-content">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">cwd</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">cwd</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
+     <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;__&quot;</span><span class="p">):</span>
+         <span class="k">continue</span>
+     <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">/&quot;</span><span class="p">)</span>
+     <span class="k">else</span><span class="p">:</span>
+         <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="searching-files">
+<h3>Searching files<a class="headerlink" href="#searching-files" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Path</span></code> objects provides a <code class="docutils literal notranslate"><span class="pre">glob()</span></code> method for simple, albeit limited, file
+searching. The <code class="docutils literal notranslate"><span class="pre">glob()</span></code> method uses a set of wildcard characters adopted from
+the command line called <a class="reference internal" href="#term-glob-patterns"><span class="xref std std-term">glob patterns</span></a>, the most common of which is
+<code class="docutils literal notranslate"><span class="pre">*</span></code> meaning “any or no text”.</p>
+<p>The following example uses the glob pattern <code class="docutils literal notranslate"><span class="pre">*.py</span></code> to search for any files
+ending in <code class="docutils literal notranslate"><span class="pre">.py</span></code>.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">path</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.py&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>The <code class="docutils literal notranslate"><span class="pre">rglob()</span></code> method works the same way, but <a class="reference internal" href="#term-recursive"><span class="xref std std-term">recursively</span></a>
+includes the contents of all subdirectories in the search.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">path</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*.py&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<div class="exercise admonition" id="list-text-files-exercise">
+<p class="admonition-title"><span class="caption-number">Exercise 22 </span>(Search for files)</p>
+<div class="section" id="exercise-content">
+<p>Print the names of all files in your working directory or recursively in any
+subdirectories that end with <code class="docutils literal notranslate"><span class="pre">*.txt</span></code>.</p>
+</div>
+</div>
+<div class="solution dropdown admonition" id="lessons/file-system-operations-solution-3">
+<p class="admonition-title">Solution to <a class="reference external" href="#list-text-files-exercise"><span>Exercise 22</span></a></p>
+<div class="section" id="solution-content">
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">cwd</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">cwd</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*.txt&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Glob_%28programming%29">Wikipedia &gt; Glob</a></p></li>
+<li><p>You can find a details on globbing in Python in the <a class="reference external" href="file-system-operations.html#globbing">reference section of this lesson</a>.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="directory-operations">
+<h2>Directory operations<a class="headerlink" href="#directory-operations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="creating-directories">
+<h3>Creating directories<a class="headerlink" href="#creating-directories" title="Permalink to this headline">¶</a></h3>
+<p>You can use the <code class="docutils literal notranslate"><span class="pre">mkdir()</span></code> method on a <code class="docutils literal notranslate"><span class="pre">Path</span></code> object to create a new
+directory.</p>
+<p>First you’ll need to create a <code class="docutils literal notranslate"><span class="pre">Path</span></code> object to the directory, then you can
+call <code class="docutils literal notranslate"><span class="pre">mkdir()</span></code> on that object.</p>
+<p>The following example creates a <code class="docutils literal notranslate"><span class="pre">tmp</span></code> directory.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;tmp&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Creating directory: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">path</span><span class="o">.</span><span class="n">mkdir</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+<p>The <code class="docutils literal notranslate"><span class="pre">mkdir()</span></code> method will raise an error if the directory already exists, so
+you could check the results of the <code class="docutils literal notranslate"><span class="pre">exists()</span></code> and <code class="docutils literal notranslate"><span class="pre">is_dir()</span></code> before calling
+it. But there’s an easier way. Just pass the the optional <code class="docutils literal notranslate"><span class="pre">exist_ok</span></code> keyword
+argument, as in the following example.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;tmp&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Creating directory: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">path</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<div class="exercise admonition" id="create-a-directory-exercise">
+<p class="admonition-title"><span class="caption-number">Exercise 23 </span>(Create a directory)</p>
+<div class="section" id="exercise-content">
+<p>Create a <code class="docutils literal notranslate"><span class="pre">tmp</span></code> directory in your <code class="docutils literal notranslate"><span class="pre">data</span></code> directory. If you don’t have a <code class="docutils literal notranslate"><span class="pre">data</span></code>
+directory, create it first.</p>
+</div>
+</div>
+<div class="solution dropdown admonition" id="lessons/file-system-operations-solution-5">
+<p class="admonition-title">Solution to <a class="reference external" href="#create-a-directory-exercise"><span>Exercise 23</span></a></p>
+<div class="section" id="solution-content">
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="n">tmp</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;tmp&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Creating directory: &#39;</span><span class="si">{</span><span class="n">tmp</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+<span class="n">tmp</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+<div class="section" id="deleting-directories">
+<h3>Deleting directories<a class="headerlink" href="#deleting-directories" title="Permalink to this headline">¶</a></h3>
+<p>To delete an empty directory use the <code class="docutils literal notranslate"><span class="pre">rmdir()</span></code> method on a <code class="docutils literal notranslate"><span class="pre">Path</span></code> object.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;tmp&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Removing directory: &#39;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+<span class="n">path</span><span class="o">.</span><span class="n">rmdir</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">rmdir()</span></code> method only works on empty directories, so you’ll need to
+delete any directory contents first. We’ll learn how to delete files later in
+this lesson.</p>
+</div>
+<div class="exercise admonition" id="delete-the-tmp-directory-exercise">
+<p class="admonition-title"><span class="caption-number">Exercise 24 </span>(Delete the tmp directory)</p>
+<div class="section" id="exercise-content">
+<p>Delete the <code class="docutils literal notranslate"><span class="pre">data/tmp</span></code> directory that you created earlier.</p>
+</div>
+</div>
+<div class="solution dropdown admonition" id="lessons/file-system-operations-solution-7">
+<p class="admonition-title">Solution to <a class="reference external" href="#delete-the-tmp-directory-exercise"><span>Exercise 24</span></a></p>
+<div class="section" id="solution-content">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/tmp&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Removing directory: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">path</span><span class="o">.</span><span class="n">rmdir</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="file-operations">
+<h2>File operations<a class="headerlink" href="#file-operations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="creating-empty-files">
+<h3>Creating empty files<a class="headerlink" href="#creating-empty-files" title="Permalink to this headline">¶</a></h3>
+<p>The command line command <strong class="command">touch</strong> will either update a file’s
+timestamp of the last time it was accessed and modified, or create an empty
+file if it does not exist. This makes it an easy way to generate files
+without worrying if they already exist.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Path</span></code> objects provide a <code class="docutils literal notranslate"><span class="pre">touch()</span></code> method that does the same thing, as shown below.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;tmp.py&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Touching file: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">path</span><span class="o">.</span><span class="n">touch</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+<div class="exercise admonition" id="generate-files-exercise">
+<p class="admonition-title"><span class="caption-number">Exercise 25 </span>(Generate files)</p>
+<div class="section" id="exercise-content">
+<ol class="simple">
+<li><p>Create the <code class="docutils literal notranslate"><span class="pre">data/tmp</span></code> directory if it does not already exist.</p></li>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">touch()</span></code> method to create files <code class="docutils literal notranslate"><span class="pre">file_1.txt</span></code> though <code class="docutils literal notranslate"><span class="pre">file_9.txt</span></code>.</p></li>
+</ol>
+</div>
+</div>
+<div class="solution dropdown admonition" id="lessons/file-system-operations-solution-9">
+<p class="admonition-title">Solution to <a class="reference external" href="#generate-files-exercise"><span>Exercise 25</span></a></p>
+<div class="section" id="solution-content">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tmpdir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;tmp&quot;</span>
+<span class="n">tmpdir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">tmpdir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;file_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">.txt&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Touching file: &#39;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+    <span class="n">path</span><span class="o">.</span><span class="n">touch</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="removing-files">
+<h3>Removing files<a class="headerlink" href="#removing-files" title="Permalink to this headline">¶</a></h3>
+<p>To remove files use the <code class="docutils literal notranslate"><span class="pre">unlink()</span></code> method on a <code class="docutils literal notranslate"><span class="pre">Path</span></code> object. Since this
+deletes a file, it’s a good to print the path and confirm with the user that
+they really want to.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number">Listing 89 </span><span class="caption-text">note: assumes <code class="docutils literal notranslate"><span class="pre">data/a.txt</span></code> exists</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/a.txt&quot;</span><span class="p">)</span>
+<span class="n">reply</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Remove file: &#39;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&#39;? [y/N] &quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">reply</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;yes&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ok, nevermind then.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ok, removing.&quot;</span><span class="p">)</span>
+    <span class="n">path</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">unlink()</span></code> method will throw an error if the file does not exist. You can
+avoid this by passing the optional <code class="docutils literal notranslate"><span class="pre">missing_ok</span></code> argument like so.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;file-that-doesnt-exist.txt&quot;</span><span class="p">)</span>
+<span class="n">path</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">missing_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<div class="exercise admonition" id="remove-a-file-exercise">
+<p class="admonition-title"><span class="caption-number">Exercise 26 </span>(Remove a file)</p>
+<div class="section" id="exercise-content">
+<ol class="simple">
+<li><p>Choose one of your generated <code class="samp docutils literal notranslate"><span class="pre">file_</span><em><span class="pre">num</span></em><span class="pre">.txt</span></code> files to delete.</p></li>
+<li><p>Ask the user to confirm they want to delete the file.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">unlink()</span></code> to delete the file.</p></li>
+</ol>
+</div>
+</div>
+<div class="solution dropdown admonition" id="lessons/file-system-operations-solution-11">
+<p class="admonition-title">Solution to <a class="reference external" href="#remove-a-file-exercise"><span>Exercise 26</span></a></p>
+<div class="section" id="solution-content">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="n">filepath</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;tmp&quot;</span> <span class="o">/</span> <span class="s2">&quot;file_9.txt&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Delete the file &#39;</span><span class="si">{</span><span class="n">filepath</span><span class="si">}</span><span class="s2">&#39;?&quot;</span><span class="p">)</span>
+<span class="n">reply</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[yN] &gt; &quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">reply</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;yes&quot;</span><span class="p">):</span>
+  <span class="n">filepath</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">missing_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All done.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Well, nevermind then.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="moving-files">
+<h3>Moving files<a class="headerlink" href="#moving-files" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Path</span></code> objects provide a <code class="docutils literal notranslate"><span class="pre">replace()</span></code> method which can be used to move files. It
+takes a destination path argument which can be either a string or <code class="docutils literal notranslate"><span class="pre">Path</span></code> object
+and returns a destination <code class="docutils literal notranslate"><span class="pre">Path</span></code> object.</p>
+<p>In the example below the file <code class="file docutils literal notranslate"><span class="pre">a.txt</span></code> is moved to the <code class="file docutils literal notranslate"><span class="pre">data</span></code>
+directory.</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number">Listing 90 </span><span class="caption-text">note: assumes <code class="docutils literal notranslate"><span class="pre">a.txt</span></code> exists</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">old_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;a.txt&quot;</span><span class="p">)</span>
+<span class="n">new_path</span> <span class="o">=</span> <span class="n">old_path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;data/a.txt&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File moved from &#39;</span><span class="si">{</span><span class="n">old_path</span><span class="si">}</span><span class="s2">&#39; to &#39;</span><span class="si">{</span><span class="n">new_path</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>If the destination file location already exists the <code class="docutils literal notranslate"><span class="pre">replace()</span></code> method will
+silently overwrite it. So it’s a good idea to check that there isn’t already a
+file at the destination.</p>
+<p>In the example below a destination <code class="docutils literal notranslate"><span class="pre">Path</span></code> object is created first to check if
+it <code class="docutils literal notranslate"><span class="pre">.exists()</span></code>. Then if all is well it is passed to <code class="docutils literal notranslate"><span class="pre">.replace()</span></code>.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">from_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;a.txt&quot;</span><span class="p">)</span>
+<span class="n">to_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;a.txt&quot;</span>
+
+<span class="k">if</span> <span class="n">to_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: &#39;</span><span class="si">{</span><span class="n">to_path</span><span class="si">}</span><span class="s2">&#39; already exists.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="n">from_path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_path</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File moved from &#39;</span><span class="si">{</span><span class="n">from_path</span><span class="si">}</span><span class="s2">&#39; to &#39;</span><span class="si">{</span><span class="n">to_path</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<div class="exercise admonition" id="move-file-exercise">
+<p class="admonition-title"><span class="caption-number">Exercise 27 </span>(Move file)</p>
+<div class="section" id="exercise-content">
+<ol class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">.touch()</span></code> to make an empty file <code class="docutils literal notranslate"><span class="pre">xxx.txt</span></code></p></li>
+<li><p>Make a new <code class="docutils literal notranslate"><span class="pre">Path</span></code> object to <code class="file docutils literal notranslate"><span class="pre">data/xxx.txt</span></code></p></li>
+<li><p>Check to make sure <code class="docutils literal notranslate"><span class="pre">data/xxx.txt</span></code> does not exist, and print an error if it does.</p></li>
+<li><p>Print a message <code class="samp docutils literal notranslate"><span class="pre">&quot;Moving</span> <span class="pre">'</span><em><span class="pre">from</span></em><span class="pre">'</span> <span class="pre">to</span> <span class="pre">'</span><em><span class="pre">to</span></em><span class="pre">'.&quot;</span></code></p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">.replace()</span></code> to move the file.</p></li>
+</ol>
+</div>
+</div>
+<div class="solution dropdown admonition" id="lessons/file-system-operations-solution-13">
+<p class="admonition-title">Solution to <a class="reference external" href="#move-file-exercise"><span>Exercise 27</span></a></p>
+<div class="section" id="solution-content">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">from_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;xxx.txt&quot;</span><span class="p">)</span>
+<span class="n">to_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;xxx.txt&quot;</span>
+
+<span class="n">from_path</span><span class="o">.</span><span class="n">touch</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">to_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cannot move to </span><span class="si">{</span><span class="n">to_path</span><span class="si">}</span><span class="s2"> as it already exists.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Moving &#39;</span><span class="si">{</span><span class="n">from_path</span><span class="si">}</span><span class="s2">&#39; to &#39;</span><span class="si">{</span><span class="n">to_path</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+    <span class="n">from_path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="exercise admonition" id="move-text-files-exercise">
+<p class="admonition-title"><span class="caption-number">Exercise 28 </span>(Move text files to data directory)</p>
+<div class="section" id="exercise-content">
+<ol class="simple">
+<li><p>If you have no files ending in <code class="docutils literal notranslate"><span class="pre">.txt</span></code> in your working directory, use
+<code class="docutils literal notranslate"><span class="pre">.touch()</span></code> to generate some first.</p></li>
+<li><p>Iterate over text files in your working directory ending in <code class="docutils literal notranslate"><span class="pre">.txt</span></code></p>
+<ul class="simple">
+<li><p>[ ] Use a for-loop and <code class="docutils literal notranslate"><span class="pre">iterdir()</span></code> or <code class="docutils literal notranslate"><span class="pre">glob()</span></code> to iterate over the files</p></li>
+<li><p>[ ] If using <code class="docutils literal notranslate"><span class="pre">iterdir()</span></code>, use an if statement to <code class="docutils literal notranslate"><span class="pre">continue</span></code> if the file does
+not end in <code class="docutils literal notranslate"><span class="pre">.txt</span></code></p></li>
+</ul>
+</li>
+<li><p>Check if a file with the same name already exists in <code class="docutils literal notranslate"><span class="pre">data/</span></code></p>
+<ul class="simple">
+<li><p>[ ] Create a  destination path object</p></li>
+<li><p>[ ] If a file already <code class="docutils literal notranslate"><span class="pre">.exists()</span></code> print an error message and <code class="docutils literal notranslate"><span class="pre">continue</span></code></p></li>
+</ul>
+</li>
+<li><p>Move the file</p>
+<ul class="simple">
+<li><p>[ ] Confirm that the user wants to move the file.</p></li>
+<li><p>[ ] Use .replace() to move the file</p></li>
+<li><p>[ ] Print a confirmation message with the old and new path.</p></li>
+</ul>
+</li>
+<li><p>Bonus: Instead of skipping files that already exist in <code class="docutils literal notranslate"><span class="pre">data/</span></code>, move the
+file to <code class="samp docutils literal notranslate"><span class="pre">data/</span><em><span class="pre">file</span></em><span class="pre">-</span><em><span class="pre">num</span></em><span class="pre">.txt</span></code></p></li>
+</ol>
+</div>
+</div>
+<div class="solution dropdown admonition" id="lessons/file-system-operations-solution-15">
+<p class="admonition-title">Solution to <a class="reference external" href="#move-text-files-exercise"><span>Exercise 28</span></a></p>
+<div class="section" id="solution-content">
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-number">Listing 91 </span><span class="caption-text">version 1: skip files that exist</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="k">for</span> <span class="n">from_path</span> <span class="ow">in</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
+  <span class="n">to_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="n">from_path</span><span class="o">.</span><span class="n">name</span>
+
+  <span class="k">if</span> <span class="n">from_path</span><span class="o">.</span><span class="n">suffix</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">&quot;.txt&quot;</span><span class="p">:</span>
+    <span class="k">continue</span>
+
+  <span class="k">if</span> <span class="n">to_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+      <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Skipping: </span><span class="si">{</span><span class="n">from_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+      <span class="k">continue</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Move &#39;</span><span class="si">{</span><span class="n">from_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; to &#39;data/</span><span class="si">{</span><span class="n">to_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;?&quot;</span><span class="p">)</span>
+  <span class="n">reply</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;[yN] &gt;&quot;</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">reply</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;yes&quot;</span><span class="p">):</span>
+      <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Declined: </span><span class="si">{</span><span class="n">from_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+      <span class="k">continue</span>
+
+  <span class="n">from_path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_path</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Moved &#39;</span><span class="si">{</span><span class="n">from_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; to &#39;</span><span class="si">{</span><span class="n">to_path</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-number">Listing 92 </span><span class="caption-text">version 2: make numbered versions if file exists</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="k">for</span> <span class="n">from_path</span> <span class="ow">in</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
+  <span class="n">to_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="n">from_path</span><span class="o">.</span><span class="n">name</span>
+
+  <span class="k">if</span> <span class="n">from_path</span><span class="o">.</span><span class="n">suffix</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">&quot;.txt&quot;</span><span class="p">:</span>
+    <span class="k">continue</span>
+
+  <span class="n">version</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="k">while</span> <span class="n">to_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="n">to_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">from_path</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">version</span><span class="si">}{</span><span class="n">from_path</span><span class="o">.</span><span class="n">suffix</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">version</span> <span class="o">+=</span> <span class="mi">1</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Move &#39;</span><span class="si">{</span><span class="n">from_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; to &#39;data/</span><span class="si">{</span><span class="n">to_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;?&quot;</span><span class="p">)</span>
+  <span class="n">reply</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;[yN] &gt;&quot;</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">reply</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;yes&quot;</span><span class="p">):</span>
+      <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Declined: </span><span class="si">{</span><span class="n">from_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+      <span class="k">continue</span>
+
+  <span class="n">from_path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_path</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Moved &#39;</span><span class="si">{</span><span class="n">from_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; to &#39;</span><span class="si">{</span><span class="n">to_path</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="renaming-files">
+<h3>Renaming files<a class="headerlink" href="#renaming-files" title="Permalink to this headline">¶</a></h3>
+<p>Renaming files is the same as moving files except instead of moving to a new
+directory, you are moving to the same directory but with a new name. Just like
+moving files, use the <code class="docutils literal notranslate"><span class="pre">.replace()</span></code> method, passing the string or path object to
+the destination location.</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-number">Listing 93 </span><span class="caption-text">note: assumes <code class="docutils literal notranslate"><span class="pre">data/a.txt</span></code> exists</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">from_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;a.txt&quot;</span>
+<span class="n">to_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;file_a.txt&quot;</span>
+
+<span class="k">if</span> <span class="n">to_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cannot rename &#39;</span><span class="si">{</span><span class="n">from_path</span><span class="si">}</span><span class="s2">&#39; to &#39;</span><span class="si">{</span><span class="n">to_path</span><span class="si">}</span><span class="s2">&#39; as it already exists.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">from_path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_path</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Renamed to: &#39;</span><span class="si">{</span><span class="n">to_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>The <code class="samp docutils literal notranslate"><em><span class="pre">path</span></em><span class="pre">.replace()</span></code> method is relative to your working directory, just
+like when you create a new <code class="docutils literal notranslate"><span class="pre">Path</span></code> object. If you pass <code class="docutils literal notranslate"><span class="pre">.replace()</span></code> <em>only</em> the
+the new filename, the file will end up being moved to your working directory.
+It’s is an easy mistake to make.</p>
+<blockquote class="highlights">
+<div><p>To rename a file, the string or path object sent to <code class="docutils literal notranslate"><span class="pre">.replace()</span></code> must have
+the same directory information as the original path object.</p>
+</div></blockquote>
+<p>It’s a good idea to create a <code class="docutils literal notranslate"><span class="pre">Path</span></code> object to the shared directory that can
+then be used for both path objects.</p>
+<div class="row"><div class="col">
+<p class="rubric">Bad</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-number">Listing 94 </span><span class="caption-text"><em>Bad</em>: moves file to ./file_a.txt</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">from_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;a.txt&quot;</span>
+<span class="n">to_path</span> <span class="o">=</span> <span class="n">from_path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;file_a.txt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div><div class="col">
+<p class="rubric">Better</p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-number">Listing 95 </span><span class="caption-text"><em>Better</em>: renames file to ./data/file_a.txt</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">from_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;a.txt&quot;</span>
+<span class="n">to_path</span> <span class="o">=</span> <span class="n">from_path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;data/file_a.txt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+<p class="rubric">Best</p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-number">Listing 96 </span><span class="caption-text"><em>Best</em>: Avoid mistakes with a <code class="docutils literal notranslate"><span class="pre">folder</span></code> variable</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">folder</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<span class="n">from_path</span> <span class="o">=</span> <span class="n">folder</span> <span class="o">/</span> <span class="s2">&quot;a.txt&quot;</span>
+<span class="n">to_path</span> <span class="o">=</span> <span class="n">folder</span> <span class="o">/</span> <span class="s2">&quot;file_a.txt&quot;</span>
+
+<span class="n">from_path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="exercise admonition" id="rename-file-exercise">
+<p class="admonition-title"><span class="caption-number">Exercise 29 </span>(Rename file)</p>
+<div class="section" id="exercise-content">
+<ol class="simple">
+<li><p>Rename the <code class="file docutils literal notranslate"><span class="pre">file_1.txt</span></code> that you created earlier to
+<code class="file docutils literal notranslate"><span class="pre">file_01.txt</span></code>.</p></li>
+<li><p>Be sure to check first that the destination does not already exist.</p></li>
+<li><p>Print the files new name.</p></li>
+</ol>
+</div>
+</div>
+<div class="solution dropdown admonition" id="lessons/file-system-operations-solution-17">
+<p class="admonition-title">Solution to <a class="reference external" href="#rename-file-exercise"><span>Exercise 29</span></a></p>
+<div class="section" id="solution-content">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">tmpdir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/tmp&quot;</span><span class="p">)</span>
+<span class="n">from_path</span> <span class="o">=</span> <span class="n">tmpdir</span> <span class="o">/</span> <span class="s2">&quot;file_1.txt&quot;</span>
+<span class="n">to_path</span> <span class="o">=</span> <span class="n">tmpdir</span> <span class="o">/</span> <span class="s2">&quot;file_01.txt&quot;</span>
+
+<span class="k">if</span> <span class="n">to_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cannot move to </span><span class="si">{</span><span class="n">to_path</span><span class="si">}</span><span class="s2"> as it already exists.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="n">from_path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_path</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Renamed file: </span><span class="si">{</span><span class="n">to_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="exercise admonition" id="zeropad-filenames-exercise">
+<p class="admonition-title"><span class="caption-number">Exercise 30 </span>(Zero pad filenames)</p>
+<div class="section" id="exercise-content">
+<p>Sometimes when files are sorted numbers get grouped together so that
+<code class="docutils literal notranslate"><span class="pre">file_1.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">file_11.txt</span></code> are before <code class="docutils literal notranslate"><span class="pre">file_2.txt</span></code>. So this exercise is
+to add zeros in front of all of the single digit file numbers.</p>
+<ol class="simple">
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">glob()</span></code> method to find all of the <code class="docutils literal notranslate"><span class="pre">file_*.txt</span></code> files that you
+created earlier.</p></li>
+<li><p>Check the length of the filename to skip files that are named
+<code class="samp docutils literal notranslate"><span class="pre">file_</span><em><span class="pre">xx</span></em><span class="pre">.txt</span></code>.</p></li>
+<li><p>For any files named <code class="samp docutils literal notranslate"><span class="pre">file_</span><em><span class="pre">x</span></em><span class="pre">.txt</span></code>, use a slice to get the number
+part of the file.</p></li>
+<li><p>Check that the zero-padded version of the file <code class="samp docutils literal notranslate"><span class="pre">file_</span><em><span class="pre">xx</span></em><span class="pre">.txt</span></code> does
+not already exist, otherwise print an error message and skip that file.</p></li>
+<li><p>Rename the file to the zero-padded version.</p></li>
+<li><p>Print the new filename.</p></li>
+</ol>
+</div>
+</div>
+<div class="solution dropdown admonition" id="lessons/file-system-operations-solution-19">
+<p class="admonition-title">Solution to <a class="reference external" href="#zeropad-filenames-exercise"><span>Exercise 30</span></a></p>
+<div class="section" id="solution-content">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">TMPDIR</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/tmp&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">from_path</span> <span class="ow">in</span> <span class="n">TMPDIR</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;file_*.txt&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">from_path</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">from_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">               ... SKIPPING: too long&quot;</span><span class="p">)</span>
+        <span class="k">continue</span>
+
+    <span class="n">num</span> <span class="o">=</span> <span class="n">from_path</span><span class="o">.</span><span class="n">name</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">num</span><span class="o">.</span><span class="n">isnumeric</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">from_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">                ... SKIPPING: </span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s2"> is not numeric&quot;</span><span class="p">)</span>
+        <span class="k">continue</span>
+
+    <span class="n">to_path</span> <span class="o">=</span> <span class="n">TMPDIR</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;file_0</span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s2">.txt&quot;</span>
+    <span class="k">if</span> <span class="n">to_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">from_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">to_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> ... ERROR: </span><span class="si">{</span><span class="n">to_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> exists&quot;</span><span class="p">)</span>
+        <span class="k">continue</span>
+
+    <span class="n">from_path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_path</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">from_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">to_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> ... DONE&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="glossary">
+<h3>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="glossary-file-system-operations">
+<h4>File System Operations<a class="headerlink" href="#glossary-file-system-operations" title="Permalink to this headline">¶</a></h4>
+<dl class="glossary">
+<dt id="term-glob">glob<a class="headerlink" href="#term-glob" title="Permalink to this term">¶</a></dt><dt id="term-globbing">globbing<a class="headerlink" href="#term-globbing" title="Permalink to this term">¶</a></dt><dt id="term-glob-patterns">glob patterns<a class="headerlink" href="#term-glob-patterns" title="Permalink to this term">¶</a></dt><dt id="term-filename-expansion">filename expansion<a class="headerlink" href="#term-filename-expansion" title="Permalink to this term">¶</a></dt><dd><p>On the command line: A feature available on many command line shells
+where when some characters are not in quotes, they are interpreted as
+filename matching wildcards. For example the command <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">*.txt</span></code> will
+first find all files ending with <code class="docutils literal notranslate"><span class="pre">.txt</span></code> in the working directory and send
+them as arguments to <strong class="command">ls</strong>.</p>
+<p>In programming: Some variant of the syntax and behavior of glob patterns
+from the command line have been adopted in many other programs and
+languages when listing files. Some examples include Pythons
+<code class="docutils literal notranslate"><span class="pre">pathlib.Path.glob</span></code> and <code class="docutils literal notranslate"><span class="pre">glob.glob</span></code> and the syntax used in
+<code class="file docutils literal notranslate"><span class="pre">.gitignore</span></code> files.</p>
+</dd>
+<dt id="term-recursive">recursive<a class="headerlink" href="#term-recursive" title="Permalink to this term">¶</a></dt><dt id="term-recursion">recursion<a class="headerlink" href="#term-recursion" title="Permalink to this term">¶</a></dt><dd><p>When something uses itself to define itself. Some examples include:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Fractal">fractals</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Infinity_mirror">infinity mirrors</a></p></li>
+<li><p>the <a class="reference external" href="https://www.google.com/search?newwindow=1&amp;q=recursion">google search suggestions for recursion</a></p></li>
+</ul>
+<p>In programming this happens when a function calls itself, for example to
+traverse a nested data structure or in algorithms to generate the
+<a class="reference external" href="https://en.wikipedia.org/wiki/Fibonacci_number#Computer_science">Fibonacci sequence</a>.</p>
+<p>When dealing with a file system the term recursive is generally used as
+shorthand to mean, “include the contents of every subdirectory
+recursively”, so that the entire file tree is traversed.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="globbing">
+<h3>Globbing<a class="headerlink" href="#globbing" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="wildcards">
+<h4>Wildcards<a class="headerlink" href="#wildcards" title="Permalink to this headline">¶</a></h4>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Symbol</p></th>
+<th class="head"><p>Matches</p></th>
+<th class="head"><p>Times</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">**</span></code></p></td>
+<td><p>any directory, recursively</p></td>
+<td><p>zero or more</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">*</span></code></p></td>
+<td><p>any character</p></td>
+<td><p>zero or more</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">?</span></code></p></td>
+<td><p>any character</p></td>
+<td><p>exactly once</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="samp docutils literal notranslate"><span class="pre">[</span><em><span class="pre">seq</span></em><span class="pre">]</span></code></p></td>
+<td><p>any character in <code class="samp docutils literal notranslate"><em><span class="pre">seq</span></em></code></p></td>
+<td><p>exactly once</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="samp docutils literal notranslate"><span class="pre">[!</span><em><span class="pre">seq</span></em><span class="pre">]</span></code></p></td>
+<td><p>any character not in <code class="samp docutils literal notranslate"><em><span class="pre">seq</span></em></code></p></td>
+<td><p>exactly once</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="character-ranges">
+<h4>Character ranges<a class="headerlink" href="#character-ranges" title="Permalink to this headline">¶</a></h4>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Range</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">a-z</span></code></p></td>
+<td><p>lowercase letter</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">A-Z</span></code></p></td>
+<td><p>uppercase letter</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">0-9</span></code></p></td>
+<td><p>number</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="examples">
+<h4>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h4>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pattern</p></th>
+<th class="head"><p>Matches where the name</p></th>
+<th class="head"><p>Located in</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">*</span></code></p></td>
+<td><p>is anything</p></td>
+<td><p>this directory</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">*.md</span></code></p></td>
+<td><p>ends in <code class="docutils literal notranslate"><span class="pre">.md</span></code></p></td>
+<td><p>this directory</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">*circle*.svg</span></code></p></td>
+<td><p>includes <code class="docutils literal notranslate"><span class="pre">circle</span></code> and ends in <code class="docutils literal notranslate"><span class="pre">.svg</span></code></p></td>
+<td><p>this directory</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">*[0-9]*</span></code></p></td>
+<td><p>includes a number</p></td>
+<td><p>this directory</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">[A-Z]*</span></code></p></td>
+<td><p>starts with a uppercase letter</p></td>
+<td><p>this directory</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">file_??.txt</span></code></p></td>
+<td><p>is <code class="docutils literal notranslate"><span class="pre">file_</span></code>, then any two characters, then <code class="docutils literal notranslate"><span class="pre">.txt</span></code></p></td>
+<td><p>this directory</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">20[0-2][0-9]</span></code></p></td>
+<td><p>is <code class="docutils literal notranslate"><span class="pre">20</span></code> followed by <code class="docutils literal notranslate"><span class="pre">00</span></code> through <code class="docutils literal notranslate"><span class="pre">29</span></code></p></td>
+<td><p>this directory</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">*[0-9][0-9].txt</span></code></p></td>
+<td><p>ends with two numbers followed by <code class="docutils literal notranslate"><span class="pre">.txt</span></code></p></td>
+<td><p>this directory</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">*[!0-9][0-9].txt</span></code></p></td>
+<td><p>ends with a non-number, a number, then <code class="docutils literal notranslate"><span class="pre">.txt</span></code></p></td>
+<td><p>this directory</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">[_.0-9]*</span></code></p></td>
+<td><p>starts with <code class="docutils literal notranslate"><span class="pre">_</span></code>, <code class="docutils literal notranslate"><span class="pre">.</span></code> or a number</p></td>
+<td><p>this directory</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">*-[hv].svg</span></code></p></td>
+<td><p>ends in <code class="docutils literal notranslate"><span class="pre">-h.svg</span></code> or <code class="docutils literal notranslate"><span class="pre">-v.svg</span></code></p></td>
+<td><p>this directory</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">docs/*</span></code></p></td>
+<td><p>is anything</p></td>
+<td><p>the <code class="docutils literal notranslate"><span class="pre">docs</span></code> child directory</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">**/*.doc</span></code></p></td>
+<td><p>ends in <code class="docutils literal notranslate"><span class="pre">.doc</span></code></p></td>
+<td><p>this directory or any child, recursively</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">*/*.jpg</span></code></p></td>
+<td><p>ends in <code class="docutils literal notranslate"><span class="pre">.jpg</span></code></p></td>
+<td><p>any child directory</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">**/.gitignore</span></code></p></td>
+<td><p>is <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code></p></td>
+<td><p>this directory or any child, recursively</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "alissa-huskey/python-class",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lessons"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="paths.html" title="previous page">Paths</a>
+    <a class='right-next' id="next-link" href="in-depth/index.html" title="next page">In Depth</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

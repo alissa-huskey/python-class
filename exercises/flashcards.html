@@ -1,0 +1,893 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flashcards Project &#8212; Python Class</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://alissa-huskey.github.io/python-class/exercises/flashcards.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="List String Exercises" href="list-string-exercises.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Python Class</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Python Class
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Lessons
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/fundamentals.html">
+   Fundamentals
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../lessons/syntax.html">
+     Syntax
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/expressions.html">
+       Expressions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/statements.html">
+       Statements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/variables.html">
+       Variables
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../lessons/flow-control.html">
+     Flow Control
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/conditional-statements.html">
+       Conditional Statements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/functions.html">
+       Functions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/loops.html">
+       Loops
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/flow.html">
+       Program Flow
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/reading-code.html">
+       Reading Code
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/data-types/index.html">
+     Data Types
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../lessons/files.html">
+     Files
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/file-io.html">
+       File I/O
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/paths.html">
+       Paths
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/file-system-operations.html">
+       File System Operations
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/in-depth/index.html">
+   In Depth
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/in-depth/imports.html">
+     Imports
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/in-depth/structure.html">
+     Structuring Python Projects
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/misc.html">
+   Misc
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/web-apis.html">
+     Web APIs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/battle.html">
+     PyPet Battle
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/game-book.html">
+   Invent Games Book
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/03_guess_the_number.html">
+     Chapter 3: Guess the Number
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/05_dragon_realm.html">
+     Chapter 5: Dragon Realm
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Practices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../practices/problem-solving.html">
+   Problem Solving
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../practices/testing.html">
+   Testing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../practices/debugging.html">
+   Using a Debugger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../practices/data-inspection.html">
+   Data Inspection
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tools
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/terminal.html">
+   Terminal
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/git.html">
+   Git
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/vscode.html">
+   VS Code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/python-shell.html">
+   Python Shell
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/ipython.html">
+   IPython
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/poetry.html">
+   Poetry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/mac.html">
+   Mac Dev Env for Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/replit.html">
+   Repl.it Tips
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/dicts.html">
+   Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/lists.html">
+   Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/template.py">
+   Script Template
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Exercises
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="program-flow.html">
+   Program Flow Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="list-exercises.html">
+   List Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="list-string-exercises.html">
+   List String Exercises
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Flashcards Project
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/alissa-huskey/python-class"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/alissa-huskey/python-class/edit/master/docs/exercises/flashcards.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#instructions">
+   Instructions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-1-make-a-csv-file">
+     Part 1: Make a
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       csv
+      </span>
+     </code>
+     file
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-2-start-flashcards-py">
+     Part 2: Start
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       flashcards.py
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-3-start-load-csv">
+     Part 3: Start
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       load_csv()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-4-read-each-line-of-the-csv-file">
+     Part 4: Read each line of the csv file
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-5-get-the-card-data-from-the-csv-file">
+     Part 5: Get the card data from the csv file
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-6-return-the-card-data-to-main">
+     Part 6: Return the card data to
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       main()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-7-remove-extra-whitespace">
+     Part 7: Remove extra whitespace
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-8-skip-the-header-row">
+     part 8: Skip the header row
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-9-start-the-play-function">
+     Part 9: Start the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       play()
+      </span>
+     </code>
+     function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-10-go-through-each-card-in-random-order">
+     Part 10: Go through each card in random order
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-11-test-the-user">
+     Part 11: Test the user
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-12-scorekeeping">
+     Part 12: Scorekeeping
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-13-prettify-flashcards">
+     Part 13: Prettify flashcards
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bonus-ideas">
+   Bonus ideas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reference">
+   Reference
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="flashcards-project">
+<h1>Flashcards Project<a class="headerlink" href="#flashcards-project" title="Permalink to this headline">¶</a></h1>
+<p>This is the project to apply what we’ve learned in the <a class="reference internal" href="../lessons/files.html"><span class="doc std std-doc">Files</span></a> lessons.</p>
+<p>The project is to write a program for running through flashcards. Card data is
+stored in <code class="docutils literal notranslate"><span class="pre">csv</span></code> files in the <code class="docutils literal notranslate"><span class="pre">data/flashcards</span></code> directory.</p>
+<div class="section" id="instructions">
+<h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="part-1-make-a-csv-file">
+<h3>Part 1: Make a <code class="docutils literal notranslate"><span class="pre">csv</span></code> file<a class="headerlink" href="#part-1-make-a-csv-file" title="Permalink to this headline">¶</a></h3>
+<p>The flashcards data will be stored in <code class="docutils literal notranslate"><span class="pre">csv</span></code> files in a directory named
+<code class="docutils literal notranslate"><span class="pre">data/flashcards</span></code>. The idea is to eventually have multiple files for different
+topics that you might want to study like <code class="docutils literal notranslate"><span class="pre">paths.csv</span></code>, <code class="docutils literal notranslate"><span class="pre">functions.csv</span></code> and so
+on. For now though, just make one file.</p>
+<ol>
+<li><p>[ ] Create a folder <code class="docutils literal notranslate"><span class="pre">data/flashcards</span></code> if it doesn’t already exist</p></li>
+<li><p>[ ] Make a <code class="docutils literal notranslate"><span class="pre">csv</span></code> file with flashcard data</p>
+<ul>
+<li><p>[ ] In the <code class="docutils literal notranslate"><span class="pre">data/flashcards</span></code> directory manually make file ending in
+<code class="docutils literal notranslate"><span class="pre">.csv</span></code>. For example <code class="docutils literal notranslate"><span class="pre">paths.csv</span></code>.</p></li>
+<li><p>[ ] Each line should be one card with the format: <code class="samp docutils literal notranslate"><em><span class="pre">text</span> <span class="pre">for</span> <span class="pre">front</span></em><span class="pre">,</span> <em><span class="pre">text</span> <span class="pre">for</span> <span class="pre">back</span></em></code>. <br />
+For example:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>front, back
+import the Path class, from pathlib import Path
+check if Path object path exists, path.exists()
+check if Path object path is a file, path.is_file()
+check if Path object path is a directory, path.is_dir()
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="part-2-start-flashcards-py">
+<h3>Part 2: Start <code class="docutils literal notranslate"><span class="pre">flashcards.py</span></code><a class="headerlink" href="#part-2-start-flashcards-py" title="Permalink to this headline">¶</a></h3>
+<p>Start your <code class="file docutils literal notranslate"><span class="pre">flashcards.py</span></code> file.</p>
+<ol class="simple">
+<li><p>[ ] write a <code class="docutils literal notranslate"><span class="pre">main()</span></code> function</p></li>
+<li><p>[ ] print any temporary debug message in it</p></li>
+<li><p>[ ] call it</p></li>
+</ol>
+</div>
+<div class="section" id="part-3-start-load-csv">
+<h3>Part 3: Start <code class="docutils literal notranslate"><span class="pre">load_csv()</span></code><a class="headerlink" href="#part-3-start-load-csv" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">load_csv()</span></code> function should take one argument, a <code class="docutils literal notranslate"><span class="pre">Path</span></code> object to a csv
+file. Eventually it will return a <code class="docutils literal notranslate"><span class="pre">list</span></code> where each item is a <code class="docutils literal notranslate"><span class="pre">dict</span></code> with <code class="docutils literal notranslate"><span class="pre">&quot;front&quot;</span></code>
+and <code class="docutils literal notranslate"><span class="pre">&quot;back&quot;</span></code> keys, one for each row in the file except the header.</p>
+<p>For now though, make a simple function that just takes a <code class="docutils literal notranslate"><span class="pre">Path</span></code> object, prints
+the location, and makes sure the file exists.</p>
+<p class="rubric">load_csv()</p>
+<ol class="simple">
+<li><p>[ ] write a <code class="docutils literal notranslate"><span class="pre">load_csv()</span></code> function that takes one argument: <code class="docutils literal notranslate"><span class="pre">path</span></code></p></li>
+<li><p>[ ] check to make sure the <code class="docutils literal notranslate"><span class="pre">csv</span></code> file exists. If not, print an error message
+that includes the path then return</p></li>
+<li><p>[ ] print a temporary debug message: <code class="samp docutils literal notranslate"><span class="pre">loading</span> <span class="pre">file:</span> <em><span class="pre">path</span></em></code></p></li>
+</ol>
+<p class="rubric">in main()</p>
+<ol class="simple">
+<li><p>[ ] make a <code class="docutils literal notranslate"><span class="pre">Path</span></code> object to your <code class="docutils literal notranslate"><span class="pre">csv</span></code> file</p></li>
+<li><p>[ ] call your <code class="docutils literal notranslate"><span class="pre">load_csv()</span></code> function, passing it your <code class="docutils literal notranslate"><span class="pre">Path</span></code> object as the
+argument, and assign the returned value to a variable named <code class="docutils literal notranslate"><span class="pre">cards</span></code></p></li>
+</ol>
+</div>
+<div class="section" id="part-4-read-each-line-of-the-csv-file">
+<h3>Part 4: Read each line of the csv file<a class="headerlink" href="#part-4-read-each-line-of-the-csv-file" title="Permalink to this headline">¶</a></h3>
+<p>Expand the <code class="docutils literal notranslate"><span class="pre">load_csv()</span></code> function to read and print every line in the file.</p>
+<p class="rubric">in load_csv()</p>
+<ol class="simple">
+<li><p>[ ] open the csv file in read mode using the <code class="docutils literal notranslate"><span class="pre">open()</span></code> function</p></li>
+<li><p>[ ] use <code class="docutils literal notranslate"><span class="pre">fp.readlines()</span></code> to iterate through each line in the file</p></li>
+<li><p>[ ] for temporary debugging, print each line</p></li>
+</ol>
+</div>
+<div class="section" id="part-5-get-the-card-data-from-the-csv-file">
+<h3>Part 5: Get the card data from the csv file<a class="headerlink" href="#part-5-get-the-card-data-from-the-csv-file" title="Permalink to this headline">¶</a></h3>
+<p>Continue expanding the <code class="docutils literal notranslate"><span class="pre">load_csv()</span></code> function to extract the card data from each
+line, put it into a dictionary named <code class="docutils literal notranslate"><span class="pre">cards</span></code> with the keys <code class="docutils literal notranslate"><span class="pre">&quot;front&quot;</span></code> and
+<code class="docutils literal notranslate"><span class="pre">&quot;back&quot;</span></code>.</p>
+<p class="rubric">in load_csv(), <em>in</em> the readlines() loop</p>
+<ol class="simple">
+<li><p>[ ] make an empty <code class="docutils literal notranslate"><span class="pre">dict</span></code> assigned to a variable named <code class="docutils literal notranslate"><span class="pre">card</span></code></p></li>
+<li><p>[ ] split each line on the <code class="docutils literal notranslate"><span class="pre">&quot;,&quot;</span></code> using the <code class="docutils literal notranslate"><span class="pre">.split()</span></code> method and assign
+the result to a variable named <code class="docutils literal notranslate"><span class="pre">row</span></code></p></li>
+<li><p>[ ] check that there are two items in the row using the <code class="docutils literal notranslate"><span class="pre">len()</span></code> function.
+If not print an error message and return</p></li>
+<li><p>[ ] assign <code class="docutils literal notranslate"><span class="pre">card[&quot;front&quot;]</span></code> to the first item in the row, and <code class="docutils literal notranslate"><span class="pre">card[&quot;back&quot;]</span></code> to
+the second</p></li>
+<li><p>[ ] for temporary debugging, print the <code class="docutils literal notranslate"><span class="pre">card</span></code> <code class="docutils literal notranslate"><span class="pre">dict</span></code></p></li>
+</ol>
+</div>
+<div class="section" id="part-6-return-the-card-data-to-main">
+<h3>Part 6: Return the card data to <code class="docutils literal notranslate"><span class="pre">main()</span></code><a class="headerlink" href="#part-6-return-the-card-data-to-main" title="Permalink to this headline">¶</a></h3>
+<p>Have <code class="docutils literal notranslate"><span class="pre">load_csv()</span></code> put all of the <code class="docutils literal notranslate"><span class="pre">card</span></code> dictionaries into one big <code class="docutils literal notranslate"><span class="pre">cards</span></code>
+<code class="docutils literal notranslate"><span class="pre">list</span></code> and return that to <code class="docutils literal notranslate"><span class="pre">main()</span></code>.</p>
+<p class="rubric">in load_csv(), <em>before</em> the readlines() loop</p>
+<ol class="simple">
+<li><p>[ ] make an empty <code class="docutils literal notranslate"><span class="pre">list</span></code> assigned to a variable named <code class="docutils literal notranslate"><span class="pre">cards</span></code></p></li>
+</ol>
+<p class="rubric">in load_csv(), <em>at the end</em> of the readlines() loop</p>
+<ol class="simple">
+<li><p>[ ] use the <code class="docutils literal notranslate"><span class="pre">.append()</span></code> method on the <code class="docutils literal notranslate"><span class="pre">cards</span></code> <code class="docutils literal notranslate"><span class="pre">list</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">card</span></code></p></li>
+</ol>
+<p class="rubric">in load_csv(), <em>after</em> the loop</p>
+<ol class="simple">
+<li><p>[ ] return <code class="docutils literal notranslate"><span class="pre">cards</span></code></p></li>
+</ol>
+<p class="rubric">in main()</p>
+<ol class="simple">
+<li><p>[ ] if the <code class="docutils literal notranslate"><span class="pre">cards</span></code> <code class="docutils literal notranslate"><span class="pre">list</span></code> is falsy, <code class="docutils literal notranslate"><span class="pre">return</span></code></p></li>
+<li><p>[ ] otherwise, print the <code class="docutils literal notranslate"><span class="pre">cards</span></code> <code class="docutils literal notranslate"><span class="pre">list</span></code> for temporary debugging</p></li>
+</ol>
+</div>
+<div class="section" id="part-7-remove-extra-whitespace">
+<h3>Part 7: Remove extra whitespace<a class="headerlink" href="#part-7-remove-extra-whitespace" title="Permalink to this headline">¶</a></h3>
+<p>In order to make sure that the flashcards are printed nicely and that the users
+answers get matched up correctly, the trailing <code class="docutils literal notranslate"><span class="pre">&quot;\n&quot;</span></code> needs to be removed from
+the end of each line. Any extra spaces that happen to be around the <code class="docutils literal notranslate"><span class="pre">&quot;,&quot;</span></code> or at
+the beginning or end of the line also need to be removed.</p>
+<p class="rubric">in load_csv(), <em>in</em> the loop</p>
+<ol class="simple">
+<li><p>[ ] remove leading and trailing whitespace by calling the <code class="docutils literal notranslate"><span class="pre">.strip()</span></code> method
+on <code class="docutils literal notranslate"><span class="pre">card[&quot;front&quot;]</span></code> and <code class="docutils literal notranslate"><span class="pre">card[&quot;back&quot;]</span></code></p></li>
+</ol>
+</div>
+<div class="section" id="part-8-skip-the-header-row">
+<h3>part 8: Skip the header row<a class="headerlink" href="#part-8-skip-the-header-row" title="Permalink to this headline">¶</a></h3>
+<p>To avoid having a flashcard pop up that reads <code class="docutils literal notranslate"><span class="pre">&quot;front&quot;</span></code>, don’t append the
+header row to the <code class="docutils literal notranslate"><span class="pre">cards</span></code> <code class="docutils literal notranslate"><span class="pre">list</span></code>.</p>
+<p class="rubric">in load_csv(), in the readlines() loop, before append</p>
+<ol class="simple">
+<li><p>[ ] check if <code class="docutils literal notranslate"><span class="pre">card[&quot;front&quot;]</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;front&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">card[&quot;back&quot;]</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;back&quot;</span></code>. If so,
+<code class="docutils literal notranslate"><span class="pre">continue</span></code> to avoid appending to the cards list</p></li>
+</ol>
+</div>
+<div class="section" id="part-9-start-the-play-function">
+<h3>Part 9: Start the <code class="docutils literal notranslate"><span class="pre">play()</span></code> function<a class="headerlink" href="#part-9-start-the-play-function" title="Permalink to this headline">¶</a></h3>
+<p>This function should take one argument, the list of cards.
+Eventually it will contain the user interface for running through each
+card, getting the answers from the user, and printing the score.</p>
+<p>For now ‘ll just write a <code class="docutils literal notranslate"><span class="pre">play()</span></code> function and call it.</p>
+<p class="rubric">play()</p>
+<ol class="simple">
+<li><p>[ ] write a <code class="docutils literal notranslate"><span class="pre">play()</span> <span class="pre">f</span></code>unction that takes one argument: <code class="docutils literal notranslate"><span class="pre">cards</span></code></p></li>
+<li><p>[ ] for temporary debugging, print something from it</p></li>
+</ol>
+<p class="rubric">main()</p>
+<ol class="simple">
+<li><p>[ ] call <code class="docutils literal notranslate"><span class="pre">play()</span></code> passing it the list of <code class="docutils literal notranslate"><span class="pre">cards</span></code></p></li>
+</ol>
+</div>
+<div class="section" id="part-10-go-through-each-card-in-random-order">
+<h3>Part 10: Go through each card in random order<a class="headerlink" href="#part-10-go-through-each-card-in-random-order" title="Permalink to this headline">¶</a></h3>
+<p>In this next part we’ll be metaphorically drawing a card at random from the
+deck until there are none left.</p>
+<p>The trick is to make a <a class="term-missing reference internal" href="#" title=""><span class="xref std std-term">while loop</span></a> that checks the <a class="reference internal" href="../lessons/conditional-statements.html#term-truthy"><span class="xref std std-term">truthy</span></a> value
+of <code class="docutils literal notranslate"><span class="pre">cards</span></code>, so that it stops as soon as its empty. The inside the loop, use the
+<code class="docutils literal notranslate"><span class="pre">random.choice()</span></code> method to pick a <code class="docutils literal notranslate"><span class="pre">card</span></code> at random, then remove it from the list.</p>
+<p class="rubric">at the top of your file</p>
+<ol class="simple">
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">import</span></code> the <code class="docutils literal notranslate"><span class="pre">random</span></code> module</p></li>
+</ol>
+<p class="rubric">in play()</p>
+<ol class="simple">
+<li><p>[ ] make a while loop where the condition is: <code class="docutils literal notranslate"><span class="pre">cards</span></code></p></li>
+</ol>
+<p class="rubric">in play(), in the loop</p>
+<ol class="simple">
+<li><p>[ ] use <code class="docutils literal notranslate"><span class="pre">random.choice()</span></code> to get a random item from the <code class="docutils literal notranslate"><span class="pre">cards</span></code>
+list and assign it to a variable named <code class="docutils literal notranslate"><span class="pre">card</span></code></p></li>
+<li><p>[ ] call the <code class="docutils literal notranslate"><span class="pre">.remove()</span></code> method on <code class="docutils literal notranslate"><span class="pre">cards</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">card</span></code> to
+remove the card from the list</p></li>
+<li><p>[ ] for temporary debugging, print <code class="docutils literal notranslate"><span class="pre">card</span></code></p></li>
+</ol>
+</div>
+<div class="section" id="part-11-test-the-user">
+<h3>Part 11: Test the user<a class="headerlink" href="#part-11-test-the-user" title="Permalink to this headline">¶</a></h3>
+<p>This is where things start to get exciting! In this part we’ll print the front
+of the card, ask the user for their answer, and let them know if it was right
+or not.</p>
+<p class="rubric">in play(), in the loop</p>
+<ol class="simple">
+<li><p>[ ] print <code class="docutils literal notranslate"><span class="pre">card[&quot;front&quot;]</span></code></p></li>
+<li><p>[ ] prompt the user for their answer using the <code class="docutils literal notranslate"><span class="pre">input()</span></code> function and assign
+the result to a variable named <code class="docutils literal notranslate"><span class="pre">answer</span></code></p></li>
+<li><p>[ ] check if the <code class="docutils literal notranslate"><span class="pre">answer</span></code> is the same as <code class="docutils literal notranslate"><span class="pre">card[&quot;back&quot;]</span></code>
+* [ ] if so, increment <code class="docutils literal notranslate"><span class="pre">score</span></code> by one and print <code class="docutils literal notranslate"><span class="pre">&quot;CORRECT&quot;</span></code>
+* [ ] if not, print <code class="docutils literal notranslate"><span class="pre">&quot;INCORRECT&quot;,</span></code> then <code class="docutils literal notranslate"><span class="pre">cards[&quot;back&quot;]</span></code></p></li>
+<li><p>[ ] call <code class="docutils literal notranslate"><span class="pre">input()</span></code> asking if the user wants to continue</p></li>
+</ol>
+<p class="rubric">in play(), after the loop</p>
+</div>
+<div class="section" id="part-12-scorekeeping">
+<h3>Part 12: Scorekeeping<a class="headerlink" href="#part-12-scorekeeping" title="Permalink to this headline">¶</a></h3>
+<p>Now lets keep track of which card the user is on, and what their score is.</p>
+<p class="rubric">in play(), above the loop</p>
+<ol class="simple">
+<li><p>[ ] assign the length of cards to a variable <code class="docutils literal notranslate"><span class="pre">total</span></code></p></li>
+<li><p>[ ] make a <code class="docutils literal notranslate"><span class="pre">num</span></code> variable set to <code class="docutils literal notranslate"><span class="pre">1</span></code></p></li>
+<li><p>[ ] make a <code class="docutils literal notranslate"><span class="pre">score</span></code> variable set to <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+</ol>
+<p class="rubric">in play(), in the loop</p>
+<ol class="simple">
+<li><p>[ ] at the top of the loop print <code class="samp docutils literal notranslate"><span class="pre">card</span> <em><span class="pre">num</span></em> <span class="pre">of</span> <em><span class="pre">total</span></em></code></p></li>
+<li><p>[ ] when you check if the <code class="docutils literal notranslate"><span class="pre">answer</span></code> is the same as <code class="docutils literal notranslate"><span class="pre">card[&quot;back&quot;]</span></code>
+* [ ] if so, increment <code class="docutils literal notranslate"><span class="pre">score</span></code> by one</p></li>
+<li><p>[ ] at the end of the loop, increment <code class="docutils literal notranslate"><span class="pre">num</span></code> by <code class="docutils literal notranslate"><span class="pre">1</span></code></p></li>
+</ol>
+<p class="rubric">in play(), after the loop</p>
+<ol class="simple">
+<li><p>[ ] print <code class="samp docutils literal notranslate"><span class="pre">&quot;</span><em><span class="pre">score</span></em> <span class="pre">of</span> <em><span class="pre">total</span></em><span class="pre">&quot;</span></code></p></li>
+</ol>
+</div>
+<div class="section" id="part-13-prettify-flashcards">
+<h3>Part 13: Prettify flashcards<a class="headerlink" href="#part-13-prettify-flashcards" title="Permalink to this headline">¶</a></h3>
+<p>This part is about making the the flashcards look nicer. Feel free to adjust
+these suggestions to your taste.</p>
+<p class="rubric">throughout your file</p>
+<ol class="simple">
+<li><p>[ ] get rid of any debug <code class="docutils literal notranslate"><span class="pre">print()</span></code> statements</p></li>
+</ol>
+<p class="rubric">at the top of your file</p>
+<ol class="simple">
+<li><p>[ ] make a global variable <code class="docutils literal notranslate"><span class="pre">WIDTH</span></code> and set it to around <code class="docutils literal notranslate"><span class="pre">75</span></code></p></li>
+</ol>
+<p class="rubric">in play()</p>
+<ol class="simple">
+<li><p>[ ] print a line to the beginning and end of each card</p></li>
+<li><p>[ ] add some extra newlines around various elements</p></li>
+<li><p>[ ] center any string by calling the <code class="docutils literal notranslate"><span class="pre">.center()</span></code> method on it and
+pass the argument <code class="docutils literal notranslate"><span class="pre">WIDTH</span></code>. For example, the <code class="docutils literal notranslate"><span class="pre">card[&quot;front&quot;]</span></code> line.</p></li>
+<li><p>[ ] right align any string by calling the .rjust() method on it and passing
+the argument <code class="docutils literal notranslate"><span class="pre">WIDTH</span></code>. For example, the <code class="samp docutils literal notranslate"><span class="pre">card</span> <em><span class="pre">x</span></em> <span class="pre">of</span> <em><span class="pre">y</span></em></code> line.</p></li>
+<li><p>[ ] print <code class="samp docutils literal notranslate"><span class="pre">&quot;</span><em><span class="pre">score</span></em> <span class="pre">of</span> <em><span class="pre">total</span></em><span class="pre">&quot;</span></code> after the end of each card</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="bonus-ideas">
+<h2>Bonus ideas<a class="headerlink" href="#bonus-ideas" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>keep a log with dates and scores</p></li>
+<li><p>make extra flashcard files, then add a menu to allow the user to select
+which topic(s) they would like to be quizzed on</p></li>
+<li><p>add an optional limit argument to limit the number of cards to go
+through at a time</p></li>
+<li><p>add extra columns to flashcards files to keep track of each time you get the</p></li>
+<li><p>answer right and wrong, use this to generate reports</p></li>
+</ul>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<p>You can view my completed scripts here:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://github.com/alissa-huskey/python-class/blob/master/pythonclass/exercises/flashcards.py">flashcards.py</a></p></li>
+<li><p><a class="reference external" href="http://github.com/alissa-huskey/python-class/blob/master/pythonclass/exercises/fancy-flashcards.py">fancy-flashcards.py</a></p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "alissa-huskey/python-class",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./exercises"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="list-string-exercises.html" title="previous page">List String Exercises</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

@@ -1,0 +1,1211 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Inspection &#8212; Python Class</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://alissa-huskey.github.io/python-class/practices/data-inspection.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Terminal" href="../tools/terminal.html" />
+    <link rel="prev" title="Using a Debugger" href="debugging.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Python Class</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Python Class
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Lessons
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/fundamentals.html">
+   Fundamentals
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../lessons/syntax.html">
+     Syntax
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/expressions.html">
+       Expressions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/statements.html">
+       Statements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/variables.html">
+       Variables
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../lessons/flow-control.html">
+     Flow Control
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/conditional-statements.html">
+       Conditional Statements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/functions.html">
+       Functions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/loops.html">
+       Loops
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/flow.html">
+       Program Flow
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/reading-code.html">
+       Reading Code
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/data-types/index.html">
+     Data Types
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../lessons/files.html">
+     Files
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/file-io.html">
+       File I/O
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/paths.html">
+       Paths
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/file-system-operations.html">
+       File System Operations
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/in-depth/index.html">
+   In Depth
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/in-depth/imports.html">
+     Imports
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/in-depth/structure.html">
+     Structuring Python Projects
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/misc.html">
+   Misc
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/web-apis.html">
+     Web APIs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/battle.html">
+     PyPet Battle
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/game-book.html">
+   Invent Games Book
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/03_guess_the_number.html">
+     Chapter 3: Guess the Number
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/05_dragon_realm.html">
+     Chapter 5: Dragon Realm
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Practices
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="problem-solving.html">
+   Problem Solving
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="testing.html">
+   Testing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="debugging.html">
+   Using a Debugger
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Data Inspection
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tools
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/terminal.html">
+   Terminal
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/git.html">
+   Git
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/vscode.html">
+   VS Code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/python-shell.html">
+   Python Shell
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/ipython.html">
+   IPython
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/poetry.html">
+   Poetry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/mac.html">
+   Mac Dev Env for Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/replit.html">
+   Repl.it Tips
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/dicts.html">
+   Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/lists.html">
+   Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/template.py">
+   Script Template
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Exercises
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/program-flow.html">
+   Program Flow Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/list-exercises.html">
+   List Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/list-string-exercises.html">
+   List String Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/flashcards.html">
+   Flashcards Project
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/alissa-huskey/python-class"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/alissa-huskey/python-class/edit/master/docs/practices/data-inspection.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/alissa-huskey/python-class/master?urlpath=lab/tree/docs/practices/data-inspection.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-1-imports-and-request">
+   Part 1: Imports and request
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-2-check-the-status">
+   Part 2: Check the status
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-3-check-the-headers">
+   Part 3: Check the headers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-4-look-at-the-data">
+   Part 4: Look at the data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-1-check-the-type">
+     Step 1: Check the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       type()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-2-check-the-len">
+     Step 2: Check the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       len()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-3-look-at-the-dict-keys">
+     Step 3: Look at the dict
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       .keys()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-4-save-beer-and-the-final-name-and-description">
+     Step 4: Save
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       beer
+      </span>
+     </code>
+     and the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       final
+      </span>
+     </code>
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       name
+      </span>
+     </code>
+     and
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       description
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-5-inspect-ingredients">
+     Step 5: Inspect ingredients
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-6-save-the-final-malt-ingredients">
+     Step 6: Save the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       final
+      </span>
+     </code>
+     malt ingredients
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-7-inspect-the-hops-ingredients">
+     Step 7: Inspect the hops ingredients
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-8-save-the-malt-ingredients">
+     Step 8: Save the malt ingredients
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-9-save-the-yeast-ingredients">
+     Step 9: Save the yeast ingredients
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-10-de-duplicate-the-ingredients">
+     Step 10: De-duplicate the ingredients
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-5-ipython-tips">
+   Part 5: IPython tips
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-6-exercise">
+   Part 6: Exercise
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="data-inspection">
+<h1>Data Inspection<a class="headerlink" href="#data-inspection" title="Permalink to this headline">¶</a></h1>
+<p>API Documentation is not always readily available or easy to understand. So we
+often end up just diving into the data to figure out what it contains and how
+to best use it.</p>
+<p>This lesson is going to be almost entirly in the Python interpreter, ideally
+IPython.</p>
+<p>For this lesson we’re going to use the <a class="reference external" href="https://punkapi.com/documentation/v2">Punk
+API</a> which searches BrewDog’s catalog
+of beers. The goal will be to the name and a simple list of ingredients for the
+beer.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://punkapi.com/documentation/v2">Punk API</a>
+Documentation</p></li>
+</ul>
+</div>
+<div class="section" id="part-1-imports-and-request">
+<h2>Part 1: Imports and request<a class="headerlink" href="#part-1-imports-and-request" title="Permalink to this headline">¶</a></h2>
+<p>We’ll be using the <code class="docutils literal notranslate"><span class="pre">requests</span></code> module as usual, as well <code class="docutils literal notranslate"><span class="pre">pprint</span></code> for looking at
+the data.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number">Listing 200 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://api.punkapi.com/v2/beers/random&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="part-2-check-the-status">
+<h2>Part 2: Check the status<a class="headerlink" href="#part-2-check-the-status" title="Permalink to this headline">¶</a></h2>
+<p>It’s a good idea to check to make sure nothing went wrong with the request.
+There are a few ways to do this.</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number">Listing 201 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">response</span><span class="o">.</span><span class="n">ok</span>                     <span class="c1"># True if the request succeeded, False otherwise</span>
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span>            <span class="c1"># The numeric status code</span>
+<span class="go">200</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span><span class="o">.</span><span class="n">reason</span>                 <span class="c1"># The text status description</span>
+<span class="go">&#39;OK&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>     <span class="c1"># Raise an exception if request failed, do nothing otherwise</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="part-3-check-the-headers">
+<h2>Part 3: Check the headers<a class="headerlink" href="#part-3-check-the-headers" title="Permalink to this headline">¶</a></h2>
+<p>It may be a good idea to look at the response headers to see if there is any useful information.</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-number">Listing 202 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span> <span class="p">{</span><span class="s1">&#39;Connection&#39;</span><span class="p">:</span> <span class="s1">&#39;keep-alive&#39;</span><span class="p">,</span> <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json; charset=utf-8&#39;</span><span class="p">,</span> <span class="s1">&#39;Date&#39;</span><span class="p">:</span> <span class="s1">&#39;Wed, 11 Nov 2020 00:30:49 GMT&#39;</span><span class="p">,</span> <span class="s1">&#39;Transfer-Encoding&#39;</span><span class="p">:</span> <span class="s1">&#39;chunked&#39;</span><span class="p">,</span> <span class="s1">&#39;access-control-allow-origin&#39;</span><span class="p">:</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;cache-control&#39;</span><span class="p">:</span> <span class="s1">&#39;public, max-age=0, must-revalidate&#39;</span><span class="p">,</span> <span class="s1">&#39;etag&#39;</span><span class="p">:</span> <span class="s1">&#39;W/&quot;a52-eLifbD7LOeHVKy02nKxMUNsJspk&quot;&#39;</span><span class="p">,</span> <span class="s1">&#39;x-dns-prefetch-control&#39;</span><span class="p">:</span> <span class="s1">&#39;off&#39;</span><span class="p">,</span> <span class="s1">&#39;x-download-options&#39;</span><span class="p">:</span> <span class="s1">&#39;noopen&#39;</span><span class="o">...</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>Well that is not pretty printing like it should. <code class="docutils literal notranslate"><span class="pre">pprint</span></code> only knows how to
+handle a few data types, so sometimes it fails when there’s an unexpected type
+of data. We can check this using the <code class="docutils literal notranslate"><span class="pre">type</span></code> function.</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-number">Listing 203 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
+<span class="go">requests.structures.CaseInsensitiveDict</span>
+</pre></div>
+</div>
+</div>
+<p>Ok, then first we need to convert it to a type that <code class="docutils literal notranslate"><span class="pre">pprint</span></code> knows using the <code class="docutils literal notranslate"><span class="pre">dict</span></code> function.</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-number">Listing 204 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">headers</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span><span class="p">(</span><span class="n">headers</span><span class="p">)</span>
+<span class="go">{&#39;CF-Cache-Status&#39;: &#39;MISS&#39;,</span>
+<span class="go"> ...</span>
+<span class="go"> &#39;x-ratelimit-limit&#39;: &#39;3600&#39;,</span>
+<span class="go"> &#39;x-ratelimit-remaining&#39;: &#39;3551&#39;,</span>
+<span class="go"> &#39;x-ratelimit-reset&#39;: &#39;1605058644&#39;</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+</div>
+<p>Rate-limit information is often found in the headers, so it’s a good thing to keep an eye out for.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you’re using ipython, you probably don’t need the pprint function, since
+ipython automatically pretty-prints all data.</p>
+</div>
+</div>
+<div class="section" id="part-4-look-at-the-data">
+<h2>Part 4: Look at the data<a class="headerlink" href="#part-4-look-at-the-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="step-1-check-the-type">
+<h3>Step 1: Check the <code class="docutils literal notranslate"><span class="pre">type()</span></code><a class="headerlink" href="#step-1-check-the-type" title="Permalink to this headline">¶</a></h3>
+<p>The first things I usually do is check are the <code class="docutils literal notranslate"><span class="pre">type</span></code> of the top-level <code class="docutils literal notranslate"><span class="pre">json()</span></code>
+data, and use <code class="docutils literal notranslate"><span class="pre">pprint</span></code> to print it all out. For this exercise I’m going to make
+a <code class="docutils literal notranslate"><span class="pre">dict</span></code> to store the data I want to keep track of called <code class="docutils literal notranslate"><span class="pre">final</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-number">Listing 205 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">final</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="go">list</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="go">[{&#39;abv&#39;: 5.2,</span>
+<span class="go">  &#39;attenuation_level&#39;: 85,</span>
+<span class="go">  &#39;boil_volume&#39;: {&#39;unit&#39;: &#39;litres&#39;, &#39;value&#39;: 25},</span>
+<span class="go">  ...</span>
+<span class="go">  }]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="step-2-check-the-len">
+<h3>Step 2: Check the <code class="docutils literal notranslate"><span class="pre">len()</span></code><a class="headerlink" href="#step-2-check-the-len" title="Permalink to this headline">¶</a></h3>
+<p>Ok, so we now know that <code class="docutils literal notranslate"><span class="pre">data</span></code> is a <code class="docutils literal notranslate"><span class="pre">list</span></code>. Let’s see how many elements are in
+the list using the <code class="docutils literal notranslate"><span class="pre">len</span></code> function.</p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-number">Listing 206 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+</div>
+<p>Just one item. Let’s repeat the same process, but this time with the first item
+on the list.</p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-number">Listing 207 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">dict</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">21</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="step-3-look-at-the-dict-keys">
+<h3>Step 3: Look at the dict <code class="docutils literal notranslate"><span class="pre">.keys()</span></code><a class="headerlink" href="#step-3-look-at-the-dict-keys" title="Permalink to this headline">¶</a></h3>
+<p>Now that we know it’s a dictionary, the next thing we want to know is what its
+keys are. All <code class="docutils literal notranslate"><span class="pre">dict</span></code> objects have a <code class="docutils literal notranslate"><span class="pre">keys()</span></code> function for just this purpose.</p>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-number">Listing 208 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="go">dict_keys([&#39;id&#39;, &#39;name&#39;, &#39;tagline&#39;, ...])</span>
+</pre></div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">dict_keys</span></code> type looks a lot like a list, which means we can convert it to
+a list if we want to <code class="docutils literal notranslate"><span class="pre">pprint</span></code> it.</p>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-number">Listing 209 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="go">[&#39;id&#39;,</span>
+<span class="go"> &#39;name&#39;,</span>
+<span class="go"> &#39;tagline&#39;,</span>
+<span class="go"> &#39;first_brewed&#39;,</span>
+<span class="go"> &#39;description&#39;,</span>
+<span class="go"> &#39;image_url&#39;,</span>
+<span class="go"> &#39;abv&#39;,</span>
+<span class="go"> &#39;ibu&#39;,</span>
+<span class="go"> &#39;target_fg&#39;,</span>
+<span class="go"> &#39;target_og&#39;,</span>
+<span class="go"> &#39;ebc&#39;,</span>
+<span class="go"> &#39;srm&#39;,</span>
+<span class="go"> &#39;ph&#39;,</span>
+<span class="go"> &#39;attenuation_level&#39;,</span>
+<span class="go"> &#39;volume&#39;,</span>
+<span class="go"> &#39;boil_volume&#39;,</span>
+<span class="go"> &#39;method&#39;,</span>
+<span class="go"> &#39;ingredients&#39;,</span>
+<span class="go"> &#39;food_pairing&#39;,</span>
+<span class="go"> &#39;brewers_tips&#39;,</span>
+<span class="go"> &#39;contributed_by&#39;]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="step-4-save-beer-and-the-final-name-and-description">
+<h3>Step 4: Save <code class="docutils literal notranslate"><span class="pre">beer</span></code> and the <code class="docutils literal notranslate"><span class="pre">final</span></code> <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">description</span></code><a class="headerlink" href="#step-4-save-beer-and-the-final-name-and-description" title="Permalink to this headline">¶</a></h3>
+<p>Now we’re getting somewhere. This looks like the <code class="docutils literal notranslate"><span class="pre">dict</span></code> for the beer, so let’s
+save this as <code class="docutils literal notranslate"><span class="pre">beer</span></code> so we don’t have to type <code class="docutils literal notranslate"><span class="pre">data[0]</span></code> over and over. Then we
+can take a look at a couple of the more interesting values <code class="docutils literal notranslate"><span class="pre">name</span></code> and
+<code class="docutils literal notranslate"><span class="pre">description</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-number">Listing 210 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">beer</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">beer</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+<span class="go">&#39;Juniper Wheat Beer&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">beer</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span>
+<span class="go">&quot;A variant on the 2008 release of Bad Pixie, but hoppier. ...&quot;</span>
+</pre></div>
+</div>
+</div>
+<p>Now let’s save the <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">description</span></code> in our <code class="docutils literal notranslate"><span class="pre">final</span></code> dictionary and
+review the results.</p>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-number">Listing 211 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">final</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">beer</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">final</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">beer</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span><span class="p">(</span><span class="n">final</span><span class="p">)</span>
+<span class="go">{&#39;description&#39;: &#39;Punk IPA. Amplified. In 2010 we finally got our paws on the &#39;</span>
+<span class="go">                &#39;equipment we needed to dry hop our beers. We focused all our &#39;</span>
+<span class="go">                &#39;energy on dry hopping, amping up the aroma and flavour of our &#39;</span>
+<span class="go">                &#39;flagship beer to create a relentless explosion of tropical &#39;</span>
+<span class="go">                &#39;fruits, and adding a hint of Caramalt to balance out the &#39;</span>
+<span class="go">                &#39;insane amount of hops.&#39;,</span>
+<span class="go"> &#39;name&#39;: &#39;Punk IPA 2010 - Current&#39;}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="step-5-inspect-ingredients">
+<h3>Step 5: Inspect ingredients<a class="headerlink" href="#step-5-inspect-ingredients" title="Permalink to this headline">¶</a></h3>
+<p>Now let’s dig into the <code class="docutils literal notranslate"><span class="pre">beer['ingredients']</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-number">Listing 212 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id13" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">beer</span><span class="p">[</span><span class="s1">&#39;ingredients&#39;</span><span class="p">])</span>
+<span class="go">dict</span>
+</pre></div>
+</div>
+</div>
+<p>Ok, it’s a <code class="docutils literal notranslate"><span class="pre">dict</span></code>. That means we’ll want to check out its <code class="docutils literal notranslate"><span class="pre">.keys()</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-number">Listing 213 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id14" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">beer</span><span class="p">[</span><span class="s1">&#39;ingredients&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="go">dict_keys([&#39;malt&#39;, &#39;hops&#39;, &#39;yeast&#39;])</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s save <code class="docutils literal notranslate"><span class="pre">beer['ingredients']</span></code> as <code class="docutils literal notranslate"><span class="pre">ing</span></code> so we don’t have to type as much.
+Then let’s take a look at <code class="docutils literal notranslate"><span class="pre">malt</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-number">Listing 214 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id15" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ing</span> <span class="o">=</span> <span class="n">beer</span><span class="p">[</span><span class="s1">&#39;ingredients&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">ing</span><span class="p">[</span><span class="s1">&#39;malt&#39;</span><span class="p">])</span>
+<span class="go">list</span>
+</pre></div>
+</div>
+</div>
+<p>Now that we know it’s a list, we’ll want to check out its length using the
+<code class="docutils literal notranslate"><span class="pre">len()</span></code> function.</p>
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-number">Listing 215 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id16" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">ing</span><span class="p">[</span><span class="s1">&#39;malt&#39;</span><span class="p">])</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+</div>
+<p>Ok, let’s look at the first item on the list.</p>
+<div class="literal-block-wrapper docutils container" id="id17">
+<div class="code-block-caption"><span class="caption-number">Listing 216 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id17" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ing</span><span class="p">[</span><span class="s1">&#39;malt&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">{&#39;name&#39;: &#39;Extra Pale&#39;, &#39;amount&#39;: {&#39;value&#39;: 4.38, &#39;unit&#39;: &#39;kilograms&#39;}}</span>
+</pre></div>
+</div>
+</div>
+<p>So to get to the <code class="docutils literal notranslate"><span class="pre">name</span></code> value we’ll use its key.</p>
+<div class="literal-block-wrapper docutils container" id="id18">
+<div class="code-block-caption"><span class="caption-number">Listing 217 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id18" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ing</span><span class="p">[</span><span class="s1">&#39;malt&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+<span class="go">&#39;Extra Pale&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="step-6-save-the-final-malt-ingredients">
+<h3>Step 6: Save the <code class="docutils literal notranslate"><span class="pre">final</span></code> malt ingredients<a class="headerlink" href="#step-6-save-the-final-malt-ingredients" title="Permalink to this headline">¶</a></h3>
+<p>Now that we’ve figured out how to drill down to the malt ingredients name,
+let’s save them to our <code class="docutils literal notranslate"><span class="pre">final</span></code> dictionary.</p>
+<p>First, let’s set <code class="docutils literal notranslate"><span class="pre">final['ingredients']</span></code> to an empty list.</p>
+<div class="literal-block-wrapper docutils container" id="id19">
+<div class="code-block-caption"><span class="caption-number">Listing 218 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id19" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">final</span><span class="p">[</span><span class="s1">&#39;ingredients&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+</div>
+<p>Now we’ll loop through all of the elements in the <code class="docutils literal notranslate"><span class="pre">ing['malt']</span></code> list and add
+each <code class="docutils literal notranslate"><span class="pre">name</span></code> to our <code class="docutils literal notranslate"><span class="pre">final['ingredients']</span></code> list after appending the string <code class="docutils literal notranslate"><span class="pre">&quot;</span> <span class="pre">Malt&quot;</span></code>.</p>
+<p>Then we’ll check the length of <code class="docutils literal notranslate"><span class="pre">final['ingredients']</span></code> which should be the same
+as the length of <code class="docutils literal notranslate"><span class="pre">ing['malts']</span></code>. And take a peek at our <code class="docutils literal notranslate"><span class="pre">final</span></code> dictionary just
+to confirm.</p>
+<div class="literal-block-wrapper docutils container" id="id20">
+<div class="code-block-caption"><span class="caption-number">Listing 219 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id20" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">malt</span> <span class="ow">in</span> <span class="n">ing</span><span class="p">[</span><span class="s1">&#39;malt&#39;</span><span class="p">]:</span>
+<span class="go">      name = malt[&#39;name&#39;] + &quot; Malt&quot;</span>
+<span class="go">      final[&#39;ingredients&#39;].append(name)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">final</span><span class="p">[</span><span class="s1">&#39;ingredients&#39;</span><span class="p">])</span>
+<span class="go">2</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">final</span>
+<span class="go">{&#39;name&#39;: &#39;Punk IPA 2010 - Current&#39;,</span>
+<span class="go"> &#39;description&#39;: &#39;Punk IPA. Amplified. In 2010 we finally got our paws on the equipment we needed to dry hop our beers. We focused all our energy on dry hopping, amping up the aroma and flavour of our flagship beer to create a relentless explosion of tropical fruits, and adding a hint of Caramalt to balance out the insane amount of hops.&#39;,</span>
+<span class="go"> &#39;ingredients&#39;: [&#39;Extra Pale Malt&#39;, &#39;Caramalt Malt&#39;]}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="step-7-inspect-the-hops-ingredients">
+<h3>Step 7: Inspect the hops ingredients<a class="headerlink" href="#step-7-inspect-the-hops-ingredients" title="Permalink to this headline">¶</a></h3>
+<p>Let’s take a look at our <code class="docutils literal notranslate"><span class="pre">ing</span></code> keys again.</p>
+<div class="literal-block-wrapper docutils container" id="id21">
+<div class="code-block-caption"><span class="caption-number">Listing 220 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id21" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ing</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="go">dict_keys([&#39;malt&#39;, &#39;hops&#39;, &#39;yeast&#39;])</span>
+</pre></div>
+</div>
+</div>
+<p>Next on our list is <code class="docutils literal notranslate"><span class="pre">hops</span></code>. As usual, we’ll want to check the <code class="docutils literal notranslate"><span class="pre">type</span></code> first.</p>
+<div class="literal-block-wrapper docutils container" id="id22">
+<div class="code-block-caption"><span class="caption-number">Listing 221 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id22" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">ing</span><span class="p">[</span><span class="s1">&#39;hops&#39;</span><span class="p">])</span>
+<span class="go">list</span>
+</pre></div>
+</div>
+</div>
+<p>Ok, we know what to do with a <code class="docutils literal notranslate"><span class="pre">list</span></code> then. We need to check the <code class="docutils literal notranslate"><span class="pre">len()</span></code> and
+then take a peek at the first item.</p>
+<div class="literal-block-wrapper docutils container" id="id23">
+<div class="code-block-caption"><span class="caption-number">Listing 222 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id23" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">ing</span><span class="p">[</span><span class="s1">&#39;hops&#39;</span><span class="p">])</span>
+<span class="go">14</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ing</span><span class="p">[</span><span class="s1">&#39;hops&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">{&#39;name&#39;: &#39;Chinook&#39;,</span>
+<span class="go"> &#39;amount&#39;: {&#39;value&#39;: 20, &#39;unit&#39;: &#39;grams&#39;},</span>
+<span class="go"> &#39;add&#39;: &#39;start&#39;,</span>
+<span class="go"> &#39;attribute&#39;: &#39;bitter&#39;}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="step-8-save-the-malt-ingredients">
+<h3>Step 8: Save the malt ingredients<a class="headerlink" href="#step-8-save-the-malt-ingredients" title="Permalink to this headline">¶</a></h3>
+<p>This looks almost exactly like the malt ingredients. So we can repeat nearly
+the same loop to append each <code class="docutils literal notranslate"><span class="pre">name</span></code> to our <code class="docutils literal notranslate"><span class="pre">final['ingredients']</span></code> list, and
+check it the same way.</p>
+<div class="literal-block-wrapper docutils container" id="id24">
+<div class="code-block-caption"><span class="caption-number">Listing 223 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id24" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">hop</span> <span class="ow">in</span> <span class="n">ing</span><span class="p">[</span><span class="s1">&#39;hops&#39;</span><span class="p">]:</span>
+<span class="go">      name = hop[&#39;name&#39;] + &quot; Hops&quot;</span>
+<span class="go">      final[&#39;ingredients&#39;].append(name)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">final</span><span class="p">[</span><span class="s1">&#39;ingredients&#39;</span><span class="p">])</span>
+<span class="go">16</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">final</span>
+<span class="go">{&#39;name&#39;: &#39;Punk IPA 2010 - Current&#39;,</span>
+<span class="go"> &#39;description&#39;: &#39;Punk IPA. Amplified. In 2010 we finally got our paws on the equipment we needed to dry hop our beers. We focused all our energy on dry hopping, amping up the aroma and flavour of our flagship beer to create a relentless explosion of tropical fruits, and adding a hint of Caramalt to balance out the insane amount of hops.&#39;,</span>
+<span class="go"> &#39;ingredients&#39;: [&#39;Extra Pale Malt&#39;,</span>
+<span class="go">  &#39;Caramalt Malt&#39;,</span>
+<span class="go">  &#39;Chinook Hops&#39;,</span>
+<span class="go">  &#39;Ahtanum Hops&#39;,</span>
+<span class="go">  &#39;Chinook Hops&#39;,</span>
+<span class="go">  &#39;Ahtanum Hops&#39;,</span>
+<span class="go">  &#39;Chinook Hops&#39;,</span>
+<span class="go">  &#39;Ahtanum Hops&#39;,</span>
+<span class="go">  &#39;Simcoe Hops&#39;,</span>
+<span class="go">  &#39;Nelson Sauvin Hops&#39;,</span>
+<span class="go">  &#39;Chinook Hops&#39;,</span>
+<span class="go">  &#39;Ahtanum Hops&#39;,</span>
+<span class="go">  &#39;Simcoe Hops&#39;,</span>
+<span class="go">  &#39;Nelson Sauvin Hops&#39;,</span>
+<span class="go">  &#39;Cascade Hops&#39;,</span>
+<span class="go">  &#39;Amarillo Hops&#39;]}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="step-9-save-the-yeast-ingredients">
+<h3>Step 9: Save the yeast ingredients<a class="headerlink" href="#step-9-save-the-yeast-ingredients" title="Permalink to this headline">¶</a></h3>
+<p>Let’s review our <code class="docutils literal notranslate"><span class="pre">ing.keys()</span></code> again.</p>
+<div class="literal-block-wrapper docutils container" id="id25">
+<div class="code-block-caption"><span class="caption-number">Listing 224 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id25" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ing</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="go">dict_keys([&#39;malt&#39;, &#39;hops&#39;, &#39;yeast&#39;])</span>
+</pre></div>
+</div>
+</div>
+<p>One more to check, the <code class="docutils literal notranslate"><span class="pre">yeast</span></code>. You should know the drill by now–start by
+checking the <code class="docutils literal notranslate"><span class="pre">type()</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id26">
+<div class="code-block-caption"><span class="caption-number">Listing 225 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id26" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">ing</span><span class="p">[</span><span class="s1">&#39;yeast&#39;</span><span class="p">])</span>
+<span class="go">str</span>
+</pre></div>
+</div>
+</div>
+<p>A string is much more simple. Let’s take a look at the value.</p>
+<div class="literal-block-wrapper docutils container" id="id27">
+<div class="code-block-caption"><span class="caption-number">Listing 226 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id27" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ing</span><span class="p">[</span><span class="s1">&#39;yeast&#39;</span><span class="p">]</span>
+<span class="go">&#39;Wyeast 1056 - American Ale™&#39;</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s append this to our <code class="docutils literal notranslate"><span class="pre">final</span></code> ingredients list then check the length and
+final dict.</p>
+<div class="literal-block-wrapper docutils container" id="id28">
+<div class="code-block-caption"><span class="caption-number">Listing 227 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id28" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">final</span><span class="p">[</span><span class="s1">&#39;ingredients&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ing</span><span class="p">[</span><span class="s1">&#39;yeast&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot; Yeast&quot;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">final</span><span class="p">[</span><span class="s1">&#39;ingredients&#39;</span><span class="p">])</span>
+<span class="go">17</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">final</span>
+<span class="go">{&#39;name&#39;: &#39;Punk IPA 2010 - Current&#39;,</span>
+<span class="go"> &#39;description&#39;: &#39;Punk IPA. Amplified. In 2010 we finally got our paws on the equipment we needed to dry hop our beers. We focused all our energy on dry hopping, amping up the aroma and flavour of our flagship beer to create a relentless explosion of tropical fruits, and adding a hint of Caramalt to balance out the insane amount of hops.&#39;,</span>
+<span class="go"> &#39;ingredients&#39;: [&#39;Extra Pale Malt&#39;,</span>
+<span class="go">  &#39;Caramalt Malt&#39;,</span>
+<span class="go">  &#39;Chinook Hops&#39;,</span>
+<span class="go">  &#39;Ahtanum Hops&#39;,</span>
+<span class="go">  &#39;Chinook Hops&#39;,</span>
+<span class="go">  &#39;Ahtanum Hops&#39;,</span>
+<span class="go">  &#39;Chinook Hops&#39;,</span>
+<span class="go">  &#39;Ahtanum Hops&#39;,</span>
+<span class="go">  &#39;Simcoe Hops&#39;,</span>
+<span class="go">  &#39;Nelson Sauvin Hops&#39;,</span>
+<span class="go">  &#39;Chinook Hops&#39;,</span>
+<span class="go">  &#39;Ahtanum Hops&#39;,</span>
+<span class="go">  &#39;Simcoe Hops&#39;,</span>
+<span class="go">  &#39;Nelson Sauvin Hops&#39;,</span>
+<span class="go">  &#39;Cascade Hops&#39;,</span>
+<span class="go">  &#39;Amarillo Hops&#39;,</span>
+<span class="go">  &#39;Wyeast 1056 - American Ale™ Yeast&#39;]}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="step-10-de-duplicate-the-ingredients">
+<h3>Step 10: De-duplicate the ingredients<a class="headerlink" href="#step-10-de-duplicate-the-ingredients" title="Permalink to this headline">¶</a></h3>
+<p>We can easily filter out duplicates by converting the <code class="docutils literal notranslate"><span class="pre">list</span></code> to a <code class="docutils literal notranslate"><span class="pre">set</span></code>, which
+is unique. Let’s see how it looks.</p>
+<div class="literal-block-wrapper docutils container" id="id29">
+<div class="code-block-caption"><span class="caption-number">Listing 228 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id29" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="p">(</span><span class="n">final</span><span class="p">[</span><span class="s1">&#39;ingredients&#39;</span><span class="p">])</span>
+<span class="go">{&#39;Ahtanum Hops&#39;,</span>
+<span class="go"> &#39;Amarillo Hops&#39;,</span>
+<span class="go"> &#39;Caramalt Malt&#39;,</span>
+<span class="go"> &#39;Cascade Hops&#39;,</span>
+<span class="go"> &#39;Chinook Hops&#39;,</span>
+<span class="go"> &#39;Extra Pale Malt&#39;,</span>
+<span class="go"> &#39;Nelson Sauvin Hops&#39;,</span>
+<span class="go"> &#39;Simcoe Hops&#39;,</span>
+<span class="go"> &#39;Wyeast 1056 - American Ale™ Yeast&#39;}</span>
+</pre></div>
+</div>
+</div>
+<p>If we want to keep it as a list for some reason, we can just convert it back to
+a list again.</p>
+<div class="literal-block-wrapper docutils container" id="id30">
+<div class="code-block-caption"><span class="caption-number">Listing 229 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id30" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">final</span><span class="p">[</span><span class="s1">&#39;ingredients&#39;</span><span class="p">]))</span>
+<span class="go">[&#39;Extra Pale Malt&#39;,</span>
+<span class="go"> &#39;Caramalt Malt&#39;,</span>
+<span class="go"> &#39;Cascade Hops&#39;,</span>
+<span class="go"> &#39;Amarillo Hops&#39;,</span>
+<span class="go"> &#39;Nelson Sauvin Hops&#39;,</span>
+<span class="go"> &#39;Ahtanum Hops&#39;,</span>
+<span class="go"> &#39;Simcoe Hops&#39;,</span>
+<span class="go"> &#39;Wyeast 1056 - American Ale™ Yeast&#39;,</span>
+<span class="go"> &#39;Chinook Hops&#39;]</span>
+</pre></div>
+</div>
+</div>
+<p>Ok, let’s save this to our <code class="docutils literal notranslate"><span class="pre">final</span></code> dictionary.</p>
+<div class="literal-block-wrapper docutils container" id="id31">
+<div class="code-block-caption"><span class="caption-number">Listing 230 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id31" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">final</span><span class="p">[</span><span class="s1">&#39;ingredients&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">final</span><span class="p">[</span><span class="s1">&#39;ingredients&#39;</span><span class="p">]))</span>
+<span class="go">[&#39;Extra Pale Malt&#39;,</span>
+<span class="go"> &#39;Caramalt Malt&#39;,</span>
+<span class="go"> &#39;Cascade Hops&#39;,</span>
+<span class="go"> &#39;Amarillo Hops&#39;,</span>
+<span class="go"> &#39;Nelson Sauvin Hops&#39;,</span>
+<span class="go"> &#39;Ahtanum Hops&#39;,</span>
+<span class="go"> &#39;Simcoe Hops&#39;,</span>
+<span class="go"> &#39;Wyeast 1056 - American Ale™ Yeast&#39;,</span>
+<span class="go"> &#39;Chinook Hops&#39;]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="part-5-ipython-tips">
+<h2>Part 5: IPython tips<a class="headerlink" href="#part-5-ipython-tips" title="Permalink to this headline">¶</a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../tools/ipython.html"><span class="doc std std-doc">IPython</span></a></p>
+</div>
+</div>
+<div class="section" id="part-6-exercise">
+<h2>Part 6: Exercise<a class="headerlink" href="#part-6-exercise" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have a good handle on the data that we get back from the <code class="docutils literal notranslate"><span class="pre">random</span></code>
+endpoint of the Punk API, we can use this information in our code. The exercise
+for this lesson involves taking the data that we’ve been exploring and printing
+it out nicely.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://punkapi.com/documentation/v2">Punk API</a>
+Documentation</p></li>
+</ul>
+</div>
+<div class="exercise admonition" id="practices/data-inspection-exercise-0">
+<p class="admonition-title"></p>
+<div class="section" id="exercise-content">
+<ul class="simple">
+<li><p>Get a random beer from the Punk API <code class="docutils literal notranslate"><span class="pre">random</span></code> endpoint:
+<code class="docutils literal notranslate"><span class="pre">http://api.punkapi.com/v2/beers/random</span></code></p></li>
+<li><p>Print the beer <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">description</span></code></p></li>
+<li><p>Print the list of unique <code class="docutils literal notranslate"><span class="pre">ingredients</span></code>.</p></li>
+</ul>
+</div>
+</div>
+<p><strong>Example output:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Barley Wine - Russian Doll
+--------------------------
+
+Russian Doll was an experimental set of brews showcasing the effects of varying the amount and ratio of malts in the grist. The barley wine had rich, chewy dark fruit aromas balanced with a spike of zesty hops. Toffee, apricot jam and grapefruit pith, crammed into the head of our little Russian Doll family.
+
+  * Caramalt Malt
+  * Centennial Hops
+  * Citra Hops
+  * Dark Crystal Malt
+  * Extra Pale Malt
+  * Simcoe Hops
+  * Wyeast 1272 - American Ale II™
+
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "alissa-huskey/python-class",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./practices"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="debugging.html" title="previous page">Using a Debugger</a>
+    <a class='right-next' id="next-link" href="../tools/terminal.html" title="next page">Terminal</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

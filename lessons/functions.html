@@ -1,0 +1,1399 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Functions &#8212; Python Class</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://alissa-huskey.github.io/python-class/lessons/functions.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Loops" href="loops.html" />
+    <link rel="prev" title="Conditional Statements" href="conditional-statements.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Python Class</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Python Class
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Lessons
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="fundamentals.html">
+   Fundamentals
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="syntax.html">
+     Syntax
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="expressions.html">
+       Expressions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="statements.html">
+       Statements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="variables.html">
+       Variables
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="flow-control.html">
+     Flow Control
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3">
+      <a class="reference internal" href="conditional-statements.html">
+       Conditional Statements
+      </a>
+     </li>
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       Functions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="loops.html">
+       Loops
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="flow.html">
+       Program Flow
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="reading-code.html">
+       Reading Code
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data-types/index.html">
+     Data Types
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="files.html">
+     Files
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="file-io.html">
+       File I/O
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="paths.html">
+       Paths
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="file-system-operations.html">
+       File System Operations
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="in-depth/index.html">
+   In Depth
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="in-depth/imports.html">
+     Imports
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="in-depth/structure.html">
+     Structuring Python Projects
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="misc.html">
+   Misc
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="web-apis.html">
+     Web APIs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="battle.html">
+     PyPet Battle
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="game-book.html">
+   Invent Games Book
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_guess_the_number.html">
+     Chapter 3: Guess the Number
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_dragon_realm.html">
+     Chapter 5: Dragon Realm
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Practices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../practices/problem-solving.html">
+   Problem Solving
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../practices/testing.html">
+   Testing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../practices/debugging.html">
+   Using a Debugger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../practices/data-inspection.html">
+   Data Inspection
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tools
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/terminal.html">
+   Terminal
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/git.html">
+   Git
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/vscode.html">
+   VS Code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/python-shell.html">
+   Python Shell
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/ipython.html">
+   IPython
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/poetry.html">
+   Poetry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/mac.html">
+   Mac Dev Env for Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/replit.html">
+   Repl.it Tips
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/dicts.html">
+   Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/lists.html">
+   Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/template.py">
+   Script Template
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Exercises
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/program-flow.html">
+   Program Flow Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/list-exercises.html">
+   List Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/list-string-exercises.html">
+   List String Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/flashcards.html">
+   Flashcards Project
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/alissa-huskey/python-class"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/alissa-huskey/python-class/edit/master/docs/lessons/functions.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#defining-functions">
+   Defining functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calling-functions">
+   Calling functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise">
+     Exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#parameters-and-arguments">
+   Parameters and arguments
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Exercise
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#positional-arguments">
+     Positional Arguments
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#keyword-arguments">
+     Keyword Arguments
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercises">
+     Exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#returning-values">
+   Returning values
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#docstrings">
+   Docstrings
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#glossary">
+   Glossary
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#glossary-functions">
+     Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   Exercises
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#welcome-function">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       welcome()
+      </span>
+     </code>
+     function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#letter-count-function">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       letter_count()
+      </span>
+     </code>
+     function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#is-vowel-function">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       is_vowel()
+      </span>
+     </code>
+     function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tip-function">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       tip()
+      </span>
+     </code>
+     function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#total-function">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       total()
+      </span>
+     </code>
+     function
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="functions">
+<h1>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h1>
+<p>A function is a set of Python instructions or <a class="reference internal" href="statements.html#term-statement"><span class="xref std std-term">statements</span></a> that can be
+executed later.</p>
+<div class="section" id="defining-functions">
+<h2>Defining functions<a class="headerlink" href="#defining-functions" title="Permalink to this headline">¶</a></h2>
+<p>Functions are <a class="reference internal" href="../compound%20statement.html" title=""><span class="xref std std-term">compound-statements</span></a>, and are made up of an
+<a class="reference internal" href="variables.html#term-identifier"><span class="xref std std-term">identifier</span></a> and the group of <a class="reference internal" href="../statement.html" title=""><span class="xref std std-term">statements</span></a> it contains.</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-number">Listing 17 </span><span class="caption-text">the identifer is <code class="docutils literal notranslate"><span class="pre">hello</span></code></span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="calling-functions">
+<h2>Calling functions<a class="headerlink" href="#calling-functions" title="Permalink to this headline">¶</a></h2>
+<p>To <a class="reference internal" href="#term-call"><span class="xref std std-term">call</span></a> or execute a function, use the function <a class="reference internal" href="variables.html#term-identifier"><span class="xref std std-term">identifier</span></a>
+followed by <code class="docutils literal notranslate"><span class="pre">(``)</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-number">Listing 18 </span><span class="caption-text">executes <code class="docutils literal notranslate"><span class="pre">print(&quot;Hello.&quot;)</span></code></span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">hello</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exercise">
+<h3>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h3>
+<div class="exercise admonition" id="hr-exercise">
+<p class="admonition-title"><span class="caption-number">Exercise 4 </span>(horizontal line function)</p>
+<div class="section" id="exercise-content">
+<p>Write a function called <code class="docutils literal notranslate"><span class="pre">hr</span></code> to print a line of dashes 100 characters wide, like so:</p>
+<p><code class="docutils literal notranslate"><span class="pre">--------------------------------------------------</span></code></p>
+</div>
+</div>
+<div class="solution dropdown admonition" id="lessons/functions-solution-1">
+<p class="admonition-title">Solution to <a class="reference external" href="#hr-exercise"><span>Exercise 4</span></a></p>
+<div class="section" id="solution-content">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hr</span><span class="p">():</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="parameters-and-arguments">
+<h2>Parameters and arguments<a class="headerlink" href="#parameters-and-arguments" title="Permalink to this headline">¶</a></h2>
+<p>Functions can be written with one or more <a class="reference internal" href="../parameter.html" title=""><span class="xref std std-term">parameters</span></a> separated by <code class="docutils literal notranslate"><span class="pre">,</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-number">Listing 19 </span><span class="caption-text">defined with one parameter, <code class="docutils literal notranslate"><span class="pre">name</span></code>.</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-number">Listing 20 </span><span class="caption-text">defined with two parameters, <code class="docutils literal notranslate"><span class="pre">first_name</span></code> and <code class="docutils literal notranslate"><span class="pre">last_name</span></code>.</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">formal_greeting</span><span class="p">(</span><span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dear&quot;</span><span class="p">,</span> <span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">,</span> <span class="s2">&quot;,&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>When calling the function the values passed are called <a class="reference internal" href="../argument.html" title=""><span class="xref std std-term">arguments</span></a>.</p>
+<p>Put the values you wish to send to the function inside the parenthesis
+separated by <code class="docutils literal notranslate"><span class="pre">,</span></code>. When the function is executed the argument(s) will be
+assigned to variables with the same names as the parameters in the function
+definition.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">hello</span><span class="p">(</span><span class="s2">&quot;John&quot;</span><span class="p">)</span>
+<span class="n">hello</span><span class="p">(</span><span class="s2">&quot;Mary&quot;</span><span class="p">)</span>
+
+<span class="n">formal_greeting</span><span class="p">(</span><span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Smith&quot;</span><span class="p">)</span>
+<span class="n">formal_greeting</span><span class="p">(</span><span class="s2">&quot;Jane&quot;</span><span class="p">,</span> <span class="s2">&quot;Doe&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-number">Listing 21 </span><span class="caption-text">executes <code class="docutils literal notranslate"><span class="pre">print(&quot;Hello.&quot;)</span></code></span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">hello</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>Exercise<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="exercise admonition" id="header-exercise">
+<p class="admonition-title"><span class="caption-number">Exercise 5 </span>(header function)</p>
+<div class="section" id="exercise-content">
+<p>Write a <code class="docutils literal notranslate"><span class="pre">header()</span></code> function that takes one string parameter <code class="docutils literal notranslate"><span class="pre">title</span></code> and prints
+the title followed by a line of dashes the same length of the title, like so:</p>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-number">Listing 22 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">header</span><span class="p">(</span><span class="s2">&quot;Chapter One&quot;</span><span class="p">)</span>
+<span class="go">Chapter One</span>
+<span class="go">-----------</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="solution dropdown admonition" id="lessons/functions-solution-3">
+<p class="admonition-title">Solution to <a class="reference external" href="#header-exercise"><span>Exercise 5</span></a></p>
+<div class="section" id="solution-content">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">header</span><span class="p">(</span><span class="n">title</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">title</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="positional-arguments">
+<h3>Positional Arguments<a class="headerlink" href="#positional-arguments" title="Permalink to this headline">¶</a></h3>
+<p>Most of the time functions are called using <a class="reference internal" href="#term-positional-argument"><span class="xref std std-term">positional arguments</span></a>. That
+is, each argument is assigned based on its position in the argument list.</p>
+<p>Lets look at the following function as an example.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">winners</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">,</span> <span class="n">third</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Print the contest winners&quot;&quot;&quot;</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The first place winner is: </span><span class="si">{</span><span class="n">first</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The second place winner is: </span><span class="si">{</span><span class="n">second</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The third place winner is: </span><span class="si">{</span><span class="n">third</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When we call it below, <code class="docutils literal notranslate"><span class="pre">&quot;Alex&quot;</span></code> is assigned to the variable <code class="docutils literal notranslate"><span class="pre">first</span></code> because
+that argument is the first one passed; <code class="docutils literal notranslate"><span class="pre">&quot;Bob&quot;</span></code> is assigned to <code class="docutils literal notranslate"><span class="pre">second</span></code> because
+that argument is the second passed, and so on.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">winners</span><span class="p">(</span><span class="s2">&quot;Alex&quot;</span><span class="p">,</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;Celeste&quot;</span><span class="p">)</span>
+<span class="go">The first place winner is: Alex</span>
+<span class="go">The second place winner is: Bob</span>
+<span class="go">The third place winner is: Celeste</span>
+</pre></div>
+</div>
+<p>When calling functions this way, changing the order of the arguments will
+change the parameters they are assigned to.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">winners</span><span class="p">(</span><span class="s2">&quot;Celeste&quot;</span><span class="p">,</span> <span class="s2">&quot;Alex&quot;</span><span class="p">,</span> <span class="s2">&quot;Bob&quot;</span><span class="p">)</span>
+<span class="go">The first place winner is: Celeste</span>
+<span class="go">The second place winner is: Alex</span>
+<span class="go">The third place winner is: Bob</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="keyword-arguments">
+<h3>Keyword Arguments<a class="headerlink" href="#keyword-arguments" title="Permalink to this headline">¶</a></h3>
+<p>You can also use <a class="reference internal" href="#term-keyword-argument"><span class="xref std std-term">keyword arguments</span></a> when calling a function to make it
+clear which argument is which. Just put the parameter name followed by an <code class="docutils literal notranslate"><span class="pre">=</span></code>
+in front of the argument value.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">winners</span><span class="p">(</span><span class="n">first</span><span class="o">=</span><span class="s2">&quot;Alex&quot;</span><span class="p">,</span> <span class="n">second</span><span class="o">=</span><span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="n">third</span><span class="o">=</span><span class="s2">&quot;Celeste&quot;</span><span class="p">)</span>
+<span class="go">The first place winner is: Alex</span>
+<span class="go">The second place winner is: Bob</span>
+<span class="go">The third place winner is: Celeste</span>
+</pre></div>
+</div>
+<p>You can even mix and match positional arguments and keyword arguments, as long
+as you put all of the positional arguments first.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">winners</span><span class="p">(</span><span class="s2">&quot;Alex&quot;</span><span class="p">,</span> <span class="n">second</span><span class="o">=</span><span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="n">third</span><span class="o">=</span><span class="s2">&quot;Celeste&quot;</span><span class="p">)</span>
+<span class="go">The first place winner is: Alex</span>
+<span class="go">The second place winner is: Bob</span>
+<span class="go">The third place winner is: Celeste</span>
+</pre></div>
+</div>
+<p>When using keyword arguments, you can change the order of your arguments
+without effecting how they are assigned.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">winners</span><span class="p">(</span><span class="n">second</span><span class="o">=</span><span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="n">first</span><span class="o">=</span><span class="s2">&quot;Alex&quot;</span><span class="p">,</span> <span class="n">third</span><span class="o">=</span><span class="s2">&quot;Celeste&quot;</span><span class="p">)</span>
+<span class="go">The first place winner is: Alex</span>
+<span class="go">The second place winner is: Bob</span>
+<span class="go">The third place winner is: Celeste</span>
+</pre></div>
+</div>
+<p>It can also be useful to use keyword arguments to make your code more clear.
+For example, imagine a <code class="docutils literal notranslate"><span class="pre">calculate_cost</span></code> function that takes a bunch of numeric
+arguments.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_cost</span><span class="p">(</span><span class="n">price</span><span class="p">,</span> <span class="n">quantity</span><span class="p">,</span> <span class="n">tax</span><span class="p">,</span> <span class="n">tip</span><span class="p">):</span>
+  <span class="o">...</span>
+</pre></div>
+</div>
+<p>Which of the following lines of code do you think is easier to understand?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cost</span> <span class="o">=</span> <span class="n">calculate_cost</span><span class="p">(</span><span class="mf">4.75</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cost</span> <span class="o">=</span> <span class="n">calculate_cost</span><span class="p">(</span><span class="n">price</span><span class="o">=</span><span class="mf">4.75</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">tax</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span> <span class="n">tip</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Some functions have default values for arguments, making them optional. When
+there are multiple arguments with default values, you can use keyword arguments
+to pass some arguments while skipping others.</p>
+<p>For example, the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function can take the optional keyword arguments
+<code class="docutils literal notranslate"><span class="pre">end</span></code>, for what string to append to the end of the text (default <code class="docutils literal notranslate"><span class="pre">&quot;\n&quot;</span></code>), and
+<code class="docutils literal notranslate"><span class="pre">sep</span></code>, for what string to put between each argument when printed (default: <code class="docutils literal notranslate"><span class="pre">&quot;</span> <span class="pre">&quot;</span></code>).</p>
+<p>You can use keyword arguments to specify either or both.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># called normally without keyword arguments</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span> <span class="p">;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;there&quot;</span><span class="p">)</span>
+<span class="go">hello</span>
+<span class="go">there</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># passing the `end` keyword argument</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span> <span class="p">;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;there&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+<span class="go">hello there.</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># called normally without keyword arguments</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;555&quot;</span><span class="p">,</span> <span class="s2">&quot;555&quot;</span><span class="p">,</span> <span class="s2">&quot;5555&quot;</span><span class="p">)</span>
+<span class="go">555 555 5555</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># passing the `sep` keyword argument</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;555&quot;</span><span class="p">,</span> <span class="s2">&quot;555&quot;</span><span class="p">,</span> <span class="s2">&quot;5555&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+<span class="go">555-555-5555</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exercises">
+<h3>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h3>
+<div class="exercise admonition" id="keyword-arguments-exercise">
+<p class="admonition-title"><span class="caption-number">Exercise 6 </span>(keyword arguments)</p>
+<div class="section" id="exercise-content">
+<ol>
+<li><p>Call the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function with the arguments <code class="docutils literal notranslate"><span class="pre">&quot;a&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;b&quot;</span></code>, and <code class="docutils literal notranslate"><span class="pre">&quot;c&quot;</span></code> with
+a value of <code class="docutils literal notranslate"><span class="pre">&quot;\n&quot;</span></code> for the <code class="docutils literal notranslate"><span class="pre">sep</span></code> keyword argument.</p></li>
+<li><p>Call the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function multiple times in a row, with the value of <code class="docutils literal notranslate"><span class="pre">&quot;...</span> <span class="pre">&quot;</span></code>
+for the <code class="docutils literal notranslate"><span class="pre">end</span></code> keyword argument.</p></li>
+<li><p>a. Write a function called <code class="docutils literal notranslate"><span class="pre">birthday</span></code> that takes the arguments <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">month</span></code>,
+<code class="docutils literal notranslate"><span class="pre">day</span></code> and <code class="docutils literal notranslate"><span class="pre">year</span></code>, and prints <code class="docutils literal notranslate"><span class="pre">&quot;____s</span> <span class="pre">birthday</span> <span class="pre">is</span> <span class="pre">on</span> <span class="pre">___</span> <span class="pre">__,</span> <span class="pre">____.&quot;</span></code></p>
+<p>For example:
+“Homer Simpsons birthday is on May 12, 1956.”</p>
+<p>b. Call it with multiple names and birthdays, using positional arguments and
+keyword arguments.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="solution dropdown admonition" id="lessons/functions-solution-5">
+<p class="admonition-title">Solution to <a class="reference external" href="#keyword-arguments-exercise"><span>Exercise 6</span></a></p>
+<div class="section" id="solution-content">
+<p>1. Call the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function with the arguments <code class="docutils literal notranslate"><span class="pre">&quot;a&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;b&quot;</span></code>, and <code class="docutils literal notranslate"><span class="pre">&quot;c&quot;</span></code> with
+a value of <code class="docutils literal notranslate"><span class="pre">&quot;\n&quot;</span></code> for the <code class="docutils literal notranslate"><span class="pre">sep</span></code> keyword argument.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="go">a</span>
+<span class="go">b</span>
+<span class="go">c</span>
+</pre></div>
+</div>
+<p>2. Call the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function multiple times in a row, with the value of <code class="docutils literal notranslate"><span class="pre">&quot;...</span> <span class="pre">&quot;</span></code>
+for the <code class="docutils literal notranslate"><span class="pre">end</span></code> keyword argument.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;... &quot;</span><span class="p">)</span> <span class="p">;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;... &quot;</span><span class="p">)</span> <span class="p">;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;... &quot;</span><span class="p">)</span>
+<span class="go">x... y... z...</span>
+</pre></div>
+</div>
+<p>3a. Write a function called <code class="docutils literal notranslate"><span class="pre">birthday</span></code> that takes the arguments <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">month</span></code>,
+<code class="docutils literal notranslate"><span class="pre">day</span></code> and <code class="docutils literal notranslate"><span class="pre">year</span></code>, and prints <code class="docutils literal notranslate"><span class="pre">&quot;____s</span> <span class="pre">birthday</span> <span class="pre">is</span> <span class="pre">on</span> <span class="pre">___</span> <span class="pre">__,</span> <span class="pre">____.&quot;</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">birthday</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">year</span><span class="p">):</span>
+   <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">s birthday is on </span><span class="si">{</span><span class="n">month</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>3b. Call it with multiple names and birthdays, using positional arguments and
+keyword arguments.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">birthday</span><span class="p">(</span><span class="s2">&quot;Homer Simpson&quot;</span><span class="p">,</span> <span class="s2">&quot;May&quot;</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">1956</span><span class="p">)</span>
+<span class="go">Homer Simpsons birthday is on May 12, 1956.</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">birthday</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Homer Simpson&quot;</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="s2">&quot;May&quot;</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="mi">1956</span><span class="p">)</span>
+<span class="go">Homer Simpsons birthday is on May 12, 1956.</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">birthday</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="mi">1984</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="s2">&quot;April&quot;</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Bart Simpson&quot;</span><span class="p">)</span>
+<span class="go">Bart Simpsons birthday is on April 1, 1984.</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">birthday</span><span class="p">(</span><span class="n">month</span><span class="o">=</span><span class="s2">&quot;May&quot;</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="mi">1986</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Lisa Simpson&quot;</span><span class="p">)</span>
+<span class="go">Lisa Simpsons birthday is on May 9, 1986.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="returning-values">
+<h2>Returning values<a class="headerlink" href="#returning-values" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="#term-return"><span class="xref std std-term">return</span></a> statement is used to leave a function.</p>
+<p>By itself <code class="docutils literal notranslate"><span class="pre">return</span></code> works similar to the <code class="docutils literal notranslate"><span class="pre">break</span></code> statement in a for loop. No
+other code in the function will be executed.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_stuff</span><span class="p">():</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;this will be printed&quot;</span><span class="p">)</span>
+  <span class="k">return</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;this will never be printed&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>It’s common to return inside an if statement, for example, to avoid errors.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hr</span><span class="p">(</span><span class="n">width</span><span class="p">):</span>
+  <span class="k">if</span> <span class="n">width</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;width can&#39;t be negative&#39;&quot;</span><span class="p">)</span>
+    <span class="k">return</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="n">width</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>The return statement can optionally send a value back to the caller, so that
+the function call will then evaluate to that value.</p>
+<p>Lets take a look at the difference between printing in the function, and returning.</p>
+<div class="row"><div class="col">
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-number">Listing 23 </span><span class="caption-text">prints a string</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;hello </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-number">Listing 24 </span><span class="caption-text">python shell</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="n">hello</span><span class="p">(</span><span class="s2">&quot;you&quot;</span><span class="p">)</span>
+<span class="go">hello you</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+<span class="go">&lt;class &#39;NoneType&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="go">None</span>
+</pre></div>
+</div>
+</div>
+<p>When the function is called, the string <code class="docutils literal notranslate"><span class="pre">&quot;hello</span> <span class="pre">you&quot;</span></code> is
+printed. Since nothing is returned, <code class="docutils literal notranslate"><span class="pre">text</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</div><div class="col">
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-number">Listing 25 </span><span class="caption-text">returns a string</span><a class="headerlink" href="#id13" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+  <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;hello </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-number">Listing 26 </span><span class="caption-text">python shell</span><a class="headerlink" href="#id14" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="n">hello</span><span class="p">(</span><span class="s2">&quot;you&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+<span class="go">&lt;class &#39;str&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="go">hello you</span>
+</pre></div>
+</div>
+</div>
+<p>Nothing is printed when the function is called and <code class="docutils literal notranslate"><span class="pre">text</span></code> is assigned the
+string <code class="docutils literal notranslate"><span class="pre">&quot;hello</span> <span class="pre">you&quot;</span></code>.</p>
+</div></div>
+<div class="section" id="id2">
+<h3>Exercise<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="exercise admonition" id="random-function-exercise">
+<p class="admonition-title"><span class="caption-number">Exercise 7 </span>(random function)</p>
+<div class="section" id="exercise-content">
+<p>Write a <code class="docutils literal notranslate"><span class="pre">number()</span></code> function to return a random number between 1 and 100.</p>
+</div>
+</div>
+<div class="solution dropdown admonition" id="lessons/functions-solution-7">
+<p class="admonition-title">Solution to <a class="reference external" href="#random-function-exercise"><span>Exercise 7</span></a></p>
+<div class="section" id="solution-content">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">number</span><span class="p">():</span>
+  <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="docstrings">
+<h2>Docstrings<a class="headerlink" href="#docstrings" title="Permalink to this headline">¶</a></h2>
+<p>Docstrings are a special kind of string in Python that are enclosed with three
+single <code class="docutils literal notranslate"><span class="pre">'''</span></code> or double <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code> quotes.  They can be used as a normal string that
+has the added bonus of being able to span multiple lines.</p>
+<p>Their namesake, and the reason we are interested in them today, comes from the
+fact that when a docstring is the very first line of a file, function, or
+class, it serves as documentation.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">formal_greeting</span><span class="p">(</span><span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Returns a string to start a letter&quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="s2">&quot;Dear&quot;</span> <span class="o">+</span> <span class="n">first_name</span> <span class="o">+</span> <span class="n">last_name</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span>
+</pre></div>
+</td></tr></table></div>
+<p>You can see this works like a comment while looking at the code. Niftier still,
+a functions docstring is saved by Python and can be used from the interpreters
+<code class="docutils literal notranslate"><span class="pre">help()</span></code> function.</p>
+<p>Say we have the following <code class="file docutils literal notranslate"><span class="pre">greetings.py</span></code> file:</p>
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-number">Listing 27 </span><span class="caption-text"><a class="reference external" href="http://greetings.py">greetings.py</a></span><a class="headerlink" href="#id15" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Functions for greeting people&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Print hello to name&quot;&quot;&quot;</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">formal_greeting</span><span class="p">(</span><span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Returns a string to start a letter&quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="s2">&quot;Dear&quot;</span> <span class="o">+</span> <span class="n">first_name</span> <span class="o">+</span> <span class="n">last_name</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>We could then import our functions from a Python shell, and call the <code class="docutils literal notranslate"><span class="pre">help()</span></code> on
+our own <code class="docutils literal notranslate"><span class="pre">hello</span></code> function.</p>
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-number">Listing 28 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id16" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">greetings</span> <span class="kn">import</span> <span class="n">hello</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="n">hello</span><span class="p">)</span>
+<span class="go">Help on function hello in module greetings:</span>
+
+<span class="go">hello(name)</span>
+<span class="go">    Print hello to name</span>
+</pre></div>
+</div>
+</div>
+<p>Or we could do the same thing for the whole <code class="docutils literal notranslate"><span class="pre">greetings</span></code> module:</p>
+<div class="literal-block-wrapper docutils container" id="id17">
+<div class="code-block-caption"><span class="caption-number">Listing 29 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id17" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">greetings</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="n">greetings</span><span class="p">)</span>
+<span class="go">Help on module greetings:</span>
+
+<span class="go">NAME</span>
+<span class="go">    greetings - Functions for greeting people</span>
+
+<span class="go">FUNCTIONS</span>
+<span class="go">    formal_greeting(first_name, last_name)</span>
+<span class="go">        Returns a string to start a letter</span>
+
+<span class="go">    hello(name)</span>
+<span class="go">        Print hello to name</span>
+
+<span class="go">FILE</span>
+<span class="go">    .../greetings.py</span>
+</pre></div>
+</div>
+</div>
+<p>Ideally all functions should have a simple doctring describing what the
+function does, any parameters, and any return value. For simple functions a
+one line brief description will do the trick.</p>
+<p>For more complicated functions, you can take advantage of the multiline
+abilities of docstrings to add detailed information. Here’s a long docstring example.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">prettify</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">align</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a formatted message</span>
+
+<span class="sd">    Params</span>
+<span class="sd">    ------</span>
+<span class="sd">    message (str): Message to format</span>
+<span class="sd">    align (str): Alignment of text (left, center, right)</span>
+<span class="sd">    width (int): Width of text</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    message (str): formatted message</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; prettify(&quot;hello&quot;, &quot;center&quot;, 100)</span>
+<span class="sd">    &#39;            hello             &#39;</span>
+<span class="sd">    &gt;&gt;&gt; prettify(&quot;goodbye&quot;, &quot;right&quot;, 100)</span>
+<span class="sd">    &#39;                       goodbye&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">align</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">):</span>
+      <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid align argument: &#39;</span><span class="si">{</span><span class="n">align</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+      <span class="k">return</span>
+
+    <span class="k">if</span> <span class="n">align</span> <span class="o">==</span> <span class="s2">&quot;center&quot;</span><span class="p">:</span>
+      <span class="n">message</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">width</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">align</span> <span class="o">==</span> <span class="s2">&quot;right&quot;</span><span class="p">:</span>
+      <span class="n">message</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="n">width</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">message</span>
+</pre></div>
+</div>
+<div class="section" id="id3">
+<h3>Exercise<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="exercise admonition" id="docstrings-exercise">
+<p class="admonition-title"><span class="caption-number">Exercise 8 </span>(docstrings)</p>
+<div class="section" id="exercise-content">
+<p>Add a simple docstring to your file and all of the functions you’ve written
+today. Import them into a Python shell and use the <code class="docutils literal notranslate"><span class="pre">help()</span></code> function to view them.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="glossary">
+<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="glossary-functions">
+<h3>Functions<a class="headerlink" href="#glossary-functions" title="Permalink to this headline">¶</a></h3>
+<dl class="glossary simple">
+<dt id="term-argument">argument<a class="headerlink" href="#term-argument" title="Permalink to this term">¶</a></dt><dd><p>A <a class="reference internal" href="expressions.html#term-value"><span class="xref std std-term">value</span></a> that is passed as input to a function.</p>
+</dd>
+<dt id="term-call">call<a class="headerlink" href="#term-call" title="Permalink to this term">¶</a></dt><dd><p>code that tells the computer to <a class="reference internal" href="statements.html#term-execute"><span class="xref std std-term">execute</span></a> the code within a previously
+defined function or method by using the function name followed by <code class="docutils literal notranslate"><span class="pre">(</span></code> <code class="docutils literal notranslate"><span class="pre">)</span></code>,
+with any arguments inside the parenthisis.</p>
+</dd>
+<dt id="term-docstring">docstring<a class="headerlink" href="#term-docstring" title="Permalink to this term">¶</a></dt><dd><p>a special kind of string surrounded by triple double-quotes <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code> or triple
+single-quotes <code class="docutils literal notranslate"><span class="pre">'''</span></code> that can span multiple lines. When a docstring appears as
+the first expression in a file, module, class, or function it is stored by
+Python as documentation and can be seen by using the <code class="docutils literal notranslate"><span class="pre">help()</span></code> function in the
+<a class="reference internal" href="../tools/python-shell.html#term-Python-shell"><span class="xref std std-term">Python shell</span></a>.</p>
+</dd>
+<dt id="term-function">function<a class="headerlink" href="#term-function" title="Permalink to this term">¶</a></dt><dd><p>a named block of reusable code. A function may or may not take arguments, and
+may or may not return a value. In Python it is recommended to use the
+<code class="docutils literal notranslate"><span class="pre">lower_case_with_underscores</span></code> for function names.</p>
+</dd>
+<dt id="term-keyword-argument">keyword argument<a class="headerlink" href="#term-keyword-argument" title="Permalink to this term">¶</a></dt><dd><p>when arguments passed to a function are preceeded by the paramater name and
+an equals sign (<code class="docutils literal notranslate"><span class="pre">=</span></code>) so that they are assigned to the specified parameter
+regardless of the order in which they appear</p>
+</dd>
+<dt id="term-parameter">parameter<a class="headerlink" href="#term-parameter" title="Permalink to this term">¶</a></dt><dd><p>The named variables that appear in a function definition to specify the
+arguments it can accept.</p>
+</dd>
+<dt id="term-positional-argument">positional argument<a class="headerlink" href="#term-positional-argument" title="Permalink to this term">¶</a></dt><dd><p>when arguments are passed to a function so that they are assigned based on
+the order in which they appear</p>
+</dd>
+<dt id="term-return">return<a class="headerlink" href="#term-return" title="Permalink to this term">¶</a></dt><dd><p>a statement that can be used in a function to exit the function and
+optionally send a value to the caller</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>Exercises<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="welcome-function">
+<h3><code class="docutils literal notranslate"><span class="pre">welcome()</span></code> function<a class="headerlink" href="#welcome-function" title="Permalink to this headline">¶</a></h3>
+<div class="exercise admonition" id="extra-exercise-a">
+<p class="admonition-title"><span class="caption-number">Exercise 9 </span>(welcome)</p>
+<div class="section" id="exercise-content">
+<p>Write a function named <code class="docutils literal notranslate"><span class="pre">welcome</span></code> that prints <code class="docutils literal notranslate"><span class="pre">&quot;Welcome</span> <span class="pre">to</span> <span class="pre">coding</span> <span class="pre">class!&quot;</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">welcome</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="solution dropdown admonition" id="lessons/functions-solution-10">
+<p class="admonition-title">Solution to <a class="reference external" href="#extra-exercise-a"><span>Exercise 9</span></a></p>
+<div class="section" id="solution-content">
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">welcome</span><span class="p">():</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome to coding class!&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">welcome</span><span class="p">()</span>
+<span class="go">Welcome to coding class!</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="letter-count-function">
+<h3><code class="docutils literal notranslate"><span class="pre">letter_count()</span></code> function<a class="headerlink" href="#letter-count-function" title="Permalink to this headline">¶</a></h3>
+<div class="exercise admonition" id="extra-exercise-b">
+<p class="admonition-title"><span class="caption-number">Exercise 10 </span>(letter_count)</p>
+<div class="section" id="exercise-content">
+<p>Write a function called <code class="docutils literal notranslate"><span class="pre">letter_count</span></code> that takes one argument <code class="docutils literal notranslate"><span class="pre">text</span></code> and
+prints <code class="docutils literal notranslate"><span class="pre">&quot;There</span> <span class="pre">are</span> <span class="pre">__</span> <span class="pre">characters</span> <span class="pre">in</span> <span class="pre">'___'.&quot;</span></code>  Call it multiple times with
+different arguments.</p>
+</div>
+</div>
+<div class="solution dropdown admonition" id="lessons/functions-solution-12">
+<p class="admonition-title">Solution to <a class="reference external" href="#extra-exercise-b"><span>Exercise 10</span></a></p>
+<div class="section" id="solution-content">
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">letter_count</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;There are </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="si">}</span><span class="s2"> characters in &#39;</span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">letter_count</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
+<span class="go">There are 5 characters in &#39;hello&#39;.</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">letter_count</span><span class="p">(</span><span class="s2">&quot;goodbye&quot;</span><span class="p">)</span>
+<span class="go">There are 7 characters in &#39;goodbye&#39;.</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">letter_count</span><span class="p">(</span><span class="s2">&quot;many thanks&quot;</span><span class="p">)</span>
+<span class="go">There are 11 characters in &#39;many thanks&#39;.</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">letter_count</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="go">There are 0 characters in &#39;&#39;.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="is-vowel-function">
+<h3><code class="docutils literal notranslate"><span class="pre">is_vowel()</span></code> function<a class="headerlink" href="#is-vowel-function" title="Permalink to this headline">¶</a></h3>
+<div class="exercise admonition" id="extra-exercise-c">
+<p class="admonition-title"><span class="caption-number">Exercise 11 </span>(is_vowel)</p>
+<div class="section" id="exercise-content">
+<p>a. Write a function named <code class="docutils literal notranslate"><span class="pre">is_vowel</span></code> that returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if a character is a
+vowel and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise. Don’t print anything in the function. Bonus:
+make it case-insensitive.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">is_vowel</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_vowel</span><span class="p">(</span><span class="s2">&quot;E&quot;</span><span class="p">)</span>
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_vowel</span><span class="p">(</span><span class="s2">&quot;c&quot;</span><span class="p">)</span>
+<span class="go">False</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_vowel</span><span class="p">(</span><span class="s2">&quot;something&quot;</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>b. Call the function with a letter assign the result to a variable like
+<code class="docutils literal notranslate"><span class="pre">answer</span></code>.  Print <code class="docutils literal notranslate"><span class="pre">&quot;is</span> <span class="pre">'_____'</span> <span class="pre">a</span> <span class="pre">vowel?:</span> <span class="pre">___&quot;</span></code>. (Note: this should be
+<strong>outside</strong> of the function.) Do this same thing with multiple arguments.</p>
+</div>
+</div>
+<div class="solution dropdown admonition" id="lessons/functions-solution-14">
+<p class="admonition-title">Solution to <a class="reference external" href="#extra-exercise-c"><span>Exercise 11</span></a></p>
+<div class="section" id="solution-content">
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_vowel</span><span class="p">(</span><span class="n">letter</span><span class="p">):</span>
+   <span class="k">return</span> <span class="n">letter</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="p">,</span> <span class="s2">&quot;i&quot;</span><span class="p">,</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="s2">&quot;u&quot;</span><span class="p">]</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ltr</span> <span class="o">=</span> <span class="s2">&quot;a&quot;</span> <span class="p">;</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">is_vowel</span><span class="p">(</span><span class="n">ltr</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;is &#39;</span><span class="si">{</span><span class="n">ltr</span><span class="si">}</span><span class="s2">&#39; a vowel?: </span><span class="si">{</span><span class="n">answer</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="go">is &#39;a&#39; a vowel?: True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ltr</span> <span class="o">=</span> <span class="s2">&quot;z&quot;</span> <span class="p">;</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">is_vowel</span><span class="p">(</span><span class="n">ltr</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;is &#39;</span><span class="si">{</span><span class="n">ltr</span><span class="si">}</span><span class="s2">&#39; a vowel?: </span><span class="si">{</span><span class="n">answer</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="go">is &#39;z&#39; a vowel?: False</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ltr</span> <span class="o">=</span> <span class="s2">&quot;E&quot;</span> <span class="p">;</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">is_vowel</span><span class="p">(</span><span class="n">ltr</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;is &#39;</span><span class="si">{</span><span class="n">ltr</span><span class="si">}</span><span class="s2">&#39; a vowel?: </span><span class="si">{</span><span class="n">answer</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="go">is &#39;E&#39; a vowel?: True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ltr</span> <span class="o">=</span> <span class="s2">&quot;word&quot;</span> <span class="p">;</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">is_vowel</span><span class="p">(</span><span class="n">ltr</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;is &#39;</span><span class="si">{</span><span class="n">ltr</span><span class="si">}</span><span class="s2">&#39; a vowel?: </span><span class="si">{</span><span class="n">answer</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="go">is &#39;word&#39; a vowel?: False</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ltr</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="p">;</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">is_vowel</span><span class="p">(</span><span class="n">ltr</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;is &#39;</span><span class="si">{</span><span class="n">ltr</span><span class="si">}</span><span class="s2">&#39; a vowel?: </span><span class="si">{</span><span class="n">answer</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="go">is &#39;&#39; a vowel?: False</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="tip-function">
+<h3><code class="docutils literal notranslate"><span class="pre">tip()</span></code> function<a class="headerlink" href="#tip-function" title="Permalink to this headline">¶</a></h3>
+<div class="exercise admonition" id="extra-exercise-d">
+<p class="admonition-title"><span class="caption-number">Exercise 12 </span>(tip)</p>
+<div class="section" id="exercise-content">
+<p>a. Write a function <code class="docutils literal notranslate"><span class="pre">tip</span></code> that takes the arguments, <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">percent</span></code>, and
+returns the tip amount. Do not print anything inside the function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tip</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="go">20.0</span>
+</pre></div>
+</div>
+<p>b. Call the function with an argument for <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">percent</span></code> and assign the
+result to a variable like <code class="docutils literal notranslate"><span class="pre">amount</span></code>.  Print the result like: <code class="docutils literal notranslate"><span class="pre">&quot;A</span> <span class="pre">____%</span> <span class="pre">tip</span> <span class="pre">on</span> <span class="pre">a</span> <span class="pre">$_____</span> <span class="pre">bill</span> <span class="pre">is:</span> <span class="pre">$_____&quot;</span></code>. (Note: this should be <strong>outside</strong> of the function.)
+Do this same thing with multiple arguments.</p>
+</div>
+</div>
+<div class="solution dropdown admonition" id="lessons/functions-solution-16">
+<p class="admonition-title">Solution to <a class="reference external" href="#extra-exercise-d"><span>Exercise 12</span></a></p>
+<div class="section" id="solution-content">
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tip</span><span class="p">(</span><span class="n">cost</span><span class="p">,</span> <span class="n">percent</span><span class="p">):</span>
+   <span class="k">return</span> <span class="n">cost</span> <span class="o">*</span> <span class="p">(</span><span class="n">percent</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">20</span> <span class="p">;</span> <span class="n">amount</span> <span class="o">=</span> <span class="n">tip</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;A </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">% tip on a $</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2"> bill is: $</span><span class="si">{</span><span class="n">amount</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="go">A 20% tip on a $100 bill is: $20.0</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span> <span class="p">;</span> <span class="n">amount</span> <span class="o">=</span> <span class="n">tip</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;A </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">% tip on a $</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2"> bill is: $</span><span class="si">{</span><span class="n">amount</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="go">A 15% tip on a $10 bill is: $1.5</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">10</span> <span class="p">;</span> <span class="n">amount</span> <span class="o">=</span> <span class="n">tip</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;A </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">% tip on a $</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2"> bill is: $</span><span class="si">{</span><span class="n">amount</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="go">A 10% tip on a $500 bill is: $50.0</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="total-function">
+<h3><code class="docutils literal notranslate"><span class="pre">total()</span></code> function<a class="headerlink" href="#total-function" title="Permalink to this headline">¶</a></h3>
+<div class="exercise admonition" id="extra-exercise-e">
+<p class="admonition-title"><span class="caption-number">Exercise 13 </span>(total)</p>
+<div class="section" id="exercise-content">
+<p>a. Write a function <code class="docutils literal notranslate"><span class="pre">total</span></code> that takes the arguments, <code class="docutils literal notranslate"><span class="pre">bill</span></code> and <code class="docutils literal notranslate"><span class="pre">tip_percent</span></code>,
+and returns the total including the tip. To calculate the tip call your
+<code class="docutils literal notranslate"><span class="pre">tip()</span></code> function from the <code class="docutils literal notranslate"><span class="pre">total()</span></code> function. Do not print anything inside the
+function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">total</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="go">120.0</span>
+</pre></div>
+</div>
+<p>b. Call the function with an argument for <code class="docutils literal notranslate"><span class="pre">bill</span></code> and <code class="docutils literal notranslate"><span class="pre">tip_percent</span></code> and assign the
+result to a variable like <code class="docutils literal notranslate"><span class="pre">final</span></code>.  Print the result like:
+<code class="docutils literal notranslate"><span class="pre">&quot;The</span> <span class="pre">final</span> <span class="pre">total</span> <span class="pre">on</span> <span class="pre">a</span> <span class="pre">$___</span> <span class="pre">bill</span> <span class="pre">including</span> <span class="pre">a</span> <span class="pre">__%</span> <span class="pre">tip</span> <span class="pre">is:</span> <span class="pre">$_____&quot;</span></code>.
+(Note: this should be <strong>outside</strong> of the function.) Do this same thing with
+multiple arguments.</p>
+</div>
+</div>
+<div class="solution dropdown admonition" id="lessons/functions-solution-18">
+<p class="admonition-title">Solution to <a class="reference external" href="#extra-exercise-e"><span>Exercise 13</span></a></p>
+<div class="section" id="solution-content">
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">total</span><span class="p">(</span><span class="n">bill</span><span class="p">,</span> <span class="n">tip_percent</span><span class="p">):</span>
+   <span class="k">return</span> <span class="n">bill</span> <span class="o">+</span> <span class="n">tip</span><span class="p">(</span><span class="n">bill</span><span class="p">,</span> <span class="n">tip_percent</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="mi">100</span> <span class="p">;</span> <span class="n">t</span> <span class="o">=</span> <span class="mi">20</span> <span class="p">;</span> <span class="n">final</span> <span class="o">=</span> <span class="n">total</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The final total on a $</span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2"> bill including a </span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">% tip is: $</span><span class="si">{</span><span class="n">final</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="go">The final total on a $100 bill including a 20% tip is: $120.0</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="mi">10</span> <span class="p">;</span> <span class="n">t</span> <span class="o">=</span> <span class="mi">15</span> <span class="p">;</span> <span class="n">final</span> <span class="o">=</span> <span class="n">total</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The final total on a $</span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2"> bill including a </span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">% tip is: $</span><span class="si">{</span><span class="n">final</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="go">The final total on a $10 bill including a 15% tip is: $11.5</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="mi">500</span> <span class="p">;</span> <span class="n">t</span> <span class="o">=</span> <span class="mi">10</span> <span class="p">;</span> <span class="n">final</span> <span class="o">=</span> <span class="n">total</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The final total on a $</span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2"> bill including a </span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">% tip is: $</span><span class="si">{</span><span class="n">final</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="go">The final total on a $500 bill including a 10% tip is: $550.0</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "alissa-huskey/python-class",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lessons"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="conditional-statements.html" title="previous page">Conditional Statements</a>
+    <a class='right-next' id="next-link" href="loops.html" title="next page">Loops</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

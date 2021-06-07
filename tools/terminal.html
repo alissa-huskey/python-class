@@ -1,0 +1,734 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terminal &#8212; Python Class</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://alissa-huskey.github.io/python-class/tools/terminal.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Git" href="git.html" />
+    <link rel="prev" title="Data Inspection" href="../practices/data-inspection.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Python Class</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Python Class
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Lessons
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/fundamentals.html">
+   Fundamentals
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../lessons/syntax.html">
+     Syntax
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/expressions.html">
+       Expressions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/statements.html">
+       Statements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/variables.html">
+       Variables
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../lessons/flow-control.html">
+     Flow Control
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/conditional-statements.html">
+       Conditional Statements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/functions.html">
+       Functions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/loops.html">
+       Loops
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/flow.html">
+       Program Flow
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/reading-code.html">
+       Reading Code
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/data-types/index.html">
+     Data Types
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../lessons/files.html">
+     Files
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/file-io.html">
+       File I/O
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/paths.html">
+       Paths
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../lessons/file-system-operations.html">
+       File System Operations
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/in-depth/index.html">
+   In Depth
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/in-depth/imports.html">
+     Imports
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/in-depth/structure.html">
+     Structuring Python Projects
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/misc.html">
+   Misc
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/web-apis.html">
+     Web APIs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/battle.html">
+     PyPet Battle
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lessons/game-book.html">
+   Invent Games Book
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/03_guess_the_number.html">
+     Chapter 3: Guess the Number
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/05_dragon_realm.html">
+     Chapter 5: Dragon Realm
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Practices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../practices/problem-solving.html">
+   Problem Solving
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../practices/testing.html">
+   Testing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../practices/debugging.html">
+   Using a Debugger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../practices/data-inspection.html">
+   Data Inspection
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tools
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Terminal
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="git.html">
+   Git
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="vscode.html">
+   VS Code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python-shell.html">
+   Python Shell
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ipython.html">
+   IPython
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="poetry.html">
+   Poetry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mac.html">
+   Mac Dev Env for Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="replit.html">
+   Repl.it Tips
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/dicts.html">
+   Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/lists.html">
+   Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/template.py">
+   Script Template
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Exercises
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/program-flow.html">
+   Program Flow Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/list-exercises.html">
+   List Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/list-string-exercises.html">
+   List String Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/flashcards.html">
+   Flashcards Project
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/alissa-huskey/python-class"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/alissa-huskey/python-class/edit/master/docs/tools/terminal.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#table-of-contents">
+   Table of Contents
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-1-open-the-shell">
+   Part 1: Open “The Shell”
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-2-anatomy-of-a-command">
+   Part 2: Anatomy of A Command
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-3-subcommands-and-flags">
+   Part 3: Subcommands and Flags
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-4-common-arguments">
+   Part 4: Common Arguments
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-5-try-some-commands">
+   Part 5: Try Some Commands
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#glossary">
+   Glossary
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#glossary-the-command-line">
+     The Command Line
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="terminal">
+<h1>Terminal<a class="headerlink" href="#terminal" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p>A brief tour of the command line on a terminal.</p>
+</div></blockquote>
+<div class="section" id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#introduction">Introduction</a></p></li>
+<li><p><a class="reference external" href="#part-1-open-the-shell">Part 1: Open “The Shell”</a></p></li>
+<li><p><a class="reference external" href="#part-2-anatomy-of-a-command">Part 2: Anatomy of A Command</a></p></li>
+<li><p><a class="reference external" href="#part-3-subcommands-and-flags">Part 3: Subcommands and Flags</a></p></li>
+<li><p><a class="reference external" href="#part-4-common-arguments">Part 4: Common Arguments</a></p></li>
+<li><p><a class="reference external" href="#part-5-try-some-commands">Part 5: Try Some Commands</a></p></li>
+<li><p><a class="reference external" href="#glossary">Glossary</a></p></li>
+</ul>
+</div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>We’ve talked about the <a class="reference internal" href="python-shell.html#term-Python-shell"><span class="xref std std-term">Python shell</span></a> – it is an interface where you can
+type in python code, and it will run it and print out the results.</p>
+<p>When people use the term <a class="reference internal" href="#term-console"><span class="xref std std-term">console</span></a>, <a class="reference internal" href="#term-command-line"><span class="xref std std-term">command line</span></a>,
+<a class="reference internal" href="#term-terminal"><span class="xref std std-term">terminal</span></a> or <a class="reference internal" href="#term-shell"><span class="xref std std-term">shell</span></a>, they mean the
+<a class="term-missing reference internal" href="#" title=""><span class="xref std std-term">Operating System Shell</span></a>. Here the input we type is in a language called
+<a class="term-missing reference internal" href="#" title=""><span class="xref std std-term">bash</span></a> then run by the underlying operating system.</p>
+</div>
+<div class="section" id="part-1-open-the-shell">
+<h2>Part 1: Open “The Shell”<a class="headerlink" href="#part-1-open-the-shell" title="Permalink to this headline">¶</a></h2>
+<p>We’re going to learn a new way to access the console, and that is using a
+<a class="reference external" href="http://Repl.it">Repl.it</a> feature they call “The Shell”.  You can open it by by pressing
+<code class="docutils literal notranslate"><span class="pre">ctrl+shift+S</span></code> or <code class="docutils literal notranslate"><span class="pre">cmd+shift+S</span></code>.</p>
+<p>Go ahead and collapse the left two panes so you only see The Console and The
+Shell panes.</p>
+<p>You should see something like this in the new pane:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~$
+</pre></div>
+</div>
+<p>This is the <a class="term-missing reference internal" href="#" title=""><span class="xref std std-term">bash prompt</span></a>, which is the same thing you get in the Console
+pane when you see <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>.</p>
+</div>
+<div class="section" id="part-2-anatomy-of-a-command">
+<h2>Part 2: Anatomy of A Command<a class="headerlink" href="#part-2-anatomy-of-a-command" title="Permalink to this headline">¶</a></h2>
+<p>The most basic kind of command has the form of:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;program-name&gt;</span> <span class="pre">[&lt;argument&gt;</span> <span class="pre">&lt;argument&gt;...]</span></code></p>
+<p>For example, to start the Python shell we use the command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">python3</span></code> is the name of the program</p></li>
+<li><p>in this case there are no arguments</p></li>
+</ul>
+<p>Or, to run our PyPet script, the command would be:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 pypet.py
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">python3</span></code> is the program name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pypet.py</span></code> is an argument – in this case, the filename for our script</p></li>
+</ul>
+<p>This tells the Python Interpreter (<code class="docutils literal notranslate"><span class="pre">python3</span></code>) to run the code found inside the
+file <code class="docutils literal notranslate"><span class="pre">pypet.py</span></code>.</p>
+<p>This, by the way, is exactly how the Run button works. It reads our <code class="docutils literal notranslate"><span class="pre">.replit</span></code>
+file and takes the value of the <code class="docutils literal notranslate"><span class="pre">run</span></code> variable inside of it, and sends it to
+the bash prompt in the Console pane.</p>
+</div>
+<div class="section" id="part-3-subcommands-and-flags">
+<h2>Part 3: Subcommands and Flags<a class="headerlink" href="#part-3-subcommands-and-flags" title="Permalink to this headline">¶</a></h2>
+<p>A program may take all sorts of arguments or none at all.</p>
+<p>Some programs have their own set of commands, known as <code class="docutils literal notranslate"><span class="pre">subcommands</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">git</span></code> is one such command. For example in the command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git status
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span></code> is the name of the program</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">status</span></code> is a subcommand argument</p></li>
+</ul>
+<p>When an argument starts with a <code class="docutils literal notranslate"><span class="pre">-</span></code> or <code class="docutils literal notranslate"><span class="pre">--</span></code> it is called a <a class="term-missing reference internal" href="#" title=""><span class="xref std std-term">flag</span></a> or an
+<a class="term-missing reference internal" href="#" title=""><span class="xref std std-term">option flag</span></a>. Usually this tells a program or its subcommand to set an
+option so that it behaves in a certian way.</p>
+<p>For example, in the command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git diff --staged
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span></code> is the name of the program</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">diff</span></code> is a subcommand argument</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--staged</span></code> is an option flag argument</p></li>
+</ul>
+<p>Flags take a number of common forms.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span> <span class="pre">-s</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span></code> Short flags start with one dash (<code class="docutils literal notranslate"><span class="pre">-</span></code>) and a single letter</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span> <span class="pre">--oneline</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span></code> Long flags have two dashes (<code class="docutils literal notranslate"><span class="pre">--</span></code>) followed by a word</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span> <span class="pre">--pretty=oneline</span>&#160;&#160;&#160; <span class="pre">#</span></code> Sometimes option flags take a value following the equal sign (<code class="docutils literal notranslate"><span class="pre">=</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-c</span> <span class="pre">'print(&quot;hello&quot;)'</span> <span class="pre">#</span></code> Sometimes option flags take the next argument passed as a value</p></li>
+</ul>
+</div>
+<div class="section" id="part-4-common-arguments">
+<h2>Part 4: Common Arguments<a class="headerlink" href="#part-4-common-arguments" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-h</span></code> | <code class="docutils literal notranslate"><span class="pre">--help</span></code> show usage information for this command</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;program&gt;</span> <span class="pre">help</span> <span class="pre">&lt;subcommand&gt;</span></code> show the usage information for the <subcommand></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-V</span></code> | <code class="docutils literal notranslate"><span class="pre">--version</span></code> show the programs version</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-v</span></code> | <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> print extra detailed information while running a command</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-q</span></code> | <code class="docutils literal notranslate"><span class="pre">--quiet</span></code> print less detailed information or none at all while running a command</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--</span></code> this means that any arguments following it should not be considered options</p></li>
+</ul>
+</div>
+<div class="section" id="part-5-try-some-commands">
+<h2>Part 5: Try Some Commands<a class="headerlink" href="#part-5-try-some-commands" title="Permalink to this headline">¶</a></h2>
+<p>Here are some commands. Pick a few and try them for yourself.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cal</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cal</span> <span class="pre">-h</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cal</span> <span class="pre">-3</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ncal</span> <span class="pre">-e</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">file</span> <span class="pre">pypet.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">whoami</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">uname</span> <span class="pre">-a</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">uptime</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">date</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">hello</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="glossary">
+<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="glossary-the-command-line">
+<h3>The Command Line<a class="headerlink" href="#glossary-the-command-line" title="Permalink to this headline">¶</a></h3>
+<dl class="glossary">
+<dt id="term-console">console<a class="headerlink" href="#term-console" title="Permalink to this term">¶</a></dt><dt id="term-system-console">system console<a class="headerlink" href="#term-system-console" title="Permalink to this term">¶</a></dt><dd><p>Comes from a time when early text-based computer systems with a keyboard and
+monitor interface were used to interact with servers or mainframes.  In
+modern usage people usually mean accessing the operating system’s shell,
+usually with a terminal emulator. In <a class="reference external" href="http://repl.it">repl.it</a>, the right-most pane is referred
+to as the console.</p>
+</dd>
+<dt id="term-shell">shell<a class="headerlink" href="#term-shell" title="Permalink to this term">¶</a></dt><dt id="term-interactive-shell">interactive shell<a class="headerlink" href="#term-interactive-shell" title="Permalink to this term">¶</a></dt><dt id="term-command-line-interpreter">command line interpreter<a class="headerlink" href="#term-command-line-interpreter" title="Permalink to this term">¶</a></dt><dd><p>A text-based interface that runs code or command input. Operating systems
+have shells for system administration and operation such as Bash or Zsh in
+Unix-like systems or Powershell or the DOS Command Prompt in Windows. Some
+languages provide shells that execute code such as the Python Interactive
+Shell or the <abbr title="Interactive Ruby Shell">IRB</abbr>.</p>
+</dd>
+<dt id="term-terminal">terminal<a class="headerlink" href="#term-terminal" title="Permalink to this term">¶</a></dt><dt id="term-terminal-emulator">terminal emulator<a class="headerlink" href="#term-terminal-emulator" title="Permalink to this term">¶</a></dt><dd><p>In modern computing, an application that provides a text-based interface to
+the operating system’s shell. Some examples include konsole and the Gnome
+Terminal in Unix-like systems, Terminal and iTerm2 on MacOs, and PuTTY,
+Cygwin mintty, the Windows Console, and the Windows Terminal for Windows.</p>
+<p>The term “console” and “terminal” are often used interchangaby, both
+historically to refer to a hardware server interface as well as the more
+modern colloquial meaning of accessing the operating system’s shell.</p>
+</dd>
+<dt id="term-command-line">command line<a class="headerlink" href="#term-command-line" title="Permalink to this term">¶</a></dt><dd><p>In casual use, people usually mean accessing the operating system’s shell,
+usually with a terminal emulator. See also, <a class="reference internal" href="#term-console"><span class="xref std std-term">console</span></a>,
+<a class="reference internal" href="#term-terminal"><span class="xref std std-term">terminal</span></a>.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "alissa-huskey/python-class",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tools"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="../practices/data-inspection.html" title="previous page">Data Inspection</a>
+    <a class='right-next' id="next-link" href="git.html" title="next page">Git</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

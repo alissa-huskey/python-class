@@ -1,0 +1,1220 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Structuring Python Projects &#8212; Python Class</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/custom.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://alissa-huskey.github.io/python-class/lessons/in-depth/structure.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Misc" href="../misc.html" />
+    <link rel="prev" title="Imports" href="imports.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Python Class</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Python Class
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Lessons
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../fundamentals.html">
+   Fundamentals
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../syntax.html">
+     Syntax
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../expressions.html">
+       Expressions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../statements.html">
+       Statements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../variables.html">
+       Variables
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../flow-control.html">
+     Flow Control
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../conditional-statements.html">
+       Conditional Statements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../functions.html">
+       Functions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../loops.html">
+       Loops
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../flow.html">
+       Program Flow
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../reading-code.html">
+       Reading Code
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../data-types/index.html">
+     Data Types
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../files.html">
+     Files
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../file-io.html">
+       File I/O
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../paths.html">
+       Paths
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../file-system-operations.html">
+       File System Operations
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   In Depth
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="imports.html">
+     Imports
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Structuring Python Projects
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../misc.html">
+   Misc
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../web-apis.html">
+     Web APIs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../battle.html">
+     PyPet Battle
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../game-book.html">
+   Invent Games Book
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03_guess_the_number.html">
+     Chapter 3: Guess the Number
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05_dragon_realm.html">
+     Chapter 5: Dragon Realm
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Practices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../practices/problem-solving.html">
+   Problem Solving
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../practices/testing.html">
+   Testing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../practices/debugging.html">
+   Using a Debugger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../practices/data-inspection.html">
+   Data Inspection
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tools
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/terminal.html">
+   Terminal
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/git.html">
+   Git
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/vscode.html">
+   VS Code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/python-shell.html">
+   Python Shell
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/ipython.html">
+   IPython
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/poetry.html">
+   Poetry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/mac.html">
+   Mac Dev Env for Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/replit.html">
+   Repl.it Tips
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/dicts.html">
+   Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/lists.html">
+   Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/template.py">
+   Script Template
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Exercises
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../exercises/program-flow.html">
+   Program Flow Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../exercises/list-exercises.html">
+   List Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../exercises/list-string-exercises.html">
+   List String Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../exercises/flashcards.html">
+   Flashcards Project
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/alissa-huskey/python-class"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/alissa-huskey/python-class/edit/master/docs/lessons/in-depth/structure.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modules">
+   Modules
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#packages">
+   Packages
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#subpackages">
+     Subpackages
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#relative-imports">
+     Relative imports
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-init-py-file">
+     The
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       __init__.py
+      </span>
+     </code>
+     file
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-python-search-path">
+   The Python Search Path
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#executable-scripts">
+   Executable scripts
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#boil-it-down">
+     Boil it down
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-script">
+     The script
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#making-the-script-executable">
+     Making the script executable
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#running-the-script">
+     Running the script
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#directory-structure">
+   Directory structure
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#directories">
+     Directories
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#git">
+       .git
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#venv">
+       .venv/
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#poetry-setup">
+         Poetry setup
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vscode">
+       .vscode/
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bin">
+       bin/
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#docs">
+       docs/
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#hangman">
+       hangman/
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tests">
+       tests/
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#files">
+     Files
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#editorconfig">
+       .editorconfig
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#env">
+       .env
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#see-also">
+   See also
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#glossary">
+   Glossary
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#glossary-structure">
+     Structure
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="structuring-python-projects">
+<h1>Structuring Python Projects<a class="headerlink" href="#structuring-python-projects" title="Permalink to this headline">¶</a></h1>
+<p>This lesson will discuss how to organize the code in your Python project and
+how Python then finds your code.</p>
+<div class="section" id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
+<p>A module is a file that contains Python code like that can be <a class="term-missing reference internal" href="#" title=""><span class="xref std std-term">imported</span></a>
+into other Python files. This can be used to split your code into multiple
+files so that your code is more organized.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number">Listing 97 </span><span class="caption-text"><a class="reference external" href="http://formatting.md">formatting.md</a></span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Module of output formatting functions&quot;&quot;&quot;</span>
+
+<span class="n">WIDTH</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="k">def</span> <span class="nf">header</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">WIDTH</span><span class="p">,</span> <span class="n">char</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">):</span>
+    <span class="n">underline</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">title</span><span class="p">)</span> <span class="o">*</span> <span class="n">char</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">title</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">width</span><span class="p">))</span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">underline</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">width</span><span class="p">))</span>
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+
+<span class="k">def</span> <span class="nf">div</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="n">WIDTH</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">width</span> <span class="o">*</span> <span class="s2">&quot;~&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+<span class="k">def</span> <span class="nf">section</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">contents</span><span class="p">):</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">text</span> <span class="o">+=</span> <span class="n">header</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">text</span> <span class="o">+=</span> <span class="n">contents</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+    <span class="n">text</span> <span class="o">+=</span> <span class="n">div</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="k">return</span> <span class="n">text</span>
+</pre></div>
+</div>
+</div>
+<p>This can then be imported into another file.</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number">Listing 98 </span><span class="caption-text"><a class="reference external" href="http://main.py">main.py</a></span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">formatting</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name? &quot;</span><span class="p">)</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Welcome.&quot;</span>
+    <span class="n">contents</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Well hello there </span><span class="si">{</span><span class="n">name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2">.&quot;</span>
+
+    <span class="n">text</span> <span class="o">=</span> <span class="n">formatting</span><span class="o">.</span><span class="n">section</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">contents</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The term “module” is often used to refer to external code installed from the
+<a class="reference external" href="http://pipy.org">pipy.org</a> repository. For example, someone might refer to the <a class="reference external" href="https://pypi.org/project/requests/">“requests module”</a>.
+This is the broad software engineering usage of the word which refers to an
+interchangeable component like a plugin or library.</p>
+<p>In the Python lexicon, these are called <a class="reference internal" href="#term-package"><span class="xref std std-term">packages</span></a>.</p>
+</div>
+</div>
+<div class="section" id="packages">
+<h2>Packages<a class="headerlink" href="#packages" title="Permalink to this headline">¶</a></h2>
+<p>A package is a group of modules in the same directory which also contains a
+file named <code class="file docutils literal notranslate"><span class="pre">__init__.py</span></code>.</p>
+<p>For example, imagine we have a hangman package with two modules. The
+<code class="file docutils literal notranslate"><span class="pre">words.py</span></code> module contains a <code class="docutils literal notranslate"><span class="pre">WORDS</span></code> list, and the <code class="file docutils literal notranslate"><span class="pre">game.py</span></code>
+module contains the functions to play the game.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hangman</span><span class="o">/</span>
+<span class="o">|--</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+<span class="o">|--</span> <span class="n">game</span><span class="o">.</span><span class="n">py</span>
+<span class="o">|--</span> <span class="n">words</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>You could import the whole package like so.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">hangman</span>
+
+<span class="n">hangman</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">hangman</span><span class="o">.</span><span class="n">words</span><span class="o">.</span><span class="n">WORDS</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Or import each module from the package separately.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">hangman</span> <span class="kn">import</span> <span class="n">game</span>
+<span class="kn">from</span> <span class="nn">hangman</span> <span class="kn">import</span> <span class="n">words</span>
+
+<span class="n">game</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">words</span><span class="o">.</span><span class="n">WORDS</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Or import individual variables and functions from the modules.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">hangman.game</span> <span class="kn">import</span> <span class="n">play</span>
+<span class="kn">from</span> <span class="nn">hangman.words</span> <span class="kn">import</span> <span class="n">WORDS</span>
+
+<span class="n">play</span><span class="p">(</span><span class="n">WORDS</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="subpackages">
+<h3>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h3>
+<p>You can further divide your code into subpackages, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hangman</span><span class="o">/</span>
+<span class="o">|--</span> <span class="n">words</span><span class="o">/</span>
+    <span class="o">|--</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+    <span class="o">|--</span> <span class="n">easy</span><span class="o">.</span><span class="n">py</span>
+    <span class="o">|--</span> <span class="n">medium</span><span class="o">.</span><span class="n">py</span>
+    <span class="o">|--</span> <span class="n">hard</span><span class="o">.</span><span class="n">py</span>
+<span class="o">|--</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+<span class="o">|--</span> <span class="n">game</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Variables and functions that are defined in your <code class="file docutils literal notranslate"><span class="pre">__init__.py</span></code> will be
+available as part of your package.</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-number">Listing 99 </span><span class="caption-text"><a class="reference external" href="http://game.py">game.py</a></span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">abort</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="relative-imports">
+<h3>Relative imports<a class="headerlink" href="#relative-imports" title="Permalink to this headline">¶</a></h3>
+<p>When importing from within the same package, you can use the shorthand <code class="docutils literal notranslate"><span class="pre">.</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-number">Listing 100 </span><span class="caption-text"><a class="reference external" href="http://main.py">main.py</a></span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.words.easy</span> <span class="kn">import</span> <span class="n">WORDS</span>
+<span class="kn">from</span> <span class="nn">.game</span> <span class="kn">import</span> <span class="n">play</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">play</span><span class="p">(</span><span class="n">WORDS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>If you’re importing from a subpackage you can reference the parent package by
+using <code class="docutils literal notranslate"><span class="pre">..</span></code>. For example, from one of the <code class="docutils literal notranslate"><span class="pre">words</span></code> modules we could import
+the <code class="docutils literal notranslate"><span class="pre">abort</span></code> function:</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-number">Listing 101 </span><span class="caption-text"><a class="reference external" href="http://easy.py">easy.py</a></span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="n">abort</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="the-init-py-file">
+<h3>The <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file<a class="headerlink" href="#the-init-py-file" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file is executed when the package is imported. This file
+can be, and often is, blank. This can also be used to set up variables or
+general purpose functions for your module.</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-number">Listing 102 </span><span class="caption-text"><strong>init</strong>.py</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;0.0.1&quot;</span>
+
+<span class="k">def</span> <span class="nf">abort</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ERROR: </span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="the-python-search-path">
+<h2>The Python Search Path<a class="headerlink" href="#the-python-search-path" title="Permalink to this headline">¶</a></h2>
+<p>When Python looks for a module or package it checks:</p>
+<ul class="simple">
+<li><p>the built-in modules and packages</p></li>
+<li><p>the working directory</p></li>
+<li><p>the list of paths stored in <code class="docutils literal notranslate"><span class="pre">sys.path</span></code></p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> contains a list of path strings loaded from:</p>
+<ul class="simple">
+<li><p>the environment variable <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code></p></li>
+<li><p>any file ending in <code class="docutils literal notranslate"><span class="pre">.pth</span></code> located in the search path</p></li>
+</ul>
+</div>
+<div class="section" id="executable-scripts">
+<h2>Executable scripts<a class="headerlink" href="#executable-scripts" title="Permalink to this headline">¶</a></h2>
+<p>When your code is in a package, it can be a little confusing how to go about
+running it in a reliable way. In this part of the lesson we’ll walk through
+how to create an executable script that imports your own package.</p>
+<p>Here’s what our file structure will look like when we’re done.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hangman</span><span class="o">/</span>
+<span class="o">|--</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+<span class="o">|--</span> <span class="n">words</span><span class="o">.</span><span class="n">py</span>
+<span class="o">|--</span> <span class="n">game</span><span class="o">.</span><span class="n">py</span>
+<span class="o">|--</span> <span class="n">main</span><span class="o">.</span><span class="n">py</span>
+<span class="nb">bin</span><span class="o">/</span>
+<span class="o">|</span> <span class="o">--</span> <span class="n">play</span>
+</pre></div>
+</div>
+<div class="section" id="boil-it-down">
+<h3>Boil it down<a class="headerlink" href="#boil-it-down" title="Permalink to this headline">¶</a></h3>
+<p>You first want to provide a minimal interface, a single function if possible,
+that will be used by your script. So first we’ll create a <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file that
+contains a single a <code class="docutils literal notranslate"><span class="pre">main()</span></code> function.</p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-number">Listing 103 </span><span class="caption-text"><a class="reference external" href="http://main.py">main.py</a></span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.words</span> <span class="kn">import</span> <span class="n">WORDS</span>
+<span class="kn">from</span> <span class="nn">.game</span> <span class="kn">import</span> <span class="n">play</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+      <span class="n">play</span><span class="p">(</span><span class="n">WORDS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="the-script">
+<h3>The script<a class="headerlink" href="#the-script" title="Permalink to this headline">¶</a></h3>
+<p>Traditionally the <code class="docutils literal notranslate"><span class="pre">bin</span></code> directory (or <code class="docutils literal notranslate"><span class="pre">Scripts</span></code> on Windows) is used to store
+executable scripts. We’ll create the <code class="docutils literal notranslate"><span class="pre">play</span></code> script there.</p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-number">Listing 104 </span><span class="caption-text">bin/play</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="sd">&quot;&quot;&quot;Executable to play the hangman game&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">hangman.main</span> <span class="kn">import</span> <span class="n">main</span>
+<span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>This will only work when run from the project directory. However, we can
+modify the <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> to include the project directory.</p>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-number">Listing 105 </span><span class="caption-text">bin/play</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="sd">&quot;&quot;&quot;Executable to play the hangman game&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">rootdir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">rootdir</span><span class="p">))</span>
+
+<span class="kn">from</span> <span class="nn">hangman.main</span> <span class="kn">import</span> <span class="n">main</span>
+<span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="making-the-script-executable">
+<h3>Making the script executable<a class="headerlink" href="#making-the-script-executable" title="Permalink to this headline">¶</a></h3>
+<p>Make it executable by running the <code class="docutils literal notranslate"><span class="pre">chmod</span></code> command.</p>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-number">Listing 106 </span><span class="caption-text">command line</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>chmod +x bin/play
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="running-the-script">
+<h3>Running the script<a class="headerlink" href="#running-the-script" title="Permalink to this headline">¶</a></h3>
+<p>To run the script:</p>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-number">Listing 107 </span><span class="caption-text">command line</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>bin/play
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
+<div class="exercise admonition" id="lessons/in-depth/structure-exercise-0">
+<p class="admonition-title"><span class="caption-number">Exercise 31 </span>(Hello World package)</p>
+<div class="section" id="exercise-content">
+<ol class="simple">
+<li><p>Create a new directory called <code class="docutils literal notranslate"><span class="pre">helloworld</span></code></p></li>
+<li><p>Create a subdirectory called <code class="docutils literal notranslate"><span class="pre">helloworld</span></code></p></li>
+<li><p>Create an empty <code class="file docutils literal notranslate"><span class="pre">__init__.py</span></code> file in that directory.</p></li>
+<li><p>Create a <code class="docutils literal notranslate"><span class="pre">hello.py</span></code> script in that directory</p></li>
+<li><p>Create a <code class="docutils literal notranslate"><span class="pre">main</span></code> function that prints <code class="docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">World&quot;</span></code></p></li>
+<li><p>Create an executable <code class="docutils literal notranslate"><span class="pre">hello</span></code> script in a directory named <code class="docutils literal notranslate"><span class="pre">bin</span></code> or <code class="docutils literal notranslate"><span class="pre">scripts</span></code></p>
+<ul class="simple">
+<li><p>Add the project root directory to the <code class="docutils literal notranslate"><span class="pre">sys.path</span></code>.</p></li>
+<li><p>Import and call your your <code class="docutils literal notranslate"><span class="pre">main</span></code> function</p></li>
+</ul>
+</li>
+<li><p>Make the file executable</p></li>
+<li><p>Run it</p></li>
+<li><p>Bonus: Add the <code class="docutils literal notranslate"><span class="pre">helloworld/bin</span></code> directory to your <code class="docutils literal notranslate"><span class="pre">PATH</span></code>, then run <code class="docutils literal notranslate"><span class="pre">hello</span></code> from a different directory.</p></li>
+</ol>
+</div>
+</div>
+<div class="exercise admonition" id="lessons/in-depth/structure-exercise-1">
+<p class="admonition-title"><span class="caption-number">Exercise 32 </span>(Goodbye)</p>
+<div class="section" id="exercise-content">
+<ol class="simple">
+<li><p>Add a <code class="docutils literal notranslate"><span class="pre">goodbye</span></code> module that contains a function <code class="docutils literal notranslate"><span class="pre">goodbye()</span></code> that prints <code class="docutils literal notranslate"><span class="pre">&quot;Goodbye</span> <span class="pre">cruel</span> <span class="pre">world!&quot;</span></code></p></li>
+<li><p>Import the <code class="docutils literal notranslate"><span class="pre">goodbye()</span></code> function in the <code class="docutils literal notranslate"><span class="pre">hello</span></code> module</p></li>
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">main()</span></code> function, after printing <code class="docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">World&quot;</span></code>, call <code class="docutils literal notranslate"><span class="pre">goodbye()</span></code>.</p></li>
+</ol>
+</div>
+</div>
+<div class="exercise admonition" id="lessons/in-depth/structure-exercise-2">
+<p class="admonition-title"><span class="caption-number">Exercise 33 </span>(Refactor)</p>
+<div class="section" id="exercise-content">
+<p>Refactor your code so that you end up with:</p>
+<ul class="simple">
+<li><p>a <code class="docutils literal notranslate"><span class="pre">goodbye</span></code> module that contains a <code class="docutils literal notranslate"><span class="pre">goodbye()</span></code> function</p></li>
+<li><p>a <code class="docutils literal notranslate"><span class="pre">hello</span></code> module that contains a <code class="docutils literal notranslate"><span class="pre">hello()</span></code> function that just prints <code class="docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">World!&quot;</span></code></p></li>
+<li><p>a new <code class="docutils literal notranslate"><span class="pre">main</span></code> module that</p>
+<ul>
+<li><p>imports the <code class="docutils literal notranslate"><span class="pre">hello()</span></code> and <code class="docutils literal notranslate"><span class="pre">goodbye()</span></code> functions from their respective modules</p></li>
+<li><p>contains a <code class="docutils literal notranslate"><span class="pre">main()</span></code> function that calls <code class="docutils literal notranslate"><span class="pre">hello()</span></code> and <code class="docutils literal notranslate"><span class="pre">goodbye()</span></code></p></li>
+</ul>
+</li>
+<li><p>Modify your <code class="docutils literal notranslate"><span class="pre">hello</span></code> script to import from the <code class="docutils literal notranslate"><span class="pre">main</span></code> module instead of <code class="docutils literal notranslate"><span class="pre">hello</span></code></p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="directory-structure">
+<h2>Directory structure<a class="headerlink" href="#directory-structure" title="Permalink to this headline">¶</a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.python-guide.org/writing/structure/">Hitchhiker’s Guide &gt; Structuring your Project</a></p></li>
+<li><p><a class="reference external" href="https://packaging-guide.openastronomy.org/en/latest/index.html">OpenAstronomy Python Packaging Guide</a></p></li>
+</ul>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>|-- .git/
+    |-- config
+    |-- ...
+|-- .venv/
+    |-- bin/
+        |-- ipython
+        |-- pip
+        |-- pytest
+        |-- python
+        |-- ...
+    |-- ...
+|-- .vscode/
+    |-- settings.json
+    |-- ...
+|-- bin/
+    | -- play
+|-- docs/
+|-- hangman/
+    |-- __init__.py
+    |-- words.py
+    |-- game.py
+    |-- main.py
+|-- tests/
+    |-- __init__.py
+    |-- test_words.py
+    |-- test_game.py
+    |-- test_main.py
+|-- .editorconfig
+|-- .env
+|-- .gitignore
+|-- README.md
+|-- LICENSE
+</pre></div>
+</div>
+<div class="section" id="directories">
+<h3>Directories<a class="headerlink" href="#directories" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="git">
+<h4>.git<a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h4>
+<p>This is the folder that is created when you use the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code> command and
+contains all of your repository data. You will rarely deal with the files in
+this directory directly, but the one file that is useful to know about is the
+<code class="file docutils literal notranslate"><span class="pre">config</span></code> file.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[core]</span>
+    <span class="na">repositoryformatversion</span> <span class="o">=</span> <span class="s">0</span>
+    <span class="na">filemode</span> <span class="o">=</span> <span class="s">true</span>
+    <span class="na">bare</span> <span class="o">=</span> <span class="s">false</span>
+    <span class="na">logallrefupdates</span> <span class="o">=</span> <span class="s">true</span>
+    <span class="na">ignorecase</span> <span class="o">=</span> <span class="s">true</span>
+    <span class="na">precomposeunicode</span> <span class="o">=</span> <span class="s">true</span>
+<span class="k">[remote &quot;origin&quot;]</span>
+    <span class="na">url</span> <span class="o">=</span> <span class="s">https://github.com/alissa-huskey/python-class.git</span>
+    <span class="na">fetch</span> <span class="o">=</span> <span class="s">+refs/heads/*:refs/remotes/origin/*</span>
+<span class="k">[branch &quot;master&quot;]</span>
+    <span class="na">remote</span> <span class="o">=</span> <span class="s">origin</span>
+    <span class="na">merge</span> <span class="o">=</span> <span class="s">refs/heads/master</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="venv">
+<h4>.venv/<a class="headerlink" href="#venv" title="Permalink to this headline">¶</a></h4>
+<p>Your virtual environment is stored in this directory if you set up
+<strong class="command">poetry</strong> to store your virtual environment in your project
+directories, and it is the standard directory for some other virtual
+environment tools.</p>
+<p>The executable scripts <code class="docutils literal notranslate"><span class="pre">python</span></code>, <code class="docutils literal notranslate"><span class="pre">pip</span></code>, and any installed modules are located
+in the <code class="docutils literal notranslate"><span class="pre">.venv/bin</span></code> directory.</p>
+<p>This directory also contains a <code class="file docutils literal notranslate"><span class="pre">.venv/bin/activate</span></code>. This file which is
+used to start your virtual environment shell with the command
+<code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">.venv/bin/activate</span></code>, upon which it defines a <code class="docutils literal notranslate"><span class="pre">deactivate</span></code> command.</p>
+<p>VS Code will automatically activate source the <code class="file docutils literal notranslate"><span class="pre">.venv/bin/activate</span></code>
+file in some cases, though not consistently enough to avoid the need to
+launch VS Code from a <code class="docutils literal notranslate"><span class="pre">poetry</span></code> shell.</p>
+<p>VS Code may also prompt you upon finding a <code class="docutils literal notranslate"><span class="pre">.venv</span></code> directory to select it for
+the workspace. This will automatically configure some of the settings in your
+per-project <code class="file docutils literal notranslate"><span class="pre">settings.json</span></code> file.</p>
+<div class="section" id="poetry-setup">
+<h5>Poetry setup<a class="headerlink" href="#poetry-setup" title="Permalink to this headline">¶</a></h5>
+<p>To set up <code class="docutils literal notranslate"><span class="pre">poetry</span></code> to store your virtual env in your project directories.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>poetry config virtualenvs.in-project <span class="nb">true</span>
+</pre></div>
+</div>
+<p>You will need to move the existing virtual env directory.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mv <span class="k">$(</span>poetry env info -p<span class="k">)</span> ./.venv
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="vscode">
+<h4>.vscode/<a class="headerlink" href="#vscode" title="Permalink to this headline">¶</a></h4>
+<p>This is the directory where the vscode settings for this project are stored.
+Here is an example that that sets the Python interpreter for this project to
+your projects <code class="docutils literal notranslate"><span class="pre">.venv</span></code> directory.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;python.venvPath&quot;</span><span class="p">:</span> <span class="s2">&quot;${workspaceFolder}/.venv&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;python.pythonPath&quot;</span><span class="p">:</span> <span class="s2">&quot;${workspaceFolder}/.venv/bin/python&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;python.testing.pytestArgs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;tests&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;python.testing.unittestEnabled&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;python.testing.nosetestsEnabled&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;python.testing.pytestEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="bin">
+<h4>bin/<a class="headerlink" href="#bin" title="Permalink to this headline">¶</a></h4>
+<p>As previously mentioned, this is generally where executable scripts are
+stored.</p>
+</div>
+<div class="section" id="docs">
+<h4>docs/<a class="headerlink" href="#docs" title="Permalink to this headline">¶</a></h4>
+<p>This is generally where any project documentation is stored.</p>
+</div>
+<div class="section" id="hangman">
+<h4>hangman/<a class="headerlink" href="#hangman" title="Permalink to this headline">¶</a></h4>
+<p>This is the directory for the <code class="docutils literal notranslate"><span class="pre">hangman</span></code> package. Package names should have
+short lowercase named without underscores.</p>
+<p>The module file should have short all lowercase names with underscores as
+needed.</p>
+</div>
+<div class="section" id="tests">
+<h4>tests/<a class="headerlink" href="#tests" title="Permalink to this headline">¶</a></h4>
+<p>Tests are stored in here. Test files should be named
+<code class="samp docutils literal notranslate"><span class="pre">test_</span><em><span class="pre">module_or_topic</span></em><span class="pre">.py</span></code>.</p>
+</div>
+</div>
+<div class="section" id="files">
+<h3>Files<a class="headerlink" href="#files" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="editorconfig">
+<h4>.editorconfig<a class="headerlink" href="#editorconfig" title="Permalink to this headline">¶</a></h4>
+<p>Used in conjunction with the <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig">EditorConfig VS Code extension</a>,
+this file configures code style settings for the project to ensure
+consistency amongst different tools, environments and developers. Here is a
+comprehensive example for Python files.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1"># EditorConfig: https://EditorConfig.org</span>
+<span class="c1"># Plugins for:</span>
+<span class="c1">#  - Vim: https://github.com/editorconfig/editorconfig</span>
+<span class="c1">#  - VS Code: https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig</span>
+
+<span class="c1"># top-most EditorConfig file</span>
+<span class="na">root</span> <span class="o">=</span> <span class="s">true</span>
+
+<span class="c1"># Unix-style newlines with a newline ending every file</span>
+<span class="k">[*]</span>
+<span class="na">end_of_line</span> <span class="o">=</span> <span class="s">lf</span>
+<span class="na">insert_final_newline</span> <span class="o">=</span> <span class="s">true</span>
+
+<span class="k">[*.py]</span>
+<span class="na">indent_style</span> <span class="o">=</span> <span class="s">space</span>
+<span class="na">indent_size</span> <span class="o">=</span> <span class="s">4</span>
+<span class="na">tab_width</span> <span class="o">=</span> <span class="s">4</span>
+<span class="na">charset</span> <span class="o">=</span> <span class="s">utf-8</span>
+<span class="na">insert_final_newline</span> <span class="o">=</span> <span class="s">true</span>
+<span class="na">trim_trailing_whitespace</span> <span class="o">=</span> <span class="s">true</span>
+<span class="na">max_line_length</span> <span class="o">=</span> <span class="s">88</span>
+<span class="na">quote_type</span> <span class="o">=</span> <span class="s">double</span>
+<span class="na">spaces_around_operators</span> <span class="o">=</span> <span class="s">true</span>
+</pre></div>
+</div>
+<p>You can keep a master <code class="file docutils literal notranslate"><span class="pre">.editorconfig</span></code> file in your home directory, then
+in your per-project file either inherit selective settings by removing the
+<code class="docutils literal notranslate"><span class="pre">root</span> <span class="pre">=</span> <span class="pre">true</span></code> line, or keep it to override all settings.</p>
+</div>
+<div class="section" id="env">
+<h4>.env<a class="headerlink" href="#env" title="Permalink to this headline">¶</a></h4>
+<p>This is a shell script file that allows you to configure environment
+variables or run other commands for this project.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://README.md">README.md</a>
+* <a class="reference external" href="https://www.makeareadme.com/">Make a README</a></p></li>
+<li><p>.gitignore
+* <a class="reference external" href="https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore">github Python template</a>
+* <a class="reference external" href="https://github.com/github/gitignore">github/gitignore</a>
+* <a class="reference external" href="https://www.toptal.com/developers/gitignore/api/python">github.io Python template</a>
+* <a class="reference external" href="http://gitignore.io/">gitignore.io</a>
+* <a class="reference external" href="https://git-scm.com/docs/gitignore">man page</a>
+* <a class="reference external" href="https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository#_ignoring">The Git Book &gt; Ignoring Files</a></p></li>
+<li><p>.vscode-exclude</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/tutorial/modules.html">Python.org Tutorial &gt; Modules &amp; Packages</a></p></li>
+<li><p><a class="reference external" href="https://pep8.org/#package-and-module-names">PEP 8 – the Style Guide for Python Code &gt; Packages and Modules</a></p></li>
+<li><p><a class="reference external" href="https://code.visualstudio.com/docs/python/environments">Using Python environments in VS Code</a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="glossary">
+<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="glossary-structure">
+<h3>Structure<a class="headerlink" href="#glossary-structure" title="Permalink to this headline">¶</a></h3>
+<dl class="glossary simple">
+<dt id="term-module">module<a class="headerlink" href="#term-module" title="Permalink to this term">¶</a></dt><dd><p>a file containing of reusable code, like function definitions and global
+variables, that can be imported into other programs</p>
+</dd>
+<dt id="term-package">package<a class="headerlink" href="#term-package" title="Permalink to this term">¶</a></dt><dd><p>a directory containing a <code class="file docutils literal notranslate"><span class="pre">__init__.py</span></code> file and other Python modules</p>
+</dd>
+<dt id="term-namespace">namespace<a class="headerlink" href="#term-namespace" title="Permalink to this term">¶</a></dt><dd><p>The group that a variable or function is part of. <code class="docutils literal notranslate"><span class="pre">print()</span></code> is part of the
+<a class="term-missing reference internal" href="#" title=""><span class="xref std std-term">global namespace</span></a> whereas <code class="docutils literal notranslate"><span class="pre">randint()</span></code> is part of the <code class="docutils literal notranslate"><span class="pre">random</span></code> module, and
+therefore part of the <code class="docutils literal notranslate"><span class="pre">random</span></code> namespace.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "alissa-huskey/python-class",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lessons/in-depth"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="imports.html" title="previous page">Imports</a>
+    <a class='right-next' id="next-link" href="../misc.html" title="next page">Misc</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

@@ -1,0 +1,1057 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conditional Statements &#8212; Python Class</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://alissa-huskey.github.io/python-class/lessons/conditional-statements.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Functions" href="functions.html" />
+    <link rel="prev" title="Flow Control" href="flow-control.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Python Class</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Python Class
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Lessons
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="fundamentals.html">
+   Fundamentals
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="syntax.html">
+     Syntax
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="expressions.html">
+       Expressions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="statements.html">
+       Statements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="variables.html">
+       Variables
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="flow-control.html">
+     Flow Control
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       Conditional Statements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="functions.html">
+       Functions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="loops.html">
+       Loops
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="flow.html">
+       Program Flow
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="reading-code.html">
+       Reading Code
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data-types/index.html">
+     Data Types
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="files.html">
+     Files
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="file-io.html">
+       File I/O
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="paths.html">
+       Paths
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="file-system-operations.html">
+       File System Operations
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="in-depth/index.html">
+   In Depth
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="in-depth/imports.html">
+     Imports
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="in-depth/structure.html">
+     Structuring Python Projects
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="misc.html">
+   Misc
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="web-apis.html">
+     Web APIs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="battle.html">
+     PyPet Battle
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="game-book.html">
+   Invent Games Book
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_guess_the_number.html">
+     Chapter 3: Guess the Number
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_dragon_realm.html">
+     Chapter 5: Dragon Realm
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Practices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../practices/problem-solving.html">
+   Problem Solving
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../practices/testing.html">
+   Testing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../practices/debugging.html">
+   Using a Debugger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../practices/data-inspection.html">
+   Data Inspection
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tools
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/terminal.html">
+   Terminal
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/git.html">
+   Git
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/vscode.html">
+   VS Code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/python-shell.html">
+   Python Shell
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/ipython.html">
+   IPython
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/poetry.html">
+   Poetry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/mac.html">
+   Mac Dev Env for Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/replit.html">
+   Repl.it Tips
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/dicts.html">
+   Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/lists.html">
+   Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/template.py">
+   Script Template
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Exercises
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/program-flow.html">
+   Program Flow Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/list-exercises.html">
+   List Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/list-string-exercises.html">
+   List String Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/flashcards.html">
+   Flashcards Project
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/alissa-huskey/python-class"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/alissa-huskey/python-class/edit/master/docs/lessons/conditional-statements.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/alissa-huskey/python-class/master?urlpath=lab/tree/docs/lessons/conditional-statements.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#if-statements">
+   If Statements
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercises-and-questions">
+     Exercises and questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conditions">
+   Conditions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comparison-operators">
+     Comparison Operators
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Exercises and questions
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#logical-operators">
+     Logical Operators
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Exercises and questions
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#truthy-and-falsy">
+     Truthy and Falsy
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       Exercises and questions
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#glossary">
+   Glossary
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#glossary-conditional-statements">
+     Conditional Statements
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="conditional-statements">
+<h1>Conditional Statements<a class="headerlink" href="#conditional-statements" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="if-statements">
+<h2>If Statements<a class="headerlink" href="#if-statements" title="Permalink to this headline">¶</a></h2>
+<img alt="fork" class="align-left" src="../_images/kings-quest-fork.png" />
+<p>An if-statement is a way to change what happens depending on the circumstances.</p>
+<div class="clear"></div>
+<p><a class="reference internal" href="../if%20statement.html" title=""><span class="xref std std-term">If-statements</span></a> are compound statements, made up of the one or more
+conditions, followed by the group of statements that belong to it.</p>
+<p>An if-statement can have three types of clauses:</p>
+<ul class="simple">
+<li><p>an <code class="docutils literal notranslate"><span class="pre">if</span></code> clause is always present, followed by a <a class="reference internal" href="#term-condition"><span class="xref std std-term">condition</span></a></p></li>
+<li><p>an optional <code class="docutils literal notranslate"><span class="pre">elif</span></code> clause may appear multiple times and is also followed by a <a class="reference internal" href="#term-condition"><span class="xref std std-term">condition</span></a></p></li>
+<li><p>and an optional <code class="docutils literal notranslate"><span class="pre">else</span></code> clause, which is like a default, and has no condition.</p></li>
+</ul>
+<p>Let’s take a look at some examples.</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-number">Listing 11 </span><span class="caption-text">one <code class="docutils literal notranslate"><span class="pre">if</span></code> clause</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="s2">&quot;failed&quot;</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sorry, you don&#39;t have access.&quot;</span><span class="p">)</span>
+  <span class="n">exit</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-number">Listing 12 </span><span class="caption-text">an <code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">else</span></code> clause</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">winner</span> <span class="o">==</span> <span class="n">player</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Congratulations, you win!&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Better luck next time.&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-number">Listing 13 </span><span class="caption-text">an <code class="docutils literal notranslate"><span class="pre">if</span></code> clause, multipe <code class="docutils literal notranslate"><span class="pre">elif</span></code> clauses, and an <code class="docutils literal notranslate"><span class="pre">else</span></code> clause</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;left&quot;</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You decide to take the path to the left.&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;right&quot;</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You decide to take the path to the right.&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;middle&quot;</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You decide to take the middle path.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Invalid choice.&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="exercises-and-questions">
+<h3>Exercises and questions<a class="headerlink" href="#exercises-and-questions" title="Permalink to this headline">¶</a></h3>
+<p>1. What is the value of <code class="docutils literal notranslate"><span class="pre">options</span></code> if <code class="docutils literal notranslate"><span class="pre">level</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;moderator&quot;</span></code>.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">options</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;view&quot;</span><span class="p">,</span> <span class="s2">&quot;list&quot;</span><span class="p">,</span> <span class="s2">&quot;exit&quot;</span><span class="p">]</span>
+
+<span class="k">if</span> <span class="n">level</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span><span class="p">:</span>
+  <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;remove&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">level</span> <span class="o">==</span> <span class="s2">&quot;moderator&quot;</span><span class="p">:</span>
+  <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;flag&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">level</span> <span class="o">==</span> <span class="s2">&quot;owner&quot;</span><span class="p">:</span>
+  <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;edit&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>2. Fix the following.</p>
+<div class="cell tag_raises-exception tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">choice</span> <span class="o">&gt;</span> <span class="n">highest</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sorry, your pick choice is too high.&quot;</span><span class="p">)</span>
+<span class="k">else</span> <span class="n">choice</span> <span class="o">&lt;</span> <span class="n">lowest</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sorry, your pick choice is too low.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-1-2c666842a327&gt;&quot;</span><span class="gt">, line </span><span class="mi">3</span>
+    <span class="k">else</span> <span class="n">choice</span> <span class="o">&lt;</span> <span class="n">lowest</span><span class="p">:</span>
+              <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="conditions">
+<h2>Conditions<a class="headerlink" href="#conditions" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="../expression.html" title=""><span class="xref std std-term">expressions</span></a> following the <code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">elif</span></code>
+<a class="reference internal" href="../reference/glossary.html#term-keyword"><span class="xref std std-term">keyword</span></a> in an if-statement are called conditions. This is what tells
+Python whether to execute the <a class="reference internal" href="statements.html#term-suite"><span class="xref std std-term">suite</span></a> of statements in this clause.</p>
+<div class="section" id="comparison-operators">
+<h3>Comparison Operators<a class="headerlink" href="#comparison-operators" title="Permalink to this headline">¶</a></h3>
+<p>Conditional statements often use <a class="reference internal" href="../comparison%20operator.html" title=""><span class="xref std std-term">Comparison operators</span></a> which compare two
+values and evaluate to either <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>Some examples of expressions using comparison operators:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">5.5</span> <span class="pre">&lt;</span> <span class="pre">3</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;fox&quot;</span> <span class="pre">in</span> <span class="pre">&quot;The</span> <span class="pre">quick</span> <span class="pre">brown</span> <span class="pre">fox</span> <span class="pre">jumps</span> <span class="pre">over</span> <span class="pre">the</span> <span class="pre">lazy</span> <span class="pre">dog&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">5*3</span> <span class="pre">==</span> <span class="pre">30</span></code></p></li>
+</ul>
+<table class="colwidths-auto table" id="id7">
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">Comparison operators</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>operator</p></th>
+<th class="head"><p>meaning</p></th>
+<th class="head"><p>examples</p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">==</span></code></p></td>
+<td><p>equivalent values</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">==</span> <span class="pre">&quot;a&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">5.0</span> <span class="pre">==</span> <span class="pre">5</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">!=</span></code></p></td>
+<td><p>not equivalent values</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">!=</span> <span class="pre">b</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code></p></td>
+<td><p>less than</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;a&quot;</span> <span class="pre">&lt;</span> <span class="pre">&quot;c&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">balance</span> <span class="pre">&lt;</span> <span class="pre">price</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code></p></td>
+<td><p>less than or equal to</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&lt;=</span> <span class="pre">b</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
+<td><p>greater than</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;z&quot;</span> <span class="pre">&gt;</span> <span class="pre">&quot;d&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">price</span> <span class="pre">&gt;</span> <span class="pre">balance</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></p></td>
+<td><p>greater than or equal to</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&gt;=</span> <span class="pre">b</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">in</span></code></p></td>
+<td><p>is member of</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;h&quot;</span> <span class="pre">in</span> <span class="pre">&quot;hello&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">in</span> <span class="pre">[1,</span> <span class="pre">3,</span> <span class="pre">5,</span> <span class="pre">7,</span> <span class="pre">9]</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">in</span></code></p></td>
+<td><p>is not a member of</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;a&quot;</span> <span class="pre">not</span> <span class="pre">in</span> <span class="pre">&quot;hello</span>&#160; <span class="pre">&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">not</span> <span class="pre">in</span> <span class="pre">[1,</span> <span class="pre">3,</span> <span class="pre">5,</span> <span class="pre">7,</span> <span class="pre">9]</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id1">
+<h4>Exercises and questions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>Open up a <a class="reference internal" href="../tools/python-shell.html#term-Python-shell"><span class="xref std std-term">Python shell</span></a> and use comparison operators to answer each of the following.</p>
+<ol class="simple">
+<li><p>Is <code class="docutils literal notranslate"><span class="pre">F</span></code> (capital F) greater than <code class="docutils literal notranslate"><span class="pre">z</span></code> (lower case z)?</p></li>
+<li><p>Is <code class="docutils literal notranslate"><span class="pre">0.0</span></code> equal to <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+<li><p>Is <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4]</span></code> greater than <code class="docutils literal notranslate"><span class="pre">[5,</span> <span class="pre">6,</span> <span class="pre">7]</span></code>?</p></li>
+<li><p>Is the letter <code class="docutils literal notranslate"><span class="pre">&quot;z&quot;</span></code> in the string <code class="docutils literal notranslate"><span class="pre">&quot;zebra&quot;</span></code>?</p></li>
+<li><p>Is the number <code class="docutils literal notranslate"><span class="pre">5</span></code> in the list <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">4]</span></code>?</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="logical-operators">
+<h3>Logical Operators<a class="headerlink" href="#logical-operators" title="Permalink to this headline">¶</a></h3>
+<p>When you have more than one expression in a condition, you need a
+<a class="reference internal" href="#term-logical-operator"><span class="xref std std-term">logical operator</span></a> which evaluates to either True or False depending on
+the boolean value of both the left and right hand values.</p>
+<p>Some examples of expressions using logical operators:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">&lt;</span> <span class="pre">3</span> <span class="pre">or</span> <span class="pre">5</span> <span class="pre">&gt;</span> <span class="pre">2</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;h&quot;</span> <span class="pre">in</span> <span class="pre">&quot;hello&quot;</span> <span class="pre">and</span> <span class="pre">&quot;H&quot;</span> <span class="pre">in</span> <span class="pre">&quot;hello&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">1</span> <span class="pre">==</span> <span class="pre">2</span></code></p></li>
+</ul>
+<table class="colwidths-auto table" id="id8">
+<caption><span class="caption-number">Table 2 </span><span class="caption-text">Logical operators</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>operator</p></th>
+<th class="head"><p>meaning</p></th>
+<th class="head"><p>example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">and</span></code></p></td>
+<td><p>both conditions are true</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">&gt;</span> <span class="pre">lowest</span> <span class="pre">and</span> <span class="pre">choice</span> <span class="pre">&lt;</span> <span class="pre">highest</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">or</span></code></p></td>
+<td><p>either condition is true</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">&lt;</span> <span class="pre">lowest</span> <span class="pre">or</span> <span class="pre">choice</span> <span class="pre">&gt;</span> <span class="pre">highest</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">not</span></code></p></td>
+<td><p>the following is not true</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">something</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>The <code class="docutils literal notranslate"><span class="pre">not</span></code> operator is special in that it does not include a <code class="docutils literal notranslate"><span class="pre">left-hand</span> <span class="pre">value</span></code>.
+You can think of it like the opposite of the value that follows.</p>
+<div class="section" id="id2">
+<h4>Exercises and questions<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<div class="tip admonition">
+<p class="admonition-title">Tip: Check if a number is divisible by another</p>
+<p>To test if a number is divisible by another number use the modulo operator <code class="docutils literal notranslate"><span class="pre">%</span></code>
+which will give you the division remainder.</p>
+<p>For example, <code class="docutils literal notranslate"><span class="pre">5/2</span></code> is <code class="docutils literal notranslate"><span class="pre">2.5</span></code>, or <code class="docutils literal notranslate"><span class="pre">2</span></code> with a remainder of <code class="docutils literal notranslate"><span class="pre">1</span></code>. <br />
+So <code class="docutils literal notranslate"><span class="pre">5%2</span></code> is <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+<p>And so to check if a number is divisible by another, just check if the
+remainder is zero.</p>
+<p><code class="docutils literal notranslate"><span class="pre">num</span> <span class="pre">%</span> <span class="pre">2</span> <span class="pre">==</span> <span class="pre">0</span></code></p>
+</div>
+<p>For each of the following get a random number using <code class="docutils literal notranslate"><span class="pre">random.randint()</span></code>.</p>
+<ol class="simple">
+<li><p>Get a random number between <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">100</span></code> then check to see if it is greater
+than <code class="docutils literal notranslate"><span class="pre">50</span></code> or if it’s an even number.</p></li>
+<li><p>Get a random number between <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">100</span></code> then check to see if it is an even
+number and divisible by ten.</p></li>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">input()</span></code> function to ask for a number and save it to a variable
+called <code class="docutils literal notranslate"><span class="pre">num</span></code>. Check <code class="docutils literal notranslate"><span class="pre">num.isnumeric()</span></code> and print an error message if it is not.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="truthy-and-falsy">
+<h3>Truthy and Falsy<a class="headerlink" href="#truthy-and-falsy" title="Permalink to this headline">¶</a></h3>
+<p>Python evaluates conditional expressions in a <a class="term-missing reference internal" href="#" title=""><span class="xref std std-term">boolean context</span></a> which
+determines if the resulting value is <a class="reference internal" href="#term-truthy"><span class="xref std std-term">truthy</span></a> or <a class="reference internal" href="#term-falsy"><span class="xref std std-term">falsy</span></a>.</p>
+<p>A truthy value is one that Python considers to be the equivalent of <code class="docutils literal notranslate"><span class="pre">True</span></code>,
+while a falsy value is one that Python considers to be the equivalent of
+<code class="docutils literal notranslate"><span class="pre">False</span></code>. It determies this by first converting it to a <code class="docutils literal notranslate"><span class="pre">boolean</span></code> value, which
+can be done using the <code class="docutils literal notranslate"><span class="pre">bool()</span></code> function.</p>
+<p>Some examples of falsy values are</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> zero</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> an empty string</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[]</span></code> an empty list</p></li>
+</ul>
+<p>Some examples of truthy values are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">5</span></code> (a non-zero number)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;hello&quot;</span></code> (a non-blank string)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[35,</span> <span class="pre">32,</span> <span class="pre">89]</span></code> (a non-empty list)</p></li>
+</ul>
+<p>Here are details for each data type.</p>
+<table class="colwidths-auto table" id="id9">
+<caption><span class="caption-number">Table 3 </span><span class="caption-text">truthy examples and falsy values for each data type</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Falsy</p></th>
+<th class="head"><p>Truthy</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>string</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;a&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>integer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.5</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dict</span></code></p></td>
+<td><p>dictionary</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{&quot;a&quot;:</span> <span class="pre">1}</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">list</span></code></p></td>
+<td><p>list</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[1]</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tuple</span></code></p></td>
+<td><p>tuple</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(1)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p>boolean</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p>none</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p>Since conditions are evaluated in a boolean context (meaning the result of
+the expression is converted to a <code class="docutils literal notranslate"><span class="pre">bool</span></code>) you can use a value as condition for
+truthiness, or add the <code class="docutils literal notranslate"><span class="pre">not</span></code> operator for falsiness.</p>
+<p>In this example we check the truthiness of an integer which we know will be
+either <code class="docutils literal notranslate"><span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-number">Listing 14 </span><span class="caption-text">the truthiness of an int</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">is_winner</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">is_winner</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Contgratulations, you win!&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>This example checks to make sure that a user response is not blank.</p>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-number">Listing 15 </span><span class="caption-text">the falsyness of a string</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name? &quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">response</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Didn&#39;t get that. Try again.&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>This example function expects a list of items. It checks to make sure the list
+is not empty first.</p>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-number">Listing 16 </span><span class="caption-text">the falsyness of a list</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">buy_items</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">items</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Oops, the list of items is empty.&quot;</span><span class="p">)</span>
+    <span class="k">return</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You are buying&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">),</span> <span class="s2">&quot;items.&quot;</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+    <span class="n">buy</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="id3">
+<h4>Exercises and questions<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<p>Open up a <a class="reference internal" href="../tools/python-shell.html#term-Python-shell"><span class="xref std std-term">Python shell</span></a> and use the <code class="docutils literal notranslate"><span class="pre">bool()</span></code> function to find out if
+each of the following is truthy or falsy.</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-1</span></code> negative one</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;</span> <span class="pre">&quot;</span></code> a space</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{}</span></code> an empty dictionary</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code> a list containing the value <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="glossary">
+<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="glossary-conditional-statements">
+<h3>Conditional Statements<a class="headerlink" href="#glossary-conditional-statements" title="Permalink to this headline">¶</a></h3>
+<dl class="glossary simple">
+<dt id="term-comparison-operator">comparison operator<a class="headerlink" href="#term-comparison-operator" title="Permalink to this term">¶</a></dt><dd><p>An operator that compares the left-hand value to the right-hand value then
+evaluates to either True or False.</p>
+</dd>
+<dt id="term-condition">condition<a class="headerlink" href="#term-condition" title="Permalink to this term">¶</a></dt><dt id="term-conditional">conditional<a class="headerlink" href="#term-conditional" title="Permalink to this term">¶</a></dt><dd><p>A valid piece of code that, when evaluated, results in
+<a class="reference internal" href="../reference/glossary.html#term-boolean"><span class="xref std std-term">boolean</span></a> value.</p>
+</dd>
+<dt id="term-falsy">falsy<a class="headerlink" href="#term-falsy" title="Permalink to this term">¶</a></dt><dd><p>A value that is False when evaluated in a <code class="docutils literal notranslate"><span class="pre">boolean</span></code> context, or when converted
+to a boolean using the <code class="docutils literal notranslate"><span class="pre">bool()</span></code> function.</p>
+</dd>
+<dt id="term-if-statement">if statement<a class="headerlink" href="#term-if-statement" title="Permalink to this term">¶</a></dt><dd><p>a compound statement that changes what code is executed depending on its conditions</p>
+</dd>
+<dt id="term-logical-operator">logical operator<a class="headerlink" href="#term-logical-operator" title="Permalink to this term">¶</a></dt><dd><p>An operator that considers both left-hand value and right-hand value then
+evaluates to either True or False.</p>
+</dd>
+<dt id="term-truthy">truthy<a class="headerlink" href="#term-truthy" title="Permalink to this term">¶</a></dt><dd><p>A value that is True when evaluated in a <code class="docutils literal notranslate"><span class="pre">boolean</span></code> context, or when converted
+to a boolean using the <code class="docutils literal notranslate"><span class="pre">bool()</span></code> function.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<div class="exercise admonition" id="lessons/conditional-statements-exercise-0">
+<p class="admonition-title"><span class="caption-number">Exercise 1 </span>(Flip a coin)</p>
+<div class="section" id="exercise-content">
+<ol class="simple">
+<li><p>Pick a random number between <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">1</span></code> and assign it to a variable <code class="docutils literal notranslate"><span class="pre">coin</span></code>.</p></li>
+<li><p>Print “You tossed”, and the value of <code class="docutils literal notranslate"><span class="pre">coin</span></code>.</p></li>
+<li><p>If the value of <code class="docutils literal notranslate"><span class="pre">coin</span></code> is truthy, print “You win the coin toss!”</p></li>
+</ol>
+</div>
+</div>
+<div class="exercise admonition" id="lessons/conditional-statements-exercise-1">
+<p class="admonition-title"><span class="caption-number">Exercise 2 </span>(Computer guessing game)</p>
+<div class="section" id="exercise-content">
+<ol class="simple">
+<li><p>Pick a number between <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">100</span></code> and assign it to the variable <code class="docutils literal notranslate"><span class="pre">pick</span></code>. (Note: not random.)</p></li>
+<li><p>Get a random number between between <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">100</span></code> and assign it to the variable <code class="docutils literal notranslate"><span class="pre">guess</span></code>.</p></li>
+<li><p>Print <code class="docutils literal notranslate"><span class="pre">&quot;The</span> <span class="pre">computer</span> <span class="pre">guessed</span></code>” and the value of <code class="docutils literal notranslate"><span class="pre">guess</span></code>.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">guess</span></code> is the same as pick print <code class="docutils literal notranslate"><span class="pre">&quot;The</span> <span class="pre">computer</span> <span class="pre">got</span> <span class="pre">it</span> <span class="pre">right!&quot;</span></code></p></li>
+<li><p>If guess is within <code class="docutils literal notranslate"><span class="pre">30</span></code> of pick print <code class="docutils literal notranslate"><span class="pre">&quot;The</span> <span class="pre">computer</span> <span class="pre">was</span> <span class="pre">close.&quot;</span></code>  (Hint: You’ll need the <code class="docutils literal notranslate"><span class="pre">and</span></code> operator.)</p></li>
+<li><p>Otherwise print <code class="docutils literal notranslate"><span class="pre">&quot;The</span> <span class="pre">computer</span> <span class="pre">got</span> <span class="pre">it</span> <span class="pre">wrong.&quot;</span></code></p></li>
+</ol>
+</div>
+</div>
+<div class="exercise admonition" id="lessons/conditional-statements-exercise-2">
+<p class="admonition-title"><span class="caption-number">Exercise 3 </span>(Heads or Tails)</p>
+<div class="section" id="exercise-content">
+<p>In this exercise use the <code class="docutils literal notranslate"><span class="pre">and</span></code> operator and determine the truthiness of a value.</p>
+<ol class="simple">
+<li><p>Ask the user <code class="docutils literal notranslate"><span class="pre">&quot;heads</span> <span class="pre">or</span> <span class="pre">tails?&quot;</span></code></p></li>
+<li><p>If the answer is blank, tell them they have to enter something.</p></li>
+<li><p>If the answer is not <code class="docutils literal notranslate"><span class="pre">&quot;heads&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;tails&quot;</span></code>, tell them they need to pick
+<code class="docutils literal notranslate"><span class="pre">&quot;heads&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;tails&quot;</span></code>.  (Bonus: Make this case-insensitive.)</p></li>
+<li><p>Randomly decide if they won the coin toss.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "alissa-huskey/python-class",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lessons"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="flow-control.html" title="previous page">Flow Control</a>
+    <a class='right-next' id="next-link" href="functions.html" title="next page">Functions</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
