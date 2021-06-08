@@ -268,7 +268,7 @@ Do each of the following in a Python shell.
 
 ```
 
-`````{solution} classes-exercise
+`````{solution} type-checking-exercise
 :class: dropdown
 
 ```{code-block} python
@@ -327,7 +327,13 @@ To demonstrate this, lets compare an `int`, a `float` and a `str`.
 >>> a_string = "1"
 ```
 
-### Methods and attributes
+### Members
+
+An object can have {term}`members <member>`, which is something that can belong
+to the object and is accessed with a `.` after a value followed by the member
+name. There are two types of members: methods and attributes.
+
+#### Methods
 
 A method is a just like a function, but one that is attached to an object.
 
@@ -336,7 +342,7 @@ value that it belongs to with a `.` between the object and the method.
 
 For example:
 
-* `str` objects have a method `.isnumeric()` which returns `True`
+* `str` objects have a method `.isnumeric()` which returns `True` if
   all its characters numbers and `False` otherwise.
 * `float` objects have a method `.is_integer()` which returns True if it is a
   whole number and `False` otherwise.
@@ -368,6 +374,8 @@ AttributeError                            Traceback (most recent call last)
 AttributeError: 'int' object has no attribute 'isnumeric'
 ```
 
+#### Attributes
+
 {term}`Attributes <attribute>`, sometimes called properties, are just like variables, but they
 are attached to an object.
 
@@ -382,10 +390,11 @@ For example, both `int` and `float` objects have a `.real` property.
 1
 ```
 
-You can use the `dir()` function to see a list of all of a values attributes
-and methods. (The ones that start and end with `__` are special internal
-methods that are used by Python under the hood, so you can disregard those for
-now.)
+### Available members
+
+You can use the `dir()` function to see a list of all of a values members. (The
+ones that start and end with `__` are special internal methods that are used by
+Python under the hood, so you can disregard those for now.)
 
 ```{code-block} python
 :caption: Python shell
@@ -394,7 +403,7 @@ now.)
  '__add__',
  '__and__',
  ...
-  'as_integer_ratio',
+ 'as_integer_ratio',
  'bit_length',
  'conjugate',
  'denominator',
@@ -403,6 +412,18 @@ now.)
  'numerator',
  'real',
  'to_bytes']
+```
+
+You can then use the `callable()` function to find out if a member is method
+(if returns `True`) or a attribute (if it returns `False`).
+
+```{code-block} python
+:caption: Python shell
+>>> callable(a_int.to_bytes)
+True
+
+>>> callable(a_int.imag)
+False
 ```
 
 In a Python shell you can also use the `help()` function on a type to get
@@ -430,20 +451,21 @@ class int(object)
 ```
 
 In VS Code, you can hit {kbd}`⌘I` or {kbd}`⌃Space` after a value to get a list
-of available methods and attributes. Then you can use the {kbd}`UP` and
-{kbd}`DOWN` arrows to navigate between the options and hit {kbd}`ENTER` to fill
-in the selected name.
+of available members. Then you can use the {kbd}`UP` and {kbd}`DOWN` arrows to
+navigate between the options and hit {kbd}`ENTER` to fill in the selected name.
 
 ![](assets/vscode-attrs.png)
 
 And in `ipython` you can hit {kbd}`TAB` after a value to get a list of available
-methods and attributes.  Then you can use the {kbd}`UP` and {kbd}`DOWN` arrows
+members.  Then you can use the {kbd}`UP` and {kbd}`DOWN` arrows
 or {kbd}`SHIFT+TAB` and {kbd}`TAB` to navigate between the options and hit
 {kbd}`ENTER` to fill in the selected name.
 
 ![](assets/ipython-attrs.png)
 
-You can use the function `hasattr()` to check if a value has an attribute or method.
+You can use the function `hasattr()` to check if a value has an attribute or
+method. The first argument is the value you want to check, the second argument
+is the name of the member, a `str`.
 
 ```{code-block} python
 :caption: Python shell
@@ -471,6 +493,51 @@ False
    to remove specified key and return the corresponding value.
 5. In a Python shell use the `hasattr()` function on a `list` value to find out
    if it has a method or attribute named `clear`.
+6. In a Python shell use the `callable()` function on a `dict` value to find out
+   if `values` is a method or a property.
+```
+
+### Operators
+
+Depending on the type of an object it may have different operators available to
+it, those operators may behave in different ways, and there may or may not be
+other types that it can play nicely with given a particular operator.
+
+Lets take a look at how the `+` operator works for different types.
+
+In the case of both `int` and `float` objects, the `+` operator adds the two
+numbers together. However, in the case of a `str` object, strings are
+concatenated.
+
+```{code-block} python
+
+>>> 1 + 1
+2
+
+>>> 1.0 + 1
+2.0
+
+>>> "1" + "1"
+'11'
+
+```
+
+`int` and `float` objects can be used together with the `+` operator. However,
+if we try to use the `+` with a `str` object and either an `int` or a `float`,
+we'll get an error.
+
+```{code-block} python
+:caption: Python shell
+>>> a_int + a_float
+2.0
+
+>>> a_int + a_string
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-133-4eab260b045c> in <module>
+----> 1 a_int + a_string
+
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
 ```
 
 
@@ -495,6 +562,9 @@ object
   ...
 
 class
+  ...
+
+member
   ...
 
 boolean
