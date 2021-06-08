@@ -306,3 +306,228 @@ False
 
 `````
 
+What a difference a type makes
+------------------------------
+
+Knowing the data type of a value will tell what it can do and where it can be
+used.
+
+The type controls:
+
+* what methods are available
+* what attributes are available
+* what operators it has access to and how they behave
+* which functions it can be used with
+
+To demonstrate this, lets compare an `int`, a `float` and a `str`.
+
+```{code-block} python
+>>> a_int = 1
+>>> a_float = 1.0
+>>> a_string = "1"
+```
+
+### Methods and attributes
+
+A method is a just like a function, but one that is attached to an object.
+
+Calling a method is just like calling a function, except that it goes after the
+value that it belongs to with a `.` between the object and the method.
+
+For example:
+
+* `str` objects have a method `.isnumeric()` which returns `True`
+  all its characters numbers and `False` otherwise.
+* `float` objects have a method `.is_integer()` which returns True if it is a
+  whole number and `False` otherwise.
+* `int` objects have a method `.bit_length()` which returns the number of bits
+  needed to store the number.
+
+```{code-block} python
+:caption: Python shell
+>>> a_string.isnumeric()
+True
+
+>>> a_float.is_integer()
+True
+
+>>> a_int.bit_length()
+1
+```
+
+If we try to call a method on the wrong type, we'll get an error.
+
+```{code-block} python
+:caption: Python shell
+>>> a_int.isnumeric()
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-117-789c44c0b36c> in <module>
+----> 1 a_int.isnumeric()
+
+AttributeError: 'int' object has no attribute 'isnumeric'
+```
+
+{term}`Attributes <attribute>`, sometimes called properties, are just like variables, but they
+are attached to an object.
+
+For example, both `int` and `float` objects have a `.real` property.
+
+```{code-block} python
+:caption: Python shell
+>>> a_float.real
+1.0
+
+>>> a_int.real
+1
+```
+
+You can use the `dir()` function to see a list of all of a values attributes
+and methods. (The ones that start and end with `__` are special internal
+methods that are used by Python under the hood, so you can disregard those for
+now.)
+
+```{code-block} python
+:caption: Python shell
+>>> dir(a_int)
+['__abs__',
+ '__add__',
+ '__and__',
+ ...
+  'as_integer_ratio',
+ 'bit_length',
+ 'conjugate',
+ 'denominator',
+ 'from_bytes',
+ 'imag',
+ 'numerator',
+ 'real',
+ 'to_bytes']
+```
+
+In a Python shell you can also use the `help()` function on a type to get
+detailed help on that type. You can also usually pass a value to `help()` to
+get the help page for that type.
+
+```{code-block} python
+:caption: Python shell
+>>> help(int)
+Help on int object:
+
+class int(object)
+ |  int([x]) -> integer
+ |  int(x, base=10) -> integer
+ ...
+
+>>> help(1)
+Help on int object:
+
+class int(object)
+ |  int([x]) -> integer
+ |  int(x, base=10) -> integer
+ ...
+
+```
+
+In VS Code, you can hit {kbd}`⌘I` or {kbd}`⌃Space` after a value to get a list
+of available methods and attributes. Then you can use the {kbd}`UP` and
+{kbd}`DOWN` arrows to navigate between the options and hit {kbd}`ENTER` to fill
+in the selected name.
+
+![](assets/vscode-attrs.png)
+
+And in `ipython` you can hit {kbd}`TAB` after a value to get a list of available
+methods and attributes.  Then you can use the {kbd}`UP` and {kbd}`DOWN` arrows
+or {kbd}`SHIFT+TAB` and {kbd}`TAB` to navigate between the options and hit
+{kbd}`ENTER` to fill in the selected name.
+
+![](assets/ipython-attrs.png)
+
+You can use the function `hasattr()` to check if a value has an attribute or method.
+
+```{code-block} python
+:caption: Python shell
+>>> hasattr(a_float, "is_integer")
+True
+
+>>> hasattr(a_float, "real")
+True
+
+>>> hasattr(a_str, "real")
+False
+```
+
+#### Exercise
+
+```{exercise} methods and attributes
+:label: methods-and-attributes-exercise
+1. In VS Code, use the {kbd}`⌘I` or {kbd}`⌃Space` shortcut keys after an `int`
+   value to find the method that will return an integer ratio.
+2. If you use `ipython`, use the {kbd}`TAB` key after a `float` value to find the
+   method that will return a hexadecimal representation of the number.
+3. In a Python shell use the `dir()` function on a `str` value to find the method
+   to right justify the string.
+4. In a Python shell use the `help()` function on a `dict` value to find the method
+   to remove specified key and return the corresponding value.
+5. In a Python shell use the `hasattr()` function on a `list` value to find out
+   if it has a method or attribute named `clear`.
+```
+
+
+Glossary
+--------
+
+```{glossary} data-types
+attribute
+property
+  ...
+
+type
+data type
+  The classification of a value which tells Python what operations can be
+  performed on it. Some examples include {term}`str`,
+  {term}`int`, {term}`list`, and {term}`dict`.
+
+typecasting
+  Converting from one type to another.
+
+object
+  ...
+
+class
+  ...
+
+boolean
+bool
+  True or False values.
+
+dictionary
+dict
+  A collection of key-value pairs.
+
+floating-point number
+float
+  Fractions or numbers with decimal points.
+
+integer
+int
+  Whole numbers values.
+
+list
+  A collection of values. In Python lists are mutable and they are defined by
+  surrounding the comma-separated values with square-bracket (`[]`).
+
+string
+str
+  Text values. They are surrounded by single or double quotes. In Python, there
+  is no difference between using single or double quotes, except which
+  characters you have to escape.
+
+none
+null
+  A special value that indicates nothingness which is different from the value
+  zero or an empty string. In Python it is referred to as None without quotes.
+  In other languages: null, nil.
+```
+
+
