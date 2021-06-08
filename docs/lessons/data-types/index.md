@@ -390,7 +390,7 @@ For example, both `int` and `float` objects have a `.real` property.
 1
 ```
 
-### Available members
+#### Available members
 
 You can use the `dir()` function to see a list of all of a values members. (The
 ones that start and end with `__` are special internal methods that are used by
@@ -510,7 +510,7 @@ numbers together. However, in the case of a `str` object, strings are
 concatenated.
 
 ```{code-block} python
-
+:caption: Python shell
 >>> 1 + 1
 2
 
@@ -540,6 +540,46 @@ TypeError                                 Traceback (most recent call last)
 TypeError: unsupported operand type(s) for +: 'int' and 'str'
 ```
 
+The `/` operator isn't available for `str` object, so you'll get an error if you try.
+
+```{code-block} python
+:caption: Python shell
+----> 1 "a, b, c" / 3
+
+TypeError: unsupported operand type(s) for /: 'str' and 'str'
+```
+
+### Functions
+
+Functions and methods often expect certian types of arguments, and if you pass
+an argument of the wrong type you'll get an arror.
+
+For example, the `len()` function will accept `list` and `str` arguments, but
+not `int` or `float`.
+
+```{code-block} python
+:caption: Python shell
+>>> len("abc")
+3
+
+>>> len([1, 2, 3])
+3
+
+>>> len(55)
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-38-51e029ded84c> in <module>
+----> 1 len(55)
+
+>>> len(3.5)
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-35-5c30567bf151> in <module>
+----> 1 len(3.5)
+
+TypeError: object of type 'float' has no len()
+
+```
 
 Glossary
 --------
@@ -566,38 +606,6 @@ class
 
 member
   ...
-
-boolean
-bool
-  True or False values.
-
-dictionary
-dict
-  A collection of key-value pairs.
-
-floating-point number
-float
-  Fractions or numbers with decimal points.
-
-integer
-int
-  Whole numbers values.
-
-list
-  A collection of values. In Python lists are mutable and they are defined by
-  surrounding the comma-separated values with square-bracket (`[]`).
-
-string
-str
-  Text values. They are surrounded by single or double quotes. In Python, there
-  is no difference between using single or double quotes, except which
-  characters you have to escape.
-
-none
-null
-  A special value that indicates nothingness which is different from the value
-  zero or an empty string. In Python it is referred to as None without quotes.
-  In other languages: null, nil.
 ```
 
 
