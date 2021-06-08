@@ -509,13 +509,11 @@
        Attributes
       </a>
      </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#available-members">
-     Available members
-    </a>
-    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#available-members">
+       Available members
+      </a>
+     </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id2">
        Exercise
@@ -526,6 +524,11 @@
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#operators">
      Operators
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#functions">
+     Functions
     </a>
    </li>
   </ul>
@@ -952,9 +955,8 @@ are attached to an object.</p>
 </div>
 </div>
 </div>
-</div>
 <div class="section" id="available-members">
-<h3>Available members<a class="headerlink" href="#available-members" title="Permalink to this headline">¶</a></h3>
+<h4>Available members<a class="headerlink" href="#available-members" title="Permalink to this headline">¶</a></h4>
 <p>You can use the <code class="docutils literal notranslate"><span class="pre">dir()</span></code> function to see a list of all of a values members. (The
 ones that start and end with <code class="docutils literal notranslate"><span class="pre">__</span></code> are special internal methods that are used by
 Python under the hood, so you can disregard those for now.)</p>
@@ -1037,6 +1039,7 @@ is the name of the member, a <code class="docutils literal notranslate"><span cl
 </pre></div>
 </div>
 </div>
+</div>
 <div class="section" id="id2">
 <h4>Exercise<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
 <div class="exercise admonition" id="methods-and-attributes-exercise">
@@ -1069,6 +1072,8 @@ other types that it can play nicely with given a particular operator.</p>
 <p>In the case of both <code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">float</span></code> objects, the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator adds the two
 numbers together. However, in the case of a <code class="docutils literal notranslate"><span class="pre">str</span></code> object, strings are
 concatenated.</p>
+<div class="literal-block-wrapper docutils container" id="id20">
+<div class="code-block-caption"><span class="caption-number">Listing 72 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id20" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="go">2</span>
 
@@ -1079,11 +1084,12 @@ concatenated.</p>
 <span class="go">&#39;11&#39;</span>
 </pre></div>
 </div>
+</div>
 <p><code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">float</span></code> objects can be used together with the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator. However,
 if we try to use the <code class="docutils literal notranslate"><span class="pre">+</span></code> with a <code class="docutils literal notranslate"><span class="pre">str</span></code> object and either an <code class="docutils literal notranslate"><span class="pre">int</span></code> or a <code class="docutils literal notranslate"><span class="pre">float</span></code>,
 we’ll get an error.</p>
-<div class="literal-block-wrapper docutils container" id="id20">
-<div class="code-block-caption"><span class="caption-number">Listing 72 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id20" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id21">
+<div class="code-block-caption"><span class="caption-number">Listing 73 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id21" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a_int</span> <span class="o">+</span> <span class="n">a_float</span>
 <span class="go">2.0</span>
 
@@ -1094,6 +1100,46 @@ we’ll get an error.</p>
 <span class="go">----&gt; 1 a_int + a_string</span>
 
 <span class="go">TypeError: unsupported operand type(s) for +: &#39;int&#39; and &#39;str&#39;</span>
+</pre></div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">/</span></code> operator isn’t available for <code class="docutils literal notranslate"><span class="pre">str</span></code> object, so you’ll get an error if you try.</p>
+<div class="literal-block-wrapper docutils container" id="id22">
+<div class="code-block-caption"><span class="caption-number">Listing 74 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id22" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">----&gt;</span> <span class="mi">1</span> <span class="s2">&quot;a, b, c&quot;</span> <span class="o">/</span> <span class="mi">3</span>
+
+<span class="ne">TypeError</span><span class="p">:</span> <span class="n">unsupported</span> <span class="n">operand</span> <span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="o">/</span><span class="p">:</span> <span class="s1">&#39;str&#39;</span> <span class="ow">and</span> <span class="s1">&#39;str&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<p>Functions and methods often expect certian types of arguments, and if you pass
+an argument of the wrong type you’ll get an arror.</p>
+<p>For example, the <code class="docutils literal notranslate"><span class="pre">len()</span></code> function will accept <code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">str</span></code> arguments, but
+not <code class="docutils literal notranslate"><span class="pre">int</span></code> or <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id23">
+<div class="code-block-caption"><span class="caption-number">Listing 75 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id23" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">)</span>
+<span class="go">3</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="go">3</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="mi">55</span><span class="p">)</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">TypeError                                 Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-38-51e029ded84c&gt; in &lt;module&gt;</span>
+<span class="go">----&gt; 1 len(55)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="mf">3.5</span><span class="p">)</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">TypeError                                 Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-35-5c30567bf151&gt; in &lt;module&gt;</span>
+<span class="go">----&gt; 1 len(3.5)</span>
+
+<span class="go">TypeError: object of type &#39;float&#39; has no len()</span>
 </pre></div>
 </div>
 </div>
@@ -1117,25 +1163,6 @@ performed on it. Some examples include <a class="reference internal" href="../..
 <dt id="term-class">class<a class="headerlink" href="#term-class" title="Permalink to this term">¶</a></dt><dd><p>…</p>
 </dd>
 <dt id="term-member">member<a class="headerlink" href="#term-member" title="Permalink to this term">¶</a></dt><dd><p>…</p>
-</dd>
-<dt id="term-boolean">boolean<a class="headerlink" href="#term-boolean" title="Permalink to this term">¶</a></dt><dt id="term-bool">bool<a class="headerlink" href="#term-bool" title="Permalink to this term">¶</a></dt><dd><p>True or False values.</p>
-</dd>
-<dt id="term-dictionary">dictionary<a class="headerlink" href="#term-dictionary" title="Permalink to this term">¶</a></dt><dt id="term-dict">dict<a class="headerlink" href="#term-dict" title="Permalink to this term">¶</a></dt><dd><p>A collection of key-value pairs.</p>
-</dd>
-<dt id="term-floating-point-number">floating-point number<a class="headerlink" href="#term-floating-point-number" title="Permalink to this term">¶</a></dt><dt id="term-float">float<a class="headerlink" href="#term-float" title="Permalink to this term">¶</a></dt><dd><p>Fractions or numbers with decimal points.</p>
-</dd>
-<dt id="term-integer">integer<a class="headerlink" href="#term-integer" title="Permalink to this term">¶</a></dt><dt id="term-int">int<a class="headerlink" href="#term-int" title="Permalink to this term">¶</a></dt><dd><p>Whole numbers values.</p>
-</dd>
-<dt id="term-list">list<a class="headerlink" href="#term-list" title="Permalink to this term">¶</a></dt><dd><p>A collection of values. In Python lists are mutable and they are defined by
-surrounding the comma-separated values with square-bracket (<code class="docutils literal notranslate"><span class="pre">[]</span></code>).</p>
-</dd>
-<dt id="term-string">string<a class="headerlink" href="#term-string" title="Permalink to this term">¶</a></dt><dt id="term-str">str<a class="headerlink" href="#term-str" title="Permalink to this term">¶</a></dt><dd><p>Text values. They are surrounded by single or double quotes. In Python, there
-is no difference between using single or double quotes, except which
-characters you have to escape.</p>
-</dd>
-<dt id="term-none">none<a class="headerlink" href="#term-none" title="Permalink to this term">¶</a></dt><dt id="term-null">null<a class="headerlink" href="#term-null" title="Permalink to this term">¶</a></dt><dd><p>A special value that indicates nothingness which is different from the value
-zero or an empty string. In Python it is referred to as None without quotes.
-In other languages: null, nil.</p>
 </dd>
 </dl>
 </div>
