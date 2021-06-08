@@ -495,8 +495,25 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#methods-and-attributes">
-     Methods and attributes
+    <a class="reference internal nav-link" href="#members">
+     Members
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#methods">
+       Methods
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#attributes">
+       Attributes
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#available-members">
+     Available members
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
@@ -505,6 +522,11 @@
       </a>
      </li>
     </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operators">
+     Operators
+    </a>
    </li>
   </ul>
  </li>
@@ -810,7 +832,7 @@ some of your own.</p>
 </div>
 </div>
 <div class="solution dropdown admonition" id="lessons/data-types/index-solution-3">
-<p class="admonition-title">Solution to <a class="reference external" href="#classes-exercise"><span>Exercise 16</span></a></p>
+<p class="admonition-title">Solution to <a class="reference external" href="#type-checking-exercise"><span>Exercise 17</span></a></p>
 <div class="section" id="solution-content">
 <div class="literal-block-wrapper docutils container" id="id11">
 <div class="code-block-caption"><span class="caption-number">Listing 63 </span><span class="caption-text">#1</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
@@ -868,14 +890,19 @@ used.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a_string</span> <span class="o">=</span> <span class="s2">&quot;1&quot;</span>
 </pre></div>
 </div>
-<div class="section" id="methods-and-attributes">
-<h3>Methods and attributes<a class="headerlink" href="#methods-and-attributes" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="members">
+<h3>Members<a class="headerlink" href="#members" title="Permalink to this headline">¶</a></h3>
+<p>An object can have <a class="reference internal" href="#term-member"><span class="xref std std-term">members</span></a>, which is something that can belong
+to the object and is accessed with a <code class="docutils literal notranslate"><span class="pre">.</span></code> after a value followed by the member
+name. There are two types of members: methods and attributes.</p>
+<div class="section" id="methods">
+<h4>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h4>
 <p>A method is a just like a function, but one that is attached to an object.</p>
 <p>Calling a method is just like calling a function, except that it goes after the
 value that it belongs to with a <code class="docutils literal notranslate"><span class="pre">.</span></code> between the object and the method.</p>
 <p>For example:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">str</span></code> objects have a method <code class="docutils literal notranslate"><span class="pre">.isnumeric()</span></code> which returns <code class="docutils literal notranslate"><span class="pre">True</span></code>
+<li><p><code class="docutils literal notranslate"><span class="pre">str</span></code> objects have a method <code class="docutils literal notranslate"><span class="pre">.isnumeric()</span></code> which returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if
 all its characters numbers and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">float</span></code> objects have a method <code class="docutils literal notranslate"><span class="pre">.is_integer()</span></code> which returns True if it is a
 whole number and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p></li>
@@ -908,6 +935,9 @@ needed to store the number.</p></li>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="section" id="attributes">
+<h4>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h4>
 <p><a class="reference internal" href="#term-attribute"><span class="xref std std-term">Attributes</span></a>, sometimes called properties, are just like variables, but they
 are attached to an object.</p>
 <p>For example, both <code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">float</span></code> objects have a <code class="docutils literal notranslate"><span class="pre">.real</span></code> property.</p>
@@ -921,10 +951,13 @@ are attached to an object.</p>
 </pre></div>
 </div>
 </div>
-<p>You can use the <code class="docutils literal notranslate"><span class="pre">dir()</span></code> function to see a list of all of a values attributes
-and methods. (The ones that start and end with <code class="docutils literal notranslate"><span class="pre">__</span></code> are special internal
-methods that are used by Python under the hood, so you can disregard those for
-now.)</p>
+</div>
+</div>
+<div class="section" id="available-members">
+<h3>Available members<a class="headerlink" href="#available-members" title="Permalink to this headline">¶</a></h3>
+<p>You can use the <code class="docutils literal notranslate"><span class="pre">dir()</span></code> function to see a list of all of a values members. (The
+ones that start and end with <code class="docutils literal notranslate"><span class="pre">__</span></code> are special internal methods that are used by
+Python under the hood, so you can disregard those for now.)</p>
 <div class="literal-block-wrapper docutils container" id="id16">
 <div class="code-block-caption"><span class="caption-number">Listing 68 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id16" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">a_int</span><span class="p">)</span>
@@ -932,7 +965,7 @@ now.)</p>
 <span class="go"> &#39;__add__&#39;,</span>
 <span class="go"> &#39;__and__&#39;,</span>
 <span class="go"> ...</span>
-<span class="go">  &#39;as_integer_ratio&#39;,</span>
+<span class="go"> &#39;as_integer_ratio&#39;,</span>
 <span class="go"> &#39;bit_length&#39;,</span>
 <span class="go"> &#39;conjugate&#39;,</span>
 <span class="go"> &#39;denominator&#39;,</span>
@@ -944,11 +977,23 @@ now.)</p>
 </pre></div>
 </div>
 </div>
+<p>You can then use the <code class="docutils literal notranslate"><span class="pre">callable()</span></code> function to find out if a member is method
+(if returns <code class="docutils literal notranslate"><span class="pre">True</span></code>) or a attribute (if it returns <code class="docutils literal notranslate"><span class="pre">False</span></code>).</p>
+<div class="literal-block-wrapper docutils container" id="id17">
+<div class="code-block-caption"><span class="caption-number">Listing 69 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id17" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">callable</span><span class="p">(</span><span class="n">a_int</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">)</span>
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">callable</span><span class="p">(</span><span class="n">a_int</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</div>
 <p>In a Python shell you can also use the <code class="docutils literal notranslate"><span class="pre">help()</span></code> function on a type to get
 detailed help on that type. You can also usually pass a value to <code class="docutils literal notranslate"><span class="pre">help()</span></code> to
 get the help page for that type.</p>
-<div class="literal-block-wrapper docutils container" id="id17">
-<div class="code-block-caption"><span class="caption-number">Listing 69 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id17" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id18">
+<div class="code-block-caption"><span class="caption-number">Listing 70 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id18" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="go">Help on int object:</span>
 
@@ -968,18 +1013,19 @@ get the help page for that type.</p>
 </div>
 </div>
 <p>In VS Code, you can hit <kbd class="kbd docutils literal notranslate">⌘I</kbd> or <kbd class="kbd docutils literal notranslate">⌃Space</kbd> after a value to get a list
-of available methods and attributes. Then you can use the <kbd class="kbd docutils literal notranslate">UP</kbd> and
-<kbd class="kbd docutils literal notranslate">DOWN</kbd> arrows to navigate between the options and hit <kbd class="kbd docutils literal notranslate">ENTER</kbd> to fill
-in the selected name.</p>
+of available members. Then you can use the <kbd class="kbd docutils literal notranslate">UP</kbd> and <kbd class="kbd docutils literal notranslate">DOWN</kbd> arrows to
+navigate between the options and hit <kbd class="kbd docutils literal notranslate">ENTER</kbd> to fill in the selected name.</p>
 <p><img alt="" src="../../_images/vscode-attrs.png" /></p>
 <p>And in <code class="docutils literal notranslate"><span class="pre">ipython</span></code> you can hit <kbd class="kbd docutils literal notranslate">TAB</kbd> after a value to get a list of available
-methods and attributes.  Then you can use the <kbd class="kbd docutils literal notranslate">UP</kbd> and <kbd class="kbd docutils literal notranslate">DOWN</kbd> arrows
+members.  Then you can use the <kbd class="kbd docutils literal notranslate">UP</kbd> and <kbd class="kbd docutils literal notranslate">DOWN</kbd> arrows
 or <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">SHIFT</kbd>+<kbd class="kbd docutils literal notranslate">TAB</kbd></kbd> and <kbd class="kbd docutils literal notranslate">TAB</kbd> to navigate between the options and hit
 <kbd class="kbd docutils literal notranslate">ENTER</kbd> to fill in the selected name.</p>
 <p><img alt="" src="../../_images/ipython-attrs.png" /></p>
-<p>You can use the function <code class="docutils literal notranslate"><span class="pre">hasattr()</span></code> to check if a value has an attribute or method.</p>
-<div class="literal-block-wrapper docutils container" id="id18">
-<div class="code-block-caption"><span class="caption-number">Listing 70 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id18" title="Permalink to this code">¶</a></div>
+<p>You can use the function <code class="docutils literal notranslate"><span class="pre">hasattr()</span></code> to check if a value has an attribute or
+method. The first argument is the value you want to check, the second argument
+is the name of the member, a <code class="docutils literal notranslate"><span class="pre">str</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id19">
+<div class="code-block-caption"><span class="caption-number">Listing 71 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id19" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">hasattr</span><span class="p">(</span><span class="n">a_float</span><span class="p">,</span> <span class="s2">&quot;is_integer&quot;</span><span class="p">)</span>
 <span class="go">True</span>
 
@@ -1007,8 +1053,48 @@ to right justify the string.</p></li>
 to remove specified key and return the corresponding value.</p></li>
 <li><p>In a Python shell use the <code class="docutils literal notranslate"><span class="pre">hasattr()</span></code> function on a <code class="docutils literal notranslate"><span class="pre">list</span></code> value to find out
 if it has a method or attribute named <code class="docutils literal notranslate"><span class="pre">clear</span></code>.</p></li>
+<li><p>In a Python shell use the <code class="docutils literal notranslate"><span class="pre">callable()</span></code> function on a <code class="docutils literal notranslate"><span class="pre">dict</span></code> value to find out
+if <code class="docutils literal notranslate"><span class="pre">values</span></code> is a method or a property.</p></li>
 </ol>
 </div>
+</div>
+</div>
+</div>
+<div class="section" id="operators">
+<h3>Operators<a class="headerlink" href="#operators" title="Permalink to this headline">¶</a></h3>
+<p>Depending on the type of an object it may have different operators available to
+it, those operators may behave in different ways, and there may or may not be
+other types that it can play nicely with given a particular operator.</p>
+<p>Lets take a look at how the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator works for different types.</p>
+<p>In the case of both <code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">float</span></code> objects, the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator adds the two
+numbers together. However, in the case of a <code class="docutils literal notranslate"><span class="pre">str</span></code> object, strings are
+concatenated.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="go">2</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="mf">1.0</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="go">2.0</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;1&quot;</span> <span class="o">+</span> <span class="s2">&quot;1&quot;</span>
+<span class="go">&#39;11&#39;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">float</span></code> objects can be used together with the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator. However,
+if we try to use the <code class="docutils literal notranslate"><span class="pre">+</span></code> with a <code class="docutils literal notranslate"><span class="pre">str</span></code> object and either an <code class="docutils literal notranslate"><span class="pre">int</span></code> or a <code class="docutils literal notranslate"><span class="pre">float</span></code>,
+we’ll get an error.</p>
+<div class="literal-block-wrapper docutils container" id="id20">
+<div class="code-block-caption"><span class="caption-number">Listing 72 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id20" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a_int</span> <span class="o">+</span> <span class="n">a_float</span>
+<span class="go">2.0</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a_int</span> <span class="o">+</span> <span class="n">a_string</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">TypeError                                 Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-133-4eab260b045c&gt; in &lt;module&gt;</span>
+<span class="go">----&gt; 1 a_int + a_string</span>
+
+<span class="go">TypeError: unsupported operand type(s) for +: &#39;int&#39; and &#39;str&#39;</span>
+</pre></div>
 </div>
 </div>
 </div>
@@ -1029,6 +1115,8 @@ performed on it. Some examples include <a class="reference internal" href="../..
 <dt id="term-object">object<a class="headerlink" href="#term-object" title="Permalink to this term">¶</a></dt><dd><p>…</p>
 </dd>
 <dt id="term-class">class<a class="headerlink" href="#term-class" title="Permalink to this term">¶</a></dt><dd><p>…</p>
+</dd>
+<dt id="term-member">member<a class="headerlink" href="#term-member" title="Permalink to this term">¶</a></dt><dd><p>…</p>
 </dd>
 <dt id="term-boolean">boolean<a class="headerlink" href="#term-boolean" title="Permalink to this term">¶</a></dt><dt id="term-bool">bool<a class="headerlink" href="#term-bool" title="Permalink to this term">¶</a></dt><dd><p>True or False values.</p>
 </dd>
