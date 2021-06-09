@@ -73,24 +73,25 @@ script from, or the {term}`working directory`.
 
 #### Part 2: Print grocery list
 
-Create a second file {file}`groceries.py` also in the working directory.
+1\. Create a second file {file}`groceries.py` also in the working directory.
 
-To interact with files we start by using Pythons built-in `open()` function.
-It returns a {term}`file handler` object, which represents the connection to
-the file. It takes at least one argument, the location of the file to open. In
-this case we want a string with the filename: {file}`"groceries.txt"`.
+2\. To interact with files we start by using Pythons built-in `open()` function.
+It returns a {term}`file handler` object, which we'll assign to a variable
+`fh`. The `open()` function takes at least one argument, the location of the
+file to open. In this case we want a string with the filename:
+{file}`"groceries.txt"`.
 
-The {term}`file handler` object, which we'll assign to a variable `fh`,
-provides methods for interacting with the file. In this case, we are interested
-in the `.read()` method which returns the entire contents of the file as a
-string. We'll assign the string to the variable `contents`.
+3\. The {term}`file handler` object represents the connection to the file and
+provides methods for interacting with the file.  In this case, we are
+interested in the `.read()` method which returns the entire contents of the
+file as a string. We'll assign the string to the variable `contents`.
 
-We're done with the file now so we'll call the `.close()` method on `fh` to
+4\. We're done with the file now so we'll call the `.close()` method on `fh` to
 free up the computer resources used to manage the file. It is important to
 always close a file handler when its no longer needed to avoid bugs that may
 slow down your computer or interfere with the file you opened.
 
-Finally, we'll print the title `"Groceries"` underlined with `=` followed by the
+5\. Finally, we'll print the title `"Groceries"` underlined with `=` followed by the
 contents of the file.
 
 ```{code-block} python
@@ -111,7 +112,7 @@ print("=========")
 print(contents)
 ```
 
-You should see a nicely formatted grocery list, all ready for a shopping trip.
+6\. When you run your script you should see a nicely formatted grocery list, all ready for a shopping trip.
 
 ```{code-block} text
 :caption: output
@@ -169,22 +170,22 @@ returns a list, where each element is one line from the file.
 In this section we'll modify the `recipes.py` file to use the `.readlines()`
 method in a `for` loop.
 
-Since we'll be printing each line as it is read, first we'll need to move the
-header to the beginning of the script so that they are printed first.
+1\. Since we'll be printing each line as it is read, first we'll need to move the
+header lines to the beginning of the script so that they are printed first.
 
-As before, we'll need a file handler object from `open()`, so we can leave that
+2\. As before, we'll need a file handler object from `open()`, so we can leave that
 line unchanged.
 
-This time we'll replace the `.read()` line with a `for` loop, iterating over the
+3\. This time we'll replace the `.read()` line with a `for` loop, iterating over the
 list returned by `fh.readlines()`. We'll call the item variable `line`, since
 it will contain a line from the file in each iteration.
 
-Now the list returned by `.readlines()` retains the carriage return (`"\n"`) at
+4\. Now the list returned by `.readlines()` retains the carriage return (`"\n"`) at
 the end of each `line` string. So when we print each `line` in the for loop,
 we'll tell the `print()` function not to add a newline by passing it the `end`
 keyword argument with a value of `""`.
 
-Finally, we'll still want to `.close()` the file handler, so that line can stay
+5\. Finally, we'll still want to `.close()` the file handler, so that line can stay
 the way it is.
 
 ```{code-block} python
@@ -208,6 +209,17 @@ for line in fh.readlines():
 
 # close the file handler
 fh.close()
+```
+
+6\. When you run your script the output should be the same.
+
+```{code-block} text
+:caption: output
+Groceries
+=========
+- eggs
+- milk
+- flour
 ```
 
 #### Part 2: Exercise
@@ -278,25 +290,25 @@ file and open it with permission to write.
 In this section we're going write the contents of a `to_pack` list to a
 {file}`packing.txt` file.
 
-Create a file {file}`packing.py`, add a `create_packing()` function and call
-it. The rest of your code in this section will go in this function.
+1\. Create a file {file}`packing.py`, add a `create_packing()` function and
+call it. The rest of your code in this section will go in this function.
 
-Add a `to_pack` list of strings, things to pack.
+2\. Add a `to_pack` list of strings, things to pack.
 
-Get a file handler `fh` by calling `open()` with the arguments `"packing.txt"`
+3\. Get a file handler `fh` by calling `open()` with the arguments `"packing.txt"`
 and `"w"` for write mode. Be aware: the file is created or
 {term}`truncated <truncate>` as soon as `open()` is called when in write mode.
 
-Using a `for` loop iterate over the `to_pack` list and name the item variable
+4\. Using a `for` loop iterate over the `to_pack` list and name the item variable
 `thing`.
 
-In write mode, file handler objects keep a {term}`buffer` where the text to be
+5\. In write mode, file handler objects keep a {term}`buffer` where the text to be
 written to the file is stored until `.close()` is called. Inside the loop we'll
 add each `thing` to the buffer by calling the `.write()` method on `fh` with
 the argument {samp}`"- {thing}\n"`. Don't forget to add a `"\n"` to the end
 of each string or the file will all be smooshed onto one long line!
 
-As always, we need to `.close()` the file handler when we're done with the
+6\. As always, we need to `.close()` the file handler when we're done with the
 file. It is especially important in write mode because that is when the buffer
 is written to disk.
 
@@ -333,7 +345,7 @@ if __main__ == "__name__":
   create_packing()
 ```
 
-Now open up your {file}`packing.txt` file. It should look something like this:
+7\. Now open up your {file}`packing.txt` file. It should look something like this:
 
 ```{code-block} text
 :caption: packing.txt
@@ -411,16 +423,16 @@ end of it.  That's when we want append mode.
 In this section we're going append a single line to the {file}`packing.txt`
 file.
 
-Open the {file}`packing.py` file, add a `addto_packing()` function and call it. The
+1\. Open the {file}`packing.py` file, add a `addto_packing()` function and call it. The
 rest of your code in this section will go in this function.
 
-Get a file handler `fh` by calling `open()` with the arguments `"packing.txt"`
+2\. Get a file handler `fh` by calling `open()` with the arguments `"packing.txt"`
 and `"a"` for append mode.
 
-Add a single line the buffer by calling the `.write()` method on `fh` with the
+3\. Add a single line the buffer by calling the `.write()` method on `fh` with the
 argument {samp}`"- {thing to pack}\n"`.
 
-Finally, `.close()` the file handler.
+4\. Finally, `.close()` the file handler.
 
 
 ```{code-block} python
@@ -444,7 +456,8 @@ if __main__ == "__name__":
   create_packing()
   addto_packing()
 ```
-After running your code the {file}`packing.txt` file should look something like this:
+
+5\. After running your code the {file}`packing.txt` file should look something like this:
 
 ```{code-block} text
 :caption: packing.txt
@@ -518,7 +531,7 @@ handler object when you're done with it.
   ends, but it's not a guarentee.
 - The more files are open, the more resources are used, and the more space is
   taken up in memory. Leaving things open unneccassarily could slow down your
-  program and your computer while its being run.
+  program and your computer while your program runs.
 - File changes usually don't go into effect until you close the file handler.
   If another part of your program is counting on those changes, you'll run into
   unpleasant surprises if you haven't yet closed it.
@@ -633,25 +646,25 @@ print(contents)
 
 ### Part 2: `scores.txt`
 
-In this section we are going to append a line with random number to a
-`scores.txt` file.
+In this section we are going to use a `with` statement to append a line with
+random number to a `scores.txt` file.
 
-Create a new file {file}`scores.py`.
+1\. Create a new file {file}`scores.py`.
 
-Import the `random` module.
+2\. Import the `random` module.
 
-Add a `add_scores()` function and call it.  The rest of your code in this
+3\. Add a `add_scores()` function and call it.  The rest of your code in this
 section will go in this function.
 
-Call `random.randint()` to get a random number between `0` and `100` and assign
+4\. Call `random.randint()` to get a random number between `0` and `100` and assign
 it to the variable `score`.
 
-Use a `with` statement to open the {file}`"scores.txt"`:
+5\. Use a `with` statement to open the {file}`"scores.txt"`:
   - the {samp}`{EXPN}` should be a call to `open()` with the arguments
-    {file}`"scores.txt"` and `"a"` for append mode.
+    {file}`"scores.txt"` and `"a"` for append mode
   - give the {samp}`{VAR}` the name `fh`
-  - in the {samp}`{BODY}` Add a single line the buffer by calling the
-    `.write()` method on `fh` with the argument {samp}`"{score}\n"`.
+  - in the {samp}`{BODY}` add a single line {samp}`"{score}\n"` the buffer by calling the
+    `.write()` method on `fh`
 
 ```{code-block} python
 :linenos:
@@ -674,17 +687,17 @@ if __name__ == "__main__":
     add_scores()
 ```
 
-Your output should contain a single number, something like this:
+6\. After you run your script {file}`scores.txt` should contain a single number, something like this:
 
 ```{code-block} text
-:caption: output
+:caption: scores.txt
 85
 ```
 
-Run your script a few more times. Now you should have some new lines like this:
+7\. Run your script a few more times. {file}`scores.txt` should have some new lines, something like thls.
 
 ```{code-block} text
-:caption: output
+:caption: scores.txt
 85
 91
 29
