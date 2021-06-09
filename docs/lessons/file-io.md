@@ -21,28 +21,29 @@ Table of Contents
 -----------------
 
 * [Reading Files](#reading-files)
-    * [File handlers and .read()](#file-handlers-and-read)
+   * [Reading whole files](#reading-whole-files)
       * [Part 1: Create groceries.txt](#part-1-create-groceries-txt)
       * [Part 2: Print grocery list](#part-2-print-grocery-list)
       * [Part 3: Exercise](#part-3-exercise)
-    * [Reading lines](#reading-lines)
+   * [Reading lines](#reading-lines)
       * [Part 1: Use .readlines()](#part-1-use-readlines)
       * [Part 2: Exercise](#part-2-exercise)
 * [Writing Files](#writing-files)
-    * [Modes and .write()](#modes-and-write)
+   * [Creating or trucating](#creating-or-trucating)
       * [Part 1: Write to packing.txt](#part-1-write-to-packing-txt)
       * [Part 2: Exercise](#part-2-exercise-1)
-    * [Adding to files](#adding-to-files)
+   * [Adding to files](#adding-to-files)
       * [Part 1: Add to packing.txt](#part-1-add-to-packing-txt)
       * [Part 2: Exercise](#part-2-exercise-2)
 * [Automatic file closing](#automatic-file-closing)
-    * [Part 1: the with statement](#part-1-the-with-statement)
-    * [Part 2: scores.txt](#part-2-scores-txt)
-    * [Part 3: Exercise](#part-3-exercise-1)
+   * [Part 1: the with statement](#part-1-the-with-statement)
+   * [Part 2: scores.txt](#part-2-scores-txt)
+   * [Part 3: Exercise](#part-3-exercise-1)
 * [Reference](#reference)
-    * [File Modes](#file-modes)
-    * [See Also](#see-also)
-    * [Glossary](#glossary)
+   * [File Modes](#file-modes)
+   * [See Also](#see-also)
+   * [Glossary](#glossary)
+
 
 Reading Files
 -------------
@@ -51,7 +52,7 @@ Sometimes in our programs we need to access information that is stored in a
 file. In programming this is called reading a file and that's what we'll learn
 first.
 
-### File handlers and `.read()`
+### Reading whole files
 
 In this section we will get the contents of a file containing a grocery list
 then then print it to the screen.
@@ -263,7 +264,7 @@ Writing Files
 Sometimes we need to create or modify files. That's what we'll be learning in
 this section.
 
-### Modes and `.write()`
+### Creating or trucating
 
 The `open()` function takes an optional `mode` argument, which is a string that
 indicates what we plan to do with the file. The default is `"r"` for read mode.
