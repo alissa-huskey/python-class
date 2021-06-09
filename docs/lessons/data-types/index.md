@@ -450,22 +450,23 @@ class int(object)
 
 ```
 
-In VS Code, you can hit {kbd}`⌘I` or {kbd}`⌃Space` after a value to get a list
-of available members. Then you can use the {kbd}`UP` and {kbd}`DOWN` arrows to
-navigate between the options and hit {kbd}`ENTER` to fill in the selected name.
+In VS Code, you can hit {kbd}`⌘I` or {kbd}`⌃Space` after a variable followed by
+a `.` to get a list of available members. Then you can use the {kbd}`UP` and
+{kbd}`DOWN` arrows to navigate between the options and hit {kbd}`ENTER` to fill
+in the selected name.
 
 ![](assets/vscode-attrs.png)
 
-And in `ipython` you can hit {kbd}`TAB` after a value to get a list of available
-members.  Then you can use the {kbd}`UP` and {kbd}`DOWN` arrows
-or {kbd}`SHIFT+TAB` and {kbd}`TAB` to navigate between the options and hit
-{kbd}`ENTER` to fill in the selected name.
+And in `ipython` you can hit {kbd}`TAB` after a variable followed by a `.` to
+get a list of available members.  Then you can use the {kbd}`UP` and
+{kbd}`DOWN` arrows or {kbd}`SHIFT+TAB` and {kbd}`TAB` to navigate between the
+options and hit {kbd}`ENTER` to fill in the selected name.
 
 ![](assets/ipython-attrs.png)
 
-You can use the function `hasattr()` to check if a value has an attribute or
-method. The first argument is the value you want to check, the second argument
-is the name of the member, a `str`.
+You can use the function `hasattr()` to check if a value has a member. The
+first argument is the value you want to check, the second argument is the name
+of the member, a `str`.
 
 ```{code-block} python
 :caption: Python shell
@@ -483,14 +484,14 @@ False
 
 ```{exercise} methods and attributes
 :label: methods-and-attributes-exercise
-1. In VS Code, use the {kbd}`⌘I` or {kbd}`⌃Space` shortcut keys after an `int`
-   value to find the method that will return an integer ratio.
-2. If you use `ipython`, use the {kbd}`TAB` key after a `float` value to find the
+1. In a VS Code editor, use the {kbd}`⌘I` or {kbd}`⌃Space` shortcut keys after
+   an `int` variable to find the method that will return an integer ratio.
+2. If you use `ipython`, use the {kbd}`TAB` key after a `float` variable to find the
    method that will return a hexadecimal representation of the number.
 3. In a Python shell use the `dir()` function on a `str` value to find the method
    to right justify the string.
-4. In a Python shell use the `help()` function on a `dict` value to find the method
-   to remove specified key and return the corresponding value.
+4. In a Python shell use the `help()` function on a `dict` type or value to
+   find the method to remove specified key and return the corresponding value.
 5. In a Python shell use the `hasattr()` function on a `list` value to find out
    if it has a method or attribute named `clear`.
 6. In a Python shell use the `callable()` function on a `dict` value to find out
@@ -544,9 +545,68 @@ The `/` operator isn't available for `str` object, so you'll get an error if you
 
 ```{code-block} python
 :caption: Python shell
+>>> "a, b, c" / 3
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-108-e172469f33c1> in <module>
 ----> 1 "a, b, c" / 3
 
-TypeError: unsupported operand type(s) for /: 'str' and 'str'
+TypeError: unsupported operand type(s) for /: 'str' and 'int'
+```
+
+#### Available operators
+
+Remember those pesky `__` members we saw when using the `dir()` function? Those
+are called {term}`magic <magic method>` or
+{term}`dunder methods <dunder method>` and we can look at them to find out what
+operators a value has.
+
+Each operator has a cooresponding magic method. For example the `+` operator
+uses the `__add__()` method. So if we see `__add__` in the list of methods for
+a value, we know that the `+` operator is available to it.
+
+```{code-block} python
+:caption: Python shell
+:emphasize-lines: "3"
+>>> dir(1)
+['__abs__',
+ '__add__',
+ ...
+ ]
+```
+
+
+#### Arithmetic Operators
+
+| Operator | Meaning                   | Method          | Operator | Method          |
+|----------|---------------------------|-----------------|----------|-----------------|
+| `+`      | sum                       | `__add__`       | `+=`     | `__iadd__`      |
+| `-`      | difference                | `__sub__`       | `-=`     | `__isub__`      |
+| `*`      | product                   | `__mul__`       | `*=`     | `__imul__`      |
+| `/`      | quotient                  | `__truediv__`   | `/=`     | `__itruediv__`  |
+| `//`     | floored quotient          | `__floordiv__`  | `//=`    | `__ifloordiv__` |
+| `%`      | remainder                 | `__mod__`       | `%=`     | `__imod__`      |
+| `**`     | power of                  | `__pow__`       | `**=`    | `__ipow__`      |
+
+#### Comparison operators
+
+| Operator | Meaning                   | Method          |
+|----------|---------------------------|-----------------|
+| `<`      | less than                 | `__lt__`        |
+| `>`      | greater than              | `__gt__`        |
+| `<=`     | less than or equal to     | `__le__`        |
+| `>=`     | greater than or equal to  | `__ge__`        |
+| `==`     | equals                    | `__eq__`        |
+| `!=`     | not equals                | `__nq__`        |
+| `in`     | contains                  | `__contains__`  |
+
+
+```{seealso}
+
+* [Python - Dunder or Magic Methods](https://rszalski.github.io/magicmethods/#operators)
+* [Python - Dunder or Magic Methods](https://www.alphacodingskills.com/python/pages/python-dunder-methods.php)
+* [Python Dunder (Special, Magic) Methods List with Tutorial](https://holycoders.com/python-dunder-special-methods/)
+
 ```
 
 ### Functions
@@ -606,6 +666,18 @@ class
 
 member
   ...
+
+dunder method
+magic method
+  ...
 ```
 
+See also
+--------
 
+```{seealso}
+
+- [python.org > Built-in Types](https://docs.python.org/3/library/stdtypes.html)
+- [python.org > The standard type hierarchy](https://docs.python.org/3/reference/datamodel.html#types)
+
+```

@@ -1,0 +1,300 @@
+#!/bin/bash
+#
+# script to install Python with tkinter support on the mac
+
+# using:
+# - homebrew
+# - pyenv
+#
+# more info:
+# - https://gist.github.com/iexa/2ac761bfd96ab78988b76c030d54a5b8
+
+# Addresses issues:
+#
+# * "error: implicit declaration of function 'sendfile' is invalid"
+#   - Apply this patch for xcode 12.*, python 3.8.0 - 3.8.3
+#   - https://github.com/pyenv/pyenv/issues/1643
+#
+# * DEPRECATION WARNING: The system version of Tk is deprecated
+# - https://stackoverflow.com/questions/60469202/unable-to-install-tkinter-with-pyenv-pythons-on-macos
+
+set -Eeo pipefail # fail on errors, even within pipes
+set +o posix      # using some noncompliant process redirection features
+
+# info msg [msg...]
+#     print info message unless in quiet mode
+info() {
+  if [[ $is_quiet ]]; then
+    return
+  fi
+
+  printf "\e[36m%s\e[0m \n" "$*"
+}
+
+# debug var
+#     print variable name and value
+debug() {
+  if ! [[ $is_verbose ]]; then
+    return
+  fi
+
+  local var val
+
+  while [[ $# -gt 0 ]]; do
+    var=$1 val="undefined"
+    if declare -p ${var}> /dev/null 2>&1 ; then
+      val="${!var}"
+    fi
+    printf "\e[36m> \e[33m%s:\e[0m %s \n" "${var}" "${val}"
+
+    shift
+  done
+}
+
+# show_cmd cmd [args...]
+#    print command in dry run or verbose
+show_cmd() {
+  local IFS=" "
+  if [[ $is_quiet ]]; then
+    return
+  fi
+
+  printf "\e[2m> %s\e[0m\n" "$*" >&2
+}
+
+# cmd cmd [args...]
+#    print command then execute
+cmd() {
+  show_cmd "$@"
+  
+  "$@"
+}
+
+# run cmd [args...]
+#    print command then execute if in dry run mode
+run() {
+  show_cmd "$@"
+
+  if [[ $is_dryrun ]]; then
+    return
+  fi
+
+  "$@"
+}
+
+# args [arg...]
+#     parse command line args
+args() {
+  [[ $# -gt 0 ]] || abort "Python version required"
+
+  local arg
+
+  while [[ $# -gt 0 ]]; do
+    arg="$1"
+    case ${arg} in
+      -v|--verbose) is_verbose=1                                          ;;
+      -n|--dry-run) is_dryrun=1                                           ;;
+      -q|--quite)   is_quiet=1                                            ;;
+      -h|*help)     help ; exit 0                                         ;;
+      *)            [[ -n "${python_version}" ]] && abort "Unrecognized argument: $arg"
+                    python_version="${arg}"                                   ;;
+    esac
+    shift
+  done
+
+  debug python_version is_verbose is_dryrun is_quiet
+
+  if ! pyenv install --list | grep -qxE "\s+${python_version}"; then
+    abort "Invalid python version: ${python_version}" "to see versions: pyenv install -l"
+  fi
+}
+
+# print short usage line
+usage() {
+  printf "Usage: %s [-h] | [-v|-q] [-n] <python-version>\n\n" "${0##*/}"
+}
+
+# print help
+help() {
+  local options i sopt lopt desc
+  options=( \
+    -v --verbose "verbose mode" \
+    -n --dry-run "dry run mode" \
+    -q --quiet "quiet mode" \
+    -h --help "print this help screen" \
+  )
+
+  usage
+
+  printf "OPTIONS\n\n"
+  for ((i=0; i< ${#options[@]}; i+=3)); do
+    sopt=${options[$i]} lopt=${options[$i+1]} desc="${options[$i+2]}"
+    printf "%s, %-10s %s\n" "${sopt}" "${lopt}" "${desc}"
+  done
+}
+
+# abort msg [lines...]
+#    print error message, usage, then exit
+abort() {
+  printf "\e[31mError\e[0m %s\n" "${1}" >&2
+  shift
+
+  while [[ $# -gt 0 ]]; do
+    printf "%-5s %s\n" " " "${1}" >&2
+    shift
+  done
+
+  echo
+  usage
+  exit 1
+}
+
+# get_prefixes package [package, ...]
+#    assign prefix_${package} to the result of brew --prefix ${package}
+get_prefixes() {
+  local vars ofs="$IFS"
+
+  info "getting prefixes for packages:" "$@"
+
+  # make an array of variable names starting with prefix_
+  IFS=',' ; eval "vars=( prefix_{${*//-/}} )"
+
+  IFS="${ofs}"
+
+  # assign each prefix_ variable to each line of brew --prefix in turn
+  IFS=$'\n' read -r -d '' ${vars[@]} < <(IFS="${ofs}" ; brew --prefix ${@}) || :
+}
+
+# withenv cmd [args...]
+#     run command with arguments with the relevant environment variables for Python
+withenv() {
+  local tcl_version vars
+
+  # set variables for all relevant brew packages
+  get_prefixes tcl-tk zlib bzip2 openssl readline
+
+  # get the version of brew installed tcl-tk
+  tcl_version=$(${prefix_tcltk}/bin/tclsh <<< "puts [info tclversion]")
+
+  debug ${!prefix_*} tcl_version
+
+  # construct environment variables
+  # and run all arguments as command
+  vars=( \
+    "PATH=${prefix_tcltk}/bin:$PATH" \
+    "CPPFLAGS=-I${prefix_tcltk}/include -L${prefix_zlib}/include -L${prefix_bzip2}/include" \
+    "PKG_CONFIG_PATH=${prefix_tcltk}/lib/pkgconfig" \
+    "CFLAGS=-I${prefix_tcltk}/include -I${prefix_openssl}/include -I${prefix_bzip2}/include -I${prefix_zlib}/include -I${prefix_readline}/include -I$(xcrun --show-sdk-path)/usr/include" \
+    "LDFLAGS=-I${prefix_tcltk}/lib -L${prefix_openssl}/lib -L${prefix_readline}/lib -L${prefix_zlib}/lib -L${prefix_bzip2}/lib" \
+    "PYTHON_CONFIGURE_OPTS=--with-tcltk-includes='-I${prefix_tcltk}/include' --with-tcltk-libs='-L${prefix_tcltk}/lib -ltcl${tcl_version} -ltk${tcl_version}'" \
+  )
+
+  run env "${vars[@]}" "$@"
+  # env \
+  #   PATH="${prefix_tcltk}/bin:$PATH" \
+  #   LDFLAGS="-L${prefix_tcltk}/lib -L${prefix_zlib}/lib -L${prefix_bzip2}/lib" \
+  #   CPPFLAGS="-I${prefix_tcltk}/include -L${prefix_zlib}/include -L${prefix_bzip2}/include" \
+  #   PKG_CONFIG_PATH="${prefix_tcltk}/lib/pkgconfig" \
+  #   CFLAGS="-O2 -I${prefix_tcltk}/include -I${prefix_openssl}/include -I${prefix_bzip2}/include -I${prefix_zlib}/include -I${prefix_readline}/include -I$(xcrun --show-sdk-path)/usr/include" \
+  #   LDFLAGS="-I${prefix_tcltk}/lib -L${prefix_openssl}/lib -L${prefix_readline}/lib -L${prefix_zlib}/lib -L${prefix_bzip2}/lib" \
+  #   PYTHON_CONFIGURE_OPTS="--with-tcltk-includes='-I${prefix_tcltk}/include' --with-tcltk-libs='-L${prefix_tcltk}/lib -ltcl${tcl_version} -ltk${tcl_version}'" \
+  #   "$@"
+}
+
+# env \
+#   PATH="$(brew --prefix tcl-tk)/bin:$PATH" \
+#   LDFLAGS="-L$(brew --prefix tcl-tk)/lib -L$(brew --prefix zlib)/lib -L$(brew --prefix bzip2)/lib" \
+#   CPPFLAGS="-I$(brew --prefix tcl-tk)/include -L$(brew --prefix zlib)/include -L$(brew --prefix bzip2)/include" \
+#   PKG_CONFIG_PATH="$(brew --prefix tcl-tk)/lib/pkgconfig" \
+#   CFLAGS="-O2 -I$(brew --prefix tcl-tk)/include -I$(brew --prefix openssl)/include -I$(brew --prefix bzip2)/include -I$(brew --prefix zlib)/include -I$(brew --prefix readline)/include -I$(xcrun --show-sdk-path)/usr/include" \
+#   LDFLAGS="-I$(brew --prefix tcl-tk)/lib -L$(brew --prefix openssl)/lib -L$(brew --prefix readline)/lib -L$(brew --prefix zlib)/lib -L$(brew --prefix bzip2)/lib" \
+#   PYTHON_CONFIGURE_OPTS="--with-tcltk-includes='-I$(brew --prefix tcl-tk)/include' --with-tcltk-libs='-L$(brew --prefix tcl-tk)/lib -ltcl${tcl_version} -ltk${tcl_version}'" \
+#   pyenv install --patch ${python_version} < <(curl -sSL "https://github.com/python/cpython/commit/8ea6353.patch?full_index=1")
+
+reinstall_xcode() {
+  info "reinstalling xcode"
+
+  echo "Reinstalling XCode could take quite awhile."
+  read -r -p "continue? " answer
+  if ! [[ "${answer}" =~ ^(y|yes)$ ]]; then
+    abort "User canceled xcode install"
+  fi
+
+  # Resinstall Xcode
+  run sudo rm -rf /Library/Developer/CommandLineTools
+  run xcode-select --install
+
+  # reinstall zlib and bzip2 using brew
+  run brew reinstall zlib bzip2
+}
+
+# brew_install pkg [pkg...]
+#     install homebrew package(s) if needed
+brew_install() {
+  while [[ $# -gt 0 ]]; do
+    if ! brew ls --versions $1 > /dev/null ; then
+      info "installing brew package: $1"
+      run brew install $1
+    fi
+    shift
+  done
+}
+
+# install_python <version>
+#     install python
+install_python() {
+  local mac_version python_version="$1"
+
+  read -r mac_version < <(sw_vers -productVersion)
+
+  debug mac_version
+
+  # not sure if this is needed or under what circumstances
+  # reinstall_xcode
+
+  brew_install tcl-tk zlib bzip2 readline openssl
+
+  # uninstall old version of python
+  if pyenv versions --bare | grep -qx ${python_version} ; then
+    info "uninstalling python version: ${python_version}"
+    run pyenv uninstall ${python_version}
+  fi
+
+  # for xcode version 12 and Python versions 3.8.0 - 3.8.3
+  if clang --version | grep -q 'Apple clang version 12' && \
+    [[ $python_version =~ ^3\.8\.[0-3] ]] ; then
+
+    info "installing python version: ${python_version} with 8ea6353 patch"
+    # apply cpython patch to address invalid 'sendfile' error
+    withenv pyenv install --patch ${python_version} < \
+      <(curl -sSL "https://github.com/python/cpython/commit/8ea6353.patch?full_index=1")
+
+  else
+
+    info "installing python version: ${python_version}"
+    # install python
+    withenv pyenv install ${python_version}
+  fi
+
+
+}
+
+verify() {
+  if [[ $is_dryrun ]]; then
+    return
+  fi
+
+  info "testing tkinter"
+  run $(pyenv prefix ${python_version})/bin/python -m tkinter -c "tkinter._test()" || abort "Bummer, looks like the install failed"
+}
+
+main() {
+  local python_version is_verbose is_dryrun is_quiet is_verbose
+
+  args ${1:+"$@"}
+
+  install_python ${python_version}
+  verify
+}
+
+main ${1:+"$@"}
