@@ -792,18 +792,25 @@ They can be combined, for example:
 file-like object
 file object
 file handler
-  ...
+IO object
+  An object used to connect to and interact with a file.
 
 buffer
-  ...
-
-mode
-  ...
+  A sort of temporary holding pen for data that is going from one place to
+  another. For example, the default behavior of writable {term}`file handler`
+  objects is to append the data passed to the `.write()` function to the write
+  buffer, then write the buffer to disk when the handler is closed. This
+  improves preformance by reducing the number of hard disk writes.
 
 context manager
 context manager objects
-  ...
+  Python objects that know how to do their own houskeeping. More precicely,
+  objects that provide the {term}`dunder methods` `.__enter__()` and
+  `.__exit__()` intended to be used by the `with` statement for setup and
+  teardown tasks.
 
 truncate
-  ...
+  To shorten something but cutting off a part. When a text file is opened in
+  write mode, it is truncated to zero bytes, thereby removing all content from
+  the file.
 ```
