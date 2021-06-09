@@ -455,6 +455,26 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/alissa-huskey/python-class/master?urlpath=lab/tree/docs/lessons/file-io.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -466,24 +486,63 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#table-of-contents">
+   Table of Contents
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#reading-files">
    Reading Files
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise">
-     Exercise
+    <a class="reference internal nav-link" href="#reading-whole-files">
+     Reading whole files
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#part-1-create-groceries-txt">
+       Part 1: Create
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         groceries.txt
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#part-2-print-grocery-list">
+       Part 2: Print grocery list
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#part-3-exercise">
+       Part 3: Exercise
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#reading-lines">
      Reading lines
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     Exercise
-    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#part-1-use-readlines">
+       Part 1: Use
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         .readlines()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#part-2-exercise">
+       Part 2: Exercise
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -493,14 +552,48 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     Exercise
+    <a class="reference internal nav-link" href="#creating-or-trucating">
+     Creating or trucating
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#part-1-write-to-packing-txt">
+       Part 1: Write to
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         packing.txt
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Part 2: Exercise
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#adding-to-files">
      Adding to files
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#part-1-add-to-packing-txt">
+       Part 1: Add to
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         packing.txt
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Part 2: Exercise
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -508,6 +601,34 @@
   <a class="reference internal nav-link" href="#automatic-file-closing">
    Automatic file closing
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-1-the-with-statement">
+     Part 1: the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       with
+      </span>
+     </code>
+     statement
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-2-scores-txt">
+     Part 2:
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       scores.txt
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Part 3: Exercise
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#reference">
@@ -518,6 +639,23 @@
     <a class="reference internal nav-link" href="#file-modes">
      File Modes
     </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#see-also">
+     See Also
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#glossary">
+     Glossary
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#glossary-file-io">
+       File Io
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -537,43 +675,152 @@
 <p>I/O is a shorthand way of referring to input and output. The <code class="docutils literal notranslate"><span class="pre">input()</span></code> and
 <code class="docutils literal notranslate"><span class="pre">print()</span></code> functions are two examples of input and output. In this lesson
 we’ll learn another: how to read from and write to files.</p>
+<div class="section" id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#reading-files">Reading Files</a></p>
+<ul>
+<li><p><a class="reference external" href="#reading-whole-files">Reading whole files</a></p>
+<ul>
+<li><p><a class="reference external" href="#part-1-create-groceries-txt">Part 1: Create groceries.txt</a></p></li>
+<li><p><a class="reference external" href="#part-2-print-grocery-list">Part 2: Print grocery list</a></p></li>
+<li><p><a class="reference external" href="#part-3-exercise">Part 3: Exercise</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#reading-lines">Reading lines</a></p>
+<ul>
+<li><p><a class="reference external" href="#part-1-use-readlines">Part 1: Use .readlines()</a></p></li>
+<li><p><a class="reference external" href="#part-2-exercise">Part 2: Exercise</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#writing-files">Writing Files</a></p>
+<ul>
+<li><p><a class="reference external" href="#creating-or-trucating">Creating or trucating</a></p>
+<ul>
+<li><p><a class="reference external" href="#part-1-write-to-packing-txt">Part 1: Write to packing.txt</a></p></li>
+<li><p><a class="reference external" href="#part-2-exercise-1">Part 2: Exercise</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#adding-to-files">Adding to files</a></p>
+<ul>
+<li><p><a class="reference external" href="#part-1-add-to-packing-txt">Part 1: Add to packing.txt</a></p></li>
+<li><p><a class="reference external" href="#part-2-exercise-2">Part 2: Exercise</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#automatic-file-closing">Automatic file closing</a></p>
+<ul>
+<li><p><a class="reference external" href="#part-1-the-with-statement">Part 1: the with statement</a></p></li>
+<li><p><a class="reference external" href="#part-2-scores-txt">Part 2: scores.txt</a></p></li>
+<li><p><a class="reference external" href="#part-3-exercise-1">Part 3: Exercise</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#reference">Reference</a></p>
+<ul>
+<li><p><a class="reference external" href="#file-modes">File Modes</a></p></li>
+<li><p><a class="reference external" href="#see-also">See Also</a></p></li>
+<li><p><a class="reference external" href="#glossary">Glossary</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="reading-files">
 <h2>Reading Files<a class="headerlink" href="#reading-files" title="Permalink to this headline">¶</a></h2>
-<p>Create a file <code class="file docutils literal notranslate"><span class="pre">groceries.txt</span></code> in the directory you will be running the
+<p>Sometimes in our programs we need to access information that is stored in a
+file. In programming this is called reading a file and that’s what we’ll learn
+first.</p>
+<div class="section" id="reading-whole-files">
+<h3>Reading whole files<a class="headerlink" href="#reading-whole-files" title="Permalink to this headline">¶</a></h3>
+<p>In this section we will get the contents of a file containing a grocery list
+then then print it to the screen.</p>
+<div class="section" id="part-1-create-groceries-txt">
+<h4>Part 1: Create <code class="docutils literal notranslate"><span class="pre">groceries.txt</span></code><a class="headerlink" href="#part-1-create-groceries-txt" title="Permalink to this headline">¶</a></h4>
+<p>First we’ll need a file to read from. Paste the following lines into a new file
+<code class="file docutils literal notranslate"><span class="pre">groceries.txt</span></code>, located in the same directory you will be running the
 script from, or the <a class="reference internal" href="paths.html#term-working-directory"><span class="xref std std-term">working directory</span></a>.</p>
-<div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-number">Listing 76 </span><span class="caption-text">groceries.txt</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>- eggs
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-number">Listing 77 </span><span class="caption-text">groceries.txt</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="highlight-text notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>- eggs
+- milk
+- flour
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="part-2-print-grocery-list">
+<h4>Part 2: Print grocery list<a class="headerlink" href="#part-2-print-grocery-list" title="Permalink to this headline">¶</a></h4>
+<p>1. Create a second file <code class="file docutils literal notranslate"><span class="pre">groceries.py</span></code> also in the working directory.</p>
+<p>2. To interact with files we start by using Pythons built-in <code class="docutils literal notranslate"><span class="pre">open()</span></code> function.
+It returns a <a class="reference internal" href="#term-file-handler"><span class="xref std std-term">file handler</span></a> object, which we’ll assign to a variable
+<code class="docutils literal notranslate"><span class="pre">fh</span></code>. The <code class="docutils literal notranslate"><span class="pre">open()</span></code> function takes at least one argument, the location of the
+file to open. In this case we want a string with the filename:
+<code class="file docutils literal notranslate"><span class="pre">&quot;groceries.txt&quot;</span></code>.</p>
+<p>3. The <a class="reference internal" href="#term-file-handler"><span class="xref std std-term">file handler</span></a> object represents the connection to the file and
+provides methods for interacting with the file.  In this case, we are
+interested in the <code class="docutils literal notranslate"><span class="pre">.read()</span></code> method which returns the entire contents of the
+file as a string. We’ll assign the string to the variable <code class="docutils literal notranslate"><span class="pre">contents</span></code>.</p>
+<p>4. We’re done with the file now so we’ll call the <code class="docutils literal notranslate"><span class="pre">.close()</span></code> method on <code class="docutils literal notranslate"><span class="pre">fh</span></code> to
+free up the computer resources used to manage the file. It is important to
+always close a file handler when its no longer needed to avoid bugs that may
+slow down your computer or interfere with the file you opened.</p>
+<p>5. Finally, we’ll print the title <code class="docutils literal notranslate"><span class="pre">&quot;Groceries&quot;</span></code> underlined with <code class="docutils literal notranslate"><span class="pre">=</span></code> followed by the
+contents of the file.</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-number">Listing 78 </span><span class="caption-text"><a class="reference external" href="http://groceries.py">groceries.py</a></span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># open the file and create a file handler object</span>
+<span class="n">fh</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;groceries.txt&quot;</span><span class="p">)</span>
+
+<span class="c1"># get a string with the contents of the file</span>
+<span class="n">contents</span> <span class="o">=</span> <span class="n">fh</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="c1"># close the file handler</span>
+<span class="n">fh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c1"># print a header followed by the file contents</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Groceries&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=========&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>6. When you run your script you should see a nicely formatted grocery list, all ready for a shopping trip.</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-number">Listing 79 </span><span class="caption-text">output</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Groceries
+=========
+- eggs
 - milk
 - flour
 </pre></div>
 </div>
 </div>
-<p>To read the contents of the file, we’ll first use Python’s built-in <code class="docutils literal notranslate"><span class="pre">open()</span></code>
-function and pass it the name of the file to open. It will return a file
-handler object which has methods for interacting with the file.</p>
-<p>Next call the <code class="docutils literal notranslate"><span class="pre">read()</span></code> method on the handler which will return the entire
-contents of the file as a string.</p>
-<p>Finally, call the <code class="docutils literal notranslate"><span class="pre">close()</span></code> method. This frees up the computer resources used
-to manage the file.</p>
-<div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-number">Listing 77 </span><span class="caption-text">shopping.txt</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fh</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;groceries.txt&quot;</span><span class="p">)</span>
-<span class="n">contents</span> <span class="o">=</span> <span class="n">fh</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="n">fh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Groceries&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=========&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
-</pre></div>
 </div>
-</div>
-<div class="section" id="exercise">
-<h3>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h3>
-<div class="exercise admonition" id="lessons/file-io-exercise-0">
-<p class="admonition-title"></p>
+<div class="section" id="part-3-exercise">
+<h4>Part 3: Exercise<a class="headerlink" href="#part-3-exercise" title="Permalink to this headline">¶</a></h4>
+<div class="exercise admonition" id="reading-files-exercise">
+<p class="admonition-title"><span class="caption-number">Exercise 19 </span>(reading files)</p>
 <div class="section" id="exercise-content">
-<p>1. Paste the following text into a file named <code class="file docutils literal notranslate"><span class="pre">mug-brownie.md</span></code> in your working directory.</p>
+<p>In this exercise you’ll be reading a file and printing its contents to the
+screen, just like you did above but with a different file.</p>
+<ol>
+<li><p>Copy the following text and paste it into a file named <code class="file docutils literal notranslate"><span class="pre">mug-brownie.md</span></code> in your working directory.</p>
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span><span class="gh">Mug Brownie</span>
 <span class="gh">===========</span>
 
@@ -603,127 +850,761 @@ Place in microwave and heat on high until the mixture is cooked through, about a
 You may have to experiment and adjust the time for less or more powerful microwaves. If you don&#39;t know the power level on your microwave, start with 60 seconds and increase until the brownie is done. It should still be moist when cooked through, not dry.
 </pre></div>
 </div>
-<p>2. Read the file contents then print them to the screen.</p>
+</li>
+<li><p>Create a new file <code class="file docutils literal notranslate"><span class="pre">recipe.py</span></code> for this exercise.</p></li>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">open()</span></code> function to get a file handler for the <code class="file docutils literal notranslate"><span class="pre">mug-brownie.md</span></code> file.</p></li>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">.read()</span></code> method to get the contents of the file and assign it to a variable <code class="docutils literal notranslate"><span class="pre">recipe</span></code>.</p></li>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">.close()</span></code> method to close the file handler.</p></li>
+<li><p>Print the <code class="docutils literal notranslate"><span class="pre">recipe</span></code>.</p></li>
+</ol>
+</div>
+</div>
+<div class="solution dropdown admonition" id="lessons/file-io-solution-1">
+<p class="admonition-title">Solution to <a class="reference external" href="#reading-files-exercise"><span>Exercise 19</span></a></p>
+<div class="section" id="solution-content">
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-number">Listing 80 </span><span class="caption-text"><a class="reference external" href="http://recipe.py">recipe.py</a></span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">fh</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;mug-brownie.md&quot;</span><span class="p">)</span>
+<span class="n">recipe</span> <span class="o">=</span> <span class="n">fh</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">fh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">recipe</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="section" id="reading-lines">
 <h3>Reading lines<a class="headerlink" href="#reading-lines" title="Permalink to this headline">¶</a></h3>
-<p>Often we want to read files one line at a time. The <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> method on
-the file handler object returns a list where each element is one line in the
-file.</p>
-<div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-number">Listing 78 </span><span class="caption-text">shopping.txt</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Groceries&quot;</span><span class="p">)</span>
+<p>Sometimes instead of getting the entire contents of a file at once, we want to
+go through each line line for more fine grained control.</p>
+<p>This is where the <code class="docutils literal notranslate"><span class="pre">.readlines()</span></code> method on file handler objects comes in. It
+returns a list, where each element is one line from the file.</p>
+<div class="section" id="part-1-use-readlines">
+<h4>Part 1: Use <code class="docutils literal notranslate"><span class="pre">.readlines()</span></code><a class="headerlink" href="#part-1-use-readlines" title="Permalink to this headline">¶</a></h4>
+<p>In this section we’ll modify the <code class="docutils literal notranslate"><span class="pre">recipes.py</span></code> file to use the <code class="docutils literal notranslate"><span class="pre">.readlines()</span></code>
+method in a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.</p>
+<p>1. Since we’ll be printing each line as it is read, first we’ll need to move the
+header lines to the beginning of the script so that they are printed first.</p>
+<p>2. As before, we’ll need a file handler object from <code class="docutils literal notranslate"><span class="pre">open()</span></code>, so we can leave that
+line unchanged.</p>
+<p>3. This time we’ll replace the <code class="docutils literal notranslate"><span class="pre">.read()</span></code> line with a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, iterating over the
+list returned by <code class="docutils literal notranslate"><span class="pre">fh.readlines()</span></code>. We’ll call the item variable <code class="docutils literal notranslate"><span class="pre">line</span></code>, since
+it will contain a line from the file in each iteration.</p>
+<p>4. Now the list returned by <code class="docutils literal notranslate"><span class="pre">.readlines()</span></code> retains the carriage return (<code class="docutils literal notranslate"><span class="pre">&quot;\n&quot;</span></code>) at
+the end of each <code class="docutils literal notranslate"><span class="pre">line</span></code> string. So when we print each <code class="docutils literal notranslate"><span class="pre">line</span></code> in the for loop,
+we’ll tell the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function not to add a newline by passing it the <code class="docutils literal notranslate"><span class="pre">end</span></code>
+keyword argument with a value of <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>.</p>
+<p>5. Finally, we’ll still want to <code class="docutils literal notranslate"><span class="pre">.close()</span></code> the file handler, so that line can stay
+the way it is.</p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-number">Listing 81 </span><span class="caption-text"><a class="reference external" href="http://groceries.py">groceries.py</a></span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># print a header</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Groceries&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=========&quot;</span><span class="p">)</span>
 
+<span class="c1"># open the file and create a file handler object</span>
 <span class="n">fh</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;groceries.txt&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fh</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<span class="hll"><span class="c1"># loop through each line of the file</span>
+</span><span class="hll"><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fh</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>
+</span><span class="hll">
+</span><span class="hll">  <span class="c1"># print the line which includes the trailing &quot;\n&quot;</span>
+</span><span class="hll">  <span class="c1"># and pass print an empty string for end</span>
+</span><span class="hll">  <span class="c1"># so it doesn&#39;t add an extra newline</span>
+</span><span class="hll">  <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</span>
+<span class="c1"># close the file handler</span>
 <span class="n">fh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>6. When you run your script the output should be the same.</p>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-number">Listing 82 </span><span class="caption-text">output</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Groceries
+=========
+- eggs
+- milk
+- flour
 </pre></div>
 </div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Each element in the list includes the carriage return (<code class="docutils literal notranslate"><span class="pre">&quot;\n&quot;</span></code>). So to avoid
-printing double lines use the <code class="docutils literal notranslate"><span class="pre">end</span></code> keyword argument in the <code class="docutils literal notranslate"><span class="pre">print()</span></code>
-function.</p>
 </div>
-</div>
-<div class="section" id="id1">
-<h3>Exercise<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<div class="exercise admonition" id="lessons/file-io-exercise-1">
-<p class="admonition-title"></p>
+<div class="section" id="part-2-exercise">
+<h4>Part 2: Exercise<a class="headerlink" href="#part-2-exercise" title="Permalink to this headline">¶</a></h4>
+<div class="exercise admonition" id="readlines-exercise">
+<p class="admonition-title"><span class="caption-number">Exercise 20 </span>(reading lines)</p>
 <div class="section" id="exercise-content">
-<p>1. Paste the following text into a file named <code class="file docutils literal notranslate"><span class="pre">todo.txt</span></code> in your working directory.</p>
+<p>In this exercise you’ll be reading each line of a <code class="file docutils literal notranslate"><span class="pre">todo.txt</span></code> file using
+the <code class="docutils literal notranslate"><span class="pre">.readlines()</span></code> method then printing each line with a <code class="docutils literal notranslate"><span class="pre">*</span></code> at the beginning.</p>
+<ol>
+<li><p>Copy the following text and paste it into a file named <code class="file docutils literal notranslate"><span class="pre">todo.txt</span></code> in
+your working directory.</p>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-number">Listing 83 </span><span class="caption-text">todo.txt</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>dishes
 laundry
 homework
 </pre></div>
 </div>
-<p>2. Read and print each line to the screen, starting with <code class="docutils literal notranslate"><span class="pre">&quot;*</span> <span class="pre">&quot;</span></code>.</p>
+</div>
+</li>
+<li><p>Create a new file <code class="file docutils literal notranslate"><span class="pre">todo.py</span></code> for this exercise.</p></li>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">open()</span></code> function to get a file handler for the <code class="file docutils literal notranslate"><span class="pre">todo.txt</span></code> file.</p></li>
+<li><p>Use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to iterate over the list returned by <code class="docutils literal notranslate"><span class="pre">fh.readlines()</span></code> and
+name the item variable <code class="docutils literal notranslate"><span class="pre">line</span></code>.</p></li>
+<li><p>In the for loop, print <code class="docutils literal notranslate"><span class="pre">&quot;*</span> <span class="pre">&quot;</span></code> followed by each <code class="docutils literal notranslate"><span class="pre">line</span></code> and tell <code class="docutils literal notranslate"><span class="pre">print()</span></code>
+not to add an extra newline by passing the <code class="docutils literal notranslate"><span class="pre">end</span></code> keyword argument with an empty
+string.</p></li>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">.close()</span></code> method to close the file handler.</p></li>
+</ol>
+<p>Your output should look like this:</p>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-number">Listing 84 </span><span class="caption-text">output</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>* dishes
+* laundry
+* homework
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="solution dropdown admonition" id="lessons/file-io-solution-3">
+<p class="admonition-title">Solution to <a class="reference external" href="#readlines-exercise"><span>Exercise 20</span></a></p>
+<div class="section" id="solution-content">
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-number">Listing 85 </span><span class="caption-text"><a class="reference external" href="http://todo.py">todo.py</a></span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">fh</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;todo.txt&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fh</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">fh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div class="section" id="writing-files">
 <h2>Writing Files<a class="headerlink" href="#writing-files" title="Permalink to this headline">¶</a></h2>
-<p>To write to a file open it in write mode by passing the optional mode
-argument <code class="docutils literal notranslate"><span class="pre">&quot;w&quot;</span></code> to <code class="docutils literal notranslate"><span class="pre">open()</span></code>. This will either create a new file if none
-exists, or replace it with an empty text file if it does.</p>
-<p>Call the <code class="docutils literal notranslate"><span class="pre">write()</span></code> method on the file handler object to add to the
-<a class="term-missing reference internal" href="#" title=""><span class="xref std std-term">buffer</span></a>, the stored text to be written to the file. Be sure to add a
-<code class="docutils literal notranslate"><span class="pre">&quot;\n&quot;</span></code> at the end of every line, including the last line in the file.</p>
-<p>Again, call the <code class="docutils literal notranslate"><span class="pre">close()</span></code> method. This will print the buffer to the file and
-close the file connection.</p>
-<div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-number">Listing 79 </span><span class="caption-text"><a class="reference external" href="http://todos.py">todos.py</a></span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">todos</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;laundry&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;dishes&quot;</span><span class="p">,</span>
-<span class="p">]</span>
+<p>Sometimes we need to create or modify files. That’s what we’ll be learning in
+this section.</p>
+<div class="section" id="creating-or-trucating">
+<h3>Creating or trucating<a class="headerlink" href="#creating-or-trucating" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">open()</span></code> function takes an optional <code class="docutils literal notranslate"><span class="pre">mode</span></code> argument, which is a string that
+indicates what we plan to do with the file. The default is <code class="docutils literal notranslate"><span class="pre">&quot;r&quot;</span></code> for read mode.</p>
+<p>To write to a file though, we’ll open it in write mode by passing the optional
+mode argument <code class="docutils literal notranslate"><span class="pre">&quot;w&quot;</span></code> to <code class="docutils literal notranslate"><span class="pre">open()</span></code>. Write mode will either create or overwrite the
+file and open it with permission to write.</p>
+<div class="section" id="part-1-write-to-packing-txt">
+<h4>Part 1: Write to <code class="docutils literal notranslate"><span class="pre">packing.txt</span></code><a class="headerlink" href="#part-1-write-to-packing-txt" title="Permalink to this headline">¶</a></h4>
+<p>In this section we’re going write the contents of a <code class="docutils literal notranslate"><span class="pre">to_pack</span></code> list to a
+<code class="file docutils literal notranslate"><span class="pre">packing.txt</span></code> file.</p>
+<p>1. Create a file <code class="file docutils literal notranslate"><span class="pre">packing.py</span></code>, add a <code class="docutils literal notranslate"><span class="pre">create_packing()</span></code> function and
+call it. The rest of your code in this section will go in this function.</p>
+<p>2. Add a <code class="docutils literal notranslate"><span class="pre">to_pack</span></code> list of strings, things to pack.</p>
+<p>3. Get a file handler <code class="docutils literal notranslate"><span class="pre">fh</span></code> by calling <code class="docutils literal notranslate"><span class="pre">open()</span></code> with the arguments <code class="docutils literal notranslate"><span class="pre">&quot;packing.txt&quot;</span></code>
+and <code class="docutils literal notranslate"><span class="pre">&quot;w&quot;</span></code> for write mode. Be aware: the file is created or
+<a class="reference internal" href="#term-truncate"><span class="xref std std-term">truncated</span></a> as soon as <code class="docutils literal notranslate"><span class="pre">open()</span></code> is called when in write mode.</p>
+<p>4. Using a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop iterate over the <code class="docutils literal notranslate"><span class="pre">to_pack</span></code> list and name the item variable
+<code class="docutils literal notranslate"><span class="pre">thing</span></code>.</p>
+<p>5. In write mode, file handler objects keep a <a class="reference internal" href="#term-buffer"><span class="xref std std-term">buffer</span></a> where the text to be
+written to the file is stored until <code class="docutils literal notranslate"><span class="pre">.close()</span></code> is called. Inside the loop we’ll
+add each <code class="docutils literal notranslate"><span class="pre">thing</span></code> to the buffer by calling the <code class="docutils literal notranslate"><span class="pre">.write()</span></code> method on <code class="docutils literal notranslate"><span class="pre">fh</span></code> with
+the argument <code class="samp docutils literal notranslate"><span class="pre">&quot;-</span> <em><span class="pre">thing</span></em><span class="pre">\n&quot;</span></code>. Don’t forget to add a <code class="docutils literal notranslate"><span class="pre">&quot;\n&quot;</span></code> to the end
+of each string or the file will all be smooshed onto one long line!</p>
+<p>6. As always, we need to <code class="docutils literal notranslate"><span class="pre">.close()</span></code> the file handler when we’re done with the
+file. It is especially important in write mode because that is when the buffer
+is written to disk.</p>
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-number">Listing 86 </span><span class="caption-text"><a class="reference external" href="http://packing.py">packing.py</a></span><a class="headerlink" href="#id13" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_packing</span><span class="p">():</span>
+  <span class="sd">&quot;&quot;&quot;Create or overwrite packing.txt and write contents of to_pack list on each</span>
+<span class="sd">     line&quot;&quot;&quot;</span>
 
-<span class="n">fh</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;todo.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">todos</span><span class="p">:</span>
-    <span class="n">fh</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">fh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> 
+  <span class="c1"># create a list of things to pack</span>
+  <span class="n">to_pack</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;phone charger&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;passport&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;weapons&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cash&quot;</span><span class="p">,</span>
+  <span class="p">]</span>
+
+  <span class="c1"># open packing.txt in write mode, which is</span>
+  <span class="c1"># when the file is created or truncated</span>
+  <span class="n">fh</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;packing.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+
+  <span class="c1"># iterate through the to_pack list</span>
+  <span class="k">for</span> <span class="n">thing</span> <span class="ow">in</span> <span class="n">to_pack</span><span class="p">:</span>
+      <span class="c1"># add each thing to the file buffer</span>
+      <span class="c1"># with a &quot;\n&quot; suffix so its on its own line</span>
+      <span class="n">fh</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">thing</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+  <span class="c1"># close the file handler, which is when the the file is written to disk</span>
+  <span class="n">fh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">__main__</span> <span class="o">==</span> <span class="s2">&quot;__name__&quot;</span><span class="p">:</span>
+  <span class="n">create_packing</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>7. Now open up your <code class="file docutils literal notranslate"><span class="pre">packing.txt</span></code> file. It should look something like this:</p>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-number">Listing 87 </span><span class="caption-text">packing.txt</span><a class="headerlink" href="#id14" title="Permalink to this code">¶</a></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>- phone charger
+- passport
+- weapons
+- cash
 </pre></div>
 </div>
 </div>
-<div class="section" id="id2">
-<h3>Exercise<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<div class="exercise admonition" id="lessons/file-io-exercise-2">
-<p class="admonition-title"></p>
+</div>
+<div class="section" id="id1">
+<h4>Part 2: Exercise<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<div class="exercise admonition" id="writing-files-exercise">
+<p class="admonition-title"><span class="caption-number">Exercise 21 </span>(writing files)</p>
 <div class="section" id="exercise-content">
-<p>Make a <code class="docutils literal notranslate"><span class="pre">list</span></code> of groceries then write them to a <code class="file docutils literal notranslate"><span class="pre">groceries.txt</span></code> file.</p>
+<p>In this exercise you’ll make a <code class="docutils literal notranslate"><span class="pre">people</span></code> list and write it to a
+<code class="file docutils literal notranslate"><span class="pre">xmas_shopping.txt</span></code> file.</p>
+<ol class="simple">
+<li><p>Create a file <code class="docutils literal notranslate"><span class="pre">xmas_shopping.py</span></code> for this script, add a
+<code class="docutils literal notranslate"><span class="pre">create_xmas_shopping()</span></code> function and call it. Put the rest of the code from
+this exercise in that function.</p></li>
+<li><p>Add a <code class="docutils literal notranslate"><span class="pre">people</span></code> list of strings, names of people to shop for.</p></li>
+<li><p>Open the file <code class="file docutils literal notranslate"><span class="pre">xmas_shopping.txt</span></code> in write mode and name the file
+handler object <code class="docutils literal notranslate"><span class="pre">fh</span></code>.</p></li>
+<li><p>Iterate through your list of <code class="docutils literal notranslate"><span class="pre">people</span></code> using a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop and name your items
+variable <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p></li>
+<li><p>In the loop <code class="docutils literal notranslate"><span class="pre">.write()</span></code> a line to the buffer: <code class="samp docutils literal notranslate"><span class="pre">&quot;[</span> <span class="pre">]</span> <em><span class="pre">name</span></em><span class="pre">\n&quot;</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.close()</span></code> the file handler</p></li>
+</ol>
+<p><code class="file docutils literal notranslate"><span class="pre">xmas_shopping.txt</span></code> should look something like this:</p>
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-number">Listing 88 </span><span class="caption-text">xmas_shopping.txt</span><a class="headerlink" href="#id15" title="Permalink to this code">¶</a></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[ ] Buffy
+[ ] Xander
+[ ] Willow
+[ ] Giles
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="solution dropdown admonition" id="lessons/file-io-solution-5">
+<p class="admonition-title">Solution to <a class="reference external" href="#writing-files-exercise"><span>Exercise 21</span></a></p>
+<div class="section" id="solution-content">
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-number">Listing 89 </span><span class="caption-text">xmas_shopping.py</span><a class="headerlink" href="#id16" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_xmas_shopping</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Create or overwrite xmas_shopping.txt and write contents of people list on each</span>
+<span class="sd">       line&quot;&quot;&quot;</span>
+
+    <span class="n">people</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;Buffy&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Xander&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Willow&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Giles&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+
+    <span class="n">fh</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;xmas_shopping.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">people</span><span class="p">:</span>
+        <span class="n">fh</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[ ] </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">fh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">create_xmas_shopping</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="section" id="adding-to-files">
 <h3>Adding to files<a class="headerlink" href="#adding-to-files" title="Permalink to this headline">¶</a></h3>
-<p>Instead of writing a file from scratch we can instead just add to the end of
-it by opening it in append mode by passing the mode mode argument <code class="docutils literal notranslate"><span class="pre">&quot;a&quot;</span></code> to
-the <code class="docutils literal notranslate"><span class="pre">open()</span></code> function.</p>
-<div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-number">Listing 80 </span><span class="caption-text"><a class="reference external" href="http://todos.py">todos.py</a></span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fh</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;todo.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span>
-<span class="n">fh</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;vacuum</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">fh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> 
+<p>Often instead of writing a whole file from scratch we just want to add to the
+end of it.  That’s when we want append mode.</p>
+<div class="section" id="part-1-add-to-packing-txt">
+<h4>Part 1: Add to <code class="docutils literal notranslate"><span class="pre">packing.txt</span></code><a class="headerlink" href="#part-1-add-to-packing-txt" title="Permalink to this headline">¶</a></h4>
+<p>In this section we’re going append a single line to the <code class="file docutils literal notranslate"><span class="pre">packing.txt</span></code>
+file.</p>
+<p>1. Open the <code class="file docutils literal notranslate"><span class="pre">packing.py</span></code> file, add a <code class="docutils literal notranslate"><span class="pre">addto_packing()</span></code> function and call it. The
+rest of your code in this section will go in this function.</p>
+<p>2. Get a file handler <code class="docutils literal notranslate"><span class="pre">fh</span></code> by calling <code class="docutils literal notranslate"><span class="pre">open()</span></code> with the arguments <code class="docutils literal notranslate"><span class="pre">&quot;packing.txt&quot;</span></code>
+and <code class="docutils literal notranslate"><span class="pre">&quot;a&quot;</span></code> for append mode.</p>
+<p>3. Add a single line the buffer by calling the <code class="docutils literal notranslate"><span class="pre">.write()</span></code> method on <code class="docutils literal notranslate"><span class="pre">fh</span></code> with the
+argument <code class="samp docutils literal notranslate"><span class="pre">&quot;-</span> <em><span class="pre">thing</span> <span class="pre">to</span> <span class="pre">pack</span></em><span class="pre">\n&quot;</span></code>.</p>
+<p>4. Finally, <code class="docutils literal notranslate"><span class="pre">.close()</span></code> the file handler.</p>
+<div class="literal-block-wrapper docutils container" id="id17">
+<div class="code-block-caption"><span class="caption-number">Listing 90 </span><span class="caption-text"><a class="reference external" href="http://packing.py">packing.py</a></span><a class="headerlink" href="#id17" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">addto_packing</span><span class="p">():</span>
+  <span class="sd">&quot;&quot;&quot;Append a single line to the packing.txt file&quot;&quot;&quot;</span>
+
+  <span class="c1"># open the file in append mode</span>
+  <span class="n">fh</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;packing.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span>
+
+  <span class="c1"># add a single line to the file buffer</span>
+  <span class="n">fh</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;- first aid kit</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+  <span class="c1"># close the file handler, which is when the the file is written to disk</span>
+  <span class="n">fh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">__main__</span> <span class="o">==</span> <span class="s2">&quot;__name__&quot;</span><span class="p">:</span>
+  <span class="n">create_packing</span><span class="p">()</span>
+  <span class="n">addto_packing</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>5. After running your code the <code class="file docutils literal notranslate"><span class="pre">packing.txt</span></code> file should look something like this:</p>
+<div class="literal-block-wrapper docutils container" id="id18">
+<div class="code-block-caption"><span class="caption-number">Listing 91 </span><span class="caption-text">packing.txt</span><a class="headerlink" href="#id18" title="Permalink to this code">¶</a></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>- phone charger
+- passport
+- weapons
+- cash
+- first aid kit
 </pre></div>
 </div>
 </div>
-<div class="exercise admonition" id="lessons/file-io-exercise-3">
-<p class="admonition-title"></p>
+</div>
+<div class="section" id="id2">
+<h4>Part 2: Exercise<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<div class="exercise admonition" id="appending-to-files-exercise">
+<p class="admonition-title"><span class="caption-number">Exercise 22 </span>(appending to files)</p>
 <div class="section" id="exercise-content">
-<p>Add an item to your <code class="file docutils literal notranslate"><span class="pre">groceries.txt</span></code> file.</p>
+<p>In this exercise you’ll append a single line to the <code class="file docutils literal notranslate"><span class="pre">xmas_shopping.txt</span></code>
+file.</p>
+<ol class="simple">
+<li><p>Open the file <code class="docutils literal notranslate"><span class="pre">xmas_shopping.py</span></code>, add a <code class="docutils literal notranslate"><span class="pre">addto_xmas_shopping()</span></code> function and
+call it. Put the rest of the code from this exercise in that function.</p></li>
+<li><p>Open the file <code class="file docutils literal notranslate"><span class="pre">xmas_shopping.txt</span></code> in append mode and name the file
+handler object <code class="docutils literal notranslate"><span class="pre">fh</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.write()</span></code> a line to the buffer: <code class="samp docutils literal notranslate"><span class="pre">&quot;[</span> <span class="pre">]</span> <em><span class="pre">name</span></em><span class="pre">\n&quot;</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.close()</span></code> the file handler</p></li>
+</ol>
+<p>You should see the new name in <code class="file docutils literal notranslate"><span class="pre">xmas_shopping.txt</span></code>, something like:</p>
+<div class="literal-block-wrapper docutils container" id="id19">
+<div class="code-block-caption"><span class="caption-number">Listing 92 </span><span class="caption-text">xmas_shopping.txt</span><a class="headerlink" href="#id19" title="Permalink to this code">¶</a></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[ ] Buffy
+[ ] Xander
+[ ] Willow
+[ ] Giles
+[ ] Angel
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="solution dropdown admonition" id="lessons/file-io-solution-7">
+<p class="admonition-title">Solution to <a class="reference external" href="#appending-to-files-exercise"><span>Exercise 22</span></a></p>
+<div class="section" id="solution-content">
+<div class="literal-block-wrapper docutils container" id="id20">
+<div class="code-block-caption"><span class="caption-number">Listing 93 </span><span class="caption-text">xmas_shopping.py</span><a class="headerlink" href="#id20" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">addto_xmas_shopping</span><span class="p">():</span>
+  <span class="sd">&quot;&quot;&quot;Append a single line to the xmas_shopping.txt file&quot;&quot;&quot;</span>
+
+  <span class="c1"># open the file in append mode</span>
+  <span class="n">fh</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;xmas_shopping.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span>
+
+  <span class="c1"># add a single line to the file buffer</span>
+  <span class="n">fh</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;[ ] Angel</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+  <span class="c1"># close the file handler, which is when the the file is written to disk</span>
+  <span class="n">fh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">create_xmas_shopping</span><span class="p">()</span>
+    <span class="n">addto_xmas_shopping</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div class="section" id="automatic-file-closing">
 <h2>Automatic file closing<a class="headerlink" href="#automatic-file-closing" title="Permalink to this headline">¶</a></h2>
-<p>It’s important to always <code class="docutils literal notranslate"><span class="pre">close()</span></code> a file handler object, since this will
-ensure that we don’t have resources still tied up after the program ends that
-we are actually done with. Moreover in write or append mode, nothing is
-actually written until the file is closed.</p>
-<p>But it’s possible to either forget to close the file handler, or for our
-program to encounter an error before it gets to the place where <code class="docutils literal notranslate"><span class="pre">close()</span></code> is
-called.</p>
-<p>Python provides a handy way of ensuring file objects are always closed, the
-<code class="docutils literal notranslate"><span class="pre">with</span></code> compound statement.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;groceries.txt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
-    <span class="n">contents</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<p>There are lots of reasons that it is important to always <code class="docutils literal notranslate"><span class="pre">.close()</span></code> a file
+handler object when you’re done with it.</p>
+<ul class="simple">
+<li><p>In theory Python is supposed to close any open file handlers when a program
+ends, but it’s not a guarentee.</p></li>
+<li><p>The more files are open, the more resources are used, and the more space is
+taken up in memory. Leaving things open unneccassarily could slow down your
+program and your computer while your program runs.</p></li>
+<li><p>File changes usually don’t go into effect until you close the file handler.
+If another part of your program is counting on those changes, you’ll run into
+unpleasant surprises if you haven’t yet closed it.</p></li>
+<li><p>There are limits to how many files a computer can have open at a time. While
+it is rare to bump up against those limits in normal operation, it’s
+certainly the kind of trouble a programmer can get themselves into by
+mistake. (Imagine opening files in an infinate loop!)</p></li>
+<li><p>Some operating sytems treat open files as locked, which may prevent you from
+reading the file with another program or even deleting it.</p></li>
+</ul>
+<p>But sometimes mistakes happen. It’s easy to forget, and what if there is an
+error after opening the file but before it is closed?</p>
+<p>That’s where the <code class="docutils literal notranslate"><span class="pre">with</span></code> statement and <a class="reference internal" href="#term-context-manager"><span class="xref std std-term">context managers</span></a>
+come in.</p>
+<div class="section" id="part-1-the-with-statement">
+<h3>Part 1: the <code class="docutils literal notranslate"><span class="pre">with</span></code> statement<a class="headerlink" href="#part-1-the-with-statement" title="Permalink to this headline">¶</a></h3>
+<p>File handlers in Python have the feature of being <a class="reference internal" href="../context%20manager.html" title=""><span class="xref std std-term">context managers</span></a>,
+which are objects designed to know how to do their own housekeeping for use in
+a <code class="docutils literal notranslate"><span class="pre">with</span></code> statement.</p>
+<p>More on that later, but first lets take a quick look at the syntax of a <code class="docutils literal notranslate"><span class="pre">with</span></code>
+statement:</p>
+<pre class="literal-block"><code class="samp docutils literal notranslate"><span class="pre">with</span> <em><span class="pre">EXPN</span></em> <span class="pre">as</span> <em><span class="pre">VAR</span></em><span class="pre">:</span></code>
+<code class="samp docutils literal notranslate">&#160;&#160;&#160; <em><span class="pre">BODY</span></em></code></pre>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">with</span></code> and <code class="docutils literal notranslate"><span class="pre">as</span></code> are <a class="reference internal" href="../keyword.html" title=""><span class="xref std std-term">keywords</span></a></p></li>
+<li><p><code class="samp docutils literal notranslate"><em><span class="pre">EXPN</span></em></code> – an expression that produces a context manager object (ie <code class="docutils literal notranslate"><span class="pre">open(...)</span></code>)</p></li>
+<li><p><code class="samp docutils literal notranslate"><em><span class="pre">VAR</span></em></code> – variable name for the object (ie <code class="docutils literal notranslate"><span class="pre">fh</span></code>)</p></li>
+<li><p><code class="samp docutils literal notranslate"><em><span class="pre">BODY</span></em></code> – statements that use <code class="samp docutils literal notranslate"><em><span class="pre">VAR</span></em></code></p></li>
+</ul>
+<p>When working with files it looks something like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
+    <span class="c1"># do stuff with fh</span>
+</pre></div>
+</div>
+<p>So, what does that do?</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">with</span></code> statement wraps a block of code with calls to internal setup and
+teardown methods provided by the context manager. In particular, anything that
+ends the execution of the block triggers a call to the teardown method; whether
+it ended because it finished or because there was an error. Neither errors nor
+<kbd class="kbd docutils literal notranslate">^C</kbd> stays the <code class="docutils literal notranslate"><span class="pre">with</span></code> statement from completing the appointed teardown.</p>
+<p>File handlers know how to clean up after themselves. That means that when used
+in a <code class="docutils literal notranslate"><span class="pre">with</span></code> statement <code class="docutils literal notranslate"><span class="pre">.close()</span></code> is called automatically at the end of the
+statement, even if there is an error in the <code class="samp docutils literal notranslate"><em><span class="pre">BODY</span></em></code>.</p>
+<p>Lets take a look at our very first <code class="docutils literal notranslate"><span class="pre">groceries.txt</span></code> code alongside the same code
+written using a <code class="docutils literal notranslate"><span class="pre">with</span></code> statement.</p>
+<div class="full-width"><div class="row"><div class="col">
+<div class="literal-block-wrapper docutils container" id="id21">
+<div class="code-block-caption"><span class="caption-number">Listing 94 </span><span class="caption-text"><a class="reference external" href="http://groceries.py">groceries.py</a></span><a class="headerlink" href="#id21" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># open the file</span>
+<span class="n">fh</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;groceries.txt&quot;</span><span class="p">)</span>
 
+<span class="c1"># read the contents</span>
+<span class="n">contents</span> <span class="o">=</span> <span class="n">fh</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="c1"># close the file handler</span>
+<span class="n">fh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c1"># print the file contents</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Groceries&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=========&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
 </pre></div>
+</td></tr></table></div>
 </div>
-<div class="exercise admonition" id="lessons/file-io-exercise-4">
-<p class="admonition-title"></p>
+</div><div class="col">
+<div class="literal-block-wrapper docutils container" id="id22">
+<div class="code-block-caption"><span class="caption-number">Listing 95 </span><span class="caption-text"><a class="reference external" href="http://groceries.py">groceries.py</a></span><a class="headerlink" href="#id22" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># open the file</span>
+<span class="hll"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;groceries.txt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+</span>
+   <span class="c1"># read the contents</span>
+    <span class="n">contents</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="hll"><span class="c1"># `fh` is automatically closed</span>
+</span><span class="hll"><span class="c1"># no need to call fh.close()</span>
+</span>
+<span class="c1"># print the file contents</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Groceries&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=========&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div></div></div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#context-managers">python.org language reference &gt; With Statement Context Managers</a></p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#the-with-statement">python.org language reference &gt; the with statement</a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="part-2-scores-txt">
+<h3>Part 2: <code class="docutils literal notranslate"><span class="pre">scores.txt</span></code><a class="headerlink" href="#part-2-scores-txt" title="Permalink to this headline">¶</a></h3>
+<p>In this section we are going to use a <code class="docutils literal notranslate"><span class="pre">with</span></code> statement to append a line with
+random number to a <code class="docutils literal notranslate"><span class="pre">scores.txt</span></code> file.</p>
+<p>1. Create a new file <code class="file docutils literal notranslate"><span class="pre">scores.py</span></code>.</p>
+<p>2. Import the <code class="docutils literal notranslate"><span class="pre">random</span></code> module.</p>
+<p>3. Add a <code class="docutils literal notranslate"><span class="pre">add_scores()</span></code> function and call it.  The rest of your code in this
+section will go in this function.</p>
+<p>4. Call <code class="docutils literal notranslate"><span class="pre">random.randint()</span></code> to get a random number between <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">100</span></code> and assign
+it to the variable <code class="docutils literal notranslate"><span class="pre">score</span></code>.</p>
+<p>5. Use a <code class="docutils literal notranslate"><span class="pre">with</span></code> statement to open the <code class="file docutils literal notranslate"><span class="pre">&quot;scores.txt&quot;</span></code>:</p>
+<ul class="simple">
+<li><p>the <code class="samp docutils literal notranslate"><em><span class="pre">EXPN</span></em></code> should be a call to <code class="docutils literal notranslate"><span class="pre">open()</span></code> with the arguments
+<code class="file docutils literal notranslate"><span class="pre">&quot;scores.txt&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;a&quot;</span></code> for append mode</p></li>
+<li><p>give the <code class="samp docutils literal notranslate"><em><span class="pre">VAR</span></em></code> the name <code class="docutils literal notranslate"><span class="pre">fh</span></code></p></li>
+<li><p>in the <code class="samp docutils literal notranslate"><em><span class="pre">BODY</span></em></code> add a single line <code class="samp docutils literal notranslate"><span class="pre">&quot;</span><em><span class="pre">score</span></em><span class="pre">\n&quot;</span></code> the buffer by calling the
+<code class="docutils literal notranslate"><span class="pre">.write()</span></code> method on <code class="docutils literal notranslate"><span class="pre">fh</span></code></p></li>
+</ul>
+<div class="literal-block-wrapper docutils container" id="id23">
+<div class="code-block-caption"><span class="caption-number">Listing 96 </span><span class="caption-text"><a class="reference external" href="http://scores.py">scores.py</a></span><a class="headerlink" href="#id23" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">add_scores</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Append a random score between 1 and 100 to scores.py&quot;&quot;&quot;</span>
+
+    <span class="c1"># get a random number between 1 and 100</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+    <span class="c1"># open scores.txt in append mode</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;scores.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
+
+        <span class="c1"># add the score to the file buffer</span>
+        <span class="n">fh</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">add_scores</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>6. After you run your script <code class="file docutils literal notranslate"><span class="pre">scores.txt</span></code> should contain a single number, something like this:</p>
+<div class="literal-block-wrapper docutils container" id="id24">
+<div class="code-block-caption"><span class="caption-number">Listing 97 </span><span class="caption-text">scores.txt</span><a class="headerlink" href="#id24" title="Permalink to this code">¶</a></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>85
+</pre></div>
+</div>
+</div>
+<p>7. Run your script a few more times. <code class="file docutils literal notranslate"><span class="pre">scores.txt</span></code> should have some new lines, something like thls.</p>
+<div class="literal-block-wrapper docutils container" id="id25">
+<div class="code-block-caption"><span class="caption-number">Listing 98 </span><span class="caption-text">scores.txt</span><a class="headerlink" href="#id25" title="Permalink to this code">¶</a></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>85
+91
+29
+20
+39
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>Part 3: Exercise<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="exercise admonition" id="with-statement-exercise">
+<p class="admonition-title"><span class="caption-number">Exercise 23 </span>(with statements)</p>
 <div class="section" id="exercise-content">
-<p>Read your <code class="file docutils literal notranslate"><span class="pre">mug-brownie.md</span></code> file and print it to the screen, this time using a <code class="docutils literal notranslate"><span class="pre">with</span></code> statement.</p>
+<p>In this exercise you’ll be reading each line of the <code class="file docutils literal notranslate"><span class="pre">scores.txt</span></code> file using
+the <code class="docutils literal notranslate"><span class="pre">.readlines()</span></code> method then printing the last line.</p>
+<ol class="simple">
+<li><p>Open the <code class="file docutils literal notranslate"><span class="pre">scores.py</span></code> file, add a new function <code class="docutils literal notranslate"><span class="pre">last_score()</span></code>, and call it.</p></li>
+<li><p>Use a <code class="docutils literal notranslate"><span class="pre">with</span></code> statement to open the <code class="file docutils literal notranslate"><span class="pre">&quot;scores.txt&quot;</span></code>:</p>
+<ul class="simple">
+<li><p>the <code class="samp docutils literal notranslate"><em><span class="pre">EXPN</span></em></code> should be a call to <code class="docutils literal notranslate"><span class="pre">open()</span></code> with the argument
+<code class="file docutils literal notranslate"><span class="pre">&quot;scores.txt&quot;</span></code> to open the file in read mode.</p></li>
+<li><p>give the <code class="samp docutils literal notranslate"><em><span class="pre">VAR</span></em></code> the name <code class="docutils literal notranslate"><span class="pre">fh</span></code></p></li>
+<li><p>in the <code class="samp docutils literal notranslate"><em><span class="pre">BODY</span></em></code>:</p>
+<ul>
+<li><p>Use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to iterate over the list returned by <code class="docutils literal notranslate"><span class="pre">fh.readlines()</span></code>
+and call the item variable <code class="docutils literal notranslate"><span class="pre">score</span></code></p></li>
+<li><p>You only need to for loop to assign the <code class="docutils literal notranslate"><span class="pre">score</span></code> variable, so in the
+body of the loop just <code class="docutils literal notranslate"><span class="pre">continue</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>After the <code class="docutils literal notranslate"><span class="pre">with</span></code> statement, <code class="docutils literal notranslate"><span class="pre">score</span></code> will still be assigned to the last line
+of the file.  Print <code class="samp docutils literal notranslate"><span class="pre">Your</span> <span class="pre">last</span> <span class="pre">score</span> <span class="pre">was:</span> <em><span class="pre">score</span></em></code> and use the <code class="docutils literal notranslate"><span class="pre">end</span></code>
+keyword argument to avoid adding an extra newline.</p></li>
+</ol>
+<p>Your output should look something like this:</p>
+<div class="literal-block-wrapper docutils container" id="id26">
+<div class="code-block-caption"><span class="caption-number">Listing 99 </span><span class="caption-text">output</span><a class="headerlink" href="#id26" title="Permalink to this code">¶</a></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Your last score was: 18
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="solution dropdown admonition" id="lessons/file-io-solution-9">
+<p class="admonition-title">Solution to <a class="reference external" href="#with-statement-exercise"><span>Exercise 23</span></a></p>
+<div class="section" id="solution-content">
+<div class="literal-block-wrapper docutils container" id="id27">
+<div class="code-block-caption"><span class="caption-number">Listing 100 </span><span class="caption-text"><a class="reference external" href="http://scores.py">scores.py</a></span><a class="headerlink" href="#id27" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">last_score</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Print the most recent score from the scores.text file&quot;&quot;&quot;</span>
+
+    <span class="c1"># open scores.txt in read mode</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;scores.txt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
+
+        <span class="c1"># iterate through each line in the file</span>
+        <span class="k">for</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">fh</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>
+
+            <span class="c1"># nothing to do in the loop since</span>
+            <span class="c1"># we just need to assign the score variable</span>
+            <span class="k">continue</span>
+
+    <span class="c1"># print the final value of score (the last line of the file)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Your last score was: </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">add_scores</span><span class="p">()</span>
+    <span class="n">last_score</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -797,6 +1678,41 @@ called.</p>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="see-also">
+<h3>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/tutorial/inputoutput.html#tut-files">python.org &gt; Reading and Writing Files</a></p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#open">python.org &gt; Built-in Functions &gt; open</a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="glossary">
+<h3>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="glossary-file-io">
+<h4>File Io<a class="headerlink" href="#glossary-file-io" title="Permalink to this headline">¶</a></h4>
+<dl class="glossary simple">
+<dt id="term-file-like-object">file-like object<a class="headerlink" href="#term-file-like-object" title="Permalink to this term">¶</a></dt><dt id="term-file-object">file object<a class="headerlink" href="#term-file-object" title="Permalink to this term">¶</a></dt><dt id="term-file-handler">file handler<a class="headerlink" href="#term-file-handler" title="Permalink to this term">¶</a></dt><dt id="term-IO-object">IO object<a class="headerlink" href="#term-IO-object" title="Permalink to this term">¶</a></dt><dd><p>An object used to connect to and interact with a file.</p>
+</dd>
+<dt id="term-buffer">buffer<a class="headerlink" href="#term-buffer" title="Permalink to this term">¶</a></dt><dd><p>A sort of temporary holding pen for data that is going from one place to
+another. For example, the default behavior of writable <a class="reference internal" href="#term-file-handler"><span class="xref std std-term">file handler</span></a>
+objects is to append the data passed to the <code class="docutils literal notranslate"><span class="pre">.write()</span></code> function to the write
+buffer, then write the buffer to disk when the handler is closed. This
+improves preformance by reducing the number of hard disk writes.</p>
+</dd>
+<dt id="term-context-manager">context manager<a class="headerlink" href="#term-context-manager" title="Permalink to this term">¶</a></dt><dt id="term-context-manager-objects">context manager objects<a class="headerlink" href="#term-context-manager-objects" title="Permalink to this term">¶</a></dt><dd><p>Python objects that know how to do their own houskeeping. More precicely,
+objects that provide the <a class="reference internal" href="../../dunder%20method.html" title=""><span class="xref std std-term">dunder methods</span></a> <code class="docutils literal notranslate"><span class="pre">.__enter__()</span></code> and
+<code class="docutils literal notranslate"><span class="pre">.__exit__()</span></code> intended to be used by the <code class="docutils literal notranslate"><span class="pre">with</span></code> statement for setup and
+teardown tasks.</p>
+</dd>
+<dt id="term-truncate">truncate<a class="headerlink" href="#term-truncate" title="Permalink to this term">¶</a></dt><dd><p>To shorten something but cutting off a part. When a text file is opened in
+write mode, it is truncated to zero bytes, thereby removing all content from
+the file.</p>
+</dd>
+</dl>
+</div>
 </div>
 </div>
 </div>
