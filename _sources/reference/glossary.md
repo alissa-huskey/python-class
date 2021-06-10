@@ -41,13 +41,6 @@ syntax
   A set of rules that determine how a programming language is understood by the
   computer. Grammar, but for code.
 
-type
-data type
-  The classification of a value which tells Python what operations can be
-  performed on it. Some examples include {term}`strings`,
-  {term}`integers`, {term}`lists`, and
-  {term}`dictionaries`.
-
 loop
   A block of code that will repeat until a specified condition is reached. For
   example *for-loops* and *while-loops*. An *infinite-loop* occurs if there is

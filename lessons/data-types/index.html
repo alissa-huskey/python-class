@@ -531,6 +531,44 @@
        Available operators
       </a>
      </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#functions">
+     Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reference">
+   Reference
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#glossary">
+     Glossary
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#glossary-data-types">
+       Data Types
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#see-also">
+   See also
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operator-dunder-methods">
+     Operator dunder methods
+    </a>
+    <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#arithmetic-operators">
        Arithmetic Operators
@@ -543,29 +581,7 @@
      </li>
     </ul>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#functions">
-     Functions
-    </a>
-   </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#glossary">
-   Glossary
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#glossary-data-types">
-     Data Types
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#see-also">
-   See also
-  </a>
  </li>
 </ul>
 
@@ -592,7 +608,7 @@ things like what methods and attributes it has, what functions it can be passed
 to, and what other types of data it can play nicely with.</p>
 <div class="section" id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
-<p>In modern Python the terms <a class="reference internal" href="../../reference/glossary.html#term-type"><span class="xref std std-term">type</span></a> and <a class="reference internal" href="#term-class"><span class="xref std std-term">class</span></a> are more or less
+<p>In modern Python the terms <a class="reference internal" href="#term-type"><span class="xref std std-term">type</span></a> and <a class="reference internal" href="#term-class"><span class="xref std std-term">class</span></a> are more or less
 synonymous.</p>
 <p>A class is like a blueprint for that type. You can call a class the same way
 you call a function. When you do an empty object of that type will be returned.</p>
@@ -917,9 +933,9 @@ used.</p>
 </div>
 <div class="section" id="members">
 <h3>Members<a class="headerlink" href="#members" title="Permalink to this headline">¶</a></h3>
-<p>An object can have <a class="reference internal" href="#term-member"><span class="xref std std-term">members</span></a>, which is something that can belong
+<p>An object can have <a class="reference internal" href="#term-member"><span class="xref std std-term">members</span></a>, which is something that belongs
 to the object and is accessed with a <code class="docutils literal notranslate"><span class="pre">.</span></code> after a value followed by the member
-name. There are two types of members: methods and attributes.</p>
+name. There are two kinds of members: methods and attributes.</p>
 <div class="section" id="methods">
 <h4>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h4>
 <p>A method is a just like a function, but one that is attached to an object.</p>
@@ -1146,8 +1162,8 @@ are called <a class="reference internal" href="#term-magic-method"><span class="
 <a class="reference internal" href="#term-dunder-method"><span class="xref std std-term">dunder methods</span></a> and we can look at them to find out what
 operators a value has.</p>
 <p>Each operator has a cooresponding magic method. For example the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator
-uses the <code class="docutils literal notranslate"><span class="pre">__add__()</span></code> method. So if we see <code class="docutils literal notranslate"><span class="pre">__add__</span></code> in the list of methods for
-a value, we know that the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator is available to it.</p>
+uses the <code class="docutils literal notranslate"><span class="pre">.__add__()</span></code> method. So if <code class="docutils literal notranslate"><span class="pre">__add__</span></code> is in the list of available
+members, we know that the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator can be used with that value.</p>
 <div class="literal-block-wrapper docutils container" id="id23">
 <div class="code-block-caption"><span class="caption-number">Listing 75 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id23" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -1158,7 +1174,98 @@ a value, we know that the <code class="docutils literal notranslate"><span class
 </pre></div>
 </div>
 </div>
+<p>You can look in the Reference section below to for a list of <a class="reference external" href="#operator-dunder-methods">Operator dunder
+methods</a> and the operators they coorespond to.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://rszalski.github.io/magicmethods/#operators">A Guide to Python’s Magic Methods</a></p></li>
+<li><p><a class="reference external" href="https://www.alphacodingskills.com/python/pages/python-dunder-methods.php">Python - Dunder or Magic Methods</a></p></li>
+<li><p><a class="reference external" href="https://holycoders.com/python-dunder-special-methods/">Python Dunder (Special, Magic) Methods List with Tutorial</a></p></li>
+</ul>
 </div>
+</div>
+</div>
+<div class="section" id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<p>Functions and methods often expect certian types of arguments. If you pass an
+argument of the wrong type you’ll get an arror.</p>
+<p>For example, the <code class="docutils literal notranslate"><span class="pre">len()</span></code> function will accept <code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">str</span></code> arguments, but
+not <code class="docutils literal notranslate"><span class="pre">int</span></code> or <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id24">
+<div class="code-block-caption"><span class="caption-number">Listing 76 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id24" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">)</span>
+<span class="go">3</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="go">3</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="mi">55</span><span class="p">)</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">TypeError                                 Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-38-51e029ded84c&gt; in &lt;module&gt;</span>
+<span class="go">----&gt; 1 len(55)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="mf">3.5</span><span class="p">)</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">TypeError                                 Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-35-5c30567bf151&gt; in &lt;module&gt;</span>
+<span class="go">----&gt; 1 len(3.5)</span>
+
+<span class="go">TypeError: object of type &#39;float&#39; has no len()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="glossary">
+<h3>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="glossary-data-types">
+<h4>Data Types<a class="headerlink" href="#glossary-data-types" title="Permalink to this headline">¶</a></h4>
+<dl class="glossary simple">
+<dt id="term-attribute">attribute<a class="headerlink" href="#term-attribute" title="Permalink to this term">¶</a></dt><dt id="term-property">property<a class="headerlink" href="#term-property" title="Permalink to this term">¶</a></dt><dd><p>A variable that is attached to an object and is accessed with a <code class="docutils literal notranslate"><span class="pre">.</span></code> after a
+value followed by the member name. For example, <a class="reference internal" href="../file-io.html#term-file-handler"><span class="xref std std-term">file handler</span></a> objects
+have an attribute <code class="docutils literal notranslate"><span class="pre">.closed</span></code> which is set True if the handler is closed and
+False if it is open.</p>
+</dd>
+<dt id="term-dunder-method">dunder method<a class="headerlink" href="#term-dunder-method" title="Permalink to this term">¶</a></dt><dt id="term-magic-method">magic method<a class="headerlink" href="#term-magic-method" title="Permalink to this term">¶</a></dt><dd><p>An method, beginning and ending with two underscores (<code class="docutils literal notranslate"><span class="pre">__</span></code>) intended to be
+used internally by Python.</p>
+</dd>
+<dt id="term-member">member<a class="headerlink" href="#term-member" title="Permalink to this term">¶</a></dt><dd><p>An attribute or method attached to an object accessed with a <code class="docutils literal notranslate"><span class="pre">.</span></code> after a
+value followed by the member name</p>
+</dd>
+<dt id="term-method">method<a class="headerlink" href="#term-method" title="Permalink to this term">¶</a></dt><dd><p>A function that is attached to an object and is accessed with a <code class="docutils literal notranslate"><span class="pre">.</span></code> after a
+value followed by the member name. For example, string objects have a <code class="docutils literal notranslate"><span class="pre">.lower()</span></code>
+method which returns a copy of the string converted to lowercase.</p>
+</dd>
+<dt id="term-object">object<a class="headerlink" href="#term-object" title="Permalink to this term">¶</a></dt><dd><p>The ancestor of all types in Python.</p>
+</dd>
+<dt id="term-type">type<a class="headerlink" href="#term-type" title="Permalink to this term">¶</a></dt><dt id="term-data-type">data type<a class="headerlink" href="#term-data-type" title="Permalink to this term">¶</a></dt><dt id="term-class">class<a class="headerlink" href="#term-class" title="Permalink to this term">¶</a></dt><dd><p>The classification of a value which tells Python what operations can be
+performed on it. Some examples include <a class="reference internal" href="../../reference/glossary.html#term-str"><span class="xref std std-term">str</span></a>, <a class="reference internal" href="../../reference/glossary.html#term-int"><span class="xref std std-term">int</span></a>,
+<a class="reference internal" href="../../reference/glossary.html#term-list"><span class="xref std std-term">list</span></a>, and <a class="reference internal" href="../../reference/glossary.html#term-dict"><span class="xref std std-term">dict</span></a>. <br />
+When called the type or class can will return a new empty object of that
+type. For example <code class="docutils literal notranslate"><span class="pre">str()</span></code> returns <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>.</p>
+</dd>
+<dt id="term-typecasting">typecasting<a class="headerlink" href="#term-typecasting" title="Permalink to this term">¶</a></dt><dd><p>Converting from one type to another.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="section" id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html">python.org &gt; Built-in Types</a></p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#types">python.org &gt; The standard type hierarchy</a></p></li>
+</ul>
+</div>
+<div class="section" id="operator-dunder-methods">
+<h3>Operator dunder methods<a class="headerlink" href="#operator-dunder-methods" title="Permalink to this headline">¶</a></h3>
+<p>Below are tables matching operators to their cooresponding dunder methods.</p>
 <div class="section" id="arithmetic-operators">
 <h4>Arithmetic Operators<a class="headerlink" href="#arithmetic-operators" title="Permalink to this headline">¶</a></h4>
 <table class="colwidths-auto table">
@@ -1256,80 +1363,7 @@ a value, we know that the <code class="docutils literal notranslate"><span class
 </tr>
 </tbody>
 </table>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://rszalski.github.io/magicmethods/#operators">Python - Dunder or Magic Methods</a></p></li>
-<li><p><a class="reference external" href="https://www.alphacodingskills.com/python/pages/python-dunder-methods.php">Python - Dunder or Magic Methods</a></p></li>
-<li><p><a class="reference external" href="https://holycoders.com/python-dunder-special-methods/">Python Dunder (Special, Magic) Methods List with Tutorial</a></p></li>
-</ul>
 </div>
-</div>
-</div>
-<div class="section" id="functions">
-<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
-<p>Functions and methods often expect certian types of arguments, and if you pass
-an argument of the wrong type you’ll get an arror.</p>
-<p>For example, the <code class="docutils literal notranslate"><span class="pre">len()</span></code> function will accept <code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">str</span></code> arguments, but
-not <code class="docutils literal notranslate"><span class="pre">int</span></code> or <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p>
-<div class="literal-block-wrapper docutils container" id="id24">
-<div class="code-block-caption"><span class="caption-number">Listing 76 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id24" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">)</span>
-<span class="go">3</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-<span class="go">3</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="mi">55</span><span class="p">)</span>
-<span class="go">---------------------------------------------------------------------------</span>
-<span class="go">TypeError                                 Traceback (most recent call last)</span>
-<span class="go">&lt;ipython-input-38-51e029ded84c&gt; in &lt;module&gt;</span>
-<span class="go">----&gt; 1 len(55)</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="mf">3.5</span><span class="p">)</span>
-<span class="go">---------------------------------------------------------------------------</span>
-<span class="go">TypeError                                 Traceback (most recent call last)</span>
-<span class="go">&lt;ipython-input-35-5c30567bf151&gt; in &lt;module&gt;</span>
-<span class="go">----&gt; 1 len(3.5)</span>
-
-<span class="go">TypeError: object of type &#39;float&#39; has no len()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="glossary">
-<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="glossary-data-types">
-<h3>Data Types<a class="headerlink" href="#glossary-data-types" title="Permalink to this headline">¶</a></h3>
-<dl class="glossary simple">
-<dt id="term-attribute">attribute<a class="headerlink" href="#term-attribute" title="Permalink to this term">¶</a></dt><dt id="term-property">property<a class="headerlink" href="#term-property" title="Permalink to this term">¶</a></dt><dd><p>…</p>
-</dd>
-<dt id="term-type">type<a class="headerlink" href="#term-type" title="Permalink to this term">¶</a></dt><dt id="term-data-type">data type<a class="headerlink" href="#term-data-type" title="Permalink to this term">¶</a></dt><dd><p>The classification of a value which tells Python what operations can be
-performed on it. Some examples include <a class="reference internal" href="../../reference/glossary.html#term-str"><span class="xref std std-term">str</span></a>,
-<a class="reference internal" href="../../reference/glossary.html#term-int"><span class="xref std std-term">int</span></a>, <a class="reference internal" href="../../reference/glossary.html#term-list"><span class="xref std std-term">list</span></a>, and <a class="reference internal" href="../../reference/glossary.html#term-dict"><span class="xref std std-term">dict</span></a>.</p>
-</dd>
-<dt id="term-typecasting">typecasting<a class="headerlink" href="#term-typecasting" title="Permalink to this term">¶</a></dt><dd><p>Converting from one type to another.</p>
-</dd>
-<dt id="term-object">object<a class="headerlink" href="#term-object" title="Permalink to this term">¶</a></dt><dd><p>…</p>
-</dd>
-<dt id="term-class">class<a class="headerlink" href="#term-class" title="Permalink to this term">¶</a></dt><dd><p>…</p>
-</dd>
-<dt id="term-member">member<a class="headerlink" href="#term-member" title="Permalink to this term">¶</a></dt><dd><p>…</p>
-</dd>
-<dt id="term-dunder-method">dunder method<a class="headerlink" href="#term-dunder-method" title="Permalink to this term">¶</a></dt><dt id="term-magic-method">magic method<a class="headerlink" href="#term-magic-method" title="Permalink to this term">¶</a></dt><dd><p>…</p>
-</dd>
-</dl>
-</div>
-</div>
-<div class="section" id="see-also">
-<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html">python.org &gt; Built-in Types</a></p></li>
-<li><p><a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#types">python.org &gt; The standard type hierarchy</a></p></li>
-</ul>
 </div>
 </div>
 </div>

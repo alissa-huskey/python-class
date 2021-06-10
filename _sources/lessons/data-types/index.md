@@ -329,9 +329,9 @@ To demonstrate this, lets compare an `int`, a `float` and a `str`.
 
 ### Members
 
-An object can have {term}`members <member>`, which is something that can belong
+An object can have {term}`members <member>`, which is something that belongs
 to the object and is accessed with a `.` after a value followed by the member
-name. There are two types of members: methods and attributes.
+name. There are two kinds of members: methods and attributes.
 
 #### Methods
 
@@ -562,8 +562,8 @@ are called {term}`magic <magic method>` or
 operators a value has.
 
 Each operator has a cooresponding magic method. For example the `+` operator
-uses the `__add__()` method. So if we see `__add__` in the list of methods for
-a value, we know that the `+` operator is available to it.
+uses the `.__add__()` method. So if `__add__` is in the list of available
+members, we know that the `+` operator can be used with that value.
 
 ```{code-block} python
 :caption: Python shell
@@ -575,35 +575,12 @@ a value, we know that the `+` operator is available to it.
  ]
 ```
 
-
-#### Arithmetic Operators
-
-| Operator | Meaning                   | Method          | Operator | Method          |
-|----------|---------------------------|-----------------|----------|-----------------|
-| `+`      | sum                       | `__add__`       | `+=`     | `__iadd__`      |
-| `-`      | difference                | `__sub__`       | `-=`     | `__isub__`      |
-| `*`      | product                   | `__mul__`       | `*=`     | `__imul__`      |
-| `/`      | quotient                  | `__truediv__`   | `/=`     | `__itruediv__`  |
-| `//`     | floored quotient          | `__floordiv__`  | `//=`    | `__ifloordiv__` |
-| `%`      | remainder                 | `__mod__`       | `%=`     | `__imod__`      |
-| `**`     | power of                  | `__pow__`       | `**=`    | `__ipow__`      |
-
-#### Comparison operators
-
-| Operator | Meaning                   | Method          |
-|----------|---------------------------|-----------------|
-| `<`      | less than                 | `__lt__`        |
-| `>`      | greater than              | `__gt__`        |
-| `<=`     | less than or equal to     | `__le__`        |
-| `>=`     | greater than or equal to  | `__ge__`        |
-| `==`     | equals                    | `__eq__`        |
-| `!=`     | not equals                | `__nq__`        |
-| `in`     | contains                  | `__contains__`  |
-
+You can look in the Reference section below to for a list of [Operator dunder
+methods](#operator-dunder-methods) and the operators they coorespond to.
 
 ```{seealso}
 
-* [Python - Dunder or Magic Methods](https://rszalski.github.io/magicmethods/#operators)
+* [A Guide to Python's Magic Methods](https://rszalski.github.io/magicmethods/#operators)
 * [Python - Dunder or Magic Methods](https://www.alphacodingskills.com/python/pages/python-dunder-methods.php)
 * [Python Dunder (Special, Magic) Methods List with Tutorial](https://holycoders.com/python-dunder-special-methods/)
 
@@ -611,8 +588,8 @@ a value, we know that the `+` operator is available to it.
 
 ### Functions
 
-Functions and methods often expect certian types of arguments, and if you pass
-an argument of the wrong type you'll get an arror.
+Functions and methods often expect certian types of arguments. If you pass an
+argument of the wrong type you'll get an arror.
 
 For example, the `len()` function will accept `list` and `str` arguments, but
 not `int` or `float`.
@@ -638,38 +615,49 @@ TypeError                                 Traceback (most recent call last)
 ----> 1 len(3.5)
 
 TypeError: object of type 'float' has no len()
-
 ```
 
-Glossary
---------
+Reference
+---------
+
+### Glossary
 
 ```{glossary} data-types
 attribute
 property
-  ...
-
-type
-data type
-  The classification of a value which tells Python what operations can be
-  performed on it. Some examples include {term}`str`,
-  {term}`int`, {term}`list`, and {term}`dict`.
-
-typecasting
-  Converting from one type to another.
-
-object
-  ...
-
-class
-  ...
-
-member
-  ...
+  A variable that is attached to an object and is accessed with a `.` after a
+  value followed by the member name. For example, {term}`file handler` objects
+  have an attribute `.closed` which is set True if the handler is closed and
+  False if it is open.
 
 dunder method
 magic method
-  ...
+  An method, beginning and ending with two underscores (`__`) intended to be
+  used internally by Python.
+
+member
+  An attribute or method attached to an object accessed with a `.` after a
+  value followed by the member name
+
+method
+  A function that is attached to an object and is accessed with a `.` after a
+  value followed by the member name. For example, string objects have a `.lower()`
+  method which returns a copy of the string converted to lowercase.
+
+object
+  The ancestor of all types in Python.
+
+type
+data type
+class
+  The classification of a value which tells Python what operations can be
+  performed on it. Some examples include {term}`str`, {term}`int`,
+  {term}`list`, and {term}`dict`. \
+  When called the type or class can will return a new empty object of that
+  type. For example `str()` returns `""`.
+
+typecasting
+  Converting from one type to another.
 ```
 
 See also
@@ -681,3 +669,32 @@ See also
 - [python.org > The standard type hierarchy](https://docs.python.org/3/reference/datamodel.html#types)
 
 ```
+
+### Operator dunder methods
+
+Below are tables matching operators to their cooresponding dunder methods.
+
+#### Arithmetic Operators
+
+| Operator | Meaning                   | Method          | Operator | Method          |
+|----------|---------------------------|-----------------|----------|-----------------|
+| `+`      | sum                       | `__add__`       | `+=`     | `__iadd__`      |
+| `-`      | difference                | `__sub__`       | `-=`     | `__isub__`      |
+| `*`      | product                   | `__mul__`       | `*=`     | `__imul__`      |
+| `/`      | quotient                  | `__truediv__`   | `/=`     | `__itruediv__`  |
+| `//`     | floored quotient          | `__floordiv__`  | `//=`    | `__ifloordiv__` |
+| `%`      | remainder                 | `__mod__`       | `%=`     | `__imod__`      |
+| `**`     | power of                  | `__pow__`       | `**=`    | `__ipow__`      |
+
+#### Comparison operators
+
+| Operator | Meaning                   | Method          |
+|----------|---------------------------|-----------------|
+| `<`      | less than                 | `__lt__`        |
+| `>`      | greater than              | `__gt__`        |
+| `<=`     | less than or equal to     | `__le__`        |
+| `>=`     | greater than or equal to  | `__ge__`        |
+| `==`     | equals                    | `__eq__`        |
+| `!=`     | not equals                | `__nq__`        |
+| `in`     | contains                  | `__contains__`  |
+
