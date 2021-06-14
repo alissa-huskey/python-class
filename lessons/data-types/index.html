@@ -56,7 +56,7 @@
     <link rel="canonical" href="https://alissa-huskey.github.io/python-class/lessons/data-types/index.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Files" href="../files.html" />
+    <link rel="next" title="Numeric Types" href="numeric.html" />
     <link rel="prev" title="Reading Code" href="../reading-code.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -172,17 +172,29 @@
      </li>
     </ul>
    </li>
-   <li class="toctree-l2 current active">
+   <li class="toctree-l2 current active has-children">
     <a class="current reference internal" href="#">
      Data Types
     </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="numeric.html">
+       Numeric Types
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toctree-l2 has-children">
     <a class="reference internal" href="../files.html">
      Files
     </a>
-    <input checked class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-    <label for="toctree-checkbox-4">
+    <input checked class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -210,8 +222,8 @@
   <a class="reference internal" href="../in-depth/index.html">
    In Depth
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
+  <input checked class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -232,8 +244,8 @@
   <a class="reference internal" href="../misc.html">
    Misc
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
+  <input checked class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -254,8 +266,8 @@
   <a class="reference internal" href="../game-book.html">
    Invent Games Book
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
+  <input checked class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -466,6 +478,11 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#table-of-contents">
+   Table of Contents
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#classes">
    Classes
   </a>
@@ -541,6 +558,16 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#built-in-types">
+   Built-in Types
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#reference">
    Reference
   </a>
@@ -557,13 +584,6 @@
      </li>
     </ul>
    </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#see-also">
-   See also
-  </a>
-  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#operator-dunder-methods">
      Operator dunder methods
@@ -580,6 +600,11 @@
       </a>
      </li>
     </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#see-also">
+     See also
+    </a>
    </li>
   </ul>
  </li>
@@ -606,6 +631,48 @@ boat.</p>
 <p>So it is with data. Every piece of data has a type and that type dictates
 things like what methods and attributes it has, what functions it can be passed
 to, and what other types of data it can play nicely with.</p>
+<div class="section" id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#classes">Classes</a></p>
+<ul>
+<li><p><a class="reference external" href="#exercise">Exercise</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#finding-out-the-type">Finding out the type</a></p>
+<ul>
+<li><p><a class="reference external" href="#exercise-1">Exercise</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#what-a-difference-a-type-makes">What a difference a type makes</a></p>
+<ul>
+<li><p><a class="reference external" href="#members">Members</a></p>
+<ul>
+<li><p><a class="reference external" href="#methods">Methods</a></p></li>
+<li><p><a class="reference external" href="#attributes">Attributes</a></p></li>
+<li><p><a class="reference external" href="#available-members">Available members</a></p></li>
+<li><p><a class="reference external" href="#exercise-2">Exercise</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#operators">Operators</a></p></li>
+<li><p><a class="reference external" href="#functions">Functions</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#summary">Summary</a></p></li>
+<li><p><a class="reference external" href="#reference">Reference</a></p>
+<ul>
+<li><p><a class="reference external" href="#glossary">Glossary</a></p></li>
+<li><p><a class="reference external" href="#operator-dunder-methods">Operator dunder methods</a></p>
+<ul>
+<li><p><a class="reference external" href="#arithmetic-operators">Arithmetic Operators</a></p></li>
+<li><p><a class="reference external" href="#comparison-operators">Comparison operators</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#see-also">See also</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
 <p>In modern Python the terms <a class="reference internal" href="#term-type"><span class="xref std std-term">type</span></a> and <a class="reference internal" href="#term-class"><span class="xref std std-term">class</span></a> are more or less
@@ -918,13 +985,6 @@ some of your own.</p>
 <h2>What a difference a type makes<a class="headerlink" href="#what-a-difference-a-type-makes" title="Permalink to this headline">¶</a></h2>
 <p>Knowing the data type of a value will tell what it can do and where it can be
 used.</p>
-<p>The type controls:</p>
-<ul class="simple">
-<li><p>what methods are available</p></li>
-<li><p>what attributes are available</p></li>
-<li><p>what operators it has access to and how they behave</p></li>
-<li><p>which functions it can be used with</p></li>
-</ul>
 <p>To demonstrate this, lets compare an <code class="docutils literal notranslate"><span class="pre">int</span></code>, a <code class="docutils literal notranslate"><span class="pre">float</span></code> and a <code class="docutils literal notranslate"><span class="pre">str</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a_int</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a_float</span> <span class="o">=</span> <span class="mf">1.0</span>
@@ -1179,6 +1239,7 @@ methods</a> and the operators they coorespond to.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#specialnames">Python.org &gt; Special Method Names</a></p></li>
 <li><p><a class="reference external" href="https://rszalski.github.io/magicmethods/#operators">A Guide to Python’s Magic Methods</a></p></li>
 <li><p><a class="reference external" href="https://www.alphacodingskills.com/python/pages/python-dunder-methods.php">Python - Dunder or Magic Methods</a></p></li>
 <li><p><a class="reference external" href="https://holycoders.com/python-dunder-special-methods/">Python Dunder (Special, Magic) Methods List with Tutorial</a></p></li>
@@ -1218,6 +1279,77 @@ not <code class="docutils literal notranslate"><span class="pre">int</span></cod
 </div>
 </div>
 </div>
+<div class="section" id="built-in-types">
+<h2>Built-in Types<a class="headerlink" href="#built-in-types" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>object</p>
+<ul>
+<li><p>None</p></li>
+<li><p>numeric</p>
+<ul>
+<li><p>float</p></li>
+<li><p>int</p>
+<ul>
+<li><p>bool</p></li>
+</ul>
+</li>
+<li><p>complex</p></li>
+</ul>
+</li>
+<li><p>containers, iterables</p>
+<ul>
+<li><p>set</p>
+<ul>
+<li><p>frozenset</p></li>
+</ul>
+</li>
+<li><p>dict</p></li>
+<li><p>sequences</p>
+<ul>
+<li><p>list</p></li>
+<li><p>tuple</p></li>
+<li><p>range</p></li>
+<li><p>str</p></li>
+<li><p>bytes</p></li>
+<li><p>bytearray</p></li>
+<li><p>memoryview</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>file (IO)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>A type or class is the classification of a value.</p></li>
+<li><p>When you call a class or type it returns an empty object of that type.</p></li>
+<li><p>You can often call a class with an argument to convert it to that type.</p></li>
+<li><p>You can use the <code class="docutils literal notranslate"><span class="pre">type()</span></code> and <code class="docutils literal notranslate"><span class="pre">isinstance()</span></code> functions to find out the type of a value.</p></li>
+<li><p>Objects can have members which are accessed by adding a <code class="docutils literal notranslate"><span class="pre">.</span></code> after the value
+followed by the member name. Members can either be attributes, which are just
+like variables, or methods which are just like functions.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">callable()</span></code> function will return <code class="docutils literal notranslate"><span class="pre">True</span></code> for things that can be called
+like methods, functions and classes, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p></li>
+<li><p>You can find out what members a value has:</p>
+<ul>
+<li><p>in IPython after a variable followed by a <code class="docutils literal notranslate"><span class="pre">.</span></code> by hitting <kbd class="kbd docutils literal notranslate">TAB</kbd></p></li>
+<li><p>in VS Code after a variable followed by a <code class="docutils literal notranslate"><span class="pre">.</span></code> by using the <kbd class="kbd docutils literal notranslate">⌘I</kbd> or <kbd class="kbd docutils literal notranslate">⌃Space</kbd> keyboard shortcuts</p></li>
+<li><p>by using the <code class="docutils literal notranslate"><span class="pre">dir()</span></code> or <code class="docutils literal notranslate"><span class="pre">hasattr()</span></code> functions</p></li>
+</ul>
+</li>
+<li><p>The type of a value dictates:</p>
+<ul>
+<li><p>what methods and attributes are available</p></li>
+<li><p>what operators it has access to and how they behave</p></li>
+<li><p>which functions it can be used with</p></li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="reference">
 <h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="glossary">
@@ -1230,7 +1362,7 @@ value followed by the member name. For example, <a class="reference internal" hr
 have an attribute <code class="docutils literal notranslate"><span class="pre">.closed</span></code> which is set True if the handler is closed and
 False if it is open.</p>
 </dd>
-<dt id="term-dunder-method">dunder method<a class="headerlink" href="#term-dunder-method" title="Permalink to this term">¶</a></dt><dt id="term-magic-method">magic method<a class="headerlink" href="#term-magic-method" title="Permalink to this term">¶</a></dt><dd><p>An method, beginning and ending with two underscores (<code class="docutils literal notranslate"><span class="pre">__</span></code>) intended to be
+<dt id="term-dunder-method">dunder method<a class="headerlink" href="#term-dunder-method" title="Permalink to this term">¶</a></dt><dt id="term-magic-method">magic method<a class="headerlink" href="#term-magic-method" title="Permalink to this term">¶</a></dt><dt id="term-special-method">special method<a class="headerlink" href="#term-special-method" title="Permalink to this term">¶</a></dt><dd><p>An method, beginning and ending with two underscores (<code class="docutils literal notranslate"><span class="pre">__</span></code>) intended to be
 used internally by Python.</p>
 </dd>
 <dt id="term-member">member<a class="headerlink" href="#term-member" title="Permalink to this term">¶</a></dt><dd><p>An attribute or method attached to an object accessed with a <code class="docutils literal notranslate"><span class="pre">.</span></code> after a
@@ -1245,23 +1377,13 @@ method which returns a copy of the string converted to lowercase.</p>
 <dt id="term-type">type<a class="headerlink" href="#term-type" title="Permalink to this term">¶</a></dt><dt id="term-data-type">data type<a class="headerlink" href="#term-data-type" title="Permalink to this term">¶</a></dt><dt id="term-class">class<a class="headerlink" href="#term-class" title="Permalink to this term">¶</a></dt><dd><p>The classification of a value which tells Python what operations can be
 performed on it. Some examples include <a class="reference internal" href="../../reference/glossary.html#term-str"><span class="xref std std-term">str</span></a>, <a class="reference internal" href="../../reference/glossary.html#term-int"><span class="xref std std-term">int</span></a>,
 <a class="reference internal" href="../../reference/glossary.html#term-list"><span class="xref std std-term">list</span></a>, and <a class="reference internal" href="../../reference/glossary.html#term-dict"><span class="xref std std-term">dict</span></a>. <br />
-When called the type or class can will return a new empty object of that
+When called the type or class will return a new empty object of that
 type. For example <code class="docutils literal notranslate"><span class="pre">str()</span></code> returns <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>.</p>
 </dd>
 <dt id="term-typecasting">typecasting<a class="headerlink" href="#term-typecasting" title="Permalink to this term">¶</a></dt><dd><p>Converting from one type to another.</p>
 </dd>
 </dl>
 </div>
-</div>
-</div>
-<div class="section" id="see-also">
-<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html">python.org &gt; Built-in Types</a></p></li>
-<li><p><a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#types">python.org &gt; The standard type hierarchy</a></p></li>
-</ul>
 </div>
 <div class="section" id="operator-dunder-methods">
 <h3>Operator dunder methods<a class="headerlink" href="#operator-dunder-methods" title="Permalink to this headline">¶</a></h3>
@@ -1365,6 +1487,18 @@ type. For example <code class="docutils literal notranslate"><span class="pre">s
 </table>
 </div>
 </div>
+<div class="section" id="see-also">
+<h3>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html">python.org &gt; Built-in Types</a></p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#types">python.org &gt; The standard type hierarchy</a></p></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
 </div>
 </div>
 
@@ -1394,7 +1528,7 @@ type. For example <code class="docutils literal notranslate"><span class="pre">s
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="../reading-code.html" title="previous page">Reading Code</a>
-    <a class='right-next' id="next-link" href="../files.html" title="next page">Files</a>
+    <a class='right-next' id="next-link" href="numeric.html" title="next page">Numeric Types</a>
 
         </div>
         

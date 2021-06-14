@@ -14,6 +14,29 @@ So it is with data. Every piece of data has a type and that type dictates
 things like what methods and attributes it has, what functions it can be passed
 to, and what other types of data it can play nicely with.
 
+Table of Contents
+-----------------
+
+* [Classes](#classes)
+   * [Exercise](#exercise)
+* [Finding out the type](#finding-out-the-type)
+   * [Exercise](#exercise-1)
+* [What a difference a type makes](#what-a-difference-a-type-makes)
+   * [Members](#members)
+      * [Methods](#methods)
+      * [Attributes](#attributes)
+      * [Available members](#available-members)
+      * [Exercise](#exercise-2)
+   * [Operators](#operators)
+   * [Functions](#functions)
+* [Summary](#summary)
+* [Reference](#reference)
+   * [Glossary](#glossary)
+   * [Operator dunder methods](#operator-dunder-methods)
+      * [Arithmetic Operators](#arithmetic-operators)
+      * [Comparison operators](#comparison-operators)
+   * [See also](#see-also)
+
 Classes
 -------
 
@@ -210,7 +233,6 @@ TypeError: cannot convert dictionary update sequence element #0 to a sequence
 >>> list({'a': '1', 'b': '2', 'c': '3'})
 ['a', 'b', 'c']
 ```
-
 `````
 
 Finding out the type
@@ -303,7 +325,6 @@ True
 >>> isinstance(0, bool)
 False
 ```
-
 `````
 
 What a difference a type makes
@@ -311,13 +332,6 @@ What a difference a type makes
 
 Knowing the data type of a value will tell what it can do and where it can be
 used.
-
-The type controls:
-
-* what methods are available
-* what attributes are available
-* what operators it has access to and how they behave
-* which functions it can be used with
 
 To demonstrate this, lets compare an `int`, a `float` and a `str`.
 
@@ -580,6 +594,7 @@ methods](#operator-dunder-methods) and the operators they coorespond to.
 
 ```{seealso}
 
+* [Python.org > Special Method Names](https://docs.python.org/3/reference/datamodel.html#specialnames)
 * [A Guide to Python's Magic Methods](https://rszalski.github.io/magicmethods/#operators)
 * [Python - Dunder or Magic Methods](https://www.alphacodingskills.com/python/pages/python-dunder-methods.php)
 * [Python Dunder (Special, Magic) Methods List with Tutorial](https://holycoders.com/python-dunder-special-methods/)
@@ -617,6 +632,58 @@ TypeError                                 Traceback (most recent call last)
 TypeError: object of type 'float' has no len()
 ```
 
+Built-in Types
+--------------
+
+* object
+  * None
+  * numeric
+    - float
+    - int
+      - bool
+    - complex
+  * containers, iterables
+    * set
+      - frozenset
+    * dict
+    * sequences
+      - list
+      - tuple
+      - range
+      - str
+      - bytes
+      - bytearray
+      - memoryview
+  * file (IO)
+
+% * internal types
+%   * type
+%   * Ellipsis
+%   * Warning
+%   * Exception
+%   * slice
+
+Summary
+-------
+
+* A type or class is the classification of a value.
+* When you call a class or type it returns an empty object of that type.
+* You can often call a class with an argument to convert it to that type.
+* You can use the `type()` and `isinstance()` functions to find out the type of a value.
+* Objects can have members which are accessed by adding a `.` after the value
+  followed by the member name. Members can either be attributes, which are just
+  like variables, or methods which are just like functions.
+* The `callable()` function will return `True` for things that can be called
+  like methods, functions and classes, `False` otherwise.
+* You can find out what members a value has:
+  - in IPython after a variable followed by a `.` by hitting {kbd}`TAB`
+  - in VS Code after a variable followed by a `.` by using the {kbd}`⌘I` or {kbd}`⌃Space` keyboard shortcuts
+  - by using the `dir()` or `hasattr()` functions
+* The type of a value dictates:
+  - what methods and attributes are available
+  - what operators it has access to and how they behave
+  - which functions it can be used with
+
 Reference
 ---------
 
@@ -632,6 +699,7 @@ property
 
 dunder method
 magic method
+special method
   An method, beginning and ending with two underscores (`__`) intended to be
   used internally by Python.
 
@@ -653,21 +721,11 @@ class
   The classification of a value which tells Python what operations can be
   performed on it. Some examples include {term}`str`, {term}`int`,
   {term}`list`, and {term}`dict`. \
-  When called the type or class can will return a new empty object of that
+  When called the type or class will return a new empty object of that
   type. For example `str()` returns `""`.
 
 typecasting
   Converting from one type to another.
-```
-
-See also
---------
-
-```{seealso}
-
-- [python.org > Built-in Types](https://docs.python.org/3/library/stdtypes.html)
-- [python.org > The standard type hierarchy](https://docs.python.org/3/reference/datamodel.html#types)
-
 ```
 
 ### Operator dunder methods
@@ -697,4 +755,13 @@ Below are tables matching operators to their cooresponding dunder methods.
 | `==`     | equals                    | `__eq__`        |
 | `!=`     | not equals                | `__nq__`        |
 | `in`     | contains                  | `__contains__`  |
+
+### See also
+
+```{seealso}
+
+- [python.org > Built-in Types](https://docs.python.org/3/library/stdtypes.html)
+- [python.org > The standard type hierarchy](https://docs.python.org/3/reference/datamodel.html#types)
+
+```
 
