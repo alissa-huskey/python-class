@@ -258,21 +258,76 @@ Moreover, the `int()` type takes an optional keyword argument `base` that can be
 % | `>>` | shift bits right      | floor division by pow(2, n)                 |
 % | `~`  | invert bits           |                                             |
 
-% ```{seealso}
 % * [Python Bitwise Operators](https://www.geeksforgeeks.org/python-bitwise-operators/)
 % * [Bitwise Operators in Python](https://realpython.com/python-bitwise-operators/)
-% ```
 
 ### Boolean
+
+The boolean data type has just two values: `True` and `False`.
 
 |                 |                    |
 |-----------------|--------------------|
 | **Type**        | `bool`             |
 | **Base Class**  | `numbers.Integral` |
 
-% [ ] truthy / falsy
-% [ ] using bool in arithmatic
-% [ ] True / False constants
+
+```{code-block} python
+:caption: Python shell
+:class: full-width
+>>> True
+True
+
+>>> False
+False
+
+>>> bool(0)
+False
+```
+
+While the boolean type is in some ways the simplest, is is also one of the most
+fundamental. It is the type that is returned when we use comparison operators:
+
+```{code-block} python
+:caption: Python shell
+:class: full-width
+>>> 1 == 2
+False
+```
+
+It is the type that expressions are converted to to determine their truthiness,
+or in a conditional statement.
+
+```{code-block} python
+:caption: Python shell
+:class: full-width
+>>> bool("")
+False
+
+>>> bool("a")
+True
+
+>>> bool([])
+False
+```
+
+Under the hood `True` is equal to `1` and `False` is equal to `0`. Since `1`
+and `0` are integers, the `bool` type is just a special kind of integer. That
+means that we can use booleans as numbers for all intents and purposes.
+
+```{code-block} python
+:caption: Python shell
+:class: full-width
+>>> True + True + True
+3
+
+>>> words = ["No", "Yes"]
+
+>>> words[False]
+'No'
+
+>>> words[True]
+'Yes'
+```
 
 Floating point numbers
 ----------------------
