@@ -28,7 +28,6 @@ Table of Contents
       * [Available members](#available-members)
       * [Exercise](#exercise-2)
    * [Operators](#operators)
-      * [Available operators](#available-operators)
    * [Functions](#functions)
 * [Summary](#summary)
 * [Reference](#reference)
@@ -595,6 +594,7 @@ methods](#operator-dunder-methods) and the operators they coorespond to.
 
 ```{seealso}
 
+* [Python.org > Special Method Names](https://docs.python.org/3/reference/datamodel.html#specialnames)
 * [A Guide to Python's Magic Methods](https://rszalski.github.io/magicmethods/#operators)
 * [Python - Dunder or Magic Methods](https://www.alphacodingskills.com/python/pages/python-dunder-methods.php)
 * [Python Dunder (Special, Magic) Methods List with Tutorial](https://holycoders.com/python-dunder-special-methods/)
@@ -632,6 +632,37 @@ TypeError                                 Traceback (most recent call last)
 TypeError: object of type 'float' has no len()
 ```
 
+Built-in Types
+--------------
+
+* object
+  * None
+  * numeric
+    - float
+    - int
+      - bool
+    - complex
+  * containers, iterables
+    * set
+      - frozenset
+    * dict
+    * sequences
+      - list
+      - tuple
+      - range
+      - str
+      - bytes
+      - bytearray
+      - memoryview
+  * file (IO)
+
+% * internal types
+%   * type
+%   * Ellipsis
+%   * Warning
+%   * Exception
+%   * slice
+
 Summary
 -------
 
@@ -668,6 +699,7 @@ property
 
 dunder method
 magic method
+special method
   An method, beginning and ending with two underscores (`__`) intended to be
   used internally by Python.
 
