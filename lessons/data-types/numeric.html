@@ -516,12 +516,12 @@
      Alternate bases
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#boolean">
-     Boolean
-    </a>
-   </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#boolean">
+   Boolean
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#floating-point-numbers">
@@ -704,6 +704,7 @@ fact underscores can be used anywhere between digits.</p>
 </div>
 <div class="section" id="operators">
 <h3>Operators<a class="headerlink" href="#operators" title="Permalink to this headline">¶</a></h3>
+<p>The following operators are available to all numeric types.</p>
 <div class="section" id="unary-sign-operators">
 <h4>Unary sign operators<a class="headerlink" href="#unary-sign-operators" title="Permalink to this headline">¶</a></h4>
 <table class="colwidths-auto table">
@@ -870,7 +871,7 @@ syntax and functions for hexadecimal (base-2), octal (base-8), and binary
 <tbody>
 <tr class="row-even"><td><p>hexadecimal</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">hex()</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">16</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0x</span></code> or <code class="docutils literal notranslate"><span class="pre">0X</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0x12</span></code></p></td>
 </tr>
@@ -882,7 +883,7 @@ syntax and functions for hexadecimal (base-2), octal (base-8), and binary
 </tr>
 <tr class="row-even"><td><p>binary</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">bin()</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">16</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0b</span></code> or <code class="docutils literal notranslate"><span class="pre">0B</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0b10</span></code></p></td>
 </tr>
@@ -922,8 +923,9 @@ syntax and functions for hexadecimal (base-2), octal (base-8), and binary
 </div>
 </div>
 </div>
+</div>
 <div class="section" id="boolean">
-<h3>Boolean<a class="headerlink" href="#boolean" title="Permalink to this headline">¶</a></h3>
+<h2>Boolean<a class="headerlink" href="#boolean" title="Permalink to this headline">¶</a></h2>
 <p>The boolean data type has just two values: <code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 <table class="colwidths-auto table">
 <thead>
@@ -954,7 +956,8 @@ syntax and functions for hexadecimal (base-2), octal (base-8), and binary
 </div>
 </div>
 <p>While the boolean type is in some ways the simplest, is is also one of the most
-fundamental. It is the type that is returned when we use comparison operators:</p>
+fundamental.</p>
+<p>It is the type that is returned when we use comparison operators:</p>
 <div class="literal-block-wrapper docutils container" id="id10">
 <div class="code-block-caption"><span class="caption-number">Listing 84 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="o">==</span> <span class="mi">2</span>
@@ -962,8 +965,7 @@ fundamental. It is the type that is returned when we use comparison operators:</
 </pre></div>
 </div>
 </div>
-<p>It is the type that expressions are converted to to determine their truthiness,
-or in a conditional statement.</p>
+<p>It is the type that expressions are converted to to determine their truthiness.</p>
 <div class="literal-block-wrapper docutils container" id="id11">
 <div class="code-block-caption"><span class="caption-number">Listing 85 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">bool</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
@@ -977,9 +979,21 @@ or in a conditional statement.</p>
 </pre></div>
 </div>
 </div>
+<p>Which is what is used when evaluating a conditional statement. For example, the following two are equivalent.</p>
+<div class="row"><div class="col">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">[]:</span>
+  <span class="c1"># do stuff</span>
+</pre></div>
+</div>
+</div><div class="col">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">bool</span><span class="p">([]):</span>
+  <span class="c1"># do stuff</span>
+</pre></div>
+</div>
+</div>
 <p>Under the hood <code class="docutils literal notranslate"><span class="pre">True</span></code> is equal to <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span></code> is equal to <code class="docutils literal notranslate"><span class="pre">0</span></code>. Since <code class="docutils literal notranslate"><span class="pre">1</span></code>
 and <code class="docutils literal notranslate"><span class="pre">0</span></code> are integers, the <code class="docutils literal notranslate"><span class="pre">bool</span></code> type is just a special kind of integer. That
-means that we can use booleans as numbers for all intents and purposes.</p>
+means that we can usually use booleans as numbers for all intents and purposes.</p>
 <div class="literal-block-wrapper docutils container" id="id12">
 <div class="code-block-caption"><span class="caption-number">Listing 86 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kc">True</span> <span class="o">+</span> <span class="kc">True</span> <span class="o">+</span> <span class="kc">True</span>
@@ -993,7 +1007,6 @@ means that we can use booleans as numbers for all intents and purposes.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">words</span><span class="p">[</span><span class="kc">True</span><span class="p">]</span>
 <span class="go">&#39;Yes&#39;</span>
 </pre></div>
-</div>
 </div>
 </div>
 </div>
@@ -1015,7 +1028,6 @@ means that we can use booleans as numbers for all intents and purposes.</p>
 </tr>
 </tbody>
 </table>
-<p><code class="docutils literal notranslate"><span class="pre">float()</span></code></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mf">1.</span>
 <span class="go">1.0</span>
 
@@ -1144,7 +1156,8 @@ scientific, geometry, or calculus calculations.</p>
 </table>
 <p>They are comprised of a real component combined with a <code class="docutils literal notranslate"><span class="pre">+</span></code> to an imaginary
 component indicated with a <code class="docutils literal notranslate"><span class="pre">j</span></code> or <code class="docutils literal notranslate"><span class="pre">J</span></code>.  The most commonly syntax is
-<code class="samp docutils literal notranslate"><em><span class="pre">real</span></em><span class="pre">+</span><em><span class="pre">imag</span></em><span class="pre">j</span></code> but the order can be switched.</p>
+<code class="samp docutils literal notranslate"><em><span class="pre">real</span></em><span class="pre">+</span><em><span class="pre">imag</span></em><span class="pre">J</span></code> but the order of the real and imaginiary parts can be
+switched.</p>
 <div class="literal-block-wrapper docutils container" id="id17">
 <div class="code-block-caption"><span class="caption-number">Listing 91 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id17" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="o">+</span><span class="mi">5</span><span class="n">j</span>

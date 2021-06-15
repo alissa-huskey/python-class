@@ -106,6 +106,8 @@ fact underscores can be used anywhere between digits.
 
 ### Operators
 
+The following operators are available to all numeric types.
+
 #### Unary sign operators
 
 | Sign | Meaning                | Example |
@@ -206,9 +208,9 @@ syntax and functions for hexadecimal (base-2), octal (base-8), and binary
 
 | System      | Function | Base  | Prefix       | Example  |
 |-------------|----------|-------|--------------|----------|
-| hexadecimal |  `hex()` |  `2`  | `0x` or `0X` | `0x12`   |
+| hexadecimal |  `hex()` |  `16` | `0x` or `0X` | `0x12`   |
 | octal       |  `oct()` |  `8`  | `0o` or `0O` | `0o12`   |
-| binary      |  `bin()` |  `16` | `0b` or `0B` | `0b10`   |
+| binary      |  `bin()` |  `2`  | `0b` or `0B` | `0b10`   |
 
 ```{code-block} python
 :caption: Python shell
@@ -261,7 +263,8 @@ Moreover, the `int()` type takes an optional keyword argument `base` that can be
 % * [Python Bitwise Operators](https://www.geeksforgeeks.org/python-bitwise-operators/)
 % * [Bitwise Operators in Python](https://realpython.com/python-bitwise-operators/)
 
-### Boolean
+Boolean
+-------
 
 The boolean data type has just two values: `True` and `False`.
 
@@ -285,7 +288,9 @@ False
 ```
 
 While the boolean type is in some ways the simplest, is is also one of the most
-fundamental. It is the type that is returned when we use comparison operators:
+fundamental.
+
+It is the type that is returned when we use comparison operators:
 
 ```{code-block} python
 :caption: Python shell
@@ -294,8 +299,7 @@ fundamental. It is the type that is returned when we use comparison operators:
 False
 ```
 
-It is the type that expressions are converted to to determine their truthiness,
-or in a conditional statement.
+It is the type that expressions are converted to to determine their truthiness.
 
 ```{code-block} python
 :caption: Python shell
@@ -310,9 +314,27 @@ True
 False
 ```
 
+Which is what is used when evaluating a conditional statement. For example, the following two are equivalent.
+
+<div class="row"><div class="col">
+
+```{code-block} python
+if []:
+  # do stuff
+```
+
+</div><div class="col">
+
+```{code-block} python
+if bool([]):
+  # do stuff
+```
+
+</div>
+
 Under the hood `True` is equal to `1` and `False` is equal to `0`. Since `1`
 and `0` are integers, the `bool` type is just a special kind of integer. That
-means that we can use booleans as numbers for all intents and purposes.
+means that we can usually use booleans as numbers for all intents and purposes.
 
 ```{code-block} python
 :caption: Python shell
@@ -338,8 +360,6 @@ Floating point values are numbers with a decimal point.
 |-----------------|--------------------|
 | **Type**        | `float`            |
 | **Base Class**  | `numbers.Real`     |
-
-`float()`
 
 ```{code-block} python
 >>> 1.
@@ -465,7 +485,8 @@ scientific, geometry, or calculus calculations.
 
 They are comprised of a real component combined with a `+` to an imaginary
 component indicated with a `j` or `J`.  The most commonly syntax is
-{samp}`{real}+{imag}j` but the order can be switched.
+{samp}`{real}+{imag}J` but the order of the real and imaginiary parts can be
+switched.
 
 ```{code-block} python
 :caption: Python shell
