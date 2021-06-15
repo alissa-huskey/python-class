@@ -203,7 +203,7 @@ represent all numbers. This is the most commonly used system and the one we use
 in our daily lives.
 
 Python also makes it easy to use other bases. In particular, there is built in
-syntax and functions for hexadecimal (base-2), octal (base-8), and binary
+syntax and functions for hexadecimal (base-16), octal (base-8), and binary
 (base-2).
 
 | System      | Function | Base  | Prefix       | Example  |
@@ -377,9 +377,6 @@ Floating point values are numbers with a decimal point.
 * `.is_integer()` -- Return True if the float is a whole number.
   ```{code-block} python
   >>> f = .25
-
-  >>> f.as_integer_ratio()
-  (1, 4)
 
   >>> f.is_integer()
   False
