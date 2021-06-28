@@ -397,7 +397,7 @@ Floating point values are numbers with a decimal point.
 ### E notation
 
 Exponent notation or {term}`E notation` is a shorthand to express very large or
-very small numbers by using the letter `E` to mean "`10` to the power of".
+very small numbers by using the letter `E` to mean "times `10` to the power of".
 
 For example, `8e4` means "`8` times `10` to the power of `4`" (or `8.0 *
 10**4`) which can also be expressed as `80000.0`.
