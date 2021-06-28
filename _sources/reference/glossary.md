@@ -18,6 +18,10 @@ escaping
   the escape character in any string. In Python (and many other languages) the
   escape character is a backslash (`\`).
 
+immutable
+  A value that cannot be changed. In Python these include numbers, strings and
+  tuples.
+
 iterate
 iteration
 iterating
@@ -31,6 +35,9 @@ keyword
   Reserved words that have special meanings in a programming language so that
   they cannot be used as an identifier. Some examples of keywords in Python are
   `for`, `if`, and `def`.
+
+mutable
+  A value that can be changed.
 
 string concatenation
 concatenation
@@ -46,12 +53,6 @@ loop
   example *for-loops* and *while-loops*. An *infinite-loop* occurs if there is
   no condition or the condition can never be met.
 
-immutable
-  A value that cannot be changed. In Python these include numbers, strings and
-  tuples.
-
-mutable
-  A value that can be changed.
 ```
 
 ```{glossary} data-types

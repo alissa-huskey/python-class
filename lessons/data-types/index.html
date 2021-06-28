@@ -56,7 +56,7 @@
     <link rel="canonical" href="https://alissa-huskey.github.io/python-class/lessons/data-types/index.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Numeric Types" href="numeric.html" />
+    <link rel="next" title="Objects" href="objects.html" />
     <link rel="prev" title="Reading Code" href="../reading-code.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -182,6 +182,11 @@
      </i>
     </label>
     <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="objects.html">
+       Objects
+      </a>
+     </li>
      <li class="toctree-l3">
       <a class="reference internal" href="numeric.html">
        Numeric Types
@@ -478,15 +483,20 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#table-of-contents">
-   Table of Contents
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#classes">
-   Classes
+  <a class="reference internal nav-link" href="#classes-and-instances">
+   Classes and instances
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-instances">
+     Creating instances
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#type-conversion">
+     Type conversion
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercise">
      Exercise
@@ -505,62 +515,6 @@
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-a-difference-a-type-makes">
-   What a difference a type makes
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#members">
-     Members
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#methods">
-       Methods
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#attributes">
-       Attributes
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#available-members">
-       Available members
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id2">
-       Exercise
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#operators">
-     Operators
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#available-operators">
-       Available operators
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#functions">
-     Functions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#built-in-types">
-   Built-in Types
-  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
@@ -583,28 +537,6 @@
       </a>
      </li>
     </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#operator-dunder-methods">
-     Operator dunder methods
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#arithmetic-operators">
-       Arithmetic Operators
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#comparison-operators">
-       Comparison operators
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#see-also">
-     See also
-    </a>
    </li>
   </ul>
  </li>
@@ -631,58 +563,38 @@ boat.</p>
 <p>So it is with data. Every piece of data has a type and that type dictates
 things like what methods and attributes it has, what functions it can be passed
 to, and what other types of data it can play nicely with.</p>
-<div class="section" id="table-of-contents">
-<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="#classes">Classes</a></p>
-<ul>
-<li><p><a class="reference external" href="#exercise">Exercise</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="#finding-out-the-type">Finding out the type</a></p>
-<ul>
-<li><p><a class="reference external" href="#exercise-1">Exercise</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="#what-a-difference-a-type-makes">What a difference a type makes</a></p>
-<ul>
-<li><p><a class="reference external" href="#members">Members</a></p>
-<ul>
-<li><p><a class="reference external" href="#methods">Methods</a></p></li>
-<li><p><a class="reference external" href="#attributes">Attributes</a></p></li>
-<li><p><a class="reference external" href="#available-members">Available members</a></p></li>
-<li><p><a class="reference external" href="#exercise-2">Exercise</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="#operators">Operators</a></p></li>
-<li><p><a class="reference external" href="#functions">Functions</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="#summary">Summary</a></p></li>
-<li><p><a class="reference external" href="#reference">Reference</a></p>
-<ul>
-<li><p><a class="reference external" href="#glossary">Glossary</a></p></li>
-<li><p><a class="reference external" href="#operator-dunder-methods">Operator dunder methods</a></p>
-<ul>
-<li><p><a class="reference external" href="#arithmetic-operators">Arithmetic Operators</a></p></li>
-<li><p><a class="reference external" href="#comparison-operators">Comparison operators</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="#see-also">See also</a></p></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="section" id="classes">
-<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="classes-and-instances">
+<h2>Classes and instances<a class="headerlink" href="#classes-and-instances" title="Permalink to this headline">¶</a></h2>
 <p>In modern Python the terms <a class="reference internal" href="#term-type"><span class="xref std std-term">type</span></a> and <a class="reference internal" href="#term-class"><span class="xref std std-term">class</span></a> are more or less
 synonymous.</p>
-<p>A class is like a blueprint for that type. You can call a class the same way
-you call a function. When you do an empty object of that type will be returned.</p>
+<p>A class is both like a category and a blueprint for data. It defines the
+characteristics and behavior of values in a particular category.  Those
+individual values are called <a class="reference internal" href="#term-instance"><span class="xref std std-term">instances</span></a> of a particular
+class, sometimes referred to as <a class="reference internal" href="objects.html#term-object"><span class="xref std std-term">objects</span></a>.</p>
+<p>As an analogy, you can think of a Ford Mustang as a class of cars that have
+<code class="docutils literal notranslate"><span class="pre">doors</span> <span class="pre">=</span> <span class="pre">2</span></code>, <code class="docutils literal notranslate"><span class="pre">seats</span> <span class="pre">=</span> <span class="pre">4</span></code>, and a <code class="docutils literal notranslate"><span class="pre">body_color</span></code> that varies per car; and have the
+ability to <code class="docutils literal notranslate"><span class="pre">drive</span></code>, <code class="docutils literal notranslate"><span class="pre">turn</span></code> and <code class="docutils literal notranslate"><span class="pre">stop</span></code>. Individual Mustang cars parked in a
+garage or driving down the street are instances of the Mustang class.</p>
+<p>For example:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span></code> is a class</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">10</span></code> are instances of the <code class="docutils literal notranslate"><span class="pre">int</span></code> class</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">str</span></code> is a class</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;hello&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;goodbye&quot;</span></code> are instances of the <code class="docutils literal notranslate"><span class="pre">str</span></code> class</p></li>
+</ul>
+<p>The built-in standard types like <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">str</span></code>, and <code class="docutils literal notranslate"><span class="pre">bool</span></code> are all lowercase.
+Most classes defined elsewhere use <code class="docutils literal notranslate"><span class="pre">CamelCasing</span></code>, like <code class="docutils literal notranslate"><span class="pre">Path</span></code> from the
+<code class="docutils literal notranslate"><span class="pre">pathlib</span></code> library.</p>
+<div class="section" id="creating-instances">
+<h3>Creating instances<a class="headerlink" href="#creating-instances" title="Permalink to this headline">¶</a></h3>
+<p>I’ve said that classes are like blueprints. That is in part because classes
+know how to create their own instances.</p>
+<p>Classes are callable just like functions and methods. When called, classes
+return an empty instance of that class. This is called <a class="reference internal" href="#term-instantiation"><span class="xref std std-term">instantiation</span></a>.</p>
 <p>Lets look at what happens when we call some of the built in type classes that
 we are already familiar with.</p>
-<div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-number">Listing 55 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number">Listing 55 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">float</span><span class="p">()</span>
 <span class="go">0.0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">()</span>
@@ -694,10 +606,13 @@ we are already familiar with.</p>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="section" id="type-conversion">
+<h3>Type conversion<a class="headerlink" href="#type-conversion" title="Permalink to this headline">¶</a></h3>
 <p>Classes may also take arguments. For example, most of the built in type classes
 can be used to convert a value to its type. This is called <a class="reference internal" href="#term-typecasting"><span class="xref std std-term">typecasting</span></a>.</p>
-<div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-number">Listing 56 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-number">Listing 56 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="mf">5.0</span><span class="p">)</span>
 <span class="go">&#39;5.0&#39;</span>
 
@@ -713,8 +628,8 @@ can be used to convert a value to its type. This is called <a class="reference i
 </div>
 </div>
 <p>Not all types can be converted to all other types though.</p>
-<div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-number">Listing 57 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-number">Listing 57 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dict</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">TypeError                                 Traceback (most recent call last)</span>
@@ -729,8 +644,8 @@ can be used to convert a value to its type. This is called <a class="reference i
 results. For example, lets say we want a list with all of the digits in
 <code class="docutils literal notranslate"><span class="pre">32562</span></code>. An <code class="docutils literal notranslate"><span class="pre">int</span></code> cannot be converted to a <code class="docutils literal notranslate"><span class="pre">list</span></code>. Instead, convert it to a
 <code class="docutils literal notranslate"><span class="pre">str</span></code> first, then convert each of the digits back to an <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p>
-<div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-number">Listing 58 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-number">Listing 58 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="mi">32562</span><span class="p">)</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">TypeError                                 Traceback (most recent call last)</span>
@@ -752,6 +667,7 @@ results. For example, lets say we want a list with all of the digits in
 <span class="gp">&gt;&gt;&gt; </span><span class="n">digits</span>
 <span class="go">[3, 2, 5, 6, 2]</span>
 </pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="exercise">
@@ -795,8 +711,8 @@ combinations.</p>
 <div class="solution dropdown admonition" id="lessons/data-types/index-solution-1">
 <p class="admonition-title">Solution to <a class="reference external" href="#classes-exercise"><span>Exercise 16</span></a></p>
 <div class="section" id="solution-content">
-<div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-number">Listing 59 </span><span class="caption-text">#1</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-number">Listing 59 </span><span class="caption-text">#1</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">bool</span><span class="p">()</span>
 <span class="go">False</span>
 
@@ -820,8 +736,8 @@ combinations.</p>
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id8">
-<div class="code-block-caption"><span class="caption-number">Listing 60 </span><span class="caption-text">#2</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-number">Listing 60 </span><span class="caption-text">#2</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="s2">&quot;5&quot;</span><span class="p">)</span>
 <span class="go">5</span>
 
@@ -882,8 +798,8 @@ combinations.</p>
 <div class="section" id="finding-out-the-type">
 <h2>Finding out the type<a class="headerlink" href="#finding-out-the-type" title="Permalink to this headline">¶</a></h2>
 <p>We can find out the type of any value by using the <code class="docutils literal notranslate"><span class="pre">type()</span></code> function.</p>
-<div class="literal-block-wrapper docutils container" id="id9">
-<div class="code-block-caption"><span class="caption-number">Listing 61 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-number">Listing 61 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="go">&lt;class &#39;int&#39;&gt;</span>
 
@@ -895,11 +811,25 @@ combinations.</p>
 </pre></div>
 </div>
 </div>
-<p>You can also check if a value is a particular type by using the <code class="docutils literal notranslate"><span class="pre">isinstance()</span></code>
+<p>You can even find out the type of a type.</p>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-number">Listing 62 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="go">&lt;class &#39;type&#39;&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="go">&lt;class &#39;type&#39;&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="go">&lt;class &#39;type&#39;&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>You can check if a value is a particular type by using the <code class="docutils literal notranslate"><span class="pre">isinstance()</span></code>
 function. The first argument is the value you want to check, and the second
 argument is a type, or tuple of types, that you want to check it against.</p>
 <div class="literal-block-wrapper docutils container" id="id10">
-<div class="code-block-caption"><span class="caption-number">Listing 62 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 63 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">isinstance</span><span class="p">(</span><span class="s2">&quot;5&quot;</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
 <span class="go">False</span>
 
@@ -943,7 +873,7 @@ some of your own.</p>
 <p class="admonition-title">Solution to <a class="reference external" href="#type-checking-exercise"><span>Exercise 17</span></a></p>
 <div class="section" id="solution-content">
 <div class="literal-block-wrapper docutils container" id="id11">
-<div class="code-block-caption"><span class="caption-number">Listing 63 </span><span class="caption-text">#1</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 64 </span><span class="caption-text">#1</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="go">bool</span>
 
@@ -962,7 +892,7 @@ some of your own.</p>
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="id12">
-<div class="code-block-caption"><span class="caption-number">Listing 64 </span><span class="caption-text">#2</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 65 </span><span class="caption-text">#2</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">isinstance</span><span class="p">(</span><span class="s2">&quot;5&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
 <span class="go">True</span>
 
@@ -981,373 +911,20 @@ some of your own.</p>
 </div>
 </div>
 </div>
-<div class="section" id="what-a-difference-a-type-makes">
-<h2>What a difference a type makes<a class="headerlink" href="#what-a-difference-a-type-makes" title="Permalink to this headline">¶</a></h2>
-<p>Knowing the data type of a value will tell what it can do and where it can be
-used.</p>
-<p>To demonstrate this, lets compare an <code class="docutils literal notranslate"><span class="pre">int</span></code>, a <code class="docutils literal notranslate"><span class="pre">float</span></code> and a <code class="docutils literal notranslate"><span class="pre">str</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a_int</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a_float</span> <span class="o">=</span> <span class="mf">1.0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a_string</span> <span class="o">=</span> <span class="s2">&quot;1&quot;</span>
-</pre></div>
-</div>
-<div class="section" id="members">
-<h3>Members<a class="headerlink" href="#members" title="Permalink to this headline">¶</a></h3>
-<p>An object can have <a class="reference internal" href="#term-member"><span class="xref std std-term">members</span></a>, which is something that belongs
-to the object and is accessed with a <code class="docutils literal notranslate"><span class="pre">.</span></code> after a value followed by the member
-name. There are two kinds of members: methods and attributes.</p>
-<div class="section" id="methods">
-<h4>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h4>
-<p>A method is a just like a function, but one that is attached to an object.</p>
-<p>Calling a method is just like calling a function, except that it goes after the
-value that it belongs to with a <code class="docutils literal notranslate"><span class="pre">.</span></code> between the object and the method.</p>
-<p>For example:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">str</span></code> objects have a method <code class="docutils literal notranslate"><span class="pre">.isnumeric()</span></code> which returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if
-all its characters numbers and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">float</span></code> objects have a method <code class="docutils literal notranslate"><span class="pre">.is_integer()</span></code> which returns True if it is a
-whole number and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">int</span></code> objects have a method <code class="docutils literal notranslate"><span class="pre">.bit_length()</span></code> which returns the number of bits
-needed to store the number.</p></li>
-</ul>
-<div class="literal-block-wrapper docutils container" id="id13">
-<div class="code-block-caption"><span class="caption-number">Listing 65 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id13" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a_string</span><span class="o">.</span><span class="n">isnumeric</span><span class="p">()</span>
-<span class="go">True</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a_float</span><span class="o">.</span><span class="n">is_integer</span><span class="p">()</span>
-<span class="go">True</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a_int</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span>
-<span class="go">1</span>
-</pre></div>
-</div>
-</div>
-<p>If we try to call a method on the wrong type, we’ll get an error.</p>
-<div class="literal-block-wrapper docutils container" id="id14">
-<div class="code-block-caption"><span class="caption-number">Listing 66 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id14" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a_int</span><span class="o">.</span><span class="n">isnumeric</span><span class="p">()</span>
-<span class="go">---------------------------------------------------------------------------</span>
-<span class="go">AttributeError                            Traceback (most recent call last)</span>
-<span class="go">&lt;ipython-input-117-789c44c0b36c&gt; in &lt;module&gt;</span>
-<span class="go">----&gt; 1 a_int.isnumeric()</span>
-
-<span class="go">AttributeError: &#39;int&#39; object has no attribute &#39;isnumeric&#39;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="attributes">
-<h4>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h4>
-<p><a class="reference internal" href="#term-attribute"><span class="xref std std-term">Attributes</span></a>, sometimes called properties, are just like variables, but they
-are attached to an object.</p>
-<p>For example, both <code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">float</span></code> objects have a <code class="docutils literal notranslate"><span class="pre">.real</span></code> property.</p>
-<div class="literal-block-wrapper docutils container" id="id15">
-<div class="code-block-caption"><span class="caption-number">Listing 67 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id15" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a_float</span><span class="o">.</span><span class="n">real</span>
-<span class="go">1.0</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a_int</span><span class="o">.</span><span class="n">real</span>
-<span class="go">1</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="available-members">
-<h4>Available members<a class="headerlink" href="#available-members" title="Permalink to this headline">¶</a></h4>
-<p>You can use the <code class="docutils literal notranslate"><span class="pre">dir()</span></code> function to see a list of all of a values members. (The
-ones that start and end with <code class="docutils literal notranslate"><span class="pre">__</span></code> are special internal methods that are used by
-Python under the hood, so you can disregard those for now.)</p>
-<div class="literal-block-wrapper docutils container" id="id16">
-<div class="code-block-caption"><span class="caption-number">Listing 68 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id16" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">a_int</span><span class="p">)</span>
-<span class="go">[&#39;__abs__&#39;,</span>
-<span class="go"> &#39;__add__&#39;,</span>
-<span class="go"> &#39;__and__&#39;,</span>
-<span class="go"> ...</span>
-<span class="go"> &#39;as_integer_ratio&#39;,</span>
-<span class="go"> &#39;bit_length&#39;,</span>
-<span class="go"> &#39;conjugate&#39;,</span>
-<span class="go"> &#39;denominator&#39;,</span>
-<span class="go"> &#39;from_bytes&#39;,</span>
-<span class="go"> &#39;imag&#39;,</span>
-<span class="go"> &#39;numerator&#39;,</span>
-<span class="go"> &#39;real&#39;,</span>
-<span class="go"> &#39;to_bytes&#39;]</span>
-</pre></div>
-</div>
-</div>
-<p>You can then use the <code class="docutils literal notranslate"><span class="pre">callable()</span></code> function to find out if a member is method
-(if returns <code class="docutils literal notranslate"><span class="pre">True</span></code>) or a attribute (if it returns <code class="docutils literal notranslate"><span class="pre">False</span></code>).</p>
-<div class="literal-block-wrapper docutils container" id="id17">
-<div class="code-block-caption"><span class="caption-number">Listing 69 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id17" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">callable</span><span class="p">(</span><span class="n">a_int</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">)</span>
-<span class="go">True</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">callable</span><span class="p">(</span><span class="n">a_int</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
-<span class="go">False</span>
-</pre></div>
-</div>
-</div>
-<p>In a Python shell you can also use the <code class="docutils literal notranslate"><span class="pre">help()</span></code> function on a type to get
-detailed help on that type. You can also usually pass a value to <code class="docutils literal notranslate"><span class="pre">help()</span></code> to
-get the help page for that type.</p>
-<div class="literal-block-wrapper docutils container" id="id18">
-<div class="code-block-caption"><span class="caption-number">Listing 70 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id18" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="go">Help on int object:</span>
-
-<span class="go">class int(object)</span>
-<span class="go"> |  int([x]) -&gt; integer</span>
-<span class="go"> |  int(x, base=10) -&gt; integer</span>
-<span class="go"> ...</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="go">Help on int object:</span>
-
-<span class="go">class int(object)</span>
-<span class="go"> |  int([x]) -&gt; integer</span>
-<span class="go"> |  int(x, base=10) -&gt; integer</span>
-<span class="go"> ...</span>
-</pre></div>
-</div>
-</div>
-<p>In VS Code, you can hit <kbd class="kbd docutils literal notranslate">⌘I</kbd> or <kbd class="kbd docutils literal notranslate">⌃Space</kbd> after a variable followed by
-a <code class="docutils literal notranslate"><span class="pre">.</span></code> to get a list of available members. Then you can use the <kbd class="kbd docutils literal notranslate">UP</kbd> and
-<kbd class="kbd docutils literal notranslate">DOWN</kbd> arrows to navigate between the options and hit <kbd class="kbd docutils literal notranslate">ENTER</kbd> to fill
-in the selected name.</p>
-<p><img alt="" src="../../_images/vscode-attrs.png" /></p>
-<p>And in <code class="docutils literal notranslate"><span class="pre">ipython</span></code> you can hit <kbd class="kbd docutils literal notranslate">TAB</kbd> after a variable followed by a <code class="docutils literal notranslate"><span class="pre">.</span></code> to
-get a list of available members.  Then you can use the <kbd class="kbd docutils literal notranslate">UP</kbd> and
-<kbd class="kbd docutils literal notranslate">DOWN</kbd> arrows or <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">SHIFT</kbd>+<kbd class="kbd docutils literal notranslate">TAB</kbd></kbd> and <kbd class="kbd docutils literal notranslate">TAB</kbd> to navigate between the
-options and hit <kbd class="kbd docutils literal notranslate">ENTER</kbd> to fill in the selected name.</p>
-<p><img alt="" src="../../_images/ipython-attrs.png" /></p>
-<p>You can use the function <code class="docutils literal notranslate"><span class="pre">hasattr()</span></code> to check if a value has a member. The
-first argument is the value you want to check, the second argument is the name
-of the member, a <code class="docutils literal notranslate"><span class="pre">str</span></code>.</p>
-<div class="literal-block-wrapper docutils container" id="id19">
-<div class="code-block-caption"><span class="caption-number">Listing 71 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id19" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">hasattr</span><span class="p">(</span><span class="n">a_float</span><span class="p">,</span> <span class="s2">&quot;is_integer&quot;</span><span class="p">)</span>
-<span class="go">True</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">hasattr</span><span class="p">(</span><span class="n">a_float</span><span class="p">,</span> <span class="s2">&quot;real&quot;</span><span class="p">)</span>
-<span class="go">True</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">hasattr</span><span class="p">(</span><span class="n">a_str</span><span class="p">,</span> <span class="s2">&quot;real&quot;</span><span class="p">)</span>
-<span class="go">False</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="id2">
-<h4>Exercise<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
-<div class="exercise admonition" id="methods-and-attributes-exercise">
-<p class="admonition-title"><span class="caption-number">Exercise 18 </span>(methods and attributes)</p>
-<div class="section" id="exercise-content">
-<ol class="simple">
-<li><p>In a VS Code editor, use the <kbd class="kbd docutils literal notranslate">⌘I</kbd> or <kbd class="kbd docutils literal notranslate">⌃Space</kbd> shortcut keys after
-an <code class="docutils literal notranslate"><span class="pre">int</span></code> variable to find the method that will return an integer ratio.</p></li>
-<li><p>If you use <code class="docutils literal notranslate"><span class="pre">ipython</span></code>, use the <kbd class="kbd docutils literal notranslate">TAB</kbd> key after a <code class="docutils literal notranslate"><span class="pre">float</span></code> variable to find the
-method that will return a hexadecimal representation of the number.</p></li>
-<li><p>In a Python shell use the <code class="docutils literal notranslate"><span class="pre">dir()</span></code> function on a <code class="docutils literal notranslate"><span class="pre">str</span></code> value to find the method
-to right justify the string.</p></li>
-<li><p>In a Python shell use the <code class="docutils literal notranslate"><span class="pre">help()</span></code> function on a <code class="docutils literal notranslate"><span class="pre">dict</span></code> type or value to
-find the method to remove specified key and return the corresponding value.</p></li>
-<li><p>In a Python shell use the <code class="docutils literal notranslate"><span class="pre">hasattr()</span></code> function on a <code class="docutils literal notranslate"><span class="pre">list</span></code> value to find out
-if it has a method or attribute named <code class="docutils literal notranslate"><span class="pre">clear</span></code>.</p></li>
-<li><p>In a Python shell use the <code class="docutils literal notranslate"><span class="pre">callable()</span></code> function on a <code class="docutils literal notranslate"><span class="pre">dict</span></code> value to find out
-if <code class="docutils literal notranslate"><span class="pre">values</span></code> is a method or a property.</p></li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="operators">
-<h3>Operators<a class="headerlink" href="#operators" title="Permalink to this headline">¶</a></h3>
-<p>Depending on the type of an object it may have different operators available to
-it, those operators may behave in different ways, and there may or may not be
-other types that it can play nicely with given a particular operator.</p>
-<p>Lets take a look at how the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator works for different types.</p>
-<p>In the case of both <code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">float</span></code> objects, the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator adds the two
-numbers together. However, in the case of a <code class="docutils literal notranslate"><span class="pre">str</span></code> object, strings are
-concatenated.</p>
-<div class="literal-block-wrapper docutils container" id="id20">
-<div class="code-block-caption"><span class="caption-number">Listing 72 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id20" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="go">2</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="mf">1.0</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="go">2.0</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;1&quot;</span> <span class="o">+</span> <span class="s2">&quot;1&quot;</span>
-<span class="go">&#39;11&#39;</span>
-</pre></div>
-</div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">float</span></code> objects can be used together with the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator. However,
-if we try to use the <code class="docutils literal notranslate"><span class="pre">+</span></code> with a <code class="docutils literal notranslate"><span class="pre">str</span></code> object and either an <code class="docutils literal notranslate"><span class="pre">int</span></code> or a <code class="docutils literal notranslate"><span class="pre">float</span></code>,
-we’ll get an error.</p>
-<div class="literal-block-wrapper docutils container" id="id21">
-<div class="code-block-caption"><span class="caption-number">Listing 73 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id21" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a_int</span> <span class="o">+</span> <span class="n">a_float</span>
-<span class="go">2.0</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a_int</span> <span class="o">+</span> <span class="n">a_string</span>
-<span class="go">---------------------------------------------------------------------------</span>
-<span class="go">TypeError                                 Traceback (most recent call last)</span>
-<span class="go">&lt;ipython-input-133-4eab260b045c&gt; in &lt;module&gt;</span>
-<span class="go">----&gt; 1 a_int + a_string</span>
-
-<span class="go">TypeError: unsupported operand type(s) for +: &#39;int&#39; and &#39;str&#39;</span>
-</pre></div>
-</div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">/</span></code> operator isn’t available for <code class="docutils literal notranslate"><span class="pre">str</span></code> object, so you’ll get an error if you try.</p>
-<div class="literal-block-wrapper docutils container" id="id22">
-<div class="code-block-caption"><span class="caption-number">Listing 74 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id22" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;a, b, c&quot;</span> <span class="o">/</span> <span class="mi">3</span>
-<span class="go">---------------------------------------------------------------------------</span>
-<span class="go">TypeError                                 Traceback (most recent call last)</span>
-<span class="go">&lt;ipython-input-108-e172469f33c1&gt; in &lt;module&gt;</span>
-<span class="go">----&gt; 1 &quot;a, b, c&quot; / 3</span>
-
-<span class="go">TypeError: unsupported operand type(s) for /: &#39;str&#39; and &#39;int&#39;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="available-operators">
-<h4>Available operators<a class="headerlink" href="#available-operators" title="Permalink to this headline">¶</a></h4>
-<p>Remember those pesky <code class="docutils literal notranslate"><span class="pre">__</span></code> members we saw when using the <code class="docutils literal notranslate"><span class="pre">dir()</span></code> function? Those
-are called <a class="reference internal" href="#term-magic-method"><span class="xref std std-term">magic</span></a> or
-<a class="reference internal" href="#term-dunder-method"><span class="xref std std-term">dunder methods</span></a> and we can look at them to find out what
-operators a value has.</p>
-<p>Each operator has a cooresponding magic method. For example the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator
-uses the <code class="docutils literal notranslate"><span class="pre">.__add__()</span></code> method. So if <code class="docutils literal notranslate"><span class="pre">__add__</span></code> is in the list of available
-members, we know that the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator can be used with that value.</p>
-<div class="literal-block-wrapper docutils container" id="id23">
-<div class="code-block-caption"><span class="caption-number">Listing 75 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id23" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="go">[&#39;__abs__&#39;,</span>
-<span class="hll"><span class="go"> &#39;__add__&#39;,</span>
-</span><span class="go"> ...</span>
-<span class="go"> ]</span>
-</pre></div>
-</div>
-</div>
-<p>You can look in the Reference section below to for a list of <a class="reference external" href="#operator-dunder-methods">Operator dunder
-methods</a> and the operators they coorespond to.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#specialnames">Python.org &gt; Special Method Names</a></p></li>
-<li><p><a class="reference external" href="https://rszalski.github.io/magicmethods/#operators">A Guide to Python’s Magic Methods</a></p></li>
-<li><p><a class="reference external" href="https://www.alphacodingskills.com/python/pages/python-dunder-methods.php">Python - Dunder or Magic Methods</a></p></li>
-<li><p><a class="reference external" href="https://holycoders.com/python-dunder-special-methods/">Python Dunder (Special, Magic) Methods List with Tutorial</a></p></li>
-</ul>
-</div>
-</div>
-</div>
-<div class="section" id="functions">
-<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
-<p>Functions and methods often expect certian types of arguments. If you pass an
-argument of the wrong type you’ll get an arror.</p>
-<p>For example, the <code class="docutils literal notranslate"><span class="pre">len()</span></code> function will accept <code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">str</span></code> arguments, but
-not <code class="docutils literal notranslate"><span class="pre">int</span></code> or <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p>
-<div class="literal-block-wrapper docutils container" id="id24">
-<div class="code-block-caption"><span class="caption-number">Listing 76 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id24" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">)</span>
-<span class="go">3</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-<span class="go">3</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="mi">55</span><span class="p">)</span>
-<span class="go">---------------------------------------------------------------------------</span>
-<span class="go">TypeError                                 Traceback (most recent call last)</span>
-<span class="go">&lt;ipython-input-38-51e029ded84c&gt; in &lt;module&gt;</span>
-<span class="go">----&gt; 1 len(55)</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="mf">3.5</span><span class="p">)</span>
-<span class="go">---------------------------------------------------------------------------</span>
-<span class="go">TypeError                                 Traceback (most recent call last)</span>
-<span class="go">&lt;ipython-input-35-5c30567bf151&gt; in &lt;module&gt;</span>
-<span class="go">----&gt; 1 len(3.5)</span>
-
-<span class="go">TypeError: object of type &#39;float&#39; has no len()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="built-in-types">
-<h2>Built-in Types<a class="headerlink" href="#built-in-types" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>object</p>
-<ul>
-<li><p>None</p></li>
-<li><p>numeric</p>
-<ul>
-<li><p>float</p></li>
-<li><p>int</p>
-<ul>
-<li><p>bool</p></li>
-</ul>
-</li>
-<li><p>complex</p></li>
-</ul>
-</li>
-<li><p>containers, iterables</p>
-<ul>
-<li><p>set</p>
-<ul>
-<li><p>frozenset</p></li>
-</ul>
-</li>
-<li><p>dict</p></li>
-<li><p>sequences</p>
-<ul>
-<li><p>list</p></li>
-<li><p>tuple</p></li>
-<li><p>range</p></li>
-<li><p>str</p></li>
-<li><p>bytes</p></li>
-<li><p>bytearray</p></li>
-<li><p>memoryview</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>file (IO)</p></li>
-</ul>
-</li>
-</ul>
-</div>
 <div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>A type or class is the classification of a value.</p></li>
-<li><p>When you call a class or type it returns an empty object of that type.</p></li>
-<li><p>You can often call a class with an argument to convert it to that type.</p></li>
+<li><p>A type or class is the classification or category of a value.</p></li>
+<li><p>A class is also a blueprint or template for a particular kind of data.</p></li>
+<li><p>Classes have the type <code class="docutils literal notranslate"><span class="pre">type</span></code></p></li>
+<li><p>Individual values are called instances or objects</p></li>
+<li><p>Creating a new object is called <a class="reference internal" href="#term-instantiation"><span class="xref std std-term">instantiation</span></a></p></li>
+<li><p>When you call a class it returns an empty instance of that type.</p></li>
+<li><p>to create a new object, call the class like you would a function</p></li>
 <li><p>You can use the <code class="docutils literal notranslate"><span class="pre">type()</span></code> and <code class="docutils literal notranslate"><span class="pre">isinstance()</span></code> functions to find out the type of a value.</p></li>
-<li><p>Objects can have members which are accessed by adding a <code class="docutils literal notranslate"><span class="pre">.</span></code> after the value
-followed by the member name. Members can either be attributes, which are just
-like variables, or methods which are just like functions.</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">callable()</span></code> function will return <code class="docutils literal notranslate"><span class="pre">True</span></code> for things that can be called
-like methods, functions and classes, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p></li>
-<li><p>You can find out what members a value has:</p>
-<ul>
-<li><p>in IPython after a variable followed by a <code class="docutils literal notranslate"><span class="pre">.</span></code> by hitting <kbd class="kbd docutils literal notranslate">TAB</kbd></p></li>
-<li><p>in VS Code after a variable followed by a <code class="docutils literal notranslate"><span class="pre">.</span></code> by using the <kbd class="kbd docutils literal notranslate">⌘I</kbd> or <kbd class="kbd docutils literal notranslate">⌃Space</kbd> keyboard shortcuts</p></li>
-<li><p>by using the <code class="docutils literal notranslate"><span class="pre">dir()</span></code> or <code class="docutils literal notranslate"><span class="pre">hasattr()</span></code> functions</p></li>
-</ul>
-</li>
-<li><p>The type of a value dictates:</p>
-<ul>
-<li><p>what methods and attributes are available</p></li>
-<li><p>what operators it has access to and how they behave</p></li>
-<li><p>which functions it can be used with</p></li>
-</ul>
-</li>
+<li><p>You can often call a class with an argument to convert it to that type.</p></li>
+<li><p>Builtin types are lowercased, most other types are <code class="docutils literal notranslate"><span class="pre">CamelCased</span></code></p></li>
+<li><p>builtin classes can convert values</p></li>
 </ul>
 </div>
 <div class="section" id="reference">
@@ -1357,23 +934,6 @@ like methods, functions and classes, <code class="docutils literal notranslate">
 <div class="section" id="glossary-data-types">
 <h4>Data Types<a class="headerlink" href="#glossary-data-types" title="Permalink to this headline">¶</a></h4>
 <dl class="glossary simple">
-<dt id="term-attribute">attribute<a class="headerlink" href="#term-attribute" title="Permalink to this term">¶</a></dt><dt id="term-property">property<a class="headerlink" href="#term-property" title="Permalink to this term">¶</a></dt><dd><p>A variable that is attached to an object and is accessed with a <code class="docutils literal notranslate"><span class="pre">.</span></code> after a
-value followed by the member name. For example, <a class="reference internal" href="../file-io.html#term-file-handler"><span class="xref std std-term">file handler</span></a> objects
-have an attribute <code class="docutils literal notranslate"><span class="pre">.closed</span></code> which is set True if the handler is closed and
-False if it is open.</p>
-</dd>
-<dt id="term-dunder-method">dunder method<a class="headerlink" href="#term-dunder-method" title="Permalink to this term">¶</a></dt><dt id="term-magic-method">magic method<a class="headerlink" href="#term-magic-method" title="Permalink to this term">¶</a></dt><dt id="term-special-method">special method<a class="headerlink" href="#term-special-method" title="Permalink to this term">¶</a></dt><dd><p>An method, beginning and ending with two underscores (<code class="docutils literal notranslate"><span class="pre">__</span></code>) intended to be
-used internally by Python.</p>
-</dd>
-<dt id="term-member">member<a class="headerlink" href="#term-member" title="Permalink to this term">¶</a></dt><dd><p>An attribute or method attached to an object accessed with a <code class="docutils literal notranslate"><span class="pre">.</span></code> after a
-value followed by the member name</p>
-</dd>
-<dt id="term-method">method<a class="headerlink" href="#term-method" title="Permalink to this term">¶</a></dt><dd><p>A function that is attached to an object and is accessed with a <code class="docutils literal notranslate"><span class="pre">.</span></code> after a
-value followed by the member name. For example, string objects have a <code class="docutils literal notranslate"><span class="pre">.lower()</span></code>
-method which returns a copy of the string converted to lowercase.</p>
-</dd>
-<dt id="term-object">object<a class="headerlink" href="#term-object" title="Permalink to this term">¶</a></dt><dd><p>The ancestor of all types in Python.</p>
-</dd>
 <dt id="term-type">type<a class="headerlink" href="#term-type" title="Permalink to this term">¶</a></dt><dt id="term-data-type">data type<a class="headerlink" href="#term-data-type" title="Permalink to this term">¶</a></dt><dt id="term-class">class<a class="headerlink" href="#term-class" title="Permalink to this term">¶</a></dt><dd><p>The classification of a value which tells Python what operations can be
 performed on it. Some examples include <a class="reference internal" href="../../reference/glossary.html#term-str"><span class="xref std std-term">str</span></a>, <a class="reference internal" href="../../reference/glossary.html#term-int"><span class="xref std std-term">int</span></a>,
 <a class="reference internal" href="../../reference/glossary.html#term-list"><span class="xref std std-term">list</span></a>, and <a class="reference internal" href="../../reference/glossary.html#term-dict"><span class="xref std std-term">dict</span></a>. <br />
@@ -1382,119 +942,12 @@ type. For example <code class="docutils literal notranslate"><span class="pre">s
 </dd>
 <dt id="term-typecasting">typecasting<a class="headerlink" href="#term-typecasting" title="Permalink to this term">¶</a></dt><dd><p>Converting from one type to another.</p>
 </dd>
+<dt id="term-instance">instance<a class="headerlink" href="#term-instance" title="Permalink to this term">¶</a></dt><dd><p>An individual value of a particular <a class="reference internal" href="#term-type"><span class="xref std std-term">type</span></a>.  A realized version of a
+class.</p>
+</dd>
+<dt id="term-instantiation">instantiation<a class="headerlink" href="#term-instantiation" title="Permalink to this term">¶</a></dt><dt id="term-instantiate">instantiate<a class="headerlink" href="#term-instantiate" title="Permalink to this term">¶</a></dt><dd><p>When a new object is created.</p>
+</dd>
 </dl>
-</div>
-</div>
-<div class="section" id="operator-dunder-methods">
-<h3>Operator dunder methods<a class="headerlink" href="#operator-dunder-methods" title="Permalink to this headline">¶</a></h3>
-<p>Below are tables matching operators to their cooresponding dunder methods.</p>
-<div class="section" id="arithmetic-operators">
-<h4>Arithmetic Operators<a class="headerlink" href="#arithmetic-operators" title="Permalink to this headline">¶</a></h4>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Operator</p></th>
-<th class="head"><p>Meaning</p></th>
-<th class="head"><p>Method</p></th>
-<th class="head"><p>Operator</p></th>
-<th class="head"><p>Method</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
-<td><p>sum</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">__add__</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">+=</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">__iadd__</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
-<td><p>difference</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">__sub__</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-=</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">__isub__</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">*</span></code></p></td>
-<td><p>product</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">__mul__</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">*=</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">__imul__</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/</span></code></p></td>
-<td><p>quotient</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">__truediv__</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">/=</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">__itruediv__</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">//</span></code></p></td>
-<td><p>floored quotient</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">__floordiv__</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">//=</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">__ifloordiv__</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%</span></code></p></td>
-<td><p>remainder</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">__mod__</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">%=</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">__imod__</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">**</span></code></p></td>
-<td><p>power of</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">__pow__</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">**=</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">__ipow__</span></code></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="comparison-operators">
-<h4>Comparison operators<a class="headerlink" href="#comparison-operators" title="Permalink to this headline">¶</a></h4>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Operator</p></th>
-<th class="head"><p>Meaning</p></th>
-<th class="head"><p>Method</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code></p></td>
-<td><p>less than</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">__lt__</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
-<td><p>greater than</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">__gt__</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code></p></td>
-<td><p>less than or equal to</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">__le__</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></p></td>
-<td><p>greater than or equal to</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">__ge__</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">==</span></code></p></td>
-<td><p>equals</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">__eq__</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">!=</span></code></p></td>
-<td><p>not equals</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">__nq__</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">in</span></code></p></td>
-<td><p>contains</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">__contains__</span></code></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="section" id="see-also">
-<h3>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html">python.org &gt; Built-in Types</a></p></li>
-<li><p><a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#types">python.org &gt; The standard type hierarchy</a></p></li>
-</ul>
 </div>
 <div class="toctree-wrapper compound">
 </div>
@@ -1528,7 +981,7 @@ type. For example <code class="docutils literal notranslate"><span class="pre">s
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="../reading-code.html" title="previous page">Reading Code</a>
-    <a class='right-next' id="next-link" href="numeric.html" title="next page">Numeric Types</a>
+    <a class='right-next' id="next-link" href="objects.html" title="next page">Objects</a>
 
         </div>
         
