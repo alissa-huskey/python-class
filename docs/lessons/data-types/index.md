@@ -143,7 +143,8 @@ Do each of the following in a Python shell.
    - `tuple`
 2. Convert data types of one type to another. Here are some
    to start with, but feel free to come up with your own
-   combinations.
+   combinations. Note: not all of these can be directly converted, so some
+   exceptions are expected.
    - `"5"` to `int`
    - `5` to `str`
    - `5` to `bool`
@@ -349,19 +350,17 @@ False
 Summary
 -------
 
-* A type or class is the classification or category of a value.
-* A class is also a blueprint or template for a particular kind of data.
-* Classes have the type `type`
-
+* A type or class is the classification or category of a value, as well as a
+  blueprint or template for a particular kind of data. They have the type
+  `type`.
 * Individual values are called instances or objects
-* Creating a new object is called {term}`instantiation`
-* When you call a class it returns an empty instance of that type.
-* to create a new object, call the class like you would a function
-* You can use the `type()` and `isinstance()` functions to find out the type of a value.
-
-* You can often call a class with an argument to convert it to that type.
-* Builtin types are lowercased, most other types are `CamelCased`
-* builtin classes can convert values
+* When you call a class it returns an empty instance of that type, which is
+  called {term}`instantiation`.
+* You can use the `type()` and `isinstance()` functions to find out the type of
+  a value.
+* You can often call a class with an argument to convert it to that type, which
+  is called {term}`typecasting`.
+* Builtin types are lowercased, most other types are `CamelCased`.
 
 Reference
 ---------
