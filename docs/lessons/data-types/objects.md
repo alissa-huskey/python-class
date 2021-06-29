@@ -191,6 +191,10 @@ In a Python shell you can also use the `help()` function on a type to get
 detailed help on that type. You can also usually pass a value to `help()` to
 get the help page for that type.
 
+Long help documents will be opened in pager mode where you can use the arrow
+keys to scroll. To exit the help document and return to your normal Python
+shell press {kbd}`Q` or just scroll to the end of the document.
+
 ```{code-block} python
 :caption: Python shell
 >>> help(int)
@@ -211,10 +215,10 @@ class int(object)
 
 ```
 
-In VS Code, you can hit {kbd}`⌘I` or {kbd}`⌃Space` after a variable followed by
-a `.` to get a list of available members. Then you can use the {kbd}`UP` and
-{kbd}`DOWN` arrows to navigate between the options and hit {kbd}`ENTER` to fill
-in the selected name.
+In VS Code, you can hit {kbd}`⌃Space`, {kbd}`Alt+Escape`, or {kbd}`⌘I` after a
+variable followed by a `.` to get a list of available members. Then you can use
+the {kbd}`UP` and {kbd}`DOWN` arrows to navigate between the options and hit
+{kbd}`ENTER` to fill in the selected name.
 
 ![](assets/vscode-attrs.png)
 
@@ -275,20 +279,10 @@ False
 ```
 ### Functions
 
-% functions
-% - [x] callable
-% - [x] dir                 __dir__
-% - [x] hasattr
-% - [x] isinstance
-% - [x] repr                __repr__
-% - [x] type                __class__
-% - [ ] del
-% - [ ] dunder methods
-
 Functions and methods usually expect certian types of arguments, and you'll run
 into some kind of error if you try to pass the wrong type.
 
-However, there are some functions available to all objects.
+However, there are some functions that any object can be passed to:
 
 * {samp}`callable({object})` -- return `True` of `object` is callable.
   ```{code-block} python
