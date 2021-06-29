@@ -497,7 +497,7 @@ Welcome back.
   `dir()` function.
 * **Operators** -- there are magic methods cooresponding to each operator. For
   example the `.__add__()` method is called by the `+` operator.
-* **statements** -- some statements call magic methods. For example when the
+* **Statements** -- some statements call magic methods. For example when the
 * `del` statement is used on an object attribute the `.__del__()` method is
   called.
 * **Syntax** -- magic methods are called by some forms of syntax. For example
