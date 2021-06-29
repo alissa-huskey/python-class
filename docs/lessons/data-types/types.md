@@ -29,3 +29,11 @@ Built-in Types
 %   * slice
 
 
+### See also
+
+```{seealso}
+
+- [python.org > Built-in Types](https://docs.python.org/3/library/stdtypes.html)
+- [python.org > The standard type hierarchy](https://docs.python.org/3/reference/datamodel.html#types)
+
+```
