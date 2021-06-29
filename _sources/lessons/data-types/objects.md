@@ -165,8 +165,9 @@ are not callable.
 #### Listing members
 
 You can use the `dir()` function to see a list the members an object has. (The
-ones that start and end with `__` are special internal methods that are used by
-Python under the hood, so you can disregard those for now.)
+ones that start and end with double underscores (`__`) are special internal
+methods that are used by Python under the hood, so you can disregard those for
+now.)
 
 ```{code-block} python
 :caption: Python shell
@@ -336,6 +337,27 @@ However, there are some functions available to all objects.
   >>> hasattr(fh, "size")
   False
   ```
+* {samp}`id({object})` -- return the unique identifier of `object`. \
+  Used by the `is` operator to test if two values reference the same object in
+  memory.
+  ```{code-block} python
+  :caption: Python shell
+  :class: full-width
+  >>> a_list = [1, 2, 3]
+
+  >>> a = [1, 2, 3]
+  >>> b = a
+  >>> c = [1, 2, 3]
+
+  >>> id(a)
+  4418273088
+
+  >>> id(b)
+  4418273088
+
+  >>> id(c)
+  4410044608
+  ```
 * {samp}`isinstance({object}, {class(es)})`
   -- return `True` if an object is an instance of `class` (or any of a tuple of
   `classes`) or one of its subclasses.
@@ -421,6 +443,113 @@ However, there are some functions available to all objects.
   hello.txt
   ```
 
+Magic methods
+-------------
+
+When using the `dir()` function you may have noticed a bunch of members with
+names surrounded by double underscores (`__`). These are are special methods
+used internally by Python called
+{term}`magic <magic method>` or {term}`dunder methods <dunder method>`.
+Each one cooresponds some under the hood Python mechanism.
+
+Lets take a look at the members of an object instance.
+
+```{code-block} python
+:caption: Python shell
+:class: full-width
+>>> dir(object())
+['__class__',
+ '__delattr__',
+ '__dir__',
+ '__doc__',
+ '__eq__',
+ '__format__',
+ '__ge__',
+ '__getattribute__',
+ '__gt__',
+ '__hash__',
+ '__init__',
+ '__init_subclass__',
+ '__le__',
+ '__lt__',
+ '__ne__',
+ '__new__',
+ '__reduce__',
+ '__reduce_ex__',
+ '__repr__',
+ '__setattr__',
+ '__sizeof__',
+ '__str__',
+ '__subclasshook__']
+```
+
+Before you read on, can you guess what any of these coorespond to? I'll wait.
+
+...
+
+...
+
+...
+
+Welcome back.
+
+{term}`Magic methods <magic method>` may coorespond to:
+
+* **Types** -- when named one of the standard built in types, this method is
+  called by that type. For example the `.__str__()` method is used by the
+  `str()` function.
+* **Functions** -- when named one of the built in functions, this method is
+  called by that function. For example the `.__dir__()` method is called by the
+  `dir()` function.
+* **Operators** -- there are magic methods cooresponding to each operator. For
+  example the `.__add__()` method is called by the `+` operator.
+* **statements** -- some statements call magic methods. For example when the
+* `del` statement is used on an object attribute the `.__del__()` method is
+  called.
+* **Syntax** -- magic methods are called by some forms of syntax. For example
+  `.__getattribute__()` is called when using dot notation.
+* **Object information** -- information about the object is stored in
+  {term}`special attributes <special attribute>` that are just like magic
+  methods, but not callable. For example the `.__class__` attribute contains
+  the object type, the same thing returned by the `type()` function.
+
+While magic methods are intended for internal use, there is nothing stopping
+you from calling them directly.
+
+```{code-block} python
+:caption: Python shell
+:class: full-width
+>>> a_int = 1
+>>> a_int.__str__()
+'1'
+
+>>> str(a_int)
+'1'
+
+>>> a_int.__add__(2)
+3
+
+>>> a_int.__class__
+int
+
+>>> type(a_int)
+int
+```
+
+There are quite a few magic methods and special attributes and they differ
+depending on the type.  Don't worry, you don't need to memorize them.  However
+it can be useful to understand the general concept, as magic methods and
+special attibutes can tell you a lot about an objects capabilities.
+
+```{seealso}
+
+* [Python.org > Special Method Names](https://docs.python.org/3/reference/datamodel.html#specialnames)
+* [A Guide to Python's Magic Methods](https://rszalski.github.io/magicmethods/#operators)
+* [Python - Dunder or Magic Methods](https://www.alphacodingskills.com/python/pages/python-dunder-methods.php)
+* [Python Dunder (Special, Magic) Methods List with Tutorial](https://holycoders.com/python-dunder-special-methods/)
+
+```
+
 Summary
 -------
 
@@ -434,10 +563,11 @@ Summary
   - in IPython after a variable followed by a `.` by hitting {kbd}`TAB`
   - in VS Code after a variable followed by a `.` by using the {kbd}`⌘I` or {kbd}`⌃Space` keyboard shortcuts
   - by using the `dir()` or `hasattr()` functions
-* The type of a value dictates:
-  - what methods and attributes are available
-  - what operators it has access to and how they behave
-  - which functions it can be used with
+* There are a number of built in functions that any object can be passed to
+  like `repr()` and `type()`.
+* Internally Python calls an objects magic methods, those with names surrounded
+  by double underscores, to preform many operations. Looking at the magic
+  methods using the `dir()` function can tell you how a particular object can be used.
 
 Glossary
 --------
@@ -455,6 +585,12 @@ dot notation
   member name: {samp}`{object}.{member}`. It is the same syntax used to access
   something imported from a module, for example: `random.randint()`.
 
+dunder method
+magic method
+special method
+  An method, beginning and ending with two underscores (`__`) intended to be
+  used internally by Python.
+
 member
   An attribute or method attached to an object accessed with a `.` after a
   value followed by the member name
@@ -468,5 +604,11 @@ object
   Synonym for {term}`instance`.
 
   The type that all other Python types are built on.
+
+special attribute
+  An attribute beginning and ending with two underscores (`__`) that store
+  object information intended to be used internally by Python. (Just like
+  {term}`magic methods <magic method>` but not callable.)
+
 
 ```

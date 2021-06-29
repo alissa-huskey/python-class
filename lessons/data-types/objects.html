@@ -527,6 +527,11 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#magic-methods">
+   Magic methods
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
    Summary
   </a>
@@ -703,8 +708,9 @@ are not callable.</p>
 <div class="section" id="listing-members">
 <h4>Listing members<a class="headerlink" href="#listing-members" title="Permalink to this headline">¶</a></h4>
 <p>You can use the <code class="docutils literal notranslate"><span class="pre">dir()</span></code> function to see a list the members an object has. (The
-ones that start and end with <code class="docutils literal notranslate"><span class="pre">__</span></code> are special internal methods that are used by
-Python under the hood, so you can disregard those for now.)</p>
+ones that start and end with double underscores (<code class="docutils literal notranslate"><span class="pre">__</span></code>) are special internal
+methods that are used by Python under the hood, so you can disregard those for
+now.)</p>
 <div class="literal-block-wrapper docutils container" id="id7">
 <div class="code-block-caption"><span class="caption-number">Listing 72 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">a_int</span><span class="p">)</span>
@@ -871,11 +877,34 @@ into some kind of error if you try to pass the wrong type.</p>
 </div>
 </div>
 </li>
+<li><p><code class="samp docutils literal notranslate"><span class="pre">id(</span><em><span class="pre">object</span></em><span class="pre">)</span></code> – return the unique identifier of <code class="docutils literal notranslate"><span class="pre">object</span></code>. <br />
+Used by the <code class="docutils literal notranslate"><span class="pre">is</span></code> operator to test if two values reference the same object in
+memory.</p>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-number">Listing 79 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id14" title="Permalink to this code">¶</a></div>
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">4418273088</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="go">4418273088</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="go">4410044608</span>
+</pre></div>
+</div>
+</div>
+</li>
 <li><p><code class="samp docutils literal notranslate"><span class="pre">isinstance(</span><em><span class="pre">object</span></em><span class="pre">,</span> <em><span class="pre">class(es)</span></em><span class="pre">)</span></code>
 – return <code class="docutils literal notranslate"><span class="pre">True</span></code> if an object is an instance of <code class="docutils literal notranslate"><span class="pre">class</span></code> (or any of a tuple of
 <code class="docutils literal notranslate"><span class="pre">classes</span></code>) or one of its subclasses.</p>
-<div class="literal-block-wrapper docutils container" id="id14">
-<div class="code-block-caption"><span class="caption-number">Listing 79 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id14" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-number">Listing 80 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id15" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">isinstance</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
 <span class="go">True</span>
 
@@ -906,8 +935,8 @@ string is either verbatim code that will create an equivalent object, or <code c
 <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> (angle brackets) surrounding the class name followed by meaningful
 identifying information. <br />
 This is used by the Python Shell to display the results of an expression.</p>
-<div class="literal-block-wrapper docutils container" id="id15">
-<div class="code-block-caption"><span class="caption-number">Listing 80 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id15" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-number">Listing 81 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id16" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">))</span>
 <span class="go">&#39;hello&#39;</span>
 
@@ -927,8 +956,8 @@ This is used by the Python Shell to display the results of an expression.</p>
 </div>
 </li>
 <li><p><code class="samp docutils literal notranslate"><span class="pre">type(</span><em><span class="pre">object</span></em><span class="pre">)</span></code> – return the <code class="docutils literal notranslate"><span class="pre">object</span></code> type.</p>
-<div class="literal-block-wrapper docutils container" id="id16">
-<div class="code-block-caption"><span class="caption-number">Listing 81 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id16" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id17">
+<div class="code-block-caption"><span class="caption-number">Listing 82 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id17" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="go">bool</span>
 
@@ -947,8 +976,8 @@ human readable text for the end user. <br />
 converts <code class="docutils literal notranslate"><span class="pre">object</span></code> to a <code class="docutils literal notranslate"><span class="pre">str</span></code>, but included here for comparison with the
 <code class="docutils literal notranslate"><span class="pre">repr()</span></code> function. <br />
 Used by the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function to convert all arguments before printing.</p>
-<div class="literal-block-wrapper docutils container" id="id17">
-<div class="code-block-caption"><span class="caption-number">Listing 82 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id17" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id18">
+<div class="code-block-caption"><span class="caption-number">Listing 83 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id18" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">))</span>
 <span class="go">hello</span>
 
@@ -963,6 +992,104 @@ Used by the <code class="docutils literal notranslate"><span class="pre">print()
 </div>
 </div>
 </li>
+</ul>
+</div>
+</div>
+<div class="section" id="magic-methods">
+<h2>Magic methods<a class="headerlink" href="#magic-methods" title="Permalink to this headline">¶</a></h2>
+<p>When using the <code class="docutils literal notranslate"><span class="pre">dir()</span></code> function you may have noticed a bunch of members with
+names surrounded by double underscores (<code class="docutils literal notranslate"><span class="pre">__</span></code>). These are are special methods
+used internally by Python called
+<a class="reference internal" href="#term-magic-method"><span class="xref std std-term">magic</span></a> or <a class="reference internal" href="#term-dunder-method"><span class="xref std std-term">dunder methods</span></a>.
+Each one cooresponds some under the hood Python mechanism.</p>
+<p>Lets take a look at the members of an object instance.</p>
+<div class="literal-block-wrapper docutils container" id="id19">
+<div class="code-block-caption"><span class="caption-number">Listing 84 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id19" title="Permalink to this code">¶</a></div>
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="nb">object</span><span class="p">())</span>
+<span class="go">[&#39;__class__&#39;,</span>
+<span class="go"> &#39;__delattr__&#39;,</span>
+<span class="go"> &#39;__dir__&#39;,</span>
+<span class="go"> &#39;__doc__&#39;,</span>
+<span class="go"> &#39;__eq__&#39;,</span>
+<span class="go"> &#39;__format__&#39;,</span>
+<span class="go"> &#39;__ge__&#39;,</span>
+<span class="go"> &#39;__getattribute__&#39;,</span>
+<span class="go"> &#39;__gt__&#39;,</span>
+<span class="go"> &#39;__hash__&#39;,</span>
+<span class="go"> &#39;__init__&#39;,</span>
+<span class="go"> &#39;__init_subclass__&#39;,</span>
+<span class="go"> &#39;__le__&#39;,</span>
+<span class="go"> &#39;__lt__&#39;,</span>
+<span class="go"> &#39;__ne__&#39;,</span>
+<span class="go"> &#39;__new__&#39;,</span>
+<span class="go"> &#39;__reduce__&#39;,</span>
+<span class="go"> &#39;__reduce_ex__&#39;,</span>
+<span class="go"> &#39;__repr__&#39;,</span>
+<span class="go"> &#39;__setattr__&#39;,</span>
+<span class="go"> &#39;__sizeof__&#39;,</span>
+<span class="go"> &#39;__str__&#39;,</span>
+<span class="go"> &#39;__subclasshook__&#39;]</span>
+</pre></div>
+</div>
+</div>
+<p>Before you read on, can you guess what any of these coorespond to? I’ll wait.</p>
+<p>…</p>
+<p>…</p>
+<p>…</p>
+<p>Welcome back.</p>
+<p><a class="reference internal" href="#term-magic-method"><span class="xref std std-term">Magic methods</span></a> may coorespond to:</p>
+<ul class="simple">
+<li><p><strong>Types</strong> – when named one of the standard built in types, this method is
+called by that type. For example the <code class="docutils literal notranslate"><span class="pre">.__str__()</span></code> method is used by the
+<code class="docutils literal notranslate"><span class="pre">str()</span></code> function.</p></li>
+<li><p><strong>Functions</strong> – when named one of the built in functions, this method is
+called by that function. For example the <code class="docutils literal notranslate"><span class="pre">.__dir__()</span></code> method is called by the
+<code class="docutils literal notranslate"><span class="pre">dir()</span></code> function.</p></li>
+<li><p><strong>Operators</strong> – there are magic methods cooresponding to each operator. For
+example the <code class="docutils literal notranslate"><span class="pre">.__add__()</span></code> method is called by the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator.</p></li>
+<li><p><strong>statements</strong> – some statements call magic methods. For example when the</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">del</span></code> statement is used on an object attribute the <code class="docutils literal notranslate"><span class="pre">.__del__()</span></code> method is
+called.</p></li>
+<li><p><strong>Syntax</strong> – magic methods are called by some forms of syntax. For example
+<code class="docutils literal notranslate"><span class="pre">.__getattribute__()</span></code> is called when using dot notation.</p></li>
+<li><p><strong>Object information</strong> – information about the object is stored in
+<a class="reference internal" href="#term-special-attribute"><span class="xref std std-term">special attributes</span></a> that are just like magic
+methods, but not callable. For example the <code class="docutils literal notranslate"><span class="pre">.__class__</span></code> attribute contains
+the object type, the same thing returned by the <code class="docutils literal notranslate"><span class="pre">type()</span></code> function.</p></li>
+</ul>
+<p>While magic methods are intended for internal use, there is nothing stopping
+you from calling them directly.</p>
+<div class="literal-block-wrapper docutils container" id="id20">
+<div class="code-block-caption"><span class="caption-number">Listing 85 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id20" title="Permalink to this code">¶</a></div>
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a_int</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a_int</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
+<span class="go">&#39;1&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">a_int</span><span class="p">)</span>
+<span class="go">&#39;1&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a_int</span><span class="o">.</span><span class="fm">__add__</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">3</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a_int</span><span class="o">.</span><span class="vm">__class__</span>
+<span class="go">int</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">a_int</span><span class="p">)</span>
+<span class="go">int</span>
+</pre></div>
+</div>
+</div>
+<p>There are quite a few magic methods and special attributes and they differ
+depending on the type.  Don’t worry, you don’t need to memorize them.  However
+it can be useful to understand the general concept, as magic methods and
+special attibutes can tell you a lot about an objects capabilities.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#specialnames">Python.org &gt; Special Method Names</a></p></li>
+<li><p><a class="reference external" href="https://rszalski.github.io/magicmethods/#operators">A Guide to Python’s Magic Methods</a></p></li>
+<li><p><a class="reference external" href="https://www.alphacodingskills.com/python/pages/python-dunder-methods.php">Python - Dunder or Magic Methods</a></p></li>
+<li><p><a class="reference external" href="https://holycoders.com/python-dunder-special-methods/">Python Dunder (Special, Magic) Methods List with Tutorial</a></p></li>
 </ul>
 </div>
 </div>
@@ -982,13 +1109,11 @@ like methods, functions and classes, <code class="docutils literal notranslate">
 <li><p>by using the <code class="docutils literal notranslate"><span class="pre">dir()</span></code> or <code class="docutils literal notranslate"><span class="pre">hasattr()</span></code> functions</p></li>
 </ul>
 </li>
-<li><p>The type of a value dictates:</p>
-<ul>
-<li><p>what methods and attributes are available</p></li>
-<li><p>what operators it has access to and how they behave</p></li>
-<li><p>which functions it can be used with</p></li>
-</ul>
-</li>
+<li><p>There are a number of built in functions that any object can be passed to
+like <code class="docutils literal notranslate"><span class="pre">repr()</span></code> and <code class="docutils literal notranslate"><span class="pre">type()</span></code>.</p></li>
+<li><p>Internally Python calls an objects magic methods, those with names surrounded
+by double underscores, to preform many operations. Looking at the magic
+methods using the <code class="docutils literal notranslate"><span class="pre">dir()</span></code> function can tell you how a particular object can be used.</p></li>
 </ul>
 </div>
 <div class="section" id="glossary">
@@ -1005,6 +1130,9 @@ False if it is open.</p>
 member name: <code class="samp docutils literal notranslate"><em><span class="pre">object</span></em><span class="pre">.</span><em><span class="pre">member</span></em></code>. It is the same syntax used to access
 something imported from a module, for example: <code class="docutils literal notranslate"><span class="pre">random.randint()</span></code>.</p>
 </dd>
+<dt id="term-dunder-method">dunder method<a class="headerlink" href="#term-dunder-method" title="Permalink to this term">¶</a></dt><dt id="term-magic-method">magic method<a class="headerlink" href="#term-magic-method" title="Permalink to this term">¶</a></dt><dt id="term-special-method">special method<a class="headerlink" href="#term-special-method" title="Permalink to this term">¶</a></dt><dd><p>An method, beginning and ending with two underscores (<code class="docutils literal notranslate"><span class="pre">__</span></code>) intended to be
+used internally by Python.</p>
+</dd>
 <dt id="term-member">member<a class="headerlink" href="#term-member" title="Permalink to this term">¶</a></dt><dd><p>An attribute or method attached to an object accessed with a <code class="docutils literal notranslate"><span class="pre">.</span></code> after a
 value followed by the member name</p>
 </dd>
@@ -1014,6 +1142,10 @@ method which returns a copy of the string converted to lowercase.</p>
 </dd>
 <dt id="term-object">object<a class="headerlink" href="#term-object" title="Permalink to this term">¶</a></dt><dd><p>Synonym for <a class="reference internal" href="index.html#term-instance"><span class="xref std std-term">instance</span></a>.</p>
 <p>The type that all other Python types are built on.</p>
+</dd>
+<dt id="term-special-attribute">special attribute<a class="headerlink" href="#term-special-attribute" title="Permalink to this term">¶</a></dt><dd><p>An attribute beginning and ending with two underscores (<code class="docutils literal notranslate"><span class="pre">__</span></code>) that store
+object information intended to be used internally by Python. (Just like
+<a class="reference internal" href="#term-magic-method"><span class="xref std std-term">magic methods</span></a> but not callable.)</p>
 </dd>
 </dl>
 </div>
