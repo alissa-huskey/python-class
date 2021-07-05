@@ -1,16 +1,14 @@
 Built-in Types
---------------
-* object
+==============
+
+* [object](objects.md)
   * None
-  * numeric
-    - float
-    - int
+  * [numeric](numeric.md)
+    - [int](integers.md#integers)
       - bool
+    - float
     - complex
   * containers, iterables
-    * set
-      - frozenset
-    * dict
     * sequences
       - list
       - tuple
@@ -19,7 +17,10 @@ Built-in Types
       - bytes
       - bytearray
       - memoryview
-  * file (IO)
+    * set
+      - frozenset
+    * dict
+    * file (IO)
 
 % * internal types
 %   * type
@@ -29,7 +30,8 @@ Built-in Types
 %   * slice
 
 
-### See also
+See also
+--------
 
 ```{seealso}
 

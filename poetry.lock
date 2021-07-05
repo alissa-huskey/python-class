@@ -500,7 +500,7 @@ qtconsole = "*"
 
 [[package]]
 name = "jupyter-book"
-version = "0.10.0"
+version = "0.10.2"
 description = "Jupyter Book: Create an online book with Jupyter Notebooks"
 category = "dev"
 optional = false
@@ -508,11 +508,12 @@ python-versions = ">=3.6"
 
 [package.dependencies]
 click = "*"
-docutils = ">=0.15"
+docutils = ">=0.15,<0.17"
 jsonschema = "*"
-jupytext = ">=1.8.0,<1.9.0"
+jupyterbook-latex = ">=0.2.0,<0.3.0"
+jupytext = ">=1.8,<1.11"
 linkify-it-py = ">=1.0.1,<1.1.0"
-myst-nb = ">=0.11.1,<0.12.0"
+myst-nb = ">=0.12.0,<0.13.0"
 nbconvert = "<6"
 nbformat = "*"
 nested-lookup = ">=0.2.21,<0.3.0"
@@ -527,11 +528,11 @@ sphinx-togglebutton = "*"
 sphinxcontrib-bibtex = ">=2.1.0,<2.2.0"
 
 [package.extras]
-all = ["cookiecutter", "pytest (>=3.6,<4)", "altair", "pre-commit (==1.17.0)", "bokeh", "sphinx-tabs", "flake8 (>=3.7.0,<3.8.0)", "beautifulsoup4", "pyppeteer", "folium", "coverage", "sphinx-click", "black", "pytest-timeout", "pandas", "sympy", "sphinx-inline-tabs", "pytest-cov", "nbclient", "pytest-xdist", "sphinxext-rediraffe (>=0.2.3,<0.3.0)", "plotly", "matplotlib", "pytest-regressions", "ipywidgets", "numpy"]
+all = ["pytest (>=3.6,<4)", "folium", "bokeh", "beautifulsoup4", "pytest-xdist", "sphinxext-rediraffe (>=0.2.3,<0.3.0)", "pytest-timeout", "pyppeteer", "black", "sphinx-click", "nbclient", "sympy", "texsoup", "pytest-cov", "flake8 (>=3.7.0,<3.8.0)", "cookiecutter", "sphinx-inline-tabs", "plotly", "numpy", "pre-commit (==1.17.0)", "ipywidgets", "pytest-regressions", "pandas", "sphinx-tabs", "altair", "matplotlib", "coverage"]
 code_style = ["flake8 (>=3.7.0,<3.8.0)", "black", "pre-commit (==1.17.0)"]
 pdfhtml = ["pyppeteer"]
 sphinx = ["folium", "numpy", "matplotlib", "ipywidgets", "pandas", "nbclient", "sympy", "plotly", "bokeh", "altair", "sphinx-click", "sphinx-inline-tabs", "sphinxext-rediraffe (>=0.2.3,<0.3.0)"]
-testing = ["coverage", "pytest (>=3.6,<4)", "pytest-cov", "pytest-xdist", "pytest-timeout", "beautifulsoup4", "matplotlib", "pytest-regressions", "altair", "sphinx-click", "sphinx-tabs", "pyppeteer", "cookiecutter"]
+testing = ["coverage", "texsoup", "pytest (>=3.6,<4)", "pytest-cov", "pytest-xdist", "pytest-timeout", "beautifulsoup4", "matplotlib", "pytest-regressions", "altair", "sphinx-click", "sphinx-tabs", "pyppeteer", "cookiecutter"]
 
 [[package]]
 name = "jupyter-cache"
@@ -605,7 +606,7 @@ traitlets = "*"
 
 [[package]]
 name = "jupyter-sphinx"
-version = "0.3.1"
+version = "0.3.2"
 description = "Jupyter Sphinx Extensions"
 category = "dev"
 optional = false
@@ -617,6 +618,24 @@ ipywidgets = ">=7.0.0"
 nbconvert = ">=5.5"
 nbformat = "*"
 Sphinx = ">=2"
+
+[[package]]
+name = "jupyterbook-latex"
+version = "0.2.0"
+description = "Latex specific features for jupyter book"
+category = "dev"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+myst-nb = "*"
+pyyaml = "*"
+sphinx = ">=3"
+
+[package.extras]
+code_style = ["flake8 (>=3.7.0,<3.8.0)", "black", "pre-commit (==1.17.0)"]
+rtd = ["sphinx (>=3.0)", "sphinx-book-theme", "myst-parser"]
+testing = ["coverage", "pytest (>=3.6,<4)", "pytest-cov (>=2.8,<3.0)", "coverage (<5.0)", "pytest-regressions", "texsoup", "jupyter-book", "sphinxcontrib-bibtex"]
 
 [[package]]
 name = "jupyterlab-widgets"
@@ -756,7 +775,7 @@ python-versions = "*"
 
 [[package]]
 name = "myst-nb"
-version = "0.11.1"
+version = "0.12.3"
 description = "A Jupyter Notebook Sphinx reader built on top of the MyST markdown parser."
 category = "dev"
 optional = false
@@ -768,8 +787,8 @@ importlib-metadata = "*"
 ipython = "*"
 ipywidgets = ">=7.0.0,<8"
 jupyter-cache = ">=0.4.1,<0.5.0"
-jupyter-sphinx = "0.3.1"
-myst-parser = ">=0.13.3,<0.14.0"
+jupyter-sphinx = ">=0.3.2,<0.4.0"
+myst-parser = ">=0.13.5,<0.14.0"
 nbconvert = ">=5.6,<6.0"
 nbformat = ">=5.0,<6.0"
 pyyaml = "*"
@@ -777,31 +796,31 @@ sphinx = ">=2,<4"
 sphinx-togglebutton = ">=0.2.2,<0.3.0"
 
 [package.extras]
-code_style = ["flake8 (>=3.7.0,<3.8.0)", "black", "pre-commit (==1.17.0)"]
-rtd = ["jupytext (>=1.8.0,<1.9.0)", "coconut (>=1.4.3,<1.5.0)", "sphinxcontrib-bibtex", "ipywidgets", "pandas", "numpy", "sympy", "altair", "alabaster", "bokeh", "plotly", "matplotlib", "sphinx-copybutton", "sphinx-book-theme", "sphinx-panels (>=0.4.1,<0.5.0)"]
-testing = ["pytest (>=5.4,<6.0)", "pytest-cov (>=2.8,<3.0)", "coverage (<5.0)", "pytest-regressions", "matplotlib", "numpy", "sympy", "pandas", "jupytext (>=1.8.0,<1.9.0)"]
+code_style = ["pre-commit (>=2.12,<3.0)"]
+rtd = ["alabaster", "altair", "bokeh", "coconut (>=1.4.3,<1.5.0)", "ipywidgets", "jupytext (>=1.8.0,<1.9.0)", "matplotlib", "numpy", "pandas", "plotly", "sphinx-book-theme (>=0.1.0,<0.2.0)", "sphinx-copybutton", "sphinx-panels (>=0.4.1,<0.5.0)", "sphinxcontrib-bibtex", "sympy"]
+testing = ["coverage (<5.0)", "jupytext (>=1.8.0,<1.9.0)", "matplotlib (>=3.3.0,<3.4.0)", "numpy", "pandas", "pytest (>=5.4,<6.0)", "pytest-cov (>=2.8,<3.0)", "pytest-regressions", "sympy"]
 
 [[package]]
 name = "myst-parser"
-version = "0.13.3"
+version = "0.13.7"
 description = "An extended commonmark compliant parser, with bridges to docutils & sphinx."
 category = "dev"
 optional = false
 python-versions = ">=3.6"
 
 [package.dependencies]
-docutils = ">=0.15"
+docutils = ">=0.15,<0.18"
 jinja2 = "*"
-markdown-it-py = ">=0.6.0,<0.7.0"
-mdit-py-plugins = ">=0.2.4,<0.3.0"
+markdown-it-py = ">=0.6.2,<0.7.0"
+mdit-py-plugins = ">=0.2.5,<0.3.0"
 pyyaml = "*"
-sphinx = ">=2,<4"
+sphinx = ">=2.1,<4"
 
 [package.extras]
-code_style = ["flake8 (>=3.7.0,<3.8.0)", "black", "pre-commit (==1.17.0)"]
+code_style = ["pre-commit (>=2.12,<3.0)"]
 linkify = ["linkify-it-py (>=1.0,<2.0)"]
-rtd = ["sphinxcontrib-bibtex (<2.0.0)", "ipython", "sphinx-book-theme (>=0.0.36)", "sphinx-panels (>=0.5.2,<0.6.0)"]
-testing = ["coverage", "pytest (>=3.6,<4)", "pytest-cov", "pytest-regressions", "beautifulsoup4"]
+rtd = ["ipython", "sphinx-book-theme (>=0.1.0,<0.2.0)", "sphinx-panels (>=0.5.2,<0.6.0)", "sphinxcontrib-bibtex (>=2.1,<3.0)"]
+testing = ["beautifulsoup4", "coverage", "docutils (>=0.17.0,<0.18.0)", "pytest (>=3.6,<4)", "pytest-cov", "pytest-regressions"]
 
 [[package]]
 name = "nbclient"
@@ -2097,8 +2116,8 @@ jupyter = [
     {file = "jupyter-1.0.0.zip", hash = "sha256:3e1f86076bbb7c8c207829390305a2b1fe836d471ed54be66a3b8c41e7f46cc7"},
 ]
 jupyter-book = [
-    {file = "jupyter-book-0.10.0.tar.gz", hash = "sha256:518bf94d23e9c9709c7511fa2698fb774c482cd29a11237aa573b42e2018240d"},
-    {file = "jupyter_book-0.10.0-py3-none-any.whl", hash = "sha256:846c6bd8e0617d72f25c405c83d8edca32cc9604f6d80d5609855a51c91c8de1"},
+    {file = "jupyter-book-0.10.2.tar.gz", hash = "sha256:91edefc9757e46c86aa782e7c2cc5f6b755eb67eee672f5a7b0f5d9200c64f03"},
+    {file = "jupyter_book-0.10.2-py3-none-any.whl", hash = "sha256:df83a419bd1c80afee7354231cf28ce8abc5af9cf9a044084407bdd84494e8ef"},
 ]
 jupyter-cache = [
     {file = "jupyter-cache-0.4.2.tar.gz", hash = "sha256:5cd0ab6170e520f31e4557ccff00ec486c33fa6b6a493e11b61399da1773ce8a"},
@@ -2117,8 +2136,12 @@ jupyter-core = [
     {file = "jupyter_core-4.7.1.tar.gz", hash = "sha256:79025cb3225efcd36847d0840f3fc672c0abd7afd0de83ba8a1d3837619122b4"},
 ]
 jupyter-sphinx = [
-    {file = "jupyter_sphinx-0.3.1-py3-none-any.whl", hash = "sha256:56f4cd319b96c491c61bfa9d11a2ee452d2758beecbd2723b23916aaac4c2bab"},
-    {file = "jupyter_sphinx-0.3.1.tar.gz", hash = "sha256:c4caf8bbf2be6edfe0319aa76127d17fdbe6927c8189cda2d6ac59c01f38404b"},
+    {file = "jupyter_sphinx-0.3.2-py3-none-any.whl", hash = "sha256:301e36d0fb3007bb5802f6b65b60c24990eb99c983332a2ab6eecff385207dc9"},
+    {file = "jupyter_sphinx-0.3.2.tar.gz", hash = "sha256:37fc9408385c45326ac79ca0452fbd7ae2bf0e97842d626d2844d4830e30aaf2"},
+]
+jupyterbook-latex = [
+    {file = "jupyterbook-latex-0.2.0.tar.gz", hash = "sha256:8083d7aa71bb0dc31847be4edd2b15ef9d55b56a8cf1b07e49b3b627fb7e49c7"},
+    {file = "jupyterbook_latex-0.2.0-py3-none-any.whl", hash = "sha256:58af59fcb5b1939d0c28914e06b48364a452bea0b48ac52df34f225c52cc346f"},
 ]
 jupyterlab-widgets = [
     {file = "jupyterlab_widgets-1.0.0-py3-none-any.whl", hash = "sha256:caeaf3e6103180e654e7d8d2b81b7d645e59e432487c1d35a41d6d3ee56b3fef"},
@@ -2226,12 +2249,12 @@ mypy-extensions = [
     {file = "mypy_extensions-0.4.3.tar.gz", hash = "sha256:2d82818f5bb3e369420cb3c4060a7970edba416647068eb4c5343488a6c604a8"},
 ]
 myst-nb = [
-    {file = "myst-nb-0.11.1.tar.gz", hash = "sha256:1ac530645296310c61ccb7e767309c6498fa386ccc41499f5ec1f6b57a4dd1c9"},
-    {file = "myst_nb-0.11.1-py3-none-any.whl", hash = "sha256:f009fc7552b425be2250476c92a0e07a5c6f12a27755f265fc2bc5be511a47a6"},
+    {file = "myst-nb-0.12.3.tar.gz", hash = "sha256:4666039f538abf32d6489f4caf912d505e8798a2709bcf7a7936823ca6b15810"},
+    {file = "myst_nb-0.12.3-py3-none-any.whl", hash = "sha256:3bc5191494720748419b8247e9ffc92d39b4ea7689f92d937e65110b346403fd"},
 ]
 myst-parser = [
-    {file = "myst-parser-0.13.3.tar.gz", hash = "sha256:4f40e1355708182195c28c00bc35375a536f819b67a730d13fecb058d3004a97"},
-    {file = "myst_parser-0.13.3-py3-none-any.whl", hash = "sha256:530a3ad80d2383494af272d3d81fdfeca2c28215c39e97d2a35d83f1695d9080"},
+    {file = "myst-parser-0.13.7.tar.gz", hash = "sha256:e4bc99e43e19f70d22e528de8e7cce59f7e8e7c4c34dcba203de92de7a7c7c85"},
+    {file = "myst_parser-0.13.7-py3-none-any.whl", hash = "sha256:260355b4da8e8865fe080b0638d7f1ab1791dc4bed02a7a48630b6bad4249219"},
 ]
 nbclient = [
     {file = "nbclient-0.5.1-py3-none-any.whl", hash = "sha256:4d6b116187c795c99b9dba13d46e764d596574b14c296d60670c8dfe454db364"},

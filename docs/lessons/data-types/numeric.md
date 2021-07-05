@@ -173,6 +173,7 @@ Numeric types can all be used as arguments to the following built-in functions.
   3.14
   ```
 
+% (integers)=
 Integers
 --------
 
