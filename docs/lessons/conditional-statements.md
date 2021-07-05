@@ -13,7 +13,7 @@ Conditional Statements
 ======================
 
 
-If-Statements
+If Statements
 -------------
 
 ```{image} assets/kings-quest-fork.png
@@ -298,6 +298,36 @@ each of the following is truthy or falsy.
 2. `" "` a space
 3. `{}` an empty dictionary
 4. `[0]` a list containing the value `0`
+
+Glossary
+--------
+
+```{glossary} conditional-statements
+comparison operator
+  An operator that compares the left-hand value to the right-hand value then
+  evaluates to either True or False.
+
+condition
+conditional
+  A valid piece of code that, when evaluated, results in
+  {term}`boolean` value.
+
+falsy
+  A value that is False when evaluated in a `boolean` context, or when converted
+  to a boolean using the `bool()` function.
+
+if statement
+  a compound statement that changes what code is executed depending on its conditions
+
+logical operator
+  An operator that considers both left-hand value and right-hand value then
+  evaluates to either True or False.
+
+truthy
+  A value that is True when evaluated in a `boolean` context, or when converted
+  to a boolean using the `bool()` function.
+
+```
 
 Exercises
 ---------

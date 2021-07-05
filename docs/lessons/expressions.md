@@ -101,29 +101,31 @@ print("Hello " + name)
 ```
 
 Reference
-----------------
+---------
 
 ### Glossary
 
-```{glossary}
-
-value
-  a piece of data or information
-
-expression
-  a unit of code that can be solved to a single value
+```{glossary} expressions
 
 evaluate
   the process of solving an expression to its resulting value
 
+expression
+  a unit of code that can be solved to a single value
+
 left-hand value
   the value to the left of an operator
+
+operator
+  A symbol with special meaning that tells the computer to do something (for
+  example `=`, `+`, or `==`).
 
 right-hand value
   the value to the right of an operator
 
-operator
-  a symbol that has special meaning, telling Python to do something with the values on either side
+value
+  a piece of data or information {term}`strings`, {term}`integers` and more.
+
 ```
 
 ### More info

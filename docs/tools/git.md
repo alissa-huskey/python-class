@@ -1,6 +1,22 @@
 Git
 ===
 
+Table of Contents
+-----------------
+
+* [Locally Grown](#locally-grown)
+* [Anatomy of a Repository](#anatomy-of-a-repository)
+* [Mo' repos, mo' versions](#mo-repos-mo-versions)
+   * [In Which I Digress](#in-which-i-digress)
+* [Remote Control](#remote-control)
+* [Let's talk committment](#lets-talk-committment)
+* [Altered States](#altered-states)
+   * [Local States](#local-states)
+   * [Relative-to-Remote States](#relative-to-remote-states)
+   * [State Changes](#state-changes)
+* [Glossary](#glossary)
+
+
 Locally Grown
 -------------
 
@@ -275,7 +291,85 @@ And finally, here is the workflow and how states change for each action.
   +--------------+--------------+------------+----------+--------------+--------+----------+---------+
 ```
 
-Bring it In
------------
+Glossary
+--------
 
+```{glossary} version-control
+branch
+  A container that has a name and stores set of commits. Every repository is
+  created with a default branch named {term}`master`.
 
+codebase
+  A set source code files that make up a software system, application,
+  component or project.
+
+commit
+revision
+change log
+  A set of changes recorded in version control.
+
+distributed version control
+   As opposed to {term}`centralized version control` systems that have one central
+   repository that all other repositories were required to communicate with in
+   order to commit changes. In distributed version control, every repo is self
+   contained and any repo send changes to or receive changes from any other
+   compatible repository.
+
+HEAD
+  A reference to the current commit on the current branch. A reference is like
+  a bookmark to a commit.
+
+index
+  A snapshot of your files at the time of the `HEAD` commit plus the changes
+  you've staged for commit.
+
+master
+main
+  The default branch. Until recently the default branch was named master, but
+  recently there has been a shift to naming the default branch main.
+
+object database
+  The history of all commits and the relationships between them.
+
+origin
+  The default {term}`remote repository`.
+
+patch
+  The file detailing the exact changes between two versions in a structured
+  format that git and other programs understand. It's very similar to the
+  output of `git diff`.
+
+reference
+  A pointer to a specific {term}`commit`.
+
+remote repository
+upstream repo
+  A repository that you send changes to.
+
+repository
+repo
+  The container for version-control information for a set of files.
+
+SHA
+hash
+  A 40-character unique identifier that points to a the rest of the data
+  related to the {term}`commit`. Basically, a commit ID. Here's an example:
+  `d16085b3b913e5bc5e351c0a7461051e9973629a`
+
+tree
+  A snapshot of your files at the time of the {term}`HEAD` {term}`commit`.
+
+version control
+source control
+revision control
+  A method for keeping track of and managing changes to a set of files.
+
+version control system
+VCS
+revision control system
+source control management system
+SCM
+  A tool or set of tools for version control. The most popular today is Git,
+  but some other examples include Mercurial, Subversion, CVS and Perforce.
+
+```
