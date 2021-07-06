@@ -358,50 +358,231 @@ Then end it with, {samp}`"What does it spell? {name}!"` [^script_name_cheer]
 For Loops
 ---------
 
-A while loop continues for as long as a condition is met, a for loop on the
-other hand repeats for every item in a a list or a list-like object.
+### Iterables and iterators
 
-You've already learned how to iterate over a list using a while loop. Let's
-take a look at another example.
+Some objects in Python are {term}`iterable`--that is, an object that can be
+itereated over. For example, `list`, `tuple` and `range` objects are all
+iterable.
+
+All iterables can be converted to an {term}`iterator`, which is an object that
+will keep returning elements until there are no more left.
+
+To demonstrate this, we'll take a look at a `list` iterator. First we'll
+convert the list to an iterator using the `iter()` function. Then we'll keep
+requesting items using the `next()` function, until we encounter a
+`StopIteration` exception.
+
+```{code-block} python
+:caption: Python shell
+:class: full-width
+>>> colors = ["red", "green", "blue"]
+>>> colors_iterator = iter(colors)
+>>> next(colors_iterator)
+'red'
+
+>>> next(colors_iterator)
+'green'
+
+>>> next(colors_iterator)
+'blue'
+
+>>> next(colors_iterator)
+---------------------------------------------------------------------------
+StopIteration                             Traceback (most recent call last)
+<ipython-input-39-707a9e8680bf> in <module>
+----> 1 next(colors_iterator)
+
+StopIteration:
+```
+
+Lets take a look at another type of iterable, a `range` object.
+
+```{code-block} python
+:caption: Python shell
+:class: full-width
+>>> numbers = range(1, 4)
+>>> numbers_iter = iter(numbers)
+
+>>> next(numbers_iter)
+1
+
+>>> next(numbers_iter)
+2
+
+>>> next(numbers_iter)
+3
+
+>>> next(numbers_iter)
+---------------------------------------------------------------------------
+StopIteration                             Traceback (most recent call last)
+<ipython-input-57-55497f467ad0> in <module>
+----> 1 next(numbers_iter)
+
+StopIteration:
+```
+
+### Exercise
+
+```{exercise} iterator exercise
+:label: iterator-exercise
+
+1. Create a list containing the letters in your name assigned to the variable `letters`.
+2. Convert the list to an iterator using the `iter()` function and assign it to the variable `letters_iterator`.
+3. Keep calling `next()` with the argument `letters_iterator` until you encounter a `StopIteration` exception.
+```
+
+`````{solution} iterator-exercise
+:class: dropdown
+
+```{code-block} python
+>>> letters = list("alissa")
+>>> letters_iterator = iter(letters)
+>>> next(letters_iterator)
+'a'
+
+>>> next(letters_iterator)
+'l'
+
+>>> next(letters_iterator)
+'i'
+
+>>> next(letters_iterator)
+'s'
+
+>>> next(letters_iterator)
+'s'
+
+>>> next(letters_iterator)
+'a'
+
+>>> next(letters_iterator)
+---------------------------------------------------------------------------
+StopIteration                             Traceback (most recent call last)
+<ipython-input-51-15be8840759d> in <module>
+----> 1 next(letters_iterator)
+
+```
+`````
+
+### For loops
+
+% TODO
+% [ ] iterators are one way
+% [ ] enumerate()
+% [ ] fix old exercses
+% [ ] multiple assignment
+
+A while loop continues for as long as a condition is met, a for loop on the
+other hand repeats for every item in an iterable.
+
+The syntax for a for loop is:
+
+`````{parsed-literal}
+{samp}`for {VAR} in {ITERABLE}:`
+    {samp}`    {BODY}`
+`````
+
+Under the hood, a for loop converts `ITERABLE` an iterator object, then
+repeatedly assigns the results of `next()` to `VAR` until there are no more
+left.
+
+We can simulate what happens in a for loop using a while loop.
 
 <div class="row"><div class="col">
 
 ```{code-block-hl} python
-:linenos:
-dwarves = [
-  "Bashful",
-  "Dopey",
-  "Happy",
-  "Grumpy",
-  "Sleepy",
-  "Sneezy",
-  "Doc",
-]
+:caption: Python shell
+:class: full-width
+colors = ["red", "green", "blue"]
+colors_iterator = iter(!!!colors!!!)
+while True:
+    !!!color!!! = next(colors_iterator)
+    print(color)
+```
 
-i = 0
-while i < len(!!!dwarves!!!):
-  !!!name!!! = dwarves[i]
-  print(f"{name}s Room")
-  i += 1
+This will raise the `StopIteration` exception. To suppress it, we can use a
+`try-except` block.
+
+```{code-block-hl} python
+:caption: Python shell
+:class: full-width
+colors = ["red", "green", "blue"]
+colors_iterator = iter(!!!colors!!!)
+while True:
+    try:
+        !!!color!!! = next(colors_iterator)
+    except StopIteration:
+        break
+    print(color)
 ```
 
 </div><div class="col">
 
 ```{code-block-hl} python
-:linenos:
-dwarves = [
-  "Bashful",
-  "Dopey",
-  "Happy",
-  "Grumpy",
-  "Sleepy",
-  "Sneezy",
-  "Doc",
-]
-
-for name in dwarves:
-  print(f"{name}s Room")
+:caption: Python shell
+:class: full-width
+colors = ["red", "green", "blue"]
+for !!!color!!! in !!!colors!!!:
+  print(color)
 ```
 
 </div></div>
 
+Lets look at a range iteratable.
+
+<div class="row"><div class="col">
+
+```{code-block-hl} python
+:caption: Python shell
+:class: full-width
+numbers = range(1, 4)
+numbers_iter = iter(!!!numbers!!!)
+while True:
+  try:
+    !!!num!!! = next(numbers_iter)
+  except StopIteration:
+    break
+
+  print(num)
+```
+
+</div><div class="col">
+
+```{code-block-hl} python
+:caption: Python shell
+:class: full-width
+numbers = range(1, 4)
+for !!!num!!! in !!!numbers!!!:
+  print(num)
+```
+
+</div></div>
+
+Reference
+---------
+
+### Glossary
+
+```{glossary}
+
+container
+  A value that can hold other values, for example `list` objects.
+
+iterable
+  An object that can be iterated over. One that provides the `.__iter__()`
+  method used by the `iter()` function.
+
+iterator
+  An object that provides a `.__next__()` method, used by the built in function
+  `next()`,  which, when called repeatedly, will keep returning elements until
+  there are no more left.
+
+```
+
+### See also
+
+```{seealso}
+
+* [python.org > Iterator Types](https://docs.python.org/3/library/stdtypes.html#typeiter)
+* [Loop Better: a deeper look at iteration in Python](https://treyhunner.com/2019/06/loop-better-a-deeper-look-at-iteration-in-python/)
+* [Python’s built-in container data types: categorisation and iteration](http://blog.wachowicz.eu/?p=132)
