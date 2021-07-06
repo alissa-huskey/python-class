@@ -2,13 +2,13 @@
 # https://jupyterbook.org/customize/config.html
 
 title                       : Python Class
-author                      : ""  # this goes in the footer
+author                      : ""  # footer (default "By The Jupyter Book community")
 
 # NOTE: Also in _ext/myroles.py
 repository:
-  url                       : https://github.com/alissa-huskey/python-class
-  branch                    : master
-  path_to_book              : docs
+  url                       : &repo https://github.com/alissa-huskey/python-class
+  branch                    : &branch master
+  path_to_book              : &path docs
 
 exclude_patterns            :
                               - todo.md
@@ -16,35 +16,39 @@ exclude_patterns            :
                               - _ext/*
                               - reference/string-formatting.md
                               - lessons/mug-brownie.md
-                              - lessons/data-types/types.md
                               - lessons/data-types/dunder-methods.md
                               - lessons/data-types/lists.md
+                              - lessons/data-types/types.md
 
 execute:
   execute_notebooks         : force
 
-html:
-  baseurl                   : https://alissa-huskey.github.io/python-class/
+use_buttons: &use_buttons
   use_repository_button     : true
   use_edit_page_button      : true   # suggested edits
 
-parse:
+html:
+  <<: *use_buttons
+  baseurl                   : https://alissa-huskey.github.io/python-class/
+
+parse: &parse
   # https://myst-parser.readthedocs.io/en/latest/using/syntax-optional.html#syntax-header-anchors
-  myst_heading_anchors      : 3
-  myst_enable_extensions    :
-                              - linkify
+  # myst_heading_anchors      : 5
+  myst_enable_extensions    : &myst_enable_extensions
                               - substitution
                               - colon_fence
                               - deflist
+                                # - tasklist  # pending myst-parser v 0.14.0+
   myst_substitutions        : { "clear": '<div class="clearfix"></div>' }
 
-launch_buttons:
+launch_buttons: &launch_buttons
   notebook_interface        : jupyterlab
   binderhub_url             : https://mybinder.org
   thebe                     : true
 
 sphinx:
-# https://www.sphinx-doc.org/en/master/templating.html#
+  # https://www.sphinx-doc.org/en/master/usage/configuration.html
+  language                  : en
   extra_extensions          :
                               - sphinx_thebe
                               - sphinx.ext.extlinks
@@ -53,35 +57,34 @@ sphinx:
                               - code_highlighter
   local_extensions          :
     lexicon                 : _ext
-  language                  : en
   config                    :
-    myst_enable_extensions  :
-                              - linkify
-                              - substitution
-                              - colon_fence
-                              - deflist
+    <<                      : *parse
+    myst_enable_extensions  : *myst_enable_extensions
     extlinks                :
       github                : [ http://github.com/alissa-huskey/python-class/blob/master/%s, "" ]
       rawfile               : [ http://raw.githubusercontent.com/alissa-huskey/python-class/master/%s, "" ]
       lesson                : [ http://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/%s, "" ]
-    html_css_files          : [ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css ]
-    html_add_permalinks     : ""
     html_show_copyright     : false
+    html_css_files          : [ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css ]
     html_theme_options      :
-    # spinx-book-theme config
-    # https://sphinx-book-theme.readthedocs.io/en/latest/configure.html
+
+      # spinx-book-theme config
+      # https://sphinx-book-theme.readthedocs.io/en/latest/configure.html
       show_navbar_depth     : 3
-      extra_navbar          : ""
-#     extra_navbar          : "<a href='https://github.com/alissa-huskey/python-class/tree/jupyter-book'><i class='fab fa-github'></i> @alissa-huskey/python-class</a>"
-      use_download_button   : false
-      home_page_in_toc      : true
-      repository_url        : https://github.com/alissa-huskey/python-class
-      use_repository_button : true
-      use_edit_page_button  : true
-      repository_branch     : master
-      path_to_docs          : docs
-      use_download_button   : false
+      extra_navbar          : "" # sidebar footer (default: "Theme by the Executable Book Project")
+      home_page_in_toc      : false
+
+      repository_url        : *repo
+      repository_branch     : *branch
+      path_to_docs          : *path
+
+
       launch_buttons        :
-        binderhub_url       : https://mybinder.org
-        notebook_interface  : jupyterlab
-        thebe               : true
+        <<                  : *launch_buttons
+      use_download_button   : false
+      <<                    : *use_buttons
+
+      # pydata-spyinx theme options
+      # https://pydata-sphinx-theme.readthedocs.io/en/latest/user_guide/configuring.html
+      navigation_with_keys  : false
+
