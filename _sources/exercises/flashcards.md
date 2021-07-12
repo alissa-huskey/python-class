@@ -6,6 +6,8 @@ This is the project to apply what we've learned in the [](../lessons/files) less
 The project is to write a program for running through flashcards. Card data is
 stored in `csv` files in the `data/flashcards` directory.
 
+![](assets/flashcards.png)
+
 Instructions
 ------------
 
@@ -79,7 +81,7 @@ Continue expanding the `load_csv()` function to extract the card data from each
 line, put it into a dictionary named `cards` with the keys `"front"` and
 `"back"`.
 
-```{rubric} in load_csv(), *in* the readlines() loop
+```{rubric} in load_csv(), **in** the readlines() loop
 ```
 
 1. [ ] make an empty `dict` assigned to a variable named `card`
@@ -97,18 +99,18 @@ line, put it into a dictionary named `cards` with the keys `"front"` and
 Have `load_csv()` put all of the `card` dictionaries into one big `cards`
 `list` and return that to `main()`.
 
-```{rubric} in load_csv(), *before* the readlines() loop
+```{rubric} in load_csv(), **before** the readlines() loop
 ```
 
 1. [ ] make an empty `list` assigned to a variable named `cards`
 
-```{rubric} in load_csv(), *at the end* of the readlines() loop
+```{rubric} in load_csv(), **at the end** of the readlines() loop
 ```
 
 1. [ ] use the `.append()` method on the `cards` `list` with the argument `card`
 
 
-```{rubric} in load_csv(), *after* the loop
+```{rubric} in load_csv(), **after** the loop
 ```
 
 1. [ ] return `cards`
@@ -126,7 +128,7 @@ answers get matched up correctly, the trailing `"\n"` needs to be removed from
 the end of each line. Any extra spaces that happen to be around the `","` or at
 the beginning or end of the line also need to be removed.
 
-```{rubric} in load_csv(), *in* the loop
+```{rubric} in load_csv(), **in** the loop
 ```
 
 1. [ ] remove leading and trailing whitespace by calling the `.strip()` method
@@ -137,7 +139,7 @@ the beginning or end of the line also need to be removed.
 To avoid having a flashcard pop up that reads `"front"`, don't append the
 header row to the `cards` `list`.
 
-```{rubric} in load_csv(), in the readlines() loop, before append
+```{rubric} in load_csv(), **in** the readlines() loop, **before** append
 ```
 
 1. [ ] check if `card["front"]` is `"front"` and `card["back"]` is `"back"`. If so,
@@ -182,7 +184,7 @@ of `cards`, so that it stops as soon as its empty. The inside the loop, use the
 
 1. [ ] make a while loop where the condition is: `cards`
 
-```{rubric} in play(), in the loop
+```{rubric} in play(), **in** the loop
 ```
 
 1. [ ] use `random.choice()` to get a random item from the `cards`
@@ -197,40 +199,41 @@ This is where things start to get exciting! In this part we'll print the front
 of the card, ask the user for their answer, and let them know if it was right
 or not.
 
-```{rubric} in play(), in the loop
+```{rubric} in play(), **in** the loop
 ```
 
 1. [ ] print `card["front"]`
 1. [ ] prompt the user for their answer using the `input()` function and assign
        the result to a variable named `answer`
 1. [ ] check if the `answer` is the same as `card["back"]`
-       * [ ] if so, increment `score` by one and print `"CORRECT"`
-       * [ ] if not, print `"INCORRECT",` then `cards["back"]`
+   * [ ] if so, print `"CORRECT"`
+   * [ ] if not, print `"INCORRECT",` then `cards["back"]`
 1. [ ] call `input()` asking if the user wants to continue
+   * [ ] if not, return
 
-```{rubric} in play(), after the loop
+```{rubric} in play(), **after** the loop
 ```
 
 ### Part 12: Scorekeeping
 
 Now lets keep track of which card the user is on, and what their score is.
 
-```{rubric} in play(), above the loop
+```{rubric} in play(), **above** the loop
 ```
 
+1. [ ] make a `score` variable set to `0`
 1. [ ] assign the length of cards to a variable `total`
 1. [ ] make a `num` variable set to `1`
-1. [ ] make a `score` variable set to `0`
 
-```{rubric} in play(), in the loop
+```{rubric} in play(), **in** the loop
 ```
 
 1. [ ] at the top of the loop print {samp}`card {num} of {total}`
 1. [ ] when you check if the `answer` is the same as `card["back"]`
-       * [ ] if so, increment `score` by one
+   * [ ] if so, increment `score` by one
 1. [ ] at the end of the loop, increment `num` by `1`
 
-```{rubric} in play(), after the loop
+```{rubric} in play(), **after** the loop
 ```
 
 1. [ ] print {samp}`"{score} of {total}"`

@@ -337,8 +337,6 @@ However, there are some functions that any object can be passed to:
   ```{code-block} python
   :caption: Python shell
   :class: full-width
-  >>> a_list = [1, 2, 3]
-
   >>> a = [1, 2, 3]
   >>> b = a
   >>> c = [1, 2, 3]

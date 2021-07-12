@@ -85,14 +85,7 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../index.html">
-   Python Class
-  </a>
- </li>
-</ul>
-<p class="caption">
+        <p class="caption">
  <span class="caption-text">
   Lessons
  </span>
@@ -472,6 +465,26 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/alissa-huskey/python-class/master?urlpath=lab/tree/docs/tools/ipython.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -488,24 +501,38 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tip-1-quickref">
-   Tip 1: quickref
+  <a class="reference internal nav-link" href="#tips">
+   Tips
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tip-1-quickref">
+     Tip 1: quickref
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tip-2-save-history-to-file">
+     Tip 2: Save history to file
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tip-2-history">
-   Tip 2: history
+  <a class="reference internal nav-link" href="#troubleshooting">
+   Troubleshooting
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tip-3-history-help">
-   Tip 3: history help
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tip-4-save">
-   Tip 4: save
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#unexpected-keyword-argument-column">
+     unexpected keyword argument ‘column’
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#unhandled-exception-in-event-loop">
+     Unhandled exception in event loop
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -523,14 +550,24 @@
 <div class="section" id="table-of-contents">
 <h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
+<li><p><a class="reference external" href="#tips">Tips</a></p>
+<ul>
 <li><p><a class="reference external" href="#tip-1-quickref">Tip 1: quickref</a></p></li>
-<li><p><a class="reference external" href="#tip-2-history">Tip 2: history</a></p></li>
-<li><p><a class="reference external" href="#tip-3-history-help">Tip 3: history help</a></p></li>
-<li><p><a class="reference external" href="#tip-4-save">Tip 4: save</a></p></li>
+<li><p><a class="reference external" href="#tip-2-save-history-to-file">Tip 2: Save history to file</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#troubleshooting">Troubleshooting</a></p>
+<ul>
+<li><p><a class="reference external" href="#unexpected-keyword-argument-column">unexpected keyword argument ‘column’</a></p></li>
+<li><p><a class="reference external" href="#unhandled-exception-in-event-loop">Unhandled exception in event loop</a></p></li>
+</ul>
+</li>
 </ul>
 </div>
+<div class="section" id="tips">
+<h2>Tips<a class="headerlink" href="#tips" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="tip-1-quickref">
-<h2>Tip 1: quickref<a class="headerlink" href="#tip-1-quickref" title="Permalink to this headline">¶</a></h2>
+<h3>Tip 1: quickref<a class="headerlink" href="#tip-1-quickref" title="Permalink to this headline">¶</a></h3>
 <p>You can use the <code class="docutils literal notranslate"><span class="pre">%quickref</span></code> magic command to get a a quick introduction to
 IPythons features.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1&gt;&gt;&gt; %quickref
@@ -546,52 +583,12 @@ obj?, obj??      : Get help, or more help for object (also works as
 </pre></div>
 </div>
 </div>
-<div class="section" id="tip-2-history">
-<h2>Tip 2: history<a class="headerlink" href="#tip-2-history" title="Permalink to this headline">¶</a></h2>
-<p>Use the <code class="docutils literal notranslate"><span class="pre">%history</span></code> magic command to see the all of the commands you typed in
-your last ipython session. (Change the <code class="docutils literal notranslate"><span class="pre">~1</span></code> to <code class="docutils literal notranslate"><span class="pre">~2</span></code> go get the second to last,
-and so on.) You can also use <code class="docutils literal notranslate"><span class="pre">%hist</span></code> for short.</p>
-<p>You can use this to review everything you typed during data inspection
-exercise.</p>
-<div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-number">Listing 303 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="o">&gt;&gt;&gt;</span> <span class="o">%</span><span class="k">history</span> ~1/
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://api.punkapi.com/v2/beers/random&quot;</span><span class="p">)</span>
-<span class="n">response</span><span class="o">.</span><span class="n">ok</span>
-<span class="n">response</span><span class="o">.</span><span class="n">status_code</span>
-<span class="n">response</span><span class="o">.</span><span class="n">reason</span>
-<span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
-<span class="n">response</span><span class="o">.</span><span class="n">headers</span>
-<span class="o">...</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="tip-3-history-help">
-<h2>Tip 3: history help<a class="headerlink" href="#tip-3-history-help" title="Permalink to this headline">¶</a></h2>
-<p>You can add a <code class="docutils literal notranslate"><span class="pre">?</span></code> after the <code class="docutils literal notranslate"><span class="pre">%history</span></code> magic command to show detailed help
-and usage information.</p>
-<div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-number">Listing 304 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1&gt;&gt;&gt; %history?
-Docstring:
-::
-
-  %history [-n] [-o] [-p] [-t] [-f FILENAME] [-g [PATTERN [PATTERN ...]]] [-l [LIMIT]] [-u] [range [range ...]]
-
-Print input history (_i&lt;n&gt; variables), with most recent last.
-...
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="tip-4-save">
-<h2>Tip 4: save<a class="headerlink" href="#tip-4-save" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="tip-2-save-history-to-file">
+<h3>Tip 2: Save history to file<a class="headerlink" href="#tip-2-save-history-to-file" title="Permalink to this headline">¶</a></h3>
 <p>You can save the history from your last session to the file in the directory
 you were in when you started <code class="docutils literal notranslate"><span class="pre">ipython</span></code> by using the <code class="docutils literal notranslate"><span class="pre">%save</span></code> magic command.</p>
-<div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-number">Listing 305 </span><span class="caption-text">ipython shell – save to a file named <a class="reference external" href="http://session.py">session.py</a></span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number">Listing 303 </span><span class="caption-text">ipython shell – save to a file named session.py</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1&gt;&gt;&gt; %save session ~1/
 The following commands were written to file `session.py`:
 import requests
@@ -601,6 +598,158 @@ response.status_code
 response.reason
 ...
 </pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="unexpected-keyword-argument-column">
+<h3>unexpected keyword argument ‘column’<a class="headerlink" href="#unexpected-keyword-argument-column" title="Permalink to this headline">¶</a></h3>
+<details class="sphinx-bs dropdown card mb-3" open="open">
+<summary class="summary-title card-header card-title">
+Error<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">This error occurs when attempting tab completion.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">File</span> <span class="s2">&quot;../venv/lib/python3.8/site-packages/IPython/core/completer.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2029</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_complete</span>
+    <span class="n">completions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jedi_matches</span><span class="p">(</span>
+  <span class="n">File</span> <span class="s2">&quot;../venv/lib/python3.8/site-packages/IPython/core/completer.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1373</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_jedi_matches</span>
+    <span class="n">interpreter</span> <span class="o">=</span> <span class="n">jedi</span><span class="o">.</span><span class="n">Interpreter</span><span class="p">(</span>
+  <span class="n">File</span> <span class="s2">&quot;../venv/lib/python3.8/site-packages/jedi/api/__init__.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">725</span><span class="p">,</span> <span class="ow">in</span> <span class="fm">__init__</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">environment</span><span class="o">=</span><span class="n">environment</span><span class="p">,</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="fm">__init__</span><span class="p">()</span> <span class="n">got</span> <span class="n">an</span> <span class="n">unexpected</span> <span class="n">keyword</span> <span class="n">argument</span> <span class="s1">&#39;column&#39;</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sphinx-bs dropdown card mb-3" open="open">
+<summary class="summary-title card-header">
+Solution<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">iPython <code class="docutils literal notranslate"><span class="pre">&lt;=7.19</span></code> is incompatable with jedi version <code class="docutils literal notranslate"><span class="pre">0.18.0</span></code>.
+To resolve, downgrade <code class="docutils literal notranslate"><span class="pre">jedi</span></code> to version <code class="docutils literal notranslate"><span class="pre">0.17.2</span></code>.</p>
+<div class="tabbed-set docutils">
+<input checked="checked" id="2ab9e62a-c431-402d-a45f-5397adb175ed" name="f72c9ec9-75db-4b87-97f9-33684ba93acf" type="radio">
+</input><label class="tabbed-label" for="2ab9e62a-c431-402d-a45f-5397adb175ed">
+poetry</label><div class="tabbed-content docutils">
+<p class="card-text">Modify your <code class="file docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file and add the following <code class="docutils literal notranslate"><span class="pre">jedi</span></code>
+dependency just above the <code class="docutils literal notranslate"><span class="pre">ipython</span></code> dependency.</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number">Listing 304 </span><span class="caption-text">pyproject.toml</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.poetry.dev-dependencies]</span>
+<span class="p">...</span>
+<span class="hll"><span class="n">jedi</span> <span class="o">=</span> <span class="s">&quot;0.17.2&quot;</span> <span class="c1"># ipython &lt;=7.19</span>
+</span><span class="n">ipython</span> <span class="o">=</span> <span class="s">&quot;^7.19.0&quot;</span>
+</pre></div>
+</div>
+</div>
+<p class="card-text">Then in a terminal run:</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-number">Listing 305 </span><span class="caption-text">terminal</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry update jedi
+</pre></div>
+</div>
+</div>
+</div>
+<input id="d910677e-691a-446a-8188-93ca80b388ca" name="f72c9ec9-75db-4b87-97f9-33684ba93acf" type="radio">
+</input><label class="tabbed-label" for="d910677e-691a-446a-8188-93ca80b388ca">
+pip</label><div class="tabbed-content docutils">
+<p class="card-text">In a terminal run:</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-number">Listing 306 </span><span class="caption-text">terminal</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m pip install -U jedi~<span class="o">=</span><span class="m">0</span>.17.2
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</details><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/ipython/ipython/issues/12740">ipython/ipython#12740</a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="unhandled-exception-in-event-loop">
+<h3>Unhandled exception in event loop<a class="headerlink" href="#unhandled-exception-in-event-loop" title="Permalink to this headline">¶</a></h3>
+<details class="sphinx-bs dropdown card mb-3" open="open">
+<summary class="summary-title card-header card-title">
+Error<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">This error occurs intermittently after hitting enter.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Unhandled</span> <span class="n">exception</span> <span class="ow">in</span> <span class="n">event</span> <span class="n">loop</span><span class="p">:</span>
+  <span class="n">File</span> <span class="s2">&quot;...\lib</span><span class="se">\a</span><span class="s2">syncio\proactor_events.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">768</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_loop_self_reading</span>
+
+    <span class="n">f</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>  <span class="c1"># may raise</span>
+  <span class="n">File</span> <span class="s2">&quot;...\lib</span><span class="se">\a</span><span class="s2">syncio\windows_events.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">808</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_poll</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">callback</span><span class="p">(</span><span class="n">transferred</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">ov</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;...\lib</span><span class="se">\a</span><span class="s2">syncio\windows_events.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">457</span><span class="p">,</span> <span class="ow">in</span> <span class="n">finish_recv</span>
+    <span class="k">raise</span> <span class="ne">ConnectionResetError</span><span class="p">(</span><span class="o">*</span><span class="n">exc</span><span class="o">.</span><span class="n">args</span><span class="p">)</span>
+
+<span class="ne">Exception</span> <span class="p">[</span><span class="n">WinError</span> <span class="mi">995</span><span class="p">]</span> <span class="n">The</span> <span class="n">I</span><span class="o">/</span><span class="n">O</span> <span class="n">operation</span> <span class="n">has</span> <span class="n">been</span> <span class="n">aborted</span> <span class="n">because</span> <span class="n">of</span> <span class="n">either</span> <span class="n">a</span> <span class="n">thread</span> <span class="n">exit</span> <span class="ow">or</span> <span class="n">an</span> <span class="n">application</span> <span class="n">request</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sphinx-bs dropdown card mb-3" open="open">
+<summary class="summary-title card-header">
+Solution<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">iPython ~7.13.0 on Windows does not work with a version 3+ of prompt-toolkit.
+To resolve, downgrade <code class="docutils literal notranslate"><span class="pre">prompt-toolkit</span></code> to version <code class="docutils literal notranslate"><span class="pre">2.x</span></code>.</p>
+<div class="tabbed-set docutils">
+<input checked="checked" id="341b4128-acf9-4039-b2b4-df8b9911cf23" name="3a761ca6-21ea-430d-bb0e-9faf725557d7" type="radio">
+</input><label class="tabbed-label" for="341b4128-acf9-4039-b2b4-df8b9911cf23">
+poetry</label><div class="tabbed-content docutils">
+<p class="card-text">Modify your <code class="file docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file and add the following <code class="docutils literal notranslate"><span class="pre">prompt-toolkit</span></code>
+dependency just above the <code class="docutils literal notranslate"><span class="pre">ipython</span></code> dependency.</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-number">Listing 307 </span><span class="caption-text">pyproject.toml</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.poetry.dev-dependencies]</span>
+<span class="p">...</span>
+<span class="hll"><span class="n">prompt-toolkit</span> <span class="o">=</span> <span class="s">&quot;^2&quot;</span> <span class="c1"># ipython ~7.10</span>
+</span><span class="n">ipython</span> <span class="o">=</span> <span class="s">&quot;^7.13.0&quot;</span>
+</pre></div>
+</div>
+</div>
+<p class="card-text">Then in a terminal run:</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-number">Listing 308 </span><span class="caption-text">terminal</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry update prompt-toolkit
+</pre></div>
+</div>
+</div>
+</div>
+<input id="53aa0e29-c6dc-46ce-b16e-d32deb752363" name="3a761ca6-21ea-430d-bb0e-9faf725557d7" type="radio">
+</input><label class="tabbed-label" for="53aa0e29-c6dc-46ce-b16e-d32deb752363">
+pip</label><div class="tabbed-content docutils">
+<p class="card-text">In a terminal run:</p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-number">Listing 309 </span><span class="caption-text">terminal</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m pip install -U prompt-toolkit~<span class="o">=</span><span class="m">2</span>.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</details><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/ipython/ipython/issues/12049">ipython/ipython#12049</a></p></li>
+<li><p><a class="reference external" href="https://stackoverflow.com/questions/59355904/why-do-i-get-an-unhandled-exception-in-event-loop-error-on-ipython">StackOverflow: Why do I get an ‘Unhandled exception in event loop’ error on ipython</a></p></li>
+</ul>
 </div>
 </div>
 </div>

@@ -341,7 +341,7 @@ def create_packing():
   # close the file handler, which is when the the file is written to disk
   fh.close()
 
-if __main__ == "__name__":
+if __name__ == "__main__":
   create_packing()
 ```
 
@@ -452,7 +452,7 @@ def addto_packing():
   # close the file handler, which is when the the file is written to disk
   fh.close()
 
-if __main__ == "__name__":
+if __name__ == "__main__":
   create_packing()
   addto_packing()
 ```
