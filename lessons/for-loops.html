@@ -523,16 +523,14 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#list-iterator">
-     List iterator
+    <a class="reference internal nav-link" href="#id1">
+     Exercise
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id1">
-       Exercise
-      </a>
-     </li>
-    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#for-loops-under-the-hood">
+     for loops under the hood
+    </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#multiple-assignment">
@@ -666,12 +664,9 @@ other hand repeats for every element in an iterable.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">for</span></code> and <code class="docutils literal notranslate"><span class="pre">in</span></code> are <a class="reference internal" href="../reference/glossary.html#term-keyword"><span class="xref std std-term">keywords</span></a></p></li>
 <li><p><code class="samp docutils literal notranslate"><em><span class="pre">VAR</span></em></code> – variable name (or comma-seperated list of names) for each item</p></li>
-<li><p><code class="samp docutils literal notranslate"><em><span class="pre">ITERABLE</span></em></code> – object to iterate over</p></li>
+<li><p><code class="samp docutils literal notranslate"><em><span class="pre">ITERABLE</span></em></code> – object to iterate over. (More on this later.)</p></li>
 <li><p><code class="samp docutils literal notranslate"><em><span class="pre">BODY</span></em></code> – statements to execute where <code class="samp docutils literal notranslate"><em><span class="pre">VAR</span></em></code> will be used</p></li>
 </ul>
-<p>Under the hood, a for loop converts <code class="docutils literal notranslate"><span class="pre">ITERABLE</span></code> an iterator object, then
-repeatedly assigns the results of <code class="docutils literal notranslate"><span class="pre">next()</span></code> to <code class="docutils literal notranslate"><span class="pre">VAR</span></code> until there are no more
-left. (More on iterables and itrators later.)</p>
 <p>Here’s a simple example that iterates over a <code class="docutils literal notranslate"><span class="pre">list</span></code> of strings.</p>
 <div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption"><span class="caption-number">Listing 49 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">for</span></code> loop example</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
@@ -751,8 +746,6 @@ itereated over. For example, <code class="docutils literal notranslate"><span cl
 iterable.</p>
 <p>All iterables can be converted to an <a class="reference internal" href="#term-iterator"><span class="xref std std-term">iterator</span></a>, which is an object that
 will keep returning elements until there are no more left.</p>
-<div class="section" id="list-iterator">
-<h3>List iterator<a class="headerlink" href="#list-iterator" title="Permalink to this headline">¶</a></h3>
 <p>To demonstrate this we’ll create a <code class="docutils literal notranslate"><span class="pre">colors</span></code> <code class="docutils literal notranslate"><span class="pre">list</span></code> then convert the it to a
 <code class="docutils literal notranslate"><span class="pre">colors_iterator</span></code> using the <code class="docutils literal notranslate"><span class="pre">iter()</span></code> function.</p>
 <div class="cell docutils container">
@@ -810,7 +803,7 @@ encounter a <code class="docutils literal notranslate"><span class="pre">StopIte
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">StopIteration</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1648</span><span class="o">/</span><span class="mf">455980397.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1657</span><span class="o">/</span><span class="mf">455980397.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">next</span><span class="p">(</span><span class="n">colors_iterator</span><span class="p">)</span>
 
 <span class="ne">StopIteration</span>: 
@@ -819,7 +812,7 @@ encounter a <code class="docutils literal notranslate"><span class="pre">StopIte
 </div>
 </div>
 <div class="section" id="id1">
-<h4>Exercise<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<h3>Exercise<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <div class="exercise admonition" id="iterator-exercise">
 <p class="admonition-title"><span class="caption-number">Exercise 28 </span>(Iterators)</p>
 <div class="section" id="exercise-content">
@@ -866,6 +859,173 @@ encounter a <code class="docutils literal notranslate"><span class="pre">StopIte
 </div>
 </div>
 </div>
+<div class="section" id="for-loops-under-the-hood">
+<h3>for loops under the hood<a class="headerlink" href="#for-loops-under-the-hood" title="Permalink to this headline">¶</a></h3>
+<p>Now that you know what iterables and iterators are, we demystify for loops.</p>
+<p>Lets look at the syntax again.</p>
+<pre class="literal-block"><code class="samp docutils literal notranslate"><span class="pre">for</span> <em><span class="pre">VAR</span></em> <span class="pre">in</span> <em><span class="pre">ITERABLE</span></em><span class="pre">:</span></code>
+<code class="samp docutils literal notranslate">&#160;&#160;&#160; <em><span class="pre">BODY</span></em></code></pre>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">for</span></code> and <code class="docutils literal notranslate"><span class="pre">in</span></code> are <a class="reference internal" href="../reference/glossary.html#term-keyword"><span class="xref std std-term">keywords</span></a></p></li>
+<li><p><code class="samp docutils literal notranslate"><em><span class="pre">VAR</span></em></code> – variable name (or comma-seperated list of names) for each item</p></li>
+<li><p><code class="samp docutils literal notranslate"><em><span class="pre">ITERABLE</span></em></code> – object to iterate over. (More on this later.)</p></li>
+<li><p><code class="samp docutils literal notranslate"><em><span class="pre">BODY</span></em></code> – statements to execute where <code class="samp docutils literal notranslate"><em><span class="pre">VAR</span></em></code> will be used</p></li>
+</ul>
+<p>Here’s what’s happening behind the scenes:</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ITERABLE</span></code> is converted to an iterator object using <code class="docutils literal notranslate"><span class="pre">iter()</span></code>, or rather its <a class="reference internal" href="data-types/objects.html#term-magic-method"><span class="xref std std-term">magic method</span></a></p></li>
+<li><p>Each iteration, <code class="docutils literal notranslate"><span class="pre">next()</span></code> is called, and the results are assigned to <code class="docutils literal notranslate"><span class="pre">VAR</span></code></p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">BODY</span></code> statements are executed</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">next()</span></code> results in a <code class="docutils literal notranslate"><span class="pre">StopIteration</span></code> exception it is discarded and the loop ends</p></li>
+</ol>
+<p>Lets revisit our <code class="docutils literal notranslate"><span class="pre">for</span></code> loop example, and see if we can deconstruct the behavior
+of a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop. First we’ll create a <code class="docutils literal notranslate"><span class="pre">houses</span></code> list, and convert it to a
+<code class="docutils literal notranslate"><span class="pre">houses_iter</span></code> using the <code class="docutils literal notranslate"><span class="pre">iter()</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create iterable</span>
+<span class="n">houses</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s2">&quot;Arryn&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;Baratheon&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;Greyjoy&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;Lannister&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;Martell&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;Stark&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;Targaryen&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;Tully&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;Tyrell&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="c1"># create iterator</span>
+<span class="n">houses_iter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">houses</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we’ll call <code class="docutils literal notranslate"><span class="pre">next()</span></code> in a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop, and assign the results to <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># loop forever</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="c1"># assign VAR to the results of next()</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">houses_iter</span><span class="p">)</span>
+
+    <span class="c1"># BODY statements</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;House </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>House Arryn
+House Baratheon
+House Greyjoy
+House Lannister
+House Martell
+House Stark
+House Targaryen
+House Tully
+House Tyrell
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">StopIteration</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1657</span><span class="o">/</span><span class="mf">1649516371.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="c1"># assign VAR to the results of next()</span>
+<span class="ne">----&gt; </span><span class="mi">4</span>     <span class="n">name</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">houses_iter</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> 
+<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="c1"># BODY statements</span>
+
+<span class="ne">StopIteration</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is close, but we’re still seeing that <code class="docutils literal notranslate"><span class="pre">StopIteration</span></code> exception. To
+supress it we’ll need a try-except block.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create iterator</span>
+<span class="n">houses_iter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">houses</span><span class="p">)</span>
+
+<span class="c1"># loop forever</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+
+    <span class="c1"># any code that may raise an exception goes under the try header</span>
+    <span class="k">try</span><span class="p">:</span>
+
+      <span class="c1"># assign VAR to the results of next()</span>
+      <span class="n">name</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">houses_iter</span><span class="p">)</span>
+
+    <span class="c1"># the type of exception that we want to catch</span>
+    <span class="c1"># instead of raising it, the body statements will be executed</span>
+    <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+
+      <span class="c1"># StopIteration means there are no more elements, so exit the loop</span>
+      <span class="k">break</span>
+
+    <span class="c1"># BODY statements</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;House </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>House Arryn
+House Baratheon
+House Greyjoy
+House Lannister
+House Martell
+House Stark
+House Targaryen
+House Tully
+House Tyrell
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we have a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop that replicates the behavior of a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop. Here they are side by side.</p>
+<div class="row"><div class="col">
+<div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">houses</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s2">&quot;Arryn&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;Baratheon&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;Greyjoy&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;Lannister&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;Martell&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;Stark&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;Targaryen&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;Tully&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;Tyrell&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">houses_iter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n n-Highlight">houses</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n n-Highlight">name</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">houses_iter</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+      <span class="k">break</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;House </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div><div class="col">
+<div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">houses</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s2">&quot;Arryn&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;Baratheon&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;Greyjoy&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;Lannister&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;Martell&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;Stark&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;Targaryen&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;Tully&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;Tyrell&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n n-Highlight">name</span> <span class="ow">in</span> <span class="n n-Highlight">houses</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;House </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
 </div>
 <div class="section" id="multiple-assignment">
 <h3>Multiple assignment<a class="headerlink" href="#multiple-assignment" title="Permalink to this headline">¶</a></h3>
@@ -916,14 +1076,14 @@ to a cooresponding variable. There must be the same number of variables to the
 left of the <code class="docutils literal notranslate"><span class="pre">=</span></code> as there are items in the <code class="docutils literal notranslate"><span class="pre">tuple</span></code> seperated by <code class="docutils literal notranslate"><span class="pre">,</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">suite</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">suites_iterator</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">suit</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">suites_iterator</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">suite</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">suit</span>
 </pre></div>
 </div>
 </div>
@@ -945,6 +1105,103 @@ left of the <code class="docutils literal notranslate"><span class="pre">=</span
 </div>
 </div>
 </div>
+<p>Lets put this assignment fanciness in a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">suites_iterator</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">suites</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">suit</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">suites_iterator</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+      <span class="k">break</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The </span><span class="si">{</span><span class="n">suit</span><span class="si">}</span><span class="s2"> suit is </span><span class="si">{</span><span class="n">color</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The heart suit is red.
+The diamond suit is red.
+The club suit is black.
+The spade suit is black.
+</pre></div>
+</div>
+</div>
+</div>
+<p>And lets see how it looks in a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">suite</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">suites</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The </span><span class="si">{</span><span class="n">suit</span><span class="si">}</span><span class="s2"> suit is </span><span class="si">{</span><span class="n">color</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The spade suit is red.
+The spade suit is red.
+The spade suit is black.
+The spade suit is black.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here they are side by side.</p>
+<div class="row"><div class="col">
+<div class="full-width highlight-python-hl notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">suites</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;heart&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;diamond&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;club&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;spade&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">suites_iterator</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n n-Highlight">suites</span><span class="o o-Highlight">.</span><span class="n n-Highlight">items</span><span class="p p-Highlight">()</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n n-Highlight">suit</span><span class="p p-Highlight">,</span><span class=" -Highlight"> </span><span class="n n-Highlight">color</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">suites_iterator</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+      <span class="k">break</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The </span><span class="si">{</span><span class="n">suit</span><span class="si">}</span><span class="s2"> suit is </span><span class="si">{</span><span class="n">color</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div><div class="col">
+<div class="full-width highlight-python-hl notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">suites</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;heart&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;diamond&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;club&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;spade&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="n n-Highlight">suite</span><span class="p p-Highlight">,</span><span class=" -Highlight"> </span><span class="n n-Highlight">color</span> <span class="ow">in</span> <span class="n n-Highlight">suites</span><span class="o o-Highlight">.</span><span class="n n-Highlight">items</span><span class="p p-Highlight">()</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The </span><span class="si">{</span><span class="n">suit</span><span class="si">}</span><span class="s2"> suit is </span><span class="si">{</span><span class="n">color</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div></div>
 </div>
 </div>
 <div class="section" id="comparing-loops">
@@ -962,19 +1219,7 @@ iterator.</p>
 <code class="docutils literal notranslate"><span class="pre">next()</span></code> happens behind the scenes.</p>
 <div class="row"><div class="col">
 <div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-number">Listing 52 </span><span class="caption-text">Iter example A-1: <code class="docutils literal notranslate"><span class="pre">list</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">while</span></code> loop (ends in error)</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
-<span class="n">colors_iterator</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n n-Highlight">colors</span><span class="p">)</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n n-Highlight">color</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">colors_iterator</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<p>This will raise the <code class="docutils literal notranslate"><span class="pre">StopIteration</span></code> exception. To suppress it, we can use a
-<code class="docutils literal notranslate"><span class="pre">try-except</span></code> block.</p>
-<div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-number">Listing 53 </span><span class="caption-text">Iter example A-2: <code class="docutils literal notranslate"><span class="pre">list</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">while</span></code> loop (error surpressed)</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 52 </span><span class="caption-text">Iter example A-1: <code class="docutils literal notranslate"><span class="pre">list</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">while</span></code> loop</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
 <span class="n">colors_iterator</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n n-Highlight">colors</span><span class="p">)</span>
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -987,8 +1232,8 @@ iterator.</p>
 </div>
 </div>
 </div><div class="col">
-<div class="literal-block-wrapper docutils container" id="id8">
-<div class="code-block-caption"><span class="caption-number">Listing 54 </span><span class="caption-text">Iter example A-3: <code class="docutils literal notranslate"><span class="pre">list</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">for</span></code> loop</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-number">Listing 53 </span><span class="caption-text">Iter example A-2: <code class="docutils literal notranslate"><span class="pre">list</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">for</span></code> loop</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
 <span class="k">for</span> <span class="n n-Highlight">color</span> <span class="ow">in</span> <span class="n n-Highlight">colors</span><span class="p">:</span>
   <span class="nb">print</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
@@ -1005,8 +1250,8 @@ it using the <code class="docutils literal notranslate"><span class="pre">iter()
 iterator.</p>
 <p>On the right is the same code as a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.</p>
 <div class="row"><div class="col">
-<div class="literal-block-wrapper docutils container" id="id9">
-<div class="code-block-caption"><span class="caption-number">Listing 55 </span><span class="caption-text">Iter example B-1: <code class="docutils literal notranslate"><span class="pre">range</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">while</span></code> loop (error surpressed)</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-number">Listing 54 </span><span class="caption-text">Iter example B-1: <code class="docutils literal notranslate"><span class="pre">range</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">while</span></code> loop (error surpressed)</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">numbers_iter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n n-Highlight">numbers</span><span class="p">)</span>
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -1020,8 +1265,8 @@ iterator.</p>
 </div>
 </div>
 </div><div class="col">
-<div class="literal-block-wrapper docutils container" id="id10">
-<div class="code-block-caption"><span class="caption-number">Listing 56 </span><span class="caption-text">Iter example B-2: <code class="docutils literal notranslate"><span class="pre">range</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">for</span></code> loop</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-number">Listing 55 </span><span class="caption-text">Iter example B-2: <code class="docutils literal notranslate"><span class="pre">range</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">for</span></code> loop</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="k">for</span> <span class="n n-Highlight">num</span> <span class="ow">in</span> <span class="n n-Highlight">numbers</span><span class="p">:</span>
   <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
@@ -1042,8 +1287,8 @@ bracket notation.</p>
 <p>Even so, the this familiar pattern may help to shed some light on <code class="docutils literal notranslate"><span class="pre">for</span></code> loop
 behavior.</p>
 <div class="row"><div class="col">
-<div class="literal-block-wrapper docutils container" id="id11">
-<div class="code-block-caption"><span class="caption-number">Listing 57 </span><span class="caption-text">Bracket example C-1: <code class="docutils literal notranslate"><span class="pre">list</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">while</span></code> loop</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-number">Listing 56 </span><span class="caption-text">Bracket example C-1: <code class="docutils literal notranslate"><span class="pre">list</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">while</span></code> loop</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
 <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
 
@@ -1055,8 +1300,8 @@ behavior.</p>
 </div>
 </div>
 </div><div class="col">
-<div class="literal-block-wrapper docutils container" id="id12">
-<div class="code-block-caption"><span class="caption-number">Listing 58 </span><span class="caption-text">Subscript example C-2: <code class="docutils literal notranslate"><span class="pre">list</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">for</span></code> loop</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-number">Listing 57 </span><span class="caption-text">Subscript example C-2: <code class="docutils literal notranslate"><span class="pre">list</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">for</span></code> loop</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n n-Highlight">color</span> <span class="ow">in</span> <span class="n n-Highlight">colors</span><span class="p">:</span>
@@ -1071,8 +1316,8 @@ behavior.</p>
 <p>In this example we’ll iterate over each <code class="docutils literal notranslate"><span class="pre">letter</span></code> in the string <code class="docutils literal notranslate"><span class="pre">word</span></code> using
 bracket notaton.</p>
 <div class="row"><div class="col">
-<div class="literal-block-wrapper docutils container" id="id13">
-<div class="code-block-caption"><span class="caption-number">Listing 59 </span><span class="caption-text">Bracket example D-1: <code class="docutils literal notranslate"><span class="pre">str</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">while</span></code> loop</span><a class="headerlink" href="#id13" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-number">Listing 58 </span><span class="caption-text">Bracket example D-1: <code class="docutils literal notranslate"><span class="pre">str</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">while</span></code> loop</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">word</span> <span class="o">=</span> <span class="s2">&quot;flibbertigibbet&quot;</span>
 <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
 
@@ -1084,8 +1329,8 @@ bracket notaton.</p>
 </div>
 </div>
 </div><div class="col">
-<div class="literal-block-wrapper docutils container" id="id14">
-<div class="code-block-caption"><span class="caption-number">Listing 60 </span><span class="caption-text">Bracket example D-2: <code class="docutils literal notranslate"><span class="pre">list</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">for</span></code> loop</span><a class="headerlink" href="#id14" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-number">Listing 59 </span><span class="caption-text">Bracket example D-2: <code class="docutils literal notranslate"><span class="pre">list</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">for</span></code> loop</span><a class="headerlink" href="#id13" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">word</span> <span class="o">=</span> <span class="s2">&quot;flibbertigibbet&quot;</span>
 
 <span class="k">for</span> <span class="n n-Highlight">letter</span> <span class="ow">in</span> <span class="n n-Highlight">word</span><span class="p">:</span>
@@ -1123,8 +1368,8 @@ bracket notaton.</p>
 <div class="solution dropdown admonition" id="lessons/for-loops-solution-5">
 <p class="admonition-title">Solution to <a class="reference external" href="#characters-exercise"><span>Exercise 29</span></a></p>
 <div class="section" id="solution-content">
-<div class="literal-block-wrapper docutils container" id="id15">
-<div class="code-block-caption"><span class="caption-number">Listing 61 </span><span class="caption-text">Characters Exercise</span><a class="headerlink" href="#id15" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-number">Listing 60 </span><span class="caption-text">Characters Exercise</span><a class="headerlink" href="#id14" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1193,8 +1438,8 @@ bracket notaton.</p>
 <div class="solution dropdown admonition" id="lessons/for-loops-solution-7">
 <p class="admonition-title">Solution to <a class="reference external" href="#skills-exercise"><span>Exercise 30</span></a></p>
 <div class="section" id="solution-content">
-<div class="literal-block-wrapper docutils container" id="id16">
-<div class="code-block-caption"><span class="caption-number">Listing 62 </span><span class="caption-text">Skills Exercise</span><a class="headerlink" href="#id16" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-number">Listing 61 </span><span class="caption-text">Skills Exercise</span><a class="headerlink" href="#id15" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1247,8 +1492,8 @@ with seperated by vertical bars (<code class="docutils literal notranslate"><spa
 <div class="solution dropdown admonition" id="lessons/for-loops-solution-9">
 <p class="admonition-title">Solution to <a class="reference external" href="#label-exercise"><span>Exercise 31</span></a></p>
 <div class="section" id="solution-content">
-<div class="literal-block-wrapper docutils container" id="id17">
-<div class="code-block-caption"><span class="caption-number">Listing 63 </span><span class="caption-text">Weekdays Exercise</span><a class="headerlink" href="#id17" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-number">Listing 62 </span><span class="caption-text">Weekdays Exercise</span><a class="headerlink" href="#id16" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>

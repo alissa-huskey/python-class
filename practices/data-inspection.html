@@ -659,7 +659,7 @@ Documentation</p></li>
 <p>We’ll be using the <code class="docutils literal notranslate"><span class="pre">requests</span></code> module as usual, as well <code class="docutils literal notranslate"><span class="pre">pprint</span></code> for looking at
 the data.</p>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-number">Listing 287 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 286 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://api.punkapi.com/v2/beers/random&quot;</span><span class="p">)</span>
@@ -672,7 +672,7 @@ the data.</p>
 <p>It’s a good idea to check to make sure nothing went wrong with the request.
 There are a few ways to do this.</p>
 <div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-number">Listing 288 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 287 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">response</span><span class="o">.</span><span class="n">ok</span>                     <span class="c1"># True if the request succeeded, False otherwise</span>
 <span class="go">True</span>
 
@@ -691,7 +691,7 @@ There are a few ways to do this.</p>
 <h2>Part 3: Check the headers<a class="headerlink" href="#part-3-check-the-headers" title="Permalink to this headline">¶</a></h2>
 <p>It may be a good idea to look at the response headers to see if there is any useful information.</p>
 <div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-number">Listing 289 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 288 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span> <span class="p">{</span><span class="s1">&#39;Connection&#39;</span><span class="p">:</span> <span class="s1">&#39;keep-alive&#39;</span><span class="p">,</span> <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json; charset=utf-8&#39;</span><span class="p">,</span> <span class="s1">&#39;Date&#39;</span><span class="p">:</span> <span class="s1">&#39;Wed, 11 Nov 2020 00:30:49 GMT&#39;</span><span class="p">,</span> <span class="s1">&#39;Transfer-Encoding&#39;</span><span class="p">:</span> <span class="s1">&#39;chunked&#39;</span><span class="p">,</span> <span class="s1">&#39;access-control-allow-origin&#39;</span><span class="p">:</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;cache-control&#39;</span><span class="p">:</span> <span class="s1">&#39;public, max-age=0, must-revalidate&#39;</span><span class="p">,</span> <span class="s1">&#39;etag&#39;</span><span class="p">:</span> <span class="s1">&#39;W/&quot;a52-eLifbD7LOeHVKy02nKxMUNsJspk&quot;&#39;</span><span class="p">,</span> <span class="s1">&#39;x-dns-prefetch-control&#39;</span><span class="p">:</span> <span class="s1">&#39;off&#39;</span><span class="p">,</span> <span class="s1">&#39;x-download-options&#39;</span><span class="p">:</span> <span class="s1">&#39;noopen&#39;</span><span class="o">...</span><span class="p">}</span>
 </pre></div>
 </div>
@@ -700,7 +700,7 @@ There are a few ways to do this.</p>
 handle a few data types, so sometimes it fails when there’s an unexpected type
 of data. We can check this using the <code class="docutils literal notranslate"><span class="pre">type</span></code> function.</p>
 <div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-number">Listing 290 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 289 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
 <span class="go">requests.structures.CaseInsensitiveDict</span>
 </pre></div>
@@ -708,7 +708,7 @@ of data. We can check this using the <code class="docutils literal notranslate">
 </div>
 <p>Ok, then first we need to convert it to a type that <code class="docutils literal notranslate"><span class="pre">pprint</span></code> knows using the <code class="docutils literal notranslate"><span class="pre">dict</span></code> function.</p>
 <div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-number">Listing 291 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 290 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">headers</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span><span class="p">(</span><span class="n">headers</span><span class="p">)</span>
 <span class="go">{&#39;CF-Cache-Status&#39;: &#39;MISS&#39;,</span>
@@ -735,7 +735,7 @@ ipython automatically pretty-prints all data.</p>
 data, and use <code class="docutils literal notranslate"><span class="pre">pprint</span></code> to print it all out. For this exercise I’m going to make
 a <code class="docutils literal notranslate"><span class="pre">dict</span></code> to store the data I want to keep track of called <code class="docutils literal notranslate"><span class="pre">final</span></code>.</p>
 <div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-number">Listing 292 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 291 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">final</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -756,7 +756,7 @@ a <code class="docutils literal notranslate"><span class="pre">dict</span></code
 <p>Ok, so we now know that <code class="docutils literal notranslate"><span class="pre">data</span></code> is a <code class="docutils literal notranslate"><span class="pre">list</span></code>. Let’s see how many elements are in
 the list using the <code class="docutils literal notranslate"><span class="pre">len</span></code> function.</p>
 <div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-number">Listing 293 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 292 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="go">1</span>
 </pre></div>
@@ -765,7 +765,7 @@ the list using the <code class="docutils literal notranslate"><span class="pre">
 <p>Just one item. Let’s repeat the same process, but this time with the first item
 on the list.</p>
 <div class="literal-block-wrapper docutils container" id="id8">
-<div class="code-block-caption"><span class="caption-number">Listing 294 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 293 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="go">dict</span>
 
@@ -780,7 +780,7 @@ on the list.</p>
 <p>Now that we know it’s a dictionary, the next thing we want to know is what its
 keys are. All <code class="docutils literal notranslate"><span class="pre">dict</span></code> objects have a <code class="docutils literal notranslate"><span class="pre">keys()</span></code> function for just this purpose.</p>
 <div class="literal-block-wrapper docutils container" id="id9">
-<div class="code-block-caption"><span class="caption-number">Listing 295 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 294 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 <span class="go">dict_keys([&#39;id&#39;, &#39;name&#39;, &#39;tagline&#39;, ...])</span>
 </pre></div>
@@ -789,7 +789,7 @@ keys are. All <code class="docutils literal notranslate"><span class="pre">dict<
 <p>The <code class="docutils literal notranslate"><span class="pre">dict_keys</span></code> type looks a lot like a list, which means we can convert it to
 a list if we want to <code class="docutils literal notranslate"><span class="pre">pprint</span></code> it.</p>
 <div class="literal-block-wrapper docutils container" id="id10">
-<div class="code-block-caption"><span class="caption-number">Listing 296 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 295 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 <span class="go">[&#39;id&#39;,</span>
 <span class="go"> &#39;name&#39;,</span>
@@ -823,7 +823,7 @@ save this as <code class="docutils literal notranslate"><span class="pre">beer</
 can take a look at a couple of the more interesting values <code class="docutils literal notranslate"><span class="pre">name</span></code> and
 <code class="docutils literal notranslate"><span class="pre">description</span></code>.</p>
 <div class="literal-block-wrapper docutils container" id="id11">
-<div class="code-block-caption"><span class="caption-number">Listing 297 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 296 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">beer</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">beer</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
@@ -837,7 +837,7 @@ can take a look at a couple of the more interesting values <code class="docutils
 <p>Now let’s save the <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">description</span></code> in our <code class="docutils literal notranslate"><span class="pre">final</span></code> dictionary and
 review the results.</p>
 <div class="literal-block-wrapper docutils container" id="id12">
-<div class="code-block-caption"><span class="caption-number">Listing 298 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 297 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">final</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">beer</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">final</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">beer</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span><span class="p">(</span><span class="n">final</span><span class="p">)</span>
@@ -856,7 +856,7 @@ review the results.</p>
 <h3>Step 5: Inspect ingredients<a class="headerlink" href="#step-5-inspect-ingredients" title="Permalink to this headline">¶</a></h3>
 <p>Now let’s dig into the <code class="docutils literal notranslate"><span class="pre">beer['ingredients']</span></code>.</p>
 <div class="literal-block-wrapper docutils container" id="id13">
-<div class="code-block-caption"><span class="caption-number">Listing 299 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id13" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 298 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id13" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">beer</span><span class="p">[</span><span class="s1">&#39;ingredients&#39;</span><span class="p">])</span>
 <span class="go">dict</span>
 </pre></div>
@@ -864,7 +864,7 @@ review the results.</p>
 </div>
 <p>Ok, it’s a <code class="docutils literal notranslate"><span class="pre">dict</span></code>. That means we’ll want to check out its <code class="docutils literal notranslate"><span class="pre">.keys()</span></code>.</p>
 <div class="literal-block-wrapper docutils container" id="id14">
-<div class="code-block-caption"><span class="caption-number">Listing 300 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id14" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 299 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id14" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">beer</span><span class="p">[</span><span class="s1">&#39;ingredients&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 <span class="go">dict_keys([&#39;malt&#39;, &#39;hops&#39;, &#39;yeast&#39;])</span>
 </pre></div>
@@ -873,7 +873,7 @@ review the results.</p>
 <p>Let’s save <code class="docutils literal notranslate"><span class="pre">beer['ingredients']</span></code> as <code class="docutils literal notranslate"><span class="pre">ing</span></code> so we don’t have to type as much.
 Then let’s take a look at <code class="docutils literal notranslate"><span class="pre">malt</span></code>.</p>
 <div class="literal-block-wrapper docutils container" id="id15">
-<div class="code-block-caption"><span class="caption-number">Listing 301 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id15" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 300 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id15" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ing</span> <span class="o">=</span> <span class="n">beer</span><span class="p">[</span><span class="s1">&#39;ingredients&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">ing</span><span class="p">[</span><span class="s1">&#39;malt&#39;</span><span class="p">])</span>
 <span class="go">list</span>
@@ -883,7 +883,7 @@ Then let’s take a look at <code class="docutils literal notranslate"><span cla
 <p>Now that we know it’s a list, we’ll want to check out its length using the
 <code class="docutils literal notranslate"><span class="pre">len()</span></code> function.</p>
 <div class="literal-block-wrapper docutils container" id="id16">
-<div class="code-block-caption"><span class="caption-number">Listing 302 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id16" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 301 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id16" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">ing</span><span class="p">[</span><span class="s1">&#39;malt&#39;</span><span class="p">])</span>
 <span class="go">2</span>
 </pre></div>
@@ -891,7 +891,7 @@ Then let’s take a look at <code class="docutils literal notranslate"><span cla
 </div>
 <p>Ok, let’s look at the first item on the list.</p>
 <div class="literal-block-wrapper docutils container" id="id17">
-<div class="code-block-caption"><span class="caption-number">Listing 303 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id17" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 302 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id17" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ing</span><span class="p">[</span><span class="s1">&#39;malt&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 <span class="go">{&#39;name&#39;: &#39;Extra Pale&#39;, &#39;amount&#39;: {&#39;value&#39;: 4.38, &#39;unit&#39;: &#39;kilograms&#39;}}</span>
 </pre></div>
@@ -899,7 +899,7 @@ Then let’s take a look at <code class="docutils literal notranslate"><span cla
 </div>
 <p>So to get to the <code class="docutils literal notranslate"><span class="pre">name</span></code> value we’ll use its key.</p>
 <div class="literal-block-wrapper docutils container" id="id18">
-<div class="code-block-caption"><span class="caption-number">Listing 304 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id18" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 303 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id18" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ing</span><span class="p">[</span><span class="s1">&#39;malt&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
 <span class="go">&#39;Extra Pale&#39;</span>
 </pre></div>
@@ -912,7 +912,7 @@ Then let’s take a look at <code class="docutils literal notranslate"><span cla
 let’s save them to our <code class="docutils literal notranslate"><span class="pre">final</span></code> dictionary.</p>
 <p>First, let’s set <code class="docutils literal notranslate"><span class="pre">final['ingredients']</span></code> to an empty list.</p>
 <div class="literal-block-wrapper docutils container" id="id19">
-<div class="code-block-caption"><span class="caption-number">Listing 305 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id19" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 304 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id19" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">final</span><span class="p">[</span><span class="s1">&#39;ingredients&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 </pre></div>
 </div>
@@ -923,7 +923,7 @@ each <code class="docutils literal notranslate"><span class="pre">name</span></c
 as the length of <code class="docutils literal notranslate"><span class="pre">ing['malts']</span></code>. And take a peek at our <code class="docutils literal notranslate"><span class="pre">final</span></code> dictionary just
 to confirm.</p>
 <div class="literal-block-wrapper docutils container" id="id20">
-<div class="code-block-caption"><span class="caption-number">Listing 306 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id20" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 305 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id20" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">malt</span> <span class="ow">in</span> <span class="n">ing</span><span class="p">[</span><span class="s1">&#39;malt&#39;</span><span class="p">]:</span>
 <span class="go">      name = malt[&#39;name&#39;] + &quot; Malt&quot;</span>
 <span class="go">      final[&#39;ingredients&#39;].append(name)</span>
@@ -943,7 +943,7 @@ to confirm.</p>
 <h3>Step 7: Inspect the hops ingredients<a class="headerlink" href="#step-7-inspect-the-hops-ingredients" title="Permalink to this headline">¶</a></h3>
 <p>Let’s take a look at our <code class="docutils literal notranslate"><span class="pre">ing</span></code> keys again.</p>
 <div class="literal-block-wrapper docutils container" id="id21">
-<div class="code-block-caption"><span class="caption-number">Listing 307 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id21" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 306 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id21" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ing</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 <span class="go">dict_keys([&#39;malt&#39;, &#39;hops&#39;, &#39;yeast&#39;])</span>
 </pre></div>
@@ -951,7 +951,7 @@ to confirm.</p>
 </div>
 <p>Next on our list is <code class="docutils literal notranslate"><span class="pre">hops</span></code>. As usual, we’ll want to check the <code class="docutils literal notranslate"><span class="pre">type</span></code> first.</p>
 <div class="literal-block-wrapper docutils container" id="id22">
-<div class="code-block-caption"><span class="caption-number">Listing 308 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id22" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 307 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id22" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">ing</span><span class="p">[</span><span class="s1">&#39;hops&#39;</span><span class="p">])</span>
 <span class="go">list</span>
 </pre></div>
@@ -960,7 +960,7 @@ to confirm.</p>
 <p>Ok, we know what to do with a <code class="docutils literal notranslate"><span class="pre">list</span></code> then. We need to check the <code class="docutils literal notranslate"><span class="pre">len()</span></code> and
 then take a peek at the first item.</p>
 <div class="literal-block-wrapper docutils container" id="id23">
-<div class="code-block-caption"><span class="caption-number">Listing 309 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id23" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 308 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id23" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">ing</span><span class="p">[</span><span class="s1">&#39;hops&#39;</span><span class="p">])</span>
 <span class="go">14</span>
 
@@ -979,7 +979,7 @@ then take a peek at the first item.</p>
 the same loop to append each <code class="docutils literal notranslate"><span class="pre">name</span></code> to our <code class="docutils literal notranslate"><span class="pre">final['ingredients']</span></code> list, and
 check it the same way.</p>
 <div class="literal-block-wrapper docutils container" id="id24">
-<div class="code-block-caption"><span class="caption-number">Listing 310 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id24" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 309 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id24" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">hop</span> <span class="ow">in</span> <span class="n">ing</span><span class="p">[</span><span class="s1">&#39;hops&#39;</span><span class="p">]:</span>
 <span class="go">      name = hop[&#39;name&#39;] + &quot; Hops&quot;</span>
 <span class="go">      final[&#39;ingredients&#39;].append(name)</span>
@@ -1014,7 +1014,7 @@ check it the same way.</p>
 <h3>Step 9: Save the yeast ingredients<a class="headerlink" href="#step-9-save-the-yeast-ingredients" title="Permalink to this headline">¶</a></h3>
 <p>Let’s review our <code class="docutils literal notranslate"><span class="pre">ing.keys()</span></code> again.</p>
 <div class="literal-block-wrapper docutils container" id="id25">
-<div class="code-block-caption"><span class="caption-number">Listing 311 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id25" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 310 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id25" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ing</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 <span class="go">dict_keys([&#39;malt&#39;, &#39;hops&#39;, &#39;yeast&#39;])</span>
 </pre></div>
@@ -1023,7 +1023,7 @@ check it the same way.</p>
 <p>One more to check, the <code class="docutils literal notranslate"><span class="pre">yeast</span></code>. You should know the drill by now–start by
 checking the <code class="docutils literal notranslate"><span class="pre">type()</span></code>.</p>
 <div class="literal-block-wrapper docutils container" id="id26">
-<div class="code-block-caption"><span class="caption-number">Listing 312 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id26" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 311 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id26" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">ing</span><span class="p">[</span><span class="s1">&#39;yeast&#39;</span><span class="p">])</span>
 <span class="go">str</span>
 </pre></div>
@@ -1031,7 +1031,7 @@ checking the <code class="docutils literal notranslate"><span class="pre">type()
 </div>
 <p>A string is much more simple. Let’s take a look at the value.</p>
 <div class="literal-block-wrapper docutils container" id="id27">
-<div class="code-block-caption"><span class="caption-number">Listing 313 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id27" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 312 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id27" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ing</span><span class="p">[</span><span class="s1">&#39;yeast&#39;</span><span class="p">]</span>
 <span class="go">&#39;Wyeast 1056 - American Ale™&#39;</span>
 </pre></div>
@@ -1040,7 +1040,7 @@ checking the <code class="docutils literal notranslate"><span class="pre">type()
 <p>Let’s append this to our <code class="docutils literal notranslate"><span class="pre">final</span></code> ingredients list then check the length and
 final dict.</p>
 <div class="literal-block-wrapper docutils container" id="id28">
-<div class="code-block-caption"><span class="caption-number">Listing 314 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id28" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 313 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id28" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">final</span><span class="p">[</span><span class="s1">&#39;ingredients&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ing</span><span class="p">[</span><span class="s1">&#39;yeast&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot; Yeast&quot;</span><span class="p">)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">final</span><span class="p">[</span><span class="s1">&#39;ingredients&#39;</span><span class="p">])</span>
@@ -1075,7 +1075,7 @@ final dict.</p>
 <p>We can easily filter out duplicates by converting the <code class="docutils literal notranslate"><span class="pre">list</span></code> to a <code class="docutils literal notranslate"><span class="pre">set</span></code>, which
 is unique. Let’s see how it looks.</p>
 <div class="literal-block-wrapper docutils container" id="id29">
-<div class="code-block-caption"><span class="caption-number">Listing 315 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id29" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 314 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id29" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="p">(</span><span class="n">final</span><span class="p">[</span><span class="s1">&#39;ingredients&#39;</span><span class="p">])</span>
 <span class="go">{&#39;Ahtanum Hops&#39;,</span>
 <span class="go"> &#39;Amarillo Hops&#39;,</span>
@@ -1092,7 +1092,7 @@ is unique. Let’s see how it looks.</p>
 <p>If we want to keep it as a list for some reason, we can just convert it back to
 a list again.</p>
 <div class="literal-block-wrapper docutils container" id="id30">
-<div class="code-block-caption"><span class="caption-number">Listing 316 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id30" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 315 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id30" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">final</span><span class="p">[</span><span class="s1">&#39;ingredients&#39;</span><span class="p">]))</span>
 <span class="go">[&#39;Extra Pale Malt&#39;,</span>
 <span class="go"> &#39;Caramalt Malt&#39;,</span>
@@ -1108,7 +1108,7 @@ a list again.</p>
 </div>
 <p>Ok, let’s save this to our <code class="docutils literal notranslate"><span class="pre">final</span></code> dictionary.</p>
 <div class="literal-block-wrapper docutils container" id="id31">
-<div class="code-block-caption"><span class="caption-number">Listing 317 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id31" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 316 </span><span class="caption-text">ipython shell</span><a class="headerlink" href="#id31" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">final</span><span class="p">[</span><span class="s1">&#39;ingredients&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">final</span><span class="p">[</span><span class="s1">&#39;ingredients&#39;</span><span class="p">]))</span>
 <span class="go">[&#39;Extra Pale Malt&#39;,</span>
 <span class="go"> &#39;Caramalt Malt&#39;,</span>

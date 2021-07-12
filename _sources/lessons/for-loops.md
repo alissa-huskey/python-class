@@ -56,12 +56,8 @@ The syntax for a for loop is:
 
 * `for` and `in` are {term}`keywords <keyword>`
 * {samp}`{VAR}` -- variable name (or comma-seperated list of names) for each item
-* {samp}`{ITERABLE}` -- object to iterate over
+* {samp}`{ITERABLE}` -- object to iterate over. (More on this later.)
 * {samp}`{BODY}` -- statements to execute where {samp}`{VAR}` will be used
-
-Under the hood, a for loop converts `ITERABLE` an iterator object, then
-repeatedly assigns the results of `next()` to `VAR` until there are no more
-left. (More on iterables and itrators later.)
 
 Here's a simple example that iterates over a `list` of strings.
 
@@ -126,8 +122,6 @@ iterable.
 All iterables can be converted to an {term}`iterator`, which is an object that
 will keep returning elements until there are no more left.
 
-### List iterator
-
 To demonstrate this we'll create a `colors` `list` then convert the it to a
 `colors_iterator` using the `iter()` function.
 
@@ -157,7 +151,7 @@ next(colors_iterator)
 next(colors_iterator)
 ```
 
-#### Exercise
+### Exercise
 
 ```{exercise} Iterators
 :label: iterator-exercise
@@ -203,6 +197,149 @@ StopIteration                             Traceback (most recent call last)
 ```
 `````
 
+### for loops under the hood
+
+Now that you know what iterables and iterators are, we demystify for loops.
+
+Lets look at the syntax again.
+
+`````{parsed-literal}
+{samp}`for {VAR} in {ITERABLE}:`
+    {samp}`    {BODY}`
+`````
+
+* `for` and `in` are {term}`keywords <keyword>`
+* {samp}`{VAR}` -- variable name (or comma-seperated list of names) for each item
+* {samp}`{ITERABLE}` -- object to iterate over. (More on this later.)
+* {samp}`{BODY}` -- statements to execute where {samp}`{VAR}` will be used
+
+Here's what's happening behind the scenes:
+
+1. `ITERABLE` is converted to an iterator object using `iter()`, or rather its {term}`magic method`
+2. Each iteration, `next()` is called, and the results are assigned to `VAR`
+3. The `BODY` statements are executed
+3. When `next()` results in a `StopIteration` exception it is discarded and the loop ends
+
+
+Lets revisit our `for` loop example, and see if we can deconstruct the behavior
+of a `for` loop. First we'll create a `houses` list, and convert it to a
+`houses_iter` using the `iter()` function.
+
+```{code-cell} python
+:class: full-width
+# create iterable
+houses = [
+  "Arryn",
+  "Baratheon",
+  "Greyjoy",
+  "Lannister",
+  "Martell",
+  "Stark",
+  "Targaryen",
+  "Tully",
+  "Tyrell",
+]
+
+# create iterator
+houses_iter = iter(houses)
+```
+
+Now we'll call `next()` in a `while` loop, and assign the results to `name`.
+
+```{code-cell} python
+:class: full-width
+:tags: [raises-exception]
+# loop forever
+while True:
+    # assign VAR to the results of next()
+    name = next(houses_iter)
+
+    # BODY statements
+    print(f"House {name}")
+```
+
+This is close, but we're still seeing that `StopIteration` exception. To
+supress it we'll need a try-except block.
+
+```{code-cell} python
+:class: full-width
+:tags: [raises-exception]
+
+# create iterator
+houses_iter = iter(houses)
+
+# loop forever
+while True:
+
+    # any code that may raise an exception goes under the try header
+    try:
+
+      # assign VAR to the results of next()
+      name = next(houses_iter)
+
+    # the type of exception that we want to catch
+    # instead of raising it, the body statements will be executed
+    except StopIteration:
+
+      # StopIteration means there are no more elements, so exit the loop
+      break
+
+    # BODY statements
+    print(f"House {name}")
+```
+
+Now we have a `while` loop that replicates the behavior of a `for` loop. Here they are side by side.
+
+<div class="row"><div class="col">
+
+```{code-block-hl} python
+:class: full-width
+houses = [
+  "Arryn",
+  "Baratheon",
+  "Greyjoy",
+  "Lannister",
+  "Martell",
+  "Stark",
+  "Targaryen",
+  "Tully",
+  "Tyrell",
+]
+
+houses_iter = iter(!!!houses!!!)
+
+while True:
+    try:
+      !!!name!!! = next(houses_iter)
+    except StopIteration:
+      break
+
+    print(f"House {name}")
+
+```
+
+</div><div class="col">
+
+```{code-block-hl} python
+:class: full-width
+houses = [
+  "Arryn",
+  "Baratheon",
+  "Greyjoy",
+  "Lannister",
+  "Martell",
+  "Stark",
+  "Targaryen",
+  "Tully",
+  "Tyrell",
+]
+
+for !!!name!!! in !!!houses!!!:
+  print(f"House {name}")
+
+```
+</div></div>
+
 ### Multiple assignment
 
 Depending on the type passed to it, `next()` may sometimes return more than one
@@ -236,17 +373,83 @@ to a cooresponding variable. There must be the same number of variables to the
 left of the `=` as there are items in the `tuple` seperated by `,`.
 
 ```{code-cell} python
-suite, color = next(suites_iterator)
+suit, color = next(suites_iterator)
 ```
 
 ```{code-cell} python
-suite
+suit
 ```
 
 ```{code-cell} python
 color
 ```
 
+Lets put this assignment fanciness in a `while` loop.
+
+```{code-cell} python
+:class: full-width
+suites_iterator = iter(suites.items())
+
+while True:
+    try:
+      suit, color = next(suites_iterator)
+    except StopIteration:
+      break
+
+    print(f"The {suit} suit is {color}.")
+```
+
+And lets see how it looks in a `for` loop.
+
+```{code-cell} python
+:class: full-width
+for suite, color in suites.items():
+    print(f"The {suit} suit is {color}.")
+```
+
+Here they are side by side.
+
+<div class="row"><div class="col">
+
+```{code-block-hl} python
+:class: full-width
+:linenos:
+
+suites = {
+  "heart": "red",
+  "diamond": "red",
+  "club": "black",
+  "spade": "black",
+}
+
+suites_iterator = iter(!!!suites.items()!!!)
+
+while True:
+    try:
+      !!!suit, color!!! = next(suites_iterator)
+    except StopIteration:
+      break
+
+    print(f"The {suit} suit is {color}.")
+```
+</div><div class="col">
+
+```{code-block-hl} python
+:class: full-width
+:linenos:
+
+suites = {
+  "heart": "red",
+  "diamond": "red",
+  "club": "black",
+  "spade": "black",
+}
+
+for !!!suite, color!!! in !!!suites.items()!!!:
+    print(f"The {suit} suit is {color}.")
+
+```
+</div></div>
 
 Comparing loops
 ---------------
@@ -270,20 +473,7 @@ On the right the same code as a `for` loop, where the use of `iter()` and
 <div class="row"><div class="col">
 
 ```{code-block-hl} python
-:caption: "Iter example A-1: `list` iteration via `while` loop (ends in error)"
-:class: full-width
-colors = ["red", "green", "blue"]
-colors_iterator = iter(!!!colors!!!)
-while True:
-    !!!color!!! = next(colors_iterator)
-    print(color)
-```
-
-This will raise the `StopIteration` exception. To suppress it, we can use a
-`try-except` block.
-
-```{code-block-hl} python
-:caption: "Iter example A-2: `list` iteration via `while` loop (error surpressed)"
+:caption: "Iter example A-1: `list` iteration via `while` loop"
 :class: full-width
 colors = ["red", "green", "blue"]
 colors_iterator = iter(!!!colors!!!)
@@ -298,7 +488,7 @@ while True:
 </div><div class="col">
 
 ```{code-block-hl} python
-:caption: "Iter example A-3: `list` iteration via `for` loop"
+:caption: "Iter example A-2: `list` iteration via `for` loop"
 :class: full-width
 colors = ["red", "green", "blue"]
 for !!!color!!! in !!!colors!!!:
