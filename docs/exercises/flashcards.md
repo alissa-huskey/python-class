@@ -207,6 +207,7 @@ or not.
    * [ ] if so, print `"CORRECT"`
    * [ ] if not, print `"INCORRECT",` then `cards["back"]`
 1. [ ] call `input()` asking if the user wants to continue
+   * [ ] if not, return
 
 ```{rubric} in play(), **after** the loop
 ```
