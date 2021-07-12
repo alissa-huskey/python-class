@@ -6,6 +6,8 @@ This is the project to apply what we've learned in the [](../lessons/files) less
 The project is to write a program for running through flashcards. Card data is
 stored in `csv` files in the `data/flashcards` directory.
 
+![](assets/flashcards.png)
+
 Instructions
 ------------
 

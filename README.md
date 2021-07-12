@@ -12,10 +12,10 @@ Development Notes
 * [Poetry](https://python-poetry.org/): dependency management
 
 
-| command                        | description                    |
-|--------------------------------|--------------------------------|
-| `poetry install --no-root`       | install dependencies           |
-| `poetry shell`                   | start virtual env shell        |
+| command                                      | description                                        |
+|----------------------------------------------|----------------------------------------------------|
+| `poetry install --no-root`                     | install dependencies                               |
+| `poetry shell`                                 | start virtual env shell                            |
 
 
 ### Docs
@@ -28,7 +28,7 @@ Development Notes
 
 #### Build
 
-Generate Static HTML files with `jupyter-book`.
+Generated Static HTML files with `jupyter-book`.
 
 ```bash
 jupyter-book build docs
@@ -36,27 +36,25 @@ jupyter-book build docs
 
 #### Deploy
 
-* [GitHub Pages](https://pages.github.com/): hosting
+* [GitHub Pages](https://pages.github.com/): hosting of `gh-pages` branch
 * [peaceiris/actions-gh-pages][actions-gh-pages] via [Github Actions][github-actions]: automatic deploy on push to master
 
+([more info][jb-pages])
 
 Python modules needed for production docs are stored in `docs/.requirements.txt`.
 
-To manually deploy the current build of `docs/` in `docs/_build/` to
-`gh-import` branch:
+To deploy manually:
 
 ```bash
 ghp-import -n -p -f docs/_build/html
 ```
 
-##### Github Settings
+##### Github Config
 
 * Pages:
   * Branch: `gh-pages`
   * Folder: `/ (root)`
 * Secrets & Deploy Key `ACTIONS_PAGES_DEPLOY_KEY`
-
-See also: [GitHub Pages and Actions][jb-pages] on jupyterbook.org.
 
 <!-- references -->
 
