@@ -327,6 +327,9 @@ truthy
   A value that is True when evaluated in a `boolean` context, or when converted
   to a boolean using the `bool()` function.
 
+boolean context
+  Where the result of an expression is converted to a `bool`.
+
 ```
 
 Exercises

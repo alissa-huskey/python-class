@@ -10,84 +10,103 @@ kernelspec:
   name: python3
 ---
 
-Loops
-=====
+While loops
+===========
 
 Normally Python reads one statement at a time, one at a time. But loops give us
 the ability to repeat a set of statements.
 
-While loops
------------
+Introduction
+------------
 
 A {term}`while loop` is a {term}`compound statement`. Like an {term}`if statement`
 while loops include a conditional expression and a {term}`suite` of
-statements that will be repeated until the expression evaluates to false.
+statements that will be repeated until the expression evaluates to {term}`falsy`.
 
 Each time that the suite of statements is repeated in a loop it is called an
 {term}`iteration`. Likewise, the process of repeating a loop is called
 {term}`iterating`.
+
+Syntax
+------
+
+The syntax for a `while` loop is:
+
+`````{parsed-literal}
+{samp}`while {CONDITION}:`
+    {samp}`    {BODY}`
+`````
+
+* `with` is a {term}`keyword`
+* {samp}`{CONDITION}` -- an expression evaluated in a {term}`boolean context`that determines if the loop should continue
+* {samp}`{BODY}` -- statements that use {samp}`{VAR}`
 
 
 Here's a simple example that will keep asking the user for their name until
 they answer.
 
 ```{code-block} python
----
-caption: a simple while loop example
-linenos:
----
+:caption: while loop example
+:class: full-width
+:linenos:
 
-reply = ""
+name = ""
 
-while not reply:
-  reply = input("What is your name? ")
+while not name:
+  name = input("What is your name? ")
 
-print("Name:", reply)
+print(f"Hello there {name}!")
 ```
 
-```{exercise}
+### Exercises
 
-1. Write a while loop that asks the user `"Heads or tails?"` until they answer
+```{exercise} Heads or Tails
+:label: heads-or-tails-exercise
+
+Write a while loop that asks the user `"Heads or tails?"` until they answer
 with either `"heads"` or `"tails"`. *Hint: Use the `not in` operator.*
-
-2. Write a while loop that prints a random number between `1` and `100` until
-   the answer is greater than `50`.
-
 ```
 
-### Infinite loops
-
-When a program is written in such a way that the loop condition is always met
-the result is called an {term}`infinite loop`. These are easy to cause by
-mistake.
-
-Here are a couple examples:
+`````{solution} heads-or-tails-exercise
+:class: dropdown
 
 ```{code-block} python
----
-caption: forgetting to increment `i`
-linenos:
----
+:caption: Heads or Tails Exercise
+:class: full-width
+:linenos:
 
-i = 0
-
-while i < 10:
-  print("Iteration:", i+1)
+answer = None
+while answer not in ["heads", "tails"]:
+  answer = input("Heads or tails? ")
 ```
 
+`````
+
+```{exercise} Random numbers less than 50
+:label: random-less-than-50-exercise
+
+Write a while loop that prints a random number between `1` and `100` as long as
+the number is less than `50`.
+```
+
+`````{solution} random-less-than-50-exercise
+:class: dropdown
+
 ```{code-block} python
----
-caption: value of `num` will never get to `15`
-linenos:
----
+:caption: Random numbers less than 50 Exercise
+:class: full-width
+:linenos:
+
+import random
 
 num = 0
-
-while num < 15:
-  num = random.randint(0, 10)
-  print("The number is:", num)
+while num < 50:
+  num = random.randint(1, 100)
+  print(num)
 
 ```
+
+`````
 
 ### Quitting a loop
 
@@ -98,10 +117,10 @@ the user if they would like to keep going and uses the `break` statement if
 they reply with `"n"`.
 
 ```{code-block} python
----
-caption: stopping a loop with `break`
-linenos:
----
+:caption: stopping a loop with `break`
+:class: full-width
+:linenos:
+
 import random
 
 while True:
@@ -112,13 +131,35 @@ while True:
         break
 ```
 
-```{exercise}
+#### Exercise
 
-Write a loop that prints a random number, then ask the user if they would like
-to keep going. Exit the loop if they answer with a `"n"`.
+```{exercise} Random number not divisible by ten
+:label: random-number-not-divisible-by-ten-exercise
+
+Write a while loop that prints a random number between `1` and `1000` as long as
+the number is less than `500`. If the number is divisible by `10`, quit the
+loop. *Hint: Use the `%` operator.*
 
 ```
 
+`````{solution} random-number-not-divisible-by-ten-exercise
+:class: dropdown
+
+```{code-block} python
+:class: full-width
+:linenos:
+import random
+num = -1
+while num < 500:
+    num = random.randint(1, 1000)
+    print(num)
+    if num % 10 == 0:
+        print("num is divisible by 10, quitting")
+        break
+
+```
+
+`````
 
 ### Skipping part of an iteration
 
@@ -129,10 +170,10 @@ This example uses the `continue` statement to skip the rest of the iteration if
 the user does not enter a number.
 
 ```{code-block} python
----
-caption: using the `continue` statement
-linenos:
----
+:caption: using the `continue` statement
+:class: full-width
+:linenos:
+
 balance = 100
 while balance > 0:
     reply = input("amount: ")
@@ -143,39 +184,66 @@ while balance > 0:
     print("Your balance is:", balance)
 ```
 
-```{exercise}
+```{exercise} Dice
+:label: dice-exercise
 
-Make an empty `rolls` list then write a loop that repeats `10` times. In each
-iteration:
+1. Assign `chances` to `0`
+1. Assign `rolls` to an empty `list`
+1. Write a loop that repeats `10` times. In each iteration:
+    1. Assign random number between `1` and `6` to the `num` variable
+    1. Print {samp}`"You rolled: {num}"`
+    1. Add `1` to `chances`
+    1. Ask the user if they want to keep the roll
+    1. If they reply with `"n"`, use the `continue` statement to skip the rest of the iteration
+    1. Append `num` to a list of `rolls`
+    1. Print the `rolls` list
+```
 
-- Get a random number between `1` and `6`
-- print {samp}`"You rolled: {number}"`.
-- Ask the user if they want to keep the roll.
-- If they reply with `"n"`, use the `continue` statement to skip the rest of
-  the iteration
-- Append the number to a list of `rolls`
-- print the `rolls` list
+`````{solution} dice-exercise
+:class: dropdown
+
+```{code-block} python
+:class: full-width
+:linenos:
+
+chances, rolls = 0, []
+
+while chances < 10:
+  num = random.randint(1, 6)
+  print(f"You rolled: {num}")
+
+  chances += 1
+
+  keep = input("Keep? ")
+  if keep.lower() == "n":
+    continue
+
+  rolls.append(num)
+  print(f"Your rolls so far: {rolls}")
+
 
 ```
+
+`````
+
 
 Loop patterns
 -------------
 
 In this section we're going to go over some of the ways that loops are commonly used.
 
-### Incrementing
+### Incrementing and decrementing
 
 Often in programming we want to repeat a suite of statements a specific number
 of times.
 
 One way to do this is to keep track of which iteration the loop is currently
-executing by incrementing (or decrementing) a number.
+executing by {term}`incrementing` or {term}`decrementing` a number.
 
 ```{code-block} python
----
-caption: incrementing the `i` variable
-linenos:
----
+:caption: incrementing the `i` variable
+:class: full-width
+:linenos:
 
 i = 0
 
@@ -184,10 +252,102 @@ while i < 10:
   i = i + 1
 ```
 
-```{exercise}
+#### Exercise
+
+```{exercise} Countdown
+:label: countdown-exercise
 
 Write a loop that counts down from `3` to `1`. In each iteration print out the
 current number then use the `time.sleep` function to pause for one second.
+
+```
+
+`````{solution} countdown-exercise
+:class: dropdown
+
+```{code-block} python
+:class: full-width
+:linenos:
+
+import time
+
+num = 3
+while num >= 1:
+  print(f"{num}...")
+  num = num - 1
+  time.sleep(1)
+```
+
+`````
+
+### Infinite loops
+
+When a program is written in such a way that the loop condition is always met
+the result is called an {term}`infinite loop`. These are easy to cause by
+mistake.
+
+The simplest infinite loop is `while True` with no `break`:
+
+```{code-block} python
+:caption: while `True`
+:class: full-width
+:linenos:
+
+import time
+
+while True:
+  print("Are we there yet?")
+  time.sleep(1)
+```
+
+A common mistake is to forget to increment your counter, as demonstrated below.
+
+```{code-block} python
+:caption: forgetting to increment `i`
+:class: full-width
+:linenos:
+
+import time
+
+i = 0
+
+while i < 10:
+  print("Iteration:", i)
+  time.sleep(1)
+```
+
+Infinite loops are not always a bad thing though. In the example below an
+infinite loop is used to always return the user to a main menu.
+
+```{code-block} python
+:caption: infinite loop used to keep a program running
+:class: full-width
+:linenos:
+
+CHOICES = {
+  "draw": "draw a card",
+  "play": "play a card",
+  "pass": "pass this turn",
+}
+
+def menu():
+  """Print user interface, and act according to user choice"""
+  print("menu:", ", ".join(CHOICES))
+  selection = input("> ").lower().strip()
+  if selection not in CHOICES:
+    print(f'"{selection}" is not a valid selection, try again.')
+    return
+
+  text = CHOICES[selection]
+  print(f"{text}...")
+
+def main():
+  """."""
+  while True:
+    menu()
+    print()
+
+main()
 
 ```
 
@@ -201,10 +361,9 @@ times the loop should repeat.
 Then we can use the `i` variable to access each item in the list.
 
 ```{code-block} python
----
-caption: iterating over a list
-linenos:
----
+:caption: iterating over a list
+:class: full-width
+:linenos:
 
 i = 0
 colors = ["red", "green", "blue"]
@@ -215,22 +374,50 @@ while i < len(colors):
   i += 1
 ```
 
-```{exercise}
+```{exercise} Lunch menu
+:label: lunch-menu-exercise
 
-Print a lunch menu. Make a list of lunch `choices` on a menu. Use a while loop
+Print a lunch menu. Make a list of lunch `choices` for a menu. Use a while loop
 to print out each item in the list with the number next to it.
 
 ```
+
+`````{solution} lunch-menu-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: Lunch Menu Exercise
+:class: full-width
+:linenos:
+
+choices = [
+  "Pepperoni pizza",
+  "Ham sandwich",
+  "Fish tacos",
+  "Bean burrito",
+]
+
+i = 0
+
+print("Lunch menu")
+print("----------", "\n")
+
+while i < len(choices):
+  item = choices[i]
+  print(f"{i+1}. {item}")
+  i += 1
+```
+
+`````
 
 You can also use this to iterate over list-like values. For example, a string
 can be used like a list of characters. So we can use the same pattern to
 iterate over all of the characters in a string.
 
 ```{code-block} python
----
-caption: iterating over the characters in a string
-linenos:
----
+:caption: iterating over the characters in a string
+:class: full-width
+:linenos:
 
 word = input("Enter a word: ")
 
@@ -240,14 +427,38 @@ while i < len(word):
     i += 1
 ```
 
-```{exercise}
+```{exercise} Vowels
+:label: vowels-exercise
 
 Print the vowels in a word. Ask the user for a word then iterate over each
-letter. If the letter is not a vowel, (*hint: make a list of vowels the use
-`not in`*) use a `continue` statement to skip the rest of the iteration. Then
-print the character number and the character.
+letter. If the letter is a vowel print the letter.  (*Hint: make a list of
+vowels the use the `in` operator*)
 
 ```
+
+`````{solution} vowels-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: Vowels Exercise
+:class: full-width
+:linenos:
+
+VOWELS = ["a", "e", "i", "o", "u", "y"]
+word = input("Enter a word: ")
+
+i = 0
+while i < len(word):
+  letter = word[i]
+  if letter in VOWELS:
+    print(letter, end="")
+  i += 1
+print()
+
+
+```
+
+`````
 
 ### Nested loops
 
@@ -257,11 +468,7 @@ also have a while loop inside of another while loop.
 This example prints out a score card for three rounds of three players each.
 
 ```{code-cell} python
----
-caption: score card
-linenos:
-tags: [hide-output]
----
+:tags: [hide-output]
 
 rounds, players = 3, 3
 r = 0
@@ -290,11 +497,7 @@ A few things to pay attention to with nested loops:
 Here's another example that prints out a grid of `x, y` coordinates.
 
 ```{code-cell} python
----
-caption: coordinates grid
-linenos:
-tags: [ hide-output ]
----
+:tags: [ hide-output ]
 
 rows, cols = 5, 5
 r = 0
@@ -308,274 +511,332 @@ while r < rows:
     r += 1
 ```
 
-```{exercise}
+#### Exercises
 
-Print a multiplication table grid with `9` rows and `9` columns. [^script_multiplication]
+```{exercise} multiplication-table
+:label: multiplication-table-exercise
 
-```
-```
-
-Practice exercises
-------------------
-
-Here are some more practice exercises with loops you can work on.
-
-```{exercise} Cheer
-
-Print a cheer for your name. For each letter print {samp}`"Gimme a {letter}!"`.
-Then end it with, {samp}`"What does it spell? {name}!"` [^script_name_cheer]
-
+Print a multiplication table grid with `9` rows and `9` columns.
 ```
 
 
-
-
-2. Print the lyrics to the jolly good fellow song. "For he's a jolly good
-   fellow..." three times, then "Which nobody can deny!" once. [^script_jolly]
-
-3. Print the 12 Days of Christmas song. Use a nested list with a list for each
-   lyric containing the ordinal word for the day (ie "second") and the gift for
-   that day. [^script_days_of_xmas]
-
-4. Write a hangman game. [^script_hangman]
-     - choose a short word, give the player 6 chances to guess letters
-     - each turn:
-       - print their chances with `x` to show used chances, and `_` to show remaining \
-         example: `chances: xx____`
-       - print the word, but replace `_` for unguessed letters \
-         example: `5 letters: _e___`
-       - ask the player to guess a letter
-       - bonus: make sure the user enters exactly one character
-     - tell the user at the end if they won or lost
-
-[^script_multiplication]: completed script: {lesson}`multiplication.py`
-[^script_name_cheer]: completed script: {lesson}`name_cheer.py`
-[^script_jolly]: completed script: {lesson}`jolly.py`
-[^script_days_of_xmas]: completed script: {lesson}`days_of_xmas.py`
-[^script_hangman]: completed script: {lesson}`hangman.py`
-
-
-For Loops
----------
-
-### Iterables and iterators
-
-Some objects in Python are {term}`iterable`--that is, an object that can be
-itereated over. For example, `list`, `tuple` and `range` objects are all
-iterable.
-
-All iterables can be converted to an {term}`iterator`, which is an object that
-will keep returning elements until there are no more left.
-
-To demonstrate this, we'll take a look at a `list` iterator. First we'll
-convert the list to an iterator using the `iter()` function. Then we'll keep
-requesting items using the `next()` function, until we encounter a
-`StopIteration` exception.
-
-```{code-block} python
-:caption: Python shell
-:class: full-width
->>> colors = ["red", "green", "blue"]
->>> colors_iterator = iter(colors)
->>> next(colors_iterator)
-'red'
-
->>> next(colors_iterator)
-'green'
-
->>> next(colors_iterator)
-'blue'
-
->>> next(colors_iterator)
----------------------------------------------------------------------------
-StopIteration                             Traceback (most recent call last)
-<ipython-input-39-707a9e8680bf> in <module>
-----> 1 next(colors_iterator)
-
-StopIteration:
-```
-
-Lets take a look at another type of iterable, a `range` object.
-
-```{code-block} python
-:caption: Python shell
-:class: full-width
->>> numbers = range(1, 4)
->>> numbers_iter = iter(numbers)
-
->>> next(numbers_iter)
-1
-
->>> next(numbers_iter)
-2
-
->>> next(numbers_iter)
-3
-
->>> next(numbers_iter)
----------------------------------------------------------------------------
-StopIteration                             Traceback (most recent call last)
-<ipython-input-57-55497f467ad0> in <module>
-----> 1 next(numbers_iter)
-
-StopIteration:
-```
-
-### Exercise
-
-```{exercise} iterator exercise
-:label: iterator-exercise
-
-1. Create a list containing the letters in your name assigned to the variable `letters`.
-2. Convert the list to an iterator using the `iter()` function and assign it to the variable `letters_iterator`.
-3. Keep calling `next()` with the argument `letters_iterator` until you encounter a `StopIteration` exception.
-```
-
-`````{solution} iterator-exercise
+`````{solution} multiplication-table-exercise
 :class: dropdown
 
 ```{code-block} python
->>> letters = list("alissa")
->>> letters_iterator = iter(letters)
->>> next(letters_iterator)
-'a'
+:caption: Multiplication Table Exercise
+:class: full-width
+:linenos:
 
->>> next(letters_iterator)
-'l'
+SIZE = 9
 
->>> next(letters_iterator)
-'i'
+print()
 
->>> next(letters_iterator)
-'s'
+x = 1
+while x <= SIZE:
+    print("  ", end="")
+    y = 1
+    while y <= SIZE:
+        val = x * y
+        print(str(val).rjust(4), end="  ")
+        y += 1
+    x+=1
+    print("\n")
 
->>> next(letters_iterator)
-'s'
-
->>> next(letters_iterator)
-'a'
-
->>> next(letters_iterator)
----------------------------------------------------------------------------
-StopIteration                             Traceback (most recent call last)
-<ipython-input-51-15be8840759d> in <module>
-----> 1 next(letters_iterator)
-
+main()
 ```
+
 `````
 
-### For loops
 
-% TODO
-% [ ] iterators are one way
-% [ ] enumerate()
-% [ ] fix old exercses
-% [ ] multiple assignment
+Exercises
+---------
 
-A while loop continues for as long as a condition is met, a for loop on the
-other hand repeats for every item in an iterable.
+```{exercise} Name Cheer
+:label: name-cheer-exercise
 
-The syntax for a for loop is:
+Print a cheer for your name. For each letter print {samp}`"Gimme a {letter}!"`.
+Then end it with, {samp}`"What does it spell? {name}!"`
 
-`````{parsed-literal}
-{samp}`for {VAR} in {ITERABLE}:`
-    {samp}`    {BODY}`
+```
+
+`````{solution} name-cheer-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: Name Cheer Exercise
+:class: full-width
+:linenos:
+
+import time
+
+NAME = "Alissa"
+
+i = 0
+while i < len(NAME):
+    print("Gimme a", NAME[i].upper() + "!")
+    i += 1
+    time.sleep(0.5)
+
+print("\nWhat does it spell?")
+print(NAME.upper() + "!")
+
+```
+
 `````
 
-Under the hood, a for loop converts `ITERABLE` an iterator object, then
-repeatedly assigns the results of `next()` to `VAR` until there are no more
-left.
+```{exercise} Check Password
+:label: check-password-exercise
 
-We can simulate what happens in a for loop using a while loop.
+1. Assign a `secret` variable to a string of your choice for the correct password.
+1. Assign a `chances` variable to `3`
+1. Assign a `password` variable to `None`
+1. Assign a `locked` variable to `True`
+1. Write a while loop that continues as long as `password` is not equal to `secret`.
+1. In the loop:
+   1. Ask the user for the password using the `input()` function, and assign the result to `password`.
+   1. If `password` is equal to `secret`, set `locked` to `False`
+   1. Quit the loop if there are no more chances
+   1. subtract `1` from `chances`
+1. After the loop: if `locked` is `False`
+   1. Print `"Welcome!"`
 
-<div class="row"><div class="col">
-
-```{code-block-hl} python
-:caption: Python shell
-:class: full-width
-colors = ["red", "green", "blue"]
-colors_iterator = iter(!!!colors!!!)
-while True:
-    !!!color!!! = next(colors_iterator)
-    print(color)
 ```
 
-This will raise the `StopIteration` exception. To suppress it, we can use a
-`try-except` block.
+`````{solution} check-password-exercise
+:class: dropdown
 
-```{code-block-hl} python
-:caption: Python shell
+```{code-block} python
+:caption: Check Password Exercise
 :class: full-width
-colors = ["red", "green", "blue"]
-colors_iterator = iter(!!!colors!!!)
-while True:
-    try:
-        !!!color!!! = next(colors_iterator)
-    except StopIteration:
-        break
-    print(color)
-```
+:linenos:
 
-</div><div class="col">
+secret = "00000"
+password, locked, chances = None, True, 3
 
-```{code-block-hl} python
-:caption: Python shell
-:class: full-width
-colors = ["red", "green", "blue"]
-for !!!color!!! in !!!colors!!!:
-  print(color)
-```
+while password != secret:
+  password = input("Enter the password: ")
+  if password == secret:
+    locked = False
 
-</div></div>
-
-Lets look at a range iteratable.
-
-<div class="row"><div class="col">
-
-```{code-block-hl} python
-:caption: Python shell
-:class: full-width
-numbers = range(1, 4)
-numbers_iter = iter(!!!numbers!!!)
-while True:
-  try:
-    !!!num!!! = next(numbers_iter)
-  except StopIteration:
+  if not chances:
+    print("Too many attempts, try again later.")
     break
 
-  print(num)
+  chances = chances - 1
+
+if not locked:
+  print("Welcome.")
+
 ```
 
-</div><div class="col">
+`````
 
-```{code-block-hl} python
-:caption: Python shell
+```{exercise} Jolly Good Fellow
+:label: jolly-exercise
+
+Print the lyrics to the jolly good fellow song. `"For he's a jolly good
+fellow..."` three times, then "Which nobody can deny!" once.
+
+```
+
+`````{solution} jolly-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: Jolly Good Fellow Exercise
 :class: full-width
-numbers = range(1, 4)
-for !!!num!!! in !!!numbers!!!:
-  print(num)
+:linenos:
+
+i = 0
+while i < 3:
+    print("For he's a jolly good fellow...")
+    i += 1
+
+print("Which nobody can deny!")
+
 ```
 
-</div></div>
+`````
+
+
+`````{exercise} 12 Days of Christmas
+:label: days-of-xmas-exercise
+
+Print the 12 Days of Christmas song.
+
+1. Create a nested list, where each item is a list containing two items: the
+   ordinal word for the day (ie "second") and the gift for that day.
+2. Iterate over each day to print the parent day lyric {samp}`"On the {ordinal} day of Christmas my true love gave to me {gift}."`
+3. Use a nested `while` loop to iterate over each of the days lower than parent day in descending order. 
+4. For each child day, print the lyric {samp}`"{day} {gift},"`
+
+::::{dropdown} Show lyrics
+
+```{include} 12-days-of-xmas-lyrics.md
+```
+
+::::
+
+`````
+
+`````{solution} days-of-xmas-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: 12 Days of Christmas Exercise
+:class: full-width
+:linenos:
+
+import time
+
+DAYS = [
+    ['first', "a partridge in a pear tree"],
+    ['second', "turtle doves"],
+    ['third', "french hens"],
+    ['forth', "calling birds"],
+    ['fifth', "golden rings"],
+    ['sixth', "geese a laying"],
+    ['seventh', "swans a swimming"],
+    ['eighth', "maids a milking"],
+    ['ninth', "ladies dancing"],
+    ['tenth', "lords a leaping"],
+    ['eleventh', "pipers piping"],
+    ['twelfth', "drummers drumming"],
+]
+
+i = 0
+while i < len(DAYS):
+    day, gift = DAYS[i]
+    print("On the", day, "day of Christmas my true love gave to me")
+
+    x = i
+    while x >= 0:
+        gift = DAYS[x][1]
+        time.sleep(0.5)
+
+        # indent the line
+        line = "  "
+
+        # add the "and" in "and a partridge in a pear tree"
+        if i and x == 0:
+            line += "and "
+
+        # add the number of gifts
+        if x:
+            line += str(x+1) + " "
+
+        # add the gift given
+        line += gift
+
+        # add the "," or "."
+        if x:
+            line += ","
+        else:
+            line += "."
+
+        # print the line
+        print(line)
+
+        x -= 1
+
+    i += 1
+
+    print()
+
+```
+
+`````
+
+```{exercise} Hangman
+:label: hangman-exercise
+
+Write a hangman game.
+
+1. Choose a short word, give the player 6 chances to guess letters
+1. Each turn:
+    1. Print their chances with `x` to show used chances, and `_` to show remaining \
+       example: `chances: xx____`
+    1. Print the word, but replace `_` for unguessed letters \
+       example: `5 letters: _e___`
+    1. Ask the player to guess a letter
+    1. Bonus: make sure the user enters exactly one character
+1. Tell the user at the end if they won or lost
+
+```
+
+`````{solution} hangman-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: Hangman Exercise
+:class: full-width
+:linenos:
+
+import random
+
+WORDS = [ "hello", "goodbye", "secret", "satisfy", "apple", "bear" ]
+
+def info(turn, chances, guess):
+    """print the used vs unused chances and guessed vs unguessed letters
+       example:
+           chances: xx____ 7 letters: _e_____
+    """
+    print(" "*40, "chances:", ("x"*turn)+("_"*(chances-turn)), len(guess), "letters:", guess)
+
+def main():
+    """."""
+    turn, chances, word = 1, 6, random.choice(WORDS)
+    guess = "_" * len(word)
+
+    info(0, chances, guess)
+
+    while guess != word and turn <= chances:
+        char = input("Guess a letter: ").lower()
+        if not char:
+            continue
+        elif len(char) > 1:
+            print(" Just one letter!")
+            continue
+        if char in word:
+            letters = list(guess)
+            for i,c in enumerate(word):
+                if c == char:
+                    letters[i] = c
+            guess = "".join(letters)
+        print(" "*40, "chances:", ("x"*turn)+("_"*(chances-turn)), len(word), "letters:", guess)
+        turn += 1
+    if guess == word:
+        print("You win!!")
+    else:
+        print("Too bad. The word was:", word)
+
+main()
+
+```
+
+`````
 
 Reference
 ---------
 
 ### Glossary
 
-```{glossary}
+```{glossary} while-loops
+while loop
+  A {term}`compound statement` that repeats a {term}`suite` of statements as
+  long as a {term}`condition` evaluates to {term}`truthy`.
 
-container
-  A value that can hold other values, for example `list` objects.
+infinite loop
+  When a program is written in such a way that the loop continues forever.
 
-iterable
-  An object that can be iterated over. One that provides the `.__iter__()`
-  method used by the `iter()` function.
+increment
+incrementing
+  Adding to a number, usually `1`.
 
-iterator
-  An object that provides a `.__next__()` method, used by the built in function
-  `next()`,  which, when called repeatedly, will keep returning elements until
-  there are no more left.
+decrement
+decrementing
+  Subtracting from a number, usually `1`.
 
 ```
 
