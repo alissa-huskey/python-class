@@ -10,379 +10,559 @@ kernelspec:
   name: python3
 ---
 
-While Loops
------------
+For Loops
+=========
 
-Normally Python reads one statement at a time, one at a time. But loops give us
-the ability to repeat a set of statements.
+A `while` loop continues for as long as a condition is met, a `for` loop on the
+other hand repeats for every element in an iterable.
 
-A {term}`while loop` is a {term}`compound statement`. Like an {term}`if statement`
-while loops include a conditional expression and a {term}`suite` of
-statements that will be repeated until the expression evaluates to false.
+% TODO
+% [ ] break and continue
+% [ ] different types, converting using list()
+% [ ] iterators are one way
+% [ ] enumerate()
+% [-] multiple assignment
+% [x] exercises
+% [x] fix old exercses
 
-Each time that the suite of statements is repeated in a loop it is called an
-{term}`iteration`. Likewise, the process of repeating a loop is called
-{term}`iterating`.
 
+Table of Contents
+-----------------
 
-Here's a simple example that will keep asking the user for their name until
-they answer.
+* [Syntax](#syntax)
+   * [Exercise](#exercise)
+* [Iterables and iterators](#iterables-and-iterators)
+   * [Exercise](#exercise-1)
+* [Comparing loops](#comparing-loops)
+   * [Example A: list iteration with next()](#example-a-list-iteration-with-next)
+   * [Example B: range iteration with next()](#example-b-range-iteration-with-next)
+   * [Example C: list iteration with subscription](#example-c-list-iteration-with-subscription)
+   * [Example D: string iteration with subscription](#example-d-string-iteration-with-subscription)
+   * [Exercises](#exercises)
+* [Exercises](#exercises-1)
+* [Reference](#reference)
+   * [Glossary](#glossary)
+   * [See also](#see-also)
 
-```{code-block} python
----
-caption: a simple while loop example
-linenos:
----
+Syntax
+------
 
-reply = ""
+The syntax for a for loop is:
 
-while not reply:
-  reply = input("What is your name? ")
+`````{parsed-literal}
+{samp}`for {VAR} in {ITERABLE}:`
+    {samp}`    {BODY}`
+`````
 
-print("Name:", reply)
-```
+* `for` and `in` are {term}`keywords <keyword>`
+* {samp}`{VAR}` -- variable name (or comma-seperated list of names) for each item
+* {samp}`{ITERABLE}` -- object to iterate over
+* {samp}`{BODY}` -- statements to execute where {samp}`{VAR}` will be used
 
-```{exercise}
+Under the hood, a for loop converts `ITERABLE` an iterator object, then
+repeatedly assigns the results of `next()` to `VAR` until there are no more
+left. (More on iterables and itrators later.)
 
-1. Write a while loop that asks the user `"Heads or tails?"` until they answer
-with either `"heads"` or `"tails"`. *Hint: Use the `not in` operator.*
-
-2. Write a while loop that prints a random number between `1` and `100` until
-   the answer is greater than `50`.
-
-```
-
-### Infinite loops
-
-When a program is written in such a way that the loop condition is always met
-the result is called an {term}`infinite loop`. These are easy to cause by
-mistake.
-
-Here are a couple examples:
-
-```{code-block} python
----
-caption: forgetting to increment `i`
-linenos:
----
-
-i = 0
-
-while i < 10:
-  print("Iteration:", i+1)
-```
+Here's a simple example that iterates over a `list` of strings.
 
 ```{code-block} python
----
-caption: value of `num` will never get to `15`
-linenos:
----
+:caption: "`for` loop example"
+:class: full-width
+:linenos:
 
-num = 0
+houses = [
+  "Arryn",
+  "Baratheon",
+  "Greyjoy",
+  "Lannister",
+  "Martell",
+  "Stark",
+  "Targaryen",
+  "Tully",
+  "Tyrell",
+]
 
-while num < 15:
-  num = random.randint(0, 10)
-  print("The number is:", num)
-
+for name in houses:
+  print(f"House {name}")
 ```
 
-### Quitting a loop
+### Exercise
 
-The `break` statement can be used to stop loop iteration.
+```{exercise} Movies
+:label: movies-exercise
 
-This example intentionally creates an infinite loop then in each iteration asks
-the user if they would like to keep going and uses the `break` statement if
-they reply with `"n"`.
+Iterate over a `list` of `movies` and print each one out using a `for` loop.
+```
+
+`````{solution} movies-exercise
+:class: dropdown
 
 ```{code-block} python
----
-caption: stopping a loop with `break`
-linenos:
----
-import random
+:caption: Movies Exercise
+:class: full-width
+:linenos:
 
-while True:
-    num = random.randint(1, 10)
-    print("The number is:", num)
-    reply = input("Keep going? ")
-    if reply == "n":
-        break
+movies = [
+  "Treasure Planet",
+  "Finding Nemo",
+  "Kung Fu Panda",
+  "Wall-E",
+  "Lilo & Stitch",
+]
+
+for name in movies:
+  print(movie)
 ```
 
-```{exercise}
+`````
 
-Write a loop that prints a random number, then ask the user if they would like
-to keep going. Exit the loop if they answer with a `"n"`.
+Iterables and iterators
+-----------------------
 
+Some objects in Python are {term}`iterable`--that is, an object that can be
+itereated over. For example, `list`, `tuple` and `range` objects are all
+iterable.
+
+All iterables can be converted to an {term}`iterator`, which is an object that
+will keep returning elements until there are no more left.
+
+### List iterator
+
+To demonstrate this we'll create a `colors` `list` then convert the it to a
+`colors_iterator` using the `iter()` function.
+
+```{code-cell} python
+:class: full-width
+colors = ["red", "green", "blue"]
+colors_iterator = iter(colors)
 ```
 
+Then we'll keep requesting items using the `next()` function, until we
+encounter a `StopIteration` exception.
 
-### Skipping part of an iteration
+```{code-cell} python
+next(colors_iterator)
+```
 
-You can skip the rest of the statements in a loop iteration by using the
-`continue` statement.
+```{code-cell} python
+next(colors_iterator)
+```
 
-This example uses the `continue` statement to skip the rest of the iteration if
-the user does not enter a number.
+```{code-cell} python
+next(colors_iterator)
+```
+
+```{code-cell} python
+:tags: [raises-exception]
+next(colors_iterator)
+```
+
+#### Exercise
+
+```{exercise} Iterators
+:label: iterator-exercise
+
+1. Create a list containing the letters in your name assigned to the variable `letters`.
+2. Convert the list to an iterator using the `iter()` function and assign it to the variable `letters_iterator`.
+3. Keep calling `next()` with the argument `letters_iterator` until you encounter a `StopIteration` exception.
+```
+
+`````{solution} iterator-exercise
+:class: dropdown
 
 ```{code-block} python
----
-caption: using the `continue` statement
-linenos:
----
-balance = 100
-while balance > 0:
-    reply = input("amount: ")
-    if not reply.isnumeric():
-        print("Numbers only.")
-        continue
-    balance = balance - int(reply)
-    print("Your balance is:", balance)
+:caption:  Iterators Exercise
+:class: full-width
+
+>>> letters = list("alissa")
+>>> letters_iterator = iter(letters)
+>>> next(letters_iterator)
+'a'
+
+>>> next(letters_iterator)
+'l'
+
+>>> next(letters_iterator)
+'i'
+
+>>> next(letters_iterator)
+'s'
+
+>>> next(letters_iterator)
+'s'
+
+>>> next(letters_iterator)
+'a'
+
+>>> next(letters_iterator)
+---------------------------------------------------------------------------
+StopIteration                             Traceback (most recent call last)
+<ipython-input-51-15be8840759d> in <module>
+----> 1 next(letters_iterator)
+
+```
+`````
+
+### Multiple assignment
+
+Depending on the type passed to it, `next()` may sometimes return more than one
+value. The classic example of this is {samp}`{dict}.items()`.
+
+```{code-cell} python
+:class: full-width
+suites = {
+  "heart": "red",
+  "diamond": "red",
+  "club": "black",
+  "spade": "black",
+}
+suites_iterator = iter(suites.items())
 ```
 
-```{exercise}
-
-Make an empty `rolls` list then write a loop that repeats `10` times. In each
-iteration:
-
-- Get a random number between `1` and `6`
-- print {samp}`"You rolled: {number}"`.
-- Ask the user if they want to keep the roll.
-- If they reply with `"n"`, use the `continue` statement to skip the rest of
-  the iteration
-- Append the number to a list of `rolls`
-- print the `rolls` list
-
+```{code-cell} python
+next(suites_iterator)
 ```
 
-Common patterns
+You can see that `next()` returns a `tuple` that contains two items. We can
+assign this to a single variable, which will then contain the entire `tuple.`
+
+```{code-cell} python
+item = next(suites_iterator)
+item
+```
+
+Or we could use {term}`multiple assignment` to assign each item in the `tuple`
+to a cooresponding variable. There must be the same number of variables to the
+left of the `=` as there are items in the `tuple` seperated by `,`.
+
+```{code-cell} python
+suite, color = next(suites_iterator)
+```
+
+```{code-cell} python
+suite
+```
+
+```{code-cell} python
+color
+```
+
+
+Comparing loops
 ---------------
 
-In this section we're going to go over some of the ways that loops are commonly used.
+Lets do some side-by-side comparisons of the same code written as a `while` loop
+and a `for` loop.
 
-### Incrementing
+On the left will be the `while` loop code and on the right will be the `for` loop code.
 
-Often in programming we want to repeat a suite of statements a specific number
-of times.
+### Example A: list iteration with `next()`
 
-One way to do this is to keep track of which iteration the loop is currently
-executing by incrementing (or decrementing) a number.
+In this example we'll iterate over a `colors` `list`.
 
-```{code-block} python
----
-caption: incrementing the `i` variable
-linenos:
----
+On the left we will use a `while` loop to iterate over a `list` by converting
+it using the `iter()` function, then calling `next()` on the resulting
+iterator.
 
-i = 0
+On the right the same code as a `for` loop, where the use of `iter()` and
+`next()` happens behind the scenes.
 
-while i < 10:
-  print("Iteration:", i+1)
-  i = i + 1
+<div class="row"><div class="col">
+
+```{code-block-hl} python
+:caption: "Iter example A-1: `list` iteration via `while` loop (ends in error)"
+:class: full-width
+colors = ["red", "green", "blue"]
+colors_iterator = iter(!!!colors!!!)
+while True:
+    !!!color!!! = next(colors_iterator)
+    print(color)
 ```
 
-```{exercise}
+This will raise the `StopIteration` exception. To suppress it, we can use a
+`try-except` block.
 
-Write a loop that counts down from `3` to `1`. In each iteration print out the
-current number then use the `time.sleep` function to pause for one second.
-
+```{code-block-hl} python
+:caption: "Iter example A-2: `list` iteration via `while` loop (error surpressed)"
+:class: full-width
+colors = ["red", "green", "blue"]
+colors_iterator = iter(!!!colors!!!)
+while True:
+    try:
+        !!!color!!! = next(colors_iterator)
+    except StopIteration:
+        break
+    print(color)
 ```
 
-### Iterating over a list
+</div><div class="col">
 
-You can use a `while` loop to iterate over the items in a list. To do this
-we'll increment an `i` variable just like we did above but we'll use the
-`len()` function to determine the length of the list and therfore how many
-times the loop should repeat.
+```{code-block-hl} python
+:caption: "Iter example A-3: `list` iteration via `for` loop"
+:class: full-width
+colors = ["red", "green", "blue"]
+for !!!color!!! in !!!colors!!!:
+  print(color)
+```
 
-Then we can use the `i` variable to access each item in the list.
+</div></div>
 
-```{code-block} python
----
-caption: iterating over a list
-linenos:
----
+### Example B: range iteration with `next()`
 
-i = 0
+Lets do the same comparison with a `range` object.
+
+On the left we will use a `while` loop to iterate over a `range` by converting
+it using the `iter()` function, then calling `next()` on the resulting
+iterator.
+
+On the right is the same code as a `for` loop.
+
+<div class="row"><div class="col">
+
+```{code-block-hl} python
+:caption: "Iter example B-1: `range` iteration via `while` loop (error surpressed)"
+:class: full-width
+numbers = range(1, 4)
+numbers_iter = iter(!!!numbers!!!)
+while True:
+  try:
+    !!!num!!! = next(numbers_iter)
+  except StopIteration:
+    break
+
+  print(num)
+```
+
+</div><div class="col">
+
+```{code-block-hl} python
+:caption: "Iter example B-2: `range` iteration via `for` loop"
+:class: full-width
+numbers = range(1, 4)
+for !!!num!!! in !!!numbers!!!:
+  print(num)
+```
+
+</div></div>
+
+### Example C: list iteration with subscription
+
+In this example we'll iterate over the `colors` `list` as before, except now
+we'll use an incrementing index number to get each element using
+{term}`bracket notation` or {term}`subscription`.
+
+While you can achieve similar results this way, subscription is not a perfect
+mirror of an analogous `for` loop. It's not quite as accurate in terms of what
+goes on under the hood and in fact not all iterable objects provide access via
+bracket notation.
+
+Even so, the this familiar pattern may help to shed some light on `for` loop
+behavior.
+
+<div class="row"><div class="col">
+
+```{code-block-hl} python
+:caption: "Bracket example C-1: `list` iteration via `while` loop"
+:class: full-width
+
+colors = ["red", "green", "blue"]
+idx = 0
+
+while idx < len(!!!colors!!!):
+    !!!color!!! = !!!colors!!![idx]
+    print(color)
+    idx += 1
+```
+
+</div><div class="col">
+
+```{code-block-hl} python
+:caption: "Subscript example C-2: `list` iteration via `for` loop"
+:class: full-width
+
 colors = ["red", "green", "blue"]
 
-while i < len(colors):
-  color = colors[i]
-  print("Color", i, "is:", colors[i])
-  i += 1
+for !!!color!!! in !!!colors!!!:
+  print(color)
 ```
 
-```{exercise}
+</div></div>
 
-Print a lunch menu. Make a list of lunch `choices` on a menu. Use a while loop
-to print out each item in the list with the number next to it.
+### Example D: string iteration with subscription
 
-```
+In this example we'll iterate over each `letter` in the string `word` using
+bracket notaton.
 
-You can also use this to iterate over list-like values. For example, a string
-can be used like a list of characters. So we can use the same pattern to
-iterate over all of the characters in a string.
+<div class="row"><div class="col">
 
-```{code-block} python
----
-caption: iterating over the characters in a string
-linenos:
----
-
-word = input("Enter a word: ")
-
-i = 0
-while i < len(word):
-    print("Letter", i, "is:", word[i])
-    i += 1
-```
-
-```{exercise}
-
-Print the vowels in a word. Ask the user for a word then iterate over each
-letter. If the letter is not a vowel, (*hint: make a list of vowels the use
-`not in`*) use a `continue` statement to skip the rest of the iteration. Then
-print the character number and the character.
-
-```
-
-### Nested loops
-
-Just like you can have an if statement inside of another if statement, you can
-also have a while loop inside of another while loop.
-
-This example prints out a score card for three rounds of three players each.
-
-```{code-cell} python
----
-caption: score card
-linenos:
-tags: [hide-output]
----
-
-rounds, players = 3, 3
-r = 0
-while r < rounds:
-    print("Round:", r+1, "\n")
-    p = 0
-    while p < players:
-        print("Player", p+1, "score:", "______________")
-        p += 1
-    print()
-    r += 1
-```
-
-A few things to pay attention to with nested loops:
-
-- The child `p` counter needs to be set to `0` **inside the parent loop**. If
-  you forget this, the score line for each player will only be printed in the
-  first round.
-
-- The child `p` counter must be incremented **inside of the child loop**.
-
-- In this case it doesn't matter, but you generally want to increment the `r`
-  counter **at the end** of the parent loop, just in case you need to use the
-  current value of `r` inside of the child loop.
-
-Here's another example that prints out a grid of `x, y` coordinates.
-
-```{code-cell} python
----
-caption: coordinates grid
-linenos:
-tags: [ hide-output ]
----
-
-rows, cols = 5, 5
-r = 0
-while r < rows:
-    c = 0
-    while c < cols:
-        output = str(r) + "," + str(c) + "   "
-        print(output, end="")
-        c += 1
-    print("\n")
-    r += 1
-```
-
-```{exercise} multiplication-table-exercise
-
-Print a multiplication table grid with `9` rows and `9` columns. [^script_multiplication]
-
-```
-
-`````{solution} multiplication-table-exercise
-:class: drop-down
-
-```{code-block} python
-:caption: Python shell
+```{code-block-hl} python
+:caption: "Bracket example D-1: `str` iteration via `while` loop"
 :class: full-width
-SIZE = 9
-print()
 
-x = 1
-while x <= SIZE:
-    print("  ", end="")
-    y = 1
-    while y <= SIZE:
-        val = x * y
-        print(str(val).rjust(4), end="  ")
-        y += 1
-    x+=1
-    print("\n")
+word = "flibbertigibbet"
+idx = 0
+
+while idx < len(!!!word!!!):
+    !!!letter!!! = !!!word!!![idx]
+    print(letter)
+    idx += 1
 ```
 
-`````
+</div><div class="col">
 
-Practice exercises
-------------------
+```{code-block-hl} python
+:caption: "Bracket example D-2: `list` iteration via `for` loop"
+:class: full-width
 
-Here are some practice exercises with loops you can work on.
+word = "flibbertigibbet"
 
-```{exercise} Cheer
-label: name-cheer
+for !!!letter!!! in !!!word!!!:
+  print(letter)
+```
 
-Print a cheer for your name. For each letter print {samp}`"Gimme a {letter}!"`.
-Then end it with, {samp}`"What does it spell? {name}!"` [^script_name_cheer]
+</div></div>
+
+### Exercises
+
+```{exercise} Game Characters
+:label: characters-exercise
+
+1. Make a `list` of game character `roles`.
+1. write a `while` loop
+   1. Convert the `list` to an `roles_iter` iterator using the `iter()` function
+   1. Make a `while` loop with the condition `True`
+   1. Get each `role` element from the `roles_iter` by calling `next()`
+   1. Print the `role`
+   1. Bonus: add a try-except block to suppress the error
+2. write a `for` loop
+   1. Make a `for` loop with the variable name `role` and the iterable `roles`
+   1. Print the `role`
 
 ```
 
-`````{solution} name-cheer
-:class: drop-down
+`````{solution} characters-exercise
+:class: dropdown
 
 ```{code-block} python
-:caption: Python shell
+:caption: Characters Exercise
 :class: full-width
+:linenos:
+
+WIDTH = 30
+roles = ["mage", "thief", "warrior"]
+
+print("WHILE LOOP ".ljust(WIDTH, "#"))
+roles_iterator = iter(roles)
+while True:
+    try:
+      role = next(roles_iterator)
+    except StopIteration:
+        break
+    print(role)
+
+
+print("FOR LOOP ".ljust(WIDTH, "#"))
+for role in roles:
+  print(role)
+
 ```
 
 `````
 
 
 
+```{exercise} Game Skills
+:label: skills-exercise
 
-2. Print the lyrics to the jolly good fellow song. "For he's a jolly good
-   fellow..." three times, then "Which nobody can deny!" once. [^script_jolly]
+1. Make a `list` of game character `skills`.
+1. write a `while` loop
+   1. Assign the `idx` var to `0`
+   1. Make a `while` loop with the condition that `idx` is less than the length of `skills`
+      1. Get each element from `skills` using bracket notation `idx` and assign it to `skill`
+      1. Increment `idx`
+      1. Print the `skill`
+2. write a `for` loop
+   1. Make a `for` loop with the variable name `skill` and the iterable `skills`
+      1. Print the `skill`
 
-3. Print the 12 Days of Christmas song. Use a nested list with a list for each
-   lyric containing the ordinal word for the day (ie "second") and the gift for
-   that day. [^script_days_of_xmas]
+```
 
-4. Write a hangman game. [^script_hangman]
-     - choose a short word, give the player 6 chances to guess letters
-     - each turn:
-       - print their chances with `x` to show used chances, and `_` to show remaining \
-         example: `chances: xx____`
-       - print the word, but replace `_` for unguessed letters \
-         example: `5 letters: _e___`
-       - ask the player to guess a letter
-       - bonus: make sure the user enters exactly one character
-     - tell the user at the end if they won or lost
+`````{solution} skills-exercise
+:class: dropdown
 
-[^script_multiplication]: completed script: {lesson}`multiplication.py`
-[^script_name_cheer]: completed script: {lesson}`name_cheer.py`
-[^script_jolly]: completed script: {lesson}`jolly.py`
-[^script_days_of_xmas]: completed script: {lesson}`days_of_xmas.py`
-[^script_hangman]: completed script: {lesson}`hangman.py`
+```{code-block} python
+:caption: Skills Exercise
+:class: full-width
+:linenos:
+
+WIDTH = 30
+skills = ["heal", "attack", "acquire"]
+idx = 0
+
+print("WHILE LOOP ".ljust(WIDTH, "#"))
+while idx < len(skills):
+  skill = skills[idx]
+  print(skill)
+  idx += 1
+
+print("FOR LOOP ".ljust(WIDTH, "#"))
+for skill in skills:
+  print(skill)
+
+```
+
+`````
+
+
+
+Exercises
+---------
+
+```{exercise} Weekdays
+:label: label-exercise
+
+Print the weekday names horizontally and seperated by `|`.
+
+1. Make a `WEEKDAYS` `list` of names.
+1. Use a `for` loop to iterated over each `day`.
+1. Print each `day` centered to the same `size` (somewhere around `10` to `20`)
+   with seperated by vertical bars (`|`). \
+   *Hint: using the `.center()` method.*
+
+Example output:
+
+`|   Monday   |  Tuesday   | Wednesday  |  Thursday  |   Friday   |`
+
+
+```
+
+`````{solution} label-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: Weekdays Exercise
+:class: full-width
+:linenos:
+
+SIZE=10
+SEP = " | "
+WEEKDAYS = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+]
+
+strings = [SEP]
+
+for day in WEEKDAYS:
+  title = day.center(SIZE)
+  strings = strings + [title, SEP]
+
+print(*strings, sep="")
+```
+
 `````
 
 Reference
@@ -390,10 +570,48 @@ Reference
 
 ### Glossary
 
-```{glossary} while-loops
+```{glossary} for-loops
 
-while loop
-  ...
+container
+  A value that can hold other values, for example `list` objects.
+
+iterable
+  An object that can be iterated over. One that provides the `.__iter__()`
+  method used by the `iter()` function.
+
+iterator
+  An object that provides a `.__next__()` method, used by the built in function
+  `next()`,  which, when called repeatedly, will keep returning elements until
+  there are no more left.
+
+subscript
+subscription
+bracket notation
+  Accessing an element from a collection object using `[` `]` after the object
+  which enclose a selector expression. The expression may be an index number,
+  key, or slice depending on its type. \
+  The syntax is: {samp}`{COLLECTION}[{SELECTOR}]`.
+
+multiple assignment
+  Assigning the contents of an itrable to multiple variables on the same line
+  with the same number of variables names to the left of the `=` as there are
+  items in the iterable seperated by `,`. \
+  For example: \
+  `from, to = (1, 100)` \
+  `first, last = "a", "b"`
+
+
+
+```
+
+### See also
+
+```{seealso}
+
+* [python.org > Iterator Types](https://docs.python.org/3/library/stdtypes.html#typeiter)
+* [python.org > Expressions > Subscriptions](https://docs.python.org/3/reference/expressions.html#subscriptions)
+* [Loop Better: a deeper look at iteration in Python](https://treyhunner.com/2019/06/loop-better-a-deeper-look-at-iteration-in-python/)
+* [Python’s built-in container data types: categorisation and iteration](http://blog.wachowicz.eu/?p=132)
 
 ```
 
