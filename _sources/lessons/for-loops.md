@@ -21,7 +21,7 @@ other hand repeats for every element in an iterable.
 % [ ] different types, converting using list()
 % [ ] iterators are one way
 % [ ] enumerate()
-% [-] multiple assignment
+% [x] multiple assignment
 % [x] exercises
 % [x] fix old exercses
 
@@ -33,13 +33,16 @@ Table of Contents
    * [Exercise](#exercise)
 * [Iterables and iterators](#iterables-and-iterators)
    * [Exercise](#exercise-1)
+* [Under the hood](#under-the-hood)
+   * [Exercise](#exercise-2)
+* [Multiple assignment](#multiple-assignment)
+   * [Exercise](#exercise-3)
 * [Comparing loops](#comparing-loops)
    * [Example A: list iteration with next()](#example-a-list-iteration-with-next)
    * [Example B: range iteration with next()](#example-b-range-iteration-with-next)
    * [Example C: list iteration with subscription](#example-c-list-iteration-with-subscription)
    * [Example D: string iteration with subscription](#example-d-string-iteration-with-subscription)
-   * [Exercises](#exercises)
-* [Exercises](#exercises-1)
+* [Exercises](#exercises)
 * [Reference](#reference)
    * [Glossary](#glossary)
    * [See also](#see-also)
@@ -197,7 +200,8 @@ StopIteration                             Traceback (most recent call last)
 ```
 `````
 
-### for loops under the hood
+Under the hood
+--------------
 
 Now that you know what iterables and iterators are, we demystify for loops.
 
@@ -340,7 +344,55 @@ for !!!name!!! in !!!houses!!!:
 ```
 </div></div>
 
-### Multiple assignment
+### Exercise
+
+```{exercise} Game Characters
+:label: characters-exercise
+
+1. Make a `list` of game character `roles`.
+1. write a `while` loop
+   1. Convert the `list` to an `roles_iter` iterator using the `iter()` function
+   1. Make a `while` loop with the condition `True`
+   1. Get each `role` element from the `roles_iter` by calling `next()`
+   1. Print the `role`
+   1. Suppress the error with a try-except block
+2. write a `for` loop
+   1. Make a `for` loop with the variable name `role` and the iterable `roles`
+   1. Print the `role`
+
+```
+
+`````{solution} characters-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: Characters Exercise
+:class: full-width
+:linenos:
+
+WIDTH = 30
+roles = ["mage", "thief", "warrior"]
+
+print("WHILE LOOP ".ljust(WIDTH, "#"))
+roles_iterator = iter(roles)
+while True:
+    try:
+      role = next(roles_iterator)
+    except StopIteration:
+        break
+    print(role)
+
+
+print("FOR LOOP ".ljust(WIDTH, "#"))
+for role in roles:
+  print(role)
+
+```
+
+`````
+
+Multiple assignment
+-------------------
 
 Depending on the type passed to it, `next()` may sometimes return more than one
 value. The classic example of this is {samp}`{dict}.items()`.
@@ -449,7 +501,58 @@ for !!!suite, color!!! in !!!suites.items()!!!:
     print(f"The {suit} suit is {color}.")
 
 ```
+
 </div></div>
+
+### Exercise
+
+```{exercise} Game Tools
+:label: toolss-exercise
+
+1. Make a `dict` of game character `tools`, where the key is the `role` and the value is a `tool`.
+1. write a `while` loop
+   1. Convert `tools.items()` to an `tools_iter` iterator using the `iter()` function
+   1. Make a `while` loop with the condition `True`
+   1. Get each `role` and `tool` element from the `tools_iter` by calling `next()`
+   1. Print the {samp}`"A {role}s favorite tool is their trusty: {tool}."`
+   1. Suppress the error with a try-except block
+2. write a `for` loop
+   1. Make a `for` loop with the variable name `tool` and the iterable `tools`
+   1. Print the `tool`
+
+```
+
+`````{solution} skills-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: Skills Exercise
+:class: full-width
+:linenos:
+
+WIDTH = 30
+tools = {
+  "mage": "wand",
+  "thief": "lockpick set",
+  "warrior": "sword",
+}
+tools_iter = iter(tools.items())
+
+print("WHILE LOOP ".ljust(WIDTH, "#"))
+while True:
+  try:
+    role, tool = next(tools_iter)
+  except StopIteration:
+    break
+  print(f"A {role}s favorite tool is their trusty: {tool}.")
+
+print("FOR LOOP ".ljust(WIDTH, "#"))
+for role, tool in tools.items():
+  print(f"A {role}s favorite tool is their trusty: {tool}.")
+
+```
+
+`````
 
 Comparing loops
 ---------------
@@ -612,54 +715,8 @@ for !!!letter!!! in !!!word!!!:
 
 </div></div>
 
-### Exercises
-
-```{exercise} Game Characters
-:label: characters-exercise
-
-1. Make a `list` of game character `roles`.
-1. write a `while` loop
-   1. Convert the `list` to an `roles_iter` iterator using the `iter()` function
-   1. Make a `while` loop with the condition `True`
-   1. Get each `role` element from the `roles_iter` by calling `next()`
-   1. Print the `role`
-   1. Bonus: add a try-except block to suppress the error
-2. write a `for` loop
-   1. Make a `for` loop with the variable name `role` and the iterable `roles`
-   1. Print the `role`
-
-```
-
-`````{solution} characters-exercise
-:class: dropdown
-
-```{code-block} python
-:caption: Characters Exercise
-:class: full-width
-:linenos:
-
-WIDTH = 30
-roles = ["mage", "thief", "warrior"]
-
-print("WHILE LOOP ".ljust(WIDTH, "#"))
-roles_iterator = iter(roles)
-while True:
-    try:
-      role = next(roles_iterator)
-    except StopIteration:
-        break
-    print(role)
-
-
-print("FOR LOOP ".ljust(WIDTH, "#"))
-for role in roles:
-  print(role)
-
-```
-
-`````
-
-
+Exercises
+---------
 
 ```{exercise} Game Skills
 :label: skills-exercise
@@ -702,11 +759,6 @@ for skill in skills:
 ```
 
 `````
-
-
-
-Exercises
----------
 
 ```{exercise} Weekdays
 :label: label-exercise
@@ -789,8 +841,6 @@ multiple assignment
   For example: \
   `from, to = (1, 100)` \
   `first, last = "a", "b"`
-
-
 
 ```
 
