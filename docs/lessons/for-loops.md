@@ -21,7 +21,7 @@ other hand repeats for every element in an iterable.
 % [ ] different types, converting using list()
 % [ ] iterators are one way
 % [ ] enumerate()
-% [-] multiple assignment
+% [x] multiple assignment
 % [x] exercises
 % [x] fix old exercses
 
@@ -33,6 +33,8 @@ Table of Contents
    * [Exercise](#exercise)
 * [Iterables and iterators](#iterables-and-iterators)
    * [Exercise](#exercise-1)
+   * [for loops under the hood](#for-loops-under-the-hood)
+   * [Multiple assignment](#multiple-assignment)
 * [Comparing loops](#comparing-loops)
    * [Example A: list iteration with next()](#example-a-list-iteration-with-next)
    * [Example B: range iteration with next()](#example-b-range-iteration-with-next)
@@ -43,6 +45,7 @@ Table of Contents
 * [Reference](#reference)
    * [Glossary](#glossary)
    * [See also](#see-also)
+
 
 Syntax
 ------
@@ -789,8 +792,6 @@ multiple assignment
   For example: \
   `from, to = (1, 100)` \
   `first, last = "a", "b"`
-
-
 
 ```
 
