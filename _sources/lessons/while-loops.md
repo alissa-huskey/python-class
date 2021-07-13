@@ -56,31 +56,15 @@ Syntax
 
 The syntax for a `while` loop is:
 
-`````{parsed-literal}
-{samp}`while {CONDITION}:`
-    {samp}`    {BODY}`
-`````
-
-* `with` is a {term}`keyword`
-* {samp}`{CONDITION}` -- an expression evaluated in a {term}`boolean context`that determines if the loop should continue
-* {samp}`{BODY}` -- statements that use {samp}`{VAR}`
-
+```{include} ../templates/syntax/while.md
+```
 
 Here's a simple example that will keep asking the user for their name until
 they answer.
 
-```{code-block} python
-:caption: while loop example
-:class: full-width
-:linenos:
-
-name = ""
-
-while not name:
-  name = input("What is your name? ")
-
-print(f"Hello there {name}!")
+```{include} ../templates/examples/while.md
 ```
+
 
 ### Exercises
 
@@ -692,7 +676,7 @@ Print the 12 Days of Christmas song.
 1. Create a nested list, where each item is a list containing two items: the
    ordinal word for the day (ie "second") and the gift for that day.
 2. Iterate over each day to print the parent day lyric {samp}`"On the {ordinal} day of Christmas my true love gave to me {gift}."`
-3. Use a nested `while` loop to iterate over each of the days lower than parent day in descending order. 
+3. Use a nested `while` loop to iterate over each of the days lower than parent day in descending order.
 4. For each child day, print the lyric {samp}`"{day} {gift},"`
 
 ::::{dropdown} Show lyrics

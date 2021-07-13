@@ -52,37 +52,12 @@ Syntax
 
 The syntax for a for loop is:
 
-`````{parsed-literal}
-{samp}`for {VAR} in {ITERABLE}:`
-    {samp}`    {BODY}`
-`````
-
-* `for` and `in` are {term}`keywords <keyword>`
-* {samp}`{VAR}` -- variable name (or comma-seperated list of names) for each item
-* {samp}`{ITERABLE}` -- object to iterate over. (More on this later.)
-* {samp}`{BODY}` -- statements to execute where {samp}`{VAR}` will be used
+```{include} ../templates/syntax/for.md
+```
 
 Here's a simple example that iterates over a `list` of strings.
 
-```{code-block} python
-:caption: "`for` loop example"
-:class: full-width
-:linenos:
-
-houses = [
-  "Arryn",
-  "Baratheon",
-  "Greyjoy",
-  "Lannister",
-  "Martell",
-  "Stark",
-  "Targaryen",
-  "Tully",
-  "Tyrell",
-]
-
-for name in houses:
-  print(f"House {name}")
+```{include} ../templates/examples/for.md
 ```
 
 ### Exercise
@@ -207,15 +182,8 @@ Now that you know what iterables and iterators are, we demystify for loops.
 
 Lets look at the syntax again.
 
-`````{parsed-literal}
-{samp}`for {VAR} in {ITERABLE}:`
-    {samp}`    {BODY}`
-`````
-
-* `for` and `in` are {term}`keywords <keyword>`
-* {samp}`{VAR}` -- variable name (or comma-seperated list of names) for each item
-* {samp}`{ITERABLE}` -- object to iterate over. (More on this later.)
-* {samp}`{BODY}` -- statements to execute where {samp}`{VAR}` will be used
+```{include} ../templates/syntax/for.md
+```
 
 Here's what's happening behind the scenes:
 
@@ -278,15 +246,15 @@ while True:
     # any code that may raise an exception goes under the try header
     try:
 
-      # assign VAR to the results of next()
-      name = next(houses_iter)
+        # assign VAR to the results of next()
+        name = next(houses_iter)
 
     # the type of exception that we want to catch
     # instead of raising it, the body statements will be executed
     except StopIteration:
 
-      # StopIteration means there are no more elements, so exit the loop
-      break
+        # StopIteration means there are no more elements, so exit the loop
+        break
 
     # BODY statements
     print(f"House {name}")
@@ -455,7 +423,7 @@ And lets see how it looks in a `for` loop.
 
 ```{code-cell} python
 :class: full-width
-for suite, color in suites.items():
+for suit, color in suites.items():
     print(f"The {suit} suit is {color}.")
 ```
 
@@ -497,7 +465,7 @@ suites = {
   "spade": "black",
 }
 
-for !!!suite, color!!! in !!!suites.items()!!!:
+for !!!suit, color!!! in !!!suites.items()!!!:
     print(f"The {suit} suit is {color}.")
 
 ```
