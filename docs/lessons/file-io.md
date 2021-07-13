@@ -557,15 +557,8 @@ a `with` statement.
 More on that later, but first lets take a quick look at the syntax of a `with`
 statement:
 
-`````{parsed-literal}
-{samp}`with {EXPN} as {VAR}:`
-    {samp}`    {BODY}`
-`````
-
-* `with` and `as` are {term}`keywords <keyword>`
-* {samp}`{EXPN}` -- an expression that produces a context manager object (ie `open(...)`)
-* {samp}`{VAR}` -- variable name for the object (ie `fh`)
-* {samp}`{BODY}` -- statements that use {samp}`{VAR}`
+```{include} ../templates/syntax/with.md
+```
 
 When working with files it looks something like this:
 
@@ -616,23 +609,7 @@ print(contents)
 
 </div><div class="col">
 
-```{code-block} python
-:caption: groceries.py
-:linenos:
-:emphasize-lines: "2, 7-8"
-# open the file
-with open("groceries.txt") as fp:
-
-   # read the contents
-    contents = fp.read()
-
-# `fh` is automatically closed
-# no need to call fh.close()
-
-# print the file contents
-print("Groceries")
-print("=========")
-print(contents)
+```{include} ../templates/examples/with.md
 ```
 
 </div></div></div>
