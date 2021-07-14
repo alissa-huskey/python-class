@@ -6,9 +6,13 @@
 
 from pathlib import Path
 import random
+import textwrap
 from sys import stderr
 
 WIDTH = 75
+MARGIN = 20
+MAXWIDTH = WIDTH - MARGIN
+DEBUG_MODE = False
 CARDS_DIR = Path(__file__).parent.parent.parent / "data" / "cards"
 
 def error(*args):
@@ -69,6 +73,7 @@ def play(cards):
     from the user, and printing the score.  Takes one argument, the list of
     cards."""
 
+
     # initialize values
     hide_cursor, show_cursor  = "\x1b[?25l", "\x1b[?12;25h"
     score, num, total = 0, 1, len(cards)
@@ -84,7 +89,7 @@ def play(cards):
 
         # print a line at the top of every card
         print("\n")
-        print("=" * 75)
+        print("=" * WIDTH)
 
         # print card x of y
         print(f"card {num} of {total}".rjust(WIDTH), "\n" * 2)
@@ -92,7 +97,16 @@ def play(cards):
         # print the card front
         print("QUESTION".center(WIDTH))
         print("--------".center(WIDTH), "\n")
-        print(f"{card['front']}".center(WIDTH), "\n" * 2)
+
+        # wrap long questions
+        lines = textwrap.wrap(card['front'], MAXWIDTH)
+        for line in lines:
+            print(line.center(WIDTH))
+
+        print("\n" * 2)
+
+        if DEBUG_MODE:
+            print(f"The answer is: {card['back']}")
 
         # get the user answer
         answer = input("> ")
@@ -105,6 +119,10 @@ def play(cards):
         else:
             feedback = f"{wrong_symbol} INCORRECT"
         print(feedback, "\n" * 2)
+
+        # exit for quit command
+        if answer.lower() in ("q", "quit"):
+            break
 
         # if the answer was wrong, print the right one
         if answer != card["back"]:

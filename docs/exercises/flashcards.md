@@ -134,16 +134,17 @@ the beginning or end of the line also need to be removed.
 1. [ ] remove leading and trailing whitespace by calling the `.strip()` method
        on `card["front"]` and `card["back"]`
 
-### part 8: Skip the header row
+### part 8: Skip the header row and blank lines
 
 To avoid having a flashcard pop up that reads `"front"`, don't append the
-header row to the `cards` `list`.
+header row to the `cards` `list`. Also skip any blank lines in the file.
 
 ```{rubric} in load_csv(), **in** the readlines() loop, **before** append
 ```
 
 1. [ ] check if `card["front"]` is `"front"` and `card["back"]` is `"back"`. If so,
     `continue` to avoid appending to the cards list
+1. [ ] check if `line` is equal to `"\n"`. If so, `continue`.
 
 ### Part 9: Start the `play()` function
 
@@ -264,6 +265,26 @@ these suggestions to your taste.
 1. [ ] right align any string by calling the .rjust() method on it and passing
        the argument `WIDTH`. For example, the {samp}`card {x} of {y}` line.
 1. [ ] print {samp}`"{score} of {total}"` after the end of each card
+
+### Part 13: Wrap long questions
+
+In this part wrap questions that are too long so that they are split into multiple lines.
+
+```{rubric} at the top of your file
+```
+
+1. [ ] If you want your questions to be wrap at a shorter length than `WIDTH`, set a `MAXWIDTH` global variable.
+1. [ ] `import` the `textwrap` module
+
+```{rubric} in play(), **in** the loop
+```
+
+1. [ ] Call `textwrap.wrap()` with the arguments `card["front"]` and the width
+       you want to wrap at, either `MAXWIDTH` or `WIDTH`. This will return a
+       `list` of strings, where each item is a line. Assign the results to a
+       variable `lines`.
+1. [ ] Remove the code that prints `card["front"]`
+1. [ ] Iterate over the `lines` list, and print each item.
 
 Bonus ideas
 -----------

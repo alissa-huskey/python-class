@@ -3,6 +3,7 @@
 from contextlib import contextmanager
 
 from blessed import Terminal
+import textwrap
 
 
 __all__ = [
@@ -18,6 +19,9 @@ __all__ = [
 
 TERM = Terminal()
 WIDTH = TERM.width
+WIDTH = 75
+MARGIN = 20
+MAXWIDTH = WIDTH - MARGIN
 
 HALIGN = {
     "right": "rjust",
@@ -83,7 +87,7 @@ def align_horiz(text: str, alignment: str=None, width=WIDTH, **kwargs):
     func = getattr(text, HALIGN[alignment])
     return func(width, **kwargs)
 
-def output(*values, color=None, align=None, width=WIDTH, sep=" ", **kwargs):
+def output(*values, color=None, align=None, width=WIDTH, wrap=None, sep=" ", **kwargs):
     """fancy print
 
        Params
@@ -92,10 +96,22 @@ def output(*values, color=None, align=None, width=WIDTH, sep=" ", **kwargs):
        * color (str) -- change text to this color before printing
        * align (str) -- horizontal alignment of text (center, right, default: None)
        * width (int, None) -- width to align text to
+       * wrap (int, None) -- width to wrap text to
        * kwargs -- other arguments forwarded to print()
     """
 
     text = sep.join(map(str, values))
+
+    if wrap:
+        lines = textwrap.wrap(text, wrap)
+        for line in lines:
+            output(line,
+                   color=color,
+                   align=align,
+                   width=width,
+                   sep=sep,
+                   **kwargs)
+        return
 
     if align:
         text = align_horiz(text, align, width)

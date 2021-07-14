@@ -41,6 +41,7 @@ from pythonclass.exercises.cli import (
     abort,
     quit,
     WIDTH,
+    MAXWIDTH,
 )
 
 PRIZES   = (
@@ -126,6 +127,8 @@ def load_cards(path, cards=[]):
         for lineno, line in enumerate(fp.readlines()):
             if lineno == 0 and line.startswith("front"):
                 continue
+            if not line.strip():
+                continue
 
             card = {}
             card["front"], card["back"] = [ text.strip() for text in line.split(",") ]
@@ -149,7 +152,7 @@ def play(cards, category):
                    width=WIDTH-len(category))
 
         cli.goto_middle()
-        cli.output(card["front"], align="center")
+        cli.output(card["front"], align="center", wrap=MAXWIDTH)
 
         cli.goto_bottom(5)
         with cli.goback():
