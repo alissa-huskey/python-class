@@ -290,6 +290,7 @@ Bonus ideas
 -----------
 
 * keep a log with dates and scores
+* allow csv file to store alternate answers
 * make extra flashcard files, then add a menu to allow the user to select
   which topic(s) they would like to be quizzed on
 * add an optional limit argument to limit the number of cards to go
