@@ -33,7 +33,9 @@ def load_csv(path):
 
     with open(path) as fp:
         # iterate through each line of file
-        for line in fp.readlines():
+        for lineno, line in enumerate(fp.readlines()):
+            if not line.strip():
+                continue
 
             # initialize card dict
             card = {}
