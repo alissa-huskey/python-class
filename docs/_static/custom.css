@@ -2,7 +2,7 @@
 /* Exercises
 /********************/
 
-div.exercise p.admonition-title::after {
+div.exercise.notitle p.admonition-title::after {
   display: none;
 }
 
@@ -10,16 +10,19 @@ div.exercise p.admonition-title::after {
 /* Field lists
 /********************/
 
+dl.field-list {
+  display: grid;
+  grid-template-columns: fit-content(20%) fit-content(70%);
+}
+
 .field-list dt {
-    float: left;
-    clear: left;
-    text-align: right;
-    font-weight: bold;
-    padding: 0 0.5em;
+  grid-column-start: 1;
+  text-align: right;
 }
 
 .field-list dd {
-  padding: 0 0 0.5em 0;
+  grid-column-start: 2;
+  margin-left: 1em !important;
 }
 
 
