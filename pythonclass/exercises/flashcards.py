@@ -159,24 +159,17 @@ def play(cards):
     print(line, "\n" * 3)
 
 
-def load_topics():
-    """Load all csv files into TOPICS global"""
-    global TOPICS
-    if TOPICS:
-        return
-
+def menu():
+    """Print a menu of all topics, return list of selected Paths"""
     TOPICS = list(CARDS_DIR.iterdir())
 
     if not TOPICS:
-        error("No flashcard data found.")
+        reldir = CARDS_DIR.relative_to(Path.cwd())
+        error("No flashcard data found in directory: {reldir}.")
 
-def menu():
-    """Print a menu of all topics, return list of selected Paths"""
-    load_topics()
     print(f"[0] all")
     for i, path in enumerate(TOPICS, 1):
         print(f"[{i}] {path.stem}")
-
 
     choices = input("choose one or more topics: ")
     selection = []

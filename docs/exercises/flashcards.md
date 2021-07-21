@@ -286,6 +286,45 @@ In this part wrap questions that are too long so that they are split into multip
 1. [ ] Remove the code that prints `card["front"]`
 1. [ ] Iterate over the `lines` list, and print each item.
 
+### Part 14: Add topics menu
+
+This section will add a menu to print the name (minus the `.csv` extension) of
+each of the csv files in your flashcards directory and allow the user to choose
+one or more files to load.
+
+```{rubric} at the top of your file
+```
+
+1. Make a list assigned to the global variable `TOPICS`
+
+```{rubric} menu()
+```
+
+1. write a `menu()` function
+1. assign `TOPICS` to a list of `Path` objects in your flashcards directory using the `.iterdir()` method
+1. print an error message if no files are found in your flashcards directory
+1. print the filename minus the `.csv` extension for each `Path` object in the `TOPICS` list, next to a number
+1. print a special option `"all"` with a menu selection of `0`
+
+1. make a `list` assigned to the variable `selection`
+1. get input from the user asking them to choose one or more topics and assign it to a variable `choices`
+1. use the `.split()` method to split `choices` into multiple items on whitespace
+1. iterate over each response and assign to `num`:
+    * if the response is `"0"`, return `TOPICS`
+    * convert `num` to an int and subtract `1`
+    * get the item from `TOPICS` at the `num` index and append it to `selection` list
+1. return the `selection` list
+
+```{rubric} in main()
+```
+
+1. at the beginning of the function, make an empty `cards` list
+1. call `menu()` and assign the returned value to the variable `paths`
+1. remove the line where you previously defined the path to your `.csv` file
+1. iterate over `paths` and assign each element to the variable `path`:
+    * call `load_csv()` with the `path` argument
+    * append the returned value to `cards` using the `.extend()` method
+
 Bonus ideas
 -----------
 
