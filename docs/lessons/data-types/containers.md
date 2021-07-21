@@ -56,5 +56,6 @@ collection
 ```{seealso}
 
 * [python.org > Abstract Base Classes for Containers](https://docs.python.org/3/library/collections.abc.html#collections.abc.Hashable)
+* [Python’s built-in container data types: categorisation and iteration](http://blog.wachowicz.eu/?p=132)
 
 ```
