@@ -628,8 +628,8 @@ def setup(app):
     # replace sphinx glossary directive with GlossaryDirective
     #    and rename glossary to std:glossary
     std = app.registry.domains.get('std')
-    del std.directives['glossary']
-    app.add_directive('std:glossary', SphinxGlossary)
+    sphinx_glossary = std.directives.pop('glossary')
+    app.add_directive('std:glossary', sphinx_glossary)
     app.add_directive("glossary", GlossaryDirective)
 
     return {
