@@ -4,6 +4,7 @@
    from the data/[flash]cards directory.
 """
 
+import csv
 from pathlib import Path
 import random
 import textwrap
@@ -22,47 +23,49 @@ def error(*args):
     print("Error", *args)
     exit(1)
 
-def load_csv(path):
+def load_csv(path, errors):
     """Takes one argument, a Path object to a csv file. Return a list where
     each item is a dict with "front" and "back" keys, one for each row in the
     file except the header."""
 
-    if not path.is_file():
-        error("file does not exist: {path}")
-        return
-
-    if path.suffix.lower() != ".csv":
-        error(f"Not a csv file: {path}")
-        return
-
     # initialize cards list
     cards = []
 
+    if not path.is_file():
+        errors.append("file does not exist: {path}")
+        return
+
+    if path.suffix.lower() != ".csv":
+        errors.append(f"Not a csv file: {path}")
+        return
+
     with open(path) as fp:
         # iterate through each line of file
-        for lineno, line in enumerate(fp.readlines()):
-            if not line.strip():
+        for lineno, row in enumerate(csv.reader(
+            fp,
+            quotechar="'",
+            skipinitialspace=True,
+            escapechar="\\"
+        )):
+            if not row:
                 continue
 
             # initialize card dict
             card = {}
 
-            # split the line at the "," delimiter
-            row = line.split(",")
-
             # ensure that there are 2 columns
             if len(row) != 2:
-                error(f"{path.name}:{lineno + 1}:",
-                      f"wrong number of columns: {len(row)} --",
-                      f"'{line.strip()}'")
-                return
+                errors.append(
+                    f"{path.name}@{lineno + 1}: "
+                    f"{len(row)} column(s)")
+                continue
 
             # get the card data from the row
             card["front"] = row[0].strip()
             card["back"] = row[1].strip()
 
             # skip the header row
-            if card["front"] == "front" and card["back"] == "back":
+            if (card["front"].lower(), card["back"].lower()) == ("front", "back"):
                 continue
 
             # add card to the list
@@ -161,7 +164,7 @@ def play(cards):
 
 def menu():
     """Print a menu of all topics, return list of selected Paths"""
-    TOPICS = list(CARDS_DIR.iterdir())
+    TOPICS = sorted(CARDS_DIR.iterdir())
 
     if not TOPICS:
         reldir = CARDS_DIR.relative_to(Path.cwd())
@@ -193,17 +196,81 @@ def menu():
 
 def main():
     paths = menu()
-    cards = []
+    cards, errors = [], []
+
     for path in paths:
-        print(f"loading file: {path}")
-        cards.extend(
-            load_csv(path)
-        )
+        cards.extend( load_csv(path, errors) )
+
+    if errors:
+        print()
+        messages = [f"    {e}\n" for e in errors]
+        error("CSV file errors:\n\n", *messages)
 
     if not cards:
         return
 
     play(cards)
+
+def parse_line(line: str):
+    quotes, backslash, comma = ("'", '"'), "\\", ","
+
+    cells, start, stop, quote = [], None, None, ""
+
+    for i, char in enumerate(line):
+        last = line[i-1]
+
+        # the cell hasn't started
+        if start is None:
+
+            # the cell starts with a quote,
+            # so set start and quote
+            if char in quotes:
+                start = i + 1
+                quote = line[i]
+                #  say("found start quote", start=start, quote=quote)
+
+            elif start == i:
+                continue
+
+            # disregard whitespace outside of cells
+            elif char.isspace() or char == comma:
+                continue
+
+            # the first nonspace, non-quote character
+            # is the beginning of the cell
+            else:
+                start = i
+                # say("found first non-whitespace char", start=start, quote=quote)
+
+
+        # this cell started with a quote
+        elif quote:
+
+            # this cell ends with the same quote, non-escaped
+            if char == quote and last != backslash:
+                stop = i
+                # say("matched quote", start=start, quote=quote, char=char, stop=stop)
+
+        # this cell didn't start with a quote
+        else:
+
+            # the cell ends at the next comma
+            if char == comma and last != backslash:
+                stop = i
+                # say("found end comma", start=start, quote=quote, stop=stop)
+
+
+        # if we've found the end of the cell
+        # append it to cells and reset variables
+        if stop:
+            cells.append(line[start:stop])
+            start, stop, quote = None, None, ""
+
+    # append the last item
+    if start and not stop:
+        cells.append(line[start:])
+
+    return cells
 
 # only call main() if the script is being run, not imported
 if __name__ == "__main__":
