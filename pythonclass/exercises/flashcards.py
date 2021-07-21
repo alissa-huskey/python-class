@@ -162,6 +162,7 @@ def play(cards):
     print(line, "\n" * 3)
 
 
+<<<<<<< HEAD
 def menu():
     """Print a menu of all topics, return list of selected Paths"""
     TOPICS = sorted(CARDS_DIR.iterdir())
@@ -194,6 +195,48 @@ def menu():
 
     return selection
 
+||||||| parent of 33b697c... flashcards: add topics menu
+=======
+def load_topics():
+    """Load all csv files into TOPICS global"""
+    global TOPICS
+    if TOPICS:
+        return
+
+    TOPICS = list(CARDS_DIR.iterdir())
+
+    if not TOPICS:
+        error("No flashcard data found.")
+
+def menu():
+    """Print a menu of all topics, return list of selected Paths"""
+    load_topics()
+    print(f"[0] all")
+    for i, path in enumerate(TOPICS, 1):
+        print(f"[{i}] {path.stem}")
+
+
+    choices = input("choose one or more topics: ")
+    selection = []
+    for num in choices.split():
+
+        # special case for "all"
+        if num == "0":
+            return TOPICS
+
+        try:
+            num = int(num) - 1
+        except ValueError:
+            error(f"Not a valid selection: {num}")
+
+        try:
+            selection.append(TOPICS[num])
+        except IndexError:
+            error(f"Not a valid selection: {num}")
+
+    return selection
+
+>>>>>>> 33b697c... flashcards: add topics menu
 def main():
     paths = menu()
     cards, errors = [], []
@@ -205,6 +248,15 @@ def main():
         print()
         messages = [f"    {e}\n" for e in errors]
         error("CSV file errors:\n\n", *messages)
+
+
+    paths = menu()
+    cards = []
+    for path in paths:
+        print(f"loading file: {path}")
+        cards.extend(
+            load_csv(path)
+        )
 
     if not cards:
         return
