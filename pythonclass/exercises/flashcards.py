@@ -8,16 +8,19 @@ from pathlib import Path
 import random
 import textwrap
 from sys import stderr
+from os import _exit as exit
 
 WIDTH = 75
 MARGIN = 20
 MAXWIDTH = WIDTH - MARGIN
 DEBUG_MODE = False
 CARDS_DIR = Path(__file__).parent.parent.parent / "data" / "cards"
+TOPICS = []
 
 def error(*args):
     """Print an error message"""
     print("Error", *args)
+    exit(1)
 
 def load_csv(path):
     """Takes one argument, a Path object to a csv file. Return a list where
@@ -156,11 +159,57 @@ def play(cards):
     print(line, "\n" * 3)
 
 
+def load_topics():
+    """Load all csv files into TOPICS global"""
+    global TOPICS
+    if TOPICS:
+        return
+
+    TOPICS = list(CARDS_DIR.iterdir())
+
+    if not TOPICS:
+        error("No flashcard data found.")
+
+def menu():
+    """Print a menu of all topics, return list of selected Paths"""
+    load_topics()
+    print(f"[0] all")
+    for i, path in enumerate(TOPICS, 1):
+        print(f"[{i}] {path.stem}")
+
+
+    choices = input("choose one or more topics: ")
+    selection = []
+    for num in choices.split():
+
+        # special case for "all"
+        if num == "0":
+            return TOPICS
+
+        try:
+            num = int(num) - 1
+        except ValueError:
+            error(f"Not a valid selection: {num}")
+
+        try:
+            selection.append(TOPICS[num])
+        except IndexError:
+            error(f"Not a valid selection: {num}")
+
+    return selection
+
 def main():
-    csv = CARDS_DIR / "paths.csv"
-    cards = load_csv(csv)
+    paths = menu()
+    cards = []
+    for path in paths:
+        print(f"loading file: {path}")
+        cards.extend(
+            load_csv(path)
+        )
+
     if not cards:
         return
+
     play(cards)
 
 # only call main() if the script is being run, not imported
