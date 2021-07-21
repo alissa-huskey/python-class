@@ -206,15 +206,6 @@ def main():
         messages = [f"    {e}\n" for e in errors]
         error("CSV file errors:\n\n", *messages)
 
-
-    paths = menu()
-    cards = []
-    for path in paths:
-        print(f"loading file: {path}")
-        cards.extend(
-            load_csv(path)
-        )
-
     if not cards:
         return
 
