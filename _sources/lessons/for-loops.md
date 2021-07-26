@@ -756,9 +756,6 @@ Reference
 
 ```{glossary} for-loops
 
-container
-  A value that can hold other values, for example `list` objects.
-
 iterable
   An object that can be iterated over. One that provides the `.__iter__()`
   method used by the `iter()` function.

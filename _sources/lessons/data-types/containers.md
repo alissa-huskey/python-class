@@ -389,11 +389,11 @@ data structure
 
 container
 collection
-  ...
+  A value that can hold other values, for example `list` objects.
 
 element
 item
-  ...
+  An individual value in a {term}`collection`.
 
 index : data-types
 index number

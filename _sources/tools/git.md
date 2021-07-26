@@ -319,7 +319,7 @@ HEAD
   A reference to the current commit on the current branch. A reference is like
   a bookmark to a commit.
 
-index
+index : git
   A snapshot of your files at the time of the `HEAD` commit plus the changes
   you've staged for commit.
 
