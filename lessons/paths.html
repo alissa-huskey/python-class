@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -190,14 +190,26 @@
        Numeric Types
       </a>
      </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="data-types/containers.html">
+       Containers
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+      <label for="toctree-checkbox-5">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="simple">
+      </ul>
+     </li>
     </ul>
    </li>
    <li class="toctree-l2 current active has-children">
     <a class="reference internal" href="files.html">
      Files
     </a>
-    <input checked class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-    <label for="toctree-checkbox-5">
+    <input checked class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -225,8 +237,8 @@
   <a class="reference internal" href="in-depth/index.html">
    In Depth
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
+  <input checked class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -247,8 +259,8 @@
   <a class="reference internal" href="misc.html">
    Misc
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
+  <input checked class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -269,8 +281,8 @@
   <a class="reference internal" href="game-book.html">
    Invent Games Book
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
+  <input checked class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -601,13 +613,13 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#path-examples">
-     Path examples
+    <a class="reference internal nav-link" href="#special-directories">
+     Special directories
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#special-directories">
-     Special directories
+    <a class="reference internal nav-link" href="#path-examples">
+     Path examples
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -651,8 +663,49 @@ physical location in the real world, a path points to a location on a
 computer.</p>
 <p>Paths are used in pretty much all programming languages as well as on the
 command line, which we’ll be learning about today.</p>
+<div class="contents local topic" id="table-of-contents">
+<p class="topic-title">Table of Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#exploring-files-on-the-command-line" id="id22">Exploring files on the command line</a></p>
+<ul>
+<li><p><a class="reference internal" href="#directory-separators" id="id23">Directory separators</a></p></li>
+<li><p><a class="reference internal" href="#the-working-directory" id="id24">The working directory</a></p></li>
+<li><p><a class="reference internal" href="#parent-directory" id="id25">Parent directory</a></p></li>
+<li><p><a class="reference internal" href="#absolute-paths" id="id26">Absolute paths</a></p></li>
+<li><p><a class="reference internal" href="#the-home-directory" id="id27">The home directory</a></p></li>
+<li><p><a class="reference internal" href="#exercise" id="id28">Exercise</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#paths-in-python" id="id29">Paths in Python</a></p>
+<ul>
+<li><p><a class="reference internal" href="#path-strings-in-open" id="id30">Path strings in <code class="docutils literal notranslate"><span class="pre">open()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#path-objects" id="id31"><code class="docutils literal notranslate"><span class="pre">Path</span></code> objects</a></p></li>
+<li><p><a class="reference internal" href="#using-path-objects-in-open" id="id32">Using <code class="docutils literal notranslate"><span class="pre">Path</span></code> objects in <code class="docutils literal notranslate"><span class="pre">open()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#validation-methods" id="id33">Validation methods</a></p></li>
+<li><p><a class="reference internal" href="#id1" id="id34">Exercise</a></p></li>
+<li><p><a class="reference internal" href="#canonical-path" id="id35">Canonical path</a></p></li>
+<li><p><a class="reference internal" href="#parts-of-a-path" id="id36">Parts of a path</a></p></li>
+<li><p><a class="reference internal" href="#constructing-paths" id="id37">Constructing paths</a></p></li>
+<li><p><a class="reference internal" href="#paths-relative-to-current-file" id="id38">Paths relative to current file</a></p></li>
+<li><p><a class="reference internal" href="#id2" id="id39">Exercise</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#reference" id="id40">Reference</a></p>
+<ul>
+<li><p><a class="reference internal" href="#special-directories" id="id41">Special directories</a></p></li>
+<li><p><a class="reference internal" href="#path-examples" id="id42">Path examples</a></p></li>
+<li><p><a class="reference internal" href="#glossary" id="id43">Glossary</a></p>
+<ul>
+<li><p><a class="reference internal" href="#glossary-paths" id="id44">Paths</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#see-also" id="id45">See also</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="exploring-files-on-the-command-line">
-<h2>Exploring files on the command line<a class="headerlink" href="#exploring-files-on-the-command-line" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#table-of-contents">Exploring files on the command line</a><a class="headerlink" href="#exploring-files-on-the-command-line" title="Permalink to this headline">¶</a></h2>
 <p>For this lesson, open a terminal. We’ll use the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command which lists
 files to experiment with different paths. (On Windows you may need to use
 <code class="docutils literal notranslate"><span class="pre">dir</span></code> instead.) With no arguments it lists the files in the
@@ -684,7 +737,7 @@ special characters, like a filename with spaces.</p>
 </div>
 </div>
 <div class="section" id="directory-separators">
-<h3>Directory separators<a class="headerlink" href="#directory-separators" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Directory separators</a><a class="headerlink" href="#directory-separators" title="Permalink to this headline">¶</a></h3>
 <p>Directories are separated with a slash (<code class="docutils literal notranslate"><span class="pre">/</span></code>) or backslash (<code class="docutils literal notranslate"><span class="pre">\</span></code>) on
 Windows. For example here’s how I would list the <code class="docutils literal notranslate"><span class="pre">template.py</span></code> file inside
 the <code class="docutils literal notranslate"><span class="pre">pythonclass</span></code> directory.</p>
@@ -707,7 +760,7 @@ you’re using. Otherwise the same command would be:</p>
 </div>
 </div>
 <div class="section" id="the-working-directory">
-<h3>The working directory<a class="headerlink" href="#the-working-directory" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">The working directory</a><a class="headerlink" href="#the-working-directory" title="Permalink to this headline">¶</a></h3>
 <p>So far all of these examples have been <a class="reference internal" href="#term-relative-path"><span class="xref std std-term">relative</span></a>
 meaning that they start from the working directory.</p>
 <p>You can explicitly specify the working directory with a <code class="docutils literal notranslate"><span class="pre">.</span></code>.</p>
@@ -720,7 +773,7 @@ meaning that they start from the working directory.</p>
 </div>
 </div>
 <div class="section" id="parent-directory">
-<h3>Parent directory<a class="headerlink" href="#parent-directory" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Parent directory</a><a class="headerlink" href="#parent-directory" title="Permalink to this headline">¶</a></h3>
 <p>You can use <code class="docutils literal notranslate"><span class="pre">..</span></code> to indicate the parent directory. For example, I have an
 <code class="file docutils literal notranslate"><span class="pre">arduino</span></code> directory in the same directory as my working directory
 <code class="docutils literal notranslate"><span class="pre">python-class</span></code>. Here’s how I would list its contents.</p>
@@ -733,7 +786,7 @@ meaning that they start from the working directory.</p>
 </div>
 </div>
 <div class="section" id="absolute-paths">
-<h3>Absolute paths<a class="headerlink" href="#absolute-paths" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Absolute paths</a><a class="headerlink" href="#absolute-paths" title="Permalink to this headline">¶</a></h3>
 <p>When a path starts with a <code class="docutils literal notranslate"><span class="pre">/</span></code> or the drive (like <code class="docutils literal notranslate"><span class="pre">C:</span></code>) it is an
 <a class="reference internal" href="#term-absolute-path"><span class="xref std std-term">absolute</span></a> path. That means that it starts at the
 computers root directory and contains all of the information to get from
@@ -760,7 +813,7 @@ C:\Windows\system32
 </div>
 </div>
 <div class="section" id="the-home-directory">
-<h3>The home directory<a class="headerlink" href="#the-home-directory" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">The home directory</a><a class="headerlink" href="#the-home-directory" title="Permalink to this headline">¶</a></h3>
 <p>Operating systems designed to support multiple users usually keep each users
 files in their own directory not accessible to other users. This is called
 the <a class="reference internal" href="#term-home-directory"><span class="xref std std-term">home directory</span></a> and on most operating systems the tilde (<code class="docutils literal notranslate"><span class="pre">~</span></code>) is a
@@ -774,7 +827,7 @@ shortcut to the home directory for the current user.</p>
 </div>
 </div>
 <div class="section" id="exercise">
-<h3>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Exercise</a><a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h3>
 <div class="exercise notitle admonition" id="command-line-paths">
 <p class="admonition-title"><span class="caption-number">Exercise 43 </span>(command-line-paths)</p>
 <div class="section" id="exercise-content">
@@ -801,9 +854,9 @@ shortcut to the home directory for the current user.</p>
 </div>
 </div>
 <div class="section" id="paths-in-python">
-<h2>Paths in Python<a class="headerlink" href="#paths-in-python" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#table-of-contents">Paths in Python</a><a class="headerlink" href="#paths-in-python" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="path-strings-in-open">
-<h3>Path strings in <code class="docutils literal notranslate"><span class="pre">open()</span></code><a class="headerlink" href="#path-strings-in-open" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Path strings in <code class="docutils literal notranslate"><span class="pre">open()</span></code></a><a class="headerlink" href="#path-strings-in-open" title="Permalink to this headline">¶</a></h3>
 <p>The first argument to the <code class="docutils literal notranslate"><span class="pre">open()</span></code> function in Python is the path to a file.
 So far we’ve been using a simple filename. In the following example, a file
 named <code class="file docutils literal notranslate"><span class="pre">contacts.txt</span></code> in the working directory is opened.</p>
@@ -831,7 +884,7 @@ directory in the working directory.</p>
 </div>
 </div>
 <div class="section" id="path-objects">
-<h3><code class="docutils literal notranslate"><span class="pre">Path</span></code> objects<a class="headerlink" href="#path-objects" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents"><code class="docutils literal notranslate"><span class="pre">Path</span></code> objects</a><a class="headerlink" href="#path-objects" title="Permalink to this headline">¶</a></h3>
 <p>Python provides a <code class="docutils literal notranslate"><span class="pre">pathlib.Path</span></code> object which makes it easier to construct
 and manipulate cross-platform paths, provides handy methods for filesystem
 operations, and can be used in many of the places that string paths are used.</p>
@@ -848,7 +901,7 @@ object for the <code class="docutils literal notranslate"><span class="pre">READ
 </div>
 </div>
 <div class="section" id="using-path-objects-in-open">
-<h3>Using <code class="docutils literal notranslate"><span class="pre">Path</span></code> objects in <code class="docutils literal notranslate"><span class="pre">open()</span></code><a class="headerlink" href="#using-path-objects-in-open" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Using <code class="docutils literal notranslate"><span class="pre">Path</span></code> objects in <code class="docutils literal notranslate"><span class="pre">open()</span></code></a><a class="headerlink" href="#using-path-objects-in-open" title="Permalink to this headline">¶</a></h3>
 <p>You can use a <code class="docutils literal notranslate"><span class="pre">Path</span></code> object instead of a string for the first argument of the
 <code class="docutils literal notranslate"><span class="pre">open()</span></code> function.</p>
 <div class="literal-block-wrapper docutils container" id="id15">
@@ -865,7 +918,7 @@ object for the <code class="docutils literal notranslate"><span class="pre">READ
 </div>
 </div>
 <div class="section" id="validation-methods">
-<h3>Validation methods<a class="headerlink" href="#validation-methods" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Validation methods</a><a class="headerlink" href="#validation-methods" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">Path</span></code> objects provide some handy boolean methods for checking the status of
 a file or directory.</p>
 <ul class="simple">
@@ -898,7 +951,7 @@ exists and that it is a normal file before trying to read it.</p>
 </div>
 </div>
 <div class="section" id="id1">
-<h3>Exercise<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Exercise</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <div class="exercise notitle admonition" id="validating-paths">
 <p class="admonition-title"><span class="caption-number">Exercise 44 </span>(Validating paths)</p>
 <div class="section" id="exercise-content">
@@ -932,7 +985,7 @@ the user the file does not exist and return.</p>
 </div>
 </div>
 <div class="section" id="canonical-path">
-<h3>Canonical path<a class="headerlink" href="#canonical-path" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Canonical path</a><a class="headerlink" href="#canonical-path" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">Path</span></code> objects provide methods for handling absolute versus relative paths as
 well as converting symbols for the current operating system.</p>
 <table class="colwidths-auto table">
@@ -981,7 +1034,7 @@ well as converting symbols for the current operating system.</p>
 </table>
 </div>
 <div class="section" id="parts-of-a-path">
-<h3>Parts of a path<a class="headerlink" href="#parts-of-a-path" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Parts of a path</a><a class="headerlink" href="#parts-of-a-path" title="Permalink to this headline">¶</a></h3>
 <p>Python <code class="docutils literal notranslate"><span class="pre">Path</span></code> objects make it easy to access parts of a path without
 having to worry about which operating system is being used.</p>
 <table class="colwidths-auto table">
@@ -1037,7 +1090,7 @@ having to worry about which operating system is being used.</p>
 </div>
 </div>
 <div class="section" id="constructing-paths">
-<h3>Constructing paths<a class="headerlink" href="#constructing-paths" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Constructing paths</a><a class="headerlink" href="#constructing-paths" title="Permalink to this headline">¶</a></h3>
 <p>One way to construct paths in a way that will work on all operating systems
 is to use the <code class="docutils literal notranslate"><span class="pre">joinpath()</span></code> method to add a subdirectory or filename to an
 existing path.</p>
@@ -1094,7 +1147,7 @@ printed to the screen.</p>
 </div>
 </div>
 <div class="section" id="paths-relative-to-current-file">
-<h3>Paths relative to current file<a class="headerlink" href="#paths-relative-to-current-file" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Paths relative to current file</a><a class="headerlink" href="#paths-relative-to-current-file" title="Permalink to this headline">¶</a></h3>
 <p>The working directory in Python is the directory the current program was
 launched from. This can make using relative paths problematic because if the
 user runs the program from a different directory, the location of any
@@ -1121,7 +1174,7 @@ directory as the current file.</p>
 </div>
 </div>
 <div class="section" id="id2">
-<h3>Exercise<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Exercise</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <div class="exercise notitle admonition" id="constructing-paths-exercise">
 <p class="admonition-title"><span class="caption-number">Exercise 45 </span>(Constructing paths)</p>
 <div class="section" id="exercise-content">
@@ -1148,46 +1201,13 @@ directory as the current file.</p>
 </div>
 </div>
 <div class="section" id="reference">
-<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="path-examples">
-<h3>Path examples<a class="headerlink" href="#path-examples" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Example</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">groceries.txt</span></code></p></td>
-<td><p>a file in the working directory</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">./groceries.txt</span></code></p></td>
-<td><p>same as above</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Documents/groceries.txt</span></code></p></td>
-<td><p>a file in the Documents folder in the working directory</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/Users/pythonclass/Documents/groceries.txt</span></code></p></td>
-<td><p>absolute path to the <code class="docutils literal notranslate"><span class="pre">pythonclass</span></code> user’s Documents folder</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/home/pythonclass/Documents/groceries.txt</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">C:\Documents\groceries.txt</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p></p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
-</div>
+<h2><a class="toc-backref" href="#table-of-contents">Reference</a><a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="special-directories">
-<h3>Special directories<a class="headerlink" href="#special-directories" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Special directories</a><a class="headerlink" href="#special-directories" title="Permalink to this headline">¶</a></h3>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Directory</p></th>
-<th class="head"><p>CLI Symbol</p></th>
+<th class="head"><p>CLI</p></th>
 <th class="head"><p>Python</p></th>
 </tr>
 </thead>
@@ -1207,10 +1227,40 @@ directory as the current file.</p>
 </tbody>
 </table>
 </div>
+<div class="section" id="path-examples">
+<h3><a class="toc-backref" href="#table-of-contents">Path examples</a><a class="headerlink" href="#path-examples" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Example</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">groceries.txt</span></code></p></td>
+<td><p>a file in the working directory</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">./groceries.txt</span></code></p></td>
+<td><p>same as above</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Documents/groceries.txt</span></code></p></td>
+<td><p>a file in the Documents folder in the working directory</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/Users/pythonclass/Documents/</span></code></p></td>
+<td><p>MacOS path to the <code class="docutils literal notranslate"><span class="pre">pythonclass</span></code> user’s Documents folder</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/home/pythonclass/Documents/</span></code></p></td>
+<td><p>Unix path to the <code class="docutils literal notranslate"><span class="pre">pythonclass</span></code> user’s Documents folder</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">C:\Documents\</span></code></p></td>
+<td><p>Windows path to the <code class="docutils literal notranslate"><span class="pre">pythonclass</span></code> user’s Documents folder</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="glossary">
-<h3>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="glossary-paths">
-<h4>Paths<a class="headerlink" href="#glossary-paths" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#table-of-contents">Paths</a><a class="headerlink" href="#glossary-paths" title="Permalink to this headline">¶</a></h4>
 <dl class="glossary">
 <dt id="term-absolute-path">absolute path<a class="headerlink" href="#term-absolute-path" title="Permalink to this term">¶</a></dt><dd><p>A complete path starting from the <a class="reference internal" href="#term-root-directory"><span class="xref std std-term">root directory</span></a>.</p>
 </dd>
@@ -1237,7 +1287,7 @@ the directory that the shell or script was started from.</p>
 </div>
 </div>
 <div class="section" id="see-also">
-<h3>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">See also</a><a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">

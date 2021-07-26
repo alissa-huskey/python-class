@@ -16,36 +16,10 @@ For Loops
 A `while` loop continues for as long as a condition is met, a `for` loop on the
 other hand repeats for every element in an iterable.
 
-% TODO
-% [ ] break and continue
-% [ ] different types, converting using list()
-% [ ] iterators are one way
-% [ ] enumerate()
-% [x] multiple assignment
-% [x] exercises
-% [x] fix old exercses
-
-
-Table of Contents
------------------
-
-* [Syntax](#syntax)
-   * [Exercise](#exercise)
-* [Iterables and iterators](#iterables-and-iterators)
-   * [Exercise](#exercise-1)
-* [Under the hood](#under-the-hood)
-   * [Exercise](#exercise-2)
-* [Multiple assignment](#multiple-assignment)
-   * [Exercise](#exercise-3)
-* [Comparing loops](#comparing-loops)
-   * [Example A: list iteration with next()](#example-a-list-iteration-with-next)
-   * [Example B: range iteration with next()](#example-b-range-iteration-with-next)
-   * [Example C: list iteration with subscription](#example-c-list-iteration-with-subscription)
-   * [Example D: string iteration with subscription](#example-d-string-iteration-with-subscription)
-* [Exercises](#exercises)
-* [Reference](#reference)
-   * [Glossary](#glossary)
-   * [See also](#see-also)
+```{contents} Table of Contents
+:backlinks: top
+:local:
+```
 
 Syntax
 ------
@@ -794,14 +768,6 @@ iterator
   `next()`,  which, when called repeatedly, will keep returning elements until
   there are no more left.
 
-subscript
-subscription
-bracket notation
-  Accessing an element from a collection object using `[` `]` after the object
-  which enclose a selector expression. The expression may be an index number,
-  key, or slice depending on its type. \
-  The syntax is: {samp}`{COLLECTION}[{SELECTOR}]`.
-
 multiple assignment
   Assigning the contents of an itrable to multiple variables on the same line
   with the same number of variables names to the left of the `=` as there are
@@ -823,3 +789,13 @@ multiple assignment
 
 ```
 
+----
+
+% TODO .....
+% [ ] break and continue
+% [ ] different types, converting using list()
+% [ ] iterators are one way
+% [ ] enumerate()
+% [x] multiple assignment
+% [x] exercises
+% [x] fix old exercses

@@ -1,3 +1,17 @@
+// add In: and Out: before cell_input and cell_output
+function addCellLabels() {
+  console.log("addCellLabels()>")
+
+  prompt_in = jQuery("<div>").html("In:").addClass("prompt").addClass("prompt-in")
+  prompt_out = jQuery("<div>").html("Out:").addClass("prompt").addClass("prompt-out")
+
+  console.log(prompt_in)
+  console.log(prompt_out)
+
+  prompt_in.insertBefore(".cell_input")
+  prompt_out.insertBefore(".cell_output")
+}
+
 // move the code-block captions to under the code blocks
 function addBodyId() {
   url = window.location.href.split("#")[0]
@@ -49,4 +63,5 @@ function fixFullWidth() {
 document.addEventListener("DOMContentLoaded", fixCaptions);
 document.addEventListener("DOMContentLoaded", addBodyId);
 document.addEventListener("DOMContentLoaded", fixFullWidth);
+document.addEventListener("DOMContentLoaded", addCellLabels);
 

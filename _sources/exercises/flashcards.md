@@ -134,16 +134,17 @@ the beginning or end of the line also need to be removed.
 1. [ ] remove leading and trailing whitespace by calling the `.strip()` method
        on `card["front"]` and `card["back"]`
 
-### part 8: Skip the header row
+### part 8: Skip the header row and blank lines
 
 To avoid having a flashcard pop up that reads `"front"`, don't append the
-header row to the `cards` `list`.
+header row to the `cards` `list`. Also skip any blank lines in the file.
 
 ```{rubric} in load_csv(), **in** the readlines() loop, **before** append
 ```
 
 1. [ ] check if `card["front"]` is `"front"` and `card["back"]` is `"back"`. If so,
     `continue` to avoid appending to the cards list
+1. [ ] check if `line` is equal to `"\n"`. If so, `continue`.
 
 ### Part 9: Start the `play()` function
 
@@ -265,10 +266,70 @@ these suggestions to your taste.
        the argument `WIDTH`. For example, the {samp}`card {x} of {y}` line.
 1. [ ] print {samp}`"{score} of {total}"` after the end of each card
 
+### Part 13: Wrap long questions
+
+In this part wrap questions that are too long so that they are split into multiple lines.
+
+```{rubric} at the top of your file
+```
+
+1. [ ] If you want your questions to be wrap at a shorter length than `WIDTH`, set a `MAXWIDTH` global variable.
+1. [ ] `import` the `textwrap` module
+
+```{rubric} in play(), **in** the loop
+```
+
+1. [ ] Call `textwrap.wrap()` with the arguments `card["front"]` and the width
+       you want to wrap at, either `MAXWIDTH` or `WIDTH`. This will return a
+       `list` of strings, where each item is a line. Assign the results to a
+       variable `lines`.
+1. [ ] Remove the code that prints `card["front"]`
+1. [ ] Iterate over the `lines` list, and print each item.
+
+### Part 14: Add topics menu
+
+This section will add a menu to print the name (minus the `.csv` extension) of
+each of the csv files in your flashcards directory and allow the user to choose
+one or more files to load.
+
+```{rubric} at the top of your file
+```
+
+1. Make a list assigned to the global variable `TOPICS`
+
+```{rubric} menu()
+```
+
+1. write a `menu()` function
+1. assign `TOPICS` to a list of `Path` objects in your flashcards directory using the `.iterdir()` method
+1. print an error message if no files are found in your flashcards directory
+1. print the filename minus the `.csv` extension for each `Path` object in the `TOPICS` list, next to a number
+1. print a special option `"all"` with a menu selection of `0`
+
+1. make a `list` assigned to the variable `selection`
+1. get input from the user asking them to choose one or more topics and assign it to a variable `choices`
+1. use the `.split()` method to split `choices` into multiple items on whitespace
+1. iterate over each response and assign to `num`:
+    * if the response is `"0"`, return `TOPICS`
+    * convert `num` to an int and subtract `1`
+    * get the item from `TOPICS` at the `num` index and append it to `selection` list
+1. return the `selection` list
+
+```{rubric} in main()
+```
+
+1. at the beginning of the function, make an empty `cards` list
+1. call `menu()` and assign the returned value to the variable `paths`
+1. remove the line where you previously defined the path to your `.csv` file
+1. iterate over `paths` and assign each element to the variable `path`:
+    * call `load_csv()` with the `path` argument
+    * append the returned value to `cards` using the `.extend()` method
+
 Bonus ideas
 -----------
 
 * keep a log with dates and scores
+* allow csv file to store alternate answers
 * make extra flashcard files, then add a menu to allow the user to select
   which topic(s) they would like to be quizzed on
 * add an optional limit argument to limit the number of cards to go

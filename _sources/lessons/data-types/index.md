@@ -14,6 +14,11 @@ So it is with data. Every piece of data has a type and that type dictates
 things like what methods and attributes it has, what functions it can be passed
 to, and what other types of data it can play nicely with.
 
+```{contents} Table of Contents
+:backlinks: top
+:local:
+```
+
 Classes and instances
 ---------------------
 

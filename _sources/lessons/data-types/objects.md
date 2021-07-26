@@ -4,6 +4,11 @@ Objects
 Python has a special type `object` which is the ancestor to all types in
 Python.
 
+```{contents} Table of Contents
+:backlinks: top
+:local:
+```
+
 The object type by itself is not terribly useful. You can see that `object` is
 a type and you can create an object instance just like you would with any
 other type. But you can't really do much with an object instance.

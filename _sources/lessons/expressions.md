@@ -113,6 +113,7 @@ evaluate
 expression
   a unit of code that can be solved to a single value
 
+LHV
 left-hand value
   the value to the left of an operator
 
@@ -120,6 +121,7 @@ operator
   A symbol with special meaning that tells the computer to do something (for
   example `=`, `+`, or `==`).
 
+RHV
 right-hand value
   the value to the right of an operator
 
