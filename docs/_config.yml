@@ -42,7 +42,11 @@ parse: &parse
                               - colon_fence
                               - deflist
                                 # - tasklist  # pending myst-parser v 0.14.0+
-  myst_substitutions        : { "clear": '<div class="clearfix"></div>' }
+  myst_substitutions        :
+    clear                   : '<div class="clearfix"></div>'
+    leftcol                 : '<div class="row"><div class="col">'
+    rightcol                : '</div><div class="col">'
+    endcols                 : '</div></div>'
 
 launch_buttons: &launch_buttons
   notebook_interface        : jupyterlab
@@ -58,6 +62,7 @@ sphinx:
                               - sphinx_exercise
                               - sphinx_panels
                               - code_highlighter
+                              - sphinxcontrib.kroki
   local_extensions          :
     lexicon                 : _ext
     fieldlist               : _ext

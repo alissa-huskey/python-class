@@ -1,168 +1,451 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
 Lists
 =====
 
-:Type: `list`
+{{ leftcol | replace("col", "col-8")  }}
+
+An ordered collection of arbitrary objects accessed via index numbers.
+
+```{contents} Table of Contents
+:backlinks: top
+:local:
+```
+
+{{ rightcol | replace("col", "col-4 text-right") }}
 
 :::{fieldlist}
 
-:Type: `list`
-:Synatx: `[` `]`
-:Mutable: Yes
-:Ordered: Yes
-:Sequence: Yes
-:Unique: No
+:Type:        `list`
+:Synatx:      {samp}`[{item},...]`
+:Bases:       Sequence, Iterable
+:State:       Mutable
+:Position:    Ordered
+:Composition: Heterogeneous
+:Diversity:   Repeatable
+:Access:      Subscriptable
+:Value:       Not hashable
 
 :::
 
-Table of Contents
------------------
+{{ endcols }}
 
-* [Creating](#creating)
-* [Accessing Elements](#accessing-elements)
-* [Changing Elements](#changing-elements)
-* [Checking Membership](#checking-membership)
-* [Iteration](#iteration)
-* [Ordering](#ordering)
-* [List Information](#list-information)
-* [Copying](#copying)
-* [Transformation](#transformation)
-* [Convert To List](#convert-to-list)
-* [Convert From List](#convert-from-list)
+```{code-cell} python
+:tags: [remove-input, thebe-init]
+"""setup pprint method"""
 
-Introduction
-------------
+from pprint import pformat
 
-List elements have an index number which always starts at 0 and increases for each element in the list.
-
-Creating
---------
-
-```python
-mylist = list()                           # create an empty list
-mylist = []                               # create an empty list
-mylist = [1, 2, 3]                        # create a list with elements 1, 2 and 3
+def pprint(obj):
+  """pretty print obj if defined, otherwise print an equal number of lines"""
+  if obj:
+    print(pformat(obj, width=40))
+  else:
+    print("-" + ("\n"*(len(GLOBAL)-1)) + repr(obj))
 ```
 
-Accessing Elements
-------------------
+Basics
+------
 
-```python
-# by index address
-mylist[0]                                 # first element value
-mylist[1]                                 # second element value
-mylist[-1]                                # last element value
-# by slice
-mylist[1:3]                               # slice of the list, starting at
-mylist[1:]                                # slice of the list except for the first element
-mylist[:-1]                               # slice of the list except for the last element
-mylist[3:6:2]                             # slice with every other element between mylist[3] and mylist[6]
-# by value
-mylist.index("bacon")                     # get the index number of value "bacon"
+### Creating
+
+There are several ways to create a new list. The simplest is to enclose the
+elements, seperated by commas, in square brackets (`[` and `]`):
+
+```{code-cell} python
+:tags: [thebe-init]
+cities = ["London", "Paris", "Berlin"]
 ```
 
-Changing Elements
------------------
-
-```python
-# set value
-mylist[0] = "eggs"                        # set value by index
-mylist[2:4] = [ "eggs", "bread" ]         # set value by slice
-
-# add element(s)
-mylist.insert(0, "pancakes")              # add element at index 0 (the beginning of the list)
-mylist.append("tacos")                    # add an element to the end of the list
-mylist.extend([4,5,6])                    # add all elements to the end of the list
-mylist + [7,8,9]                          # add all elements to the end of the list
-mylist * 3                                # a list that contains the contents of mylist repeated three times
-
-# remove element(s)
-del mylist[2]                             # remove an element by index
-del mylist[2:4]                           # remove element by slice
-mylist.remove("bacon")                    # remove element by element
-mylist.pop()                              # remove and return the last element
-mylist.clear()                            # remove all elements
+```{code-cell} python
+:tags: [thebe-init, remove-input]
+# set global to cities list for pprint
+GLOBAL = cities
 ```
 
-Checking Membership
--------------------
+Each element is assigned a successive {term}`index number`, starting at `0`.
+Under the hood, the `cities` list looks like this:
 
-```python
-val in mylist                             # check if list contains val
+```{kroki}
+:type: ditaa
++----------------------------------------+
+|                                        |
+| cities (list)                          |
+|                                        |
+|   +----------+----------+----------+   |
+|   |          |          |          |   |
+|   | London   | Paris    | Berlin   |   |
+|   |          |          |          |   |
+|   +----------+----------+----------+   |
+|   |    0 cCFF|    1 cCFF|    2 cCFF|   |
+|   +----------+----------+----------+   |
+|   |   -3 cCCF|   -2 cCCF|   -1 cCCF|   |
+|   +----------+----------+----------+   |
+|                                        |
++----------------------------------------+
+
+  /----\               /----\
+  |cCFF| index number  |cCCF| negative index
+  \----/               \----/
+
+```
+
+### Accessing
+
+Items are accessed via {term}`subscription`, using `[` `]` after the object
+to enclose a selector expression. For example, use the index number to select
+an individual item.
+
+```{code-cell} python
+print(cities[0])
+```
+
+You can use a negative index number to access elements starting at the end.
+
+Negative index numbers are shorthand for
+{samp}`{length of list} + {negative index value}`.
+
+```{code-cell} python
+print(cities[-1])
+```
+
+Subscription is also used to change list elements.
+
+```{code-cell} python
+cities[1] = "Amsterdam"
+print(cities)
+```
+
+### Adding
+
+To add an element to the end of a list, use the `.append()` method.
+
+```{code-cell} python
+:tags: [thebe-init]
+cities.append("Dublin")
+print(cities)
+```
+
+Or you can add an item at a specific position with the `.insert()` method.
+
+```{code-cell} python
+:tags: [thebe-init]
+cities.insert(1, "Italy")
+print(cities)
+```
+
+Or you can add all the items from another {term}`iterable` with the `.extend()`
+method.
+
+```{code-cell} python
+:tags: [thebe-init]
+cities.extend(["San Francisco", "Brooklyn", "Denver"])
+pprint(cities)
+```
+
+### Removing
+
+Use the `del` keyword to remove an element by index.
+
+```{code-cell} python
+:tags: [thebe-init]
+del cities[1]
+print(cities)
+```
+
+Or to remove an element by value, use the `.remove()` method.
+
+```{code-cell} python
+:tags: [thebe-init]
+cities.remove("London")
+print(cities)
+```
+
+Values
+------
+
+The `list` type is {term}`heterogeneous`, which means it can contain arbitrary
+objects of any type. So far in this lesson our example list has contained all
+`str` objects.  But in fact, we can mix and match.
+
+```{code-cell} python
+[None, True, 'two', 3.0, 4]
+```
+
+We can use {term}`multiple assignment` to easily assign assign all of the
+values in a list to a series of variables.
+
+```{code-cell} python
+book = [5, "Hitchhiker's Guide to the Galaxy", "Douglas Adams", 1979]
+
+rating, title, author, year = book
+
+print(f"{title} ({year}) by {author}: {rating} stars")
+```
+
+Lists can also contain other lists.
+
+```{code-cell} python
+:tags: [thebe-init]
+meals = [
+  ["omelet", "turkey wrap", "tacos"],
+  ["oatmeal", "turkey burger", "tamales"],
+  ["yogurt", "chicken salad", "enchiladas"],
+]
+```
+
+You can access items in the nested lists by using multiple indexing operations.
+
+```{code-cell} python
+print(f"Dinner tonight is: {meals[0][2]}.")
+print(f"Tomorrow for breakfast we're having: {meals[1][0]}.")
 ```
 
 Iteration
 ---------
 
-```python
-for elm in mylist:                        # iterate over each element value
-for i, elm in enumerate(mylist):          # iterate over each index number and element value
+Iterate over each element using a `for` loop.
+
+```{code-cell} python
+for item in cities:
+  print(item)
 ```
 
-Ordering
---------
+To include the index number, use the `enumerate()` function.
 
-```python
-mylist = [2,4,1,3,5]
-mylist.sort()                             # [1,2,3,4,5] sort values in ascending order in-place (returns None)
-mylist.sort(reverse=True)                 # [5,4,3,2,1] sort values in decending order in-place (returns None)
-mylist.reverse()                          # [5,3,1,4,2] reverse order of values in-place (returns None)
-mylist.sort(key=lambda v:len(v))          # sort values by lambda function results in-place (returns None)
-sorted(mylist)                            # [1,2,3,4,5] return list with contents of mylist in ascending order
-sorted(mylist, reverse=True)              # [5,4,3,2,1] return list with contents of mylist in decending order
-list(reversed(mylist))                    # [5,3,1,4,2] return list with contents of mylist in reverse order
-sorted(mylist, key=lambda v: len(v))      # return list sorted by lambda function results
+```{code-cell} python
+for i, item in enumerate(cities):
+  print(i, item)
 ```
 
-List Information
-----------------
+To iterate over a nested list, you'll need nested for loops. The `VAR` in the
+first loop will point to the child list; the nested `VAR` will point to the
+child list elements.
 
-```python
-len(mylist)                               # list length
-max(mylist)                               # maximum value in list
-min(mylist)                               # maximum value in list
-mylist.count("purple")                    # number of times value occurs in list
+```{code-cell} python
+table = [
+  [1, 2, 3, 4],
+  [2, 4, 6, 8],
+  [3, 6, 9, 12],
+  [4, 8, 12, 16],
+]
 
-sum(mylist)                               # sum of all list values
+# iterate over the table list and assign each child list to row
+for row in table:
+
+   # iterate over the child list and assign each element to product
+   for product in row:
+
+       # print the number, right aligned, followed by two spaces
+       print(str(product).rjust(2), end="  ")
+
+   # print a new line at the end of every row
+   print()
 ```
 
-Copying
+If you are certain to have the same number of items in every row, you can use
+multiple assignment in the for loop `VAR`.
+
+```{code-cell} python
+for breakfast, lunch, dinner in meals:
+   print(f"Breakfast: {breakfast}")
+   print(f"Lunch: {lunch}")
+   print(f"Dinner: {dinner}")
+   print()
+```
+
+You can even combine this technique with `enumerate()` elements by enclosing
+the child element variable names in `(` `)`.
+
+
+```{code-cell} python
+for i, (breakfast, lunch, dinner) in enumerate(meals):
+   if i == 0:
+       day = "Today"
+   elif i == 1:
+       day = "Tomorrow"
+   else:
+       day = f"In {i} days"
+
+   print(f"### {day}\n")
+   print(f"Breakfast: {breakfast}")
+   print(f"Lunch: {lunch}")
+   print(f"Dinner: {dinner}")
+   print()
+```
+
+Slices
+------
+
+You often want to extract part of a list. This could be accomplished using a
+`for` loop, for example:
+
+```{code-cell} python
+partial, start, stop = [], 2, 5
+
+for i, item in enumerate(cities):
+  if i >= start and i < stop:
+    partial.append(item)
+
+print(partial)
+```
+
+Python provides handy dandy slice functionality, which is also supported by
+subscription.
+
+The syntax is: {samp}`{COLLECTION}[{START}:{STOP}]`
+
+Using this feature we can extract the same part of the list like so:
+
+```{code-cell} python
+cities[2:5]
+```
+
+A missing `STOP` value will default to the end of the list.
+
+```{code-cell} python
+cities[2:]
+```
+
+A missing `START` value will default to the beginning of the list.
+
+```{code-cell} python
+cities[:2]
+```
+
+If both are missing, the slice will be a copy of the whole list.
+
+```{code-cell} python
+cities[:]
+```
+
+Membership
+----------
+
+Check if list contains value using the `in` operator:
+
+```{code-cell} python
+"London" in cities
+```
+
+Check if list does not contains value using the `not in` operator:
+
+```{code-cell} python
+"London" not in cities
+```
+
+To look up the index number of a particular value, use the `.index()` method.
+
+Get the first index number of value:
+
+```{code-cell} python
+cities.index("Dublin")
+```
+
+Sorting
 -------
 
-```python
-mylist = otherlist                        # create a reference to otherlist
-mylist = otherlist.copy()                 # create a new list with references to the contents of otherlist
-mylist = otherlist[:]                     # create a new list with references to the contents of otherlist
-mylist = copy.deepcopy(otherlist)         # create a new list with the contents of otherlist
+There are two ways to sort a list
+
+* {samp}`sorted({list})` -- returns a new sorted list
+* {samp}`{list}.sort()` -- sorts the list in place
+
+To demonstrate this, we'll use the `FRUIT` list.
+
+```{code-cell} python
+:tags: [thebe-init]
+# define global FRUIT list
+FRUIT = ["cherry", "apple", "date", "bananna", "elderberry"]
+```
+We'll make copies and sort using both methods side by side.
+
+```{code-cell} python
+:tags: [thebe-init, remove-input]
+# set global to FRUIT list for pprint
+GLOBAL = FRUIT
 ```
 
-Transformation
---------------
+{{ leftcol }}
 
-```python
-[ int(x) for x in mylist ]                # list comprehension: mapping
-[ x for x in mylist if x ]                # list comprehension: filtering
-map(int, mylist)                          # mapping
+```{rubric} Returned sorting
 ```
 
-Convert To List
----------------
-
-```python
-# from string
-list("abc")                               # ['a', 'b', 'c']
-"list info search".split()                # ['list', 'info', 'search']
-re.split(r"[./]", "github.com/git")       # ['github', 'com', 'git']
-
-# from dict
-list(mydict)                              # values
-list(mydict.values())                     # values
-list(mydict.keys())                       # keys
+```{code-cell} python
+:tags: [thebe-init]
+# make a fresh copy of FRUIT
+fruit = FRUIT[:]
+pprint(fruit)
 ```
 
-Convert From List
------------------
-
-```python
-"".join(mylist)                          # to string
-dict([("a", 1), ("b", 2)])               # to dict
+```{code-cell} python
+:tags: [thebe-init]
+# sorted() returns a new list
+result = sorted(fruit)
+pprint(result)
 ```
+
+```{code-cell} python
+# and leaves fruit alone
+pprint(fruit)
+```
+
+{{ rightcol }}
+
+```{rubric} In-place sorting
+```
+
+```{code-cell} python
+:tags: [thebe-init]
+# make a fresh copy of FRUIT
+fruit = FRUIT[:]
+pprint(fruit)
+```
+
+```{code-cell} python
+:tags: [thebe-init]
+# .sort() returns None
+result = fruit.sort()
+pprint(result)
+```
+
+```{code-cell} python
+# but fruit was modified in place
+pprint(fruit)
+```
+
+{{ endcols }}
+
+Reference
+---------
+
+```{glossary} lists
+
+heterogeneous
+  ...
+
+```
+
+```{seealso}
+
+* [Lists Reference](../../reference/lists.md)
+
+```
+
+----
+
+% TODO
+% - [x] nesting
+% - [ ] copying
+% - [ ] exercises
+% - [ ] glossary terms
+% - [x] multiple assignment

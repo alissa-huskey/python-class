@@ -13,6 +13,11 @@ computer.
 Paths are used in pretty much all programming languages as well as on the
 command line, which we'll be learning about today.
 
+```{contents} Table of Contents
+:backlinks: top
+:local:
+```
+
 Exploring files on the command line
 -----------------------------------
 
@@ -469,25 +474,24 @@ def print_script():
 Reference
 ---------
 
-### Path examples
-
-| Example                                         | Description                                                 |
-|-------------------------------------------------|-------------------------------------------------------------|
-| `groceries.txt`                                 | a file in the working directory                             |
-| `./groceries.txt`                               | same as above                                               |
-| `Documents/groceries.txt`                       | a file in the Documents folder in the working directory     |
-| `/Users/pythonclass/Documents/groceries.txt`    | absolute path to the `pythonclass` user's Documents folder  |
-| `/home/pythonclass/Documents/groceries.txt`     |                                                             |
-| `C:\Documents\groceries.txt`                    |                                                             |
-|                                                 |                                                             |
-
 ### Special directories
 
-| Directory  | CLI Symbol   | Python                |
-|------------|--------------|-----------------------|
-| home       | `~`          | `Path.home()`         |
-| working    | `.`          | `Path.cwd()`          |
-| parent     | `..`         | {samp}`{path}.parent` |
+| Directory  | CLI   | Python                |
+|------------|-------|-----------------------|
+| home       | `~`   | `Path.home()`         |
+| working    | `.`   | `Path.cwd()`          |
+| parent     | `..`  | {samp}`{path}.parent` |
+
+### Path examples
+
+| Example                                         | Description                                                    |
+|-------------------------------------------------|----------------------------------------------------------------|
+| `groceries.txt`                                 | a file in the working directory                                |
+| `./groceries.txt`                               | same as above                                                  |
+| `Documents/groceries.txt`                       | a file in the Documents folder in the working directory        |
+| `/Users/pythonclass/Documents/`                 | MacOS path to the `pythonclass` user's Documents folder        |
+| `/home/pythonclass/Documents/`                  | Unix path to the `pythonclass` user's Documents folder         |
+| `C:\Documents\`                                 | Windows path to the `pythonclass` user's Documents folder      |
 
 ### Glossary
 

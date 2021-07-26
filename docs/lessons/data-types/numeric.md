@@ -2,7 +2,16 @@ Numeric Types
 =============
 
 Nearly every program uses numbers at some point, whether you are keeping track
-of a game score or doing calculations for graphics.
+of a game score or doing calculations for graphics. In this lesson we'll be
+learning about the numeric types provided by Python.
+
+```{contents} Table of Contents
+:backlinks: top
+:local:
+```
+
+Introduction
+------------
 
 Numbers are {term}`primitive data types <primitive data type>`, meaning they
 are the basic building blocks that make up other types.
@@ -10,7 +19,7 @@ are the basic building blocks that make up other types.
 Python provides four numeric types:
 
 | Name       | Type       | Description            | Example |
-|------------|------------|------------------------|---------|
+|------------|------------|------------------------|--------:|
 | Integer    | `int`      | whole numbers          |  `1`    |
 | Float      | `float`    | floating point numbers |  `1.0`  |
 | Boolean    | `bool`     | `True` or `False`      |  `True` |
@@ -108,24 +117,34 @@ fact underscores can be used anywhere between digits.
 
 The following operators are available to all numeric types.
 
-#### Unary sign operators
+{{ leftcol }}
+
+:::{table} Arithmetic operators
+
+| Sign | Meaning                      | Example    |
+|------|------------------------------|-----------:|
+| `+`  | addition                     | `1+2`      |
+| `-`  | subtraction                  | `2-1`      |
+| `*`  | multiplication               | `2*2`      |
+| `/`  | division                     | `4/2`      |
+| `%`  | modulus (remainder)          | `5%2`      |
+| `**` | exponent (power)             | `2**4`     |
+| `//` | floor division (quotient)    | `5//2`     |
+
+:::
+
+{{ rightcol }}
+
+:::{table} Unary sign operators
 
 | Sign | Meaning                | Example |
-|------|------------------------|---------|
+|------|------------------------|--------:|
 | `-`  | negative               | `-1`    |
 | `+`  | positive or unchanged  | `+1`    |
 
-#### Arithmetic operators
+:::
 
-| Sign | Meaning                      | Example           |
-|------|------------------------------|-------------------|
-| `+`  | addition                     | `1+2`             |
-| `-`  | subtraction                  | `2-1`             |
-| `*`  | multiplication               | `2*2`             |
-| `/`  | division                     | `4/2`             |
-| `%`  | modulus (remainder)          | `5%2`             |
-| `**` | exponent (power)             | `2**4`            |
-| `//` | floor division (quotient)    | `5//2`            |
+{{ endcols }}
 
 ### Functions
 
@@ -177,12 +196,20 @@ Numeric types can all be used as arguments to the following built-in functions.
 Integers
 --------
 
+{{ leftcol }}
+
 An integer is a whole number with no decimal places.
 
-|                 |                    |
-|-----------------|--------------------|
-| **Type**        | `int`              |
-| **Base Class**  | `numbers.Integral` |
+{{ rightcol | replace("col", "col text-right") }}
+
+:::{fieldlist}
+
+:Type:        `int`
+:Base:  `numbers.Integral`
+
+:::
+
+{{ endcols }}
 
 ```{code-block} python
 :caption: Python shell
@@ -208,7 +235,7 @@ syntax and functions for hexadecimal (base-16), octal (base-8), and binary
 (base-2).
 
 | System      | Function | Base  | Prefix       | Example  |
-|-------------|----------|-------|--------------|----------|
+|-------------|----------|-------|--------------|---------:|
 | hexadecimal |  `hex()` |  `16` | `0x` or `0X` | `0x12`   |
 | octal       |  `oct()` |  `8`  | `0o` or `0O` | `0o12`   |
 | binary      |  `bin()` |  `2`  | `0b` or `0B` | `0b10`   |
@@ -267,12 +294,20 @@ Moreover, the `int()` type takes an optional keyword argument `base` that can be
 Boolean
 -------
 
+{{ leftcol }}
+
 The boolean data type has just two values: `True` and `False`.
 
-|                 |                    |
-|-----------------|--------------------|
-| **Type**        | `bool`             |
-| **Base Class**  | `numbers.Integral` |
+{{ rightcol | replace("col", "col text-right") }}
+
+:::{fieldlist}
+
+:Type: `bool`
+:Base: `numbers.Integral`
+
+:::
+
+{{ endcols }}
 
 
 ```{code-block} python
@@ -317,21 +352,21 @@ False
 
 Which is what is used when evaluating a conditional statement. For example, the following two are equivalent.
 
-<div class="row"><div class="col">
+{{ leftcol }}
 
 ```{code-block} python
 if []:
   # do stuff
 ```
 
-</div><div class="col">
+{{ rightcol }}
 
 ```{code-block} python
 if bool([]):
   # do stuff
 ```
 
-</div>
+{{ endcols }}
 
 Under the hood `True` is equal to `1` and `False` is equal to `0`. Since `1`
 and `0` are integers, the `bool` type is just a special kind of integer. That
@@ -355,12 +390,20 @@ means that we can usually use booleans as numbers for all intents and purposes.
 Floating point numbers
 ----------------------
 
+{{ leftcol }}
+
 Floating point values are numbers with a decimal point.
 
-|                 |                    |
-|-----------------|--------------------|
-| **Type**        | `float`            |
-| **Base Class**  | `numbers.Real`     |
+{{ rightcol | replace("col", "col text-right") }}
+
+:::{fieldlist}
+
+:Type: `float`
+:Base: `numbers.Real`
+
+:::
+
+{{ endcols }}
 
 ```{code-block} python
 >>> 1.
@@ -473,13 +516,21 @@ answer for now is to use the `round()` function.
 Complex numbers
 ---------------
 
+{{ leftcol | replace("col", "col-8")  }}
+
 Complex numbers provide support for imaginary numbers, primarily used in
 scientific, geometry, or calculus calculations.
 
-|                 |                    |
-|-----------------|--------------------|
-| **Type**        | `complex`          |
-| **Base Class**  | `numbers.Complex`  |
+{{ rightcol | replace("col", "col-4 text-right") }}
+
+:::{fieldlist}
+
+:Type: `complex`
+:Base: `numbers.Complex`
+
+:::
+
+{{ endcols }}
 
 They are comprised of a real component combined with a `+` to an imaginary
 component indicated with a `j` or `J`.  The most commonly syntax is

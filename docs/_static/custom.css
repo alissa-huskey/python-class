@@ -7,12 +7,66 @@ div.exercise.notitle p.admonition-title::after {
 }
 
 /********************
+/* Table of Contents
+/********************/
+
+div.contents {
+  border: 1px solid #c9c9c9;
+  /* background-color: #fafafa; */
+  background-color: var(--light);
+}
+
+/********************
+/* code cells
+/********************/
+
+.cell_output {
+  padding-left: 0;
+  margin-top: 0;
+}
+
+.cell_output > .output {
+  margin-top: 0;
+}
+
+div.cell_output.docutils.container > div.output > div.highlight {
+  border: 1px solid #c9c9c9 !important;
+}
+
+.cell_input, .cell_output {
+  margin-left: 2.5em;
+}
+
+.cell_output > .output {
+  margin-top: 0.5em;
+}
+
+.cell > .prompt {
+  display: inline;
+  font-family: monospace;
+  float: left;
+  width: 2.5em;
+  padding-right: 3px;
+  text-align: right;
+  color: #999;
+}
+
+/* .cell > .prompt-in { */
+/*   color: #303F9F; */
+/* } */
+
+.cell > .prompt-out {
+  /* color: #D84315; */
+  margin-top: 1em;
+}
+
+/********************
 /* Field lists
 /********************/
 
 dl.field-list {
-  display: grid;
-  grid-template-columns: fit-content(20%) fit-content(70%);
+  display: inline-grid;
+  grid-template-columns: max-content max-content;
 }
 
 .field-list dt {
@@ -23,8 +77,14 @@ dl.field-list {
 .field-list dd {
   grid-column-start: 2;
   margin-left: 1em !important;
+  text-align: left;
+  inline-size: fit-content;
 }
 
+.field-list dd p {
+  display: inline;
+  inline-size: fit-content;
+}
 
 /********************
 /* misc
@@ -94,6 +154,17 @@ table.table td.text-align\:right code,
 table.table td.text-align\:right .pre {
   text-align: right;
 }
+
+table.table thead tr th p,
+table.table tr td p {
+  margin: 0;
+}
+
+table.table thead tr th,
+table.table tr td {
+  padding: .3rem .5rem;
+}
+
 
 /********************
 /* admonitions
