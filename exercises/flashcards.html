@@ -603,11 +603,21 @@
      Part 14: Add topics menu
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-15-allow-answers-with-commas">
+     Part 15: Allow answers with commas
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#bonus-ideas">
    Bonus ideas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#card-data">
+   Card data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -932,6 +942,30 @@ one or more files to load.</p>
 </li>
 </ol>
 </div>
+<div class="section" id="part-15-allow-answers-with-commas">
+<h3>Part 15: Allow answers with commas<a class="headerlink" href="#part-15-allow-answers-with-commas" title="Permalink to this headline">¶</a></h3>
+<p>Many answers have commas in them, so instead of manually parsing the csv file,
+lets use the built in <code class="docutils literal notranslate"><span class="pre">csv</span></code> module.</p>
+<p class="rubric">at the top of your file</p>
+<ol class="simple">
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">import</span></code> the <code class="docutils literal notranslate"><span class="pre">csv</span></code> module</p></li>
+</ol>
+<p class="rubric">in load_csv() after opening your file</p>
+<ol>
+<li><p>Create a new csv reader like so:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span>
+    <span class="n">fh</span><span class="p">,</span>
+    <span class="n">quotechar</span><span class="o">=</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span>
+    <span class="n">skipinitialspace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">escapechar</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Instead of itearting over <code class="docutils literal notranslate"><span class="pre">fh.readlines()</span></code>, iterate over the <code class="docutils literal notranslate"><span class="pre">reader</span></code>
+object, which will yields a <code class="docutils literal notranslate"><span class="pre">list</span></code> of values in each <code class="docutils literal notranslate"><span class="pre">row</span></code>.</p></li>
+</ol>
+</div>
 </div>
 <div class="section" id="bonus-ideas">
 <h2>Bonus ideas<a class="headerlink" href="#bonus-ideas" title="Permalink to this headline">¶</a></h2>
@@ -944,6 +978,18 @@ which topic(s) they would like to be quizzed on</p></li>
 through at a time</p></li>
 <li><p>add extra columns to flashcards files to keep track of each time you get the</p></li>
 <li><p>answer right and wrong, use this to generate reports</p></li>
+</ul>
+</div>
+<div class="section" id="card-data">
+<h2>Card data<a class="headerlink" href="#card-data" title="Permalink to this headline">¶</a></h2>
+<p>Download the following flashcard files or feel free to make your own.</p>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../_downloads/48e5c39602b29b2029a60b2e7b7d210d/conditional-statements.csv"><code class="xref download docutils literal notranslate"><span class="pre">conditional-statements.csv</span></code></a></p></li>
+<li><p><a class="reference download internal" download="" href="../_downloads/0f74ad265ab289ac7480cc9d6942066f/files.csv"><code class="xref download docutils literal notranslate"><span class="pre">files.csv</span></code></a></p></li>
+<li><p><a class="reference download internal" download="" href="../_downloads/aefb175bbb2b53010d3d065a165a7664/functions.csv"><code class="xref download docutils literal notranslate"><span class="pre">functions.csv</span></code></a></p></li>
+<li><p><a class="reference download internal" download="" href="../_downloads/305a038a9cf79ae274f42e4b91f58671/loops.csv"><code class="xref download docutils literal notranslate"><span class="pre">loops.csv</span></code></a></p></li>
+<li><p><a class="reference download internal" download="" href="../_downloads/7fef5027c3b2e735a02fdbf1dd63fbad/paths.csv"><code class="xref download docutils literal notranslate"><span class="pre">paths.csv</span></code></a></p></li>
+<li><p><a class="reference download internal" download="" href="../_downloads/e40a7e524d2ec09e50dbc27c792500bf/types.csv"><code class="xref download docutils literal notranslate"><span class="pre">types.csv</span></code></a></p></li>
 </ul>
 </div>
 <div class="section" id="reference">

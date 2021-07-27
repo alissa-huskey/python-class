@@ -325,6 +325,32 @@ one or more files to load.
     * call `load_csv()` with the `path` argument
     * append the returned value to `cards` using the `.extend()` method
 
+### Part 15: Allow answers with commas
+
+Many answers have commas in them, so instead of manually parsing the csv file,
+lets use the built in `csv` module.
+
+```{rubric} at the top of your file
+```
+
+1. [ ] `import` the `csv` module
+
+```{rubric} in load_csv() after opening your file
+```
+
+1. Create a new csv reader like so:
+   ```python
+   reader = csv.reader(
+       fh,
+       quotechar="'",
+       skipinitialspace=True,
+       escapechar="\\"
+   )
+   ```
+2. Instead of itearting over `fh.readlines()`, iterate over the `reader`
+   object, which will yields a `list` of values in each `row`.
+
+
 Bonus ideas
 -----------
 
@@ -336,6 +362,18 @@ Bonus ideas
   through at a time
 * add extra columns to flashcards files to keep track of each time you get the
 * answer right and wrong, use this to generate reports
+
+Card data
+---------
+
+Download the following flashcard files or feel free to make your own.
+
+* {download}`conditional-statements.csv <../../data/cards/conditional-statements.csv>`
+* {download}`files.csv <../../data/cards/files.csv>`
+* {download}`functions.csv <../../data/cards/functions.csv>`
+* {download}`loops.csv <../../data/cards/loops.csv>`
+* {download}`paths.csv <../../data/cards/paths.csv>`
+* {download}`types.csv <../../data/cards/types.csv>`
 
 Reference
 ---------
