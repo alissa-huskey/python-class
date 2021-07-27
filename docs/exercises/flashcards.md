@@ -1,3 +1,15 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+tocdepth: 2
+---
 Flashcards Project
 ==================
 
@@ -10,6 +22,11 @@ stored in `csv` files in the `data/flashcards` directory.
 
 Instructions
 ------------
+
+```{contents} Table of Contents
+:backlinks: top
+:local:
+```
 
 ### Part 1: Make a `csv` file
 
@@ -266,7 +283,7 @@ these suggestions to your taste.
        the argument `WIDTH`. For example, the {samp}`card {x} of {y}` line.
 1. [ ] print {samp}`"{score} of {total}"` after the end of each card
 
-### Part 13: Wrap long questions
+### Part 14: Wrap long questions
 
 In this part wrap questions that are too long so that they are split into multiple lines.
 
@@ -286,7 +303,7 @@ In this part wrap questions that are too long so that they are split into multip
 1. [ ] Remove the code that prints `card["front"]`
 1. [ ] Iterate over the `lines` list, and print each item.
 
-### Part 14: Add topics menu
+### Part 15: Add topics menu
 
 This section will add a menu to print the name (minus the `.csv` extension) of
 each of the csv files in your flashcards directory and allow the user to choose
@@ -325,7 +342,7 @@ one or more files to load.
     * call `load_csv()` with the `path` argument
     * append the returned value to `cards` using the `.extend()` method
 
-### Part 15: Allow answers with commas
+### Part 16: Allow answers with commas
 
 Many answers have commas in them, so instead of manually parsing the csv file,
 lets use the built in `csv` module.
