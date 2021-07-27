@@ -486,6 +486,26 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/alissa-huskey/python-class/master?urlpath=lab/tree/docs/exercises/flashcards.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -500,115 +520,6 @@
   <a class="reference internal nav-link" href="#instructions">
    Instructions
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-1-make-a-csv-file">
-     Part 1: Make a
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       csv
-      </span>
-     </code>
-     file
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-2-start-flashcards-py">
-     Part 2: Start
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       flashcards.py
-      </span>
-     </code>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-3-start-load-csv">
-     Part 3: Start
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       load_csv()
-      </span>
-     </code>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-4-read-each-line-of-the-csv-file">
-     Part 4: Read each line of the csv file
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-5-get-the-card-data-from-the-csv-file">
-     Part 5: Get the card data from the csv file
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-6-return-the-card-data-to-main">
-     Part 6: Return the card data to
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       main()
-      </span>
-     </code>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-7-remove-extra-whitespace">
-     Part 7: Remove extra whitespace
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-8-skip-the-header-row-and-blank-lines">
-     part 8: Skip the header row and blank lines
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-9-start-the-play-function">
-     Part 9: Start the
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       play()
-      </span>
-     </code>
-     function
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-10-go-through-each-card-in-random-order">
-     Part 10: Go through each card in random order
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-11-test-the-user">
-     Part 11: Test the user
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-12-scorekeeping">
-     Part 12: Scorekeeping
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-13-prettify-flashcards">
-     Part 13: Prettify flashcards
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-13-wrap-long-questions">
-     Part 13: Wrap long questions
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-14-add-topics-menu">
-     Part 14: Add topics menu
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-15-allow-answers-with-commas">
-     Part 15: Allow answers with commas
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#bonus-ideas">
@@ -644,8 +555,29 @@ stored in <code class="docutils literal notranslate"><span class="pre">csv</span
 <p><img alt="" src="../_images/flashcards.png" /></p>
 <div class="section" id="instructions">
 <h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">¶</a></h2>
+<div class="contents local topic" id="table-of-contents">
+<p class="topic-title">Table of Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#part-1-make-a-csv-file" id="id1">Part 1: Make a <code class="docutils literal notranslate"><span class="pre">csv</span></code> file</a></p></li>
+<li><p><a class="reference internal" href="#part-2-start-flashcards-py" id="id2">Part 2: Start <code class="docutils literal notranslate"><span class="pre">flashcards.py</span></code></a></p></li>
+<li><p><a class="reference internal" href="#part-3-start-load-csv" id="id3">Part 3: Start <code class="docutils literal notranslate"><span class="pre">load_csv()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#part-4-read-each-line-of-the-csv-file" id="id4">Part 4: Read each line of the csv file</a></p></li>
+<li><p><a class="reference internal" href="#part-5-get-the-card-data-from-the-csv-file" id="id5">Part 5: Get the card data from the csv file</a></p></li>
+<li><p><a class="reference internal" href="#part-6-return-the-card-data-to-main" id="id6">Part 6: Return the card data to <code class="docutils literal notranslate"><span class="pre">main()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#part-7-remove-extra-whitespace" id="id7">Part 7: Remove extra whitespace</a></p></li>
+<li><p><a class="reference internal" href="#part-8-skip-the-header-row-and-blank-lines" id="id8">part 8: Skip the header row and blank lines</a></p></li>
+<li><p><a class="reference internal" href="#part-9-start-the-play-function" id="id9">Part 9: Start the <code class="docutils literal notranslate"><span class="pre">play()</span></code> function</a></p></li>
+<li><p><a class="reference internal" href="#part-10-go-through-each-card-in-random-order" id="id10">Part 10: Go through each card in random order</a></p></li>
+<li><p><a class="reference internal" href="#part-11-test-the-user" id="id11">Part 11: Test the user</a></p></li>
+<li><p><a class="reference internal" href="#part-12-scorekeeping" id="id12">Part 12: Scorekeeping</a></p></li>
+<li><p><a class="reference internal" href="#part-13-prettify-flashcards" id="id13">Part 13: Prettify flashcards</a></p></li>
+<li><p><a class="reference internal" href="#part-14-wrap-long-questions" id="id14">Part 14: Wrap long questions</a></p></li>
+<li><p><a class="reference internal" href="#part-15-add-topics-menu" id="id15">Part 15: Add topics menu</a></p></li>
+<li><p><a class="reference internal" href="#part-16-allow-answers-with-commas" id="id16">Part 16: Allow answers with commas</a></p></li>
+</ul>
+</div>
 <div class="section" id="part-1-make-a-csv-file">
-<h3>Part 1: Make a <code class="docutils literal notranslate"><span class="pre">csv</span></code> file<a class="headerlink" href="#part-1-make-a-csv-file" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Part 1: Make a <code class="docutils literal notranslate"><span class="pre">csv</span></code> file</a><a class="headerlink" href="#part-1-make-a-csv-file" title="Permalink to this headline">¶</a></h3>
 <p>The flashcards data will be stored in <code class="docutils literal notranslate"><span class="pre">csv</span></code> files in a directory named
 <code class="docutils literal notranslate"><span class="pre">data/flashcards</span></code>. The idea is to eventually have multiple files for different
 topics that you might want to study like <code class="docutils literal notranslate"><span class="pre">paths.csv</span></code>, <code class="docutils literal notranslate"><span class="pre">functions.csv</span></code> and so
@@ -671,7 +603,7 @@ check if Path object path is a directory, path.is_dir()
 </ol>
 </div>
 <div class="section" id="part-2-start-flashcards-py">
-<h3>Part 2: Start <code class="docutils literal notranslate"><span class="pre">flashcards.py</span></code><a class="headerlink" href="#part-2-start-flashcards-py" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Part 2: Start <code class="docutils literal notranslate"><span class="pre">flashcards.py</span></code></a><a class="headerlink" href="#part-2-start-flashcards-py" title="Permalink to this headline">¶</a></h3>
 <p>Start your <code class="file docutils literal notranslate"><span class="pre">flashcards.py</span></code> file.</p>
 <ol class="simple">
 <li><p>[ ] write a <code class="docutils literal notranslate"><span class="pre">main()</span></code> function</p></li>
@@ -680,7 +612,7 @@ check if Path object path is a directory, path.is_dir()
 </ol>
 </div>
 <div class="section" id="part-3-start-load-csv">
-<h3>Part 3: Start <code class="docutils literal notranslate"><span class="pre">load_csv()</span></code><a class="headerlink" href="#part-3-start-load-csv" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Part 3: Start <code class="docutils literal notranslate"><span class="pre">load_csv()</span></code></a><a class="headerlink" href="#part-3-start-load-csv" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">load_csv()</span></code> function should take one argument, a <code class="docutils literal notranslate"><span class="pre">Path</span></code> object to a csv
 file. Eventually it will return a <code class="docutils literal notranslate"><span class="pre">list</span></code> where each item is a <code class="docutils literal notranslate"><span class="pre">dict</span></code> with <code class="docutils literal notranslate"><span class="pre">&quot;front&quot;</span></code>
 and <code class="docutils literal notranslate"><span class="pre">&quot;back&quot;</span></code> keys, one for each row in the file except the header.</p>
@@ -701,7 +633,7 @@ argument, and assign the returned value to a variable named <code class="docutil
 </ol>
 </div>
 <div class="section" id="part-4-read-each-line-of-the-csv-file">
-<h3>Part 4: Read each line of the csv file<a class="headerlink" href="#part-4-read-each-line-of-the-csv-file" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Part 4: Read each line of the csv file</a><a class="headerlink" href="#part-4-read-each-line-of-the-csv-file" title="Permalink to this headline">¶</a></h3>
 <p>Expand the <code class="docutils literal notranslate"><span class="pre">load_csv()</span></code> function to read and print every line in the file.</p>
 <p class="rubric">in load_csv()</p>
 <ol class="simple">
@@ -711,7 +643,7 @@ argument, and assign the returned value to a variable named <code class="docutil
 </ol>
 </div>
 <div class="section" id="part-5-get-the-card-data-from-the-csv-file">
-<h3>Part 5: Get the card data from the csv file<a class="headerlink" href="#part-5-get-the-card-data-from-the-csv-file" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Part 5: Get the card data from the csv file</a><a class="headerlink" href="#part-5-get-the-card-data-from-the-csv-file" title="Permalink to this headline">¶</a></h3>
 <p>Continue expanding the <code class="docutils literal notranslate"><span class="pre">load_csv()</span></code> function to extract the card data from each
 line, put it into a dictionary named <code class="docutils literal notranslate"><span class="pre">cards</span></code> with the keys <code class="docutils literal notranslate"><span class="pre">&quot;front&quot;</span></code> and
 <code class="docutils literal notranslate"><span class="pre">&quot;back&quot;</span></code>.</p>
@@ -728,7 +660,7 @@ the second</p></li>
 </ol>
 </div>
 <div class="section" id="part-6-return-the-card-data-to-main">
-<h3>Part 6: Return the card data to <code class="docutils literal notranslate"><span class="pre">main()</span></code><a class="headerlink" href="#part-6-return-the-card-data-to-main" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Part 6: Return the card data to <code class="docutils literal notranslate"><span class="pre">main()</span></code></a><a class="headerlink" href="#part-6-return-the-card-data-to-main" title="Permalink to this headline">¶</a></h3>
 <p>Have <code class="docutils literal notranslate"><span class="pre">load_csv()</span></code> put all of the <code class="docutils literal notranslate"><span class="pre">card</span></code> dictionaries into one big <code class="docutils literal notranslate"><span class="pre">cards</span></code>
 <code class="docutils literal notranslate"><span class="pre">list</span></code> and return that to <code class="docutils literal notranslate"><span class="pre">main()</span></code>.</p>
 <p class="rubric">in load_csv(), <strong>before</strong> the readlines() loop</p>
@@ -750,7 +682,7 @@ the second</p></li>
 </ol>
 </div>
 <div class="section" id="part-7-remove-extra-whitespace">
-<h3>Part 7: Remove extra whitespace<a class="headerlink" href="#part-7-remove-extra-whitespace" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Part 7: Remove extra whitespace</a><a class="headerlink" href="#part-7-remove-extra-whitespace" title="Permalink to this headline">¶</a></h3>
 <p>In order to make sure that the flashcards are printed nicely and that the users
 answers get matched up correctly, the trailing <code class="docutils literal notranslate"><span class="pre">&quot;\n&quot;</span></code> needs to be removed from
 the end of each line. Any extra spaces that happen to be around the <code class="docutils literal notranslate"><span class="pre">&quot;,&quot;</span></code> or at
@@ -762,7 +694,7 @@ on <code class="docutils literal notranslate"><span class="pre">card[&quot;front
 </ol>
 </div>
 <div class="section" id="part-8-skip-the-header-row-and-blank-lines">
-<h3>part 8: Skip the header row and blank lines<a class="headerlink" href="#part-8-skip-the-header-row-and-blank-lines" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">part 8: Skip the header row and blank lines</a><a class="headerlink" href="#part-8-skip-the-header-row-and-blank-lines" title="Permalink to this headline">¶</a></h3>
 <p>To avoid having a flashcard pop up that reads <code class="docutils literal notranslate"><span class="pre">&quot;front&quot;</span></code>, don’t append the
 header row to the <code class="docutils literal notranslate"><span class="pre">cards</span></code> <code class="docutils literal notranslate"><span class="pre">list</span></code>. Also skip any blank lines in the file.</p>
 <p class="rubric">in load_csv(), <strong>in</strong> the readlines() loop, <strong>before</strong> append</p>
@@ -773,7 +705,7 @@ header row to the <code class="docutils literal notranslate"><span class="pre">c
 </ol>
 </div>
 <div class="section" id="part-9-start-the-play-function">
-<h3>Part 9: Start the <code class="docutils literal notranslate"><span class="pre">play()</span></code> function<a class="headerlink" href="#part-9-start-the-play-function" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Part 9: Start the <code class="docutils literal notranslate"><span class="pre">play()</span></code> function</a><a class="headerlink" href="#part-9-start-the-play-function" title="Permalink to this headline">¶</a></h3>
 <p>This function should take one argument, the list of cards.
 Eventually it will contain the user interface for running through each
 card, getting the answers from the user, and printing the score.</p>
@@ -789,7 +721,7 @@ card, getting the answers from the user, and printing the score.</p>
 </ol>
 </div>
 <div class="section" id="part-10-go-through-each-card-in-random-order">
-<h3>Part 10: Go through each card in random order<a class="headerlink" href="#part-10-go-through-each-card-in-random-order" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Part 10: Go through each card in random order</a><a class="headerlink" href="#part-10-go-through-each-card-in-random-order" title="Permalink to this headline">¶</a></h3>
 <p>In this next part we’ll be metaphorically drawing a card at random from the
 deck until there are none left.</p>
 <p>The trick is to make a <a class="reference internal" href="../lessons/while-loops.html#term-while-loop"><span class="xref std std-term">while loop</span></a> that checks the <a class="reference internal" href="../lessons/conditional-statements.html#term-truthy"><span class="xref std std-term">truthy</span></a> value
@@ -813,7 +745,7 @@ remove the card from the list</p></li>
 </ol>
 </div>
 <div class="section" id="part-11-test-the-user">
-<h3>Part 11: Test the user<a class="headerlink" href="#part-11-test-the-user" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Part 11: Test the user</a><a class="headerlink" href="#part-11-test-the-user" title="Permalink to this headline">¶</a></h3>
 <p>This is where things start to get exciting! In this part we’ll print the front
 of the card, ask the user for their answer, and let them know if it was right
 or not.</p>
@@ -837,7 +769,7 @@ the result to a variable named <code class="docutils literal notranslate"><span 
 <p class="rubric">in play(), <strong>after</strong> the loop</p>
 </div>
 <div class="section" id="part-12-scorekeeping">
-<h3>Part 12: Scorekeeping<a class="headerlink" href="#part-12-scorekeeping" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Part 12: Scorekeeping</a><a class="headerlink" href="#part-12-scorekeeping" title="Permalink to this headline">¶</a></h3>
 <p>Now lets keep track of which card the user is on, and what their score is.</p>
 <p class="rubric">in play(), <strong>above</strong> the loop</p>
 <ol class="simple">
@@ -861,7 +793,7 @@ the result to a variable named <code class="docutils literal notranslate"><span 
 </ol>
 </div>
 <div class="section" id="part-13-prettify-flashcards">
-<h3>Part 13: Prettify flashcards<a class="headerlink" href="#part-13-prettify-flashcards" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Part 13: Prettify flashcards</a><a class="headerlink" href="#part-13-prettify-flashcards" title="Permalink to this headline">¶</a></h3>
 <p>This part is about making the the flashcards look nicer. Feel free to adjust
 these suggestions to your taste.</p>
 <p class="rubric">throughout your file</p>
@@ -883,8 +815,8 @@ the argument <code class="docutils literal notranslate"><span class="pre">WIDTH<
 <li><p>[ ] print <code class="samp docutils literal notranslate"><span class="pre">&quot;</span><em><span class="pre">score</span></em> <span class="pre">of</span> <em><span class="pre">total</span></em><span class="pre">&quot;</span></code> after the end of each card</p></li>
 </ol>
 </div>
-<div class="section" id="part-13-wrap-long-questions">
-<h3>Part 13: Wrap long questions<a class="headerlink" href="#part-13-wrap-long-questions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="part-14-wrap-long-questions">
+<h3><a class="toc-backref" href="#table-of-contents">Part 14: Wrap long questions</a><a class="headerlink" href="#part-14-wrap-long-questions" title="Permalink to this headline">¶</a></h3>
 <p>In this part wrap questions that are too long so that they are split into multiple lines.</p>
 <p class="rubric">at the top of your file</p>
 <ol class="simple">
@@ -901,8 +833,8 @@ variable <code class="docutils literal notranslate"><span class="pre">lines</spa
 <li><p>[ ] Iterate over the <code class="docutils literal notranslate"><span class="pre">lines</span></code> list, and print each item.</p></li>
 </ol>
 </div>
-<div class="section" id="part-14-add-topics-menu">
-<h3>Part 14: Add topics menu<a class="headerlink" href="#part-14-add-topics-menu" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="part-15-add-topics-menu">
+<h3><a class="toc-backref" href="#table-of-contents">Part 15: Add topics menu</a><a class="headerlink" href="#part-15-add-topics-menu" title="Permalink to this headline">¶</a></h3>
 <p>This section will add a menu to print the name (minus the <code class="docutils literal notranslate"><span class="pre">.csv</span></code> extension) of
 each of the csv files in your flashcards directory and allow the user to choose
 one or more files to load.</p>
@@ -942,8 +874,8 @@ one or more files to load.</p>
 </li>
 </ol>
 </div>
-<div class="section" id="part-15-allow-answers-with-commas">
-<h3>Part 15: Allow answers with commas<a class="headerlink" href="#part-15-allow-answers-with-commas" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="part-16-allow-answers-with-commas">
+<h3><a class="toc-backref" href="#table-of-contents">Part 16: Allow answers with commas</a><a class="headerlink" href="#part-16-allow-answers-with-commas" title="Permalink to this headline">¶</a></h3>
 <p>Many answers have commas in them, so instead of manually parsing the csv file,
 lets use the built in <code class="docutils literal notranslate"><span class="pre">csv</span></code> module.</p>
 <p class="rubric">at the top of your file</p>
