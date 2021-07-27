@@ -97,6 +97,8 @@ Here are some of the key aspects.
 %
 % - [ ] copying
 % - [ ] packing, unpacking
+% - [ ] add missing capabilities to table
+% - [ ] fix sequences capabilities
 
 
 
@@ -397,7 +399,7 @@ item
 
 index : data-types
 index number
-  ...
+  An integer representing an elements position in a sequence.
 
 ```
 
