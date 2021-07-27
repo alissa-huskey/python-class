@@ -39,14 +39,16 @@ def load_csv(path, errors):
         errors.append(f"Not a csv file: {path}")
         return
 
-    with open(path) as fp:
-        # iterate through each line of file
-        for lineno, row in enumerate(csv.reader(
-            fp,
+    with open(path) as fh:
+        reader = csv.reader(
+            fh,
             quotechar="'",
             skipinitialspace=True,
             escapechar="\\"
-        )):
+        )
+
+        # iterate through each line of file
+        for lineno, row in enumerate(reader):
             if not row:
                 continue
 
