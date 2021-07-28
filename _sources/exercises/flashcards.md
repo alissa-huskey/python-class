@@ -23,7 +23,7 @@ stored in `csv` files in the `data/flashcards` directory.
 Instructions
 ------------
 
-```{contents} Table of Contents
+```{contents}
 :backlinks: top
 :local:
 ```
@@ -35,11 +35,11 @@ The flashcards data will be stored in `csv` files in a directory named
 topics that you might want to study like `paths.csv`, `functions.csv` and so
 on. For now though, just make one file.
 
-1. [ ] Create a folder `data/flashcards` if it doesn't already exist
-2. [ ] Make a `csv` file with flashcard data
-   * [ ] In the `data/flashcards` directory manually make file ending in
+1. `[ ]` Create a folder `data/flashcards` if it doesn't already exist
+2. `[ ]` Make a `csv` file with flashcard data
+   * `[ ]` In the `data/flashcards` directory manually make file ending in
          `.csv`. For example `paths.csv`.
-   * [ ] Each line should be one card with the format: {samp}`{text for front}, {text for back}`. \
+   * `[ ]` Each line should be one card with the format: {samp}`{text for front}, {text for back}`. \
         For example:
         ```text
         front, back
@@ -53,9 +53,9 @@ on. For now though, just make one file.
 
 Start your {file}`flashcards.py` file.
 
-1. [ ] write a `main()` function
-1. [ ] print any temporary debug message in it
-1. [ ] call it
+1. `[ ]` write a `main()` function
+1. `[ ]` print any temporary debug message in it
+1. `[ ]` call it
 
 ### Part 3: Start `load_csv()`
 
@@ -69,16 +69,16 @@ the location, and makes sure the file exists.
 ```{rubric} load_csv()
 ```
 
-1. [ ] write a `load_csv()` function that takes one argument: `path`
-1. [ ] check to make sure the `csv` file exists. If not, print an error message
+1. `[ ]` write a `load_csv()` function that takes one argument: `path`
+1. `[ ]` check to make sure the `csv` file exists. If not, print an error message
        that includes the path then return
-1. [ ] print a temporary debug message: {samp}`loading file: {path}`
+1. `[ ]` print a temporary debug message: {samp}`loading file: {path}`
 
 ```{rubric} in main()
 ```
 
-1. [ ] make a `Path` object to your `csv` file
-1. [ ] call your `load_csv()` function, passing it your `Path` object as the
+1. `[ ]` make a `Path` object to your `csv` file
+1. `[ ]` call your `load_csv()` function, passing it your `Path` object as the
       argument, and assign the returned value to a variable named `cards`
 
 ### Part 4: Read each line of the csv file
@@ -88,9 +88,9 @@ Expand the `load_csv()` function to read and print every line in the file.
 ```{rubric} in load_csv()
 ```
 
-1. [ ] open the csv file in read mode using the `open()` function
-1. [ ] use `fp.readlines()` to iterate through each line in the file
-1. [ ] for temporary debugging, print each line
+1. `[ ]` open the csv file in read mode using the `open()` function
+1. `[ ]` use `fp.readlines()` to iterate through each line in the file
+1. `[ ]` for temporary debugging, print each line
 
 ### Part 5: Get the card data from the csv file
 
@@ -101,14 +101,14 @@ line, put it into a dictionary named `cards` with the keys `"front"` and
 ```{rubric} in load_csv(), **in** the readlines() loop
 ```
 
-1. [ ] make an empty `dict` assigned to a variable named `card`
-1. [ ] split each line on the `","` using the `.split()` method and assign
+1. `[ ]` make an empty `dict` assigned to a variable named `card`
+1. `[ ]` split each line on the `","` using the `.split()` method and assign
        the result to a variable named `row`
-1. [ ] check that there are two items in the row using the `len()` function.
+1. `[ ]` check that there are two items in the row using the `len()` function.
        If not print an error message and return
-1. [ ] assign `card["front"]` to the first item in the row, and `card["back"]` to
+1. `[ ]` assign `card["front"]` to the first item in the row, and `card["back"]` to
        the second
-1. [ ] for temporary debugging, print the `card` `dict`
+1. `[ ]` for temporary debugging, print the `card` `dict`
 
 
 ### Part 6: Return the card data to `main()`
@@ -119,24 +119,24 @@ Have `load_csv()` put all of the `card` dictionaries into one big `cards`
 ```{rubric} in load_csv(), **before** the readlines() loop
 ```
 
-1. [ ] make an empty `list` assigned to a variable named `cards`
+1. `[ ]` make an empty `list` assigned to a variable named `cards`
 
 ```{rubric} in load_csv(), **at the end** of the readlines() loop
 ```
 
-1. [ ] use the `.append()` method on the `cards` `list` with the argument `card`
+1. `[ ]` use the `.append()` method on the `cards` `list` with the argument `card`
 
 
 ```{rubric} in load_csv(), **after** the loop
 ```
 
-1. [ ] return `cards`
+1. `[ ]` return `cards`
 
 ```{rubric} in main()
 ```
 
-1. [ ] if the `cards` `list` is falsy, `return`
-1. [ ] otherwise, print the `cards` `list` for temporary debugging
+1. `[ ]` if the `cards` `list` is falsy, `return`
+1. `[ ]` otherwise, print the `cards` `list` for temporary debugging
 
 ### Part 7: Remove extra whitespace
 
@@ -148,7 +148,7 @@ the beginning or end of the line also need to be removed.
 ```{rubric} in load_csv(), **in** the loop
 ```
 
-1. [ ] remove leading and trailing whitespace by calling the `.strip()` method
+1. `[ ]` remove leading and trailing whitespace by calling the `.strip()` method
        on `card["front"]` and `card["back"]`
 
 ### part 8: Skip the header row and blank lines
@@ -159,9 +159,9 @@ header row to the `cards` `list`. Also skip any blank lines in the file.
 ```{rubric} in load_csv(), **in** the readlines() loop, **before** append
 ```
 
-1. [ ] check if `card["front"]` is `"front"` and `card["back"]` is `"back"`. If so,
+1. `[ ]` check if `card["front"]` is `"front"` and `card["back"]` is `"back"`. If so,
     `continue` to avoid appending to the cards list
-1. [ ] check if `line` is equal to `"\n"`. If so, `continue`.
+1. `[ ]` check if `line` is equal to `"\n"`. If so, `continue`.
 
 ### Part 9: Start the `play()` function
 
@@ -174,13 +174,13 @@ For now 'll just write a `play()` function and call it.
 ```{rubric} play()
 ```
 
-1. [ ] write a `play() f`unction that takes one argument: `cards`
-1. [ ] for temporary debugging, print something from it
+1. `[ ]` write a `play() f`unction that takes one argument: `cards`
+1. `[ ]` for temporary debugging, print something from it
 
 ```{rubric} main()
 ```
 
-1. [ ] call `play()` passing it the list of `cards`
+1. `[ ]` call `play()` passing it the list of `cards`
 
 
 ### Part 10: Go through each card in random order
@@ -195,21 +195,21 @@ of `cards`, so that it stops as soon as its empty. The inside the loop, use the
 ```{rubric} at the top of your file
 ```
 
-1. [ ] `import` the `random` module
+1. `[ ]` `import` the `random` module
 
 ```{rubric} in play()
 ```
 
-1. [ ] make a while loop where the condition is: `cards`
+1. `[ ]` make a while loop where the condition is: `cards`
 
 ```{rubric} in play(), **in** the loop
 ```
 
-1. [ ] use `random.choice()` to get a random item from the `cards`
+1. `[ ]` use `random.choice()` to get a random item from the `cards`
        list and assign it to a variable named `card`
-1. [ ] call the `.remove()` method on `cards` with the argument `card` to
+1. `[ ]` call the `.remove()` method on `cards` with the argument `card` to
        remove the card from the list
-1. [ ] for temporary debugging, print `card`
+1. `[ ]` for temporary debugging, print `card`
 
 ### Part 11: Test the user
 
@@ -220,14 +220,14 @@ or not.
 ```{rubric} in play(), **in** the loop
 ```
 
-1. [ ] print `card["front"]`
-1. [ ] prompt the user for their answer using the `input()` function and assign
+1. `[ ]` print `card["front"]`
+1. `[ ]` prompt the user for their answer using the `input()` function and assign
        the result to a variable named `answer`
-1. [ ] check if the `answer` is the same as `card["back"]`
-   * [ ] if so, print `"CORRECT"`
-   * [ ] if not, print `"INCORRECT",` then `cards["back"]`
-1. [ ] call `input()` asking if the user wants to continue
-   * [ ] if not, return
+1. `[ ]` check if the `answer` is the same as `card["back"]`
+   * `[ ]` if so, print `"CORRECT"`
+   * `[ ]` if not, print `"INCORRECT",` then `cards["back"]`
+1. `[ ]` call `input()` asking if the user wants to continue
+   * `[ ]` if not, return
 
 ```{rubric} in play(), **after** the loop
 ```
@@ -239,22 +239,22 @@ Now lets keep track of which card the user is on, and what their score is.
 ```{rubric} in play(), **above** the loop
 ```
 
-1. [ ] make a `score` variable set to `0`
-1. [ ] assign the length of cards to a variable `total`
-1. [ ] make a `num` variable set to `1`
+1. `[ ]` make a `score` variable set to `0`
+1. `[ ]` assign the length of cards to a variable `total`
+1. `[ ]` make a `num` variable set to `1`
 
 ```{rubric} in play(), **in** the loop
 ```
 
-1. [ ] at the top of the loop print {samp}`card {num} of {total}`
-1. [ ] when you check if the `answer` is the same as `card["back"]`
-   * [ ] if so, increment `score` by one
-1. [ ] at the end of the loop, increment `num` by `1`
+1. `[ ]` at the top of the loop print {samp}`card {num} of {total}`
+1. `[ ]` when you check if the `answer` is the same as `card["back"]`
+   * `[ ]` if so, increment `score` by one
+1. `[ ]` at the end of the loop, increment `num` by `1`
 
 ```{rubric} in play(), **after** the loop
 ```
 
-1. [ ] print {samp}`"{score} of {total}"`
+1. `[ ]` print {samp}`"{score} of {total}"`
 
 ### Part 13: Prettify flashcards
 
@@ -265,23 +265,23 @@ these suggestions to your taste.
 ```{rubric} throughout your file
 ```
 
-1. [ ] get rid of any debug `print()` statements
+1. `[ ]` get rid of any debug `print()` statements
 
 ```{rubric} at the top of your file
 ```
 
-1. [ ] make a global variable `WIDTH` and set it to around `75`
+1. `[ ]` make a global variable `WIDTH` and set it to around `75`
 
 ```{rubric} in play()
 ```
 
-1. [ ] print a line to the beginning and end of each card
-1. [ ] add some extra newlines around various elements
-1. [ ] center any string by calling the `.center()` method on it and
+1. `[ ]` print a line to the beginning and end of each card
+1. `[ ]` add some extra newlines around various elements
+1. `[ ]` center any string by calling the `.center()` method on it and
        pass the argument `WIDTH`. For example, the `card["front"]` line.
-1. [ ] right align any string by calling the .rjust() method on it and passing
+1. `[ ]` right align any string by calling the .rjust() method on it and passing
        the argument `WIDTH`. For example, the {samp}`card {x} of {y}` line.
-1. [ ] print {samp}`"{score} of {total}"` after the end of each card
+1. `[ ]` print {samp}`"{score} of {total}"` after the end of each card
 
 ### Part 14: Wrap long questions
 
@@ -290,18 +290,18 @@ In this part wrap questions that are too long so that they are split into multip
 ```{rubric} at the top of your file
 ```
 
-1. [ ] If you want your questions to be wrap at a shorter length than `WIDTH`, set a `MAXWIDTH` global variable.
-1. [ ] `import` the `textwrap` module
+1. `[ ]` If you want your questions to be wrap at a shorter length than `WIDTH`, set a `MAXWIDTH` global variable.
+1. `[ ]` `import` the `textwrap` module
 
 ```{rubric} in play(), **in** the loop
 ```
 
-1. [ ] Call `textwrap.wrap()` with the arguments `card["front"]` and the width
+1. `[ ]` Call `textwrap.wrap()` with the arguments `card["front"]` and the width
        you want to wrap at, either `MAXWIDTH` or `WIDTH`. This will return a
        `list` of strings, where each item is a line. Assign the results to a
        variable `lines`.
-1. [ ] Remove the code that prints `card["front"]`
-1. [ ] Iterate over the `lines` list, and print each item.
+1. `[ ]` Remove the code that prints `card["front"]`
+1. `[ ]` Iterate over the `lines` list, and print each item.
 
 ### Part 15: Add topics menu
 
@@ -312,35 +312,35 @@ one or more files to load.
 ```{rubric} at the top of your file
 ```
 
-1. Make a list assigned to the global variable `TOPICS`
+1. `[ ]` Make a list assigned to the global variable `TOPICS`
 
 ```{rubric} menu()
 ```
 
-1. write a `menu()` function
-1. assign `TOPICS` to a list of `Path` objects in your flashcards directory using the `.iterdir()` method
-1. print an error message if no files are found in your flashcards directory
-1. print the filename minus the `.csv` extension for each `Path` object in the `TOPICS` list, next to a number
-1. print a special option `"all"` with a menu selection of `0`
+1. `[ ]` write a `menu()` function
+1. `[ ]` assign `TOPICS` to a list of `Path` objects in your flashcards directory using the `.iterdir()` method
+1. `[ ]` print an error message if no files are found in your flashcards directory
+1. `[ ]` print the filename minus the `.csv` extension for each `Path` object in the `TOPICS` list, next to a number
+1. `[ ]` print a special option `"all"` with a menu selection of `0`
 
-1. make a `list` assigned to the variable `selection`
-1. get input from the user asking them to choose one or more topics and assign it to a variable `choices`
-1. use the `.split()` method to split `choices` into multiple items on whitespace
-1. iterate over each response and assign to `num`:
-    * if the response is `"0"`, return `TOPICS`
-    * convert `num` to an int and subtract `1`
-    * get the item from `TOPICS` at the `num` index and append it to `selection` list
-1. return the `selection` list
+1. `[ ]` make a `list` assigned to the variable `selection`
+1. `[ ]` get input from the user asking them to choose one or more topics and assign it to a variable `choices`
+1. `[ ]` use the `.split()` method to split `choices` into multiple items on whitespace
+1. `[ ]` iterate over each response and assign to `num`:
+    * `[ ]` if the response is `"0"`, return `TOPICS`
+    * `[ ]` convert `num` to an int and subtract `1`
+    * `[ ]` get the item from `TOPICS` at the `num` index and append it to `selection` list
+1. `[ ]` return the `selection` list
 
 ```{rubric} in main()
 ```
 
-1. at the beginning of the function, make an empty `cards` list
-1. call `menu()` and assign the returned value to the variable `paths`
-1. remove the line where you previously defined the path to your `.csv` file
-1. iterate over `paths` and assign each element to the variable `path`:
-    * call `load_csv()` with the `path` argument
-    * append the returned value to `cards` using the `.extend()` method
+1. `[ ]` at the beginning of the function, make an empty `cards` list
+1. `[ ]` call `menu()` and assign the returned value to the variable `paths`
+1. `[ ]` remove the line where you previously defined the path to your `.csv` file
+1. `[ ]` iterate over `paths` and assign each element to the variable `path`:
+    * `[ ]` call `load_csv()` with the `path` argument
+    * `[ ]` append the returned value to `cards` using the `.extend()` method
 
 ### Part 16: Allow answers with commas
 
@@ -350,12 +350,12 @@ lets use the built in `csv` module.
 ```{rubric} at the top of your file
 ```
 
-1. [ ] `import` the `csv` module
+1. `[ ]` `import` the `csv` module
 
 ```{rubric} in load_csv() after opening your file
 ```
 
-1. Create a new csv reader like so:
+1. `[ ]` Create a new csv reader like so:
    ```python
    reader = csv.reader(
        fh,
@@ -364,7 +364,7 @@ lets use the built in `csv` module.
        escapechar="\\"
    )
    ```
-2. Instead of itearting over `fh.readlines()`, iterate over the `reader`
+2. `[ ]` Instead of iterating over `fh.readlines()`, iterate over the `reader`
    object, which will yields a `list` of values in each `row`.
 
 
@@ -373,12 +373,10 @@ Bonus ideas
 
 * keep a log with dates and scores
 * allow csv file to store alternate answers
-* make extra flashcard files, then add a menu to allow the user to select
-  which topic(s) they would like to be quizzed on
 * add an optional limit argument to limit the number of cards to go
   through at a time
 * add extra columns to flashcards files to keep track of each time you get the
-* answer right and wrong, use this to generate reports
+  answer right and wrong, use this to generate reports
 
 Card data
 ---------

@@ -29,6 +29,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/asciinema-player.css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
@@ -44,6 +45,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script src="../_static/custom.js"></script>
+    <script src="../_static/asciinema-player.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
@@ -555,8 +557,7 @@ stored in <code class="docutils literal notranslate"><span class="pre">csv</span
 <p><img alt="" src="../_images/flashcards.png" /></p>
 <div class="section" id="instructions">
 <h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">¶</a></h2>
-<div class="contents local topic" id="table-of-contents">
-<p class="topic-title">Table of Contents</p>
+<div class="contents local topic" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#part-1-make-a-csv-file" id="id1">Part 1: Make a <code class="docutils literal notranslate"><span class="pre">csv</span></code> file</a></p></li>
 <li><p><a class="reference internal" href="#part-2-start-flashcards-py" id="id2">Part 2: Start <code class="docutils literal notranslate"><span class="pre">flashcards.py</span></code></a></p></li>
@@ -577,18 +578,18 @@ stored in <code class="docutils literal notranslate"><span class="pre">csv</span
 </ul>
 </div>
 <div class="section" id="part-1-make-a-csv-file">
-<h3><a class="toc-backref" href="#table-of-contents">Part 1: Make a <code class="docutils literal notranslate"><span class="pre">csv</span></code> file</a><a class="headerlink" href="#part-1-make-a-csv-file" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 1: Make a <code class="docutils literal notranslate"><span class="pre">csv</span></code> file</a><a class="headerlink" href="#part-1-make-a-csv-file" title="Permalink to this headline">¶</a></h3>
 <p>The flashcards data will be stored in <code class="docutils literal notranslate"><span class="pre">csv</span></code> files in a directory named
 <code class="docutils literal notranslate"><span class="pre">data/flashcards</span></code>. The idea is to eventually have multiple files for different
 topics that you might want to study like <code class="docutils literal notranslate"><span class="pre">paths.csv</span></code>, <code class="docutils literal notranslate"><span class="pre">functions.csv</span></code> and so
 on. For now though, just make one file.</p>
 <ol>
-<li><p>[ ] Create a folder <code class="docutils literal notranslate"><span class="pre">data/flashcards</span></code> if it doesn’t already exist</p></li>
-<li><p>[ ] Make a <code class="docutils literal notranslate"><span class="pre">csv</span></code> file with flashcard data</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Create a folder <code class="docutils literal notranslate"><span class="pre">data/flashcards</span></code> if it doesn’t already exist</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Make a <code class="docutils literal notranslate"><span class="pre">csv</span></code> file with flashcard data</p>
 <ul>
-<li><p>[ ] In the <code class="docutils literal notranslate"><span class="pre">data/flashcards</span></code> directory manually make file ending in
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> In the <code class="docutils literal notranslate"><span class="pre">data/flashcards</span></code> directory manually make file ending in
 <code class="docutils literal notranslate"><span class="pre">.csv</span></code>. For example <code class="docutils literal notranslate"><span class="pre">paths.csv</span></code>.</p></li>
-<li><p>[ ] Each line should be one card with the format: <code class="samp docutils literal notranslate"><em><span class="pre">text</span> <span class="pre">for</span> <span class="pre">front</span></em><span class="pre">,</span> <em><span class="pre">text</span> <span class="pre">for</span> <span class="pre">back</span></em></code>. <br />
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Each line should be one card with the format: <code class="samp docutils literal notranslate"><em><span class="pre">text</span> <span class="pre">for</span> <span class="pre">front</span></em><span class="pre">,</span> <em><span class="pre">text</span> <span class="pre">for</span> <span class="pre">back</span></em></code>. <br />
 For example:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>front, back
 import the Path class, from pathlib import Path
@@ -603,16 +604,16 @@ check if Path object path is a directory, path.is_dir()
 </ol>
 </div>
 <div class="section" id="part-2-start-flashcards-py">
-<h3><a class="toc-backref" href="#table-of-contents">Part 2: Start <code class="docutils literal notranslate"><span class="pre">flashcards.py</span></code></a><a class="headerlink" href="#part-2-start-flashcards-py" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 2: Start <code class="docutils literal notranslate"><span class="pre">flashcards.py</span></code></a><a class="headerlink" href="#part-2-start-flashcards-py" title="Permalink to this headline">¶</a></h3>
 <p>Start your <code class="file docutils literal notranslate"><span class="pre">flashcards.py</span></code> file.</p>
 <ol class="simple">
-<li><p>[ ] write a <code class="docutils literal notranslate"><span class="pre">main()</span></code> function</p></li>
-<li><p>[ ] print any temporary debug message in it</p></li>
-<li><p>[ ] call it</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> write a <code class="docutils literal notranslate"><span class="pre">main()</span></code> function</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> print any temporary debug message in it</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> call it</p></li>
 </ol>
 </div>
 <div class="section" id="part-3-start-load-csv">
-<h3><a class="toc-backref" href="#table-of-contents">Part 3: Start <code class="docutils literal notranslate"><span class="pre">load_csv()</span></code></a><a class="headerlink" href="#part-3-start-load-csv" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 3: Start <code class="docutils literal notranslate"><span class="pre">load_csv()</span></code></a><a class="headerlink" href="#part-3-start-load-csv" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">load_csv()</span></code> function should take one argument, a <code class="docutils literal notranslate"><span class="pre">Path</span></code> object to a csv
 file. Eventually it will return a <code class="docutils literal notranslate"><span class="pre">list</span></code> where each item is a <code class="docutils literal notranslate"><span class="pre">dict</span></code> with <code class="docutils literal notranslate"><span class="pre">&quot;front&quot;</span></code>
 and <code class="docutils literal notranslate"><span class="pre">&quot;back&quot;</span></code> keys, one for each row in the file except the header.</p>
@@ -620,108 +621,108 @@ and <code class="docutils literal notranslate"><span class="pre">&quot;back&quot
 the location, and makes sure the file exists.</p>
 <p class="rubric">load_csv()</p>
 <ol class="simple">
-<li><p>[ ] write a <code class="docutils literal notranslate"><span class="pre">load_csv()</span></code> function that takes one argument: <code class="docutils literal notranslate"><span class="pre">path</span></code></p></li>
-<li><p>[ ] check to make sure the <code class="docutils literal notranslate"><span class="pre">csv</span></code> file exists. If not, print an error message
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> write a <code class="docutils literal notranslate"><span class="pre">load_csv()</span></code> function that takes one argument: <code class="docutils literal notranslate"><span class="pre">path</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> check to make sure the <code class="docutils literal notranslate"><span class="pre">csv</span></code> file exists. If not, print an error message
 that includes the path then return</p></li>
-<li><p>[ ] print a temporary debug message: <code class="samp docutils literal notranslate"><span class="pre">loading</span> <span class="pre">file:</span> <em><span class="pre">path</span></em></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> print a temporary debug message: <code class="samp docutils literal notranslate"><span class="pre">loading</span> <span class="pre">file:</span> <em><span class="pre">path</span></em></code></p></li>
 </ol>
 <p class="rubric">in main()</p>
 <ol class="simple">
-<li><p>[ ] make a <code class="docutils literal notranslate"><span class="pre">Path</span></code> object to your <code class="docutils literal notranslate"><span class="pre">csv</span></code> file</p></li>
-<li><p>[ ] call your <code class="docutils literal notranslate"><span class="pre">load_csv()</span></code> function, passing it your <code class="docutils literal notranslate"><span class="pre">Path</span></code> object as the
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> make a <code class="docutils literal notranslate"><span class="pre">Path</span></code> object to your <code class="docutils literal notranslate"><span class="pre">csv</span></code> file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> call your <code class="docutils literal notranslate"><span class="pre">load_csv()</span></code> function, passing it your <code class="docutils literal notranslate"><span class="pre">Path</span></code> object as the
 argument, and assign the returned value to a variable named <code class="docutils literal notranslate"><span class="pre">cards</span></code></p></li>
 </ol>
 </div>
 <div class="section" id="part-4-read-each-line-of-the-csv-file">
-<h3><a class="toc-backref" href="#table-of-contents">Part 4: Read each line of the csv file</a><a class="headerlink" href="#part-4-read-each-line-of-the-csv-file" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 4: Read each line of the csv file</a><a class="headerlink" href="#part-4-read-each-line-of-the-csv-file" title="Permalink to this headline">¶</a></h3>
 <p>Expand the <code class="docutils literal notranslate"><span class="pre">load_csv()</span></code> function to read and print every line in the file.</p>
 <p class="rubric">in load_csv()</p>
 <ol class="simple">
-<li><p>[ ] open the csv file in read mode using the <code class="docutils literal notranslate"><span class="pre">open()</span></code> function</p></li>
-<li><p>[ ] use <code class="docutils literal notranslate"><span class="pre">fp.readlines()</span></code> to iterate through each line in the file</p></li>
-<li><p>[ ] for temporary debugging, print each line</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> open the csv file in read mode using the <code class="docutils literal notranslate"><span class="pre">open()</span></code> function</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> use <code class="docutils literal notranslate"><span class="pre">fp.readlines()</span></code> to iterate through each line in the file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> for temporary debugging, print each line</p></li>
 </ol>
 </div>
 <div class="section" id="part-5-get-the-card-data-from-the-csv-file">
-<h3><a class="toc-backref" href="#table-of-contents">Part 5: Get the card data from the csv file</a><a class="headerlink" href="#part-5-get-the-card-data-from-the-csv-file" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 5: Get the card data from the csv file</a><a class="headerlink" href="#part-5-get-the-card-data-from-the-csv-file" title="Permalink to this headline">¶</a></h3>
 <p>Continue expanding the <code class="docutils literal notranslate"><span class="pre">load_csv()</span></code> function to extract the card data from each
 line, put it into a dictionary named <code class="docutils literal notranslate"><span class="pre">cards</span></code> with the keys <code class="docutils literal notranslate"><span class="pre">&quot;front&quot;</span></code> and
 <code class="docutils literal notranslate"><span class="pre">&quot;back&quot;</span></code>.</p>
 <p class="rubric">in load_csv(), <strong>in</strong> the readlines() loop</p>
 <ol class="simple">
-<li><p>[ ] make an empty <code class="docutils literal notranslate"><span class="pre">dict</span></code> assigned to a variable named <code class="docutils literal notranslate"><span class="pre">card</span></code></p></li>
-<li><p>[ ] split each line on the <code class="docutils literal notranslate"><span class="pre">&quot;,&quot;</span></code> using the <code class="docutils literal notranslate"><span class="pre">.split()</span></code> method and assign
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> make an empty <code class="docutils literal notranslate"><span class="pre">dict</span></code> assigned to a variable named <code class="docutils literal notranslate"><span class="pre">card</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> split each line on the <code class="docutils literal notranslate"><span class="pre">&quot;,&quot;</span></code> using the <code class="docutils literal notranslate"><span class="pre">.split()</span></code> method and assign
 the result to a variable named <code class="docutils literal notranslate"><span class="pre">row</span></code></p></li>
-<li><p>[ ] check that there are two items in the row using the <code class="docutils literal notranslate"><span class="pre">len()</span></code> function.
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> check that there are two items in the row using the <code class="docutils literal notranslate"><span class="pre">len()</span></code> function.
 If not print an error message and return</p></li>
-<li><p>[ ] assign <code class="docutils literal notranslate"><span class="pre">card[&quot;front&quot;]</span></code> to the first item in the row, and <code class="docutils literal notranslate"><span class="pre">card[&quot;back&quot;]</span></code> to
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> assign <code class="docutils literal notranslate"><span class="pre">card[&quot;front&quot;]</span></code> to the first item in the row, and <code class="docutils literal notranslate"><span class="pre">card[&quot;back&quot;]</span></code> to
 the second</p></li>
-<li><p>[ ] for temporary debugging, print the <code class="docutils literal notranslate"><span class="pre">card</span></code> <code class="docutils literal notranslate"><span class="pre">dict</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> for temporary debugging, print the <code class="docutils literal notranslate"><span class="pre">card</span></code> <code class="docutils literal notranslate"><span class="pre">dict</span></code></p></li>
 </ol>
 </div>
 <div class="section" id="part-6-return-the-card-data-to-main">
-<h3><a class="toc-backref" href="#table-of-contents">Part 6: Return the card data to <code class="docutils literal notranslate"><span class="pre">main()</span></code></a><a class="headerlink" href="#part-6-return-the-card-data-to-main" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 6: Return the card data to <code class="docutils literal notranslate"><span class="pre">main()</span></code></a><a class="headerlink" href="#part-6-return-the-card-data-to-main" title="Permalink to this headline">¶</a></h3>
 <p>Have <code class="docutils literal notranslate"><span class="pre">load_csv()</span></code> put all of the <code class="docutils literal notranslate"><span class="pre">card</span></code> dictionaries into one big <code class="docutils literal notranslate"><span class="pre">cards</span></code>
 <code class="docutils literal notranslate"><span class="pre">list</span></code> and return that to <code class="docutils literal notranslate"><span class="pre">main()</span></code>.</p>
 <p class="rubric">in load_csv(), <strong>before</strong> the readlines() loop</p>
 <ol class="simple">
-<li><p>[ ] make an empty <code class="docutils literal notranslate"><span class="pre">list</span></code> assigned to a variable named <code class="docutils literal notranslate"><span class="pre">cards</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> make an empty <code class="docutils literal notranslate"><span class="pre">list</span></code> assigned to a variable named <code class="docutils literal notranslate"><span class="pre">cards</span></code></p></li>
 </ol>
 <p class="rubric">in load_csv(), <strong>at the end</strong> of the readlines() loop</p>
 <ol class="simple">
-<li><p>[ ] use the <code class="docutils literal notranslate"><span class="pre">.append()</span></code> method on the <code class="docutils literal notranslate"><span class="pre">cards</span></code> <code class="docutils literal notranslate"><span class="pre">list</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">card</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> use the <code class="docutils literal notranslate"><span class="pre">.append()</span></code> method on the <code class="docutils literal notranslate"><span class="pre">cards</span></code> <code class="docutils literal notranslate"><span class="pre">list</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">card</span></code></p></li>
 </ol>
 <p class="rubric">in load_csv(), <strong>after</strong> the loop</p>
 <ol class="simple">
-<li><p>[ ] return <code class="docutils literal notranslate"><span class="pre">cards</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> return <code class="docutils literal notranslate"><span class="pre">cards</span></code></p></li>
 </ol>
 <p class="rubric">in main()</p>
 <ol class="simple">
-<li><p>[ ] if the <code class="docutils literal notranslate"><span class="pre">cards</span></code> <code class="docutils literal notranslate"><span class="pre">list</span></code> is falsy, <code class="docutils literal notranslate"><span class="pre">return</span></code></p></li>
-<li><p>[ ] otherwise, print the <code class="docutils literal notranslate"><span class="pre">cards</span></code> <code class="docutils literal notranslate"><span class="pre">list</span></code> for temporary debugging</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> if the <code class="docutils literal notranslate"><span class="pre">cards</span></code> <code class="docutils literal notranslate"><span class="pre">list</span></code> is falsy, <code class="docutils literal notranslate"><span class="pre">return</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> otherwise, print the <code class="docutils literal notranslate"><span class="pre">cards</span></code> <code class="docutils literal notranslate"><span class="pre">list</span></code> for temporary debugging</p></li>
 </ol>
 </div>
 <div class="section" id="part-7-remove-extra-whitespace">
-<h3><a class="toc-backref" href="#table-of-contents">Part 7: Remove extra whitespace</a><a class="headerlink" href="#part-7-remove-extra-whitespace" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 7: Remove extra whitespace</a><a class="headerlink" href="#part-7-remove-extra-whitespace" title="Permalink to this headline">¶</a></h3>
 <p>In order to make sure that the flashcards are printed nicely and that the users
 answers get matched up correctly, the trailing <code class="docutils literal notranslate"><span class="pre">&quot;\n&quot;</span></code> needs to be removed from
 the end of each line. Any extra spaces that happen to be around the <code class="docutils literal notranslate"><span class="pre">&quot;,&quot;</span></code> or at
 the beginning or end of the line also need to be removed.</p>
 <p class="rubric">in load_csv(), <strong>in</strong> the loop</p>
 <ol class="simple">
-<li><p>[ ] remove leading and trailing whitespace by calling the <code class="docutils literal notranslate"><span class="pre">.strip()</span></code> method
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> remove leading and trailing whitespace by calling the <code class="docutils literal notranslate"><span class="pre">.strip()</span></code> method
 on <code class="docutils literal notranslate"><span class="pre">card[&quot;front&quot;]</span></code> and <code class="docutils literal notranslate"><span class="pre">card[&quot;back&quot;]</span></code></p></li>
 </ol>
 </div>
 <div class="section" id="part-8-skip-the-header-row-and-blank-lines">
-<h3><a class="toc-backref" href="#table-of-contents">part 8: Skip the header row and blank lines</a><a class="headerlink" href="#part-8-skip-the-header-row-and-blank-lines" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#contents">part 8: Skip the header row and blank lines</a><a class="headerlink" href="#part-8-skip-the-header-row-and-blank-lines" title="Permalink to this headline">¶</a></h3>
 <p>To avoid having a flashcard pop up that reads <code class="docutils literal notranslate"><span class="pre">&quot;front&quot;</span></code>, don’t append the
 header row to the <code class="docutils literal notranslate"><span class="pre">cards</span></code> <code class="docutils literal notranslate"><span class="pre">list</span></code>. Also skip any blank lines in the file.</p>
 <p class="rubric">in load_csv(), <strong>in</strong> the readlines() loop, <strong>before</strong> append</p>
 <ol class="simple">
-<li><p>[ ] check if <code class="docutils literal notranslate"><span class="pre">card[&quot;front&quot;]</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;front&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">card[&quot;back&quot;]</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;back&quot;</span></code>. If so,
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> check if <code class="docutils literal notranslate"><span class="pre">card[&quot;front&quot;]</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;front&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">card[&quot;back&quot;]</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;back&quot;</span></code>. If so,
 <code class="docutils literal notranslate"><span class="pre">continue</span></code> to avoid appending to the cards list</p></li>
-<li><p>[ ] check if <code class="docutils literal notranslate"><span class="pre">line</span></code> is equal to <code class="docutils literal notranslate"><span class="pre">&quot;\n&quot;</span></code>. If so, <code class="docutils literal notranslate"><span class="pre">continue</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> check if <code class="docutils literal notranslate"><span class="pre">line</span></code> is equal to <code class="docutils literal notranslate"><span class="pre">&quot;\n&quot;</span></code>. If so, <code class="docutils literal notranslate"><span class="pre">continue</span></code>.</p></li>
 </ol>
 </div>
 <div class="section" id="part-9-start-the-play-function">
-<h3><a class="toc-backref" href="#table-of-contents">Part 9: Start the <code class="docutils literal notranslate"><span class="pre">play()</span></code> function</a><a class="headerlink" href="#part-9-start-the-play-function" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 9: Start the <code class="docutils literal notranslate"><span class="pre">play()</span></code> function</a><a class="headerlink" href="#part-9-start-the-play-function" title="Permalink to this headline">¶</a></h3>
 <p>This function should take one argument, the list of cards.
 Eventually it will contain the user interface for running through each
 card, getting the answers from the user, and printing the score.</p>
 <p>For now ‘ll just write a <code class="docutils literal notranslate"><span class="pre">play()</span></code> function and call it.</p>
 <p class="rubric">play()</p>
 <ol class="simple">
-<li><p>[ ] write a <code class="docutils literal notranslate"><span class="pre">play()</span> <span class="pre">f</span></code>unction that takes one argument: <code class="docutils literal notranslate"><span class="pre">cards</span></code></p></li>
-<li><p>[ ] for temporary debugging, print something from it</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> write a <code class="docutils literal notranslate"><span class="pre">play()</span> <span class="pre">f</span></code>unction that takes one argument: <code class="docutils literal notranslate"><span class="pre">cards</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> for temporary debugging, print something from it</p></li>
 </ol>
 <p class="rubric">main()</p>
 <ol class="simple">
-<li><p>[ ] call <code class="docutils literal notranslate"><span class="pre">play()</span></code> passing it the list of <code class="docutils literal notranslate"><span class="pre">cards</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> call <code class="docutils literal notranslate"><span class="pre">play()</span></code> passing it the list of <code class="docutils literal notranslate"><span class="pre">cards</span></code></p></li>
 </ol>
 </div>
 <div class="section" id="part-10-go-through-each-card-in-random-order">
-<h3><a class="toc-backref" href="#table-of-contents">Part 10: Go through each card in random order</a><a class="headerlink" href="#part-10-go-through-each-card-in-random-order" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 10: Go through each card in random order</a><a class="headerlink" href="#part-10-go-through-each-card-in-random-order" title="Permalink to this headline">¶</a></h3>
 <p>In this next part we’ll be metaphorically drawing a card at random from the
 deck until there are none left.</p>
 <p>The trick is to make a <a class="reference internal" href="../lessons/while-loops.html#term-while-loop"><span class="xref std std-term">while loop</span></a> that checks the <a class="reference internal" href="../lessons/conditional-statements.html#term-truthy"><span class="xref std std-term">truthy</span></a> value
@@ -729,162 +730,162 @@ of <code class="docutils literal notranslate"><span class="pre">cards</span></co
 <code class="docutils literal notranslate"><span class="pre">random.choice()</span></code> method to pick a <code class="docutils literal notranslate"><span class="pre">card</span></code> at random, then remove it from the list.</p>
 <p class="rubric">at the top of your file</p>
 <ol class="simple">
-<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">import</span></code> the <code class="docutils literal notranslate"><span class="pre">random</span></code> module</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> <code class="docutils literal notranslate"><span class="pre">import</span></code> the <code class="docutils literal notranslate"><span class="pre">random</span></code> module</p></li>
 </ol>
 <p class="rubric">in play()</p>
 <ol class="simple">
-<li><p>[ ] make a while loop where the condition is: <code class="docutils literal notranslate"><span class="pre">cards</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> make a while loop where the condition is: <code class="docutils literal notranslate"><span class="pre">cards</span></code></p></li>
 </ol>
 <p class="rubric">in play(), <strong>in</strong> the loop</p>
 <ol class="simple">
-<li><p>[ ] use <code class="docutils literal notranslate"><span class="pre">random.choice()</span></code> to get a random item from the <code class="docutils literal notranslate"><span class="pre">cards</span></code>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> use <code class="docutils literal notranslate"><span class="pre">random.choice()</span></code> to get a random item from the <code class="docutils literal notranslate"><span class="pre">cards</span></code>
 list and assign it to a variable named <code class="docutils literal notranslate"><span class="pre">card</span></code></p></li>
-<li><p>[ ] call the <code class="docutils literal notranslate"><span class="pre">.remove()</span></code> method on <code class="docutils literal notranslate"><span class="pre">cards</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">card</span></code> to
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> call the <code class="docutils literal notranslate"><span class="pre">.remove()</span></code> method on <code class="docutils literal notranslate"><span class="pre">cards</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">card</span></code> to
 remove the card from the list</p></li>
-<li><p>[ ] for temporary debugging, print <code class="docutils literal notranslate"><span class="pre">card</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> for temporary debugging, print <code class="docutils literal notranslate"><span class="pre">card</span></code></p></li>
 </ol>
 </div>
 <div class="section" id="part-11-test-the-user">
-<h3><a class="toc-backref" href="#table-of-contents">Part 11: Test the user</a><a class="headerlink" href="#part-11-test-the-user" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 11: Test the user</a><a class="headerlink" href="#part-11-test-the-user" title="Permalink to this headline">¶</a></h3>
 <p>This is where things start to get exciting! In this part we’ll print the front
 of the card, ask the user for their answer, and let them know if it was right
 or not.</p>
 <p class="rubric">in play(), <strong>in</strong> the loop</p>
 <ol class="simple">
-<li><p>[ ] print <code class="docutils literal notranslate"><span class="pre">card[&quot;front&quot;]</span></code></p></li>
-<li><p>[ ] prompt the user for their answer using the <code class="docutils literal notranslate"><span class="pre">input()</span></code> function and assign
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> print <code class="docutils literal notranslate"><span class="pre">card[&quot;front&quot;]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> prompt the user for their answer using the <code class="docutils literal notranslate"><span class="pre">input()</span></code> function and assign
 the result to a variable named <code class="docutils literal notranslate"><span class="pre">answer</span></code></p></li>
-<li><p>[ ] check if the <code class="docutils literal notranslate"><span class="pre">answer</span></code> is the same as <code class="docutils literal notranslate"><span class="pre">card[&quot;back&quot;]</span></code></p>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> check if the <code class="docutils literal notranslate"><span class="pre">answer</span></code> is the same as <code class="docutils literal notranslate"><span class="pre">card[&quot;back&quot;]</span></code></p>
 <ul class="simple">
-<li><p>[ ] if so, print <code class="docutils literal notranslate"><span class="pre">&quot;CORRECT&quot;</span></code></p></li>
-<li><p>[ ] if not, print <code class="docutils literal notranslate"><span class="pre">&quot;INCORRECT&quot;,</span></code> then <code class="docutils literal notranslate"><span class="pre">cards[&quot;back&quot;]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> if so, print <code class="docutils literal notranslate"><span class="pre">&quot;CORRECT&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> if not, print <code class="docutils literal notranslate"><span class="pre">&quot;INCORRECT&quot;,</span></code> then <code class="docutils literal notranslate"><span class="pre">cards[&quot;back&quot;]</span></code></p></li>
 </ul>
 </li>
-<li><p>[ ] call <code class="docutils literal notranslate"><span class="pre">input()</span></code> asking if the user wants to continue</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> call <code class="docutils literal notranslate"><span class="pre">input()</span></code> asking if the user wants to continue</p>
 <ul class="simple">
-<li><p>[ ] if not, return</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> if not, return</p></li>
 </ul>
 </li>
 </ol>
 <p class="rubric">in play(), <strong>after</strong> the loop</p>
 </div>
 <div class="section" id="part-12-scorekeeping">
-<h3><a class="toc-backref" href="#table-of-contents">Part 12: Scorekeeping</a><a class="headerlink" href="#part-12-scorekeeping" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 12: Scorekeeping</a><a class="headerlink" href="#part-12-scorekeeping" title="Permalink to this headline">¶</a></h3>
 <p>Now lets keep track of which card the user is on, and what their score is.</p>
 <p class="rubric">in play(), <strong>above</strong> the loop</p>
 <ol class="simple">
-<li><p>[ ] make a <code class="docutils literal notranslate"><span class="pre">score</span></code> variable set to <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
-<li><p>[ ] assign the length of cards to a variable <code class="docutils literal notranslate"><span class="pre">total</span></code></p></li>
-<li><p>[ ] make a <code class="docutils literal notranslate"><span class="pre">num</span></code> variable set to <code class="docutils literal notranslate"><span class="pre">1</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> make a <code class="docutils literal notranslate"><span class="pre">score</span></code> variable set to <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> assign the length of cards to a variable <code class="docutils literal notranslate"><span class="pre">total</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> make a <code class="docutils literal notranslate"><span class="pre">num</span></code> variable set to <code class="docutils literal notranslate"><span class="pre">1</span></code></p></li>
 </ol>
 <p class="rubric">in play(), <strong>in</strong> the loop</p>
 <ol class="simple">
-<li><p>[ ] at the top of the loop print <code class="samp docutils literal notranslate"><span class="pre">card</span> <em><span class="pre">num</span></em> <span class="pre">of</span> <em><span class="pre">total</span></em></code></p></li>
-<li><p>[ ] when you check if the <code class="docutils literal notranslate"><span class="pre">answer</span></code> is the same as <code class="docutils literal notranslate"><span class="pre">card[&quot;back&quot;]</span></code></p>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> at the top of the loop print <code class="samp docutils literal notranslate"><span class="pre">card</span> <em><span class="pre">num</span></em> <span class="pre">of</span> <em><span class="pre">total</span></em></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> when you check if the <code class="docutils literal notranslate"><span class="pre">answer</span></code> is the same as <code class="docutils literal notranslate"><span class="pre">card[&quot;back&quot;]</span></code></p>
 <ul class="simple">
-<li><p>[ ] if so, increment <code class="docutils literal notranslate"><span class="pre">score</span></code> by one</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> if so, increment <code class="docutils literal notranslate"><span class="pre">score</span></code> by one</p></li>
 </ul>
 </li>
-<li><p>[ ] at the end of the loop, increment <code class="docutils literal notranslate"><span class="pre">num</span></code> by <code class="docutils literal notranslate"><span class="pre">1</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> at the end of the loop, increment <code class="docutils literal notranslate"><span class="pre">num</span></code> by <code class="docutils literal notranslate"><span class="pre">1</span></code></p></li>
 </ol>
 <p class="rubric">in play(), <strong>after</strong> the loop</p>
 <ol class="simple">
-<li><p>[ ] print <code class="samp docutils literal notranslate"><span class="pre">&quot;</span><em><span class="pre">score</span></em> <span class="pre">of</span> <em><span class="pre">total</span></em><span class="pre">&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> print <code class="samp docutils literal notranslate"><span class="pre">&quot;</span><em><span class="pre">score</span></em> <span class="pre">of</span> <em><span class="pre">total</span></em><span class="pre">&quot;</span></code></p></li>
 </ol>
 </div>
 <div class="section" id="part-13-prettify-flashcards">
-<h3><a class="toc-backref" href="#table-of-contents">Part 13: Prettify flashcards</a><a class="headerlink" href="#part-13-prettify-flashcards" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 13: Prettify flashcards</a><a class="headerlink" href="#part-13-prettify-flashcards" title="Permalink to this headline">¶</a></h3>
 <p>This part is about making the the flashcards look nicer. Feel free to adjust
 these suggestions to your taste.</p>
 <p class="rubric">throughout your file</p>
 <ol class="simple">
-<li><p>[ ] get rid of any debug <code class="docutils literal notranslate"><span class="pre">print()</span></code> statements</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> get rid of any debug <code class="docutils literal notranslate"><span class="pre">print()</span></code> statements</p></li>
 </ol>
 <p class="rubric">at the top of your file</p>
 <ol class="simple">
-<li><p>[ ] make a global variable <code class="docutils literal notranslate"><span class="pre">WIDTH</span></code> and set it to around <code class="docutils literal notranslate"><span class="pre">75</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> make a global variable <code class="docutils literal notranslate"><span class="pre">WIDTH</span></code> and set it to around <code class="docutils literal notranslate"><span class="pre">75</span></code></p></li>
 </ol>
 <p class="rubric">in play()</p>
 <ol class="simple">
-<li><p>[ ] print a line to the beginning and end of each card</p></li>
-<li><p>[ ] add some extra newlines around various elements</p></li>
-<li><p>[ ] center any string by calling the <code class="docutils literal notranslate"><span class="pre">.center()</span></code> method on it and
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> print a line to the beginning and end of each card</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> add some extra newlines around various elements</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> center any string by calling the <code class="docutils literal notranslate"><span class="pre">.center()</span></code> method on it and
 pass the argument <code class="docutils literal notranslate"><span class="pre">WIDTH</span></code>. For example, the <code class="docutils literal notranslate"><span class="pre">card[&quot;front&quot;]</span></code> line.</p></li>
-<li><p>[ ] right align any string by calling the .rjust() method on it and passing
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> right align any string by calling the .rjust() method on it and passing
 the argument <code class="docutils literal notranslate"><span class="pre">WIDTH</span></code>. For example, the <code class="samp docutils literal notranslate"><span class="pre">card</span> <em><span class="pre">x</span></em> <span class="pre">of</span> <em><span class="pre">y</span></em></code> line.</p></li>
-<li><p>[ ] print <code class="samp docutils literal notranslate"><span class="pre">&quot;</span><em><span class="pre">score</span></em> <span class="pre">of</span> <em><span class="pre">total</span></em><span class="pre">&quot;</span></code> after the end of each card</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> print <code class="samp docutils literal notranslate"><span class="pre">&quot;</span><em><span class="pre">score</span></em> <span class="pre">of</span> <em><span class="pre">total</span></em><span class="pre">&quot;</span></code> after the end of each card</p></li>
 </ol>
 </div>
 <div class="section" id="part-14-wrap-long-questions">
-<h3><a class="toc-backref" href="#table-of-contents">Part 14: Wrap long questions</a><a class="headerlink" href="#part-14-wrap-long-questions" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 14: Wrap long questions</a><a class="headerlink" href="#part-14-wrap-long-questions" title="Permalink to this headline">¶</a></h3>
 <p>In this part wrap questions that are too long so that they are split into multiple lines.</p>
 <p class="rubric">at the top of your file</p>
 <ol class="simple">
-<li><p>[ ] If you want your questions to be wrap at a shorter length than <code class="docutils literal notranslate"><span class="pre">WIDTH</span></code>, set a <code class="docutils literal notranslate"><span class="pre">MAXWIDTH</span></code> global variable.</p></li>
-<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">import</span></code> the <code class="docutils literal notranslate"><span class="pre">textwrap</span></code> module</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> If you want your questions to be wrap at a shorter length than <code class="docutils literal notranslate"><span class="pre">WIDTH</span></code>, set a <code class="docutils literal notranslate"><span class="pre">MAXWIDTH</span></code> global variable.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> <code class="docutils literal notranslate"><span class="pre">import</span></code> the <code class="docutils literal notranslate"><span class="pre">textwrap</span></code> module</p></li>
 </ol>
 <p class="rubric">in play(), <strong>in</strong> the loop</p>
 <ol class="simple">
-<li><p>[ ] Call <code class="docutils literal notranslate"><span class="pre">textwrap.wrap()</span></code> with the arguments <code class="docutils literal notranslate"><span class="pre">card[&quot;front&quot;]</span></code> and the width
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Call <code class="docutils literal notranslate"><span class="pre">textwrap.wrap()</span></code> with the arguments <code class="docutils literal notranslate"><span class="pre">card[&quot;front&quot;]</span></code> and the width
 you want to wrap at, either <code class="docutils literal notranslate"><span class="pre">MAXWIDTH</span></code> or <code class="docutils literal notranslate"><span class="pre">WIDTH</span></code>. This will return a
 <code class="docutils literal notranslate"><span class="pre">list</span></code> of strings, where each item is a line. Assign the results to a
 variable <code class="docutils literal notranslate"><span class="pre">lines</span></code>.</p></li>
-<li><p>[ ] Remove the code that prints <code class="docutils literal notranslate"><span class="pre">card[&quot;front&quot;]</span></code></p></li>
-<li><p>[ ] Iterate over the <code class="docutils literal notranslate"><span class="pre">lines</span></code> list, and print each item.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Remove the code that prints <code class="docutils literal notranslate"><span class="pre">card[&quot;front&quot;]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Iterate over the <code class="docutils literal notranslate"><span class="pre">lines</span></code> list, and print each item.</p></li>
 </ol>
 </div>
 <div class="section" id="part-15-add-topics-menu">
-<h3><a class="toc-backref" href="#table-of-contents">Part 15: Add topics menu</a><a class="headerlink" href="#part-15-add-topics-menu" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 15: Add topics menu</a><a class="headerlink" href="#part-15-add-topics-menu" title="Permalink to this headline">¶</a></h3>
 <p>This section will add a menu to print the name (minus the <code class="docutils literal notranslate"><span class="pre">.csv</span></code> extension) of
 each of the csv files in your flashcards directory and allow the user to choose
 one or more files to load.</p>
 <p class="rubric">at the top of your file</p>
 <ol class="simple">
-<li><p>Make a list assigned to the global variable <code class="docutils literal notranslate"><span class="pre">TOPICS</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Make a list assigned to the global variable <code class="docutils literal notranslate"><span class="pre">TOPICS</span></code></p></li>
 </ol>
 <p class="rubric">menu()</p>
 <ol class="simple">
-<li><p>write a <code class="docutils literal notranslate"><span class="pre">menu()</span></code> function</p></li>
-<li><p>assign <code class="docutils literal notranslate"><span class="pre">TOPICS</span></code> to a list of <code class="docutils literal notranslate"><span class="pre">Path</span></code> objects in your flashcards directory using the <code class="docutils literal notranslate"><span class="pre">.iterdir()</span></code> method</p></li>
-<li><p>print an error message if no files are found in your flashcards directory</p></li>
-<li><p>print the filename minus the <code class="docutils literal notranslate"><span class="pre">.csv</span></code> extension for each <code class="docutils literal notranslate"><span class="pre">Path</span></code> object in the <code class="docutils literal notranslate"><span class="pre">TOPICS</span></code> list, next to a number</p></li>
-<li><p>print a special option <code class="docutils literal notranslate"><span class="pre">&quot;all&quot;</span></code> with a menu selection of <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
-<li><p>make a <code class="docutils literal notranslate"><span class="pre">list</span></code> assigned to the variable <code class="docutils literal notranslate"><span class="pre">selection</span></code></p></li>
-<li><p>get input from the user asking them to choose one or more topics and assign it to a variable <code class="docutils literal notranslate"><span class="pre">choices</span></code></p></li>
-<li><p>use the <code class="docutils literal notranslate"><span class="pre">.split()</span></code> method to split <code class="docutils literal notranslate"><span class="pre">choices</span></code> into multiple items on whitespace</p></li>
-<li><p>iterate over each response and assign to <code class="docutils literal notranslate"><span class="pre">num</span></code>:</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> write a <code class="docutils literal notranslate"><span class="pre">menu()</span></code> function</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> assign <code class="docutils literal notranslate"><span class="pre">TOPICS</span></code> to a list of <code class="docutils literal notranslate"><span class="pre">Path</span></code> objects in your flashcards directory using the <code class="docutils literal notranslate"><span class="pre">.iterdir()</span></code> method</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> print an error message if no files are found in your flashcards directory</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> print the filename minus the <code class="docutils literal notranslate"><span class="pre">.csv</span></code> extension for each <code class="docutils literal notranslate"><span class="pre">Path</span></code> object in the <code class="docutils literal notranslate"><span class="pre">TOPICS</span></code> list, next to a number</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> print a special option <code class="docutils literal notranslate"><span class="pre">&quot;all&quot;</span></code> with a menu selection of <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> make a <code class="docutils literal notranslate"><span class="pre">list</span></code> assigned to the variable <code class="docutils literal notranslate"><span class="pre">selection</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> get input from the user asking them to choose one or more topics and assign it to a variable <code class="docutils literal notranslate"><span class="pre">choices</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> use the <code class="docutils literal notranslate"><span class="pre">.split()</span></code> method to split <code class="docutils literal notranslate"><span class="pre">choices</span></code> into multiple items on whitespace</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> iterate over each response and assign to <code class="docutils literal notranslate"><span class="pre">num</span></code>:</p>
 <ul class="simple">
-<li><p>if the response is <code class="docutils literal notranslate"><span class="pre">&quot;0&quot;</span></code>, return <code class="docutils literal notranslate"><span class="pre">TOPICS</span></code></p></li>
-<li><p>convert <code class="docutils literal notranslate"><span class="pre">num</span></code> to an int and subtract <code class="docutils literal notranslate"><span class="pre">1</span></code></p></li>
-<li><p>get the item from <code class="docutils literal notranslate"><span class="pre">TOPICS</span></code> at the <code class="docutils literal notranslate"><span class="pre">num</span></code> index and append it to <code class="docutils literal notranslate"><span class="pre">selection</span></code> list</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> if the response is <code class="docutils literal notranslate"><span class="pre">&quot;0&quot;</span></code>, return <code class="docutils literal notranslate"><span class="pre">TOPICS</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> convert <code class="docutils literal notranslate"><span class="pre">num</span></code> to an int and subtract <code class="docutils literal notranslate"><span class="pre">1</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> get the item from <code class="docutils literal notranslate"><span class="pre">TOPICS</span></code> at the <code class="docutils literal notranslate"><span class="pre">num</span></code> index and append it to <code class="docutils literal notranslate"><span class="pre">selection</span></code> list</p></li>
 </ul>
 </li>
-<li><p>return the <code class="docutils literal notranslate"><span class="pre">selection</span></code> list</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> return the <code class="docutils literal notranslate"><span class="pre">selection</span></code> list</p></li>
 </ol>
 <p class="rubric">in main()</p>
 <ol class="simple">
-<li><p>at the beginning of the function, make an empty <code class="docutils literal notranslate"><span class="pre">cards</span></code> list</p></li>
-<li><p>call <code class="docutils literal notranslate"><span class="pre">menu()</span></code> and assign the returned value to the variable <code class="docutils literal notranslate"><span class="pre">paths</span></code></p></li>
-<li><p>remove the line where you previously defined the path to your <code class="docutils literal notranslate"><span class="pre">.csv</span></code> file</p></li>
-<li><p>iterate over <code class="docutils literal notranslate"><span class="pre">paths</span></code> and assign each element to the variable <code class="docutils literal notranslate"><span class="pre">path</span></code>:</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> at the beginning of the function, make an empty <code class="docutils literal notranslate"><span class="pre">cards</span></code> list</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> call <code class="docutils literal notranslate"><span class="pre">menu()</span></code> and assign the returned value to the variable <code class="docutils literal notranslate"><span class="pre">paths</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> remove the line where you previously defined the path to your <code class="docutils literal notranslate"><span class="pre">.csv</span></code> file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> iterate over <code class="docutils literal notranslate"><span class="pre">paths</span></code> and assign each element to the variable <code class="docutils literal notranslate"><span class="pre">path</span></code>:</p>
 <ul class="simple">
-<li><p>call <code class="docutils literal notranslate"><span class="pre">load_csv()</span></code> with the <code class="docutils literal notranslate"><span class="pre">path</span></code> argument</p></li>
-<li><p>append the returned value to <code class="docutils literal notranslate"><span class="pre">cards</span></code> using the <code class="docutils literal notranslate"><span class="pre">.extend()</span></code> method</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> call <code class="docutils literal notranslate"><span class="pre">load_csv()</span></code> with the <code class="docutils literal notranslate"><span class="pre">path</span></code> argument</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> append the returned value to <code class="docutils literal notranslate"><span class="pre">cards</span></code> using the <code class="docutils literal notranslate"><span class="pre">.extend()</span></code> method</p></li>
 </ul>
 </li>
 </ol>
 </div>
 <div class="section" id="part-16-allow-answers-with-commas">
-<h3><a class="toc-backref" href="#table-of-contents">Part 16: Allow answers with commas</a><a class="headerlink" href="#part-16-allow-answers-with-commas" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 16: Allow answers with commas</a><a class="headerlink" href="#part-16-allow-answers-with-commas" title="Permalink to this headline">¶</a></h3>
 <p>Many answers have commas in them, so instead of manually parsing the csv file,
 lets use the built in <code class="docutils literal notranslate"><span class="pre">csv</span></code> module.</p>
 <p class="rubric">at the top of your file</p>
 <ol class="simple">
-<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">import</span></code> the <code class="docutils literal notranslate"><span class="pre">csv</span></code> module</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> <code class="docutils literal notranslate"><span class="pre">import</span></code> the <code class="docutils literal notranslate"><span class="pre">csv</span></code> module</p></li>
 </ol>
 <p class="rubric">in load_csv() after opening your file</p>
 <ol>
-<li><p>Create a new csv reader like so:</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Create a new csv reader like so:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span>
     <span class="n">fh</span><span class="p">,</span>
     <span class="n">quotechar</span><span class="o">=</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span>
@@ -894,7 +895,7 @@ lets use the built in <code class="docutils literal notranslate"><span class="pr
 </pre></div>
 </div>
 </li>
-<li><p>Instead of itearting over <code class="docutils literal notranslate"><span class="pre">fh.readlines()</span></code>, iterate over the <code class="docutils literal notranslate"><span class="pre">reader</span></code>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Instead of iterating over <code class="docutils literal notranslate"><span class="pre">fh.readlines()</span></code>, iterate over the <code class="docutils literal notranslate"><span class="pre">reader</span></code>
 object, which will yields a <code class="docutils literal notranslate"><span class="pre">list</span></code> of values in each <code class="docutils literal notranslate"><span class="pre">row</span></code>.</p></li>
 </ol>
 </div>
@@ -904,12 +905,10 @@ object, which will yields a <code class="docutils literal notranslate"><span cla
 <ul class="simple">
 <li><p>keep a log with dates and scores</p></li>
 <li><p>allow csv file to store alternate answers</p></li>
-<li><p>make extra flashcard files, then add a menu to allow the user to select
-which topic(s) they would like to be quizzed on</p></li>
 <li><p>add an optional limit argument to limit the number of cards to go
 through at a time</p></li>
-<li><p>add extra columns to flashcards files to keep track of each time you get the</p></li>
-<li><p>answer right and wrong, use this to generate reports</p></li>
+<li><p>add extra columns to flashcards files to keep track of each time you get the
+answer right and wrong, use this to generate reports</p></li>
 </ul>
 </div>
 <div class="section" id="card-data">
