@@ -1,45 +1,12 @@
 Web APIs
 ========
 
-Table of Contents
------------------
-
-* [Part 1: Setup](#part-1-setup)
-* [Part 2: Introduction](#part-2-introduction)
-* [Part 3: How web requests work](#part-3-how-web-requests-work)
-* [Part 4: The parts of an API response](#part-4-the-parts-of-an-api-response)
-    * [Part 4.1: Solo Exercise - Print the Weather](#part-41-solo-exercise---print-the-weather)
-* [Part 5: Getting data from an API](#part-5-getting-data-from-an-api)
-    * [Part 5.1: What is JSON](#part-51-what-is-json)
-    * [Part 5.2: Accessing JSON data](#part-52-accessing-json-data)
-    * [Part 5.3: Solo Exercise - Latitude and Longitude](#part-53-solo-exercise---latitude-and-longitude)
-* [Part 6: Parameters](#part-6-parameters)
-    * [Part 6.1 Parameters in URLs](#part-61-parameters-in-urls)
-    * [Part 6.2 API Parameters](#part-62-api-parameters)
-       * [Step 1: Try it using curl](#step-1-try-it-using-curl)
-       * [Step 2: Add it to apis.py](#step-2-add-it-to-apispy)
-    * [Part 6.3: Solo Exercise - Parameters](#part-63-solo-exercise---parameters)
-* [Part 7: Private Data](#part-7-private-data)
-  * [Step 1: Create the private module](#step-1-create-the-private-module)
-  * [Step 2: Ignore it in git](#step-2-ignore-it-in-git)
-  * [Step 3: Import it](#step-3-import-it)
-* [Part 8: Headers](#part-8-headers)
-    * [Part 8.1: Get Your API Key](#part-81-get-your-api-key)
-      * [Step 1: Sign up](#step-1-sign-up)
-      * [Step 2: Add it to private.py](#step-2-add-it-to-privatepy)
-      * [Step 3: Import it in apis.py](#step-3-import-it-in-apispy)
-    * [Part 8.2: Sending the x-access-token Header](#part-82-sending-the-x-access-token-header)
-    * [Part 8.3: Solo Exercise - RapidAPI](#part-83-solo-exercise---rapidapi)
-* [Part 9: Request Methods](#part-9-request-methods)
-    * [Part 9.1: Request methods in Python](#part-91-request-methods-in-python)
-    * [Part 9.2 POST, PUT and PATCH](#part-92-post-put-and-patch)
-    * [Part 9.3 Request methods using curl](#part-93-request-methods-using-curl)
-    * [Part 9.4 Solo Exercise](#part-94-solo-exercise)
-* [Part 10: Final Project](#part-10-final-project)
-* [See Also](#see-also)
+```{contents}
+:backlinks: top
+:local:
+```
 
 {lesson}`web_apis.py`
-
 
 Part 1: Setup
 -------------
@@ -354,6 +321,7 @@ you. I use this knowledge often to bypass slow pages and occationally to get
 around a bug.
 
 :::{admonition} Sidenote
+
 In modern browsers you can usually type in spaces and other special
 characters directly into the URL bar. After you hit enter you may notice
 that your spaces have been changed to `+` or `%20`.  The browser is URL
@@ -365,6 +333,8 @@ only accept encoded values. The `requests` module handles much of this for
 you, but you may run into occasional problems when passing unencoded
 parameters at the command line. If your curl requests are mysteriously
 failing, try replacing any spaces with `+`.
+
+:::
 
 ### Part 6.2 API Parameters
 
@@ -380,7 +350,7 @@ how to say "hello" in a given language.
 The `endpoint` is `https://fourtonfish.com/hellosalut/`. We'll pass it the
 `lang` parameter, starting with the language code `de` for German.
 
-### Step 1: Try it using `curl`
+#### Step 1: Try it using `curl`
 
 ```{code-block} bash
 ---
@@ -393,7 +363,7 @@ Now we'll do the same thing in Python using the `requests` module. The
 `requests.get` function takes an optional argument `params` which acceps a
 hash.
 
-### Step 2: Add it to `apis.py`
+#### Step 2: Add it to `apis.py`
 
 ```{code-block} python
 ---
@@ -545,7 +515,7 @@ we'll be doing today using the `openuv.io` API.
 
 ### Part 8.1: Get Your API Key
 
-### Step 1: Sign up
+#### Step 1: Sign up
 
 In your web browser visit [openuv.io](https://www.openuv.io/). Click on **Get My API Key**
 then sign into a Google account.
@@ -558,7 +528,7 @@ To authorise your client just add your API Key _______ to "x-access-token"
 header for each request.
 ```
 
-### Step 2: Add it to `private.py`
+#### Step 2: Add it to `private.py`
 
 Copy the API key shown then add it to `private.py`. Don't forget to add
 `OPENUV_KEY` to the `__all__` list.
@@ -576,7 +546,7 @@ LNG = "-118.26"
 OPENUV_KEY = ""      # your API key here
 ```
 
-### Step 3: Import it in `apis.py`
+#### Step 3: Import it in `apis.py`
 
 Then add `OPENUV_KEY` to the `import` statement in `apis.py`.
 
@@ -1026,6 +996,7 @@ most useful to make you more productive.
 :::
 
 :::{admonition}Tips and Reminders
+
 :class: tip
 
 * Choose a goal for each week. **Phase 1** should be doable in a week or maybe
@@ -1066,6 +1037,8 @@ most useful to make you more productive.
   step. Perhaps also give your classmate(s) an opportunity to review your code
   as well. Code reviews are a good way to get feedback and course-correct
   early, as well as learning from each other.
+
+:::
 
 See Also
 --------
