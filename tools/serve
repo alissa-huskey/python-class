@@ -1,0 +1,31 @@
+#!/usr/bin/env python
+
+"""Start HTTP server serving files from docs/_build/html at
+   http://localhost:1313
+
+   Equivelant to:
+   python -m http.server --directory docs/_build/html
+"""
+
+from pathlib import Path
+from http.server import HTTPServer, SimpleHTTPRequestHandler
+
+ROOTDIR = Path(__file__).parent.parent.parent
+PORT = 1313
+
+class Handler(SimpleHTTPRequestHandler):
+    """Request handler class that overwrites the directory"""
+
+    directory = ROOTDIR / "docs" / "_build" / "html"
+
+    def __init__(self, *args, **kwargs):
+        kwargs.pop("directory", None)
+        super().__init__(*args, directory=self.directory, **kwargs)
+
+def main():
+    print(f"Serving {Handler.directory} at: http://localhost:{PORT}\n")
+    server = HTTPServer(("", PORT), Handler)
+    server.serve_forever()
+
+if __name__ == "__main__":
+    main()
