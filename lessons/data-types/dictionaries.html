@@ -556,6 +556,33 @@
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#membership">
+   Membership
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#keys-and-values">
+     Keys and values
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#key-types">
+     Key types
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conditions">
+     Conditions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nested-values">
+     Nested values
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
             </nav>
@@ -581,6 +608,14 @@
 <li><p><a class="reference internal" href="#modifying" id="id5">Modifying</a></p></li>
 <li><p><a class="reference internal" href="#removing" id="id6">Removing</a></p></li>
 <li><p><a class="reference internal" href="#exercise" id="id7">Exercise</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#membership" id="id8">Membership</a></p>
+<ul>
+<li><p><a class="reference internal" href="#keys-and-values" id="id9">Keys and values</a></p></li>
+<li><p><a class="reference internal" href="#key-types" id="id10">Key types</a></p></li>
+<li><p><a class="reference internal" href="#conditions" id="id11">Conditions</a></p></li>
+<li><p><a class="reference internal" href="#nested-values" id="id12">Nested values</a></p></li>
 </ul>
 </li>
 </ul>
@@ -667,7 +702,7 @@ Published: 1990
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1680</span><span class="o">/</span><span class="mf">1856190195.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1706</span><span class="o">/</span><span class="mf">1856190195.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Series:&quot;</span><span class="p">,</span> <span class="n">book</span><span class="p">[</span><span class="s2">&quot;series&quot;</span><span class="p">])</span>
 
 <span class="ne">KeyError</span>: &#39;series&#39;
@@ -855,6 +890,218 @@ result.</p>
 </div>
 </div>
 </div>
+</div>
+</div>
+<div class="section" id="membership">
+<h2><a class="toc-backref" href="#table-of-contents">Membership</a><a class="headerlink" href="#membership" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="keys-and-values">
+<h3><a class="toc-backref" href="#table-of-contents">Keys and values</a><a class="headerlink" href="#keys-and-values" title="Permalink to this headline">¶</a></h3>
+<p>You can get a list of all of the keys in a dictionary using the <code class="docutils literal notranslate"><span class="pre">.keys()</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">book</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;title&#39;, &#39;author&#39;, &#39;year&#39;, &#39;genre&#39;, &#39;isbn&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Similarly, you can get a list of all of the values in a dictionary using the <code class="docutils literal notranslate"><span class="pre">.values()</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">book</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_values([&#39;Last Chance to See&#39;, &#39;Douglas Adams, Mark Carwardine&#39;, 1990, &#39;Science&#39;, &#39;0345371984&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Both of these are <a class="reference internal" href="../iterable.html" title=""><span class="xref std std-term">iterables</span></a> which can be converted to a <code class="docutils literal notranslate"><span class="pre">list</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">book</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">book</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;title&#39;, &#39;author&#39;, &#39;year&#39;, &#39;genre&#39;, &#39;isbn&#39;]
+[&#39;Last Chance to See&#39;,
+ &#39;Douglas Adams, Mark Carwardine&#39;,
+ 1990,
+ &#39;Science&#39;,
+ &#39;0345371984&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="key-types">
+<h3><a class="toc-backref" href="#table-of-contents">Key types</a><a class="headerlink" href="#key-types" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">book</span></code> dictionary uses strings for keys, but you can actually use nearly
+any type as a key.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="mi">10</span><span class="p">:</span> <span class="s2">&quot;ten&quot;</span><span class="p">,</span>
+  <span class="mi">20</span><span class="p">:</span> <span class="s2">&quot;twenty&quot;</span><span class="p">,</span>
+  <span class="mi">30</span><span class="p">:</span> <span class="s2">&quot;thirty&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">[</span><span class="mi">30</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>thirty
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can mix and match the type of keys.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="mi">10</span><span class="p">:</span> <span class="s2">&quot;ten&quot;</span><span class="p">,</span>
+  <span class="mi">20</span><span class="p">:</span> <span class="s2">&quot;twenty&quot;</span><span class="p">,</span>
+  <span class="mi">30</span><span class="p">:</span> <span class="s2">&quot;thirty&quot;</span><span class="p">,</span>
+  <span class="mf">0.5</span><span class="p">:</span> <span class="s2">&quot;half&quot;</span><span class="p">,</span>
+  <span class="mf">0.25</span><span class="p">:</span> <span class="s2">&quot;a quarter&quot;</span><span class="p">,</span>
+  <span class="mf">0.125</span><span class="p">:</span> <span class="s2">&quot;one eighth&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">[</span><span class="mf">0.5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>half
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can even use a <code class="docutils literal notranslate"><span class="pre">tuple</span></code> objects as keys.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">times</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span> <span class="s2">&quot;noon&quot;</span><span class="p">,</span>
+  <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">30</span><span class="p">):</span> <span class="s2">&quot;half past eight&quot;</span><span class="p">,</span>
+  <span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span> <span class="s2">&quot;midnight&quot;</span><span class="p">,</span>
+  <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">45</span><span class="p">):</span> <span class="s2">&quot;quarter to nine&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">times</span><span class="p">[(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">30</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>half past eight
+</pre></div>
+</div>
+</div>
+</div>
+<p>You just can’t use <a class="reference internal" href="../../reference/glossary.html#term-mutable"><span class="xref std std-term">mutable</span></a> objects as keys, like <code class="docutils literal notranslate"><span class="pre">dict</span></code> or <code class="docutils literal notranslate"><span class="pre">list</span></code> objects.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">times</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="p">]:</span> <span class="s2">&quot;noon&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1706</span><span class="o">/</span><span class="mf">599626864.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">times</span> <span class="o">=</span> <span class="p">{</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>   <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="p">]:</span> <span class="s2">&quot;noon&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="p">}</span>
+
+<span class="ne">TypeError</span>: unhashable type: &#39;list&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="conditions">
+<h3><a class="toc-backref" href="#table-of-contents">Conditions</a><a class="headerlink" href="#conditions" title="Permalink to this headline">¶</a></h3>
+<p>You can check if a dictionary has a particular key using the <code class="docutils literal notranslate"><span class="pre">in</span></code> operator.</p>
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;title&quot;</span> <span class="ow">in</span> <span class="n">book</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;series&quot;</span> <span class="ow">in</span> <span class="n">book</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>To check if a dictionary has a particular value you’ll also use the <code class="docutils literal notranslate"><span class="pre">in</span></code>
+operator, but on the <code class="docutils literal notranslate"><span class="pre">.values()</span></code> method.</p>
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">1990</span> <span class="ow">in</span> <span class="n">book</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;Orson Scott Card&quot;</span> <span class="ow">in</span> <span class="n">book</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="nested-values">
+<h3><a class="toc-backref" href="#table-of-contents">Nested values</a><a class="headerlink" href="#nested-values" title="Permalink to this headline">¶</a></h3>
+<p>Values can be anything you want, even other dictionaries or lists.</p>
+<div class="cell tag_thebe-init docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">favorites</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;jessica&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;purple&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;movie&quot;</span><span class="p">:</span> <span class="s2">&quot;Pulp Fiction&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;book&quot;</span><span class="p">:</span> <span class="s2">&quot;The Lion, the Witch and the Wardrobe&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;song&quot;</span><span class="p">:</span> <span class="s2">&quot;Another One Bites the Dust&quot;</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;eric&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;movie&quot;</span><span class="p">:</span> <span class="s2">&quot;Goodfellas&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;book&quot;</span><span class="p">:</span> <span class="s2">&quot;The Lion, the Witch and the Wardrobe&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;song&quot;</span><span class="p">:</span> <span class="s2">&quot;Good Vibrations&quot;</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can access items in the nested lists by using multiple subscription
+operations, with brackets back to back.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jessica&#39;s favorite book is:&quot;</span><span class="p">,</span> <span class="n">favorites</span><span class="p">[</span><span class="s2">&quot;jessica&quot;</span><span class="p">][</span><span class="s2">&quot;book&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jessica&#39;s favorite book is: The Lion, the Witch and the Wardrobe
+</pre></div>
+</div>
+</div>
+</div>
+<p>Another way to do this is to retrieve each level and store it in a variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jessica</span> <span class="o">=</span> <span class="n">favorites</span><span class="p">[</span><span class="s2">&quot;jessica&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jessica&#39;s favorite book is:&quot;</span><span class="p">,</span> <span class="n">jessica</span><span class="p">[</span><span class="s2">&quot;book&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jessica&#39;s favorite book is: The Lion, the Witch and the Wardrobe
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
 </div>
 </div>
 </div>
