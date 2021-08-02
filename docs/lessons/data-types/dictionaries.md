@@ -213,10 +213,168 @@ def add(a, b):
   return numbers[a] + numbers[b]
 `````
 
+Membership
+----------
+
+### Keys and values
+
+You can get a list of all of the keys in a dictionary using the `.keys()` method.
+
+```{code-cell} python
+:class: full-width
+
+print(book.keys())
+```
+
+Similarly, you can get a list of all of the values in a dictionary using the `.values()` method.
+
+```{code-cell} python
+:class: full-width
+
+print(book.values())
+```
+
+Both of these are {term}`iterables` which can be converted to a `list`.
+
+```{code-cell} python
+:class: full-width
+
+keys = list(book.keys())
+pprint(keys)
+
+values = list(book.values())
+pprint(values)
+```
+
+### Key types
+
+The `book` dictionary uses strings for keys, but you can actually use nearly
+any type as a key.
+
+```{code-cell} python
+:class: full-width
+
+numbers = {
+  10: "ten",
+  20: "twenty",
+  30: "thirty",
+}
+
+print(numbers[30])
+```
+
+You can mix and match the type of keys.
+
+```{code-cell} python
+:class: full-width
+
+numbers = {
+  10: "ten",
+  20: "twenty",
+  30: "thirty",
+  0.5: "half",
+  0.25: "a quarter",
+  0.125: "one eighth",
+}
+
+print(numbers[0.5])
+```
+
+You can even use a `tuple` objects as keys.
+
+```{code-cell} python
+:class: full-width
+times = {
+  (12, 0): "noon",
+  (8, 30): "half past eight",
+  (24, 0): "midnight",
+  (9, 45): "quarter to nine",
+}
+
+print(times[(8, 30)])
+```
+
+You just can't use {term}`mutable` objects as keys, like `dict` or `list` objects.
+
+```{code-cell} python
+:class: full-width
+:tags: [raises-exception]
+
+times = {
+  [12, 0]: "noon",
+}
+
+```
+
+### Conditions
+
+You can check if a dictionary has a particular key using the `in` operator.
+
+```{code-block} python
+:class: full-width
+>>> "title" in book
+True
+>>> "series" in book
+False
+```
+
+To check if a dictionary has a particular value you'll also use the `in`
+operator, but on the `.values()` method.
+
+```{code-block} python
+:class: full-width
+>>> 1990 in book.values()
+True
+>>> "Orson Scott Card" in book.values()
+False
+```
+
+### Nested values
+
+Values can be anything you want, even other dictionaries or lists.
+
+```{code-cell} python
+:class: full-width
+:tags: [thebe-init]
+
+favorites = {
+  "jessica": {
+    "color": "purple",
+    "movie": "Pulp Fiction",
+    "book": "The Lion, the Witch and the Wardrobe",
+    "song": "Another One Bites the Dust",
+  },
+  "eric": {
+    "color": "green",
+    "movie": "Goodfellas",
+    "book": "The Lion, the Witch and the Wardrobe",
+    "song": "Good Vibrations",
+  }
+}
+```
+You can access items in the nested lists by using multiple subscription
+operations, with brackets back to back.
+
+```{code-cell} python
+:class: full-width
+
+print("Jessica's favorite book is:", favorites["jessica"]["book"])
+```
+
+Another way to do this is to retrieve each level and store it in a variable.
+
+```{code-cell} python
+:class: full-width
+
+jessica = favorites["jessica"]
+print("Jessica's favorite book is:", jessica["book"])
+```
+
+
+----
 
 % TODO
 % [ ] ordered version 3.7+
-% [ ] values that can be used as keys
 % [ ] no duplicate keys, but duplicate values
 % [x] creating
 % [x] accessing
@@ -225,9 +383,13 @@ def add(a, b):
 % [x] removing
 %     [x] pop
 %     [x] del
-% [ ] values
+% [x] values
 % [ ] iteration
 % [ ] membership
 %     [ ] keys
 %     [ ] values
+%     [ ] values that can be used as keys
 % [ ] exercise
+% [ ] under the hood
+%     [ ] tuples
+
