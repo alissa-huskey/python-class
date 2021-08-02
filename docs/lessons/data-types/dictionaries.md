@@ -150,7 +150,7 @@ format = book.pop("format", "Unknown")
 pprint(book)
 ```
 
-### Exercise
+### Exercises
 
 `````{exercise} Word calculator
 :label: word-calculator-exercise
@@ -180,14 +180,13 @@ def add(a, b):
   """
 ```
 
-
 `````
 
 `````{solution} word-calculator-exercise
 :class: dropdown
 
 ```{code-block} python
-:caption: Name Exercise
+:caption: Word Calculator Exercise
 :class: full-width
 :linenos:
 
@@ -211,6 +210,43 @@ def add(a, b):
   4
   """
   return numbers[a] + numbers[b]
+`````
+
+`````{exercise} Scrabble Score
+:label: scrabble-score-exercise
+
+In this exercise you'll write a function that calculates the scrabble score for
+a list of letters.
+
+1. Make a dictionary assigned to the global variable `POINTS` where each key is
+   a letter with a value of the cooresponding point, as listed below.
+   | Points | Letters                         |
+   |--------|---------------------------------|
+   | 1      | A, E, I, L, N, O, R, S, T and U |
+   | 2      | D and G                         |
+   | 3      | B, C, M and P                   |
+   | 4      | F, H, V, W and Y                |
+2. Write a function `score()` that takes one argument, a list of `letters`. Use
+   the `POINTS` dictionary to look up the value of each letter and add them
+   together, then return the total.
+   ```{dropdown} Need a hint?
+   * set a variable `total` to `0`
+   * iterate over each letter in the list
+     - get the point value for each letter from the `POINTS` dictionary
+     - add it to `total`
+   * return `total`
+   ```
+
+`````
+
+`````{solution} scrabble-score-exercise
+:class: dropdown
+
+```{literalinclude} ../../../pythonclass/exercises/scrabble.py
+:caption: Scrabble Score Exercise
+:class: full-width
+:linenos:
+
 `````
 
 Membership
