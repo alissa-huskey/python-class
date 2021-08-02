@@ -6,6 +6,7 @@
 # a hash of pet pics
 # species: pic
 PICS = {
+    'dragon': "/|\\{O_O}/|\\",
     'cat': "=^..^=",
     'fish': "<`)))><",
     'owl': "{O,o}",
