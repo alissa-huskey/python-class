@@ -149,6 +149,18 @@ table.table tbody tr {
   border-bottom: 1px solid #dee2e6;
 }
 
+table.table label {
+  font-weight: 500;
+  color: var(--md-indigo-400);
+  display: block;
+}
+
+/* add a line break after labels */
+table.table label:after {
+  content: '\A';
+  white-space: pre;
+}
+
 table.table td.text-align\:right p,
 table.table td.text-align\:right code,
 table.table td.text-align\:right .pre {
@@ -156,7 +168,8 @@ table.table td.text-align\:right .pre {
 }
 
 table.table thead tr th p,
-table.table tr td p {
+table.table tr td p,
+table.table tr td pre {
   margin: 0;
 }
 
@@ -164,7 +177,6 @@ table.table thead tr th,
 table.table tr td {
   padding: .3rem .5rem;
 }
-
 
 /********************
 /* admonitions
@@ -206,7 +218,6 @@ div.admonition.exercises p.admonition-title::after {
 div.admonition.exercise p.admonition-title::after {
   content: "Exercise";
 }
-
 
 /********************
 /* sidebars
@@ -322,6 +333,14 @@ div.full-width {
   width: 100%;
 }
 
+div.full-width table tbody {
+  width: 100%;
+}
+
+div.full-width table tbody td.code {
+  width: 100%;
+}
+
 /* code-block container
  * - remove the space between the code block and caption
  * */
@@ -343,7 +362,15 @@ div.literal-block-wrapper table td {
  * */
 td.linenos,
 td.code {
-  vertical-align: top;
+  vertical-align: top !important;
+}
+
+/* code block
+ * - align line numbers with code-block
+ * */
+td.linenos div.linenodiv pre,
+td.code div.highlight pre {
+  margin-top: 0;
 }
 
 /* caption container
@@ -370,6 +397,10 @@ div.code-block-caption {
 div.code-block-caption > span.caption-number {
   font-weight: bold;
   display: none;
+}
+
+div.row div table.highlighttable div.highlight pre {
+  margin-top: 0;
 }
 
 /********************

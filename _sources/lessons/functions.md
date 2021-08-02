@@ -22,7 +22,7 @@ Calling functions
 -----------------
 
 To {term}`call` or execute a function, use the function {term}`identifier`
-followed by `(``)`.
+followed by `(` `)`.
 
 ```{code-block} python
 ---
