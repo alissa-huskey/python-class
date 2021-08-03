@@ -84,8 +84,8 @@ If you try to access a key that does not exist, you will encounter a
 print("Series:", book["series"])
 ```
 
-However, you can avoid this using the `.get()` method, which two arguments: the
-key, and an optional default value.
+However, you can avoid this using the `.get()` method, which takes two
+arguments: the key, and an optional default value.
 
 ```{code-cell} python
 :class: full-width
@@ -226,9 +226,9 @@ a list of letters.
    | 2      | D and G                         |
    | 3      | B, C, M and P                   |
    | 4      | F, H, V, W and Y                |
-2. Write a function `score()` that takes one argument, a list of `letters`. Use
-   the `POINTS` dictionary to look up the value of each letter and add them
-   together, then return the total.
+2. Write a function `score()` that takes one argument, a string or list of
+   `letters`. Use the `POINTS` dictionary to look up the value of each letter and
+   add them together, then return the total.
    ```{dropdown} Need a hint?
    * set a variable `total` to `0`
    * iterate over each letter in the list
@@ -236,6 +236,29 @@ a list of letters.
      - add it to `total`
    * return `total`
    ```
+
+**Example Usage**
+
+``` python
+>>> score("blank")
+11
+>>> score(["d", "i", "r", "t"])
+5
+```
+
+**Solution template**
+
+```python
+def score(letters):
+    """Return the scrabble score for a list of letters
+    >>> score("blank")
+    11
+    >>> score("dirt")
+    5
+    >>> score("fajita")
+    16
+    """
+```
 
 `````
 
@@ -406,6 +429,14 @@ jessica = favorites["jessica"]
 print("Jessica's favorite book is:", jessica["book"])
 ```
 
+% Iteration
+% ---------
+
+% When used as a {term}`iterable`, dictionaries often act like a {term}`sequence`
+% of keys.
+
+% For 
+
 
 ----
 
@@ -420,11 +451,11 @@ print("Jessica's favorite book is:", jessica["book"])
 %     [x] pop
 %     [x] del
 % [x] values
+% [x] membership
+%     [x] keys
+%     [x] values
+%     [x] values that can be used as keys
 % [ ] iteration
-% [ ] membership
-%     [ ] keys
-%     [ ] values
-%     [ ] values that can be used as keys
 % [ ] exercise
 % [ ] under the hood
 %     [ ] tuples
