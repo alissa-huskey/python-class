@@ -171,6 +171,121 @@ cities.remove("London")
 print(cities)
 ```
 
+### Membership
+
+Check if list contains value using the `in` operator:
+
+```{code-cell} python
+"London" in cities
+```
+
+Check if list does not contains value using the `not in` operator:
+
+```{code-cell} python
+"London" not in cities
+```
+
+To look up the index number of a particular value, use the `.index()` method.
+
+Get the first index number of value:
+
+```{code-cell} python
+cities.index("Dublin")
+```
+
+### Exercises
+
+`````{exercise} Random Lotto Numbers
+:label: lotto-numbers-exercise
+
+Generate a list of six unique numbers between `1` and `49`, then print the list.
+
+```{dropdown} Need help?
+* import the `random` module
+* make an empty list assigned to the variable `numbers`
+* start a `while` loop with the condition that the length of `numbers` is less than `6`
+* in the loop:
+  * get a random number between `1` and `49` using the `random.randint()`
+    method and assign it to the variable `num`
+  * check if `num` is in the `numbers` list
+    * if not, append `num` to `numbers`
+* print the `numbers` list
+```
+
+**Example output**:
+
+```python
+[29, 19, 17, 49, 45, 4]
+```
+
+`````
+
+`````{solution} lotto-numbers-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: Random Lotto Numbers Exercise
+:class: full-width
+:linenos:
+
+import random
+
+numbers = []
+while len(numbers) < 6:
+  num = random.randint(1, 49)
+  if num not in numbers:
+    numbers.append(num)
+
+print(numbers)
+
+`````
+
+Slices
+------
+
+You often want to extract part of a list. This could be accomplished using a
+`for` loop, for example:
+
+```{code-cell} python
+partial, start, stop = [], 2, 5
+
+for i, item in enumerate(cities):
+  if i >= start and i < stop:
+    partial.append(item)
+
+print(partial)
+```
+
+Python provides handy dandy slice functionality, which is also supported by
+subscription.
+
+The syntax is: {samp}`{COLLECTION}[{START}:{STOP}]`
+
+Using this feature we can extract the same part of the list like so:
+
+```{code-cell} python
+cities[2:5]
+```
+
+A missing `STOP` value will default to the end of the list.
+
+```{code-cell} python
+cities[2:]
+```
+
+A missing `START` value will default to the beginning of the list.
+
+```{code-cell} python
+cities[:2]
+```
+
+If both are missing, the slice will be a copy of the whole list.
+
+```{code-cell} python
+cities[:]
+```
+
+
 Values
 ------
 
@@ -284,74 +399,6 @@ for i, (breakfast, lunch, dinner) in enumerate(meals):
    print()
 ```
 
-Slices
-------
-
-You often want to extract part of a list. This could be accomplished using a
-`for` loop, for example:
-
-```{code-cell} python
-partial, start, stop = [], 2, 5
-
-for i, item in enumerate(cities):
-  if i >= start and i < stop:
-    partial.append(item)
-
-print(partial)
-```
-
-Python provides handy dandy slice functionality, which is also supported by
-subscription.
-
-The syntax is: {samp}`{COLLECTION}[{START}:{STOP}]`
-
-Using this feature we can extract the same part of the list like so:
-
-```{code-cell} python
-cities[2:5]
-```
-
-A missing `STOP` value will default to the end of the list.
-
-```{code-cell} python
-cities[2:]
-```
-
-A missing `START` value will default to the beginning of the list.
-
-```{code-cell} python
-cities[:2]
-```
-
-If both are missing, the slice will be a copy of the whole list.
-
-```{code-cell} python
-cities[:]
-```
-
-Membership
-----------
-
-Check if list contains value using the `in` operator:
-
-```{code-cell} python
-"London" in cities
-```
-
-Check if list does not contains value using the `not in` operator:
-
-```{code-cell} python
-"London" not in cities
-```
-
-To look up the index number of a particular value, use the `.index()` method.
-
-Get the first index number of value:
-
-```{code-cell} python
-cities.index("Dublin")
-```
-
 Sorting
 -------
 
@@ -428,6 +475,7 @@ pprint(fruit)
 Exercises
 ---------
 
+
 `````{exercise} Appointment Maker
 :label: appointment-exercise
 
@@ -438,7 +486,7 @@ This exercise is to find the overlapping days that two people are available.
 2. Make an empty list `shared_days`.
 3. Add items to the `shared_days` list that are in both the `my_days` and
    `your_days` lists.
-   ```{dropdown} Need a hint?
+   ```{dropdown} Need help?
    Iterate over one of the lists, then use the `in` operator to check if that
    day is in the other list. If it is, then use the `.append()` method to add
    that day to `shared_days`.
