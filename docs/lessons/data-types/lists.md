@@ -475,6 +475,41 @@ pprint(fruit)
 Exercises
 ---------
 
+`````{exercise} Delete Alternate Items
+:label: delete-alternates-exercise
+
+1. Make a list of words and print it.
+2. Iterate over the list using a `for` loop and the `enumerate` function, and delete every other item.
+   *Hint: You can check if a number is even with `i % 2 == 0`*
+3. Print the list again.
+
+**Example output:**
+
+```
+Before: ['Lorem', 'ipsum', 'dolor', 'sit', 'amet', 'consectetur', 'adipiscing', 'elit']
+After: ['Lorem', 'dolor', 'sit', 'consectetur', 'adipiscing']
+```
+
+
+`````
+
+`````{solution} delete-alternates-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: Delete Alternate Items Exercise
+:class: full-width
+:linenos:
+
+words = ["Lorem", "ipsum", "dolor", "sit", "amet", "consectetur", "adipiscing", "elit"]
+print("Before:", words)
+for i, elm in enumerate(words):
+  if i % 2 != 0:
+    del words[i]
+print("After:", words)
+
+`````
+
 
 `````{exercise} Appointment Maker
 :label: appointment-exercise
