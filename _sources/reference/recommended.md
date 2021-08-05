@@ -27,7 +27,7 @@ section as well as a library of examples.
 
 :::{warning}
 
-Lots of annoying banner and pop-up ads. Not recommended if you don't use an ad blocker.
+Lots of annoying banner and pop-up ads. Not recommended without an ad blocker.
 
 :::
 
