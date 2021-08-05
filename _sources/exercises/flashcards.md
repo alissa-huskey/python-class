@@ -377,6 +377,7 @@ Bonus ideas
   through at a time
 * add extra columns to flashcards files to keep track of each time you get the
   answer right and wrong, use this to generate reports
+* print any cards that the user got wrong again at the end after showing the score
 
 Card data
 ---------
@@ -389,6 +390,18 @@ Download the following flashcard files or feel free to make your own.
 * {download}`loops.csv <../../data/cards/loops.csv>`
 * {download}`paths.csv <../../data/cards/paths.csv>`
 * {download}`types.csv <../../data/cards/types.csv>`
+
+Screencasts
+-----------
+
+```{screencast} assets/flashcards.cast
+:cols: 125
+:rows: 33
+:poster: npt:0:09
+:title: "flashcards"
+:author: "Alissa Huskey"
+:author-url: "http://github.com/alissa-huskey"
+```
 
 Reference
 ---------
