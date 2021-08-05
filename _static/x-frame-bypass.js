@@ -11,10 +11,10 @@ customElements.define('x-frame-bypass', class extends HTMLIFrameElement {
 		if (!url || !url.startsWith('http'))
 			throw new Error(`X-Frame-Bypass src ${url} does not start with http(s)://`)
 
-    url_protocol = url.split(":")[0];
-    window_protocol = window.location.href.split(":")[0]
+    var url_protocol = url.split(":")[0];
+    var window_protocol = window.location.href.split(":")[0]
     if (url_protocol != window_protocol) {
-      url.replace(url_protocol, window_protocol)
+      url = url.replace(url_protocol, window_protocol)
     }
 
 		console.log('X-Frame-Bypass loading:', url)
