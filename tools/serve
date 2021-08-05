@@ -10,7 +10,7 @@
 from pathlib import Path
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 
-ROOTDIR = Path(__file__).parent.parent.parent
+ROOTDIR = Path(__file__).parent.parent
 PORT = 1313
 
 class Handler(SimpleHTTPRequestHandler):
@@ -20,7 +20,7 @@ class Handler(SimpleHTTPRequestHandler):
 
     def __init__(self, *args, **kwargs):
         kwargs.pop("directory", None)
-        super().__init__(*args, directory=self.directory, **kwargs)
+        super().__init__(*args, directory=str(self.directory), **kwargs)
 
 def main():
     print(f"Serving {Handler.directory} at: http://localhost:{PORT}\n")

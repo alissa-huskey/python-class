@@ -169,10 +169,10 @@ are not callable.
 
 #### Listing members
 
-You can use the `dir()` function to see a list the members an object has. (The
-ones that start and end with double underscores (`__`) are special internal
-methods that are used by Python under the hood, so you can disregard those for
-now.)
+You can use the `dir()` function to see a list of the members an object has.
+(The ones that start and end with double underscores (`__`) are special
+internal methods that are used by Python under the hood, so you can disregard
+those for now.)
 
 ```{code-block} python
 :caption: Python shell
@@ -269,8 +269,9 @@ False
 
 ```{exercise} methods and attributes
 :label: methods-and-attributes-exercise
-1. In a VS Code editor, use the {kbd}`⌘I` or {kbd}`⌃Space` shortcut keys after
-   an `int` variable to find the method that will return an integer ratio.
+1. In a VS Code editor, use the {kbd}`⌘I`, {kbd}`Alt+Escape`, or {kbd}`⌃Space`
+   shortcut keys after an `int` variable to find the method that will return an
+   integer ratio.
 2. If you use `ipython`, use the {kbd}`TAB` key after a `float` variable to find the
    method that will return a hexadecimal representation of the number.
 3. In a Python shell use the `dir()` function on a `str` value to find the method
