@@ -571,6 +571,77 @@ else:
         print("*", day.title())
 `````
 
+`````{exercise} Deck of Cards
+:label: deck-of-cards-exercise
+
+Write a function `make_deck()` to generate a list of `52` playing cards where
+each card is a number or letter representing the rank, and a letter or number
+representing the suit.
+
+```{dropdown} Need help?
+* make a list of `SUITS` that contains the suit letters
+* make a list of `RANKS` including the ranks
+* write a function make_deck() in the function:
+  * make an empty `deck` list
+  * use a `for` loop to iterate over each `SUIT` with the variable name `suit`
+    * use a (nested) `for` loop to iterate over each `RANK` with the variable name `rank`
+      * combine the `rank` and `suit` into one string and assign it to the variable `card`
+      * append `card` to the `deck` list
+  * return `deck`
+```
+
+Bonus: Add an optional argument `shuffled` that defaults to False, which
+shuffles the deck using the `random.shuffle()` function.
+
+{{ leftcol }}
+
+**Ranks**
+
+|         |               |
+|---------|---------------|
+| `2`-`9` | numeric value |
+| `"T"`   | Ten           |
+| `"J"`   | Jack          |
+| `"Q"`   | Queen         |
+| `"K"`   | King          |
+
+{{ rightcol }}
+
+**Suits**
+
+|         |               |
+|---------|---------------|
+| `"C"`   | Clubs         |
+| `"D"`   | Diamonds      |
+| `"H"`   | Hearts        |
+| `"S"`   | Spades        |
+
+{{ endcols }}
+
+**Example usage**:
+
+```python
+>>> deck = make_deck()
+>>> len(deck)
+52
+>>> deck[:13]
+['2C', '3C', '4C', '5C', '6C', '7C', '8C', '9C', 'TC', 'JC', 'QC', 'KC', 'AC']
+```
+
+`````
+
+`````{solution} deck-of-cards-exercise
+:class: dropdown
+
+```{literalinclude} ../../../pythonclass/exercises/cards.py
+:caption: Deck of Cards Exercise
+:class: full-width
+:linenos:
+:start-at: "from random import shuffle"
+:end-at: "return deck"
+
+
+`````
 Reference
 ---------
 
