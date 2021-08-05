@@ -10,7 +10,7 @@ class screenshot(nodes.container):
 def visit_screenshot_node(self, node):
     """Append div.thumbnail-container > div.thumbnail > iframe tags to body"""
     url = node.attributes.pop("url")
-    options = {}
+    options = {"onclick": f'window.location.href = "{url}";'}
     if "title" in node.attributes:
         options["title"] = node.attributes["title"]
 
