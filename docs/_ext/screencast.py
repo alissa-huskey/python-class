@@ -25,6 +25,7 @@ See also:
 from pathlib import Path
 from pprint import pformat
 from sys import stderr
+from os.path import getmtime
 
 from docutils import nodes
 from sphinx.util.docutils import SphinxDirective
@@ -43,10 +44,22 @@ def add_cast_files(app, config):
         if outdir in path.parents:
             continue
 
-        # add files to config if not already there
-        relpath = str(path.relative_to(srcdir))
-        if relpath not in config.html_extra_path:
-            app.config.html_extra_path.append(relpath)
+        # the same location in outdir
+        newpath = outdir / path.relative_to(srcdir)
+
+        # time file was modified
+        mtime = int(getmtime(path))
+
+        # do nothing more if it's already there and has not been modified
+        if newpath.is_file() and int(getmtime(newpath)) >= mtime:
+            continue
+
+        # create directory in outdir if it doesn't exist
+        if not newpath.parent.is_dir():
+            newpath.parent.mkdir(parents=True)
+
+        # copy file
+        newpath.write_text(path.read_text())
 
 class asciinema_player(nodes.General, nodes.Element):
     """Node for <asciinema-player> tag"""

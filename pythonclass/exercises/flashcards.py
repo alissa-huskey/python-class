@@ -8,7 +8,7 @@ import csv
 from pathlib import Path
 import random
 import textwrap
-from sys import stderr
+from sys import stderr, argv
 from os import _exit as exit
 
 WIDTH = 75
@@ -44,7 +44,7 @@ def load_csv(path, errors):
             fh,
             quotechar="'",
             skipinitialspace=True,
-            escapechar="\\"
+            #  escapechar="\\"
         )
 
         # iterate through each line of file
@@ -71,7 +71,8 @@ def load_csv(path, errors):
                 continue
 
             # add card to the list
-            cards.append(card)
+            if card not in cards:
+                cards.append(card)
 
     # return the list of cards
     return cards
@@ -139,7 +140,7 @@ def play(cards):
             print(card["back"].center(WIDTH), "\n" * 2)
 
         # print the current score
-        print(f"score: {score} of {total}".rjust(WIDTH))
+        print(f"score: {score} of {num}".rjust(WIDTH))
 
         # print a line at the end of the card
         print("=" * 75, "\n" * 2)
@@ -196,7 +197,7 @@ def menu():
 
     return selection
 
-def main():
+def main(limit=None):
     paths = menu()
     cards, errors = [], []
 
@@ -211,73 +212,30 @@ def main():
     if not cards:
         return
 
+    random.shuffle(cards)
+
+    if limit:
+        sample = []
+        for _ in range(limit):
+            sample.append(cards.pop())
+        cards = sample
+
     play(cards)
-
-def parse_line(line: str):
-    quotes, backslash, comma = ("'", '"'), "\\", ","
-
-    cells, start, stop, quote = [], None, None, ""
-
-    for i, char in enumerate(line):
-        last = line[i-1]
-
-        # the cell hasn't started
-        if start is None:
-
-            # the cell starts with a quote,
-            # so set start and quote
-            if char in quotes:
-                start = i + 1
-                quote = line[i]
-                #  say("found start quote", start=start, quote=quote)
-
-            elif start == i:
-                continue
-
-            # disregard whitespace outside of cells
-            elif char.isspace() or char == comma:
-                continue
-
-            # the first nonspace, non-quote character
-            # is the beginning of the cell
-            else:
-                start = i
-                # say("found first non-whitespace char", start=start, quote=quote)
-
-
-        # this cell started with a quote
-        elif quote:
-
-            # this cell ends with the same quote, non-escaped
-            if char == quote and last != backslash:
-                stop = i
-                # say("matched quote", start=start, quote=quote, char=char, stop=stop)
-
-        # this cell didn't start with a quote
-        else:
-
-            # the cell ends at the next comma
-            if char == comma and last != backslash:
-                stop = i
-                # say("found end comma", start=start, quote=quote, stop=stop)
-
-
-        # if we've found the end of the cell
-        # append it to cells and reset variables
-        if stop:
-            cells.append(line[start:stop])
-            start, stop, quote = None, None, ""
-
-    # append the last item
-    if start and not stop:
-        cells.append(line[start:])
-
-    return cells
 
 # only call main() if the script is being run, not imported
 if __name__ == "__main__":
+    # get the limit from command line arguments
+    limit = None
     try:
-        main()
+        idx = argv.index("--limit")
+    except ValueError:
+        pass
+    else:
+        if len(argv) > idx+1:
+            limit = int(argv[idx+1])
+
+    try:
+        main(limit)
 
     # suppress errors when the user hits CTRL+C
     except KeyboardInterrupt:
