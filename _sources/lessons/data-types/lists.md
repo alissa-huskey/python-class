@@ -40,20 +40,6 @@ An ordered collection of arbitrary objects accessed via index numbers.
 
 {{ endcols }}
 
-```{code-cell} python
-:tags: [remove-input, thebe-init]
-"""setup pprint method"""
-
-from pprint import pformat
-
-def pprint(obj):
-  """pretty print obj if defined, otherwise print an equal number of lines"""
-  if obj:
-    print(pformat(obj, width=40))
-  else:
-    print("-" + ("\n"*(len(GLOBAL)-1)) + repr(obj))
-```
-
 Basics
 ------
 
@@ -65,12 +51,6 @@ elements, seperated by commas, in square brackets (`[` and `]`):
 ```{code-cell} python
 :tags: [thebe-init]
 cities = ["London", "Paris", "Berlin"]
-```
-
-```{code-cell} python
-:tags: [thebe-init, remove-input]
-# set global to cities list for pprint
-GLOBAL = cities
 ```
 
 Each element is assigned a successive {term}`index number`, starting at `0`.
@@ -150,7 +130,7 @@ method.
 ```{code-cell} python
 :tags: [thebe-init]
 cities.extend(["San Francisco", "Brooklyn", "Denver"])
-pprint(cities)
+print(cities)
 ```
 
 ### Removing
@@ -402,6 +382,24 @@ for i, (breakfast, lunch, dinner) in enumerate(meals):
 Sorting
 -------
 
+```{code-cell} python
+:tags: [remove-input, thebe-init]
+"""setup pprint method"""
+
+from pprint import pformat
+
+def pprint(obj):
+  """modified function to align column heights, as for some reason blank lines
+  seem to be inconsistently removed from output.
+
+  pretty print obj if defined, otherwise print an equal number of blank lines"""
+
+  if obj:
+    print(pformat(obj, width=40))
+  else:
+    print("-" + ("\n"*(len(GLOBAL)-1)) + repr(obj))
+```
+
 There are two ways to sort a list
 
 * {samp}`sorted({list})` -- returns a new sorted list
@@ -490,7 +488,6 @@ Before: ['Lorem', 'ipsum', 'dolor', 'sit', 'amet', 'consectetur', 'adipiscing', 
 After: ['Lorem', 'dolor', 'sit', 'consectetur', 'adipiscing']
 ```
 
-
 `````
 
 `````{solution} delete-alternates-exercise
@@ -508,67 +505,6 @@ for i, elm in enumerate(words):
     del words[i]
 print("After:", words)
 
-`````
-
-
-`````{exercise} Appointment Maker
-:label: appointment-exercise
-
-This exercise is to find the overlapping days that two people are available.
-
-1. Make two lists `my_days` and `your_days`, which each contain a list of
-   weekday names that each hypothetical person is available.
-2. Make an empty list `shared_days`.
-3. Add items to the `shared_days` list that are in both the `my_days` and
-   `your_days` lists.
-   ```{dropdown} Need help?
-   Iterate over one of the lists, then use the `in` operator to check if that
-   day is in the other list. If it is, then use the `.append()` method to add
-   that day to `shared_days`.
-   ```
-4. If there are no items in `shared_days` print a message saying that there are
-   no shared days available.
-5. Otherwise, print a message that the following days will work, then print
-   each day on a new line.
-6. Bonus: Make a function called `find_shared_days()` that takes `my_days` and
-   `your_days` as arguments and returns `shared_days`.
-
-Example output:
-```text
-The following days will work:
-* Monday
-* Thursday
-```
-
-Or:
-```text
-No shared days available, sadface.
-```
-
-`````
-
-`````{solution} appointment-exercise
-:class: dropdown
-
-```{code-block} python
-:caption: Appointment Maker Exercise
-:class: full-width
-:linenos:
-
-my_days = ["monday", "tuesday", "friday"]
-your_days = ["monday", "wednesday", "thursday"]
-shared_days = []
-
-for day in my_days:
-    if day in your_days:
-        shared_days.append(day)
-
-if not shared_days:
-    print("No shared days available, sadface.")
-else:
-    print("The following days will work:")
-    for day in shared_days:
-        print("*", day.title())
 `````
 
 `````{exercise} Deck of Cards
@@ -639,9 +575,50 @@ shuffles the deck using the `random.shuffle()` function.
 :linenos:
 :start-at: "from random import shuffle"
 :end-at: "return deck"
+`````
 
+`````{exercise} Hand of Cards Exercise
+:label: draw-cards-exercise
+
+Write a `draw() function that takes two arguments, a `deck` containing a deck
+of cards from the `make_deck()` function, and a `size` with the number of cards
+to draw. It should return a new list of cards, with e a length of `size`, that
+have been removed from the `deck`.
+
+```{dropdown} Need help?
+* Write a `draw() function that takes two arguments: `deck` and `size`
+  * make an empty list assigned to the variable `cards`
+  * use a `for` loop to iterate over a `range()` iterable up to `size`
+    * if there are no cards left in the deck, `break`
+    * get one card from the deck using the `.pop()` method and assign it to the variable `card`
+    * append `card` to the `cards` list
+  * return the `cards` list
+```
+
+**Example output**:
+
+```python
+>>> deck = make_deck(shuffled=True)
+>>> hand = draw(deck, 5)
+>>> hand
+['KS', '7D', '3H', '2H', '6C']
+>>> len(hand)
+5
+>>> len(deck)
+47
+```
+
+`````{solution} draw-cards-exercise
+:class: dropdown
+
+```{literalinclude} ../../../pythonclass/exercises/cards.py
+:caption: Hand of Cards Exercise
+:class: full-width
+:linenos:
+:start-at: "def draw"
 
 `````
+
 Reference
 ---------
 
