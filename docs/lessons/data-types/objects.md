@@ -445,10 +445,10 @@ Magic methods
 -------------
 
 When using the `dir()` function you may have noticed a bunch of members with
-names surrounded by double underscores (`__`). These are are special methods
+names surrounded by double underscores (`__`). These are special methods
 used internally by Python called
 {term}`magic <magic method>` or {term}`dunder methods <dunder method>`.
-Each one cooresponds some under the hood Python mechanism.
+Each one cooresponds to some under the hood Python mechanism.
 
 Lets take a look at the members of an object instance.
 
@@ -502,7 +502,7 @@ Welcome back.
 * **Operators** -- there are magic methods cooresponding to each operator. For
   example the `.__add__()` method is called by the `+` operator.
 * **Statements** -- some statements call magic methods. For example when the
-* `del` statement is used on an object attribute the `.__del__()` method is
+  `del` statement is used on an object attribute the `.__del__()` method is
   called.
 * **Syntax** -- magic methods are called by some forms of syntax. For example
   `.__getattribute__()` is called when using dot notation.

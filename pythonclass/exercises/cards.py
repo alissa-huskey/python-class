@@ -1,22 +1,21 @@
 from random import shuffle
 
 SUITS = ["C", "D", "H", "S"]
-RANKS = list(range(1, 10)) + ["J", "Q", "K", "A"]
+RANKS = list(range(2, 10))
+RANKS.extend(["T", "J", "Q", "K", "A"])
 
 def make_deck(shuffled=False):
     """Return a deck of 52 playing cards, a list where each element is a string
     of two characters, the first character representing the rank, and the
-    second representing the suit. The suits are C, D, H, S and the rank letters
-    are J, Q, K, A.
+    second representing the suit.
+    The suit letters are C, D, H, and S.
+    The rank letters are T, J, Q, K and A.
 
     >>> deck = make_deck()
     >>> len(deck)
     52
-    >>> list(sorted(set(deck))) == sorted(deck)
-    True
-    >>> deck = sorted(deck, key=lambda c: c[1])
-    >>> [deck[i] for i in (0, 13, 26, 39)]
-    ['1C', '1D', '1H', '1S']
+    >>> deck[:13]
+    ['2C', '3C', '4C', '5C', '6C', '7C', '8C', '9C', 'TC', 'JC', 'QC', 'KC', 'AC']
     """
     deck = []
     for suit in SUITS:
@@ -47,7 +46,8 @@ def draw(deck, size=5):
     for i in range(size):
         if not deck:
             break
-        cards.append(deck.pop())
+        card = deck.pop()
+        cards.append(card)
 
     return cards
 
