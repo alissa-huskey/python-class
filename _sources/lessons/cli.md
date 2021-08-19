@@ -166,15 +166,20 @@ To reference a variable on the command line, prefix it with a `$`.
 :class: full-width
 $ echo $SHELL
 /bin/zsh
+
 $ echo $TERM
 xterm-256color
+
 $ echo $HOME
 /Users/pythonclass
+
 $ echo $TMPDIR
 /var/folders/mn/qt2cdhdn5md6hrwjrz5sp60m0000gn/T/
 ```
 
-To set an environment variable, use the `typeset` or `export` command:
+To set an environment variable, use the `typeset` or `export` command as in the
+following example. (Note: The variable only exists only for the duration of
+your current terminal sesson.)
 
 ```{code-block} console
 :caption: command line
@@ -209,11 +214,65 @@ print(lang)
 `````{exercise} Environment Variables Exercise
 :label: envvar-exercise
 
-Modify your countdown program to check the environment variable `VERBOSE` and only prints
-a welcome message if it is set.
+Modify your countdown program to check the environment variable `VERBOSE` and the message
+{samp}`"Counting down to {COUNT}."` if it is set to a non-blank value.
 
+Test it with the envionment variable not set, set to `""`, and set to a value like `"yes"`.
 `````
 
+`````{solution} envvar-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: Environment Variables Exercise
+:class: full-width
+:linenos:
+
+"""Countdown exercise for the CLI Lesson
+   https://alissa-huskey.github.io/python-class/lessons/cli.html
+"""
+import os
+import sys
+import time
+
+count = 3
+is_verbose = os.environ.get("VERBOSE", False)
+
+if is_verbose:
+  print(f"Counting down to {count}.")
+
+if len(sys.argv) > 2:
+  print(f"Warning: extra arguments: {sys.argv[2:]}", file=sys.stderr)
+elif len(sys.argv) == 2:
+  count = int(sys.argv[1])
+
+for num in range(count, 0, -1):
+    print(f"{num}...")
+    time.sleep(1)
+```
+
+```{code-block} console
+:caption: command line
+:class: full-width
+$ python countdown.py
+3...
+2...
+1...
+
+$ export VERBOSE=TRUE
+$ python countdown.py
+3...
+2...
+1...
+
+$ export VERBOSE=TRUE
+$ python countdown.py
+Counting down to 3.
+3...
+2...
+1...
+```
+`````
 
 Input and Output
 ----------------

@@ -623,26 +623,26 @@ command line environment.</p>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">Table of Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#arguments" id="id15">Arguments</a></p>
+<li><p><a class="reference internal" href="#arguments" id="id17">Arguments</a></p>
 <ul>
-<li><p><a class="reference internal" href="#exercise" id="id16">Exercise</a></p></li>
+<li><p><a class="reference internal" href="#exercise" id="id18">Exercise</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#environment-variables" id="id17">Environment Variables</a></p>
+<li><p><a class="reference internal" href="#environment-variables" id="id19">Environment Variables</a></p>
 <ul>
-<li><p><a class="reference internal" href="#id1" id="id18">Exercise</a></p></li>
+<li><p><a class="reference internal" href="#id1" id="id20">Exercise</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#input-and-output" id="id19">Input and Output</a></p>
+<li><p><a class="reference internal" href="#input-and-output" id="id21">Input and Output</a></p>
 <ul>
-<li><p><a class="reference internal" href="#id2" id="id20">Exercise</a></p></li>
+<li><p><a class="reference internal" href="#id2" id="id22">Exercise</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#reference" id="id21">Reference</a></p>
+<li><p><a class="reference internal" href="#reference" id="id23">Reference</a></p>
 <ul>
-<li><p><a class="reference internal" href="#glossary" id="id22">Glossary</a></p>
+<li><p><a class="reference internal" href="#glossary" id="id24">Glossary</a></p>
 <ul>
-<li><p><a class="reference internal" href="#glossary-CLI" id="id23">Cli</a></p></li>
+<li><p><a class="reference internal" href="#glossary-CLI" id="id25">Cli</a></p></li>
 </ul>
 </li>
 </ul>
@@ -814,16 +814,21 @@ are typically stored as all caps. For example, most systems set the variables
 <div class="code-block-caption"><span class="caption-number">Listing 195 </span><span class="caption-text">command line</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">echo</span> <span class="nv">$SHELL</span>
 <span class="go">/bin/zsh</span>
+
 <span class="gp">$ </span><span class="nb">echo</span> <span class="nv">$TERM</span>
 <span class="go">xterm-256color</span>
+
 <span class="gp">$ </span><span class="nb">echo</span> <span class="nv">$HOME</span>
 <span class="go">/Users/pythonclass</span>
+
 <span class="gp">$ </span><span class="nb">echo</span> <span class="nv">$TMPDIR</span>
 <span class="go">/var/folders/mn/qt2cdhdn5md6hrwjrz5sp60m0000gn/T/</span>
 </pre></div>
 </div>
 </div>
-<p>To set an environment variable, use the <code class="docutils literal notranslate"><span class="pre">typeset</span></code> or <code class="docutils literal notranslate"><span class="pre">export</span></code> command:</p>
+<p>To set an environment variable, use the <code class="docutils literal notranslate"><span class="pre">typeset</span></code> or <code class="docutils literal notranslate"><span class="pre">export</span></code> command as in the
+following example. (Note: The variable only exists only for the duration of
+your current terminal sesson.)</p>
 <div class="literal-block-wrapper docutils container" id="id9">
 <div class="code-block-caption"><span class="caption-number">Listing 196 </span><span class="caption-text">command line</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">typeset</span> -gx <span class="nv">LANGUAGE</span><span class="o">=</span>en
@@ -867,8 +872,82 @@ missing.</p>
 <div class="exercise admonition" id="envvar-exercise">
 <p class="admonition-title"><span class="caption-number">Exercise 63 </span>(Environment Variables Exercise)</p>
 <div class="section" id="exercise-content">
-<p>Modify your countdown program to check the environment variable <code class="docutils literal notranslate"><span class="pre">VERBOSE</span></code> and only prints
-a welcome message if it is set.</p>
+<p>Modify your countdown program to check the environment variable <code class="docutils literal notranslate"><span class="pre">VERBOSE</span></code> and the message
+<code class="samp docutils literal notranslate"><span class="pre">&quot;Counting</span> <span class="pre">down</span> <span class="pre">to</span> <em><span class="pre">COUNT</span></em><span class="pre">.&quot;</span></code> if it is set to a non-blank value.</p>
+<p>Test it with the envionment variable not set, set to <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>, and set to a value like <code class="docutils literal notranslate"><span class="pre">&quot;yes&quot;</span></code>.</p>
+</div>
+</div>
+<div class="solution dropdown admonition" id="lessons/cli-solution-3">
+<p class="admonition-title">Solution to <a class="reference external" href="#envvar-exercise"><span>Exercise 63</span></a></p>
+<div class="section" id="solution-content">
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-number">Listing 197 </span><span class="caption-text">Environment Variables Exercise</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
+<div class="full-width highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Countdown exercise for the CLI Lesson</span>
+<span class="sd">   https://alissa-huskey.github.io/python-class/lessons/cli.html</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">count</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">is_verbose</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;VERBOSE&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">is_verbose</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Counting down to </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Warning: extra arguments: </span><span class="si">{</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+<span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+  <span class="n">count</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-number">Listing 198 </span><span class="caption-text">command line</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
+<div class="full-width highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python countdown.py
+<span class="go">3...</span>
+<span class="go">2...</span>
+<span class="go">1...</span>
+
+<span class="gp">$ </span><span class="nb">export</span> <span class="nv">VERBOSE</span><span class="o">=</span>TRUE
+<span class="gp">$ </span>python countdown.py
+<span class="go">3...</span>
+<span class="go">2...</span>
+<span class="go">1...</span>
+
+<span class="gp">$ </span><span class="nb">export</span> <span class="nv">VERBOSE</span><span class="o">=</span>TRUE
+<span class="gp">$ </span>python countdown.py
+<span class="go">Counting down to 3.</span>
+<span class="go">3...</span>
+<span class="go">2...</span>
+<span class="go">1...</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -961,8 +1040,8 @@ scope of this lesson, the most common use case is to send a particular stream
 to a different destination with the syntax: <code class="samp docutils literal notranslate"><em><span class="pre">COMMAND</span></em> <em><span class="pre">FD</span></em><span class="pre">&gt;</span> <em><span class="pre">DESTINATION</span></em></code>.</p>
 <p>The following for example sends the results of the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command to the file
 <code class="docutils literal notranslate"><span class="pre">files.txt</span></code>. (The file descriptor defaults to <code class="docutils literal notranslate"><span class="pre">stdout</span></code>.)</p>
-<div class="literal-block-wrapper docutils container" id="id10">
-<div class="code-block-caption"><span class="caption-number">Listing 197 </span><span class="caption-text">command ine</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-number">Listing 199 </span><span class="caption-text">command ine</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls &gt; files.txt
 </pre></div>
 </div>
@@ -971,8 +1050,8 @@ to a different destination with the syntax: <code class="samp docutils literal n
 systems) to silence them completely. Here we use the file descriptor number <code class="docutils literal notranslate"><span class="pre">2</span></code>
 immediately before the <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> to indicate that we want to redirect <code class="docutils literal notranslate"><span class="pre">stderr</span></code>
 instead of <code class="docutils literal notranslate"><span class="pre">stdout</span></code>.</p>
-<div class="literal-block-wrapper docutils container" id="id11">
-<div class="code-block-caption"><span class="caption-number">Listing 198 </span><span class="caption-text">command ine</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-number">Listing 200 </span><span class="caption-text">command ine</span><a class="headerlink" href="#id13" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls <span class="m">2</span>&gt; errors.log
 <span class="go">file1 file2 file3</span>
 
@@ -983,8 +1062,8 @@ instead of <code class="docutils literal notranslate"><span class="pre">stdout</
 </div>
 <p>Take the following example, which prints some messages to <code class="docutils literal notranslate"><span class="pre">stderr</span></code> and others
 to <code class="docutils literal notranslate"><span class="pre">stdout</span></code>.</p>
-<div class="literal-block-wrapper docutils container" id="id12">
-<div class="code-block-caption"><span class="caption-number">Listing 199 </span><span class="caption-text">using-stderr.py</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-number">Listing 201 </span><span class="caption-text">using-stderr.py</span><a class="headerlink" href="#id14" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -997,8 +1076,8 @@ to <code class="docutils literal notranslate"><span class="pre">stdout</span></c
 </div>
 <p>If we redirect <code class="docutils literal notranslate"><span class="pre">stdout</span></code> to the file <code class="docutils literal notranslate"><span class="pre">messages.txt</span></code> the faux error message will
 be printed to the screen and excluded from the <code class="docutils literal notranslate"><span class="pre">messages.txt</span></code> file.</p>
-<div class="literal-block-wrapper docutils container" id="id13">
-<div class="code-block-caption"><span class="caption-number">Listing 200 </span><span class="caption-text">command ine</span><a class="headerlink" href="#id13" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-number">Listing 202 </span><span class="caption-text">command ine</span><a class="headerlink" href="#id15" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python using-stderr.py &gt; messages.txt
 <span class="go">Danger, Will Robinson!</span>
 
@@ -1023,11 +1102,11 @@ than one argument passed.</p>
 </ul>
 </div>
 </div>
-<div class="solution dropdown admonition" id="lessons/cli-solution-4">
+<div class="solution dropdown admonition" id="lessons/cli-solution-5">
 <p class="admonition-title">Solution to <a class="reference external" href="#stderr-exercise"><span>Exercise 64</span></a></p>
 <div class="section" id="solution-content">
-<div class="literal-block-wrapper docutils container" id="id14">
-<div class="code-block-caption"><span class="caption-number">Listing 201 </span><span class="caption-text">Stderr Exercise</span><a class="headerlink" href="#id14" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-number">Listing 203 </span><span class="caption-text">Stderr Exercise</span><a class="headerlink" href="#id16" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
