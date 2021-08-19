@@ -151,6 +151,70 @@ $ python countdown.py 5                                                         
 
 `````
 
+Environment Variables
+---------------------
+
+Just like we can set variables in our programs, we can also set variables on
+the command line. There are known as {term}`environment variables`, and they
+are typically stored as all caps. For example, most systems set the variables
+`SHELL`, `TERM`, `HOME` and `TMPDIR`.
+
+To reference a variable on the command line, prefix it with a `$`.
+
+```{code-block} console
+:caption: command line
+:class: full-width
+$ echo $SHELL
+/bin/zsh
+$ echo $TERM
+xterm-256color
+$ echo $HOME
+/Users/pythonclass
+$ echo $TMPDIR
+/var/folders/mn/qt2cdhdn5md6hrwjrz5sp60m0000gn/T/
+```
+
+To set an environment variable, use the `typeset` or `export` command:
+
+```{code-block} console
+:caption: command line
+:class: full-width
+$ typeset -gx LANGUAGE=en
+$ export LANGUAGE=en
+```
+
+In Python, we can access this using the `os.environ` dictionary.
+
+```{code-cell} python
+:class: full-width
+
+import os
+print(os.environ["TERM"])
+```
+
+If you're not sure if the environment variable exists, use the `.get()` method,
+with an optional second argument that will be the value returned if it is
+missing.
+
+```{code-cell} python
+:class: full-width
+
+import os
+lang = os.environ.get("LANGUAGE", "en")
+print(lang)
+```
+
+### Exercise
+
+`````{exercise} Environment Variables Exercise
+:label: envvar-exercise
+
+Modify your countdown program to check the environment variable `VERBOSE` and only prints
+a welcome message if it is set.
+
+`````
+
+
 Input and Output
 ----------------
 
@@ -195,8 +259,7 @@ print("Danger, Will Robinson!", file=sys.stderr)
 This is useful because on those streams can be handled seperately on the
 command line. While a complete lesson on {term}`redirection` is outside of the
 scope of this lesson, the most common use case is to send a particular stream
-to a different destination with the syntax: {samp}`{COMMAND} {FD}>
-{DESTINATION}`.
+to a different destination with the syntax: {samp}`{COMMAND} {FD}> {DESTINATION}`.
 
 The following for example sends the results of the `ls` command to the file
 `files.txt`. (The file descriptor defaults to `stdout`.)
@@ -208,13 +271,16 @@ $ ls > files.txt
 ```
 
 Or we could send all error messages to `errors.log` or to `/dev/null` (on most
-systems) to silence them completely.
+systems) to silence them completely. Here we use the file descriptor number `2`
+immediately before the `>` to indicate that we want to redirect `stderr`
+instead of `stdout`.
 
 ```{code-block} console
 :caption: command ine
 :class: full-width
 $ ls 2> errors.log
 file1 file2 file3
+
 $ ls 2> /dev/null
 file1 file2 file3
 ```
@@ -318,6 +384,9 @@ FD
 file descriptor
   A unique identifier associated with an input/output resource, most often a
   positive number.
+
+environment variables
+  A variable is set on the command line and effects how programs are run or behave.
 ```
 
 ...
@@ -327,14 +396,13 @@ file descriptor
 % TODO
 % [ ] shabang
 % [ ] chmod
-% [ ] file handlers, stdin/stdout/stderr
-% [ ] environment variables
-% [ ] arguments
+% [x] file handlers, stdin/stdout/stderr
+% [.] sys.environ, environment variables
+% [x] arguments
 % [ ] terminal size
 % [ ] color
 %     [ ] colorama https://k3no.medium.com/command-line-uis-in-python-80af755aa27d
 %     [ ] termcolor
-% [ ] sys.environ
 % [ ] exit, exit status
 % [ ] version, usage, help
 % [ ] file modes/permissions
