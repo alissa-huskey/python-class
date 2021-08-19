@@ -1,8 +1,19 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
 CLI
 ===
 
-In this class we've been writing {abbr}`CLI [(command line interface)]`
-programs, as opposed to a {abbr}`GUI [(graphical user interface)]`. While most
+In this class we've been writing {abbr}`CLI (command line interface)`
+programs, as opposed to a {abbr}`GUI (graphical user interface)`. While most
 of the programs an average person interacts with on a day-to-day basis
 are most likely GUIs, text-based programs have their advantages.
 
@@ -140,15 +151,149 @@ $ python countdown.py 5                                                         
 
 `````
 
-Output
-------
+Input and Output
+----------------
+
+In a command line environment, input and output are handled via three special
+kinds of files called that serve as data streams: {term}`stdin`, {term}`stdout`
+and {term}`stderr`. Each one has an associated {abbr}`FD (file descriptor)`
+number, which we'll learn more about later.
+
+| Descriptor     | Name            | FD  | Source / Destination      |
+|----------------|-----------------|-----|---------------------------|
+| {term}`stdin`  | standard input  | `0` | from the keyboard         |
+| {term}`stdout` | standard output | `1` | to the screen             |
+| {term}`stderr` | standard error  | `2` | to the screen             |
+
+In Python, these can be accessed in the `sys` module.
+
+When you use the `print()` function, for example it prints to `stdout` by
+default. This is the same as:
+
+```{code-cell} python
+import sys
+print("hello", file=sys.stdout)
+```
+
+As I mentioned, these are all special kinds of files, and in Python they are
+represented as {term}`file handler` objects. As such, you can interact with
+them the same way you would with a normal file object. So yet another way to
+accomplish the same thing is:
+
+```{code-cell} python
+import sys
+sys.stdout.write("hello\n")
+```
+
+The most common use of file handlers is to write to `stderr` instead of `stdout`.
+
+```{code-cell} python
+import sys
+print("Danger, Will Robinson!", file=sys.stderr)
+```
+
+This is useful because on those streams can be handled seperately on the
+command line. While a complete lesson on {term}`redirection` is outside of the
+scope of this lesson, the most common use case is to send a particular stream
+to a different destination with the syntax: {samp}`{COMMAND} {FD}>
+{DESTINATION}`.
+
+The following for example sends the results of the `ls` command to the file
+`files.txt`. (The file descriptor defaults to `stdout`.)
+
+```{code-block} console
+:caption: command ine
+:class: full-width
+$ ls > files.txt
+```
+
+Or we could send all error messages to `errors.log` or to `/dev/null` (on most
+systems) to silence them completely.
+
+```{code-block} console
+:caption: command ine
+:class: full-width
+$ ls 2> errors.log
+file1 file2 file3
+$ ls 2> /dev/null
+file1 file2 file3
+```
+
+Take the following example, which prints some messages to `stderr` and others
+to `stdout`.
+
+```{code-block} python
+:caption: using-stderr.py
+:class: full-width
+:linenos:
+
+import sys
+print("Welcome!")
+print("Danger, Will Robinson!", file=sys.stderr)
+print("Farewell.")
+```
+
+If we redirect `stdout` to the file `messages.txt` the faux error message will
+be printed to the screen and excluded from the `messages.txt` file.
+
+```{code-block} console
+:caption: command ine
+:class: full-width
+$ python using-stderr.py > messages.txt
+Danger, Will Robinson!
+
+$ cat messages.txt
+Welcome!
+Farewell.
+```
+
+### Exercise
+
+`````{exercise} Stderr Exercise
+:label: stderr-exercise
+
+Modify your countdown function to print a message to `stderr` if there is more
+than one argument passed.
+
+Test this on the command line by:
+* redirecting stdout to `countdown.txt` (with more than one argument)
+* redirecting stderr to `errors.log`
+* redirecting stderr to `/dev/null`
+
+`````
+
+`````{solution} stderr-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: Stderr Exercise
+:class: full-width
+:linenos:
+"""Countdown exercise for the CLI Lesson
+   https://alissa-huskey.github.io/python-class/lessons/cli.html
+"""
+import sys
+import time
+
+count = 3
+
+if len(sys.argv) > 2:
+  print(f"Warning: extra arguments: {sys.argv[2:]}", file=sys.stderr)
+elif len(sys.argv) == 2:
+  count = int(sys.argv[1])
+
+for num in range(count, 0, -1):
+    print(f"{num}...")
+    time.sleep(1)
+
+`````
 
 Reference
 ---------
 
 ### Glossary
 
-```{glossary}
+```{glossary} CLI
 CLI
 command line interface
   A program executed at the {term}`command line` with a text-based user
@@ -159,6 +304,20 @@ graphical user interface
   A program where users provide input primarily by manipulating visual
   elements. Examples include ATMs, Windows, MacOS, nearly all smartphones, web
   browsers, and office programs.
+
+stdin
+  The standard input file stream.
+
+stdout
+  The standard output file stream.
+
+stderr
+  The standard error file stream.
+
+FD
+file descriptor
+  A unique identifier associated with an input/output resource, most often a
+  positive number.
 ```
 
 ...
@@ -180,3 +339,4 @@ graphical user interface
 % [ ] version, usage, help
 % [ ] file modes/permissions
 % [ ] catching cancels, SystemExit
+% [ ] if __name__ == "__main__"
