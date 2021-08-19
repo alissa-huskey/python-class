@@ -873,7 +873,7 @@ missing.</p>
 <p class="admonition-title"><span class="caption-number">Exercise 63 </span>(Environment Variables Exercise)</p>
 <div class="section" id="exercise-content">
 <p>Modify your countdown program to check the environment variable <code class="docutils literal notranslate"><span class="pre">VERBOSE</span></code> and the message
-<code class="samp docutils literal notranslate"><span class="pre">&quot;Counting</span> <span class="pre">down</span> <span class="pre">to</span> <em><span class="pre">COUNT</span></em><span class="pre">.&quot;</span></code> if it is set to a non-blank value.</p>
+<code class="samp docutils literal notranslate"><span class="pre">&quot;Counting</span> <span class="pre">down</span> <span class="pre">from</span> <em><span class="pre">COUNT</span></em><span class="pre">.&quot;</span></code> if it is set to a non-blank value.</p>
 <p>Test it with the envionment variable not set, set to <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>, and set to a value like <code class="docutils literal notranslate"><span class="pre">&quot;yes&quot;</span></code>.</p>
 </div>
 </div>
@@ -913,7 +913,7 @@ missing.</p>
 <span class="n">is_verbose</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;VERBOSE&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">is_verbose</span><span class="p">:</span>
-  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Counting down to </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Counting down from </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
   <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Warning: extra arguments: </span><span class="si">{</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
@@ -933,15 +933,15 @@ missing.</p>
 <span class="go">2...</span>
 <span class="go">1...</span>
 
-<span class="gp">$ </span><span class="nb">export</span> <span class="nv">VERBOSE</span><span class="o">=</span>TRUE
+<span class="gp">$ </span><span class="nb">export</span> <span class="nv">VERBOSE</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
 <span class="gp">$ </span>python countdown.py
 <span class="go">3...</span>
 <span class="go">2...</span>
 <span class="go">1...</span>
 
-<span class="gp">$ </span><span class="nb">export</span> <span class="nv">VERBOSE</span><span class="o">=</span>TRUE
+<span class="gp">$ </span><span class="nb">export</span> <span class="nv">VERBOSE</span><span class="o">=</span>yes
 <span class="gp">$ </span>python countdown.py
-<span class="go">Counting down to 3.</span>
+<span class="go">Counting down from 3.</span>
 <span class="go">3...</span>
 <span class="go">2...</span>
 <span class="go">1...</span>

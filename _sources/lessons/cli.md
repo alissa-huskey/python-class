@@ -215,7 +215,7 @@ print(lang)
 :label: envvar-exercise
 
 Modify your countdown program to check the environment variable `VERBOSE` and the message
-{samp}`"Counting down to {COUNT}."` if it is set to a non-blank value.
+{samp}`"Counting down from {COUNT}."` if it is set to a non-blank value.
 
 Test it with the envionment variable not set, set to `""`, and set to a value like `"yes"`.
 `````
@@ -239,7 +239,7 @@ count = 3
 is_verbose = os.environ.get("VERBOSE", False)
 
 if is_verbose:
-  print(f"Counting down to {count}.")
+  print(f"Counting down from {count}.")
 
 if len(sys.argv) > 2:
   print(f"Warning: extra arguments: {sys.argv[2:]}", file=sys.stderr)
@@ -259,15 +259,15 @@ $ python countdown.py
 2...
 1...
 
-$ export VERBOSE=TRUE
+$ export VERBOSE=""
 $ python countdown.py
 3...
 2...
 1...
 
-$ export VERBOSE=TRUE
+$ export VERBOSE=yes
 $ python countdown.py
-Counting down to 3.
+Counting down from 3.
 3...
 2...
 1...
