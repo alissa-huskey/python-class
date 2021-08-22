@@ -124,13 +124,14 @@ second between printing each number.
 ```
 
 **Example output**:
-```
-$ python countdown.py                                                                      3:49PM <main> [ 1 ]
+
+```{code-block} console
+$ python countdown.py
 3...
 2...
 1...
 
-$ python countdown.py 5                                                                    3:50PM <main> [ 0 ]
+$ python countdown.py 5
 5...
 4...
 3...
@@ -147,6 +148,20 @@ $ python countdown.py 5                                                         
 :caption: Countdown With Args Exercise
 :class: full-width
 :linenos:
+```
+
+```{code-block} console
+$ python countdown.py
+3...
+2...
+1...
+
+$ python countdown.py 5
+5...
+4...
+3...
+2...
+1...
 ```
 
 `````
@@ -227,6 +242,7 @@ Test it with the envionment variable not set, set to `""`, and set to a value li
 :caption: Environment Variables Exercise
 :class: full-width
 :linenos:
+:emphasize-lines: "4, 9-12"
 
 """Countdown exercise for the CLI Lesson
    https://alissa-huskey.github.io/python-class/lessons/cli.html
@@ -243,7 +259,8 @@ if is_verbose:
 
 if len(sys.argv) > 2:
   print(f"Warning: extra arguments: {sys.argv[2:]}", file=sys.stderr)
-elif len(sys.argv) == 2:
+
+if len(sys.argv) >= 2:
   count = int(sys.argv[1])
 
 for num in range(count, 0, -1):
@@ -380,8 +397,8 @@ Farewell.
 Modify your countdown function to print a message to `stderr` if there is more
 than one argument passed.
 
-Test this on the command line by:
-* redirecting stdout to `countdown.txt` (with more than one argument)
+Test this on the command line with more than one argument by:
+* redirecting stdout to `countdown.txt`
 * redirecting stderr to `errors.log`
 * redirecting stderr to `/dev/null`
 
@@ -394,22 +411,184 @@ Test this on the command line by:
 :caption: Stderr Exercise
 :class: full-width
 :linenos:
+:emphasize-lines: "14-15"
 """Countdown exercise for the CLI Lesson
    https://alissa-huskey.github.io/python-class/lessons/cli.html
 """
+import os
 import sys
 import time
 
 count = 3
+is_verbose = os.environ.get("VERBOSE", False)
+
+if is_verbose:
+  print(f"Counting down from {count}.")
 
 if len(sys.argv) > 2:
   print(f"Warning: extra arguments: {sys.argv[2:]}", file=sys.stderr)
-elif len(sys.argv) == 2:
+
+if len(sys.argv) >= 2:
   count = int(sys.argv[1])
 
 for num in range(count, 0, -1):
     print(f"{num}...")
     time.sleep(1)
+```
+
+```{code-block} console
+:caption: command line
+:class: full-width
+$ python countdown.py 1
+1...
+
+$ python countdown.py 1 2
+Warning: extra arguments: ['2']
+1...
+
+$ python countdown.py 1 2 > countdown.txt
+Warning: extra arguments: ['2']
+
+$ python countdown.py 1 2 2> errors.log
+1...
+
+$ python countdown.py 1 2 2> /dev/null
+1...
+```
+
+`````
+
+Exiting Programs
+----------------
+
+When a command line programs ends, it returns an {term}`exit code` to indicate
+success or failure. Traditionally an exit code of `0` indicates success and
+anything else indicates some kind of failure. Some programs use different exit
+codes to let you know why the program failed.
+
+You can see the exit code of the last command with the special variable `$?`.
+Lets use the `ls` command as an example.
+
+```{code-block} console
+:caption: command line
+:class: full-width
+$ ls
+file1 file2 file3
+
+$ echo $?
+0
+
+$ ls x
+ls: cannot access 'x': No such file or directory
+
+$ echo $?
+2
+```
+
+To exit a program in Python use `sys.exit()` with an optional exit code
+argument. In the following example we expand the `randnums.py` script to exit
+with an exit code of `1`.
+
+```{code-block} python
+:caption: "example: randnums.py"
+:class: full-width
+:linenos:
+:emphasize-lines: "6-7"
+
+import sys
+import random
+
+count = 3
+
+if len(sys.argv) > 2:
+  print(f"Warning: extra arguments: {sys.argv[2:]}", file=sys.stderr)
+
+if len(sys.argv) >= 2:
+
+  if not sys.argv[1].isnumeric():
+    print("Count must be a number.")
+    sys.exit(1)
+
+  count = int(sys.argv[1])
+
+for _ in range(count):
+  print(random.randint(0, 100))
+```
+
+### Exercise
+
+`````{exercise} Exiting Exercise
+:label: exiting-exercise
+
+Modify your countdown program, so that when an argument is passed that is not a
+number, print an error message and exit with an exit code of `1`. Test with
+both numeric and non-numeric arguments.
+
+```{dropdown} Need help?
+If you already have an if statement checking that `sys.argv` has at least two
+items, do the following in it. Otherwise, make one.
+
+1. In an `if` statement, on second item in the `sys.argv` list, check that the
+   results of the `.isnumeric()` method is `False`.
+  - print an error message
+  - call `sys.exit()` with the argument `1`
+```
+
+`````
+
+`````{solution} exiting-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: Exiting Exercise
+:class: full-width
+:linenos:
+:emphasize-lines: "18-20"
+
+"""Countdown exercise for the CLI Lesson
+   https://alissa-huskey.github.io/python-class/lessons/cli.html
+"""
+import os
+import sys
+import time
+
+count = 3
+is_verbose = os.environ.get("VERBOSE", False)
+
+if is_verbose:
+    print(f"Counting down from {count}.")
+
+if len(sys.argv) > 2:
+    print(f"Warning: extra arguments: {sys.argv[2:]}", file=sys.stderr)
+
+if len(sys.argv) >= 2:
+    if not sys.argv[1].isnumeric():
+        print(f"Error: Countdown count should be a number: {sys.argv[1]}", file=sys.stderr)
+        sys.exit(1)
+
+    count = int(sys.argv[1])
+
+for num in range(count, 0, -1):
+    print(f"{num}...")
+    time.sleep(1)
+```
+
+```{code-block} console
+:caption: command line
+
+$ python countdown.py a
+Error: Countdown count should be a number: a
+
+$ echo $?
+1
+
+$ python countdown.py 2
+2...
+1...
+
+$ echo $?
+0
+```
 
 `````
 
@@ -446,6 +625,11 @@ file descriptor
 
 environment variables
   A variable is set on the command line and effects how programs are run or behave.
+
+exit code
+status code
+  A number between `0` and `255` returned by command line programs to indicate
+  success or failure.
 ```
 
 ...
@@ -453,17 +637,18 @@ environment variables
 ----
 
 % TODO
-% [ ] shabang
-% [ ] chmod
 % [x] file handlers, stdin/stdout/stderr
-% [.] sys.environ, environment variables
+% [x] sys.environ, environment variables
 % [x] arguments
+% [x] exit, exit status
 % [ ] terminal size
+% [ ] catching cancels, SystemExit
+% [ ] executable scripts
+%     [ ] shabang
+%     [ ] chmod
+%     [ ] file modes/permissions
 % [ ] color
 %     [ ] colorama https://k3no.medium.com/command-line-uis-in-python-80af755aa27d
 %     [ ] termcolor
-% [ ] exit, exit status
 % [ ] version, usage, help
-% [ ] file modes/permissions
-% [ ] catching cancels, SystemExit
 % [ ] if __name__ == "__main__"
