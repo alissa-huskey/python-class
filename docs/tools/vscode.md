@@ -24,15 +24,10 @@ kernelspec:
 VS Code
 =======
 
-Table of Contents
------------------
-
-* [Resources](#resources)
-* [Essential Keyboard Shortcuts](#essential-keyboard-shortcuts)
-* [Extensions](#extensions)
-* [Suggested Settings](#suggested-settings)
-* [Themes](#themes)
-
+```{contents} Table of Contents
+:backlinks: top
+:local:
+```
 
 Resources
 ---------
@@ -59,12 +54,6 @@ Resources
   replacing within and across files, advanced selection, formatting and
   indentation.
 
-* [Getting Started > Default Keyboard Shortcuts](https://code.visualstudio.com/docs/getstarted/keybindings#_default-keyboard-shortcuts) \
-  Covers how to access currently defined keyboard shortcuts, as well as listing
-  the default shortcuts for (I presume) your detected OS. This is also where to
-  find out how to make your own keyboards shortcuts (keybindings) and
-  troubleshoot them if needed.
-
 * [User Guide > Code Navigation](https://code.visualstudio.com/docs/editor/editingevolved) \
   Covers the powerful features for quickly finding and getting to the right
   parts of your codebase via quick open, toggling history and open editors,
@@ -80,9 +69,6 @@ Resources
 
 * [Editing Python in Visual Studio Code](https://code.visualstudio.com/docs/python/editing) \
   Covers the editor features provided by the Python extension.
-
-* (PDF) Keyboard shortcuts for [Windows](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf), [macOS](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf), [Linux](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf) \
-  Keyboard shortcut cheat sheet for each OS.
 
 * [Visual Studio Code Docs](https://code.visualstudio.com/docs) \
   VS Code documentation home page.
@@ -113,7 +99,9 @@ Resources
 Essential Keyboard Shortcuts
 ----------------------------
 
-`````{tabbed} macOS
+```````{tabs}
+
+`````{tab} MacOS
 
 ````{panels}
 :card: shadow-none
@@ -177,7 +165,7 @@ Editor
 
 `````
 
-`````{tabbed} Windows
+`````{tab} Windows/Linux
 
 ````{panels}
 :card: shadow-none
@@ -237,6 +225,20 @@ Editor
 ````
 
 `````
+
+```````
+
+:::{seealso}
+
+* [Getting Started > Default Keyboard Shortcuts](https://code.visualstudio.com/docs/getstarted/keybindings#_default-keyboard-shortcuts)
+* (PDF) Keyboard shortcuts for [Windows](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf), [macOS](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf), [Linux](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf)
+* Commands
+  - {guilabel}`Help: Keyboard Shortcuts Reference`
+  - {guilabel}`Preferences: Open Default Keyboard Shortcuts (JSON)`
+  - {guilabel}`Preferences: Open Keyboard Shortcuts (JSON)`
+  - {guilabel}`Preferences: Open Keyboard Shortcuts`
+
+:::
 
 
 Extensions
