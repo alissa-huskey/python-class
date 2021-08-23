@@ -48,9 +48,10 @@
     <script src="../_static/custom.js"></script>
     <script src="../_static/asciinema-player.js"></script>
     <script src="../_static/x-frame-bypass.js"></script>
+    <script src="../_static/tabs.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
         const thebe_selector_input = "pre,.cell_input div.highlight"
@@ -542,11 +543,6 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#table-of-contents">
-   Table of Contents
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#resources">
    Resources
   </a>
@@ -658,18 +654,38 @@
                 
   <div class="section" id="vs-code">
 <h1>VS Code<a class="headerlink" href="#vs-code" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="table-of-contents">
-<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
+<div class="contents local topic" id="table-of-contents">
+<p class="topic-title">Table of Contents</p>
 <ul class="simple">
-<li><p><a class="reference external" href="#resources">Resources</a></p></li>
-<li><p><a class="reference external" href="#essential-keyboard-shortcuts">Essential Keyboard Shortcuts</a></p></li>
-<li><p><a class="reference external" href="#extensions">Extensions</a></p></li>
-<li><p><a class="reference external" href="#suggested-settings">Suggested Settings</a></p></li>
-<li><p><a class="reference external" href="#themes">Themes</a></p></li>
+<li><p><a class="reference internal" href="#resources" id="id13">Resources</a></p></li>
+<li><p><a class="reference internal" href="#essential-keyboard-shortcuts" id="id14">Essential Keyboard Shortcuts</a></p></li>
+<li><p><a class="reference internal" href="#extensions" id="id15">Extensions</a></p></li>
+<li><p><a class="reference internal" href="#suggested-settings" id="id16">Suggested Settings</a></p>
+<ul>
+<li><p><a class="reference internal" href="#instructions" id="id17">Instructions</a></p></li>
+<li><p><a class="reference internal" href="#hide-open-editors" id="id18">Hide Open Editors</a></p></li>
+<li><p><a class="reference internal" href="#minimap" id="id19">Minimap</a></p></li>
+<li><p><a class="reference internal" href="#reduce-preview-mode" id="id20">Reduce preview mode</a></p></li>
+<li><p><a class="reference internal" href="#autosave" id="id21">Autosave</a></p></li>
+<li><p><a class="reference internal" href="#disable-notices" id="id22">Disable notices</a></p></li>
+<li><p><a class="reference internal" href="#live-share" id="id23">Live Share</a></p></li>
+<li><p><a class="reference internal" href="#highlight-cursor-line" id="id24">Highlight cursor line</a></p></li>
+<li><p><a class="reference internal" href="#disable-suggestions" id="id25">Disable suggestions</a></p></li>
+<li><p><a class="reference internal" href="#git" id="id26">Git</a></p></li>
+<li><p><a class="reference internal" href="#editorconfig-compatibility" id="id27">EditorConfig compatibility</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#themes" id="id28">Themes</a></p>
+<ul>
+<li><p><a class="reference internal" href="#dark" id="id29">Dark</a></p></li>
+<li><p><a class="reference internal" href="#medium" id="id30">Medium</a></p></li>
+<li><p><a class="reference internal" href="#light" id="id31">Light</a></p></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="resources">
-<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#table-of-contents">Resources</a><a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p class="centered">
@@ -687,11 +703,6 @@ via code symbols and history.</p></li>
 Oddly focuses less on editing than the Tips and Tricks page. Searching and
 replacing within and across files, advanced selection, formatting and
 indentation.</p></li>
-<li><p><a class="reference external" href="https://code.visualstudio.com/docs/getstarted/keybindings#_default-keyboard-shortcuts">Getting Started &gt; Default Keyboard Shortcuts</a> <br />
-Covers how to access currently defined keyboard shortcuts, as well as listing
-the default shortcuts for (I presume) your detected OS. This is also where to
-find out how to make your own keyboards shortcuts (keybindings) and
-troubleshoot them if needed.</p></li>
 <li><p><a class="reference external" href="https://code.visualstudio.com/docs/editor/editingevolved">User Guide &gt; Code Navigation</a> <br />
 Covers the powerful features for quickly finding and getting to the right
 parts of your codebase via quick open, toggling history and open editors,
@@ -704,8 +715,6 @@ Notebooks or Django. However, following the Hello World steps could be
 helpful.</p></li>
 <li><p><a class="reference external" href="https://code.visualstudio.com/docs/python/editing">Editing Python in Visual Studio Code</a> <br />
 Covers the editor features provided by the Python extension.</p></li>
-<li><p>(PDF) Keyboard shortcuts for <a class="reference external" href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf">Windows</a>, <a class="reference external" href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf">macOS</a>, <a class="reference external" href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf">Linux</a> <br />
-Keyboard shortcut cheat sheet for each OS.</p></li>
 <li><p><a class="reference external" href="https://code.visualstudio.com/docs">Visual Studio Code Docs</a> <br />
 VS Code documentation home page.</p></li>
 </ul>
@@ -730,12 +739,9 @@ It’s detailed with well labeled time markers so it’s easy to skip around.
 </div>
 </div>
 <div class="section" id="essential-keyboard-shortcuts">
-<h2>Essential Keyboard Shortcuts<a class="headerlink" href="#essential-keyboard-shortcuts" title="Permalink to this headline">¶</a></h2>
-<div class="tabbed-set docutils">
-<input checked="checked" id="53dd259d-f355-44d4-b849-a4b078db3e3f" name="9665a3f3-6b86-4721-b194-7e89d9f88eb9" type="radio">
-</input><label class="tabbed-label" for="53dd259d-f355-44d4-b849-a4b078db3e3f">
-macOS</label><div class="tabbed-content docutils">
-<div class="sphinx-bs container pb-4 docutils">
+<h2><a class="toc-backref" href="#table-of-contents">Essential Keyboard Shortcuts</a><a class="headerlink" href="#essential-keyboard-shortcuts" title="Permalink to this headline">¶</a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">MacOS</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Windows/Linux</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="sphinx-bs container pb-4 docutils">
 <div class="row docutils">
 <div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
 <div class="card w-100 shadow-none docutils">
@@ -879,11 +885,7 @@ Key<div class="summary-down docutils">
 </div>
 </div>
 </div>
-</div>
-<input id="3db17a0c-9f49-48ee-a750-a89978197bfd" name="9665a3f3-6b86-4721-b194-7e89d9f88eb9" type="radio">
-</input><label class="tabbed-label" for="3db17a0c-9f49-48ee-a750-a89978197bfd">
-Windows</label><div class="tabbed-content docutils">
-<div class="sphinx-bs container pb-4 docutils">
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="sphinx-bs container pb-4 docutils">
 <div class="row docutils">
 <div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
 <div class="card w-100 shadow-none docutils">
@@ -1021,11 +1023,25 @@ Key<div class="summary-down docutils">
 </div>
 </div>
 </div>
-</div>
+</div></div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://code.visualstudio.com/docs/getstarted/keybindings#_default-keyboard-shortcuts">Getting Started &gt; Default Keyboard Shortcuts</a></p></li>
+<li><p>(PDF) Keyboard shortcuts for <a class="reference external" href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf">Windows</a>, <a class="reference external" href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf">macOS</a>, <a class="reference external" href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf">Linux</a></p></li>
+<li><p>Commands</p>
+<ul>
+<li><p><span class="guilabel">Help: Keyboard Shortcuts Reference</span></p></li>
+<li><p><span class="guilabel">Preferences: Open Default Keyboard Shortcuts (JSON)</span></p></li>
+<li><p><span class="guilabel">Preferences: Open Keyboard Shortcuts (JSON)</span></p></li>
+<li><p><span class="guilabel">Preferences: Open Keyboard Shortcuts</span></p></li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 <div class="section" id="extensions">
-<h2>Extensions<a class="headerlink" href="#extensions" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#table-of-contents">Extensions</a><a class="headerlink" href="#extensions" title="Permalink to this headline">¶</a></h2>
 <div class="sphinx-bs container pb-4 docutils">
 <div class="row docutils">
 <div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
@@ -1061,7 +1077,7 @@ well as among multiple project contributors.</p>
 <p class="card-text">Create a file in your project dir or home dir named <code class="docutils literal notranslate"><span class="pre">.editorconfig</span></code> and append
 at least the following:</p>
 <div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-number">Listing 338 </span><span class="caption-text">.editorconfig</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 371 </span><span class="caption-text">.editorconfig</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
 <div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">root</span> <span class="o">=</span> <span class="s">true</span>
 
 <span class="k">[*.py]</span>
@@ -1079,17 +1095,17 @@ at least the following:</p>
 </div>
 </div>
 <div class="section" id="suggested-settings">
-<h2>Suggested Settings<a class="headerlink" href="#suggested-settings" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#table-of-contents">Suggested Settings</a><a class="headerlink" href="#suggested-settings" title="Permalink to this headline">¶</a></h2>
 <p>Below are some of the settings that I prefer and recommend. Each section
 includes a description of what the change will do followed by the setting(s)
 to change.</p>
 <div class="section" id="instructions">
-<h3>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Instructions</a><a class="headerlink" href="#instructions" title="Permalink to this headline">¶</a></h3>
 <p>You can change your settings by either modifying your <code class="file docutils literal notranslate"><span class="pre">settings.json</span></code>
 file or using the Settings UI, whichever you find easiest.</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="d02304aa-1744-4806-a03d-a4fddc23f691" name="22904955-b9cf-45c3-97f0-ae0a78005031" type="radio">
-</input><label class="tabbed-label" for="d02304aa-1744-4806-a03d-a4fddc23f691">
+<input checked="checked" id="01a0b282-0fe9-4cc1-8f3a-3aca3bfaf333" name="e2398581-e14c-4f7e-93b2-628207c80f59" type="radio">
+</input><label class="tabbed-label" for="01a0b282-0fe9-4cc1-8f3a-3aca3bfaf333">
 Settings (JSON)</label><div class="tabbed-content docutils">
 <p>On the left side of each section is a JSON dictionary containing the relevant
 settings for the <code class="file docutils literal notranslate"><span class="pre">settings.json</span></code> file.</p>
@@ -1105,8 +1121,8 @@ the <code class="file docutils literal notranslate"><span class="pre">settings.j
 the last <code class="docutils literal notranslate"><span class="pre">}</span></code> in the file.</p></li>
 </ol>
 </div>
-<input id="aa0aec10-795e-430f-b9e4-8c71c81e29a7" name="22904955-b9cf-45c3-97f0-ae0a78005031" type="radio">
-</input><label class="tabbed-label" for="aa0aec10-795e-430f-b9e4-8c71c81e29a7">
+<input id="2799b2c1-63ac-42b4-947f-dcaf50f765d4" name="e2398581-e14c-4f7e-93b2-628207c80f59" type="radio">
+</input><label class="tabbed-label" for="2799b2c1-63ac-42b4-947f-dcaf50f765d4">
 Settings (UI)</label><div class="tabbed-content docutils">
 <p>On the right side of each section is a list of relevant settings from the
 Settings UI.</p>
@@ -1137,7 +1153,7 @@ setting in this document.</p></li>
 </div>
 </div>
 <div class="section" id="hide-open-editors">
-<h3>Hide Open Editors<a class="headerlink" href="#hide-open-editors" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Hide Open Editors</a><a class="headerlink" href="#hide-open-editors" title="Permalink to this headline">¶</a></h3>
 <p>In the <code class="file docutils literal notranslate"><span class="pre">Explorer</span></code> don’t show the “open editors” section.</p>
 <div class="no-headers sidebar">
 <p class="sidebar-title">Settings (UI)</p>
@@ -1155,7 +1171,7 @@ setting in this document.</p></li>
 </table>
 </div>
 <div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-number">Listing 339 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 372 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;explorer.openEditors.visible&quot;</span><span class="o">:</span> <span class="mf">0</span>
 <span class="p">}</span>
@@ -1166,7 +1182,7 @@ setting in this document.</p></li>
 </div>
 <hr class="docutils" />
 <div class="section" id="minimap">
-<h3>Minimap<a class="headerlink" href="#minimap" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Minimap</a><a class="headerlink" href="#minimap" title="Permalink to this headline">¶</a></h3>
 <p>Make the minimap prettier and hide it by default. (You can open it using the
 <span class="guilabel">View: Toggle Minimap</span> command.)</p>
 <div class="no-headings sidebar">
@@ -1197,7 +1213,7 @@ setting in this document.</p></li>
 </table>
 </div>
 <div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-number">Listing 340 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 373 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;editor.minimap.enabled&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="s2">&quot;editor.minimap.renderCharacters&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
@@ -1211,7 +1227,7 @@ setting in this document.</p></li>
 </div>
 <hr class="docutils" />
 <div class="section" id="reduce-preview-mode">
-<h3>Reduce preview mode<a class="headerlink" href="#reduce-preview-mode" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Reduce preview mode</a><a class="headerlink" href="#reduce-preview-mode" title="Permalink to this headline">¶</a></h3>
 <p>When opening files via Quick Open (<kbd class="kbd docutils literal notranslate">⌘P</kbd> / <kbd class="kbd docutils literal notranslate">⌃P</kbd>) don’t start in <a class="reference external" href="https://code.visualstudio.com/docs/getstarted/userinterface#_preview-mode">preview mode</a>.</p>
 <div class="no-headers sidebar">
 <p class="sidebar-title">Settings (UI)</p>
@@ -1229,7 +1245,7 @@ setting in this document.</p></li>
 </table>
 </div>
 <div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-number">Listing 341 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 374 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;workbench.editor.enablePreviewFromQuickOpen&quot;</span><span class="o">:</span> <span class="kc">false</span>
 <span class="p">}</span>
@@ -1240,7 +1256,7 @@ setting in this document.</p></li>
 </div>
 <hr class="docutils" />
 <div class="section" id="autosave">
-<h3>Autosave<a class="headerlink" href="#autosave" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Autosave</a><a class="headerlink" href="#autosave" title="Permalink to this headline">¶</a></h3>
 <p>Enable auto-save.</p>
 <div class="no-headers sidebar">
 <p class="sidebar-title">Settings (UI)</p>
@@ -1258,7 +1274,7 @@ setting in this document.</p></li>
 </table>
 </div>
 <div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-number">Listing 342 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 375 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;files.autoSave&quot;</span><span class="o">:</span> <span class="s2">&quot;afterDelay&quot;</span>
 <span class="p">}</span>
@@ -1269,7 +1285,7 @@ setting in this document.</p></li>
 </div>
 <hr class="docutils" />
 <div class="section" id="disable-notices">
-<h3>Disable notices<a class="headerlink" href="#disable-notices" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Disable notices</a><a class="headerlink" href="#disable-notices" title="Permalink to this headline">¶</a></h3>
 <p>Disable tips and startup pages.</p>
 <div class="no-headers sidebar">
 <p class="sidebar-title">Settings (UI)</p>
@@ -1293,7 +1309,7 @@ setting in this document.</p></li>
 </table>
 </div>
 <div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-number">Listing 343 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 376 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;workbench.startupEditor&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
     <span class="s2">&quot;workbench.tips.enabled&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
@@ -1306,7 +1322,7 @@ setting in this document.</p></li>
 </div>
 <hr class="docutils" />
 <div class="section" id="live-share">
-<h3>Live Share<a class="headerlink" href="#live-share" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Live Share</a><a class="headerlink" href="#live-share" title="Permalink to this headline">¶</a></h3>
 <p>Don’t add Live Share guests names to your git commit messages.</p>
 <div class="no-headers sidebar">
 <p class="sidebar-title">Settings (UI)</p>
@@ -1324,7 +1340,7 @@ setting in this document.</p></li>
 </table>
 </div>
 <div class="literal-block-wrapper docutils container" id="id8">
-<div class="code-block-caption"><span class="caption-number">Listing 344 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 377 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;liveshare.populateGitCoAuthors&quot;</span><span class="o">:</span> <span class="s2">&quot;never&quot;</span>
 <span class="p">}</span>
@@ -1335,7 +1351,7 @@ setting in this document.</p></li>
 </div>
 <hr class="docutils" />
 <div class="section" id="highlight-cursor-line">
-<h3>Highlight cursor line<a class="headerlink" href="#highlight-cursor-line" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Highlight cursor line</a><a class="headerlink" href="#highlight-cursor-line" title="Permalink to this headline">¶</a></h3>
 <p>In the editor highlight the line your cursor is currently on.</p>
 <div class="no-headers sidebar">
 <p class="sidebar-title">Settings (UI)</p>
@@ -1359,7 +1375,7 @@ setting in this document.</p></li>
 </table>
 </div>
 <div class="literal-block-wrapper docutils container" id="id9">
-<div class="code-block-caption"><span class="caption-number">Listing 345 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 378 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;editor.renderLineHighlight&quot;</span><span class="o">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
     <span class="s2">&quot;editor.renderLineHighlightOnlyWhenFocus&quot;</span><span class="o">:</span> <span class="kc">true</span>
@@ -1371,7 +1387,7 @@ setting in this document.</p></li>
 </div>
 <hr class="docutils" />
 <div class="section" id="disable-suggestions">
-<h3>Disable suggestions<a class="headerlink" href="#disable-suggestions" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Disable suggestions</a><a class="headerlink" href="#disable-suggestions" title="Permalink to this headline">¶</a></h3>
 <p>Suggestions are a great feature but they may interfere with retaining
 information as you’re learning. They can make the interface a bit noisy. These
 settings disable them, though they can still be triggered using a shortcut key.</p>
@@ -1403,7 +1419,7 @@ settings disable them, though they can still be triggered using a shortcut key.<
 </table>
 </div>
 <div class="literal-block-wrapper docutils container" id="id10">
-<div class="code-block-caption"><span class="caption-number">Listing 346 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 379 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;editor.acceptSuggestionOnCommitCharacter&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="s2">&quot;editor.suggestOnTriggerCharacters&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
@@ -1421,7 +1437,7 @@ settings disable them, though they can still be triggered using a shortcut key.<
 </div>
 <hr class="docutils" />
 <div class="section" id="git">
-<h3>Git<a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Git</a><a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h3>
 <p>If you use the EditorConfig extension, disable the built-in whitespace handling features as it is not compatible.</p>
 <div class="no-headers sidebar">
 <p class="sidebar-title">Settings (UI)</p>
@@ -1439,7 +1455,7 @@ settings disable them, though they can still be triggered using a shortcut key.<
 </table>
 </div>
 <div class="literal-block-wrapper docutils container" id="id11">
-<div class="code-block-caption"><span class="caption-number">Listing 347 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 380 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;git.autofetch&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
 <span class="p">}</span>
@@ -1450,7 +1466,7 @@ settings disable them, though they can still be triggered using a shortcut key.<
 </div>
 <hr class="docutils" />
 <div class="section" id="editorconfig-compatibility">
-<h3>EditorConfig compatibility<a class="headerlink" href="#editorconfig-compatibility" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">EditorConfig compatibility</a><a class="headerlink" href="#editorconfig-compatibility" title="Permalink to this headline">¶</a></h3>
 <p>If you use the EditorConfig extension, disable the built-in whitespace handling features as they interfere.</p>
 <div class="no-headers sidebar">
 <p class="sidebar-title">Settings (UI)</p>
@@ -1468,7 +1484,7 @@ settings disable them, though they can still be triggered using a shortcut key.<
 </table>
 </div>
 <div class="literal-block-wrapper docutils container" id="id12">
-<div class="code-block-caption"><span class="caption-number">Listing 348 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 381 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;files.trimTrailingWhitespace&quot;</span><span class="o">:</span> <span class="kc">false</span>
 <span class="p">}</span>
@@ -1480,9 +1496,9 @@ settings disable them, though they can still be triggered using a shortcut key.<
 </div>
 <hr class="docutils" />
 <div class="section" id="themes">
-<h2>Themes<a class="headerlink" href="#themes" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#table-of-contents">Themes</a><a class="headerlink" href="#themes" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="dark">
-<h3>Dark<a class="headerlink" href="#dark" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Dark</a><a class="headerlink" href="#dark" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="#one-dark-pro-monokai-darker">One Dark Pro Monokai Darker</a></p></li>
 <li><p><a class="reference external" href="#dolch-dark">Dolch Dark</a></p></li>
@@ -1522,7 +1538,7 @@ settings disable them, though they can still be triggered using a shortcut key.<
 <p><img alt="Black Ocean" src="https://raw.githubusercontent.com/Zamerick/black-ocean/master/img/BlackOcean.png" /></p>
 </div>
 <div class="section" id="medium">
-<h3>Medium<a class="headerlink" href="#medium" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Medium</a><a class="headerlink" href="#medium" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="#nord-extra-dark">Nord Extra Dark</a></p></li>
 <li><p><a class="reference external" href="#subliminal">Subliminal</a></p></li>
@@ -1555,7 +1571,7 @@ settings disable them, though they can still be triggered using a shortcut key.<
 <p><img alt="Mario Color" src="../_images/mario.png" /></p>
 </div>
 <div class="section" id="light">
-<h3>Light<a class="headerlink" href="#light" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#table-of-contents">Light</a><a class="headerlink" href="#light" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="#one-dark-raincoat-light">One Dark Raincoat Light</a></p></li>
 <li><p><a class="reference external" href="#dolch-light">Dolch Light</a></p></li>
