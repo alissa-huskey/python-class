@@ -62,6 +62,42 @@ book = {
 }
 ```
 
+`````{exercise} Shapes Dictionary
+:label: shapes-dict-exercise
+
+Create a dictionary assigned to the variable `shapes` that has a shape name
+(like `"square"` or `"triangle"`) for each key and the number of sides (`4` and
+`3`) for the value.
+
+Print the dictionary.
+`````
+
+`````{solution} shapes-dict-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: Shapes Dictionary Exercise
+:class: full-width
+:linenos:
+
+from pprint import pprint
+
+shapes = {
+    "square": 4,
+    "triangle": 3,
+    "circle": 0,
+    "rectangle": 4,
+    "octogon": 8,
+    "pentagon": 5,
+    "hexagon": 6,
+    "heptagon": 7,
+}
+
+pprint(shapes, sort_dicts=False)
+```
+
+`````
+
 ### Accessing
 
 Items are accessed via {term}`subscription`, using `[` `]` after the object to
@@ -95,6 +131,125 @@ series = book.get("series", "NA")
 print("Series:", series)
 ```
 
+`````{exercise} Lookup Sides
+:label: shapes-sides-exercise
+
+Print {samp}`"A {name} has {number} sides."` for a `square` and `rectangle`.
+```{code-block} text
+:caption: output
+A triangle has 3 sides.
+A square has 4 sides.
+```
+
+`````
+
+`````{solution} shapes-sides-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: Shapes Exercise
+:class: full-width
+:linenos:
+:emphasize-lines: "16-17"
+
+from pprint import pprint
+
+shapes = {
+    "square": 4,
+    "triangle": 3,
+    "circle": 0,
+    "rectangle": 4,
+    "octogon": 8,
+    "pentagon": 5,
+    "hexagon": 6,
+    "heptagon": 7,
+}
+
+pprint(shapes, sort_dicts=False)
+
+print("A triangle has", shapes["triangle"], "sides.")
+print("A square has", shapes["square"], "sides.")
+```
+
+`````
+
+`````{exercise} Lookup Side with Fallback
+:label: shapes-sides-fallback-exercise
+
+Prompt the user for the shape name, then look up the number of sides in `shapes` using the `.get()` method.
+
+If the shape is not in the dictionary print: {samp}`"Sorry, I don't know the shape: {name}"`
+
+Otherwise print: {samp}`"A {name} has {number} sides."`
+
+```{admonition} Need a hint?
+   :class: "dropdown hint"
+   1. Use the `input()` function to prompt the user for a shape name and
+      assign the returned value to the variable `name`.
+
+   2. Look up the number of sides: Call the
+      `.get()` method on `shapes` with the argument `name` and the optional
+      second argument `None` (the value that will be returned if `name` is
+      not a key in `shapes`). Assign to the variable `sides`.
+
+   3. Use an if statement with the condition that `sides` is equal to `None`.
+
+      In the body print the message:
+      {samp}`"Sorry, I don't know the shape: {name}"`
+
+      Use an `else` clause. In the body print the message:
+      {samp}`"A {name} has {number} sides."`
+```
+
+```{code-block} text
+:caption: output
+shape > rectangle
+A rectangle has 4 sides.
+
+shape > heart
+Sorry, I don't know the shape: heart
+```
+
+`````
+
+`````{solution} shapes-sides-fallback-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: Shapes Exercise
+:class: full-width
+:linenos:
+:emphasize-lines: "19-25"
+
+from pprint import pprint
+
+shapes = {
+    "square": 4,
+    "triangle": 3,
+    "circle": 0,
+    "rectangle": 4,
+    "octogon": 8,
+    "pentagon": 5,
+    "hexagon": 6,
+    "heptagon": 7,
+}
+
+pprint(shapes, sort_dicts=False)
+
+print("A triangle has", shapes["triangle"], "sides.")
+print("A square has", shapes["square"], "sides.")
+
+name = input("shape > ")
+sides = shapes.get(name, None)
+
+if sides == None:
+    print("Sorry, I don't know the shape:", name)
+else:
+    print("A", name, "has", sides, "sides.")
+```
+
+`````
+
 ### Modifying
 
 Adding or changing elements in the list is done the same way, also using subscription.
@@ -125,6 +280,113 @@ book.update({"isbn": "0345371984", "genre": "Science", "pages": 256})
 pprint(book)
 ```
 
+`````{exercise} Add and Change a Shape
+:label: change-shape-exercise
+
+Use {term}`subscription` to:
+
+* add the shape `"oval"` to `shapes` with `0` sides
+* change `"square"` to `"four"` sides
+
+`````
+
+`````{solution} change-shape-exercise
+:class: dropdown
+
+```{code-block} python
+:caption:  Add and Change a Shape Exercise
+:class: full-width
+:linenos:
+:emphasize-lines: "14-15"
+
+from pprint import pprint
+
+shapes = {
+    "square": 4,
+    "triangle": 3,
+    "circle": 0,
+    "rectangle": 4,
+    "octogon": 8,
+    "pentagon": 5,
+    "hexagon": 6,
+    "heptagon": 7,
+}
+
+shapes["oval"] = 0
+shapes["square"] = "four"
+
+pprint(shapes, sort_dicts=False)
+
+print("A triangle has", shapes["triangle"], "sides.")
+print("A square has", shapes["square"], "sides.")
+
+name = input("shape > ")
+sides = shapes.get(name, None)
+
+if sides == None:
+    print("Sorry, I don't know the shape:", name)
+else:
+    print("A", name, "has", sides, "sides.")
+```
+
+`````
+
+`````{exercise} Add and Change Multiple Shapes
+:label: change-shapes-exercise
+
+Use the `.update()` method to
+* change `"triangle"` to `"three"` sides
+* add `star` with `10` sides
+* add `nonagon` with `9` sides
+`````
+
+`````{solution} change-shapes-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: Add and Change Multiple Shapes Exercise
+:class: full-width
+:linenos:
+:emphasize-lines: "17-21"
+
+from pprint import pprint
+
+shapes = {
+    "square": 4,
+    "triangle": 3,
+    "circle": 0,
+    "rectangle": 4,
+    "octogon": 8,
+    "pentagon": 5,
+    "hexagon": 6,
+    "heptagon": 7,
+}
+
+shapes["oval"] = 0
+shapes["square"] = "four"
+
+shapes.update({
+    "star": 10,
+    "nonagon": 9,
+    "triangle": "three",
+})
+
+pprint(shapes, sort_dicts=False)
+
+print("A triangle has", shapes["triangle"], "sides.")
+print("A square has", shapes["square"], "sides.")
+
+name = input("shape > ")
+sides = shapes.get(name, None)
+
+if sides == None:
+    print("Sorry, I don't know the shape:", name)
+else:
+    print("A", name, "has", sides, "sides.")
+```
+
+`````
+
 ### Removing
 
 To remove elements you can use the `del` keyword.
@@ -138,18 +400,104 @@ del book["pages"]
 pprint(book)
 ```
 
-You can also use the `.pop()` method, which returns the deleted element. It has
-the added benefit that you can pass it a default value to avoid a `KeyError`
-exception.
+You can also remove items using the `.pop()` method, which returns the deleted
+element before removing it.
 
 ```{code-cell} python
 :class: full-width
 :tags: [thebe-init]
 
-format = book.pop("format", "Unknown")
+isbn = book.pop("isbn")
+print("The books ISBN is:", isbn)
 pprint(book)
 ```
 
+Just like when using subscription, `.pop()` will raise a `KeyError` if no value
+with that key exists.
+
+```{code-cell} python
+:class: full-width
+:tags: [thebe-init, raises-exception]
+
+fmt = book.pop("format")
+print("This books format is:", fmt)
+pprint(book)
+```
+
+You can avoid this error by pass the optional second argument `default`, which is the
+value to return if it is missing.
+
+```{code-cell} python
+:class: full-width
+:tags: [thebe-init]
+
+year = book.pop("year", "Unknown")
+print("The year is:", year)
+pprint(book)
+
+fmt = book.pop("format", "Unknown")
+print("The format is:", fmt)
+pprint(book)
+```
+
+`````{exercise} Remove a Shape
+:label: remove-shape-exercise
+
+Print `shapes` then remove the `"star"` shape using `del`. Print `shapes` again
+to confirm it has been removed.
+
+`````
+
+`````{solution} remove-shape-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: Remove a Shape Exercise
+:class: full-width
+:linenos:
+:emphasize-lines: "25-27"
+
+from pprint import pprint
+
+shapes = {
+    "square": 4,
+    "triangle": 3,
+    "circle": 0,
+    "rectangle": 4,
+    "octogon": 8,
+    "pentagon": 5,
+    "hexagon": 6,
+    "heptagon": 7,
+}
+
+shapes["oval"] = 0
+shapes["square"] = "four"
+
+shapes.update({
+    "star": 10,
+    "nonagon": 9,
+    "triangle": "three",
+})
+
+pprint(shapes)
+
+del shapes["star"]
+
+pprint(shapes, sort_dicts=False)
+
+print("A triangle has", shapes["triangle"], "sides.")
+print("A square has", shapes["square"], "sides.")
+
+name = input("shape > ")
+sides = shapes.get(name, None)
+
+if sides == None:
+    print("Sorry, I don't know the shape:", name)
+else:
+    print("A", name, "has", sides, "sides.")
+```
+
+`````
 ### Exercises
 
 `````{exercise} Word calculator
@@ -435,7 +783,7 @@ print("Jessica's favorite book is:", jessica["book"])
 % When used as a {term}`iterable`, dictionaries often act like a {term}`sequence`
 % of keys.
 
-% For 
+% For
 
 
 ----
