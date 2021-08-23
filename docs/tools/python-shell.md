@@ -1,3 +1,14 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
 Python Shell
 ============
 
@@ -9,41 +20,70 @@ the shell is open.
 You can access it from a few places but here I want to show you how to use it
 from repl.it.
 
-Table of Contents
------------------
-
-* [Part 1. Open the Python Shell](#part-1-open-the-python-shell)
-* [Part 2. Simple expressions](#part-2-simple-expressions)
-* [Part 3. The semicolon shorthand](#part-3-the-semicolon-shorthand)
-* [Part 4. Use Up-arrow and Down-arrow to repeat history](#part-4-use-up-arrow-and-down-arrow-to-repeat-history)
-* [Part 5. Tab completion](#part-5-tab-completion)
-* [Part 6. Inspect thyself](#part-6-inspect-thyself)
-* [Part 7. Get help](#part-7-get-help)
-* [Glossary](#glossary)
+```{contents} Table of Contents
+:backlinks: top
+:local:
+```
 
 Part 1. Open the Python Shell
 -----------------------------
 
-1. Open repl.it
-2. In the right pane, you will see the following and your {term}`prompt` will
-   be an orange `>`.
+::::::{margin}
 
-```
-Python 3.8.2 (default, Feb 26 2020, 02:56:10)
->
-```
+:::{admonition} Need help?
+:class: hint
 
-Now type `python` and hit enter. The prompt will change to three `>>>`.
+For help getting to the command line see [Starting a
+Terminal](../tools/terminal.html#starting-a-terminal) in the
+[Terminal](terminal.md) tool guide.
+
+:::
+
+::::::
+
+At the {term}`command line` type `python` and hit enter. The prompt will change
+to three `>>>`.
+
 That means you're in the Python Shell.
 
-```
-Python 3.8.2 (default, Feb 26 2020, 02:56:10)
-> python
+```{code-block} python
+:caption: Python shell
 Python 2.7.17 (default, Apr 15 2020, 17:20:14)
 [GCC 7.5.0] on linux2
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
+
+In these lessons we show Python shell examples in one of the following styles:
+
+{{ leftcol | replace("col", "col align-top") }}
+
+```{code-block} python
+:caption: Python shell
+>>> print("like this...")
+like this...
+```
+
+The caption `Python Shell` tells you that this is executed in the Python
+Shell. The `>>>` are input lines, and the rest are output.
+
+This should look very similar to what you see in your own Python shell.
+
+{{ rightcol }}
+
+```{code-cell} python
+print("...or like that")
+```
+
+The green border tells you that this code that you can edit live on this site
+(by clicking the ![launch][] icon at the top of the page), or type into your
+own Python shell.
+
+The box labeled `In` is input code and the box labled `Out` is output.
+
+[launch]: ../assets/rocket-icon.png
+
+{{ endcols }}
 
 
 Part 2. Simple expressions
@@ -52,30 +92,39 @@ Part 2. Simple expressions
 Here you can type simple expressions to see what they will do. Here are a few things to try.
 
 
-```python
->>> age = 28
->>> age * 365
-
->>> name = "Jayson"
->>> clothing = "hat"
->>> print("Hello " + name + ". What a nice " + clothing + " you are wearing!")
+```{code-cell} python
+age = 28
+age * 365
 ```
 
-It can be helpful to test out ***conditionals*** that you would want to put in an if-statement.
+```{code-cell} python
+name = "Jayson"
+clothing = "hat"
+print("Hello " + name + ". What a nice " + clothing + " you are wearing!")
+```
 
-```python
->>> False == 0
-True
->>> 2.0 == 2
-True
->>> 2 + 2 == 4
-True
->>> 2 + 2 + 2 == 2 * 3
-True
->>> min_age = 21
->>> age = 28
->>> age >= min_age
-True
+It can be helpful to test out {term}`conditionals` that you would want to put in an {term}`if statement`.
+
+```{code-cell} python
+False == 0
+```
+
+```{code-cell} python
+2.0 == 2
+```
+
+```{code-cell} python
+2 + 2 == 4
+```
+
+```{code-cell} python
+2 + 2 + 2 == 2 * 3
+```
+
+```{code-cell} python
+min_age = 21
+age = 28
+age >= min_age
 ```
 
 Type some expressions of your own.
@@ -90,9 +139,9 @@ shorthand in the Python Shell.
 
 For example, we could change the above to:
 
-```python
->>> name = "Jayson" ; clothing = "hat"
->>> print("Hello " + name + ". What a nice " + clothing + " you are wearing!")
+```{code-cell} python
+name = "Jayson" ; clothing = "hat"
+print("Hello " + name + ". What a nice " + clothing + " you are wearing!")
 ```
 
 
@@ -102,7 +151,8 @@ Part 4. Use Up-arrow and Down-arrow to repeat history
 You can use the up arrow to fill in previously typed lines in your history.
 Imagine we made a mistake.
 
-```python
+```{code-block} python
+:caption: Python shell
 >>> print("Hello world)
   File "<stdin>", line 1
     print("Hello world)
@@ -113,7 +163,8 @@ SyntaxError: EOL while scanning string literal
 We can hit the up-arrow once to bring the last line back, then fix the misake
 and press enter.
 
-```python
+```{code-block} python
+:caption: Python shell
 >>> print("Hello world")
 Hello world
 ```
@@ -126,7 +177,8 @@ the `name` and `clothing` variables and change their values. After pressing
 enter, we could use the up-arrow again to bring back the `print` line to repeat
 it with the new values.
 
-```python
+```{code-block} python
+:caption: Python shell
 >>> name = "Cody" ; clothing = "shirt"
 >>> print("Hello " + name + ". What a nice " + clothing + " you are wearing!")
 Hello Cody. What a nice shirt you are wearing!
@@ -140,13 +192,14 @@ Part 5. Tab completion
 ----------------------
 
 To save typing time the Python Shell uses a nifty trick called
-***tab-completion***. For identifiers that are either built-in or ones that we
+{term}`tab completion`. For identifiers that are either built-in or ones that we
 define, it we can type out just the first few characters then hit the Tab key,
 and it will attempt to guess the rest.
 
 Try typing `pri` and then hit the tab key.
 
-```python
+```{code-block} python
+:caption: Python shell
 >>> print(
 ```
 
@@ -156,7 +209,8 @@ a list of the matches. For example, if we had `favorite_color` and
 `favorite_season` defined, and then we typed `fav` followed by the tab key we
 would see:
 
-```python
+```{code-block} python
+:caption: Python shell
 >>> favorite_color = "black"
 >>> favorite_season = "fall"
 >>> fav
@@ -176,27 +230,35 @@ information about the things you have defined.
 
 The `type()` function will tell you what type a variable is.
 
-```python
->>> five = 5
->>> type(five)
-<class 'int'>
->>> five = 5.0
->>> type(five)
-<class 'float'>
->>> five = "5"
->>> type(five)
-<class 'str'>
->>> type(print)
-<class 'builtin_function_or_method'>
+```{code-cell} python
+:caption: Python shell
+five = 5
+type(five)
+```
+
+```{code-cell} python
+five = 5.0
+type(five)
+```
+
+```{code-cell} python
+five = "5"
+type(five)
+```
+
+```{code-cell} python
+type(print)
 ```
 
 The `callable()` function will tell you if an object is a function or not.
 
-```python
->>> callable(five)
-False
->>> callable(print)
-True
+```{code-cell} python
+:caption: Python shell
+callable(five)
+```
+
+```{code-cell} python
+callable(print)
 ```
 
 Part 7. Get help
@@ -207,19 +269,29 @@ more information about all sorts of things.
 
 You can pass it a string with the name of a funciton you would like more information about.
 
-(You may find it helpful to expand the right pane by clicking the middle of the
-bar between the right and left panes, and dragging to the left.)
+```{code-cell} python
+:tags: [output_scroll]
 
-```python
->>> help("print")
->>> help("input")
->>> help("if")
+help("print")
+```
+
+```{code-cell} python
+:tags: [output_scroll]
+
+help("input")
+```
+
+```{code-cell} python
+:tags: [output_scroll]
+
+help("if")
 ```
 
 You can also call `help()` without arguments to get Python's Interactive Help.
 This will change the prompt to `help>`.
 
-```python
+```{code-block} python
+:caption: Python shell
 >>> help()
 
 Welcome to Python 3.8's help utility!
@@ -233,7 +305,8 @@ function. For example, typing `print` at the `help>` prompt is the same as
 typing `help("print")` at the Python prompt.
 
 
-```python
+```{code-block} python
+:caption: Python shell
 help> print
 Help on built-in function print in module builtins:
 
@@ -259,7 +332,8 @@ Additionally you can type:
   repl.) A list of available modules.
 
 
-```python
+```{code-block} python
+:caption: Python shell
 help> keywords
 
 Here is a list of the Python keywords.  Enter any keyword to get more help.
@@ -282,6 +356,7 @@ prompt
   input from the user.
 
 Python shell
+Python interpreter
   a {term}`REPL` for Python code
 
   an interface where you can type in python code, and it will run it and print
@@ -296,4 +371,8 @@ REPL
   editor pane, and an output or results pane. Many online REPLs exist such as
   play.golang.org for Go, pythonfiddle.com for Python, try.ruby-lang.org for
   Ruby and repl.it.
+
+tab completion
+  A feature in many REPLs where pressing {kbd}`TAB` after a few letters of a
+  name (like a command or variable) will attempt to guess the rest.
 ```

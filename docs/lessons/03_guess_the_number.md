@@ -1,7 +1,18 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
 Chapter 3: Guess the Number
 ===========================
 
-> Based on: http://inventwithpython.com/invent4thed/chapter3.html
+> Based on: [Chapter 3: Guess the Number](http://inventwithpython.com/invent4thed/chapter3.html)
 
 In this chapter, you’re going to make a Guess the Number game. The
 computer will think of a secret number from 1 to 20 and ask the user to
@@ -16,24 +27,36 @@ from now on we’ll call the user the player.
 
 {lesson}`guess.py`
 
-Part 1. Create a New Script
-----------------------------
+```{contents} Table of Contents
+:backlinks: top
+:local:
+```
 
-Follow the instructions in [Repl.it Tips](../tools/replit.md) to create
-a new file called `guess.py` and change your `.replit` file to run it.
+Part 1. Setup
+-------------
 
-Add a comment to the first line of the script to describe it:
+Create a new file called `guess.py`.
 
-**Edit Your Script**
+:::{admonition} Repl.it
+:class: tip
+
+For more information on creating and running new scripts on Repl.it see
+[Repl.it Tips](../tools/replit.html#running-new-scripts).
+
+:::
+
+Start by adding a docstring, surrounded by three double or single quotes, to
+the first line of your file with a brief description of this script.
 
 ```{code-block} python
----
-caption: guess.py
-linenos:
----
+:caption: guess.py
+:linenos:
+
 """This is a Guess the Number game."""
 ```
 
+Even though the script doesn't do anything yet, go ahead and run it to make
+sure there are no errors.
 
 Part 2. Use the `random` Module
 -------------------------------
@@ -57,21 +80,16 @@ number, the second is the maximum number.
 
 ### Try it in the Python Shell
 
-In the right pane of your repl.it, if you see only one `>` open a python
-shell by typing `python3` then hitting enter. The prompt will change to
-`>>>`.
+The {term}`Python shell` is an easy way to execute Python code interactively.
+You can think of it kind of like a whiteboard for code. It lets you quickly try
+small code snippets to see how they work. (See also [](../tools/python-shell.md).)
 
-```{code-block} bash
----
-caption: at the command line
----
-> python3                                      
-```
+At the command line, start a Python shell by typing `python`. The prompt will
+change to `>>>`.
 
 ```{code-block} python
----
-caption: the Python interactive shell
----
+:caption: Python shell
+
 Python 3.8.3 (default, May 14 2020, 20:11:43)
 [GCC 7.5.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
@@ -80,10 +98,14 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> random.randint(1,20)
 ```
 
-Hint: In the Python shell, you can hit the up arrow to fill in the last line you typed again.
+:::{hint}
+
+In the Python shell, you can hit the up arrow to fill in the last line you typed again.
+
+:::
 
 
-**Edit Your Script**
+### Edit `guess.py`
 
 Now that you understand how importing works, import the module, then save
 a random number to the `number` variable by calling `random.randint()`.
@@ -91,17 +113,16 @@ a random number to the `number` variable by calling `random.randint()`.
 Let's also set the maximum number of guesses.
 
 ```{code-block} python
----
-caption: guess.py
-linenos:
----
+:caption: guess.py
+:linenos:
+:emphasize-lines: "4-5"
+
 """This is a Guess the Number game."""
 import random
 
 number = random.randint(1, 20)
 max_guesses = 6
 ```
-
 
 Part 3: Welcome the Player
 --------------------------
@@ -113,13 +134,13 @@ the user as a prompt just to the left of their cursor.
 Let's use this new way of calling `input()` to get the players name and
 then use `print()` to greet them.
 
-**Edit Your Script**
+### Edit `guess.py`
 
 ```{code-block} python
----
-caption: guess.py
-linenos:
----
+:caption: guess.py
+:linenos:
+:emphasize-lines: "7-10"
+
 """This is a Guess the Number game."""
 import random
 
@@ -150,13 +171,13 @@ it will convert them each to strings and then print them with spaces
 in-between. Let's use this handy way to print the guess number each round.
 
 
-**Edit Your Script**
+### Edit `guess.py`
 
 ```{code-block} python
----
-caption: guess.py
-linenos:
----
+:caption: guess.py
+:linenos:
+:emphasize-lines: "12-14"
+
 """This is a Guess the Number game."""
 import random
 
@@ -166,8 +187,9 @@ max_guesses = 6
 player = input("Hello! What is your name? ")
 print("Hello " + player + ".")
 print("I am thinking of a number between 1 and 20.")
+print()
 
-for guess_count in range(1, max_guesses):
+for guess_count in range(1, max_guesses+1):
     print("Guess", guess_count, "of", max_guesses)
     guess = input("Your guess: ")
 ```
@@ -182,13 +204,13 @@ convert a string to an integer, we will use the `int()` function.
 Once it is converted, we can use an {term}`if statement` to check it. We'll
 use the `break` keyword to exit the loop early if the guess is correct.
 
-**Edit Your Script**
+### Edit `guess.py`
 
 ```{code-block} python
----
-caption: guess.py
-linenos:
----
+:caption: guess.py
+:linenos:
+:emphasize-lines: "16-27"
+
 """This is a Guess the Number game."""
 import random
 
@@ -200,7 +222,7 @@ print("Hello " + player + ".")
 print("I am thinking of a number between 1 and 20.")
 print()
 
-for guess_count in range(1, max_guesses):
+for guess_count in range(1, max_guesses+1):
     print("Guess", guess_count, "of", max_guesses)
 
     guess = input("Your guess: ")
@@ -231,18 +253,18 @@ We'll use an {term}`if statement` to check the `guess` value to determine if
 the player won or not and print out a message for each case.
 
 Both the `guess` variable and the `number` variable are integers but we
-need them to be strings in order to {term}`concatonate` them in the message
+need them to be strings in order to {term}`concatenate` them in the message
 we print at the of the game. To convert an int to a string use the
 `str()` function.
 
-**Edit Your Script**
+### Edit `guess.py`
 
 ```{code-block} python
----
-caption: guess.py
-linenos:
-class: full-width
----
+:caption: guess.py
+:linenos:
+:class: full-width
+:emphasize-lines: "30-36"
+
 """This is a Guess the Number game."""
 import random
 
@@ -254,7 +276,7 @@ print("Hello " + player + ".")
 print("I am thinking of a number between 1 and 20.")
 print()
 
-for guess_count in range(1, max_guesses):
+for guess_count in range(1, max_guesses+1):
     print("Guess", guess_count, "of", max_guesses)
 
     guess = input("Your guess: ")
