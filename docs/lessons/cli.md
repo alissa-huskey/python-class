@@ -592,6 +592,120 @@ $ echo $?
 
 `````
 
+Terminal size
+-------------
+
+::::::{margin}
+
+:::{admonition} Python Version
+:class: version
+
+3.3+
+
+:::
+
+::::::
+
+If you need to know the size of the terminal, you can use the
+`shutil.get_terminal_size()` function.
+
+```{code-cell} python
+:class: full-width
+
+import shutil
+shutil.get_terminal_size()
+```
+
+It returns a `terminal_size` object, which provides the
+{term}`properties <property>` `columns` and `lines`.
+
+```{code-cell} python
+:class: full-width
+
+import shutil
+
+size = shutil.get_terminal_size()
+print("width:", size.columns)
+print("height:", size.lines)
+```
+
+It is also a special kind of `tuple`, which means you can make use of multiple
+assignment.
+
+```{code-cell} python
+:class: full-width
+
+import shutil
+
+width, height = shutil.get_terminal_size()
+print("width:", width)
+print("height:", height)
+```
+
+On systems where the size cannot be determined, the defaults `(80, 24)`
+will be used. To change the defaults, send an `tuple` argument with
+{samp}`({columns}, {lines})`.
+
+```{code-cell} python
+:class: full-width
+
+import shutil
+width, height = shutil.get_terminal_size((125, 33))
+print("width:", width)
+print("height:", height)
+```
+
+### Exercise
+
+`````{exercise} Terminal Size Exercise
+:label: termsize-exercise
+
+In the following example, we use the width from `get_terminal_size()` print
+the text `"Hello world!"` centered on the screen.
+
+```{dropdown} Need help?
+1. Import the `shutil` module.
+2. Set the variable `text` to the value `"Hello world!"`
+3. Assign `width` and `height` to the value returned from `shutil.get_terminal_size()`.
+4. To get a string with centered text call the `.center()` method on `text`
+   with a width argument of `width`. Assign the returned value to `text`.
+5. Print `text`.
+```
+
+**Example output**:
+
+```
+                                  Hello world!                                  
+```
+
+`````
+
+`````{solution} termsize-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: Terminal Size Exercise
+:class: full-width
+:linenos:
+
+import shutil
+
+text = "Hello world!"
+width, height = shutil.get_terminal_size()
+text = text.center(width)
+
+print(text.center(width))
+```
+
+`````
+
+:::{seealso}
+
+* [python.org > shutil.get_terminal_size()](https://docs.python.org/3/library/shutil.html#shutil.get_terminal_size)
+
+:::
+
+
 Reference
 ---------
 
@@ -631,8 +745,6 @@ status code
   A number between `0` and `255` returned by command line programs to indicate
   success or failure.
 ```
-
-...
 
 ----
 
