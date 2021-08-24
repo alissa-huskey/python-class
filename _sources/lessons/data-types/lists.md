@@ -180,7 +180,9 @@ cities.index("Dublin")
 
 Generate a list of six unique numbers between `1` and `49`, then print the list.
 
-```{dropdown} Need help?
+:::{admonition} Need help?
+:class: hint dropdown
+
 * import the `random` module
 * make an empty list assigned to the variable `numbers`
 * start a `while` loop with the condition that the length of `numbers` is less than `6`
@@ -190,7 +192,7 @@ Generate a list of six unique numbers between `1` and `49`, then print the list.
   * check if `num` is in the `numbers` list
     * if not, append `num` to `numbers`
 * print the `numbers` list
-```
+:::
 
 **Example output**:
 
@@ -514,17 +516,19 @@ Write a function `make_deck()` to generate a list of `52` playing cards where
 each card is a number or letter representing the rank, and a letter or number
 representing the suit.
 
-```{dropdown} Need help?
+:::{admonition} Need help?
+:class: hint dropdown
+
 * make a list of `SUITS` that contains the suit letters
 * make a list of `RANKS` including the ranks
-* write a function make_deck() in the function:
+* write a function `make_deck()` in the function:
   * make an empty `deck` list
   * use a `for` loop to iterate over each `SUIT` with the variable name `suit`
     * use a (nested) `for` loop to iterate over each `RANK` with the variable name `rank`
       * combine the `rank` and `suit` into one string and assign it to the variable `card`
       * append `card` to the `deck` list
   * return `deck`
-```
+:::
 
 Bonus: Add an optional argument `shuffled` that defaults to False, which
 shuffles the deck using the `random.shuffle()` function.
@@ -580,12 +584,14 @@ shuffles the deck using the `random.shuffle()` function.
 `````{exercise} Hand of Cards Exercise
 :label: draw-cards-exercise
 
-Write a `draw() function that takes two arguments, a `deck` containing a deck
+Write a `draw()` function that takes two arguments, a `deck` containing a deck
 of cards from the `make_deck()` function, and a `size` with the number of cards
 to draw. It should return a new list of cards, with e a length of `size`, that
 have been removed from the `deck`.
 
-```{dropdown} Need help?
+:::{admonition} Need help?
+:class: hint dropdown
+
 * Write a `draw() function that takes two arguments: `deck` and `size`
   * make an empty list assigned to the variable `cards`
   * use a `for` loop to iterate over a `range()` iterable up to `size`
@@ -593,7 +599,8 @@ have been removed from the `deck`.
     * get one card from the deck using the `.pop()` method and assign it to the variable `card`
     * append `card` to the `cards` list
   * return the `cards` list
-```
+
+:::
 
 **Example output**:
 
@@ -607,6 +614,8 @@ have been removed from the `deck`.
 >>> len(deck)
 47
 ```
+
+`````
 
 `````{solution} draw-cards-exercise
 :class: dropdown
