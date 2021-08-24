@@ -1,12 +1,4 @@
 /********************
-/* Exercises
-/********************/
-
-div.exercise.notitle p.admonition-title::after {
-  display: none;
-}
-
-/********************
 /* Table of Contents
 /********************/
 
@@ -217,12 +209,43 @@ div.admonition.details p.admonition-title::after {
 /* exercise
 /********************/
 
+div.exercise.notitle p.admonition-title::after {
+  display: none;
+}
+
 div.admonition.exercises p.admonition-title::after {
   content: "Exercises";
 }
 
 div.admonition.exercise p.admonition-title::after {
   content: "Exercise";
+}
+
+/* remove the "Exercise" suffix from regular admonitions inside of exercises */
+.admonition.exercise .admonition.attention p.admonition-title::after,
+.admonition.exercise .admonition.caution p.admonition-title::after,
+.admonition.exercise .admonition.danger p.admonition-title::after,
+.admonition.exercise .admonition.error p.admonition-title::after,
+.admonition.exercise .admonition.important p.admonition-title::after,
+.admonition.exercise .admonition.hint p.admonition-title::after,
+.admonition.exercise .admonition.tip p.admonition-title::after,
+.admonition.exercise .admonition.warning p.admonition-title::after,
+.admonition.exercise .admonition.hint p.admonition-title::after {
+  content: "";
+}
+
+/* set the bg color to white for regular admonitions inside of exercises */
+.admonition.exercise .admonition.attention,
+.admonition.exercise .admonition.caution,
+.admonition.exercise .admonition.danger,
+.admonition.exercise .admonition.error,
+.admonition.exercise .admonition.important,
+.admonition.exercise .admonition.hint,
+.admonition.exercise .admonition.tip,
+.admonition.exercise .admonition.warning,
+.admonition.exercise .admonition.hint
+.admonition.solution {
+  background-color: var(--jp-layout-color0);
 }
 
 /* version

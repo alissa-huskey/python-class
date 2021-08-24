@@ -108,7 +108,9 @@ Write a program which counts down from `3` by default, or from the number
 passed by the first argument if present. Use `time.sleep()` to pause for a
 second between printing each number.
 
-```{dropdown} Need help?
+:::{admonition} Need help?
+:class: hint dropdown
+
 1. Import the `sys` and `time` modules.
 2. Assign the value `3` to the `count` variable.
 3. If there are at least `2` values in the `sys.argv` list, set count to be the
@@ -121,7 +123,7 @@ second between printing each number.
 
    - Print `num` followed by `...`
    - Call `time.sleep()` with an argument of `1`
-```
+:::
 
 **Example output**:
 
@@ -524,15 +526,18 @@ Modify your countdown program, so that when an argument is passed that is not a
 number, print an error message and exit with an exit code of `1`. Test with
 both numeric and non-numeric arguments.
 
-```{dropdown} Need help?
+:::{admonition} Need help?
+:class: hint dropdown
+
 If you already have an if statement checking that `sys.argv` has at least two
 items, do the following in it. Otherwise, make one.
 
-1. In an `if` statement, on second item in the `sys.argv` list, check that the
-   results of the `.isnumeric()` method is `False`.
-  - print an error message
-  - call `sys.exit()` with the argument `1`
-```
+In an `if` statement, on second item in the `sys.argv` list, check that the
+results of the `.isnumeric()` method is `False`.
+
+- print an error message
+- call `sys.exit()` with the argument `1`
+:::
 
 `````
 
@@ -663,7 +668,9 @@ print("height:", height)
 In the following example, we use the width from `get_terminal_size()` print
 the text `"Hello world!"` centered on the screen.
 
-```{dropdown} Need help?
+:::{admonition} Need help?
+:class: hint dropdown
+
 1. Import the `shutil` module.
 2. Set the variable `text` to the value `"Hello world!"`
 3. Assign `width` and `height` to the value returned from `shutil.get_terminal_size()`.
