@@ -56,13 +56,25 @@ Syntax
 
 The syntax for a `while` loop is:
 
-```{include} ../templates/syntax/while.md
+{{ leftcol | replace("col", "col-5") }}
+
+```{include} ../templates/syntax/while.md 
 ```
+
+{{ rightcol | replace("col", "col-7") }}
+
+```{include} ../templates/desc/while.md
+```
+
+{{ endcols }} 
 
 Here's a simple example that will keep asking the user for their name until
 they answer.
 
-```{include} ../templates/examples/while.md
+```{literalinclude} ../templates/examples/while.py
+:caption: while loop example
+:class: full-width
+:linenos:
 ```
 
 

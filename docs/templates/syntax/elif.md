@@ -1,4 +1,4 @@
 `````{parsed-literal}
-{samp}`for {VAR} in {ITERABLE}:`
+{samp}`elif {CONDITION}:`
     {samp}`    {BODY}`
 `````

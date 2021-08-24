@@ -182,6 +182,7 @@ items.
 |--------------|---------------------------------------------------------------------|
 | `list`       | mutable collection of arbitrary objects                             |
 | `tuple`      | immutable collection of arbitrary objects                           |
+| `set`        | unordered collection with no duplicate elements.                    |
 | `range`      | collection containing a arithmetic progressions of numbers          |
 | `str`        | sequence of unicode characters                                      |
 | `bytes`      | immutable collection of integers between `0` and `256`              |

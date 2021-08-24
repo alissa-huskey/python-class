@@ -557,15 +557,24 @@ a `with` statement.
 More on that later, but first lets take a quick look at the syntax of a `with`
 statement:
 
+{{ leftcol | replace("col", "col-5") }}
+
 ```{include} ../templates/syntax/with.md
 ```
 
-When working with files it looks something like this:
+For files it looks like:
 
 ```python
 with open(...) as fh:
     # do stuff with fh
 ```
+
+{{ rightcol | replace("col", "col-7") }}
+
+```{include} ../templates/desc/with.md
+```
+
+{{ endcols }}
 
 So, what does that do?
 
@@ -586,11 +595,12 @@ statement, even if there is an error in the {samp}`{BODY}`.
 Lets take a look at our very first `groceries.txt` code alongside the same code
 written using a `with` statement.
 
-<div class="full-width"><div class="row"><div class="col">
+{{ leftcol }}
 
 ```{code-block} python
 :caption: groceries.py
 :linenos:
+:emphasize-lines: "2, 8"
 
 # open the file
 fh = open("groceries.txt")
@@ -607,12 +617,15 @@ print("=========")
 print(contents)
 ```
 
-</div><div class="col">
+{{ rightcol }}
 
-```{include} ../templates/examples/with.md
+```{literalinclude} ../templates/examples/with.py
+:caption: groceries.py
+:linenos:
+:emphasize-lines: "2, 7-8"
 ```
 
-</div></div></div>
+{{ endcols }}
 
 ```{seealso}
 
