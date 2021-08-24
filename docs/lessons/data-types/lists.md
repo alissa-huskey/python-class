@@ -592,7 +592,7 @@ have been removed from the `deck`.
 :::{admonition} Need help?
 :class: hint dropdown
 
-* Write a `draw() function that takes two arguments: `deck` and `size`
+* Write a `draw()` function that takes two arguments: `deck` and `size`
   * make an empty list assigned to the variable `cards`
   * use a `for` loop to iterate over a `range()` iterable up to `size`
     * if there are no cards left in the deck, `break`
