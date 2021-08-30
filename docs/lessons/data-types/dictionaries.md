@@ -40,11 +40,15 @@ A collection of *key: value* pairs.
 
 {{ endcols }}
 
-Basics
-------
+Introduction
+------------
 
 A dictionary is a collection of key value pairs. Each key is connected to a
-value, which makes them a handy way to look up a particular value.
+value, which makes it easy to look up a particular value.
+
+A dictionary is kind of like a phone book, where you can look up someone's
+phone number (the value) using their name (the key). Or an English dictionary
+where the you can look up a word (the key) to get its meaning (the value).
 
 ### Creating
 
@@ -62,12 +66,31 @@ book = {
 }
 ```
 
+A visualization of that dictionary would look something like this:
+
+```{kroki}
+:type: ditaa
+
++----------------------+-----------------------+-----------------------+
+|       "title"   cCFF |       "author"   cCFF |        "year"     cCFF|
++----------------------+-----------------------+-----------------------+
+|                      |                       |                       |
+| "Last Chance to See" | "Doublas Adams"       | 1990                  |
+|                      |                       |                       |
++----------------------+-----------------------+-----------------------+
+
+  /----\
+  |cCFF| key
+  \----/
+
+```
+
 `````{exercise} Shapes Dictionary
 :label: shapes-dict-exercise
 
-Create a dictionary assigned to the variable `shapes` that has a shape name
-(like `"square"` or `"triangle"`) for each key and the number of sides (`4` and
-`3`) for the value.
+Create a dictionary assigned to the variable `shapes` that uses shape names
+(like `"square"` or `"triangle"`) for keys and the number of sides (like `4`
+and `3`) for values.
 
 Print the dictionary.
 `````
@@ -121,11 +144,21 @@ print("Series:", book["series"])
 ```
 
 However, you can avoid this using the `.get()` method, which takes two
-arguments: the key, and an optional default value.
+arguments: the key, and an optional default value. If the key is in the
+dictionary, it will return the associated value.
 
 ```{code-cell} python
 :class: full-width
 :tags: [raises-exception]
+
+author = book.get("author", "Anonymous")
+print("Author:", author)
+```
+
+Otherwise, the value passed for the default argument will be returned.
+
+```{code-cell} python
+:class: full-width
 
 series = book.get("series", "NA")
 print("Series:", series)
@@ -134,9 +167,11 @@ print("Series:", series)
 `````{exercise} Lookup Sides
 :label: shapes-sides-exercise
 
-Print {samp}`"A {name} has {number} sides."` for a `square` and `rectangle`.
+Use {term}`subscription` to print {samp}`"A {name} has {number} sides."` for a
+`square` and `rectangle`.
+
 ```{code-block} text
-:caption: output
+:caption: example output
 A triangle has 3 sides.
 A square has 4 sides.
 ```
@@ -192,23 +227,40 @@ Otherwise print: {samp}`"A {name} has {number} sides."`
       second argument `None` (the value that will be returned if `name` is
       not a key in `shapes`). Assign to the variable `sides`.
 
-   3. Use an if statement with the condition that `sides` is equal to `None`.
+   3. Use an if statement with the condition that `sides` is {term}`falsy`.
 
       In the body print the message:
       {samp}`"Sorry, I don't know the shape: {name}"`
 
-      Use an `else` clause. In the body print the message:
+   4. Add an `else` clause. In the body print the message:
       {samp}`"A {name} has {number} sides."`
 ```
 
+{{ leftcol }}
+
 ```{code-block} text
-:caption: output
+---
+caption: |
+  example output \
+  (when the key is in `shapes`)
+---
 shape > rectangle
 A rectangle has 4 sides.
+```
 
+{{ rightcol }}
+
+```{code-block} text
+---
+caption: |
+  example output \
+  (when the shape is missing)
+---
 shape > heart
 Sorry, I don't know the shape: heart
 ```
+
+{{ endcols }}
 
 `````
 
@@ -254,8 +306,22 @@ else:
 
 Adding or changing elements in the list is done the same way, also using subscription.
 
+```{margin}
+:class: notitle
+
+:::{tip}
+
+The `pprint` function from the `pprint` module can be used to nicely format and
+print Python builtin collection types.
+
+Passing `sort_dicts=False` will print dictionaries in their origional order
+instead of sorting them.
+
+:::
+
+```
+
 ```{code-cell} python
-:class: full-width
 :tags: [thebe-init]
 
 from pprint import pprint
@@ -263,7 +329,7 @@ from pprint import pprint
 book["genre"] = "Nonfiction"
 book["author"] = "Douglas Adams, Mark Carwardine"
 
-pprint(book)
+pprint(book, sort_dicts=False)
 ```
 
 You can also change multiple elements at once using the `.update()`
@@ -277,7 +343,7 @@ will be added. The remaining elements will be left as they are.
 
 book.update({"isbn": "0345371984", "genre": "Science", "pages": 256})
 
-pprint(book)
+pprint(book, sort_dicts=False)
 ```
 
 `````{exercise} Add and Change a Shape
@@ -424,8 +490,9 @@ print("This books format is:", fmt)
 pprint(book)
 ```
 
-You can avoid this error by pass the optional second argument `default`, which is the
-value to return if it is missing.
+You can avoid this error by pass the optional second argument `default`. This
+works just like the default argument in the `get` method--the key value pair
+will be removed if it exists.
 
 ```{code-cell} python
 :class: full-width
@@ -434,7 +501,14 @@ value to return if it is missing.
 year = book.pop("year", "Unknown")
 print("The year is:", year)
 pprint(book)
+```
 
+If it doesn't exist, the value passed as the default argument will be returned
+instead.
+
+```{code-cell} python
+:class: full-width
+:tags: [thebe-init]
 fmt = book.pop("format", "Unknown")
 print("The format is:", fmt)
 pprint(book)
