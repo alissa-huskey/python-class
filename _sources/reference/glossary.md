@@ -3,13 +3,6 @@ Glossary
 
 ```{glossary} programming-concepts
 
-comment
-  Parts in a source-code file which are ignored when the program is run. In
-  Python add a `#` to the beginning a line to indicate that it is a comment.
-  You can also comment out only part of a line by adding `#` followed by the
-  comment text to the end of an expression. It is recommended to follow the `#`
-  by a single space before the text of the comment.
-
 escaping
   How to indicate to the computer that an operator inside of a string should
   not be interpreted but instead be treated be treated as part of the string.
@@ -31,11 +24,6 @@ iterating
 key
   A value used to retrieve another value from a {term}`dictionary`.
 
-keyword
-  Reserved words that have special meanings in a programming language so that
-  they cannot be used as an identifier. Some examples of keywords in Python are
-  `for`, `if`, and `def`.
-
 mutable
   A value that can be changed.
 
@@ -43,10 +31,6 @@ string concatenation
 concatenation
 concatenate
   Joining two or more strings together.
-
-syntax
-  A set of rules that determine how a programming language is understood by the
-  computer. Grammar, but for code.
 
 loop
   A block of code that will repeat until a specified condition is reached. For

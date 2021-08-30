@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -50,7 +50,7 @@
     <script src="../_static/x-frame-bypass.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
         const thebe_selector_input = "pre,.cell_input div.highlight"
@@ -87,7 +87,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <p class="caption">
  <span class="caption-text">
@@ -519,7 +519,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#part-1-variable-assignment-and-reference">
@@ -584,12 +584,12 @@
   <div class="section" id="program-flow-exercises">
 <h1>Program Flow Exercises<a class="headerlink" href="#program-flow-exercises" title="Permalink to this headline">¶</a></h1>
 <p>Today we’re going to write some code for game characters, working with the
-concepts of <a class="reference internal" href="../lessons/variables.html#term-variable"><span class="xref std std-term">variables</span></a> and <a class="reference internal" href="../lessons/functions.html#term-function"><span class="xref std std-term">functions</span></a> that we
+concepts of <a class="reference internal" href="../lessons/syntax.html#term-variable"><span class="xref std std-term">variables</span></a> and <a class="reference internal" href="../lessons/functions.html#term-function"><span class="xref std std-term">functions</span></a> that we
 discussed last week.</p>
 <p>Start by making a new file <code class="docutils literal notranslate"><span class="pre">character.py</span></code>. We’re going to use the <code class="docutils literal notranslate"><span class="pre">random</span></code>
 module today, so start off by importing it at the top of the file.</p>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-number">Listing 442 </span><span class="caption-text">character.py</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 443 </span><span class="caption-text">character.py</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 </pre></div>
 </td></tr></table></div>
@@ -598,22 +598,22 @@ module today, so start off by importing it at the top of the file.</p>
 <h2>Part 1: Variable assignment and reference<a class="headerlink" href="#part-1-variable-assignment-and-reference" title="Permalink to this headline">¶</a></h2>
 <p>Last week we discussed that…</p>
 <ul class="simple">
-<li><p>A <a class="reference internal" href="../lessons/variables.html#term-variable"><span class="xref std std-term">variable</span></a> is like a storage container for data.</p></li>
-<li><p>To create a variable, you simply <a class="reference internal" href="../lessons/variables.html#term-assign"><span class="xref std std-term">assign</span></a> a value to
+<li><p>A <a class="reference internal" href="../lessons/syntax.html#term-variable"><span class="xref std std-term">variable</span></a> is like a storage container for data.</p></li>
+<li><p>To create a variable, you simply <a class="reference internal" href="../lessons/syntax.html#term-assign"><span class="xref std std-term">assign</span></a> a value to
 it, using the <code class="docutils literal notranslate"><span class="pre">=</span></code> operator. This is like adding an item to
 your inventory.</p></li>
 <li><p>To retrieve the stored information you <a class="reference internal" href="../tools/git.html#term-reference"><span class="xref std std-term">reference</span></a> it using the
-variable name or <a class="reference internal" href="../lessons/variables.html#term-identifier"><span class="xref std std-term">identifier</span></a>.</p></li>
+variable name or <a class="reference internal" href="../lessons/syntax.html#term-identifier"><span class="xref std std-term">identifier</span></a>.</p></li>
 </ul>
 <div class="section" id="step-1-setup-your-character">
 <h3>Step 1: Setup your character<a class="headerlink" href="#step-1-setup-your-character" title="Permalink to this headline">¶</a></h3>
-<p>Let’s start by <a class="reference internal" href="../lessons/variables.html#term-assign"><span class="xref std std-term">assigning</span></a> two new variables:</p>
+<p>Let’s start by <a class="reference internal" href="../lessons/syntax.html#term-assign"><span class="xref std std-term">assigning</span></a> two new variables:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> a string (<code class="docutils literal notranslate"><span class="pre">str</span></code>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">level</span></code> an integer (<code class="docutils literal notranslate"><span class="pre">int</span></code>) that is a random number between <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">5</span></code>.</p></li>
 </ul>
 <div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-number">Listing 443 </span><span class="caption-text">character.py</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 444 </span><span class="caption-text">character.py</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -631,7 +631,7 @@ assignment statements are saving the information for future use.</p>
 <h3>Step 2: Print character info<a class="headerlink" href="#step-2-print-character-info" title="Permalink to this headline">¶</a></h3>
 <p>Now we’ll <a class="reference internal" href="../tools/git.html#term-reference"><span class="xref std std-term">reference</span></a> these variables in a print statement.</p>
 <div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-number">Listing 444 </span><span class="caption-text">character.py</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 445 </span><span class="caption-text">character.py</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -667,7 +667,7 @@ assignment statements are saving the information for future use.</p>
 the current value of <code class="docutils literal notranslate"><span class="pre">level</span></code>. Then we <code class="docutils literal notranslate"><span class="pre">assign</span></code> the result of the expression to
 the <code class="docutils literal notranslate"><span class="pre">level</span></code> variable using the <code class="docutils literal notranslate"><span class="pre">=</span></code> operator.</p>
 <div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-number">Listing 445 </span><span class="caption-text">character.py</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 446 </span><span class="caption-text">character.py</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -722,7 +722,7 @@ calling line with commas seperating them.</p></li>
 a <code class="docutils literal notranslate"><span class="pre">character_info</span></code> function that takes three arguments. Then replace your print
 statement from line 7 with a call to your newly created function.</p>
 <div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-number">Listing 446 </span><span class="caption-text">character.py</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 447 </span><span class="caption-text">character.py</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -760,7 +760,7 @@ statement from line 7 with a call to your newly created function.</p>
 For functions that take arguments, you can call them with different arguments.</p>
 <p>Lets call our new function with different values for all three arguments.</p>
 <div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-number">Listing 447 </span><span class="caption-text">character.py</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 448 </span><span class="caption-text">character.py</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -847,12 +847,32 @@ function for that too.</p>
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="../reference/lists.html" title="previous page">Lists</a>
-    <a class='right-next' id="next-link" href="list-exercises.html" title="next page">List Exercises</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="../reference/lists.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Lists</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="list-exercises.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">List Exercises</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>

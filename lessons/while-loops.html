@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -50,7 +50,7 @@
     <script src="../_static/x-frame-bypass.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
         const thebe_selector_input = "pre,.cell_input div.highlight"
@@ -87,7 +87,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <p class="caption">
  <span class="caption-text">
@@ -539,7 +539,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#table-of-contents">
@@ -718,28 +718,43 @@ statements that will be repeated until the expression evaluates to <a class="ref
 <div class="section" id="syntax">
 <h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
 <p>The syntax for a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop is:</p>
+<div class="row"><div class="col-5">
 <pre class="literal-block"><code class="samp docutils literal notranslate"><span class="pre">while</span> <em><span class="pre">CONDITION</span></em><span class="pre">:</span></code>
 <code class="samp docutils literal notranslate">&#160;&#160;&#160; <em><span class="pre">BODY</span></em></code></pre>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">with</span></code> is a <a class="reference internal" href="../reference/glossary.html#term-keyword"><span class="xref std std-term">keyword</span></a></p></li>
-<li><p><code class="samp docutils literal notranslate"><em><span class="pre">CONDITION</span></em></code> – an expression evaluated in a <a class="reference internal" href="conditional-statements.html#term-boolean-context"><span class="xref std std-term">boolean context</span></a>that determines if the loop should continue</p></li>
-<li><p><code class="samp docutils literal notranslate"><em><span class="pre">BODY</span></em></code> – statements that use <code class="samp docutils literal notranslate"><em><span class="pre">VAR</span></em></code></p></li>
-</ul>
+</div><div class="col-7">
+<table class="colwidths-auto notitle table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CONDITION</span></code></p></td>
+<td><p>an expression evaluated in a <a class="reference internal" href="conditional-statements.html#term-boolean-context"><span class="xref std std-term">boolean context</span></a> that determines if the loop keeps going</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">BODY</span></code></p></td>
+<td><p>statements to execute each iteration</p></td>
+</tr>
+</tbody>
+</table>
+</div></div>
 <p>Here’s a simple example that will keep asking the user for their name until
 they answer.</p>
 <div class="literal-block-wrapper docutils container" id="id4">
 <div class="code-block-caption"><span class="caption-number">Listing 30 </span><span class="caption-text">while loop example</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 
 <span class="k">while</span> <span class="ow">not</span> <span class="n">name</span><span class="p">:</span>
   <span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What is your name? &quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello there </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
+
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -1892,12 +1907,32 @@ long as a <a class="reference internal" href="conditional-statements.html#term-c
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="functions.html" title="previous page">Functions</a>
-    <a class='right-next' id="next-link" href="for-loops.html" title="next page">For Loops</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="functions.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Functions</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="for-loops.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">For Loops</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>

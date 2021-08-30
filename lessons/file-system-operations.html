@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -50,7 +50,7 @@
     <script src="../_static/x-frame-bypass.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
         const thebe_selector_input = "pre,.cell_input div.highlight"
@@ -87,7 +87,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <p class="caption">
  <span class="caption-text">
@@ -539,7 +539,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#listing-files">
@@ -956,7 +956,7 @@ without worrying if they already exist.</p>
 deletes a file, it’s a good to print the path and confirm with the user that
 they really want to.</p>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-number">Listing 190 </span><span class="caption-text">note: assumes <code class="docutils literal notranslate"><span class="pre">data/a.txt</span></code> exists</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 191 </span><span class="caption-text">note: assumes <code class="docutils literal notranslate"><span class="pre">data/a.txt</span></code> exists</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1025,7 +1025,7 @@ and returns a destination <code class="docutils literal notranslate"><span class
 <p>In the example below the file <code class="file docutils literal notranslate"><span class="pre">a.txt</span></code> is moved to the <code class="file docutils literal notranslate"><span class="pre">data</span></code>
 directory.</p>
 <div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-number">Listing 191 </span><span class="caption-text">note: assumes <code class="docutils literal notranslate"><span class="pre">a.txt</span></code> exists</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 192 </span><span class="caption-text">note: assumes <code class="docutils literal notranslate"><span class="pre">a.txt</span></code> exists</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1132,7 +1132,7 @@ file to <code class="samp docutils literal notranslate"><span class="pre">data/<
 <p class="admonition-title">Solution to <a class="reference external" href="#move-text-files-exercise"><span>Exercise 65</span></a></p>
 <div class="section" id="solution-content">
 <div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-number">Listing 192 </span><span class="caption-text">version 1: skip files that exist</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 193 </span><span class="caption-text">version 1: skip files that exist</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
 <span class="k">for</span> <span class="n">from_path</span> <span class="ow">in</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
@@ -1158,7 +1158,7 @@ file to <code class="samp docutils literal notranslate"><span class="pre">data/<
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-number">Listing 193 </span><span class="caption-text">version 2: make numbered versions if file exists</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 194 </span><span class="caption-text">version 2: make numbered versions if file exists</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
 <span class="k">for</span> <span class="n">from_path</span> <span class="ow">in</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
@@ -1194,7 +1194,7 @@ directory, you are moving to the same directory but with a new name. Just like
 moving files, use the <code class="docutils literal notranslate"><span class="pre">.replace()</span></code> method, passing the string or path object to
 the destination location.</p>
 <div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-number">Listing 194 </span><span class="caption-text">note: assumes <code class="docutils literal notranslate"><span class="pre">data/a.txt</span></code> exists</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 195 </span><span class="caption-text">note: assumes <code class="docutils literal notranslate"><span class="pre">data/a.txt</span></code> exists</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1230,7 +1230,7 @@ then be used for both path objects.</p>
 <div class="row"><div class="col">
 <p class="rubric">Bad</p>
 <div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-number">Listing 195 </span><span class="caption-text"><em>Bad</em>: moves file to ./file_a.txt</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 196 </span><span class="caption-text"><em>Bad</em>: moves file to ./file_a.txt</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
 <span class="n">from_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;a.txt&quot;</span>
@@ -1241,7 +1241,7 @@ then be used for both path objects.</p>
 </div><div class="col">
 <p class="rubric">Better</p>
 <div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-number">Listing 196 </span><span class="caption-text"><em>Better</em>: renames file to ./data/file_a.txt</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 197 </span><span class="caption-text"><em>Better</em>: renames file to ./data/file_a.txt</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
 <span class="n">from_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;a.txt&quot;</span>
@@ -1252,7 +1252,7 @@ then be used for both path objects.</p>
 </div></div>
 <p class="rubric">Best</p>
 <div class="literal-block-wrapper docutils container" id="id8">
-<div class="code-block-caption"><span class="caption-number">Listing 197 </span><span class="caption-text"><em>Best</em>: Avoid mistakes with a <code class="docutils literal notranslate"><span class="pre">folder</span></code> variable</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 198 </span><span class="caption-text"><em>Best</em>: Avoid mistakes with a <code class="docutils literal notranslate"><span class="pre">folder</span></code> variable</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
 <span class="n">folder</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
@@ -1532,12 +1532,32 @@ recursively”, so that the entire file tree is traversed.</p>
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="paths.html" title="previous page">Paths</a>
-    <a class='right-next' id="next-link" href="in-depth/index.html" title="next page">In Depth</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="paths.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Paths</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="in-depth/index.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">In Depth</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>

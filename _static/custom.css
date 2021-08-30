@@ -170,6 +170,11 @@ table.table tr td {
   padding: .3rem .5rem;
 }
 
+table.table.notitle thead th.head {
+  border: 0;
+  padding: 0;
+}
+
 /********************
 /* admonitions
 /********************/
@@ -418,9 +423,11 @@ div.literal-block-wrapper div.highlight-python div.highlight,
 div.literal-block-wrapper div div.highlight,
 div.literal-block-wrapper div div.highlight pre,
 div.literal-block-wrapper div.highlight-python pre,
+div.literal-block-wrapper pre,
 div.literal-block-wrapper div.highlight table.highlighttable,
 div.literal-block-wrapper div.highlight-python table.highlighttable {
   margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 div.literal-block-wrapper table td {
@@ -471,6 +478,21 @@ div.code-block-caption > span.caption-number {
 
 div.row div table.highlighttable div.highlight pre {
   margin-top: 0;
+}
+
+/* remove top margin from code blocks
+ * that are the first element in bootstrap grids
+ * to ensure columns align on top */
+div div:first-child .highlight,
+div div:first-child .highlight pre,
+div pre:first-child {
+  margin-top: 0;
+}
+
+/* align highlight blocks with interactive blocks  */
+.thebe-align {
+  margin-left: 2.5em;
+  padding-right: 15px;
 }
 
 /********************

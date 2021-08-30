@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -50,7 +50,7 @@
     <script src="../_static/x-frame-bypass.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
         const thebe_selector_input = "pre,.cell_input div.highlight"
@@ -87,7 +87,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <p class="caption">
  <span class="caption-text">
@@ -511,11 +511,164 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/alissa-huskey/python-class/master?urlpath=lab/tree/docs/lessons/syntax.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#structure">
+   Structure
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comments">
+     Comments
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#statements">
+     Statements
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#expressions">
+     Expressions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#values">
+   Values
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variables">
+     Variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#types">
+     Types
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#strings">
+     Strings
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lists">
+     Lists
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dictionaries">
+     Dictionaries
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tuples">
+     Tuples
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sets">
+     Sets
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#flow-control">
+   Flow Control
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#if-statements">
+     if statements
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#for-loops">
+     for loops
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#while-loops">
+     while loops
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#functions">
+     Functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calls">
+     Calls
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reference">
+   Reference
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#glossary">
+     Glossary
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#glossary-syntax">
+       Syntax
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#see-also">
+     See also
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -527,14 +680,1123 @@
   <div class="section" id="syntax">
 <h1>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h1>
 <p>In this section we’ll learn the basic Python syntax.</p>
-<div class="tableofcontents-wrapper compound">
+<div class="contents local topic" id="table-of-contents">
+<p class="topic-title">Table of Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#introduction" id="id1">Introduction</a></p></li>
+<li><p><a class="reference internal" href="#structure" id="id2">Structure</a></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="expressions.html">Expressions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="statements.html">Statements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="variables.html">Variables</a></li>
+<li><p><a class="reference internal" href="#comments" id="id3">Comments</a></p></li>
+<li><p><a class="reference internal" href="#statements" id="id4">Statements</a></p></li>
+<li><p><a class="reference internal" href="#expressions" id="id5">Expressions</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#values" id="id6">Values</a></p>
+<ul>
+<li><p><a class="reference internal" href="#variables" id="id7">Variables</a></p></li>
+<li><p><a class="reference internal" href="#types" id="id8">Types</a></p></li>
+<li><p><a class="reference internal" href="#strings" id="id9">Strings</a></p></li>
+<li><p><a class="reference internal" href="#lists" id="id10">Lists</a></p></li>
+<li><p><a class="reference internal" href="#dictionaries" id="id11">Dictionaries</a></p></li>
+<li><p><a class="reference internal" href="#tuples" id="id12">Tuples</a></p></li>
+<li><p><a class="reference internal" href="#sets" id="id13">Sets</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#flow-control" id="id14">Flow Control</a></p>
+<ul>
+<li><p><a class="reference internal" href="#if-statements" id="id15">if statements</a></p></li>
+<li><p><a class="reference internal" href="#for-loops" id="id16">for loops</a></p></li>
+<li><p><a class="reference internal" href="#while-loops" id="id17">while loops</a></p></li>
+<li><p><a class="reference internal" href="#functions" id="id18">Functions</a></p></li>
+<li><p><a class="reference internal" href="#calls" id="id19">Calls</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#reference" id="id20">Reference</a></p>
+<ul>
+<li><p><a class="reference internal" href="#glossary" id="id21">Glossary</a></p>
+<ul>
+<li><p><a class="reference internal" href="#glossary-syntax" id="id22">Syntax</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#see-also" id="id23">See also</a></p></li>
+</ul>
+</li>
 </ul>
 </div>
+<div class="section" id="introduction">
+<h2><a class="toc-backref" href="#table-of-contents">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Syntax is set of grammar and punctuation rules that define how to put words and
+symbols together to properly form a particular language.</p>
+<p>In the English language for example, we know a sentence is made up of a subject
+and predicate, that the first letter should be capitalized, and that
+it should end in a period, question mark, or exclamation point.</p>
+<p>Python is a programming language, intended to read by a computer. In order to
+write code that the computer can understand, we need to understand the syntax.</p>
+</div>
+<div class="section" id="structure">
+<h2><a class="toc-backref" href="#table-of-contents">Structure</a><a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h2>
+<p>A program is made up of a series of instructions which are read and executed in
+order from top to bottom.</p>
+<p>To get a better idea of what is involved, lets consider the following simple
+example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># My first Python program</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello world!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="comments">
+<h3><a class="toc-backref" href="#table-of-contents">Comments</a><a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h3>
+<div class="row"><div class="col-5">
+<p>You can leave notes for your own reference starting with a <code class="docutils literal notranslate"><span class="pre">#</span></code>. This tells
+Python to ignore everything that follows until the end of the line.</p>
+</div><div class="col-7">
+<div class="full-width thebe-align highlight-python-hl notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="hll"><span class="c1"># My first Python program</span>
+</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div></div>
+</div>
+<div class="section" id="statements">
+<h3><a class="toc-backref" href="#table-of-contents">Statements</a><a class="headerlink" href="#statements" title="Permalink to this headline">¶</a></h3>
+<div class="row"><div class="col-5">
+<p>A statement is an instruction that Python can execute as a unit, analagous to a
+sentence.  In its simplest form it’s is a line of code that does something.</p>
+</div><div class="col-7">
+<div class="full-width thebe-align highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># My first Python program</span>
+<span class="hll"><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">)</span>
+</span></pre></div>
+</td></tr></table></div>
+</div></div>
+</div>
+<div class="section" id="expressions">
+<h3><a class="toc-backref" href="#table-of-contents">Expressions</a><a class="headerlink" href="#expressions" title="Permalink to this headline">¶</a></h3>
+<div class="row"><div class="col-5">
+<p>A statement may contain one or more expressions. An expression is any piece
+of code that produces a value.</p>
+</div><div class="col-7">
+<div class="full-width thebe-align highlight-python-hl notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># My first Python program</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2 s2-Highlight">&quot;Hello world!&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div></div>
+<div class="row"><div class="col-5">
+<p>Parentheses can be used around part of an expression to change order of
+operation.</p>
+</div><div class="col-7">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+</div>
+<div class="section" id="values">
+<h2><a class="toc-backref" href="#table-of-contents">Values</a><a class="headerlink" href="#values" title="Permalink to this headline">¶</a></h2>
+<p>Every value has a type and each type has its own syntax. Let’s take a look at
+the following example with a summary of the simple types and how variables are
+saved.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">greeting</span> <span class="o">=</span> <span class="s2">&quot;Hello.&quot;</span> <span class="c1"># string         (str)</span>
+<span class="n">health</span> <span class="o">=</span> <span class="mi">100</span>        <span class="c1"># integer        (int)</span>
+<span class="n">delay</span> <span class="o">=</span> <span class="mf">0.1</span>         <span class="c1"># floating point (float)</span>
+<span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span>      <span class="c1"># boolean        (bool)</span>
+<span class="n">winner</span> <span class="o">=</span> <span class="kc">None</span>       <span class="c1"># NoneType</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">greeting</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="variables">
+<h3><a class="toc-backref" href="#table-of-contents">Variables</a><a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h3>
+<div class="row"><div class="col-5">
+<p>Save a value to be easily used later in the code by giving it a name.  To
+create a variable simply <a class="reference internal" href="#term-assign"><span class="xref std std-term">assign</span></a> a value to it it using the equals sign
+(<code class="docutils literal notranslate"><span class="pre">=</span></code>).</p>
+<p>Syntax: <code class="samp docutils literal notranslate"><em><span class="pre">NAME</span></em> <span class="pre">=</span> <em><span class="pre">VALUE</span></em></code></p>
+</div><div class="col-7">
+<div class="highlight-python-hl notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n n-Highlight">greeting</span><span class=" -Highlight"> </span><span class="o o-Highlight">=</span><span class=" -Highlight"> </span><span class="s2 s2-Highlight">&quot;Hello.&quot;</span> <span class="c1"># string         (str)</span>
+<span class="n n-Highlight">health</span><span class=" -Highlight"> </span><span class="o o-Highlight">=</span><span class=" -Highlight"> </span><span class="mi mi-Highlight">100</span>        <span class="c1"># integer        (int)</span>
+<span class="n n-Highlight">delay</span><span class=" -Highlight"> </span><span class="o o-Highlight">=</span><span class=" -Highlight"> </span><span class="mf mf-Highlight">0.1</span>         <span class="c1"># floating point (float)</span>
+<span class="n n-Highlight">verbose</span><span class=" -Highlight"> </span><span class="o o-Highlight">=</span><span class=" -Highlight"> </span><span class="kc kc-Highlight">True</span>      <span class="c1"># boolean        (bool)</span>
+<span class="n n-Highlight">winner</span><span class=" -Highlight"> </span><span class="o o-Highlight">=</span><span class=" -Highlight"> </span><span class="kc kc-Highlight">None</span>       <span class="c1"># NoneType</span>
+</pre></div>
+</td></tr></table></div>
+</div></div><div class="row"><div class="col-5">
+<p>To <a class="reference internal" href="../tools/git.html#term-reference"><span class="xref std std-term">reference</span></a> a variable, or retrieve the data you stored, use the variable name.</p>
+</div><div class="col-7">
+<div class="highlight-python-hl notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n n-Highlight">greeting</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div></div><div class="row"><div class="col-5">
+<p>Assign multiple variables at once by putting the same number of variables on
+the left of the equals sign as values on the right, seperated by commas.</p>
+<p>Syntax: <br />
+<code class="samp docutils literal notranslate"><span class="pre">NAME1,</span> <span class="pre">NAME2...</span> <span class="pre">=</span> <span class="pre">VAL1,</span> <span class="pre">VAL2...</span></code></p>
+</div><div class="col-7">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">125</span>
+</pre></div>
+</div>
+</div></div><div class="row"><div class="col-5">
+<p>Or the same number of variables on the left of the equals sign as elements in a
+sequence such as a list.</p>
+<p>Syntax: <code class="samp docutils literal notranslate"><span class="pre">NAME1,</span> <span class="pre">NAME2...</span> <span class="pre">=</span> <span class="pre">SEQUENCE</span></code></p>
+</div><div class="col-7">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div></div>
+</div>
+<div class="section" id="types">
+<h3><a class="toc-backref" href="#table-of-contents">Types</a><a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h3>
+<p>Lets take a closer look at the standard built in types.</p>
+<table class="colwidths-given table">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 11%" />
+<col style="width: 37%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Examples</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><label>Strings</label></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Text data enclosed in either single or double quotes.</p></td>
+<td><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Hello&quot;</span>
+<span class="s1">&#39;Goodbye&#39;</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><label>Integers</label></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Whole numbers.</p></td>
+<td><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">10</span>
+<span class="mi">0</span>
+<span class="o">-</span><span class="mi">55</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><label>Floating point</label></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>Numbers with a decimal point.</p></td>
+<td><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mf">.1</span>
+<span class="mf">1.5</span>
+<span class="o">-</span><span class="mf">0.25</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><label>Boolean</label></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p>Either <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code> with the first letter capitalized.</p></td>
+<td><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kc">True</span>
+<span class="kc">False</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><label>None</label></p></td>
+<td></td>
+<td><p>A single value <code class="docutils literal notranslate"><span class="pre">None</span></code> with the first letter capitalized. Used to indicate
+that the value has not been set.</p></td>
+<td><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kc">None</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><label>List</label></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">list</span></code></p></td>
+<td><p>An ordered collection of arbitrary objects seperated by commas and enclosed in square brackets (<code class="docutils literal notranslate"><span class="pre">[</span></code> <code class="docutils literal notranslate"><span class="pre">]</span></code>).</p></td>
+<td><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><label>Dictionary</label></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dict</span></code></p></td>
+<td><p>A collection of <code class="samp docutils literal notranslate"><em><span class="pre">key</span></em><span class="pre">:</span> <em><span class="pre">value</span></em></code> pairs seperated by commas and enclosed in curly braces (<code class="docutils literal notranslate"><span class="pre">{</span></code> <code class="docutils literal notranslate"><span class="pre">}</span></code>).</p></td>
+<td><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{}</span>
+<span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><label>Tuple</label></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tuple</span></code></p></td>
+<td><p>An ordered, immutable collection of arbitrary objects seperated by commas and enclosed in parenthesis (<code class="docutils literal notranslate"><span class="pre">(</span></code> <code class="docutils literal notranslate"><span class="pre">)</span></code>)</p></td>
+<td><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">()</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,)</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><label>Set</label></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">set</span></code></p></td>
+<td><p>An unordered collection of unique elements seperated by commas and enclosed in curly braces (<code class="docutils literal notranslate"><span class="pre">{</span></code> <code class="docutils literal notranslate"><span class="pre">}</span></code>).</p></td>
+<td><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="p">()</span>
+<span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="strings">
+<h3><a class="toc-backref" href="#table-of-contents">Strings</a><a class="headerlink" href="#strings" title="Permalink to this headline">¶</a></h3>
+<div class="row"><div class="col-5">
+<p>Strings store text data and can be enclosed in either single or double quotes.</p>
+</div><div class="col-7">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;&quot;</span>
+<span class="s2">&quot;Hello.&quot;</span>
+<span class="s1">&#39;Farewell.&#39;</span>
+<span class="s2">&quot;It&#39;s a lovely day.&quot;</span>
+<span class="s1">&#39;&quot;Well hello!&quot;, he said.&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;&quot;Well hello!&quot;, he said.&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col-5">
+<p>For a string that spans multiple lines, enclose it in tripple double (<code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code>) or
+tripple single (<code class="docutils literal notranslate"><span class="pre">'''</span></code>) quotes.</p>
+</div><div class="col-7">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rhyme</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Roses are red,</span>
+<span class="s2">Violets are blue,</span>
+<span class="s2">Sugar is sweet,</span>
+<span class="s2">And so are you.&quot;&quot;&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">rhyme</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Roses are red,
+Violets are blue,
+Sugar is sweet,
+And so are you.
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col-5">
+<p>To break long text into multiple lines of code, put strings on concecutive
+lines (without seperating commas) and enclose the whole expression in
+parentheses <code class="docutils literal notranslate"><span class="pre">(</span></code> <code class="docutils literal notranslate"><span class="pre">)</span></code>.</p>
+</div><div class="col-7">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="p">(</span>
+  <span class="s2">&quot;Lorem ipsum dolor sit amet, consectetur &quot;</span>
+  <span class="s2">&quot;adipiscing elit, sed do eiusmod tempor &quot;</span>
+  <span class="s2">&quot;incididunt ut labore et dolore magna &quot;</span>
+  <span class="s2">&quot;aliqua. Ut enim ad minim veniam, quis &quot;</span>
+  <span class="s2">&quot;nostrud exercitation ullamco laboris &quot;</span>
+  <span class="s2">&quot;nisi ut aliquip ex ea commodo consequat.&quot;</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col-5">
+<p>Backslashes (<code class="docutils literal notranslate"><span class="pre">\</span></code>) are used to escape quotes or to indicate special characters,
+like <code class="docutils literal notranslate"><span class="pre">\n</span></code> for a new line.</p>
+</div><div class="col-7">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;It</span><span class="se">\&#39;</span><span class="s1">s a nice day.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;line one</span><span class="se">\n</span><span class="s2">line two&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>It&#39;s a nice day.
+line one
+line two
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col-5">
+<p>For strings that contain backslashes use a double backslash (<code class="docutils literal notranslate"><span class="pre">\\</span></code>) or prefix
+the string with the letter <code class="docutils literal notranslate"><span class="pre">r</span></code> for a raw string.</p>
+</div><div class="col-7">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&quot;</span><span class="se">\\</span><span class="s1">n&quot; is used to add a newline&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Documents\nodes&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&quot;\n&quot; is used to add a newline
+C:\Documents\nodes
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col-5">
+<p>Strings can be concatenated (joined together) by using the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator.</p>
+<p>String literals (i.e. the ones in quotes) next to each other are automatically
+concatonated.</p>
+</div><div class="col-7">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;coding class&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome to &quot;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Today we&#39;re talking about&quot;</span> <span class="s1">&#39;strings.&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome to coding class.
+Today we&#39;re talking aboutstrings.
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col-5">
+<p>Use an f-string for string interpoliation by prefixing the string with the
+letter <code class="docutils literal notranslate"><span class="pre">f</span></code> then enclose the variable or other evaluated code curly braces (<code class="docutils literal notranslate"><span class="pre">{</span></code> <code class="docutils literal notranslate"><span class="pre">}</span></code>).</p>
+</div><div class="col-7">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">price</span> <span class="o">=</span> <span class="mf">1.25</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;I am buying </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2"> apples for $</span><span class="si">{</span><span class="n">price</span><span class="si">}</span><span class="s2"> each.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The total is $</span><span class="si">{</span><span class="n">price</span><span class="o">*</span><span class="n">count</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I am buying 5 apples for $1.25 each.
+The total is $6.25.
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+<div class="section" id="lists">
+<h3><a class="toc-backref" href="#table-of-contents">Lists</a><a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h3>
+<p>A list is an ordered collection of arbitrary objects.</p>
+<div class="row"><div class="col-5">
+<p>To create one, enclose comma-seperated values in square brackets <br />
+(<code class="docutils literal notranslate"><span class="pre">[</span></code> <code class="docutils literal notranslate"><span class="pre">]</span></code>), or an empty pair of square brackets for an empty list.</p>
+</div><div class="col-7">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3]
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col-5">
+<p>Long lists can be split onto multiple lines after the commas.</p>
+</div><div class="col-7">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rainbow</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s2">&quot;red&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;orange&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;yellow&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;green&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;indigo&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;purple&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col-5">
+<p>List elements are primarily accessed, changed, or removed using
+<a class="reference internal" href="data-types/containers.html#term-subscription"><span class="xref std std-term">subscription</span></a> via either index numbers or slices.</p>
+</div><div class="col-7">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># changing</span>
+<span class="n">rainbow</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;violet&quot;</span>
+
+<span class="c1"># removing</span>
+<span class="k">del</span> <span class="n">rainbow</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="c1"># accessing</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rainbow</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rainbow</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rainbow</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>red
+violet
+[&#39;red&#39;, &#39;orange&#39;, &#39;yellow&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+<div class="section" id="dictionaries">
+<h3><a class="toc-backref" href="#table-of-contents">Dictionaries</a><a class="headerlink" href="#dictionaries" title="Permalink to this headline">¶</a></h3>
+<p>A dictionary is a collection of key value pairs.</p>
+<div class="row"><div class="col-5">
+<p>To create one, enclose comma-seperated key value pairs in curly braces (<code class="docutils literal notranslate"><span class="pre">{</span></code> <code class="docutils literal notranslate"><span class="pre">}</span></code>) with
+a colon (<code class="docutils literal notranslate"><span class="pre">:</span></code>) between each key and value. Or use an empty pair of curly brackets
+to make an empty dictionary.</p>
+</div><div class="col-7">
+<div class="cell tag_thebe-init docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pet</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="n">garfield</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;garfield&quot;</span><span class="p">,</span> <span class="s2">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;orange&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col-5">
+<p>Long dictionaries can be split onto multiple lines after the commas.</p>
+</div><div class="col-7">
+<div class="cell tag_thebe-init docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">toothless</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Toothless&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;dragon&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;pic&quot;</span><span class="p">:</span> <span class="s2">&quot;/|</span><span class="se">\\</span><span class="si">{O_O}</span><span class="s2">/|</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col-5">
+<p>List elements are primarily accessed, added, changed, or removed using
+<a class="reference internal" href="data-types/containers.html#term-subscription"><span class="xref std std-term">subscription</span></a> via keys.</p>
+</div><div class="col-7">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># changing</span>
+<span class="n">garfield</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Garfield&quot;</span>
+
+<span class="c1"># adding</span>
+<span class="n">garfield</span><span class="p">[</span><span class="s2">&quot;pic&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;(=^o.o^=)__&quot;</span>
+
+<span class="c1"># removing</span>
+<span class="k">del</span> <span class="n">toothless</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span>
+
+<span class="c1"># accessing</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">toothless</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">toothless</span><span class="p">[</span><span class="s2">&quot;pic&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">garfield</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">garfield</span><span class="p">[</span><span class="s2">&quot;pic&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Toothless : /|\{O_O}/|\
+Garfield : (=^o.o^=)__
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+<div class="section" id="tuples">
+<h3><a class="toc-backref" href="#table-of-contents">Tuples</a><a class="headerlink" href="#tuples" title="Permalink to this headline">¶</a></h3>
+<p>A tuple is an immutable collection of arbitrary objects.</p>
+<div class="row"><div class="col-5">
+<p>To create one, enclose comma-seperated values in parenthesis <br />
+(<code class="docutils literal notranslate"><span class="pre">(</span></code> <code class="docutils literal notranslate"><span class="pre">)</span></code>), or an empty pair of parenthesis for an empty tuple.</p>
+</div><div class="col-7">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">()</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 2, 3)
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col-5">
+<p>A tuple can also be created using comma seperated values without the
+parenthesis.</p>
+</div><div class="col-7">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 2, 3)
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col-5">
+<p>Though parenthesis are required when splitting tuples onto multiple lines.</p>
+</div><div class="col-7">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">words</span> <span class="o">=</span> <span class="p">(</span>
+  <span class="s2">&quot;target&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;specify&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;incline&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;college&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;forget&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;recent&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col-5">
+<p>Creating a tuple with only one item is a bit tricky, since parenthesis are
+used for both expression grouping and tuples.</p>
+<p>Use a trailing comma to create a tuple with one item.</p>
+</div><div class="col-7">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># parens are interpreted as grouping</span>
+<span class="c1"># so this is an int instead of a tuple</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use a trailing comma to create a tuple</span>
+<span class="c1"># with one item</span>
+<span class="n">nums</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+
+<span class="c1"># with or without the parenthesis</span>
+<span class="n">nums</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1,)
+(1,)
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col-5">
+<p>Tuple elements are accessed using <a class="reference internal" href="data-types/containers.html#term-subscription"><span class="xref std std-term">subscription</span></a> via index numbers or
+slices.</p>
+</div><div class="col-7">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>target
+recent
+(&#39;target&#39;, &#39;specify&#39;, &#39;incline&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<p>Tuples are immutable, so items cannot be modified or removed.</p>
+</div>
+<div class="section" id="sets">
+<h3><a class="toc-backref" href="#table-of-contents">Sets</a><a class="headerlink" href="#sets" title="Permalink to this headline">¶</a></h3>
+<p>A set is an unordered collection with no duplicate elements.</p>
+<div class="row"><div class="col-5">
+<p>To create one, enclose comma-seperated values in curly braces <br />
+(<code class="docutils literal notranslate"><span class="pre">{</span></code> <code class="docutils literal notranslate"><span class="pre">}</span></code>).</p>
+</div><div class="col-7">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{1, 2, 3}
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col-5">
+<p>Since curley braces are also used for dictionaries, use <code class="docutils literal notranslate"><span class="pre">set()</span></code> to create an
+empty set.</p>
+</div><div class="col-7">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>set()
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<p>Sets are unordered, so <a class="reference internal" href="data-types/containers.html#term-subscription"><span class="xref std std-term">subscription</span></a> is not supported.</p>
+</div>
+</div>
+<div class="section" id="flow-control">
+<h2><a class="toc-backref" href="#table-of-contents">Flow Control</a><a class="headerlink" href="#flow-control" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="if-statements">
+<h3><a class="toc-backref" href="#table-of-contents">if statements</a><a class="headerlink" href="#if-statements" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="conditional-statements.html#term-if-statement"><span class="xref std std-term">If statements</span></a> are used to only execute code under
+certain conditions.</p>
+<div class="row"><div class="col-5">
+<p>If statements always start with an <code class="docutils literal notranslate"><span class="pre">if</span></code> clause. The syntax is:</p>
+</div><div class="col-7">
+<pre class="literal-block"><code class="samp docutils literal notranslate"><span class="pre">if</span> <em><span class="pre">CONDITION</span></em><span class="pre">:</span></code>
+<code class="samp docutils literal notranslate">&#160;&#160;&#160; <em><span class="pre">BODY</span></em></code></pre>
+<table class="colwidths-auto notitle table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CONDITION</span></code></p></td>
+<td><p>an expression evaluated in a <a class="reference internal" href="conditional-statements.html#term-boolean-context"><span class="xref std std-term">boolean context</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">BODY</span></code></p></td>
+<td><p>statements to execute if <code class="docutils literal notranslate"><span class="pre">CONDITION</span></code> evaluates to <code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<br>
+</div></div><div class="row"><div class="col-5">
+<p>In this example, <code class="docutils literal notranslate"><span class="pre">&quot;Would</span> <span class="pre">you</span> <span class="pre">like</span> <span class="pre">a</span> <span class="pre">beer?&quot;</span></code> will only be printed if <code class="docutils literal notranslate"><span class="pre">age</span> <span class="pre">&gt;=</span> <span class="pre">21</span></code>.</p>
+</div><div class="col-7">
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">age</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">99</span><span class="p">)</span>
+
+<span class="hll"><span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">21</span><span class="p">:</span>
+</span><span class="hll">  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Would you like a beer?&quot;</span><span class="p">)</span>
+</span><span class="k">elif</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">12</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Would you like a soda?&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Would you like a juice?&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello.&quot;</span><span class="p">)</span>
+
+</pre></div>
+</td></tr></table></div>
+<br>
+</div></div><div class="row"><div class="col-5">
+<p>An if statement may contain zero or more <code class="docutils literal notranslate"><span class="pre">elif</span></code> clauses. The syntax is:</p>
+</div><div class="col-7">
+<pre class="literal-block"><code class="samp docutils literal notranslate"><span class="pre">elif</span> <em><span class="pre">CONDITION</span></em><span class="pre">:</span></code>
+<code class="samp docutils literal notranslate">&#160;&#160;&#160; <em><span class="pre">BODY</span></em></code></pre>
+<br>
+</div></div><div class="row"><div class="col-5">
+<p>This example contains two <code class="docutils literal notranslate"><span class="pre">elif</span></code> clauses.</p>
+</div><div class="col-7">
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">age</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">99</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">21</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Would you like a beer?&quot;</span><span class="p">)</span>
+<span class="hll"><span class="k">elif</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">12</span><span class="p">:</span>
+</span><span class="hll">  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Would you like a soda?&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="k">elif</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>
+</span><span class="hll">  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Would you like a juice?&quot;</span><span class="p">)</span>
+</span><span class="k">else</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello.&quot;</span><span class="p">)</span>
+
+</pre></div>
+</td></tr></table></div>
+<br>
+</div></div><div class="row"><div class="col-5">
+<p>And an if statement may optionally end with an <code class="docutils literal notranslate"><span class="pre">else</span></code> clause. The syntax is:</p>
+</div><div class="col-7">
+<pre class="literal-block"><code class="samp docutils literal notranslate"><span class="pre">else:</span></code>
+<code class="samp docutils literal notranslate">&#160;&#160;&#160; <em><span class="pre">BODY</span></em></code></pre>
+<table class="colwidths-auto notitle table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">BODY</span></code></p></td>
+<td><p>statements to execute if all previous <code class="docutils literal notranslate"><span class="pre">CONDITION</span></code>s are <code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<br>
+</div></div><div class="row"><div class="col-5">
+<p>In this example, <code class="docutils literal notranslate"><span class="pre">&quot;Hello.&quot;</span></code> is printed if all preceeding conditions evaluated to
+<code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</div><div class="col-7">
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">age</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">99</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">21</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Would you like a beer?&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">12</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Would you like a soda?&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Would you like a juice?&quot;</span><span class="p">)</span>
+<span class="hll"><span class="k">else</span><span class="p">:</span>
+</span><span class="hll">  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello.&quot;</span><span class="p">)</span>
+</span>
+</pre></div>
+</td></tr></table></div>
+</div></div>
+</div>
+<div class="section" id="for-loops">
+<h3><a class="toc-backref" href="#table-of-contents">for loops</a><a class="headerlink" href="#for-loops" title="Permalink to this headline">¶</a></h3>
+<div class="row"><div class="col-5">
+</div><div class="col-7">
+<pre class="literal-block"><code class="samp docutils literal notranslate"><span class="pre">for</span> <em><span class="pre">VAR</span></em> <span class="pre">in</span> <em><span class="pre">ITERABLE</span></em><span class="pre">:</span></code>
+<code class="samp docutils literal notranslate">&#160;&#160;&#160; <em><span class="pre">BODY</span></em></code></pre>
+<table class="colwidths-auto notitle table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">VAR</span></code></p></td>
+<td><p>variable name (or comma-seperated list of names) to assign each item to</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ITERABLE</span></code></p></td>
+<td><p>object to iterate over.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">BODY</span></code></p></td>
+<td><p>statements to execute where <code class="docutils literal notranslate"><span class="pre">VAR</span></code> will be used</p></td>
+</tr>
+</tbody>
+</table>
+</div></div><div class="row"><div class="col-5">
+</div><div class="col-7">
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">pet</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;garfield&quot;</span><span class="p">,</span> <span class="s2">&quot;toothless&quot;</span><span class="p">]:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">pet</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div></div>
+</div>
+<div class="section" id="while-loops">
+<h3><a class="toc-backref" href="#table-of-contents">while loops</a><a class="headerlink" href="#while-loops" title="Permalink to this headline">¶</a></h3>
+<div class="row"><div class="col-5">
+</div><div class="col-7">
+<pre class="literal-block"><code class="samp docutils literal notranslate"><span class="pre">while</span> <em><span class="pre">CONDITION</span></em><span class="pre">:</span></code>
+<code class="samp docutils literal notranslate">&#160;&#160;&#160; <em><span class="pre">BODY</span></em></code></pre>
+<table class="colwidths-auto notitle table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CONDITION</span></code></p></td>
+<td><p>an expression evaluated in a <a class="reference internal" href="conditional-statements.html#term-boolean-context"><span class="xref std std-term">boolean context</span></a> that determines if the loop keeps going</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">BODY</span></code></p></td>
+<td><p>statements to execute each iteration</p></td>
+</tr>
+</tbody>
+</table>
+<br>
+</div></div><div class="row"><div class="col-5">
+</div><div class="col-7">
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+<span class="k">while</span> <span class="ow">not</span> <span class="n">name</span><span class="p">:</span>
+  <span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What is your name? &quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello there </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
+
+</pre></div>
+</td></tr></table></div>
+</div></div>
+</div>
+<div class="section" id="functions">
+<h3><a class="toc-backref" href="#table-of-contents">Functions</a><a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<p>A <a class="reference internal" href="functions.html#term-function"><span class="xref std std-term">function</span></a> is a set of Python instructions or statements that can be
+executed, or called, later.</p>
+<div class="row"><div class="col-5">
+</div><div class="col-7">
+<pre class="literal-block"><code class="samp docutils literal notranslate"><span class="pre">def</span> <em><span class="pre">NAME</span></em><span class="pre">(</span><em><span class="pre">PARAMS</span></em><span class="pre">):</span></code>
+<code class="samp docutils literal notranslate">&#160;&#160;&#160; <em><span class="pre">BODY</span></em></code></pre>
+<table class="colwidths-auto notitle table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">NAME</span></code></p></td>
+<td><p>name of the function</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">PARAMS</span></code></p></td>
+<td><p>zero or more comma seperated names for variable arguments</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">BODY</span></code></p></td>
+<td><p>statements to execute each time the function is called</p></td>
+</tr>
+</tbody>
+</table>
+<br>
+</div></div><div class="row"><div class="col-5">
+</div><div class="col-7">
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">line</span><span class="p">():</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------------------&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">see</span><span class="p">(</span><span class="n">pet</span><span class="p">):</span>
+  <span class="n">line</span><span class="p">()</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">pet</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="s2">&quot;the&quot;</span><span class="p">,</span> <span class="n">pet</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">],</span> <span class="n">pet</span><span class="p">[</span><span class="s2">&quot;kind&quot;</span><span class="p">])</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">pet</span><span class="p">[</span><span class="s2">&quot;pic&quot;</span><span class="p">])</span>
+
+</pre></div>
+</td></tr></table></div>
+</div></div>
+</div>
+<div class="section" id="calls">
+<h3><a class="toc-backref" href="#table-of-contents">Calls</a><a class="headerlink" href="#calls" title="Permalink to this headline">¶</a></h3>
+<div class="row"><div class="col-5">
+<p>Call a function by adding a set of parenthesis after the name. <br />
+Syntax: <code class="samp docutils literal notranslate"><em><span class="pre">NAME</span></em><span class="pre">()</span></code></p>
+</div><div class="col-7">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col-5">
+<p>Put arguments inside the parenthesis. <br />
+Syntax: <code class="samp docutils literal notranslate"><em><span class="pre">NAME</span></em><span class="pre">(</span><em><span class="pre">ARG</span></em><span class="pre">)</span></code></p>
+</div><div class="col-7">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome!
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col-5">
+<p>Seperate multiple arguments with commas. <br />
+Syntax: <code class="samp docutils literal notranslate"><em><span class="pre">NAME</span></em><span class="pre">(</span><em><span class="pre">ARG1</span></em><span class="pre">,</span> <em><span class="pre">ARG2</span></em><span class="pre">...)</span></code></p>
+</div><div class="col-7">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Mario&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome Mario
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+</div>
+<div class="section" id="reference">
+<h2><a class="toc-backref" href="#table-of-contents">Reference</a><a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="glossary">
+<h3><a class="toc-backref" href="#table-of-contents">Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="glossary-syntax">
+<h4><a class="toc-backref" href="#table-of-contents">Syntax</a><a class="headerlink" href="#glossary-syntax" title="Permalink to this headline">¶</a></h4>
+<dl class="glossary simple">
+<dt id="term-comment">comment<a class="headerlink" href="#term-comment" title="Permalink to this term">¶</a></dt><dd><p>Parts in a source-code file which are ignored when the program is run. In
+Python add a <code class="docutils literal notranslate"><span class="pre">#</span></code> to the beginning a line to indicate that it is a comment.
+You can also comment out only part of a line by adding <code class="docutils literal notranslate"><span class="pre">#</span></code> followed by the
+comment text to the end of an expression. It is recommended to follow the <code class="docutils literal notranslate"><span class="pre">#</span></code>
+by a single space before the text of the comment.</p>
+</dd>
+<dt id="term-keyword">keyword<a class="headerlink" href="#term-keyword" title="Permalink to this term">¶</a></dt><dd><p>Reserved words that have special meanings in a programming language so that
+they cannot be used as an identifier. Some examples of keywords in Python are
+<code class="docutils literal notranslate"><span class="pre">for</span></code>, <code class="docutils literal notranslate"><span class="pre">if</span></code>, and <code class="docutils literal notranslate"><span class="pre">def</span></code>.</p>
+</dd>
+<dt id="term-syntax">syntax<a class="headerlink" href="#term-syntax" title="Permalink to this term">¶</a></dt><dd><p>A set of rules that determine how a programming language is understood by the
+computer. Grammar, but for code.</p>
+</dd>
+<dt id="term-assign">assign<a class="headerlink" href="#term-assign" title="Permalink to this term">¶</a></dt><dd><p>A <a class="reference internal" href="statements.html#term-statement"><span class="xref std std-term">statement</span></a> that sets the <a class="reference internal" href="expressions.html#term-value"><span class="xref std std-term">value</span></a> of a variable name.</p>
+</dd>
+<dt id="term-identifier">identifier<a class="headerlink" href="#term-identifier" title="Permalink to this term">¶</a></dt><dd><p>The name that refers to a some programming element, such as a variable,
+class, function or module.</p>
+</dd>
+<dt id="term-variable">variable<a class="headerlink" href="#term-variable" title="Permalink to this term">¶</a></dt><dd><p>A name given to a value.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="see-also">
+<h3><a class="toc-backref" href="#table-of-contents">See also</a><a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://learnxinyminutes.com/docs/python/">Learn X in Y Minutes: Python</a></p></li>
+<li><p><a class="reference external" href="https://jakevdp.github.io/WhirlwindTourOfPython/02-basic-python-syntax.html">A Quick Tour of Python Language Syntax</a></p></li>
+<li><p><a class="reference external" href="https://pythonprinciples.com/reference/">Python Programming Reference Sheet</a></p></li>
+</ul>
+</div>
+<hr class="docutils" />
 <div class="toctree-wrapper compound">
+</div>
+</div>
 </div>
 </div>
 
@@ -561,12 +1823,32 @@
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="fundamentals.html" title="previous page">Fundamentals</a>
-    <a class='right-next' id="next-link" href="expressions.html" title="next page">Expressions</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="fundamentals.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Fundamentals</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="expressions.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Expressions</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>

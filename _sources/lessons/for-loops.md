@@ -26,12 +26,24 @@ Syntax
 
 The syntax for a for loop is:
 
+{{ leftcol | replace("col", "col-5") }}
+
 ```{include} ../templates/syntax/for.md
 ```
 
+{{ rightcol | replace("col", "col-7") }}
+
+```{include} ../templates/desc/for.md
+```
+
+{{ endcols }}
+
 Here's a simple example that iterates over a `list` of strings.
 
-```{include} ../templates/examples/for.md
+```{literalinclude} ../templates/examples/for.py
+:caption: "`for` loop example"
+:class: full-width
+:linenos:
 ```
 
 ### Exercise
@@ -495,6 +507,12 @@ for role, tool in tools.items():
 ```
 
 `````
+
+Incrementing
+------------
+
+Sometimes we need to keep track of the number associated with each item in an iterable.
+
 
 Comparing loops
 ---------------
