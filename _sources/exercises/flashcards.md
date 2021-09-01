@@ -89,7 +89,7 @@ Expand the `load_csv()` function to read and print every line in the file.
 ```
 
 1. `[ ]` open the csv file in read mode using the `open()` function
-1. `[ ]` use `fp.readlines()` to iterate through each line in the file
+1. `[ ]` use `fh.readlines()` to iterate through each line in the file
 1. `[ ]` for temporary debugging, print each line
 
 ### Part 5: Get the card data from the csv file
@@ -347,6 +347,11 @@ one or more files to load.
 Many answers have commas in them, so instead of manually parsing the csv file,
 lets use the built in `csv` module.
 
+We'll create and iterate over a `csv.reader` object, which will provide each
+line split into a list of fields that we can use as the `row`. Then either
+remove all of the places where we use `line`, or replace them with an
+equivalent for `row`.
+
 ```{rubric} at the top of your file
 ```
 
@@ -365,19 +370,52 @@ lets use the built in `csv` module.
    )
    ```
 2. `[ ]` Instead of iterating over `fh.readlines()`, iterate over the `reader`
-   object, which will yields a `list` of values in each `row`.
+   object. Change the variable name in the for loop to `row`.
+
+```{rubric} in load_csv(), in the for loop
+```
+
+1. `[ ]` Remove the `row = line.split()` line. (Since `row` is now a list
+   provided by the `reader` object.)
+2. `[ ]` Check if `row` is an empty list. If so, `continue`.
+
+### Part 17: limit CLI argument
+
+In this section we'll change the program to accept an optional command line
+argument to limit the number of cards to show.
+
+So, if at the command line you type:
+
+```console
+$ python flashcards.py 10
+```
+
+Then at most 10 flashcards will be shown.
+
+Or if you type:
+
+```console
+$ python flashcards.py
+```
+
+Then then you'll go through all of the flashcards for the selected topic(s).
+
+```{rubric} In the main() function, before calling play():
+```
+
+1. `[ ]` Check if `sys.argv` has more than `1` item. If so:
+   * `[ ]` assign the second value in the `sys.argv` list, converted to an
+          `int` to the variable `limit`
+   * `[ ]` get a slice of the `cards` list with a size equal to `limit` and
+           assign it back to the variable `cards`
 
 
 Bonus ideas
 -----------
 
 * keep a log with dates and scores
-* allow csv file to store alternate answers
-* add an optional limit argument to limit the number of cards to go
-  through at a time
-* add extra columns to flashcards files to keep track of each time you get the
-  answer right and wrong, use this to generate reports
-* print any cards that the user got wrong again at the end after showing the score
+* print any cards that the user got wrong again at the end after showing the
+  score
 
 Card data
 ---------
@@ -394,6 +432,29 @@ Download the following flashcard files or feel free to make your own.
 Screencasts
 -----------
 
+`````{tabbed} Brian's
+
+```{div} text-right
+{link-badge}`https://github.com/muaddib576/python_fundamentals/blob/master/python_fundamentals/flashcards.py,source code,cls=badge-success text-white p-2`
+```
+
+```{screencast} assets/brian-flashcards.cast
+:cols: 125
+:rows: 33
+:poster: npt:0:22
+:title: "flashcards"
+:author: "Brian"
+:author-url: "http://github.com/muaddib576"
+```
+
+`````
+
+`````{tabbed} Alissa's
+
+```{div} text-right
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/exercises/flashcards.py,source code,cls=badge-success text-white p-2`
+```
+
 ```{screencast} assets/flashcards.cast
 :cols: 125
 :rows: 33
@@ -402,6 +463,8 @@ Screencasts
 :author: "Alissa Huskey"
 :author-url: "http://github.com/alissa-huskey"
 ```
+
+`````
 
 Reference
 ---------

@@ -602,6 +602,7 @@ stored in <code class="docutils literal notranslate"><span class="pre">csv</span
 <li><p><a class="reference internal" href="#part-14-wrap-long-questions" id="id14">Part 14: Wrap long questions</a></p></li>
 <li><p><a class="reference internal" href="#part-15-add-topics-menu" id="id15">Part 15: Add topics menu</a></p></li>
 <li><p><a class="reference internal" href="#part-16-allow-answers-with-commas" id="id16">Part 16: Allow answers with commas</a></p></li>
+<li><p><a class="reference internal" href="#part-17-limit-cli-argument" id="id17">Part 17: limit CLI argument</a></p></li>
 </ul>
 </div>
 <div class="section" id="part-1-make-a-csv-file">
@@ -666,7 +667,7 @@ argument, and assign the returned value to a variable named <code class="docutil
 <p class="rubric">in load_csv()</p>
 <ol class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> open the csv file in read mode using the <code class="docutils literal notranslate"><span class="pre">open()</span></code> function</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> use <code class="docutils literal notranslate"><span class="pre">fp.readlines()</span></code> to iterate through each line in the file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> use <code class="docutils literal notranslate"><span class="pre">fh.readlines()</span></code> to iterate through each line in the file</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> for temporary debugging, print each line</p></li>
 </ol>
 </div>
@@ -906,6 +907,10 @@ one or more files to load.</p>
 <h3><a class="toc-backref" href="#contents">Part 16: Allow answers with commas</a><a class="headerlink" href="#part-16-allow-answers-with-commas" title="Permalink to this headline">¶</a></h3>
 <p>Many answers have commas in them, so instead of manually parsing the csv file,
 lets use the built in <code class="docutils literal notranslate"><span class="pre">csv</span></code> module.</p>
+<p>We’ll create and iterate over a <code class="docutils literal notranslate"><span class="pre">csv.reader</span></code> object, which will provide each
+line split into a list of fields that we can use as the <code class="docutils literal notranslate"><span class="pre">row</span></code>. Then either
+remove all of the places where we use <code class="docutils literal notranslate"><span class="pre">line</span></code>, or replace them with an
+equivalent for <code class="docutils literal notranslate"><span class="pre">row</span></code>.</p>
 <p class="rubric">at the top of your file</p>
 <ol class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> <code class="docutils literal notranslate"><span class="pre">import</span></code> the <code class="docutils literal notranslate"><span class="pre">csv</span></code> module</p></li>
@@ -923,7 +928,39 @@ lets use the built in <code class="docutils literal notranslate"><span class="pr
 </div>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Instead of iterating over <code class="docutils literal notranslate"><span class="pre">fh.readlines()</span></code>, iterate over the <code class="docutils literal notranslate"><span class="pre">reader</span></code>
-object, which will yields a <code class="docutils literal notranslate"><span class="pre">list</span></code> of values in each <code class="docutils literal notranslate"><span class="pre">row</span></code>.</p></li>
+object. Change the variable name in the for loop to <code class="docutils literal notranslate"><span class="pre">row</span></code>.</p></li>
+</ol>
+<p class="rubric">in load_csv(), in the for loop</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Remove the <code class="docutils literal notranslate"><span class="pre">row</span> <span class="pre">=</span> <span class="pre">line.split()</span></code> line. (Since <code class="docutils literal notranslate"><span class="pre">row</span></code> is now a list
+provided by the <code class="docutils literal notranslate"><span class="pre">reader</span></code> object.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Check if <code class="docutils literal notranslate"><span class="pre">row</span></code> is an empty list. If so, <code class="docutils literal notranslate"><span class="pre">continue</span></code>.</p></li>
+</ol>
+</div>
+<div class="section" id="part-17-limit-cli-argument">
+<h3><a class="toc-backref" href="#contents">Part 17: limit CLI argument</a><a class="headerlink" href="#part-17-limit-cli-argument" title="Permalink to this headline">¶</a></h3>
+<p>In this section we’ll change the program to accept an optional command line
+argument to limit the number of cards to show.</p>
+<p>So, if at the command line you type:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python flashcards.py <span class="m">10</span>
+</pre></div>
+</div>
+<p>Then at most 10 flashcards will be shown.</p>
+<p>Or if you type:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python flashcards.py
+</pre></div>
+</div>
+<p>Then then you’ll go through all of the flashcards for the selected topic(s).</p>
+<p class="rubric">In the main() function, before calling play():</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Check if <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code> has more than <code class="docutils literal notranslate"><span class="pre">1</span></code> item. If so:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> assign the second value in the <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code> list, converted to an
+<code class="docutils literal notranslate"><span class="pre">int</span></code> to the variable <code class="docutils literal notranslate"><span class="pre">limit</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> get a slice of the <code class="docutils literal notranslate"><span class="pre">cards</span></code> list with a size equal to <code class="docutils literal notranslate"><span class="pre">limit</span></code> and
+assign it back to the variable <code class="docutils literal notranslate"><span class="pre">cards</span></code></p></li>
+</ul>
+</li>
 </ol>
 </div>
 </div>
@@ -931,12 +968,8 @@ object, which will yields a <code class="docutils literal notranslate"><span cla
 <h2>Bonus ideas<a class="headerlink" href="#bonus-ideas" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>keep a log with dates and scores</p></li>
-<li><p>allow csv file to store alternate answers</p></li>
-<li><p>add an optional limit argument to limit the number of cards to go
-through at a time</p></li>
-<li><p>add extra columns to flashcards files to keep track of each time you get the
-answer right and wrong, use this to generate reports</p></li>
-<li><p>print any cards that the user got wrong again at the end after showing the score</p></li>
+<li><p>print any cards that the user got wrong again at the end after showing the
+score</p></li>
 </ul>
 </div>
 <div class="section" id="card-data">
@@ -953,7 +986,23 @@ answer right and wrong, use this to generate reports</p></li>
 </div>
 <div class="section" id="screencasts">
 <h2>Screencasts<a class="headerlink" href="#screencasts" title="Permalink to this headline">¶</a></h2>
+<div class="tabbed-set docutils">
+<input checked="checked" id="0b600c16-c5ec-4857-9dd7-a35c6e2f6381" name="3d4e5f6d-f3f0-4fc3-a30a-acb78f0f6599" type="radio">
+</input><label class="tabbed-label" for="0b600c16-c5ec-4857-9dd7-a35c6e2f6381">
+Brian’s</label><div class="tabbed-content docutils">
+<div class="text-right docutils">
+<p><a class="sphinx-bs badge badge-success text-white p-2 reference external" href="https://github.com/muaddib576/python_fundamentals/blob/master/python_fundamentals/flashcards.py"><span>source code</span></a></p>
+</div>
+<asciinema-player cols="125" rows="33" poster="npt:0:22" title="flashcards" author="Brian" author-url="http://github.com/muaddib576" src="assets/brian-flashcards.cast"></asciinema-player></div>
+<input id="cf3879a2-6c8b-456d-a71e-1edba11623d4" name="3d4e5f6d-f3f0-4fc3-a30a-acb78f0f6599" type="radio">
+</input><label class="tabbed-label" for="cf3879a2-6c8b-456d-a71e-1edba11623d4">
+Alissa’s</label><div class="tabbed-content docutils">
+<div class="text-right docutils">
+<p><a class="sphinx-bs badge badge-success text-white p-2 reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/exercises/flashcards.py"><span>source code</span></a></p>
+</div>
 <asciinema-player cols="125" rows="33" poster="npt:0:09" title="flashcards" author="Alissa Huskey" author-url="http://github.com/alissa-huskey" src="assets/flashcards.cast"></asciinema-player></div>
+</div>
+</div>
 <div class="section" id="reference">
 <h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
 <p>You can view my completed scripts here:</p>
