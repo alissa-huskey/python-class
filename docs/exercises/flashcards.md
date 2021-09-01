@@ -432,6 +432,29 @@ Download the following flashcard files or feel free to make your own.
 Screencasts
 -----------
 
+`````{tabbed} Brian's
+
+```{div} text-right
+{link-badge}`https://github.com/muaddib576/python_fundamentals/blob/master/python_fundamentals/flashcards.py,source code,cls=badge-success text-white p-2`
+```
+
+```{screencast} assets/brian-flashcards.cast
+:cols: 125
+:rows: 33
+:poster: npt:0:22
+:title: "flashcards"
+:author: "Brian"
+:author-url: "http://github.com/muaddib576"
+```
+
+`````
+
+`````{tabbed} Alissa's
+
+```{div} text-right
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/exercises/flashcards.py,source code,cls=badge-success text-white p-2`
+```
+
 ```{screencast} assets/flashcards.cast
 :cols: 125
 :rows: 33
@@ -440,6 +463,8 @@ Screencasts
 :author: "Alissa Huskey"
 :author-url: "http://github.com/alissa-huskey"
 ```
+
+`````
 
 Reference
 ---------

@@ -32,7 +32,7 @@ def load_csv(path, errors):
     cards = []
 
     if not path.is_file():
-        errors.append("file does not exist: {path}")
+        errors.append(f"File does not exist: {path}")
         return
 
     if path.suffix.lower() != ".csv":
@@ -40,6 +40,7 @@ def load_csv(path, errors):
         return
 
     with open(path) as fh:
+        # create a csv reader object
         reader = csv.reader(
             fh,
             quotechar="'",
@@ -49,6 +50,7 @@ def load_csv(path, errors):
 
         # iterate through each line of file
         for lineno, row in enumerate(reader):
+            # skip empty rows (blank lines)
             if not row:
                 continue
 
@@ -81,7 +83,6 @@ def play(cards):
     """The user interface for running through each card, getting the answers
     from the user, and printing the score.  Takes one argument, the list of
     cards."""
-
 
     # initialize values
     hide_cursor, show_cursor  = "\x1b[?25l", "\x1b[?12;25h"
