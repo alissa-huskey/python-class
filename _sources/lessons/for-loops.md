@@ -511,8 +511,137 @@ for role, tool in tools.items():
 Incrementing
 ------------
 
-Sometimes we need to keep track of the number associated with each item in an iterable.
+Sometimes we need to keep track of the number associated with each item in an
+iterable. One way to do this would be to increment a number each iteration.
 
+```{code-cell} python
+i = 0
+rainbow = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"]
+
+for i, color in enumerate(rainbow):
+  print(i, color)
+  i += 1
+```
+
+An easier way to do this is to use the `enumerate()` function which returns an
+iterator. Each iteration it yields a tuple containing the count and the next
+item.
+
+Lets take a look at what happens when we pass the `rainbow` list to
+`enumerate()`. (Notice that we convert the iterator to a list so we can see its
+contents.)
+
+```{code-cell} python
+list(enumerate(rainbow))
+```
+
+To use this in a `for` loop, we'll call `enumerate()` on the `ITERABLE`. Then
+we'll change `VAR` so that it assigns both `i` and `color`.
+
+```{code-cell} python
+rainbow = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"]
+
+for i, color in enumerate(rainbow):
+  print(i, color)
+```
+
+We can change the number that `emumerate()` starts at by passing an optional
+second argument.
+
+```{code-cell} python
+rainbow = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"]
+
+for i, color in enumerate(rainbow, 1):
+  print(i, color)
+```
+
+But what happens if you want to enumerate an iterable that yields multiple
+items per iteration? Is it possible to assign the number and the other items to
+their respective variable names?
+
+Lets take a look at what happens when we pass a `dict.items()` iteratable to
+`enumerate()`.
+
+```{code-cell} python
+:class: full-width
+
+suites = {
+  "heart": "red",
+  "diamond": "red",
+  "club": "black",
+  "spade": "black",
+}
+
+list(enumerate(suites.items()))
+```
+
+The iterable now yields a tuple containing a the count, and each item is a
+tuple containing the key and value like so: {samp}`({COUNT}, ({KEY}, {VALUE}))`
+
+To use this in a for loop, simply encose the key-value tuple in parenthesis.
+
+```{code-cell} python
+:class: full-width
+
+suites = {
+  "heart": "red",
+  "diamond": "red",
+  "club": "black",
+  "spade": "black",
+}
+
+for i, (suit, color) in enumerate(suites.items(), 1):
+    print(f"{i}. The {suit} suit is {color}.")
+```
+
+
+### Exercise
+
+`````{exercise} Number Names
+:label: number-names-exercise
+
+Use the `enumerate` function to print the numerical values `1` through `5` next
+to the names of those numbers (`"one"` through `"five"`).
+
+```{dropdown} Need help?
+1. Make a list assigned to the variable `numbers` containing the names of the
+numbers `"one"` through `"five"`.
+2. Write a `for` loop using the variable names `i` and `name` that iterates over
+the value returned from calling `enumerate()` with the arguments `numbers`
+and `1`. \
+   In the for loop:
+   * print `i` and `name`
+```
+
+**Example output**:
+
+```{code-block} text
+:caption: example output
+1 one
+2 two
+3 three
+4 four
+5 five
+```
+
+`````
+
+`````{solution} number-names-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: Number Names Exercise
+:class: full-width
+:linenos:
+
+numbers = ["one", "two", "three", "four", "five"]
+
+for i, name in enumerate(numbers, 1):
+  print(i, name)
+
+```
+
+`````
 
 Comparing loops
 ---------------
