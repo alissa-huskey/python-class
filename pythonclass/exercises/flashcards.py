@@ -44,7 +44,7 @@ def load_csv(path, errors):
             fh,
             quotechar="'",
             skipinitialspace=True,
-            #  escapechar="\\"
+            escapechar="\\",
         )
 
         # iterate through each line of file
@@ -215,10 +215,7 @@ def main(limit=None):
     random.shuffle(cards)
 
     if limit:
-        sample = []
-        for _ in range(limit):
-            sample.append(cards.pop())
-        cards = sample
+        cards = cards[:limit]
 
     play(cards)
 
