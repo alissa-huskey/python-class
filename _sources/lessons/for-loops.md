@@ -518,7 +518,7 @@ iterable. One way to do this would be to increment a number each iteration.
 i = 0
 rainbow = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"]
 
-for i, color in enumerate(rainbow):
+for color in rainbow:
   print(i, color)
   i += 1
 ```
@@ -559,7 +559,7 @@ But what happens if you want to enumerate an iterable that yields multiple
 items per iteration? Is it possible to assign the number and the other items to
 their respective variable names?
 
-Lets take a look at what happens when we pass a `dict.items()` iteratable to
+Lets take a look at what happens when we pass a {samp}`{dict}.items()` iteratable to
 `enumerate()`.
 
 ```{code-cell} python
