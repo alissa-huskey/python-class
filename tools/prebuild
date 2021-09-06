@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+#
+# prebuild script
+
+mk_keywords() {
+  local srcdir=docs/lessons infile outfile
+
+  infile=$srcdir/keywords.py
+  outfile=$srcdir/keywords.md
+
+  if ! [[ -f $outfile ]] || [[ $outfile -ot $infile ]]; then
+    echo "generating keywords.md"
+    python $infile
+  fi
+}
+
+mk_keywords

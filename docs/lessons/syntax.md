@@ -49,28 +49,116 @@ example:
 ```{code-cell} python
 :class: full-width
 :linenos:
+"""My first program"""
 
-# My first Python program
-print("Hello world!")
+import time
+
+width = 80
+today = time.localtime()
+
+greeting = "Hello"
+
+if today.tm_hour < 11:
+  greeting = "Good morning"  # before 12pm
+
+# put together the message and make it centered
+message = (greeting + " world!").center(width)
+
+print(message)
 ```
+
+### Docstrings
+
+{{ left }}
+
+When the first line of a program or function is enclosed in tripple single
+(`'''`) or tripple double (`"""`) quotes, it is a special kind of string
+intended for documenation called a {term}`docstring`.
+
+{{ right }}
+
+```{code-block} python
+:class: full-width
+:emphasize-lines: "1"
+:linenos:
+
+"""My first program"""
+```
+
+{{ endcols }}
 
 ### Comments
 
 {{ left }}
 
-You can leave notes for your own reference starting with a `#`. This tells
+You can leave notes for future reference starting with a `#`. This tells
 Python to ignore everything that follows until the end of the line.
+
+{{ right }}
+
+```{literalinclude} ../templates/examples/syntax.py
+:class: full-width
+:emphasize-lines: 1
+:lines: "14-15"
+:linenos:
+```
+
+{{ row }}
+
+A comment doesn't have to be at the start of the line.
 
 {{ right }}
 
 ```{code-block-hl} python
 :linenos:
-:class: full-width thebe-align
-:emphasize-lines: "1"
+:class: full-width
+:lineno-start: 11
 
-# My first Python program
-print("Hello world!")
+if today.tm_hour < 11:
+  greeting = "Good morning"  !!!# before 12pm!!!
 ```
+
+{{ endcols }}
+
+### Keywords
+
+{{ left }}
+
+Keywords are reserved words that have a special meaning in Python. A keyword
+cannot be used as a function or variable.
+
+{{ right }}
+
+```{code-block-hl} python
+:class: full-width
+:linenos:
+
+!!!import !!!time
+!!!import !!!shutil
+```
+
+```{code-block-hl} python
+:class: full-width
+:lineno-start: 11
+
+!!!if!!! today.tm_hour < 11:
+```
+
+{{ row }}
+
+A list of all keywords is available in the `keyword` module `kwlist`.
+
+{{ right }}
+
+
+:::{dropdown} Show Keywords
+:title: +text-center
+:container: +keywords-list
+
+```{include} keywords.md
+```
+
+:::
 
 {{ endcols }}
 
@@ -78,19 +166,132 @@ print("Hello world!")
 
 {{ left }}
 
-A statement is an instruction that Python can execute as a unit, analagous to a
-sentence.  In its simplest form it's is a line of code that does something.
+Code is made up of a series of instructions to the computer called
+{term}`statements <statement>`.
 
 {{ right }}
 
-```{code-block} python
-:linenos:
-:class: full-width thebe-align
-:emphasize-lines: "2"
+`````{dropdown} **...**
+:title: +text-center
 
-# My first Python program
-print("Hello world!")
+```{code-block-hl} python
+:linenos:
+:emphasize-lines: "3-10, 14-16"
+:caption: all statements
+
+"""My first program"""
+
+import time
+
+width = 80
+today = time.localtime()
+
+greeting = "Hello"
+
+if today.tm_hour < 11:
+  !!!greeting = "Good morning"!!!  # before 12pm
+
+# put together the message and make it centered
+message = (greeting + " world!").center(width)
+
+print(message)
 ```
+
+`````
+
+{{ row }}
+
+The {term}`simple <simple statement>` form is a single line of code, kind of
+like a sentence that says what to do.
+
+{{ right }}
+
+```{code-block-hl} python
+:linenos:
+:class: full-width
+:emphasize-lines: "3"
+:caption: a simple statement
+
+"""My first program"""
+
+import time
+```
+
+`````{dropdown} See more
+:title: +text-center
+
+```{code-block-hl} python
+:linenos:
+:emphasize-lines: "1-4, 10-12"
+:caption: all simple statements
+:lineno-start: 4
+
+width = 80
+today = time.localtime()
+
+greeting = "Hello"
+
+if today.tm_hour < 11:
+  !!!greeting = "Good morning"!!!  # before 12pm
+
+# put together the message and make it centered
+message = (greeting + " world!").center(width)
+
+print(message)
+```
+
+`````
+
+<br>
+
+{{ row }}
+
+Various kinds of {term}`compound statements <compound statement>` are used to
+group together and control part of a program. The syntax is:
+
+
+{{ right }}
+
+```{include} ../templates/syntax/compound-statement.md
+```
+
+```{include} ../templates/desc/compound-statement.md
+```
+
+{{ row }}
+
+While the full {term}`header` syntax depends on the statement, they all begin
+with a keyword and end with a colon (`:`).
+
+{{ right }}
+
+```{code-block-hl} python
+:class: full-width
+:lineno-start: 11
+:caption: header line
+
+!!!if!!! today.tm_hour < 11!!!:!!!
+  greeting = "Good morning "  # before 12pm
+```
+
+<br>
+
+{{ row }}
+
+Its {term}`body` of statements are indented under the header.
+
+{{ right }}
+
+```{code-block-hl} python
+:class: full-width
+:lineno-start: 11
+:caption: indented body line
+
+if today.tm_hour < 11:
+!!!  !!!greeting = "Good morning"  # before 12pm
+```
+
+<br>
 
 {{ endcols }}
 
@@ -98,41 +299,66 @@ print("Hello world!")
 
 {{ left }}
 
-A statement may contain one or more expressions. An expression is any piece
-of code that produces a value.
+A statement may contain one or more {term}`expressions <expression>`, which is
+any piece of code that resolves to a value.
 
 {{ right }}
 
 ```{code-block-hl} python
-:class: full-width thebe-align
+:class: full-width
 :linenos:
+:lineno-start: 9
 
-# My first Python program
-print(!!!"Hello world!"!!!)
+greeting = !!!"Hello"!!!
 ```
 
-{{ endcols }}
+:::{dropdown} See more
+:title: +text-center
 
-{{ left }}
+```{code-block-hl} python
+:class: full-width
+:linenos:
+:caption: all expressions
 
-Parentheses can be used around part of an expression to change order of
-operation.
+!!!"""My first program"""!!!
+
+import time
+import shutil
+
+width = !!!80!!!
+today = !!!time.localtime()!!!
+
+greeting = !!!"Hello"!!!
+
+if !!!today.tm_hour < 11!!!:
+  greeting = !!!"Good morning"!!!  # before 12pm
+
+# put together the message and make it centered
+message = !!!(greeting + "world!").center(width)!!!
+
+print(!!!message!!!)
+```
+
+:::
+
+<br>
+
+{{ row }}
+
+Parentheses can be used around part of an expression to control order of
+operation or grouping.
 
 {{ right }}
 
-```{code-cell} python
+```{code-block-hl} python
 :class: full-width
 :linenos:
+:lineno-start: 15
 
-2 * 3 + 4
+message = !!!(greeting + "world!")!!!.center(width)
 ```
 
-```{code-cell} python
-:class: full-width
-:linenos:
-
-2 * (3 + 4)
-```
+<br>
 
 {{ endcols }}
 
@@ -229,12 +455,20 @@ Lets take a closer look at the standard built in types.
   - Description
   - Examples
 
-* - <label>Strings</label>
-  - `str`
-  - Text data enclosed in either single or double quotes.
+* - <label>None</label>
+  -
+  - A single value `None` with the first letter capitalized. Used to indicate
+    that the value has not been set.
   - ```python
-    "Hello"
-    'Goodbye'
+    None
+    ```
+
+* - <label>Boolean</label>
+  - `bool`
+  - Either `True` or `False` with the first letter capitalized.
+  - ```python
+    True
+    False
     ```
 
 * - <label>Integers</label>
@@ -255,20 +489,12 @@ Lets take a closer look at the standard built in types.
     -0.25
     ```
 
-* - <label>Boolean</label>
-  - `bool`
-  - Either `True` or `False` with the first letter capitalized.
+* - <label>Strings</label>
+  - `str`
+  - Text data enclosed in either single or double quotes.
   - ```python
-    True
-    False
-    ```
-
-* - <label>None</label>
-  -
-  - A single value `None` with the first letter capitalized. Used to indicate
-    that the value has not been set.
-  - ```python
-    None
+    "Hello"
+    'Goodbye'
     ```
 
 * - <label>List</label>
@@ -755,7 +981,11 @@ In this example, `"Hello."` is printed if all preceeding conditions evaluated to
 
 ### for loops
 
+
 {{ left }}
+
+For loops are used to iterate over every element in a sequence and repeat a
+block of code each time.
 
 {{ right }}
 
@@ -779,6 +1009,9 @@ In this example, `"Hello."` is printed if all preceeding conditions evaluated to
 
 {{ left }}
 
+A `while` loop is used to repeat a block of code as long as an
+expression evalutates to `True`.
+
 {{ right }}
 
 ```{include} ../templates/syntax/while.md
@@ -801,10 +1034,10 @@ In this example, `"Hello."` is printed if all preceeding conditions evaluated to
 
 ### Functions
 
+{{ left }}
+
 A {term}`function` is a set of Python instructions or statements that can be
 executed, or called, later.
-
-{{ left }}
 
 {{ right }}
 
