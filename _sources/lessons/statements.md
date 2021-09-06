@@ -183,6 +183,7 @@ else:
 You can think of compound statements as a hierarchy where statements at the
 same indentation level are under the authority of the most recent header
 statement that's back one indentation level.
+
 ```{code-block} python
 ---
 linenos:
