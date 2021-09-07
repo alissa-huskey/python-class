@@ -579,6 +579,7 @@ property
   False if it is open.
 
 dot notation
+attribute reference
   Accessing an object member using a `.` after the object followed by the
   member name: {samp}`{object}.{member}`. It is the same syntax used to access
   something imported from a module, for example: `random.randint()`.

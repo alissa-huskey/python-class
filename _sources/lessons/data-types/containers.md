@@ -402,6 +402,9 @@ index : data-types
 index number
   An integer representing an elements position in a sequence.
 
+slice
+  Selecting a range of elements from a collection. In Python, this is done
+  either using {term}`subscription` or the `slice` type.
 ```
 
 
