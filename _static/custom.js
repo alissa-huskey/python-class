@@ -4,6 +4,16 @@ try {
   var session = {};
 }
 
+// remove href attribute from .missing-term
+window.addEventListener("DOMContentLoaded", (e) => {
+  console.log("python-class> removing missing-term hrefs...");
+
+  orphans = $("a.term-missing");
+  for(i = 0; i < orphans.length; i++) {
+    orphans[i].removeAttribute("href");
+  }
+});
+
 // add In: and Out: before cell_input and cell_output
 window.addEventListener("DOMContentLoaded", (e) => {
   console.log("python-class> adding cell labels...");

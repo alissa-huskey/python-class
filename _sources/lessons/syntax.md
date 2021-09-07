@@ -552,8 +552,9 @@ any expression.
 
 {{ row }}
 
-This means it is possible to {term}`chain` or string together multiple
-attribute references, as long as each concecutive member returns a value.
+This means it is possible to {term}`chain <chaining>` or string together
+multiple attribute references, as long as each concecutive member returns a
+value.
 
 {{ right }}
 
