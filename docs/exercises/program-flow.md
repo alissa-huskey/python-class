@@ -120,7 +120,7 @@ Last week we discussed that...
 * You define a function using a compound statement starting with the `def`
   keyword.
 * When you {term}`call` a function, it is like using the skill. This is when
-  the stored statements are actually {term}`executed`.
+  the stored statements are actually {term}`executed <execute>`.
 * You call a function by using its name, followed by parenthisis.
 * Functions can take {term}`arguments`.
 * When defining the function, these go inside the parenthisis of the

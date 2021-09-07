@@ -2,13 +2,16 @@
 
 from pprint import pformat
 from collections import defaultdict
+from pathlib import Path
 
 from sphinx.application import Sphinx as SphinxApplication
 from sphinx.environment import BuildEnvironment
+from sphinx.environment.collectors import EnvironmentCollector
 from sphinx.builders import Builder
 from sphinx.domains import Domain
+from sphinx.directives import SphinxDirective
 from sphinx.util import rst
-from sphinx.util.nodes import make_id
+from sphinx.util.nodes import make_id, make_refnode
 from sphinx import addnodes
 from sphinx.domains.std import Glossary as SphinxGlossary
 from sphinx.util.docutils import register_directive
@@ -19,17 +22,40 @@ from more_itertools import first
 
 from logger import Logger
 
-# log = Logger("lexicon")
+
 log = Logger("lexicon", enabled=False)
 
 
+class OrphanedTermsDirective(SphinxDirective):
+
+    def run(self):
+        return [orphanedterms("")]
+
+
+class MissingTermsCollector(EnvironmentCollector):
+    """."""
+
+    def clear_doc(self, app, env, docname) -> None:
+        if env.orphans[docname]:
+            app.domains.get("lexicon").expire_orphans()
+        env.orphans[docname] = set()
+
+    def merge_other(self, app, env, docnames, other) -> None:
+        for doc in docnames:
+            if doc not in other.orphans:
+                continue
+            env.orphans[doc] = other.orphans[doc]
+
+    def process_doc(self, app, doctree) -> None:
+        ...
+
+
 class Term(str):
-    """Class for Terms"""
+    """Class for glossary Terms"""
 
     def normalize(self):
         """Provide trimmed sha string"""
         return self.lower().replace(" ", "-").rstrip("s")
-
 
 
 class Glossary():
@@ -221,6 +247,9 @@ class MissingTerm():
         self.doc = doc
         self.lineno = lineno
 
+    def __hash__(self):
+        return hash(self.term)
+
 
 class GlossaryDirective(SphinxGlossary):
     optional_arguments = 1
@@ -237,6 +266,12 @@ class GlossaryDirective(SphinxGlossary):
         """Process the directive arguments, options and content, and return a
            list of nodes."""
         lex = self.env.get_domain('lexicon')
+        location, _ = self.state_machine.get_source_and_line(self.lineno)
+        rel_filename = str(Path(location).relative_to(self.env.srcdir))
+        self.env.note_dependency(rel_filename)
+
+        log("GlossaryDirective> location:", location)
+        log("GlossaryDirective> rel_filename:", rel_filename)
 
         glossary = Glossary(
             doc=self.env.docname,
@@ -267,9 +302,11 @@ class LexiconDomain(Domain):
 
     name = "lexicon"
     label = "Lexicon Domain"
+    outdated = set()
 
     directives = {
         'glossary': GlossaryDirective,
+        'orphanedterms': OrphanedTermsDirective,
     }
 
     initial_data = {
@@ -296,8 +333,14 @@ class LexiconDomain(Domain):
         assert isinstance(term, Term), "argument term (Term) required"
         assert isinstance(doc, str), "argument doc (str) required"
         assert isinstance(lineno, int), "argument lineno (int) required"
-        self.data['missing-terms'][term.normalize()] = \
-            MissingTerm(term, doc, lineno)
+        log(f"missing term> {term}")
+        orphan = MissingTerm(term, doc, lineno)
+        self.data['missing-terms'][term.normalize()] = orphan
+        self.env.orphans[doc].add(orphan)
+        self.expire_orphans()
+
+    def expire_orphans(self):
+        self.outdated.add("docs/orphans")
 
     def add_term(self, term: Term, listing: GlossaryListing):
         """Save GlossaryListing to list of defined self.data['terms']"""
@@ -323,29 +366,6 @@ class LexiconDomain(Domain):
 
         refnode.append(textnode)
         return refnode
-
-
-def setup(app):
-    log("Lexicon Extension>", "setup()")
-
-    # add Lexicon Domain
-    app.add_domain(LexiconDomain)
-
-    # handle missing-reference events with term_resolver
-    app.connect("missing-reference", term_resolver)
-
-    # replace sphinx glossary directive with GlossaryDirective
-    #    and rename glossary to std:glossary
-    std = app.registry.domains.get('std')
-    sphinx_glossary = std.directives.pop('glossary')
-    app.add_directive('std:glossary', sphinx_glossary)
-    app.add_directive("glossary", GlossaryDirective)
-
-    return {
-        "version": "0.1",
-        "parallel_read_safe": True,
-        "parallel_write_safe": True,
-    }
 
 
 def term_resolver(app: SphinxApplication, env: BuildEnvironment,
@@ -386,3 +406,82 @@ def term_resolver(app: SphinxApplication, env: BuildEnvironment,
     return domain.mkref(app.builder, term, listing, textnode)
 
 
+class orphanedterms(nodes.General, nodes.Element):
+    pass
+
+def visit_orphanedterms_node(self, node):
+    self.visit_container(node)
+
+def depart_orphanedterms_node(self, node):
+    self.depart_container(node)
+
+def generate_missing_glossary(app, doctree, docname):
+    """."""
+    domain = app.builder.env.domains.get("lexicon")
+
+    log("generate_missing_glossary> missing-terms:", len(domain.data["missing-terms"]))
+    log("generate_missing_glossary> env.orphans:", len(app.env.orphans))
+
+    children = []
+
+    for doc, orphans in app.env.orphans.items():
+        if not orphans:
+            continue
+
+        ref = nodes.paragraph("", "", nodes.reference(
+            "", "",
+            nodes.Text(doc),
+            internal=True,
+            refuri=app.builder.get_relative_uri(docname, doc),
+        ))
+        children.append(ref)
+
+        for orphan in orphans:
+            children.append(nodes.literal_block("", f"{orphan.term}\n  ..."))
+
+    for glossary in doctree.traverse(orphanedterms):
+        log("orphanedterms>", glossary)
+        glossary.children = children
+
+
+def init(app):
+    """Initialize collector storage objects"""
+    app.builder.env.orphans = defaultdict(set)
+
+def get_outdated_docs(app, env, added, changed, removed):
+    lexicon = app.env.domains.get("lexicon")
+    log("get_outdated_docs>", len(lexicon.outdated))
+    return changed.union(lexicon.outdated)
+
+def setup(app):
+    log("Lexicon Extension>", "setup()")
+
+    # add Lexicon Domain
+    app.add_domain(LexiconDomain)
+
+    # handle missing-reference events with term_resolver
+    app.connect("missing-reference", term_resolver)
+
+    app.connect("builder-inited", init)
+    app.connect("env-get-outdated", get_outdated_docs)
+
+    # replace sphinx glossary directive with GlossaryDirective
+    #    and rename glossary to std:glossary
+    std = app.registry.domains.get('std')
+    sphinx_glossary = std.directives.pop('glossary')
+    app.add_directive('std:glossary', sphinx_glossary)
+    app.add_directive("glossary", GlossaryDirective)
+
+    app.add_env_collector(MissingTermsCollector)
+
+    app.add_node(orphanedterms,
+                 html=(visit_orphanedterms_node, depart_orphanedterms_node))
+
+    app.add_directive("orphanedterms", OrphanedTermsDirective)
+    app.connect("doctree-resolved", generate_missing_glossary)
+
+    return {
+        "version": "0.1",
+        "parallel_read_safe": True,
+        "parallel_write_safe": True,
+    }

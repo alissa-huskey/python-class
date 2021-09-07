@@ -492,7 +492,8 @@ function does, any parameters, and any return value. For simple functions a
 one line brief description will do the trick.
 
 For more complicated functions, you can take advantage of the multiline
-abilities of docstrings to add detailed information. Here's a long docstring example.
+abilities of docstrings to add detailed information. Here's a long docstring
+example.
 
 ```{code-block} python
 def prettify(message, align, width):
@@ -550,6 +551,12 @@ call
   code that tells the computer to {term}`execute` the code within a previously
   defined function or method by using the function name followed by `(` `)`,
   with any arguments inside the parenthisis.
+
+define
+defining a function
+  Creating a function by specifying its name, the parameters it takes, and what
+  it does. In Python, this is done using the `def` keyword.
+
 
 docstring
   a special kind of string surrounded by triple double-quotes `"""` or triple

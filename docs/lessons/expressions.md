@@ -3,7 +3,7 @@ Expressions
 
 An {term}`expression` is a unit of code that can be solved to a single value.
 
-This process is called {term}`evaluating` the expression.
+This process is called {term}`evaluating <evaluate>` the expression.
 
 Take the following simple expression that resolves to `30`.
 
