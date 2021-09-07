@@ -32,10 +32,21 @@ concatenation
 concatenate
   Joining two or more strings together.
 
+interpolation
+string interpolation
+variable interpolation
+variable substitution
+variable expansion
+  When values are replaced for their respective placeholders inside of a string
+  literal. In Python the recommended way to do this is with f-strings.
+
 loop
   A block of code that will repeat until a specified condition is reached. For
-  example *for-loops* and *while-loops*. An *infinite-loop* occurs if there is
-  no condition or the condition can never be met.
+  example *for-loops* and *while-loops*.
+
+literal
+  A value in its raw form, (for example `25` or `"text"`), as opposed to being
+  referenced in a variable.
 
 ```
 

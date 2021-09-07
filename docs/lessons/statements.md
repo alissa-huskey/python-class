@@ -206,7 +206,7 @@ charge of `Data` and `Worf` (lines `6` and `7`).
 ### Nested statements
 
 Compound statements contain other compound statements. The suites of the nested
-compound statements would then be indented one additional level. 
+compound statements would then be indented one additional level.
 
 An example is a function that contains an if-statement.
 
@@ -240,7 +240,7 @@ action(response)
 * Lines `11`-`12` are inside the function, but not the `if` statement
 * Lines `14`-`15` are outside of the function entirely
 
-Expressions vs. Statements 
+Expressions vs. Statements
 ---------------------------
 
 An expression is any piece of code that evaluates to a value.
@@ -456,7 +456,7 @@ physical line
 logical line
   - a physical line of code containing a single complete statement
   - multiple physical lines of code joned by explicit or implicit line continuation
-  - a single statement part of multi-statement physical line of code 
+  - a single statement part of multi-statement physical line of code
 
 execute
   when Python runs a statement (or script)
@@ -481,8 +481,9 @@ compound statement
 header
   the first line in a compound statement clause, beginning with a keyword and
   ending with a `:`, that controls when and how the suite of statements in the
-  clause will be executed. 
+  clause will be executed.
 
+body
 suite
   a group of statements in a compound statement that are controlled by a header
 

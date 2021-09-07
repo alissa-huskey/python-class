@@ -3,6 +3,7 @@ substitutions:
   left:  '{{ leftcol | replace("col", "col-5") }}'
   right: '{{ rightcol | replace("col", "col-7") }}'
   row: '{{ newrow | replace("col", "col-5") }}'
+  label: '<div class="text-right">Syntax:</div>'
 
 jupytext:
   formats: md:myst
@@ -71,9 +72,9 @@ print(message)
 
 {{ left }}
 
-When the first line of a program or function is enclosed in tripple single
-(`'''`) or tripple double (`"""`) quotes, it is a special kind of string
-intended for documenation called a {term}`docstring`.
+When the first line of a program or function is enclosed in triple single
+(`'''`) or triple double (`"""`) quotes, it is a special kind of string
+intended for documentation called a {term}`docstring`.
 
 {{ right }}
 
@@ -247,7 +248,9 @@ print(message)
 {{ row }}
 
 Various kinds of {term}`compound statements <compound statement>` are used to
-group together and control part of a program. The syntax is:
+group together and control part of a program.
+
+{{ label }}
 
 
 {{ right }}
@@ -376,6 +379,18 @@ delay = 0.1         # floating point (float)
 verbose = True      # boolean        (bool)
 winner = None       # NoneType
 
+# list (list)
+letters = ["a", "b", "c", "d", "e", "f"]
+
+# dictionary (dict)
+numbers = {
+  "I": 1,
+  "II": 2,
+  "III": 3,
+  "IV": 4,
+  "V": 5,
+}
+
 print(greeting)
 ```
 
@@ -416,7 +431,7 @@ print(!!!greeting!!!)
 {{ row }}
 
 Assign multiple variables at once by putting the same number of variables on
-the left of the equals sign as values on the right, seperated by commas.
+the left of the equals sign as values on the right, separated by commas.
 
 Syntax: \
 {samp}`NAME1, NAME2... = VAL1, VAL2...`
@@ -442,7 +457,161 @@ x, y = [-10, 10]
 
 {{ endcols }}
 
-### Types
+### Bracket notation
+
+Many {term}`container` types (like lists and dictionaries) support the use of
+{term}`subscription` or {term}`bracket notation` to select elements from the
+collection. Add square brackets (`[` `]`) after a value enclosing a selector
+expression.
+
+Syntax: {samp}`{VALUE}[{EXPRESSION}]`
+
+{{ left }}
+
+Depending on the type, a selector expression may be a negative or positive {term}`index number`...
+
+{{ right }}
+
+```{code-block-hl} python
+letters!!![0]!!!
+letters!!![-1]!!!
+```
+
+{{ row }}
+
+... a {term}`key`...
+
+{{ right }}
+
+```{code-block-hl} python
+numbers!!!["IV"]!!!
+```
+
+{{ row }}
+
+...or a {term}`slice`.
+
+{{ right }}
+
+```{code-block-hl} python
+letters!!![2:4]!!!
+```
+
+{{ row }}
+
+As with any expression, variables can be used in selector expressions.
+
+{{ right }}
+
+```{code-block-hl} python
+idx = 2
+letters!!![idx]!!!
+letters!!![idx:]!!!
+```
+
+{{ row }}
+
+Bracket notation is most often used on a variable, but in fact it can be used
+on any expression that results in a type that supports it.
+
+{{ right }}
+
+```{code-block-hl} python
+"hello"!!![2]!!!
+list("abc")!!![-1]!!!
+{"a": 1}!!!["a"]!!!
+```
+
+{{ endcols }}
+
+### Dot notation
+
+{{ left }}
+
+Use {term}`dot notation` to access {term}`members` of a given value by adding a
+period (`.`) after a value followed by the member name.
+
+Syntax: {samp}`{VALUE}.{MEMBER}`
+
+{{ right }}
+
+```{code-block-hl} python
+letters!!!.sort!!!()
+```
+
+{{ row }}
+
+While dot notation is most often used on a variable, it can actually be used on
+any expression.
+
+{{ right }}
+
+```{code-block-hl} python
+"hello"!!!.upper!!!()
+```
+
+{{ row }}
+
+This means it is possible to {term}`chain` or string together multiple
+attribute references, as long as each concecutive member returns a value.
+
+{{ right }}
+
+```{code-block-hl} python
+name = input("Full Name: ")!!!.title!!!()!!!.strip!!!()
+```
+
+{{ endcols }}
+
+### Calls
+
+{{ left }}
+
+Call a function by adding a set of parenthesis after the name.
+
+Syntax: {samp}`{NAME}()`
+
+{{ right }}
+
+```{code-cell} python
+:class: full-width
+
+print()
+```
+
+{{ row }}
+
+Put arguments inside the parenthesis.
+
+Syntax: {samp}`{NAME}({ARG})`
+
+{{ right }}
+
+```{code-cell} python
+:class: full-width
+
+print("Welcome!")
+```
+
+{{ row }}
+
+Separate multiple {term}`arguments <argument>` with commas.
+
+Syntax: {samp}`{NAME}({ARG1}, {ARG2}...)`
+
+{{ right }}
+
+```{code-cell} python
+:class: full-width
+
+name = "Mario"
+print("Welcome", name)
+```
+
+{{ endcols }}
+
+Types
+-----
 
 Lets take a closer look at the standard built in types.
 
@@ -471,7 +640,7 @@ Lets take a closer look at the standard built in types.
     False
     ```
 
-* - <label>Integers</label>
+* - <label>Integer</label>
   - `int`
   - Whole numbers.
   - ```python
@@ -489,7 +658,7 @@ Lets take a closer look at the standard built in types.
     -0.25
     ```
 
-* - <label>Strings</label>
+* - <label>String</label>
   - `str`
   - Text data enclosed in either single or double quotes.
   - ```python
@@ -550,8 +719,8 @@ Strings store text data and can be enclosed in either single or double quotes.
 
 {{ row }}
 
-For a string that spans multiple lines, enclose it in tripple double (`"""`) or
-tripple single (`'''`) quotes.
+For a string that spans multiple lines, enclose it in triple double (`"""`) or
+triple single (`'''`) quotes.
 
 {{ right }}
 
@@ -566,8 +735,8 @@ print(rhyme)
 
 {{ row }}
 
-To break long text into multiple lines of code, put strings on concecutive
-lines (without seperating commas) and enclose the whole expression in
+To break long text into multiple lines of code, put strings on consecutive
+lines (without separating commas) and enclose the whole expression in
 parentheses `(` `)`.
 
 {{ right }}
@@ -611,10 +780,11 @@ print(r"C:\Documents\nodes")
 
 {{ row }}
 
-Strings can be concatenated (joined together) by using the `+` operator.
+Strings can be {term}`concatenated <concatenate>` (joined together) by using
+the `+` operator.
 
-String literals (i.e. the ones in quotes) next to each other are automatically
-concatonated.
+String literals (the ones in quotes) next to each other are automatically
+concatenated.
 
 {{ right }}
 
@@ -628,7 +798,7 @@ print(text)
 
 {{ row }}
 
-Use an f-string for string interpoliation by prefixing the string with the
+Use an f-string for string {term}`interpolation` by prefixing the string with the
 letter `f` then enclose the variable or other evaluated code curly braces (`{` `}`).
 
 {{ right }}
@@ -649,7 +819,7 @@ A list is an ordered collection of arbitrary objects.
 
 {{ left }}
 
-To create one, enclose comma-seperated values in square brackets \
+To create one, enclose comma-separated values in square brackets \
 (`[` `]`), or an empty pair of square brackets for an empty list.
 
 {{ right }}
@@ -708,7 +878,7 @@ A dictionary is a collection of key value pairs.
 
 {{ left }}
 
-To create one, enclose comma-seperated key value pairs in curly braces (`{` `}`) with
+To create one, enclose comma-separated key value pairs in curly braces (`{` `}`) with
 a colon (`:`) between each key and value. Or use an empty pair of curly brackets
 to make an empty dictionary.
 
@@ -771,7 +941,7 @@ A tuple is an immutable collection of arbitrary objects.
 
 {{ left }}
 
-To create one, enclose comma-seperated values in parenthesis \
+To create one, enclose comma-separated values in parenthesis \
 (`(` `)`), or an empty pair of parenthesis for an empty tuple.
 
 {{ right }}
@@ -784,7 +954,7 @@ To create one, enclose comma-seperated values in parenthesis \
 
 {{ row }}
 
-A tuple can also be created using comma seperated values without the
+A tuple can also be created using comma separated values without the
 parenthesis.
 
 {{ right }}
@@ -861,7 +1031,7 @@ A set is an unordered collection with no duplicate elements.
 
 {{ left }}
 
-To create one, enclose comma-seperated values in curly braces \
+To create one, enclose comma-separated values in curly braces \
 (`{` `}`).
 
 {{ right }}
@@ -872,7 +1042,7 @@ To create one, enclose comma-seperated values in curly braces \
 
 {{ row }}
 
-Since curley braces are also used for dictionaries, use `set()` to create an
+Since curly braces are also used for dictionaries, use `set()` to create an
 empty set.
 
 {{ right }}
@@ -895,7 +1065,9 @@ certain conditions.
 
 {{ left }}
 
-If statements always start with an `if` clause. The syntax is:
+If statements always start with an `if` {term}`clause`.
+
+{{ label }}
 
 {{ right }}
 
@@ -923,7 +1095,9 @@ In this example, `"Would you like a beer?"` will only be printed if `age >= 21`.
 
 {{ row }}
 
-An if statement may contain zero or more `elif` clauses. The syntax is:
+An if statement may contain zero or more `elif` clauses.
+
+{{ label }}
 
 {{ right }}
 
@@ -951,7 +1125,10 @@ This example contains two `elif` clauses.
 
 {{ row }}
 
-And an if statement may optionally end with an `else` clause. The syntax is:
+And an if statement may optionally end with an `else` clause. These body
+statements will be executed if none of the previous conditions are met.
+
+{{ label }}
 
 {{ right }}
 
@@ -965,7 +1142,7 @@ And an if statement may optionally end with an `else` clause. The syntax is:
 
 {{ row }}
 
-In this example, `"Hello."` is printed if all preceeding conditions evaluated to
+In this example, `"Hello."` is printed if all preceding conditions evaluated to
 `False`.
 
 {{ right }}
@@ -986,6 +1163,8 @@ In this example, `"Hello."` is printed if all preceeding conditions evaluated to
 
 For loops are used to iterate over every element in a sequence and repeat a
 block of code each time.
+
+{{ label }}
 
 {{ right }}
 
@@ -1010,7 +1189,9 @@ block of code each time.
 {{ left }}
 
 A `while` loop is used to repeat a block of code as long as an
-expression evalutates to `True`.
+expression evaluates to `True`.
+
+{{ label }}
 
 {{ right }}
 
@@ -1030,7 +1211,7 @@ expression evalutates to `True`.
 :linenos:
 ```
 
-{{ endcols}}
+{{ endcols }}
 
 ### Functions
 
@@ -1038,6 +1219,8 @@ expression evalutates to `True`.
 
 A {term}`function` is a set of Python instructions or statements that can be
 executed, or called, later.
+
+{{ label }}
 
 {{ right }}
 
@@ -1059,56 +1242,16 @@ executed, or called, later.
 
 {{ endcols }}
 
-### Calls
-
-{{ left }}
-
-Call a function by adding a set of parenthesis after the name. \
-Syntax: {samp}`{NAME}()`
-
-{{ right }}
-
-```{code-cell} python
-:class: full-width
-
-print()
-```
-
-{{ row }}
-
-Put arguments inside the parenthesis. \
-Syntax: {samp}`{NAME}({ARG})`
-
-{{ right }}
-
-```{code-cell} python
-:class: full-width
-
-print("Welcome!")
-```
-
-{{ row }}
-
-Seperate multiple arguments with commas. \
-Syntax: {samp}`{NAME}({ARG1}, {ARG2}...)`
-
-{{ right }}
-
-```{code-cell} python
-:class: full-width
-
-name = "Mario"
-print("Welcome", name)
-```
-
-{{ endcols }}
-
 Reference
 ---------
 
 ### Glossary
 
 ```{glossary} syntax
+
+chaining
+method chaining
+  Stringing together multiple {term}`dot notation` attribute references.
 
 comment
   Parts in a source-code file which are ignored when the program is run. In
@@ -1152,25 +1295,27 @@ variable
 ----
 
 % TODO
-% [ ] docstrings
+% [x] docstrings
 % [x] comments
 % [x] parens for grouping, order of operation
 % [ ] line splitting
-% [.] types
+% [x] subscription
+% [ ] dot notation
+% [ ] case sensitive
+% [ ] operators
+% [ ] delimiters
+% [x] types
 %     [x] list
 %     [.] dict
 %     [x] str
 %     [x] None
-%     [ ] set
-%     [ ] tuple
-% [ ] flow control
-%     [ ] if
-%     [ ] while
-%     [ ] for
-%         [ ] break
-%         [ ] continue
-%     [.] functions
-%         [ ] return
+%     [x] set
+%     [x] tuple
+% [x] flow control
+%     [x] if
+%     [x] while
+%     [x] for
+%     [x] functions
 % [ ] confusing
 %     [ ] nested function calls
 %     [ ] subscription and dot notation on values
@@ -1182,10 +1327,8 @@ variable
 %     [ ] `if function`
 %     [ ] missing commas from list means concatonation
 %
-% [ ] keywords
-% [ ] case sensitive
+% [x] keywords
 
-% https://jakevdp.github.io/WhirlwindTourOfPython/02-basic-python-syntax.html
 % https://www.101computing.net/wp/wp-content/uploads/Python-Cheat-Sheet.pdf
 % https://ddi.ifi.lmu.de/probestudium/2013/ws-i-3d-programmierung/tutorials/python-referenzkarte
 % https://www.codecademy.com/learn/introduction-to-python-dvp/modules/python-syntax-dvp/cheatsheet
