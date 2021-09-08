@@ -432,6 +432,24 @@ Download the following flashcard files or feel free to make your own.
 Screencasts
 -----------
 
+`````{tabbed} Nila's
+
+```{div} text-right
+{link-badge}`https://github.com/Mazama1980/Repl.it/blob/master/flashcards.py,source code,cls=badge-success text-white p-2`
+```
+
+```{screencast} assets/nila-flashcards.cast
+:cols: 125
+:rows: 33
+:poster: npt:0:19
+:title: "flashcards"
+:author: "Nila"
+:author-url: "http://github.com/Mazama1980"
+```
+
+`````
+
+
 `````{tabbed} Sean's
 
 ```{div} text-right
