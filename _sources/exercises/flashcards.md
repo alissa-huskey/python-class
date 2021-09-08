@@ -432,6 +432,24 @@ Download the following flashcard files or feel free to make your own.
 Screencasts
 -----------
 
+`````{tabbed} Sean's
+
+```{div} text-right
+{link-badge}`https://github.com/siporter43/mainpypet.py/blob/master/project_outrun/flashcards.py,source code,cls=badge-success text-white p-2`
+```
+
+```{screencast} assets/sean-flashcards.cast
+:cols: 125
+:rows: 33
+:poster: npt:0:39
+:title: "flashcards"
+:author: "Sean"
+:author-url: "http://github.com/siporter43"
+```
+
+`````
+
+
 `````{tabbed} Brian's
 
 ```{div} text-right
