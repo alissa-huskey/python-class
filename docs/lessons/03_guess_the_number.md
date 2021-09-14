@@ -14,11 +14,10 @@ Chapter 3: Guess the Number
 
 > Based on: [Chapter 3: Guess the Number](http://inventwithpython.com/invent4thed/chapter3.html)
 
-In this chapter, you’re going to make a Guess the Number game. The
-computer will think of a secret number from 1 to 20 and ask the user to
-guess it. After each guess, the computer will tell the user whether the
-number is too high or too low. The user wins if they can guess the number
-within six tries.
+In this chapter, you’re going to make a Guess the Number game. The computer
+will think of a secret number from `1` to `20` and ask the user to guess it.
+After each guess, the computer will tell the user whether the number is too
+high or too low. The user wins if they can guess the number within six tries.
 
 This is a good game to code because it covers many programming concepts in
 a short program. You’ll learn how to convert values to different data
@@ -61,15 +60,17 @@ sure there are no errors.
 Part 2. Use the `random` Module
 -------------------------------
 
-Python has a limited set of functions built into the language like the
-`print()` function that you are already familiar with. More functions can
-be accessed through {term}`modules`.
+Python provides some functions that are built into the language like the
+`print()` function that you are already familiar with. There are even more
+functions available through {term}`modules`.
 
-A {term}`module` is a kind of reusable code that can be loaded into your scripts
-using the `import` keyword.
+A {term}`module` is a kind of reusable code that can be loaded into your
+scripts using the `import` keyword followed by the name of the module.
 
-We are going to use the `random` module in this script. It has a function
-`randint()` which we will use to get a random number.
+The collection of modules provided by Python is called the standard library,
+and that's what we'll be using today.  We are going to use the `random` module
+in this script. It has a function `randint()` which we will use to get a random
+number.
 
 To call a function that is part of a module, put the module
 {term}`namespace` in front of the function followed by a dot, then the

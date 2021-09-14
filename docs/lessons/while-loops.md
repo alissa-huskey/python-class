@@ -17,27 +17,10 @@ Normally Python reads one statement at a time, one at a time. But loops give us
 the ability to repeat a set of statements. In this lesson we will be learning
 about `while` loops.
 
-
-Table of Contents
------------------
-
-* [Introduction](#introduction)
-* [Syntax](#syntax)
-   * [Exercises](#exercises)
-   * [Quitting a loop](#quitting-a-loop)
-      * [Exercise](#exercise)
-   * [Skipping part of an iteration](#skipping-part-of-an-iteration)
-* [Loop patterns](#loop-patterns)
-   * [Incrementing and decrementing](#incrementing-and-decrementing)
-      * [Exercise](#exercise-1)
-   * [Infinite loops](#infinite-loops)
-   * [Iterating over a list](#iterating-over-a-list)
-   * [Nested loops](#nested-loops)
-      * [Exercises](#exercises-1)
-* [Exercises](#exercises-2)
-* [Reference](#reference)
-   * [Glossary](#glossary)
-   * [See also](#see-also)
+```{contents} Table of Contents
+:backlinks: top
+:local:
+```
 
 
 Introduction
