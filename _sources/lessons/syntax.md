@@ -243,8 +243,6 @@ print(message)
 
 `````
 
-<br>
-
 {{ row }}
 
 Various kinds of {term}`compound statements <compound statement>` are used to
@@ -277,8 +275,6 @@ with a keyword and end with a colon (`:`).
   greeting = "Good morning "  # before 12pm
 ```
 
-<br>
-
 {{ row }}
 
 Its {term}`body` of statements are indented under the header.
@@ -293,8 +289,6 @@ Its {term}`body` of statements are indented under the header.
 if today.tm_hour < 11:
 !!!  !!!greeting = "Good morning"  # before 12pm
 ```
-
-<br>
 
 {{ endcols }}
 
@@ -344,8 +338,6 @@ print(!!!message!!!)
 
 :::
 
-<br>
-
 {{ row }}
 
 Parentheses can be used around part of an expression to control order of
@@ -361,7 +353,64 @@ operation or grouping.
 message = !!!(greeting + "world!")!!!.center(width)
 ```
 
-<br>
+{{ br * 2 }}
+
+{{ row }}
+
+Often more than one expression is needed to make a value.
+
+One expression is then made up of two or more other expressions, each of which
+must be {term}`evaluated <evaluate>` to produce a value, before being combined
+together into the final result.
+
+They are evaluated in the order of inside outward then left to right.
+
+{{ right }}
+
+```{code-block-hl} python
+---
+class: full-width
+caption: |
+  step #1 innermost variables and literal values: \
+  `message = ("Hello" + "world!").center(80)`
+---
+
+
+message = (!!!greeting!!! + !!!"world!"!!!).center(!!!width!!!)
+```
+
+```{code-block-hl} python
+---
+class: full-width
+caption: |
+  step #2 remaining inner expression: \
+  `message = ("Hello world!").center(80)`
+---
+
+message = (!!!greeting + "world!"!!!).center(width)
+```
+
+```{code-block-hl} python
+---
+class: full-width
+caption: |
+  step #3 leftmost expression: \
+  `message = "Hello world!".center(80)`
+---
+
+message = !!!(greeting + "world!")!!!.center(width)
+```
+
+```{code-block-hl} python
+---
+class: full-width
+caption: |
+  step #4 next expression to the right: \
+  `message = "                                  Hello world!                                  "`
+---
+
+message = !!!(greeting + "world!").center(width)!!!
+```
 
 {{ endcols }}
 
@@ -517,9 +566,9 @@ on any expression that results in a type that supports it.
 {{ right }}
 
 ```{code-block-hl} python
-"hello"!!![2]!!!
-list("abc")!!![-1]!!!
-{"a": 1}!!!["a"]!!!
+!!!"hello"!!![2]
+!!!list("abc")!!![-1]
+!!!{"a": 1}!!!["a"]
 ```
 
 {{ endcols }}
@@ -547,7 +596,7 @@ any expression.
 {{ right }}
 
 ```{code-block-hl} python
-"hello"!!!.upper!!!()
+!!!"hello"!!!.upper()
 ```
 
 {{ row }}
@@ -1078,8 +1127,6 @@ If statements always start with an `if` {term}`clause`.
 ```{include} ../templates/desc/if.md
 ```
 
-<br>
-
 {{ row }}
 
 In this example, `"Would you like a beer?"` will only be printed if `age >= 21`.
@@ -1091,8 +1138,6 @@ In this example, `"Would you like a beer?"` will only be printed if `age >= 21`.
 :linenos:
 :emphasize-lines: "5-6"
 ```
-
-<br>
 
 {{ row }}
 
@@ -1108,8 +1153,6 @@ An if statement may contain zero or more `elif` clauses.
 ```{include} ../templates/desc/elif.md
 ```
 
-<br>
-
 {{ row }}
 
 This example contains two `elif` clauses.
@@ -1121,8 +1164,6 @@ This example contains two `elif` clauses.
 :linenos:
 :emphasize-lines: "7-10"
 ```
-
-<br>
 
 {{ row }}
 
@@ -1138,8 +1179,6 @@ statements will be executed if none of the previous conditions are met.
 
 ```{include} ../templates/desc/else.md
 ```
-
-<br>
 
 {{ row }}
 
@@ -1202,8 +1241,6 @@ expression evaluates to `True`.
 ```{include} ../templates/desc/while.md
 ```
 
-<br>
-
 {{ row }}
 
 {{ right }}
@@ -1230,8 +1267,6 @@ executed, or called, later.
 
 ```{include} ../templates/desc/def.md
 ```
-
-<br>
 
 {{ row }}
 
