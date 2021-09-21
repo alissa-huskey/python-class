@@ -212,6 +212,23 @@ By the way, if we break down that last formatting string: `"=8.2f"`.
 
 {{ endcols }}
 
+Exercises
+---------
+
+`````{exercise} String Formatting
+:label: string-formatting-exercise
+
+Use the `format()` function to:
+
+1. Format the number `48.7052` to two decimal points.
+1. Format the number `2.5` to two decimal points.
+1. Format `.25` to `25%`
+1. Truncate the string `"September"` to a width of `3` characters
+1. Center the string `"Game Over"` to a width of `80`
+1. Left align the text `"8 of 10"` to a width of `80`
+1. Left align the string `"Question"` with a fill character of `"="` to a width of `30` characters.
+
+`````
 
 
 Reference
