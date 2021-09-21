@@ -281,7 +281,7 @@ Print the list so that the decimal points and `-` signs line up.
 1. Paste the above `rand_nums()` function into your file.
 1. Call it and assign the retuned value to the variable `numbers`.
 1. Use a `for` loop to iterate over `numbers` with the variable name `num`. \
-   In each iteration: 
+   In each iteration:
    * Use the `format()` function to format `num` with the format string indicating:
       - `float` presentation
       - `2` decimal places percision
