@@ -225,11 +225,41 @@ Use the `format()` function to:
 1. Format `.25` to `25%`
 1. Truncate the string `"September"` to a width of `3` characters
 1. Center the string `"Game Over"` to a width of `80`
-1. Left align the text `"8 of 10"` to a width of `80`
+1. Right align the text `"8 of 10"` to a width of `80`
 1. Left align the string `"Question"` with a fill character of `"="` to a width of `30` characters.
 
 `````
 
+`````{solution} string-formatting-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: String Formatting Exercise
+:class: full-width
+>>> format(48.7052, ".2f")          # 1
+'48.71'
+
+>>> format(2.5, ".2f")              # 2
+'2.50'
+
+>>> format(.25, ".0%")              # 3
+'25%'
+
+>>> format("September", ".3s")      # 4
+'Sep'
+
+>>> format("Game Over", "^80")      # 5
+'                                   Game Over                                    '
+
+>>> format("8 of 10", ">80")        # 6
+'                                                                         8 of 10'
+
+>>> format("Question ", "=<30")     # 7
+'Question ====================='
+
+```
+
+`````
 
 Reference
 ---------
