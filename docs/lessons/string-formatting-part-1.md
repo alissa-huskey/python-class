@@ -261,6 +261,69 @@ Use the `format()` function to:
 
 `````
 
+`````{exercise} Align Numbers
+:label: align-numbers-exercise
+
+Copy the following function `rand_nums()` then call it to generate a list of
+`10` positive and negative numbers, both floats and ints.
+
+Print the list so that the decimal points and `-` signs line up.
+
+:::{dropdown} Show `rand_nums()` code
+
+```{literalinclude} ../../pythonclass/exercises/rand_nums.py
+:linenos:
+```
+
+:::
+
+```{dropdown} Need help?
+1. Paste the above `rand_nums()` function into your file.
+1. Call it and assign the retuned value to the variable `numbers`.
+1. Use a `for` loop to iterate over `numbers` with the variable name `num`. \
+   In each iteration: 
+   * Use the `format()` function to format `num` with the format string indicating:
+      - `float` presentation
+      - `2` decimal places percision
+      - numeric sign alignment
+      - width of `7` characters
+   * print the returned value
+```
+
+**Example output**:
+
+```text
+-471.00
+ 434.00
+-421.00
+-459.99
+-399.98
+ 371.07
+ 200.02
+  29.00
+  32.00
+ 315.00
+```
+
+`````
+
+`````{solution} align-numbers-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: Align Numbers Exercise
+:class: full-width
+:linenos:
+
+numbers = rand_nums()
+
+for num in numbers:
+  print(format(num, "=7.2f"))
+
+```
+
+`````
+
 Reference
 ---------
 
