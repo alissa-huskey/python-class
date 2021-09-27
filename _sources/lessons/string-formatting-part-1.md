@@ -9,8 +9,8 @@ kernelspec:
   language: python
   name: python3
 ---
-String formatting
-=================
+String formatting: Part 1
+=========================
 
 We often want to display text to the end user in a specific way. For example,
 we may want to display `25.375` as `$25.38` if it represents an amount of money
@@ -357,14 +357,4 @@ Reference
 
 
 % TODO
-% [ ] format() / .format() / % / fstrings
-% [ ] `x%`
-% [ ] `$x.xx`
-% [ ] `(-10)`
-% [ ] `5.25378` -> `5.2`
-% [ ] center/left/right to width
-%     [ ] with alternate character
-% [ ] truncate a string
-
-% EXERCISES
-% [ ] Remove leading zeros from an IP address
+% [ ] fill characters
