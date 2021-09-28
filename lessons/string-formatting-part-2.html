@@ -593,6 +593,18 @@
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#f-strings">
+   f-strings
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise">
+     Exercise
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
             </nav>
@@ -789,7 +801,7 @@ position numbers, you use variable names.</p>
 <div class="section" id="exercises">
 <h3>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h3>
 <div class="exercise admonition" id="format-email-exercise">
-<p class="admonition-title"><span class="caption-number">Exercise 36 </span>(Format email address)</p>
+<p class="admonition-title"><span class="caption-number">Exercise 36 </span>(Format Email Address)</p>
 <div class="section" id="exercise-content">
 <p>Given the following values:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">user</span> <span class="o">=</span> <span class="s2">&quot;joe&quot;</span>
@@ -802,6 +814,148 @@ position numbers, you use variable names.</p>
 <p>Bonus: Write a <code class="docutils literal notranslate"><span class="pre">format_email()</span></code> function that takes three arguments, <code class="docutils literal notranslate"><span class="pre">name</span></code>,
 <code class="docutils literal notranslate"><span class="pre">domain</span></code>, and <code class="docutils literal notranslate"><span class="pre">extension</span></code> and returns a formatted email address string.</p>
 </div>
+</div>
+<div class="solution admonition" id="lessons/string-formatting-part-2-solution-1">
+<p class="admonition-title">Solution to <a class="reference external" href="#format-email-exercise"><span>Exercise 36</span></a></p>
+<div class="section" id="solution-content">
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Click to show<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="si">{user}</span><span class="s2">@</span><span class="si">{domain}</span><span class="s2">.</span><span class="si">{extension}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="s2">&quot;joe&quot;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;gmail&quot;</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s2">&quot;com&quot;</span><span class="p">)</span>
+<span class="go">&#39;joe@gmail.com&#39;</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Click to show: Bonus<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">format_email</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">extension</span><span class="p">):</span>
+  <span class="k">return</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">@</span><span class="si">{}</span><span class="s2">.</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">extension</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">format_email</span><span class="p">(</span><span class="s2">&quot;joe&quot;</span><span class="p">,</span> <span class="s2">&quot;gmail&quot;</span><span class="p">,</span> <span class="s2">&quot;com&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Click to show: Bonus alternate<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">format_email</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">extension</span><span class="p">):</span>
+  <span class="k">return</span> <span class="s2">&quot;</span><span class="si">{user}</span><span class="s2">@</span><span class="si">{domain}</span><span class="s2">.</span><span class="si">{extension}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">domain</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="n">extension</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">format_email</span><span class="p">(</span><span class="s2">&quot;joe&quot;</span><span class="p">,</span> <span class="s2">&quot;gmail&quot;</span><span class="p">,</span> <span class="s2">&quot;com&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details></div>
+</div>
+</div>
+</div>
+<div class="section" id="f-strings">
+<h2>f-strings<a class="headerlink" href="#f-strings" title="Permalink to this headline">¶</a></h2>
+<div class="row"><div class="col left-col">
+<p>Since we so frequently need to format strings, Python provides a shortcut
+called f-strings, which have the letter <code class="docutils literal notranslate"><span class="pre">f</span></code> immediately before the opening
+single or double quote.</p>
+<p>F-strings works just the same as <code class="docutils literal notranslate"><span class="pre">.format()</span></code>, except variables are used instead
+of keyword arguments.</p>
+</div><div class="col">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">day</span> <span class="o">=</span> <span class="s2">&quot;Monday&quot;</span>
+<span class="n">cost</span> <span class="o">=</span> <span class="mf">5.2423</span>
+
+<span class="sa">f</span><span class="s2">&quot;The price on </span><span class="si">{</span><span class="n">day</span><span class="si">:</span><span class="s2">.3s</span><span class="si">}</span><span class="s2"> is: $</span><span class="si">{</span><span class="n">cost</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;The price on Mon is: $5.24&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="exercise">
+<h3>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h3>
+<div class="exercise admonition" id="street-address-exercise">
+<p class="admonition-title"><span class="caption-number">Exercise 37 </span>(Street Address)</p>
+<div class="section" id="exercise-content">
+<p>Given the following values:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">street</span> <span class="o">=</span> <span class="s2">&quot;1600 Pennsylvania Ave NW&quot;</span>
+<span class="n">city</span> <span class="o">=</span> <span class="s2">&quot;Washington&quot;</span>
+<span class="n">state</span> <span class="o">=</span> <span class="s2">&quot;DC&quot;</span>
+<span class="nb">zip</span> <span class="o">=</span> <span class="s2">&quot;20500&quot;</span>
+</pre></div>
+</div>
+<p>Use an f-string to print the following:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1600 Pennsylvania Ave NW
+Washington, DC 20500
+</pre></div>
+</div>
+<p>Bonus: Write a <code class="docutils literal notranslate"><span class="pre">format_address()</span></code> function that takes the arguments <code class="docutils literal notranslate"><span class="pre">street</span></code>,
+<code class="docutils literal notranslate"><span class="pre">city</span></code>, <code class="docutils literal notranslate"><span class="pre">state</span></code> and <code class="docutils literal notranslate"><span class="pre">zip</span></code> and returns a formatted address string.</p>
+</div>
+</div>
+<div class="solution admonition" id="lessons/string-formatting-part-2-solution-3">
+<p class="admonition-title">Solution to <a class="reference external" href="#street-address-exercise"><span>Exercise 37</span></a></p>
+<div class="section" id="solution-content">
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Click to show<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">street</span> <span class="o">=</span> <span class="s2">&quot;1600 Pennsylvania Ave NW&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">city</span> <span class="o">=</span> <span class="s2">&quot;Washington&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">state</span> <span class="o">=</span> <span class="s2">&quot;DC&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">zip</span> <span class="o">=</span> <span class="s2">&quot;20500&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">street</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">city</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">state</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="nb">zip</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="go">1600 Pennsylvania Ave NW</span>
+<span class="go">Washington, DC 20500</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Click to show: Bonus<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="full-width highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">format_address</span><span class="p">(</span><span class="n">street</span><span class="p">,</span> <span class="n">city</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="nb">zip</span><span class="p">):</span>
+  <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">street</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">city</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">state</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="nb">zip</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">format_address</span><span class="p">(</span>
+  <span class="s2">&quot;1600 Pennsylvania Ave NW&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;Washington&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;DC&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;20500&quot;</span><span class="p">,</span>
+<span class="p">))</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</details></div>
 </div>
 </div>
 </div>

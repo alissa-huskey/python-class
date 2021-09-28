@@ -169,7 +169,7 @@ blueprint.format(
 
 ### Exercises
 
-`````{exercise} Format email address
+`````{exercise} Format Email Address
 :label: format-email-exercise
 
 Given the following values:
@@ -186,5 +186,136 @@ Use `.format()` to print the string:
 
 Bonus: Write a `format_email()` function that takes three arguments, `name`,
 `domain`, and `extension` and returns a formatted email address string.
+
+`````
+
+`````{solution} format-email-exercise
+
+:::{dropdown} Click to show
+
+```python
+>>> "{user}@{domain}.{extension}".format(user="joe", domain="gmail", extension="com")
+'joe@gmail.com'
+```
+:::
+
+:::{dropdown} Click to show: Bonus
+
+```{code-block} python
+:class: full-width
+
+def format_email(user, domain, extension):
+  return "{}@{}.{}".format(user, domain, extension)
+
+print(format_email("joe", "gmail", "com"))
+```
+
+:::
+
+:::{dropdown} Click to show: Bonus alternate
+
+```{code-block} python
+:class: full-width
+
+def format_email(user, domain, extension):
+  return "{user}@{domain}.{extension}".format(user=user, domain=domain, extension=extension)
+
+print(format_email("joe", "gmail", "com"))
+```
+
+:::
+
+`````
+
+f-strings
+---------
+
+{{ leftcol }}
+
+Since we so frequently need to format strings, Python provides a shortcut
+called f-strings, which have the letter `f` immediately before the opening
+single or double quote.
+
+F-strings works just the same as `.format()`, except variables are used instead
+of keyword arguments.
+
+
+{{ rightcol }}
+
+```{code-cell} python
+:class: full-width
+
+day = "Monday"
+cost = 5.2423
+
+f"The price on {day:.3s} is: ${cost:.2f}"
+```
+
+{{ endcols }}
+
+### Exercise
+
+`````{exercise} Street Address
+:label: street-address-exercise
+
+Given the following values:
+
+```python
+street = "1600 Pennsylvania Ave NW"
+city = "Washington"
+state = "DC"
+zip = "20500"
+```
+
+Use an f-string to print the following:
+
+```text
+1600 Pennsylvania Ave NW
+Washington, DC 20500
+```
+
+Bonus: Write a `format_address()` function that takes the arguments `street`,
+`city`, `state` and `zip` and returns a formatted address string.
+
+`````
+
+`````{solution} street-address-exercise
+
+:::{dropdown} Click to show
+
+```{code-block} python
+:class: full-width
+
+>>> street = "1600 Pennsylvania Ave NW"
+>>> city = "Washington"
+>>> state = "DC"
+>>> zip = "20500"
+>>> print(f"{street}\n{city}, {state} {zip}")
+1600 Pennsylvania Ave NW
+Washington, DC 20500
+```
+
+:::
+
+:::{dropdown} Click to show: Bonus
+
+```{code-block} python
+:class: full-width
+:linenos:
+
+def format_address(street, city, state, zip):
+  return f"{street}\n{city}, {state} {zip}"
+
+print(format_address(
+  "1600 Pennsylvania Ave NW",
+  "Washington",
+  "DC",
+  "20500",
+))
+```
+
+:::
+
+
 
 `````
