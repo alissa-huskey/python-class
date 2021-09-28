@@ -148,18 +148,22 @@ interpreted literally.
 "The price on {:.3s} is: ${:.2f}".format("Monday", 5.2423)
 ```
 
+{{ newrow }}
+
+You can also send keyword arguments to `.format()`. Then, instead of using
+position numbers, you use variable names.
+
+{{ rightcol }}
+
+```{code-cell} python
+:class: full-width
+
+blueprint = "The price on {day:.3s} is: ${cost:.2f}"
+blueprint.format(
+  day="Monday",
+  cost=5.2423,
+)
+```
+
+
 {{ endcols }}
-
-
-% TODO
-% [ ] format() / .format() / % / fstrings
-% [ ] `x%`
-% [ ] `$x.xx`
-% [ ] `(-10)`
-% [ ] `5.25378` -> `5.2`
-% [ ] center/left/right to width
-%     [ ] with alternate character
-% [ ] truncate a string
-
-% EXERCISES
-% [ ] Remove leading zeros from an IP address
