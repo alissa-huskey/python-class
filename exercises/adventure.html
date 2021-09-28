@@ -60,6 +60,8 @@
     <link rel="canonical" href="https://alissa-huskey.github.io/python-class/exercises/adventure.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Orphaned Terms" href="../orphans.html" />
+    <link rel="prev" title="Flashcards Project" href="flashcards.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -444,7 +446,7 @@
   Exercises
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="program-flow.html">
    Program Flow Exercises
@@ -463,6 +465,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="flashcards.html">
    Flashcards Project
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Adventure Game
   </a>
  </li>
 </ul>
@@ -567,6 +574,11 @@
    Part 1: The game loop
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-1-3-your-first-command-quit">
+   Part 1.3: Your first command: quit
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -595,6 +607,7 @@ much simpler to start.).</p>
 <li><p><a class="reference internal" href="#part-1-2-the-main-function" id="id3">Part 1.2: The main() function</a></p></li>
 </ul>
 </li>
+<li><p><a class="reference internal" href="#part-1-3-your-first-command-quit" id="id4">Part 1.3: Your first command: quit</a></p></li>
 </ul>
 </div>
 <div class="section" id="part-1-the-game-loop">
@@ -619,14 +632,14 @@ repo for it, if you’re comfortable with git.)</p></li>
 </div>
 <div class="section" id="part-1-2-the-main-function">
 <h3><a class="toc-backref" href="#contents">Part 1.2: The main() function</a><a class="headerlink" href="#part-1-2-the-main-function" title="Permalink to this headline">¶</a></h3>
-<details class="sphinx-bs dropdown card mb-3" open="open">
+<details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
 Demo<div class="summary-down docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
 <div class="summary-up docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="summary-content card-body docutils">
-<asciinema-player src="assets/adventure-1.cast"></asciinema-player></div>
+<asciinema-player src="assets/adventure-1.2.cast"></asciinema-player></div>
 </details><div class="br"></div>
 <div class="row"><div class="col left-col">
 <ol class="simple">
@@ -644,26 +657,109 @@ Code<div class="summary-down docutils">
 <div class="summary-up docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="summary-content card-body docutils">
-<div class="full-width highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome&quot;</span><span class="p">)</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome!&quot;</span><span class="p">)</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">reply</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;&gt; &quot;</span><span class="p">)</span>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
+
 </pre></div>
 </td></tr></table></div>
 </div>
 </details></div></div>
 </div>
+</div>
+<div class="section" id="part-1-3-your-first-command-quit">
+<h2><a class="toc-backref" href="#contents">Part 1.3: Your first command: quit</a><a class="headerlink" href="#part-1-3-your-first-command-quit" title="Permalink to this headline">¶</a></h2>
+<p>In this section we will actually look at what the user says, and make our first
+command: the <code class="docutils literal notranslate"><span class="pre">quit</span></code> command.</p>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Demo<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<asciinema-player src="assets/adventure-1.3.cast"></asciinema-player></div>
+</details><div class="row"><div class="col left-col">
+<p class="rubric">Make do_quit()</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Make a <code class="docutils literal notranslate"><span class="pre">do_quit()</span></code> function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> In it, print <code class="docutils literal notranslate"><span class="pre">&quot;Goodbye.&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Then call <code class="docutils literal notranslate"><span class="pre">quit()</span></code></p></li>
+</ol>
+<p class="rubric">In main(), in the while loop:</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> After getting <code class="docutils literal notranslate"><span class="pre">reply</span></code>, check if <code class="docutils literal notranslate"><span class="pre">reply</span></code> is equal to <code class="docutils literal notranslate"><span class="pre">q</span></code> or <code class="docutils literal notranslate"><span class="pre">quit</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> If so, call <code class="docutils literal notranslate"><span class="pre">do_quit()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Otherwise, print a messsage like: <code class="docutils literal notranslate"><span class="pre">&quot;No</span> <span class="pre">such</span> <span class="pre">command.&quot;</span></code> then <code class="docutils literal notranslate"><span class="pre">continue</span></code></p></li>
+</ol>
+</div><div class="col">
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Code<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="hll"><span class="k">def</span> <span class="nf">do_quit</span><span class="p">():</span>
+</span><span class="hll">    <span class="sd">&quot;&quot;&quot;Exit the game.&quot;&quot;&quot;</span>
+</span><span class="hll">    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ok, goodbye.&quot;</span><span class="p">)</span>
+</span><span class="hll">    <span class="n">quit</span><span class="p">()</span>
+</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome!&quot;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">reply</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;&gt; &quot;</span><span class="p">)</span>
+
+<span class="hll">        <span class="k">if</span> <span class="n">reply</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;q&quot;</span><span class="p">,</span> <span class="s2">&quot;quit&quot;</span><span class="p">,</span> <span class="s2">&quot;exit&quot;</span><span class="p">]:</span>
+</span><span class="hll">            <span class="n">do_quit</span><span class="p">()</span>
+</span><span class="hll">
+</span><span class="hll">        <span class="k">else</span><span class="p">:</span>
+</span><span class="hll">            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No such command.&quot;</span><span class="p">)</span>
+</span><span class="hll">            <span class="k">continue</span>
+</span>
+        <span class="nb">print</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+
+</pre></div>
+</td></tr></table></div>
+</div>
+</details></div></div>
 </div>
 </div>
 
@@ -696,6 +792,24 @@ Code<div class="summary-down docutils">
 
 <div class='prev-next-bottom'>
     
+    <div id="prev">
+        <a class="left-prev" href="flashcards.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Flashcards Project</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="../orphans.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Orphaned Terms</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
 
 </div>
         

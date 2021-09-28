@@ -57,12 +57,12 @@ repo for it, if you're comfortable with git.)
 ### Part 1.2: The main() function
 
 `````{dropdown} Demo
-:open:
 
-```{screencast} assets/adventure-1.cast
+```{screencast} assets/adventure-1.2.cast
 ```
 
 `````
+
 {{ br }}
 
 {{ leftcol }}
@@ -77,22 +77,56 @@ repo for it, if you're comfortable with git.)
 
 `````{dropdown} Code
 
-```{code-block} python
+```{literalinclude} adventure/adventure-1.2.py
 :class: full-width
 :linenos:
-
-def main():
-    print("Welcome")
-    while True:
-        reply = input("> ")
-
-
-if __name__ == "__main__":
-    main()
-
 ```
 
 `````
 
+{{ endcols }}
+
+
+Part 1.3: Your first command: quit
+----------------------------------
+
+In this section we will actually look at what the user says, and make our first
+command: the `quit` command.
+
+`````{dropdown} Demo
+
+```{screencast} assets/adventure-1.3.cast
+```
+
+`````
+
+{{ leftcol }}
+
+```{rubric} Make do_quit()
+```
+
+1. `[ ]` Make a `do_quit()` function.
+1. `[ ]` In it, print `"Goodbye."`
+1. `[ ]` Then call `quit()`
+
+```{rubric} In main(), in the while loop:
+```
+
+1. `[ ]` After getting `reply`, check if `reply` is equal to `q` or `quit`.
+1. `[ ]` If so, call `do_quit()`
+1. `[ ]` Otherwise, print a messsage like: `"No such command."` then `continue`
+
+{{ rightcol }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-1.3.py
+:class: full-width
+:linenos:
+:emphasize-lines: "1-4, 11-16"
+
+```
+
+`````
 
 {{ endcols }}
