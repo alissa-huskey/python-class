@@ -165,5 +165,26 @@ blueprint.format(
 )
 ```
 
-
 {{ endcols }}
+
+### Exercises
+
+`````{exercise} Format email address
+:label: format-email-exercise
+
+Given the following values:
+
+```python
+user = "joe"
+domain = "gmail"
+extension = "com"
+```
+
+Use `.format()` to print the string:
+
+`"joe@gmail.com"`
+
+Bonus: Write a `format_email()` function that takes three arguments, `name`,
+`domain`, and `extension` and returns a formatted email address string.
+
+`````
