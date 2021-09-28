@@ -580,6 +580,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fill">
+   Fill
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
    Exercises
   </a>
@@ -884,6 +889,149 @@ characters in the output string, including any signs or decimal points.</p>
 </tr>
 </tbody>
 </table>
+</div></div>
+</div>
+<div class="section" id="fill">
+<h2>Fill<a class="headerlink" href="#fill" title="Permalink to this headline">¶</a></h2>
+<div class="row"><div class="col left-col">
+<p>There is one more optional part of alignment, the character to fill in any
+extra space with. By default, the fill character is a space.</p>
+<p>The following two examples are the same.</p>
+</div><div class="col">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="s2">&quot;^20&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;       hello        &#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="s2">&quot; ^20&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;       hello        &#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col right-col">
+<p>However, we can use any character for the fill character. Lets say instead we
+use the character <code class="docutils literal notranslate"><span class="pre">&quot;=&quot;</span></code>.</p>
+</div><div class="col">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="s2">&quot;=^20&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;=======hello========&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col right-col">
+<p>This is an easy way to make lots of stylish looking headers.</p>
+</div><div class="col">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="s2">&quot;_&lt;20&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;hello_______________&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="s2">&quot;.&gt;20&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;...............hello&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col right-col">
+<p>Note, if you want space between your fill character and the text, add them in
+the text itself rather than the formatting spec.</p>
+</div><div class="col">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="p">(</span><span class="s2">&quot; hello &quot;</span><span class="p">,</span> <span class="s2">&quot;=^20&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;====== hello =======&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="p">(</span><span class="s2">&quot;hello &quot;</span><span class="p">,</span> <span class="s2">&quot;_&lt;20&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;hello ______________&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="p">(</span><span class="s2">&quot; hello&quot;</span><span class="p">,</span> <span class="s2">&quot;.&gt;20&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;.............. hello&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col right-col">
+<p>A fill character is also used to zero-pad numbers:</p>
+</div><div class="col">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;0&gt;2d&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;02&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="p">(</span><span class="mf">5.2</span><span class="p">,</span> <span class="s2">&quot;0&gt;5.2f&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;05.20&#39;
+</pre></div>
+</div>
+</div>
+</div>
 </div></div>
 </div>
 <div class="section" id="exercises">

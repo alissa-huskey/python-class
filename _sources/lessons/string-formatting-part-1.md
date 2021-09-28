@@ -212,6 +212,98 @@ By the way, if we break down that last formatting string: `"=8.2f"`.
 
 {{ endcols }}
 
+Fill
+----
+
+{{ leftcol }}
+
+There is one more optional part of alignment, the character to fill in any
+extra space with. By default, the fill character is a space.
+
+The following two examples are the same.
+
+{{ rightcol }}
+
+```{code-cell} python
+:class: full-width
+format("hello", "^20")
+```
+
+```{code-cell} python
+:class: full-width
+format("hello", " ^20")
+```
+
+{{ newrow }}
+
+However, we can use any character for the fill character. Lets say instead we
+use the character `"="`.
+
+{{ rightcol }}
+
+```{code-cell} python
+:class: full-width
+format("hello", "=^20")
+```
+
+{{ newrow }}
+
+This is an easy way to make lots of stylish looking headers.
+
+{{ rightcol }}
+
+```{code-cell} python
+:class: full-width
+format("hello", "_<20")
+```
+
+```{code-cell} python
+:class: full-width
+format("hello", ".>20")
+```
+
+{{ newrow }}
+
+Note, if you want space between your fill character and the text, add them in
+the text itself rather than the formatting spec.
+
+{{ rightcol }}
+
+
+```{code-cell} python
+:class: full-width
+format(" hello ", "=^20")
+```
+
+```{code-cell} python
+:class: full-width
+format("hello ", "_<20")
+```
+
+```{code-cell} python
+:class: full-width
+format(" hello", ".>20")
+```
+
+
+{{ newrow }}
+
+A fill character is also used to zero-pad numbers:
+
+{{ rightcol }}
+
+```{code-cell} python
+:class: full-width
+format(2, "0>2d")
+```
+
+```{code-cell} python
+:class: full-width
+format(5.2, "0>5.2f")
+```
+
+{{ endcols }}
+
 Exercises
 ---------
 
