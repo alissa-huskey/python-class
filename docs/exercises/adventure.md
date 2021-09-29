@@ -186,6 +186,13 @@ ITEMS = {
 
 ### Part 1.5: Make `do_shop()` function
 
+`````{dropdown} Demo
+
+```{screencast} assets/adventure-1.5.cast
+```
+
+`````
+
 ```{rubric} make a do_shop() function
 ```
 
