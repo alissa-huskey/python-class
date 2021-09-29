@@ -283,6 +283,11 @@
      Structuring Python Projects
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/in-depth/oop.html">
+     Object Oriented Programming
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -662,7 +667,7 @@ obj?, obj??      : Get help, or more help for object (also works as
 <p>You can save the history from your last session to the file in the directory
 you were in when you started <code class="docutils literal notranslate"><span class="pre">ipython</span></code> by using the <code class="docutils literal notranslate"><span class="pre">%save</span></code> magic command.</p>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-number">Listing 415 </span><span class="caption-text">ipython shell – save to a file named session.py</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 418 </span><span class="caption-text">ipython shell – save to a file named session.py</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1&gt;&gt;&gt; %save session ~1/
 The following commands were written to file `session.py`:
 import requests
@@ -708,13 +713,13 @@ Solution<div class="summary-down docutils">
 <p class="card-text">iPython <code class="docutils literal notranslate"><span class="pre">&lt;=7.19</span></code> is incompatable with jedi version <code class="docutils literal notranslate"><span class="pre">0.18.0</span></code>.
 To resolve, downgrade <code class="docutils literal notranslate"><span class="pre">jedi</span></code> to version <code class="docutils literal notranslate"><span class="pre">0.17.2</span></code>.</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="6496fc2b-9b4d-418f-b8f6-facb4a5d7b22" name="dbfd717a-f0b3-47f6-bb33-69f934d8eb6a" type="radio">
-</input><label class="tabbed-label" for="6496fc2b-9b4d-418f-b8f6-facb4a5d7b22">
+<input checked="checked" id="14233688-1668-4933-b799-d65e207911e4" name="e223beed-d52d-4f06-a0a7-26f58041f2c6" type="radio">
+</input><label class="tabbed-label" for="14233688-1668-4933-b799-d65e207911e4">
 poetry</label><div class="tabbed-content docutils">
 <p class="card-text">Modify your <code class="file docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file and add the following <code class="docutils literal notranslate"><span class="pre">jedi</span></code>
 dependency just above the <code class="docutils literal notranslate"><span class="pre">ipython</span></code> dependency.</p>
 <div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-number">Listing 416 </span><span class="caption-text">pyproject.toml</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 419 </span><span class="caption-text">pyproject.toml</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.poetry.dev-dependencies]</span>
 <span class="p">...</span>
 <span class="hll"><span class="n">jedi</span> <span class="o">=</span> <span class="s">&quot;0.17.2&quot;</span> <span class="c1"># ipython &lt;=7.19</span>
@@ -724,18 +729,18 @@ dependency just above the <code class="docutils literal notranslate"><span class
 </div>
 <p class="card-text">Then in a terminal run:</p>
 <div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-number">Listing 417 </span><span class="caption-text">terminal</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 420 </span><span class="caption-text">terminal</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry update jedi
 </pre></div>
 </div>
 </div>
 </div>
-<input id="ed17913a-cde9-4c89-a79e-d34add313338" name="dbfd717a-f0b3-47f6-bb33-69f934d8eb6a" type="radio">
-</input><label class="tabbed-label" for="ed17913a-cde9-4c89-a79e-d34add313338">
+<input id="5477e89f-5e24-4663-9be6-52457af40890" name="e223beed-d52d-4f06-a0a7-26f58041f2c6" type="radio">
+</input><label class="tabbed-label" for="5477e89f-5e24-4663-9be6-52457af40890">
 pip</label><div class="tabbed-content docutils">
 <p class="card-text">In a terminal run:</p>
 <div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-number">Listing 418 </span><span class="caption-text">terminal</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 421 </span><span class="caption-text">terminal</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m pip install -U jedi~<span class="o">=</span><span class="m">0</span>.17.2
 </pre></div>
 </div>
@@ -783,13 +788,13 @@ Solution<div class="summary-down docutils">
 <p class="card-text">iPython ~7.13.0 on Windows does not work with a version 3+ of prompt-toolkit.
 To resolve, downgrade <code class="docutils literal notranslate"><span class="pre">prompt-toolkit</span></code> to version <code class="docutils literal notranslate"><span class="pre">2.x</span></code>.</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="d08bcd3f-e748-49c9-9fed-55e15e0576c1" name="997ed69f-fd79-4f6a-a361-2b5bd078bfed" type="radio">
-</input><label class="tabbed-label" for="d08bcd3f-e748-49c9-9fed-55e15e0576c1">
+<input checked="checked" id="341d57b6-b026-4a23-918a-d3f43c40f846" name="3ac14ace-e227-4599-9398-7756f26248ca" type="radio">
+</input><label class="tabbed-label" for="341d57b6-b026-4a23-918a-d3f43c40f846">
 poetry</label><div class="tabbed-content docutils">
 <p class="card-text">Modify your <code class="file docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file and add the following <code class="docutils literal notranslate"><span class="pre">prompt-toolkit</span></code>
 dependency just above the <code class="docutils literal notranslate"><span class="pre">ipython</span></code> dependency.</p>
 <div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-number">Listing 419 </span><span class="caption-text">pyproject.toml</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 422 </span><span class="caption-text">pyproject.toml</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.poetry.dev-dependencies]</span>
 <span class="p">...</span>
 <span class="hll"><span class="n">prompt-toolkit</span> <span class="o">=</span> <span class="s">&quot;^2&quot;</span> <span class="c1"># ipython ~7.10</span>
@@ -799,18 +804,18 @@ dependency just above the <code class="docutils literal notranslate"><span class
 </div>
 <p class="card-text">Then in a terminal run:</p>
 <div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-number">Listing 420 </span><span class="caption-text">terminal</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 423 </span><span class="caption-text">terminal</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry update prompt-toolkit
 </pre></div>
 </div>
 </div>
 </div>
-<input id="1aabfcb4-44d3-4ffa-8763-f68e6242ff3f" name="997ed69f-fd79-4f6a-a361-2b5bd078bfed" type="radio">
-</input><label class="tabbed-label" for="1aabfcb4-44d3-4ffa-8763-f68e6242ff3f">
+<input id="a1b31744-fd59-46c5-8431-c99a21932f87" name="3ac14ace-e227-4599-9398-7756f26248ca" type="radio">
+</input><label class="tabbed-label" for="a1b31744-fd59-46c5-8431-c99a21932f87">
 pip</label><div class="tabbed-content docutils">
 <p class="card-text">In a terminal run:</p>
 <div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-number">Listing 421 </span><span class="caption-text">terminal</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 424 </span><span class="caption-text">terminal</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m pip install -U prompt-toolkit~<span class="o">=</span><span class="m">2</span>.0
 </pre></div>
 </div>
