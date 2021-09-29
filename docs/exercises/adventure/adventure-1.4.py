@@ -1,3 +1,8 @@
+"""
+Text-based adventure game
+https://alissa-huskey.github.io/python-class/exercises/adventure.html
+"""
+
 ITEMS = {
     "elixr": {
         "key": "elixr",

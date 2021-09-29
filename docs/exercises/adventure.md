@@ -1,4 +1,8 @@
 ---
+substitutions:
+  left:  '{{ leftcol | replace("col", "col-5") }}'
+  right: '{{ rightcol | replace("col", "col-7") }}'
+
 jupytext:
   formats: md:myst
   text_representation:
@@ -56,16 +60,7 @@ repo for it, if you're comfortable with git.)
 
 ### Part 1.2: The main() function
 
-`````{dropdown} Demo
-
-```{screencast} assets/adventure-1.2.cast
-```
-
-`````
-
-{{ br }}
-
-{{ leftcol }}
+{{ left }}
 
 1. `[ ]` Define a `main()` function, and have it print `"Welcome!"`
 2. `[ ]` In `main()` make a `while` loop with the condition `True`.
@@ -73,7 +68,16 @@ repo for it, if you're comfortable with git.)
 4. `[ ]` Outside of `main()`: Use an if statement to check if `__name__ == "__main__"`.
 5. `[ ]` In the `if` statement, call `main()`.
 
-{{ rightcol }}
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-1.2.cast
+:rows: 16
+```
+
+`````
 
 `````{dropdown} Code
 
@@ -92,56 +96,56 @@ repo for it, if you're comfortable with git.)
 In this section we will actually look at what the user says, and make our first
 command: the `quit` command.
 
-`````{dropdown} Demo
+{{ left }}
 
-```{screencast} assets/adventure-1.3.cast
-```
-
-`````
-
-{{ leftcol }}
-
-```{rubric} Make do_quit()
+```{rubric} A. Make do_quit()
 ```
 
 1. `[ ]` Make a `do_quit()` function.
 1. `[ ]` In it, print `"Goodbye."`
 1. `[ ]` Then call `quit()`
 
-```{rubric} In main(), in the while loop:
+```{rubric} B. In main(), in the while loop:
 ```
 
 1. `[ ]` After getting `reply`, check if `reply` is equal to `q` or `quit`.
 1. `[ ]` If so, call `do_quit()`
 1. `[ ]` Otherwise, print a messsage like: `"No such command."` then `continue`
 
-{{ rightcol }}
+{{ right }}
 
-`````{dropdown} Code
+`````{dropdown} Demo
+:open:
 
-```{literalinclude} adventure/adventure-1.3.py
-:class: full-width
-:linenos:
-:emphasize-lines: "1-4, 11-16"
-
+```{screencast} assets/adventure-1.3.cast
+:rows: 15
 ```
 
 `````
 
 {{ endcols }}
 
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-1.3.py
+:class: full-width
+:linenos:
+:emphasize-lines: "5-9, 16-21"
+
+```
+
+`````
+
 ### Part 1.4 Create `ITEMS`
 
 We're going to make our first real command: `shop`. We're skipping ahead a bit
 so we can have our program do something interesting.
 
-{{ leftcol }}
-
 Create a dictionary `ITEMS` that is a global variable. This is where you'll
 keep the information about the items that are for sale, or objects in any of
 the rooms.
 
-{{ br }}
+{{ leftcol }}
 
 This will be a nested dictionary, where the key is a unique identifier for
 each item, and the value is a dictionary with detailed information about
@@ -151,8 +155,6 @@ that item. The keys of the child dictionary will be:
 * `"name"` -- a short description
 * `"description"` -- a longer description
 * `"price"` -- how much it costs
-
-{{ br }}
 
 Make a few items for your shop.
 
@@ -171,36 +173,46 @@ ITEMS = {
 }
 ```
 
+{{ endcols }}
+
 `````{dropdown} Code
 
 ```{literalinclude} adventure/adventure-1.4.py
 :linenos:
-:emphasize-lines: "1-14"
+:emphasize-lines: "6-19"
 
 ```
 
 `````
-
-
-{{ endcols }}
 
 ### Part 1.5: Make `do_shop()` function
 
+{{ left }}
+
+In this section we'll make a `shop` command that will list the items that we
+defined in `ITEMS` above.
+
+{{ right }}
+
 `````{dropdown} Demo
+:open:
 
 ```{screencast} assets/adventure-1.5.cast
+:rows: 15
 ```
 
 `````
 
-```{rubric} make a do_shop() function
+{{ endcols }}
+
+```{rubric} A. Define a do_shop() function
 ```
 
 1. Define a `do_shop()` function.
 1. Have it print `"Items for sale."`
 1. Iterate over the `ITEMS` dictionary. Print the `name` and `description` of each.
 
-```{rubric} in main()
+```{rubric} B. in main()
 ```
 
 1. In between your `if` and `else`, add an `elif` clause that checks if `reply`
@@ -211,10 +223,80 @@ ITEMS = {
 
 ```{literalinclude} adventure/adventure-1.5.py
 :linenos:
-:emphasize-lines: "16-23, 38-39"
+:emphasize-lines: "21-28, 43-44"
 ```
 
 `````
 
+Part 2: Go places
+-----------------
 
+In this section we'll be writing the `go` command, and the system to go from
+one place to another.
 
+### Part 2.1: Split reply into command and arguments
+
+{{ left }}
+
+This will be the first command that we've written that takes an argument. That
+is, the user needs to type not just `go`, but also which direction to go like
+`north`.
+
+That means we need to split the string that is returned from `input()` into a
+list. That way we if the user types `go north` we can figure out that `go` is
+the command, and `north` is the direction.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-2.1.cast
+:rows: 15
+```
+
+`````
+
+{{ endcols }}
+
+```{rubric} A. Define do_go
+```
+
+1. Define a `do_go()` function that takes one argument, `args`.
+2. In `do_go()` print {samp}`Trying to go: {args}`
+
+```{rubric} B. In main(), in the while loop
+```
+
+1. Strip the value returned from `input()` using the `.strip()` method. 
+
+   This means if a user enters `" quit"` or `"quit "` the program still knows
+   to call `do_quit()`.
+2. Call `.split()` on `reply` and assign it to the variable `args`.
+
+   Now the `args` variable will contain a list where each word is an item in
+   the list.
+3. Use an `if` statement to check if `args` is {term}`falsy`. If it is,
+   `continue`.
+
+   This means that if a user doesn't enter anything, the program will ignore it
+   and start the loop over.
+4. Remove the first item from `args` using the `.pop()` method and assign it to
+   the variable `command`.
+
+   Now `command` will contain the first word the user entered, and `args` will
+   contain a list of the remaining commands. If there were no additional words,
+   then `args` will be an empty list.
+5. In each clause of the `if` statement where we check the value of `reply`,
+   change it to `command`.
+6. Add an `elif` clause that checks if `command` is equal to `"g"` or `"go"`.
+   If it is, call `do_go()` and pass `args`.
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-2.1.py
+:linenos:
+:emphasize-lines: "20-22, 27-35, 38, 41"
+```
+
+`````
