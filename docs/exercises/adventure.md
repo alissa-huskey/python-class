@@ -296,7 +296,204 @@ the command, and `north` is the direction.
 
 ```{literalinclude} adventure/adventure-2.1.py
 :linenos:
-:emphasize-lines: "20-22, 27-35, 38, 41"
+:emphasize-lines: "35-37, 42-50, 53, 56-57"
+```
+
+`````
+
+### Part 2.2: Create PLAYER and PLACES
+
+Now we'll make global `PLACES` dictionary which will store information about
+the different areas in the game.
+
+Like the `ITEMS` dictionary, `PLACES` will be a nested dictionary, where the
+key is a unique identifier for each place, and the value is a dictionary with
+detailed information about that place.
+
+{{ leftcol }}
+
+The keys of the child dictionary will be:
+
+* `"key"` -- the same thing as the key
+* `"name"` -- a short description
+* `"description"` -- a longer description
+* `"east"`, `"west"`, `"north"`, `"south"` -- the key to the place in that
+  direction. (More on that next.)
+
+{{ rightcol }}
+
+Here is an example:
+
+```{code-block-hl} python
+:class: full-width
+
+PLACES = {
+    "home": {
+        "key": "home",
+        "name": "Your Cottage",
+        "east": "town-square",
+        "description": "A cozy stone cottage with a desk and a neatly made bed.",
+    },
+}
+```
+
+{{ endcols }}
+
+{{ br }}
+
+The `"north"`, `"south"`, `"east"` and `"west"` values will be used to tell
+which way the player can go from a particular place and what is in that
+direction.
+
+For example, going `"east"` from `"home"` is the `"town-square"`.
+
+{{ leftcol }}
+
+```{code-block-hl} python
+:class: full-width
+
+PLACES = {
+    "home": {
+        "key": "home",
+        "name": "Your Cottage",
+        "east": !!!"town-square"!!!,
+        ...
+    },
+    "town-square": {
+        "key": "town-square",
+        "name": "The Town Square",
+        "west": "home",
+        ...
+    },
+}
+```
+
+{{ rightcol }}
+
+```{code-block-hl} python
+:class: full-width
+
+PLACES = {
+    "home": {
+        "key": "home",
+        "name": "Your Cottage",
+        "east": "town-square",
+        ...
+    },
+    !!!"town-square"!!!: {
+        "key": "town-square",
+        "name": "The Town Square",
+        "west": "home",
+        ...
+    },
+}
+```
+
+{{ endcols }}
+
+{{ br }}
+
+Likewise, going `"west"` from the `"town-square"` is `"home"`.
+
+{{ leftcol }}
+
+```{code-block-hl} python
+:class: full-width
+
+PLACES = {
+    "home": {
+        "key": "home",
+        "name": "Your Cottage",
+        "east": "town-square",
+        ...
+    },
+    "town-square": {
+        "key": "town-square",
+        "name": "The Town Square",
+        "west": !!!"home"!!!,
+        ...
+    },
+}
+```
+
+{{ rightcol }}
+
+```{code-block-hl} python
+:class: full-width
+
+PLACES = {
+    !!!"home"!!!: {
+        "key": "home",
+        "name": "Your Cottage",
+        "east": "town-square",
+        ...
+    },
+    "town-square": {
+        "key": "town-square",
+        "name": "The Town Square",
+        "west": "home",
+        ...
+    },
+}
+```
+
+{{ endcols }}
+
+We'll also make a global `PLAYER` dictionary that will save information about
+the current game.
+
+For now it will just have one key, the `place`, which point to where the player
+is at. In the `do_go()` function, we will change that value to move the player
+from one place to another.
+
+{{ leftcol }}
+
+```{code-block-hl} python
+:class: full-width
+
+PLAYER = {
+    "place": !!!"home"!!!,
+}
+```
+
+{{ rightcol }}
+
+```{code-block-hl} python
+:class: full-width
+
+PLACES = {
+    !!!"home"!!!: {
+        "key": "home",
+        "name": "Your Cottage",
+        "east": "town-square",
+        ...
+    },
+    ...
+}
+```
+
+{{ endcols }}
+
+```{rubric} at the top of your file
+```
+
+1. Create a `PLAYER` dictionary with the key `"place"` and the value `"home"`.
+2. Create a `PLACES` dictionary where the key is a unique identifier for each place.
+   The value is a dictionary that with information about each place:
+
+   * `"key"` -- the same thing as the key
+   * `"name"` -- a short description
+   * `"description"` -- a longer description
+   * `"east"`, `"west"`, `"north"`, `"south"` -- the key to the place in that
+
+   Add two places, `"home"` and `"town-square"`.
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-2.2.py
+:linenos:
+:emphasize-lines: "6-26"
+:end-at: "ITEMS ="
 ```
 
 `````

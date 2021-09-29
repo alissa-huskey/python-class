@@ -3,6 +3,28 @@ Text-based adventure game
 https://alissa-huskey.github.io/python-class/exercises/adventure.html
 """
 
+PLAYER = {
+    "place": "home",
+}
+
+PLACES = {
+    "home": {
+        "key": "home",
+        "name": "Your Cottage",
+        "east": "town-square",
+        "description": "A cozy stone cottage with a desk and a neatly made bed.",
+    },
+    "town-square": {
+        "key": "town-square",
+        "name": "The Town Square",
+        "west": "home",
+        "description": (
+            "A large open space surrounded by buildings with a burbling "
+            "fountain in the center."
+        ),
+    },
+}
+
 ITEMS = {
     "elixr": {
         "key": "elixr",
@@ -38,6 +60,7 @@ def do_go(args):
 
 def main():
     print("Welcome!")
+
     while True:
         reply = input("> ").strip()
         args = reply.split()
