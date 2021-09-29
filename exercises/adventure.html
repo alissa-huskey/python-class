@@ -574,6 +574,11 @@
    Part 1: The game loop
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-2-go-places">
+   Part 2: Go places
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -605,6 +610,12 @@ much simpler to start.).</p>
 <li><p><a class="reference internal" href="#part-1-5-make-do-shop-function" id="id6">Part 1.5: Make <code class="docutils literal notranslate"><span class="pre">do_shop()</span></code> function</a></p></li>
 </ul>
 </li>
+<li><p><a class="reference internal" href="#part-2-go-places" id="id7">Part 2: Go places</a></p>
+<ul>
+<li><p><a class="reference internal" href="#part-2-1-split-reply-into-command-and-arguments" id="id8">Part 2.1: Split reply into command and arguments</a></p></li>
+<li><p><a class="reference internal" href="#part-2-2-create-player-and-places" id="id9">Part 2.2: Create PLAYER and PLACES</a></p></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="part-1-the-game-loop">
@@ -629,16 +640,7 @@ repo for it, if you’re comfortable with git.)</p></li>
 </div>
 <div class="section" id="part-1-2-the-main-function">
 <h3><a class="toc-backref" href="#contents">Part 1.2: The main() function</a><a class="headerlink" href="#part-1-2-the-main-function" title="Permalink to this headline">¶</a></h3>
-<details class="sphinx-bs dropdown card mb-3">
-<summary class="summary-title card-header">
-Demo<div class="summary-down docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="summary-up docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="summary-content card-body docutils">
-<asciinema-player src="assets/adventure-1.2.cast"></asciinema-player></div>
-</details><div class="br"></div>
-<div class="row"><div class="col left-col">
+<div class="row"><div class="col-5 left-col-5">
 <ol class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Define a <code class="docutils literal notranslate"><span class="pre">main()</span></code> function, and have it print <code class="docutils literal notranslate"><span class="pre">&quot;Welcome!&quot;</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> In <code class="docutils literal notranslate"><span class="pre">main()</span></code> make a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop with the condition <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
@@ -646,23 +648,41 @@ Demo<div class="summary-down docutils">
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Outside of <code class="docutils literal notranslate"><span class="pre">main()</span></code>: Use an if statement to check if <code class="docutils literal notranslate"><span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> In the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement, call <code class="docutils literal notranslate"><span class="pre">main()</span></code>.</p></li>
 </ol>
-</div><div class="col">
-<details class="sphinx-bs dropdown card mb-3">
+</div><div class="col-7">
+<details class="sphinx-bs dropdown card mb-3" open="open">
+<summary class="summary-title card-header">
+Demo<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<asciinema-player rows="16" src="assets/adventure-1.2.cast"></asciinema-player></div>
+</details><details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
 Code<div class="summary-down docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
 <div class="summary-up docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="summary-content card-body docutils">
-<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Text-based adventure game</span>
+<span class="sd">https://alissa-huskey.github.io/python-class/exercises/adventure.html</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome!&quot;</span><span class="p">)</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">reply</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;&gt; &quot;</span><span class="p">)</span>
@@ -680,28 +700,29 @@ Code<div class="summary-down docutils">
 <h3><a class="toc-backref" href="#contents">Part 1.3: Your first command: quit</a><a class="headerlink" href="#part-1-3-your-first-command-quit" title="Permalink to this headline">¶</a></h3>
 <p>In this section we will actually look at what the user says, and make our first
 command: the <code class="docutils literal notranslate"><span class="pre">quit</span></code> command.</p>
-<details class="sphinx-bs dropdown card mb-3">
+<div class="row"><div class="col-5 left-col-5">
+<p class="rubric">A. Make do_quit()</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Make a <code class="docutils literal notranslate"><span class="pre">do_quit()</span></code> function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> In it, print <code class="docutils literal notranslate"><span class="pre">&quot;Goodbye.&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Then call <code class="docutils literal notranslate"><span class="pre">quit()</span></code></p></li>
+</ol>
+<p class="rubric">B. In main(), in the while loop:</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> After getting <code class="docutils literal notranslate"><span class="pre">reply</span></code>, check if <code class="docutils literal notranslate"><span class="pre">reply</span></code> is equal to <code class="docutils literal notranslate"><span class="pre">q</span></code> or <code class="docutils literal notranslate"><span class="pre">quit</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> If so, call <code class="docutils literal notranslate"><span class="pre">do_quit()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Otherwise, print a messsage like: <code class="docutils literal notranslate"><span class="pre">&quot;No</span> <span class="pre">such</span> <span class="pre">command.&quot;</span></code> then <code class="docutils literal notranslate"><span class="pre">continue</span></code></p></li>
+</ol>
+</div><div class="col-7">
+<details class="sphinx-bs dropdown card mb-3" open="open">
 <summary class="summary-title card-header">
 Demo<div class="summary-down docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
 <div class="summary-up docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="summary-content card-body docutils">
-<asciinema-player src="assets/adventure-1.3.cast"></asciinema-player></div>
-</details><div class="row"><div class="col left-col">
-<p class="rubric">Make do_quit()</p>
-<ol class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Make a <code class="docutils literal notranslate"><span class="pre">do_quit()</span></code> function.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> In it, print <code class="docutils literal notranslate"><span class="pre">&quot;Goodbye.&quot;</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Then call <code class="docutils literal notranslate"><span class="pre">quit()</span></code></p></li>
-</ol>
-<p class="rubric">In main(), in the while loop:</p>
-<ol class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> After getting <code class="docutils literal notranslate"><span class="pre">reply</span></code>, check if <code class="docutils literal notranslate"><span class="pre">reply</span></code> is equal to <code class="docutils literal notranslate"><span class="pre">q</span></code> or <code class="docutils literal notranslate"><span class="pre">quit</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> If so, call <code class="docutils literal notranslate"><span class="pre">do_quit()</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Otherwise, print a messsage like: <code class="docutils literal notranslate"><span class="pre">&quot;No</span> <span class="pre">such</span> <span class="pre">command.&quot;</span></code> then <code class="docutils literal notranslate"><span class="pre">continue</span></code></p></li>
-</ol>
-</div><div class="col">
+<asciinema-player rows="15" src="assets/adventure-1.3.cast"></asciinema-player></div>
+</details></div></div>
 <details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
 Code<div class="summary-down docutils">
@@ -730,7 +751,17 @@ Code<div class="summary-down docutils">
 <span class="normal">19</span>
 <span class="normal">20</span>
 <span class="normal">21</span>
-<span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="hll"><span class="k">def</span> <span class="nf">do_quit</span><span class="p">():</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Text-based adventure game</span>
+<span class="sd">https://alissa-huskey.github.io/python-class/exercises/adventure.html</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="hll">
+</span><span class="hll"><span class="k">def</span> <span class="nf">do_quit</span><span class="p">():</span>
 </span><span class="hll">    <span class="sd">&quot;&quot;&quot;Exit the game.&quot;&quot;&quot;</span>
 </span><span class="hll">    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ok, goodbye.&quot;</span><span class="p">)</span>
 </span><span class="hll">    <span class="n">quit</span><span class="p">()</span>
@@ -755,17 +786,15 @@ Code<div class="summary-down docutils">
 </pre></div>
 </td></tr></table></div>
 </div>
-</details></div></div>
-</div>
+</details></div>
 <div class="section" id="part-1-4-create-items">
 <h3><a class="toc-backref" href="#contents">Part 1.4 Create <code class="docutils literal notranslate"><span class="pre">ITEMS</span></code></a><a class="headerlink" href="#part-1-4-create-items" title="Permalink to this headline">¶</a></h3>
 <p>We’re going to make our first real command: <code class="docutils literal notranslate"><span class="pre">shop</span></code>. We’re skipping ahead a bit
 so we can have our program do something interesting.</p>
-<div class="row"><div class="col left-col">
 <p>Create a dictionary <code class="docutils literal notranslate"><span class="pre">ITEMS</span></code> that is a global variable. This is where you’ll
 keep the information about the items that are for sale, or objects in any of
 the rooms.</p>
-<div class="br"></div>
+<div class="row"><div class="col left-col">
 <p>This will be a nested dictionary, where the key is a unique identifier for
 each item, and the value is a dictionary with detailed information about
 that item. The keys of the child dictionary will be:</p>
@@ -775,7 +804,6 @@ that item. The keys of the child dictionary will be:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">&quot;description&quot;</span></code> – a longer description</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&quot;price&quot;</span></code> – how much it costs</p></li>
 </ul>
-<div class="br"></div>
 <p>Make a few items for your shop.</p>
 </div><div class="col">
 <p>Here is an example:</p>
@@ -789,6 +817,7 @@ that item. The keys of the child dictionary will be:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
+</div></div>
 <details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
 Code<div class="summary-down docutils">
@@ -832,7 +861,17 @@ Code<div class="summary-down docutils">
 <span class="normal">34</span>
 <span class="normal">35</span>
 <span class="normal">36</span>
-<span class="normal">37</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="hll"><span class="n">ITEMS</span> <span class="o">=</span> <span class="p">{</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Text-based adventure game</span>
+<span class="sd">https://alissa-huskey.github.io/python-class/exercises/adventure.html</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="hll"><span class="n">ITEMS</span> <span class="o">=</span> <span class="p">{</span>
 </span><span class="hll">    <span class="s2">&quot;elixr&quot;</span><span class="p">:</span> <span class="p">{</span>
 </span><span class="hll">        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;elixr&quot;</span><span class="p">,</span>
 </span><span class="hll">        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;healing elixr&quot;</span><span class="p">,</span>
@@ -872,25 +911,29 @@ Code<div class="summary-down docutils">
 </pre></div>
 </td></tr></table></div>
 </div>
-</details></div></div>
-</div>
+</details></div>
 <div class="section" id="part-1-5-make-do-shop-function">
 <h3><a class="toc-backref" href="#contents">Part 1.5: Make <code class="docutils literal notranslate"><span class="pre">do_shop()</span></code> function</a><a class="headerlink" href="#part-1-5-make-do-shop-function" title="Permalink to this headline">¶</a></h3>
-<details class="sphinx-bs dropdown card mb-3">
+<div class="row"><div class="col-5 left-col-5">
+<p>In this section we’ll make a <code class="docutils literal notranslate"><span class="pre">shop</span></code> command that will list the items that we
+defined in <code class="docutils literal notranslate"><span class="pre">ITEMS</span></code> above.</p>
+</div><div class="col-7">
+<details class="sphinx-bs dropdown card mb-3" open="open">
 <summary class="summary-title card-header">
 Demo<div class="summary-down docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
 <div class="summary-up docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="summary-content card-body docutils">
-<asciinema-player src="assets/adventure-1.5.cast"></asciinema-player></div>
-</details><p class="rubric">make a do_shop() function</p>
+<asciinema-player rows="15" src="assets/adventure-1.5.cast"></asciinema-player></div>
+</details></div></div>
+<p class="rubric">A. Define a do_shop() function</p>
 <ol class="simple">
 <li><p>Define a <code class="docutils literal notranslate"><span class="pre">do_shop()</span></code> function.</p></li>
 <li><p>Have it print <code class="docutils literal notranslate"><span class="pre">&quot;Items</span> <span class="pre">for</span> <span class="pre">sale.&quot;</span></code></p></li>
 <li><p>Iterate over the <code class="docutils literal notranslate"><span class="pre">ITEMS</span></code> dictionary. Print the <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">description</span></code> of each.</p></li>
 </ol>
-<p class="rubric">in main()</p>
+<p class="rubric">B. in main()</p>
 <ol class="simple">
 <li><p>In between your <code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">else</span></code>, add an <code class="docutils literal notranslate"><span class="pre">elif</span></code> clause that checks if <code class="docutils literal notranslate"><span class="pre">reply</span></code>
 is equal to <code class="docutils literal notranslate"><span class="pre">shop</span></code>.</p></li>
@@ -951,7 +994,17 @@ Code<div class="summary-down docutils">
 <span class="normal">46</span>
 <span class="normal">47</span>
 <span class="normal">48</span>
-<span class="normal">49</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">ITEMS</span> <span class="o">=</span> <span class="p">{</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Text-based adventure game</span>
+<span class="sd">https://alissa-huskey.github.io/python-class/exercises/adventure.html</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">ITEMS</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;elixr&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;elixr&quot;</span><span class="p">,</span>
         <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;healing elixr&quot;</span><span class="p">,</span>
@@ -1000,6 +1053,415 @@ Code<div class="summary-down docutils">
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 
+</pre></div>
+</td></tr></table></div>
+</div>
+</details></div>
+</div>
+<div class="section" id="part-2-go-places">
+<h2><a class="toc-backref" href="#contents">Part 2: Go places</a><a class="headerlink" href="#part-2-go-places" title="Permalink to this headline">¶</a></h2>
+<p>In this section we’ll be writing the <code class="docutils literal notranslate"><span class="pre">go</span></code> command, and the system to go from
+one place to another.</p>
+<div class="section" id="part-2-1-split-reply-into-command-and-arguments">
+<h3><a class="toc-backref" href="#contents">Part 2.1: Split reply into command and arguments</a><a class="headerlink" href="#part-2-1-split-reply-into-command-and-arguments" title="Permalink to this headline">¶</a></h3>
+<div class="row"><div class="col-5 left-col-5">
+<p>This will be the first command that we’ve written that takes an argument. That
+is, the user needs to type not just <code class="docutils literal notranslate"><span class="pre">go</span></code>, but also which direction to go like
+<code class="docutils literal notranslate"><span class="pre">north</span></code>.</p>
+<p>That means we need to split the string that is returned from <code class="docutils literal notranslate"><span class="pre">input()</span></code> into a
+list. That way we if the user types <code class="docutils literal notranslate"><span class="pre">go</span> <span class="pre">north</span></code> we can figure out that <code class="docutils literal notranslate"><span class="pre">go</span></code> is
+the command, and <code class="docutils literal notranslate"><span class="pre">north</span></code> is the direction.</p>
+</div><div class="col-7">
+<details class="sphinx-bs dropdown card mb-3" open="open">
+<summary class="summary-title card-header">
+Demo<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<asciinema-player rows="15" src="assets/adventure-2.1.cast"></asciinema-player></div>
+</details></div></div>
+<p class="rubric">A. Define do_go</p>
+<ol class="simple">
+<li><p>Define a <code class="docutils literal notranslate"><span class="pre">do_go()</span></code> function that takes one argument, <code class="docutils literal notranslate"><span class="pre">args</span></code>.</p></li>
+<li><p>In <code class="docutils literal notranslate"><span class="pre">do_go()</span></code> print <code class="samp docutils literal notranslate"><span class="pre">Trying</span> <span class="pre">to</span> <span class="pre">go:</span> <em><span class="pre">args</span></em></code></p></li>
+</ol>
+<p class="rubric">B. In main(), in the while loop</p>
+<ol>
+<li><p>Strip the value returned from <code class="docutils literal notranslate"><span class="pre">input()</span></code> using the <code class="docutils literal notranslate"><span class="pre">.strip()</span></code> method.</p>
+<p>This means if a user enters <code class="docutils literal notranslate"><span class="pre">&quot;</span> <span class="pre">quit&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;quit</span> <span class="pre">&quot;</span></code> the program still knows
+to call <code class="docutils literal notranslate"><span class="pre">do_quit()</span></code>.</p>
+</li>
+<li><p>Call <code class="docutils literal notranslate"><span class="pre">.split()</span></code> on <code class="docutils literal notranslate"><span class="pre">reply</span></code> and assign it to the variable <code class="docutils literal notranslate"><span class="pre">args</span></code>.</p>
+<p>Now the <code class="docutils literal notranslate"><span class="pre">args</span></code> variable will contain a list where each word is an item in
+the list.</p>
+</li>
+<li><p>Use an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement to check if <code class="docutils literal notranslate"><span class="pre">args</span></code> is <a class="reference internal" href="../lessons/conditional-statements.html#term-falsy"><span class="xref std std-term">falsy</span></a>. If it is,
+<code class="docutils literal notranslate"><span class="pre">continue</span></code>.</p>
+<p>This means that if a user doesn’t enter anything, the program will ignore it
+and start the loop over.</p>
+</li>
+<li><p>Remove the first item from <code class="docutils literal notranslate"><span class="pre">args</span></code> using the <code class="docutils literal notranslate"><span class="pre">.pop()</span></code> method and assign it to
+the variable <code class="docutils literal notranslate"><span class="pre">command</span></code>.</p>
+<p>Now <code class="docutils literal notranslate"><span class="pre">command</span></code> will contain the first word the user entered, and <code class="docutils literal notranslate"><span class="pre">args</span></code> will
+contain a list of the remaining commands. If there were no additional words,
+then <code class="docutils literal notranslate"><span class="pre">args</span></code> will be an empty list.</p>
+</li>
+<li><p>In each clause of the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement where we check the value of <code class="docutils literal notranslate"><span class="pre">reply</span></code>,
+change it to <code class="docutils literal notranslate"><span class="pre">command</span></code>.</p></li>
+<li><p>Add an <code class="docutils literal notranslate"><span class="pre">elif</span></code> clause that checks if <code class="docutils literal notranslate"><span class="pre">command</span></code> is equal to <code class="docutils literal notranslate"><span class="pre">&quot;g&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;go&quot;</span></code>.
+If it is, call <code class="docutils literal notranslate"><span class="pre">do_go()</span></code> and pass <code class="docutils literal notranslate"><span class="pre">args</span></code>.</p></li>
+</ol>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Code<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Text-based adventure game</span>
+<span class="sd">https://alissa-huskey.github.io/python-class/exercises/adventure.html</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">ITEMS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;elixr&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;elixr&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;healing elixr&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;a magical elixr that will heal what ails ya&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;dagger&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;dagger&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;a dagger&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;a 14 inch dagger with a double-edged blade&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">25</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">do_shop</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;List the items for sale.&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Items for sale.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">ITEMS</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="si">:</span><span class="s1">&lt;13</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">])</span>
+
+    <span class="nb">print</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">do_quit</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Exit the game.&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ok, goodbye.&quot;</span><span class="p">)</span>
+    <span class="n">quit</span><span class="p">()</span>
+
+<span class="hll"><span class="k">def</span> <span class="nf">do_go</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+</span><span class="hll">    <span class="sd">&quot;&quot;&quot;Move to a different place&quot;&quot;&quot;</span>
+</span><span class="hll">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Trying to go: </span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome!&quot;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="hll">        <span class="n">reply</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;&gt; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</span><span class="hll">        <span class="n">args</span> <span class="o">=</span> <span class="n">reply</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+</span><span class="hll">
+</span><span class="hll">        <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">:</span>
+</span><span class="hll">            <span class="k">continue</span>
+</span><span class="hll">
+</span><span class="hll">        <span class="n">command</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span class="hll">
+</span><span class="hll">        <span class="k">if</span> <span class="n">command</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;q&quot;</span><span class="p">,</span> <span class="s2">&quot;quit&quot;</span><span class="p">,</span> <span class="s2">&quot;exit&quot;</span><span class="p">]:</span>
+</span>            <span class="n">do_quit</span><span class="p">()</span>
+
+<span class="hll">        <span class="k">elif</span> <span class="n">command</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;shop&quot;</span><span class="p">]:</span>
+</span>            <span class="n">do_shop</span><span class="p">()</span>
+
+<span class="hll">        <span class="k">elif</span> <span class="n">command</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="s2">&quot;go&quot;</span><span class="p">]:</span>
+</span><span class="hll">            <span class="n">do_go</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No such command.&quot;</span><span class="p">)</span>
+            <span class="k">continue</span>
+
+        <span class="nb">print</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+
+</pre></div>
+</td></tr></table></div>
+</div>
+</details></div>
+<div class="section" id="part-2-2-create-player-and-places">
+<h3><a class="toc-backref" href="#contents">Part 2.2: Create PLAYER and PLACES</a><a class="headerlink" href="#part-2-2-create-player-and-places" title="Permalink to this headline">¶</a></h3>
+<p>Now we’ll make global <code class="docutils literal notranslate"><span class="pre">PLACES</span></code> dictionary which will store information about
+the different areas in the game.</p>
+<p>Like the <code class="docutils literal notranslate"><span class="pre">ITEMS</span></code> dictionary, <code class="docutils literal notranslate"><span class="pre">PLACES</span></code> will be a nested dictionary, where the
+key is a unique identifier for each place, and the value is a dictionary with
+detailed information about that place.</p>
+<div class="row"><div class="col left-col">
+<p>The keys of the child dictionary will be:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;key&quot;</span></code> – the same thing as the key</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;name&quot;</span></code> – a short description</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;description&quot;</span></code> – a longer description</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;east&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;west&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;north&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;south&quot;</span></code> – the key to the place in that
+direction. (More on that next.)</p></li>
+</ul>
+</div><div class="col">
+<p>Here is an example:</p>
+<div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">PLACES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;home&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Your Cottage&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;east&quot;</span><span class="p">:</span> <span class="s2">&quot;town-square&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A cozy stone cottage with a desk and a neatly made bed.&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></div>
+<div class="br"></div>
+<p>The <code class="docutils literal notranslate"><span class="pre">&quot;north&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;south&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;east&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;west&quot;</span></code> values will be used to tell
+which way the player can go from a particular place and what is in that
+direction.</p>
+<p>For example, going <code class="docutils literal notranslate"><span class="pre">&quot;east&quot;</span></code> from <code class="docutils literal notranslate"><span class="pre">&quot;home&quot;</span></code> is the <code class="docutils literal notranslate"><span class="pre">&quot;town-square&quot;</span></code>.</p>
+<div class="row"><div class="col left-col">
+<div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">PLACES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;home&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Your Cottage&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;east&quot;</span><span class="p">:</span> <span class="s2 s2-Highlight">&quot;town-square&quot;</span><span class="p">,</span>
+        <span class="o">...</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;town-square&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;town-square&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;The Town Square&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;west&quot;</span><span class="p">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
+        <span class="o">...</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div><div class="col">
+<div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">PLACES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;home&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Your Cottage&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;east&quot;</span><span class="p">:</span> <span class="s2">&quot;town-square&quot;</span><span class="p">,</span>
+        <span class="o">...</span>
+    <span class="p">},</span>
+    <span class="s2 s2-Highlight">&quot;town-square&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;town-square&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;The Town Square&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;west&quot;</span><span class="p">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
+        <span class="o">...</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></div>
+<div class="br"></div>
+<p>Likewise, going <code class="docutils literal notranslate"><span class="pre">&quot;west&quot;</span></code> from the <code class="docutils literal notranslate"><span class="pre">&quot;town-square&quot;</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;home&quot;</span></code>.</p>
+<div class="row"><div class="col left-col">
+<div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">PLACES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;home&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Your Cottage&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;east&quot;</span><span class="p">:</span> <span class="s2">&quot;town-square&quot;</span><span class="p">,</span>
+        <span class="o">...</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;town-square&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;town-square&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;The Town Square&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;west&quot;</span><span class="p">:</span> <span class="s2 s2-Highlight">&quot;home&quot;</span><span class="p">,</span>
+        <span class="o">...</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div><div class="col">
+<div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">PLACES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2 s2-Highlight">&quot;home&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Your Cottage&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;east&quot;</span><span class="p">:</span> <span class="s2">&quot;town-square&quot;</span><span class="p">,</span>
+        <span class="o">...</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;town-square&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;town-square&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;The Town Square&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;west&quot;</span><span class="p">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
+        <span class="o">...</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></div>
+<p>We’ll also make a global <code class="docutils literal notranslate"><span class="pre">PLAYER</span></code> dictionary that will save information about
+the current game.</p>
+<p>For now it will just have one key, the <code class="docutils literal notranslate"><span class="pre">place</span></code>, which point to where the player
+is at. In the <code class="docutils literal notranslate"><span class="pre">do_go()</span></code> function, we will change that value to move the player
+from one place to another.</p>
+<div class="row"><div class="col left-col">
+<div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">PLAYER</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;place&quot;</span><span class="p">:</span> <span class="s2 s2-Highlight">&quot;home&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div><div class="col">
+<div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">PLACES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2 s2-Highlight">&quot;home&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Your Cottage&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;east&quot;</span><span class="p">:</span> <span class="s2">&quot;town-square&quot;</span><span class="p">,</span>
+        <span class="o">...</span>
+    <span class="p">},</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></div>
+<p class="rubric">at the top of your file</p>
+<ol>
+<li><p>Create a <code class="docutils literal notranslate"><span class="pre">PLAYER</span></code> dictionary with the key <code class="docutils literal notranslate"><span class="pre">&quot;place&quot;</span></code> and the value <code class="docutils literal notranslate"><span class="pre">&quot;home&quot;</span></code>.</p></li>
+<li><p>Create a <code class="docutils literal notranslate"><span class="pre">PLACES</span></code> dictionary where the key is a unique identifier for each place.
+The value is a dictionary that with information about each place:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;key&quot;</span></code> – the same thing as the key</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;name&quot;</span></code> – a short description</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;description&quot;</span></code> – a longer description</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;east&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;west&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;north&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;south&quot;</span></code> – the key to the place in that</p></li>
+</ul>
+<p>Add two places, <code class="docutils literal notranslate"><span class="pre">&quot;home&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;town-square&quot;</span></code>.</p>
+</li>
+</ol>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Code<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Text-based adventure game</span>
+<span class="sd">https://alissa-huskey.github.io/python-class/exercises/adventure.html</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="hll"><span class="n">PLAYER</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="hll">    <span class="s2">&quot;place&quot;</span><span class="p">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
+</span><span class="hll"><span class="p">}</span>
+</span><span class="hll">
+</span><span class="hll"><span class="n">PLACES</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="hll">    <span class="s2">&quot;home&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class="hll">        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
+</span><span class="hll">        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Your Cottage&quot;</span><span class="p">,</span>
+</span><span class="hll">        <span class="s2">&quot;east&quot;</span><span class="p">:</span> <span class="s2">&quot;town-square&quot;</span><span class="p">,</span>
+</span><span class="hll">        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A cozy stone cottage with a desk and a neatly made bed.&quot;</span><span class="p">,</span>
+</span><span class="hll">    <span class="p">},</span>
+</span><span class="hll">    <span class="s2">&quot;town-square&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class="hll">        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;town-square&quot;</span><span class="p">,</span>
+</span><span class="hll">        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;The Town Square&quot;</span><span class="p">,</span>
+</span><span class="hll">        <span class="s2">&quot;west&quot;</span><span class="p">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
+</span><span class="hll">        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="p">(</span>
+</span><span class="hll">            <span class="s2">&quot;A large open space surrounded by buildings with a burbling &quot;</span>
+</span><span class="hll">            <span class="s2">&quot;fountain in the center.&quot;</span>
+</span><span class="hll">        <span class="p">),</span>
+</span><span class="hll">    <span class="p">},</span>
+</span><span class="hll"><span class="p">}</span>
+</span>
+<span class="n">ITEMS</span> <span class="o">=</span> <span class="p">{</span>
 </pre></div>
 </td></tr></table></div>
 </div>
