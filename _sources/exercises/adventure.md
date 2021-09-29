@@ -87,8 +87,7 @@ repo for it, if you're comfortable with git.)
 {{ endcols }}
 
 
-Part 1.3: Your first command: quit
-----------------------------------
+### Part 1.3: Your first command: quit
 
 In this section we will actually look at what the user says, and make our first
 command: the `quit` command.
@@ -130,3 +129,85 @@ command: the `quit` command.
 `````
 
 {{ endcols }}
+
+### Part 1.4 Create `ITEMS`
+
+We're going to make our first real command: `shop`. We're skipping ahead a bit
+so we can have our program do something interesting.
+
+{{ leftcol }}
+
+Create a dictionary `ITEMS` that is a global variable. This is where you'll
+keep the information about the items that are for sale, or objects in any of
+the rooms.
+
+{{ br }}
+
+This will be a nested dictionary, where the key is a unique identifier for
+each item, and the value is a dictionary with detailed information about
+that item. The keys of the child dictionary will be:
+
+* `"key"` -- the same thing as the key
+* `"name"` -- a short description
+* `"description"` -- a longer description
+* `"price"` -- how much it costs
+
+{{ br }}
+
+Make a few items for your shop.
+
+{{ rightcol }}
+
+Here is an example:
+
+```python
+ITEMS = {
+    "elixr": {
+        "key": "elixr",
+        "name": "healing elixr",
+        "description": "a magical elixr that will heal what ails ya",
+        "price": -10,
+    },
+}
+```
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-1.4.py
+:linenos:
+:emphasize-lines: "1-14"
+
+```
+
+`````
+
+
+{{ endcols }}
+
+### Part 1.5: Make `do_shop()` function
+
+```{rubric} make a do_shop() function
+```
+
+1. Define a `do_shop()` function.
+1. Have it print `"Items for sale."`
+1. Iterate over the `ITEMS` dictionary. Print the `name` and `description` of each.
+
+```{rubric} in main()
+```
+
+1. In between your `if` and `else`, add an `elif` clause that checks if `reply`
+   is equal to `shop`.
+1. If so, call `do_shop()`
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-1.5.py
+:linenos:
+:emphasize-lines: "16-23, 38-39"
+```
+
+`````
+
+
+
