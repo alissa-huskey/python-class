@@ -497,3 +497,11 @@ PLACES = {
 ```
 
 `````
+
+### Part 2.3: Move the player in do_go()
+
+```{rubric} in main(), at the top of the while loop
+```
+
+1. `[ ]` Print {samp}`You are at: {PLACE}`, where `PLACE` is the value of
+   `place` from the `PLAYER` dictionary.
