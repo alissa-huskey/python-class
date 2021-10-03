@@ -2,9 +2,12 @@
 
 
 % TODO
+% [ ] operators
+%     [ ] `+`, `*`
+%     [ ] `in`, `not in`
 % [ ] replace
 % [ ] methods, rmethods, lmethods
-% [ ] subscription, characters
+% [ ] subscription, characters, slicing
 % [ ] partial string matching with `in`
 % [ ] escaping, raw, escape sequences
 % [ ] chr() ord()
@@ -17,6 +20,11 @@
 %     [ ] str.splitlines()
 % [ ] textwrap
 % [ ] regex
+% [ ] f-strings
+% [ ] `len()`
+% [ ] bytes, b'chars', bytesarray
+% [ ] string.ascii_lowercase, etc
+% [ ] encodings: ascii, utf-8 (unicode), `ascii()`
 
 % REFERENCE
 % https://realpython.com/python-strings/
