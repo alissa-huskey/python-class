@@ -1331,27 +1331,10 @@ variable
 ----
 
 % TODO
-% [x] docstrings
-% [x] comments
-% [x] parens for grouping, order of operation
 % [ ] line splitting
-% [x] subscription
-% [ ] dot notation
 % [ ] case sensitive
 % [ ] operators
 % [ ] delimiters
-% [x] types
-%     [x] list
-%     [.] dict
-%     [x] str
-%     [x] None
-%     [x] set
-%     [x] tuple
-% [x] flow control
-%     [x] if
-%     [x] while
-%     [x] for
-%     [x] functions
 % [ ] confusing
 %     [ ] nested function calls
 %     [ ] subscription and dot notation on values
@@ -1362,6 +1345,24 @@ variable
 %     [ ] `x + 1` vs `x = x + 1`
 %     [ ] `if function`
 %     [ ] missing commas from list means concatonation
+
+% [x] docstrings
+% [x] comments
+% [x] parens for grouping, order of operation
+% [x] subscription
+% [x] dot notation
+% [x] types
+%     [x] list
+%     [x] dict
+%     [x] str
+%     [x] None
+%     [x] set
+%     [x] tuple
+% [x] flow control
+%     [x] if
+%     [x] while
+%     [x] for
+%     [x] functions
 %
 % [x] keywords
 
