@@ -549,3 +549,10 @@ print(truck.is_clean)
 ```
 
 `````
+
+----
+
+% [ ] TODO
+% [ ] properties
+% [ ] inheritance
+% [ ] super

@@ -262,13 +262,13 @@ the command, and `north` is the direction.
 ```{rubric} A. Define do_go
 ```
 
-1. Define a `do_go()` function that takes one argument, `args`.
+1. Define a `do_go()` function that takes one argument: `args`.
 2. In `do_go()` print {samp}`Trying to go: {args}`
 
 ```{rubric} B. In main(), in the while loop
 ```
 
-1. Strip the value returned from `input()` using the `.strip()` method. 
+1. Strip the value returned from `input()` using the `.strip()` method.
 
    This means if a user enters `" quit"` or `"quit "` the program still knows
    to call `do_quit()`.
@@ -497,3 +497,86 @@ PLACES = {
 ```
 
 `````
+
+### Part 2.3: Write user message functions
+
+{{ left }}
+
+We're going to take a brief interlude here to write a couple of functions for
+printing messages to the user.
+
+We'll add a `debug()` function which will print messages intended for us (the
+programmer), but only if a global variable indicates that the program is in
+debug mode.
+
+We'll also add a `error()` function which will print an error message.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-2.3.cast
+:rows: 15
+```
+
+`````
+
+{{ endcols }}
+
+```{rubric} A. At the top of the file
+```
+
+1. `[ ]` Import `stderr` from the `sys` module
+1. `[ ]` Add a global variable `DEBUG` and set it to `True`
+
+
+```{rubric} B. Define debug() function
+```
+
+1. `[ ]` Write a function named: `debug` with one parameter: `message`
+1. `[ ]` In the function, check if `DEBUG` is `True` (or {term}`truthy`)
+   * `[ ]` If so, then print `message`
+   * `[ ]` Bonus: Print something before it like `"DEBUG: "`, or `"# "`, so you can more
+                 easily tell that it is a debug message
+
+```{rubric} C. define error() function
+```
+
+1. `[ ]` Write a function named: `error` with one parameter: `message`
+1. `[ ]` Print `message` with something before it like `"Error: "`. Send the
+         keyword argument `file` with the value `stderr` to print it to
+         {term}`stderr`.
+         *See [CLI Lesson](../lessons/cli.html#input-and-output) for more information.*
+
+```{rubric} D. in do_go()
+```
+
+1. `[ ]` Call `debug()` instead of `print()` for the message {samp}`Trying to go: {args}`
+
+```{rubric} E. in main(), in the while loop
+```
+
+1. `[ ]` At the beginning of the `while` loop call `debug()` with the message {samp}`You are at: {PLACE}`.
+   Replace `PLACE` with the value in the `PLAYER` dictionary associated with the `"place"` key
+
+   This will print a debug message with your current location every time the loop runs.
+
+1. `[ ]` After assigning `command`, use `debug()` to print `command` and `args`.
+1. `[ ]` Call `error()` instead of `print()` for the message {samp}`No such command.`
+
+```{rubric} F. Test debug messages
+```
+
+1. `[ ]` Test with `DEBUG` set to `True` as well as with `DEBUG` set to `False`
+
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-2.3.py
+:linenos:
+:emphasize-lines: "6-8, 47-55, 73, 79, 88, 100"
+```
+
+`````
+
