@@ -620,6 +620,7 @@ much simpler to start.).</p>
 <li><p><a class="reference internal" href="#part-2-1-split-reply-into-command-and-arguments" id="id8">Part 2.1: Split reply into command and arguments</a></p></li>
 <li><p><a class="reference internal" href="#part-2-2-create-player-and-places" id="id9">Part 2.2: Create PLAYER and PLACES</a></p></li>
 <li><p><a class="reference internal" href="#part-2-3-write-user-message-functions" id="id10">Part 2.3: Write user message functions</a></p></li>
+<li><p><a class="reference internal" href="#part-2-4-fill-in-go-command" id="id11">Part 2.4: Fill in <code class="docutils literal notranslate"><span class="pre">go</span></code> command</a></p></li>
 </ul>
 </li>
 </ul>
@@ -1280,7 +1281,7 @@ direction. (More on that next.)</p></li>
 </ul>
 </div><div class="col">
 <p>Here is an example:</p>
-<div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">PLACES</span> <span class="o">=</span> <span class="p">{</span>
+<div class="full-width highlight-python-hl notranslate" id="places-direction-to-place"><div class="highlight"><pre><span></span><span class="n">PLACES</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;home&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
         <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Your Cottage&quot;</span><span class="p">,</span>
@@ -1374,7 +1375,7 @@ the current game.</p>
 is at. In the <code class="docutils literal notranslate"><span class="pre">do_go()</span></code> function, we will change that value to move the player
 from one place to another.</p>
 <div class="row"><div class="col left-col">
-<div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">PLAYER</span> <span class="o">=</span> <span class="p">{</span>
+<div class="full-width highlight-python-hl notranslate" id="player-to-places"><div class="highlight"><pre><span></span><span class="n">PLAYER</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;place&quot;</span><span class="p">:</span> <span class="s2 s2-Highlight">&quot;home&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
@@ -1753,6 +1754,331 @@ Code<div class="summary-down docutils">
     <span class="n">main</span><span class="p">()</span>
 
 </pre></div>
+</td></tr></table></div>
+</div>
+</details></div>
+<div class="section" id="part-2-4-fill-in-go-command">
+<h3><a class="toc-backref" href="#contents">Part 2.4: Fill in <code class="docutils literal notranslate"><span class="pre">go</span></code> command</a><a class="headerlink" href="#part-2-4-fill-in-go-command" title="Permalink to this headline">¶</a></h3>
+<div class="row"><div class="col-5 left-col-5">
+<p>In this section we’ll be filling in the rest of the <code class="docutils literal notranslate"><span class="pre">go</span></code> command.</p>
+<p>We’ll need to make sure that we get a valid direction in <code class="docutils literal notranslate"><span class="pre">args</span></code>. Then look up
+where we are now from <code class="docutils literal notranslate"><span class="pre">PLAYER[&quot;place&quot;]</span></code> and <code class="docutils literal notranslate"><span class="pre">PLACES</span></code>; and look up where we want
+to go by looking at direction (ie <code class="docutils literal notranslate"><span class="pre">&quot;east&quot;</span></code>) key in the current place dictionary.</p>
+<p>Finally, we’ll change the current <code class="docutils literal notranslate"><span class="pre">&quot;place&quot;</span></code> in the <code class="docutils literal notranslate"><span class="pre">PLAYER</span></code> dictionary, and
+print the <code class="docutils literal notranslate"><span class="pre">&quot;name&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;description&quot;</span></code>.</p>
+</div><div class="col-7">
+<details class="sphinx-bs dropdown card mb-3" open="open">
+<summary class="summary-title card-header">
+Demo<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<asciinema-player rows="15" src="assets/adventure-2.4.cast"></asciinema-player></div>
+</details></div></div>
+<p class="rubric">A. in do_go(): ensure that the user typed a valid direction</p>
+<p>In this section we’ll be making sure there is at least one item in the <code class="docutils literal notranslate"><span class="pre">args</span></code>
+list and that it is a valid direction.</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Check to see if <code class="docutils literal notranslate"><span class="pre">args</span></code> is <a class="reference internal" href="../lessons/conditional-statements.html#term-falsy"><span class="xref std std-term">falsy</span></a>, if so:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Use the <code class="docutils literal notranslate"><span class="pre">error()</span></code> function to print a message saying:
+<code class="docutils literal notranslate"><span class="pre">&quot;Which</span> <span class="pre">way</span> <span class="pre">do</span> <span class="pre">you</span> <span class="pre">want</span> <span class="pre">to</span> <span class="pre">go?&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> return</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> assign the first item of the <code class="docutils literal notranslate"><span class="pre">args</span></code> list to the variable <code class="docutils literal notranslate"><span class="pre">direction</span></code> and make it lowercase</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Check if <code class="docutils literal notranslate"><span class="pre">direction</span></code> is one of <code class="docutils literal notranslate"><span class="pre">&quot;north&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;south&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;east&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;west&quot;</span></code>. If not:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Use the <code class="docutils literal notranslate"><span class="pre">error()</span></code> function to print a message saying:
+<code class="samp docutils literal notranslate"><span class="pre">&quot;Sorry,</span> <span class="pre">I</span> <span class="pre">don't</span> <span class="pre">know</span> <span class="pre">how</span> <span class="pre">to</span> <span class="pre">go:</span> <em><span class="pre">direction</span></em><span class="pre">.&quot;)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> return</p></li>
+</ul>
+</li>
+</ol>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Code<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">do_go</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Move to a different place&quot;&quot;&quot;</span>
+    <span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Trying to go: </span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># make sure the player included a direction</span>
+<span class="hll">    <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">:</span>
+</span><span class="hll">        <span class="n">error</span><span class="p">(</span><span class="s2">&quot;Which way do you want to go?&quot;</span><span class="p">)</span>
+</span><span class="hll">        <span class="k">return</span>
+</span>
+    <span class="c1"># get the direction from arguments</span>
+    <span class="c1"># and make it lowercase</span>
+<span class="hll">    <span class="n">direction</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</span>
+    <span class="c1"># make sure it&#39;s a valid direction</span>
+<span class="hll">    <span class="k">if</span> <span class="n">direction</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;north&#39;</span><span class="p">,</span> <span class="s1">&#39;south&#39;</span><span class="p">,</span> <span class="s1">&#39;east&#39;</span><span class="p">,</span> <span class="s1">&#39;west&#39;</span><span class="p">):</span>
+</span><span class="hll">        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorry, I don&#39;t know how to go: </span><span class="si">{</span><span class="n">direction</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</span><span class="hll">        <span class="k">return</span>
+</span></pre></div>
+</td></tr></table></div>
+</div>
+</details><p class="rubric">B. (still) in do_go(): look up where the user is at</p>
+<p>In this section we’ll be using the <code class="docutils literal notranslate"><span class="pre">PLAYER[&quot;place&quot;]</span></code> to get the current place
+from the <code class="docutils literal notranslate"><span class="pre">PLACES</span></code> dictionary, as shown <a class="reference internal" href="#player-to-places"><span class="std std-ref">here</span></a>.</p>
+<div class="row"><div class="col left-col">
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> get the value from <code class="docutils literal notranslate"><span class="pre">PLAYER</span></code> associated with the <code class="docutils literal notranslate"><span class="pre">&quot;place&quot;</span></code> key and assign it to <code class="docutils literal notranslate"><span class="pre">old_name</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> get the value from <code class="docutils literal notranslate"><span class="pre">PLACES</span></code> associated with <code class="docutils literal notranslate"><span class="pre">old_name</span></code> and assign it to <code class="docutils literal notranslate"><span class="pre">old_place</span></code></p></li>
+</ol>
+</div><div class="col">
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Code<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="c1"># look up where the user is at now</span>
+<span class="hll">    <span class="n">old_name</span> <span class="o">=</span> <span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;place&quot;</span><span class="p">]</span>
+</span><span class="hll">    <span class="n">old_place</span> <span class="o">=</span> <span class="n">PLACES</span><span class="p">[</span><span class="n">old_name</span><span class="p">]</span>
+</span></pre></div>
+</td></tr></table></div>
+</div>
+</details></div></div>
+<p class="rubric">C. (still) in do_go(): look up what is in that direction from here</p>
+<p>In this section we’ll use the direction (ie. <code class="docutils literal notranslate"><span class="pre">&quot;east&quot;</span></code>) the player wants to go
+to look up the name of the next place (if any) in the current place dictionary
+as seen <a class="reference internal" href="#places-direction-to-place"><span class="std std-ref">here</span></a>.</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> use the <code class="docutils literal notranslate"><span class="pre">.get()</span></code> method on <code class="docutils literal notranslate"><span class="pre">old_place</span></code> to get the value associated
+with the <code class="docutils literal notranslate"><span class="pre">direction</span></code> key and assign it to <code class="docutils literal notranslate"><span class="pre">new_name</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Check if <code class="docutils literal notranslate"><span class="pre">new_name</span></code> is falsy. If so:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Use the <code class="docutils literal notranslate"><span class="pre">error()</span></code> function to print a message saying:
+<code class="samp docutils literal notranslate"><span class="pre">&quot;Sorry,</span> <span class="pre">you</span> <span class="pre">can't</span> <span class="pre">go</span> <em><span class="pre">direction</span></em> <span class="pre">from</span> <span class="pre">here.&quot;)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> return</p></li>
+</ul>
+</li>
+</ol>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Code<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">93</span>
+<span class="normal">94</span>
+<span class="normal">95</span>
+<span class="normal">96</span>
+<span class="normal">97</span>
+<span class="normal">98</span>
+<span class="normal">99</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="c1"># look up what is in that direction from here</span>
+<span class="hll">    <span class="n">new_name</span> <span class="o">=</span> <span class="n">old_place</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span>
+</span>
+    <span class="c1"># print an error if there is nothing in that direction</span>
+<span class="hll">    <span class="k">if</span> <span class="ow">not</span> <span class="n">new_name</span><span class="p">:</span>
+</span><span class="hll">        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorry, you can&#39;t go </span><span class="si">{</span><span class="n">direction</span><span class="si">}</span><span class="s2"> from here.&quot;</span><span class="p">)</span>
+</span><span class="hll">        <span class="k">return</span>
+</span></pre></div>
+</td></tr></table></div>
+</div>
+</details><p class="rubric">D. (still) in do_go(): figure out where we’re going</p>
+<p>Next we’ll look up the new place name from the current place dictionary using
+the direction (ie. <code class="docutils literal notranslate"><span class="pre">&quot;east&quot;</span></code>) to as a key. If it’s missing, that means the
+player can’t go that direction from where they are.</p>
+<ol>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> use the <code class="docutils literal notranslate"><span class="pre">.get()</span></code> method on <code class="docutils literal notranslate"><span class="pre">PLACES</span></code> to get the value associated
+with the <code class="docutils literal notranslate"><span class="pre">new_name</span></code> key and assign it to <code class="docutils literal notranslate"><span class="pre">new_place</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Check if <code class="docutils literal notranslate"><span class="pre">new_place</span></code> is falsy. If so:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Use the <code class="docutils literal notranslate"><span class="pre">error()</span></code> function to print a message saying:
+<code class="docutils literal notranslate"><span class="pre">&quot;Woops!</span> <span class="pre">The</span> <span class="pre">information</span> <span class="pre">about</span> <span class="pre">{new_name}</span> <span class="pre">seems</span> <span class="pre">to</span> <span class="pre">be</span> <span class="pre">missing.&quot;</span></code></p></li>
+</ul>
+<p>This will only happen if you made a mistake somewhere in your code. But just
+in case we do, we want to have a clear error message so we can tell what
+went wrong.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> return</p></li>
+</ul>
+</li>
+</ol>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Code<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="c1"># look up the place information</span>
+<span class="hll">    <span class="n">new_place</span> <span class="o">=</span> <span class="n">PLACES</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">new_name</span><span class="p">)</span>
+</span>
+    <span class="c1"># this should never happen if we write the code correctly</span>
+    <span class="c1"># but just in case there is no key in PLACES matching</span>
+    <span class="c1"># the new name, print an error</span>
+<span class="hll">    <span class="k">if</span> <span class="ow">not</span> <span class="n">new_place</span><span class="p">:</span>
+</span><span class="hll">        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Woops! The information about </span><span class="si">{</span><span class="n">new_name</span><span class="si">}</span><span class="s2"> seems to be missing.&quot;</span><span class="p">)</span>
+</span><span class="hll">        <span class="k">return</span>
+</span></pre></div>
+</td></tr></table></div>
+</div>
+</details><p class="rubric">E. (still) in do_go(): update the players place and describe it</p>
+<p>Finally, we can now update the <code class="docutils literal notranslate"><span class="pre">PLAYER</span></code> dictionary to point to the new place
+name and print the place information.</p>
+<div class="row"><div class="col left-col">
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> In the <code class="docutils literal notranslate"><span class="pre">PLAYER</span></code> dictionary change value associated with the <code class="docutils literal notranslate"><span class="pre">&quot;player&quot;</span></code> key to <code class="docutils literal notranslate"><span class="pre">new_name</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Print the values associated with the <code class="docutils literal notranslate"><span class="pre">&quot;name&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;description&quot;</span></code> keys of the <code class="docutils literal notranslate"><span class="pre">new_place</span></code> dictionary</p></li>
+</ol>
+</div><div class="col">
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Code<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="c1"># move the player to the new place</span>
+<span class="hll">    <span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;place&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_name</span>
+</span>
+    <span class="c1"># print information about the new place</span>
+<span class="hll">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">new_place</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class="hll">    <span class="nb">print</span><span class="p">(</span><span class="n">new_place</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">],</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</span></pre></div>
+</td></tr></table></div>
+</div>
+</details></div></div>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Code<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">do_go</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Move to a different place&quot;&quot;&quot;</span>
+    <span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Trying to go: </span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># make sure the player included a direction</span>
+<span class="hll">    <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">:</span>
+</span><span class="hll">        <span class="n">error</span><span class="p">(</span><span class="s2">&quot;Which way do you want to go?&quot;</span><span class="p">)</span>
+</span><span class="hll">        <span class="k">return</span>
+</span>
+    <span class="c1"># get the direction from arguments</span>
+    <span class="c1"># and make it lowercase</span>
+<span class="hll">    <span class="n">direction</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</span>
+    <span class="c1"># make sure it&#39;s a valid direction</span>
+<span class="hll">    <span class="k">if</span> <span class="n">direction</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;north&#39;</span><span class="p">,</span> <span class="s1">&#39;south&#39;</span><span class="p">,</span> <span class="s1">&#39;east&#39;</span><span class="p">,</span> <span class="s1">&#39;west&#39;</span><span class="p">):</span>
+</span><span class="hll">        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorry, I don&#39;t know how to go: </span><span class="si">{</span><span class="n">direction</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</span><span class="hll">        <span class="k">return</span>
+</span>
+    <span class="c1"># look up where the user is at now</span>
+<span class="hll">    <span class="n">old_name</span> <span class="o">=</span> <span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;place&quot;</span><span class="p">]</span>
+</span><span class="hll">    <span class="n">old_place</span> <span class="o">=</span> <span class="n">PLACES</span><span class="p">[</span><span class="n">old_name</span><span class="p">]</span>
+</span>
+    <span class="c1"># look up what is in that direction from here</span>
+<span class="hll">    <span class="n">new_name</span> <span class="o">=</span> <span class="n">old_place</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span>
+</span>
+    <span class="c1"># print an error if there is nothing in that direction</span>
+<span class="hll">    <span class="k">if</span> <span class="ow">not</span> <span class="n">new_name</span><span class="p">:</span>
+</span><span class="hll">        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorry, you can&#39;t go </span><span class="si">{</span><span class="n">direction</span><span class="si">}</span><span class="s2"> from here.&quot;</span><span class="p">)</span>
+</span><span class="hll">        <span class="k">return</span>
+</span>
+    <span class="c1"># look up the place information</span>
+<span class="hll">    <span class="n">new_place</span> <span class="o">=</span> <span class="n">PLACES</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">new_name</span><span class="p">)</span>
+</span>
+    <span class="c1"># this should never happen if we write the code correctly</span>
+    <span class="c1"># but just in case there is no key in PLACES matching</span>
+    <span class="c1"># the new name, print an error</span>
+<span class="hll">    <span class="k">if</span> <span class="ow">not</span> <span class="n">new_place</span><span class="p">:</span>
+</span><span class="hll">        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Woops! The information about </span><span class="si">{</span><span class="n">new_name</span><span class="si">}</span><span class="s2"> seems to be missing.&quot;</span><span class="p">)</span>
+</span><span class="hll">        <span class="k">return</span>
+</span>
+    <span class="c1"># move the player to the new place</span>
+<span class="hll">    <span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;place&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_name</span>
+</span>
+    <span class="c1"># print information about the new place</span>
+<span class="hll">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">new_place</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class="hll">    <span class="nb">print</span><span class="p">(</span><span class="n">new_place</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">],</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</span></pre></div>
 </td></tr></table></div>
 </div>
 </details></div>
