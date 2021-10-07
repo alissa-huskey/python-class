@@ -325,6 +325,7 @@ The keys of the child dictionary will be:
 Here is an example:
 
 ```{code-block-hl} python
+:name: places-direction-to-place
 :class: full-width
 
 PLACES = {
@@ -450,6 +451,7 @@ from one place to another.
 
 ```{code-block-hl} python
 :class: full-width
+:name: player-to-places
 
 PLAYER = {
     "place": !!!"home"!!!,
@@ -580,3 +582,175 @@ We'll also add a `error()` function which will print an error message.
 
 `````
 
+
+### Part 2.4: Fill in `go` command
+
+{{ left }}
+
+In this section we'll be filling in the rest of the `go` command.
+
+We'll need to make sure that we get a valid direction in `args`. Then look up
+where we are now from `PLAYER["place"]` and `PLACES`; and look up where we want
+to go by looking at direction (ie `"east"`) key in the current place dictionary.
+
+Finally, we'll change the current `"place"` in the `PLAYER` dictionary, and
+print the `"name"` and `"description"`.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-2.4.cast
+:rows: 15
+```
+
+`````
+
+{{ endcols }}
+
+```{rubric} A. in do_go(): ensure that the user typed a valid direction
+```
+
+In this section we'll be making sure there is at least one item in the `args`
+list and that it is a valid direction.
+
+1. `[ ]` Check to see if `args` is {term}`falsy`, if so:
+   * `[ ]` Use the `error()` function to print a message saying:
+   `"Which way do you want to go?"`
+   * `[ ]` return
+1. `[ ]` assign the first item of the `args` list to the variable `direction` and make it lowercase
+1. `[ ]` Check if `direction` is one of `"north"`, `"south"`, `"east"`, `"west"`. If not:
+   * `[ ]` Use the `error()` function to print a message saying:
+       {samp}`"Sorry, I don't know how to go: {direction}.")`
+   * `[ ]` return
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-2.4.py
+:class: full-width
+:linenos:
+:lines: "71-87"
+:lineno-match:
+:emphasize-lines: "6-8, 12, 15-17"
+```
+
+`````
+
+```{rubric} B. (still) in do_go(): look up where the user is at
+```
+
+In this section we'll be using the `PLAYER["place"]` to get the current place
+from the `PLACES` dictionary, as shown {ref}`here <player-to-places>`.
+
+{{ leftcol }}
+
+1. `[ ]` get the value from `PLAYER` associated with the `"place"` key and assign it to `old_name`
+1. `[ ]` get the value from `PLACES` associated with `old_name` and assign it to `old_place`
+
+{{ rightcol }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-2.4.py
+:linenos:
+:lineno-match:
+:lines: 89-91
+:emphasize-lines: "2-"
+```
+
+`````
+
+{{ endcols }}
+
+```{rubric} C. (still) in do_go(): look up what is in that direction from here
+```
+
+In this section we'll use the direction (ie. `"east"`) the player wants to go
+to look up the name of the next place (if any) in the current place dictionary
+as seen {ref}`here <places-direction-to-place>`.
+
+1. `[ ]` use the `.get()` method on `old_place` to get the value associated
+         with the `direction` key and assign it to `new_name`
+1. `[ ]` Check if `new_name` is falsy. If so:
+   * `[ ]` Use the `error()` function to print a message saying:
+       {samp}`"Sorry, you can't go {direction} from here.")`
+   * `[ ]` return
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-2.4.py
+:linenos:
+:lineno-match:
+:lines: 93-99
+:emphasize-lines: "2, 5-7"
+```
+
+`````
+
+
+```{rubric} D. (still) in do_go(): figure out where we're going
+```
+
+Next we'll look up the new place name from the current place dictionary using
+the direction (ie. `"east"`) to as a key. If it's missing, that means the
+player can't go that direction from where they are.
+
+1. `[ ]` use the `.get()` method on `PLACES` to get the value associated
+         with the `new_name` key and assign it to `new_place`
+1. `[ ]` Check if `new_place` is falsy. If so:
+   * `[ ]` Use the `error()` function to print a message saying:
+   `"Woops! The information about {new_name} seems to be missing."`
+
+   This will only happen if you made a mistake somewhere in your code. But just
+   in case we do, we want to have a clear error message so we can tell what
+   went wrong.
+   * `[ ]` return
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-2.4.py
+:linenos:
+:lines: 101-109
+:lineno-match:
+:emphasize-lines: "2, 7-9"
+```
+
+`````
+
+```{rubric} E. (still) in do_go(): update the players place and describe it
+```
+
+Finally, we can now update the `PLAYER` dictionary to point to the new place
+name and print the place information.
+
+{{ leftcol }}
+
+1. `[ ]` In the `PLAYER` dictionary change value associated with the `"player"` key to `new_name`
+1. `[ ]` Print the values associated with the `"name"` and `"description"` keys of the `new_place` dictionary
+
+{{ rightcol }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-2.4.py
+:linenos:
+:lines: 111-116
+:lineno-match:
+:emphasize-lines: "2, 5-6"
+```
+
+`````
+
+{{ endcols }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-2.4.py
+:pyobject: do_go
+:linenos:
+:emphasize-lines: "6-8, 12, 15-17, 20-21, 24, 27-29, 32, 37-39, 42, 45-46"
+:lineno-match:
+```
+
+`````
