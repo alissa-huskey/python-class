@@ -125,13 +125,13 @@ Part 2: Parameters and Arguments
 
 While it is useful to be able to repeat exactly the same lines of code, often
 we want to repeat tasks that are *almost* the same. This is where parameters
-and arguments come in, because they let us give change the value of specific
+and arguments come in, because they let us change the value of specific
 variables when a function is called.
 
 ### Part 2.1: Parameters and Arguments
 
-A {term}`parameters <parameter>` is a variable name you give to data the
-function get later. You add it to the function definition as you'll see below.
+A {term}`parameter` is a variable name you give to data that the function gets
+later. You add it to the function definition as you'll see below.
 
 The actual values, called {term}`arguments <argument>`, get sent to the
 function and assigned when the function is called, then cease to exist when the
