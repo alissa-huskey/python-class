@@ -321,8 +321,8 @@ print(cat.is_hungry)
 
 {{ newrow }}
 
-If you have more than two arguments, or if it isn't obvious what the arguments
-are just by looking at it, it's can make your code clearer to use
+If you have more than two arguments or if it isn't obvious what the arguments
+are just by looking at it, it can make your code clearer to use
 {term}`keyword arguments`.
 
 To do this, just put {samp}`{NAME}={VALUE}` when calling the constructor.
