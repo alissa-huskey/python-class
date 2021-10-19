@@ -128,7 +128,7 @@ print(r"C:\Documents\nodes")
 
 `````{solution} string-create-exercise
 
-:::{dropdown} "#1: Verse Docstring"
+:::{dropdown} #1: Verse Docstring
 
 ```{code-block} python
 :caption: "String Creation Exercise #1"
@@ -145,7 +145,7 @@ print(verse)
 
 :::
 
-:::{dropdown} "#2: One, Two, Three lines, muah hah haa!"
+:::{dropdown} #2: One, Two, Three lines, muah hah haa!
 
 ```{code-block} python
 :caption: "String Creation Exercise #2"
@@ -156,7 +156,7 @@ print("one\ntwo\nthree")
 
 :::
 
-:::{dropdown} "#3: Quotable quotes"
+:::{dropdown} #3: Quotable quotes
 
 ```{code-block} python
 :caption: "String Creation Exercise #3"
@@ -168,7 +168,7 @@ print("She muttered, \"Well, I for one can deny it.\"")
 
 :::
 
-:::{dropdown} "#4: Sometimes backslashes just want to be seen"
+:::{dropdown} #4: Sometimes backslashes just want to be seen
 
 ```{code-block} python
 :caption: "String Creation Exercise #4"
@@ -257,7 +257,7 @@ You can repeat a string multiple times using the `*` operator.
 {{ right }}
 
 ```{code-cell} python
-text = "Hip hip horray!\n" * 3
+text = "The horror! " * 2
 print(text)
 ```
 
@@ -290,6 +290,172 @@ print(f"The total is ${price*count}.")
 ```
 
 {{ endcols }}
+
+### Part 1.2: Exercise
+
+`````{exercise} String Modification
+:label: string-modify-exercise
+
+1. Use the `+` operator to join two strings together and print the result.
+2. Concatonate two string literals without using the `+` operator and print the result.
+3. Choose a long paragraph of text. Break it up onto multiple lines **in your
+   code** while still all on one line in the string itself. Assign it to the
+   variable `paragraph` and print it.
+4. Assign the string `"Four out of five dentists agree: "` to the varable `text`.
+   Choose something the dentists agree on and on a new line, append it to
+   `text`. Print `text`.
+6. Use both the `+` and `*` operators to assign the string `"Noooooo!"` to the
+   variable `text` then print it. Change the number of `"o"`s and print it again.
+5. Pick something that Bart Simpson may have written on the blackboard and
+   assign it to the variable `admonition`. Append it to itself `10` times then
+   print it. \
+   *Note: This should take no more than 2 lines of code.*
+   *Bonus: Write a function to do this.*
+6. Choose a name and assign it to the variable `name`. Using an f-string, print: \
+   {samp}`"Hello my name is: {NAME}."`
+7. Create a visual line by repeating the underscore character (`"_"`) some
+   number of times, (say, `20`) and assign it to the variable `line`. Using an
+   f-string, make a string with a single line of a sign-up sheet that looks
+   something like this: 
+
+   `"Name: ____________________   Email: ____________________"`
+
+   Assign it to the variable `row` and print it `25` times to generate a
+   sign-up sheet.
+
+`````
+
+`````{solution} string-modify-exercise
+
+:::{dropdown} #1: Concatonate with `+`
+
+```{code-block} python
+:caption: "String Modification Exercise #1"
+:class: full-width
+:linenos:
+text = "Hello " + "world!"
+print(text)
+```
+
+:::
+
+:::{dropdown} #2: Concatonate without an operator
+
+```{code-block} python
+:caption: "String Modification Exercise #2"
+:class: full-width
+:linenos:
+text = "Goodbye " "cruel world!"
+print(text)
+```
+
+:::
+
+:::{dropdown} #3: Paragraph concatonation
+
+```{code-block} python
+:caption: "String Modification Exercise #3"
+:class: full-width
+:linenos:
+paragraph = (
+  "Quo usque tandem abutere, Catilina, "
+  "patientia nostra? Quam diu etiam "
+  "furor iste tuus nos eludet? Quem "
+  "ad finem sese effrenata iactabit "
+  "audacia?"
+)
+print(paragraph)
+```
+
+:::
+
+:::{dropdown} #4: Dentists conclude...
+
+```{code-block} python
+:caption: "String Modification Exercise #4"
+:class: full-width
+:linenos:
+text = "Four out of five dentists agree: "
+text += "that other guy is nuts."
+print(text)
+```
+
+:::
+
+:::{dropdown} #5a: Variously emphatic `"No!"`
+
+```{code-block} python
+:caption: "String Modification Exercise #5a"
+:class: full-width
+:linenos:
+text = "N" + ("o"*1) + "!"
+print(text)
+
+text = "N" + ("o"*3) + "!"
+print(text)
+
+text = "N" + ("o"*8) + "!"
+print(text)
+```
+
+:::
+
+:::{dropdown} #5b: (Bonus) Efficient variously emphatic `"No!"`
+
+```{code-block} python
+:caption: "String Modification Exercise #5b"
+:class: full-width
+:linenos:
+def no(ohs):
+  text = "N" + ("o"*ohs) + "!"
+  print(text)
+
+no(1)
+no(3)
+no(8)
+```
+
+:::
+
+:::{dropdown} #6: Chalkboard repetition
+
+```{code-block} python
+:caption: "String Modification Exercise #6"
+:class: full-width
+:linenos:
+admonition = "I will not repeat myself.\n"
+admonition *= 10
+print(admonition)
+```
+
+:::
+
+:::{dropdown} #7: Nametag
+
+```{code-block} python
+:caption: "String Modification Exercise #7"
+:class: full-width
+:linenos:
+name = "Inigo Montoya"
+print(f"Hello my name is: {name}.")
+```
+
+:::
+
+:::{dropdown} #8: Sign-up Sheet
+
+```{code-block} python
+:caption: "String Modification Exercise #8"
+:class: full-width
+:linenos:
+line = "_" * 20
+row = f"Name: {line}    Email: {line}\n"
+print(row * 25)
+```
+
+:::
+
+`````
 
 
 ---
