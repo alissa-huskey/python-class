@@ -48,6 +48,7 @@
     <script src="../_static/x-frame-bypass.js"></script>
     <script src="../_static/asciinema-player.js"></script>
     <script src="../_static/custom.js"></script>
+    <script src="../_static/tabs.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -640,6 +641,23 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#colors-and-styles">
+   Colors and Styles
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#installation">
+     Installation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#usage">
+     Usage
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#reference">
    Reference
   </a>
@@ -685,36 +703,42 @@ command line environment.</p>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">Table of Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#arguments" id="id25">Arguments</a></p>
+<li><p><a class="reference internal" href="#arguments" id="id28">Arguments</a></p>
 <ul>
-<li><p><a class="reference internal" href="#exercise" id="id26">Exercise</a></p></li>
+<li><p><a class="reference internal" href="#exercise" id="id29">Exercise</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#environment-variables" id="id27">Environment Variables</a></p>
+<li><p><a class="reference internal" href="#environment-variables" id="id30">Environment Variables</a></p>
 <ul>
-<li><p><a class="reference internal" href="#id1" id="id28">Exercise</a></p></li>
+<li><p><a class="reference internal" href="#id1" id="id31">Exercise</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#input-and-output" id="id29">Input and Output</a></p>
+<li><p><a class="reference internal" href="#input-and-output" id="id32">Input and Output</a></p>
 <ul>
-<li><p><a class="reference internal" href="#id2" id="id30">Exercise</a></p></li>
+<li><p><a class="reference internal" href="#id2" id="id33">Exercise</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#exiting-programs" id="id31">Exiting Programs</a></p>
+<li><p><a class="reference internal" href="#exiting-programs" id="id34">Exiting Programs</a></p>
 <ul>
-<li><p><a class="reference internal" href="#id3" id="id32">Exercise</a></p></li>
+<li><p><a class="reference internal" href="#id3" id="id35">Exercise</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#terminal-size" id="id33">Terminal size</a></p>
+<li><p><a class="reference internal" href="#terminal-size" id="id36">Terminal size</a></p>
 <ul>
-<li><p><a class="reference internal" href="#id4" id="id34">Exercise</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id37">Exercise</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#reference" id="id35">Reference</a></p>
+<li><p><a class="reference internal" href="#colors-and-styles" id="id38">Colors and Styles</a></p>
 <ul>
-<li><p><a class="reference internal" href="#glossary" id="id36">Glossary</a></p>
+<li><p><a class="reference internal" href="#installation" id="id39">Installation</a></p></li>
+<li><p><a class="reference internal" href="#usage" id="id40">Usage</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#reference" id="id41">Reference</a></p>
 <ul>
-<li><p><a class="reference internal" href="#glossary-CLI" id="id37">Cli</a></p></li>
+<li><p><a class="reference internal" href="#glossary" id="id42">Glossary</a></p>
+<ul>
+<li><p><a class="reference internal" href="#glossary-CLI" id="id43">Cli</a></p></li>
 </ul>
 </li>
 </ul>
@@ -1558,6 +1582,61 @@ with a width argument of <code class="docutils literal notranslate"><span class=
 <li><p><a class="reference external" href="https://docs.python.org/3/library/shutil.html#shutil.get_terminal_size">python.org &gt; shutil.get_terminal_size()</a></p></li>
 </ul>
 </div>
+</div>
+</div>
+<div class="section" id="colors-and-styles">
+<h2><a class="toc-backref" href="#table-of-contents">Colors and Styles</a><a class="headerlink" href="#colors-and-styles" title="Permalink to this headline">¶</a></h2>
+<p>Many terminals use ANSI escape codes to control the font colors and style and
+many other things.</p>
+<p>Fortunately, there are modules that handle all the complication of escape codes
+for us. The one I recommend is <a class="reference external" href="https://github.com/mixmastamyk/console">console</a>, which works on
+Mac/Linux/Windows.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Not all systems support escape codes, though one avantage to using a module
+like this is that it does its best to detect if colors will work with that
+system, and if not, does nothing.</p>
+<p>Just be careful not to rely too heavily on colors and styles, so your program
+still works even if they don’t show up. Also, be aware that some colors look
+different or are harder to read with a different background color, so its a
+good idea to test with a light and back background color.</p>
+</div>
+<div class="section" id="installation">
+<h3><a class="toc-backref" href="#table-of-contents">Installation</a><a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">pip</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">poetry</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id25">
+<div class="code-block-caption"><span class="caption-number">Listing 236 </span><span class="caption-text">command line</span><a class="headerlink" href="#id25" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install console
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id26">
+<div class="code-block-caption"><span class="caption-number">Listing 237 </span><span class="caption-text">command line</span><a class="headerlink" href="#id26" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry add console
+</pre></div>
+</div>
+</div>
+</div></div>
+<p>To see a demo of the effects and how they work in your terminal, you can type
+the following at the command line:</p>
+<div class="literal-block-wrapper docutils container" id="id27">
+<div class="code-block-caption"><span class="caption-number">Listing 238 </span><span class="caption-text">command line</span><a class="headerlink" href="#id27" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m console.demos
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="usage">
+<h3><a class="toc-backref" href="#table-of-contents">Usage</a><a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">console</span> <span class="kn">import</span> <span class="n">fg</span><span class="p">,</span> <span class="n">bg</span><span class="p">,</span> <span class="n">fx</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fg</span><span class="o">.</span><span class="n">cyan</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bg</span><span class="o">.</span><span class="n">blue</span><span class="p">(</span><span class="s2">&quot;oh hai there.&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fx</span><span class="o">.</span><span class="n">bold</span><span class="p">(</span><span class="s2">&quot;Attention!&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>For a list of all available styles and colors, see the
+<a class="reference external" href="https://mixmastamyk.bitbucket.io/console/">console docs</a>.</p>
 </div>
 </div>
 <div class="section" id="reference">
