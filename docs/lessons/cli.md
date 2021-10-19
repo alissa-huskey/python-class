@@ -712,6 +712,73 @@ print(text.center(width))
 
 :::
 
+Colors and Styles
+-----------------
+
+Many terminals use ANSI escape codes to control the font colors and style and
+many other things.
+
+Fortunately, there are modules that handle all the complication of escape codes
+for us. The one I recommend is [console][console], which works on
+Mac/Linux/Windows.
+
+[console]: https://github.com/mixmastamyk/console
+
+:::{important}
+
+Not all systems support escape codes, though one avantage to using a module
+like this is that it does its best to detect if colors will work with that
+system, and if not, does nothing.
+
+Just be careful not to rely too heavily on colors and styles, so your program
+still works even if they don't show up. Also, be aware that some colors look
+different or are harder to read with a different background color, so its a
+good idea to test with a light and back background color.
+
+:::
+
+### Installation
+
+`````{tabs}
+
+````{tab} pip
+
+```{code-block} bash
+:caption: command line
+pip install console
+```
+
+````
+
+````{tab} poetry
+
+```{code-block} bash
+:caption: command line
+poetry add console
+```
+
+`````
+
+To see a demo of the effects and how they work in your terminal, you can type
+the following at the command line:
+
+```{code-block} bash
+:caption: command line
+python -m console.demos
+```
+
+### Usage
+
+```{code-block} python
+from console import fg, bg, fx
+
+print(fg.cyan("Hello world!"))
+print(bg.blue("oh hai there."))
+print(fx.bold("Attention!"))
+```
+
+For a list of all available styles and colors, see the
+[console docs](https://mixmastamyk.bitbucket.io/console/).
 
 Reference
 ---------
@@ -753,6 +820,8 @@ status code
   success or failure.
 ```
 
+
+
 ----
 
 % TODO
@@ -771,3 +840,4 @@ status code
 %     [ ] termcolor
 % [ ] version, usage, help
 % [ ] if __name__ == "__main__"
+
