@@ -754,3 +754,99 @@ name and print the place information.
 ```
 
 `````
+
+Part 3: Colors and wrapping
+---------------------------
+
+In this section we'll start making things prettier by wrapping text and adding colors.
+
+Part 3.1: Text wrapping
+-----------------------
+
+{{ left }}
+
+In this section we're going to add a `message()` function, which we'll use for
+anything that we want to print to the user. We'll put our text wrapping in that
+function.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-3.1.cast
+:rows: 15
+```
+
+`````
+
+{{ endcols }}
+
+```{rubric} A. at the top of your file
+```
+
+{{ left }}
+
+1. `[ ]` import the `textwrap` module
+1. `[ ]` Add a global variable `WIDTH` and assign it the value `60` (or so, to taste).
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-3.1.py
+:linenos:
+:lines: "6-15"
+:lineno-match:
+:emphasize-lines: "2, 4"
+```
+
+`````
+
+{{ endcols }}
+
+
+```{rubric} B. Make message()
+```
+
+1. `[ ]` Define a `message()` function which takes one argument `text`.
+1. `[ ]` For now, just print `message` in the function, so we can make sure it works.
+
+```{rubric} C. In do_go(), at the end
+```
+
+1. `[ ]` Instead of printing the new place name and description, call the
+         `message()` function you just wrote.
+
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-3.1.py
+:class: full-width
+:linenos:
+:lines: "122-126"
+:lineno-match:
+:emphasize-lines: "3, 5"
+```
+
+`````
+
+```{rubric} B. In message()
+```
+
+1. `[ ]` Call the `wrap()` function from the `textwrap` module. Pass it the
+   `text` and the global variable `WIDTH`. Assign the result to the variable
+   `lines`.
+1. `[ ]` Iterate over the `lines`, and print each `line`.
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-3.1.py
+:class: full-width
+:linenos:
+:lines: "50-53"
+:lineno-match:
+:emphasize-lines: "1-"
+```
+
+`````
