@@ -760,8 +760,7 @@ Part 3: Colors and wrapping
 
 In this section we'll start making things prettier by wrapping text and adding colors.
 
-Part 3.1: Text wrapping
------------------------
+### Part 3.1: Text wrapping
 
 {{ left }}
 
@@ -810,7 +809,7 @@ function.
 ```
 
 1. `[ ]` Define a `message()` function which takes one argument `text`.
-1. `[ ]` For now, just print `message` in the function, so we can make sure it works.
+1. `[ ]` For now, just print `text` in the function, so we can make sure it works.
 
 ```{rubric} C. In do_go(), at the end
 ```
@@ -834,6 +833,7 @@ function.
 ```{rubric} B. In message()
 ```
 
+1. `[ ]` Remove the line where you previously printed `text`.
 1. `[ ]` Call the `wrap()` function from the `textwrap` module. Pass it the
    `text` and the global variable `WIDTH`. Assign the result to the variable
    `lines`.
@@ -846,13 +846,12 @@ function.
 :linenos:
 :lines: "50-53"
 :lineno-match:
-:emphasize-lines: "1-"
+:emphasize-lines: "2-"
 ```
 
 `````
 
-Part 3.2: Colors
-----------------
+### Part 3.2: Colors
 
 {{ left }}
 
