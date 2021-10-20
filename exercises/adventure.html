@@ -594,16 +594,6 @@
    Part 3: Colors and wrapping
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#part-3-1-text-wrapping">
-   Part 3.1: Text wrapping
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#part-3-2-colors">
-   Part 3.2: Colors
-  </a>
- </li>
 </ul>
 
             </nav>
@@ -643,9 +633,12 @@ much simpler to start.).</p>
 <li><p><a class="reference internal" href="#part-2-4-fill-in-go-command" id="id11">Part 2.4: Fill in <code class="docutils literal notranslate"><span class="pre">go</span></code> command</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#part-3-colors-and-wrapping" id="id12">Part 3: Colors and wrapping</a></p></li>
+<li><p><a class="reference internal" href="#part-3-colors-and-wrapping" id="id12">Part 3: Colors and wrapping</a></p>
+<ul>
 <li><p><a class="reference internal" href="#part-3-1-text-wrapping" id="id13">Part 3.1: Text wrapping</a></p></li>
 <li><p><a class="reference internal" href="#part-3-2-colors" id="id14">Part 3.2: Colors</a></p></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="part-1-the-game-loop">
@@ -2109,9 +2102,8 @@ Code<div class="summary-down docutils">
 <div class="section" id="part-3-colors-and-wrapping">
 <h2><a class="toc-backref" href="#contents">Part 3: Colors and wrapping</a><a class="headerlink" href="#part-3-colors-and-wrapping" title="Permalink to this headline">¶</a></h2>
 <p>In this section we’ll start making things prettier by wrapping text and adding colors.</p>
-</div>
 <div class="section" id="part-3-1-text-wrapping">
-<h2><a class="toc-backref" href="#contents">Part 3.1: Text wrapping</a><a class="headerlink" href="#part-3-1-text-wrapping" title="Permalink to this headline">¶</a></h2>
+<h3><a class="toc-backref" href="#contents">Part 3.1: Text wrapping</a><a class="headerlink" href="#part-3-1-text-wrapping" title="Permalink to this headline">¶</a></h3>
 <div class="row"><div class="col-5 left-col-5">
 <p>In this section we’re going to add a <code class="docutils literal notranslate"><span class="pre">message()</span></code> function, which we’ll use for
 anything that we want to print to the user. We’ll put our text wrapping in that
@@ -2166,7 +2158,7 @@ Code<div class="summary-down docutils">
 <p class="rubric">B. Make message()</p>
 <ol class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Define a <code class="docutils literal notranslate"><span class="pre">message()</span></code> function which takes one argument <code class="docutils literal notranslate"><span class="pre">text</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> For now, just print <code class="docutils literal notranslate"><span class="pre">message</span></code> in the function, so we can make sure it works.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> For now, just print <code class="docutils literal notranslate"><span class="pre">text</span></code> in the function, so we can make sure it works.</p></li>
 </ol>
 <p class="rubric">C. In do_go(), at the end</p>
 <ol class="simple">
@@ -2194,6 +2186,7 @@ Code<div class="summary-down docutils">
 </div>
 </details><p class="rubric">B. In message()</p>
 <ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Remove the line where you previously printed <code class="docutils literal notranslate"><span class="pre">text</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Call the <code class="docutils literal notranslate"><span class="pre">wrap()</span></code> function from the <code class="docutils literal notranslate"><span class="pre">textwrap</span></code> module. Pass it the
 <code class="docutils literal notranslate"><span class="pre">text</span></code> and the global variable <code class="docutils literal notranslate"><span class="pre">WIDTH</span></code>. Assign the result to the variable
 <code class="docutils literal notranslate"><span class="pre">lines</span></code>.</p></li>
@@ -2209,8 +2202,8 @@ Code<div class="summary-down docutils">
 <div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">50</span>
 <span class="normal">51</span>
 <span class="normal">52</span>
-<span class="normal">53</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="hll"><span class="k">def</span> <span class="nf">message</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
-</span><span class="hll">    <span class="n">lines</span> <span class="o">=</span> <span class="n">textwrap</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">WIDTH</span><span class="p">)</span>
+<span class="normal">53</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">message</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+<span class="hll">    <span class="n">lines</span> <span class="o">=</span> <span class="n">textwrap</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">WIDTH</span><span class="p">)</span>
 </span><span class="hll">    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
 </span><span class="hll">        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 </span></pre></div>
@@ -2218,7 +2211,7 @@ Code<div class="summary-down docutils">
 </div>
 </details></div>
 <div class="section" id="part-3-2-colors">
-<h2><a class="toc-backref" href="#contents">Part 3.2: Colors</a><a class="headerlink" href="#part-3-2-colors" title="Permalink to this headline">¶</a></h2>
+<h3><a class="toc-backref" href="#contents">Part 3.2: Colors</a><a class="headerlink" href="#part-3-2-colors" title="Permalink to this headline">¶</a></h3>
 <div class="row"><div class="col-5 left-col-5">
 <p>In this sction we’re going to use the <code class="docutils literal notranslate"><span class="pre">console</span></code> module to make our game more
 colorful.</p>
@@ -2312,6 +2305,7 @@ Code<div class="summary-down docutils">
 </td></tr></table></div>
 </div>
 </details></div></div>
+</div>
 </div>
 </div>
 
