@@ -589,6 +589,16 @@
    Part 2: Go places
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-3-colors-and-wrapping">
+   Part 3: Colors and wrapping
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-3-1-text-wrapping">
+   Part 3.1: Text wrapping
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -628,6 +638,8 @@ much simpler to start.).</p>
 <li><p><a class="reference internal" href="#part-2-4-fill-in-go-command" id="id11">Part 2.4: Fill in <code class="docutils literal notranslate"><span class="pre">go</span></code> command</a></p></li>
 </ul>
 </li>
+<li><p><a class="reference internal" href="#part-3-colors-and-wrapping" id="id12">Part 3: Colors and wrapping</a></p></li>
+<li><p><a class="reference internal" href="#part-3-1-text-wrapping" id="id13">Part 3.1: Text wrapping</a></p></li>
 </ul>
 </div>
 <div class="section" id="part-1-the-game-loop">
@@ -2088,6 +2100,117 @@ Code<div class="summary-down docutils">
 </div>
 </details></div>
 </div>
+<div class="section" id="part-3-colors-and-wrapping">
+<h2><a class="toc-backref" href="#contents">Part 3: Colors and wrapping</a><a class="headerlink" href="#part-3-colors-and-wrapping" title="Permalink to this headline">¶</a></h2>
+<p>In this section we’ll start making things prettier by wrapping text and adding colors.</p>
+</div>
+<div class="section" id="part-3-1-text-wrapping">
+<h2><a class="toc-backref" href="#contents">Part 3.1: Text wrapping</a><a class="headerlink" href="#part-3-1-text-wrapping" title="Permalink to this headline">¶</a></h2>
+<div class="row"><div class="col-5 left-col-5">
+<p>In this section we’re going to add a <code class="docutils literal notranslate"><span class="pre">message()</span></code> function, which we’ll use for
+anything that we want to print to the user. We’ll put our text wrapping in that
+function.</p>
+</div><div class="col-7">
+<details class="sphinx-bs dropdown card mb-3" open="open">
+<summary class="summary-title card-header">
+Demo<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<asciinema-player rows="15" src="assets/adventure-3.1.cast"></asciinema-player></div>
+</details></div></div>
+<p class="rubric">A. at the top of your file</p>
+<div class="row"><div class="col-5 left-col-5">
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> import the <code class="docutils literal notranslate"><span class="pre">textwrap</span></code> module</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add a global variable <code class="docutils literal notranslate"><span class="pre">WIDTH</span></code> and assign it the value <code class="docutils literal notranslate"><span class="pre">60</span></code> (or so, to taste).</p></li>
+</ol>
+</div><div class="col-7">
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Code<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sys</span> <span class="kn">import</span> <span class="n">stderr</span>
+<span class="hll"><span class="kn">import</span> <span class="nn">textwrap</span>
+</span>
+<span class="hll"><span class="n">WIDTH</span> <span class="o">=</span> <span class="mi">60</span>
+</span>
+<span class="n">DEBUG</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="n">PLAYER</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;place&quot;</span><span class="p">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</details></div></div>
+<p class="rubric">B. Make message()</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Define a <code class="docutils literal notranslate"><span class="pre">message()</span></code> function which takes one argument <code class="docutils literal notranslate"><span class="pre">text</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> For now, just print <code class="docutils literal notranslate"><span class="pre">message</span></code> in the function, so we can make sure it works.</p></li>
+</ol>
+<p class="rubric">C. In do_go(), at the end</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Instead of printing the new place name and description, call the
+<code class="docutils literal notranslate"><span class="pre">message()</span></code> function you just wrote.</p></li>
+</ol>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Code<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="c1"># print information about the new place</span>
+    <span class="nb">print</span><span class="p">()</span>
+<span class="hll">    <span class="n">message</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">new_place</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span>    <span class="nb">print</span><span class="p">()</span>
+<span class="hll">    <span class="n">message</span><span class="p">(</span><span class="n">new_place</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">])</span>
+</span></pre></div>
+</td></tr></table></div>
+</div>
+</details><p class="rubric">B. In message()</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Call the <code class="docutils literal notranslate"><span class="pre">wrap()</span></code> function from the <code class="docutils literal notranslate"><span class="pre">textwrap</span></code> module. Pass it the
+<code class="docutils literal notranslate"><span class="pre">text</span></code> and the global variable <code class="docutils literal notranslate"><span class="pre">WIDTH</span></code>. Assign the result to the variable
+<code class="docutils literal notranslate"><span class="pre">lines</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Iterate over the <code class="docutils literal notranslate"><span class="pre">lines</span></code>, and print each <code class="docutils literal notranslate"><span class="pre">line</span></code>.</p></li>
+</ol>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Code<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="hll"><span class="k">def</span> <span class="nf">message</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+</span><span class="hll">    <span class="n">lines</span> <span class="o">=</span> <span class="n">textwrap</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">WIDTH</span><span class="p">)</span>
+</span><span class="hll">    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+</span><span class="hll">        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</span></pre></div>
+</td></tr></table></div>
+</div>
+</details></div>
 </div>
 
     <script type="text/x-thebe-config">
