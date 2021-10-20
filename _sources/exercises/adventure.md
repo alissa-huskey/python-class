@@ -850,3 +850,86 @@ function.
 ```
 
 `````
+
+Part 3.2: Colors
+----------------
+
+{{ left }}
+
+In this sction we're going to use the `console` module to make our game more
+colorful.
+
+```{rubric} A. install console
+```
+
+1. `[ ]` Follow the instructions [here](../lessons/cli.html#installation) to install.
+
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-3.2.cast
+:rows: 15
+```
+
+`````
+
+{{ endcols }}
+
+```{rubric} B. At the top of your file
+```
+
+{{ left }}
+
+1. `[ ]` Import `fg`, `bg`, and `fx` from `console`.
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-3.2.py
+:class: full-width
+:linenos:
+:lines: "6-9"
+:lineno-match:
+:emphasize-lines: "4"
+```
+
+`````
+
+{{ endcols }}
+
+```{rubric} B. In error(), debug(), other places...
+```
+
+{{ left }}
+
+1. In the places you want it, such as in the `error()` and `debug()` function,
+  add colors and styles to your taste.
+
+{{ right }}
+
+`````{dropdown} Code
+:open:
+
+```{literalinclude} adventure/adventure-3.2.py
+:class: full-width
+:linenos:
+:lines: "57-65"
+:lineno-match:
+:emphasize-lines: "3, 9"
+```
+
+```{literalinclude} adventure/adventure-3.2.py
+:class: full-width
+:linenos:
+:lines: "130-137"
+:lineno-match:
+:emphasize-lines: "7"
+```
+
+`````
+
+{{ endcols }}
