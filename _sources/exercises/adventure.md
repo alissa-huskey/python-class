@@ -529,7 +529,6 @@ We'll also add a `error()` function which will print an error message.
 ```{rubric} A. At the top of the file
 ```
 
-1. `[ ]` Import `stderr` from the `sys` module
 1. `[ ]` Add a global variable `DEBUG` and set it to `True`
 
 
@@ -546,10 +545,7 @@ We'll also add a `error()` function which will print an error message.
 ```
 
 1. `[ ]` Write a function named: `error` with one parameter: `message`
-1. `[ ]` Print `message` with something before it like `"Error: "`. Send the
-         keyword argument `file` with the value `stderr` to print it to
-         {term}`stderr`.
-         *See [CLI Lesson](../lessons/cli.html#input-and-output) for more information.*
+1. `[ ]` Print `message` with something before it like `"Error: "`.
 
 ```{rubric} D. in do_go()
 ```
@@ -755,18 +751,19 @@ name and print the place information.
 
 `````
 
-Part 3: Colors and wrapping
+Part 3: Prettify
 ---------------------------
 
-In this section we'll start making things prettier by wrapping text and adding colors.
+In this section we'll start making things prettier by wrapping text and adding
+colors and styles.
 
 ### Part 3.1: Text wrapping
 
 {{ left }}
 
-In this section we're going to add a `message()` function, which we'll use for
-anything that we want to print to the user. We'll put our text wrapping in that
-function.
+In this section we're going to add a `narrative()` function, which we'll to
+print paragraphs of text like place or item descriptions. We'll both indent and
+wrap the text so that it looks nice.
 
 {{ right }}
 
@@ -788,6 +785,7 @@ function.
 
 1. `[ ]` import the `textwrap` module
 1. `[ ]` Add a global variable `WIDTH` and assign it the value `60` (or so, to taste).
+1. `[ ]` Add a global variable `MARGIN` and assign the value of two or three spaces.
 
 {{ right }}
 
@@ -797,7 +795,7 @@ function.
 :linenos:
 :lines: "6-15"
 :lineno-match:
-:emphasize-lines: "2, 4"
+:emphasize-lines: "2-6"
 ```
 
 `````
@@ -805,17 +803,22 @@ function.
 {{ endcols }}
 
 
-```{rubric} B. Make message()
+```{rubric} B. Make narrative()
 ```
 
-1. `[ ]` Define a `message()` function which takes one argument `text`.
-1. `[ ]` For now, just print `text` in the function, so we can make sure it works.
+1. `[ ]` Define a `narrative()` function which takes one argument `text`.
+1. `[ ]` For now, just print `MARGIN`, then `text` in the function, so we can
+         make sure it works.
 
 ```{rubric} C. In do_go(), at the end
 ```
 
-1. `[ ]` Instead of printing the new place name and description, call the
-         `message()` function you just wrote.
+{{ left }}
+
+1. `[ ]` Instead of calling `print()` to print the place description, call the
+         `narrative()` function you just wrote.
+
+{{ right }}
 
 
 `````{dropdown} Code
@@ -823,28 +826,36 @@ function.
 ```{literalinclude} adventure/adventure-3.1.py
 :class: full-width
 :linenos:
-:lines: "122-126"
+:lines: "133-135"
 :lineno-match:
-:emphasize-lines: "3, 5"
+:emphasize-lines: "3"
 ```
 
 `````
 
-```{rubric} B. In message()
+{{ endcols }}
+
+```{rubric} B. In narrative()
 ```
 
+In this section we'll call `textwrap.fill()` function to wrap a paragraph of
+text.
+
 1. `[ ]` Remove the line where you previously printed `text`.
-1. `[ ]` Call the `wrap()` function from the `textwrap` module. Pass it the
-   `text` and the global variable `WIDTH`. Assign the result to the variable
-   `lines`.
-1. `[ ]` Iterate over the `lines`, and print each `line`.
+1. `[ ]` Call the `fill()` function from the `textwrap` module and assign the
+   result to the variable `paragraph`. Pass the arguments:
+   * `text`
+   * `WIDTH`
+   * keyword argument `initial_indent` with the value `MARGIN`
+   * keyword argument `subsequent_indent` with the value `MARGIN`
+1. `[ ]` Print `paragraph`.
 
 `````{dropdown} Code
 
 ```{literalinclude} adventure/adventure-3.1.py
 :class: full-width
 :linenos:
-:lines: "50-53"
+:lines: "52-63"
 :lineno-match:
 :emphasize-lines: "2-"
 ```
@@ -855,10 +866,10 @@ function.
 
 {{ left }}
 
-In this sction we're going to use the `console` module to make our game more
+In this section we're going to use the `console` module to make our game more
 colorful.
 
-```{rubric} A. install console
+```{rubric} A. Install console
 ```
 
 1. `[ ]` Follow the instructions [here](../lessons/cli.html#installation) to install.
@@ -906,7 +917,7 @@ colorful.
 {{ left }}
 
 1. In the places you want it, such as in the `error()` and `debug()` function,
-  add colors and styles to your taste.
+   add colors and styles to your taste.
 
 {{ right }}
 
@@ -916,7 +927,7 @@ colorful.
 ```{literalinclude} adventure/adventure-3.2.py
 :class: full-width
 :linenos:
-:lines: "57-65"
+:lines: "67-75"
 :lineno-match:
 :emphasize-lines: "3, 9"
 ```
@@ -924,7 +935,7 @@ colorful.
 ```{literalinclude} adventure/adventure-3.2.py
 :class: full-width
 :linenos:
-:lines: "130-137"
+:lines: "139-147"
 :lineno-match:
 :emphasize-lines: "7"
 ```

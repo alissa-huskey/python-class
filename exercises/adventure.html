@@ -590,8 +590,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#part-3-colors-and-wrapping">
-   Part 3: Colors and wrapping
+  <a class="reference internal nav-link" href="#part-3-prettify">
+   Part 3: Prettify
   </a>
  </li>
 </ul>
@@ -633,7 +633,7 @@ much simpler to start.).</p>
 <li><p><a class="reference internal" href="#part-2-4-fill-in-go-command" id="id11">Part 2.4: Fill in <code class="docutils literal notranslate"><span class="pre">go</span></code> command</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#part-3-colors-and-wrapping" id="id12">Part 3: Colors and wrapping</a></p>
+<li><p><a class="reference internal" href="#part-3-prettify" id="id12">Part 3: Prettify</a></p>
 <ul>
 <li><p><a class="reference internal" href="#part-3-1-text-wrapping" id="id13">Part 3.1: Text wrapping</a></p></li>
 <li><p><a class="reference internal" href="#part-3-2-colors" id="id14">Part 3.2: Colors</a></p></li>
@@ -1510,7 +1510,6 @@ Demo<div class="summary-down docutils">
 </details></div></div>
 <p class="rubric">A. At the top of the file</p>
 <ol class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Import <code class="docutils literal notranslate"><span class="pre">stderr</span></code> from the <code class="docutils literal notranslate"><span class="pre">sys</span></code> module</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add a global variable <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code> and set it to <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
 </ol>
 <p class="rubric">B. Define debug() function</p>
@@ -1527,10 +1526,7 @@ easily tell that it is a debug message</p></li>
 <p class="rubric">C. define error() function</p>
 <ol class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Write a function named: <code class="docutils literal notranslate"><span class="pre">error</span></code> with one parameter: <code class="docutils literal notranslate"><span class="pre">message</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Print <code class="docutils literal notranslate"><span class="pre">message</span></code> with something before it like <code class="docutils literal notranslate"><span class="pre">&quot;Error:</span> <span class="pre">&quot;</span></code>. Send the
-keyword argument <code class="docutils literal notranslate"><span class="pre">file</span></code> with the value <code class="docutils literal notranslate"><span class="pre">stderr</span></code> to print it to
-<a class="reference internal" href="../lessons/cli.html#term-stderr"><span class="xref std std-term">stderr</span></a>.
-<em>See <a class="reference external" href="../lessons/cli.html#input-and-output">CLI Lesson</a> for more information.</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Print <code class="docutils literal notranslate"><span class="pre">message</span></code> with something before it like <code class="docutils literal notranslate"><span class="pre">&quot;Error:</span> <span class="pre">&quot;</span></code>.</p></li>
 </ol>
 <p class="rubric">D. in do_go()</p>
 <ol class="simple">
@@ -2099,15 +2095,16 @@ Code<div class="summary-down docutils">
 </div>
 </details></div>
 </div>
-<div class="section" id="part-3-colors-and-wrapping">
-<h2><a class="toc-backref" href="#contents">Part 3: Colors and wrapping</a><a class="headerlink" href="#part-3-colors-and-wrapping" title="Permalink to this headline">¶</a></h2>
-<p>In this section we’ll start making things prettier by wrapping text and adding colors.</p>
+<div class="section" id="part-3-prettify">
+<h2><a class="toc-backref" href="#contents">Part 3: Prettify</a><a class="headerlink" href="#part-3-prettify" title="Permalink to this headline">¶</a></h2>
+<p>In this section we’ll start making things prettier by wrapping text and adding
+colors and styles.</p>
 <div class="section" id="part-3-1-text-wrapping">
 <h3><a class="toc-backref" href="#contents">Part 3.1: Text wrapping</a><a class="headerlink" href="#part-3-1-text-wrapping" title="Permalink to this headline">¶</a></h3>
 <div class="row"><div class="col-5 left-col-5">
-<p>In this section we’re going to add a <code class="docutils literal notranslate"><span class="pre">message()</span></code> function, which we’ll use for
-anything that we want to print to the user. We’ll put our text wrapping in that
-function.</p>
+<p>In this section we’re going to add a <code class="docutils literal notranslate"><span class="pre">narrative()</span></code> function, which we’ll to
+print paragraphs of text like place or item descriptions. We’ll both indent and
+wrap the text so that it looks nice.</p>
 </div><div class="col-7">
 <details class="sphinx-bs dropdown card mb-3" open="open">
 <summary class="summary-title card-header">
@@ -2123,6 +2120,7 @@ Demo<div class="summary-down docutils">
 <ol class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> import the <code class="docutils literal notranslate"><span class="pre">textwrap</span></code> module</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add a global variable <code class="docutils literal notranslate"><span class="pre">WIDTH</span></code> and assign it the value <code class="docutils literal notranslate"><span class="pre">60</span></code> (or so, to taste).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add a global variable <code class="docutils literal notranslate"><span class="pre">MARGIN</span></code> and assign the value of two or three spaces.</p></li>
 </ol>
 </div><div class="col-7">
 <details class="sphinx-bs dropdown card mb-3">
@@ -2141,30 +2139,33 @@ Code<div class="summary-down docutils">
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sys</span> <span class="kn">import</span> <span class="n">stderr</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
 <span class="hll"><span class="kn">import</span> <span class="nn">textwrap</span>
+</span><span class="hll">
+</span><span class="hll"><span class="n">WIDTH</span> <span class="o">=</span> <span class="mi">45</span>
+</span><span class="hll">
+</span><span class="hll"><span class="n">MARGIN</span> <span class="o">=</span> <span class="s2">&quot;  &quot;</span>
 </span>
-<span class="hll"><span class="n">WIDTH</span> <span class="o">=</span> <span class="mi">60</span>
-</span>
-<span class="n">DEBUG</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">DEBUG</span> <span class="o">=</span> <span class="kc">False</span>
 
 <span class="n">PLAYER</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;place&quot;</span><span class="p">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
-<span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
 </div>
 </details></div></div>
-<p class="rubric">B. Make message()</p>
+<p class="rubric">B. Make narrative()</p>
 <ol class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Define a <code class="docutils literal notranslate"><span class="pre">message()</span></code> function which takes one argument <code class="docutils literal notranslate"><span class="pre">text</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> For now, just print <code class="docutils literal notranslate"><span class="pre">text</span></code> in the function, so we can make sure it works.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Define a <code class="docutils literal notranslate"><span class="pre">narrative()</span></code> function which takes one argument <code class="docutils literal notranslate"><span class="pre">text</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> For now, just print <code class="docutils literal notranslate"><span class="pre">MARGIN</span></code>, then <code class="docutils literal notranslate"><span class="pre">text</span></code> in the function, so we can
+make sure it works.</p></li>
 </ol>
 <p class="rubric">C. In do_go(), at the end</p>
+<div class="row"><div class="col-5 left-col-5">
 <ol class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Instead of printing the new place name and description, call the
-<code class="docutils literal notranslate"><span class="pre">message()</span></code> function you just wrote.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Instead of calling <code class="docutils literal notranslate"><span class="pre">print()</span></code> to print the place description, call the
+<code class="docutils literal notranslate"><span class="pre">narrative()</span></code> function you just wrote.</p></li>
 </ol>
+</div><div class="col-7">
 <details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
 Code<div class="summary-down docutils">
@@ -2172,25 +2173,30 @@ Code<div class="summary-down docutils">
 <div class="summary-up docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="summary-content card-body docutils">
-<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="c1"># print information about the new place</span>
-    <span class="nb">print</span><span class="p">()</span>
-<span class="hll">    <span class="n">message</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">new_place</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span>    <span class="nb">print</span><span class="p">()</span>
-<span class="hll">    <span class="n">message</span><span class="p">(</span><span class="n">new_place</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">])</span>
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="c1"># print information about the new place</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">new_place</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="hll">    <span class="n">narrative</span><span class="p">(</span><span class="n">new_place</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">])</span>
 </span></pre></div>
 </td></tr></table></div>
 </div>
-</details><p class="rubric">B. In message()</p>
+</details></div></div>
+<p class="rubric">B. In narrative()</p>
+<p>In this section we’ll call <code class="docutils literal notranslate"><span class="pre">textwrap.fill()</span></code> function to wrap a paragraph of
+text.</p>
 <ol class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Remove the line where you previously printed <code class="docutils literal notranslate"><span class="pre">text</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Call the <code class="docutils literal notranslate"><span class="pre">wrap()</span></code> function from the <code class="docutils literal notranslate"><span class="pre">textwrap</span></code> module. Pass it the
-<code class="docutils literal notranslate"><span class="pre">text</span></code> and the global variable <code class="docutils literal notranslate"><span class="pre">WIDTH</span></code>. Assign the result to the variable
-<code class="docutils literal notranslate"><span class="pre">lines</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Iterate over the <code class="docutils literal notranslate"><span class="pre">lines</span></code>, and print each <code class="docutils literal notranslate"><span class="pre">line</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Call the <code class="docutils literal notranslate"><span class="pre">fill()</span></code> function from the <code class="docutils literal notranslate"><span class="pre">textwrap</span></code> module and assign the
+result to the variable <code class="docutils literal notranslate"><span class="pre">paragraph</span></code>. Pass the arguments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">text</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WIDTH</span></code></p></li>
+<li><p>keyword argument <code class="docutils literal notranslate"><span class="pre">initial_indent</span></code> with the value <code class="docutils literal notranslate"><span class="pre">MARGIN</span></code></p></li>
+<li><p>keyword argument <code class="docutils literal notranslate"><span class="pre">subsequent_indent</span></code> with the value <code class="docutils literal notranslate"><span class="pre">MARGIN</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Print <code class="docutils literal notranslate"><span class="pre">paragraph</span></code>.</p></li>
 </ol>
 <details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
@@ -2199,13 +2205,29 @@ Code<div class="summary-down docutils">
 <div class="summary-up docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="summary-content card-body docutils">
-<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">message</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
-<span class="hll">    <span class="n">lines</span> <span class="o">=</span> <span class="n">textwrap</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">WIDTH</span><span class="p">)</span>
-</span><span class="hll">    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
-</span><span class="hll">        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">narrative</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+<span class="hll">    <span class="sd">&quot;&quot;&quot;Print wrapped and indented text.&quot;&quot;&quot;</span>
+</span><span class="hll">    <span class="c1"># wrap the text</span>
+</span><span class="hll">    <span class="n">paragraph</span> <span class="o">=</span> <span class="n">textwrap</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span>
+</span><span class="hll">        <span class="n">text</span><span class="p">,</span>
+</span><span class="hll">        <span class="n">WIDTH</span><span class="p">,</span>
+</span><span class="hll">        <span class="n">initial_indent</span><span class="o">=</span><span class="n">MARGIN</span><span class="p">,</span>
+</span><span class="hll">        <span class="n">subsequent_indent</span><span class="o">=</span><span class="n">MARGIN</span><span class="p">,</span>
+</span><span class="hll">    <span class="p">)</span>
+</span><span class="hll">
+</span><span class="hll">    <span class="c1"># print the wrapped text</span>
+</span><span class="hll">    <span class="nb">print</span><span class="p">(</span><span class="n">paragraph</span><span class="p">)</span>
 </span></pre></div>
 </td></tr></table></div>
 </div>
@@ -2213,9 +2235,9 @@ Code<div class="summary-down docutils">
 <div class="section" id="part-3-2-colors">
 <h3><a class="toc-backref" href="#contents">Part 3.2: Colors</a><a class="headerlink" href="#part-3-2-colors" title="Permalink to this headline">¶</a></h3>
 <div class="row"><div class="col-5 left-col-5">
-<p>In this sction we’re going to use the <code class="docutils literal notranslate"><span class="pre">console</span></code> module to make our game more
+<p>In this section we’re going to use the <code class="docutils literal notranslate"><span class="pre">console</span></code> module to make our game more
 colorful.</p>
-<p class="rubric">A. install console</p>
+<p class="rubric">A. Install console</p>
 <ol class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Follow the instructions <a class="reference external" href="../lessons/cli.html#installation">here</a> to install.</p></li>
 </ol>
@@ -2245,7 +2267,7 @@ Code<div class="summary-down docutils">
 <div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sys</span> <span class="kn">import</span> <span class="n">stderr</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">textwrap</span>
 
 <span class="hll"><span class="kn">from</span> <span class="nn">console</span> <span class="kn">import</span> <span class="n">fg</span><span class="p">,</span> <span class="n">bg</span><span class="p">,</span> <span class="n">fx</span>
@@ -2267,17 +2289,17 @@ Code<div class="summary-down docutils">
 <div class="summary-up docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="summary-content card-body docutils">
-<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">error</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">error</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Print an error message.&quot;&quot;&quot;</span>
-<span class="hll">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;! </span><span class="si">{</span><span class="n">fg</span><span class="o">.</span><span class="n">red</span><span class="p">(</span><span class="s1">&#39;Error&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">stderr</span><span class="p">)</span>
+<span class="hll">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">fg</span><span class="o">.</span><span class="n">red</span><span class="p">(</span><span class="s1">&#39;! Error&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 </span>
 <span class="k">def</span> <span class="nf">debug</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Print a debug message if in debug mode.&quot;&quot;&quot;</span>
@@ -2286,14 +2308,15 @@ Code<div class="summary-down docutils">
 <span class="hll">    <span class="nb">print</span><span class="p">(</span><span class="n">fg</span><span class="o">.</span><span class="n">lightblack</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;# </span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
 </span></pre></div>
 </td></tr></table></div>
-<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome!&quot;</span><span class="p">)</span>
 
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -2301,6 +2324,7 @@ Code<div class="summary-down docutils">
 
 <span class="hll">        <span class="n">reply</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="n">fg</span><span class="o">.</span><span class="n">cyan</span><span class="p">(</span><span class="s2">&quot;&gt; &quot;</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 </span>        <span class="n">args</span> <span class="o">=</span> <span class="n">reply</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
 </pre></div>
 </td></tr></table></div>
 </div>
