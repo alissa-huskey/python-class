@@ -655,6 +655,16 @@
      Usage
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#available-colors-and-styles">
+     Available colors and styles
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#see-also">
+     See Also
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -732,13 +742,15 @@ command line environment.</p>
 <ul>
 <li><p><a class="reference internal" href="#installation" id="id39">Installation</a></p></li>
 <li><p><a class="reference internal" href="#usage" id="id40">Usage</a></p></li>
+<li><p><a class="reference internal" href="#available-colors-and-styles" id="id41">Available colors and styles</a></p></li>
+<li><p><a class="reference internal" href="#see-also" id="id42">See Also</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#reference" id="id41">Reference</a></p>
+<li><p><a class="reference internal" href="#reference" id="id43">Reference</a></p>
 <ul>
-<li><p><a class="reference internal" href="#glossary" id="id42">Glossary</a></p>
+<li><p><a class="reference internal" href="#glossary" id="id44">Glossary</a></p>
 <ul>
-<li><p><a class="reference internal" href="#glossary-CLI" id="id43">Cli</a></p></li>
+<li><p><a class="reference internal" href="#glossary-CLI" id="id45">Cli</a></p></li>
 </ul>
 </li>
 </ul>
@@ -1617,26 +1629,816 @@ good idea to test with a light and back background color.</p>
 </div>
 </div>
 </div></div>
-<p>To see a demo of the effects and how they work in your terminal, you can type
-the following at the command line:</p>
-<div class="literal-block-wrapper docutils container" id="id27">
-<div class="code-block-caption"><span class="caption-number">Listing 238 </span><span class="caption-text">command line</span><a class="headerlink" href="#id27" title="Permalink to this code">¶</a></div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m console.demos
-</pre></div>
-</div>
-</div>
 </div>
 <div class="section" id="usage">
 <h3><a class="toc-backref" href="#table-of-contents">Usage</a><a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">console</span> <span class="kn">import</span> <span class="n">fg</span><span class="p">,</span> <span class="n">bg</span><span class="p">,</span> <span class="n">fx</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">fg</span><span class="o">.</span><span class="n">cyan</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">bg</span><span class="o">.</span><span class="n">blue</span><span class="p">(</span><span class="s2">&quot;oh hai there.&quot;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">fx</span><span class="o">.</span><span class="n">bold</span><span class="p">(</span><span class="s2">&quot;Attention!&quot;</span><span class="p">))</span>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="row"><div class="col left-col">
+<p>To see a demo of all available features and how they work in your terminal you
+can run <code class="docutils literal notranslate"><span class="pre">console.demo</span></code> from the command line.</p>
+</div><div class="col">
+<div class="literal-block-wrapper docutils container" id="id27">
+<div class="code-block-caption"><span class="caption-number">Listing 238 </span><span class="caption-text">command line</span><a class="headerlink" href="#id27" title="Permalink to this code">¶</a></div>
+<div class="full-width highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m console.demos
 </pre></div>
 </div>
-<p>For a list of all available styles and colors, see the
-<a class="reference external" href="https://mixmastamyk.bitbucket.io/console/">console docs</a>.</p>
+</div>
+<div class="br"></div><div class="br"></div><div class="br"></div><div class="br"></div>
+</div></div><div class="row"><div class="col right-col">
+<p>To change the text colors and styles, use the <code class="docutils literal notranslate"><span class="pre">fg</span></code>, <code class="docutils literal notranslate"><span class="pre">bg</span></code> and <code class="docutils literal notranslate"><span class="pre">fx</span></code> objects to
+change the foreground color, background color, and effects respectively.</p>
+</div><div class="col">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">console</span> <span class="kn">import</span> <span class="n">fg</span><span class="p">,</span> <span class="n">bg</span><span class="p">,</span> <span class="n">fx</span>
+</pre></div>
+</div>
+</div></div><div class="row"><div class="col right-col">
+<p>For text effects, use the methods on the <code class="docutils literal notranslate"><span class="pre">fx</span></code> object.</p>
+</div><div class="col">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">fx</span><span class="o">.</span><span class="n">bold</span><span class="p">(</span><span class="s2">&quot;Attention!&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div></div><div class="row"><div class="col right-col">
+<p>For foreground and background colors use methods on the <code class="docutils literal notranslate"><span class="pre">fg</span></code> and <code class="docutils literal notranslate"><span class="pre">bg</span></code> objects
+respectively, such as the 16 basic colors supported by most terminals.</p>
+</div><div class="col">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">fg</span><span class="o">.</span><span class="n">green</span><span class="p">(</span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bg</span><span class="o">.</span><span class="n">magenta</span><span class="p">(</span><span class="s2">&quot;Information&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div></div><div class="row"><div class="col right-col">
+<p>Some terminals also provide an extended set of <code class="docutils literal notranslate"><span class="pre">256</span></code> indexed colors (shown in
+the aforementioned demo). Methods for these colors are named <code class="docutils literal notranslate"><span class="pre">i0</span></code> through
+<code class="docutils literal notranslate"><span class="pre">i255</span></code>.</p>
+</div><div class="col">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">fg</span><span class="o">.</span><span class="n">i197</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div></div><div class="row"><div class="col right-col">
+<p>For terminals that support “True”, RGB, or 16 million colors, you can use any
+6-character hex color code prefixed with <code class="docutils literal notranslate"><span class="pre">t_</span></code>.</p>
+</div><div class="col">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;default=&quot;</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">t_f4c2c2</span><span class="p">(</span><span class="s2">&quot;None&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div></div><div class="row"><div class="col right-col">
+<p>Or you can use X11 color names, prefixed with <code class="docutils literal notranslate"><span class="pre">x_</span></code>.</p>
+</div><div class="col">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">bg</span><span class="o">.</span><span class="n">midnightblue</span><span class="p">(</span><span class="s2">&quot;Home&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fg</span><span class="o">.</span><span class="n">x_deepskyblue</span><span class="p">(</span><span class="s2">&quot;Tutorial&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div></div><div class="row"><div class="col right-col">
+<p>You can combine a <code class="docutils literal notranslate"><span class="pre">fg</span></code>, <code class="docutils literal notranslate"><span class="pre">bg</span></code>, and/or <code class="docutils literal notranslate"><span class="pre">fx</span></code> object to create a custom, callable
+style.</p>
+</div><div class="col">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">highlight</span> <span class="o">=</span> <span class="n">fx</span><span class="o">.</span><span class="n">italic</span> <span class="o">+</span> <span class="n">fg</span><span class="o">.</span><span class="n">yellow</span> <span class="o">+</span> <span class="n">bg</span><span class="o">.</span><span class="n">blue</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">highlight</span><span class="p">(</span><span class="s2">&quot;Great job!&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div></div>
+</div>
+<div class="section" id="available-colors-and-styles">
+<h3><a class="toc-backref" href="#table-of-contents">Available colors and styles</a><a class="headerlink" href="#available-colors-and-styles" title="Permalink to this headline">¶</a></h3>
+<div class="row no-labels"><div class="col">
+<p class="rubric">Text Effects</p>
+<p>Text effects methods available via the <code class="docutils literal notranslate"><span class="pre">fx</span></code> object:</p>
+</div><div class="col">
+<p class="rubric">Basic Colors</p>
+<p>Methods for the 16 basic colors available via the <code class="docutils literal notranslate"><span class="pre">fg</span></code> and <code class="docutils literal notranslate"><span class="pre">bg</span></code> objects.</p>
+</div><div class="col">
+<p class="rubric">X11 Colors</p>
+<p>Methods for RGB colors associated with <a class="reference external" href="https://en.wikipedia.org/wiki/X11_color_names">X11 color names</a> available
+via the <code class="docutils literal notranslate"><span class="pre">fg</span></code> and <code class="docutils literal notranslate"><span class="pre">bg</span></code> objects.</p>
+</div></div>
+<div class="row no-labels"><div class="col"><div class="cell tag_remove-input tag_hide-output tag_output_scroll docutils container">
+<div class="cell_output docutils container">
+<ul class="simple">
+<li><p>b</p></li>
+<li><p>blink</p></li>
+<li><p>bold</p></li>
+<li><p>conceal</p></li>
+<li><p>crossed</p></li>
+<li><p>curly_underline</p></li>
+<li><p>dim</p></li>
+<li><p>double_underline</p></li>
+<li><p>dunder</p></li>
+<li><p>encircle</p></li>
+<li><p>fastblink</p></li>
+<li><p>frame</p></li>
+<li><p>hide</p></li>
+<li><p>i</p></li>
+<li><p>italic</p></li>
+<li><p>overline</p></li>
+<li><p>reverse</p></li>
+<li><p>s</p></li>
+<li><p>slowblink</p></li>
+<li><p>strike</p></li>
+<li><p>u</p></li>
+<li><p>underline</p></li>
+</ul>
+</div>
+</div>
+</div><div class="col"><div class="cell tag_remove-input tag_hide-output tag_output_scroll docutils container">
+<div class="cell_output docutils container">
+<ul class="simple">
+<li><p>black</p></li>
+<li><p>blue</p></li>
+<li><p>cyan</p></li>
+<li><p>green</p></li>
+<li><p>lightblack</p></li>
+<li><p>lightblue</p></li>
+<li><p>lightcyan</p></li>
+<li><p>lightgreen</p></li>
+<li><p>lightmagenta</p></li>
+<li><p>lightpurple</p></li>
+<li><p>lightred</p></li>
+<li><p>lightwhite</p></li>
+<li><p>lightyellow</p></li>
+<li><p>magenta</p></li>
+<li><p>purple</p></li>
+<li><p>red</p></li>
+<li><p>white</p></li>
+<li><p>yellow</p></li>
+</ul>
+</div>
+</div>
+</div><div class="col"><div class="cell tag_remove-input tag_hide-output tag_output_scroll docutils container">
+<div class="cell_output docutils container">
+<ul class="simple">
+<li><p>snow</p></li>
+<li><p>ghostwhite</p></li>
+<li><p>whitesmoke</p></li>
+<li><p>gainsboro</p></li>
+<li><p>floralwhite</p></li>
+<li><p>oldlace</p></li>
+<li><p>linen</p></li>
+<li><p>antiquewhite</p></li>
+<li><p>papayawhip</p></li>
+<li><p>blanchedalmond</p></li>
+<li><p>bisque</p></li>
+<li><p>peachpuff</p></li>
+<li><p>navajowhite</p></li>
+<li><p>moccasin</p></li>
+<li><p>cornsilk</p></li>
+<li><p>ivory</p></li>
+<li><p>lemonchiffon</p></li>
+<li><p>seashell</p></li>
+<li><p>honeydew</p></li>
+<li><p>mintcream</p></li>
+<li><p>azure</p></li>
+<li><p>aliceblue</p></li>
+<li><p>lavender</p></li>
+<li><p>lavenderblush</p></li>
+<li><p>mistyrose</p></li>
+<li><p>white</p></li>
+<li><p>black</p></li>
+<li><p>darkslategray</p></li>
+<li><p>darkslategrey</p></li>
+<li><p>dimgray</p></li>
+<li><p>dimgrey</p></li>
+<li><p>slategray</p></li>
+<li><p>slategrey</p></li>
+<li><p>lightslategray</p></li>
+<li><p>lightslategrey</p></li>
+<li><p>gray</p></li>
+<li><p>grey</p></li>
+<li><p>lightgrey</p></li>
+<li><p>lightgray</p></li>
+<li><p>midnightblue</p></li>
+<li><p>navy</p></li>
+<li><p>navyblue</p></li>
+<li><p>cornflowerblue</p></li>
+<li><p>darkslateblue</p></li>
+<li><p>slateblue</p></li>
+<li><p>mediumslateblue</p></li>
+<li><p>lightslateblue</p></li>
+<li><p>mediumblue</p></li>
+<li><p>royalblue</p></li>
+<li><p>blue</p></li>
+<li><p>dodgerblue</p></li>
+<li><p>deepskyblue</p></li>
+<li><p>skyblue</p></li>
+<li><p>lightskyblue</p></li>
+<li><p>steelblue</p></li>
+<li><p>lightsteelblue</p></li>
+<li><p>lightblue</p></li>
+<li><p>powderblue</p></li>
+<li><p>paleturquoise</p></li>
+<li><p>darkturquoise</p></li>
+<li><p>mediumturquoise</p></li>
+<li><p>turquoise</p></li>
+<li><p>cyan</p></li>
+<li><p>lightcyan</p></li>
+<li><p>cadetblue</p></li>
+<li><p>mediumaquamarine</p></li>
+<li><p>aquamarine</p></li>
+<li><p>darkgreen</p></li>
+<li><p>darkolivegreen</p></li>
+<li><p>darkseagreen</p></li>
+<li><p>seagreen</p></li>
+<li><p>mediumseagreen</p></li>
+<li><p>lightseagreen</p></li>
+<li><p>palegreen</p></li>
+<li><p>springgreen</p></li>
+<li><p>lawngreen</p></li>
+<li><p>green</p></li>
+<li><p>chartreuse</p></li>
+<li><p>mediumspringgreen</p></li>
+<li><p>greenyellow</p></li>
+<li><p>limegreen</p></li>
+<li><p>yellowgreen</p></li>
+<li><p>forestgreen</p></li>
+<li><p>olivedrab</p></li>
+<li><p>darkkhaki</p></li>
+<li><p>khaki</p></li>
+<li><p>palegoldenrod</p></li>
+<li><p>lightgoldenrodyellow</p></li>
+<li><p>lightyellow</p></li>
+<li><p>yellow</p></li>
+<li><p>gold</p></li>
+<li><p>lightgoldenrod</p></li>
+<li><p>goldenrod</p></li>
+<li><p>darkgoldenrod</p></li>
+<li><p>rosybrown</p></li>
+<li><p>indianred</p></li>
+<li><p>saddlebrown</p></li>
+<li><p>sienna</p></li>
+<li><p>peru</p></li>
+<li><p>burlywood</p></li>
+<li><p>beige</p></li>
+<li><p>wheat</p></li>
+<li><p>sandybrown</p></li>
+<li><p>tan</p></li>
+<li><p>chocolate</p></li>
+<li><p>firebrick</p></li>
+<li><p>brown</p></li>
+<li><p>darksalmon</p></li>
+<li><p>salmon</p></li>
+<li><p>lightsalmon</p></li>
+<li><p>orange</p></li>
+<li><p>darkorange</p></li>
+<li><p>coral</p></li>
+<li><p>lightcoral</p></li>
+<li><p>tomato</p></li>
+<li><p>orangered</p></li>
+<li><p>red</p></li>
+<li><p>hotpink</p></li>
+<li><p>deeppink</p></li>
+<li><p>pink</p></li>
+<li><p>lightpink</p></li>
+<li><p>palevioletred</p></li>
+<li><p>maroon</p></li>
+<li><p>mediumvioletred</p></li>
+<li><p>violetred</p></li>
+<li><p>magenta</p></li>
+<li><p>violet</p></li>
+<li><p>plum</p></li>
+<li><p>orchid</p></li>
+<li><p>mediumorchid</p></li>
+<li><p>darkorchid</p></li>
+<li><p>darkviolet</p></li>
+<li><p>blueviolet</p></li>
+<li><p>purple</p></li>
+<li><p>mediumpurple</p></li>
+<li><p>thistle</p></li>
+<li><p>snow1</p></li>
+<li><p>snow2</p></li>
+<li><p>snow3</p></li>
+<li><p>snow4</p></li>
+<li><p>seashell1</p></li>
+<li><p>seashell2</p></li>
+<li><p>seashell3</p></li>
+<li><p>seashell4</p></li>
+<li><p>antiquewhite1</p></li>
+<li><p>antiquewhite2</p></li>
+<li><p>antiquewhite3</p></li>
+<li><p>antiquewhite4</p></li>
+<li><p>bisque1</p></li>
+<li><p>bisque2</p></li>
+<li><p>bisque3</p></li>
+<li><p>bisque4</p></li>
+<li><p>peachpuff1</p></li>
+<li><p>peachpuff2</p></li>
+<li><p>peachpuff3</p></li>
+<li><p>peachpuff4</p></li>
+<li><p>navajowhite1</p></li>
+<li><p>navajowhite2</p></li>
+<li><p>navajowhite3</p></li>
+<li><p>navajowhite4</p></li>
+<li><p>lemonchiffon1</p></li>
+<li><p>lemonchiffon2</p></li>
+<li><p>lemonchiffon3</p></li>
+<li><p>lemonchiffon4</p></li>
+<li><p>cornsilk1</p></li>
+<li><p>cornsilk2</p></li>
+<li><p>cornsilk3</p></li>
+<li><p>cornsilk4</p></li>
+<li><p>ivory1</p></li>
+<li><p>ivory2</p></li>
+<li><p>ivory3</p></li>
+<li><p>ivory4</p></li>
+<li><p>honeydew1</p></li>
+<li><p>honeydew2</p></li>
+<li><p>honeydew3</p></li>
+<li><p>honeydew4</p></li>
+<li><p>lavenderblush1</p></li>
+<li><p>lavenderblush2</p></li>
+<li><p>lavenderblush3</p></li>
+<li><p>lavenderblush4</p></li>
+<li><p>mistyrose1</p></li>
+<li><p>mistyrose2</p></li>
+<li><p>mistyrose3</p></li>
+<li><p>mistyrose4</p></li>
+<li><p>azure1</p></li>
+<li><p>azure2</p></li>
+<li><p>azure3</p></li>
+<li><p>azure4</p></li>
+<li><p>slateblue1</p></li>
+<li><p>slateblue2</p></li>
+<li><p>slateblue3</p></li>
+<li><p>slateblue4</p></li>
+<li><p>royalblue1</p></li>
+<li><p>royalblue2</p></li>
+<li><p>royalblue3</p></li>
+<li><p>royalblue4</p></li>
+<li><p>blue1</p></li>
+<li><p>blue2</p></li>
+<li><p>blue3</p></li>
+<li><p>blue4</p></li>
+<li><p>dodgerblue1</p></li>
+<li><p>dodgerblue2</p></li>
+<li><p>dodgerblue3</p></li>
+<li><p>dodgerblue4</p></li>
+<li><p>steelblue1</p></li>
+<li><p>steelblue2</p></li>
+<li><p>steelblue3</p></li>
+<li><p>steelblue4</p></li>
+<li><p>deepskyblue1</p></li>
+<li><p>deepskyblue2</p></li>
+<li><p>deepskyblue3</p></li>
+<li><p>deepskyblue4</p></li>
+<li><p>skyblue1</p></li>
+<li><p>skyblue2</p></li>
+<li><p>skyblue3</p></li>
+<li><p>skyblue4</p></li>
+<li><p>lightskyblue1</p></li>
+<li><p>lightskyblue2</p></li>
+<li><p>lightskyblue3</p></li>
+<li><p>lightskyblue4</p></li>
+<li><p>slategray1</p></li>
+<li><p>slategray2</p></li>
+<li><p>slategray3</p></li>
+<li><p>slategray4</p></li>
+<li><p>lightsteelblue1</p></li>
+<li><p>lightsteelblue2</p></li>
+<li><p>lightsteelblue3</p></li>
+<li><p>lightsteelblue4</p></li>
+<li><p>lightblue1</p></li>
+<li><p>lightblue2</p></li>
+<li><p>lightblue3</p></li>
+<li><p>lightblue4</p></li>
+<li><p>lightcyan1</p></li>
+<li><p>lightcyan2</p></li>
+<li><p>lightcyan3</p></li>
+<li><p>lightcyan4</p></li>
+<li><p>paleturquoise1</p></li>
+<li><p>paleturquoise2</p></li>
+<li><p>paleturquoise3</p></li>
+<li><p>paleturquoise4</p></li>
+<li><p>cadetblue1</p></li>
+<li><p>cadetblue2</p></li>
+<li><p>cadetblue3</p></li>
+<li><p>cadetblue4</p></li>
+<li><p>turquoise1</p></li>
+<li><p>turquoise2</p></li>
+<li><p>turquoise3</p></li>
+<li><p>turquoise4</p></li>
+<li><p>cyan1</p></li>
+<li><p>cyan2</p></li>
+<li><p>cyan3</p></li>
+<li><p>cyan4</p></li>
+<li><p>darkslategray1</p></li>
+<li><p>darkslategray2</p></li>
+<li><p>darkslategray3</p></li>
+<li><p>darkslategray4</p></li>
+<li><p>aquamarine1</p></li>
+<li><p>aquamarine2</p></li>
+<li><p>aquamarine3</p></li>
+<li><p>aquamarine4</p></li>
+<li><p>darkseagreen1</p></li>
+<li><p>darkseagreen2</p></li>
+<li><p>darkseagreen3</p></li>
+<li><p>darkseagreen4</p></li>
+<li><p>seagreen1</p></li>
+<li><p>seagreen2</p></li>
+<li><p>seagreen3</p></li>
+<li><p>seagreen4</p></li>
+<li><p>palegreen1</p></li>
+<li><p>palegreen2</p></li>
+<li><p>palegreen3</p></li>
+<li><p>palegreen4</p></li>
+<li><p>springgreen1</p></li>
+<li><p>springgreen2</p></li>
+<li><p>springgreen3</p></li>
+<li><p>springgreen4</p></li>
+<li><p>green1</p></li>
+<li><p>green2</p></li>
+<li><p>green3</p></li>
+<li><p>green4</p></li>
+<li><p>chartreuse1</p></li>
+<li><p>chartreuse2</p></li>
+<li><p>chartreuse3</p></li>
+<li><p>chartreuse4</p></li>
+<li><p>olivedrab1</p></li>
+<li><p>olivedrab2</p></li>
+<li><p>olivedrab3</p></li>
+<li><p>olivedrab4</p></li>
+<li><p>darkolivegreen1</p></li>
+<li><p>darkolivegreen2</p></li>
+<li><p>darkolivegreen3</p></li>
+<li><p>darkolivegreen4</p></li>
+<li><p>khaki1</p></li>
+<li><p>khaki2</p></li>
+<li><p>khaki3</p></li>
+<li><p>khaki4</p></li>
+<li><p>lightgoldenrod1</p></li>
+<li><p>lightgoldenrod2</p></li>
+<li><p>lightgoldenrod3</p></li>
+<li><p>lightgoldenrod4</p></li>
+<li><p>lightyellow1</p></li>
+<li><p>lightyellow2</p></li>
+<li><p>lightyellow3</p></li>
+<li><p>lightyellow4</p></li>
+<li><p>yellow1</p></li>
+<li><p>yellow2</p></li>
+<li><p>yellow3</p></li>
+<li><p>yellow4</p></li>
+<li><p>gold1</p></li>
+<li><p>gold2</p></li>
+<li><p>gold3</p></li>
+<li><p>gold4</p></li>
+<li><p>goldenrod1</p></li>
+<li><p>goldenrod2</p></li>
+<li><p>goldenrod3</p></li>
+<li><p>goldenrod4</p></li>
+<li><p>darkgoldenrod1</p></li>
+<li><p>darkgoldenrod2</p></li>
+<li><p>darkgoldenrod3</p></li>
+<li><p>darkgoldenrod4</p></li>
+<li><p>rosybrown1</p></li>
+<li><p>rosybrown2</p></li>
+<li><p>rosybrown3</p></li>
+<li><p>rosybrown4</p></li>
+<li><p>indianred1</p></li>
+<li><p>indianred2</p></li>
+<li><p>indianred3</p></li>
+<li><p>indianred4</p></li>
+<li><p>sienna1</p></li>
+<li><p>sienna2</p></li>
+<li><p>sienna3</p></li>
+<li><p>sienna4</p></li>
+<li><p>burlywood1</p></li>
+<li><p>burlywood2</p></li>
+<li><p>burlywood3</p></li>
+<li><p>burlywood4</p></li>
+<li><p>wheat1</p></li>
+<li><p>wheat2</p></li>
+<li><p>wheat3</p></li>
+<li><p>wheat4</p></li>
+<li><p>tan1</p></li>
+<li><p>tan2</p></li>
+<li><p>tan3</p></li>
+<li><p>tan4</p></li>
+<li><p>chocolate1</p></li>
+<li><p>chocolate2</p></li>
+<li><p>chocolate3</p></li>
+<li><p>chocolate4</p></li>
+<li><p>firebrick1</p></li>
+<li><p>firebrick2</p></li>
+<li><p>firebrick3</p></li>
+<li><p>firebrick4</p></li>
+<li><p>brown1</p></li>
+<li><p>brown2</p></li>
+<li><p>brown3</p></li>
+<li><p>brown4</p></li>
+<li><p>salmon1</p></li>
+<li><p>salmon2</p></li>
+<li><p>salmon3</p></li>
+<li><p>salmon4</p></li>
+<li><p>lightsalmon1</p></li>
+<li><p>lightsalmon2</p></li>
+<li><p>lightsalmon3</p></li>
+<li><p>lightsalmon4</p></li>
+<li><p>orange1</p></li>
+<li><p>orange2</p></li>
+<li><p>orange3</p></li>
+<li><p>orange4</p></li>
+<li><p>darkorange1</p></li>
+<li><p>darkorange2</p></li>
+<li><p>darkorange3</p></li>
+<li><p>darkorange4</p></li>
+<li><p>coral1</p></li>
+<li><p>coral2</p></li>
+<li><p>coral3</p></li>
+<li><p>coral4</p></li>
+<li><p>tomato1</p></li>
+<li><p>tomato2</p></li>
+<li><p>tomato3</p></li>
+<li><p>tomato4</p></li>
+<li><p>orangered1</p></li>
+<li><p>orangered2</p></li>
+<li><p>orangered3</p></li>
+<li><p>orangered4</p></li>
+<li><p>red1</p></li>
+<li><p>red2</p></li>
+<li><p>red3</p></li>
+<li><p>red4</p></li>
+<li><p>debianred</p></li>
+<li><p>deeppink1</p></li>
+<li><p>deeppink2</p></li>
+<li><p>deeppink3</p></li>
+<li><p>deeppink4</p></li>
+<li><p>hotpink1</p></li>
+<li><p>hotpink2</p></li>
+<li><p>hotpink3</p></li>
+<li><p>hotpink4</p></li>
+<li><p>pink1</p></li>
+<li><p>pink2</p></li>
+<li><p>pink3</p></li>
+<li><p>pink4</p></li>
+<li><p>lightpink1</p></li>
+<li><p>lightpink2</p></li>
+<li><p>lightpink3</p></li>
+<li><p>lightpink4</p></li>
+<li><p>palevioletred1</p></li>
+<li><p>palevioletred2</p></li>
+<li><p>palevioletred3</p></li>
+<li><p>palevioletred4</p></li>
+<li><p>maroon1</p></li>
+<li><p>maroon2</p></li>
+<li><p>maroon3</p></li>
+<li><p>maroon4</p></li>
+<li><p>violetred1</p></li>
+<li><p>violetred2</p></li>
+<li><p>violetred3</p></li>
+<li><p>violetred4</p></li>
+<li><p>magenta1</p></li>
+<li><p>magenta2</p></li>
+<li><p>magenta3</p></li>
+<li><p>magenta4</p></li>
+<li><p>orchid1</p></li>
+<li><p>orchid2</p></li>
+<li><p>orchid3</p></li>
+<li><p>orchid4</p></li>
+<li><p>plum1</p></li>
+<li><p>plum2</p></li>
+<li><p>plum3</p></li>
+<li><p>plum4</p></li>
+<li><p>mediumorchid1</p></li>
+<li><p>mediumorchid2</p></li>
+<li><p>mediumorchid3</p></li>
+<li><p>mediumorchid4</p></li>
+<li><p>darkorchid1</p></li>
+<li><p>darkorchid2</p></li>
+<li><p>darkorchid3</p></li>
+<li><p>darkorchid4</p></li>
+<li><p>purple1</p></li>
+<li><p>purple2</p></li>
+<li><p>purple3</p></li>
+<li><p>purple4</p></li>
+<li><p>mediumpurple1</p></li>
+<li><p>mediumpurple2</p></li>
+<li><p>mediumpurple3</p></li>
+<li><p>mediumpurple4</p></li>
+<li><p>thistle1</p></li>
+<li><p>thistle2</p></li>
+<li><p>thistle3</p></li>
+<li><p>thistle4</p></li>
+<li><p>gray0</p></li>
+<li><p>grey0</p></li>
+<li><p>gray1</p></li>
+<li><p>grey1</p></li>
+<li><p>gray2</p></li>
+<li><p>grey2</p></li>
+<li><p>gray3</p></li>
+<li><p>grey3</p></li>
+<li><p>gray4</p></li>
+<li><p>grey4</p></li>
+<li><p>gray5</p></li>
+<li><p>grey5</p></li>
+<li><p>gray6</p></li>
+<li><p>grey6</p></li>
+<li><p>gray7</p></li>
+<li><p>grey7</p></li>
+<li><p>gray8</p></li>
+<li><p>grey8</p></li>
+<li><p>gray9</p></li>
+<li><p>grey9</p></li>
+<li><p>gray10</p></li>
+<li><p>grey10</p></li>
+<li><p>gray11</p></li>
+<li><p>grey11</p></li>
+<li><p>gray12</p></li>
+<li><p>grey12</p></li>
+<li><p>gray13</p></li>
+<li><p>grey13</p></li>
+<li><p>gray14</p></li>
+<li><p>grey14</p></li>
+<li><p>gray15</p></li>
+<li><p>grey15</p></li>
+<li><p>gray16</p></li>
+<li><p>grey16</p></li>
+<li><p>gray17</p></li>
+<li><p>grey17</p></li>
+<li><p>gray18</p></li>
+<li><p>grey18</p></li>
+<li><p>gray19</p></li>
+<li><p>grey19</p></li>
+<li><p>gray20</p></li>
+<li><p>grey20</p></li>
+<li><p>gray21</p></li>
+<li><p>grey21</p></li>
+<li><p>gray22</p></li>
+<li><p>grey22</p></li>
+<li><p>gray23</p></li>
+<li><p>grey23</p></li>
+<li><p>gray24</p></li>
+<li><p>grey24</p></li>
+<li><p>gray25</p></li>
+<li><p>grey25</p></li>
+<li><p>gray26</p></li>
+<li><p>grey26</p></li>
+<li><p>gray27</p></li>
+<li><p>grey27</p></li>
+<li><p>gray28</p></li>
+<li><p>grey28</p></li>
+<li><p>gray29</p></li>
+<li><p>grey29</p></li>
+<li><p>gray30</p></li>
+<li><p>grey30</p></li>
+<li><p>gray31</p></li>
+<li><p>grey31</p></li>
+<li><p>gray32</p></li>
+<li><p>grey32</p></li>
+<li><p>gray33</p></li>
+<li><p>grey33</p></li>
+<li><p>gray34</p></li>
+<li><p>grey34</p></li>
+<li><p>gray35</p></li>
+<li><p>grey35</p></li>
+<li><p>gray36</p></li>
+<li><p>grey36</p></li>
+<li><p>gray37</p></li>
+<li><p>grey37</p></li>
+<li><p>gray38</p></li>
+<li><p>grey38</p></li>
+<li><p>gray39</p></li>
+<li><p>grey39</p></li>
+<li><p>gray40</p></li>
+<li><p>grey40</p></li>
+<li><p>gray41</p></li>
+<li><p>grey41</p></li>
+<li><p>gray42</p></li>
+<li><p>grey42</p></li>
+<li><p>gray43</p></li>
+<li><p>grey43</p></li>
+<li><p>gray44</p></li>
+<li><p>grey44</p></li>
+<li><p>gray45</p></li>
+<li><p>grey45</p></li>
+<li><p>gray46</p></li>
+<li><p>grey46</p></li>
+<li><p>gray47</p></li>
+<li><p>grey47</p></li>
+<li><p>gray48</p></li>
+<li><p>grey48</p></li>
+<li><p>gray49</p></li>
+<li><p>grey49</p></li>
+<li><p>gray50</p></li>
+<li><p>grey50</p></li>
+<li><p>gray51</p></li>
+<li><p>grey51</p></li>
+<li><p>gray52</p></li>
+<li><p>grey52</p></li>
+<li><p>gray53</p></li>
+<li><p>grey53</p></li>
+<li><p>gray54</p></li>
+<li><p>grey54</p></li>
+<li><p>gray55</p></li>
+<li><p>grey55</p></li>
+<li><p>gray56</p></li>
+<li><p>grey56</p></li>
+<li><p>gray57</p></li>
+<li><p>grey57</p></li>
+<li><p>gray58</p></li>
+<li><p>grey58</p></li>
+<li><p>gray59</p></li>
+<li><p>grey59</p></li>
+<li><p>gray60</p></li>
+<li><p>grey60</p></li>
+<li><p>gray61</p></li>
+<li><p>grey61</p></li>
+<li><p>gray62</p></li>
+<li><p>grey62</p></li>
+<li><p>gray63</p></li>
+<li><p>grey63</p></li>
+<li><p>gray64</p></li>
+<li><p>grey64</p></li>
+<li><p>gray65</p></li>
+<li><p>grey65</p></li>
+<li><p>gray66</p></li>
+<li><p>grey66</p></li>
+<li><p>gray67</p></li>
+<li><p>grey67</p></li>
+<li><p>gray68</p></li>
+<li><p>grey68</p></li>
+<li><p>gray69</p></li>
+<li><p>grey69</p></li>
+<li><p>gray70</p></li>
+<li><p>grey70</p></li>
+<li><p>gray71</p></li>
+<li><p>grey71</p></li>
+<li><p>gray72</p></li>
+<li><p>grey72</p></li>
+<li><p>gray73</p></li>
+<li><p>grey73</p></li>
+<li><p>gray74</p></li>
+<li><p>grey74</p></li>
+<li><p>gray75</p></li>
+<li><p>grey75</p></li>
+<li><p>gray76</p></li>
+<li><p>grey76</p></li>
+<li><p>gray77</p></li>
+<li><p>grey77</p></li>
+<li><p>gray78</p></li>
+<li><p>grey78</p></li>
+<li><p>gray79</p></li>
+<li><p>grey79</p></li>
+<li><p>gray80</p></li>
+<li><p>grey80</p></li>
+<li><p>gray81</p></li>
+<li><p>grey81</p></li>
+<li><p>gray82</p></li>
+<li><p>grey82</p></li>
+<li><p>gray83</p></li>
+<li><p>grey83</p></li>
+<li><p>gray84</p></li>
+<li><p>grey84</p></li>
+<li><p>gray85</p></li>
+<li><p>grey85</p></li>
+<li><p>gray86</p></li>
+<li><p>grey86</p></li>
+<li><p>gray87</p></li>
+<li><p>grey87</p></li>
+<li><p>gray88</p></li>
+<li><p>grey88</p></li>
+<li><p>gray89</p></li>
+<li><p>grey89</p></li>
+<li><p>gray90</p></li>
+<li><p>grey90</p></li>
+<li><p>gray91</p></li>
+<li><p>grey91</p></li>
+<li><p>gray92</p></li>
+<li><p>grey92</p></li>
+<li><p>gray93</p></li>
+<li><p>grey93</p></li>
+<li><p>gray94</p></li>
+<li><p>grey94</p></li>
+<li><p>gray95</p></li>
+<li><p>grey95</p></li>
+<li><p>gray96</p></li>
+<li><p>grey96</p></li>
+<li><p>gray97</p></li>
+<li><p>grey97</p></li>
+<li><p>gray98</p></li>
+<li><p>grey98</p></li>
+<li><p>gray99</p></li>
+<li><p>grey99</p></li>
+<li><p>gray100</p></li>
+<li><p>grey100</p></li>
+<li><p>darkgrey</p></li>
+<li><p>darkgray</p></li>
+<li><p>darkblue</p></li>
+<li><p>darkcyan</p></li>
+<li><p>darkmagenta</p></li>
+<li><p>darkred</p></li>
+<li><p>lightgreen</p></li>
+</ul>
+</div>
+</div>
+</div></div>
+</div>
+<div class="section" id="see-also">
+<h3><a class="toc-backref" href="#table-of-contents">See Also</a><a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/mixmastamyk/console"><i class="fa fa-github"></i> mixmastamyk/console</a></p></li>
+<li><p><a class="reference external" href="https://mixmastamyk.bitbucket.io/console/">console docs</a>.</p></li>
+<li><p><a class="reference external" href="https://www.colorhexa.com/color-names">colorhexa.com</a> – a page with a list of an assortment of hex colors by name</p></li>
+</ul>
+</div>
 </div>
 </div>
 <div class="section" id="reference">
