@@ -58,14 +58,14 @@ def do_shop():
     """List the items for sale."""
     print("\nItems for sale.\n")
 
-    for key, item in ITEMS.items():
-        print(f'{item["name"]:<13}', item["description"])
+    for item in ITEMS.values():
+        print(f'{item["name"]:<13}  {item["description"]}')
 
     print()
 
 def do_quit():
     """Exit the game."""
-    print("Ok, goodbye.")
+    print("Ok, goodbye.\n")
     quit()
 
 def do_go(args):

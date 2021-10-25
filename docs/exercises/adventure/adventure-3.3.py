@@ -6,7 +6,9 @@ https://alissa-huskey.github.io/python-class/exercises/adventure.html
 import re
 import textwrap
 
-WIDTH = 45
+from console import fg, bg, fx
+
+WIDTH = 60
 
 MARGIN = "  "
 
@@ -49,42 +51,54 @@ ITEMS = {
     },
 }
 
+def header(title):
+    """Print a header"""
+    print()
+    writeline(fx.bold(title))
+    print()
+
 def narrative(text):
-    """Print wrapped and indented text."""
-    # wrap the text
-    paragraph = textwrap.fill(
+    """Print wrapped and indented text.
+    """
+    # get a list of lines
+    lines = textwrap.wrap(
         text,
         WIDTH,
         initial_indent=MARGIN,
         subsequent_indent=MARGIN,
     )
 
-    # print the wrapped text
-    print(paragraph)
+    # print each line
+    for line in lines:
+        print(line)
+
+def writeline(text):
+    """Print an indented line of game text."""
+    print(MARGIN, text, sep="")
 
 def error(message):
     """Print an error message."""
-    print(f"! Error {message}\n")
+    print(f"{fg.red('! Error')} {message}\n", file=stderr)
 
 def debug(message):
     """Print a debug message if in debug mode."""
     if not DEBUG:
         return
-    print(f"# {message}")
+    print(fg.lightblack(f"# {message}"))
 
 def do_shop():
     """List the items for sale."""
 
-    print("Items for sale.")
+    header("Items for sale.")
 
     for item in ITEMS.values():
-        print(f'{item["name"]:<13}  {item["description"]}')
+        writeline(f'{item["name"]:<13}  {item["description"]}')
 
     print()
 
 def do_quit():
     """Exit the game."""
-    print("Ok, goodbye.\n")
+    writeline("Ok, goodbye.\n")
     quit()
 
 def do_go(args):
@@ -131,16 +145,16 @@ def do_go(args):
     PLAYER["place"] = new_name
 
     # print information about the new place
-    print(f"\n{new_place['name']}\n")
+    header(f"{new_place['name']}")
     narrative(new_place["description"])
 
 def main():
-    print("Welcome!")
+    header("Welcome!")
 
     while True:
         debug(f"You are at: {PLAYER['place']}")
 
-        reply = input("> ").strip()
+        reply = input(fg.cyan("> ")).strip()
         args = reply.split()
 
         if not args:
@@ -167,6 +181,3 @@ def main():
 if __name__ == "__main__":
     main()
 
-
-## todo:
-# [ ] remove stderr

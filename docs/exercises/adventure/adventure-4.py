@@ -1,14 +1,15 @@
 """
-Text-based adventure game
+Texr-based adventure game
 https://alissa-huskey.github.io/python-class/exercises/adventure.html
 """
 
 import re
+from sys import stderr
 import textwrap
 
-WIDTH = 45
+from console import fg, bg, fx
 
-MARGIN = "  "
+WIDTH = 45
 
 DEBUG = False
 
@@ -22,6 +23,7 @@ PLACES = {
         "name": "Your Cottage",
         "east": "town-square",
         "description": "A cozy stone cottage with a desk and a neatly made bed.",
+        "items": ["book", "desk"],
     },
     "town-square": {
         "key": "town-square",
@@ -47,45 +49,129 @@ ITEMS = {
         "description": "a 14 inch dagger with a double-edged blade",
         "price": -25,
     },
+    "desk": {
+        "key": "desk",
+        "name": "Desk",
+        "description": (
+            "A heavy book sits open on a stand on the desk. You "
+            "also see an ink pot, a cup of feather quilled "
+            "pens, and a pocket watch."
+        ),
+    },
+    "book": {
+        "key": "book",
+        "name": "A book",
+        "description": (
+            "A hefty leather-bound tome is open to a page that reads:",
+            "> In a mysterious cave lives a dragon with three heads "
+              "each with a different temperament.",
+            "> Legend says that if you happen upon the dragon sleeping, the "
+              "brave may pet one of its three heads.",
+            "> Choose the right head, and you will be rewarded with great "
+              "fortune!",
+            "> But beware! Choose poorly and it will surely mean your doom.",
+        ),
+    },
 }
 
+def header(title):
+    """Print a header"""
+    print()
+    put(fx.bold(title))
+    print()
+
 def narrative(text):
-    """Print wrapped and indented text."""
-    # wrap the text
-    paragraph = textwrap.fill(
+    """Print game narrative
+    """
+    if isinstance(text, str):
+        wrap(text)
+        return
+
+    # tuple
+    for para in text:
+        narrative(para)
+        print()
+
+def wrap(text):
+    """Print wrapped text"""
+    indent = ""
+    if text.startswith("> "):
+        indent = "    "
+        text = text[2:]
+
+    lines = textwrap.wrap(
         text,
         WIDTH,
-        initial_indent=MARGIN,
-        subsequent_indent=MARGIN,
+        initial_indent=indent,
+        subsequent_indent=indent,
     )
 
-    # print the wrapped text
-    print(paragraph)
+    for line in lines:
+        put(line)
+
+def put(text):
+    """Print a line of game output."""
+    print("   ", text, sep="")
 
 def error(message):
     """Print an error message."""
-    print(f"! Error {message}\n")
+    print(f"{fg.red('! Error')} {message}\n", file=stderr)
 
 def debug(message):
     """Print a debug message if in debug mode."""
     if not DEBUG:
         return
-    print(f"# {message}")
+    print(fg.lightblack(f"# {message}"))
+
+def get_place():
+    """Return the place dictionary where the player is at now"""
+    name = PLAYER["place"]
+    return PLACES[name]
 
 def do_shop():
     """List the items for sale."""
 
-    print("Items for sale.")
+    header("Items for sale.")
 
     for item in ITEMS.values():
-        print(f'{item["name"]:<13}  {item["description"]}')
+        if "price" not in item:
+            continue
+        put(f'{item["name"]:<13}', item["description"])
 
     print()
 
 def do_quit():
     """Exit the game."""
-    print("Ok, goodbye.\n")
+    put("Ok, goodbye.")
     quit()
+
+def do_examine(args):
+    """Look at an item in the current place."""
+
+    debug(f"Trying to examine: {args}")
+
+    # make sure the player said what they want to examine
+    if not args:
+        error("What do you want to examine?")
+        return
+
+    # look up where the player is now
+    place = get_place()
+
+    # get the item entered by the user and make it lowercase
+    name = args[0].lower()
+
+    # make sure it is a thing that is in this place
+    if name not in place.get("items", []):
+        error(f"Sorry, I don't know what this is: {name!r}.")
+        return
+
+    # get the item dictionary
+    item = ITEMS[name]
+
+    # print the item information
+    header(item["name"])
+    narrative(item["description"])
 
 def do_go(args):
     """Move to a different place"""
@@ -106,8 +192,7 @@ def do_go(args):
         return
 
     # look up where the player is now
-    old_name = PLAYER["place"]
-    old_place = PLACES[old_name]
+    old_place = get_place()
 
     # look up what is in that direction from here
     new_name = old_place.get(direction)
@@ -131,16 +216,16 @@ def do_go(args):
     PLAYER["place"] = new_name
 
     # print information about the new place
-    print(f"\n{new_place['name']}\n")
+    header(f"{new_place['name']}")
     narrative(new_place["description"])
 
 def main():
-    print("Welcome!")
+    header("Welcome!")
 
     while True:
         debug(f"You are at: {PLAYER['place']}")
 
-        reply = input("> ").strip()
+        reply = input(fg.cyan("> ")).strip()
         args = reply.split()
 
         if not args:
@@ -158,6 +243,9 @@ def main():
         elif command in ["g", "go"]:
             do_go(args)
 
+        elif command in ["x", "exam", "examine"]:
+            do_examine(args)
+
         else:
             error("No such command.")
             continue
@@ -167,6 +255,3 @@ def main():
 if __name__ == "__main__":
     main()
 
-
-## todo:
-# [ ] remove stderr

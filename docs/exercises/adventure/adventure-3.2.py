@@ -3,12 +3,14 @@ Text-based adventure game
 https://alissa-huskey.github.io/python-class/exercises/adventure.html
 """
 
-from sys import stderr
+import re
 import textwrap
 
 from console import fg, bg, fx
 
 WIDTH = 45
+
+MARGIN = "  "
 
 DEBUG = True
 
@@ -46,17 +48,25 @@ ITEMS = {
         "name": "a dagger",
         "description": "a 14 inch dagger with a double-edged blade",
         "price": -25,
-    }
+    },
 }
 
-def message(text):
-    lines = textwrap.wrap(text, WIDTH, drop_whitespace=False)
-    for line in lines:
-        print(line)
+def narrative(text):
+    """Print wrapped and indented text."""
+    # wrap the text
+    paragraph = textwrap.fill(
+        text,
+        WIDTH,
+        initial_indent=MARGIN,
+        subsequent_indent=MARGIN,
+    )
+
+    # print the wrapped text
+    print(paragraph)
 
 def error(message):
     """Print an error message."""
-    print(f"! {fg.red('Error')}: {message}\n", file=stderr)
+    print(f"{fg.red('! Error')} {message}\n")
 
 def debug(message):
     """Print a debug message if in debug mode."""
@@ -66,16 +76,17 @@ def debug(message):
 
 def do_shop():
     """List the items for sale."""
-    print("\nItems for sale.\n")
 
-    for key, item in ITEMS.items():
-        print(f'{item["name"]:<13}', item["description"])
+    print("Items for sale.")
+
+    for item in ITEMS.values():
+        print(f'{item["name"]:<13}  {item["description"]}')
 
     print()
 
 def do_quit():
     """Exit the game."""
-    print("Ok, goodbye.")
+    print("Ok, goodbye.\n")
     quit()
 
 def do_go(args):
@@ -96,7 +107,7 @@ def do_go(args):
         error(f"Sorry, I don't know how to go: {direction}.")
         return
 
-    # look up where the user is at now
+    # look up where the player is now
     old_name = PLAYER["place"]
     old_place = PLACES[old_name]
 
@@ -122,10 +133,8 @@ def do_go(args):
     PLAYER["place"] = new_name
 
     # print information about the new place
-    print()
-    message(f"{new_place['name']}")
-    print()
-    message(new_place["description"])
+    print(f"\n{new_place['name']}\n")
+    narrative(new_place["description"])
 
 def main():
     print("Welcome!")
@@ -160,3 +169,6 @@ def main():
 if __name__ == "__main__":
     main()
 
+
+## todo:
+# [ ] remove stderr
