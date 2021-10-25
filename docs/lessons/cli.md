@@ -758,27 +758,186 @@ poetry add console
 ```
 
 `````
+### Usage
 
-To see a demo of the effects and how they work in your terminal, you can type
-the following at the command line:
+```{code-cell} python
+:tags: [remove-input]
+from IPython.display import display, Markdown
+from console.style import ForegroundPalette, EffectsPalette
+from console.color_tables_x11 import x11_color_map
+
+def show(iter):
+    md = [f"* {x}\n" for x in iter]
+    display(Markdown("".join(md)))
+
+def palette(klass):
+    excluded = lambda x: x in ("end", "default") or x.startswith("_")
+    functions = [x for x in dir(klass) if not excluded(x)]
+    show(functions)
+
+def x11_colors():
+    show(x11_color_map.keys())
+```
+
+{{ leftcol }}
+
+To see a demo of all available features and how they work in your terminal you
+can run `console.demo` from the command line.
+
+{{ rightcol }}
 
 ```{code-block} bash
 :caption: command line
+:class: full-width
+
 python -m console.demos
 ```
 
-### Usage
+{{ br * 4 }}
+
+{{ newrow }}
+
+To change the text colors and styles, use the `fg`, `bg` and `fx` objects to
+change the foreground color, background color, and effects respectively.
+
+{{ rightcol }}
 
 ```{code-block} python
 from console import fg, bg, fx
+```
 
-print(fg.cyan("Hello world!"))
-print(bg.blue("oh hai there."))
+{{ newrow }}
+
+For text effects, use the methods on the `fx` object.
+
+{{ rightcol }}
+
+```{code-block} python
 print(fx.bold("Attention!"))
 ```
 
-For a list of all available styles and colors, see the
-[console docs](https://mixmastamyk.bitbucket.io/console/).
+{{ newrow }}
+
+For foreground and background colors use methods on the `fg` and `bg` objects
+respectively, such as the 16 basic colors supported by most terminals.
+
+{{ rightcol }}
+
+```{code-block} python
+print(fg.green("SUCCESS"))
+print(bg.magenta("Information"))
+```
+
+{{ newrow }}
+
+Some terminals also provide an extended set of `256` indexed colors (shown in
+the aforementioned demo). Methods for these colors are named `i0` through
+`i255`.
+
+{{ rightcol }}
+
+```{code-block} python
+print(fg.i197("Error"))
+```
+
+{{ newrow }}
+
+For terminals that support "True", RGB, or 16 million colors, you can use any
+6-character hex color code prefixed with `t_`.
+
+{{ rightcol }}
+
+```{code-block} python
+print("default=" + fg.t_f4c2c2("None"))
+```
+
+{{ newrow }}
+
+Or you can use X11 color names, prefixed with `x_`.
+
+{{ rightcol }}
+
+```{code-block} python
+print(bg.midnightblue("Home"))
+print(fg.x_deepskyblue("Tutorial"))
+```
+
+{{ newrow }}
+
+You can combine a `fg`, `bg`, and/or `fx` object to create a custom, callable
+style.
+
+{{ rightcol }}
+
+```{code-block} python
+highlight = fx.italic + fg.yellow + bg.blue
+print(highlight("Great job!"))
+```
+{{ endcols }}
+
+### Available colors and styles
+
+<div class="row no-labels"><div class="col">
+
+```{rubric} Text Effects
+```
+
+Text effects methods available via the `fx` object:
+
+</div><div class="col">
+
+```{rubric} Basic Colors
+```
+
+Methods for the 16 basic colors available via the `fg` and `bg` objects.
+
+</div><div class="col">
+
+```{rubric} X11 Colors
+```
+
+Methods for RGB colors associated with [X11 color names][x11-colors] available
+via the `fg` and `bg` objects.
+
+[x11-colors]: https://en.wikipedia.org/wiki/X11_color_names
+
+</div></div>
+
+<div class="row no-labels"><div class="col">
+
+```{code-cell} python
+:tags: [remove-input, hide-output, output_scroll]
+
+palette(EffectsPalette)
+```
+
+</div><div class="col">
+
+```{code-cell} python
+:tags: [remove-input, hide-output, output_scroll]
+
+palette(ForegroundPalette)
+```
+
+</div><div class="col">
+
+```{code-cell} python
+:tags: [remove-input, hide-output, output_scroll]
+
+x11_colors()
+```
+
+</div></div>
+
+### See Also
+
+:::{seealso}
+
+* [<i class="fa fa-github"></i> mixmastamyk/console][console]
+* [console docs](https://mixmastamyk.bitbucket.io/console/).
+* [colorhexa.com](https://www.colorhexa.com/color-names) -- a page with a list of an assortment of hex colors by name
+
+:::
 
 Reference
 ---------
