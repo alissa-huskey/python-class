@@ -96,10 +96,10 @@ repo for it, if you're comfortable with git.)
 In this section we will actually look at what the user says, and make our first
 command: the `quit` command.
 
-{{ left }}
-
 ```{rubric} A. Make do_quit()
 ```
+
+{{ left }}
 
 1. `[ ]` Make a `do_quit()` function.
 1. `[ ]` In it, print `"Goodbye."`
@@ -757,6 +757,10 @@ Part 3: Prettify
 In this section we'll start making things prettier by wrapping text and adding
 colors and styles.
 
+We'll also make sure that the way we print things is consitent by always
+printing via our custom functions: `header()`, `narrative()`, `write()`,
+`error()`, or `debug()`.
+
 ### Part 3.1: Text wrapping
 
 {{ left }}
@@ -938,6 +942,173 @@ colorful.
 :lines: "139-147"
 :lineno-match:
 :emphasize-lines: "7"
+```
+
+`````
+
+{{ endcols }}
+
+### Part 3.3: Header and write functions
+
+{{ left }}
+
+In this section we're going to write a `header()` function to print pretty
+headers and a `write()` function to print all other one-line messsages.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-3.3.cast
+:rows: 15
+```
+
+`````
+
+{{ endcols }}
+
+
+```{rubric} A. Define write() function
+```
+
+{{ left }}
+
+In this section we'll define a `write()` function that we'll use to print
+non-wrapping messages to the player. This is to make sure that they're all
+indented at the same level, or to add any extra formatting.
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-3.3.py
+:class: full-width
+:linenos:
+:lines: "73-75"
+:lineno-match:
+```
+
+`````
+
+{{ endcols }}
+
+1. `[ ]` Write a function named: `write` with one parameter: `text`
+1. `[ ]` In the function: print `MARGIN`, followed by `text`. You can do this
+         as an f-string or pass the keyword argument `sep` with the value `""` to
+         avoid adding an extra space between them.
+
+```{rubric} B. Define header() function
+```
+
+{{ left }}
+
+The `header()` function should style the `title` text using the `fx`, `fg`
+and/or `bg` objects, add any additional desired formatting, then print it by
+calling the `write()` function.
+
+These steps are to add a blank line before and after the title and to make it
+bold, but you can change it to suit your taste.
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-3.3.py
+:class: full-width
+:linenos:
+:lines: "54-58"
+:lineno-match:
+```
+
+`````
+
+{{ endcols }}
+
+
+1. `[ ]` Write a function named: `header` with one parameter: `title`
+1. `[ ]` In the function:
+   * `[ ]` Print a blank line.
+   * `[ ]` Use the `bold` method on the `fx` object to make
+         `title` bold. (Or whatever other styles/colors you
+         want.)
+   * `[ ]` Pass the result as an argument to `write()`.
+   * `[ ]` Print a blank line.
+
+```{rubric} C. In do_shop():
+```
+
+{{ left }}
+
+Replace `print()` calls with `header()` and `write()` calls.
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-3.3.py
+:class: full-width
+:linenos:
+:lines: "87-95"
+:lineno-match:
+:emphasize-lines: "4, 7"
+```
+
+`````
+
+{{ endcols }}
+
+1. `[ ]` When printing the title (`"Items for sale"`) call `header()` instead
+         of `print()`.
+1. `[ ]` When printing the item name and description, change
+         the call to the `print()` function to call the `write()`
+         function instead.
+
+```{rubric} D. In do_quit():
+```
+
+{{ left }}
+
+Replace `print()` call with `write()` call.
+
+1. `[ ]` When printing any message (like `"Goodbye"`) call `write()` instad of
+         `print()`.
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-3.3.py
+:class: full-width
+:linenos:
+:lines: "97-100"
+:lineno-match:
+:emphasize-lines: "3"
+```
+
+`````
+
+{{ endcols }}
+
+```{rubric} E. In do_go():
+```
+
+{{ left }}
+
+Replace `print()` call with `header()` call.
+
+1. `[ ]` When printing the place name call `header()` instead of `print()`.
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-3.3.py
+:class: full-width
+:linenos:
+:lines: "144-147"
+:lineno-match:
+:emphasize-lines: "3"
 ```
 
 `````

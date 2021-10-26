@@ -54,31 +54,29 @@ ITEMS = {
 def header(title):
     """Print a header"""
     print()
-    writeline(fx.bold(title))
+    write(fx.bold(title))
     print()
 
 def narrative(text):
-    """Print wrapped and indented text.
-    """
-    # get a list of lines
-    lines = textwrap.wrap(
+    """Print wrapped and indented text."""
+    # wrap the text
+    paragraph = textwrap.fill(
         text,
         WIDTH,
         initial_indent=MARGIN,
         subsequent_indent=MARGIN,
     )
 
-    # print each line
-    for line in lines:
-        print(line)
+    # print the wrapped text
+    print(paragraph)
 
-def writeline(text):
+def write(text):
     """Print an indented line of game text."""
     print(MARGIN, text, sep="")
 
 def error(message):
     """Print an error message."""
-    print(f"{fg.red('! Error')} {message}\n", file=stderr)
+    print(f"{fg.red('! Error')} {message}\n")
 
 def debug(message):
     """Print a debug message if in debug mode."""
@@ -92,13 +90,13 @@ def do_shop():
     header("Items for sale.")
 
     for item in ITEMS.values():
-        writeline(f'{item["name"]:<13}  {item["description"]}')
+        write(f'{item["name"]:<13}  {item["description"]}')
 
     print()
 
 def do_quit():
     """Exit the game."""
-    writeline("Ok, goodbye.\n")
+    write("Ok, goodbye.\n")
     quit()
 
 def do_go(args):
