@@ -12,7 +12,6 @@ kernelspec:
   display_name: Python 3
   language: python
   name: python3
-tocdepth: 2
 ---
 Adventure Game
 ==============
@@ -1114,3 +1113,87 @@ Replace `print()` call with `header()` call.
 `````
 
 {{ endcols }}
+
+
+Part 4: Examine items
+---------------------
+
+In this section we'll add the `examine` command.
+
+### Part 4.1: Add new items
+
+In this section we'll add a `"desk"` and `"book"` items to the `ITEMS`
+dictionary, which will eventualy be added to the `"home"` place. The book is
+where we'll find the hint about petting dragons.
+
+We'll also have to modify `do_shop()`, so that items without prices (like
+`"book"` and `"desk"`) aren't listed for sale.
+
+Note: At the end of this section, there will be no difference in how the game
+behaves. But check and make sure that the book and desk are not listed when you
+do the `shop` command.
+
+```{rubric} A. In ITEMS:
+```
+
+{{ left }}
+
+1. `[ ]` Add two items to the `ITEMS` dictionary with keys: `"desk"` and
+        `"book"`. Like previous items, each element one should be a dictionary
+        with a `"name"` and `"description"`; unlike the others, these will have
+        no `"price"`.
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-4.1.py
+:class: full-width
+:linenos:
+:lines: "40-68"
+:lineno-match:
+:emphasize-lines: "14-"
+```
+
+`````
+
+{{ endcols }}
+
+For now, keep the descriptions for both simple. Something like:
+
+**Desk**
+
+    A wooden desk with a large leather-bound book open on its surface.
+
+**Book**
+
+    A hefty leather-bound tome open to an interesting passage.
+
+Note: If you try the `shop` command before the next section, you will see
+`"book"` and `"desk"` in the list.
+
+```{rubric} B. In do_shop(), in the for loop:
+```
+
+{{ left }}
+
+1. `[ ]` Before printing each item, check if the item has a `"price"` key.
+`continue` if not.
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-4.1.py
+:class: full-width
+:linenos:
+:lines: "104-114"
+:lineno-match:
+:emphasize-lines: "7-8"
+```
+
+`````
+
+{{ endcols }}
+
+Be sure to test the `shop` command and make sure book and desk aren't listed.
