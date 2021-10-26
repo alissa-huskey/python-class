@@ -110,7 +110,7 @@ print(r"C:\Documents\nodes")
 
 {{ endcols }}
 
-### Part 1.2: Exercise
+### Part 1.2: Exercises
 
 `````{exercise} String Creation
 :label: string-create-exercise
@@ -316,7 +316,7 @@ print(f"The total is ${price*count}.")
 7. Create a visual line by repeating the underscore character (`"_"`) some
    number of times, (say, `20`) and assign it to the variable `line`. Using an
    f-string, make a string with a single line of a sign-up sheet that looks
-   something like this: 
+   something like this:
 
    `"Name: ____________________   Email: ____________________"`
 
@@ -457,20 +457,182 @@ print(row * 25)
 
 `````
 
+Part 2: Strings as sequences
+----------------------------
 
+Under the hood a string is a {term}`sequence` of characters. Let's take a simple example.
+
+```{code-cell} python
+word = "cat"
+```
+
+This could be visualized as:
+
+
+```{kroki}
+:type: ditaa
++----------------------------------------+
+|                                        |
+|   word (str)                           |
+|                                        |
+|   +----------+----------+----------+   |
+|   |          |          |          |   |
+|   | "c"      | "a"      | "t"      |   |
+|   |          |          |          |   |
+|   +----------+----------+----------+   |
+|   |    0 cCFF|    1 cCFF|    2 cCFF|   |
+|   +----------+----------+----------+   |
+|   |   -3 cCCF|   -2 cCCF|   -1 cCCF|   |
+|   +----------+----------+----------+   |
+|                                        |
++----------------------------------------+
+
+  /----\               /----\
+  |cCFF| index number  |cCCF| negative index
+  \----/               \----/
+
+```
+
+### Part 2.1: Sequence features
+
+Since it is a sequence, that means you can do most of the same things you can
+do with a list.
+
+{{ leftcol }}
+
+You can use `subscription` to access characters via negative or positive index
+number.
+
+{{ rightcol }}
+
+```{code-cell} python
+print(word[0])
+print(word[-1])
+```
+
+{{ newrow }}
+
+You can get part of a string via {term}`slice`.
+
+{{ rightcol }}
+
+```{code-cell} python
+print(word[1:])
+```
+
+{{ newrow }}
+
+You can get the length using the `len()` function.
+
+{{ rightcol }}
+
+```{code-cell} python
+len(word)
+```
+
+{{ newrow }}
+
+You can check if a single character or a substring is part of a string using
+the `in` and `not in` operators.
+
+{{ rightcol }}
+
+```{code-cell} python
+"c" in word
+```
+
+```{code-cell} python
+"at" not in word
+```
+
+{{ newrow }}
+
+You can check how many times a letter or substring occurs in a string using the `.count()` method.
+
+{{ rightcol }}
+
+```{code-cell} python
+word.count("c")
+```
+
+```{code-cell} python
+word.count("at")
+```
+
+{{ newrow }}
+
+You can find out the index number of the first occurance of a letter or substring.
+
+{{ rightcol }}
+
+```{code-cell} python
+word.index("c")
+```
+
+```{code-cell} python
+word.index("at")
+```
+
+{{ newrow }}
+
+You can iterate over every character.
+
+{{ rightcol }}
+
+```{code-cell} python
+for char in word:
+    print(char)
+```
+
+{{ newrow }}
+
+However, since strings are immutable, you cannot modify a string via subscription.
+
+{{ rightcol }}
+
+```{code-cell} python
+:tags: [raises-exception]
+word[0] = "b"
+```
+
+{{ endcols }}
+
+### Part 2.2: Exercises
+
+`````{exercise} String as Sequence Exercise
+:label: string-sequence-exercise
+
+1. Make a list of words and assign it to the variable `sentence`. Iterate over
+   the list and print the first letter in each word.
+`````
+
+`````{solution} string-sequence-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: "String as Sequence Exercise"
+:class: full-width
+:linenos:
+
+sentence = ['The', 'quick', 'brown', 'fox', 'jumps', 'over', 'the', 'lazy', 'dog.']
+
+for word in sentence:
+    print(word[0])
+```
+
+`````
 ---
 
 
 % TODO
-% [ ] operators
-%     [x] `+`, `*`
-%     [ ] `in`, `not in`
+% [x] `in`, `not in`
+% [x] `len()`
+% [x] subscription, characters, slicing
+% [ ] chr() ord()
+
+
 % [ ] replace
 % [ ] methods, rmethods, lmethods
-% [ ] subscription, characters, slicing
-% [ ] partial string matching with `in`
-% [x] escaping, raw, escape sequences
-% [ ] chr() ord()
 % [ ] templates
 % [ ] strings <=> lists
 %     [ ] str.join()
@@ -480,11 +642,13 @@ print(row * 25)
 %     [ ] str.splitlines()
 % [ ] textwrap
 % [ ] regex
-% [x] f-strings
-% [ ] `len()`
 % [ ] bytes, b'chars', bytesarray
 % [ ] string.ascii_lowercase, etc
 % [ ] encodings: ascii, utf-8 (unicode), `ascii()`
+
+% [x] `+`, `*`
+% [x] escaping, raw, escape sequences
+% [x] f-strings
 
 % REFERENCE
 % https://realpython.com/python-strings/
