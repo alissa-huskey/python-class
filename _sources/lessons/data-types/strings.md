@@ -127,6 +127,7 @@ print(r"C:\Documents\nodes")
 `````
 
 `````{solution} string-create-exercise
+:class: dropdown
 
 :::{dropdown} #1: Verse Docstring
 
@@ -326,6 +327,7 @@ print(f"The total is ${price*count}.")
 `````
 
 `````{solution} string-modify-exercise
+:class: dropdown
 
 :::{dropdown} #1: Concatonate with `+`
 
@@ -457,7 +459,167 @@ print(row * 25)
 
 `````
 
-Part 2: Strings as sequences
+Part 2: Splitting and Joining
+-----------------------------
+
+We often want to split a string apart in various ways, or create a string from
+a list of strings. In other words, to convert a string to a list and vice versa.
+
+### Part 2.1: Converting to and from lists
+
+{{ left }}
+
+The most common way to split a string is using the `.split()` method. With no
+arguments, it splits the string on any whitespace.
+
+{{ right }}
+
+```{code-cell} python
+name = "Jean-Claude Van Damme"
+name.split()
+```
+
+{{ row }}
+
+If you pass an argument to `.split()`, it will use that character or substring
+as the delimiter, instead of whitespace.
+
+{{ right }}
+
+```{code-cell} python
+phone = "555-867-5309"
+phone.split("-")
+```
+
+```{code-cell} python
+text = "one and two and three and four"
+text.split(" and ")
+```
+
+{{ row }}
+
+Or if you want a list where each character is an element call `list()`.
+
+{{ right }}
+
+```{code-cell} python
+text = "apart"
+list(text)
+```
+
+{{ row }}
+
+To convert a list (or other iterable) to a string, use the {samp}`{str}.join()`
+method.
+
+{{ right }}
+
+```{code-cell} python
+letters = ['t', 'o', 'g', 'e', 't', 'h', 'e', 'r']
+"".join(letters)
+```
+
+```{code-cell} python
+shapes = ["triangle", "square", "circle"]
+", ".join(shapes)
+```
+
+{{ endcols }}
+
+### Part 2.1: Exercises
+
+[wotd]: https://www.merriam-webster.com/word-of-the-day
+
+`````{exercise} Splitting and Joining Exercise
+:label: basic-split-join-exercise
+
+1. Take the quote of your choice and assign it to the variable `quote`. Split
+   it into a list of words (seperated by whitespace) and print the result.
+1. Assign this string to the variable `flavors`: \
+   `"banana split;hot fudge;cherry;malted;black and white"` \
+   Split it into a list on the deliter `";"`.
+1. Look up the [word of the day][wotd] and assign it to the variable `word`.
+   Convert it to a list of characters and print it.
+1. Make a list with every letter in the current day of the week and assign it
+   to the variable `day`. Turn it into a string (join it using a blank string as
+   the delimiter) and print it.
+1. Make a list of three `dinosaurs`. Join it on a newline
+   delimiter then print it.
+
+`````
+
+`````{solution} basic-split-join-exercise
+:class: dropdown
+
+:::{dropdown} #1: Quote words
+
+```{code-block} python
+:caption:  "Splitting and Joining Exercise #1"
+:class: full-width
+:linenos:
+
+quote = "Life is what happens when you're busy making other plans."
+print(quote.split())
+```
+
+:::
+
+:::{dropdown} #2: Flavors
+
+```{code-block} python
+:caption:  "Splitting and Joining Exercise #2"
+:class: full-width
+:linenos:
+
+flavors = "banana split;hot fudge;cherry;malted;black and white"
+print(flavors.split(";"))
+```
+
+:::
+
+:::{dropdown} #3: Letters of the Day
+
+```{code-block} python
+:caption:  "Splitting and Joining Exercise #3"
+:class: full-width
+:linenos:
+
+word = "treacle"
+print(list(word))
+```
+
+:::
+
+:::{dropdown} #4: Day Letters to Word
+
+```{code-block} python
+:caption:  "Splitting and Joining Exercise #4"
+:class: full-width
+:linenos:
+
+day = ['T', 'u', 'e', 's', 'd', 'a', 'y']
+print("".join(day))
+```
+
+:::
+
+
+:::{dropdown} #5: Dinosaurs
+
+```{code-block} python
+:caption:  "Splitting and Joining Exercise #5"
+:class: full-width
+:linenos:
+
+dinosaurs = ["Tyrannosaurus Rex", "Stegosaurus", "Velociraptor"]
+print("\n".join(dinosaurs))
+```
+
+:::
+`````
+
+
+Part 3: Strings as sequences
 ----------------------------
 
 Under the hood a string is a {term}`sequence` of characters. Let's take a simple example.
@@ -493,7 +655,7 @@ This could be visualized as:
 
 ```
 
-### Part 2.1: Sequence features
+### Part 3.1: Sequence features
 
 Since it is a sequence, that means you can do most of the same things you can
 do with a list.
@@ -597,7 +759,7 @@ word[0] = "b"
 
 {{ endcols }}
 
-### Part 2.2: Exercises
+### Part 3.2: Exercises
 
 `````{exercise} String as Sequence Exercise
 :label: string-sequence-exercise
@@ -621,10 +783,18 @@ for word in sentence:
 ```
 
 `````
+
 ---
 
-
 % TODO
+
+% [ ] strings <=> lists
+%     [x] str.join()
+%     [x] str.split()
+%     [x] list(str)
+%     [ ] str.partition()
+%     [ ] str.splitlines()
+
 % [x] `in`, `not in`
 % [x] `len()`
 % [x] subscription, characters, slicing
@@ -634,12 +804,6 @@ for word in sentence:
 % [ ] replace
 % [ ] methods, rmethods, lmethods
 % [ ] templates
-% [ ] strings <=> lists
-%     [ ] str.join()
-%     [ ] list(str)
-%     [ ] str.partition()
-%     [ ] str.split()
-%     [ ] str.splitlines()
 % [ ] textwrap
 % [ ] regex
 % [ ] bytes, b'chars', bytesarray
