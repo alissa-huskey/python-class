@@ -96,8 +96,7 @@ repo for it, if you're comfortable with git.)
 In this section we will actually look at what the user says, and make our first
 command: the `quit` command.
 
-```{rubric} A. Make do_quit()
-```
+#### A. Make do_quit()
 
 {{ left }}
 
@@ -105,8 +104,7 @@ command: the `quit` command.
 1. `[ ]` In it, print `"Goodbye."`
 1. `[ ]` Then call `quit()`
 
-```{rubric} B. In main(), in the while loop:
-```
+#### B. In main(), in the while loop:
 
 1. `[ ]` After getting `reply`, check if `reply` is equal to `q` or `quit`.
 1. `[ ]` If so, call `do_quit()`
@@ -205,15 +203,13 @@ defined in `ITEMS` above.
 
 {{ endcols }}
 
-```{rubric} A. Define a do_shop() function
-```
+#### A. Define a do_shop() function
 
 1. `[ ]` Define a `do_shop()` function.
 1. `[ ]` Have it print `"Items for sale."`
 1. `[ ]` Iterate over the `ITEMS` dictionary. Print the `name` and `description` of each.
 
-```{rubric} B. in main()
-```
+#### B. in main()
 
 1. `[ ]` In between your `if` and `else`, add an `elif` clause that checks if `reply`
    is equal to `shop`.
@@ -259,14 +255,12 @@ the command, and `north` is the direction.
 
 {{ endcols }}
 
-```{rubric} A. Define do_go
-```
+#### A. Define do_go
 
 1. `[ ]` Define a `do_go()` function that takes one argument: `args`.
 2. `[ ]` In `do_go()` print {samp}`Trying to go: {args}`
 
-```{rubric} B. In main(), in the while loop
-```
+#### B. In main(), in the while loop
 
 1. `[ ]` Strip the value returned from `input()` using the `.strip()` method.
 
@@ -476,8 +470,7 @@ PLACES = {
 
 {{ endcols }}
 
-```{rubric} at the top of your file
-```
+#### A. at the top of your file
 
 1. `[ ]` Create a `PLAYER` dictionary with the key `"place"` and the value `"home"`.
 2. `[ ]` Create a `PLACES` dictionary where the key is a unique identifier for each place.
@@ -526,14 +519,12 @@ We'll also add a `error()` function which will print an error message.
 
 {{ endcols }}
 
-```{rubric} A. At the top of the file
-```
+#### A. At the top of the file
 
 1. `[ ]` Add a global variable `DEBUG` and set it to `True`
 
 
-```{rubric} B. Define debug() function
-```
+#### B. Define debug() function
 
 1. `[ ]` Write a function named: `debug` with one parameter: `message`
 1. `[ ]` In the function, check if `DEBUG` is `True` (or {term}`truthy`)
@@ -541,19 +532,16 @@ We'll also add a `error()` function which will print an error message.
    * `[ ]` Bonus: Print something before it like `"DEBUG: "`, or `"# "`, so you can more
                  easily tell that it is a debug message
 
-```{rubric} C. define error() function
-```
+#### C. define error() function
 
 1. `[ ]` Write a function named: `error` with one parameter: `message`
 1. `[ ]` Print `message` with something before it like `"Error: "`.
 
-```{rubric} D. in do_go()
-```
+#### D. in do_go()
 
 1. `[ ]` Call `debug()` instead of `print()` for the message {samp}`Trying to go: {args}`
 
-```{rubric} E. in main(), in the while loop
-```
+#### E. in main(), in the while loop
 
 1. `[ ]` At the beginning of the `while` loop call `debug()` with the message {samp}`You are at: {PLACE}`.
    Replace `PLACE` with the value in the `PLAYER` dictionary associated with the `"place"` key
@@ -563,8 +551,7 @@ We'll also add a `error()` function which will print an error message.
 1. `[ ]` After assigning `command`, use `debug()` to print `command` and `args`.
 1. `[ ]` Call `error()` instead of `print()` for the message {samp}`No such command.`
 
-```{rubric} F. Test debug messages
-```
+#### F. Test debug messages
 
 1. `[ ]` Test with `DEBUG` set to `True` as well as with `DEBUG` set to `False`
 
@@ -605,8 +592,7 @@ print the `"name"` and `"description"`.
 
 {{ endcols }}
 
-```{rubric} A. in do_go(): ensure that the user typed a valid direction
-```
+#### A. in do_go(): ensure that the user typed a valid direction
 
 In this section we'll be making sure there is at least one item in the `args`
 list and that it is a valid direction.
@@ -633,8 +619,7 @@ list and that it is a valid direction.
 
 `````
 
-```{rubric} B. (still) in do_go(): look up where the user is at
-```
+#### B. (still) in do_go(): look up where the user is at
 
 In this section we'll be using the `PLAYER["place"]` to get the current place
 from the `PLACES` dictionary, as shown {ref}`here <player-to-places>`.
@@ -659,8 +644,7 @@ from the `PLACES` dictionary, as shown {ref}`here <player-to-places>`.
 
 {{ endcols }}
 
-```{rubric} C. (still) in do_go(): look up what is in that direction from here
-```
+#### C. (still) in do_go(): look up what is in that direction from here
 
 In this section we'll use the direction (ie. `"east"`) the player wants to go
 to look up the name of the next place (if any) in the current place dictionary
@@ -685,8 +669,7 @@ as seen {ref}`here <places-direction-to-place>`.
 `````
 
 
-```{rubric} D. (still) in do_go(): figure out where we're going
-```
+#### D. (still) in do_go(): figure out where we're going
 
 Next we'll look up the new place name from the current place dictionary using
 the direction (ie. `"east"`) to as a key. If it's missing, that means the
@@ -714,8 +697,7 @@ player can't go that direction from where they are.
 
 `````
 
-```{rubric} E. (still) in do_go(): update the players place and describe it
-```
+#### E. (still) in do_go(): update the players place and describe it
 
 Finally, we can now update the `PLAYER` dictionary to point to the new place
 name and print the place information.
@@ -782,8 +764,7 @@ wrap the text so that it looks nice.
 
 {{ endcols }}
 
-```{rubric} A. at the top of your file
-```
+#### A. at the top of your file
 
 {{ left }}
 
@@ -807,15 +788,13 @@ wrap the text so that it looks nice.
 {{ endcols }}
 
 
-```{rubric} B. Make narrative()
-```
+#### B. Make narrative()
 
 1. `[ ]` Define a `narrative()` function which takes one argument `text`.
 1. `[ ]` For now, just print `MARGIN`, then `text` in the function, so we can
          make sure it works.
 
-```{rubric} C. In do_go(), at the end
-```
+#### C. In do_go(), at the end
 
 {{ left }}
 
@@ -839,8 +818,7 @@ wrap the text so that it looks nice.
 
 {{ endcols }}
 
-```{rubric} B. In narrative()
-```
+#### D. In narrative()
 
 In this section we'll call `textwrap.fill()` function to wrap a paragraph of
 text.
@@ -873,8 +851,7 @@ text.
 In this section we're going to use the `console` module to make our game more
 colorful.
 
-```{rubric} A. Install console
-```
+#### A. Install console
 
 1. `[ ]` Follow the instructions [here](../lessons/cli.html#installation) to install.
 
@@ -892,8 +869,7 @@ colorful.
 
 {{ endcols }}
 
-```{rubric} B. At the top of your file
-```
+#### B. At the top of your file
 
 {{ left }}
 
@@ -915,8 +891,7 @@ colorful.
 
 {{ endcols }}
 
-```{rubric} B. In error(), debug(), other places...
-```
+#### C. In error(), debug(), other places...
 
 {{ left }}
 
@@ -969,8 +944,7 @@ headers and a `write()` function to print all other one-line messsages.
 {{ endcols }}
 
 
-```{rubric} A. Define write() function
-```
+#### A. Define write() function
 
 {{ left }}
 
@@ -998,8 +972,7 @@ indented at the same level, or to add any extra formatting.
          as an f-string or pass the keyword argument `sep` with the value `""` to
          avoid adding an extra space between them.
 
-```{rubric} B. Define header() function
-```
+#### B. Define header() function
 
 {{ left }}
 
@@ -1035,8 +1008,7 @@ bold, but you can change it to suit your taste.
    * `[ ]` Pass the result as an argument to `write()`.
    * `[ ]` Print a blank line.
 
-```{rubric} C. In do_shop():
-```
+#### C. In do_shop():
 
 {{ left }}
 
@@ -1064,8 +1036,7 @@ Replace `print()` calls with `header()` and `write()` calls.
          the call to the `print()` function to call the `write()`
          function instead.
 
-```{rubric} D. In do_quit():
-```
+#### D. In do_quit():
 
 {{ left }}
 
@@ -1090,8 +1061,7 @@ Replace `print()` call with `write()` call.
 
 {{ endcols }}
 
-```{rubric} E. In do_go():
-```
+#### E. In do_go():
 
 {{ left }}
 
@@ -1134,8 +1104,7 @@ Note: At the end of this section, there will be no difference in how the game
 behaves. But check and make sure that the book and desk are not listed when you
 do the `shop` command.
 
-```{rubric} A. In ITEMS:
-```
+#### A. In ITEMS:
 
 {{ left }}
 
@@ -1173,8 +1142,7 @@ For now, keep the descriptions for both simple. Something like:
 Note: If you try the `shop` command before the next section, you will see
 `"book"` and `"desk"` in the list.
 
-```{rubric} B. In do_shop(), in the for loop:
-```
+#### B. In do_shop(), in the for loop:
 
 {{ left }}
 
@@ -1218,8 +1186,7 @@ In this section we'll add an `examine` command.
 
 {{ endcols }}
 
-```{rubric} A. Make do_examine():
-```
+#### A. Make do_examine():
 
 {{ left }}
 
@@ -1243,8 +1210,7 @@ In this section we'll add an `examine` command.
 
 {{ endcols }}
 
-```{rubric} B. In main(), in the while loop:
-```
+#### B. In main(), in the while loop:
 
 {{ left }}
 
@@ -1299,8 +1265,7 @@ dictionary and print its information.
 
 {{ endcols }}
 
-```{rubric} A. In do_examine() ensure args is not empty
-```
+#### A. In do_examine() ensure args is not empty
 
 {{ left }}
 
@@ -1325,8 +1290,7 @@ dictionary and print its information.
 
 {{ endcols }}
 
-```{rubric} B. Still in do_examine() get the current place
-```
+#### B. Still in do_examine(): get the current place
 
 {{ left }}
 
@@ -1349,8 +1313,7 @@ dictionary and print its information.
 
 {{ endcols }}
 
-```{rubric} C. Still in do_examine(): check the name
-```
+#### C. Still in do_examine(): check the name
 
 1. `[ ]` assign the first element from the `args` list to the variable `name` and make it lowercase
 1. `[ ]` check if name is in the `items` list by:
@@ -1381,10 +1344,7 @@ dictionary and print its information.
 
 `````
 
-
-
-```{rubric} D. Still in do_examine(): get and print the item info
-```
+#### D. Still in do_examine(): get and print the item info
 
 1. `[ ]` Get the value from the `ITEMS` dictionary associated with the `name`
          key and assign it to the variable `item`
