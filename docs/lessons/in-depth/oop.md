@@ -634,6 +634,62 @@ print("Animal:", Animal.ears)
 
 {{ endcols }}
 
+### Part 1.5: Exercise
+
+`````{exercise} Class Properties
+:label: class-properties-exercise
+
+Add the class property `doors` to the `Car` class and assign it the value of
+`4`. After creating your `truck` object, set the value of its `doors` property
+to `2`. Print the value of `Car.doors`, `car.doors` and `truck.doors`.
+
+`````
+
+`````{solution} class-properties-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: "Class Properties Exercise"
+:class: full-width
+:linenos:
+class Car:
+    doors = 4
+
+    def __init__(self, make, model, year, color, is_clean=False):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.color = color
+        self.is_clean = is_clean
+
+    def wash(self):
+        print(f"Washing the {self.year} {self.make} {self.model}")
+        self.is_clean = True
+
+car = Car(
+  make="Honda",
+  model="Accord",
+  year=2010,
+  color="Black",
+)
+
+truck = Car(
+  make="Ford",
+  model="F-150",
+  year=2021,
+  color="Red",
+  is_clean=True,
+)
+
+truck.doors = 2
+
+print(Car.doors)
+print(car.doors)
+print(truck.doors)
+```
+
+`````
+
 ### Part 1.6: Gotchas with Mutable Types
 
 You have to be careful with {term}`mutable` types when it comes to default
@@ -832,6 +888,24 @@ print(snake.toys)
 ```
 
 {{ endcols }}
+
+### Part 1.6: Exercise
+
+`````{exercise} Mutable Gotchas
+:label: mutable-gotchas-exercise
+
+1. Add the class property `features` to your `Car` class and assign it to an
+   empty list. Append some `features` to your `car` object. Print `car.features`
+   and `truck.features`.
+1. Remove the `features` class property, and instead add it as an argument to
+   `__init__` with an empty list for a default value.  Append some `features` to
+   your `car` object. Print `car.features` and `truck.features`.
+1. Change the `features` default to `None`. In your `__init__` function, check
+   if `features` is {term}`falsy`. If it is, set it to an empty list. Append some
+   `features` to your `car` object. Print `car.features` and `truck.features`.
+
+`````
+
 
 
 Reference
