@@ -4,7 +4,6 @@ https://alissa-huskey.github.io/python-class/exercises/adventure.html
 """
 
 import re
-from sys import stderr
 import textwrap
 
 from console import fg, bg, fx
@@ -13,7 +12,7 @@ WIDTH = 45
 
 MARGIN = "  "
 
-DEBUG = False
+DEBUG = True
 
 PLAYER = {
     "place": "home",
@@ -55,23 +54,15 @@ ITEMS = {
         "key": "desk",
         "name": "Desk",
         "description": (
-            "A heavy book sits open on a stand on the desk. You "
-            "also see an ink pot, a cup of feather quilled "
-            "pens, and a pocket watch."
+            "A wooden desk with a large leather-bound book open on "
+            " its surface."
         ),
     },
     "book": {
         "key": "book",
         "name": "A book",
         "description": (
-            "A hefty leather-bound tome is open to a page that reads:",
-            "> In a mysterious cave lives a dragon with three heads "
-              "each with a different temperament.",
-            "> Legend says that if you happen upon the dragon sleeping, the "
-              "brave may pet one of its three heads.",
-            "> Choose the right head, and you will be rewarded with great "
-              "fortune!",
-            "> But beware! Choose poorly and it will surely mean your doom.",
+            "A hefty leather-bound tome open to an interesting passage."
         ),
     },
 }
@@ -110,11 +101,6 @@ def debug(message):
         return
     print(fg.lightblack(f"# {message}"))
 
-def get_place():
-    """Return the place dictionary where the player is at now"""
-    name = PLAYER["place"]
-    return PLACES[name]
-
 def do_shop():
     """List the items for sale."""
 
@@ -143,14 +129,20 @@ def do_examine(args):
         return
 
     # look up where the player is now
-    place = get_place()
+    place_name = PLAYER["place"]
+    place = PLACES[place_name]
 
     # get the item entered by the user and make it lowercase
     name = args[0].lower()
 
-    # make sure it is a thing that is in this place
+    # make sure the item is in this place
     if name not in place.get("items", []):
         error(f"Sorry, I don't know what this is: {name!r}.")
+        return
+
+    # make sure the item is in the ITEMS dictionary
+    if name not in ITEMS:
+        error(f"Woops! The information about {name} seems to be missing.")
         return
 
     # get the item dictionary
@@ -179,7 +171,8 @@ def do_go(args):
         return
 
     # look up where the player is now
-    old_place = get_place()
+    old_name = PLAYER["place"]
+    old_place = PLACES[old_name]
 
     # look up what is in that direction from here
     new_name = old_place.get(direction)
@@ -224,13 +217,13 @@ def main():
         if command in ["q", "quit", "exit"]:
             do_quit()
 
-        elif command in ["shop"]:
+        elif command in ("shop"):
             do_shop()
 
-        elif command in ["g", "go"]:
+        elif command in ("g", "go"):
             do_go(args)
 
-        elif command in ["x", "exam", "examine"]:
+        elif command in ("x", "exam", "examine"):
             do_examine(args)
 
         else:
