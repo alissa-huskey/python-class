@@ -12,7 +12,6 @@ kernelspec:
   display_name: Python 3
   language: python
   name: python3
-tocdepth: 2
 ---
 Adventure Game
 ==============
@@ -33,6 +32,7 @@ much simpler to start.).
 ```{contents}
 :backlinks: top
 :local:
+:depth: 2
 ```
 
 Part 1: The game loop
@@ -54,9 +54,9 @@ For now though, we're just setting up the basic framework.
 
 ### Part 1.1: Setup
 
-1. Create a new file called `adventure.py`. (You might consider creating a new
+1. `[ ]` Create a new file called `adventure.py`. (You might consider creating a new
 repo for it, if you're comfortable with git.)
-2. Give the file a docstring that includes the link to this page.
+2. `[ ]` Give the file a docstring that includes the link to this page.
 
 ### Part 1.2: The main() function
 
@@ -96,8 +96,7 @@ repo for it, if you're comfortable with git.)
 In this section we will actually look at what the user says, and make our first
 command: the `quit` command.
 
-```{rubric} A. Make do_quit()
-```
+#### A. Make do_quit()
 
 {{ left }}
 
@@ -105,8 +104,7 @@ command: the `quit` command.
 1. `[ ]` In it, print `"Goodbye."`
 1. `[ ]` Then call `quit()`
 
-```{rubric} B. In main(), in the while loop:
-```
+#### B. In main(), in the while loop:
 
 1. `[ ]` After getting `reply`, check if `reply` is equal to `q` or `quit`.
 1. `[ ]` If so, call `do_quit()`
@@ -205,19 +203,17 @@ defined in `ITEMS` above.
 
 {{ endcols }}
 
-```{rubric} A. Define a do_shop() function
-```
+#### A. Define a do_shop() function
 
-1. Define a `do_shop()` function.
-1. Have it print `"Items for sale."`
-1. Iterate over the `ITEMS` dictionary. Print the `name` and `description` of each.
+1. `[ ]` Define a `do_shop()` function.
+1. `[ ]` Have it print `"Items for sale."`
+1. `[ ]` Iterate over the `ITEMS` dictionary. Print the `name` and `description` of each.
 
-```{rubric} B. in main()
-```
+#### B. in main()
 
-1. In between your `if` and `else`, add an `elif` clause that checks if `reply`
+1. `[ ]` In between your `if` and `else`, add an `elif` clause that checks if `reply`
    is equal to `shop`.
-1. If so, call `do_shop()`
+1. `[ ]` If so, call `do_shop()`
 
 `````{dropdown} Code
 
@@ -259,37 +255,35 @@ the command, and `north` is the direction.
 
 {{ endcols }}
 
-```{rubric} A. Define do_go
-```
+#### A. Define do_go
 
-1. Define a `do_go()` function that takes one argument: `args`.
-2. In `do_go()` print {samp}`Trying to go: {args}`
+1. `[ ]` Define a `do_go()` function that takes one argument: `args`.
+2. `[ ]` In `do_go()` print {samp}`Trying to go: {args}`
 
-```{rubric} B. In main(), in the while loop
-```
+#### B. In main(), in the while loop
 
-1. Strip the value returned from `input()` using the `.strip()` method.
+1. `[ ]` Strip the value returned from `input()` using the `.strip()` method.
 
    This means if a user enters `" quit"` or `"quit "` the program still knows
    to call `do_quit()`.
-2. Call `.split()` on `reply` and assign it to the variable `args`.
+2. `[ ]` Call `.split()` on `reply` and assign it to the variable `args`.
 
    Now the `args` variable will contain a list where each word is an item in
    the list.
-3. Use an `if` statement to check if `args` is {term}`falsy`. If it is,
+3. `[ ]` Use an `if` statement to check if `args` is {term}`falsy`. If it is,
    `continue`.
 
    This means that if a user doesn't enter anything, the program will ignore it
    and start the loop over.
-4. Remove the first item from `args` using the `.pop()` method and assign it to
+4. `[ ]` Remove the first item from `args` using the `.pop()` method and assign it to
    the variable `command`.
 
    Now `command` will contain the first word the user entered, and `args` will
    contain a list of the remaining commands. If there were no additional words,
    then `args` will be an empty list.
-5. In each clause of the `if` statement where we check the value of `reply`,
+5. `[ ]` In each clause of the `if` statement where we check the value of `reply`,
    change it to `command`.
-6. Add an `elif` clause that checks if `command` is equal to `"g"` or `"go"`.
+6. `[ ]` Add an `elif` clause that checks if `command` is equal to `"g"` or `"go"`.
    If it is, call `do_go()` and pass `args`.
 
 `````{dropdown} Code
@@ -476,11 +470,10 @@ PLACES = {
 
 {{ endcols }}
 
-```{rubric} at the top of your file
-```
+#### A. at the top of your file
 
-1. Create a `PLAYER` dictionary with the key `"place"` and the value `"home"`.
-2. Create a `PLACES` dictionary where the key is a unique identifier for each place.
+1. `[ ]` Create a `PLAYER` dictionary with the key `"place"` and the value `"home"`.
+2. `[ ]` Create a `PLACES` dictionary where the key is a unique identifier for each place.
    The value is a dictionary that with information about each place:
 
    * `"key"` -- the same thing as the key
@@ -526,14 +519,12 @@ We'll also add a `error()` function which will print an error message.
 
 {{ endcols }}
 
-```{rubric} A. At the top of the file
-```
+#### A. At the top of the file
 
 1. `[ ]` Add a global variable `DEBUG` and set it to `True`
 
 
-```{rubric} B. Define debug() function
-```
+#### B. Define debug() function
 
 1. `[ ]` Write a function named: `debug` with one parameter: `message`
 1. `[ ]` In the function, check if `DEBUG` is `True` (or {term}`truthy`)
@@ -541,19 +532,16 @@ We'll also add a `error()` function which will print an error message.
    * `[ ]` Bonus: Print something before it like `"DEBUG: "`, or `"# "`, so you can more
                  easily tell that it is a debug message
 
-```{rubric} C. define error() function
-```
+#### C. define error() function
 
 1. `[ ]` Write a function named: `error` with one parameter: `message`
 1. `[ ]` Print `message` with something before it like `"Error: "`.
 
-```{rubric} D. in do_go()
-```
+#### D. in do_go()
 
 1. `[ ]` Call `debug()` instead of `print()` for the message {samp}`Trying to go: {args}`
 
-```{rubric} E. in main(), in the while loop
-```
+#### E. in main(), in the while loop
 
 1. `[ ]` At the beginning of the `while` loop call `debug()` with the message {samp}`You are at: {PLACE}`.
    Replace `PLACE` with the value in the `PLAYER` dictionary associated with the `"place"` key
@@ -563,8 +551,7 @@ We'll also add a `error()` function which will print an error message.
 1. `[ ]` After assigning `command`, use `debug()` to print `command` and `args`.
 1. `[ ]` Call `error()` instead of `print()` for the message {samp}`No such command.`
 
-```{rubric} F. Test debug messages
-```
+#### F. Test debug messages
 
 1. `[ ]` Test with `DEBUG` set to `True` as well as with `DEBUG` set to `False`
 
@@ -605,8 +592,7 @@ print the `"name"` and `"description"`.
 
 {{ endcols }}
 
-```{rubric} A. in do_go(): ensure that the user typed a valid direction
-```
+#### A. in do_go(): ensure that the user typed a valid direction
 
 In this section we'll be making sure there is at least one item in the `args`
 list and that it is a valid direction.
@@ -633,8 +619,7 @@ list and that it is a valid direction.
 
 `````
 
-```{rubric} B. (still) in do_go(): look up where the user is at
-```
+#### B. (still) in do_go(): look up where the user is at
 
 In this section we'll be using the `PLAYER["place"]` to get the current place
 from the `PLACES` dictionary, as shown {ref}`here <player-to-places>`.
@@ -659,8 +644,7 @@ from the `PLACES` dictionary, as shown {ref}`here <player-to-places>`.
 
 {{ endcols }}
 
-```{rubric} C. (still) in do_go(): look up what is in that direction from here
-```
+#### C. (still) in do_go(): look up what is in that direction from here
 
 In this section we'll use the direction (ie. `"east"`) the player wants to go
 to look up the name of the next place (if any) in the current place dictionary
@@ -685,8 +669,7 @@ as seen {ref}`here <places-direction-to-place>`.
 `````
 
 
-```{rubric} D. (still) in do_go(): figure out where we're going
-```
+#### D. (still) in do_go(): figure out where we're going
 
 Next we'll look up the new place name from the current place dictionary using
 the direction (ie. `"east"`) to as a key. If it's missing, that means the
@@ -696,7 +679,7 @@ player can't go that direction from where they are.
          with the `new_name` key and assign it to `new_place`
 1. `[ ]` Check if `new_place` is falsy. If so:
    * `[ ]` Use the `error()` function to print a message saying:
-   `"Woops! The information about {new_name} seems to be missing."`
+       {samp}`"Woops! The information about {new_name} seems to be missing."`
 
    This will only happen if you made a mistake somewhere in your code. But just
    in case we do, we want to have a clear error message so we can tell what
@@ -714,8 +697,7 @@ player can't go that direction from where they are.
 
 `````
 
-```{rubric} E. (still) in do_go(): update the players place and describe it
-```
+#### E. (still) in do_go(): update the players place and describe it
 
 Finally, we can now update the `PLAYER` dictionary to point to the new place
 name and print the place information.
@@ -782,8 +764,7 @@ wrap the text so that it looks nice.
 
 {{ endcols }}
 
-```{rubric} A. at the top of your file
-```
+#### A. at the top of your file
 
 {{ left }}
 
@@ -807,15 +788,13 @@ wrap the text so that it looks nice.
 {{ endcols }}
 
 
-```{rubric} B. Make narrative()
-```
+#### B. Make narrative()
 
 1. `[ ]` Define a `narrative()` function which takes one argument `text`.
 1. `[ ]` For now, just print `MARGIN`, then `text` in the function, so we can
          make sure it works.
 
-```{rubric} C. In do_go(), at the end
-```
+#### C. In do_go(), at the end
 
 {{ left }}
 
@@ -839,8 +818,7 @@ wrap the text so that it looks nice.
 
 {{ endcols }}
 
-```{rubric} B. In narrative()
-```
+#### D. In narrative()
 
 In this section we'll call `textwrap.fill()` function to wrap a paragraph of
 text.
@@ -873,8 +851,7 @@ text.
 In this section we're going to use the `console` module to make our game more
 colorful.
 
-```{rubric} A. Install console
-```
+#### A. Install console
 
 1. `[ ]` Follow the instructions [here](../lessons/cli.html#installation) to install.
 
@@ -892,8 +869,7 @@ colorful.
 
 {{ endcols }}
 
-```{rubric} B. At the top of your file
-```
+#### B. At the top of your file
 
 {{ left }}
 
@@ -915,8 +891,7 @@ colorful.
 
 {{ endcols }}
 
-```{rubric} B. In error(), debug(), other places...
-```
+#### C. In error(), debug(), other places...
 
 {{ left }}
 
@@ -969,8 +944,7 @@ headers and a `write()` function to print all other one-line messsages.
 {{ endcols }}
 
 
-```{rubric} A. Define write() function
-```
+#### A. Define write() function
 
 {{ left }}
 
@@ -998,8 +972,7 @@ indented at the same level, or to add any extra formatting.
          as an f-string or pass the keyword argument `sep` with the value `""` to
          avoid adding an extra space between them.
 
-```{rubric} B. Define header() function
-```
+#### B. Define header() function
 
 {{ left }}
 
@@ -1035,8 +1008,7 @@ bold, but you can change it to suit your taste.
    * `[ ]` Pass the result as an argument to `write()`.
    * `[ ]` Print a blank line.
 
-```{rubric} C. In do_shop():
-```
+#### C. In do_shop():
 
 {{ left }}
 
@@ -1064,8 +1036,7 @@ Replace `print()` calls with `header()` and `write()` calls.
          the call to the `print()` function to call the `write()`
          function instead.
 
-```{rubric} D. In do_quit():
-```
+#### D. In do_quit():
 
 {{ left }}
 
@@ -1090,8 +1061,7 @@ Replace `print()` call with `write()` call.
 
 {{ endcols }}
 
-```{rubric} E. In do_go():
-```
+#### E. In do_go():
 
 {{ left }}
 
@@ -1114,3 +1084,282 @@ Replace `print()` call with `header()` call.
 `````
 
 {{ endcols }}
+
+
+Part 4: Examine items
+---------------------
+
+In this section we'll add the `examine` command.
+
+### Part 4.1: Add new items
+
+In this section we'll add a `"desk"` and `"book"` items to the `ITEMS`
+dictionary, which will eventualy be added to the `"home"` place. The book is
+where we'll find the hint about petting dragons.
+
+We'll also have to modify `do_shop()`, so that items without prices (like
+`"book"` and `"desk"`) aren't listed for sale.
+
+Note: At the end of this section, there will be no difference in how the game
+behaves. But check and make sure that the book and desk are not listed when you
+do the `shop` command.
+
+#### A. In ITEMS:
+
+{{ left }}
+
+1. `[ ]` Add two items to the `ITEMS` dictionary with keys: `"desk"` and
+        `"book"`. Like previous items, each element one should be a dictionary
+        with a `"name"` and `"description"`; unlike the others, these will have
+        no `"price"`.
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-4.1.py
+:class: full-width
+:linenos:
+:lines: "40-68"
+:lineno-match:
+:emphasize-lines: "14-"
+```
+
+`````
+
+{{ endcols }}
+
+For now, keep the descriptions for both simple. Something like:
+
+**Desk**
+
+    A wooden desk with a large leather-bound book open on its surface.
+
+**Book**
+
+    A hefty leather-bound tome open to an interesting passage.
+
+Note: If you try the `shop` command before the next section, you will see
+`"book"` and `"desk"` in the list.
+
+#### B. In do_shop(), in the for loop:
+
+{{ left }}
+
+1. `[ ]` Before printing each item, check if the item has a `"price"` key.
+`continue` if not.
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-4.1.py
+:class: full-width
+:linenos:
+:lines: "104-114"
+:lineno-match:
+:emphasize-lines: "7-8"
+```
+
+`````
+
+{{ endcols }}
+
+Be sure to test the `shop` command and make sure book and desk aren't listed.
+
+### Part 4.2: Add `do_examine()`
+
+{{ left }}
+
+In this section we'll add an `examine` command.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-4.2.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+#### A. Make do_examine():
+
+{{ left }}
+
+1. `[ ]` Add a function `do_examine()` with one parameter: `args`.
+1. `[ ]` Use the `debug()` function to print the value of `args`, something like:
+
+   {samp}`Trying to examine: {args}`
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-4.2.py
+:class: full-width
+:linenos:
+:lines: "121-124"
+:lineno-match:
+```
+
+`````
+
+{{ endcols }}
+
+#### B. In main(), in the while loop:
+
+{{ left }}
+
+1. `[ ]` Add an `elif` clause that checks if `command` is `"x"`, `"exam"`, or `"examine"`.
+
+   * If it is, call `do_examine()` and pass `args`.
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-4.2.py
+:class: full-width
+:linenos:
+:lineno-match:
+:lines: "189-203"
+:emphasize-lines: "10-11"
+```
+
+`````
+
+{{ endcols }}
+
+:::{tip}
+
+This is a good time to test and make sure `x`, `exam` and `examine` all trigger
+calling the `do_examine()` function.
+
+:::
+
+### Part 4.3: Finish examine command
+
+{{ left }}
+
+In this section we'll write the rest of the `do_examine()` function.
+
+This will be very similar to the `do_go()` function. in that we'll need to make
+sure the player typed something after the command, (in `args`) and that it is
+an item in the current place; then we'll get the item from the `ITEMS`
+dictionary and print its information.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-4.3.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+#### A. In do_examine() ensure args is not empty
+
+{{ left }}
+
+1. `[ ]` Check to see if `args` is {term}`falsy`, if so:
+   * `[ ]` Use the `error()` function to print a message saying:
+   `"What do you want to examine?"`
+   * `[ ]` return
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-4.3.py
+:class: full-width
+:linenos:
+:lines: "121-129"
+:lineno-match:
+:emphasize-lines: "6-9"
+```
+
+`````
+
+{{ endcols }}
+
+#### B. Still in do_examine(): get the current place
+
+{{ left }}
+
+1. `[ ]` get the value from `PLAYER` associated with the `"place"` key and assign it to `place_name`
+1. `[ ]` get the value from `PLACES` associated with `place_name` and assign it to `place`
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-4.3.py
+:class: full-width
+:linenos:
+:lines: "121-133"
+:lineno-match:
+:emphasize-lines: "11-13"
+```
+
+`````
+
+{{ endcols }}
+
+#### C. Still in do_examine(): check the name
+
+1. `[ ]` assign the first element from the `args` list to the variable `name` and make it lowercase
+1. `[ ]` check if name is in the `items` list by:
+   * `[ ]` use an if statement with the condition:
+     * `[ ]` check if `name` is not in the list returned by `.get()`
+     * `[ ]` use the `.get()` method on `place` to get the `"items"` list and pass
+   * `[ ]` if the above condition is met:
+     * `[ ]` print an error message like: {samp}`"Sorry, I don't know what this is: {name}."`
+     * `[ ]` return
+1. `[ ]` Check if `name` is a key in the `ITEMS` dictionary, if not:
+     * `[ ]` Print an error message like:
+
+       {samp}`"Woops! The information about {name} seems to be missing."`
+
+       This will only happen if you made a mistake somewhere in your code. But just
+       in case we do, we want to have a clear error message so we can tell what
+       went wrong.
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-4.3.py
+:class: full-width
+:linenos:
+:lines: "121-147"
+:lineno-match:
+:emphasize-lines: "15-"
+```
+
+`````
+
+#### D. Still in do_examine(): get and print the item info
+
+1. `[ ]` Get the value from the `ITEMS` dictionary associated with the `name`
+         key and assign it to the variable `item`
+1. `[ ]` Using the `header()` funciton print the item name
+1. `[ ]` Using the `narrative()` function print the item description
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-4.3.py
+:class: full-width
+:linenos:
+:lines: "121-153"
+:lineno-match:
+:emphasize-lines: "28-"
+```
+
+`````
+

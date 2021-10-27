@@ -8,7 +8,7 @@ kernelspec:
   display_name: Python 3
   language: python
   name: python3
-tocdepth: 2
+tocdepth: 3
 ---
 Flashcards Project
 ==================
