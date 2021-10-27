@@ -68,7 +68,7 @@ has a `name`, a `weight`, a `pic` and an `is_hungry` value.
 In this lesson we'll rewrite that using object oriented programming, staring by
 creating an `Animal` class.
 
-### Part 1.1: Simple classes
+### Part 1.1: Simple Classes
 
 {{ leftcol }}
 
@@ -280,7 +280,7 @@ print(car.color, car.make, car.model, car.year)
 
 `````
 
-### Part 1.3 Default and keyword arguments
+### Part 1.3 Default and Keyword Arguments
 
 Often you want to give an property a default value if the user does not
 specify the value. You can do this in the method definition with
@@ -297,8 +297,6 @@ class Animal:
         self.pic = pic
         self.weight = weight
         self.is_hungry = is_hungry
-
-        print(f"Here is your new animal: {self.name}.")
 ```
 
 {{ leftcol }}
@@ -550,9 +548,315 @@ print(truck.is_clean)
 
 `````
 
+### Part 1.5: Class Properties
+
+When you set properties inside the class via `self.`, or outside of the class
+using an object that has already been instantiated, these properties are called
+{term}`instance properties <instance property>`, which means that they belong
+to an individual object.
+
+You can also set properties that belong to the class and are the same for all
+instances.
+
+{{ leftcol }}
+
+You can do this just like assigning any variable, except inside the class.
+
+{{ rightcol }}
+
+```{code-cell} python
+:class: full-width
+
+class Animal:
+    ears = 2
+
+    def __init__(self, name, pic, weight, is_hungry=False):
+        self.name = name
+        self.pic = pic
+        self.weight = weight
+        self.is_hungry = is_hungry
+
+    def feed(self):
+        if self.is_hungry:
+            print("Feeding: " + self.name)
+            self.is_hungry = False
+            self.weight = self.weight + 1
+        else:
+            print(self.name + "is not hungry, thanks anyway.")
+```
+
+{{ newrow }}
+
+You can then access it via {term}`dot notation` on the class.
+
+{{ rightcol }}
+
+```{code-cell} python
+Animal.ears
+```
+
+{{ newrow }}
+
+As well as on every instance of that class.
+
+{{ rightcol }}
+
+```{code-cell} python
+cat = Animal(
+    "Flufosourus",
+    "(=^o.o^=)__",
+    7,
+    True
+)
+
+cat.ears
+```
+
+{{ newrow }}
+
+You can change the value on any particular instance, but the class value will
+remain the same. This can be handy for defaults values.
+
+{{ rightcol }}
+
+```{code-cell} python
+snake = Animal(
+    "Medusa",
+    r"_/\__/\_/--{ :>~",
+    2,
+)
+
+snake.ears = 0
+
+print("Medusa's:", snake.ears)
+print("Animal:", Animal.ears)
+```
+
+{{ endcols }}
+
+### Part 1.6: Gotchas with Mutable Types
+
+You have to be careful with {term}`mutable` types when it comes to default
+arguments or class properties, as they can lead to unexpected behavior.
+
+{{ leftcol }}
+
+Let's say we add a class attribute `toys` to the `Animal` class, and assign it
+to an empty list.
+
+{{ rightcol }}
+
+```{code-cell} python
+:class: full-width
+
+class Animal:
+    ears = 2
+    toys = []
+
+    def __init__(self, name, pic, weight, is_hungry=False):
+        self.name = name
+        self.pic = pic
+        self.weight = weight
+        self.is_hungry = is_hungry
+
+    def feed(self):
+        if self.is_hungry:
+            print("Feeding: " + self.name)
+            self.is_hungry = False
+            self.weight = self.weight + 1
+        else:
+            print(self.name + "is not hungry, thanks anyway.")
+```
+
+{{ newrow }}
+
+Then we create a `cat` object and add some `toys`.
+
+{{ rightcol }}
+
+```{code-cell} python
+cat = Animal(
+    "Flufosourus",
+    "(=^o.o^=)__",
+    7,
+)
+
+cat.toys.append("catnip mouse")
+cat.toys.append("cardboard box")
+cat.toys.append("laser pointer")
+
+print(cat.toys)
+```
+
+{{ newrow }}
+
+What would `toys` contain on a new `snake` object?
+
+You may be surprised to see that it has the same contents as the `cat` object.
+That is because all instances share the *exact same object*. Since a list is
+mutable, (unlike an integer or string), any instance can make changes that will
+apply to all instances of the same class.
+
+{{ rightcol }}
+
+```{code-cell} python
+snake = Animal(
+    "Medusa",
+    r"_/\__/\_/--{ :>~",
+    2,
+)
+
+print(snake.toys)
+```
+
+{{ endcols }}
+
+The same behavior is seen when using a mutable object for a default value.
+
+This is because the default value is created *when the method or function is
+defined*, __not__ when an object is instantiated.
+
+```{code-cell} python
+:class: full-width
+
+class Animal:
+    ears = 2
+
+    def __init__(self, name, pic, weight, is_hungry=False, toys=[]):
+        self.name = name
+        self.pic = pic
+        self.weight = weight
+        self.is_hungry = is_hungry
+        self.toys = toys
+
+    def feed(self):
+        if self.is_hungry:
+            print("Feeding: " + self.name)
+            self.is_hungry = False
+            self.weight = self.weight + 1
+        else:
+            print(self.name + "is not hungry, thanks anyway.")
+```
+
+{{ leftcol }}
+
+As a result, all instances that use the default value share the exact same
+object.
+
+{{ rightcol }}
+
+```{code-cell} python
+cat = Animal(
+    "Flufosourus",
+    "(=^o.o^=)__",
+    7,
+)
+
+cat.toys.append("catnip mouse")
+cat.toys.append("cardboard box")
+cat.toys.append("laser pointer")
+
+print(cat.toys)
+```
+
+```{code-cell} python
+snake = Animal(
+    "Medusa",
+    r"_/\__/\_/--{ :>~",
+    2,
+)
+
+print(snake.toys)
+```
+
+{{ endcols }}
+
+The moral of the story is, if you want a mutable property that is different for
+each instance of a class, assign it in the `__init__()` function.
+
+```{code-cell} python
+:class: full-width
+
+class Animal:
+    ears = 2
+
+    def __init__(self, name, pic, weight, is_hungry=False, toys=None):
+        self.name = name
+        self.pic = pic
+        self.weight = weight
+        self.is_hungry = is_hungry
+
+        if not toys:
+            toys = []
+
+        self.toys = toys
+
+    def feed(self):
+        if self.is_hungry:
+            print("Feeding: " + self.name)
+            self.is_hungry = False
+            self.weight = self.weight + 1
+        else:
+            print(self.name + "is not hungry, thanks anyway.")
+```
+
+{{ leftcol }}
+
+This will ensure the mutable property is created when the object is
+instantiated so it will be different for each instance.
+
+{{ rightcol }}
+
+```{code-cell} python
+cat = Animal(
+    "Flufosourus",
+    "(=^o.o^=)__",
+    7,
+)
+
+cat.toys.append("catnip mouse")
+cat.toys.append("cardboard box")
+cat.toys.append("laser pointer")
+
+print(cat.toys)
+```
+
+```{code-cell} python
+snake = Animal(
+    "Medusa",
+    r"_/\__/\_/--{ :>~",
+    2,
+)
+
+print(snake.toys)
+```
+
+{{ endcols }}
+
+
+Reference
+---------
+
+### Glossary
+
+```{glossary}
+
+class variable
+class property
+class attribute
+    A variable that belongs to a class as well as all instances of that class.
+
+instance variable
+instance property
+instance attribute
+    A variable that belongs to one specific object, or instance.
+```
+
 ----
 
 % [ ] TODO
-% [ ] properties
+% [ ] class methods
+% [ ] @property
 % [ ] inheritance
-% [ ] super
+%     [ ] super
+% [ ] dunder methods: __str__, __iter__, __call__
