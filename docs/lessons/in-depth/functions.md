@@ -29,7 +29,7 @@ You can make an argument optional by giving it a default value.
 
 ```{code-cell} python
 :class: full-width
-def hr(width=40):
+def hr(width=20):
     print("-" * width)
 ```
 
@@ -44,7 +44,6 @@ When you call the function, you can pass an arguent as you normally would.
 hr(10)
 ```
 
-
 {{ newrow }}
 
 Or skip the argument to use the default value.
@@ -54,6 +53,108 @@ Or skip the argument to use the default value.
 ```{code-cell} python
 :class: full-width
 hr()
+```
+
+{{ newrow }}
+
+Any parameters without default values have to go before any with default
+values.
+
+{{ rightcol }}
+
+```{code-cell} python
+:class: full-width
+def hr(char, width=20):
+    print(char * width)
+```
+
+{{ newrow }}
+
+Avoid using a {term}`mutable` object as a default value, since it is evaluated
+only once when the function is defined.
+
+{{ rightcol }}
+
+```{code-cell} python
+:class: full-width
+def setup(project, options={}):
+    if "title" not in options:
+        options["title"] = project
+    print(id(options), options)
+
+```
+
+{{ newrow }}
+
+Therefore any call that uses the default value will have the *exact same
+object*.
+
+{{ rightcol }}
+
+```{code-cell} python
+:class: full-width
+setup("home")
+setup("work")
+setup("school", {"title": "School Work"})
+```
+
+{{ newrow }}
+
+For mutable types, set the default value to `None`. Then in the body of the
+function, assign the value if the argument is {term}`falsy`.
+
+{{ rightcol }}
+
+```{code-cell} python
+:class: full-width
+def setup(project, options=None):
+    if not options:
+        options = {}
+    if "title" not in options:
+        options["title"] = project
+    print(id(options), options)
+```
+
+{{ newrow }}
+
+This will ensure that every time the function is called, a new value is created
+and assigned.
+
+{{ rightcol }}
+
+```{code-cell} python
+:class: full-width
+setup("home")
+setup("work")
+setup("school", {"title": "School Work"})
+```
+
+{{ newrow }}
+
+A shorthand for this is:
+
+{samp}`{NAME} = {NAME} or {DEFAULT}`
+
+{{ rightcol }}
+
+```{code-cell} python
+:class: full-width
+def setup(project, options=None):
+    options = options or {}
+    if "title" not in options:
+        options["title"] = project
+    print(id(options), options)
+```
+
+{{ newrow }}
+
+{{ rightcol }}
+
+```{code-cell} python
+:class: full-width
+setup("home")
+setup("work")
+setup("school", {"title": "School Work"})
 ```
 
 {{ endcols }}
@@ -71,7 +172,8 @@ are called {term}`variadic` arguments.
 {{ leftcol }}
 
 This can be done with a single asterisk before a parameter name.  Any
-positional arguments will then be in a tuple with that name.
+positional arguments will then be in a tuple with that name, in this case
+`args`.
 
 {{ rightcol }}
 
@@ -80,6 +182,8 @@ positional arguments will then be in a tuple with that name.
 
 def thing(*args):
     print(args)
+    if args:
+      print(args[0])
 ```
 
 {{ newrow }}
@@ -117,7 +221,9 @@ thing("a", "b", "c", "d", "e")
 
 {{ newrow }}
 
-Or you put two astricks before a paramater name.
+To take arbitrary keyword arguments, put two astricks before a paramater name.
+The keyword arguments will then be in a dictionary with that name, in this case
+`kwargs`.
 
 {{ rightcol }}
 
@@ -125,6 +231,8 @@ Or you put two astricks before a paramater name.
 :class: full-width
 def thing(**kwargs):
     print(kwargs)
+    if "a" in kwargs:
+        print(kwargs["a"])
 ```
 
 {{ newrow }}
@@ -275,13 +383,15 @@ Reference
 
 ```{glossary} functions
 variadic
-  ...
+variadic arguments
+    When any number of arguments may be passed to a function or method.
 
 annotations
-  ...
+  Syntax for specifying the type of a variable, class attribute, function
+  parameter or return value.
 
 lambda
-  ...
+  An anonymous inline function consisting of a single expression.
 ```
 
 
