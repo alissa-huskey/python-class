@@ -500,7 +500,8 @@ Lisa Simpsons birthday is on May 9, 1986.
 Part 3: Returning values
 ------------------------
 
-The {term}`return` statement is used to leave a function.
+The {term}`return` statement is used to exit a function and optionally send
+data back to the caller.
 
 {{ leftcol }}
 
@@ -516,11 +517,13 @@ def print_stuff():
   print("this will be printed")
   return
   print("this will never be printed")
+
+print_stuff()
 ```
 
 {{ newrow }}
 
-It's common to return inside an if statement, for example, to avoid errors.
+It's common to `return` inside an `if` statement, for example, to avoid errors.
 
 {{ rightcol }}
 
@@ -528,16 +531,83 @@ It's common to return inside an if statement, for example, to avoid errors.
 
 def hr(width):
   if width < 0:
-    print("width can't be negative'")
+    print("Error: width can't be negative")
     return
 
   print("=" * width)
+```
+
+```{code-cell} python
+hr(-10)
+```
+
+```{code-cell} python
+hr(20)
 ```
 
 {{ newrow }}
 
 The `return` statement can optionally send a value back to the caller, so that
 the function call will then evaluate to that value.
+
+{{ rightcol }}
+
+```{code-cell} python
+def is_between(num, start_range, end_range):
+    if num >= start_range and num <= end_range:
+        return True
+    else:
+        return False
+```
+
+{{ newrow }}
+
+Then you can call the function anywhere you want to use the value it returns.
+
+For example, assigning it to a variable...
+
+{{ rightcol }}
+
+```{code-cell} python
+from random import randint
+
+height = randint(36, 108)
+too_short = is_between(height, 1, 48)
+words = ("can", "cannot")
+
+print(f'A person of {height}" {words[too_short]} ride the ride.')
+```
+
+{{ newrow }}
+
+...in an `if` statement...
+
+{{ rightcol }}
+
+```{code-cell} python
+score = randint(-200, 200)
+
+if not is_between(score, 1, 100):
+    print(f"Error: Invalid score: {score}")
+else:
+    print(f"Your score is: {score}%")
+```
+
+{{ newrow }}
+
+...or as part of an expression.
+
+{{ rightcol }}
+
+```{code-cell} python
+rating = randint(0, 10)
+text = is_between(rating, 1, 5) * f"Stars: {'*' * rating}"
+
+if not text:
+    print(f"Invalid rating: {rating}")
+else:
+    print(text)
+```
 
 {{ endcols }}
 
@@ -968,8 +1038,10 @@ today. Import them into a Python shell and use the `help()` function to view the
 
 ```
 
-Glossary
---------
+Reference
+---------
+
+### Glossary
 
 ```{glossary} functions
 
@@ -1017,3 +1089,15 @@ return
   optionally send a value to the caller
 
 ```
+
+### See Also
+
+```{seealso}
+
+* [python.org > Tutorial > Defining Functions](https://docs.python.org/3/tutorial/controlflow.html#defining-functions)
+* [python.org > Tutorial > Documentation Strings](https://docs.python.org/3/tutorial/controlflow.html#tut-docstrings)
+* [Defining Your Own Python Function](https://realpython.com/defining-your-own-python-function/)
+* [Real Python > The Python return Statement: Usage and Best Practices](https://realpython.com/python-return-statement/)
+
+```
+
