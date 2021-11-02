@@ -942,12 +942,12 @@ text.
 
 {{ clear }}
 
-{{ left }}
-
 In this section we're going to use the `console` module to make our game more
 colorful.
 
 #### A. Install console
+
+{{ left }}
 
 1. `[ ]` Follow the instructions [here](../lessons/cli.html#installation) to install.
 
