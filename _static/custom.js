@@ -55,6 +55,13 @@ window.addEventListener("DOMContentLoaded", (e) => {
   }
 });
 
+// add "header-link" to a.header-link parent p tag
+window.addEventListener("DOMContentLoaded", (e) => {
+  console.log("python-class> fixing header links...");
+
+  $("a.header-link").parents('p').addClass("header-link");
+});
+
 // add "full-width" class to literal-block-wrappers that contain a full-width div
 window.addEventListener("DOMContentLoaded", (e) => {
   console.log("python-class> fixing full width...");
