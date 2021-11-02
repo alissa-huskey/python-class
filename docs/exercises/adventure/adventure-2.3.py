@@ -3,8 +3,6 @@ Text-based adventure game
 https://alissa-huskey.github.io/python-class/exercises/adventure.html
 """
 
-from sys import stderr
-
 DEBUG = True
 
 PLAYER = {
@@ -46,7 +44,7 @@ ITEMS = {
 
 def error(message):
     """Print an error message."""
-    print(f"! Error: {message}\n", file=stderr)
+    print(f"! Error: {message}\n")
 
 def debug(message):
     """Print a debug message if in debug mode."""

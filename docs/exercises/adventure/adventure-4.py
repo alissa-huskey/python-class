@@ -4,7 +4,6 @@ https://alissa-huskey.github.io/python-class/exercises/adventure.html
 """
 
 import re
-from sys import stderr
 import textwrap
 
 from console import fg, bg, fx
