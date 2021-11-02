@@ -73,7 +73,7 @@ def header(title):
     write(fx.bold(title))
     print()
 
-def narrative(text):
+def wrap(text):
     """Print wrapped and indented text."""
     # wrap the text
     paragraph = textwrap.fill(
@@ -150,7 +150,7 @@ def do_examine(args):
 
     # print the item information
     header(item["name"])
-    narrative(item["description"])
+    wrap(item["description"])
 
 def do_go(args):
     """Move to a different place"""
@@ -197,7 +197,7 @@ def do_go(args):
 
     # print information about the new place
     header(f"{new_place['name']}")
-    narrative(new_place["description"])
+    wrap(new_place["description"])
 
 def main():
     header("Welcome!")

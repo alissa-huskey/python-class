@@ -2,6 +2,7 @@
 substitutions:
   left:  '{{ leftcol | replace("col", "col-5") }}'
   right: '{{ rightcol | replace("col", "col-7") }}'
+  icon: '{opticon}`file-code`'
 
 jupytext:
   formats: md:myst
@@ -60,6 +61,10 @@ repo for it, if you're comfortable with git.)
 
 ### Part 1.2: The main() function
 
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-1.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
+
 {{ left }}
 
 1. `[ ]` Define a `main()` function, and have it print `"Welcome!"`
@@ -92,6 +97,10 @@ repo for it, if you're comfortable with git.)
 
 
 ### Part 1.3: Your first command: quit
+
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-1.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
 
 In this section we will actually look at what the user says, and make our first
 command: the `quit` command.
@@ -135,6 +144,10 @@ command: the `quit` command.
 `````
 
 ### Part 1.4 Create `ITEMS`
+
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-1.4.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
 
 We're going to make our first real command: `shop`. We're skipping ahead a bit
 so we can have our program do something interesting.
@@ -185,6 +198,10 @@ ITEMS = {
 
 ### Part 1.5: Make `do_shop()` function
 
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-1.5.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
+
 {{ left }}
 
 In this section we'll make a `shop` command that will list the items that we
@@ -231,6 +248,10 @@ In this section we'll be writing the `go` command, and the system to go from
 one place to another.
 
 ### Part 2.1: Split reply into command and arguments
+
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-2.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
 
 {{ left }}
 
@@ -296,6 +317,10 @@ the command, and `north` is the direction.
 `````
 
 ### Part 2.2: Create PLAYER and PLACES
+
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-2.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
 
 Now we'll make global `PLACES` dictionary which will store information about
 the different areas in the game.
@@ -495,6 +520,10 @@ PLACES = {
 
 ### Part 2.3: Write user message functions
 
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-2.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
+
 {{ left }}
 
 We're going to take a brief interlude here to write a couple of functions for
@@ -567,6 +596,10 @@ We'll also add a `error()` function which will print an error message.
 
 
 ### Part 2.4: Fill in `go` command
+
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-2.4.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
 
 {{ left }}
 
@@ -740,14 +773,18 @@ In this section we'll start making things prettier by wrapping text and adding
 colors and styles.
 
 We'll also make sure that the way we print things is consitent by always
-printing via our custom functions: `header()`, `narrative()`, `write()`,
+printing via our custom functions: `header()`, `wrap()`, `write()`,
 `error()`, or `debug()`.
 
 ### Part 3.1: Text wrapping
 
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-3.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
+
 {{ left }}
 
-In this section we're going to add a `narrative()` function, which we'll to
+In this section we're going to add a `wrap()` function, which we'll use to
 print paragraphs of text like place or item descriptions. We'll both indent and
 wrap the text so that it looks nice.
 
@@ -788,9 +825,9 @@ wrap the text so that it looks nice.
 {{ endcols }}
 
 
-#### B. Make narrative()
+#### B. Make wrap()
 
-1. `[ ]` Define a `narrative()` function which takes one argument `text`.
+1. `[ ]` Define a `wrap()` function which takes one argument `text`.
 1. `[ ]` For now, just print `MARGIN`, then `text` in the function, so we can
          make sure it works.
 
@@ -799,7 +836,7 @@ wrap the text so that it looks nice.
 {{ left }}
 
 1. `[ ]` Instead of calling `print()` to print the place description, call the
-         `narrative()` function you just wrote.
+         `wrap()` function you just wrote.
 
 {{ right }}
 
@@ -818,7 +855,7 @@ wrap the text so that it looks nice.
 
 {{ endcols }}
 
-#### D. In narrative()
+#### D. In wrap()
 
 In this section we'll call `textwrap.fill()` function to wrap a paragraph of
 text.
@@ -845,6 +882,10 @@ text.
 `````
 
 ### Part 3.2: Colors
+
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-3.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
 
 {{ left }}
 
@@ -924,6 +965,10 @@ colorful.
 {{ endcols }}
 
 ### Part 3.3: Header and write functions
+
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-3.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
 
 {{ left }}
 
@@ -1093,6 +1138,10 @@ In this section we'll add the `examine` command.
 
 ### Part 4.1: Add new items
 
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-4.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
+
 In this section we'll add a `"desk"` and `"book"` items to the `ITEMS`
 dictionary, which will eventualy be added to the `"home"` place. The book is
 where we'll find the hint about petting dragons.
@@ -1169,6 +1218,10 @@ Be sure to test the `shop` command and make sure book and desk aren't listed.
 
 ### Part 4.2: Add `do_examine()`
 
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-4.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
+
 {{ left }}
 
 In this section we'll add an `examine` command.
@@ -1242,6 +1295,10 @@ calling the `do_examine()` function.
 :::
 
 ### Part 4.3: Finish examine command
+
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-4.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
 
 {{ left }}
 
@@ -1349,7 +1406,7 @@ dictionary and print its information.
 1. `[ ]` Get the value from the `ITEMS` dictionary associated with the `name`
          key and assign it to the variable `item`
 1. `[ ]` Using the `header()` funciton print the item name
-1. `[ ]` Using the `narrative()` function print the item description
+1. `[ ]` Using the `wrap()` function print the item description
 
 `````{dropdown} Code
 

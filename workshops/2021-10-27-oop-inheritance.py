@@ -1,5 +1,5 @@
 """
-2021-10-27 In-Depth OOP Lesson: Inheritance 
+2021-10-27 In-Depth OOP Lesson: Inheritance
 
 Exercise:
 

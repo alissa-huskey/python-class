@@ -49,7 +49,7 @@ ITEMS = {
     },
 }
 
-def narrative(text):
+def wrap(text):
     """Print wrapped and indented text."""
     # wrap the text
     paragraph = textwrap.fill(
@@ -132,7 +132,7 @@ def do_go(args):
 
     # print information about the new place
     print(f"\n{new_place['name']}\n")
-    narrative(new_place["description"])
+    wrap(new_place["description"])
 
 def main():
     print("Welcome!")
