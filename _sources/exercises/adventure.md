@@ -550,10 +550,29 @@ We'll also add a `error()` function which will print an error message.
 
 #### A. At the top of the file
 
+{{ left }}
+
 1. `[ ]` Add a global variable `DEBUG` and set it to `True`
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-2.3.py
+:linenos:
+:lines: "1-11"
+:emphasize-lines: "6"
+:lineno-match:
+```
+
+`````
+
+{{ endcols }}
 
 
 #### B. Define debug() function
+
+{{ left }}
 
 1. `[ ]` Write a function named: `debug` with one parameter: `message`
 1. `[ ]` In the function, check if `DEBUG` is `True` (or {term}`truthy`)
@@ -561,14 +580,60 @@ We'll also add a `error()` function which will print an error message.
    * `[ ]` Bonus: Print something before it like `"DEBUG: "`, or `"# "`, so you can more
                  easily tell that it is a debug message
 
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-2.3.py
+:linenos:
+:lines: "49-53"
+```
+
+`````
+
+{{ endcols }}
+
 #### C. define error() function
+
+{{ left }}
 
 1. `[ ]` Write a function named: `error` with one parameter: `message`
 1. `[ ]` Print `message` with something before it like `"Error: "`.
 
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-2.3.py
+:linenos:
+:lines: "45-47"
+```
+
+`````
+
+{{ endcols }}
+
 #### D. in do_go()
 
+{{ left }}
+
 1. `[ ]` Call `debug()` instead of `print()` for the message {samp}`Trying to go: {args}`
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-2.3.py
+:class: full-width
+:linenos:
+:lines: "69-71"
+:lineno-match:
+:emphasize-lines: "3"
+```
+
+`````
+
+{{ endcols }}
 
 #### E. in main(), in the while loop
 
@@ -580,20 +645,21 @@ We'll also add a `error()` function which will print an error message.
 1. `[ ]` After assigning `command`, use `debug()` to print `command` and `args`.
 1. `[ ]` Call `error()` instead of `print()` for the message {samp}`No such command.`
 
-#### F. Test debug messages
-
-1. `[ ]` Test with `DEBUG` set to `True` as well as with `DEBUG` set to `False`
-
-
 `````{dropdown} Code
 
 ```{literalinclude} adventure/adventure-2.3.py
+:class: full-width
 :linenos:
-:emphasize-lines: "6-8, 47-55, 73, 79, 88, 100"
+:lines: "73-101"
+:lineno-match:
+:emphasize-lines: "5, 14, 26"
 ```
 
 `````
 
+#### F. Test debug messages
+
+1. `[ ]` Test with `DEBUG` set to `True` as well as with `DEBUG` set to `False`
 
 ### Part 2.4: Fill in `go` command
 
@@ -645,7 +711,7 @@ list and that it is a valid direction.
 ```{literalinclude} adventure/adventure-2.4.py
 :class: full-width
 :linenos:
-:lines: "71-87"
+:lines: "69-85"
 :lineno-match:
 :emphasize-lines: "6-8, 12, 15-17"
 ```
@@ -669,7 +735,7 @@ from the `PLACES` dictionary, as shown {ref}`here <player-to-places>`.
 ```{literalinclude} adventure/adventure-2.4.py
 :linenos:
 :lineno-match:
-:lines: 89-91
+:lines: 87-89
 :emphasize-lines: "2-"
 ```
 
@@ -695,7 +761,7 @@ as seen {ref}`here <places-direction-to-place>`.
 ```{literalinclude} adventure/adventure-2.4.py
 :linenos:
 :lineno-match:
-:lines: 93-99
+:lines: 91-97
 :emphasize-lines: "2, 5-7"
 ```
 
@@ -723,7 +789,7 @@ player can't go that direction from where they are.
 
 ```{literalinclude} adventure/adventure-2.4.py
 :linenos:
-:lines: 101-109
+:lines: 99-107
 :lineno-match:
 :emphasize-lines: "2, 7-9"
 ```
@@ -746,7 +812,7 @@ name and print the place information.
 
 ```{literalinclude} adventure/adventure-2.4.py
 :linenos:
-:lines: 111-116
+:lines: 109-114
 :lineno-match:
 :emphasize-lines: "2, 5-6"
 ```
@@ -754,17 +820,6 @@ name and print the place information.
 `````
 
 {{ endcols }}
-
-`````{dropdown} Code
-
-```{literalinclude} adventure/adventure-2.4.py
-:pyobject: do_go
-:linenos:
-:emphasize-lines: "6-8, 12, 15-17, 20-21, 24, 27-29, 32, 37-39, 42, 45-46"
-:lineno-match:
-```
-
-`````
 
 Part 3: Prettify
 ---------------------------
