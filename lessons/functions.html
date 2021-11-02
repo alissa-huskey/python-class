@@ -289,6 +289,11 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="in-depth/functions.html">
+     Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="in-depth/oop.html">
      Object Oriented Programming
     </a>
@@ -703,13 +708,25 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#glossary">
-   Glossary
+  <a class="reference internal nav-link" href="#reference">
+   Reference
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#glossary-functions">
-     Functions
+    <a class="reference internal nav-link" href="#glossary">
+     Glossary
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#glossary-functions">
+       Functions
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#see-also">
+     See Also
     </a>
    </li>
   </ul>
@@ -766,9 +783,14 @@ programs, it’s kind of like that.</p>
 <li><p><a class="reference internal" href="#docstring-exercise" id="id21">Docstring exercise</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#glossary" id="id22">Glossary</a></p>
+<li><p><a class="reference internal" href="#reference" id="id22">Reference</a></p>
 <ul>
-<li><p><a class="reference internal" href="#glossary-functions" id="id23">Functions</a></p></li>
+<li><p><a class="reference internal" href="#glossary" id="id23">Glossary</a></p>
+<ul>
+<li><p><a class="reference internal" href="#glossary-functions" id="id24">Functions</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#see-also" id="id25">See Also</a></p></li>
 </ul>
 </li>
 </ul>
@@ -1278,7 +1300,8 @@ keyword arguments.</p>
 </div>
 <div class="section" id="part-3-returning-values">
 <h2><a class="toc-backref" href="#table-of-contents">Part 3: Returning values</a><a class="headerlink" href="#part-3-returning-values" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference internal" href="#term-return"><span class="xref std std-term">return</span></a> statement is used to leave a function.</p>
+<p>The <a class="reference internal" href="#term-return"><span class="xref std std-term">return</span></a> statement is used to exit a function and optionally send
+data back to the caller.</p>
 <div class="row"><div class="col left-col">
 <p>By itself <code class="docutils literal notranslate"><span class="pre">return</span></code> works similar to the <code class="docutils literal notranslate"><span class="pre">break</span></code> statement in a for loop. No
 other code in the function will be executed.</p>
@@ -1289,18 +1312,25 @@ other code in the function will be executed.</p>
   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;this will be printed&quot;</span><span class="p">)</span>
   <span class="k">return</span>
   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;this will never be printed&quot;</span><span class="p">)</span>
+
+<span class="n">print_stuff</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>this will be printed
 </pre></div>
 </div>
 </div>
 </div>
 </div></div><div class="row"><div class="col right-col">
-<p>It’s common to return inside an if statement, for example, to avoid errors.</p>
+<p>It’s common to <code class="docutils literal notranslate"><span class="pre">return</span></code> inside an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement, for example, to avoid errors.</p>
 </div><div class="col">
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hr</span><span class="p">(</span><span class="n">width</span><span class="p">):</span>
   <span class="k">if</span> <span class="n">width</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;width can&#39;t be negative&#39;&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error: width can&#39;t be negative&quot;</span><span class="p">)</span>
     <span class="k">return</span>
 
   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="n">width</span><span class="p">)</span>
@@ -1308,9 +1338,108 @@ other code in the function will be executed.</p>
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hr</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error: width can&#39;t be negative
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hr</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>====================
+</pre></div>
+</div>
+</div>
+</div>
 </div></div><div class="row"><div class="col right-col">
 <p>The <code class="docutils literal notranslate"><span class="pre">return</span></code> statement can optionally send a value back to the caller, so that
 the function call will then evaluate to that value.</p>
+</div><div class="col">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_between</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">start_range</span><span class="p">,</span> <span class="n">end_range</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">num</span> <span class="o">&gt;=</span> <span class="n">start_range</span> <span class="ow">and</span> <span class="n">num</span> <span class="o">&lt;=</span> <span class="n">end_range</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col right-col">
+<p>Then you can call the function anywhere you want to use the value it returns.</p>
+<p>For example, assigning it to a variable…</p>
+</div><div class="col">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+
+<span class="n">height</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">36</span><span class="p">,</span> <span class="mi">108</span><span class="p">)</span>
+<span class="n">too_short</span> <span class="o">=</span> <span class="n">is_between</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">48</span><span class="p">)</span>
+<span class="n">words</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;can&quot;</span><span class="p">,</span> <span class="s2">&quot;cannot&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;A person of </span><span class="si">{</span><span class="n">height</span><span class="si">}</span><span class="s1">&quot; </span><span class="si">{</span><span class="n">words</span><span class="p">[</span><span class="n">too_short</span><span class="p">]</span><span class="si">}</span><span class="s1"> ride the ride.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A person of 108&quot; can ride the ride.
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col right-col">
+<p>…in an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement…</p>
+</div><div class="col">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">score</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">is_between</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: Invalid score: </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Your score is: </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error: Invalid score: -160
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col right-col">
+<p>…or as part of an expression.</p>
+</div><div class="col">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rating</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">is_between</span><span class="p">(</span><span class="n">rating</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="sa">f</span><span class="s2">&quot;Stars: </span><span class="si">{</span><span class="s1">&#39;*&#39;</span> <span class="o">*</span> <span class="n">rating</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">text</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid rating: </span><span class="si">{</span><span class="n">rating</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Invalid rating: 6
+</pre></div>
+</div>
+</div>
+</div>
 </div></div>
 <p>Lets take a look at the difference between printing in the function, and returning.</p>
 <div class="row"><div class="col left-col">
@@ -1783,10 +1912,12 @@ today. Import them into a Python shell and use the <code class="docutils literal
 </div>
 </div></div>
 </div>
+<div class="section" id="reference">
+<h2><a class="toc-backref" href="#table-of-contents">Reference</a><a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="glossary">
-<h2><a class="toc-backref" href="#table-of-contents">Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<h3><a class="toc-backref" href="#table-of-contents">Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="glossary-functions">
-<h3><a class="toc-backref" href="#table-of-contents">Functions</a><a class="headerlink" href="#glossary-functions" title="Permalink to this headline">¶</a></h3>
+<h4><a class="toc-backref" href="#table-of-contents">Functions</a><a class="headerlink" href="#glossary-functions" title="Permalink to this headline">¶</a></h4>
 <dl class="glossary simple">
 <dt id="term-argument">argument<a class="headerlink" href="#term-argument" title="Permalink to this term">¶</a></dt><dd><p>A <a class="reference internal" href="expressions.html#term-value"><span class="xref std std-term">value</span></a> that is passed as input to a function.</p>
 </dd>
@@ -1821,6 +1952,19 @@ the order in which they appear</p>
 optionally send a value to the caller</p>
 </dd>
 </dl>
+</div>
+</div>
+<div class="section" id="see-also">
+<h3><a class="toc-backref" href="#table-of-contents">See Also</a><a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/tutorial/controlflow.html#defining-functions">python.org &gt; Tutorial &gt; Defining Functions</a></p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/tutorial/controlflow.html#tut-docstrings">python.org &gt; Tutorial &gt; Documentation Strings</a></p></li>
+<li><p><a class="reference external" href="https://realpython.com/defining-your-own-python-function/">Defining Your Own Python Function</a></p></li>
+<li><p><a class="reference external" href="https://realpython.com/python-return-statement/">Real Python &gt; The Python return Statement: Usage and Best Practices</a></p></li>
+</ul>
+</div>
 </div>
 </div>
 </div>
