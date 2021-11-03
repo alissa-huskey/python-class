@@ -47,7 +47,7 @@ def hr(width=20):
 
 {{ newrow }}
 
-When you call the function, you can pass an arguent as you normally would.
+When you call the function, you can pass an argument as you normally would.
 
 {{ rightcol }}
 
@@ -294,11 +294,46 @@ thing("a", "b", "c", "d", "e")
 
 {{ endcols }}
 
+### Part 2.1: Exercise
+
+`````{exercise} Arbitrary Positional Arguments
+:label: arbitrary-positional-exercise
+
+Make a function `write()` that takes an arbitrary number of positional
+arguments. Which converts all to strings, joins with a comma, then prints them.
+
+**Example Usage**
+
+```python
+>>> write("abc", 123)
+abc, 123
+```
+
+`````
+
+`````{solution} arbitrary-positional-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: "Arbitrary Positional Arguments Exercise"
+:class: full-width
+:linenos:
+
+def write(*args):
+    args = map(str, args)
+    text = ", ".join(args)
+    print(text)
+
+```
+
+`````
+
+
 ### Part 2.2: Keyword
 
 {{ leftcol }}
 
-To take arbitrary keyword arguments, put two astricks before a paramater name.
+To take arbitrary keyword arguments, put two asterisks before a parameter name.
 The keyword arguments will then be in a dictionary with that name, in this case
 `kwargs`.
 
@@ -325,6 +360,42 @@ thing(a=1, b=2, c=3)
 
 {{ endcols }}
 
+### Part 2.2: Exercise
+
+`````{exercise} Arbitrary Keyword Arguments
+:label: arbitrary-keyword-exercise
+
+Modify `write()` to also take arbitrary keyword arguments. Each keyword
+argument should be formatted into a string: {samp}`{NAME}={VALUE}`, then
+printed (along with any arguments) seperated by commas.
+
+**Example Usage**
+
+```python
+>>> write("abc", 123, a=1, b=2.0, c="three")
+abc, 123, a=1, b=2.0, c='three'
+```
+
+`````
+
+`````{solution} arbitrary-keyword-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: "Arbitrary Keyword Arguments Exercise"
+:class: full-width
+:linenos:
+
+def write(*args, **kwargs):
+    args = [str(x) for x in args]
+    args += [f"{k}={v!r}" for k,v in kwargs.items()]
+    text = ", ".join(args)
+    print(text)
+
+```
+
+`````
+
 Part 3: Unpacking Arguments
 ---------------------------
 
@@ -336,7 +407,7 @@ is known as {term}`unpacking`.
 
 {{ leftcol }}
 
-To send all elements in a list, tuple, or other {term}`sequence`, put an astrisk
+To send all elements in a list, tuple, or other {term}`sequence`, put an asterisk
 before the object.
 
 {{ rightcol }}
@@ -356,7 +427,7 @@ print(*birth_stones)
 {{ newrow }}
 
 To send all elements of a dictionary as {term}`keyword arguments`, put two
-astricts before the dictionary.
+asterisks before the dictionary.
 
 {{ rightcol }}
 
@@ -413,7 +484,7 @@ def debug(message!!!: str!!!):
 
 {{ leftcol }}
 
-Incidentally, you can specify the the type of a particular variable the same
+Incidentally, you can specify the type of a particular variable the same
 way.
 
 {{ rightcol }}
@@ -448,7 +519,7 @@ def random(limit: int=10) !!!-> int!!!:
 {{ endcols }}
 
 Be aware that is strictly documentation. An annotation does not change or
-enforce a the type of a given value.
+enforce the type of a given value.
 
 Part 5: Lambdas
 ---------------
@@ -502,7 +573,7 @@ Part 6: Shorthand
 It is possible, though not recommended, to write a function (or any other
 compound statement) all on one line, assuming that it contains a single line.
 
-The following two functions are equilivant.
+The following two functions are equivalent.
 
 {{ leftcol }}
 
