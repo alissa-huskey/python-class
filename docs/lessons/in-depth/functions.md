@@ -391,8 +391,6 @@ def write(*args, before=0, after=0):
 {{ leftcol }}
 
 To take arbitrary keyword arguments, put two asterisks before a parameter name.
-The keyword arguments will then be in a dictionary with that name, in this case
-`kwargs`.
 
 {{ rightcol }}
 
@@ -406,13 +404,30 @@ def thing(**kwargs):
 
 {{ newrow }}
 
-Then any keyword arguments will be in a dictionary with that name.
+The keyword arguments will then be in a dictionary with that name, in this case
+`kwargs`.
 
 {{ rightcol }}
 
 ```{code-cell} python
 :class: full-width
 thing(a=1, b=2, c=3)
+```
+
+{{ newrow }}
+
+Variadic keyword arguments go after parameters with default values in the
+function definition.
+
+{{ rightcol }}
+
+```{code-cell} python
+:class: full-width
+
+def thing(stuff, *args, data=None, **kwargs):
+    print(stuff, args, data, kwargs)
+    if args:
+      print(args[0])
 ```
 
 {{ endcols }}
