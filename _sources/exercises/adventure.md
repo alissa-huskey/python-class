@@ -1977,3 +1977,40 @@ place, and let the player know that it's done.
 ```
 
 `````
+
+### Part 6.4: Examine inventory
+
+{{ left }}
+
+In this section we'll modify `do_examine()` so it can be used to look at inventory items.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-6.4.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+#### A: in `do_examine()`
+
+1. `[ ]` Find the if statement where you check if `name` is not in the `place`
+         items list. Modify it so that it shows the error if `name` is not in
+         `place` items **and** `name` is not in `PLAYER["inventory"]`.
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-6.4.py
+:class: full-width
+:linenos:
+:lineno-match:
+:lines: '177-197'
+:emphasize-lines: "19"
+```
+
+`````

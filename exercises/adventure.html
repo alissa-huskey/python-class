@@ -29,8 +29,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/asciinema-player.css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/asciinema-player.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
@@ -45,9 +45,9 @@
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/x-frame-bypass.js"></script>
     <script src="../_static/asciinema-player.js"></script>
     <script src="../_static/custom.js"></script>
+    <script src="../_static/x-frame-bypass.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -1142,6 +1142,23 @@
      </li>
     </ul>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-6-4-examine-inventory">
+     Part 6.4: Examine inventory
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#a-in-do-examine">
+       A: in
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         do_examine()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
   </ul>
  </li>
 </ul>
@@ -1210,6 +1227,7 @@ much simpler to start.).</p>
 <li><p><a class="reference internal" href="#part-6-1-add-command" id="id33">Part 6.1: Add command</a></p></li>
 <li><p><a class="reference internal" href="#part-6-2-validate-item" id="id34">Part 6.2: Validate item</a></p></li>
 <li><p><a class="reference internal" href="#part-6-3-take-it" id="id35">Part 6.3: Take it</a></p></li>
+<li><p><a class="reference internal" href="#part-6-4-examine-inventory" id="id36">Part 6.4: Examine inventory</a></p></li>
 </ul>
 </li>
 </ul>
@@ -4405,6 +4423,80 @@ Code<div class="summary-down docutils">
 </span><span class="hll">
 </span><span class="hll">    <span class="n">wrap</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;You pick up </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> and put it in your pack.&quot;</span><span class="p">)</span>
 </span></pre></div>
+</td></tr></table></div>
+</div>
+</details></div>
+</div>
+<div class="section" id="part-6-4-examine-inventory">
+<h3><a class="toc-backref" href="#contents">Part 6.4: Examine inventory</a><a class="headerlink" href="#part-6-4-examine-inventory" title="Permalink to this headline">¶</a></h3>
+<div class="row"><div class="col-5 left-col-5">
+<p>In this section we’ll modify <code class="docutils literal notranslate"><span class="pre">do_examine()</span></code> so it can be used to look at inventory items.</p>
+</div><div class="col-7">
+<details class="sphinx-bs dropdown card mb-3" open="open">
+<summary class="summary-title card-header">
+Demo<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<asciinema-player rows="16" src="assets/adventure-6.4.cast"></asciinema-player></div>
+</details></div></div>
+<div class="section" id="a-in-do-examine">
+<h4>A: in <code class="docutils literal notranslate"><span class="pre">do_examine()</span></code><a class="headerlink" href="#a-in-do-examine" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Find the if statement where you check if <code class="docutils literal notranslate"><span class="pre">name</span></code> is not in the <code class="docutils literal notranslate"><span class="pre">place</span></code>
+items list. Modify it so that it shows the error if <code class="docutils literal notranslate"><span class="pre">name</span></code> is not in
+<code class="docutils literal notranslate"><span class="pre">place</span></code> items <strong>and</strong> <code class="docutils literal notranslate"><span class="pre">name</span></code> is not in <code class="docutils literal notranslate"><span class="pre">PLAYER[&quot;inventory&quot;]</span></code>.</p></li>
+</ol>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Code<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">do_examine</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Look at an item in the current place.&quot;&quot;&quot;</span>
+
+    <span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Trying to examine: </span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># make sure the player said what they want to examine</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">:</span>
+        <span class="n">error</span><span class="p">(</span><span class="s2">&quot;What do you want to examine?&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="c1"># look up where the player is now</span>
+    <span class="n">place_name</span> <span class="o">=</span> <span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;place&quot;</span><span class="p">]</span>
+    <span class="n">place</span> <span class="o">=</span> <span class="n">PLACES</span><span class="p">[</span><span class="n">place_name</span><span class="p">]</span>
+
+    <span class="c1"># get the item entered by the user and make it lowercase</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="c1"># make sure the item is in this place or in the players inventory</span>
+<span class="hll">    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">name</span> <span class="ow">in</span> <span class="n">place</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;items&quot;</span><span class="p">,</span> <span class="p">[])</span> <span class="ow">or</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;inventory&quot;</span><span class="p">]):</span>
+</span>        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorry, I don&#39;t know what this is: </span><span class="si">{</span><span class="n">name</span><span class="si">!r}</span><span class="s2">.&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+</pre></div>
 </td></tr></table></div>
 </div>
 </details></div>
