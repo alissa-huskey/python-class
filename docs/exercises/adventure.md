@@ -1475,3 +1475,152 @@ dictionary and print its information.
 
 `````
 
+Part 5: Look around
+-------------------
+
+In this section we'll add the `look` command.
+
+### Part 5.1: Add command
+
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-5.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
+
+{{ left }}
+
+In this section we'll define a `do_look()` function that gets called when the
+player types `l` or `look`.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-5.1.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+#### A: Define a `do_look()` function
+
+{{ left }}
+
+1. `[ ]` Define a `do_look()` function.
+1. `[ ]` In it, use the `debug()` function to print something like `"Trying to look around."`.
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-5.1.py
+:class: full-width
+:linenos:
+:lineno-match:
+:lines: "121-124"
+```
+
+`````
+
+{{ endcols }}
+
+#### B: in `main()`, in the `while` loop
+
+{{ left }}
+
+1. `[ ]` Add an `elif` that checks if `command` is `"l"` or
+         `"look"`.
+   * `[ ]` if so, call `do_look()`
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-5.1.py
+:class: full-width
+:linenos:
+:lineno-match:
+:lines: "222-239"
+:emphasize-lines: "13-14"
+```
+
+`````
+
+{{ endcols }}
+
+### Part 5.2: Finish `look`
+
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-5.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
+
+{{ left }}
+
+In this section we'll fill in the `do_look()` function.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-5.2.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+#### A: In `do_look()`: look up and print the current place
+
+{{ left }}
+
+1. `[ ]` get the value from `PLAYER` associated with the `"place"` key and assign it to `place_name`
+1. `[ ]` get the value from `PLACES` associated with `place_name` and assign it to `place`
+1. `[ ]` Print the value associated with the `"name"` key of the `place` dictionary using the `header()` function.
+1. `[ ]` Print the value associated with the `"description"` key of the `place` dictionary using the `wrap()` function.
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-5.2.py
+:class: full-width
+:linenos:
+:lineno-match:
+:lines: "121-132"
+:emphasize-lines: "6-"
+```
+
+`````
+
+{{ endcols }}
+
+#### B: still in `do_look()`: print nearby places
+
+{{ left }}
+
+1. `[ ]` print a blank line
+1. `[ ]` Use a for loop to iterate over a list: `"north"`, `"east"`, `"south"`, and `"west"` using the variable name `direction`. For each one:
+   * `[ ]` Get the value associated with the `direction` key from the `place` dictionary and assign it to the variable `name`.
+   * `[ ]` If `name` is {term}`truthy`, then print:
+
+     {samp}`"To the {direction} is {name}."`
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-5.2.py
+:class: full-width
+:linenos:
+:lineno-match:
+:lines: "121-141"
+:emphasize-lines: "14-"
+```
+
+`````
+
+{{ endcols }}
