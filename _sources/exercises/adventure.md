@@ -40,15 +40,15 @@ Part 1: The game loop
 ---------------------
 
 In this section we'll be writing the game loop--the main interface that allows
-the user to enter commads, do something, print messages to the user, and
+the player to enter commads, do something, print messages to the player, and
 continue with the game.
 
 We'll write a `main()` function to be the core of this interface. In it we'll
 use an infinite `while` loop to run the game. Every time the loop runs it will
-ask the user for input, then do something based on their response.
+ask the player for input, then do something based on their response.
 
 We will eventually write a function to coorespond to each of the commands
-available in the game, which will be called from `main()` when the user enters
+available in the game, which will be called from `main()` when the player enters
 the relevant command.
 
 For now though, we're just setting up the basic framework.
@@ -102,7 +102,7 @@ repo for it, if you're comfortable with git.)
 
 {{ clear }}
 
-In this section we will actually look at what the user says, and make our first
+In this section we will actually look at what the player says, and make our first
 command: the `quit` command.
 
 #### A. Make do_quit()
@@ -256,11 +256,11 @@ one place to another.
 {{ left }}
 
 This will be the first command that we've written that takes an argument. That
-is, the user needs to type not just `go`, but also which direction to go like
+is, the player needs to type not just `go`, but also which direction to go like
 `north`.
 
 That means we need to split the string that is returned from `input()` into a
-list. That way we if the user types `go north` we can figure out that `go` is
+list. That way we if the player types `go north` we can figure out that `go` is
 the command, and `north` is the direction.
 
 {{ right }}
@@ -285,7 +285,7 @@ the command, and `north` is the direction.
 
 1. `[ ]` Strip the value returned from `input()` using the `.strip()` method.
 
-   This means if a user enters `" quit"` or `"quit "` the program still knows
+   This means if a player enters `" quit"` or `"quit "` the program still knows
    to call `do_quit()`.
 2. `[ ]` Call `.split()` on `reply` and assign it to the variable `args`.
 
@@ -294,12 +294,12 @@ the command, and `north` is the direction.
 3. `[ ]` Use an `if` statement to check if `args` is {term}`falsy`. If it is,
    `continue`.
 
-   This means that if a user doesn't enter anything, the program will ignore it
+   This means that if a player doesn't enter anything, the program will ignore it
    and start the loop over.
 4. `[ ]` Remove the first item from `args` using the `.pop()` method and assign it to
    the variable `command`.
 
-   Now `command` will contain the first word the user entered, and `args` will
+   Now `command` will contain the first word the player entered, and `args` will
    contain a list of the remaining commands. If there were no additional words,
    then `args` will be an empty list.
 5. `[ ]` In each clause of the `if` statement where we check the value of `reply`,
@@ -518,7 +518,7 @@ PLACES = {
 
 `````
 
-### Part 2.3: Write user message functions
+### Part 2.3: Write message functions
 
 {link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-2.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
@@ -527,7 +527,7 @@ PLACES = {
 {{ left }}
 
 We're going to take a brief interlude here to write a couple of functions for
-printing messages to the user.
+printing messages to the player.
 
 We'll add a `debug()` function which will print messages intended for us (the
 programmer), but only if a global variable indicates that the program is in
@@ -691,7 +691,7 @@ print the `"name"` and `"description"`.
 
 {{ endcols }}
 
-#### A. in do_go(): ensure that the user typed a valid direction
+#### A. in do_go(): ensure that the player typed a valid direction
 
 In this section we'll be making sure there is at least one item in the `args`
 list and that it is a valid direction.
@@ -718,7 +718,7 @@ list and that it is a valid direction.
 
 `````
 
-#### B. (still) in do_go(): look up where the user is at
+#### B. (still) in do_go(): look up where the player is at
 
 In this section we'll be using the `PLAYER["place"]` to get the current place
 from the `PLACES` dictionary, as shown {ref}`here <player-to-places>`.
@@ -1730,8 +1730,8 @@ In this section we'll print the name of each of any places directly to the
 
 `````
 
-Part 6: Take items
-------------------
+Part 6: Take things
+-------------------
 
 In this section we'll add the `take` command.
 
@@ -1810,7 +1810,7 @@ player types `t`, `take`, or `grab`.
 
 {{ left }}
 
-In this section we'll check to make sure that the user entered a valid, takable
+In this section we'll check to make sure that the player entered a valid, takable
 item in the current place.
 
 {{ right }}
@@ -2019,7 +2019,7 @@ Part 7: Show inventory
 
 In this section we'll add the `inventory` command.
 
-### Part 6.1: Add command
+### Part 7.1: Add command
 
 {link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-7.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
@@ -2130,6 +2130,199 @@ In this section we'll print the players inventory.
 :start-at: 'def do_inventory():'
 :end-at: '    print()'
 :emphasize-lines: "6-"
+```
+
+`````
+Part 8: Drop things
+-------------------
+
+In this section we'll add the `drop` command.
+
+### Part 8.1: Add command
+
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-8.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
+
+{{ left }}
+
+In this section we'll define a `do_drop()` function that gets called when the
+player types `drop`.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-8.1.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+#### A: Define a `do_drop()` function
+
+{{ left }}
+
+1. `[ ]` Define a `do_drop()` function.
+1. `[ ]` In it, use the `debug()` function to print something like {samp}`"Trying to drop {args}."`.
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-8.1.py
+:class: full-width
+:linenos:
+:lineno-match:
+:start-at: 'def do_drop'
+:end-at: '    debug'
+```
+
+`````
+
+{{ endcols }}
+
+#### B: in `main()`, in the `while` loop
+
+{{ left }}
+
+1. `[ ]` Add an `elif` that checks if `command` is `"drop"`.
+   * `[ ]` if so, call `do_drop()` and pass `args`.
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-8.1.py
+:class: full-width
+:linenos:
+:lineno-match:
+:start-at: '        if command in ("q", "quit", "exit"):'
+:end-at: '            continue'
+:emphasize-lines: "21-23"
+```
+
+`````
+
+{{ endcols }}
+
+### Part 8.2: Validate
+
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-8.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
+
+{{ left }}
+
+In this section we'll check to make sure that the player entered an item they
+have in inventory.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-8.2.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+#### A: in `do_drop()`
+
+1. `[ ]` Check to see if `args` is {term}`falsy`, if so:
+   * `[ ]` Use the `error()` function to print a message saying:
+
+     `"What do you want to drop?"`
+   * `[ ]` `return`
+1. `[ ]` assign the first item of the `args` list to the variable `name` and make it lowercase
+1. `[ ]` Check if `name` is not in `PLAYER["inventory"]` or if `PLAYER["inventory"][name]` is {term}`falsy`. If so:
+   * `[ ]` Use the `error()` function to print a message saying:
+
+     {samp}`"You don't have any {name}."`
+   * `[ ]` `return`
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-8.2.py
+:class: full-width
+:linenos:
+:lineno-match:
+:start-at: 'def do_drop'
+:end-before: 'def '
+:emphasize-lines: "6-"
+```
+
+`````
+
+### Part 8.3: Drop it
+
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-8.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
+
+{{ left }}
+
+In this section we'll check remove the item from the players inventory and add
+it to the place items.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-8.3.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+#### A: in `do_drop()`: remove from inventory
+
+1. `[ ]` subtract `1` from `PLAYER["inventory"][name]`
+1. `[ ]` remove item from inventory if the quantity is `0` by:
+
+   if `PLAYER["inventory"][name]` is {term}`falsy`:
+   * `[ ]` call `.pop()` on `PLAYER["inventory"]` with the argument `name`
+
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-8.3.py
+:class: full-width
+:linenos:
+:lineno-match:
+:start-at: 'def do_drop'
+:end-before: '    # look up where the player is now'
+:emphasize-lines: "20-"
+```
+
+`````
+
+#### B: still in `do_drop()`: add to place
+
+1. `[ ]` get the value from `PLAYER` associated with the `"place"` key and assign it to `place_name`
+1. `[ ]` get the value from `PLACES` associated with `place_name` and assign it to `place`
+1. `[ ]` call `.setdefault()` on `place` with the argument `items` and `[]`
+1. `[ ]` append `name` to `place["items"]`
+
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-8.3.py
+:class: full-width
+:linenos:
+:lineno-match:
+:start-at: 'def do_drop'
+:end-before: 'def '
+:emphasize-lines: "25-"
 ```
 
 `````
