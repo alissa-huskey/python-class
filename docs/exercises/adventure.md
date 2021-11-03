@@ -247,6 +247,46 @@ Part 2: Go places
 In this section we'll be writing the `go` command, and the system to go from
 one place to another.
 
+To start out we'll add just two places: `"home"` and the `"town-square"`. A map
+of the game world would look something like this:
+
+```{kroki}
+:type: ditaa
+
+   +--------+      +--------+
+   | home   |      | town   |
+   |        *------* square |
+   |        |      |        |
+   +--------+      +--------+
+
+```
+
+You are welcome to add your own places. However, I strongly recommend that you
+first get your `go` command working with these two places.
+
+You also may want to keep a map of the game world in a docstring or another
+text file. Here's an example of how you might represent a slightly more
+populated world.
+
+```python
+"""
+Text-based adventure game
+https://alissa-huskey.github.io/python-class/exercises/adventure.html
+
+  =========
+  World Map
+  =========
+
+            market
+              |
+  home -- town square -- woods -- hill
+              |                    |
+            bakery                cave
+
+"""
+
+```
+
 ### Part 2.1: Split reply into command and arguments
 
 {link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-2.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
@@ -1713,9 +1753,9 @@ In this section we'll print the name of each of any places directly to the
 1. `[ ]` Use a for loop to iterate over a list: `"north"`, `"east"`, `"south"`, and `"west"` using the variable name `direction`. For each one:
    * `[ ]` Get the value associated with the `direction` key from the `place` dictionary and assign it to the variable `name`.
    * `[ ]` If `name` is {term}`falsy`, then continue
-1. `[ ]` Get the place dictionary from `PLACES` associated with the `name` key and assign it to `place`.
+1. `[ ]` Get the place dictionary from `PLACES` associated with the `name` key and assign it to `destination`.
 1. `[ ]` Use the `write()` function to print: {samp}`"To the {direction} is {name}."`.
-         Get *`name`* from the `place` dictionary.
+         Get *`name`* from the `destination` dictionary.
 
 
 `````{dropdown} Code

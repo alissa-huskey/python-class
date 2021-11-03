@@ -169,8 +169,8 @@ def do_look():
         if not name:
             continue
 
-        place = PLACES.get(name)
-        write(f"To the {direction} is {place['name']}.")
+        destination = PLACES.get(name)
+        write(f"To the {direction} is {destination['name']}.")
 
 def do_examine(args):
     """Look at an item in the current place."""
