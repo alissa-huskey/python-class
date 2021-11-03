@@ -16,7 +16,6 @@ DEBUG = True
 
 PLAYER = {
     "place": "home",
-    "inventory": {},
 }
 
 PLACES = {
@@ -25,7 +24,7 @@ PLACES = {
         "name": "Your Cottage",
         "east": "town-square",
         "description": "A cozy stone cottage with a desk and a neatly made bed.",
-        "items": ["book", "desk"],
+        "items": ["desk", "book"],
     },
     "town-square": {
         "key": "town-square",
@@ -53,7 +52,7 @@ ITEMS = {
     },
     "desk": {
         "key": "desk",
-        "name": "Desk",
+        "name": "a desk",
         "description": (
             "A wooden desk with a large leather-bound book open on "
             "its surface."
@@ -61,7 +60,7 @@ ITEMS = {
     },
     "book": {
         "key": "book",
-        "name": "A book",
+        "name": "a book",
         "description": (
             "A hefty leather-bound tome open to an interesting passage."
         ),
@@ -132,14 +131,46 @@ def do_look():
     header(f"{place['name']}")
     wrap(place["description"])
 
+    # get the items in the room
+    items = place.get("items", [])
+
+    if items:
+
+        # for each of the place items
+        # get the info from the ITEMS dictionary
+        # and make a list of item names
+        names = []
+        for key in items:
+            item = ITEMS.get(key)
+            names.append(item["name"])
+
+        # remove the last name from the list
+        last = names.pop()
+
+        # construct a sentence that looks like one of:
+        #   x, x and y
+        #   x and y
+        #   y
+        text = ", ".join(names)
+        if text:
+            text += " and "
+        text += last
+
+        # print the list of items.
+        print()
+        wrap(f"You see {text}.\n")
+
     # add a blank line
     print()
 
     # print what is in each direction from here
     for direction in ("north", "east", "south", "west"):
         name = place.get(direction)
-        if name:
-            write(f"To the {direction} is {name}.")
+        if not name:
+            continue
+
+        place = PLACES.get(name)
+        write(f"To the {direction} is {place['name']}.")
 
 def do_examine(args):
     """Look at an item in the current place."""

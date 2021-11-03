@@ -16,6 +16,7 @@ DEBUG = True
 
 PLAYER = {
     "place": "home",
+    "inventory": {},
 }
 
 PLACES = {
@@ -287,6 +288,12 @@ def do_take(args):
     if not item.get("can_take"):
         wrap(f"You try to pick up {item['name']}, but you find you aren't able to lift it.")
         return
+
+    PLAYER["inventory"].setdefault(name, 0)
+    PLAYER["inventory"][name] += 1
+    place["items"].remove(name)
+
+    wrap(f"You pick up {item['name']} and put it in your pack.")
 
 def main():
     header("Welcome!")
