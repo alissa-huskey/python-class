@@ -292,6 +292,58 @@ Or any number of arguments...
 thing("a", "b", "c", "d", "e")
 ```
 
+{{ newrow }}
+
+If you mix positional arguments and variadic the positional arguments must
+be first in the function definition.
+
+{{ rightcol }}
+
+```{code-cell} python
+:class: full-width
+
+def thing(stuff, *args):
+    print(stuff, args)
+    if args:
+      print(args[0])
+```
+
+{{ newrow }}
+
+Arguments with default values go after `*args`.
+
+{{ rightcol }}
+
+```{code-cell} python
+:class: full-width
+
+def thing(stuff, *args, data=None):
+    print(stuff, args, data)
+    if args:
+      print(args[0])
+```
+
+{{ newrow }}
+
+Note that when calling a function that like this you'll need to use
+{term}`keyword arguments` to specify the parameter name of any arguments with
+default values. If you send it as a positional argument, it will be part of
+`args`.
+
+{{ rightcol }}
+
+```{code-cell} python
+:class: full-width
+
+thing("abc", [1, 2, 3])
+```
+
+```{code-cell} python
+:class: full-width
+
+thing("abc", data=[1, 2, 3])
+```
+
 {{ endcols }}
 
 ### Part 2.1: Exercise
