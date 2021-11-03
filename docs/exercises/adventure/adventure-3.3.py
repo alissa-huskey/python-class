@@ -8,7 +8,7 @@ import textwrap
 
 from console import fg, bg, fx
 
-WIDTH = 60
+WIDTH = 45
 
 MARGIN = "  "
 

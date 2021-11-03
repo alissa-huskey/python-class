@@ -803,7 +803,7 @@ name and print the place information.
 
 {{ leftcol }}
 
-1. `[ ]` In the `PLAYER` dictionary change value associated with the `"player"` key to `new_name`
+1. `[ ]` In the `PLAYER` dictionary change value associated with the `"place"` key to `new_name`
 1. `[ ]` Print the values associated with the `"name"` and `"description"` keys of the `new_place` dictionary
 
 {{ rightcol }}
