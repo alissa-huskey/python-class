@@ -299,8 +299,9 @@ thing("a", "b", "c", "d", "e")
 `````{exercise} Arbitrary Positional Arguments
 :label: arbitrary-positional-exercise
 
-Make a function `write()` that takes an arbitrary number of positional
-arguments. Which converts all to strings, joins with a comma, then prints them.
+Modify your `write()` so that it takes an arbitrary number of positional
+arguments instead of message. It should converts all to strings then join them
+with a space between each before printing.
 
 **Example Usage**
 
@@ -319,10 +320,14 @@ abc, 123
 :class: full-width
 :linenos:
 
-def write(*args):
+def write(*args, before=0, after=0):
     args = map(str, args)
-    text = ", ".join(args)
-    print(text)
+    message = " ".join(args)
+
+    print("\n"*before, end="")
+    print(message)
+    print("\n"*after, end="")
+    print("----")
 
 ```
 
@@ -386,11 +391,15 @@ abc, 123, a=1, b=2.0, c='three'
 :class: full-width
 :linenos:
 
-def write(*args, **kwargs):
+def write(*args, before=0, after=0, **kwargs):
     args = [str(x) for x in args]
     args += [f"{k}={v!r}" for k,v in kwargs.items()]
-    text = ", ".join(args)
-    print(text)
+    message = " ".join(args)
+
+    print("\n"*before, end="")
+    print(message)
+    print("\n"*after, end="")
+    print("----")
 
 ```
 
