@@ -1550,7 +1550,7 @@ player types `l` or `look`.
 
 {{ endcols }}
 
-### Part 5.2: Finish `look`
+### Part 5.2: Print place name and description
 
 {link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-5.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
@@ -1558,7 +1558,7 @@ player types `l` or `look`.
 
 {{ left }}
 
-In this section we'll fill in the `do_look()` function.
+In this section we'll look up the place info and print the name and description.
 
 {{ right }}
 
@@ -1598,29 +1598,134 @@ In this section we'll fill in the `do_look()` function.
 
 {{ endcols }}
 
-#### B: still in `do_look()`: print nearby places
+### Part 5.3: Print the place items
+
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-5.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
 
 {{ left }}
 
-1. `[ ]` print a blank line
-1. `[ ]` Use a for loop to iterate over a list: `"north"`, `"east"`, `"south"`, and `"west"` using the variable name `direction`. For each one:
-   * `[ ]` Get the value associated with the `direction` key from the `place` dictionary and assign it to the variable `name`.
-   * `[ ]` If `name` is {term}`truthy`, then print:
-
-     {samp}`"To the {direction} is {name}."`
+In this section we'll print the list of items in the current place.
 
 {{ right }}
 
-`````{dropdown} Code
+`````{dropdown} Demo
+:open:
 
-```{literalinclude} adventure/adventure-5.2.py
-:class: full-width
-:linenos:
-:lineno-match:
-:lines: "121-141"
-:emphasize-lines: "14-"
+```{screencast} assets/adventure-5.3.cast
+:rows: 16
 ```
 
 `````
 
 {{ endcols }}
+
+#### A: at the end of `do_look()`
+
+In this section you will use each of the items in the current places `"items"`
+list to get the item information from `ITEMS` then construct a list of each
+items `"name"`.
+
+1. `[ ]` Using the `.get()` method, get the value from `place` associated with
+         the `items` dictionary. Use a default value of `[]` and assign it to the
+         variable `items`.
+1. `[ ]` If `items` is {term}`truthy`:
+   1. `[ ]` Make an empty list assigned to the variable `names`
+   1. `[ ]` Iterate over the `items` list using the variable name `key` for each item. For each item:
+      * `[ ]` Get the value from `ITEMS` associated with the `key` key and assign it to the variable `item`
+      * `[ ]` Append the value associated with the `"name"` key from the `items` dictionary to the `names` list
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-5.3.py
+:class: full-width
+:linenos:
+:lineno-match:
+:lines: "130-144"
+:emphasize-lines: "5-"
+```
+
+`````
+
+#### B: still in `do_look()`, in `if items`
+
+In this section we're going to construct a plain english sentence listing the items in this place. If there is only one item it will look like:
+
+    y
+
+If there are two items it will look like:
+
+    x and y
+
+And if there are three or more items it will look like:
+
+    x, x and y
+
+1. `[ ]` Remove the last item from the `names` list using the `.pop()` method and assign it to the variable `last`.
+1. `[ ]` Join the `names` list using `", "` as a delimiter and assign it to the variable `text`
+1. `[ ]` If `text` is {term}`truthy` then append `" and "` to text.
+1. `[ ]` Append `last` to `text`
+1. `[ ]` Print a blank line
+1. `[ ]` Use the `write()` function to print:
+   {samp}`You see {text}.`
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-5.3.py
+:class: full-width
+:linenos:
+:lineno-match:
+:lines: "142-160"
+:emphasize-lines: "5-"
+```
+
+`````
+
+### Part 5.4: Print the nearby places
+
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-5.4.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
+
+{{ left }}
+
+In this section we'll print the name of each of any places directly to the
+`"north"`, `"south"`, `"east"` or `"west"` of the players current place.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-5.4.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+
+#### A: at the end of `do_look()`
+
+1. `[ ]` print a blank line
+1. `[ ]` Use a for loop to iterate over a list: `"north"`, `"east"`, `"south"`, and `"west"` using the variable name `direction`. For each one:
+   * `[ ]` Get the value associated with the `direction` key from the `place` dictionary and assign it to the variable `name`.
+   * `[ ]` If `name` is {term}`falsy`, then continue
+1. `[ ]` Get the place dictionary from `PLACES` associated with the `name` key and assign it to `place`.
+1. `[ ]` Use the `write()` function to print: {samp}`"To the {direction} is {name}."`.
+         Get *`name`* from the `place` dictionary.
+
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-5.4.py
+:class: full-width
+:linenos:
+:lineno-match:
+:lines: "158-173"
+:emphasize-lines: "5-"
+```
+
+`````

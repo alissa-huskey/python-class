@@ -16,6 +16,7 @@ DEBUG = True
 
 PLAYER = {
     "place": "home",
+    "inventory": {},
 }
 
 PLACES = {
@@ -24,7 +25,7 @@ PLACES = {
         "name": "Your Cottage",
         "east": "town-square",
         "description": "A cozy stone cottage with a desk and a neatly made bed.",
-        "items": ["book", "desk"],
+        "items": ["desk", "book"],
     },
     "town-square": {
         "key": "town-square",
@@ -52,7 +53,7 @@ ITEMS = {
     },
     "desk": {
         "key": "desk",
-        "name": "Desk",
+        "name": "a desk",
         "description": (
             "A wooden desk with a large leather-bound book open on "
             "its surface."
@@ -60,7 +61,8 @@ ITEMS = {
     },
     "book": {
         "key": "book",
-        "name": "A book",
+        "can_take": True,
+        "name": "a book",
         "description": (
             "A hefty leather-bound tome open to an interesting passage."
         ),
@@ -130,6 +132,46 @@ def do_look():
     # print information about the current place
     header(f"{place['name']}")
     wrap(place["description"])
+
+    # print the items in the room
+    items = place.get("items", [])
+    if items:
+
+        # for each of the place items
+        # get the info from the ITEMS dictionary
+        # and make a list of item names
+        names = []
+        for key in items:
+            item = ITEMS.get(key)
+            names.append(item["name"])
+
+        # remove the last name from the list
+        last = names.pop()
+
+        # construct a sentence that looks like one of:
+        #   x, x and y
+        #   x and y
+        #   y
+        text = ", ".join(names)
+        if text:
+            text += " and "
+        text += last
+
+        # print the list of items.
+        print()
+        wrap(f"You see {text}.\n")
+
+    # add a blank line
+    print()
+
+    # print what is in each direction from here
+    for direction in ("north", "east", "south", "west"):
+        name = place.get(direction)
+        if not name:
+            continue
+
+        place = PLACES.get(name)
+        write(f"To the {direction} is {place['name']}.")
 
 def do_examine(args):
     """Look at an item in the current place."""
@@ -212,6 +254,45 @@ def do_go(args):
     header(f"{new_place['name']}")
     wrap(new_place["description"])
 
+def do_take(args):
+    """Pick up an item and add it to inventory."""
+    debug(f"Trying to take: {args}")
+
+    # make sure the player typed an item
+    if not args:
+        error("What do you want to take?")
+        return
+
+    # get the item name from arguments
+    # and make it lowercase
+    name = args[0].lower()
+
+    # look up where the player is now
+    place_name = PLAYER["place"]
+    place = PLACES[place_name]
+
+    # make sure the item is in this place
+    if name not in place["items"]:
+        error(f"Sorry, I don't see a {name!r} here.")
+        return
+
+    # get the item information
+    item = ITEMS.get(name)
+
+    # make sure the item is in the ITEMS dictionary
+    if not item:
+        error(f"Woops! The information about {name!r} seems to be missing.")
+        return
+
+    if not item.get("can_take"):
+        write(f"You try to pick up {item['name']}, but you find you aren't able to lift it.")
+        return
+
+    write(f"You pick up {item['name']} and put it in your pack.")
+
+    place["items"].remove(name)
+    PLAYER["inventory"][name] = PLAYER["inventory"].get(name, 0) + 1
+
 def main():
     header("Welcome!")
 
@@ -241,6 +322,9 @@ def main():
 
         elif command in ("l", "look"):
             do_look()
+
+        elif command in ("t", "take", "grab"):
+            do_take(args)
 
         else:
             error("No such command.")

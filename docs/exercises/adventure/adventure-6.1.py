@@ -16,6 +16,7 @@ DEBUG = True
 
 PLAYER = {
     "place": "home",
+    "inventory": {},
 }
 
 PLACES = {
@@ -131,6 +132,15 @@ def do_look():
     header(f"{place['name']}")
     wrap(place["description"])
 
+    # add a blank line
+    print()
+
+    # print what is in each direction from here
+    for direction in ("north", "east", "south", "west"):
+        name = place.get(direction)
+        if name:
+            write(f"To the {direction} is {name}.")
+
 def do_examine(args):
     """Look at an item in the current place."""
 
@@ -212,6 +222,10 @@ def do_go(args):
     header(f"{new_place['name']}")
     wrap(new_place["description"])
 
+def do_take(args):
+    """Pick up an item and add it to inventory."""
+    debug(f"Trying to take: {args}")
+
 def main():
     header("Welcome!")
 
@@ -241,6 +255,9 @@ def main():
 
         elif command in ("l", "look"):
             do_look()
+
+        elif command in ("t", "take", "grab"):
+            do_take(args)
 
         else:
             error("No such command.")
