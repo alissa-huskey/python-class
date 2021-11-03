@@ -892,9 +892,9 @@ object</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140442359133504 {&#39;title&#39;: &#39;home&#39;}
-140442359133504 {&#39;title&#39;: &#39;home&#39;}
-140442359128960 {&#39;title&#39;: &#39;School Work&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140555294552576 {&#39;title&#39;: &#39;home&#39;}
+140555294552576 {&#39;title&#39;: &#39;home&#39;}
+140555311998272 {&#39;title&#39;: &#39;School Work&#39;}
 </pre></div>
 </div>
 </div>
@@ -928,9 +928,9 @@ and assigned.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140442359132544 {&#39;title&#39;: &#39;home&#39;}
-140442359115712 {&#39;title&#39;: &#39;work&#39;}
-140442359133184 {&#39;title&#39;: &#39;School Work&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140555294543808 {&#39;title&#39;: &#39;home&#39;}
+140555294552832 {&#39;title&#39;: &#39;work&#39;}
+140555294543552 {&#39;title&#39;: &#39;School Work&#39;}
 </pre></div>
 </div>
 </div>
@@ -961,9 +961,9 @@ and assigned.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140442359115712 {&#39;title&#39;: &#39;home&#39;}
-140442359133184 {&#39;title&#39;: &#39;work&#39;}
-140442359358208 {&#39;title&#39;: &#39;School Work&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140555294786880 {&#39;title&#39;: &#39;home&#39;}
+140555294541760 {&#39;title&#39;: &#39;work&#39;}
+140555294533760 {&#39;title&#39;: &#39;School Work&#39;}
 </pre></div>
 </div>
 </div>
@@ -1141,9 +1141,7 @@ with a space between each before printing.</p>
 <div class="section" id="part-2-2-keyword">
 <h3><a class="toc-backref" href="#table-of-contents">Part 2.2: Keyword</a><a class="headerlink" href="#part-2-2-keyword" title="Permalink to this headline">¶</a></h3>
 <div class="row"><div class="col left-col">
-<p>To take arbitrary keyword arguments, put two asterisks before a parameter name.
-The keyword arguments will then be in a dictionary with that name, in this case
-<code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>To take arbitrary keyword arguments, put two asterisks before a parameter name.</p>
 </div><div class="col">
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1156,7 +1154,8 @@ The keyword arguments will then be in a dictionary with that name, in this case
 </div>
 </div>
 </div></div><div class="row"><div class="col right-col">
-<p>Then any keyword arguments will be in a dictionary with that name.</p>
+<p>The keyword arguments will then be in a dictionary with that name, in this case
+<code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
 </div><div class="col">
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1167,6 +1166,20 @@ The keyword arguments will then be in a dictionary with that name, in this case
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3}
 1
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col right-col">
+<p>Variadic keyword arguments go after parameters with default values in the
+function definition.</p>
+</div><div class="col">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">thing</span><span class="p">(</span><span class="n">stuff</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">stuff</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">args</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
