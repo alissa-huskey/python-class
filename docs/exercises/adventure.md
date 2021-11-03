@@ -2019,7 +2019,7 @@ Part 7: Show inventory
 
 In this section we'll add the `inventory` command.
 
-### Part 6.1: Add command
+### Part 7.1: Add command
 
 {link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-7.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
