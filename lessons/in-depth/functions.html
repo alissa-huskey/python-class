@@ -892,9 +892,9 @@ object</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140136805630464 {&#39;title&#39;: &#39;home&#39;}
-140136805630464 {&#39;title&#39;: &#39;home&#39;}
-140136805944320 {&#39;title&#39;: &#39;School Work&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140442359133504 {&#39;title&#39;: &#39;home&#39;}
+140442359133504 {&#39;title&#39;: &#39;home&#39;}
+140442359128960 {&#39;title&#39;: &#39;School Work&#39;}
 </pre></div>
 </div>
 </div>
@@ -928,9 +928,9 @@ and assigned.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140136805619200 {&#39;title&#39;: &#39;home&#39;}
-140136805620800 {&#39;title&#39;: &#39;work&#39;}
-140136805878464 {&#39;title&#39;: &#39;School Work&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140442359132544 {&#39;title&#39;: &#39;home&#39;}
+140442359115712 {&#39;title&#39;: &#39;work&#39;}
+140442359133184 {&#39;title&#39;: &#39;School Work&#39;}
 </pre></div>
 </div>
 </div>
@@ -961,9 +961,9 @@ and assigned.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140136805619904 {&#39;title&#39;: &#39;home&#39;}
-140136805862336 {&#39;title&#39;: &#39;work&#39;}
-140136805610752 {&#39;title&#39;: &#39;School Work&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140442359115712 {&#39;title&#39;: &#39;home&#39;}
+140442359133184 {&#39;title&#39;: &#39;work&#39;}
+140442359358208 {&#39;title&#39;: &#39;School Work&#39;}
 </pre></div>
 </div>
 </div>
@@ -1035,6 +1035,64 @@ a
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;)
 a
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col right-col">
+<p>If you mix positional arguments and variadic the positional arguments must
+be first in the function definition.</p>
+</div><div class="col">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">thing</span><span class="p">(</span><span class="n">stuff</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">stuff</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">args</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col right-col">
+<p>Arguments with default values go after <code class="docutils literal notranslate"><span class="pre">*args</span></code>.</p>
+</div><div class="col">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">thing</span><span class="p">(</span><span class="n">stuff</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">stuff</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">args</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col right-col">
+<p>Note that when calling a function that like this you’ll need to use
+<a class="reference internal" href="../keyword%20argument.html" title=""><span class="xref std std-term">keyword arguments</span></a> to specify the parameter name of any arguments with
+default values. If you send it as a positional argument, it will be part of
+<code class="docutils literal notranslate"><span class="pre">args</span></code>.</p>
+</div><div class="col">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thing</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>abc ([1, 2, 3],) None
+[1, 2, 3]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thing</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>abc () [1, 2, 3]
 </pre></div>
 </div>
 </div>
