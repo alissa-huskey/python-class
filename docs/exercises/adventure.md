@@ -1759,7 +1759,6 @@ player types `t`, `take`, or `grab`.
 
 {{ endcols }}
 
-
 #### A: Define a `do_take()` function
 
 {{ left }}
@@ -2011,6 +2010,126 @@ In this section we'll modify `do_examine()` so it can be used to look at invento
 :lineno-match:
 :lines: '177-197'
 :emphasize-lines: "19"
+```
+
+`````
+
+Part 7: Show inventory
+----------------------
+
+In this section we'll add the `inventory` command.
+
+### Part 6.1: Add command
+
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-7.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
+
+{{ left }}
+
+In this section we'll define a `do_inventory()` function that gets called when the
+player types `i`, or `inventory`.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-7.1.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+#### A: Define a `do_inventory()` function
+
+{{ left }}
+
+1. `[ ]` Define a `do_inventory()` function.
+1. `[ ]` In it, use the `debug()` function to print something like `"Trying to show inventory."`.
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-7.1.py
+:class: full-width
+:linenos:
+:lineno-match:
+:start-at: 'def do_inventory():'
+:end-at: '    debug'
+```
+
+`````
+
+{{ endcols }}
+
+#### B: in `main()`, in the `while` loop
+
+{{ left }}
+
+1. `[ ]` Add an `elif` that checks if `command` is `"i"`, or
+         `"inventory"`.
+   * `[ ]` if so, call `do_inventory()`
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-7.1.py
+:class: full-width
+:linenos:
+:lineno-match:
+:start-at: '        if command in ["q", "quit", "exit"]:'
+:end-at: '            continue'
+:emphasize-lines: "19-21"
+```
+
+`````
+
+{{ endcols }}
+
+### Part 7.2: Print inventory
+
+{{ left }}
+
+In this section we'll print the players inventory.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-7.2.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+#### A: in `do_inventory()`
+
+1. `[ ]` Use the `header()` function to print `"Inventory"`
+1. `[ ]` If `PLAYER["inventory"]` is {term}`falsy`:
+   * `[ ]` use the `write()` function to print `"Empty."`
+1. `[ ]` Iterate over the results of `.items()` on `PLAYER["inventory"]` using
+         the variables `name` and `qty`.
+   * `[ ]` Get the value associated with the `name` key from `ITEMS` and assign it to `item`.
+   * `[ ]` Use the `write()` function to print the `qty` and `item["name"]`
+1. `[ ]` Print a blank line
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-7.2.py
+:class: full-width
+:linenos:
+:lineno-match:
+:start-at: 'def do_inventory():'
+:end-at: '    print()'
+:emphasize-lines: "6-"
 ```
 
 `````
