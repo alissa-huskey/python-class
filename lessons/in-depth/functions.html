@@ -904,9 +904,9 @@ object</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140384035307904 {&#39;title&#39;: &#39;home&#39;}
-140384035307904 {&#39;title&#39;: &#39;home&#39;}
-140384035298944 {&#39;title&#39;: &#39;School Work&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140269348475520 {&#39;title&#39;: &#39;home&#39;}
+140269348475520 {&#39;title&#39;: &#39;home&#39;}
+140269348466240 {&#39;title&#39;: &#39;School Work&#39;}
 </pre></div>
 </div>
 </div>
@@ -940,9 +940,9 @@ and assigned.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140384035311744 {&#39;title&#39;: &#39;home&#39;}
-140384035298240 {&#39;title&#39;: &#39;work&#39;}
-140384035298752 {&#39;title&#39;: &#39;School Work&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140269348477888 {&#39;title&#39;: &#39;home&#39;}
+140269348462784 {&#39;title&#39;: &#39;work&#39;}
+140269348479488 {&#39;title&#39;: &#39;School Work&#39;}
 </pre></div>
 </div>
 </div>
@@ -973,9 +973,9 @@ and assigned.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140384035543296 {&#39;title&#39;: &#39;home&#39;}
-140384035298240 {&#39;title&#39;: &#39;work&#39;}
-140384035296000 {&#39;title&#39;: &#39;School Work&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140269382981632 {&#39;title&#39;: &#39;home&#39;}
+140269348720768 {&#39;title&#39;: &#39;work&#39;}
+140269348464320 {&#39;title&#39;: &#39;School Work&#39;}
 </pre></div>
 </div>
 </div>
@@ -1301,8 +1301,7 @@ before the object.</p>
 </div>
 </div>
 </div></div><div class="row"><div class="col right-col">
-<p>All unpacked sequences must go after any positional arguments and before any
-keyword arguments.</p>
+<p>All unpacked sequences must go before any keyword arguments.</p>
 </div><div class="col">
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1403,6 +1402,42 @@ asterisks before the dictionary.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hex Color: #21abcd is RGB: (33, 171, 205)
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col right-col">
+<p>As with unpacking sequences, you can unpack multiple dictionaries.</p>
+</div><div class="col">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">show</span><span class="p">(</span><span class="o">**</span><span class="n">color</span><span class="p">,</span> <span class="o">**</span><span class="n">rgb</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1899</span><span class="o">/</span><span class="mf">406702068.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">show</span><span class="p">(</span><span class="o">**</span><span class="n">color</span><span class="p">,</span> <span class="o">**</span><span class="n">rgb</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;rgb&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col right-col">
+<p>The unpacked keyword arguments must go after any positional arguments.</p>
+</div><div class="col">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">color</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+
+<span class="n">color</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;green&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;blue&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">show</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="o">**</span><span class="n">color</span><span class="p">,</span> <span class="n">hex_code</span><span class="o">=</span><span class="s2">&quot;#FF0000&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
