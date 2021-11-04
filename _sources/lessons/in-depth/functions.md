@@ -479,7 +479,7 @@ Sometimes want a function to take arbitrary arguments, sometimes you want to
 send all of the values in a list or dictionary as arguments to a function. This
 is known as {term}`unpacking`.
 
-### Part 3.1: Calling
+### Part 3.1: Sequences
 
 {{ leftcol }}
 
@@ -501,6 +501,63 @@ print(*birth_stones)
 ```
 
 {{ newrow }}
+
+You can unpack more than one sequence.
+
+{{ rightcol }}
+
+```{code-cell} python
+:class: full-width
+birth_stones = [
+    "Garnet",
+    "Amethyst",
+    "Aquam",
+    "Diamond",
+    "Emerald"
+]
+
+flowers = (
+    "Carnation",
+    "Violet",
+    "Jonquil",
+    "Sweet Pea",
+    "Lily"
+)
+print(*birth_stones, *flowers)
+```
+
+{{ newrow }}
+
+All unpacked sequences must go after any positional arguments and before any
+keyword arguments.
+
+{{ rightcol }}
+
+```{code-cell} python
+:class: full-width
+birth_stones = [
+    "Garnet",
+    "Amethyst",
+    "Aquam",
+    "Diamond",
+    "Emerald"
+]
+
+flowers = (
+    "Carnation",
+    "Violet",
+    "Jonquil",
+    "Sweet Pea",
+    "Lily"
+)
+print("Stones and flowers:", *birth_stones, *flowers, sep="\n")
+```
+
+{{ endcols }}
+
+### Part 3.1: Mappings
+
+{{ leftcol }}
 
 To send all elements of a dictionary as {term}`keyword arguments`, put two
 asterisks before the dictionary.
