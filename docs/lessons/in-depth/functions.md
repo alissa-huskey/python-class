@@ -528,8 +528,7 @@ print(*birth_stones, *flowers)
 
 {{ newrow }}
 
-All unpacked sequences must go after any positional arguments and before any
-keyword arguments.
+All unpacked sequences must go before any keyword arguments.
 
 {{ rightcol }}
 
@@ -612,9 +611,37 @@ color = {
 show(**color)
 ```
 
+{{ newrow }}
+
+As with unpacking sequences, you can unpack multiple dictionaries.
+
+{{ rightcol }}
+
+```{code-cell} python
+:class: full-width
+show(**color, **rgb)
+```
+
+{{ newrow }}
+
+The unpacked keyword arguments must go after any positional arguments.
+
+{{ rightcol }}
+
+```{code-cell} python
+:class: full-width
+color.pop("red")
+
+color = {
+    "green": 0,
+    "blue": 0,
+}
+show(255, **color, hex_code="#FF0000")
+```
+
 {{ endcols }}
 
-% ### Part 3.2: Exercises
+% ### Part 3.2: Exercise
 
 % TODO
 % [ ] order of positional, kwargs, unpacked args
