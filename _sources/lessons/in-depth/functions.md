@@ -555,6 +555,39 @@ print("Stones and flowers:", *birth_stones, *flowers, sep="\n")
 
 {{ endcols }}
 
+### Part 3.1: Exercise
+
+`````{exercise} Unpacking Sequences
+:label: unpacking-sequences-exercise
+
+Make a list of cities you've lived in. Print them by unpacking the list as
+arguments to the `print()` function. Bonus: Mix with positional and keyword
+arguments.
+
+`````
+
+`````{solution} unpacking-sequences-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: "Unpacking Sequences Exercise"
+:class: full-width
+:linenos:
+
+cities = [
+    "Oceanside, CA",
+    "San Francisco, CA",
+    "Lafayette, CA",
+    "Denver, CO",
+]
+
+print(*cities)
+print("Cities I've lived in:", *cities, sep="\n")
+
+```
+
+`````
+
 ### Part 3.1: Mappings
 
 {{ leftcol }}
