@@ -619,6 +619,17 @@ As with unpacking sequences, you can unpack multiple dictionaries.
 
 ```{code-cell} python
 :class: full-width
+
+color = {
+  "hex_code": "21abcd",
+}
+
+rgb = {
+  "red": 33,
+  "green": 171,
+  "blue": 205,
+}
+
 show(**color, **rgb)
 ```
 
@@ -630,23 +641,41 @@ The unpacked keyword arguments must go after any positional arguments.
 
 ```{code-cell} python
 :class: full-width
-color.pop("red")
-
 color = {
     "green": 0,
     "blue": 0,
 }
+
 show(255, **color, hex_code="#FF0000")
 ```
 
 {{ endcols }}
 
-% ### Part 3.2: Exercise
+### Part 3.2: Exercise
 
-% TODO
-% [ ] order of positional, kwargs, unpacked args
+`````{exercise} Unpacking Mappings
+:label: unpacking-mappings-exercise
 
+Make a dictionary called `options` that includes some of the values for `sep`,
+`end` or `file`. Unpack `options` it as arguments to `print()` after printing
+your previous list of cities.
 
+`````
+
+`````{solution} unpacking-mappings-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: "Unpacking Mappings Exercise"
+:class: full-width
+:linenos:
+
+options = {"sep": "; ", "end": "\n\n"}
+print(*cities, **options)
+
+```
+
+`````
 
 Part 4: Annotations
 -------------------
