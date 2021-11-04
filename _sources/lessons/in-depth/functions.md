@@ -360,6 +360,8 @@ with a space between each before printing.
 ```python
 >>> write("abc", 123)
 abc, 123
+----
+
 ```
 
 `````
@@ -445,7 +447,9 @@ printed (along with any arguments) seperated by commas.
 
 ```python
 >>> write("abc", 123, a=1, b=2.0, c="three")
-abc, 123, a=1, b=2.0, c='three'
+abc 123 a=1 b=2.0 c='three'
+----
+
 ```
 
 `````
@@ -742,6 +746,46 @@ def random(limit: int=10) !!!-> int!!!:
 
 Be aware that is strictly documentation. An annotation does not change or
 enforce the type of a given value.
+
+### Part 4.4: Exercise
+
+`````{exercise} Annotations
+:label: annotations-exercise
+
+Write a function `get_keys()` that takes two arguments: `source` (dict) and
+`keys` (list).  It should return a dictionary containing all key value pairs
+from `source` for keys in `keys`.
+
+Annotate both the parameters and return value.
+
+** Example Usage**
+
+```{code-block} python
+:class: full-width
+:linenos:
+
+>>> import string
+>>> alpha = dict(zip(string.ascii_lowercase, range(1, 27)))
+
+>>> get_keys(alpha, ["x", "y", "x"])
+{'x': 24, 'y': 25, 'z': 26}
+```
+
+`````
+
+`````{solution} annotations-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: "Annotations Exercise"
+:class: full-width
+:linenos:
+
+def get_keys(source: dict, keys: list) -> dict:
+     return {k: source.get(k) for k in keys}
+```
+
+`````
 
 Part 5: Lambdas
 ---------------
