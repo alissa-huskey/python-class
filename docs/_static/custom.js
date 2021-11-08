@@ -4,6 +4,25 @@ try {
   var session = {};
 }
 
+// add relative URL base
+window.addEventListener("DOMContentLoaded", (e) => {
+  console.log("python-class> setting relative URL base...");
+
+  url = document.location.href;
+
+  if (url.includes("github.io/alissa-huskey")) {
+    // get the slash after github.io/alissa-huskey/
+    base = url.substring(0, url.indexOf("/", 32));
+  } else {
+    base = document.location.origin;
+  }
+
+  console.log("python-class> base URL: " + base);
+
+  elm = $("head").add("base")
+  elm.attr["href"] = base
+});
+
 // remove href attribute from .missing-term
 window.addEventListener("DOMContentLoaded", (e) => {
   console.log("python-class> removing missing-term hrefs...");

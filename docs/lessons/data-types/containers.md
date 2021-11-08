@@ -398,7 +398,7 @@ element
 item
   An individual value in a {term}`collection`.
 
-index : data-types
+index : types
 index number
   An integer representing an elements position in a sequence.
 
