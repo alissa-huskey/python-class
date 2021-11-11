@@ -82,7 +82,7 @@ def asciinema_player(opts):
     return f"<player name={opts['name']}></player>"
     # return f"<player name={'adventure'}></player>"
     # return "<player name=adventure></player>"
-    
+
 options = {"name": "adventure"}
 
 results = [asciinema_player(opts=options)]
@@ -109,11 +109,4 @@ LOGDIR = Path(__file__).parents[2].joinpath("tmp")
 # LOGDIR = Path('/Users/alissahuskey/Dropbox/tmp')
 
 # object.method(arguments)
-
-#######################################################################
-
-# Exercise 7
-
-text = ""
-text.lower().replace(" ", "-").rstrip("s")
 
