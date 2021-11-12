@@ -628,6 +628,83 @@ reduce(addifvowel, text, 0)
 
 `````
 
+Challenges
+----------
+
+This section contains a series of more challenging exercises using `map()`,
+`filter()` or `range()`.
+
+### Fibonacci sequence
+
+`````{exercise} Fibonacci
+:label: fibonacci-exercise
+
+Use `reduce()` to generate a list containing the first `10` numbers of the
+[fibonacci sequence][] in which each successive number is the result of adding
+the preceeding two.
+
+**Example output**
+
+```
+[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+```
+
+`````
+
+`````{solution} fibonacci-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: "Fibonacci Exercise"
+:class: full-width
+reduce(lambda seq, _: seq + [sum(seq[-2:])], range(10), [0, 1])
+
+```
+
+`````
+
+[fibonacci sequence]: https://en.wikipedia.org/wiki/Fibonacci_number
+
+### RGB to Hex Color Code
+
+`````{exercise} RGB to Hex
+:label: rgb-to-hex-exercise
+
+Use `reduce()` to convert a iterable of three RGB color values from `0-255` to
+a six character string containing the equivalant [hex color code][].
+
+```{dropdown} Need a hint?
+Use [string formatting][] to convert hex.
+```
+
+**Example**
+
+```python
+(255, 255, 0)  # RGB input
+'ffff00'       # hex output
+```
+
+`````
+
+`````{solution} rgb-to-hex-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: "RGB to Hex Exercise"
+:class: full-width
+:linenos:
+
+yellow = (255, 255, 0)
+
+reduce(lambda hex, val: hex + f"{val:02x}", yellow, "")
+
+```
+
+`````
+
+[hex color code]: https://www.pluralsight.com/blog/tutorials/understanding-hexadecimal-colors-simple
+[string formatting]: https://alissa-huskey.github.io/python-class/lessons/string-formatting-part-1.html#presentations
+
 
 Reference
 ---------
@@ -779,7 +856,7 @@ stateless
 ### Summary
 
 * `map()` is used to transform elements
-* `filter()` is used to filter to select elements
+* `filter()` is used to select elements
 * `reduce()` is used for aggregation
 
 % TODO
