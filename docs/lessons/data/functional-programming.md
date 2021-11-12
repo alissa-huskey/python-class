@@ -103,7 +103,7 @@ list(converted)
 
 {{ newrow }}
 
-You can use any {term}`callable`, such as lambda...
+You can use any {term}`callable`, such as {term}`lambda`...
 
 {{ rightcol }}
 
@@ -311,11 +311,11 @@ Part 2: Filter
 Generating a new collection containing only items that match a certain condition
 is called {term}`filtering <filter>`.
 
-### Part 2.1: For loop filtering
+### Part 2.1: Proceedural
 
 {{ leftcol }}
 
-As with mapping, you can always filter the old fashioned way, via a `for` loop.
+Here is how you would filter the old fashioned way, via a `for` loop.
 
 {{ rightcol }}
 
@@ -415,9 +415,11 @@ Part 3: Reducing
 operation, cumulatively, to each element in a collection to arrive at a single
 value is called {term}`reducing <reduce>`.
 
-### Part 3.1: For loop
+### Part 3.1: Proceedural
 
 {{ leftcol }}
+
+Here's an example of how you would reduce via a `for` loop.
 
 In this example, we add each number in the `numbers` list to the previous total
 to arrive at the sum of all numbers in the sequence.
@@ -751,7 +753,7 @@ statelessness
 stateless
   A term describing software, a software component (like a function), or a
   protocol that does not reference information from previous operations nor
-  have any [side effects][wk-side-effects] such as saving state for future
+  have any [side effects][] such as saving state for future
   operations. Instead each operation starts from scratch based only on the
   input and the only thing effected is the returned output.
   In contrast to {term}`statefulness`.
