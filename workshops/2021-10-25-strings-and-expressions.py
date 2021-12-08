@@ -20,7 +20,7 @@ print("-" * (8+2))
 
 print("one", "two", "three")
 things = [
-    "one", 
+    "one",
     "two",
     "three",
 ]
@@ -42,7 +42,7 @@ print(child_words)
 #
 # 1. You can group an expression using parenthesis
 # 2. You can split a single statement onto multiple lines when it is inside of: (), [], or {}
-# 3. When you put two string literals next to each other, they are automatically concatonated 
+# 3. When you put two string literals next to each other, they are automatically concatonated
 
 words = ["one", "two", "three"]
 words = ("one", "two", "three")
@@ -60,8 +60,8 @@ description = (
 )
 
 # description = """
-#     Your cottage is at the top of a hill with a winding path leading down 
-#     to a burbling brook which in turn has fish and rocks and blah blah blah 
+#     Your cottage is at the top of a hill with a winding path leading down
+#     to a burbling brook which in turn has fish and rocks and blah blah blah
 #     and stuff the end.
 # """
 
