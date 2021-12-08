@@ -10,7 +10,7 @@ from console import fg, bg, fx
 
 WIDTH = 45
 
-MARGIN = "  "
+MARGIN = 2
 
 DEBUG = True
 
@@ -54,13 +54,14 @@ ITEMS = {
 def wrap(text):
     """Print wrapped and indented text."""
     # wrap the text
+    margin = MARGIN * " "
+    # wrap the text
     paragraph = textwrap.fill(
         text,
         WIDTH,
-        initial_indent=MARGIN,
-        subsequent_indent=MARGIN,
+        initial_indent=margin,
+        subsequent_indent=margin,
     )
-
     # print the wrapped text
     print(paragraph)
 
