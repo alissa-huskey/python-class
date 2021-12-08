@@ -902,7 +902,7 @@ wrap the text so that it looks nice.
 
 1. `[ ]` import the `textwrap` module
 1. `[ ]` Add a global variable `WIDTH` and assign it the value `60` (or so, to taste).
-1. `[ ]` Add a global variable `MARGIN` and assign the value of two or three spaces.
+1. `[ ]` Add a global variable `MARGIN` and assign it to `2` or `3` (or so, to taste).
 
 {{ right }}
 
@@ -923,7 +923,7 @@ wrap the text so that it looks nice.
 #### B. Make wrap()
 
 1. `[ ]` Define a `wrap()` function which takes one argument `text`.
-1. `[ ]` For now, just print `MARGIN`, then `text` in the function, so we can
+1. `[ ]` For now, just print `text` in the function, so we can
          make sure it works.
 
 #### C. In do_go(), at the end
@@ -941,7 +941,8 @@ wrap the text so that it looks nice.
 ```{literalinclude} adventure/adventure-3.1.py
 :class: full-width
 :linenos:
-:lines: "133-135"
+:start-at: "# print information about the new place"
+:end-before: "def "
 :lineno-match:
 :emphasize-lines: "3"
 ```
@@ -955,21 +956,34 @@ wrap the text so that it looks nice.
 In this section we'll call `textwrap.fill()` function to wrap a paragraph of
 text.
 
+:::{hint}
+
+If you don't know how keyword arguments work or would like a refresher take a
+look at this section of the [functions lesson][keyword-args].
+
+:::
+
+1. `[ ]` Mulitply a single space (`" "`) by `MARGIN` and assign it to the local
+         variable `margin` (note that the two different cases).
 1. `[ ]` Remove the line where you previously printed `text`.
 1. `[ ]` Call the `fill()` function from the `textwrap` module and assign the
    result to the variable `paragraph`. Pass the arguments:
    * `text`
    * `WIDTH`
-   * keyword argument `initial_indent` with the value `MARGIN`
-   * keyword argument `subsequent_indent` with the value `MARGIN`
+   * keyword argument `initial_indent` with the value `margin`
+   * keyword argument `subsequent_indent` with the value `margin`
 1. `[ ]` Print `paragraph`.
+
+[keyword-args]: ../lessons/functions.html#part-2-3-keyword-arguments
+
 
 `````{dropdown} Code
 
 ```{literalinclude} adventure/adventure-3.1.py
 :class: full-width
 :linenos:
-:lines: "52-63"
+:start-at: 'def wrap'
+:end-before: 'def'
 :lineno-match:
 :emphasize-lines: "2-"
 ```
@@ -1042,17 +1056,19 @@ colorful.
 ```{literalinclude} adventure/adventure-3.2.py
 :class: full-width
 :linenos:
-:lines: "67-75"
 :lineno-match:
 :emphasize-lines: "3, 9"
+:start-at: "def error"
+:end-before: "def do_"
 ```
 
 ```{literalinclude} adventure/adventure-3.2.py
 :class: full-width
 :linenos:
-:lines: "139-147"
 :lineno-match:
 :emphasize-lines: "7"
+:start-at: 'def main'
+:end-at: 'args ='
 ```
 
 `````
@@ -1099,7 +1115,8 @@ indented at the same level, or to add any extra formatting.
 ```{literalinclude} adventure/adventure-3.3.py
 :class: full-width
 :linenos:
-:lines: "73-75"
+:start-at: 'def write'
+:end-before: 'def'
 :lineno-match:
 ```
 
@@ -1108,9 +1125,9 @@ indented at the same level, or to add any extra formatting.
 {{ endcols }}
 
 1. `[ ]` Write a function named: `write` with one parameter: `text`
-1. `[ ]` In the function: print `MARGIN`, followed by `text`. You can do this
-         as an f-string or pass the keyword argument `sep` with the value `""` to
-         avoid adding an extra space between them.
+1. `[ ]` In the function: print `MARGIN` multiplied by a single space (`" "`),
+         followed by `text`. You can do this as an f-string or pass the keyword argument
+         `sep` with the value `""` to avoid adding an extra space between them.
 
 #### B. Define header() function
 
@@ -1130,7 +1147,8 @@ bold, but you can change it to suit your taste.
 ```{literalinclude} adventure/adventure-3.3.py
 :class: full-width
 :linenos:
-:lines: "54-58"
+:start-at: 'def header'
+:end-before: 'def'
 :lineno-match:
 ```
 
@@ -1161,7 +1179,8 @@ Replace `print()` calls with `header()` and `write()` calls.
 ```{literalinclude} adventure/adventure-3.3.py
 :class: full-width
 :linenos:
-:lines: "87-95"
+:start-at: 'def do_shop'
+:end-before: 'def'
 :lineno-match:
 :emphasize-lines: "4, 7"
 ```
@@ -1182,7 +1201,7 @@ Replace `print()` calls with `header()` and `write()` calls.
 
 Replace `print()` call with `write()` call.
 
-1. `[ ]` When printing any message (like `"Goodbye"`) call `write()` instad of
+1. `[ ]` When printing any message (like `"Goodbye"`) call `write()` instead of
          `print()`.
 
 {{ right }}
@@ -1192,7 +1211,8 @@ Replace `print()` call with `write()` call.
 ```{literalinclude} adventure/adventure-3.3.py
 :class: full-width
 :linenos:
-:lines: "97-100"
+:start-at: 'def do_quit'
+:end-before: 'def'
 :lineno-match:
 :emphasize-lines: "3"
 ```
@@ -1216,9 +1236,10 @@ Replace `print()` call with `header()` call.
 ```{literalinclude} adventure/adventure-3.3.py
 :class: full-width
 :linenos:
-:lines: "144-147"
+:start-at: "# print information about the new place"
+:end-before: 'def'
 :lineno-match:
-:emphasize-lines: "3"
+:emphasize-lines: "2"
 ```
 
 `````
@@ -1300,7 +1321,8 @@ Note: If you try the `shop` command before the next section, you will see
 ```{literalinclude} adventure/adventure-4.1.py
 :class: full-width
 :linenos:
-:lines: "104-114"
+:start-at: 'def do_shop'
+:end-before: 'def do_'
 :lineno-match:
 :emphasize-lines: "7-8"
 ```
@@ -1350,7 +1372,8 @@ In this section we'll add an `examine` command.
 ```{literalinclude} adventure/adventure-4.2.py
 :class: full-width
 :linenos:
-:lines: "121-124"
+:start-at: 'def do_examine'
+:end-before: 'def'
 :lineno-match:
 ```
 
@@ -1374,7 +1397,8 @@ In this section we'll add an `examine` command.
 :class: full-width
 :linenos:
 :lineno-match:
-:lines: "189-203"
+:start-at: 'if command'
+:end-before: 'if __name__'
 :emphasize-lines: "10-11"
 ```
 
@@ -1433,7 +1457,8 @@ dictionary and print its information.
 ```{literalinclude} adventure/adventure-4.3.py
 :class: full-width
 :linenos:
-:lines: "121-129"
+:start-at: 'def do_examine'
+:end-at: "return"
 :lineno-match:
 :emphasize-lines: "6-9"
 ```
@@ -1456,7 +1481,8 @@ dictionary and print its information.
 ```{literalinclude} adventure/adventure-4.3.py
 :class: full-width
 :linenos:
-:lines: "121-133"
+:start-at: "do_examine"
+:end-at: "place ="
 :lineno-match:
 :emphasize-lines: "11-13"
 ```
@@ -1489,7 +1515,8 @@ dictionary and print its information.
 ```{literalinclude} adventure/adventure-4.3.py
 :class: full-width
 :linenos:
-:lines: "121-147"
+:start-at: "def do_examine"
+:end-before: "# make sure the item is in the ITEMS dictionary"
 :lineno-match:
 :emphasize-lines: "15-"
 ```
@@ -1508,7 +1535,8 @@ dictionary and print its information.
 ```{literalinclude} adventure/adventure-4.3.py
 :class: full-width
 :linenos:
-:lines: "121-153"
+:start-at: "def do_examine"
+:end-before: "def"
 :lineno-match:
 :emphasize-lines: "28-"
 ```
@@ -1559,7 +1587,8 @@ player types `l` or `look`.
 :class: full-width
 :linenos:
 :lineno-match:
-:lines: "121-124"
+:start-at: "def do_look"
+:end-before: "def"
 ```
 
 `````
@@ -1582,7 +1611,8 @@ player types `l` or `look`.
 :class: full-width
 :linenos:
 :lineno-match:
-:lines: "222-239"
+:start-at: "if command"
+:end-before: "if __name__"
 :emphasize-lines: "13-14"
 ```
 
@@ -1630,7 +1660,8 @@ In this section we'll look up the place info and print the name and description.
 :class: full-width
 :linenos:
 :lineno-match:
-:lines: "121-132"
+:start-at: "def do_look"
+:end-before: "def"
 :emphasize-lines: "6-"
 ```
 
@@ -1682,7 +1713,8 @@ items `"name"`.
 :class: full-width
 :linenos:
 :lineno-match:
-:lines: "130-144"
+:start-at: "def do_look"
+:end-at: "names.append"
 :emphasize-lines: "5-"
 ```
 
@@ -1716,8 +1748,9 @@ And if there are three or more items it will look like:
 :class: full-width
 :linenos:
 :lineno-match:
-:lines: "142-160"
-:emphasize-lines: "5-"
+:start-at: "if items"
+:end-before: "def"
+:emphasize-lines: "10-"
 ```
 
 `````
@@ -1764,8 +1797,9 @@ In this section we'll print the name of each of any places directly to the
 :class: full-width
 :linenos:
 :lineno-match:
-:lines: "158-173"
-:emphasize-lines: "5-"
+:start-at: "def do_look"
+:end-before: "def"
+:emphasize-lines: "42-"
 ```
 
 `````
@@ -1814,7 +1848,8 @@ player types `t`, `take`, or `grab`.
 :class: full-width
 :linenos:
 :lineno-match:
-:lines: "257-259"
+:start-at: "def do_take"
+:end-before: "def"
 ```
 
 `````
@@ -1890,7 +1925,7 @@ item in the current place.
 
 {{ endcols }}
 
-#### A: in `do_take()`: make sure the item is valid in the current place
+#### B: in `do_take()`: make sure the item is valid in the current place
 
 1. `[ ]` Check to see if `args` is {term}`falsy`, if so:
    * `[ ]` Use the `error()` function to print a message saying:
@@ -1912,13 +1947,14 @@ item in the current place.
 :class: full-width
 :linenos:
 :lineno-match:
-:lines: "258-278"
+:start-at: "def do_take"
+:end-before: "# get the item information"
 :emphasize-lines: "5-"
 ```
 
 `````
 
-#### B: still in `do_take()`: make sure the item is takable
+#### C: still in `do_take()`: make sure the item is takable
 
 1. `[ ]` Using `.get()`, get the value from `ITEMS` associated with the `name`
          key and assign it to the variable `item`.
@@ -1941,7 +1977,8 @@ item in the current place.
 :class: full-width
 :linenos:
 :lineno-match:
-:lines: "258-290"
+:start-at: "def do_take"
+:end-before: "def"
 :emphasize-lines: "23-"
 ```
 
@@ -2048,7 +2085,8 @@ In this section we'll modify `do_examine()` so it can be used to look at invento
 :class: full-width
 :linenos:
 :lineno-match:
-:lines: '177-197'
+:start-at: "def do_examine"
+:end-before: "# make sure the item is in the ITEMS dictionary"
 :emphasize-lines: "19"
 ```
 
