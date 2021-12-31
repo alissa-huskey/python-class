@@ -46,8 +46,8 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script src="../_static/custom.js"></script>
-    <script src="../_static/asciinema-player.js"></script>
     <script src="../_static/x-frame-bypass.js"></script>
+    <script src="../_static/asciinema-player.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -886,8 +886,13 @@
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#b-in-do-shop-in-the-for-loop">
-       B. In do_shop(), in the for loop:
+      <a class="reference internal nav-link" href="#b-in-places">
+       B. In PLACES:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#c-in-do-shop-in-the-for-loop">
+       C. In do_shop(), in the for loop:
       </a>
      </li>
     </ul>
@@ -3348,8 +3353,46 @@ Code<div class="summary-down docutils">
 <p>Note: If you try the <code class="docutils literal notranslate"><span class="pre">shop</span></code> command before the next section, you will see
 <code class="docutils literal notranslate"><span class="pre">&quot;book&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;desk&quot;</span></code> in the list.</p>
 </div>
-<div class="section" id="b-in-do-shop-in-the-for-loop">
-<h4>B. In do_shop(), in the for loop:<a class="headerlink" href="#b-in-do-shop-in-the-for-loop" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="b-in-places">
+<h4>B. In PLACES:<a class="headerlink" href="#b-in-places" title="Permalink to this headline">¶</a></h4>
+<p>We’ll keep track of which items are in a particular place by adding a <code class="docutils literal notranslate"><span class="pre">&quot;items&quot;</span></code>
+key to the place dictionary. In this case, we’re going to add the keys for the <code class="docutils literal notranslate"><span class="pre">&quot;book&quot;</span></code> and
+<code class="docutils literal notranslate"><span class="pre">&quot;desk&quot;</span></code> items to the <code class="docutils literal notranslate"><span class="pre">&quot;home&quot;</span></code> place.</p>
+<div class="row"><div class="col-5 left-col-5">
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> In the dictionary for <code class="docutils literal notranslate"><span class="pre">&quot;home&quot;</span></code> the key <code class="docutils literal notranslate"><span class="pre">&quot;items&quot;</span></code>. The value should be
+a list that contains two items, the strings <code class="docutils literal notranslate"><span class="pre">&quot;book&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;desk&quot;</span></code>.</p></li>
+</ol>
+</div><div class="col-7">
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Code<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">PLACES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;home&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Your Cottage&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;east&quot;</span><span class="p">:</span> <span class="s2">&quot;town-square&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A cozy stone cottage with a desk and a neatly made bed.&quot;</span><span class="p">,</span>
+<span class="hll">        <span class="s2">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;book&quot;</span><span class="p">,</span> <span class="s2">&quot;desk&quot;</span><span class="p">],</span>
+</span>    <span class="p">},</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</details></div></div>
+</div>
+<div class="section" id="c-in-do-shop-in-the-for-loop">
+<h4>C. In do_shop(), in the for loop:<a class="headerlink" href="#c-in-do-shop-in-the-for-loop" title="Permalink to this headline">¶</a></h4>
 <div class="row"><div class="col-5 left-col-5">
 <ol class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Before printing each item, check if the item has a <code class="docutils literal notranslate"><span class="pre">&quot;price&quot;</span></code> key.
@@ -3617,12 +3660,17 @@ Code<div class="summary-down docutils">
 <h4>C. Still in do_examine(): check the name<a class="headerlink" href="#c-still-in-do-examine-check-the-name" title="Permalink to this headline">¶</a></h4>
 <ol>
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> assign the first element from the <code class="docutils literal notranslate"><span class="pre">args</span></code> list to the variable <code class="docutils literal notranslate"><span class="pre">name</span></code> and make it lowercase</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> check if name is in the <code class="docutils literal notranslate"><span class="pre">items</span></code> list by:</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> check if <code class="docutils literal notranslate"><span class="pre">name</span></code> is in the the list of items available at this place by:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> use an if statement with the condition:</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> use an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement with the following condition:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> check if <code class="docutils literal notranslate"><span class="pre">name</span></code> is not in the list returned by <code class="docutils literal notranslate"><span class="pre">.get()</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> use the <code class="docutils literal notranslate"><span class="pre">.get()</span></code> method on <code class="docutils literal notranslate"><span class="pre">place</span></code> to get the <code class="docutils literal notranslate"><span class="pre">&quot;items&quot;</span></code> list and pass</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> check if <code class="docutils literal notranslate"><span class="pre">name</span></code> is not in the list returned in the next step</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> use the <code class="docutils literal notranslate"><span class="pre">.get()</span></code> method on <code class="docutils literal notranslate"><span class="pre">place</span></code> and pass it two arguments:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> the key: <code class="docutils literal notranslate"><span class="pre">&quot;items&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> the default value to return if missing: an empty list</p></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> if the above condition is met:</p>

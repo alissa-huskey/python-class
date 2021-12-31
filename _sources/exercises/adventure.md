@@ -1307,7 +1307,35 @@ For now, keep the descriptions for both simple. Something like:
 Note: If you try the `shop` command before the next section, you will see
 `"book"` and `"desk"` in the list.
 
-#### B. In do_shop(), in the for loop:
+#### B. In PLACES:
+
+We'll keep track of which items are in a particular place by adding a `"items"`
+key to the place dictionary. In this case, we're going to add the keys for the `"book"` and
+`"desk"` items to the `"home"` place.
+
+{{ left }}
+
+1. `[ ]` In the dictionary for `"home"` the key `"items"`. The value should be
+a list that contains two items, the strings `"book"` and `"desk"`.
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-4.1.py
+:class: full-width
+:linenos:
+:start-at: 'PLACES'
+:end-at: '},'
+:lineno-match:
+:emphasize-lines: "7"
+```
+
+`````
+
+{{ endcols }}
+
+#### C. In do_shop(), in the for loop:
 
 {{ left }}
 
@@ -1494,10 +1522,12 @@ dictionary and print its information.
 #### C. Still in do_examine(): check the name
 
 1. `[ ]` assign the first element from the `args` list to the variable `name` and make it lowercase
-1. `[ ]` check if name is in the `items` list by:
-   * `[ ]` use an if statement with the condition:
-     * `[ ]` check if `name` is not in the list returned by `.get()`
-     * `[ ]` use the `.get()` method on `place` to get the `"items"` list and pass
+1. `[ ]` check if `name` is in the the list of items available at this place by:
+   * `[ ]` use an `if` statement with the following condition:
+     * `[ ]` check if `name` is not in the list returned in the next step
+     * `[ ]` use the `.get()` method on `place` and pass it two arguments:
+       * `[ ]` the key: `"items"`
+       * `[ ]` the default value to return if missing: an empty list
    * `[ ]` if the above condition is met:
      * `[ ]` print an error message like: {samp}`"Sorry, I don't know what this is: {name}."`
      * `[ ]` return
