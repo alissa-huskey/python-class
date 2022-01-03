@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+#
+# mklive -- make a liveshare file with todays date initialized with a docstring
+
+# assign contents of a heredoc to <var>
+define() {
+   IFS=$'\n' read -r -d '' ${1} || true
+}
+
+# print an info message
+info() {
+  printf "\033[35m>\033[0m %s\n" "${*}"
+}
+
+main() {
+  local today filename
+
+  today="$(date +%Y-%m-%d)"
+  filename="${today}-live.py"
+
+  # info "today: ${today}"
+  # info "filename ${filename}"
+
+define docstring <<ENDDOC
+"""
+${today}
+
+
+"""
+
+
+ENDDOC
+
+  echo "${docstring}" > "${filename}"
+
+}
+
+main

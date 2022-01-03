@@ -41,7 +41,7 @@ print(letters)
 
 # ===================================================================
 # Exercise #3 -- split this email address at the @ character
-#                bonus: use multiple assignment to assign to two 
+#                bonus: use multiple assignment to assign to two
 #                       variables: name and domain
 # ===================================================================
 
