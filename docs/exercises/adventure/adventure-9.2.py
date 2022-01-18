@@ -115,6 +115,27 @@ def abort(message):
     error(message)
     exit(1)
 
+# ## Data functions ##########################################################
+
+def get_place(key=None):
+    """Return the place information from the PLACES dictionary, either
+       associated with key, or if none is passed, where the user is
+       currently at. """
+    # get the current player's place if key is not passed
+    if not key:
+        key = PLAYER["place"]
+
+    # get the place info
+    place = PLACES.get(key)
+
+    # this should never happen if we write the code correctly
+    # but just in case there is no key in PLACES matching
+    # the new name, print an error
+    if not place:
+        abort(f"Woops! The information about {key!r} seems to be missing.")
+
+    return place
+
 # ## Action functions ########################################################
 
 def do_shop():
@@ -253,13 +274,7 @@ def do_go(args):
         return
 
     # look up the place information
-    new_place = PLACES.get(new_name)
-
-    # this should never happen if we write the code correctly
-    # but just in case there is no key in PLACES matching
-    # the new name, print an error
-    if not new_place:
-        abort(f"Woops! The information about {new_name} seems to be missing.")
+    new_place = get_place(new_name)
 
     # move the player to the new place
     PLAYER["place"] = new_name
@@ -282,8 +297,7 @@ def do_take(args):
     name = args[0].lower()
 
     # look up where the player is now
-    place_name = PLAYER["place"]
-    place = PLACES[place_name]
+    place = get_place()
 
     # make sure the item is in this place
     if name not in place.get("items", []):

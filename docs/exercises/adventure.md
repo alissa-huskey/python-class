@@ -2553,3 +2553,133 @@ caused by something the user typed in.
 `````
 
 {{ endcols }}
+
+### Part 9.2: Add do_take()
+
+The `get_place()` function will handle both getting a place from the `PLACES`
+dictionary, and exiting the program using `abort()` if the place is not found.
+
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-9.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }} 
+
+#### A. Define `get_place()`
+
+{{ left }}
+
+1. `[ ]` define an `get_place()` function that takes one optional argument `key` with a default value of `None`
+1. `[ ]` if `key` is {term}`falsy` then assign `key` to the value of the `PLAYER` dict associated with the `key` value
+1. `[ ]` get the value from the `PLAYER` dictionary assocated from the `"place"` key and assign it to the variable `place`
+1. `[ ]` If `place`` is {term}`falsy`,
+     * `[ ]` Use the `abort()` function to print an error message like:
+
+       {samp}`"Woops! The information about {name!r} seems to be missing."`
+1. `[ ]` return `place`
+
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-9.2.py
+:class: full-width
+:linenos:
+:lineno-match:
+:start-at: 'def get_place`
+:end-at: 'return place'
+```
+
+`````
+
+{{ endcols }}
+
+
+### Part 9.2: Add get_place()
+
+The `get_place()` function will handle both getting a place from the `PLACES`
+dictionary, and exiting the program using `abort()` if the place is not found.
+
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-9.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }} 
+
+#### A. Define `get_place()`
+
+{{ left }}
+
+1. `[ ]` define an `get_place()` function that takes one optional argument `key` with a default value of `None`
+1. `[ ]` if `key` is {term}`falsy` then assign `key` to the value of the `PLAYER` dict associated with the `key` value
+1. `[ ]` get the value from the `PLAYER` dictionary assocated from the `"place"` key and assign it to the variable `place`
+1. `[ ]` If `place`` is {term}`falsy`,
+     * `[ ]` Use the `abort()` function to print an error message like:
+
+       {samp}`"Woops! The information about {name!r} seems to be missing."`
+1. `[ ]` return `place`
+
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-9.1.py
+:class: full-width
+:linenos:
+:lineno-match:
+:start-at: 'def get_place`
+:end-at: 'return place'
+```
+
+`````
+
+{{ endcols }}
+
+#### B. In `do_go()`
+
+{{ left }}
+
+1. `[ ]` Call `get_place()` with the argument `name` to get the value for `new_place`
+1. `[ ]` Remove ... 
+
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-9.1.py
+:class: full-width
+:linenos:
+:lineno-match:
+:start-at: 'def do_go`
+:end-at: 'place = get_place()'
+:emphasize-lines: '14-15'
+```
+
+`````
+
+{{ endcols }}
+
+f### C. In `do_take()`
+
+{{ left }}
+
+1. `[ ]` Call `get_place()` to get the value for `place`
+1. `[ ]` Remove ... 
+
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-9.2.py
+:class: full-width
+:linenos:
+:lineno-match:
+:start-at: 'def do_take`
+:end-at: 'place = get_place()'
+:emphasize-lines: '14-15'
+```
+
+`````
+
+{{ endcols }}
+
