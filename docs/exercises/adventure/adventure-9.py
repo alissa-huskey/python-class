@@ -2,7 +2,7 @@
 Text-based adventure game
 https://alissa-huskey.github.io/python-class/exercises/adventure.html
 
-Part 9.1: Refactoring -- add abort()
+Part 9: Refactoring
 """
 
 import re
@@ -115,17 +115,103 @@ def abort(message):
     error(message)
     exit(1)
 
+# ## Data functions ##########################################################
+
+def get_place(key=None):
+    """Return the place information from the PLACES dictionary, either
+       associated with key, or if none is passed, where the user is
+       currently at. """
+    # get the current player's place if key is not passed
+    if not key:
+        key = PLAYER["place"]
+
+    # get the place info
+    place = PLACES.get(key)
+
+    # this should never happen if we write the code correctly
+    # but just in case there is no key in PLACES matching
+    # the new name, print an error
+    if not place:
+        abort(f"Woops! The information about {key!r} seems to be missing.")
+
+    return place
+
+def get_item(key):
+    """Return item information from ITEMS dictionary associated with key. If no
+       item is found, print an error message and return None."""
+    item = ITEMS.get(key)
+
+    if not item:
+        abort(f"Woops! The information about {key!r} seems to be missing.")
+
+    return item
+
+def inventory_change(key, quantity=1):
+    """Add item to player inventory."""
+    PLAYER["inventory"].setdefault(key, 0)
+    PLAYER["inventory"][key] += quantity
+
+    # remove from inventory dictionary if quantity is zero
+    if not PLAYER["inventory"][key] and key != "coins":
+        PLAYER["inventory"].pop(key)
+
+def place_add(key, quantity=1):
+    """Remove an item from a place, or the players current place if missing."""
+    # get the current place
+    place = get_place()
+
+    # add the item key to the place items list
+    place.setdefault("items", [])
+    if not key in place["items"]:
+        place["items"].append(key)
+
+def place_remove(key, quantity=1):
+    """Remove an item from a place, or the players current place if missing."""
+    # get the current place
+    place = get_place()
+
+    # remove from inventory
+    place["inventory"].remove(key)
+
+
+# ## Validation functions ####################################################
+
+def currently_at(place):
+    """Return True if the player is not currently at place, otherwise return False."""
+    return PLAYER["place"] == place
+
+def player_has(key, qty=1):
+    """Return True if the player has at least one item associated with key in
+       their inventory."""
+    return key in PLAYER["inventory"] and PLAYER["inventory"][key] >= qty
+
+def place_has(item):
+    """Return True if current place has a particular item."""
+    place = get_place()
+    return item in place.get("items", [])
+
+def is_for_sale(item):
+    """Return True if item is for sale (has a price)."""
+    return "price" in item
+
 # ## Action functions ########################################################
 
 def do_shop():
     """List the items for sale."""
 
+    if not currently_at("market"):
+        error(f"Sorry, can't do that here.")
+        return
+
     header("Items for sale.")
 
     for item in ITEMS.values():
-        if "price" not in item:
+        # skip items that are sold out in inventory
+        if not place_has(key):
             continue
         
+        # print info about items for sale
+        if is_for_sale(item):
         write(f'{item["name"]:<13}  {item["description"]}')
 
     print()
@@ -207,18 +293,27 @@ def do_examine(args):
     name = args[0].lower()
 
     # make sure the item is in this place or in the players inventory
-    if not (name in place.get("items", []) or name in PLAYER["inventory"]):
+    if not (place_has(name) or player_has(name)):
         error(f"Sorry, I don't know what this is: {name!r}.")
         return
 
-    # make sure the item is in the ITEMS dictionary
-    if name not in ITEMS:
-        abort(f"Woops! The information about {name} seems to be missing.")
     # get the item dictionary
-    item = ITEMS[name]
+    item = get_item(name)
 
     # print the item information
     header(item["name"].title())
+
+    # print the price if we're in the market
+    if currently_at("market") and place_has(name) and is_for_sale(item):
+        write(f"{abs(item['price'])} coins".rjust(WIDTH - MARGIN))
+        print()
+
+    # print the quantity if the item is from inventory
+    elif player_has(name):
+        write(f"(x{PLAYER['inventory'][name]})".rjust(WIDTH - MARGIN))
+        print()
+
+
     wrap(item["description"])
 
 def do_go(args):
@@ -252,13 +347,7 @@ def do_go(args):
         return
 
     # look up the place information
-    new_place = PLACES.get(new_name)
-
-    # this should never happen if we write the code correctly
-    # but just in case there is no key in PLACES matching
-    # the new name, print an error
-    if not new_place:
-        abort(f"Woops! The information about {new_name} seems to be missing.")
+    new_place = get_place(new_name)
 
     # move the player to the new place
     PLAYER["place"] = new_name
@@ -281,31 +370,25 @@ def do_take(args):
     name = args[0].lower()
 
     # look up where the player is now
-    place_name = PLAYER["place"]
-    place = PLACES[place_name]
+    place = get_place()
 
     # make sure the item is in this place
-    if name not in place.get("items", []):
+    if not place_has(name):
         error(f"Sorry, I don't see a {name!r} here.")
         return
 
     # get the item information
-    item = ITEMS.get(name)
-
-    # make sure the item is in the ITEMS dictionary
-    if not item:
-        abort(f"Woops! The information about {name!r} seems to be missing.")
+    item = get_item(name)
 
     if not item.get("can_take"):
         error(f"You try to pick up {name!r}, but you find you aren't able to lift it.")
         return
 
     # add to inventory
-    PLAYER["inventory"].setdefault(name, 0)
-    PLAYER["inventory"][name] += 1
+    inventory_change(name, place["inventory"][name])
 
     # remove from place
-    place["items"].remove(name)
+    place_remove(name, place["inventory"][name])
 
     wrap(f"You pick up {item['name']} and put it in your pack.")
 
@@ -341,22 +424,15 @@ def do_drop(args):
     name = args[0].lower()
 
     # make sure the item is in inventory
-    if name not in PLAYER["inventory"] or not PLAYER["inventory"][name]:
+    if not player_has(name):
         error(f"You don't have any {name!r}.")
         return
 
-    # remove from inventory
-    PLAYER["inventory"][name] -= 1
-    if not PLAYER["inventory"][name]:
-        PLAYER["inventory"].pop(name)
-
-    # look up where the player is now
-    place_name = PLAYER["place"]
-    place = PLACES[place_name]
-
     # add to place items
-    place.setdefault("items", [])
-    place["items"].append(name)
+    place_add(name, PLAYER["inventory"][name])
+
+    # remove from player inventory
+    inventory_change(name, -PLAYER["inventory"][name])
 
 
 def main():

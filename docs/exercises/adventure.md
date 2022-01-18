@@ -1728,9 +1728,9 @@ In this section you will use each of the items in the current places `"items"`
 list to get the item information from `ITEMS` then construct a list of each
 items `"name"`.
 
-1. `[ ]` Using the `.get()` method, get the value from `place` associated with
-         the `items` dictionary. Use a default value of `[]` and assign it to the
-         variable `items`.
+1. `[ ]` Use the `.get()` method on the `place` dictionary to get the value
+         associated with the `items` key with a default value of `[]`, and assign it to
+         the variable `items`.
 1. `[ ]` If `items` is {term}`truthy`:
    1. `[ ]` Make an empty list assigned to the variable `names`
    1. `[ ]` Iterate over the `items` list using the variable name `key` for each item. For each item:
@@ -2434,3 +2434,122 @@ it to the place items.
 ```
 
 `````
+
+Part 9: Refactoring
+-------------------
+
+### Part 9.1: Add abort()
+
+The `abort()` function will be similar to the `error()` function, except it
+will exit the game immediately. This function will be for errors that only
+happen if there is a problem with the code, as opposed to errors that can be
+caused by something the user typed in.
+
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-9.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }} 
+
+#### A. Define `abort()`
+
+{{ left }}
+
+1. `[ ]` define an `abort()` function that takes one argument `message`
+1. `[ ]` call `error()` with the argument `message`.
+1. `[ ]` call the built-in `exit()` function and pass it the argument `1`
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-8.3.py
+:class: full-width
+:linenos:
+:lineno-match:
+:start-at: 'def do_abort'
+:end-at: 'exit(1)'
+```
+
+`````
+
+{{ endcols }}
+
+#### B. in do_take()
+
+{{ left }}
+
+1. `[ ]` Call `abort()` instead of `error()` when you check if `item` is {term}`falsy`
+1. `[ ]` remove the `return` statement
+1. `[ ]` To test, temporarily change the key for `"book"` to somthing
+         else, then type `take book`` from home. It should print an error message
+         then exit the program. After verifying that it works, change it back.
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-9.1.py
+:class: full-width
+:linenos:
+:lineno-match:
+:start-at: 'def do_take'
+:end-before: 'if not item.get("can_take")'
+:emphasize-lines: "29"
+```
+
+`````
+
+{{ endcols }}
+
+#### C. in do_examine()
+
+{{ left }}
+
+1. `[ ]` Call `abort()` instead of `error()` when you check if `name` is not in `ITEMS`
+1. `[ ]` remove the `return` statement
+1. `[ ]` To test, temporarily change the key for `"book"` to somthing
+         else, then type `take book`` from home. It should print an error message
+         then exit the program. After verifying that it works, change it back.
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-9.1.py
+:class: full-width
+:linenos:
+:lineno-match:
+:start-at: 'def do_examine'
+:end-before: '# get the item dictionary'
+:emphasize-lines: "25"
+```
+
+`````
+
+{{ endcols }}
+
+#### C. in do_go()
+
+{{ left }}
+
+1. `[ ]` Call `abort()` instead of `error()` when you check if `new_place` is {term}`truthy`
+1. `[ ]` remove the `return` statement
+1. `[ ]` To test, temporarily change the value for `home["east"]` to somthing
+         else, then type `go east` from home. It should print an error message
+         then exit the program. After verifying that it works, change it back.
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-9.1.py
+:class: full-width
+:linenos:
+:lineno-match:
+:start-at: 'def do_go'
+:end-before: '# move the player to the new place'
+:emphasize-lines: "37"
+```
+
+`````
+
+{{ endcols }}

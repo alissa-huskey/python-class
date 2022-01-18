@@ -214,6 +214,7 @@ def do_examine(args):
     # make sure the item is in the ITEMS dictionary
     if name not in ITEMS:
         abort(f"Woops! The information about {name} seems to be missing.")
+
     # get the item dictionary
     item = ITEMS[name]
 
