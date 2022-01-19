@@ -1450,6 +1450,67 @@
      </li>
     </ul>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-9-3-add-get-item">
+     Part 9.3: Add get_item()
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#a-define-get-item">
+       A. Define
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         get_item()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#b-use-get-item-in-do-look-and-do-inventory">
+       B. Use
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         get_item()
+        </span>
+       </code>
+       in
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         do_look()
+        </span>
+       </code>
+       and
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         do_inventory()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#c-use-get-item-in-do-examine-and-do-take">
+       C. Use
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         get_item()
+        </span>
+       </code>
+       in
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         do_examine()
+        </span>
+       </code>
+       and
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         do_take()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -2324,6 +2385,67 @@
      </li>
     </ul>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-9-3-add-get-item">
+     Part 9.3: Add get_item()
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#a-define-get-item">
+       A. Define
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         get_item()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#b-use-get-item-in-do-look-and-do-inventory">
+       B. Use
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         get_item()
+        </span>
+       </code>
+       in
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         do_look()
+        </span>
+       </code>
+       and
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         do_inventory()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#c-use-get-item-in-do-examine-and-do-take">
+       C. Use
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         get_item()
+        </span>
+       </code>
+       in
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         do_examine()
+        </span>
+       </code>
+       and
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         do_take()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -2422,11 +2544,12 @@ much simpler to start.).</p>
 <ul>
 <li><p><a class="reference internal" href="#part-9-1-add-abort" id="id49">Part 9.1: Add abort()</a></p></li>
 <li><p><a class="reference internal" href="#part-9-2-add-get-place" id="id50">Part 9.2: Add get_place()</a></p></li>
+<li><p><a class="reference internal" href="#part-9-3-add-get-item" id="id51">Part 9.3: Add get_item()</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#reference" id="id51">Reference</a></p>
+<li><p><a class="reference internal" href="#reference" id="id52">Reference</a></p>
 <ul>
-<li><p><a class="reference internal" href="#glossary-adventure-game" id="id52">Adventure Game</a></p></li>
+<li><p><a class="reference internal" href="#glossary-adventure-game" id="id53">Adventure Game</a></p></li>
 </ul>
 </li>
 </ul>
@@ -6838,12 +6961,12 @@ dictionary, and call <code class="docutils literal notranslate"><span class="pre
 <div class="row"><div class="col-5 left-col-5">
 <ol>
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> define a <code class="docutils literal notranslate"><span class="pre">get_place()</span></code> function that takes one optional argument <code class="docutils literal notranslate"><span class="pre">key</span></code> with a default value of <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> if <code class="docutils literal notranslate"><span class="pre">key</span></code> is <a class="reference internal" href="../lessons/conditional-statements.html#term-falsy"><span class="xref std std-term">falsy</span></a> then assign <code class="docutils literal notranslate"><span class="pre">key</span></code> to the value of the <code class="docutils literal notranslate"><span class="pre">PLAYER</span></code> dict associated with the <code class="docutils literal notranslate"><span class="pre">key</span></code> value</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> get the value from the <code class="docutils literal notranslate"><span class="pre">PLAYER</span></code> dictionary assocated from the <code class="docutils literal notranslate"><span class="pre">&quot;place&quot;</span></code> key and assign it to the variable <code class="docutils literal notranslate"><span class="pre">place</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> if <code class="docutils literal notranslate"><span class="pre">key</span></code> is <a class="reference internal" href="../lessons/conditional-statements.html#term-falsy"><span class="xref std std-term">falsy</span></a> then assign <code class="docutils literal notranslate"><span class="pre">key</span></code> to the value of the <code class="docutils literal notranslate"><span class="pre">PLAYER</span></code> dict associated with the <code class="docutils literal notranslate"><span class="pre">&quot;place&quot;</span></code> value</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> get the value from the <code class="docutils literal notranslate"><span class="pre">PLACES</span></code> dictionary assocated from the <code class="docutils literal notranslate"><span class="pre">key</span></code> key and assign it to the variable <code class="docutils literal notranslate"><span class="pre">place</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> If <code class="docutils literal notranslate"><span class="pre">place</span></code> is <a class="reference internal" href="../lessons/conditional-statements.html#term-falsy"><span class="xref std std-term">falsy</span></a>,</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Use the <code class="docutils literal notranslate"><span class="pre">abort()</span></code> function to print an error message like:</p>
-<p><code class="samp docutils literal notranslate"><span class="pre">&quot;Woops!</span> <span class="pre">The</span> <span class="pre">information</span> <span class="pre">about</span> <em><span class="pre">name!r</span></em> <span class="pre">seems</span> <span class="pre">to</span> <span class="pre">be</span> <span class="pre">missing.&quot;</span></code></p>
+<p><code class="samp docutils literal notranslate"><span class="pre">&quot;Woops!</span> <span class="pre">The</span> <span class="pre">information</span> <span class="pre">about</span> <span class="pre">the</span> <span class="pre">place</span> <em><span class="pre">name</span></em> <span class="pre">seems</span> <span class="pre">to</span> <span class="pre">be</span> <span class="pre">missing.&quot;</span></code></p>
 </li>
 </ul>
 </li>
@@ -6901,9 +7024,11 @@ Code<div class="summary-down docutils">
 <h4>B. In <code class="docutils literal notranslate"><span class="pre">do_go()</span></code><a class="headerlink" href="#b-in-do-go" title="Permalink to this headline">¶</a></h4>
 <div class="row"><div class="col-5 left-col-5">
 <ol class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Call <code class="docutils literal notranslate"><span class="pre">get_place()</span></code> with no arguments to get the value for <code class="docutils literal notranslate"><span class="pre">old_place</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Call <code class="docutils literal notranslate"><span class="pre">get_place()</span></code> with no arguments to get the value for <code class="docutils literal notranslate"><span class="pre">old_place</span></code>.
+(This will replace the existing <code class="docutils literal notranslate"><span class="pre">PLACES[old_place]</span></code>.)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Remove the line assigning <code class="docutils literal notranslate"><span class="pre">old_name</span></code> since that is taken care of in <code class="docutils literal notranslate"><span class="pre">get_place()</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Call <code class="docutils literal notranslate"><span class="pre">get_place()</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">new_name</span></code> to get the value for <code class="docutils literal notranslate"><span class="pre">new_place</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Call <code class="docutils literal notranslate"><span class="pre">get_place()</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">new_name</span></code> to get the value for <code class="docutils literal notranslate"><span class="pre">new_place</span></code>.
+(This will replace the existing <code class="docutils literal notranslate"><span class="pre">PLACES.get(new_place)</span></code>.)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Remove the lines that calls <code class="docutils literal notranslate"><span class="pre">abort()</span></code> if <code class="docutils literal notranslate"><span class="pre">new_place</span></code> is <a class="reference internal" href="../lessons/conditional-statements.html#term-falsy"><span class="xref std std-term">falsy</span></a>.</p></li>
 </ol>
 </div><div class="col-7">
@@ -6999,9 +7124,9 @@ Code<div class="summary-down docutils">
 <div class="section" id="c-in-do-look">
 <h4>C. In <code class="docutils literal notranslate"><span class="pre">do_look()</span></code><a class="headerlink" href="#c-in-do-look" title="Permalink to this headline">¶</a></h4>
 <ol class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Call <code class="docutils literal notranslate"><span class="pre">get_place()</span></code> to get the value for <code class="docutils literal notranslate"><span class="pre">place</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Replace the existing value for <code class="docutils literal notranslate"><span class="pre">place</span></code> with a call to <code class="docutils literal notranslate"><span class="pre">get_place()</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Remove the line assigning <code class="docutils literal notranslate"><span class="pre">place_name</span></code> since that is taken care of in <code class="docutils literal notranslate"><span class="pre">get_place()</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Call <code class="docutils literal notranslate"><span class="pre">get_place()</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">name</span></code> to get the value for <code class="docutils literal notranslate"><span class="pre">destination</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Replace the existing value for <code class="docutils literal notranslate"><span class="pre">destination</span></code> with a call to <code class="docutils literal notranslate"><span class="pre">get_place()</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p></li>
 </ol>
 <details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
@@ -7122,12 +7247,12 @@ Code<div class="summary-down docutils">
 <div class="section" id="d-in-do-take-do-examine-and-do-drop">
 <h4>D. In <code class="docutils literal notranslate"><span class="pre">do_take()</span></code>, <code class="docutils literal notranslate"><span class="pre">do_examine()</span></code> and <code class="docutils literal notranslate"><span class="pre">do_drop()</span></code><a class="headerlink" href="#d-in-do-take-do-examine-and-do-drop" title="Permalink to this headline">¶</a></h4>
 <ol class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Call <code class="docutils literal notranslate"><span class="pre">get_place()</span></code> to get the value for <code class="docutils literal notranslate"><span class="pre">place</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Replace the existing value for <code class="docutils literal notranslate"><span class="pre">place</span></code> with a call to <code class="docutils literal notranslate"><span class="pre">get_place()</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Remove the line assigning <code class="docutils literal notranslate"><span class="pre">place_name</span></code> since that is taken care of in <code class="docutils literal notranslate"><span class="pre">get_place()</span></code></p></li>
 </ol>
 <details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
-Code<div class="summary-down docutils">
+do_take()<div class="summary-down docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
 <div class="summary-up docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
@@ -7202,7 +7327,7 @@ Code<div class="summary-down docutils">
 </div>
 </details><details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
-Code<div class="summary-down docutils">
+do_examine()<div class="summary-down docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
 <div class="summary-up docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
@@ -7275,7 +7400,7 @@ Code<div class="summary-down docutils">
 </div>
 </details><details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
-Code<div class="summary-down docutils">
+do_drop()<div class="summary-down docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
 <div class="summary-up docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
@@ -7340,6 +7465,375 @@ Code<div class="summary-down docutils">
 </div>
 </details></div></div>
 </div>
+</div>
+<div class="section" id="part-9-3-add-get-item">
+<h3><a class="toc-backref" href="#contents">Part 9.3: Add get_item()</a><a class="headerlink" href="#part-9-3-add-get-item" title="Permalink to this headline">¶</a></h3>
+<p><a class="sphinx-bs badge badge-info text-white fa fa-file-code float-right font-bold p-2 header-link reference external" href="https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-9.3.py"><span> source code</span></a></p>
+<div class="clearfix"></div>
+<p>In this section we’ll be adding a <code class="docutils literal notranslate"><span class="pre">get_item()</span></code> function which will be very
+similar to <code class="docutils literal notranslate"><span class="pre">get_place()</span></code> but for items instead of places.</p>
+<div class="section" id="a-define-get-item">
+<h4>A. Define <code class="docutils literal notranslate"><span class="pre">get_item()</span></code><a class="headerlink" href="#a-define-get-item" title="Permalink to this headline">¶</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">get_item()</span></code> function will be almost exactly like <code class="docutils literal notranslate"><span class="pre">get_place()</span></code>. It will
+also take one argument, the <code class="docutils literal notranslate"><span class="pre">key</span></code> to get from the <code class="docutils literal notranslate"><span class="pre">ITEMS</span></code> dictionary, but it
+will not be optional. We’ll call <code class="docutils literal notranslate"><span class="pre">abort()</span></code> if the <code class="docutils literal notranslate"><span class="pre">key</span></code> is not in the <code class="docutils literal notranslate"><span class="pre">ITEMS</span></code>
+dictionary and finally return the <code class="docutils literal notranslate"><span class="pre">item</span></code> otherwise.</p>
+<div class="row"><div class="col-5 left-col-5">
+<ol>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> define a <code class="docutils literal notranslate"><span class="pre">get_item()</span></code> function that takes one argument <code class="docutils literal notranslate"><span class="pre">key</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> use the <code class="docutils literal notranslate"><span class="pre">.get()</span></code> method on the <code class="docutils literal notranslate"><span class="pre">ITEMS</span></code> dictionary to get the value assocated from the <code class="docutils literal notranslate"><span class="pre">key</span></code> key and assign it to the variable <code class="docutils literal notranslate"><span class="pre">item</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> If <code class="docutils literal notranslate"><span class="pre">item</span></code> is <a class="reference internal" href="../lessons/conditional-statements.html#term-falsy"><span class="xref std std-term">falsy</span></a>,</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Use the <code class="docutils literal notranslate"><span class="pre">abort()</span></code> function to print an error message like:</p>
+<p><code class="samp docutils literal notranslate"><span class="pre">&quot;Woops!</span> <span class="pre">The</span> <span class="pre">information</span> <span class="pre">about</span> <span class="pre">the</span> <span class="pre">item</span> <em><span class="pre">name</span></em> <span class="pre">seems</span> <span class="pre">to</span> <span class="pre">be</span> <span class="pre">missing.&quot;</span></code></p>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> return <code class="docutils literal notranslate"><span class="pre">item</span></code></p></li>
+</ol>
+</div><div class="col-7">
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Code<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_item</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return item information from ITEMS dictionary associated with key. If no</span>
+<span class="sd">       item is found, print an error message and return None.&quot;&quot;&quot;</span>
+    <span class="n">item</span> <span class="o">=</span> <span class="n">ITEMS</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">item</span><span class="p">:</span>
+        <span class="n">abort</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Woops! The information about </span><span class="si">{</span><span class="n">key</span><span class="si">!r}</span><span class="s2"> seems to be missing.&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">item</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</details></div></div>
+</div>
+<div class="section" id="b-use-get-item-in-do-look-and-do-inventory">
+<h4>B. Use <code class="docutils literal notranslate"><span class="pre">get_item()</span></code> in <code class="docutils literal notranslate"><span class="pre">do_look()</span></code> and <code class="docutils literal notranslate"><span class="pre">do_inventory()</span></code><a class="headerlink" href="#b-use-get-item-in-do-look-and-do-inventory" title="Permalink to this headline">¶</a></h4>
+<p>Throughout the rest of the program, you’ll replace anywhere that you get an
+item from the <code class="docutils literal notranslate"><span class="pre">ITEMS</span></code> dictionary using <a class="reference internal" href="../lessons/data-types/containers.html#term-subscription"><span class="xref std std-term">subscription</span></a> or the <code class="docutils literal notranslate"><span class="pre">.get()</span></code>
+method with a call to <code class="docutils literal notranslate"><span class="pre">get_item()</span></code>.</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Call <code class="docutils literal notranslate"><span class="pre">get_item()</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">name</span></code> or <code class="docutils literal notranslate"><span class="pre">key</span></code> to get the value
+for <code class="docutils literal notranslate"><span class="pre">item</span></code>. This will replace the existing <code class="samp docutils literal notranslate"><span class="pre">ITEMS.get(</span><em><span class="pre">key</span></em><span class="pre">)</span></code> or
+<code class="samp docutils literal notranslate"><span class="pre">ITEMS[</span><em><span class="pre">key</span></em><span class="pre">]</span></code>.</p></li>
+</ol>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+do_look()<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">do_look</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Look at the current place&quot;&quot;&quot;</span>
+
+    <span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Trying to look around.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># look up where the player is now</span>
+    <span class="n">place</span> <span class="o">=</span> <span class="n">get_place</span><span class="p">()</span>
+
+    <span class="c1"># print information about the current place</span>
+    <span class="n">header</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">place</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">wrap</span><span class="p">(</span><span class="n">place</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">])</span>
+
+    <span class="c1"># get the items in the room</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="n">place</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;items&quot;</span><span class="p">,</span> <span class="p">[])</span>
+
+    <span class="k">if</span> <span class="n">items</span><span class="p">:</span>
+
+        <span class="c1"># for each of the place items</span>
+        <span class="c1"># get the info from the ITEMS dictionary</span>
+        <span class="c1"># and make a list of item names</span>
+        <span class="n">names</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+<span class="hll">            <span class="n">item</span> <span class="o">=</span> <span class="n">get_item</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+</span>            <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+
+        <span class="c1"># remove the last name from the list</span>
+        <span class="n">last</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+        <span class="c1"># construct a sentence that looks like one of:</span>
+        <span class="c1">#   x, x and y</span>
+        <span class="c1">#   x and y</span>
+        <span class="c1">#   y</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">text</span><span class="p">:</span>
+            <span class="n">text</span> <span class="o">+=</span> <span class="s2">&quot; and &quot;</span>
+        <span class="n">text</span> <span class="o">+=</span> <span class="n">last</span>
+
+        <span class="c1"># print the list of items.</span>
+        <span class="nb">print</span><span class="p">()</span>
+        <span class="n">wrap</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;You see </span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s2">.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># add a blank line</span>
+    <span class="nb">print</span><span class="p">()</span>
+
+    <span class="c1"># print what is in each direction from here</span>
+    <span class="k">for</span> <span class="n">direction</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;north&quot;</span><span class="p">,</span> <span class="s2">&quot;east&quot;</span><span class="p">,</span> <span class="s2">&quot;south&quot;</span><span class="p">,</span> <span class="s2">&quot;west&quot;</span><span class="p">):</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">place</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="n">destination</span> <span class="o">=</span> <span class="n">get_place</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;To the </span><span class="si">{</span><span class="n">direction</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">destination</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+</pre></div>
+</td></tr></table></div>
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+do_inventory()<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">do_inventory</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Show the players inventory&quot;&quot;&quot;</span>
+
+    <span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Trying to show inventory.&quot;</span><span class="p">)</span>
+
+    <span class="n">header</span><span class="p">(</span><span class="s2">&quot;Inventory&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;inventory&quot;</span><span class="p">]:</span>
+        <span class="n">write</span><span class="p">(</span><span class="s2">&quot;Empty.&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">qty</span> <span class="ow">in</span> <span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;inventory&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="hll">        <span class="n">item</span> <span class="o">=</span> <span class="n">get_item</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span>        <span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(x</span><span class="si">{</span><span class="n">qty</span><span class="si">:</span><span class="s2">&gt;2</span><span class="si">}</span><span class="s2">)  </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">()</span>
+
+</pre></div>
+</td></tr></table></div>
+</div>
+</details></div>
+<div class="section" id="c-use-get-item-in-do-examine-and-do-take">
+<h4>C. Use <code class="docutils literal notranslate"><span class="pre">get_item()</span></code> in <code class="docutils literal notranslate"><span class="pre">do_examine()</span></code> and <code class="docutils literal notranslate"><span class="pre">do_take()</span></code><a class="headerlink" href="#c-use-get-item-in-do-examine-and-do-take" title="Permalink to this headline">¶</a></h4>
+<p>In these functions we’ll do a similar replacement as above. Additionally, we’ll
+remove error handling that is done in <code class="docutils literal notranslate"><span class="pre">get_item()</span></code>.</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Call <code class="docutils literal notranslate"><span class="pre">get_item()</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">name</span></code> or <code class="docutils literal notranslate"><span class="pre">key</span></code> to get the value
+for <code class="docutils literal notranslate"><span class="pre">item</span></code>. This will replace the existing <code class="samp docutils literal notranslate"><span class="pre">ITEMS.get(</span><em><span class="pre">key</span></em><span class="pre">)</span></code> or
+<code class="samp docutils literal notranslate"><span class="pre">ITEMS[</span><em><span class="pre">key</span></em><span class="pre">]</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Remove the lines that calls <code class="docutils literal notranslate"><span class="pre">abort()</span></code> if <code class="docutils literal notranslate"><span class="pre">item</span></code> is <a class="reference internal" href="../lessons/conditional-statements.html#term-falsy"><span class="xref std std-term">falsy</span></a> or if
+<code class="docutils literal notranslate"><span class="pre">name</span></code> is not in <code class="docutils literal notranslate"><span class="pre">ITEMS</span></code>.</p></li>
+</ol>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+do_examine()<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">do_examine</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Look at an item in the current place.&quot;&quot;&quot;</span>
+
+    <span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Trying to examine: </span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># make sure the player said what they want to examine</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">:</span>
+        <span class="n">error</span><span class="p">(</span><span class="s2">&quot;What do you want to examine?&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="c1"># look up where the player is now</span>
+    <span class="n">place</span> <span class="o">=</span> <span class="n">get_place</span><span class="p">()</span>
+
+    <span class="c1"># get the item entered by the user and make it lowercase</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="c1"># make sure the item is in this place or in the players inventory</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">name</span> <span class="ow">in</span> <span class="n">place</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;items&quot;</span><span class="p">,</span> <span class="p">[])</span> <span class="ow">or</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;inventory&quot;</span><span class="p">]):</span>
+        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorry, I don&#39;t know what this is: </span><span class="si">{</span><span class="n">name</span><span class="si">!r}</span><span class="s2">.&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="c1"># get the item dictionary</span>
+<span class="hll">    <span class="n">item</span> <span class="o">=</span> <span class="n">get_item</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span>
+    <span class="c1"># print the item information</span>
+    <span class="n">header</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">title</span><span class="p">())</span>
+    <span class="n">wrap</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">])</span>
+
+</pre></div>
+</td></tr></table></div>
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+do_take()<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">do_take</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Pick up an item and add it to inventory.&quot;&quot;&quot;</span>
+    <span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Trying to take: </span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># make sure the player typed an item</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">:</span>
+        <span class="n">error</span><span class="p">(</span><span class="s2">&quot;What do you want to take?&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="c1"># get the item name from arguments</span>
+    <span class="c1"># and make it lowercase</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="c1"># look up where the player is now</span>
+    <span class="n">place</span> <span class="o">=</span> <span class="n">get_place</span><span class="p">()</span>
+
+    <span class="c1"># make sure the item is in this place</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">place</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;items&quot;</span><span class="p">,</span> <span class="p">[]):</span>
+        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorry, I don&#39;t see a </span><span class="si">{</span><span class="n">name</span><span class="si">!r}</span><span class="s2"> here.&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="c1"># get the item information</span>
+<span class="hll">    <span class="n">item</span> <span class="o">=</span> <span class="n">get_item</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;can_take&quot;</span><span class="p">):</span>
+        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;You try to pick up </span><span class="si">{</span><span class="n">name</span><span class="si">!r}</span><span class="s2">, but you find you aren&#39;t able to lift it.&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="c1"># add to inventory</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</details></div>
 </div>
 </div>
 <div class="section" id="reference">
