@@ -2438,6 +2438,27 @@ it to the place items.
 Part 9: Refactoring
 -------------------
 
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-9.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
+
+In this section we are going to work on refactoring our game.
+{term}`Refactoring <refactoring>` is when you change code to make the code
+better, but without changing what the software does.
+
+It is key to make changes in small, incremental steps which are tested
+regularily to ensure the program works properly throughout. Avoid tearing out
+and reworking vast swaths of code at a time, which will often leave you with a
+hopeless tangle of broken code.
+
+Here we'll be focusing on the {term}`DRY`[^DRY] principle--don't repeat
+yourself. This means that when you notice you're repeating the same, or nearly
+the same, code over and over again, find a way to put it somewhere it can be
+reused. In this case we'll be adding a few functions, then call those functions
+in the places where the same code is repeated.
+
+[^DRY]: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
+
 ### Part 9.1: Add abort()
 
 The `abort()` function will be similar to the `error()` function, except it
@@ -2445,27 +2466,33 @@ will exit the game immediately. This function will be for errors that only
 happen if there is a problem with the code, as opposed to errors that can be
 caused by something the user typed in.
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-9.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
-
-{{ clear }} 
+(This will actually result in a minor change in behavior. Now, when you
+encounter any errors using the `abort()` function, your game will end
+immediately instead of continuing on.)
 
 #### A. Define `abort()`
+
+The `abort()` function will simply call `error()` to print an error message,
+then exit the program.
+
+When `abort()` is called, a `return` statement will no longer be needed since
+the program will end immediately.
 
 {{ left }}
 
 1. `[ ]` define an `abort()` function that takes one argument `message`
-1. `[ ]` call `error()` with the argument `message`.
-1. `[ ]` call the built-in `exit()` function and pass it the argument `1`
+1. `[ ]` in `abort()`
+   * `[ ]` call `error()` with the argument `message`.
+   * `[ ]` call the built-in `exit()` function and pass it the argument `1`
 
 {{ right }}
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-8.3.py
-:class: full-width
+```{literalinclude} adventure/adventure-9.1.py
 :linenos:
 :lineno-match:
-:start-at: 'def do_abort'
+:start-at: 'def abort'
 :end-at: 'exit(1)'
 ```
 
@@ -2473,14 +2500,21 @@ caused by something the user typed in.
 
 {{ endcols }}
 
-#### B. in do_take()
+#### B. in `do_take()`
+
+Since we always expect to be able to find an item in the `ITEMS` dictionary for
+a key in the `place` items list, if we fail to find one that means that we
+messed something up, not the player. This is a perfect place to use `abort()`
+instead of `error()`. 
+
+Then because `abort()` exits the program immediately, we can remove the `return`. 
 
 {{ left }}
 
 1. `[ ]` Call `abort()` instead of `error()` when you check if `item` is {term}`falsy`
 1. `[ ]` remove the `return` statement
 1. `[ ]` To test, temporarily change the key for `"book"` to somthing
-         else, then type `take book`` from home. It should print an error message
+         else, then type `take book` from home. It should print an error message
          then exit the program. After verifying that it works, change it back.
 
 {{ right }}
@@ -2493,21 +2527,23 @@ caused by something the user typed in.
 :lineno-match:
 :start-at: 'def do_take'
 :end-before: 'if not item.get("can_take")'
-:emphasize-lines: "29"
+:emphasize-lines: "28"
 ```
 
 `````
 
 {{ endcols }}
 
-#### C. in do_examine()
+#### C. in `do_examine()`
+
+This is nearly exactly the same as the previous section.
 
 {{ left }}
 
 1. `[ ]` Call `abort()` instead of `error()` when you check if `name` is not in `ITEMS`
 1. `[ ]` remove the `return` statement
 1. `[ ]` To test, temporarily change the key for `"book"` to somthing
-         else, then type `take book`` from home. It should print an error message
+         else, then type `take book` from home. It should print an error message
          then exit the program. After verifying that it works, change it back.
 
 {{ right }}
@@ -2527,7 +2563,12 @@ caused by something the user typed in.
 
 {{ endcols }}
 
-#### C. in do_go()
+#### C. in `do_go()`
+
+Similar to the previous two sections, we always expect to be able to find an
+place in the `PLACES` dictionary for a key from another `place` dictionary, so
+if we don't it means there's an error somewhere in the code.
+
 
 {{ left }}
 
@@ -2547,30 +2588,46 @@ caused by something the user typed in.
 :lineno-match:
 :start-at: 'def do_go'
 :end-before: '# move the player to the new place'
-:emphasize-lines: "37"
+:emphasize-lines: "38"
 ```
 
 `````
 
 {{ endcols }}
 
-### Part 9.2: Add do_take()
-
-The `get_place()` function will handle both getting a place from the `PLACES`
-dictionary, and exiting the program using `abort()` if the place is not found.
+### Part 9.2: Add get_place()
 
 {link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-9.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
-{{ clear }} 
+{{ clear }}
+
+Since we're so often needing to get place information from the `PLACES`
+dictionary, we'll wrap this functionality into a function called `get_place()`
+that we can call from anywhere in our program where we need to get place
+information.
 
 #### A. Define `get_place()`
 
+The `get_place()` function will take one argument, the `key` to get from the
+`PLACES` dictionary. We'll make that argument optional though, and set the
+default to `None`. 
+
+If the user passes a `key` argument, then we'll get the place information from
+`PLACES` for that `key`. If they don't, we'll get the key from the `PLAYER`
+dictionary for their current location. That way we can call `get_place()` with
+no args to get the current place.
+
+This function will also check to make sure the place is found in the `PLACES`
+dictionary, and call `abort()` if it is not. That means that anywhere we call
+`get_place()` will not have to do that error handling over and over.
+
+
 {{ left }}
 
-1. `[ ]` define an `get_place()` function that takes one optional argument `key` with a default value of `None`
+1. `[ ]` define a `get_place()` function that takes one optional argument `key` with a default value of `None`
 1. `[ ]` if `key` is {term}`falsy` then assign `key` to the value of the `PLAYER` dict associated with the `key` value
 1. `[ ]` get the value from the `PLAYER` dictionary assocated from the `"place"` key and assign it to the variable `place`
-1. `[ ]` If `place`` is {term}`falsy`,
+1. `[ ]` If `place` is {term}`falsy`,
      * `[ ]` Use the `abort()` function to print an error message like:
 
        {samp}`"Woops! The information about {name!r} seems to be missing."`
@@ -2582,50 +2639,9 @@ dictionary, and exiting the program using `abort()` if the place is not found.
 `````{dropdown} Code
 
 ```{literalinclude} adventure/adventure-9.2.py
-:class: full-width
 :linenos:
 :lineno-match:
-:start-at: 'def get_place`
-:end-at: 'return place'
-```
-
-`````
-
-{{ endcols }}
-
-
-### Part 9.2: Add get_place()
-
-The `get_place()` function will handle both getting a place from the `PLACES`
-dictionary, and exiting the program using `abort()` if the place is not found.
-
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-9.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
-
-{{ clear }} 
-
-#### A. Define `get_place()`
-
-{{ left }}
-
-1. `[ ]` define an `get_place()` function that takes one optional argument `key` with a default value of `None`
-1. `[ ]` if `key` is {term}`falsy` then assign `key` to the value of the `PLAYER` dict associated with the `key` value
-1. `[ ]` get the value from the `PLAYER` dictionary assocated from the `"place"` key and assign it to the variable `place`
-1. `[ ]` If `place`` is {term}`falsy`,
-     * `[ ]` Use the `abort()` function to print an error message like:
-
-       {samp}`"Woops! The information about {name!r} seems to be missing."`
-1. `[ ]` return `place`
-
-
-{{ right }}
-
-`````{dropdown} Code
-
-```{literalinclude} adventure/adventure-9.1.py
-:class: full-width
-:linenos:
-:lineno-match:
-:start-at: 'def get_place`
+:start-at: 'def get_place'
 :end-at: 'return place'
 ```
 
@@ -2637,33 +2653,10 @@ dictionary, and exiting the program using `abort()` if the place is not found.
 
 {{ left }}
 
-1. `[ ]` Call `get_place()` with the argument `name` to get the value for `new_place`
-1. `[ ]` Remove ... 
-
-
-{{ right }}
-
-`````{dropdown} Code
-
-```{literalinclude} adventure/adventure-9.1.py
-:class: full-width
-:linenos:
-:lineno-match:
-:start-at: 'def do_go`
-:end-at: 'place = get_place()'
-:emphasize-lines: '14-15'
-```
-
-`````
-
-{{ endcols }}
-
-f### C. In `do_take()`
-
-{{ left }}
-
-1. `[ ]` Call `get_place()` to get the value for `place`
-1. `[ ]` Remove ... 
+1. `[ ]` Call `get_place()` with no arguments to get the value for `old_place`
+1. `[ ]` Remove the line assigning `old_name` since that is taken care of in `get_place()`
+1. `[ ]` Call `get_place()` with the argument `new_name` to get the value for `new_place`.
+1. `[ ]` Remove the lines that calls `abort()` if `new_place` is {term}`falsy`.
 
 
 {{ right }}
@@ -2671,15 +2664,95 @@ f### C. In `do_take()`
 `````{dropdown} Code
 
 ```{literalinclude} adventure/adventure-9.2.py
-:class: full-width
 :linenos:
 :lineno-match:
-:start-at: 'def do_take`
-:end-at: 'place = get_place()'
-:emphasize-lines: '14-15'
+:start-at: 'def do_go'
+:end-before: 'def'
+:emphasize-lines: '20, 31'
 ```
 
 `````
 
 {{ endcols }}
+
+#### C. In `do_look()`
+
+1. `[ ]` Call `get_place()` to get the value for `place`
+1. `[ ]` Remove the line assigning `place_name` since that is taken care of in `get_place()`
+1. `[ ]` Call `get_place()` with the argument `name` to get the value for `destination`
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-9.2.py
+:linenos:
+:lineno-match:
+:start-at: 'def do_look'
+:end-before: 'def'
+:emphasize-lines: '7, 51'
+```
+
+`````
+#### D. In `do_take()`, `do_examine()` and `do_drop()`
+
+1. `[ ]` Call `get_place()` to get the value for `place`
+1. `[ ]` Remove the line assigning `place_name` since that is taken care of in `get_place()`
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-9.2.py
+:linenos:
+:lineno-match:
+:start-at: 'def do_take'
+:end-before: 'def'
+:emphasize-lines: '15'
+```
+
+`````
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-9.2.py
+:linenos:
+:lineno-match:
+:start-at: 'def do_examine'
+:end-before: 'def'
+:emphasize-lines: '12'
+```
+
+`````
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-9.2.py
+:linenos:
+:lineno-match:
+:start-at: 'def do_drop'
+:end-before: 'def'
+:emphasize-lines: '26'
+```
+
+`````
+
+{{ endcols }}
+
+
+Reference
+---------
+
+```{glossary} adventure-game
+
+refactoring
+  Making changes to existing code for the sake of improving the code quality
+  without changing what the software does. Refactoring is done to improve
+  things like readability, maintainability and reliability.
+
+DRY
+Don't repeat yourself
+   A principle of software development aimed at reducing repetition of software
+   patterns, replacing it with abstractions or using data normalization to
+   avoid redundancy.
+
+```
+
+
 

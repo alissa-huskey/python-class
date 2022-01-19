@@ -146,7 +146,7 @@ def do_shop():
     for item in ITEMS.values():
         if "price" not in item:
             continue
-        
+
         write(f'{item["name"]:<13}  {item["description"]}')
 
     print()
@@ -162,8 +162,7 @@ def do_look():
     debug("Trying to look around.")
 
     # look up where the player is now
-    place_name = PLAYER["place"]
-    place = PLACES[place_name]
+    place = get_place()
 
     # print information about the current place
     header(f"{place['name']}")
@@ -207,7 +206,7 @@ def do_look():
         if not name:
             continue
 
-        destination = PLACES.get(name)
+        destination = get_place(name)
         write(f"To the {direction} is {destination['name']}.")
 
 def do_examine(args):
@@ -221,8 +220,7 @@ def do_examine(args):
         return
 
     # look up where the player is now
-    place_name = PLAYER["place"]
-    place = PLACES[place_name]
+    place = get_place()
 
     # get the item entered by the user and make it lowercase
     name = args[0].lower()
@@ -262,8 +260,7 @@ def do_go(args):
         return
 
     # look up where the player is now
-    old_name = PLAYER["place"]
-    old_place = PLACES[old_name]
+    old_place = get_place()
 
     # look up what is in that direction from here
     new_name = old_place.get(direction)
@@ -366,8 +363,7 @@ def do_drop(args):
         PLAYER["inventory"].pop(name)
 
     # look up where the player is now
-    place_name = PLAYER["place"]
-    place = PLACES[place_name]
+    place = get_place()
 
     # add to place items
     place.setdefault("items", [])
