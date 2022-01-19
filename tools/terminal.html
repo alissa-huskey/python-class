@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=84ace793992934648b4de8eed757e5a2" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -45,12 +45,12 @@
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/asciinema-player.js"></script>
     <script src="../_static/custom.js"></script>
     <script src="../_static/x-frame-bypass.js"></script>
-    <script src="../_static/asciinema-player.js"></script>
     <script src="../_static/tabs.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
@@ -79,7 +79,12 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<div class="col-12 col-md-3 bd-sidebar site-navigation " id="site-navigation">
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
@@ -532,22 +537,22 @@
 
 
           
+<!-- This is an invisible pixel that we watch to see if we've scrolled. -->
+<div class="sbt-scroll-pixel-helper"></div>
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
     <div class="topbar container-xl fixed-top">
     <div class="topbar-contents row">
         <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
         <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
+            <div class="topbar-left">
+                
+                <label class="nav-toggle-button" for="__navigation">
+                    <div class="visually-hidden">Toggle navigation</div>
+                    <i class="fas fa-bars"></i>
+                </label>
+                
+            </div>
             
             <!-- Source interaction buttons -->
 
@@ -588,6 +593,7 @@
         
         
         
+        
         <button type="button" class="btn btn-secondary topbarbtn"
             onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
                 class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
@@ -598,7 +604,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -711,7 +717,123 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Terminal</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-1-the-terminal">
+   Part 1: The terminal
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#starting-a-terminal">
+     2.1: Starting a terminal
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-prompt">
+     1.2: The Prompt
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-2-command-line-tour">
+   Part 2: Command line tour
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#commands-and-arguments">
+     2.1: Commands and arguments
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summary">
+     Summary
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getting-help">
+     2.3: Getting Help
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Summary
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise">
+     Exercise
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getting-around">
+     2.4: Getting around
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getting-file-information">
+     2.5: Getting file information
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#making-filesystem-changes">
+     2.6: Making filesystem changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#text-processing">
+     2.7: Text processing
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reference">
+   Reference
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#glossary">
+     Glossary
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#glossary-the-command-line">
+       The Command Line
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#see-also">
+     See also
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="section" id="terminal">
@@ -774,8 +896,8 @@ Code or Repl.it, it refers the terminal part of the application.</p>
 <div class="section" id="starting-a-terminal">
 <h3><a class="toc-backref" href="#table-of-contents">2.1: Starting a terminal</a><a class="headerlink" href="#starting-a-terminal" title="Permalink to this headline">¶</a></h3>
 <div class="tabbed-set docutils">
-<input checked="checked" id="2f058b14-731a-48e2-8806-44d9fc065f97" name="9a0f1962-5b90-4441-9a3a-0cb98f346b7f" type="radio">
-</input><label class="tabbed-label" for="2f058b14-731a-48e2-8806-44d9fc065f97">
+<input checked="checked" id="0bf07d57-bdd5-4785-be5a-d5502e36064b" name="2376ee60-3c6a-4a2d-aae9-9e088b55a2d9" type="radio">
+</input><label class="tabbed-label" for="0bf07d57-bdd5-4785-be5a-d5502e36064b">
 VS Code</label><div class="tabbed-content docutils">
 <p>To open and focus the shell, click the <span class="guilabel">Terminal</span> tab (usually in the
 bottom panel) or use the <kbd class="kbd docutils literal notranslate">⌃`</kbd> keyboard shortcut.</p>
@@ -788,8 +910,8 @@ symbol in the upper right corner. You might want to do so for this lesson.</p>
 <p>You should see something like this:</p>
 <p><img alt="" src="../_images/vscode-shell.png" /></p>
 </div>
-<input id="4dcc20db-3f4d-4644-99d9-86d6cb6be14e" name="9a0f1962-5b90-4441-9a3a-0cb98f346b7f" type="radio">
-</input><label class="tabbed-label" for="4dcc20db-3f4d-4644-99d9-86d6cb6be14e">
+<input id="92cf0b63-2a41-46f7-be51-47e7ff86b455" name="2376ee60-3c6a-4a2d-aae9-9e088b55a2d9" type="radio">
+</input><label class="tabbed-label" for="92cf0b63-2a41-46f7-be51-47e7ff86b455">
 Repl.it</label><div class="tabbed-content docutils">
 <p>To open and focus the shell, click the <span class="guilabel">Shell</span> tab in the right-most panel.</p>
 <div class="tip admonition">
@@ -802,8 +924,8 @@ remainder of this lesson.</p>
 <p>You should see something like this:</p>
 <p><img alt="" src="../_images/replit-shell.png" /></p>
 </div>
-<input id="f7e67b00-c2ba-456c-870a-7994c94715eb" name="9a0f1962-5b90-4441-9a3a-0cb98f346b7f" type="radio">
-</input><label class="tabbed-label" for="f7e67b00-c2ba-456c-870a-7994c94715eb">
+<input id="bfb8066e-51fe-4220-973b-6dacf3b6f71d" name="2376ee60-3c6a-4a2d-aae9-9e088b55a2d9" type="radio">
+</input><label class="tabbed-label" for="bfb8066e-51fe-4220-973b-6dacf3b6f71d">
 OS</label><div class="tabbed-content docutils">
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">MacOS</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><ol class="simple">
@@ -1448,8 +1570,8 @@ to enable or disable color might be: <code class="docutils literal notranslate">
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="../practices/data-inspection.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1466,16 +1588,14 @@ to enable or disable color might be: <code class="docutils literal notranslate">
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+  </p>
+</footer>
 </main>
 
 
