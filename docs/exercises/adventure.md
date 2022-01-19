@@ -2505,9 +2505,9 @@ the program will end immediately.
 Since we always expect to be able to find an item in the `ITEMS` dictionary for
 a key in the `place` items list, if we fail to find one that means that we
 messed something up, not the player. This is a perfect place to use `abort()`
-instead of `error()`. 
+instead of `error()`.
 
-Then because `abort()` exits the program immediately, we can remove the `return`. 
+Then because `abort()` exits the program immediately, we can remove the `return`.
 
 {{ left }}
 
@@ -2610,7 +2610,7 @@ information.
 
 The `get_place()` function will take one argument, the `key` to get from the
 `PLACES` dictionary. We'll make that argument optional though, and set the
-default to `None`. 
+default to `None`.
 
 If the user passes a `key` argument, then we'll get the place information from
 `PLACES` for that `key`. If they don't, we'll get the key from the `PLAYER`
@@ -2625,12 +2625,12 @@ dictionary, and call `abort()` if it is not. That means that anywhere we call
 {{ left }}
 
 1. `[ ]` define a `get_place()` function that takes one optional argument `key` with a default value of `None`
-1. `[ ]` if `key` is {term}`falsy` then assign `key` to the value of the `PLAYER` dict associated with the `key` value
-1. `[ ]` get the value from the `PLAYER` dictionary assocated from the `"place"` key and assign it to the variable `place`
+1. `[ ]` if `key` is {term}`falsy` then assign `key` to the value of the `PLAYER` dict associated with the `"place"` value
+1. `[ ]` get the value from the `PLACES` dictionary assocated from the `key` key and assign it to the variable `place`
 1. `[ ]` If `place` is {term}`falsy`,
      * `[ ]` Use the `abort()` function to print an error message like:
 
-       {samp}`"Woops! The information about {name!r} seems to be missing."`
+       {samp}`"Woops! The information about the place {name} seems to be missing."`
 1. `[ ]` return `place`
 
 
@@ -2653,9 +2653,11 @@ dictionary, and call `abort()` if it is not. That means that anywhere we call
 
 {{ left }}
 
-1. `[ ]` Call `get_place()` with no arguments to get the value for `old_place`
+1. `[ ]` Call `get_place()` with no arguments to get the value for `old_place`.
+         (This will replace the existing `PLACES[old_place]`.)
 1. `[ ]` Remove the line assigning `old_name` since that is taken care of in `get_place()`
 1. `[ ]` Call `get_place()` with the argument `new_name` to get the value for `new_place`.
+         (This will replace the existing `PLACES.get(new_place)`.)
 1. `[ ]` Remove the lines that calls `abort()` if `new_place` is {term}`falsy`.
 
 
@@ -2677,9 +2679,9 @@ dictionary, and call `abort()` if it is not. That means that anywhere we call
 
 #### C. In `do_look()`
 
-1. `[ ]` Call `get_place()` to get the value for `place`
+1. `[ ]` Replace the existing value for `place` with a call to `get_place()`.
 1. `[ ]` Remove the line assigning `place_name` since that is taken care of in `get_place()`
-1. `[ ]` Call `get_place()` with the argument `name` to get the value for `destination`
+1. `[ ]` Replace the existing value for `destination` with a call to `get_place()` with the argument `name`.
 
 `````{dropdown} Code
 
@@ -2694,10 +2696,10 @@ dictionary, and call `abort()` if it is not. That means that anywhere we call
 `````
 #### D. In `do_take()`, `do_examine()` and `do_drop()`
 
-1. `[ ]` Call `get_place()` to get the value for `place`
+1. `[ ]` Replace the existing value for `place` with a call to `get_place()`.
 1. `[ ]` Remove the line assigning `place_name` since that is taken care of in `get_place()`
 
-`````{dropdown} Code
+`````{dropdown} do_take()
 
 ```{literalinclude} adventure/adventure-9.2.py
 :linenos:
@@ -2709,7 +2711,7 @@ dictionary, and call `abort()` if it is not. That means that anywhere we call
 
 `````
 
-`````{dropdown} Code
+`````{dropdown} do_examine()
 
 ```{literalinclude} adventure/adventure-9.2.py
 :linenos:
@@ -2721,7 +2723,7 @@ dictionary, and call `abort()` if it is not. That means that anywhere we call
 
 `````
 
-`````{dropdown} Code
+`````{dropdown} do_drop()
 
 ```{literalinclude} adventure/adventure-9.2.py
 :linenos:
@@ -2735,6 +2737,118 @@ dictionary, and call `abort()` if it is not. That means that anywhere we call
 
 {{ endcols }}
 
+### Part 9.3: Add get_item()
+
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-9.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
+
+In this section we'll be adding a `get_item()` function which will be very
+similar to `get_place()` but for items instead of places.
+
+#### A. Define `get_item()`
+
+The `get_item()` function will be almost exactly like `get_place()`. It will
+also take one argument, the `key` to get from the `ITEMS` dictionary, but it
+will not be optional. We'll call `abort()` if the `key` is not in the `ITEMS`
+dictionary and finally return the `item` otherwise.
+
+
+{{ left }}
+
+1. `[ ]` define a `get_item()` function that takes one argument `key`
+1. `[ ]` use the `.get()` method on the `ITEMS` dictionary to get the value assocated from the `key` key and assign it to the variable `item`
+1. `[ ]` If `item` is {term}`falsy`,
+     * `[ ]` Use the `abort()` function to print an error message like:
+
+       {samp}`"Woops! The information about the item {name} seems to be missing."`
+1. `[ ]` return `item`
+
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-9.3.py
+:linenos:
+:lineno-match:
+:start-at: 'def get_item'
+:end-at: 'return item'
+```
+
+`````
+
+{{ endcols }}
+
+#### B. Use `get_item()` in `do_look()` and `do_inventory()`
+
+Throughout the rest of the program, you'll replace anywhere that you get an
+item from the `ITEMS` dictionary using {term}`subscription` or the `.get()`
+method with a call to `get_item()`.
+
+1. `[ ]` Call `get_item()` with the argument `name` or `key` to get the value
+   for `item`. This will replace the existing {samp}`ITEMS.get({key})` or
+   {samp}`ITEMS[{key}]`.
+
+`````{dropdown} do_look()
+
+```{literalinclude} adventure/adventure-9.3.py
+:linenos:
+:lineno-match:
+:start-at: 'def do_look'
+:end-before: 'def'
+:emphasize-lines: "23"
+```
+
+`````
+
+`````{dropdown} do_inventory()
+
+```{literalinclude} adventure/adventure-9.3.py
+:linenos:
+:lineno-match:
+:start-at: 'def do_inventory'
+:end-before: 'def'
+:emphasize-lines: "13"
+```
+
+`````
+
+#### C. Use `get_item()` in `do_examine()` and `do_take()`
+
+In these functions we'll do a similar replacement as above. Additionally, we'll
+remove error handling that is done in `get_item()`.
+
+1. `[ ]` Call `get_item()` with the argument `name` or `key` to get the value
+   for `item`. This will replace the existing {samp}`ITEMS.get({key})` or
+   {samp}`ITEMS[{key}]`.
+1. `[ ]` Remove the lines that calls `abort()` if `item` is {term}`falsy` or if
+   `name` is not in `ITEMS`.
+
+
+`````{dropdown} do_examine()
+
+```{literalinclude} adventure/adventure-9.3.py
+:linenos:
+:lineno-match:
+:start-at: 'def do_examine'
+:end-before: 'def'
+:emphasize-lines: "23"
+```
+
+`````
+
+`````{dropdown} do_take()
+
+```{literalinclude} adventure/adventure-9.3.py
+:linenos:
+:lineno-match:
+:start-at: 'def do_take'
+:end-before: 'def'
+:emphasize-lines: "23"
+```
+
+`````
 
 Reference
 ---------

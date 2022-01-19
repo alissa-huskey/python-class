@@ -2,7 +2,7 @@
 Text-based adventure game
 https://alissa-huskey.github.io/python-class/exercises/adventure.html
 
-Part 9: Refactoring
+Part 9.3: Refactoring -- add get_item()
 """
 
 import re
@@ -146,72 +146,17 @@ def get_item(key):
 
     return item
 
-def inventory_change(key, quantity=1):
-    """Add item to player inventory."""
-    PLAYER["inventory"].setdefault(key, 0)
-    PLAYER["inventory"][key] += quantity
-
-    # remove from inventory dictionary if quantity is zero
-    if not PLAYER["inventory"][key] and key != "coins":
-        PLAYER["inventory"].pop(key)
-
-def place_add(key, quantity=1):
-    """Remove an item from a place, or the players current place if missing."""
-    # get the current place
-    place = get_place()
-
-    # add the item key to the place items list
-    place.setdefault("items", [])
-    if not key in place["items"]:
-        place["items"].append(key)
-
-def place_remove(key, quantity=1):
-    """Remove an item from a place, or the players current place if missing."""
-    # get the current place
-    place = get_place()
-
-    # remove from inventory
-    place["inventory"].remove(key)
-
-
-# ## Validation functions ####################################################
-
-def currently_at(place):
-    """Return True if the player is not currently at place, otherwise return False."""
-    return PLAYER["place"] == place
-
-def player_has(key, qty=1):
-    """Return True if the player has at least one item associated with key in
-       their inventory."""
-    return key in PLAYER["inventory"] and PLAYER["inventory"][key] >= qty
-
-def place_has(item):
-    """Return True if current place has a particular item."""
-    place = get_place()
-    return item in place.get("items", [])
-
-def is_for_sale(item):
-    """Return True if item is for sale (has a price)."""
-    return "price" in item
-
 # ## Action functions ########################################################
 
 def do_shop():
     """List the items for sale."""
 
-    if not currently_at("market"):
-        error(f"Sorry, can't do that here.")
-        return
-
     header("Items for sale.")
 
     for item in ITEMS.values():
-        # skip items that are sold out in inventory
-        if not place_has(key):
+        if "price" not in item:
             continue
 
-        # print info about items for sale
-        if is_for_sale(item):
         write(f'{item["name"]:<13}  {item["description"]}')
 
     print()
@@ -227,8 +172,7 @@ def do_look():
     debug("Trying to look around.")
 
     # look up where the player is now
-    place_name = PLAYER["place"]
-    place = PLACES[place_name]
+    place = get_place()
 
     # print information about the current place
     header(f"{place['name']}")
@@ -244,7 +188,7 @@ def do_look():
         # and make a list of item names
         names = []
         for key in items:
-            item = ITEMS.get(key)
+            item = get_item(key)
             names.append(item["name"])
 
         # remove the last name from the list
@@ -272,7 +216,7 @@ def do_look():
         if not name:
             continue
 
-        destination = PLACES.get(name)
+        destination = get_place(name)
         write(f"To the {direction} is {destination['name']}.")
 
 def do_examine(args):
@@ -286,14 +230,13 @@ def do_examine(args):
         return
 
     # look up where the player is now
-    place_name = PLAYER["place"]
-    place = PLACES[place_name]
+    place = get_place()
 
     # get the item entered by the user and make it lowercase
     name = args[0].lower()
 
     # make sure the item is in this place or in the players inventory
-    if not (place_has(name) or player_has(name)):
+    if not (name in place.get("items", []) or name in PLAYER["inventory"]):
         error(f"Sorry, I don't know what this is: {name!r}.")
         return
 
@@ -302,18 +245,6 @@ def do_examine(args):
 
     # print the item information
     header(item["name"].title())
-
-    # print the price if we're in the market
-    if currently_at("market") and place_has(name) and is_for_sale(item):
-        write(f"{abs(item['price'])} coins".rjust(WIDTH - MARGIN))
-        print()
-
-    # print the quantity if the item is from inventory
-    elif player_has(name):
-        write(f"(x{PLAYER['inventory'][name]})".rjust(WIDTH - MARGIN))
-        print()
-
-
     wrap(item["description"])
 
 def do_go(args):
@@ -335,8 +266,7 @@ def do_go(args):
         return
 
     # look up where the player is now
-    old_name = PLAYER["place"]
-    old_place = PLACES[old_name]
+    old_place = get_place()
 
     # look up what is in that direction from here
     new_name = old_place.get(direction)
@@ -373,7 +303,7 @@ def do_take(args):
     place = get_place()
 
     # make sure the item is in this place
-    if not place_has(name):
+    if name not in place.get("items", []):
         error(f"Sorry, I don't see a {name!r} here.")
         return
 
@@ -385,10 +315,11 @@ def do_take(args):
         return
 
     # add to inventory
-    inventory_change(name, place["inventory"][name])
+    PLAYER["inventory"].setdefault(name, 0)
+    PLAYER["inventory"][name] += 1
 
     # remove from place
-    place_remove(name, place["inventory"][name])
+    place["items"].remove(name)
 
     wrap(f"You pick up {item['name']} and put it in your pack.")
 
@@ -404,7 +335,7 @@ def do_inventory():
         return
 
     for name, qty in PLAYER["inventory"].items():
-        item = ITEMS.get(name)
+        item = get_item(name)
         write(f"(x{qty:>2})  {item['name']}")
 
     print()
@@ -424,15 +355,21 @@ def do_drop(args):
     name = args[0].lower()
 
     # make sure the item is in inventory
-    if not player_has(name):
+    if name not in PLAYER["inventory"] or not PLAYER["inventory"][name]:
         error(f"You don't have any {name!r}.")
         return
 
-    # add to place items
-    place_add(name, PLAYER["inventory"][name])
+    # remove from inventory
+    PLAYER["inventory"][name] -= 1
+    if not PLAYER["inventory"][name]:
+        PLAYER["inventory"].pop(name)
 
-    # remove from player inventory
-    inventory_change(name, -PLAYER["inventory"][name])
+    # look up where the player is now
+    place = get_place()
+
+    # add to place items
+    place.setdefault("items", [])
+    place["items"].append(name)
 
 
 def main():

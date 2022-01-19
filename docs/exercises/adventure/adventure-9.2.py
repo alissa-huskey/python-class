@@ -2,7 +2,7 @@
 Text-based adventure game
 https://alissa-huskey.github.io/python-class/exercises/adventure.html
 
-Part 9.1: Refactoring -- add abort()
+Part 9.2: Refactoring -- add get_place()
 """
 
 import re
