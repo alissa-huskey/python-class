@@ -17,16 +17,7 @@ Attendees
 
 """
 
-def header(title, char="-"):
-    print()
-    print(title)
-    print(char * len(title))
-
-def section(part, title):
-    header(f"{part}: {title}", char="=")
-
-def div(part, title):
-    header(f"{part}: {title}", char="-")
+from workshops import section, div
 
 # truthy and falsy
 # ================
@@ -74,13 +65,13 @@ if expression:
 
 if bool(expression):
     ...
-    
+
 # the following statements/operators are evaluated in a boolean context
 #
 # if
 # while
 # not
-# and 
+# and
 # or
 
 div("A.3", "and/or operators")
