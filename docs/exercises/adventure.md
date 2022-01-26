@@ -3150,6 +3150,70 @@ do for now.)
 
 {{ endcols }}
 
+### Part 9.6: Add `place_add()`
+
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-9.6.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
+
+In this section we'll be adding an `place_add()` function that will add
+an item to the current place.
+
+#### A. Define `place_add()`
+
+The `place_add()` function will take care of looking up the current place,
+making sure that the places `"items"` dictionary is set to an empty list if
+it's missing, making sure that it's not already in the place, and finally
+adding the item key to the place list.
+
+1. `[ ]` Define a `place_add()` function that takes one argument `key`.
+1. `[ ]` Get the current place by calling `get_place()` and assign it to the
+         variable `place`.
+1. `[ ]` Call `.setdefault()` on `place` with the arguments `"items"` and an
+         empty list.
+1. `[ ]` Check if `key` is in the `place["items"]` list
+    * `[ ]` If not, append `key` to the `place["items"]` dict
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-9.6.py
+:linenos:
+:lineno-match:
+:pyobject: 'place_add'
+```
+
+`````
+
+#### B. Call `place_add()` in `do_drop()`
+
+Now we can call `place_add()` anytime we want to add something to a place.
+Right now, this only happens in the `do_drop()` function.
+
+{{ leftcol }}
+
+
+1. `[ ]` Find where you add the item to the place. Replace those lines with a
+         call to `place_add()` and pass the `name` argument.
+1. `[ ]` You can also remove the line where you get the current place using the
+        `get_place()` function.
+
+
+{{ rightcol }}
+
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-9.6.py
+:linenos:
+:lineno-match:
+:pyobject: 'do_drop'
+:emphasize-lines: 27
+```
+
+`````
+
+{{ endcols }}
+
 
 Reference
 ---------
