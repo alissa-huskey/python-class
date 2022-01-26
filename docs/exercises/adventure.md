@@ -2850,6 +2850,197 @@ remove error handling that is done in `get_item()`.
 
 `````
 
+### Part 9.4: Validation functions
+
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-9.4.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
+
+In this section we'll be several functions return `True` or `False` so that
+they can be used for things we commonly need to check. Specifically the
+functions `player_has()`, `place_has()`, and `is_for_sale()`.
+
+#### A. Define `player_has()`
+
+The `player_has()` function will return `True` if the player has a particular
+item in inventory.
+
+
+1. `[ ]` define a `player_has()` function that takes one argument `key`, and an optional argument `qty` with a default value of `1`
+1. `[ ]` Check if the `key` is in the players inventory (stored in the `PLAYER`
+         dict with the `"inventory"` key), and if so, if the value is greater than or
+         equal to `qty`.
+    * `[ ]` If so, return `True`
+    * `[ ]` If not, return `False`
+
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-9.4.py
+:linenos:
+:lineno-match:
+:start-at: 'def player_has'
+:end-at: 'return'
+```
+
+`````
+
+#### B. Call `player_has()` from `do_drop()`
+
+Now in our if statements where we check the same thing we can replace it with a
+call to `player_has()`.
+
+
+1. `[ ]` Find the if statement where we check to see if the item is in not inventory.
+1. `[ ]` Replace the part of the condition that checks with a call to
+         `player_has()` and pass the argument `name()`. (Be sure to keep the `not`.)
+
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-9.4.py
+:linenos:
+:lineno-match:
+:pyobject: do_drop
+:emphasize-lines: "16"
+```
+
+`````
+
+#### C. Call `player_has()` from `do_examine()`
+
+1. `[ ]` Find the if statement where we check to see if the item is not in
+         either the the current place or the inventory.
+1. `[ ]` Replace the part of the condition that checks with a call to
+         `player_has()` and pass the argument `name()`. (Be sure to keep the
+         `not`, as well as the part that checks if the item is in the current
+         place.)
+
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-9.4.py
+:linenos:
+:lineno-match:
+:pyobject: do_examine
+:emphasize-lines: "18"
+```
+
+`````
+
+#### D. Define `place_has()`
+
+The `place_has()` function will return `True` if the place has a particular
+item.
+
+
+1. `[ ]` define a `place_has()` function that takes one argument `item`.
+1. `[ ]` In the function get the current place by calling `get_place()` assign it to the variable `place`.
+1. `[ ]` Check if the `item` is in the list of items in the current place by
+         using the `.get()` method on `place` with the key `"items"`.
+    * `[ ]` If so, return `True`
+    * `[ ]` If not, return `False`
+
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-9.4.py
+:linenos:
+:lineno-match:
+:pyobject: 'place_has'
+```
+
+`````
+
+#### E. Call `place_has()` from `do_take()`
+
+Now in our if statements where we check the same thing we can replace it with a
+call to `place_has()`.
+
+
+1. `[ ]` Find the if statement where we check to see if the item is not in the current place.
+1. `[ ]` Replace the part of the condition that checks with a call to
+         `place_has()` and pass the argument `name()`. (Be sure to keep the `not`.)
+
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-9.4.py
+:linenos:
+:lineno-match:
+:pyobject: do_take
+:emphasize-lines: "18"
+```
+
+`````
+
+#### F. Call `place_has()` from `do_examine()`
+
+Now in our if statements where we check the same thing we can replace it with a
+call to `place_has()`.
+
+
+1. `[ ]` Find the if statement where we check to see if the item is not in the current place.
+1. `[ ]` Replace the part of the condition that checks with a call to
+         `place_has()` and pass the argument `name`. (Be sure to keep the
+         `not` as well as the part that checks if the player has the item.)
+
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-9.4.py
+:linenos:
+:lineno-match:
+:pyobject: do_examine
+:emphasize-lines: "18"
+```
+
+`````
+
+#### G. Define `is_for_sale()`
+
+The `is_for_sale()` function will return `True` if an item is for sale.
+
+1. `[ ]` Define a `is_for_sale()` function that takes one argument, `item`.
+1. `[ ]` Check if the `"price"` key is in the `item` dictionary.
+    * `[ ]` If so, return `True`
+    * `[ ]` If not, return `False`
+
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-9.4.py
+:linenos:
+:lineno-match:
+:pyobject: is_for_sale
+```
+
+`````
+
+#### H. Call `is_for_sale()` from `do_shop()`
+
+Now in our if statements where we check the same thing we can replace it with a
+call to `is_for_sale()`.
+
+
+1. `[ ]` Find the if statement where we check to see if the `"price"` key is in an `item` dictionary
+1. `[ ]` Replace the part of the condition that checks with a call to
+         `is_for_sale()` and pass the argument `item`. (Be sure to keep the `not`.)
+
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-9.4.py
+:linenos:
+:lineno-match:
+:pyobject: do_shop
+:emphasize-lines: "7"
+```
+
+`````
+
+
+
 Reference
 ---------
 
