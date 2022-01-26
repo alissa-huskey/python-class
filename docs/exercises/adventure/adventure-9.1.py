@@ -125,7 +125,7 @@ def do_shop():
     for item in ITEMS.values():
         if "price" not in item:
             continue
-        
+
         write(f'{item["name"]:<13}  {item["description"]}')
 
     print()
@@ -357,6 +357,9 @@ def do_drop(args):
     # add to place items
     place.setdefault("items", [])
     place["items"].append(name)
+
+    # print a message
+    wrap(f"You set down the {name}.")
 
 
 def main():

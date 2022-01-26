@@ -146,6 +146,33 @@ def get_item(key):
 
     return item
 
+def inventory_change(key, quantity=1):
+    """Add item to player inventory."""
+    PLAYER["inventory"].setdefault(key, 0)
+    PLAYER["inventory"][key] += quantity
+
+    # remove from inventory dictionary if quantity is zero
+    if not PLAYER["inventory"][key] and key != "coins":
+        PLAYER["inventory"].pop(key)
+
+def place_add(key, quantity=1):
+    """Remove an item from a place, or the players current place if missing."""
+    # get the current place
+    place = get_place()
+
+    # add the item key to the place items list
+    place.setdefault("items", [])
+    if not key in place["items"]:
+        place["items"].append(key)
+
+def place_remove(key, quantity=1):
+    """Remove an item from a place, or the players current place if missing."""
+    # get the current place
+    place = get_place()
+
+    # remove from inventory
+    place["inventory"].remove(key)
+
 # ## Validation functions ####################################################
 
 def player_has(key, qty=1):
@@ -331,11 +358,10 @@ def do_take(args):
         return
 
     # add to inventory
-    PLAYER["inventory"].setdefault(name, 0)
-    PLAYER["inventory"][name] += 1
+    inventory_change(name, place["inventory"][name])
 
     # remove from place
-    place["items"].remove(name)
+    place_remove(name, place["inventory"][name])
 
     wrap(f"You pick up {item['name']} and put it in your pack.")
 
@@ -375,17 +401,17 @@ def do_drop(args):
         error(f"You don't have any {name!r}.")
         return
 
-    # remove from inventory
-    PLAYER["inventory"][name] -= 1
-    if not PLAYER["inventory"][name]:
-        PLAYER["inventory"].pop(name)
+    # get the amount currently in inventory
+    qty = -PLAYER["inventory"][name]
 
-    # look up where the player is now
-    place = get_place()
+    # remove from player inventory
+    inventory_change(name, -qty)
 
     # add to place items
-    place.setdefault("items", [])
-    place["items"].append(name)
+    place_add(name, qty)
+
+    # print a message
+    wrap(f"You set down the {name}.")
 
 
 def main():

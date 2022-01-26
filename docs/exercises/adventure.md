@@ -2420,6 +2420,8 @@ it to the place items.
 1. `[ ]` get the value from `PLACES` associated with `place_name` and assign it to `place`
 1. `[ ]` call `.setdefault()` on `place` with the argument `items` and `[]`
 1. `[ ]` append `name` to `place["items"]`
+1. `[ ]` print a message using the `wrap()` function like:
+         {samp}`You set down the {name}.`
 
 
 `````{dropdown} Code
@@ -2428,8 +2430,7 @@ it to the place items.
 :class: full-width
 :linenos:
 :lineno-match:
-:start-at: 'def do_drop'
-:end-before: 'def '
+:pyobject: 'do_drop'
 :emphasize-lines: "25-"
 ```
 
@@ -2492,8 +2493,7 @@ the program will end immediately.
 ```{literalinclude} adventure/adventure-9.1.py
 :linenos:
 :lineno-match:
-:start-at: 'def abort'
-:end-at: 'exit(1)'
+:pyobject: 'abort'
 ```
 
 `````
@@ -2641,8 +2641,7 @@ dictionary, and call `abort()` if it is not. That means that anywhere we call
 ```{literalinclude} adventure/adventure-9.2.py
 :linenos:
 :lineno-match:
-:start-at: 'def get_place'
-:end-at: 'return place'
+:pyobject: 'get_place'
 ```
 
 `````
@@ -2668,8 +2667,7 @@ dictionary, and call `abort()` if it is not. That means that anywhere we call
 ```{literalinclude} adventure/adventure-9.2.py
 :linenos:
 :lineno-match:
-:start-at: 'def do_go'
-:end-before: 'def'
+:pyobject: 'do_go'
 :emphasize-lines: '20, 31'
 ```
 
@@ -2688,8 +2686,7 @@ dictionary, and call `abort()` if it is not. That means that anywhere we call
 ```{literalinclude} adventure/adventure-9.2.py
 :linenos:
 :lineno-match:
-:start-at: 'def do_look'
-:end-before: 'def'
+:pyobject: 'do_look'
 :emphasize-lines: '7, 51'
 ```
 
@@ -2704,8 +2701,7 @@ dictionary, and call `abort()` if it is not. That means that anywhere we call
 ```{literalinclude} adventure/adventure-9.2.py
 :linenos:
 :lineno-match:
-:start-at: 'def do_take'
-:end-before: 'def'
+:pyobject: 'do_take'
 :emphasize-lines: '15'
 ```
 
@@ -2716,8 +2712,7 @@ dictionary, and call `abort()` if it is not. That means that anywhere we call
 ```{literalinclude} adventure/adventure-9.2.py
 :linenos:
 :lineno-match:
-:start-at: 'def do_examine'
-:end-before: 'def'
+:pyobject: 'do_examine'
 :emphasize-lines: '12'
 ```
 
@@ -2728,8 +2723,7 @@ dictionary, and call `abort()` if it is not. That means that anywhere we call
 ```{literalinclude} adventure/adventure-9.2.py
 :linenos:
 :lineno-match:
-:start-at: 'def do_drop'
-:end-before: 'def'
+:pyobject: 'do_drop'
 :emphasize-lines: '26'
 ```
 
@@ -2772,8 +2766,7 @@ dictionary and finally return the `item` otherwise.
 ```{literalinclude} adventure/adventure-9.3.py
 :linenos:
 :lineno-match:
-:start-at: 'def get_item'
-:end-at: 'return item'
+:pyobject: 'get_item'
 ```
 
 `````
@@ -2795,8 +2788,7 @@ method with a call to `get_item()`.
 ```{literalinclude} adventure/adventure-9.3.py
 :linenos:
 :lineno-match:
-:start-at: 'def do_look'
-:end-before: 'def'
+:pyobject: 'do_look'
 :emphasize-lines: "23"
 ```
 
@@ -2807,8 +2799,7 @@ method with a call to `get_item()`.
 ```{literalinclude} adventure/adventure-9.3.py
 :linenos:
 :lineno-match:
-:start-at: 'def do_inventory'
-:end-before: 'def'
+:pyobject: 'do_inventory'
 :emphasize-lines: "13"
 ```
 
@@ -2831,8 +2822,7 @@ remove error handling that is done in `get_item()`.
 ```{literalinclude} adventure/adventure-9.3.py
 :linenos:
 :lineno-match:
-:start-at: 'def do_examine'
-:end-before: 'def'
+:pyobject: 'do_examine'
 :emphasize-lines: "23"
 ```
 
@@ -2843,8 +2833,7 @@ remove error handling that is done in `get_item()`.
 ```{literalinclude} adventure/adventure-9.3.py
 :linenos:
 :lineno-match:
-:start-at: 'def do_take'
-:end-before: 'def'
+:pyobject: 'do_take'
 :emphasize-lines: "23"
 ```
 
@@ -2879,8 +2868,7 @@ item in inventory.
 ```{literalinclude} adventure/adventure-9.4.py
 :linenos:
 :lineno-match:
-:start-at: 'def player_has'
-:end-at: 'return'
+:pyobject: 'player_has'
 ```
 
 `````

@@ -369,6 +369,9 @@ def do_drop(args):
     place.setdefault("items", [])
     place["items"].append(name)
 
+    # print a message
+    wrap(f"You set down the {name}.")
+
 
 def main():
     header("Welcome!")
