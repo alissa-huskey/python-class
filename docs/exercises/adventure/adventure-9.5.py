@@ -2,7 +2,7 @@
 Text-based adventure game
 https://alissa-huskey.github.io/python-class/exercises/adventure.html
 
-Part 9.4: Refactoring -- inventory_change()
+Part 9.5: Refactoring -- inventory_change()
 """
 
 import re
@@ -389,6 +389,9 @@ def do_drop(args):
 
     # remove from player inventory
     inventory_change(name, -qty)
+
+    # look up where the player is now
+    place = get_place()
 
     # add to place items
     place.setdefault("items", [])

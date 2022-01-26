@@ -2,7 +2,7 @@
 Text-based adventure game
 https://alissa-huskey.github.io/python-class/exercises/adventure.html
 
-Part 9.6: Refactoring -- place_add()
+Part 9.7: Refactoring -- place_remove()
 """
 
 import re
@@ -165,6 +165,15 @@ def place_add(key):
     place.setdefault("items", [])
     if key not in place["items"]:
         place["items"].append(key)
+
+def place_remove(key):
+    """Remove an item from the current place."""
+    # get the current place
+    place = get_place()
+
+    # remove from place
+    if key in place.get("items", []):
+        place["items"].remove(key)
 
 # ## Validation functions ####################################################
 
@@ -335,9 +344,6 @@ def do_take(args):
     # and make it lowercase
     name = args[0].lower()
 
-    # look up where the player is now
-    place = get_place()
-
     # make sure the item is in this place
     if not place_has(name):
         error(f"Sorry, I don't see a {name!r} here.")
@@ -354,7 +360,7 @@ def do_take(args):
     inventory_change(name)
 
     # remove from place
-    place["items"].remove(name)
+    place_remove(name)
 
     wrap(f"You pick up {item['name']} and put it in your pack.")
 

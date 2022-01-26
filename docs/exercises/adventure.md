@@ -3214,6 +3214,68 @@ Right now, this only happens in the `do_drop()` function.
 
 {{ endcols }}
 
+### Part 9.7: Add `place_remove()`
+
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-9.7.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
+
+In this section we'll be adding an `place_remove()` function that will remove
+an item from the current place.
+
+#### A. Define `place_remove()`
+
+The `place_remove()` function will take care of looking up the current place,
+making sure that the item is in the place, and finally removing the item key
+from the place list.
+
+1. `[ ]` Define a `place_remove()` function that takes one argument `key`.
+1. `[ ]` Get the current place by calling `get_place()` and assign it to the
+         variable `place`.
+1. `[ ]` Check if `key` is in the current place by calling `.get()` on `place`
+         and passing the arguments `key` and an empty list for the default value.
+    * `[ ]` If so, call `.remove()` on `place["items"]` with the `key` argument
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-9.7.py
+:linenos:
+:lineno-match:
+:pyobject: 'place_remove'
+```
+
+`````
+
+#### B. Call `place_remove()` in `do_take()`
+
+Now we can call `place_remove()` anytime we want to remove something from a
+place.  Right now, this only happens in the `do_take()` function.
+
+{{ leftcol }}
+
+
+1. `[ ]` Find where you remove the item from the place. Replace those lines
+    with a call to `place_remove()` and pass the `name` argument.
+1. `[ ]` You can also remove the line where you get the current place using the
+        `get_place()` function.
+
+
+{{ rightcol }}
+
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-9.7.py
+:linenos:
+:lineno-match:
+:pyobject: 'do_take'
+:emphasize-lines: 30
+```
+
+`````
+
+{{ endcols }}
+
 
 Reference
 ---------
