@@ -3027,6 +3027,128 @@ call to `is_for_sale()`.
 
 `````
 
+### Part 9.5: Add `inventory_change()`
+
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-9.5.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
+
+In this section we'll be adding an `inventory_change()` function that will add
+or remove items from the players inventory.
+
+#### A. Define `inventory_change()`
+
+The `inventory_change()` function will handle either adding items to a player's
+inventory or removing from it. We'll use an optional argument `quantity` for
+the number to add. (If the number is negative, then it the quantity will be
+subtracted.)
+
+In this function we'll use the `.setdefault()` method on the inventory
+dictionary. This is kind of like the inverse of the `.get()` method--if the `key`
+is not currently in the dictionary, it will set it `default` value. Otherwise,
+nothing will happen.[^setdefault]
+
+Once we are done changing the quantity in inventory, we'll remove the entire
+item from dictionary if there is `0` (or less) of them left. This way items
+with a zero quantity won't show up in `do_inventory()`.
+
+
+1. `[ ]` Define a `inventory_change()` function that takes one argument `key`,
+         and an optional argument `quantity` with a default value of `1`
+1. `[ ]` Call the `.setdefault()` method on the players inventory (accessed in
+         the `PLAYER` dict with the `"inventory"` key) with the arguments `key`
+         and `0` for the default.
+1. `[ ]` Add `quantity` to the players inventory (accessed in the `PLAYER` dict
+         with the `"inventory"` key) for the `key` key.
+
+   *Hint: Use the `+=` operator.*
+1. `[ ]` Check if the value assocated with `key` in the players inventory is
+         {term}`falsy`, or if it is less than or equal to zero.
+    * `[ ]` If so, remove that key from the player's inventory by calling the
+            `.pop()` method on the inventory dictionary with the `key` argument.
+
+[^setdefault]: See `help(dict.setdefault)` in a python/iPython shell for more information.
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-9.5.py
+:linenos:
+:lineno-match:
+:pyobject: 'inventory_change'
+```
+
+`````
+
+#### B. Call `inventory_change()` in `do_take()`
+
+Now we can call `inventory_change()` anytime we want to add or remove something
+from inventory. Let's start in the `do_take()` function. Since we currently can
+only have one of something in a room at a time, we won't pass the `quantity`
+argument, so it will default to `1`.
+
+{{ leftcol }}
+
+
+1. `[ ]` Find where you add the item to the player's inventory. Replace those
+         lines with a call to `inventory_change()` and pass the `name` argument.
+
+{{ rightcol }}
+
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-9.5.py
+:linenos:
+:lineno-match:
+:pyobject: 'do_take'
+:emphasize-lines: 30
+```
+
+`````
+
+{{ endcols }}
+
+#### C. Call `inventory_change()` in `do_drop()`
+
+Next, we'll call it from `do_drop()`.
+
+Here we'll be subtracting from inventory by passing in a negative value for
+quantity by putting a `-` in front of the value. Then when the negative number
+is added to the current inventory value in `inventory_change()`, it will be the
+same as if we had subtracted a positive number.
+
+We run into a little issue, since we can have more than one of something in the
+player's inventory, but only one of something in a place. To account for this,
+we'll zero out that item in inventory and only add one item to place. (Someday
+we may want to make the place `"items"` a dictionary instead of a list so we
+can have more than one of a thing in a particular place, but this will have to
+do for now.)
+
+{{ leftcol }}
+
+
+1. `[ ]` Find where you remove the item from the player's inventory. Right above
+         that, get the amount the player has in their inventory (stored in the `PLAYER`
+         dict with the `"inventory"` key) using the `name` key and assign it to the
+         `qty` variable.
+1. `[ ]` Replace the lines where you add to the inventory with a call to
+         `inventory_change()` with the arguments `name` and `-qty`.
+
+{{ rightcol }}
+
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-9.5.py
+:linenos:
+:lineno-match:
+:pyobject: 'do_drop'
+:emphasize-lines: "20-24"
+```
+
+`````
+
+{{ endcols }}
 
 
 Reference

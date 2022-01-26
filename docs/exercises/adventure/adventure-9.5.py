@@ -2,7 +2,7 @@
 Text-based adventure game
 https://alissa-huskey.github.io/python-class/exercises/adventure.html
 
-Part 9.4: Refactoring -- Validation functions
+Part 9.4: Refactoring -- inventory_change()
 """
 
 import re
@@ -145,6 +145,16 @@ def get_item(key):
         abort(f"Woops! The information about {key!r} seems to be missing.")
 
     return item
+
+
+def inventory_change(key, quantity=1):
+    """Add item to player inventory."""
+    PLAYER["inventory"].setdefault(key, 0)
+    PLAYER["inventory"][key] += quantity
+
+    # remove from inventory dictionary if quantity is zero
+    if not PLAYER["inventory"][key]:
+        PLAYER["inventory"].pop(key)
 
 # ## Validation functions ####################################################
 
@@ -331,8 +341,7 @@ def do_take(args):
         return
 
     # add to inventory
-    PLAYER["inventory"].setdefault(name, 0)
-    PLAYER["inventory"][name] += 1
+    inventory_change(name)
 
     # remove from place
     place["items"].remove(name)
@@ -375,13 +384,11 @@ def do_drop(args):
         error(f"You don't have any {name!r}.")
         return
 
-    # remove from player inventory
-    PLAYER["inventory"][name] -= 1
-    if not PLAYER["inventory"][name]:
-        PLAYER["inventory"].pop(name)
+    # get the amount currently in inventory
+    qty = PLAYER["inventory"][name]
 
-    # look up where the player is now
-    place = get_place()
+    # remove from player inventory
+    inventory_change(name, -qty)
 
     # add to place items
     place.setdefault("items", [])
