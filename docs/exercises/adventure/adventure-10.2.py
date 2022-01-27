@@ -17,7 +17,7 @@ https://alissa-huskey.github.io/python-class/exercises/adventure.html
 |                                                        |
 +--------------------------------------------------------+
 
-Part 10.2: Cleanup the shop
+Part 10.2: Add place_can()
 
 """
 
@@ -231,7 +231,7 @@ def do_shop():
     """List the items for sale."""
 
     if not place_can("shop"):
-        error(f"Sorry, you can't {action} here.")
+        error(f"Sorry, you can't shop here.")
         return
 
     place = get_place()
@@ -243,7 +243,7 @@ def do_shop():
         if not is_for_sale(item):
             continue
 
-        write(f'{item["name"]:<13}  {item["description"]+" ":<55}  {abs(item["price"]):>2} gems')
+        write(f'{item["name"]:<13}  {item["description"]}')
 
     print()
 
@@ -331,11 +331,6 @@ def do_examine(args):
 
     # print the item information
     header(item["name"].title())
-
-    # print the price if we're in the market
-    if place_can("shop") and place_has(name) and is_for_sale(item):
-        write(f"{abs(item['price'])} gems".rjust(WIDTH - MARGIN))
-        print()
 
     wrap(item["description"])
 

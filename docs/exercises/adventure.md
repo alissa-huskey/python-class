@@ -3278,9 +3278,15 @@ place.  Right now, this only happens in the `do_take()` function.
 Part 10: Buy things
 -------------------
 
+In this section we'll add the buy command, make sure that the buy and shop
+commands only work in the market, and make add information to the buy shop and
+examine commands.
+
 ### Part 10.1: Add market
 
-#### A. Add market to places
+First we'll need to add the market to our `PLACES` dictionary.
+
+#### A. Add market to `PLACES`
 
 {{ leftcol }}
 
@@ -3334,11 +3340,7 @@ than going through all items.
 
 `````
 
-### Part 10.2: Cleanup the shop
-
-In this section we'll make a number of small changes to improve `do_shop()`.
-
-#### A: Add places `"can"` list
+### Part 10.2: Add `place_can()`
 
 Some commands can only happen when you are in a particular place. The way we
 initially wrote the `do_shop()` function, you can shop from anywhere. Now we're
@@ -3347,6 +3349,8 @@ the action is restricted to certain places.
 
 Similar to place `"items"`, we'll store this information as a list of strings,
 this time with the key `"can"`.
+
+#### A: In `PLACES` add `"can"` list to market
 
 In the next section we'll write a function to use that information.
 
@@ -3371,13 +3375,13 @@ In the next section we'll write a function to use that information.
 
 {{ endcols }}
 
-#### B: Add `place_can()`
+#### B: Define `place_can()`
 
 The `place_can()` function will let us know if a place supports a particular
 action. This function will be very similar to the `place_has()` function, but
 for actions instead of items.
 
-1. `[ ]` Add the `place_can()` method that takes one argument, `action`.
+1. `[ ]` Add the `place_can()` function that takes one argument, `action`.
 1. `[ ]` Get the current place by calling `get_place()` and assign it to the variable `place`
 1. `[ ]` Check if `action` is not in the list of place items by calling
          `.get()` on `place` with the key `"can"` and an empty list for the default
@@ -3419,7 +3423,265 @@ for actions instead of items.
 
 {{ endcols }}
 
-#### D: Show price in `do_shop()`
+### Part 10.3: Add buy command
+
+Now we'll add the buy command.
+
+#### A. Add game info
+
+First we'll need to give the player some gems, add buy to the market `"can"`
+list, and add gems to the items list.
+
+{{ leftcol }}
+
+1. `[ ]` For now, let's give the player some free gems so we can test out
+         buying things. Add a `"gems"` key to the `PLAYER` inventory dictionary with a
+         value of `50` or so.
+1. `[ ]` In the `PLACES` dictionary, add a `"buy"` to the `"can"` list to the market dictionary.
+1. `[ ]` In `ITEMS` add a `"gems"` item.
+
+{{ rightcol }}
+
+`````{dropdown} PLAYER
+
+```{literalinclude} adventure/adventure-10.3.py
+:linenos:
+:lineno-match:
+:start-at: 'PLAYER ='
+:end-before: 'PLACES ='
+:emphasize-lines: 3
+```
+
+`````
+
+`````{dropdown} PLACES
+
+```{literalinclude} adventure/adventure-10.3.py
+:linenos:
+:lineno-match:
+:start-at: 'PLACES ='
+:end-before: 'ITEMS ='
+:emphasize-lines: 24
+```
+
+`````
+
+`````{dropdown} ITEMS
+
+```{literalinclude} adventure/adventure-10.3.py
+:linenos:
+:lineno-match:
+:start-at: 'ITEMS ='
+:end-before: '# Message functions'
+:emphasize-lines: "30-36"
+```
+
+`````
+
+{{ endcols }}
+
+
+#### B: Define a `do_buy()` function
+
+Here we'll define the function that is called when the player types `"buy"`.
+
+{{ leftcol }}
+
+1. `[ ]` Define a `do_buy()` function that takes one argument, `args`
+1. `[ ]` In it, use the `debug()` function to print something like {samp}`Trying to buy {args}.`
+
+{{ rightcol }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-10.3.py
+:linenos:
+:lineno-match:
+:start-at: 'def do_buy'
+:end-at: 'debug'
+```
+
+`````
+
+{{ endcols }}
+
+#### C: In `main()`
+
+{{ leftcol }}
+
+1. `[ ]` Add an `elif` that checks if `command` is equal to `buy`
+   * `[ ]` If so, call `do_buy()` and pass `args`
+
+{{ rightcol }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-10.3.py
+:linenos:
+:lineno-match:
+:pyobject: main
+:emphasize-lines: "40-41"
+```
+
+`````
+
+{{ endcols }}
+
+#### D: In `do_buy()`, Make sure the place supports buying
+
+{{ leftcol }}
+
+1. `[ ]` Check if you can buy things in the current place buy calling `place_can()` with the argument `"buy"`.
+   * `[ ]` If not, print a message like {samp}`Sorry, you can't buy things here.` then return
+
+{{ rightcol }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-10.3.py
+:linenos:
+:lineno-match:
+:start-at: 'def do_buy'
+:end-at: 'return'
+:emphasize-lines: "6-8"
+```
+
+`````
+
+{{ endcols }}
+
+#### E: Still in `do_buy()`, make sure the player typed in something to buy
+
+{{ leftcol }}
+
+1. `[ ]` Check if `args` is {term}`falsy`
+   * `[ ]` If so, print a message with the `error()` function like `What do you want to buy?` then return
+
+{{ rightcol }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-10.3.py
+:linenos:
+:lineno-match:
+:start-at: 'def do_buy'
+:end-before: '# get the item name'
+:emphasize-lines: "10-13"
+```
+
+`````
+
+{{ endcols }}
+
+#### F: Still in `do_buy()`, make sure the item is in this place
+
+{{ leftcol }}
+
+1. `[ ]` assign the first item of the `args` list to the variable `name` and make it lowercase
+1. `[ ]` check if the item is in this place by calling `place_has()` with the argument `name`
+   * `[ ]` if not, print an error message `"Sorry, I don't see a {name} here."` then return
+
+{{ rightcol }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-10.3.py
+:linenos:
+:lineno-match:
+:start-at: 'def do_buy'
+:end-before: '# get the item info'
+:emphasize-lines: "15-22"
+```
+
+`````
+
+{{ endcols }}
+
+#### G. Still in `do_buy()`, make sure the item is for sale
+
+{{ leftcol }}
+
+1. `[ ]` Get the item dictionary by calling `get_item()` with the
+         argument `name` and assign it to the variable `item`.
+1. `[ ]` Check if the item is for sale by calling `is_for_sale()` with the argument `item`
+   * `[ ]` If not print an error message like {samp}`Sorry, {name} is not for sale` then return
+
+{{ rightcol }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-10.3.py
+:linenos:
+:lineno-match:
+:start-at: 'def do_buy'
+:end-before: 'price ='
+:emphasize-lines: "24-29"
+```
+
+`````
+
+{{ endcols }}
+
+#### G. Still in `do_buy()`, make sure the player can afford the item
+
+{{ leftcol }}
+
+1. `[ ]` Get the price from the item dictionary, and make it positive (if
+         neccessary) by calling `abs()`, then assign it to the variable `price`
+1. `[ ]` Check if the player has enough gems by calling `player_has()` with the
+         arguments `"gems"` and `price`. If not:
+   * `[ ]` Get the number of gems the player currently has from the `PLAYER`
+           inventory dictionary by calling the `.get()` method with the arguments
+           `"gems"` and `0` for the default value. Assign it to the variable `gems`.
+   * `[ ]` Print an error message like {samp}`Sorry, you can't afford {name} because it costs {price} and you only have {gems}.`
+   * `[ ]` return
+
+{{ rightcol }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-10.3.py
+:linenos:
+:lineno-match:
+:start-at: 'def do_buy'
+:end-before: '# remove gems'
+:emphasize-lines: "31-35"
+```
+
+`````
+
+{{ endcols }}
+
+#### H. In `do_buy()`, buy the item
+
+{{ leftcol }}
+
+1. `[ ]` Remove gems from inventory by calling `inventory_change()` with the values `"gems"` and negative `price`.
+1. `[ ]` Add the item to inventory by calling `inventory_change()` with the value `name`
+1. `[ ]` Remove the item from the current place by calling `place_remove()` with the argument `name`
+1. `[ ]` Print a message like {samp}`"You bought {name}."`
+
+{{ rightcol }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-10.3.py
+:linenos:
+:lineno-match:
+:pyobject: 'do_buy'
+:emphasize-lines: "37-"
+```
+
+`````
+
+{{ endcols }}
+
+
+### Part 10.4: Clean up the shop
+
+In this section we'll make a number of small changes to improve `do_shop()`.
+
+#### A: Show price in `do_shop()`
 
 We should add the price to the information we print out about each item. This
 is also a good chance to make this look prettier.
@@ -3433,7 +3695,7 @@ is also a good chance to make this look prettier.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-10.2.py
+```{literalinclude} adventure/adventure-10.4.py
 :linenos:
 :lineno-match:
 :pyobject: do_shop
@@ -3442,7 +3704,7 @@ is also a good chance to make this look prettier.
 
 `````
 
-#### E. Handle long descriptions
+#### B. Handle long descriptions
 
 If your item descriptions are too long for a single line, you can do either one
 of the following.
@@ -3566,10 +3828,10 @@ def do_shop():
 
 `````
 
-#### F. Add price to examine
+#### C. Show price in `do_examine()`
 
-Finally, let's add the price to `do_examine()` if we're in the market (or
-somewhere else where we can shop).
+Let's show the price to `do_examine()` if we're in the market (or somewhere else
+where we can shop).
 
 1. `[ ]` In `do_shop()` after the header, check if:
    * the place supports shopping by calling `place_can()` with the argument `"shop"` and
@@ -3582,7 +3844,7 @@ somewhere else where we can shop).
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-10.2.py
+```{literalinclude} adventure/adventure-10.4.py
 :linenos:
 :lineno-match:
 :pyobject: do_examine
@@ -3591,70 +3853,22 @@ somewhere else where we can shop).
 
 `````
 
-### Part 10.3: Add command
+#### D. Show inventory quantity in `do_examine()`
 
-%
-% TODO
-%
-% - [ ] add do_buy()
-% - [ ] call do_buy() to main
-% - [ ] add gems to inventory
-% - [ ] add "buy" to market "can" list
-% - [ ] add gems to items
-% - [ ] add quantity to examine
+1. `[ ]` Check if the player has the item in inventory by calling `player_has()` with the argument `name`. If so:
+   * `[ ]` Print the quantity from the `PLAYER` inventory dictionary for `name`.
 
-#### A: Define a `do_buy()` function
 
-1. `[ ]` Define a `do_buy()` function that takes one argument, `args`
-1. `[ ]` In it, use the `debug()` function to print something like {samp}`Trying to buy {args}.`
+`````{dropdown} Code
 
-#### B: In `main()`
+```{literalinclude} adventure/adventure-10.4.py
+:linenos:
+:lineno-match:
+:pyobject: do_examine
+:emphasize-lines: "33-36"
+```
 
-1. `[ ]` Add an `elif` that checks if `command` is equal to `buy`
-   * `[ ]` If so, call `do_buy()` and pass `args`
-
-#### C: Make sure the place supports buying
-
-1. `[ ]` Check if you can buy things in the current place buy calling `place_can()` with the argument `"buy"`.
-   * `[ ]` If not, print a message like {samp}`Sorry, you can't buy things here.` then return
-
-#### D: Make sure the player typed in something to buy
-
-1. `[ ]` Check if `args` is {term}`falsy`
-   * `[ ]` If so, print a message with the `error()` function like `What do you want to buy?` then return
-
-#### E: Make sure the item is in this place
-
-1. `[ ]` assign the first item of the `args` list to the variable `name` and make it lowercase
-1. `[ ]` check if the item is in this place by calling `place_has()` with the argument `name`
-   * `[ ]` if not, print an error message `"Sorry, I don't see a {name} here."` then return
-
-#### F. Make sure the item is for sale
-
-1. `[ ]` Get the item dictionary by calling `get_item()` with the
-         argument `name` and assign it to the variable `item`.
-1. `[ ]` Check if the item is for sale by calling `is_for_sale()` with the argument `item`
-   * `[ ]` If not print an error message like {samp}`Sorry, {name} is not for sale` then return
-
-#### G. Make sure the player can afford the item
-
-1. `[ ]` Get the price from the item dictionary, and make it positive (if
-         neccessary) by calling `abs()`, then assign it to the variable `price`
-1. `[ ]` Check if the player has enough gems by calling `player_has()` with the
-         arguments `"gems"` and `price`. If not:
-   * `[ ]` Get the number of gems the player currently has from the `PLAYER`
-           inventory dictionary by calling the `.get()` method with the arguments
-           `"gems"` and `0` for the default value. Assign it to the variable `gems`.
-   * `[ ]` Print an error message like {samp}`Sorry, you can't afford {name} because it costs {price} and you only have {gems}.`
-   * `[ ]` return
-
-#### H. Buy the item
-
-1. `[ ]` Remove gems from inventory by calling `inventory_change()` with the values `"gems"` and negative `price`.
-1. `[ ]` Add the item to inventory by calling `inventory_change()` with the value `name`
-1. `[ ]` Remove the item from the current place by calling `place_remove()` with the argument `name`
-1. `[ ]` Print a message like {samp}`"You bought {name}."`
-
+`````
 
 Reference
 ---------
