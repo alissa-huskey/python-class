@@ -3262,7 +3262,6 @@ place.  Right now, this only happens in the `do_take()` function.
 
 {{ rightcol }}
 
-
 `````{dropdown} Code
 
 ```{literalinclude} adventure/adventure-9.7.py
@@ -3275,6 +3274,323 @@ place.  Right now, this only happens in the `do_take()` function.
 `````
 
 {{ endcols }}
+
+Part 10: Buy things
+-------------------
+
+### Part 10.1: Add market
+
+#### A. Add market to places
+
+{{ leftcol }}
+
+1. `[ ]` Add a `"market"` dictionary to your `PLACES` dictionary.
+   * `[ ]` Be sure to add the relavant directions. For example, since I have it just north of `"town-square"`
+           I have `"south": "town-square"`.  But you can put it somewhere else if
+           it suits you.
+   * `[ ]` Also add the `"items"` list with a list of keys of the items that
+           are for sale in the market. For example, I have `"book"` and
+           `"dagger"` in mine.
+1. `[ ]` Add the direction values to the other adjacent place dictionaries. For
+         example, in my `"town-square"` dictionary I have `"north": "market"`.
+1. `[ ]` Test this by making sure you can get to and from the market.
+
+{{ rightcol }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-10.1.py
+:linenos:
+:lineno-match:
+:start-at: 'PLACES = {'
+:end-before: 'ITEMS ='
+:emphasize-lines: "13, 19-28"
+```
+
+`````
+{{ endcols }}
+
+#### B. In `do_shop()` get items from the market
+
+Now that we have a legit market, we can get our items from the market rather
+than going through all items.
+
+1. `[ ]` At the beginning of the `do_shop()` function, get the market
+         dictionary by calling `get_place()` and assign it to the variable `place`.
+1. `[ ]` Change your for loop, instead of iterating over `ITEMS.values()`, use the
+         `.get()` method on `place` with the arguments `"items"` and an empty list, and
+         iterate over that instead. Also rename the variable from `item` to `key`.
+1. `[ ]` Inside the the for loop at the beginning, call `get_item()` with the
+         argument `key` and assign it to the variable `item`.
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-10.1.py
+:linenos:
+:lineno-match:
+:pyobject: do_shop
+:emphasize-lines: "4, 8-9"
+```
+
+`````
+
+### Part 10.2: Cleanup the shop
+
+In this section we'll make a number of small changes to improve `do_shop()`.
+
+#### A: Add places `"can"` list
+
+Some commands can only happen when you are in a particular place. The way we
+initially wrote the `do_shop()` function, you can shop from anywhere. Now we're
+going to store some extra information on place dictionaries to let us know if
+the action is restricted to certain places.
+
+Similar to place `"items"`, we'll store this information as a list of strings,
+this time with the key `"can"`.
+
+In the next section we'll write a function to use that information.
+
+{{ leftcol }}
+
+1. `[ ]` In your `market` place dictionary, add the key `"can"`; and for the
+         value a list with one item, `"shop"`.
+
+{{ rightcol }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-10.2.py
+:linenos:
+:lineno-match:
+:start-at: '"market": {'
+:end-at: '},'
+:emphasize-lines: "6"
+```
+
+`````
+
+{{ endcols }}
+
+#### B: Add `place_can()`
+
+The `place_can()` function will let us know if a place supports a particular
+action. This function will be very similar to the `place_has()` function, but
+for actions instead of items.
+
+1. `[ ]` Add the `place_can()` method that takes one argument, `action`.
+1. `[ ]` Get the current place by calling `get_place()` and assign it to the variable `place`
+1. `[ ]` Check if `action` is not in the list of place items by calling
+         `.get()` on `place` with the key `"can"` and an empty list for the default
+         argument.
+   * `[ ]` If so, return `True`
+   * `[ ]` Otherwise, return `False`
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-10.2.py
+:linenos:
+:lineno-match:
+:pyobject: place_can
+```
+
+`````
+
+#### C: Call `place_can()` from `do_shop()`
+
+{{ leftcol }}
+
+1. `[ ]` In `do_shop()` at the very beginning of the function check if shopping
+         is supported in the current place by calling `place_can()` with the
+         argument `"shop"`.
+   * `[ ]` If not, print an error message like {samp}`Sorry, you can't {action} here.` then return
+
+{{ rightcol }}
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-10.2.py
+:linenos:
+:lineno-match:
+:pyobject: do_shop
+:emphasize-lines: "4-6"
+```
+
+`````
+
+{{ endcols }}
+
+#### D: Show price in `do_shop()`
+
+We should add the price to the information we print out about each item. This
+is also a good chance to make this look prettier.
+
+{{ leftcol }}
+
+1. `[ ]` Print the `item` `"price"` along with the name and description. If the
+         number is negative, call `abs()` to make it a positive number.
+1. `[ ]` Use [string formatting](../lessons/string-formatting-part-1) to align
+         the information into columns.
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-10.2.py
+:linenos:
+:lineno-match:
+:pyobject: do_shop
+:emphasize-lines: 17
+```
+
+`````
+
+#### E. Handle long descriptions
+
+If your item descriptions are too long for a single line, you can do either one
+of the following.
+
+##### I. Truncate the description
+
+The simplist way to handle too-long descriptions is to truncate them so that
+they are all limited to a specific width. There are a few ways to do this, but
+here we'll use the `textwrap.shorten()` function.
+
+1. `[ ]` In your for loop, before you call `write()` to print the line, call
+         `textwrap.shorten()` with two arguments: the item description, and the desired
+         maximum width. Assign it to the variable `description`.
+1. `[ ]` In the argument to your `write()` function, replace
+         `item["description"]` with `description`.
+
+`````{dropdown} Code
+
+```{code-block}
+:linenos:
+:lineno-start: 233
+:emphasize-lines: "17-18"
+
+def do_shop():
+    """List the items for sale."""
+
+    if not place_can("shop"):
+        error(f"Sorry, you can't {action} here.")
+        return
+
+    place = get_place()
+
+    header("Items for sale.")
+
+    for key in place.get("items", []):
+        item = get_item(key)
+        if not is_for_sale(item):
+            continue
+
+        description = textwrap.shorten(item["description"], 30)
+        write(f'{item["name"]:<13}  {description:<30} {abs(item["price"]):>2} gems')
+
+    print()
+```
+
+`````
+
+##### II. Add a short `"summary"` to items dictionary
+
+Another way to deal with the problem is to seperate the long `"description"`
+from a shorter `"summary"` in the `ITEMS` dictionaries. Then here in
+`do_shop()` we'll print the `"summary"`, and in `do_examine()` we'll show the
+longer description.
+
+This is fancier, but it will require coming up with more data for each item in
+your game.
+
+1. `[ ]` In each dictionary in `ITEMS` add a key `"summary"` with a one-line
+         description of the item.
+1. `[ ]` In `do_shop` when printing the item information, replace
+        `item["description"]` with `item["summary"]`.
+
+`````{dropdown} ITEMS
+
+```{code-block}
+:linenos:
+:lineno-start: 73
+:emphasize-lines: "4-8, 14-18"
+
+    "elixr": {
+        "key": "elixr",
+        "name": "healing elixr",
+        "summary": "a healing elixer",
+        "desc": (
+            "A small corked bottle filled with a swirling green liquid. "
+            "It is said to have magical healing properties."
+        ),
+        "price": -10,
+    },
+    "dagger": {
+        "key": "dagger",
+        "name": "a dagger",
+        "summary": "a double-edged 14 inch dagger",
+        "description": (
+            "A double-edged 14 inch dagger with a crescent shaped hardwood "
+            "grip, metal cross guard, and curved studded metal pommel."
+        ),
+        "price": -25,
+    },
+```
+
+`````
+
+`````{dropdown} do_shop()
+
+```{code-block}
+:linenos:
+:lineno-start: 233
+:emphasize-lines: "17"
+
+def do_shop():
+    """List the items for sale."""
+
+    if not place_can("shop"):
+        error(f"Sorry, you can't {action} here.")
+        return
+
+    place = get_place()
+
+    header("Items for sale.")
+
+    for key in place.get("items", []):
+        item = get_item(key)
+        if not is_for_sale(item):
+            continue
+
+        write(f'{item["name"]:<13}  {items["summary"]:<30} {abs(item["price"]):>2} gems')
+
+    print()
+```
+
+`````
+
+#### F. Add price to examine
+
+Finally, let's add the price to `do_examine()` if we're in the market (or
+somewhere else where we can shop).
+
+1. `[ ]` In `do_shop()` after the header, check if:
+   * the place supports shopping by calling `place_can()` with the argument `"shop"` and
+   * the place has the item by calling `place_has()` with the argument `name` and
+   * the item is for sale by calling `is_for_sale()` with the argument `item`
+
+   If so:
+   * `[ ]` print the `item` `"price"`
+
+
+`````{dropdown} Code
+
+```{literalinclude} adventure/adventure-10.2.py
+:linenos:
+:lineno-match:
+:pyobject: do_examine
+:emphasize-lines: "28-31"
+```
+
+`````
+
 
 
 Reference
