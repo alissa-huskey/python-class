@@ -3591,6 +3591,69 @@ somewhere else where we can shop).
 
 `````
 
+### Part 10.3: Add command
+
+%
+% TODO
+%
+% - [ ] add do_buy()
+% - [ ] call do_buy() to main
+% - [ ] add gems to inventory
+% - [ ] add "buy" to market "can" list
+% - [ ] add gems to items
+% - [ ] add quantity to examine
+
+#### A: Define a `do_buy()` function
+
+1. `[ ]` Define a `do_buy()` function that takes one argument, `args`
+1. `[ ]` In it, use the `debug()` function to print something like {samp}`Trying to buy {args}.`
+
+#### B: In `main()`
+
+1. `[ ]` Add an `elif` that checks if `command` is equal to `buy`
+   * `[ ]` If so, call `do_buy()` and pass `args`
+
+#### C: Make sure the place supports buying
+
+1. `[ ]` Check if you can buy things in the current place buy calling `place_can()` with the argument `"buy"`.
+   * `[ ]` If not, print a message like {samp}`Sorry, you can't buy things here.` then return
+
+#### D: Make sure the player typed in something to buy
+
+1. `[ ]` Check if `args` is {term}`falsy`
+   * `[ ]` If so, print a message with the `error()` function like `What do you want to buy?` then return
+
+#### E: Make sure the item is in this place
+
+1. `[ ]` assign the first item of the `args` list to the variable `name` and make it lowercase
+1. `[ ]` check if the item is in this place by calling `place_has()` with the argument `name`
+   * `[ ]` if not, print an error message `"Sorry, I don't see a {name} here."` then return
+
+#### F. Make sure the item is for sale
+
+1. `[ ]` Get the item dictionary by calling `get_item()` with the
+         argument `name` and assign it to the variable `item`.
+1. `[ ]` Check if the item is for sale by calling `is_for_sale()` with the argument `item`
+   * `[ ]` If not print an error message like {samp}`Sorry, {name} is not for sale` then return
+
+#### G. Make sure the player can afford the item
+
+1. `[ ]` Get the price from the item dictionary, and make it positive (if
+         neccessary) by calling `abs()`, then assign it to the variable `price`
+1. `[ ]` Check if the player has enough gems by calling `player_has()` with the
+         arguments `"gems"` and `price`. If not:
+   * `[ ]` Get the number of gems the player currently has from the `PLAYER`
+           inventory dictionary by calling the `.get()` method with the arguments
+           `"gems"` and `0` for the default value. Assign it to the variable `gems`.
+   * `[ ]` Print an error message like {samp}`Sorry, you can't afford {name} because it costs {price} and you only have {gems}.`
+   * `[ ]` return
+
+#### H. Buy the item
+
+1. `[ ]` Remove gems from inventory by calling `inventory_change()` with the values `"gems"` and negative `price`.
+1. `[ ]` Add the item to inventory by calling `inventory_change()` with the value `name`
+1. `[ ]` Remove the item from the current place by calling `place_remove()` with the argument `name`
+1. `[ ]` Print a message like {samp}`"You bought {name}."`
 
 
 Reference

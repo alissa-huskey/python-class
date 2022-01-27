@@ -17,7 +17,7 @@ https://alissa-huskey.github.io/python-class/exercises/adventure.html
 |                                                        |
 +--------------------------------------------------------+
 
-Part 10.2: Cleanup the shop
+Part 10.3: Add do_buy()
 
 """
 
@@ -36,7 +36,7 @@ DEBUG = True
 
 PLAYER = {
     "place": "home",
-    "inventory": {},
+    "inventory": {"gems": 50},
 }
 
 
@@ -63,7 +63,7 @@ PLACES = {
         "name": "The Market",
         "south": "town-square",
         "items": ["elixr", "dagger"],
-        "can": ["shop"],
+        "can": ["shop", "buy"],
         "description": (
             "A tidy store with shelves full of goods to buy. A wooden hand "
             "painted menu hangs on the wall."
@@ -98,6 +98,13 @@ ITEMS = {
         "name": "a book",
         "description": (
             "A hefty leather-bound tome open to an interesting passage."
+        ),
+    },
+    "gems": {
+        "key": "gems",
+        "name": "gems",
+        "description": (
+            "A pile of sparkling gems."
         ),
     },
 
@@ -337,6 +344,11 @@ def do_examine(args):
         write(f"{abs(item['price'])} gems".rjust(WIDTH - MARGIN))
         print()
 
+    # print the quantity if the item is from inventory
+    elif player_has(name):
+        write(f"(x{PLAYER['inventory'][name]})".rjust(WIDTH - MARGIN))
+        print()
+
     wrap(item["description"])
 
 def do_go(args):
@@ -460,6 +472,53 @@ def do_drop(args):
     wrap(f"You set down the {name}.")
 
 
+def do_buy(args):
+    """Purchase an item."""
+
+    debug(f"Trying to buy: {args}.")
+
+    if not place_can("buy"):
+        error("Sorry, you can't buy things here.")
+        return
+
+    # make sure the player typed an item
+    if not args:
+        error("What do you want to buy?")
+        return
+
+    # get the item name from arguments
+    # and make it lowercase
+    name = args[0].lower()
+
+    # make sure the item is in this place
+    if not place_has(name):
+        error(f"Sorry, I don't see a {name!r} here.")
+        return
+
+    # get the item information
+    item = get_item(name)
+
+    if not is_for_sale(item):
+        error(f"Sorry, {item['name']} is not for sale.")
+        return
+
+    price = abs(item["price"])
+    if not player_has("gems", price):
+        gems = PLAYER["inventory"].get("gems", 0)
+        error(f"Sorry, you can't afford {item['name']} because it costs {price} and you only have {gems}.")
+        return
+
+    # remove gems from inventory
+    inventory_change("gems", -price)
+
+    # add item to inventory
+    inventory_change(name)
+
+    # remove item from place
+    place_remove(name)
+
+    wrap(f"You bought {item['name']}.")
+
 def main():
     header("Welcome!")
 
@@ -498,6 +557,9 @@ def main():
 
         elif command == "drop":
             do_drop(args)
+
+        elif command == "buy":
+            do_buy(args)
 
         else:
             error("No such command.")
