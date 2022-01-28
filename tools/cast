@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+main() {
+  local version="$1" cast prog
+
+  cast="docs/exercises/assets/adventure-${version}.cast"
+  prog="docs/exercises/adventure/adventure-${version}.py"
+
+  asciinema rec --quiet --overwrite "${cast}" --command "python ${prog}"
+}
+
+main ${1:+"$@"}
