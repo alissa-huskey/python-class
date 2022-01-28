@@ -156,7 +156,7 @@ Create a dictionary `ITEMS` that is a global variable. This is where you'll
 keep the information about the items that are for sale, or objects in any of
 the rooms.
 
-{{ leftcol }}
+{{ left }}
 
 This will be a nested dictionary, where the key is a unique identifier for
 each item, and the value is a dictionary with detailed information about
@@ -169,7 +169,7 @@ that item. The keys of the child dictionary will be:
 
 Make a few items for your shop.
 
-{{ rightcol }}
+{{ right }}
 
 Here is an example:
 
@@ -369,7 +369,7 @@ Like the `ITEMS` dictionary, `PLACES` will be a nested dictionary, where the
 key is a unique identifier for each place, and the value is a dictionary with
 detailed information about that place.
 
-{{ leftcol }}
+{{ left }}
 
 The keys of the child dictionary will be:
 
@@ -379,7 +379,7 @@ The keys of the child dictionary will be:
 * `"east"`, `"west"`, `"north"`, `"south"` -- the key to the place in that
   direction. (More on that next.)
 
-{{ rightcol }}
+{{ right }}
 
 Here is an example:
 
@@ -407,7 +407,7 @@ direction.
 
 For example, going `"east"` from `"home"` is the `"town-square"`.
 
-{{ leftcol }}
+{{ left }}
 
 ```{code-block-hl} python
 :class: full-width
@@ -428,7 +428,7 @@ PLACES = {
 }
 ```
 
-{{ rightcol }}
+{{ right }}
 
 ```{code-block-hl} python
 :class: full-width
@@ -455,7 +455,7 @@ PLACES = {
 
 Likewise, going `"west"` from the `"town-square"` is `"home"`.
 
-{{ leftcol }}
+{{ left }}
 
 ```{code-block-hl} python
 :class: full-width
@@ -476,7 +476,7 @@ PLACES = {
 }
 ```
 
-{{ rightcol }}
+{{ right }}
 
 ```{code-block-hl} python
 :class: full-width
@@ -506,7 +506,7 @@ For now it will just have one key, the `place`, which point to where the player
 is at. In the `do_go()` function, we will change that value to move the player
 from one place to another.
 
-{{ leftcol }}
+{{ left }}
 
 ```{code-block-hl} python
 :class: full-width
@@ -517,7 +517,7 @@ PLAYER = {
 }
 ```
 
-{{ rightcol }}
+{{ right }}
 
 ```{code-block-hl} python
 :class: full-width
@@ -763,12 +763,12 @@ list and that it is a valid direction.
 In this section we'll be using the `PLAYER["place"]` to get the current place
 from the `PLACES` dictionary, as shown {ref}`here <player-to-places>`.
 
-{{ leftcol }}
+{{ left }}
 
 1. `[ ]` get the value from `PLAYER` associated with the `"place"` key and assign it to `old_name`
 1. `[ ]` get the value from `PLACES` associated with `old_name` and assign it to `old_place`
 
-{{ rightcol }}
+{{ right }}
 
 `````{dropdown} Code
 
@@ -841,12 +841,12 @@ player can't go that direction from where they are.
 Finally, we can now update the `PLAYER` dictionary to point to the new place
 name and print the place information.
 
-{{ leftcol }}
+{{ left }}
 
 1. `[ ]` In the `PLAYER` dictionary change value associated with the `"place"` key to `new_name`
 1. `[ ]` Print the values associated with the `"name"` and `"description"` keys of the `new_place` dictionary
 
-{{ rightcol }}
+{{ right }}
 
 `````{dropdown} Code
 
@@ -3086,13 +3086,13 @@ from inventory. Let's start in the `do_take()` function. Since we currently can
 only have one of something in a room at a time, we won't pass the `quantity`
 argument, so it will default to `1`.
 
-{{ leftcol }}
+{{ left }}
 
 
 1. `[ ]` Find where you add the item to the player's inventory. Replace those
          lines with a call to `inventory_change()` and pass the `name` argument.
 
-{{ rightcol }}
+{{ right }}
 
 
 `````{dropdown} Code
@@ -3124,7 +3124,7 @@ we may want to make the place `"items"` a dictionary instead of a list so we
 can have more than one of a thing in a particular place, but this will have to
 do for now.)
 
-{{ leftcol }}
+{{ left }}
 
 
 1. `[ ]` Find where you remove the item from the player's inventory. Right above
@@ -3134,7 +3134,7 @@ do for now.)
 1. `[ ]` Replace the lines where you add to the inventory with a call to
          `inventory_change()` with the arguments `name` and `-qty`.
 
-{{ rightcol }}
+{{ right }}
 
 
 `````{dropdown} Code
@@ -3189,7 +3189,7 @@ adding the item key to the place list.
 Now we can call `place_add()` anytime we want to add something to a place.
 Right now, this only happens in the `do_drop()` function.
 
-{{ leftcol }}
+{{ left }}
 
 
 1. `[ ]` Find where you add the item to the place. Replace those lines with a
@@ -3198,7 +3198,7 @@ Right now, this only happens in the `do_drop()` function.
         `get_place()` function.
 
 
-{{ rightcol }}
+{{ right }}
 
 
 `````{dropdown} Code
@@ -3251,7 +3251,7 @@ from the place list.
 Now we can call `place_remove()` anytime we want to remove something from a
 place.  Right now, this only happens in the `do_take()` function.
 
-{{ leftcol }}
+{{ left }}
 
 
 1. `[ ]` Find where you remove the item from the place. Replace those lines
@@ -3260,7 +3260,7 @@ place.  Right now, this only happens in the `do_take()` function.
         `get_place()` function.
 
 
-{{ rightcol }}
+{{ right }}
 
 `````{dropdown} Code
 
@@ -3278,17 +3278,37 @@ place.  Right now, this only happens in the `do_take()` function.
 Part 10: Buy things
 -------------------
 
-In this section we'll add the buy command, make sure that the buy and shop
-commands only work in the market, and make add information to the buy shop and
-examine commands.
+In this section we'll add the buy command, add the market, make sure that the
+buy and shop commands only work in the market, and make add information to the
+buy shop and examine commands.
 
 ### Part 10.1: Add market
 
-First we'll need to add the market to our `PLACES` dictionary.
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-10.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
+
+{{ left }}
+
+First we'll need to add the market to our `PLACES` dictionary so we can
+navigate to and from there.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-10.1.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
 
 #### A. Add market to `PLACES`
 
-{{ leftcol }}
+{{ left }}
 
 1. `[ ]` Add a `"market"` dictionary to your `PLACES` dictionary.
    * `[ ]` Be sure to add the relavant directions. For example, since I have it just north of `"town-square"`
@@ -3301,7 +3321,7 @@ First we'll need to add the market to our `PLACES` dictionary.
          example, in my `"town-square"` dictionary I have `"north": "market"`.
 1. `[ ]` Test this by making sure you can get to and from the market.
 
-{{ rightcol }}
+{{ right }}
 
 `````{dropdown} Code
 
@@ -3342,6 +3362,12 @@ than going through all items.
 
 ### Part 10.2: Add `place_can()`
 
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-10.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
+
+{{ left }}
+
 Some commands can only happen when you are in a particular place. The way we
 initially wrote the `do_shop()` function, you can shop from anywhere. Now we're
 going to store some extra information on place dictionaries to let us know if
@@ -3350,16 +3376,30 @@ the action is restricted to certain places.
 Similar to place `"items"`, we'll store this information as a list of strings,
 this time with the key `"can"`.
 
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-10.2.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+
 #### A: In `PLACES` add `"can"` list to market
 
 In the next section we'll write a function to use that information.
 
-{{ leftcol }}
+{{ left }}
 
 1. `[ ]` In your `market` place dictionary, add the key `"can"`; and for the
          value a list with one item, `"shop"`.
 
-{{ rightcol }}
+{{ right }}
 
 `````{dropdown} Code
 
@@ -3401,14 +3441,14 @@ for actions instead of items.
 
 #### C: Call `place_can()` from `do_shop()`
 
-{{ leftcol }}
+{{ left }}
 
 1. `[ ]` In `do_shop()` at the very beginning of the function check if shopping
          is supported in the current place by calling `place_can()` with the
          argument `"shop"`.
    * `[ ]` If not, print an error message like {samp}`Sorry, you can't {action} here.` then return
 
-{{ rightcol }}
+{{ right }}
 
 `````{dropdown} Code
 
@@ -3425,14 +3465,33 @@ for actions instead of items.
 
 ### Part 10.3: Add buy command
 
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-10.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
+
+{{ left }}
+
 Now we'll add the buy command.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-10.3.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
 
 #### A. Add game info
 
 First we'll need to give the player some gems, add buy to the market `"can"`
 list, and add gems to the items list.
 
-{{ leftcol }}
+{{ left }}
 
 1. `[ ]` For now, let's give the player some free gems so we can test out
          buying things. Add a `"gems"` key to the `PLAYER` inventory dictionary with a
@@ -3440,7 +3499,7 @@ list, and add gems to the items list.
 1. `[ ]` In the `PLACES` dictionary, add a `"buy"` to the `"can"` list to the market dictionary.
 1. `[ ]` In `ITEMS` add a `"gems"` item.
 
-{{ rightcol }}
+{{ right }}
 
 `````{dropdown} PLAYER
 
@@ -3485,12 +3544,12 @@ list, and add gems to the items list.
 
 Here we'll define the function that is called when the player types `"buy"`.
 
-{{ leftcol }}
+{{ left }}
 
 1. `[ ]` Define a `do_buy()` function that takes one argument, `args`
 1. `[ ]` In it, use the `debug()` function to print something like {samp}`Trying to buy {args}.`
 
-{{ rightcol }}
+{{ right }}
 
 `````{dropdown} Code
 
@@ -3507,12 +3566,12 @@ Here we'll define the function that is called when the player types `"buy"`.
 
 #### C: In `main()`
 
-{{ leftcol }}
+{{ left }}
 
 1. `[ ]` Add an `elif` that checks if `command` is equal to `buy`
    * `[ ]` If so, call `do_buy()` and pass `args`
 
-{{ rightcol }}
+{{ right }}
 
 `````{dropdown} Code
 
@@ -3529,12 +3588,12 @@ Here we'll define the function that is called when the player types `"buy"`.
 
 #### D: In `do_buy()`, Make sure the place supports buying
 
-{{ leftcol }}
+{{ left }}
 
 1. `[ ]` Check if you can buy things in the current place buy calling `place_can()` with the argument `"buy"`.
    * `[ ]` If not, print a message like {samp}`Sorry, you can't buy things here.` then return
 
-{{ rightcol }}
+{{ right }}
 
 `````{dropdown} Code
 
@@ -3552,12 +3611,12 @@ Here we'll define the function that is called when the player types `"buy"`.
 
 #### E: Still in `do_buy()`, make sure the player typed in something to buy
 
-{{ leftcol }}
+{{ left }}
 
 1. `[ ]` Check if `args` is {term}`falsy`
    * `[ ]` If so, print a message with the `error()` function like `What do you want to buy?` then return
 
-{{ rightcol }}
+{{ right }}
 
 `````{dropdown} Code
 
@@ -3575,13 +3634,13 @@ Here we'll define the function that is called when the player types `"buy"`.
 
 #### F: Still in `do_buy()`, make sure the item is in this place
 
-{{ leftcol }}
+{{ left }}
 
 1. `[ ]` assign the first item of the `args` list to the variable `name` and make it lowercase
 1. `[ ]` check if the item is in this place by calling `place_has()` with the argument `name`
    * `[ ]` if not, print an error message `"Sorry, I don't see a {name} here."` then return
 
-{{ rightcol }}
+{{ right }}
 
 `````{dropdown} Code
 
@@ -3599,14 +3658,16 @@ Here we'll define the function that is called when the player types `"buy"`.
 
 #### G. Still in `do_buy()`, make sure the item is for sale
 
-{{ leftcol }}
+{{ left }}
 
 1. `[ ]` Get the item dictionary by calling `get_item()` with the
          argument `name` and assign it to the variable `item`.
 1. `[ ]` Check if the item is for sale by calling `is_for_sale()` with the argument `item`
    * `[ ]` If not print an error message like {samp}`Sorry, {name} is not for sale` then return
+1. `[ ]` To test this, add another item that is not for sale to the `market`,
+         or temporarily remove the `"price"` from one of the items in your market.
 
-{{ rightcol }}
+{{ right }}
 
 `````{dropdown} Code
 
@@ -3624,7 +3685,7 @@ Here we'll define the function that is called when the player types `"buy"`.
 
 #### G. Still in `do_buy()`, make sure the player can afford the item
 
-{{ leftcol }}
+{{ left }}
 
 1. `[ ]` Get the price from the item dictionary, and make it positive (if
          neccessary) by calling `abs()`, then assign it to the variable `price`
@@ -3635,8 +3696,9 @@ Here we'll define the function that is called when the player types `"buy"`.
            `"gems"` and `0` for the default value. Assign it to the variable `gems`.
    * `[ ]` Print an error message like {samp}`Sorry, you can't afford {name} because it costs {price} and you only have {gems}.`
    * `[ ]` return
+1. `[ ]` To test this, temporarily change the price of one of your items to be more than the amount of gems you have.
 
-{{ rightcol }}
+{{ right }}
 
 `````{dropdown} Code
 
@@ -3654,14 +3716,14 @@ Here we'll define the function that is called when the player types `"buy"`.
 
 #### H. In `do_buy()`, buy the item
 
-{{ leftcol }}
+{{ left }}
 
 1. `[ ]` Remove gems from inventory by calling `inventory_change()` with the values `"gems"` and negative `price`.
 1. `[ ]` Add the item to inventory by calling `inventory_change()` with the value `name`
 1. `[ ]` Remove the item from the current place by calling `place_remove()` with the argument `name`
 1. `[ ]` Print a message like {samp}`"You bought {name}."`
 
-{{ rightcol }}
+{{ right }}
 
 `````{dropdown} Code
 
@@ -3679,14 +3741,33 @@ Here we'll define the function that is called when the player types `"buy"`.
 
 ### Part 10.4: Clean up the shop
 
-In this section we'll make a number of small changes to improve `do_shop()`.
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-10.4.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+
+{{ clear }}
+
+{{ left }}
+
+In this section we'll make a number of small changes to improve the shop and examine commands.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-10.4.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
 
 #### A: Show price in `do_shop()`
 
 We should add the price to the information we print out about each item. This
 is also a good chance to make this look prettier.
 
-{{ leftcol }}
+{{ left }}
 
 1. `[ ]` Print the `item` `"price"` along with the name and description. If the
          number is negative, call `abs()` to make it a positive number.
