@@ -3745,11 +3745,11 @@ Here we'll define the function that is called when the player types `"buy"`.
 
 {{ clear }}
 
-{{ left }}
+{{ leftcol | replace("col", "col-3") }}
 
 In this section we'll make a number of small changes to improve the shop and examine commands.
 
-{{ right }}
+{{ rightcol | replace("col", "col-9") }}
 
 `````{dropdown} Demo
 :open:
@@ -3774,6 +3774,8 @@ is also a good chance to make this look prettier.
 1. `[ ]` Use [string formatting](../lessons/string-formatting-part-1) to align
          the information into columns.
 
+{{ right }}
+
 `````{dropdown} Code
 
 ```{literalinclude} adventure/adventure-10.4.py
@@ -3784,6 +3786,8 @@ is also a good chance to make this look prettier.
 ```
 
 `````
+
+{{ endcols }}
 
 #### B. Handle long descriptions
 

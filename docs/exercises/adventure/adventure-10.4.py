@@ -248,7 +248,7 @@ def do_shop():
         if not is_for_sale(item):
             continue
 
-        write(f'{item["name"]:<13}  {item["description"]+" ":<55}  {abs(item["price"]):>2} gems')
+        write(f'{item["name"]:<13}  {item["description"]:<45}  {abs(item["price"]):>2} gems')
 
     print()
 
