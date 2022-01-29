@@ -3745,11 +3745,11 @@ Here we'll define the function that is called when the player types `"buy"`.
 
 {{ clear }}
 
-{{ leftcol | replace("col", "col-3") }}
+{{ leftcol | replace("col", "col-2") }}
 
 In this section we'll make a number of small changes to improve the shop and examine commands.
 
-{{ rightcol | replace("col", "col-9") }}
+{{ rightcol | replace("col", "col-10") }}
 
 `````{dropdown} Demo
 :open:
