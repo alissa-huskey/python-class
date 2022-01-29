@@ -4,15 +4,17 @@ Mac Dev Env for Python
 Mac tool recommendations and setup guide for Python development.
 
 
-Table of Contents
------------------
+```{contents} Table of Contents
+:backlinks: entry
+:depth: 1
+:local:
+```
 
-* [Quickstart](#quickstart)
-* [Homebrew](#homebrew)
-* [VS Code](#vs-code)
-* [pyenv](#pyenv)
-* [Python](#python)
-* [Poetry](#poetry)
+TODO
+----
+
+* [ ] zshrc / bashrc
+* [ ] .env
 
 
 Quickstart
@@ -25,133 +27,74 @@ xcode-select --install
 # install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
+# install all brewfile packages
+curl -sSL "https://raw.githubusercontent.com/alissa-huskey/python-class/master/docs/tools/brewfile.rb" | brew bundle install --file=-
+
 # install vscode
-brew cask install visual-studio-code
+# brew cask install visual-studio-code
 code --install-extension ms-python.python              # Python extension
 code --install-extension ms-vsliveshare.vsliveshare    # LiveShare
 
 # install pyenv
-brew install pyenv
+# brew install pyenv
+
 touch ~/.zshrc
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
 echo 'export PATH="~/.pyenv/bin:$PATH"\neval "$(pyenv init -)"' >> ~/.zshrc
 
 # install Python
-pyenv install 3.8.0
-pyenv global 3.8.0
+pyenv install 3.8.11
+pyenv global 3.8.11
 
 # install Poetry
 curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
 ```
 
-Homebrew
+
+XCode
 -----
+
+XCode is the Apple IDE (integrated development environment), a tool for writing
+code. It also contains the foundational tools and libraries that other programs
+rely on, and that programmers use when writing code.
+
+### Install
+
+:::{warning}
+
+This step will take awhile, so it's a good idea to do this before bed or something.
+
+:::
+
+Run the following command at the command line. Some GUI windows will pop up,
+prompting you to log into your apple account and accept the terms of service.
+After you follow the prompts, the download and installation will begin.
+
+```{code-block} console
+:caption: command line
+xcode-select --install
+```
+
+If installing from the command line does not work for some reason, you can
+install XCode via the Apple App Stoe.
+
+Homebrew
+--------
 
 * [Homebrew](https://brew.sh/)
 * [Introduction to Homebrew](https://opensource.com/article/20/6/homebrew-mac)
 * [macOS migrations with Brewfile](https://openfolder.sh/macos-migrations-with-brewfile)
 
+Homebrew is a package manager for macOS.  It simplifies the installing,
+upgrading and uninstalling of software, especially tools used by developers.
+
+We'll use this to install other software.
+
 ### Install
 
 ```bash
-xcode-select --install
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 ```
-
-### Usage
-
-| command                                      | description                                    |
-|----------------------------------------------|------------------------------------------------|
-| `brew search {keyword}`                        | search for available packages                  |
-| `brew info {package}`                          | show info about an installed package           |
-| `brew install {package}`                       | install {package}                              |
-| `brew uninstall {package}`                     | uninstall {package}                            |
-| `brew cask install {package}`                  | install GUI {package}                          |
-| `brew cask install {package}`                  | uninstall GUI {package}                        |
-| `brew list --versions | column`               | list all installed packages, columnized        |
-| `brew list --versions {package}`               | list installed package versions                |
-| `brew bundle dump`                             | make a Brewfile of installed packages          |
-| `brew bundle --global install`                 | install all packages from ~/.Brewfile          |
-| `brew home {package}`                          | open the homepage for package                  |
-| `brew leaves`                                  | list installed top-level formula               |
-| `brew leaves | column`                        | list installed top-level formula, columnized   |
-| `brew help`                                    | show brief Homebrew help                       |
-| `brew help {command}`                          | show help info for {command}                   |
-| `man brew`                                     | show Homebrew manpage                          |
-
-### The Brewfile
-
-The `brew bundle` command installs all packages from a `Brewfile`.
-
-Here is a sample Brewfile. You can copy it to `~/.Brewfile` then modify it to
-suit your needs. When you're ready, run `brew bundle install --global`.
-
-Store it in Github or Dropbox to greatly simplify setting up a new system in
-the future.
-
-*~/.Brewfile*
-```ruby
-# Development
-# -----------
-
-cask "visual-studio-code"                 # editor
-brew "pyenv"                              # manage Python versions
-brew "git"                                # most recent git version
-
-# Recommended CLI utils
-# ---------------------
-
-brew "tree"                               # pretty directory viewer
-brew "tldr"                               # cheat sheet for the CLI
-brew "youtube-dl"                         # download youtube videos
-brew "mas"                                # CLI for Mac App Store
-brew "ack"                                # like grep but better
-brew "jq"                                 # JSON processor
-brew "gh"                                 # github CLI
-
-# (better) gnu version
-brew "coreutils"
-brew "findutils"
-brew "gnu-sed"
-brew "gawk"
-
-# Recommended GUI apps
-# --------------------
-
-cask "iterm2"                             # a nice terminal
-cask "alfred"                             # launcher (Spotlight alternative)
-cask "vlc"                                # cross-platform media viewer
-cask "electric-sheep"                     # crowdsourced abstract screensaver
-cask "github"                             # github desktop
-
-# Popular apps
-# ------------
-
-cask "discord"
-mas "desktop.WhatsApp", id: 1147396723
-cask "dropbox"
-cask "brave-browser"
-cask "google-chrome"
-cask "firefox"
-cask "steam"
-```
-
-VS Code
--------
-
-* [Visual Studio Code](https://code.visualstudio.com/)
-* [VS Code Python Tutorial](https://code.visualstudio.com/docs/python/python-tutorial)
-
-### Install
-
-```bash
-brew cask install visual-studio-code
-code --install-extension ms-python.python              # Python extension
-code --install-extension ms-vsliveshare.vsliveshare    # LiveShare
-```
-
-See the [VS Code Intro](vscode.md).
-
 
 pyenv
 -----
@@ -161,10 +104,15 @@ pyenv
 * [Installing Pythons with PyEnv](https://joachim8675309.medium.com/installing-pythons-with-pyenv-54cca2196cd3)
 * [Installing pyenv on macOS](https://binx.io/blog/2019/04/12/installing-pyenv-on-macos/)
 
+pyenv is a command line tool that lets you easily install and switch between
+multiple versions of Python.
+
 
 ### Install
 
-```bash
+```{code-block} console
+:caption: command line
+
 # install pyenv
 brew install pyenv
 
@@ -182,7 +130,6 @@ echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bash_profile
 echo 'export PATH="~/.pyenv/bin:$PATH"\neval "$(pyenv init -)"' >> ~/.bash_profile
 ```
 Then close your terminal and start a new one.
-
 
 ### Usage
 
@@ -226,4 +173,21 @@ curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poet
 ```
 
 See the full [Poetry Guide](poetry.md).
+
+VS Code
+-------
+
+* [Visual Studio Code](https://code.visualstudio.com/)
+* [VS Code Python Tutorial](https://code.visualstudio.com/docs/python/python-tutorial)
+
+### Install
+
+```bash
+brew cask install visual-studio-code
+code --install-extension ms-python.python              # Python extension
+code --install-extension ms-vsliveshare.vsliveshare    # LiveShare
+```
+
+See the [VS Code Intro](vscode.md).
+
 
