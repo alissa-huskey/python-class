@@ -244,48 +244,7 @@ Editor
 Extensions
 ----------
 
-`````{panels}
-
-  <span class="card-title h4">Python</span>
-  ^^^^^^^^^^^^^^
-
-  Support for the Python language.
-
-  {{ mktbtn | replace("ID", "ms-python.python") }}
-
-  ---
-
-  <span class="card-title h4">Live Share</span>
-  ^^^^^^^^^^^^^^
-
-  Features for remote collaboratively editing.
-
-  {{ mktbtn | replace("ID", "ms-vsliveshare.vsliveshare") }}
-
-  ---
-
-  <span class="card-title h4">Editor Config</span>
-  ^^^^^^^^^^^^^^
-
-  Ensure consistent code formatting among different editors that employ it as
-  well as among multiple project contributors.
-
-  Create a file in your project dir or home dir named `.editorconfig` and append
-  at least the following:
-
-  ```{code-block} ini
-  :caption: .editorconfig
-  root = true
-
-  [*.py]
-  indent_style = space
-  indent_size = 4
-  tab_width = 4
-  ```
-
-  {{ mktbtn | replace("ID", "EditorConfig.EditorConfig") }}
-
-`````
+Install the [python-class extension pack](https://marketplace.visualstudio.com/items?itemName=alissahuskey.vscode-python-class).
 
 Suggested Settings
 ------------------
