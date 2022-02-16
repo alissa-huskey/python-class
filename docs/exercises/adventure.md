@@ -2418,7 +2418,7 @@ it to the place items.
 
 1. `[ ]` get the value from `PLAYER` associated with the `"place"` key and assign it to `place_name`
 1. `[ ]` get the value from `PLACES` associated with `place_name` and assign it to `place`
-1. `[ ]` call `.setdefault()` on `place` with the argument `items` and `[]`
+1. `[ ]` call `.setdefault()` on `place` with the argument `"items"` and `[]`
 1. `[ ]` append `name` to `place["items"]`
 1. `[ ]` print a message using the `wrap()` function like:
          {samp}`You set down the {name}.`
