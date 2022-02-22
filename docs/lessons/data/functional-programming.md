@@ -671,18 +671,36 @@ reduce(lambda seq, _: seq + [sum(seq[-2:])], range(10), [0, 1])
 :label: rgb-to-hex-exercise
 
 Use `reduce()` to convert a iterable of three RGB color values from `0-255` to
-a six character string containing the equivalant [hex color code][].
+a six character string containing the equivalant hex color code.
+([More info][color-info].)
+
+*Note: The solution is not a mathmatical equation.*
 
 ```{dropdown} Need a hint?
-Use [string formatting][] to convert hex.
+Use [string formatting][] to convert each number to its hex equivalant.
 ```
 
 **Example**
 
-```python
-(255, 255, 0)  # RGB input
-'ffff00'       # hex output
+{{ leftcol }}
+
+```{rubric} Given
 ```
+
+```python
+RGB = (34, 34, 171)
+```
+
+{{ rightcol }}
+
+```{rubric} Output
+```
+
+```python
+'2222AB'
+```
+
+{{ endcols }}
 
 `````
 
@@ -702,8 +720,133 @@ reduce(lambda hex, val: hex + f"{val:02x}", yellow, "")
 
 `````
 
-[hex color code]: https://www.pluralsight.com/blog/tutorials/understanding-hexadecimal-colors-simple
 [string formatting]: https://alissa-huskey.github.io/python-class/lessons/string-formatting-part-1.html#presentations
+
+### Hex to RGB Color Values
+
+`````{exercise} Hex to RGB
+:label: hex-to-rgb-exercise
+
+Use `reduce()` to convert a six character hex color code to list of the
+equivalant [RGB color values][] from `0-255`. ([More info][color-info].)
+
+*Note: The solution is not a mathmatical equation.*
+
+```{dropdown} Need a hint?
+* Use the range() function and a slice to exract each two digit hex number from
+  the six digit string.
+* You can convert a hex number to a base `10` integer (the normal kind) using
+  the `int()` {term}`constructor` by including the optional second argument.
+```
+
+**Example**
+
+{{ leftcol }}
+
+```{rubric} Given
+```
+
+```python
+hex_code = "00ffff"
+```
+
+{{ rightcol }}
+
+```{rubric} Output
+```
+
+```python
+(0, 255, 255)
+```
+
+{{ endcols }}
+
+`````
+
+`````{solution} hex-to-rgb-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: "Hex to RGB Exercise"
+:class: full-width
+:linenos:
+
+def to_rgb(hex_code, i):
+    code = hex_code[i*2:i*2+2]
+    return int(code, base=16)
+
+reduce(lambda rgb, i: rgb + [to_rgb("ffff00", i)], range(3), [])
+
+```
+
+`````
+
+[color-info]: https://mathstats.uncg.edu/sites/pauli/112/HTML/seccolors.html
+[RGB color values]: https://en.wikipedia.org/wiki/RGB_color_model
+
+### Get values for multiple keys
+
+`````{exercise} Multiple Dictionary Keys
+:label: reduce-dict-keys-exercise
+
+Given a dictionary mapping `letters` to their unicode codepoint, use `reduce()`
+go return a list containing the values for an iterable of `keys`.
+
+**Example**
+
+{{ leftcol }}
+
+```{rubric} Given
+```
+
+```python
+letters = {
+  'a': 97,
+  'b': 98,
+  'c': 99,
+  'd': 100,
+  'e': 101,
+ }
+
+ keys = ['c', 'a', 't']
+```
+
+{{ rightcol }}
+
+```{rubric} Output
+```
+
+```python
+[99, 97, None]
+```
+
+{{ endcols }}
+
+`````
+
+`````{solution} reduce-dict-keys-exercise
+:class: dropdown
+
+```{code-block} python
+:caption: "Multiple Dictionary Keys Exercise"
+:class: full-width
+:linenos:
+
+letters = {
+  'a': 97,
+  'b': 98,
+  'c': 99,
+  'd': 100,
+  'e': 101,
+}
+
+keys = ['c', 'a', 't']
+
+reduce(lambda values, key: values + [alpha.get(key)], "aeiou", [])
+
+```
+
+`````
 
 
 Reference
