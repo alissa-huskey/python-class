@@ -45,17 +45,16 @@
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/asciinema-player.js"></script>
     <script src="../_static/custom.js"></script>
     <script src="../_static/x-frame-bypass.js"></script>
+    <script src="../_static/asciinema-player.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe,.cell"
-        const thebe_selector_input = "pre,.cell_input div.highlight"
-        const thebe_selector_output = ".output,.cell_output"
-    </script>
+    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="canonical" href="https://alissa-huskey.github.io/python-class/exercises/program-flow.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -335,6 +334,11 @@
    </i>
   </label>
   <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/dates.html">
+     Dates and Times
+    </a>
+   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../lessons/web-apis.html">
      Web APIs
@@ -739,7 +743,7 @@ discussed last week.</p>
 <p>Start by making a new file <code class="docutils literal notranslate"><span class="pre">character.py</span></code>. We’re going to use the <code class="docutils literal notranslate"><span class="pre">random</span></code>
 module today, so start off by importing it at the top of the file.</p>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-number">Listing 492 </span><span class="caption-text">character.py</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 495 </span><span class="caption-text">character.py</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 </pre></div>
 </td></tr></table></div>
@@ -763,7 +767,7 @@ variable name or <a class="reference internal" href="../lessons/syntax.html#term
 <li><p><code class="docutils literal notranslate"><span class="pre">level</span></code> an integer (<code class="docutils literal notranslate"><span class="pre">int</span></code>) that is a random number between <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">5</span></code>.</p></li>
 </ul>
 <div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-number">Listing 493 </span><span class="caption-text">character.py</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 496 </span><span class="caption-text">character.py</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -781,7 +785,7 @@ assignment statements are saving the information for future use.</p>
 <h3>Step 2: Print character info<a class="headerlink" href="#step-2-print-character-info" title="Permalink to this headline">¶</a></h3>
 <p>Now we’ll <a class="reference internal" href="../tools/git.html#term-reference"><span class="xref std std-term">reference</span></a> these variables in a print statement.</p>
 <div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-number">Listing 494 </span><span class="caption-text">character.py</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 497 </span><span class="caption-text">character.py</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -817,7 +821,7 @@ assignment statements are saving the information for future use.</p>
 the current value of <code class="docutils literal notranslate"><span class="pre">level</span></code>. Then we <code class="docutils literal notranslate"><span class="pre">assign</span></code> the result of the expression to
 the <code class="docutils literal notranslate"><span class="pre">level</span></code> variable using the <code class="docutils literal notranslate"><span class="pre">=</span></code> operator.</p>
 <div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-number">Listing 495 </span><span class="caption-text">character.py</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 498 </span><span class="caption-text">character.py</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -872,7 +876,7 @@ calling line with commas seperating them.</p></li>
 a <code class="docutils literal notranslate"><span class="pre">character_info</span></code> function that takes three arguments. Then replace your print
 statement from line 7 with a call to your newly created function.</p>
 <div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-number">Listing 496 </span><span class="caption-text">character.py</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 499 </span><span class="caption-text">character.py</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -910,7 +914,7 @@ statement from line 7 with a call to your newly created function.</p>
 For functions that take arguments, you can call them with different arguments.</p>
 <p>Lets call our new function with different values for all three arguments.</p>
 <div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-number">Listing 497 </span><span class="caption-text">character.py</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 500 </span><span class="caption-text">character.py</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>

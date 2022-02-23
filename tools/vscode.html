@@ -45,18 +45,17 @@
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/asciinema-player.js"></script>
     <script src="../_static/custom.js"></script>
     <script src="../_static/x-frame-bypass.js"></script>
+    <script src="../_static/asciinema-player.js"></script>
     <script src="../_static/tabs.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe,.cell"
-        const thebe_selector_input = "pre,.cell_input div.highlight"
-        const thebe_selector_output = ".output,.cell_output"
-    </script>
+    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="canonical" href="https://alissa-huskey.github.io/python-class/tools/vscode.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -336,6 +335,11 @@
    </i>
   </label>
   <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lessons/dates.html">
+     Dates and Times
+    </a>
+   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../lessons/web-apis.html">
      Web APIs
@@ -1255,8 +1259,8 @@ to change.</p>
 <p>You can change your settings by either modifying your <code class="file docutils literal notranslate"><span class="pre">settings.json</span></code>
 file or using the Settings UI, whichever you find easiest.</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="3311c737-0281-48d4-a8ed-027f2ae05275" name="b867c776-17c6-4045-9ca4-10cee0445e4e" type="radio">
-</input><label class="tabbed-label" for="3311c737-0281-48d4-a8ed-027f2ae05275">
+<input checked="checked" id="6594bc64-7ebd-4002-8979-d2f8b0a9e906" name="d52bab6f-ab60-4215-91e6-2aee3a0f583a" type="radio">
+</input><label class="tabbed-label" for="6594bc64-7ebd-4002-8979-d2f8b0a9e906">
 Settings (JSON)</label><div class="tabbed-content docutils">
 <p>On the left side of each section is a JSON dictionary containing the relevant
 settings for the <code class="file docutils literal notranslate"><span class="pre">settings.json</span></code> file.</p>
@@ -1272,8 +1276,8 @@ the <code class="file docutils literal notranslate"><span class="pre">settings.j
 the last <code class="docutils literal notranslate"><span class="pre">}</span></code> in the file.</p></li>
 </ol>
 </div>
-<input id="1da721ff-49a9-4975-a441-5258e8318a1e" name="b867c776-17c6-4045-9ca4-10cee0445e4e" type="radio">
-</input><label class="tabbed-label" for="1da721ff-49a9-4975-a441-5258e8318a1e">
+<input id="d073ff7c-b32a-4597-a98c-72bd70aea348" name="d52bab6f-ab60-4215-91e6-2aee3a0f583a" type="radio">
+</input><label class="tabbed-label" for="d073ff7c-b32a-4597-a98c-72bd70aea348">
 Settings (UI)</label><div class="tabbed-content docutils">
 <p>On the right side of each section is a list of relevant settings from the
 Settings UI.</p>
@@ -1322,7 +1326,7 @@ setting in this document.</p></li>
 </table>
 </div>
 <div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-number">Listing 425 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 428 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;explorer.openEditors.visible&quot;</span><span class="o">:</span> <span class="mf">0</span>
 <span class="p">}</span>
@@ -1364,7 +1368,7 @@ setting in this document.</p></li>
 </table>
 </div>
 <div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-number">Listing 426 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 429 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;editor.minimap.enabled&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="s2">&quot;editor.minimap.renderCharacters&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
@@ -1396,7 +1400,7 @@ setting in this document.</p></li>
 </table>
 </div>
 <div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-number">Listing 427 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 430 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;workbench.editor.enablePreviewFromQuickOpen&quot;</span><span class="o">:</span> <span class="kc">false</span>
 <span class="p">}</span>
@@ -1425,7 +1429,7 @@ setting in this document.</p></li>
 </table>
 </div>
 <div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-number">Listing 428 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 431 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;files.autoSave&quot;</span><span class="o">:</span> <span class="s2">&quot;afterDelay&quot;</span>
 <span class="p">}</span>
@@ -1460,7 +1464,7 @@ setting in this document.</p></li>
 </table>
 </div>
 <div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-number">Listing 429 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 432 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;workbench.startupEditor&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
     <span class="s2">&quot;workbench.tips.enabled&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
@@ -1491,7 +1495,7 @@ setting in this document.</p></li>
 </table>
 </div>
 <div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-number">Listing 430 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 433 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;liveshare.populateGitCoAuthors&quot;</span><span class="o">:</span> <span class="s2">&quot;never&quot;</span>
 <span class="p">}</span>
@@ -1526,7 +1530,7 @@ setting in this document.</p></li>
 </table>
 </div>
 <div class="literal-block-wrapper docutils container" id="id8">
-<div class="code-block-caption"><span class="caption-number">Listing 431 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 434 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;editor.renderLineHighlight&quot;</span><span class="o">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
     <span class="s2">&quot;editor.renderLineHighlightOnlyWhenFocus&quot;</span><span class="o">:</span> <span class="kc">true</span>
@@ -1570,7 +1574,7 @@ settings disable them, though they can still be triggered using a shortcut key.<
 </table>
 </div>
 <div class="literal-block-wrapper docutils container" id="id9">
-<div class="code-block-caption"><span class="caption-number">Listing 432 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 435 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;editor.acceptSuggestionOnCommitCharacter&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="s2">&quot;editor.suggestOnTriggerCharacters&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
@@ -1606,7 +1610,7 @@ settings disable them, though they can still be triggered using a shortcut key.<
 </table>
 </div>
 <div class="literal-block-wrapper docutils container" id="id10">
-<div class="code-block-caption"><span class="caption-number">Listing 433 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 436 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;git.autofetch&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
 <span class="p">}</span>
@@ -1635,7 +1639,7 @@ settings disable them, though they can still be triggered using a shortcut key.<
 </table>
 </div>
 <div class="literal-block-wrapper docutils container" id="id11">
-<div class="code-block-caption"><span class="caption-number">Listing 434 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 437 </span><span class="caption-text">settings.json</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;files.trimTrailingWhitespace&quot;</span><span class="o">:</span> <span class="kc">false</span>
 <span class="p">}</span>
