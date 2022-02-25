@@ -1,0 +1,153 @@
+#!/usr/bin/env bash
+
+# TODO:
+# [x] determine shell
+# [x] find existing .[zsh|bash]rc
+# [x] --shellrc
+# [ ] iterate through parts of file, include if not included
+
+set -Eeo pipefail # fail on errors, even within pipes
+# set +o posix      # using some noncompliant process redirection features
+read -r rootdir < <(cd "${0%/*}/." && pwd -P) || :
+
+abort() {
+  printf "\033[31mError\033[0m %s" "${*}"
+  exit 1
+}
+
+show_var() {
+  local var val
+  while [[ $# -gt 0 ]]; do
+    var="$1"
+    eval 'val=$'"$1"
+
+    printf "\033[33m%s\033[0m = '%s'\n" "$var" "$val"
+    shift
+  done
+}
+
+is_dry_run() {
+  [[ -n "${dry_run_mode}" ]]
+}
+
+backup() {
+  is_dry_run && return
+
+  [[ -f "$shellrc" ]] || return
+
+  cp "${shellrc}" "${backup_file}"
+}
+
+args() {
+  local sn=1
+
+  while [[ $# -gt 0 ]]; do case $1 in
+      --shellrc)    sn=2 shellrc="$2"            ;;
+      --shell)      sn=2 shell="$2"              ;;
+      -n|--dry-run) sn=1 dry_run_mode=true       ;;
+      *) : ;;
+    esac
+    shift $sn
+  done
+}
+
+find_shell() {
+  [[ -n "$shell" ]] && return
+
+  if [[ -n "${shellrc}" ]]; then
+    shell="${shellrc##*/}"
+    shell="${shell#.}"
+    shell="${shell%rc}"
+  else
+    shell=${SHELL##*/}
+  fi
+
+  [[ -z "${shell}" ]] && abort "Unable to determine shell. Please specify with --shell or --shellrc."
+
+  if ! [[ "${shell}" =~ ^(bash|zsh)$ ]]; then
+    abort "Unsupported shell: '${shell}'. (If this seems like a mistake, specify with --shell.)"
+  fi
+}
+
+find_shellrc() {
+  [[ -n "$shellrc" ]] && return
+
+  shellrc="$HOME/.${shell}rc"
+}
+
+rcs_to_add() {
+  local rc_file pat script
+
+  is_dry_run && return
+
+  touch "${shellrc}"
+  script='/# mksh: check if present/ s/^[[:space:]]*(.*)#.*$/\1/p'
+
+  for rc_file in ${rootdir}/rcs/*.sh; do
+    if read -r pat < <(sed -nEe "${script}" "${rc_file}"); then
+      if ! grep -q "${pat}" "${shellrc}"; then
+        files+=( "${rc_file}" )
+      fi
+    fi
+  done
+}
+
+generate() {
+  local file
+
+  for file in "${shellrc}" "${files[@]}"; do
+    sed -Ee '/# mksh: check if present/ s///' "${file}"
+  done
+}
+
+prompt() {
+  local question="${1:-Continue?}"
+  printf "%s [yN] " "${question}"
+  read -r ok
+
+  [[ "${ok}" =~ ^[yY]$ ]]
+}
+
+preview() {
+
+  printf "\n\n\033[32m=======================================================================\033[0m\n"
+  printf "\033[1m%s Preview\033[0m\n" "${shellrc##*/}"
+  printf "\033[32m-----------------------------------------------------------------------\033[0m\n\n"
+
+  generate
+
+  printf "\033[32m=======================================================================\033[0m\n\n"
+
+  prompt "Save to ${shellrc}? "
+}
+
+save() {
+  local tmpfile="${TEMPDIR:-.}/dot-shellrc"
+
+    backup
+    generate > "${tmpfile}"
+    mv "${tmpfile}" "${shellrc}"
+}
+
+main() {
+  local shellrc shell backup_file
+  local -a files
+
+  args ${1:+"$@"}
+  find_shell
+  find_shellrc
+  backup_file="${shellrc/\/.//}-$(date +%s)"
+
+  show_var shell shellrc backup_file
+
+  prompt || return
+
+  rcs_to_add
+
+  if preview; then
+    save
+  fi
+}
+
+main ${1:+"$@"}
+
