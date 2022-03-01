@@ -15,11 +15,12 @@ command line, which we'll be learning about today.
 
 ```{contents} Table of Contents
 :backlinks: top
+:depth: 2
 :local:
 ```
 
-Exploring files on the command line
------------------------------------
+Part 1. Exploring files on the command line
+-------------------------------------------
 
 For this lesson, open a terminal. We'll use the `ls` command which lists
 files to experiment with different paths. (On Windows you may need to use
@@ -54,7 +55,7 @@ $ ls README.md
 README.md
 ```
 
-### Directory separators
+### Part 1.1: Directory separators
 
 Directories are separated with a slash (`/`) or backslash (`\`) on
 Windows. For example here's how I would list the `template.py` file inside
@@ -76,7 +77,7 @@ you're using. Otherwise the same command would be:
 pythonclass\template.py
 ```
 
-### The working directory
+### Part 1.2: The working directory
 
 So far all of these examples have been {term}`relative <relative path>`
 meaning that they start from the working directory.
@@ -89,7 +90,7 @@ $ ls ./pythonclass/template.py
 ./pythonclass/template.py
 ```
 
-### Parent directory
+### Part 1.3: Parent directory
 
 You can use `..` to indicate the parent directory. For example, I have an
 {file}`arduino` directory in the same directory as my working directory
@@ -101,7 +102,7 @@ $ ls ../arduino
 config  docs  examples  sketchbook  tools
 ```
 
-### Absolute paths
+### Part 1.4: Absolute paths
 
 When a path starts with a `/` or the drive (like `C:`) it is an
 {term}`absolute <absolute path>` path. That means that it starts at the
@@ -129,7 +130,7 @@ On Windows you may need to start with the drive letter.
 C:\Windows\system32
 ```
 
-### The home directory
+### Part 1.5: The home directory
 
 Operating systems designed to support multiple users usually keep each users
 files in their own directory not accessible to other users. This is called
@@ -142,7 +143,7 @@ $ ls ~/Documents
 Adobe Autodesk
 ```
 
-### Exercise
+### Part 1.6: Exercise
 
 ```{exercise} command-line-paths
 :class: notitle
@@ -167,10 +168,10 @@ On a Unix-like operating system what is the path for each of the following?
 
 ```
 
-Paths in Python
----------------
+Part 2: Paths in Python
+-----------------------
 
-### Path strings in `open()`
+### Part 2.1: Path strings in `open()`
 
 The first argument to the `open()` function in Python is the path to a file.
 So far we've been using a simple filename. In the following example, a file
@@ -197,7 +198,7 @@ fh.close()
 print(contents)
 ```
 
-### `Path` objects
+### Part 2.2: `Path` objects
 
 Python provides a `pathlib.Path` object which makes it easier to construct
 and manipulate cross-platform paths, provides handy methods for filesystem
@@ -215,7 +216,7 @@ from pathlib import Path
 path = Path("README.md")
 ```
 
-### Using `Path` objects in `open()`
+### Part 2.3: Using `Path` objects in `open()`
 
 You can use a `Path` object instead of a string for the first argument of the
 `open()` function.
@@ -232,7 +233,7 @@ fh.close()
 print(contents)
 ```
 
-### Validation methods
+### Part 2.4: Validation methods
 
 `Path` objects provide some handy boolean methods for checking the status of
 a file or directory.
@@ -265,7 +266,7 @@ def main():
   print(contents)
 ```
 
-### Exercise
+### Part 2.5: Exercise
 
 ```{exercise} Validating paths
 :class: notitle
@@ -301,7 +302,7 @@ def show():
 
 `````
 
-### Canonical path
+### Part 2.6: Canonical path
 
 `Path` objects provide methods for handling absolute versus relative paths as
 well as converting symbols for the current operating system.
@@ -321,7 +322,7 @@ For example, here is what each method returns for `path = Path("../t.py")`.
 | `path.absolute()`    | `PosixPath('/Users/pythonclass/projects/python-class/../t.py')`    |
 | `path.resolve()`     | `PosixPath('/Users/pythonclass/projects/t.py')`                    |
 
-### Parts of a path
+### Part 2.7: Parts of a path
 
 Python `Path` objects make it easy to access parts of a path without
 having to worry about which operating system is being used.
@@ -353,7 +354,7 @@ def main():
   print(contents)
 ```
 
-### Constructing paths
+### Part 2.8: Constructing paths
 
 One way to construct paths in a way that will work on all operating systems
 is to use the `joinpath()` method to add a subdirectory or filename to an
@@ -413,7 +414,7 @@ def main():
   print(contents)
 ```
 
-### Paths relative to current file
+### Part 2.9: Paths relative to current file
 
 The working directory in Python is the directory the current program was
 launched from. This can make using relative paths problematic because if the
@@ -443,7 +444,7 @@ def main():
   print(contents)
 ```
 
-### Exercise
+### Part 2.10: Exercise
 
 ```{exercise} Constructing paths
 :class: notitle
