@@ -167,23 +167,6 @@ date string and the format string.
 datetime.strptime("6/5/20", "%m/%d/%y")
 ```
 
-Part 3: Timestamps and seconds math
------------------------------------
-
-Another way to represent a date and time is known as an
-{term}`epoch timestamp`.
-
-```{code-cell} python
-now.timestamp()
-```
-
-```{code-cell} python
-# first moon walk
-# July 20, 1969
-```
-
-
-
 Part 3: Relative dates and times
 --------------------------------
 
@@ -225,15 +208,18 @@ fortnight / week
 ```
 
 While `timedelta` objects can be created in any of the above units of
-measurement, they are stored in `days` and `seconds`.
-
+measurement, they are stored in `days` and `seconds`. For example, here we
+create a `moment` timedelta of `1` minute and `30` seconds.
 
 ```{code-cell} python
-timedelta(weeks=4)
-timedelta(minutes=1, seconds=30)
-timedelta(weeks=1, hours=3)
+moment = timedelta(minutes=1, seconds=30)
 ```
 
+This is stored as `90` seconds.
+
+```{code-cell} python
+print(moment.seconds)
+```
 
 
 ```{code-cell} python
@@ -246,31 +232,62 @@ print(delta.seconds)
 ### Part 3.2: Adding and subtracting from dates
 
 ```{code-cell} python
+week = timedelta(days=7)
+last_week = now - week
 
+print("last week:", last_week)
+```
+
+```{code-cell} python
+tomorrow = now + timedelta(days=1)
+
+print("tomorrow:", tomorrow)
 ```
 
 ### Part 3.3: Difference between dates
 
-### Part 3 Exercises
+```{code-cell} python
+birthday = datetime(2020, 6, 5)
+age = now - birthday
 
-`````{exercise} Name
-:label: label-exercise
-
-1. Get the timedelta for a `fortnight` (`2` weeks).
-
-`````
-
-`````{solution} label-exercise
-:class: dropdown
-
-```{code-block} python
-:caption: "Name Exercise"
-:class: full-width
-:linenos:
-
+print(age)
 ```
 
-`````
+% ### Part 3 Exercises
+
+% `````{exercise} Name
+% :label: label-exercise
+% 
+% 1. Get the timedelta for a `fortnight` (`2` weeks).
+
+% `````
+% 
+% `````{solution} label-exercise
+% :class: dropdown
+% 
+% ```{code-block} python
+% :caption: "Name Exercise"
+% :class: full-width
+% :linenos:
+% 
+% ```
+% 
+% `````
+
+% Part 4: Timestamps and seconds math
+% -----------------------------------
+
+% Another way to represent a date and time is known as an
+% {term}`epoch timestamp`.
+
+% ```{code-cell} python
+% now.timestamp()
+% ```
+
+% ```{code-cell} python
+% # first moon walk
+% # July 20, 1969
+% ```
 
 
 Reference

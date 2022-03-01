@@ -5,9 +5,12 @@ Python has a special type `object` which is the ancestor to all types in
 Python.
 
 ```{contents} Table of Contents
-:backlinks: top
+:backlinks: entry
 :local:
 ```
+
+Part 1: Introduction
+--------------------
 
 The object type by itself is not terribly useful. You can see that `object` is
 a type and you can create an object instance just like you would with any
@@ -44,16 +47,14 @@ True
 As such, the object type defines the characteristics shared by all classes and
 instances, which is what we will be talking about in this lesson.
 
-Shared traits
--------------
-
 % TODO
 % - [ ] mutability
 % - [x] members
 %       - [x] attributes
 %       - [x] methods
 
-### Members
+Part 2: Members
+---------------
 
 Objects can have {term}`members <member>` which are accessed using
 {term}`dot notation`.
@@ -65,7 +66,7 @@ imported from a module, for example: `random.randint()`.
 
 There are two kinds of members: attributes and methods.
 
-#### Attributes
+### Part 2.2: Attributes
 
 {term}`Attributes <attribute>`, sometimes called {term}`properties <property>`,
 are just like variables but they are attached to an object and accessed using
@@ -106,7 +107,7 @@ AttributeError                            Traceback (most recent call last)
 AttributeError: 'str' object has no attribute 'real'
 ```
 
-#### Methods
+### Part 2.2: Methods
 
 A method is a just like a function, but one that is attached to an object and
 accessed through {term}`dot notation`.
@@ -167,7 +168,7 @@ are not callable.
 % TODO
 % [ ] accessing attributes on raw values or any kind of expression
 
-#### Listing members
+### Part 2.3: Listing members
 
 You can use the `dir()` function to see a list of the members an object has.
 (The ones that start and end with double underscores (`__`) are special
@@ -235,7 +236,7 @@ options and hit {kbd}`ENTER` to fill in the selected name.
 ![](assets/ipython-attrs.png)
 
 
-#### Checking members
+### Part 2.4: Checking members
 
 You can use the function `hasattr()` to check if an object has a particular
 member. The first argument is the value you want to check, the second argument
@@ -265,7 +266,7 @@ True
 False
 ```
 
-#### Exercise
+### Part 2.5: Exercise
 
 ```{exercise} methods and attributes
 :label: methods-and-attributes-exercise
@@ -283,12 +284,205 @@ False
 6. In a Python shell use the `callable()` function on a `dict` value to find out
    if `values` is a method or a property.
 ```
-### Functions
+
+Part 3: Playing well with others
+--------------------------------
+
+The type of an object will determine how and where it can be used. This section
+goes over the things that are effected by the object type.
+
+### Part 3.1: Functions
 
 Functions and methods usually expect certian types of arguments, and you'll run
 into some kind of error if you try to pass the wrong type.
 
-However, there are some functions that any object can be passed to:
+For example, you can use the `len()` function with any kind of iterable--like,
+a `list`, a `dict` or a `str`.
+
+```{code-block} python
+:caption: Python shell
+>>> len([1, 2, 3])
+3
+
+>>> len({'a': 1, 'b': 2})
+2
+
+>>> len("hello")
+5
+```
+
+But if we try to use the `len()` function with something that is not an
+iterable, like a `float` or an `int` we'll get a `TypeError`.
+
+```{code-block} python
+:caption: Python shell
+>>> len(510)
+
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-8-dac1cb5dc6aa> in <module>
+----> 1 len(510)
+
+TypeError: object of type 'int' has no len()
+```
+
+```{code-block} python
+:caption: Python shell
+>>> len("53.50")
+
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-9-995b26d517d2> in <module>
+----> 1 len(53.50)
+
+TypeError: object of type 'float' has no len()
+```
+
+Some functions though can be used with any type. For example, the `print()`
+function can take any object type as an argument.
+
+
+```{code-block} python
+:caption: Python shell
+>>> print("hello")
+hello
+```
+
+
+
+
+Part 4: Magic methods
+---------------------
+
+When using the `dir()` function you may have noticed a bunch of members with
+names surrounded by double underscores (`__`). These are special methods
+used internally by Python called
+{term}`magic <magic method>` or {term}`dunder methods <dunder method>`.
+Each one cooresponds to some under the hood Python mechanism.
+
+Lets take a look at the members of an object instance.
+
+```{code-block} python
+:caption: Python shell
+:class: full-width
+>>> dir(object())
+['__class__',
+ '__delattr__',
+ '__dir__',
+ '__doc__',
+ '__eq__',
+ '__format__',
+ '__ge__',
+ '__getattribute__',
+ '__gt__',
+ '__hash__',
+ '__init__',
+ '__init_subclass__',
+ '__le__',
+ '__lt__',
+ '__ne__',
+ '__new__',
+ '__reduce__',
+ '__reduce_ex__',
+ '__repr__',
+ '__setattr__',
+ '__sizeof__',
+ '__str__',
+ '__subclasshook__']
+```
+
+Before you read on, can you guess what any of these coorespond to? I'll wait.
+
+...
+
+...
+
+...
+
+Welcome back.
+
+{term}`Magic methods <magic method>` may coorespond to:
+
+* **Types** -- when named one of the standard built in types, this method is
+  called by that type. For example the `.__str__()` method is used by the
+  `str()` function.
+* **Functions** -- when named one of the built in functions, this method is
+  called by that function. For example the `.__dir__()` method is called by the
+  `dir()` function.
+* **Operators** -- there are magic methods cooresponding to each operator. For
+  example the `.__add__()` method is called by the `+` operator.
+* **Statements** -- some statements call magic methods. For example when the
+  `del` statement is used on an object attribute the `.__del__()` method is
+  called.
+* **Syntax** -- magic methods are called by some forms of syntax. For example
+  `.__getattribute__()` is called when using dot notation.
+* **Object information** -- information about the object is stored in
+  {term}`special attributes <special attribute>` that are just like magic
+  methods, but not callable. For example the `.__class__` attribute contains
+  the object type, the same thing returned by the `type()` function.
+
+While magic methods are intended for internal use, there is nothing stopping
+you from calling them directly.
+
+```{code-block} python
+:caption: Python shell
+:class: full-width
+>>> a_int = 1
+>>> a_int.__str__()
+'1'
+
+>>> str(a_int)
+'1'
+
+>>> a_int.__add__(2)
+3
+
+>>> a_int.__class__
+int
+
+>>> type(a_int)
+int
+```
+
+There are quite a few magic methods and special attributes and they differ
+depending on the type.  Don't worry, you don't need to memorize them.  However
+it can be useful to understand the general concept, as magic methods and
+special attibutes can tell you a lot about an objects capabilities.
+
+```{seealso}
+
+* [Python.org > Special Method Names](https://docs.python.org/3/reference/datamodel.html#specialnames)
+* [A Guide to Python's Magic Methods](https://rszalski.github.io/magicmethods/#operators)
+* [Python - Dunder or Magic Methods](https://www.alphacodingskills.com/python/pages/python-dunder-methods.php)
+* [Python Dunder (Special, Magic) Methods List with Tutorial](https://holycoders.com/python-dunder-special-methods/)
+
+```
+
+Summary
+-------
+
+* Objects can have members which are accessed using {term}`dot notation` --
+  adding a `.` after the object followed by the member name. Members can either
+  be attributes, which are just like variables, or methods which are just like
+  functions.
+* The `callable()` function will return `True` for things that can be called
+  like methods, functions and classes, `False` otherwise.
+* You can find out what members a value has:
+  - in IPython after a variable followed by a `.` by hitting {kbd}`TAB`
+  - in VS Code after a variable followed by a `.` by using the {kbd}`⌘I` or {kbd}`⌃Space` keyboard shortcuts
+  - by using the `dir()` or `hasattr()` functions
+* There are a number of built in functions that any object can be passed to
+  like `repr()` and `type()`.
+* Internally Python calls an objects magic methods, those with names surrounded
+  by double underscores, to preform many operations. Looking at the magic
+  methods using the `dir()` function can tell you how a particular object can be used.
+
+Reference
+---------
+
+### Universal Functions
+
+Here is a list of functions that can be used with any type.
 
 * {samp}`callable({object})` -- return `True` of `object` is callable.
   ```{code-block} python
@@ -441,134 +635,7 @@ However, there are some functions that any object can be passed to:
   hello.txt
   ```
 
-Magic methods
--------------
-
-When using the `dir()` function you may have noticed a bunch of members with
-names surrounded by double underscores (`__`). These are special methods
-used internally by Python called
-{term}`magic <magic method>` or {term}`dunder methods <dunder method>`.
-Each one cooresponds to some under the hood Python mechanism.
-
-Lets take a look at the members of an object instance.
-
-```{code-block} python
-:caption: Python shell
-:class: full-width
->>> dir(object())
-['__class__',
- '__delattr__',
- '__dir__',
- '__doc__',
- '__eq__',
- '__format__',
- '__ge__',
- '__getattribute__',
- '__gt__',
- '__hash__',
- '__init__',
- '__init_subclass__',
- '__le__',
- '__lt__',
- '__ne__',
- '__new__',
- '__reduce__',
- '__reduce_ex__',
- '__repr__',
- '__setattr__',
- '__sizeof__',
- '__str__',
- '__subclasshook__']
-```
-
-Before you read on, can you guess what any of these coorespond to? I'll wait.
-
-...
-
-...
-
-...
-
-Welcome back.
-
-{term}`Magic methods <magic method>` may coorespond to:
-
-* **Types** -- when named one of the standard built in types, this method is
-  called by that type. For example the `.__str__()` method is used by the
-  `str()` function.
-* **Functions** -- when named one of the built in functions, this method is
-  called by that function. For example the `.__dir__()` method is called by the
-  `dir()` function.
-* **Operators** -- there are magic methods cooresponding to each operator. For
-  example the `.__add__()` method is called by the `+` operator.
-* **Statements** -- some statements call magic methods. For example when the
-  `del` statement is used on an object attribute the `.__del__()` method is
-  called.
-* **Syntax** -- magic methods are called by some forms of syntax. For example
-  `.__getattribute__()` is called when using dot notation.
-* **Object information** -- information about the object is stored in
-  {term}`special attributes <special attribute>` that are just like magic
-  methods, but not callable. For example the `.__class__` attribute contains
-  the object type, the same thing returned by the `type()` function.
-
-While magic methods are intended for internal use, there is nothing stopping
-you from calling them directly.
-
-```{code-block} python
-:caption: Python shell
-:class: full-width
->>> a_int = 1
->>> a_int.__str__()
-'1'
-
->>> str(a_int)
-'1'
-
->>> a_int.__add__(2)
-3
-
->>> a_int.__class__
-int
-
->>> type(a_int)
-int
-```
-
-There are quite a few magic methods and special attributes and they differ
-depending on the type.  Don't worry, you don't need to memorize them.  However
-it can be useful to understand the general concept, as magic methods and
-special attibutes can tell you a lot about an objects capabilities.
-
-```{seealso}
-
-* [Python.org > Special Method Names](https://docs.python.org/3/reference/datamodel.html#specialnames)
-* [A Guide to Python's Magic Methods](https://rszalski.github.io/magicmethods/#operators)
-* [Python - Dunder or Magic Methods](https://www.alphacodingskills.com/python/pages/python-dunder-methods.php)
-* [Python Dunder (Special, Magic) Methods List with Tutorial](https://holycoders.com/python-dunder-special-methods/)
-
-```
-
-Summary
--------
-
-* Objects can have members which are accessed using {term}`dot notation` --
-  adding a `.` after the object followed by the member name. Members can either
-  be attributes, which are just like variables, or methods which are just like
-  functions.
-* The `callable()` function will return `True` for things that can be called
-  like methods, functions and classes, `False` otherwise.
-* You can find out what members a value has:
-  - in IPython after a variable followed by a `.` by hitting {kbd}`TAB`
-  - in VS Code after a variable followed by a `.` by using the {kbd}`⌘I` or {kbd}`⌃Space` keyboard shortcuts
-  - by using the `dir()` or `hasattr()` functions
-* There are a number of built in functions that any object can be passed to
-  like `repr()` and `type()`.
-* Internally Python calls an objects magic methods, those with names surrounded
-  by double underscores, to preform many operations. Looking at the magic
-  methods using the `dir()` function can tell you how a particular object can be used.
-
-Glossary
---------
+### Glossary
 
 ```{glossary} data-types
 attribute

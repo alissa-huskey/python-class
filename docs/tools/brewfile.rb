@@ -9,6 +9,7 @@ brew "git"                                # most recent git version
 cask "discord"                            # Discord app
 brew "mas"                                # app store CLI tool
 brew "pyenv"                              # install and manage Python versions
+brew "autoenv"                            # automatically source .env files on cd
 
 # python dependencies
 # -------------------

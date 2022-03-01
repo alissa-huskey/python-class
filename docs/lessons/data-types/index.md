@@ -15,11 +15,12 @@ things like what methods and attributes it has, what functions it can be passed
 to, and what other types of data it can play nicely with.
 
 ```{contents} Table of Contents
-:backlinks: top
+:backlinks: entry
 :local:
+:depth: 2
 ```
 
-Classes and instances
+Part 1: Classes and instances
 ---------------------
 
 In modern Python the terms {term}`type` and {term}`class` are more or less
@@ -46,7 +47,7 @@ The built-in standard types like `int`, `str`, and `bool` are all lowercase.
 Most classes defined elsewhere use `CamelCasing`, like `Path` from the
 `pathlib` library.
 
-### Creating instances
+### Part 1.1: Creating instances
 
 I've said that classes are like blueprints. That is in part because classes
 know how to create their own instances.
@@ -69,7 +70,7 @@ we are already familiar with.
 []
 ```
 
-### Type conversion
+### Part 1.2: Type conversion
 
 Classes may also take arguments. For example, most of the built in type classes
 can be used to convert a value to its type. This is called {term}`typecasting`.
@@ -131,7 +132,7 @@ TypeError: 'int' object is not iterable
 [3, 2, 5, 6, 2]
 ```
 
-### Exercise
+### Part 1.3: Exercise
 
 ```{exercise} classes
 :label: classes-exercise
@@ -246,8 +247,10 @@ TypeError: cannot convert dictionary update sequence element #0 to a sequence
 ```
 `````
 
-Finding out the type
---------------------
+Part 2: Finding out the type
+----------------------------
+
+### Part 2.1: Type checking functions
 
 We can find out the type of any value by using the `type()` function.
 
@@ -293,7 +296,7 @@ True
 True
 ```
 
-### Exercise
+### Part 2.2: Exercise
 
 ```{exercise} classes
 :label: type-checking-exercise
