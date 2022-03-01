@@ -30,7 +30,7 @@ code --install-extension alissahuskey.vscode-python-class
 touch ~/.zshrc
 
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
-echo 'export PATH="~/.pyenv/bin:$PATH"\neval "$(pyenv init -)"' >> ~/.zshrc
+echo 'export PATH=~/.pyenv/bin:$PATH\neval "$(pyenv init -)"' >> ~/.zshrc
 
 # install Python
 pyenv install 3.8.11
