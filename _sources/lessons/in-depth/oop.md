@@ -21,6 +21,7 @@ It allows us to define our own types and give those types properties and behavio
 ```{contents} Table of Contents
 :backlinks: top
 :local:
+:depth: 2
 ```
 
 Part 1: Classes

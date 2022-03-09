@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>In Depth &#8212; Python Class</title>
+    <title>Magic methods &#8212; Python Class</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -56,11 +56,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://alissa-huskey.github.io/python-class/lessons/in-depth/index.html" />
+    <link rel="canonical" href="https://alissa-huskey.github.io/python-class/lessons/in-depth/magic-methods.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="CLI" href="../cli.html" />
-    <link rel="prev" title="File System Operations" href="../file-system-operations.html" />
+    <link rel="next" title="Structuring Python Projects" href="structure.html" />
+    <link rel="prev" title="Imports" href="imports.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -271,7 +271,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+  <a class="reference internal" href="index.html">
    In Depth
   </a>
   <input checked class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
@@ -279,7 +279,7 @@ const thebe_selector_output = ".output, .cell_output"
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="../cli.html">
      CLI
@@ -290,8 +290,8 @@ const thebe_selector_output = ".output, .cell_output"
      Imports
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="magic-methods.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Magic methods
     </a>
    </li>
@@ -588,7 +588,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         
-        <a class="edit-button" href="https://github.com/alissa-huskey/python-class/edit/master/docs/lessons/in-depth/index.md"><button
+        <a class="edit-button" href="https://github.com/alissa-huskey/python-class/edit/master/docs/lessons/in-depth/magic-methods.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -608,6 +608,26 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#glossary">
+   Glossary
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#glossary-magic-methods">
+     Magic Methods
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -615,30 +635,166 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>In Depth</h1>
+                <h1>Magic methods</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#glossary">
+   Glossary
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#glossary-magic-methods">
+     Magic Methods
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="section" id="in-depth">
-<h1>In Depth<a class="headerlink" href="#in-depth" title="Permalink to this headline">¶</a></h1>
-<div class="tableofcontents-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../cli.html">CLI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="imports.html">Imports</a></li>
-<li class="toctree-l1"><a class="reference internal" href="magic-methods.html">Magic methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="structure.html">Structuring Python Projects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="oop.html">Object Oriented Programming</a></li>
+  <div class="section" id="magic-methods">
+<h1>Magic methods<a class="headerlink" href="#magic-methods" title="Permalink to this headline">¶</a></h1>
+<p>When using the <code class="docutils literal notranslate"><span class="pre">dir()</span></code> function you may have noticed a bunch of members with
+names surrounded by double underscores (<code class="docutils literal notranslate"><span class="pre">__</span></code>). These are special attributes
+used internally by Python called <a class="reference internal" href="#term-magic-method"><span class="xref std std-term">magic methods</span></a> or
+<a class="reference internal" href="#term-special-attribute"><span class="xref std std-term">special attributes</span></a>.</p>
+<p>These are special methods used by some Python mechanism under the hood such as:</p>
+<ul class="simple">
+<li><p><strong>Types</strong> – some are called when the type of the same name is called. For</p></li>
+<li><p>example the <code class="docutils literal notranslate"><span class="pre">.__str__()</span></code> method is used by the
+<code class="docutils literal notranslate"><span class="pre">str()</span></code> function.</p></li>
+<li><p><strong>Functions</strong> – some are called when the builtin function of the same name</p></li>
+<li><p>is called. For example the <code class="docutils literal notranslate"><span class="pre">.__format__()</span></code> method is called by the
+<code class="docutils literal notranslate"><span class="pre">format()</span></code> function.</p></li>
+<li><p><strong>Operators</strong> – there are magic methods cooresponding to each operator. For
+example the <code class="docutils literal notranslate"><span class="pre">.__add__()</span></code> method is called by the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator.</p></li>
+<li><p><strong>Statements</strong> – some statements call magic methods. For example when the
+<code class="docutils literal notranslate"><span class="pre">del</span></code> statement is used on an object attribute the <code class="docutils literal notranslate"><span class="pre">.__del__()</span></code> method is
+called.</p></li>
+<li><p><strong>Syntax</strong> – magic methods are called by some forms of syntax. For example
+<code class="docutils literal notranslate"><span class="pre">.__getattribute__()</span></code> is called when using dot notation.</p></li>
+<li><p><strong>Object information</strong> – information about the object is stored in
+<a class="reference internal" href="#term-special-attribute"><span class="xref std std-term">special attributes</span></a> that are just like magic
+methods, but not callable. For example the <code class="docutils literal notranslate"><span class="pre">.__doc__</span></code> attribute contains the
+help documentation from the type <a class="reference internal" href="../functions.html#term-docstring"><span class="xref std std-term">docstring</span></a>. (Which is displayed when
+calling the <code class="docutils literal notranslate"><span class="pre">help()</span></code> function.)</p></li>
+</ul>
+<p>Lets take a look at the members of an <code class="docutils literal notranslate"><span class="pre">object</span></code> instance. These are the magic
+methods that are defined for all types.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number">Listing 256 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="nb">object</span><span class="p">())</span>
+<span class="go">[&#39;__class__&#39;,</span>
+<span class="go"> &#39;__delattr__&#39;,</span>
+<span class="go"> &#39;__dir__&#39;,</span>
+<span class="go"> &#39;__doc__&#39;,</span>
+<span class="go"> &#39;__eq__&#39;,</span>
+<span class="go"> &#39;__format__&#39;,</span>
+<span class="go"> &#39;__ge__&#39;,</span>
+<span class="go"> &#39;__getattribute__&#39;,</span>
+<span class="go"> &#39;__gt__&#39;,</span>
+<span class="go"> &#39;__hash__&#39;,</span>
+<span class="go"> &#39;__init__&#39;,</span>
+<span class="go"> &#39;__init_subclass__&#39;,</span>
+<span class="go"> &#39;__le__&#39;,</span>
+<span class="go"> &#39;__lt__&#39;,</span>
+<span class="go"> &#39;__ne__&#39;,</span>
+<span class="go"> &#39;__new__&#39;,</span>
+<span class="go"> &#39;__reduce__&#39;,</span>
+<span class="go"> &#39;__reduce_ex__&#39;,</span>
+<span class="go"> &#39;__repr__&#39;,</span>
+<span class="go"> &#39;__setattr__&#39;,</span>
+<span class="go"> &#39;__sizeof__&#39;,</span>
+<span class="go"> &#39;__str__&#39;,</span>
+<span class="go"> &#39;__subclasshook__&#39;]</span>
+</pre></div>
+</div>
+</div>
+<p>While magic methods are intended for internal use, there is nothing stopping
+you from calling them directly.</p>
+<p>Here are a few examples of normal Python code and the same thing via the
+cooresponding magic method or special attribute.</p>
+<div class="row"><div class="col left-col">
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">value</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="go">&#39;1&#39;</span>
+</pre></div>
+</div>
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">value</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="go">int</span>
+</pre></div>
+</div>
+</div><div class="col">
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">value</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">value</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
+<span class="go">&#39;1&#39;</span>
+</pre></div>
+</div>
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">value</span><span class="o">.</span><span class="fm">__eq__</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">value</span><span class="o">.</span><span class="vm">__class__</span>
+<span class="go">int</span>
+</pre></div>
+</div>
+</div></div>
+<p>Different types have different magic methods and special attributes.</p>
+<p>For example <code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">float</span></code> objects have a number of math related magic
+methods like <code class="docutils literal notranslate"><span class="pre">.__add__()</span></code> and <code class="docutils literal notranslate"><span class="pre">.__sub__()</span></code> which are called when the <code class="docutils literal notranslate"><span class="pre">+</span></code> and
+<code class="docutils literal notranslate"><span class="pre">-</span></code> operators are used. Iterables like <code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">dict</span></code> have a <code class="docutils literal notranslate"><span class="pre">.__len__()</span></code>
+method is called by <code class="docutils literal notranslate"><span class="pre">len()</span></code> and a <code class="docutils literal notranslate"><span class="pre">.__contains__()</span></code> method which is called when
+you use the <code class="docutils literal notranslate"><span class="pre">in</span></code> or <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">in</span></code> operators.</p>
+<p>While it’s not important to understand special attributes until you start
+learning <a class="reference internal" href="oop.html"><span class="doc std std-doc">object oriented programming</span></a>, you may come across them from
+time to time like when you call the <code class="docutils literal notranslate"><span class="pre">dir()</span></code> or <code class="docutils literal notranslate"><span class="pre">help()</span></code> functions. Python may
+feel a lot less alien when you know why they’re there.</p>
+<p>You’ll use magic methods when you start writing your own classes to specify how
+Python code behaves with instances of your classes. For example, you can write
+a <code class="docutils literal notranslate"><span class="pre">__mul__</span></code> method to define what happens when you use the <code class="docutils literal notranslate"><span class="pre">*</span></code> operator.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#specialnames">Python.org &gt; Special Method Names</a></p></li>
+<li><p><a class="reference external" href="https://rszalski.github.io/magicmethods/">A Guide to Python’s Magic Methods</a></p></li>
+<li><p><a class="reference external" href="https://www.alphacodingskills.com/python/pages/python-dunder-methods.php">Python - Dunder or Magic Methods</a></p></li>
+<li><p><a class="reference external" href="https://holycoders.com/python-dunder-special-methods/">Python Dunder (Special, Magic) Methods List with Tutorial</a></p></li>
 </ul>
 </div>
-<div class="toctree-wrapper compound">
+<div class="section" id="glossary">
+<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="glossary-magic-methods">
+<h3>Magic Methods<a class="headerlink" href="#glossary-magic-methods" title="Permalink to this headline">¶</a></h3>
+<dl class="glossary simple">
+<dt id="term-dunder-method">dunder method<a class="headerlink" href="#term-dunder-method" title="Permalink to this term">¶</a></dt><dt id="term-magic-method">magic method<a class="headerlink" href="#term-magic-method" title="Permalink to this term">¶</a></dt><dt id="term-special-method">special method<a class="headerlink" href="#term-special-method" title="Permalink to this term">¶</a></dt><dd><p>An method, beginning and ending with two underscores (<code class="docutils literal notranslate"><span class="pre">__</span></code>) intended to be
+used internally by Python.</p>
+</dd>
+<dt id="term-special-attribute">special attribute<a class="headerlink" href="#term-special-attribute" title="Permalink to this term">¶</a></dt><dd><p>An attribute beginning and ending with two underscores (<code class="docutils literal notranslate"><span class="pre">__</span></code>) that store
+object information intended to be used internally by Python. (Just like
+<a class="reference internal" href="#term-magic-method"><span class="xref std std-term">magic methods</span></a> but not callable.)</p>
+</dd>
+</dl>
+</div>
 </div>
 </div>
 
@@ -667,17 +823,17 @@ const thebe_selector_output = ".output, .cell_output"
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../file-system-operations.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="imports.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">File System Operations</p>
+            <p class="prev-next-title">Imports</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../cli.html" title="next page">
+    <a class='right-next' id="next-link" href="structure.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">CLI</p>
+        <p class="prev-next-title">Structuring Python Projects</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

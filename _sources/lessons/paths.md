@@ -307,20 +307,55 @@ def show():
 `Path` objects provide methods for handling absolute versus relative paths as
 well as converting symbols for the current operating system.
 
-| Method          | Type   | Description                                                                               |
-|-----------------|--------|-------------------------------------------------------------------------------------------|
-| `is_absolute()` | `bool` | Return True if path is absolute.                                                          |
-| `absolute()`    | `Path` | Return the absolute path.                                                                 |
-| `resolve()`     | `Path` | Return the normalized absolute path. (Convert shortcuts and slashes, resolve symlinks.)   |
+You can use the `.is_absolute()` method to check if a path is an absolute or relative.
 
-For example, here is what each method returns for `path = Path("../t.py")`.
+```{code-block} python
+:caption: Python Shell
+>>> path = Path("file.txt")
+PosixPath("file.txt")
 
-| Method               | Returns                                                            |
-|----------------------|--------------------------------------------------------------------|
-| `path`               | `PosixPath('../t.py')`                                             |
-| `path.is_absolute()` | `False`                                                            |
-| `path.absolute()`    | `PosixPath('/Users/pythonclass/projects/python-class/../t.py')`    |
-| `path.resolve()`     | `PosixPath('/Users/pythonclass/projects/t.py')`                    |
+>>> path.is_absolute()
+False
+```
+
+You can use the `.absolute()` method to return an absolute version of a path object.
+
+```{code-block} python
+:caption: Python Shell
+>>> path.absolute()
+PosixPath("/home/pythonclass/Documents/file.txt")
+```
+
+Note though, `.absolute()` does not change the value of path. It is still relative.
+
+```{code-block} python
+:caption: Python Shell
+>>> path
+PosixPath("file.txt")
+```
+
+To make `path` absolute, you'll need to assign it to the `path` variable using the `=` operator.
+
+```{code-block} python
+:caption: Python Shell
+>>> path = path.absolute()
+>>> path
+PosixPath("/home/pythonclass/Documents/file.txt")
+```
+
+Finally, you can get the normalized path using the `.resolve()` method. This
+will convert shortcuts like `..` or `~` to the path and resolve, or follow,
+any symbolic links (like shortcuts).
+
+```{code-block} python
+:caption: Python Shell
+>>> path = Path("../file.txt")
+>>> path
+PosixPath("../file.txt")
+
+>>> path.resolve()
+PosixPath("/home/pythonclass/file.txt")
+```
 
 ### Part 2.7: Parts of a path
 

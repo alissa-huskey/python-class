@@ -531,12 +531,16 @@ settings disable them, though they can still be triggered using a shortcut key.
 
 {{ clear }}
 
+[^json]: edit in {file}`settings.json`
+
 ---
 
 
 ### Git
 
-If you use the EditorConfig extension, disable the built-in whitespace handling features as it is not compatible.
+Automatically fetch updates from the default remote of the current Git
+repository.
+
 
 ````{sidebar} Settings (UI)
 :class: no-headers
@@ -557,33 +561,6 @@ If you use the EditorConfig extension, disable the built-in whitespace handling 
 {{ clear }}
 
 ---
-
-
-### EditorConfig compatibility
-
-If you use the EditorConfig extension, disable the built-in whitespace handling features as they interfere.
-
-````{sidebar} Settings (UI)
-:class: no-headers
-
-|                                                                                       |                         |
-|---------------------------------------------------------------------------------------|-------------------------|
-| {menuselection}`Text Editor --> Files --> Files: Trim Trailing Whitespace`            | <input type="checkbox"> |
-
-````
-
-```{code-block} javascript
-:caption: settings.json
-{
-    "files.trimTrailingWhitespace": false
-}
-```
-
-{{ clear }}
-
----
-
-[^json]: edit in {file}`settings.json`
 
 Themes
 ------

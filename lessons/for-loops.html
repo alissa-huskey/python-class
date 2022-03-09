@@ -291,6 +291,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="in-depth/magic-methods.html">
+     Magic methods
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="in-depth/structure.html">
      Structuring Python Projects
     </a>
@@ -1172,7 +1177,7 @@ encounter a <code class="docutils literal notranslate"><span class="pre">StopIte
 <code class="samp docutils literal notranslate">&#160;&#160;&#160; <em><span class="pre">BODY</span></em></code></pre>
 <p>Here’s what’s happening behind the scenes:</p>
 <ol class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">ITERABLE</span></code> is converted to an iterator object using <code class="docutils literal notranslate"><span class="pre">iter()</span></code>, or rather its <a class="reference internal" href="data-types/objects.html#term-magic-method"><span class="xref std std-term">magic method</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ITERABLE</span></code> is converted to an iterator object using <code class="docutils literal notranslate"><span class="pre">iter()</span></code>, or rather its <a class="reference internal" href="in-depth/magic-methods.html#term-magic-method"><span class="xref std std-term">magic method</span></a></p></li>
 <li><p>Each iteration, <code class="docutils literal notranslate"><span class="pre">next()</span></code> is called, and the results are assigned to <code class="docutils literal notranslate"><span class="pre">VAR</span></code></p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">BODY</span></code> statements are executed</p></li>
 <li><p>When <code class="docutils literal notranslate"><span class="pre">next()</span></code> results in a <code class="docutils literal notranslate"><span class="pre">StopIteration</span></code> exception it is discarded and the loop ends</p></li>
@@ -2063,9 +2068,25 @@ bracket notaton.</p>
 </div>
 </div>
 </div>
+<div class="exercise admonition" id="label-exercise">
+
+<p class="admonition-title"><span class="caption-number">Exercise 33 </span> (Weekdays)</p>
+<div class="section" id="exercise-content">
+<p>Print the weekday names horizontally and seperated by <code class="docutils literal notranslate"><span class="pre">|</span></code>.</p>
+<ol class="simple">
+<li><p>Make a <code class="docutils literal notranslate"><span class="pre">WEEKDAYS</span></code> <code class="docutils literal notranslate"><span class="pre">list</span></code> of names.</p></li>
+<li><p>Use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to iterated over each <code class="docutils literal notranslate"><span class="pre">day</span></code>.</p></li>
+<li><p>Print each <code class="docutils literal notranslate"><span class="pre">day</span></code> centered to the same <code class="docutils literal notranslate"><span class="pre">size</span></code> (somewhere around <code class="docutils literal notranslate"><span class="pre">10</span></code> to <code class="docutils literal notranslate"><span class="pre">20</span></code>)
+with seperated by vertical bars (<code class="docutils literal notranslate"><span class="pre">|</span></code>). <br />
+<em>Hint: using the <code class="docutils literal notranslate"><span class="pre">.center()</span></code> method.</em></p></li>
+</ol>
+<p>Example output:</p>
+<p><code class="docutils literal notranslate"><span class="pre">|</span>&#160;&#160; <span class="pre">Monday</span>&#160;&#160; <span class="pre">|</span>&#160; <span class="pre">Tuesday</span>&#160;&#160; <span class="pre">|</span> <span class="pre">Wednesday</span>&#160; <span class="pre">|</span>&#160; <span class="pre">Thursday</span>&#160; <span class="pre">|</span>&#160;&#160; <span class="pre">Friday</span>&#160;&#160; <span class="pre">|</span></code></p>
+</div>
+</div>
 <div class="solution dropdown admonition" id="lessons/for-loops-solution-13">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="dates.html#label-exercise"> Exercise 106 (Name)</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#label-exercise"> Exercise 33 (Weekdays)</a></p>
 <div class="section" id="solution-content">
 <div class="literal-block-wrapper docutils container" id="id21">
 <div class="code-block-caption"><span class="caption-number">Listing 65 </span><span class="caption-text">Weekdays Exercise</span><a class="headerlink" href="#id21" title="Permalink to this code">¶</a></div>
