@@ -2563,7 +2563,7 @@ This is nearly exactly the same as the previous section.
 
 {{ endcols }}
 
-#### C. in `do_go()`
+#### D. in `do_go()`
 
 Similar to the previous two sections, we always expect to be able to find an
 place in the `PLACES` dictionary for a key from another `place` dictionary, so
@@ -3683,7 +3683,7 @@ Here we'll define the function that is called when the player types `"buy"`.
 
 {{ endcols }}
 
-#### G. Still in `do_buy()`, make sure the player can afford the item
+#### H. Still in `do_buy()`, make sure the player can afford the item
 
 {{ left }}
 
@@ -3714,7 +3714,7 @@ Here we'll define the function that is called when the player types `"buy"`.
 
 {{ endcols }}
 
-#### H. In `do_buy()`, buy the item
+#### I. In `do_buy()`, buy the item
 
 {{ left }}
 
