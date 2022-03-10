@@ -4,11 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Objects &#8212; Python Class</title>
     
-  <link href="../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
     
   <link rel="stylesheet"
@@ -20,10 +20,14 @@
 
     
       
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=84ace793992934648b4de8eed757e5a2" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
@@ -36,7 +40,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
 
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -49,7 +53,7 @@
     <script src="../../_static/x-frame-bypass.js"></script>
     <script src="../../_static/asciinema-player.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
+    <script src="../../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
     <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -61,67 +65,57 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Numeric Types" href="numeric.html" />
     <link rel="prev" title="Data Types" href="index.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
 
-    <!-- Google Analytics -->
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://alissa-huskey.github.io/python-class/lessons/data-types/objects.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Objects" />
+<meta property="og:description" content="Objects  Python has a special type object which is the ancestor to all types in Python.  Table of Contents  Part 1: Introduction  Part 2: Members  Part 2.2: Att" />
+
+
+<meta name="twitter:card" content="summary" />
+
+
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
-
     
 
     <div class="container-xl">
       <div class="row">
           
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<div class="col-12 col-md-3 bd-sidebar site-navigation " id="site-navigation">
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Python Class</h1>
-      
-    </a>
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Python Class</h1>
+  
+</a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <p class="caption">
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p>
  <span class="caption-text">
   Lessons
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="../fundamentals.html">
    Fundamentals
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
   <ul class="current">
-   <li class="toctree-l2 has-children">
+   <li class="toctree-l2 collapsible-parent">
     <a class="reference internal" href="../syntax.html">
      Syntax
     </a>
-    <input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-    <label for="toctree-checkbox-2">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
     <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="../expressions.html">
@@ -139,16 +133,13 @@ const thebe_selector_output = ".output, .cell_output"
       </a>
      </li>
     </ul>
+    <i class="fas fa-chevron-up">
+    </i>
    </li>
-   <li class="toctree-l2 has-children">
+   <li class="toctree-l2 collapsible-parent">
     <a class="reference internal" href="../flow-control.html">
      Flow Control
     </a>
-    <input checked class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-    <label for="toctree-checkbox-3">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
     <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="../conditional-statements.html">
@@ -191,16 +182,13 @@ const thebe_selector_output = ".output, .cell_output"
       </a>
      </li>
     </ul>
+    <i class="fas fa-chevron-up">
+    </i>
    </li>
-   <li class="toctree-l2 current active has-children">
+   <li class="toctree-l2 current active collapsible-parent">
     <a class="reference internal" href="index.html">
      Data Types
     </a>
-    <input checked class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-    <label for="toctree-checkbox-4">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
     <ul class="current">
      <li class="toctree-l3 current active">
       <a class="current reference internal" href="#">
@@ -212,16 +200,11 @@ const thebe_selector_output = ".output, .cell_output"
        Numeric Types
       </a>
      </li>
-     <li class="toctree-l3 has-children">
+     <li class="toctree-l3 collapsible-parent">
       <a class="reference internal" href="containers.html">
        Containers
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-      <label for="toctree-checkbox-5">
-       <i class="fas fa-chevron-down">
-       </i>
-      </label>
-      <ul>
+      <ul class="collapse-ul">
        <li class="toctree-l4">
         <a class="reference internal" href="lists.html">
          Lists
@@ -238,18 +221,17 @@ const thebe_selector_output = ".output, .cell_output"
         </a>
        </li>
       </ul>
+      <i class="fas fa-chevron-down">
+      </i>
      </li>
     </ul>
+    <i class="fas fa-chevron-up">
+    </i>
    </li>
-   <li class="toctree-l2 has-children">
+   <li class="toctree-l2 collapsible-parent">
     <a class="reference internal" href="../files.html">
      Files
     </a>
-    <input checked class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-    <label for="toctree-checkbox-6">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
     <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="../file-io.html">
@@ -267,18 +249,17 @@ const thebe_selector_output = ".output, .cell_output"
       </a>
      </li>
     </ul>
+    <i class="fas fa-chevron-up">
+    </i>
    </li>
   </ul>
+  <i class="fas fa-chevron-up">
+  </i>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../in-depth/index.html">
    In Depth
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../cli.html">
@@ -311,16 +292,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+  <i class="fas fa-chevron-up">
+  </i>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../data/index.html">
    Data
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../data/functional-programming.html">
@@ -328,16 +306,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+  <i class="fas fa-chevron-up">
+  </i>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../misc.html">
    Misc
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../dates.html">
@@ -355,16 +330,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+  <i class="fas fa-chevron-up">
+  </i>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../game-book.html">
    Invent Games Book
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../03_guess_the_number.html">
@@ -377,14 +349,16 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+  <i class="fas fa-chevron-up">
+  </i>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Practices
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../../practices/problem-solving.html">
    Problem Solving
@@ -406,12 +380,12 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Tools
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../../tools/terminal.html">
    Terminal
@@ -473,12 +447,12 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Reference
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../../reference/recommended.html">
    Recommended Resources
@@ -502,15 +476,17 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/template.py">
    Script Template
+   <i class="fas fa-external-link-alt">
+   </i>
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Exercises
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../../exercises/program-flow.html">
    Program Flow Exercises
@@ -537,12 +513,12 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Admin
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../../orphans.html">
    Orphaned Terms
@@ -550,7 +526,6 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-    </div>
 </nav> <!-- To handle the deprecated key -->
 
 </div>
@@ -560,22 +535,22 @@ const thebe_selector_output = ".output, .cell_output"
 
 
           
-<!-- This is an invisible pixel that we watch to see if we've scrolled. -->
-<div class="sbt-scroll-pixel-helper"></div>
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
     <div class="topbar container-xl fixed-top">
     <div class="topbar-contents row">
         <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
         <div class="col pl-md-4 topbar-main">
-            <div class="topbar-left">
-                
-                <label class="nav-toggle-button" for="__navigation">
-                    <div class="visually-hidden">Toggle navigation</div>
-                    <i class="fas fa-bars"></i>
-                </label>
-                
-            </div>
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
             
             <!-- Source interaction buttons -->
 
@@ -594,25 +569,26 @@ const thebe_selector_output = ".output, .cell_output"
     </div>
 </div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
 
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+        <div class="d-none d-md-block col-md-2 bd-toc show">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#part-1-introduction">
    Part 1: Introduction
@@ -703,122 +679,17 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
+        </nav>
+        
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Objects</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#part-1-introduction">
-   Part 1: Introduction
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#part-2-members">
-   Part 2: Members
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-2-2-attributes">
-     Part 2.2: Attributes
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-2-2-methods">
-     Part 2.2: Methods
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-2-3-listing-members">
-     Part 2.3: Listing members
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-2-4-checking-members">
-     Part 2.4: Checking members
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-2-5-special-attributes">
-     Part 2.5: Special attributes
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-2-6-exercise">
-     Part 2.6: Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#part-3-playing-well-with-others">
-   Part 3: Playing well with others
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-3-1-arguments">
-     Part 3.1: Arguments
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-3-2-operations">
-     Part 3.2: Operations
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reference">
-   Reference
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#universal-functions">
-     Universal Functions
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#glossary">
-     Glossary
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#glossary-data-types">
-       Data Types
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
+        
               <div>
                 
-  <div class="section" id="objects">
+  <section id="objects">
 <h1>Objects<a class="headerlink" href="#objects" title="Permalink to this headline">¶</a></h1>
 <p>Python has a special type <code class="docutils literal notranslate"><span class="pre">object</span></code> which is the ancestor to all types in
 Python.</p>
@@ -855,7 +726,7 @@ Python.</p>
 </li>
 </ul>
 </div>
-<div class="section" id="part-1-introduction">
+<section id="part-1-introduction">
 <h2><a class="toc-backref" href="#id27">Part 1: Introduction</a><a class="headerlink" href="#part-1-introduction" title="Permalink to this headline">¶</a></h2>
 <p>The object type by itself is not terribly useful. You can see that <code class="docutils literal notranslate"><span class="pre">object</span></code> is
 a type and you can create an object instance just like you would with any
@@ -889,8 +760,8 @@ integers all objects. All data in Python is an object.</p>
 </div>
 <p>As such, the object type defines the characteristics shared by all classes and
 instances, which is what we will be talking about in this lesson.</p>
-</div>
-<div class="section" id="part-2-members">
+</section>
+<section id="part-2-members">
 <h2><a class="toc-backref" href="#id28">Part 2: Members</a><a class="headerlink" href="#part-2-members" title="Permalink to this headline">¶</a></h2>
 <p>Objects can have <a class="reference internal" href="#term-member"><span class="xref std std-term">members</span></a> which are accessed using
 <a class="reference internal" href="#term-dot-notation"><span class="xref std std-term">dot notation</span></a>.</p>
@@ -899,7 +770,7 @@ Use a <code class="docutils literal notranslate"><span class="pre">.</span></cod
 <code class="samp docutils literal notranslate"><em><span class="pre">object</span></em><span class="pre">.</span><em><span class="pre">member</span></em></code>. It is the same syntax used to access something
 imported from a module, for example: <code class="docutils literal notranslate"><span class="pre">random.randint()</span></code>.</p>
 <p>There are two kinds of members: attributes and methods.</p>
-<div class="section" id="part-2-2-attributes">
+<section id="part-2-2-attributes">
 <h3><a class="toc-backref" href="#id29">Part 2.2: Attributes</a><a class="headerlink" href="#part-2-2-attributes" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="#term-attribute"><span class="xref std std-term">Attributes</span></a>, sometimes called <a class="reference internal" href="#term-property"><span class="xref std std-term">properties</span></a>,
 are just like variables but they are attached to an object and accessed using
@@ -940,8 +811,8 @@ an <code class="docutils literal notranslate"><span class="pre">AttributeError</
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="part-2-2-methods">
+</section>
+<section id="part-2-2-methods">
 <h3><a class="toc-backref" href="#id30">Part 2.2: Methods</a><a class="headerlink" href="#part-2-2-methods" title="Permalink to this headline">¶</a></h3>
 <p>A method is a just like a function, but one that is attached to an object and
 accessed through <a class="reference internal" href="#term-dot-notation"><span class="xref std std-term">dot notation</span></a>.</p>
@@ -997,8 +868,8 @@ that doesn’t have it.</p>
 <p>For clarity I use the term <a class="reference internal" href="#term-property"><span class="xref std std-term">property</span></a> when referring to attributes that
 are not callable.</p>
 </div>
-</div>
-<div class="section" id="part-2-3-listing-members">
+</section>
+<section id="part-2-3-listing-members">
 <h3><a class="toc-backref" href="#id31">Part 2.3: Listing members</a><a class="headerlink" href="#part-2-3-listing-members" title="Permalink to this headline">¶</a></h3>
 <p>You can use the <code class="docutils literal notranslate"><span class="pre">dir()</span></code> function to see a list of the members an object has.
 (The ones that start and end with double underscores (<code class="docutils literal notranslate"><span class="pre">__</span></code>) are special
@@ -1059,8 +930,8 @@ get a list of available members.  Then you can use the <kbd class="kbd docutils 
 <kbd class="kbd docutils literal notranslate">DOWN</kbd> arrows or <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">SHIFT</kbd>+<kbd class="kbd docutils literal notranslate">TAB</kbd></kbd> and <kbd class="kbd docutils literal notranslate">TAB</kbd> to navigate between the
 options and hit <kbd class="kbd docutils literal notranslate">ENTER</kbd> to fill in the selected name.</p>
 <p><img alt="" src="../../_images/ipython-attrs.png" /></p>
-</div>
-<div class="section" id="part-2-4-checking-members">
+</section>
+<section id="part-2-4-checking-members">
 <h3><a class="toc-backref" href="#id32">Part 2.4: Checking members</a><a class="headerlink" href="#part-2-4-checking-members" title="Permalink to this headline">¶</a></h3>
 <p>You can use the function <code class="docutils literal notranslate"><span class="pre">hasattr()</span></code> to check if an object has a particular
 member. The first argument is the value you want to check, the second argument
@@ -1090,8 +961,8 @@ is the name of the member, a <code class="docutils literal notranslate"><span cl
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="part-2-5-special-attributes">
+</section>
+<section id="part-2-5-special-attributes">
 <h3><a class="toc-backref" href="#id33">Part 2.5: Special attributes</a><a class="headerlink" href="#part-2-5-special-attributes" title="Permalink to this headline">¶</a></h3>
 <p>Every object has a number of members that start and end with two underscores
 (<code class="docutils literal notranslate"><span class="pre">__</span></code>). These are special members used internally by Python called
@@ -1100,13 +971,13 @@ is the name of the member, a <code class="docutils literal notranslate"><span cl
 <p>For example, every object has a <code class="docutils literal notranslate"><span class="pre">.__eq__()</span></code> method which is called when you use
 the <code class="docutils literal notranslate"><span class="pre">==</span></code> operator.</p>
 <p>For more information see <a class="reference internal" href="../in-depth/magic-methods.html"><span class="doc std std-doc">Magic methods</span></a>.</p>
-</div>
-<div class="section" id="part-2-6-exercise">
+</section>
+<section id="part-2-6-exercise">
 <h3><a class="toc-backref" href="#id34">Part 2.6: Exercise</a><a class="headerlink" href="#part-2-6-exercise" title="Permalink to this headline">¶</a></h3>
 <div class="exercise admonition" id="methods-and-attributes-exercise">
 
 <p class="admonition-title"><span class="caption-number">Exercise 43 </span> (methods and attributes)</p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <ol class="simple">
 <li><p>In a VS Code editor, use the <kbd class="kbd docutils literal notranslate">⌘I</kbd>, <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Alt</kbd>+<kbd class="kbd docutils literal notranslate">Escape</kbd></kbd>, or <kbd class="kbd docutils literal notranslate">⌃Space</kbd>
 shortcut keys after an <code class="docutils literal notranslate"><span class="pre">int</span></code> variable to find the method that will return an
@@ -1122,15 +993,15 @@ if it has a method or attribute named <code class="docutils literal notranslate"
 <li><p>In a Python shell use the <code class="docutils literal notranslate"><span class="pre">callable()</span></code> function on a <code class="docutils literal notranslate"><span class="pre">dict</span></code> value to find out
 if <code class="docutils literal notranslate"><span class="pre">values</span></code> is a method or a property.</p></li>
 </ol>
+</section>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="part-3-playing-well-with-others">
+</section>
+</section>
+<section id="part-3-playing-well-with-others">
 <h2><a class="toc-backref" href="#id35">Part 3: Playing well with others</a><a class="headerlink" href="#part-3-playing-well-with-others" title="Permalink to this headline">¶</a></h2>
 <p>The type of an object will determine how and where it can be used. This section
 goes over the things that are effected by the object type.</p>
-<div class="section" id="part-3-1-arguments">
+<section id="part-3-1-arguments">
 <h3><a class="toc-backref" href="#id36">Part 3.1: Arguments</a><a class="headerlink" href="#part-3-1-arguments" title="Permalink to this headline">¶</a></h3>
 <p>Functions and methods usually expect certian types of arguments, and you’ll run
 into some kind of error if you try to pass the wrong type.</p>
@@ -1188,8 +1059,8 @@ function can take any object type as an argument.</p>
 </div>
 <p>See the reference section <a class="reference external" href="#universal-functions"></a> for a list of functions that
 will work with any type.</p>
-</div>
-<div class="section" id="part-3-2-operations">
+</section>
+<section id="part-3-2-operations">
 <h3><a class="toc-backref" href="#id37">Part 3.2: Operations</a><a class="headerlink" href="#part-3-2-operations" title="Permalink to this headline">¶</a></h3>
 <p>Operations on an object can only be used in combination with a limited number
 of other types.</p>
@@ -1230,9 +1101,9 @@ of other types.</p>
 </pre></div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="summary">
+</section>
+</section>
+<section id="summary">
 <h2><a class="toc-backref" href="#id38">Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Objects can have members which are accessed using <a class="reference internal" href="#term-dot-notation"><span class="xref std std-term">dot notation</span></a> –
@@ -1254,10 +1125,10 @@ like <code class="docutils literal notranslate"><span class="pre">repr()</span><
 by double underscores, to preform many operations. Looking at the magic
 methods using the <code class="docutils literal notranslate"><span class="pre">dir()</span></code> function can tell you how a particular object can be used.</p></li>
 </ul>
-</div>
-<div class="section" id="reference">
+</section>
+<section id="reference">
 <h2><a class="toc-backref" href="#id39">Reference</a><a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="universal-functions">
+<section id="universal-functions">
 <h3><a class="toc-backref" href="#id40">Universal Functions</a><a class="headerlink" href="#universal-functions" title="Permalink to this headline">¶</a></h3>
 <p>Here is a list of functions that can be used with any type.</p>
 <ul>
@@ -1428,10 +1299,10 @@ Used by the <code class="docutils literal notranslate"><span class="pre">print()
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="glossary">
+</section>
+<section id="glossary">
 <h3><a class="toc-backref" href="#id41">Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="glossary-data-types">
+<section id="glossary-data-types">
 <h4><a class="toc-backref" href="#id42">Data Types</a><a class="headerlink" href="#glossary-data-types" title="Permalink to this headline">¶</a></h4>
 <dl class="glossary">
 <dt id="term-attribute">attribute<a class="headerlink" href="#term-attribute" title="Permalink to this term">¶</a></dt><dt id="term-property">property<a class="headerlink" href="#term-property" title="Permalink to this term">¶</a></dt><dd><p>A variable that is attached to an object and is accessed with a <code class="docutils literal notranslate"><span class="pre">.</span></code> after a
@@ -1454,10 +1325,10 @@ method which returns a copy of the string converted to lowercase.</p>
 <p>The type that all other Python types are built on.</p>
 </dd>
 </dl>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1481,39 +1352,33 @@ method which returns a copy of the string converted to lowercase.</p>
 
               </div>
               
+        
+        <div class='prev-next-bottom'>
             
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="index.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Data Types</p>
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">Data Types</a>
+    <a class='right-next' id="next-link" href="numeric.html" title="next page">Numeric Types</a>
+
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="numeric.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Numeric Types</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            
+        
         </div>
     </div>
-    <footer class="footer">
-  <p>
-    
-  </p>
-</footer>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+      </p>
+    </div>
+  </footer>
 </main>
 
 
       </div>
     </div>
-  
-  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
   </body>
 </html>

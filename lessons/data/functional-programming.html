@@ -4,11 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Functional Programming &#8212; Python Class</title>
     
-  <link href="../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
     
   <link rel="stylesheet"
@@ -20,10 +20,14 @@
 
     
       
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=84ace793992934648b4de8eed757e5a2" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
@@ -36,7 +40,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
 
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -49,7 +53,7 @@
     <script src="../../_static/x-frame-bypass.js"></script>
     <script src="../../_static/asciinema-player.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
+    <script src="../../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
     <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -61,67 +65,57 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Misc" href="../misc.html" />
     <link rel="prev" title="Data" href="index.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
 
-    <!-- Google Analytics -->
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://alissa-huskey.github.io/python-class/lessons/data/functional-programming.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Functional Programming" />
+<meta property="og:description" content="Functional Programming  Table of Contents  Functional Programming  Introduction  Part 1: Mapping  Part 1.1: Procedural  Part 1.2: map()  Part 1.2: Exercise  Par" />
+
+
+<meta name="twitter:card" content="summary" />
+
+
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
-
     
 
     <div class="container-xl">
       <div class="row">
           
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<div class="col-12 col-md-3 bd-sidebar site-navigation " id="site-navigation">
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Python Class</h1>
-      
-    </a>
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Python Class</h1>
+  
+</a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <p class="caption">
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p>
  <span class="caption-text">
   Lessons
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../fundamentals.html">
    Fundamentals
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
   <ul>
-   <li class="toctree-l2 has-children">
+   <li class="toctree-l2 collapsible-parent">
     <a class="reference internal" href="../syntax.html">
      Syntax
     </a>
-    <input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-    <label for="toctree-checkbox-2">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
     <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="../expressions.html">
@@ -139,16 +133,13 @@ const thebe_selector_output = ".output, .cell_output"
       </a>
      </li>
     </ul>
+    <i class="fas fa-chevron-up">
+    </i>
    </li>
-   <li class="toctree-l2 has-children">
+   <li class="toctree-l2 collapsible-parent">
     <a class="reference internal" href="../flow-control.html">
      Flow Control
     </a>
-    <input checked class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-    <label for="toctree-checkbox-3">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
     <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="../conditional-statements.html">
@@ -191,16 +182,13 @@ const thebe_selector_output = ".output, .cell_output"
       </a>
      </li>
     </ul>
+    <i class="fas fa-chevron-up">
+    </i>
    </li>
-   <li class="toctree-l2 has-children">
+   <li class="toctree-l2 collapsible-parent">
     <a class="reference internal" href="../data-types/index.html">
      Data Types
     </a>
-    <input checked class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-    <label for="toctree-checkbox-4">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
     <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="../data-types/objects.html">
@@ -212,16 +200,11 @@ const thebe_selector_output = ".output, .cell_output"
        Numeric Types
       </a>
      </li>
-     <li class="toctree-l3 has-children">
+     <li class="toctree-l3 collapsible-parent">
       <a class="reference internal" href="../data-types/containers.html">
        Containers
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-      <label for="toctree-checkbox-5">
-       <i class="fas fa-chevron-down">
-       </i>
-      </label>
-      <ul>
+      <ul class="collapse-ul">
        <li class="toctree-l4">
         <a class="reference internal" href="../data-types/lists.html">
          Lists
@@ -238,18 +221,17 @@ const thebe_selector_output = ".output, .cell_output"
         </a>
        </li>
       </ul>
+      <i class="fas fa-chevron-down">
+      </i>
      </li>
     </ul>
+    <i class="fas fa-chevron-up">
+    </i>
    </li>
-   <li class="toctree-l2 has-children">
+   <li class="toctree-l2 collapsible-parent">
     <a class="reference internal" href="../files.html">
      Files
     </a>
-    <input checked class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-    <label for="toctree-checkbox-6">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
     <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="../file-io.html">
@@ -267,18 +249,17 @@ const thebe_selector_output = ".output, .cell_output"
       </a>
      </li>
     </ul>
+    <i class="fas fa-chevron-up">
+    </i>
    </li>
   </ul>
+  <i class="fas fa-chevron-up">
+  </i>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../in-depth/index.html">
    In Depth
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../cli.html">
@@ -311,16 +292,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+  <i class="fas fa-chevron-up">
+  </i>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="index.html">
    Data
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
@@ -328,16 +306,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+  <i class="fas fa-chevron-up">
+  </i>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../misc.html">
    Misc
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../dates.html">
@@ -355,16 +330,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+  <i class="fas fa-chevron-up">
+  </i>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../game-book.html">
    Invent Games Book
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../03_guess_the_number.html">
@@ -377,14 +349,16 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+  <i class="fas fa-chevron-up">
+  </i>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Practices
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../../practices/problem-solving.html">
    Problem Solving
@@ -406,12 +380,12 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Tools
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../../tools/terminal.html">
    Terminal
@@ -473,12 +447,12 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Reference
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../../reference/recommended.html">
    Recommended Resources
@@ -502,15 +476,17 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/template.py">
    Script Template
+   <i class="fas fa-external-link-alt">
+   </i>
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Exercises
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../../exercises/program-flow.html">
    Program Flow Exercises
@@ -537,12 +513,12 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Admin
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../../orphans.html">
    Orphaned Terms
@@ -550,7 +526,6 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-    </div>
 </nav> <!-- To handle the deprecated key -->
 
 </div>
@@ -560,22 +535,22 @@ const thebe_selector_output = ".output, .cell_output"
 
 
           
-<!-- This is an invisible pixel that we watch to see if we've scrolled. -->
-<div class="sbt-scroll-pixel-helper"></div>
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
     <div class="topbar container-xl fixed-top">
     <div class="topbar-contents row">
         <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
         <div class="col pl-md-4 topbar-main">
-            <div class="topbar-left">
-                
-                <label class="nav-toggle-button" for="__navigation">
-                    <div class="visually-hidden">Toggle navigation</div>
-                    <i class="fas fa-bars"></i>
-                </label>
-                
-            </div>
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
             
             <!-- Source interaction buttons -->
 
@@ -594,12 +569,12 @@ const thebe_selector_output = ".output, .cell_output"
     </div>
 </div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
 
@@ -616,7 +591,6 @@ const thebe_selector_output = ".output, .cell_output"
         
         
         
-        
         <button type="button" class="btn btn-secondary topbarbtn"
             onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
                 class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
@@ -627,13 +601,14 @@ const thebe_selector_output = ".output, .cell_output"
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+        <div class="d-none d-md-block col-md-2 bd-toc show">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduction">
    Introduction
@@ -798,196 +773,17 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
+        </nav>
+        
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Functional Programming</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   Introduction
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#part-1-mapping">
-   Part 1: Mapping
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-1-1-procedural">
-     Part 1.1: Procedural
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-1-2-map">
-     Part 1.2:
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       map()
-      </span>
-     </code>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-1-2-exercise">
-     Part 1.2: Exercise
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-1-3-multiple-args">
-     Part 1.3: Multiple Args
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-1-3-exercise">
-     Part 1.3: Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#part-2-filter">
-   Part 2: Filter
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-2-1-proceedural">
-     Part 2.1: Proceedural
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-2-2-filter">
-     Part 2.2:
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       filter()
-      </span>
-     </code>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-2-3-truthy-filtering">
-     Part 2.3: Truthy filtering
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#part-3-reducing">
-   Part 3: Reducing
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-3-1-proceedural">
-     Part 3.1: Proceedural
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-3-2-reduce">
-     Part 3.2:
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       reduce()
-      </span>
-     </code>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-3-2-exercise">
-     Part 3.2: Exercise
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-3-3-initial-value">
-     Part 3.3: Initial value
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-3-3-exercise">
-     Part 3.3: Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#challenges">
-   Challenges
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#fibonacci-sequence">
-     Fibonacci sequence
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#rgb-to-hex-color-code">
-     RGB to Hex Color Code
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hex-to-rgb-color-values">
-     Hex to RGB Color Values
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#get-values-for-multiple-keys">
-     Get values for multiple keys
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reference">
-   Reference
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#glossary">
-     Glossary
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#glossary-functional-programming">
-       Functional Programming
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#see-also">
-     See Also
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#summary">
-     Summary
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
+        
               <div>
                 
-  <div class="section" id="functional-programming">
+  <section id="functional-programming">
 <h1><a class="toc-backref" href="#id9">Functional Programming</a><a class="headerlink" href="#functional-programming" title="Permalink to this headline">¶</a></h1>
 <div class="contents topic" id="table-of-contents">
 <p class="topic-title">Table of Contents</p>
@@ -1043,7 +839,7 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 </ul>
 </div>
-<div class="section" id="introduction">
+<section id="introduction">
 <h2><a class="toc-backref" href="#id10">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>The code we have written so far in this class has either been
 <a class="reference internal" href="#term-procedural-programming"><span class="xref std std-term">procedural</span></a> or
@@ -1064,12 +860,12 @@ The results are often less error prone and (once you get the hang of it) more
 readable than the procedural equivalent.</p>
 <p>In this lesson you’ll learn the functional programming features provided by
 Python.</p>
-</div>
-<div class="section" id="part-1-mapping">
+</section>
+<section id="part-1-mapping">
 <h2><a class="toc-backref" href="#id11">Part 1: Mapping</a><a class="headerlink" href="#part-1-mapping" title="Permalink to this headline">¶</a></h2>
 <p>Generating a new collection by applying the same transformation to every item
 in a container is called <a class="reference internal" href="#term-map"><span class="xref std std-term">mapping</span></a>.</p>
-<div class="section" id="part-1-1-procedural">
+<section id="part-1-1-procedural">
 <h3><a class="toc-backref" href="#id12">Part 1.1: Procedural</a><a class="headerlink" href="#part-1-1-procedural" title="Permalink to this headline">¶</a></h3>
 <p>The procedural way to map an iterable is via the old standby, the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.</p>
 <div class="row"><div class="col left-col">
@@ -1098,8 +894,8 @@ shared state has been changed.</p>
 </div>
 </div>
 </div></div>
-</div>
-<div class="section" id="part-1-2-map">
+</section>
+<section id="part-1-2-map">
 <h3><a class="toc-backref" href="#id13">Part 1.2: <code class="docutils literal notranslate"><span class="pre">map()</span></code></a><a class="headerlink" href="#part-1-2-map" title="Permalink to this headline">¶</a></h3>
 <p>Python provides a built in <code class="docutils literal notranslate"><span class="pre">map()</span></code> function which does the same thing in a
 single function call.</p>
@@ -1220,13 +1016,13 @@ single function call.</p>
 </div>
 </div>
 </div></div>
-</div>
-<div class="section" id="part-1-2-exercise">
+</section>
+<section id="part-1-2-exercise">
 <h3><a class="toc-backref" href="#id14">Part 1.2: Exercise</a><a class="headerlink" href="#part-1-2-exercise" title="Permalink to this headline">¶</a></h3>
 <div class="exercise admonition" id="map-exercise">
 
 <p class="admonition-title"><span class="caption-number">Exercise 99 </span> (Map)</p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Write a function <code class="docutils literal notranslate"><span class="pre">normalize()</span></code> that takes one argument <code class="docutils literal notranslate"><span class="pre">text</span></code> and returns a
 lowercased version with leading and trailing whitespace removed and spaces
 replace with underscores.</p>
@@ -1239,12 +1035,12 @@ replace with underscores.</p>
 <span class="p">]</span>
 </pre></div>
 </div>
-</div>
+</section>
 </div>
 <div class="solution dropdown admonition" id="lessons/data/functional-programming-solution-1">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#map-exercise"> Exercise 99 (Map)</a></p>
-<div class="section" id="solution-content">
+<section id="solution-content">
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-number">Listing 281 </span><span class="caption-text">Map Exercise</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
@@ -1281,10 +1077,10 @@ replace with underscores.</p>
 </pre></div>
 </td></tr></table></div>
 </div>
+</section>
 </div>
-</div>
-</div>
-<div class="section" id="part-1-3-multiple-args">
+</section>
+<section id="part-1-3-multiple-args">
 <h3><a class="toc-backref" href="#id15">Part 1.3: Multiple Args</a><a class="headerlink" href="#part-1-3-multiple-args" title="Permalink to this headline">¶</a></h3>
 <p>For a transformation callable that takes multiple arguments, you can provide
 multiple iterables to <code class="docutils literal notranslate"><span class="pre">map()</span></code>.</p>
@@ -1306,13 +1102,13 @@ multiple iterables to <code class="docutils literal notranslate"><span class="pr
 </div>
 </div>
 </div></div>
-</div>
-<div class="section" id="part-1-3-exercise">
+</section>
+<section id="part-1-3-exercise">
 <h3><a class="toc-backref" href="#id16">Part 1.3: Exercise</a><a class="headerlink" href="#part-1-3-exercise" title="Permalink to this headline">¶</a></h3>
 <div class="exercise admonition" id="map-multiple-exercise">
 
 <p class="admonition-title"><span class="caption-number">Exercise 100 </span> (Mapping Multiple Args)</p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Using <code class="docutils literal notranslate"><span class="pre">map()</span></code> apply the function <code class="docutils literal notranslate"><span class="pre">operator.mul</span></code> to multiply each of the
 following <code class="docutils literal notranslate"><span class="pre">prices</span></code> keys by their exchange rate value.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rates</span> <span class="o">=</span> <span class="p">{</span>
@@ -1331,12 +1127,12 @@ following <code class="docutils literal notranslate"><span class="pre">prices</s
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
+</section>
 </div>
 <div class="solution dropdown admonition" id="lessons/data/functional-programming-solution-3">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#map-multiple-exercise"> Exercise 100 (Mapping Multiple Args)</a></p>
-<div class="section" id="solution-content">
+<section id="solution-content">
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-number">Listing 282 </span><span class="caption-text">Mapping Multiple Args Exercise</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
@@ -1377,15 +1173,15 @@ following <code class="docutils literal notranslate"><span class="pre">prices</s
 </pre></div>
 </td></tr></table></div>
 </div>
+</section>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="part-2-filter">
+</section>
+</section>
+<section id="part-2-filter">
 <h2><a class="toc-backref" href="#id17">Part 2: Filter</a><a class="headerlink" href="#part-2-filter" title="Permalink to this headline">¶</a></h2>
 <p>Generating a new collection containing only items that match a certain condition
 is called <a class="reference internal" href="#term-filter"><span class="xref std std-term">filtering</span></a>.</p>
-<div class="section" id="part-2-1-proceedural">
+<section id="part-2-1-proceedural">
 <h3><a class="toc-backref" href="#id18">Part 2.1: Proceedural</a><a class="headerlink" href="#part-2-1-proceedural" title="Permalink to this headline">¶</a></h3>
 <div class="row"><div class="col left-col">
 <p>Here is how you would filter the old fashioned way, via a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.</p>
@@ -1411,8 +1207,8 @@ is called <a class="reference internal" href="#term-filter"><span class="xref st
 </div>
 </div>
 </div></div>
-</div>
-<div class="section" id="part-2-2-filter">
+</section>
+<section id="part-2-2-filter">
 <h3><a class="toc-backref" href="#id19">Part 2.2: <code class="docutils literal notranslate"><span class="pre">filter()</span></code></a><a class="headerlink" href="#part-2-2-filter" title="Permalink to this headline">¶</a></h3>
 <p>Python provides a built in <code class="docutils literal notranslate"><span class="pre">filter()</span></code> function.</p>
 <div class="row"><div class="col left-col">
@@ -1472,8 +1268,8 @@ condition followed by the iterable to filter.</p>
 </div>
 </div>
 </div></div>
-</div>
-<div class="section" id="part-2-3-truthy-filtering">
+</section>
+<section id="part-2-3-truthy-filtering">
 <h3><a class="toc-backref" href="#id20">Part 2.3: Truthy filtering</a><a class="headerlink" href="#part-2-3-truthy-filtering" title="Permalink to this headline">¶</a></h3>
 <p>Often you just want to filter a list for non-empty or <a class="reference internal" href="../conditional-statements.html#term-truthy"><span class="xref std std-term">truthy</span></a> values.</p>
 <div class="row"><div class="col left-col">
@@ -1509,14 +1305,14 @@ condition followed by the iterable to filter.</p>
 </div>
 </div>
 </div></div>
-</div>
-</div>
-<div class="section" id="part-3-reducing">
+</section>
+</section>
+<section id="part-3-reducing">
 <h2><a class="toc-backref" href="#id21">Part 3: Reducing</a><a class="headerlink" href="#part-3-reducing" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="#term-aggregation"><span class="xref std std-term">Aggregation</span></a> operations, or those that apply the same
 operation, cumulatively, to each element in a collection to arrive at a single
 value is called <a class="reference internal" href="#term-reduce"><span class="xref std std-term">reducing</span></a>.</p>
-<div class="section" id="part-3-1-proceedural">
+<section id="part-3-1-proceedural">
 <h3><a class="toc-backref" href="#id22">Part 3.1: Proceedural</a><a class="headerlink" href="#part-3-1-proceedural" title="Permalink to this headline">¶</a></h3>
 <div class="row"><div class="col left-col">
 <p>Here’s an example of how you would reduce via a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.</p>
@@ -1543,8 +1339,8 @@ to arrive at the sum of all numbers in the sequence.</p>
 </div>
 </div>
 </div></div>
-</div>
-<div class="section" id="part-3-2-reduce">
+</section>
+<section id="part-3-2-reduce">
 <h3><a class="toc-backref" href="#id23">Part 3.2: <code class="docutils literal notranslate"><span class="pre">reduce()</span></code></a><a class="headerlink" href="#part-3-2-reduce" title="Permalink to this headline">¶</a></h3>
 <p>Python provides the <code class="docutils literal notranslate"><span class="pre">reduce()</span></code> function from the <code class="docutils literal notranslate"><span class="pre">functools</span></code> module.</p>
 <div class="row"><div class="col left-col">
@@ -1617,23 +1413,23 @@ iteration, or returned by <code class="docutils literal notranslate"><span class
 </div>
 </div>
 </div></div>
-</div>
-<div class="section" id="part-3-2-exercise">
+</section>
+<section id="part-3-2-exercise">
 <h3><a class="toc-backref" href="#id24">Part 3.2: Exercise</a><a class="headerlink" href="#part-3-2-exercise" title="Permalink to this headline">¶</a></h3>
 <div class="exercise admonition" id="reduce-exercise">
 
 <p class="admonition-title"><span class="caption-number">Exercise 101 </span> (Reduce)</p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Make a list assigned to the variable <code class="docutils literal notranslate"><span class="pre">letters</span></code> with all the letters in the
 <a class="reference external" href="https://www.dictionary.com/e/word-of-the-day/">word of the day</a>.</p>
 <p>Concatonate all letters using both a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop and the <code class="docutils literal notranslate"><span class="pre">functools.reduce()</span></code>
 function.</p>
-</div>
+</section>
 </div>
 <div class="solution dropdown admonition" id="lessons/data/functional-programming-solution-5">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#reduce-exercise"> Exercise 101 (Reduce)</a></p>
-<div class="section" id="solution-content">
+<section id="solution-content">
 <div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption"><span class="caption-number">Listing 283 </span><span class="caption-text">Reduce Exercise</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
@@ -1668,10 +1464,10 @@ function.</p>
 </pre></div>
 </td></tr></table></div>
 </div>
+</section>
 </div>
-</div>
-</div>
-<div class="section" id="part-3-3-initial-value">
+</section>
+<section id="part-3-3-initial-value">
 <h3><a class="toc-backref" href="#id25">Part 3.3: Initial value</a><a class="headerlink" href="#part-3-3-initial-value" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">reduce()</span></code> determines the initial value of <code class="docutils literal notranslate"><span class="pre">res</span></code> by calling the type of the
 first element of the iterable. For example, if your iterable is <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code>,
@@ -1729,20 +1525,20 @@ using the string to strip as the initial value.</p>
 </div>
 </div>
 </div></div>
-</div>
-<div class="section" id="part-3-3-exercise">
+</section>
+<section id="part-3-3-exercise">
 <h3><a class="toc-backref" href="#id26">Part 3.3: Exercise</a><a class="headerlink" href="#part-3-3-exercise" title="Permalink to this headline">¶</a></h3>
 <div class="exercise admonition" id="reduce-initializer-exercise">
 
 <p class="admonition-title"><span class="caption-number">Exercise 102 </span> (Initializer)</p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Use <code class="docutils literal notranslate"><span class="pre">reduce()</span></code> to count the number of vowels in a string.</p>
-</div>
+</section>
 </div>
 <div class="solution dropdown admonition" id="lessons/data/functional-programming-solution-7">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#reduce-initializer-exercise"> Exercise 102 (Initializer)</a></p>
-<div class="section" id="solution-content">
+<section id="solution-content">
 <div class="literal-block-wrapper docutils container" id="id4">
 <div class="code-block-caption"><span class="caption-number">Listing 284 </span><span class="caption-text">Initializer Exercise</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
@@ -1765,20 +1561,20 @@ using the string to strip as the initial value.</p>
 </pre></div>
 </td></tr></table></div>
 </div>
+</section>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="challenges">
+</section>
+</section>
+<section id="challenges">
 <h2><a class="toc-backref" href="#id27">Challenges</a><a class="headerlink" href="#challenges" title="Permalink to this headline">¶</a></h2>
 <p>This section contains a series of more challenging exercises using <code class="docutils literal notranslate"><span class="pre">map()</span></code>,
 <code class="docutils literal notranslate"><span class="pre">filter()</span></code> or <code class="docutils literal notranslate"><span class="pre">range()</span></code>.</p>
-<div class="section" id="fibonacci-sequence">
+<section id="fibonacci-sequence">
 <h3><a class="toc-backref" href="#id28">Fibonacci sequence</a><a class="headerlink" href="#fibonacci-sequence" title="Permalink to this headline">¶</a></h3>
 <div class="exercise admonition" id="fibonacci-exercise">
 
 <p class="admonition-title"><span class="caption-number">Exercise 103 </span> (Fibonacci)</p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Use <code class="docutils literal notranslate"><span class="pre">reduce()</span></code> to generate a list containing the first <code class="docutils literal notranslate"><span class="pre">10</span></code> numbers of the
 <a class="reference external" href="https://en.wikipedia.org/wiki/Fibonacci_number">fibonacci sequence</a> in which each successive number is the result of adding
 the preceeding two.</p>
@@ -1786,27 +1582,27 @@ the preceeding two.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">89</span><span class="p">]</span>
 </pre></div>
 </div>
-</div>
+</section>
 </div>
 <div class="solution dropdown admonition" id="lessons/data/functional-programming-solution-9">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#fibonacci-exercise"> Exercise 103 (Fibonacci)</a></p>
-<div class="section" id="solution-content">
+<section id="solution-content">
 <div class="literal-block-wrapper docutils container" id="id5">
 <div class="code-block-caption"><span class="caption-number">Listing 285 </span><span class="caption-text">Fibonacci Exercise</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">seq</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span> <span class="n">seq</span> <span class="o">+</span> <span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="n">seq</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:])],</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
+</section>
 </div>
-</div>
-</div>
-<div class="section" id="rgb-to-hex-color-code">
+</section>
+<section id="rgb-to-hex-color-code">
 <h3><a class="toc-backref" href="#id29">RGB to Hex Color Code</a><a class="headerlink" href="#rgb-to-hex-color-code" title="Permalink to this headline">¶</a></h3>
 <div class="exercise admonition" id="rgb-to-hex-exercise">
 
 <p class="admonition-title"><span class="caption-number">Exercise 104 </span> (RGB to Hex)</p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Use <code class="docutils literal notranslate"><span class="pre">reduce()</span></code> to convert a iterable of three RGB color values from <code class="docutils literal notranslate"><span class="pre">0-255</span></code> to
 a six character string containing the equivalant hex color code.
 (<a class="reference external" href="https://mathstats.uncg.edu/sites/pauli/112/HTML/seccolors.html">More info</a>.)</p>
@@ -1832,12 +1628,12 @@ Need a hint?<div class="summary-down docutils">
 </pre></div>
 </div>
 </div></div>
-</div>
+</section>
 </div>
 <div class="solution dropdown admonition" id="lessons/data/functional-programming-solution-11">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#rgb-to-hex-exercise"> Exercise 104 (RGB to Hex)</a></p>
-<div class="section" id="solution-content">
+<section id="solution-content">
 <div class="literal-block-wrapper docutils container" id="id6">
 <div class="code-block-caption"><span class="caption-number">Listing 286 </span><span class="caption-text">RGB to Hex Exercise</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
@@ -1848,15 +1644,15 @@ Need a hint?<div class="summary-down docutils">
 </pre></div>
 </td></tr></table></div>
 </div>
+</section>
 </div>
-</div>
-</div>
-<div class="section" id="hex-to-rgb-color-values">
+</section>
+<section id="hex-to-rgb-color-values">
 <h3><a class="toc-backref" href="#id30">Hex to RGB Color Values</a><a class="headerlink" href="#hex-to-rgb-color-values" title="Permalink to this headline">¶</a></h3>
 <div class="exercise admonition" id="hex-to-rgb-exercise">
 
 <p class="admonition-title"><span class="caption-number">Exercise 105 </span> (Hex to RGB)</p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Use <code class="docutils literal notranslate"><span class="pre">reduce()</span></code> to convert a six character hex color code to list of the
 equivalant <a class="reference external" href="https://en.wikipedia.org/wiki/RGB_color_model">RGB color values</a> from <code class="docutils literal notranslate"><span class="pre">0-255</span></code>. (<a class="reference external" href="https://mathstats.uncg.edu/sites/pauli/112/HTML/seccolors.html">More info</a>.)</p>
 <p><em>Note: The solution is not a mathmatical equation.</em></p>
@@ -1886,12 +1682,12 @@ the <code class="docutils literal notranslate"><span class="pre">int()</span></c
 </pre></div>
 </div>
 </div></div>
-</div>
+</section>
 </div>
 <div class="solution dropdown admonition" id="lessons/data/functional-programming-solution-13">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#hex-to-rgb-exercise"> Exercise 105 (Hex to RGB)</a></p>
-<div class="section" id="solution-content">
+<section id="solution-content">
 <div class="literal-block-wrapper docutils container" id="id7">
 <div class="code-block-caption"><span class="caption-number">Listing 287 </span><span class="caption-text">Hex to RGB Exercise</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
@@ -1906,15 +1702,15 @@ the <code class="docutils literal notranslate"><span class="pre">int()</span></c
 </pre></div>
 </td></tr></table></div>
 </div>
+</section>
 </div>
-</div>
-</div>
-<div class="section" id="get-values-for-multiple-keys">
+</section>
+<section id="get-values-for-multiple-keys">
 <h3><a class="toc-backref" href="#id31">Get values for multiple keys</a><a class="headerlink" href="#get-values-for-multiple-keys" title="Permalink to this headline">¶</a></h3>
 <div class="exercise admonition" id="reduce-dict-keys-exercise">
 
 <p class="admonition-title"><span class="caption-number">Exercise 106 </span> (Multiple Dictionary Keys)</p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Given a dictionary mapping <code class="docutils literal notranslate"><span class="pre">letters</span></code> to their unicode codepoint, use <code class="docutils literal notranslate"><span class="pre">reduce()</span></code>
 go return a list containing the values for an iterable of <code class="docutils literal notranslate"><span class="pre">keys</span></code>.</p>
 <p><strong>Example</strong></p>
@@ -1937,12 +1733,12 @@ go return a list containing the values for an iterable of <code class="docutils 
 </pre></div>
 </div>
 </div></div>
-</div>
+</section>
 </div>
 <div class="solution dropdown admonition" id="lessons/data/functional-programming-solution-15">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#reduce-dict-keys-exercise"> Exercise 106 (Multiple Dictionary Keys)</a></p>
-<div class="section" id="solution-content">
+<section id="solution-content">
 <div class="literal-block-wrapper docutils container" id="id8">
 <div class="code-block-caption"><span class="caption-number">Listing 288 </span><span class="caption-text">Multiple Dictionary Keys Exercise</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
 <div class="full-width highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
@@ -1969,15 +1765,15 @@ go return a list containing the values for an iterable of <code class="docutils 
 </pre></div>
 </td></tr></table></div>
 </div>
+</section>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="reference">
+</section>
+</section>
+<section id="reference">
 <h2><a class="toc-backref" href="#id32">Reference</a><a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="glossary">
+<section id="glossary">
 <h3><a class="toc-backref" href="#id33">Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="glossary-functional-programming">
+<section id="glossary-functional-programming">
 <h4><a class="toc-backref" href="#id34">Functional Programming</a><a class="headerlink" href="#glossary-functional-programming" title="Permalink to this headline">¶</a></h4>
 <dl class="glossary">
 <dt id="term-callable">callable<a class="headerlink" href="#term-callable" title="Permalink to this term">¶</a></dt><dd><p>Any object that can be called such as a function, method, or type.</p>
@@ -2054,9 +1850,9 @@ input and the only thing effected is the returned output.
 In contrast to <a class="reference internal" href="#term-statefulness"><span class="xref std std-term">statefulness</span></a>.</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="see-also">
+</section>
+</section>
+<section id="see-also">
 <h3><a class="toc-backref" href="#id35">See Also</a><a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -2070,17 +1866,17 @@ In contrast to <a class="reference internal" href="#term-statefulness"><span cla
 <li><p><a class="reference external" href="https://melvinkoh.me/understanding-the-python-reduce-function-with-examples-ck7mzz8l200na8ss1ogdvw5c5?guid=none&amp;deviceId=fb7e31e2-51ab-45db-a5d8-d71705d2ec8c">Understanding The Python Reduce Function With Examples</a></p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="summary">
+</section>
+<section id="summary">
 <h3><a class="toc-backref" href="#id36">Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">map()</span></code> is used to transform elements</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">filter()</span></code> is used to select elements</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">reduce()</span></code> is used for aggregation</p></li>
 </ul>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2104,39 +1900,33 @@ In contrast to <a class="reference internal" href="#term-statefulness"><span cla
 
               </div>
               
+        
+        <div class='prev-next-bottom'>
             
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="index.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Data</p>
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">Data</a>
+    <a class='right-next' id="next-link" href="../misc.html" title="next page">Misc</a>
+
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="../misc.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Misc</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            
+        
         </div>
     </div>
-    <footer class="footer">
-  <p>
-    
-  </p>
-</footer>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+      </p>
+    </div>
+  </footer>
 </main>
 
 
       </div>
     </div>
-  
-  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
   </body>
 </html>

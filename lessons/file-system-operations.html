@@ -4,11 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>File System Operations &#8212; Python Class</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
     
   <link rel="stylesheet"
@@ -20,10 +20,14 @@
 
     
       
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=84ace793992934648b4de8eed757e5a2" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -36,7 +40,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -49,7 +53,7 @@
     <script src="../_static/x-frame-bypass.js"></script>
     <script src="../_static/asciinema-player.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
     <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -61,67 +65,57 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="In Depth" href="in-depth/index.html" />
     <link rel="prev" title="Paths" href="paths.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
 
-    <!-- Google Analytics -->
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://alissa-huskey.github.io/python-class/lessons/file-system-operations.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="File System Operations" />
+<meta property="og:description" content="File System Operations  This lesson will go over how to use Path objects to preform common operations on files and directories.  This part of the lesson is abou" />
+
+
+<meta name="twitter:card" content="summary" />
+
+
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
-
     
 
     <div class="container-xl">
       <div class="row">
           
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<div class="col-12 col-md-3 bd-sidebar site-navigation " id="site-navigation">
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Python Class</h1>
-      
-    </a>
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Python Class</h1>
+  
+</a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <p class="caption">
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p>
  <span class="caption-text">
   Lessons
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="fundamentals.html">
    Fundamentals
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
   <ul class="current">
-   <li class="toctree-l2 has-children">
+   <li class="toctree-l2 collapsible-parent">
     <a class="reference internal" href="syntax.html">
      Syntax
     </a>
-    <input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-    <label for="toctree-checkbox-2">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
     <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="expressions.html">
@@ -139,16 +133,13 @@ const thebe_selector_output = ".output, .cell_output"
       </a>
      </li>
     </ul>
+    <i class="fas fa-chevron-up">
+    </i>
    </li>
-   <li class="toctree-l2 has-children">
+   <li class="toctree-l2 collapsible-parent">
     <a class="reference internal" href="flow-control.html">
      Flow Control
     </a>
-    <input checked class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-    <label for="toctree-checkbox-3">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
     <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="conditional-statements.html">
@@ -191,16 +182,13 @@ const thebe_selector_output = ".output, .cell_output"
       </a>
      </li>
     </ul>
+    <i class="fas fa-chevron-up">
+    </i>
    </li>
-   <li class="toctree-l2 has-children">
+   <li class="toctree-l2 collapsible-parent">
     <a class="reference internal" href="data-types/index.html">
      Data Types
     </a>
-    <input checked class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-    <label for="toctree-checkbox-4">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
     <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="data-types/objects.html">
@@ -212,16 +200,11 @@ const thebe_selector_output = ".output, .cell_output"
        Numeric Types
       </a>
      </li>
-     <li class="toctree-l3 has-children">
+     <li class="toctree-l3 collapsible-parent">
       <a class="reference internal" href="data-types/containers.html">
        Containers
       </a>
-      <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-      <label for="toctree-checkbox-5">
-       <i class="fas fa-chevron-down">
-       </i>
-      </label>
-      <ul>
+      <ul class="collapse-ul">
        <li class="toctree-l4">
         <a class="reference internal" href="data-types/lists.html">
          Lists
@@ -238,18 +221,17 @@ const thebe_selector_output = ".output, .cell_output"
         </a>
        </li>
       </ul>
+      <i class="fas fa-chevron-down">
+      </i>
      </li>
     </ul>
+    <i class="fas fa-chevron-up">
+    </i>
    </li>
-   <li class="toctree-l2 current active has-children">
+   <li class="toctree-l2 current active collapsible-parent">
     <a class="reference internal" href="files.html">
      Files
     </a>
-    <input checked class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-    <label for="toctree-checkbox-6">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
     <ul class="current">
      <li class="toctree-l3">
       <a class="reference internal" href="file-io.html">
@@ -267,18 +249,17 @@ const thebe_selector_output = ".output, .cell_output"
       </a>
      </li>
     </ul>
+    <i class="fas fa-chevron-up">
+    </i>
    </li>
   </ul>
+  <i class="fas fa-chevron-up">
+  </i>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="in-depth/index.html">
    In Depth
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cli.html">
@@ -311,16 +292,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+  <i class="fas fa-chevron-up">
+  </i>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="data/index.html">
    Data
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="data/functional-programming.html">
@@ -328,16 +306,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+  <i class="fas fa-chevron-up">
+  </i>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="misc.html">
    Misc
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="dates.html">
@@ -355,16 +330,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+  <i class="fas fa-chevron-up">
+  </i>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="game-book.html">
    Invent Games Book
   </a>
-  <input checked class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="03_guess_the_number.html">
@@ -377,14 +349,16 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+  <i class="fas fa-chevron-up">
+  </i>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Practices
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../practices/problem-solving.html">
    Problem Solving
@@ -406,12 +380,12 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Tools
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../tools/terminal.html">
    Terminal
@@ -473,12 +447,12 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Reference
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../reference/recommended.html">
    Recommended Resources
@@ -502,15 +476,17 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/template.py">
    Script Template
+   <i class="fas fa-external-link-alt">
+   </i>
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Exercises
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../exercises/program-flow.html">
    Program Flow Exercises
@@ -537,12 +513,12 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Admin
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../orphans.html">
    Orphaned Terms
@@ -550,7 +526,6 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-    </div>
 </nav> <!-- To handle the deprecated key -->
 
 </div>
@@ -560,22 +535,22 @@ const thebe_selector_output = ".output, .cell_output"
 
 
           
-<!-- This is an invisible pixel that we watch to see if we've scrolled. -->
-<div class="sbt-scroll-pixel-helper"></div>
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
     <div class="topbar container-xl fixed-top">
     <div class="topbar-contents row">
         <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
         <div class="col pl-md-4 topbar-main">
-            <div class="topbar-left">
-                
-                <label class="nav-toggle-button" for="__navigation">
-                    <div class="visually-hidden">Toggle navigation</div>
-                    <i class="fas fa-bars"></i>
-                </label>
-                
-            </div>
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
             
             <!-- Source interaction buttons -->
 
@@ -594,12 +569,12 @@ const thebe_selector_output = ".output, .cell_output"
     </div>
 </div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
 
@@ -616,7 +591,6 @@ const thebe_selector_output = ".output, .cell_output"
         
         
         
-        
         <button type="button" class="btn btn-secondary topbarbtn"
             onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
                 class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
@@ -627,13 +601,14 @@ const thebe_selector_output = ".output, .cell_output"
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+        <div class="d-none d-md-block col-md-2 bd-toc show">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#listing-files">
    Listing files
@@ -738,144 +713,25 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
+        </nav>
+        
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>File System Operations</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#listing-files">
-   Listing files
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#directory-contents">
-     Directory contents
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#searching-files">
-     Searching files
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#directory-operations">
-   Directory operations
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#creating-directories">
-     Creating directories
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#deleting-directories">
-     Deleting directories
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#file-operations">
-   File operations
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#creating-empty-files">
-     Creating empty files
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#removing-files">
-     Removing files
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#moving-files">
-     Moving files
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#renaming-files">
-     Renaming files
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reference">
-   Reference
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#glossary">
-     Glossary
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#glossary-file-system-operations">
-       File System Operations
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#globbing">
-     Globbing
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#wildcards">
-       Wildcards
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#character-ranges">
-       Character ranges
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#examples">
-       Examples
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
+        
               <div>
                 
-  <div class="section" id="file-system-operations">
+  <section id="file-system-operations">
 <h1>File System Operations<a class="headerlink" href="#file-system-operations" title="Permalink to this headline">¶</a></h1>
 <p>This lesson will go over how to use <code class="docutils literal notranslate"><span class="pre">Path</span></code> objects to preform common
 operations on files and directories.</p>
 <p>This part of the lesson is about the ways to get a list of files on your
 local computer.</p>
-<div class="section" id="listing-files">
+<section id="listing-files">
 <h2>Listing files<a class="headerlink" href="#listing-files" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="directory-contents">
+<section id="directory-contents">
 <h3>Directory contents<a class="headerlink" href="#directory-contents" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">Path</span></code> objects provide an <code class="docutils literal notranslate"><span class="pre">iterdir()</span></code> method for iterating through the
 contents of a directory. Here’s a simple example that prints contents of the
@@ -932,19 +788,19 @@ text or markdown.</p>
 <div class="exercise admonition" id="print-working-dir">
 
 <p class="admonition-title"><span class="caption-number">Exercise 68 </span> (Print the contents of the working directory.)</p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Iterate over the contents of the working directory and:</p>
 <ul class="simple">
 <li><p>skip over files or directories with names that begin with <code class="docutils literal notranslate"><span class="pre">.</span></code> or <code class="docutils literal notranslate"><span class="pre">__</span></code></p></li>
 <li><p>print the name of any directories followed by a <code class="docutils literal notranslate"><span class="pre">/</span></code></p></li>
 <li><p>print the name of everything else</p></li>
 </ul>
-</div>
+</section>
 </div>
 <div class="solution dropdown admonition" id="lessons/file-system-operations-solution-1">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#print-working-dir"> Exercise 68 (Print the contents of the working directory.)</a></p>
-<div class="section" id="solution-content">
+<section id="solution-content">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
 <span class="n">cwd</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span>
@@ -958,10 +814,10 @@ text or markdown.</p>
          <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 </pre></div>
 </div>
+</section>
 </div>
-</div>
-</div>
-<div class="section" id="searching-files">
+</section>
+<section id="searching-files">
 <h3>Searching files<a class="headerlink" href="#searching-files" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">Path</span></code> objects provides a <code class="docutils literal notranslate"><span class="pre">glob()</span></code> method for simple, albeit limited, file
 searching. The <code class="docutils literal notranslate"><span class="pre">glob()</span></code> method uses a set of wildcard characters adopted from
@@ -996,15 +852,15 @@ includes the contents of all subdirectories in the search.</p>
 <div class="exercise admonition" id="list-text-files-exercise">
 
 <p class="admonition-title"><span class="caption-number">Exercise 69 </span> (Search for files)</p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Print the names of all files in your working directory or recursively in any
 subdirectories that end with <code class="docutils literal notranslate"><span class="pre">*.txt</span></code>.</p>
-</div>
+</section>
 </div>
 <div class="solution dropdown admonition" id="lessons/file-system-operations-solution-3">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#list-text-files-exercise"> Exercise 69 (Search for files)</a></p>
-<div class="section" id="solution-content">
+<section id="solution-content">
 <div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1016,7 +872,7 @@ subdirectories that end with <code class="docutils literal notranslate"><span cl
     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-</div>
+</section>
 </div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -1025,11 +881,11 @@ subdirectories that end with <code class="docutils literal notranslate"><span cl
 <li><p>You can find a details on globbing in Python in the <a class="reference external" href="file-system-operations.html#globbing">reference section of this lesson</a>.</p></li>
 </ul>
 </div>
-</div>
-</div>
-<div class="section" id="directory-operations">
+</section>
+</section>
+<section id="directory-operations">
 <h2>Directory operations<a class="headerlink" href="#directory-operations" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="creating-directories">
+<section id="creating-directories">
 <h3>Creating directories<a class="headerlink" href="#creating-directories" title="Permalink to this headline">¶</a></h3>
 <p>You can use the <code class="docutils literal notranslate"><span class="pre">mkdir()</span></code> method on a <code class="docutils literal notranslate"><span class="pre">Path</span></code> object to create a new
 directory.</p>
@@ -1065,15 +921,15 @@ argument, as in the following example.</p>
 <div class="exercise admonition" id="create-a-directory-exercise">
 
 <p class="admonition-title"><span class="caption-number">Exercise 70 </span> (Create a directory)</p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Create a <code class="docutils literal notranslate"><span class="pre">tmp</span></code> directory in your <code class="docutils literal notranslate"><span class="pre">data</span></code> directory. If you don’t have a <code class="docutils literal notranslate"><span class="pre">data</span></code>
 directory, create it first.</p>
-</div>
+</section>
 </div>
 <div class="solution dropdown admonition" id="lessons/file-system-operations-solution-5">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#create-a-directory-exercise"> Exercise 70 (Create a directory)</a></p>
-<div class="section" id="solution-content">
+<section id="solution-content">
 <div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1083,10 +939,10 @@ directory, create it first.</p>
 <span class="n">tmp</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
+</section>
 </div>
-</div>
-</div>
-<div class="section" id="deleting-directories">
+</section>
+<section id="deleting-directories">
 <h3>Deleting directories<a class="headerlink" href="#deleting-directories" title="Permalink to this headline">¶</a></h3>
 <p>To delete an empty directory use the <code class="docutils literal notranslate"><span class="pre">rmdir()</span></code> method on a <code class="docutils literal notranslate"><span class="pre">Path</span></code> object.</p>
 <div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
@@ -1109,27 +965,27 @@ this lesson.</p>
 <div class="exercise admonition" id="delete-the-tmp-directory-exercise">
 
 <p class="admonition-title"><span class="caption-number">Exercise 71 </span> (Delete the tmp directory)</p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Delete the <code class="docutils literal notranslate"><span class="pre">data/tmp</span></code> directory that you created earlier.</p>
-</div>
+</section>
 </div>
 <div class="solution dropdown admonition" id="lessons/file-system-operations-solution-7">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#delete-the-tmp-directory-exercise"> Exercise 71 (Delete the tmp directory)</a></p>
-<div class="section" id="solution-content">
+<section id="solution-content">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/tmp&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Removing directory: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="n">path</span><span class="o">.</span><span class="n">rmdir</span><span class="p">()</span>
 </pre></div>
 </div>
+</section>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="file-operations">
+</section>
+</section>
+<section id="file-operations">
 <h2>File operations<a class="headerlink" href="#file-operations" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="creating-empty-files">
+<section id="creating-empty-files">
 <h3>Creating empty files<a class="headerlink" href="#creating-empty-files" title="Permalink to this headline">¶</a></h3>
 <p>The command line command <strong class="command">touch</strong> will either update a file’s
 timestamp of the last time it was accessed and modified, or create an empty
@@ -1150,17 +1006,17 @@ without worrying if they already exist.</p>
 <div class="exercise admonition" id="generate-files-exercise">
 
 <p class="admonition-title"><span class="caption-number">Exercise 72 </span> (Generate files)</p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <ol class="simple">
 <li><p>Create the <code class="docutils literal notranslate"><span class="pre">data/tmp</span></code> directory if it does not already exist.</p></li>
 <li><p>Use the <code class="docutils literal notranslate"><span class="pre">touch()</span></code> method to create files <code class="docutils literal notranslate"><span class="pre">file_1.txt</span></code> though <code class="docutils literal notranslate"><span class="pre">file_9.txt</span></code>.</p></li>
 </ol>
-</div>
+</section>
 </div>
 <div class="solution dropdown admonition" id="lessons/file-system-operations-solution-9">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#generate-files-exercise"> Exercise 72 (Generate files)</a></p>
-<div class="section" id="solution-content">
+<section id="solution-content">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tmpdir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;tmp&quot;</span>
 <span class="n">tmpdir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -1170,10 +1026,10 @@ without worrying if they already exist.</p>
     <span class="n">path</span><span class="o">.</span><span class="n">touch</span><span class="p">()</span>
 </pre></div>
 </div>
+</section>
 </div>
-</div>
-</div>
-<div class="section" id="removing-files">
+</section>
+<section id="removing-files">
 <h3>Removing files<a class="headerlink" href="#removing-files" title="Permalink to this headline">¶</a></h3>
 <p>To remove files use the <code class="docutils literal notranslate"><span class="pre">unlink()</span></code> method on a <code class="docutils literal notranslate"><span class="pre">Path</span></code> object. Since this
 deletes a file, it’s a good to print the path and confirm with the user that
@@ -1214,18 +1070,18 @@ avoid this by passing the optional <code class="docutils literal notranslate"><s
 <div class="exercise admonition" id="remove-a-file-exercise">
 
 <p class="admonition-title"><span class="caption-number">Exercise 73 </span> (Remove a file)</p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <ol class="simple">
 <li><p>Choose one of your generated <code class="samp docutils literal notranslate"><span class="pre">file_</span><em><span class="pre">num</span></em><span class="pre">.txt</span></code> files to delete.</p></li>
 <li><p>Ask the user to confirm they want to delete the file.</p></li>
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">unlink()</span></code> to delete the file.</p></li>
 </ol>
-</div>
+</section>
 </div>
 <div class="solution dropdown admonition" id="lessons/file-system-operations-solution-11">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#remove-a-file-exercise"> Exercise 73 (Remove a file)</a></p>
-<div class="section" id="solution-content">
+<section id="solution-content">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="n">filepath</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;tmp&quot;</span> <span class="o">/</span> <span class="s2">&quot;file_9.txt&quot;</span>
 
@@ -1239,10 +1095,10 @@ avoid this by passing the optional <code class="docutils literal notranslate"><s
   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Well, nevermind then.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</section>
 </div>
-</div>
-</div>
-<div class="section" id="moving-files">
+</section>
+<section id="moving-files">
 <h3>Moving files<a class="headerlink" href="#moving-files" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">Path</span></code> objects provide a <code class="docutils literal notranslate"><span class="pre">replace()</span></code> method which can be used to move files. It
 takes a destination path argument which can be either a string or <code class="docutils literal notranslate"><span class="pre">Path</span></code> object
@@ -1294,7 +1150,7 @@ it <code class="docutils literal notranslate"><span class="pre">.exists()</span>
 <div class="exercise admonition" id="move-file-exercise">
 
 <p class="admonition-title"><span class="caption-number">Exercise 74 </span> (Move file)</p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <ol class="simple">
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">.touch()</span></code> to make an empty file <code class="docutils literal notranslate"><span class="pre">xxx.txt</span></code></p></li>
 <li><p>Make a new <code class="docutils literal notranslate"><span class="pre">Path</span></code> object to <code class="file docutils literal notranslate"><span class="pre">data/xxx.txt</span></code></p></li>
@@ -1302,12 +1158,12 @@ it <code class="docutils literal notranslate"><span class="pre">.exists()</span>
 <li><p>Print a message <code class="samp docutils literal notranslate"><span class="pre">&quot;Moving</span> <span class="pre">'</span><em><span class="pre">from</span></em><span class="pre">'</span> <span class="pre">to</span> <span class="pre">'</span><em><span class="pre">to</span></em><span class="pre">'.&quot;</span></code></p></li>
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">.replace()</span></code> to move the file.</p></li>
 </ol>
-</div>
+</section>
 </div>
 <div class="solution dropdown admonition" id="lessons/file-system-operations-solution-13">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#move-file-exercise"> Exercise 74 (Move file)</a></p>
-<div class="section" id="solution-content">
+<section id="solution-content">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
 <span class="n">from_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;xxx.txt&quot;</span><span class="p">)</span>
@@ -1322,12 +1178,12 @@ it <code class="docutils literal notranslate"><span class="pre">.exists()</span>
     <span class="n">from_path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_path</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
+</section>
 </div>
 <div class="exercise admonition" id="move-text-files-exercise">
 
 <p class="admonition-title"><span class="caption-number">Exercise 75 </span> (Move text files to data directory)</p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <ol class="simple">
 <li><p>If you have no files ending in <code class="docutils literal notranslate"><span class="pre">.txt</span></code> in your working directory, use
 <code class="docutils literal notranslate"><span class="pre">.touch()</span></code> to generate some first.</p></li>
@@ -1354,12 +1210,12 @@ not end in <code class="docutils literal notranslate"><span class="pre">.txt</sp
 <li><p>Bonus: Instead of skipping files that already exist in <code class="docutils literal notranslate"><span class="pre">data/</span></code>, move the
 file to <code class="samp docutils literal notranslate"><span class="pre">data/</span><em><span class="pre">file</span></em><span class="pre">-</span><em><span class="pre">num</span></em><span class="pre">.txt</span></code></p></li>
 </ol>
-</div>
+</section>
 </div>
 <div class="solution dropdown admonition" id="lessons/file-system-operations-solution-15">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#move-text-files-exercise"> Exercise 75 (Move text files to data directory)</a></p>
-<div class="section" id="solution-content">
+<section id="solution-content">
 <div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption"><span class="caption-number">Listing 227 </span><span class="caption-text">version 1: skip files that exist</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
@@ -1413,10 +1269,10 @@ file to <code class="samp docutils literal notranslate"><span class="pre">data/<
 </pre></div>
 </div>
 </div>
+</section>
 </div>
-</div>
-</div>
-<div class="section" id="renaming-files">
+</section>
+<section id="renaming-files">
 <h3>Renaming files<a class="headerlink" href="#renaming-files" title="Permalink to this headline">¶</a></h3>
 <p>Renaming files is the same as moving files except instead of moving to a new
 directory, you are moving to the same directory but with a new name. Just like
@@ -1495,19 +1351,19 @@ then be used for both path objects.</p>
 <div class="exercise admonition" id="rename-file-exercise">
 
 <p class="admonition-title"><span class="caption-number">Exercise 76 </span> (Rename file)</p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <ol class="simple">
 <li><p>Rename the <code class="file docutils literal notranslate"><span class="pre">file_1.txt</span></code> that you created earlier to
 <code class="file docutils literal notranslate"><span class="pre">file_01.txt</span></code>.</p></li>
 <li><p>Be sure to check first that the destination does not already exist.</p></li>
 <li><p>Print the files new name.</p></li>
 </ol>
-</div>
+</section>
 </div>
 <div class="solution dropdown admonition" id="lessons/file-system-operations-solution-17">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#rename-file-exercise"> Exercise 76 (Rename file)</a></p>
-<div class="section" id="solution-content">
+<section id="solution-content">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
 <span class="n">tmpdir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/tmp&quot;</span><span class="p">)</span>
@@ -1521,12 +1377,12 @@ then be used for both path objects.</p>
   <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Renamed file: </span><span class="si">{</span><span class="n">to_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
+</section>
 </div>
 <div class="exercise admonition" id="zeropad-filenames-exercise">
 
 <p class="admonition-title"><span class="caption-number">Exercise 77 </span> (Zero pad filenames)</p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Sometimes when files are sorted numbers get grouped together so that
 <code class="docutils literal notranslate"><span class="pre">file_1.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">file_11.txt</span></code> are before <code class="docutils literal notranslate"><span class="pre">file_2.txt</span></code>. So this exercise is
 to add zeros in front of all of the single digit file numbers.</p>
@@ -1542,12 +1398,12 @@ not already exist, otherwise print an error message and skip that file.</p></li>
 <li><p>Rename the file to the zero-padded version.</p></li>
 <li><p>Print the new filename.</p></li>
 </ol>
-</div>
+</section>
 </div>
 <div class="solution dropdown admonition" id="lessons/file-system-operations-solution-19">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#zeropad-filenames-exercise"> Exercise 77 (Zero pad filenames)</a></p>
-<div class="section" id="solution-content">
+<section id="solution-content">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
 <span class="n">TMPDIR</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/tmp&quot;</span><span class="p">)</span>
@@ -1571,15 +1427,15 @@ not already exist, otherwise print an error message and skip that file.</p></li>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">from_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">to_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> ... DONE&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</section>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="reference">
+</section>
+</section>
+<section id="reference">
 <h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="glossary">
+<section id="glossary">
 <h3>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="glossary-file-system-operations">
+<section id="glossary-file-system-operations">
 <h4>File System Operations<a class="headerlink" href="#glossary-file-system-operations" title="Permalink to this headline">¶</a></h4>
 <dl class="glossary">
 <dt id="term-glob">glob<a class="headerlink" href="#term-glob" title="Permalink to this term">¶</a></dt><dt id="term-globbing">globbing<a class="headerlink" href="#term-globbing" title="Permalink to this term">¶</a></dt><dt id="term-glob-patterns">glob patterns<a class="headerlink" href="#term-glob-patterns" title="Permalink to this term">¶</a></dt><dt id="term-filename-expansion">filename expansion<a class="headerlink" href="#term-filename-expansion" title="Permalink to this term">¶</a></dt><dd><p>On the command line: A feature available on many command line shells
@@ -1607,11 +1463,11 @@ shorthand to mean, “include the contents of every subdirectory
 recursively”, so that the entire file tree is traversed.</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="globbing">
+</section>
+</section>
+<section id="globbing">
 <h3>Globbing<a class="headerlink" href="#globbing" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="wildcards">
+<section id="wildcards">
 <h4>Wildcards<a class="headerlink" href="#wildcards" title="Permalink to this headline">¶</a></h4>
 <table class="colwidths-auto table">
 <thead>
@@ -1643,8 +1499,8 @@ recursively”, so that the entire file tree is traversed.</p>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="character-ranges">
+</section>
+<section id="character-ranges">
 <h4>Character ranges<a class="headerlink" href="#character-ranges" title="Permalink to this headline">¶</a></h4>
 <table class="colwidths-auto table">
 <thead>
@@ -1664,8 +1520,8 @@ recursively”, so that the entire file tree is traversed.</p>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="examples">
+</section>
+<section id="examples">
 <h4>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h4>
 <table class="colwidths-auto table">
 <thead>
@@ -1737,10 +1593,10 @@ recursively”, so that the entire file tree is traversed.</p>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1764,39 +1620,33 @@ recursively”, so that the entire file tree is traversed.</p>
 
               </div>
               
+        
+        <div class='prev-next-bottom'>
             
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="paths.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Paths</p>
+    <a class='left-prev' id="prev-link" href="paths.html" title="previous page">Paths</a>
+    <a class='right-next' id="next-link" href="in-depth/index.html" title="next page">In Depth</a>
+
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="in-depth/index.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">In Depth</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            
+        
         </div>
     </div>
-    <footer class="footer">
-  <p>
-    
-  </p>
-</footer>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+      </p>
+    </div>
+  </footer>
 </main>
 
 
       </div>
     </div>
-  
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
   </body>
 </html>
