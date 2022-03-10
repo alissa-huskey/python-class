@@ -442,6 +442,11 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="asdf.html">
+   asdf
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="pyenv.html">
    pyenv
   </a>
@@ -623,20 +628,6 @@ const thebe_selector_output = ".output, .cell_output"
     <a class="reference internal nav-link" href="#step-5-python">
      Step 5: Python
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#troubleshooting">
-       Troubleshooting
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#issue-arm64-apple-not-recognized">
-         Issue: arm64-apple not recognized
-        </a>
-       </li>
-      </ul>
-     </li>
-    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-6-poetry">
@@ -651,6 +642,33 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-8-vs-code-extensions">
      Step 8: VS Code extensions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#troubleshooting">
+   Troubleshooting
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#issue-a-arm64-apple-not-recognized">
+     Issue A: arm64-apple not recognized
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#issue-b-unexpected-output-of-arch-on-osx">
+     Issue B: Unexpected output of ‘arch’ on OSX
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#issue-c-sendfile-zipimport-bzip-lzma-errors">
+     Issue C: sendfile, zipimport, bzip, _lzma errors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#issue-d-build-failed">
+     Issue D: BUILD FAILED
     </a>
    </li>
   </ul>
@@ -673,31 +691,31 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">Table of Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#quickstart" id="id5">Quickstart</a></p></li>
-<li><p><a class="reference internal" href="#steps" id="id6">Steps</a></p>
+<li><p><a class="reference internal" href="#quickstart" id="id9">Quickstart</a></p></li>
+<li><p><a class="reference internal" href="#steps" id="id10">Steps</a></p>
 <ul>
-<li><p><a class="reference internal" href="#step-1-xcode" id="id7">Step 1: XCode</a></p></li>
-<li><p><a class="reference internal" href="#step-2-find-create-your-startup-file" id="id8">Step 2: Find/create your startup file</a></p></li>
-<li><p><a class="reference internal" href="#step-3-homebrew" id="id9">Step 3: Homebrew</a></p></li>
-<li><p><a class="reference internal" href="#step-4-asdf" id="id10">Step 4: asdf</a></p></li>
-<li><p><a class="reference internal" href="#step-5-python" id="id11">Step 5: Python</a></p>
-<ul>
-<li><p><a class="reference internal" href="#troubleshooting" id="id12">Troubleshooting</a></p>
-<ul>
-<li><p><a class="reference internal" href="#issue-arm64-apple-not-recognized" id="id13">Issue: arm64-apple not recognized</a></p></li>
+<li><p><a class="reference internal" href="#step-1-xcode" id="id11">Step 1: XCode</a></p></li>
+<li><p><a class="reference internal" href="#step-2-find-create-your-startup-file" id="id12">Step 2: Find/create your startup file</a></p></li>
+<li><p><a class="reference internal" href="#step-3-homebrew" id="id13">Step 3: Homebrew</a></p></li>
+<li><p><a class="reference internal" href="#step-4-asdf" id="id14">Step 4: asdf</a></p></li>
+<li><p><a class="reference internal" href="#step-5-python" id="id15">Step 5: Python</a></p></li>
+<li><p><a class="reference internal" href="#step-6-poetry" id="id16">Step 6: Poetry</a></p></li>
+<li><p><a class="reference internal" href="#step-7-vs-code" id="id17">Step 7: VS Code</a></p></li>
+<li><p><a class="reference internal" href="#step-8-vs-code-extensions" id="id18">Step 8: VS Code extensions</a></p></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#step-6-poetry" id="id14">Step 6: Poetry</a></p></li>
-<li><p><a class="reference internal" href="#step-7-vs-code" id="id15">Step 7: VS Code</a></p></li>
-<li><p><a class="reference internal" href="#step-8-vs-code-extensions" id="id16">Step 8: VS Code extensions</a></p></li>
+<li><p><a class="reference internal" href="#troubleshooting" id="id19">Troubleshooting</a></p>
+<ul>
+<li><p><a class="reference internal" href="#issue-a-arm64-apple-not-recognized" id="id20">Issue A: arm64-apple not recognized</a></p></li>
+<li><p><a class="reference internal" href="#issue-b-unexpected-output-of-arch-on-osx" id="id21">Issue B: Unexpected output of ‘arch’ on OSX</a></p></li>
+<li><p><a class="reference internal" href="#issue-c-sendfile-zipimport-bzip-lzma-errors" id="id22">Issue C: sendfile, zipimport, bzip, _lzma errors</a></p></li>
+<li><p><a class="reference internal" href="#issue-d-build-failed" id="id23">Issue D: BUILD FAILED</a></p></li>
 </ul>
 </li>
 </ul>
 </div>
 <section id="quickstart">
-<h2><a class="toc-backref" href="#id5">Quickstart</a><a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id9">Quickstart</a><a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference external" href="https://github.com/alissa-huskey/python-class-setup">Python Class Setup</a> tool will guide you step-by-step through
 the setup process.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[[</span> -d ~/.setup <span class="o">]]</span> <span class="o">||</span> git clone https://github.com/alissa-huskey/python-class-setup.git ~/.setup
@@ -708,9 +726,9 @@ the setup process.</p>
 <p><img alt="screenshot" src="../_images/python-class-setup.png" /></p>
 </section>
 <section id="steps">
-<h2><a class="toc-backref" href="#id6">Steps</a><a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id10">Steps</a><a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
 <section id="step-1-xcode">
-<h3><a class="toc-backref" href="#id7">Step 1: XCode</a><a class="headerlink" href="#step-1-xcode" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id11">Step 1: XCode</a><a class="headerlink" href="#step-1-xcode" title="Permalink to this headline">¶</a></h3>
 <p>XCode is the Apple IDE (integrated development environment), a tool for writing
 code. It also contains the foundational tools and libraries that other programs
 rely on, and that programmers use when writing code.</p>
@@ -735,7 +753,7 @@ After you follow the prompts, the download and installation will begin.</p>
 install XCode via the Apple App Store.</p>
 </section>
 <section id="step-2-find-create-your-startup-file">
-<h3><a class="toc-backref" href="#id8">Step 2: Find/create your startup file</a><a class="headerlink" href="#step-2-find-create-your-startup-file" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id12">Step 2: Find/create your startup file</a><a class="headerlink" href="#step-2-find-create-your-startup-file" title="Permalink to this headline">¶</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>You can run the <code class="docutils literal notranslate"><span class="pre">make-shellrc</span></code> tool to find and generate a startup file for
@@ -770,7 +788,7 @@ touch <span class="s2">&quot;</span><span class="si">${</span><span class="nv">i
 your file.</p>
 </section>
 <section id="step-3-homebrew">
-<h3><a class="toc-backref" href="#id9">Step 3: Homebrew</a><a class="headerlink" href="#step-3-homebrew" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id13">Step 3: Homebrew</a><a class="headerlink" href="#step-3-homebrew" title="Permalink to this headline">¶</a></h3>
 <p>Homebrew is a package manager for macOS.  It simplifies the installing,
 upgrading and uninstalling of software, especially tools used by developers.</p>
 <p>We’ll use this to install software in future steps.</p>
@@ -786,7 +804,7 @@ file.</p>
 <p>See the <a class="reference internal" href="homebrew.html"><span class="doc std std-doc">homebrew guide</span></a>.</p>
 </section>
 <section id="step-4-asdf">
-<h3><a class="toc-backref" href="#id10">Step 4: asdf</a><a class="headerlink" href="#step-4-asdf" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id14">Step 4: asdf</a><a class="headerlink" href="#step-4-asdf" title="Permalink to this headline">¶</a></h3>
 <p>asdf is a command line tool that lets you easily install and switch between
 multiple versions of Python or other languages.</p>
 <div class="literal-block-wrapper docutils container" id="id2">
@@ -800,18 +818,10 @@ brew install asdf
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> <span class="s2">&quot;</span><span class="k">$(</span>brew --prefix asdf<span class="k">)</span><span class="s2">/libexec/asdf.sh&quot;</span>
 </pre></div>
 </div>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://asdf-vm.com/manage/core.html">asdf docs</a></p></li>
-<li><p><a class="reference external" href="https://github.com/asdf-vm/asdf">github repo</a></p></li>
-<li><p><a class="reference external" href="https://github.com/danhper/asdf-python">python plugin</a></p></li>
-<li><p><a class="reference external" href="https://github.com/asdf-vm/asdf-plugins">asdf plugin repo</a></p></li>
-</ul>
-</div>
+<p>See the <a class="reference internal" href="asdf.html"><span class="doc std std-doc">asdf guide</span></a>.</p>
 </section>
 <section id="step-5-python">
-<h3><a class="toc-backref" href="#id11">Step 5: Python</a><a class="headerlink" href="#step-5-python" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id15">Step 5: Python</a><a class="headerlink" href="#step-5-python" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>This is for installing Python 3.8, but feel free to replace <code class="docutils literal notranslate"><span class="pre">3.8.11</span></code> with any
 version in <code class="docutils literal notranslate"><span class="pre">asdf</span> <span class="pre">list</span> <span class="pre">all</span> <span class="pre">python</span></code>.</p>
@@ -824,12 +834,55 @@ asdf install python <span class="m">3</span>.8.11
 asdf global python <span class="m">3</span>.8.11
 </pre></div>
 </div>
+</section>
+<section id="step-6-poetry">
+<h3><a class="toc-backref" href="#id16">Step 6: Poetry</a><a class="headerlink" href="#step-6-poetry" title="Permalink to this headline">¶</a></h3>
+<p>Poetry is a tool that helps you make keep track of and install the dependencies
+needed for each project.</p>
+<p>This step is optional.</p>
+<p>To install poetry run the following:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sSL https://install.python-poetry.org <span class="p">|</span> python3 -
+</pre></div>
+</div>
+<p>Then add to your startup file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.poetry/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<span class="nb">export</span> PATH
+</pre></div>
+</div>
+<p>See the full <a class="reference internal" href="poetry.html"><span class="doc std std-doc">Poetry Guide</span></a>.</p>
+</section>
+<section id="step-7-vs-code">
+<h3><a class="toc-backref" href="#id17">Step 7: VS Code</a><a class="headerlink" href="#step-7-vs-code" title="Permalink to this headline">¶</a></h3>
+<p>Install Visual Studio Code via homebrew:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew install --cask visual-studio-code
+</pre></div>
+</div>
+<p>Or you can <a class="reference external" href="https://code.visualstudio.com/#alt-downloads">download</a> the package from the Visual Studio Code website.</p>
+<p>See the <a class="reference internal" href="vscode.html"><span class="doc std std-doc">VS Code Intro</span></a>.</p>
+</section>
+<section id="step-8-vs-code-extensions">
+<h3><a class="toc-backref" href="#id18">Step 8: VS Code extensions</a><a class="headerlink" href="#step-8-vs-code-extensions" title="Permalink to this headline">¶</a></h3>
+<p>You can install the recommended extensions via the <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=alissahuskey.vscode-python-class">PythonClass</a> extension.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>code --install-extension alissahuskey.vscode-python-class
+</pre></div>
+</div>
+</section>
+</section>
 <section id="troubleshooting">
-<h4><a class="toc-backref" href="#id12">Troubleshooting</a><a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h4>
-<section id="issue-arm64-apple-not-recognized">
-<h5><a class="toc-backref" href="#id13">Issue: arm64-apple not recognized</a><a class="headerlink" href="#issue-arm64-apple-not-recognized" title="Permalink to this headline">¶</a></h5>
+<h2><a class="toc-backref" href="#id19">Troubleshooting</a><a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<p>This section is for various issues installing Python on macs.</p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#issue-a-arm64-apple-not-recognized" id="id24">Issue A: arm64-apple not recognized</a></p></li>
+<li><p><a class="reference internal" href="#issue-b-unexpected-output-of-arch-on-osx" id="id25">Issue B: Unexpected output of ‘arch’ on OSX</a></p></li>
+<li><p><a class="reference internal" href="#issue-c-sendfile-zipimport-bzip-lzma-errors" id="id26">Issue C: sendfile, zipimport, bzip, _lzma errors</a></p></li>
+<li><p><a class="reference internal" href="#issue-d-build-failed" id="id27">Issue D: BUILD FAILED</a></p></li>
+</ul>
+</div>
+<section id="issue-a-arm64-apple-not-recognized">
+<h3><a class="toc-backref" href="#id24">Issue A: arm64-apple not recognized</a><a class="headerlink" href="#issue-a-arm64-apple-not-recognized" title="Permalink to this headline">¶</a></h3>
 <p>The install fails before building with the error</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Invalid configuration arm64-apple-darwin21.3.0: machine arm64-apple not recognized
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">Invalid</span> <span class="n">configuration</span> <span class="n">arm64</span><span class="o">-</span><span class="n">apple</span><span class="o">-</span><span class="n">darwin21</span><span class="mf">.3.0</span><span class="p">:</span> <span class="n">machine</span> <span class="n">arm64</span><span class="o">-</span><span class="n">apple</span> <span class="ow">not</span> <span class="n">recognized</span>
 </pre></div>
 </div>
 <details class="sphinx-bs dropdown card mb-3">
@@ -864,8 +917,8 @@ Solution<div class="summary-down docutils">
 (from the <code class="docutils literal notranslate"><span class="pre">coreutils</span></code> homebrew package) is installed.</p>
 <p class="card-text">There is a patch for this that can be applied on install.</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="564a1835-0fc3-4166-8916-c8cd601ada57" name="c1ec22b2-c8c3-4bfb-892d-4beec14d8927" type="radio">
-</input><label class="tabbed-label" for="564a1835-0fc3-4166-8916-c8cd601ada57">
+<input checked="checked" id="98683d1a-ca18-439a-b037-b5901b8d1ed6" name="61d50f67-a8e0-42ec-a302-9424eab5756c" type="radio">
+</input><label class="tabbed-label" for="98683d1a-ca18-439a-b037-b5901b8d1ed6">
 asdf</label><div class="tabbed-content docutils">
 <p class="card-text">Apply the patch by setting the <code class="docutils literal notranslate"><span class="pre">ASDF_PYTHON_PATCH_URL</span></code> environment variable.</p>
 <div class="literal-block-wrapper docutils container" id="id3">
@@ -876,8 +929,8 @@ asdf install python <span class="m">3</span>.8.11
 </div>
 </div>
 </div>
-<input id="b2e7a2f9-1834-4e2a-97ad-5cbe72b984d6" name="c1ec22b2-c8c3-4bfb-892d-4beec14d8927" type="radio">
-</input><label class="tabbed-label" for="b2e7a2f9-1834-4e2a-97ad-5cbe72b984d6">
+<input id="cebaa565-bf87-4eb8-a712-966c311dc3b4" name="61d50f67-a8e0-42ec-a302-9424eab5756c" type="radio">
+</input><label class="tabbed-label" for="cebaa565-bf87-4eb8-a712-966c311dc3b4">
 pyenv</label><div class="tabbed-content docutils">
 <p class="card-text">Apply the patch using the –patch flag.</p>
 <div class="literal-block-wrapper docutils container" id="id4">
@@ -899,38 +952,169 @@ pyenv</label><div class="tabbed-content docutils">
 </ul>
 </div>
 </section>
-</section>
-</section>
-<section id="step-6-poetry">
-<h3><a class="toc-backref" href="#id14">Step 6: Poetry</a><a class="headerlink" href="#step-6-poetry" title="Permalink to this headline">¶</a></h3>
-<p>Poetry is a tool that helps you make keep track of and install the dependencies
-needed for each project.</p>
-<p>This step is optional.</p>
-<p>To install poetry run the following:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sSL https://install.python-poetry.org <span class="p">|</span> python3 -
+<section id="issue-b-unexpected-output-of-arch-on-osx">
+<h3><a class="toc-backref" href="#id25">Issue B: Unexpected output of ‘arch’ on OSX</a><a class="headerlink" href="#issue-b-unexpected-output-of-arch-on-osx" title="Permalink to this headline">¶</a></h3>
+<p>The install fails before building with the error</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">Unexpected</span> <span class="n">output</span> <span class="n">of</span> <span class="s1">&#39;arch&#39;</span> <span class="n">on</span> <span class="n">OSX</span>
 </pre></div>
 </div>
-<p>Then add to your startup file:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.poetry/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
-<span class="nb">export</span> PATH
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pyenv/pyenv/issues/1768">python bug report</a></p></li>
+</ul>
+</div>
+<details class="sphinx-bs dropdown card mb-3" open="open">
+<summary class="summary-title card-header">
+Solution<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">This happens on macs with the M1 chip if it is not supported for that
+particular version.</p>
+<p class="card-text">There may be a patch available <a class="reference external" href="https://github.com/Homebrew/formula-patches/tree/master/python">here</a> depending on your version.</p>
+<div class="tabbed-set docutils">
+<input checked="checked" id="95c7770c-9e18-4500-8c06-d0d02f0dad44" name="c9a88678-1bbb-48bd-8e30-fac2e3ca74b9" type="radio">
+</input><label class="tabbed-label" for="95c7770c-9e18-4500-8c06-d0d02f0dad44">
+asdf</label><div class="tabbed-content docutils">
+<p class="card-text">Apply the patch by setting the <code class="docutils literal notranslate"><span class="pre">ASDF_PYTHON_PATCH_URL</span></code> environment variable.</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-number">Listing 496 </span><span class="caption-text">Command line</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">ASDF_PYTHON_PATCH_URL</span><span class="o">=</span><span class="s2">&quot;PATCH_URL&quot;</span>
+asdf install python <span class="m">3</span>.8.11
 </pre></div>
 </div>
-<p>See the full <a class="reference internal" href="poetry.html"><span class="doc std std-doc">Poetry Guide</span></a>.</p>
-</section>
-<section id="step-7-vs-code">
-<h3><a class="toc-backref" href="#id15">Step 7: VS Code</a><a class="headerlink" href="#step-7-vs-code" title="Permalink to this headline">¶</a></h3>
-<p>Install Visual Studio Code via homebrew:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew install --cask visual-studio-code
+</div>
+</div>
+<input id="98cc6315-6282-4b22-b628-0567d4e75a16" name="c9a88678-1bbb-48bd-8e30-fac2e3ca74b9" type="radio">
+</input><label class="tabbed-label" for="98cc6315-6282-4b22-b628-0567d4e75a16">
+pyenv</label><div class="tabbed-content docutils">
+<p class="card-text">Apply the patch using the –patch flag.</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-number">Listing 497 </span><span class="caption-text">Command line</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pyenv install --patch <span class="m">3</span>.8.11 &lt; <span class="se">\</span>
+  &lt;<span class="o">(</span>curl -sSL PATCH_URL<span class="o">)</span>
 </pre></div>
 </div>
-<p>Or you can <a class="reference external" href="https://code.visualstudio.com/#alt-downloads">download</a> the package from the Visual Studio Code website.</p>
-<p>See the <a class="reference internal" href="vscode.html"><span class="doc std std-doc">VS Code Intro</span></a>.</p>
+</div>
+</div>
+</div>
+</div>
+</details><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pyenv/pyenv/issues/1768">pyenv bug report</a></p></li>
+</ul>
+</div>
 </section>
-<section id="step-8-vs-code-extensions">
-<h3><a class="toc-backref" href="#id16">Step 8: VS Code extensions</a><a class="headerlink" href="#step-8-vs-code-extensions" title="Permalink to this headline">¶</a></h3>
-<p>You can install the recommended extensions via the <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=alissahuskey.vscode-python-class">PythonClass</a> extension.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>code --install-extension alissahuskey.vscode-python-class
+<section id="issue-c-sendfile-zipimport-bzip-lzma-errors">
+<h3><a class="toc-backref" href="#id26">Issue C: sendfile, zipimport, bzip, _lzma errors</a><a class="headerlink" href="#issue-c-sendfile-zipimport-bzip-lzma-errors" title="Permalink to this headline">¶</a></h3>
+<p>The install fails when building with one of the following errors:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">implicit</span> <span class="n">declaration</span> <span class="n">of</span> <span class="n">function</span> <span class="s1">&#39;sendfile&#39;</span> <span class="ow">is</span> <span class="n">invalid</span> <span class="ow">in</span> <span class="n">C99</span>
 </pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">zipimport</span><span class="o">.</span><span class="n">ZipImportError</span><span class="p">:</span> <span class="n">can</span><span class="s1">&#39;t decompress data; zlib not available</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  The Python bz2 extension was not compiled. Missing the bzip2 lib?
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  No module named ‘_lzma’
+</pre></div>
+</div>
+<details class="sphinx-bs dropdown card mb-3" open="open">
+<summary class="summary-title card-header">
+Solution<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">These errors happen either because some dependencies are not installed, the
+dependency that is installed is broken in some way, or the python build cannot
+find them.</p>
+<p class="card-text">First, install or reinstall all dependencies.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> pkg <span class="k">in</span> zlib openssl readline xz bzip2<span class="p">;</span> <span class="k">do</span> 
+    brew uninstall <span class="nv">$pkg</span> <span class="m">2</span>&gt; /dev/null
+    brew install <span class="nv">$pkg</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+<p class="card-text">Then use this script to generate a <code class="docutils literal notranslate"><span class="pre">.flags</span></code> file.  This contains shell commands
+to set the <code class="docutils literal notranslate"><span class="pre">CFLAGS</span></code> and <code class="docutils literal notranslate"><span class="pre">LDFLAGS</span></code> environment variables so that they contain
+the paths to the locations of all dependencies on your system.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sSl https://raw.githubusercontent.com/alissa-huskey/python-class-setup/main/bin/flags.sh <span class="p">|</span> bash
+</pre></div>
+</div>
+<p class="card-text">Apply the envionment varibles to your current terminal session by sourcing the
+file, then install Python the way you normally would. After you’re done, you
+can remove the <code class="docutils literal notranslate"><span class="pre">.flags</span></code> file if you want.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> .flags
+asdf install python VERSION <span class="o">&amp;&amp;</span> rm .flags
+</pre></div>
+</div>
+</div>
+</details><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pyenv/pyenv/issues/1740">pyenv bug report #1740</a></p></li>
+<li><p><a class="reference external" href="https://github.com/pyenv/pyenv/issues/1737">puenv bug report #1737</a></p></li>
+<li><p><a class="reference external" href="https://medium.com/dive-into-ml-ai/managing-issues-of-macos-and-pyenv-a78ce1e85e9d">Managing macOS + python issues</a></p></li>
+</ul>
+</div>
+</section>
+<section id="issue-d-build-failed">
+<h3><a class="toc-backref" href="#id27">Issue D: BUILD FAILED</a><a class="headerlink" href="#issue-d-build-failed" title="Permalink to this headline">¶</a></h3>
+<p>The install fails before building with an error that looks like the following
+with no other useful error messages.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">BUILD</span> <span class="n">FAILED</span> <span class="p">(</span><span class="n">OS</span> <span class="n">X</span> <span class="n">XX</span><span class="o">.</span><span class="n">X</span> <span class="n">using</span> <span class="n">python</span><span class="o">-</span><span class="n">build</span> <span class="n">XXXXXXXX</span><span class="p">)</span>
+</pre></div>
+</div>
+<details class="sphinx-bs dropdown card mb-3" open="open">
+<summary class="summary-title card-header">
+Solution<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">This happens on macOS 11+ because the configure script searches for a release
+version (from <code class="docutils literal notranslate"><span class="pre">uname</span> <span class="pre">-r</span></code>) of <code class="docutils literal notranslate"><span class="pre">1*.*</span></code> and as of macOS 11 the release version is
+<code class="docutils literal notranslate"><span class="pre">2*.*</span></code>.</p>
+<p class="card-text">There is a patch for this that can be applied on install.</p>
+<div class="tabbed-set docutils">
+<input checked="checked" id="64edaffe-5b20-43d7-bc71-b28a63ffb3e2" name="268c114f-ad9c-4c47-bad5-4974f7f35f05" type="radio">
+</input><label class="tabbed-label" for="64edaffe-5b20-43d7-bc71-b28a63ffb3e2">
+asdf</label><div class="tabbed-content docutils">
+<p class="card-text">Apply the patch by setting the <code class="docutils literal notranslate"><span class="pre">ASDF_PYTHON_PATCH_URL</span></code> environment variable.</p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-number">Listing 498 </span><span class="caption-text">Command line</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">ASDF_PYTHON_PATCH_URL</span><span class="o">=</span><span class="s2">&quot;https://github.com/python/cpython/commit/8ea6353.patch?full_index=1&quot;</span>
+asdf install python <span class="m">3</span>.8.11
+</pre></div>
+</div>
+</div>
+</div>
+<input id="9c0924a8-3ff5-4ce1-86d2-4d9ba1b02b56" name="268c114f-ad9c-4c47-bad5-4974f7f35f05" type="radio">
+</input><label class="tabbed-label" for="9c0924a8-3ff5-4ce1-86d2-4d9ba1b02b56">
+pyenv</label><div class="tabbed-content docutils">
+<p class="card-text">Apply the patch using the –patch flag.</p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-number">Listing 499 </span><span class="caption-text">Command line</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pyenv install --patch <span class="m">3</span>.8.11 &lt; <span class="se">\</span>
+  &lt;<span class="o">(</span>curl -sSL https://github.com/python/cpython/commit/8ea6353.patch?full_index<span class="o">=</span><span class="m">1</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</details><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pyenv/pyenv/issues/1737">pyenv bug report</a></p></li>
+<li><p><a class="reference external" href="https://bugs.python.org/issue41100">python bug report</a></p></li>
+<li><p><a class="reference external" href="https://github.com/python/cpython/commit/8ea6353.patch?full_index=1">patch</a></p></li>
+</ul>
 </div>
 </section>
 </section>

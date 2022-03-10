@@ -144,16 +144,7 @@ Then you'll need to add the following line to your startup file:
 source "$(brew --prefix asdf)/libexec/asdf.sh"
 ```
 
-% See the [asdf guide](asdf.md).
-
-```{seealso}
-
-* [asdf docs](https://asdf-vm.com/manage/core.html)
-* [github repo](https://github.com/asdf-vm/asdf)
-* [python plugin](https://github.com/danhper/asdf-python)
-* [asdf plugin repo](https://github.com/asdf-vm/asdf-plugins)
-
-```
+See the [asdf guide](asdf.md).
 
 ### Step 5: Python
 
@@ -169,13 +160,70 @@ asdf install python 3.8.11
 asdf global python 3.8.11
 ```
 
-#### Troubleshooting
 
-##### Issue: arm64-apple not recognized
+### Step 6: Poetry
+
+Poetry is a tool that helps you make keep track of and install the dependencies
+needed for each project.
+
+This step is optional.
+
+To install poetry run the following:
+
+```bash
+curl -sSL https://install.python-poetry.org | python3 -
+```
+
+Then add to your startup file:
+
+```bash
+PATH="$HOME/.poetry/bin:$PATH"
+export PATH
+```
+
+See the full [Poetry Guide](poetry.md).
+
+### Step 7: VS Code
+
+Install Visual Studio Code via homebrew:
+
+```bash
+brew install --cask visual-studio-code
+```
+
+Or you can [download][vscode-download] the package from the Visual Studio Code website.
+
+See the [VS Code Intro](vscode.md).
+
+[vscode-download]: https://code.visualstudio.com/#alt-downloads
+
+### Step 8: VS Code extensions
+
+You can install the recommended extensions via the [PythonClass][vscode-ext] extension.
+
+[vscode-ext]: https://marketplace.visualstudio.com/items?itemName=alissahuskey.vscode-python-class
+
+```bash
+code --install-extension alissahuskey.vscode-python-class
+```
+
+Troubleshooting
+---------------
+
+This section is for various issues installing Python on macs.
+
+```{contents}
+:backlinks: entry
+:local:
+```
+
+### Issue A: arm64-apple not recognized
 
 The install fails before building with the error
 
-    Invalid configuration arm64-apple-darwin21.3.0: machine arm64-apple not recognized
+```
+  Invalid configuration arm64-apple-darwin21.3.0: machine arm64-apple not recognized
+```
 
 :::{dropdown} Error
 :title: card-title
@@ -238,51 +286,178 @@ pyenv install --patch 3.8.11 < \
 
 :::
 
-### Step 6: Poetry
+### Issue B: Unexpected output of 'arch' on OSX
 
-Poetry is a tool that helps you make keep track of and install the dependencies
-needed for each project.
+The install fails before building with the error
 
-This step is optional.
-
-To install poetry run the following:
-
-```bash
-curl -sSL https://install.python-poetry.org | python3 -
+```
+    Unexpected output of 'arch' on OSX
 ```
 
-Then add to your startup file:
+:::{seealso}
 
-```bash
-PATH="$HOME/.poetry/bin:$PATH"
-export PATH
+* [python bug report](https://github.com/pyenv/pyenv/issues/1768)
+
+:::
+
+:::{dropdown} Solution
+:open:
+
+This happens on macs with the M1 chip if it is not supported for that
+particular version.
+
+There may be a patch available [here][patches] depending on your version.
+
+[patches]: https://github.com/Homebrew/formula-patches/tree/master/python
+
+`````{tabbed} asdf
+
+Apply the patch by setting the `ASDF_PYTHON_PATCH_URL` environment variable.
+
+```{code-block} bash
+:caption: Command line
+export ASDF_PYTHON_PATCH_URL="PATCH_URL"
+asdf install python 3.8.11
 ```
 
-See the full [Poetry Guide](poetry.md).
+`````
 
-### Step 7: VS Code
+`````{tabbed} pyenv
 
-Install Visual Studio Code via homebrew:
+Apply the patch using the --patch flag.
 
-```bash
-brew install --cask visual-studio-code
+```{code-block} bash
+:caption: Command line
+pyenv install --patch 3.8.11 < \
+  <(curl -sSL PATCH_URL)
 ```
 
-Or you can [download][vscode-download] the package from the Visual Studio Code website.
+`````
 
-See the [VS Code Intro](vscode.md).
+:::
 
-[vscode-download]: https://code.visualstudio.com/#alt-downloads
+:::{seealso}
 
-### Step 8: VS Code extensions
+* [pyenv bug report](https://github.com/pyenv/pyenv/issues/1768)
 
-You can install the recommended extensions via the [PythonClass][vscode-ext] extension.
+:::
 
-[vscode-ext]: https://marketplace.visualstudio.com/items?itemName=alissahuskey.vscode-python-class
+### Issue C: sendfile, zipimport, bzip, _lzma errors
+
+The install fails when building with one of the following errors:
+
+```
+  implicit declaration of function 'sendfile' is invalid in C99
+```
+
+```
+  zipimport.ZipImportError: can't decompress data; zlib not available
+```
+
+```
+  The Python bz2 extension was not compiled. Missing the bzip2 lib?
+```
+
+```
+  No module named ‘_lzma’
+```
+
+
+:::{dropdown} Solution
+:open:
+
+These errors happen either because some dependencies are not installed, the
+dependency that is installed is broken in some way, or the python build cannot
+find them.
+
+First, install or reinstall all dependencies.
 
 ```bash
-code --install-extension alissahuskey.vscode-python-class
+for pkg in zlib openssl readline xz bzip2; do 
+    brew uninstall $pkg 2> /dev/null
+    brew install $pkg
+done
 ```
+
+Then use this script to generate a `.flags` file.  This contains shell commands
+to set the `CFLAGS` and `LDFLAGS` environment variables so that they contain
+the paths to the locations of all dependencies on your system.
+
+```bash
+curl -sSl https://raw.githubusercontent.com/alissa-huskey/python-class-setup/main/bin/flags.sh | bash
+```
+
+Apply the envionment varibles to your current terminal session by sourcing the
+file, then install Python the way you normally would. After you're done, you
+can remove the `.flags` file if you want.
+
+```bash
+source .flags
+asdf install python VERSION && rm .flags
+```
+
+:::
+
+:::{seealso}
+
+* [pyenv bug report #1740](https://github.com/pyenv/pyenv/issues/1740)
+* [puenv bug report #1737](https://github.com/pyenv/pyenv/issues/1737)
+* [Managing macOS + python issues](https://medium.com/dive-into-ml-ai/managing-issues-of-macos-and-pyenv-a78ce1e85e9d)
+
+:::
+
+### Issue D: BUILD FAILED
+
+The install fails before building with an error that looks like the following
+with no other useful error messages.
+
+```
+  BUILD FAILED (OS X XX.X using python-build XXXXXXXX)
+```
+
+
+:::{dropdown} Solution
+:open:
+
+This happens on macOS 11+ because the configure script searches for a release
+version (from `uname -r`) of `1*.*` and as of macOS 11 the release version is
+`2*.*`.
+
+There is a patch for this that can be applied on install.
+
+`````{tabbed} asdf
+
+Apply the patch by setting the `ASDF_PYTHON_PATCH_URL` environment variable.
+
+```{code-block} bash
+:caption: Command line
+export ASDF_PYTHON_PATCH_URL="https://github.com/python/cpython/commit/8ea6353.patch?full_index=1"
+asdf install python 3.8.11
+```
+
+`````
+
+`````{tabbed} pyenv
+
+Apply the patch using the --patch flag.
+
+```{code-block} bash
+:caption: Command line
+pyenv install --patch 3.8.11 < \
+  <(curl -sSL https://github.com/python/cpython/commit/8ea6353.patch?full_index=1)
+```
+
+`````
+
+:::
+
+:::{seealso}
+
+* [pyenv bug report](https://github.com/pyenv/pyenv/issues/1737)
+* [python bug report](https://bugs.python.org/issue41100)
+* [patch](https://github.com/python/cpython/commit/8ea6353.patch?full_index=1)
+
+:::
 
 
 % #### TODO
