@@ -4,11 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Using a Debugger &#8212; Python Class</title>
     
-  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -20,14 +20,10 @@
 
     
       
-  <link rel="stylesheet"
-    href="../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -40,7 +36,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -53,7 +49,7 @@
     <script src="../_static/x-frame-bypass.js"></script>
     <script src="../_static/asciinema-player.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -65,23 +61,17 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Data Inspection" href="data-inspection.html" />
     <link rel="prev" title="Testing" href="testing.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
 
-
-<!-- Opengraph tags -->
-<meta property="og:url"         content="https://alissa-huskey.github.io/python-class/practices/debugging.html" />
-<meta property="og:type"        content="article" />
-<meta property="og:title"       content="Using a Debugger" />
-<meta property="og:description" content="Using a Debugger  In the Reading Code lesson we learned how to walk through code step by step and figure out how a line is evaluated and what the value of a var" />
-
-
-<meta name="twitter:card" content="summary" />
-
-
+    <!-- Google Analytics -->
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -90,32 +80,43 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../index.html">
-  
-  
-  <h1 class="site-logo" id="site-title">Python Class</h1>
-  
-</a>
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Python Class</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <p>
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p class="caption">
  <span class="caption-text">
   Lessons
  </span>
 </p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1 collapsible-parent">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../lessons/fundamentals.html">
    Fundamentals
   </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
   <ul>
-   <li class="toctree-l2 collapsible-parent">
+   <li class="toctree-l2 has-children">
     <a class="reference internal" href="../lessons/syntax.html">
      Syntax
     </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
     <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="../lessons/expressions.html">
@@ -133,13 +134,16 @@ const thebe_selector_output = ".output, .cell_output"
       </a>
      </li>
     </ul>
-    <i class="fas fa-chevron-up">
-    </i>
    </li>
-   <li class="toctree-l2 collapsible-parent">
+   <li class="toctree-l2 has-children">
     <a class="reference internal" href="../lessons/flow-control.html">
      Flow Control
     </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
     <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="../lessons/conditional-statements.html">
@@ -182,13 +186,16 @@ const thebe_selector_output = ".output, .cell_output"
       </a>
      </li>
     </ul>
-    <i class="fas fa-chevron-up">
-    </i>
    </li>
-   <li class="toctree-l2 collapsible-parent">
+   <li class="toctree-l2 has-children">
     <a class="reference internal" href="../lessons/data-types/index.html">
      Data Types
     </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
     <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="../lessons/data-types/objects.html">
@@ -200,11 +207,16 @@ const thebe_selector_output = ".output, .cell_output"
        Numeric Types
       </a>
      </li>
-     <li class="toctree-l3 collapsible-parent">
+     <li class="toctree-l3 has-children">
       <a class="reference internal" href="../lessons/data-types/containers.html">
        Containers
       </a>
-      <ul class="collapse-ul">
+      <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+      <label for="toctree-checkbox-5">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
        <li class="toctree-l4">
         <a class="reference internal" href="../lessons/data-types/lists.html">
          Lists
@@ -221,17 +233,18 @@ const thebe_selector_output = ".output, .cell_output"
         </a>
        </li>
       </ul>
-      <i class="fas fa-chevron-down">
-      </i>
      </li>
     </ul>
-    <i class="fas fa-chevron-up">
-    </i>
    </li>
-   <li class="toctree-l2 collapsible-parent">
+   <li class="toctree-l2 has-children">
     <a class="reference internal" href="../lessons/files.html">
      Files
     </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
     <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="../lessons/file-io.html">
@@ -249,17 +262,18 @@ const thebe_selector_output = ".output, .cell_output"
       </a>
      </li>
     </ul>
-    <i class="fas fa-chevron-up">
-    </i>
    </li>
   </ul>
-  <i class="fas fa-chevron-up">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../lessons/in-depth/index.html">
    In Depth
   </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../lessons/cli.html">
@@ -292,13 +306,16 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-up">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../lessons/data/index.html">
    Data
   </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../lessons/data/functional-programming.html">
@@ -306,13 +323,16 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-up">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../lessons/misc.html">
    Misc
   </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../lessons/dates.html">
@@ -330,13 +350,16 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-up">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../lessons/game-book.html">
    Invent Games Book
   </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../lessons/03_guess_the_number.html">
@@ -349,16 +372,14 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-up">
-  </i>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Practices
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="problem-solving.html">
    Problem Solving
@@ -380,12 +401,12 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Tools
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../tools/terminal.html">
    Terminal
@@ -452,12 +473,12 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Reference
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../reference/recommended.html">
    Recommended Resources
@@ -481,17 +502,15 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/template.py">
    Script Template
-   <i class="fas fa-external-link-alt">
-   </i>
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Exercises
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../exercises/program-flow.html">
    Program Flow Exercises
@@ -518,12 +537,12 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Admin
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../orphans.html">
    Orphaned Terms
@@ -531,6 +550,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
+    </div>
 </nav> <!-- To handle the deprecated key -->
 
 </div>
@@ -574,12 +594,12 @@ const thebe_selector_output = ".output, .cell_output"
     </div>
 </div>
 
-
             <!-- Full screen (wrap in <a> to have style consistency -->
-            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                    title="Fullscreen mode"><i
-                        class="fas fa-expand"></i></button></a>
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
 
@@ -588,12 +608,11 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i>
-            Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#part-1-setup">
    Part 1: Setup
@@ -1120,8 +1139,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-        </nav>
-        
+            </nav>
         </div>
     </div>
 </div>
@@ -1130,7 +1148,7 @@ const thebe_selector_output = ".output, .cell_output"
         
               <div>
                 
-  <section id="using-a-debugger">
+  <div class="section" id="using-a-debugger">
 <h1>Using a Debugger<a class="headerlink" href="#using-a-debugger" title="Permalink to this headline">¶</a></h1>
 <p>In the <a class="reference internal" href="../lessons/reading-code.html"><span class="doc std std-doc">Reading Code</span></a> lesson we learned how to walk through code step by
 step and figure out how a line is evaluated and what the value of a variable
@@ -1143,9 +1161,9 @@ point you want to know more about. Then the program is paused so you can see
 what is in the scope at that point and experiment with code in the context of
 that line. From there you can go forward or backwards in the code or continue
 on until the next breakpoint.</p>
-<section id="part-1-setup">
+<div class="section" id="part-1-setup">
 <h2>Part 1: Setup<a class="headerlink" href="#part-1-setup" title="Permalink to this headline">¶</a></h2>
-<section id="step-1-create-hello-world">
+<div class="section" id="step-1-create-hello-world">
 <h3>Step 1: Create Hello World<a class="headerlink" href="#step-1-create-hello-world" title="Permalink to this headline">¶</a></h3>
 <p>In VS Code, create a file named <code class="file docutils literal notranslate"><span class="pre">hello_world.py</span></code> and paste the
 following code and save it.</p>
@@ -1157,8 +1175,8 @@ following code and save it.</p>
 </pre></div>
 </td></tr></table></div>
 </div>
-</section>
-<section id="step-2-configure">
+</div>
+<div class="section" id="step-2-configure">
 <h3>Step 2: Configure<a class="headerlink" href="#step-2-configure" title="Permalink to this headline">¶</a></h3>
 <p>The first time you run the debugger for a particular project you’ll need to
 configure it for that project. These settings are saved in the
@@ -1222,11 +1240,11 @@ around <code class="docutils literal notranslate"><span class="pre">redirectOutp
 </ul>
 </div>
 <p>V. Save the file then close it.</p>
-</section>
-</section>
-<section id="part-2-run-the-debugger">
+</div>
+</div>
+<div class="section" id="part-2-run-the-debugger">
 <h2>Part 2: Run the debugger<a class="headerlink" href="#part-2-run-the-debugger" title="Permalink to this headline">¶</a></h2>
-<section id="step-1-add-a-breakpoint">
+<div class="section" id="step-1-add-a-breakpoint">
 <h3>Step 1: Add a breakpoint<a class="headerlink" href="#step-1-add-a-breakpoint" title="Permalink to this headline">¶</a></h3>
 <p>The debugger will run the program normally until it hits a
 <a class="reference internal" href="#term-breakpoint"><span class="xref std std-term">breakpoint</span></a>, the place where we tell it to pause the program. Without
@@ -1236,8 +1254,8 @@ breakpoint.</p>
 you see a dim red dot. To add a breakpoint click the dot. It will change to
 solid red and stay there after you move your cursor.</p>
 <p><img alt="" src="https://code.visualstudio.com/assets/docs/python/tutorial/breakpoint-set.png" /></p>
-</section>
-<section id="step-2-start-the-debugger">
+</div>
+<div class="section" id="step-2-start-the-debugger">
 <h3>Step 2: Start the debugger<a class="headerlink" href="#step-2-start-the-debugger" title="Permalink to this headline">¶</a></h3>
 <div class="tip admonition">
 <p class="admonition-title">Shortcut Key</p>
@@ -1266,8 +1284,8 @@ configuration you just created. Click the play button to the left of
 <p>The debugger will stop at the first breakpoint in the program. The current line
 will be highlighted with a yellow arrow in the gutter.</p>
 <p><img alt="" src="../_images/debug-editor-current.png" /></p>
-</section>
-<section id="step-3-open-the-debug-console">
+</div>
+<div class="section" id="step-3-open-the-debug-console">
 <h3>Step 3: Open the debug console<a class="headerlink" href="#step-3-open-the-debug-console" title="Permalink to this headline">¶</a></h3>
 <div class="tip admonition">
 <p class="admonition-title">Shortcut Key</p>
@@ -1292,11 +1310,11 @@ panel.</p>
 <p>Your program output will be shown here in addition to in the
 <span class="guilabel">Terminal</span> while the debugger is running. (This behavior can be
 changed via the <code class="docutils literal notranslate"><span class="pre">redirectOutput</span></code> setting in the <code class="file docutils literal notranslate"><span class="pre">launch.json</span></code> file.)</p>
-</section>
-</section>
-<section id="part-3-inspecting-data">
+</div>
+</div>
+<div class="section" id="part-3-inspecting-data">
 <h2>Part 3: Inspecting data<a class="headerlink" href="#part-3-inspecting-data" title="Permalink to this headline">¶</a></h2>
-<section id="step-1-variables-in-the-sidebar">
+<div class="section" id="step-1-variables-in-the-sidebar">
 <h3>Step 1: Variables in the sidebar<a class="headerlink" href="#step-1-variables-in-the-sidebar" title="Permalink to this headline">¶</a></h3>
 <p>The <span class="guilabel">Variables</span> section in the sidebar is just like the Variables box
 from the <a class="reference internal" href="../lessons/reading-code.html"><span class="doc std std-doc">Reading Code</span></a> lesson. It lists everything that is defined at
@@ -1304,15 +1322,15 @@ this point in the code execution and shows what it is set to.</p>
 <p>In our <code class="file docutils literal notranslate"><span class="pre">hello_world.py</span></code> debugging seession, you can see that the <code class="docutils literal notranslate"><span class="pre">msg</span></code>
 variable listed with the value of <code class="docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">World&quot;</span></code>.</p>
 <p><img alt="" src="https://code.visualstudio.com/assets/docs/python/tutorial/debug-step-02.png" /></p>
-</section>
-<section id="step-2-editor-hover">
+</div>
+<div class="section" id="step-2-editor-hover">
 <h3>Step 2: Editor hover<a class="headerlink" href="#step-2-editor-hover" title="Permalink to this headline">¶</a></h3>
 <p>You can also use the editor to see the current value of a variable. If you
 hover your cursor over the variable name <code class="docutils literal notranslate"><span class="pre">msg</span></code>, a tooltip will pop up showing
 you its current value.</p>
 <p><img alt="" src="../_images/debug-editor-hover.png" /></p>
-</section>
-<section id="step-3-the-debug-console">
+</div>
+<div class="section" id="step-3-the-debug-console">
 <h3>Step 3: The debug console<a class="headerlink" href="#step-3-the-debug-console" title="Permalink to this headline">¶</a></h3>
 <p>Finally, you can use the <span class="guilabel">DEBUG CONSOLE</span> to get more information
 about your data and more.</p>
@@ -1342,13 +1360,13 @@ then hit enter after each.</p>
 functions and methods. Suggestions will appear as you type, and you can use the
 up or down arrows to scroll through the list.</p>
 <p><img alt="" src="../_images/debug-console-suggestions.png" /></p>
-</section>
-</section>
-<section id="part-4-basic-stepping">
+</div>
+</div>
+<div class="section" id="part-4-basic-stepping">
 <h2>Part 4: Basic stepping<a class="headerlink" href="#part-4-basic-stepping" title="Permalink to this headline">¶</a></h2>
 <p>Let’s learn how to use the debugger to walk through the code just like we did
 in the <a class="reference internal" href="../lessons/reading-code.html"><span class="doc std std-doc">Reading Code</span></a> lesson.</p>
-<section id="step-4-1-modify-hello-world-py">
+<div class="section" id="step-4-1-modify-hello-world-py">
 <h3>Step 4.1: Modify <code class="file docutils literal notranslate"><span class="pre">hello_world.py</span></code><a class="headerlink" href="#step-4-1-modify-hello-world-py" title="Permalink to this headline">¶</a></h3>
 <p>Let’s start by adding to the <code class="file docutils literal notranslate"><span class="pre">hello_world.py</span></code> file so we have a little
 more to work with.</p>
@@ -1376,8 +1394,8 @@ more to work with.</p>
 <p>Now save the file and restart the debugger by clicking
 <img alt="debug-action-restart" src="../_images/debug-action-restart.png" /> on the debug toolbar or by using the <kbd class="kbd docutils literal notranslate">⇧⌘F5</kbd> /
 <kbd class="kbd docutils literal notranslate">⇧⌃F5</kbd> keyboard shortcut.</p>
-</section>
-<section id="step-4-2-step-into-line-4">
+</div>
+<div class="section" id="step-4-2-step-into-line-4">
 <h3>Step 4.2: Step Into – Line <code class="docutils literal notranslate"><span class="pre">4</span></code><a class="headerlink" href="#step-4-2-step-into-line-4" title="Permalink to this headline">¶</a></h3>
 <p>For this exercise we’ll be using the Step Into tool, which will step through the
 code one line at a time <em>in the order that they are executed</em>. The line highlighted in the
@@ -1391,8 +1409,8 @@ keyboard shortcut to go to the next line.</p>
 <span class="guilabel">DEBUG CONSOLE</span>.</p></li>
 </ul>
 <p><img alt="" src="../_images/debug-basic-stepping-a.png" /></p>
-</section>
-<section id="step-4-3-step-into-line-5">
+</div>
+<div class="section" id="step-4-3-step-into-line-5">
 <h3>Step 4.3: Step Into – Line <code class="docutils literal notranslate"><span class="pre">5</span></code><a class="headerlink" href="#step-4-3-step-into-line-5" title="Permalink to this headline">¶</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
@@ -1404,8 +1422,8 @@ keyboard shortcut to go to the next line.</p>
 section of the sidebar.</p></li>
 </ul>
 <p><img alt="" src="../_images/debug-basic-stepping-b.png" /></p>
-</section>
-<section id="step-4-4-step-into-line-7">
+</div>
+<div class="section" id="step-4-4-step-into-line-7">
 <h3>Step 4.4: Step Into – Line <code class="docutils literal notranslate"><span class="pre">7</span></code><a class="headerlink" href="#step-4-4-step-into-line-7" title="Permalink to this headline">¶</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
@@ -1416,8 +1434,8 @@ keyboard shortcut to go to the next line.</p>
 appears in the <span class="guilabel">DEBUG CONSOLE</span>.</p></li>
 </ul>
 <p><img alt="" src="../_images/debug-basic-stepping-c.png" /></p>
-</section>
-<section id="step-4-5-step-into-line-8">
+</div>
+<div class="section" id="step-4-5-step-into-line-8">
 <h3>Step 4.5: Step Into – Line <code class="docutils literal notranslate"><span class="pre">8</span></code><a class="headerlink" href="#step-4-5-step-into-line-8" title="Permalink to this headline">¶</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
@@ -1428,8 +1446,8 @@ keyboard shortcut to go to the next line.</p>
 <code class="docutils literal notranslate"><span class="pre">&quot;Farewell.&quot;</span></code> in the <span class="guilabel">Variables</span> section of the sidebar.</p></li>
 </ul>
 <p><img alt="" src="../_images/debug-basic-stepping-d.png" /></p>
-</section>
-<section id="step-4-6-continue">
+</div>
+<div class="section" id="step-4-6-continue">
 <h3>Step 4.6: Continue<a class="headerlink" href="#step-4-6-continue" title="Permalink to this headline">¶</a></h3>
 <p>Since this is the last line of the program use Continue to finish the progam.</p>
 <p>Click <img alt="debug-action-continue" src="../_images/debug-action-continue.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F5</kbd> keyboard
@@ -1441,13 +1459,13 @@ shortcut to go to continue to the end of the program.</p>
 <li><p>The debugger has finished.</p></li>
 </ul>
 <p><img alt="" src="../_images/debug-basic-stepping-e.png" /></p>
-</section>
-</section>
-<section id="part-5-steeping-through-loops">
+</div>
+</div>
+<div class="section" id="part-5-steeping-through-loops">
 <h2>Part 5: Steeping through loops<a class="headerlink" href="#part-5-steeping-through-loops" title="Permalink to this headline">¶</a></h2>
 <p>Let’s see what happens when we do the same exercise, but this time with a for
 loop.</p>
-<section id="step-5-1-modify-hello-world-py">
+<div class="section" id="step-5-1-modify-hello-world-py">
 <h3>Step 5.1: Modify <code class="file docutils literal notranslate"><span class="pre">hello_world.py</span></code><a class="headerlink" href="#step-5-1-modify-hello-world-py" title="Permalink to this headline">¶</a></h3>
 <p>Let’s change <code class="file docutils literal notranslate"><span class="pre">hello_world.py</span></code> so that it uses a for loop.</p>
 <p>Change the <code class="file docutils literal notranslate"><span class="pre">hello_world.py</span></code> file so that it contains the following.</p>
@@ -1476,18 +1494,18 @@ loop.</p>
 </td></tr></table></div>
 </div>
 <p>Save the file.</p>
-</section>
-<section id="step-5-2-modify-your-breakpoints">
+</div>
+<div class="section" id="step-5-2-modify-your-breakpoints">
 <h3>Step 5.2: Modify your breakpoints<a class="headerlink" href="#step-5-2-modify-your-breakpoints" title="Permalink to this headline">¶</a></h3>
 <p>Remove the breakpoint from line <code class="docutils literal notranslate"><span class="pre">2</span></code> then add a breakpoint to line <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
 <p><img alt="" src="../_images/debug-step-loops-breakpoints.png" /></p>
-</section>
-<section id="step-5-3-run-the-debugger">
+</div>
+<div class="section" id="step-5-3-run-the-debugger">
 <h3>Step 5.3: Run the debugger<a class="headerlink" href="#step-5-3-run-the-debugger" title="Permalink to this headline">¶</a></h3>
 <p>Run the debugger by clicking <img alt="debug-action-run" src="../_images/debug-action-run.png" /> in the <strong>sidebar</strong> or by using the <kbd class="kbd docutils literal notranslate">F5</kbd> keyboard shortcut.</p>
 <p><img alt="" src="../_images/debug-step-loops-run.png" /></p>
-</section>
-<section id="step-5-4-step-into-loop-1-line-7">
+</div>
+<div class="section" id="step-5-4-step-into-loop-1-line-7">
 <h3>Step 5.4: Step Into – Loop <code class="docutils literal notranslate"><span class="pre">1</span></code>, Line <code class="docutils literal notranslate"><span class="pre">7</span></code><a class="headerlink" href="#step-5-4-step-into-loop-1-line-7" title="Permalink to this headline">¶</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
@@ -1501,8 +1519,8 @@ listed in the <span class="guilabel">VARIABLES</span> section of the sidebar.</p
 <p>The <code class="docutils literal notranslate"><span class="pre">messages</span></code> variable in the sidebar now has a <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> symbol to the left of it.
 Click that to expand the section to see more details.</p>
 <p><img alt="" src="../_images/debug-step-loops-variables-expand.png" /></p>
-</section>
-<section id="step-5-5-step-into-loop-1-line-8">
+</div>
+<div class="section" id="step-5-5-step-into-loop-1-line-8">
 <h3>Step 5.5: Step Into – Loop <code class="docutils literal notranslate"><span class="pre">1</span></code>, Line <code class="docutils literal notranslate"><span class="pre">8</span></code><a class="headerlink" href="#step-5-5-step-into-loop-1-line-8" title="Permalink to this headline">¶</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
@@ -1513,8 +1531,8 @@ keyboard shortcut to go to the next line.</p>
 listed in the <span class="guilabel">VARIABLES</span> section of the sidebar.</p></li>
 </ul>
 <p><img alt="" src="../_images/debug-step-loops-b.png" /></p>
-</section>
-<section id="step-5-6-step-into-loop-2-line-7">
+</div>
+<div class="section" id="step-5-6-step-into-loop-2-line-7">
 <h3>Step 5.6: Step Into – Loop <code class="docutils literal notranslate"><span class="pre">2</span></code>, Line <code class="docutils literal notranslate"><span class="pre">7</span></code><a class="headerlink" href="#step-5-6-step-into-loop-2-line-7" title="Permalink to this headline">¶</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
@@ -1527,8 +1545,8 @@ line <code class="docutils literal notranslate"><span class="pre">7</span></code
 appears in the <span class="guilabel">DEBUG CONSOLE</span>.</p></li>
 </ul>
 <p><img alt="" src="../_images/debug-step-loops-c.png" /></p>
-</section>
-<section id="step-5-7-step-into-loop-2-line-8">
+</div>
+<div class="section" id="step-5-7-step-into-loop-2-line-8">
 <h3>Step 5.7: Step Into – Loop <code class="docutils literal notranslate"><span class="pre">2</span></code>, Line <code class="docutils literal notranslate"><span class="pre">8</span></code><a class="headerlink" href="#step-5-7-step-into-loop-2-line-8" title="Permalink to this headline">¶</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
@@ -1539,8 +1557,8 @@ keyboard shortcut to go to the next line.</p>
 updated in the <span class="guilabel">VARIABLES</span> section of the sidebar.</p></li>
 </ul>
 <p><img alt="" src="../_images/debug-step-loops-d.png" /></p>
-</section>
-<section id="step-5-8-step-into-loop-3-line-7">
+</div>
+<div class="section" id="step-5-8-step-into-loop-3-line-7">
 <h3>Step 5.8: Step Into – Loop <code class="docutils literal notranslate"><span class="pre">3</span></code>, Line <code class="docutils literal notranslate"><span class="pre">7</span></code><a class="headerlink" href="#step-5-8-step-into-loop-3-line-7" title="Permalink to this headline">¶</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
@@ -1552,8 +1570,8 @@ line <code class="docutils literal notranslate"><span class="pre">7</span></code
 <li><p>Lines <code class="docutils literal notranslate"><span class="pre">8</span></code> <strong>from the previous loop</strong> has been executed the output of <code class="docutils literal notranslate"><span class="pre">It's</span> <span class="pre">a</span> <span class="pre">lovely</span> <span class="pre">day</span> <span class="pre">for</span> <span class="pre">coding,</span> <span class="pre">isn't</span> <span class="pre">it?</span></code>
 appears in the <span class="guilabel">DEBUG CONSOLE</span>.</p></li>
 </ul>
-</section>
-<section id="step-5-9-step-into-loop-3-line-8">
+</div>
+<div class="section" id="step-5-9-step-into-loop-3-line-8">
 <h3>Step 5.9: Step Into – Loop <code class="docutils literal notranslate"><span class="pre">3</span></code>, Line <code class="docutils literal notranslate"><span class="pre">8</span></code><a class="headerlink" href="#step-5-9-step-into-loop-3-line-8" title="Permalink to this headline">¶</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
@@ -1564,8 +1582,8 @@ keyboard shortcut to go to the next line.</p>
 updated in the <span class="guilabel">VARIABLES</span> section of the sidebar.</p></li>
 </ul>
 <p><img alt="" src="../_images/debug-step-loops-f.png" /></p>
-</section>
-<section id="step-5-10-step-into-line-10">
+</div>
+<div class="section" id="step-5-10-step-into-line-10">
 <h3>Step 5.10: Step Into – Line <code class="docutils literal notranslate"><span class="pre">10</span></code><a class="headerlink" href="#step-5-10-step-into-line-10" title="Permalink to this headline">¶</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
@@ -1581,18 +1599,18 @@ appears in the <span class="guilabel">DEBUG CONSOLE</span>.</p></li>
 <p>The <code class="docutils literal notranslate"><span class="pre">pass</span></code> statement does nothing. I added it here so we can see the last line
 of the program in the debugger.</p>
 </div>
-</section>
-<section id="step-5-11-stop-the-debugger">
+</div>
+<div class="section" id="step-5-11-stop-the-debugger">
 <h3>Step 5.11: Stop the debugger<a class="headerlink" href="#step-5-11-stop-the-debugger" title="Permalink to this headline">¶</a></h3>
 <p>Click <img alt="debug-action-stop" src="../_images/debug-action-stop.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">⇧F5</kbd>
 keyboard shortcut to stop the debugger.</p>
-</section>
-</section>
-<section id="part-6-stepping-through-functions">
+</div>
+</div>
+<div class="section" id="part-6-stepping-through-functions">
 <h2>Part 6: Stepping through functions<a class="headerlink" href="#part-6-stepping-through-functions" title="Permalink to this headline">¶</a></h2>
 <p>Let’s see what happens when we do the same exercise, but this time with
 functions.</p>
-<section id="step-6-1-setup">
+<div class="section" id="step-6-1-setup">
 <h3>Step 6.1: Setup<a class="headerlink" href="#step-6-1-setup" title="Permalink to this headline">¶</a></h3>
 <p>Let’s change <code class="file docutils literal notranslate"><span class="pre">hello_world.py</span></code> so that it uses functions.</p>
 <p>Change the <code class="file docutils literal notranslate"><span class="pre">hello_world.py</span></code> file so that it contains the following.</p>
@@ -1631,19 +1649,19 @@ functions.</p>
 </td></tr></table></div>
 </div>
 <p>Save the file and make sure your breakpoint is on line <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
-</section>
-<section id="step-6-2-run-the-debugger">
+</div>
+<div class="section" id="step-6-2-run-the-debugger">
 <h3>Step 6.2: Run the debugger<a class="headerlink" href="#step-6-2-run-the-debugger" title="Permalink to this headline">¶</a></h3>
 <p>Run the debugger by clicking <img alt="debug-action-run" src="../_images/debug-action-run.png" /> in the <strong>sidebar</strong> or by using the <kbd class="kbd docutils literal notranslate">F5</kbd> keyboard shortcut.</p>
 <p><img alt="" src="../_images/debug-step-functions-a.png" /></p>
-</section>
-<section id="step-6-3-line-7">
+</div>
+<div class="section" id="step-6-3-line-7">
 <h3>Step 6.3: Line <code class="docutils literal notranslate"><span class="pre">7</span></code><a class="headerlink" href="#step-6-3-line-7" title="Permalink to this headline">¶</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p><img alt="" src="../_images/debug-step-functions-b.png" /></p>
-</section>
-<section id="step-6-4-line-10">
+</div>
+<div class="section" id="step-6-4-line-10">
 <h3>Step 6.4: Line <code class="docutils literal notranslate"><span class="pre">10</span></code><a class="headerlink" href="#step-6-4-line-10" title="Permalink to this headline">¶</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
@@ -1654,8 +1672,8 @@ left.</p>
 <p>You will see the <code class="docutils literal notranslate"><span class="pre">message</span></code> function listed. This is because lines <code class="docutils literal notranslate"><span class="pre">7</span></code>-<code class="docutils literal notranslate"><span class="pre">8</span></code>,
 where the <code class="docutils literal notranslate"><span class="pre">message()</span></code> function was defined, have been executed.</p>
 <p><img alt="" src="../_images/debug-step-functions-function-vars.png" /></p>
-</section>
-<section id="step-6-5-line-15">
+</div>
+<div class="section" id="step-6-5-line-15">
 <h3>Step 6.5: Line <code class="docutils literal notranslate"><span class="pre">15</span></code><a class="headerlink" href="#step-6-5-line-15" title="Permalink to this headline">¶</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
@@ -1666,77 +1684,77 @@ left.</p>
 <p>You will see the <code class="docutils literal notranslate"><span class="pre">main</span></code> function listed. This is because lines <code class="docutils literal notranslate"><span class="pre">10</span></code>-<code class="docutils literal notranslate"><span class="pre">13</span></code>,
 where the <code class="docutils literal notranslate"><span class="pre">main()</span></code> function was defined, have been executed.</p>
 <p><img alt="" src="../_images/debug-step-functions-d-function-vars.png" /></p>
-</section>
-<section id="step-6-6-main-line-11">
+</div>
+<div class="section" id="step-6-6-main-line-11">
 <h3>Step 6.6: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">11</span></code><a class="headerlink" href="#step-6-6-main-line-11" title="Permalink to this headline">¶</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p><img alt="" src="../_images/debug-step-functions-e.png" /></p>
-</section>
-<section id="step-6-7-main-message-line-8">
+</div>
+<div class="section" id="step-6-7-main-message-line-8">
 <h3>Step 6.7: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">message()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">8</span></code><a class="headerlink" href="#step-6-7-main-message-line-8" title="Permalink to this headline">¶</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p><img alt="" src="../_images/debug-step-functions-f.png" /></p>
-</section>
-<section id="step-6-8-main-line-11">
+</div>
+<div class="section" id="step-6-8-main-line-11">
 <h3>Step 6.8: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">11</span></code><a class="headerlink" href="#step-6-8-main-line-11" title="Permalink to this headline">¶</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p><img alt="" src="../_images/debug-step-functions-g.png" /></p>
-</section>
-<section id="step-6-9-main-line-12">
+</div>
+<div class="section" id="step-6-9-main-line-12">
 <h3>Step 6.9: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">12</span></code><a class="headerlink" href="#step-6-9-main-line-12" title="Permalink to this headline">¶</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p><img alt="" src="../_images/debug-step-functions-h.png" /></p>
-</section>
-<section id="step-6-10-main-message-line-8">
+</div>
+<div class="section" id="step-6-10-main-message-line-8">
 <h3>Step 6.10: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">message()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">8</span></code><a class="headerlink" href="#step-6-10-main-message-line-8" title="Permalink to this headline">¶</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p><img alt="" src="../_images/debug-step-functions-i.png" /></p>
-</section>
-<section id="step-6-11-main-line-12">
+</div>
+<div class="section" id="step-6-11-main-line-12">
 <h3>Step 6.11: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">12</span></code><a class="headerlink" href="#step-6-11-main-line-12" title="Permalink to this headline">¶</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p><img alt="" src="../_images/debug-step-functions-j.png" /></p>
-</section>
-<section id="step-6-12-main-line-13">
+</div>
+<div class="section" id="step-6-12-main-line-13">
 <h3>Step 6.12: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">13</span></code><a class="headerlink" href="#step-6-12-main-line-13" title="Permalink to this headline">¶</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p><img alt="" src="../_images/debug-step-functions-k.png" /></p>
-</section>
-<section id="step-6-13-main-message-line-8">
+</div>
+<div class="section" id="step-6-13-main-message-line-8">
 <h3>Step 6.13: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">message()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">8</span></code><a class="headerlink" href="#step-6-13-main-message-line-8" title="Permalink to this headline">¶</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p><img alt="" src="../_images/debug-step-functions-l.png" /></p>
-</section>
-<section id="step-6-14-main-line-13">
+</div>
+<div class="section" id="step-6-14-main-line-13">
 <h3>Step 6.14: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">13</span></code><a class="headerlink" href="#step-6-14-main-line-13" title="Permalink to this headline">¶</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p><img alt="" src="../_images/debug-step-functions-m.png" /></p>
-</section>
-<section id="step-6-15-line-15">
+</div>
+<div class="section" id="step-6-15-line-15">
 <h3>Step 6.15: Line <code class="docutils literal notranslate"><span class="pre">15</span></code><a class="headerlink" href="#step-6-15-line-15" title="Permalink to this headline">¶</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p><img alt="" src="../_images/debug-step-functions-n.png" /></p>
-</section>
-<section id="step-16-16-stop-the-debugger">
+</div>
+<div class="section" id="step-16-16-stop-the-debugger">
 <h3>Step 16.16: Stop the debugger<a class="headerlink" href="#step-16-16-stop-the-debugger" title="Permalink to this headline">¶</a></h3>
 <p>Click <img alt="debug-action-stop" src="../_images/debug-action-stop.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">⇧F5</kbd>
 keyboard shortcut to stop the debugger.</p>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section id="reference">
+<div class="section" id="reference">
 <h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
-<section id="overview">
+<div class="section" id="overview">
 <h3>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h3>
 <p><img alt="" src="../_images/debug-parts-marked.png" /></p>
 <table class="colwidths-auto no-headers table">
@@ -1766,8 +1784,8 @@ keyboard shortcut to stop the debugger.</p>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="the-debug-toolbar">
+</div>
+<div class="section" id="the-debug-toolbar">
 <h3>The debug toolbar<a class="headerlink" href="#the-debug-toolbar" title="Permalink to this headline">¶</a></h3>
 <p>The debug toolbar is a controller widget that’s usually found hovering near the
 top of the editor.</p>
@@ -1815,13 +1833,13 @@ top of the editor.</p>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="debug-console">
+</div>
+<div class="section" id="debug-console">
 <h3>Debug Console<a class="headerlink" href="#debug-console" title="Permalink to this headline">¶</a></h3>
 <p><img alt="" src="../_images/debug-console-detail.png" /></p>
-</section>
-</section>
-<section id="see-also">
+</div>
+</div>
+<div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -1830,18 +1848,18 @@ top of the editor.</p>
 <li><p><a class="reference external" href="https://code.visualstudio.com/docs/python/debugging">VS Code &gt; Python &gt; Debugging</a></p></li>
 </ul>
 </div>
-</section>
-<section id="glossary">
+</div>
+<div class="section" id="glossary">
 <h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
-<section id="glossary-programming-concepts">
+<div class="section" id="glossary-programming-concepts">
 <h3>Programming Concepts<a class="headerlink" href="#glossary-programming-concepts" title="Permalink to this headline">¶</a></h3>
 <dl class="glossary simple">
 <dt id="term-breakpoint">breakpoint<a class="headerlink" href="#term-breakpoint" title="Permalink to this term">¶</a></dt><dd><p>A place for the debugger to pause the program.</p>
 </dd>
 </dl>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -1866,16 +1884,27 @@ top of the editor.</p>
               </div>
               
         
-        <div class='prev-next-bottom'>
-            
-    <a class='left-prev' id="prev-link" href="testing.html" title="previous page">Testing</a>
-    <a class='right-next' id="next-link" href="data-inspection.html" title="next page">Data Inspection</a>
-
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="testing.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Testing</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="data-inspection.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data Inspection</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         
@@ -1887,11 +1916,8 @@ top of the editor.</p>
 
       </div>
     </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-    
-  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
-
-
-    
   </body>
 </html>
