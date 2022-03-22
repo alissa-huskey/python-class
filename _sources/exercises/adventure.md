@@ -4001,3 +4001,4 @@ Don't repeat yourself
 - `[ ]` Draw a map as the player goes from place to place
 - `[ ]` Add a (secret?) jump command to go straight to a place
 - `[ ]` Add search command (ie, search rubble)
+
