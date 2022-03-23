@@ -61,7 +61,7 @@ repo for it, if you're comfortable with git.)
 
 ### Part 1.2: The main() function
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-1.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-1.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -86,7 +86,7 @@ repo for it, if you're comfortable with git.)
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-1.2.py
+```{literalinclude} ../../pythonclass/adventure/adventure-1.2.py
 :class: full-width
 :linenos:
 ```
@@ -98,7 +98,7 @@ repo for it, if you're comfortable with git.)
 
 ### Part 1.3: Your first command: quit
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-1.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-1.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -134,7 +134,7 @@ command: the `quit` command.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-1.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-1.3.py
 :class: full-width
 :linenos:
 :emphasize-lines: "5-9, 16-21"
@@ -145,7 +145,7 @@ command: the `quit` command.
 
 ### Part 1.4 Create `ITEMS`
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-1.4.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-1.4.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -188,7 +188,7 @@ ITEMS = {
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-1.4.py
+```{literalinclude} ../../pythonclass/adventure/adventure-1.4.py
 :linenos:
 :emphasize-lines: "6-19"
 
@@ -198,7 +198,7 @@ ITEMS = {
 
 ### Part 1.5: Make `do_shop()` function
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-1.5.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-1.5.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -234,7 +234,7 @@ defined in `ITEMS` above.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-1.5.py
+```{literalinclude} ../../pythonclass/adventure/adventure-1.5.py
 :linenos:
 :emphasize-lines: "21-28, 43-44"
 ```
@@ -289,7 +289,7 @@ https://alissa-huskey.github.io/python-class/exercises/adventure.html
 
 ### Part 2.1: Split reply into command and arguments
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-2.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-2.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -349,7 +349,7 @@ the command, and `north` is the direction.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-2.1.py
+```{literalinclude} ../../pythonclass/adventure/adventure-2.1.py
 :linenos:
 :emphasize-lines: "35-37, 42-50, 53, 56-57"
 ```
@@ -358,7 +358,7 @@ the command, and `north` is the direction.
 
 ### Part 2.2: Create PLAYER and PLACES
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-2.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-2.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -550,7 +550,7 @@ PLACES = {
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-2.2.py
+```{literalinclude} ../../pythonclass/adventure/adventure-2.2.py
 :linenos:
 :emphasize-lines: "6-26"
 :end-at: "ITEMS ="
@@ -560,7 +560,7 @@ PLACES = {
 
 ### Part 2.3: Write message functions
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-2.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-2.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -598,7 +598,7 @@ We'll also add a `error()` function which will print an error message.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-2.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-2.3.py
 :linenos:
 :lines: "1-11"
 :emphasize-lines: "6"
@@ -624,7 +624,7 @@ We'll also add a `error()` function which will print an error message.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-2.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-2.3.py
 :linenos:
 :lines: "49-53"
 ```
@@ -644,7 +644,7 @@ We'll also add a `error()` function which will print an error message.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-2.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-2.3.py
 :linenos:
 :lines: "45-47"
 ```
@@ -663,7 +663,7 @@ We'll also add a `error()` function which will print an error message.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-2.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-2.3.py
 :class: full-width
 :linenos:
 :lines: "69-71"
@@ -687,7 +687,7 @@ We'll also add a `error()` function which will print an error message.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-2.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-2.3.py
 :class: full-width
 :linenos:
 :lines: "73-101"
@@ -703,7 +703,7 @@ We'll also add a `error()` function which will print an error message.
 
 ### Part 2.4: Fill in `go` command
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-2.4.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-2.4.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -748,7 +748,7 @@ list and that it is a valid direction.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-2.4.py
+```{literalinclude} ../../pythonclass/adventure/adventure-2.4.py
 :class: full-width
 :linenos:
 :lines: "69-85"
@@ -772,7 +772,7 @@ from the `PLACES` dictionary, as shown {ref}`here <player-to-places>`.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-2.4.py
+```{literalinclude} ../../pythonclass/adventure/adventure-2.4.py
 :linenos:
 :lineno-match:
 :lines: 87-89
@@ -798,7 +798,7 @@ as seen {ref}`here <places-direction-to-place>`.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-2.4.py
+```{literalinclude} ../../pythonclass/adventure/adventure-2.4.py
 :linenos:
 :lineno-match:
 :lines: 91-97
@@ -827,7 +827,7 @@ player can't go that direction from where they are.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-2.4.py
+```{literalinclude} ../../pythonclass/adventure/adventure-2.4.py
 :linenos:
 :lines: 99-107
 :lineno-match:
@@ -850,7 +850,7 @@ name and print the place information.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-2.4.py
+```{literalinclude} ../../pythonclass/adventure/adventure-2.4.py
 :linenos:
 :lines: 109-114
 :lineno-match:
@@ -873,7 +873,7 @@ printing via our custom functions: `header()`, `wrap()`, `write()`,
 
 ### Part 3.1: Text wrapping
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-3.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-3.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -908,7 +908,7 @@ wrap the text so that it looks nice.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-3.1.py
+```{literalinclude} ../../pythonclass/adventure/adventure-3.1.py
 :linenos:
 :lines: "6-15"
 :lineno-match:
@@ -938,7 +938,7 @@ wrap the text so that it looks nice.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-3.1.py
+```{literalinclude} ../../pythonclass/adventure/adventure-3.1.py
 :class: full-width
 :linenos:
 :start-at: "# print information about the new place"
@@ -979,7 +979,7 @@ look at this section of the [functions lesson][keyword-args].
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-3.1.py
+```{literalinclude} ../../pythonclass/adventure/adventure-3.1.py
 :class: full-width
 :linenos:
 :start-at: 'def wrap'
@@ -992,7 +992,7 @@ look at this section of the [functions lesson][keyword-args].
 
 ### Part 3.2: Colors
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-3.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-3.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -1029,7 +1029,7 @@ colorful.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-3.2.py
+```{literalinclude} ../../pythonclass/adventure/adventure-3.2.py
 :class: full-width
 :linenos:
 :lines: "6-9"
@@ -1053,7 +1053,7 @@ colorful.
 `````{dropdown} Code
 :open:
 
-```{literalinclude} adventure/adventure-3.2.py
+```{literalinclude} ../../pythonclass/adventure/adventure-3.2.py
 :class: full-width
 :linenos:
 :lineno-match:
@@ -1062,7 +1062,7 @@ colorful.
 :end-before: "def do_"
 ```
 
-```{literalinclude} adventure/adventure-3.2.py
+```{literalinclude} ../../pythonclass/adventure/adventure-3.2.py
 :class: full-width
 :linenos:
 :lineno-match:
@@ -1077,7 +1077,7 @@ colorful.
 
 ### Part 3.3: Header and write functions
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-3.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-3.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -1112,7 +1112,7 @@ indented at the same level, or to add any extra formatting.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-3.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-3.3.py
 :class: full-width
 :linenos:
 :start-at: 'def write'
@@ -1144,7 +1144,7 @@ bold, but you can change it to suit your taste.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-3.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-3.3.py
 :class: full-width
 :linenos:
 :start-at: 'def header'
@@ -1176,7 +1176,7 @@ Replace `print()` calls with `header()` and `write()` calls.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-3.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-3.3.py
 :class: full-width
 :linenos:
 :start-at: 'def do_shop'
@@ -1208,7 +1208,7 @@ Replace `print()` call with `write()` call.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-3.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-3.3.py
 :class: full-width
 :linenos:
 :start-at: 'def do_quit'
@@ -1233,7 +1233,7 @@ Replace `print()` call with `header()` call.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-3.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-3.3.py
 :class: full-width
 :linenos:
 :start-at: "# print information about the new place"
@@ -1254,7 +1254,7 @@ In this section we'll add the `examine` command.
 
 ### Part 4.1: Add new items
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-4.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-4.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -1282,7 +1282,7 @@ do the `shop` command.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-4.1.py
+```{literalinclude} ../../pythonclass/adventure/adventure-4.1.py
 :class: full-width
 :linenos:
 :lines: "40-68"
@@ -1322,7 +1322,7 @@ a list that contains two items, the strings `"book"` and `"desk"`.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-4.1.py
+```{literalinclude} ../../pythonclass/adventure/adventure-4.1.py
 :class: full-width
 :linenos:
 :start-at: 'PLACES'
@@ -1346,7 +1346,7 @@ a list that contains two items, the strings `"book"` and `"desk"`.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-4.1.py
+```{literalinclude} ../../pythonclass/adventure/adventure-4.1.py
 :class: full-width
 :linenos:
 :start-at: 'def do_shop'
@@ -1363,7 +1363,7 @@ Be sure to test the `shop` command and make sure book and desk aren't listed.
 
 ### Part 4.2: Add `do_examine()`
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-4.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-4.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -1397,7 +1397,7 @@ In this section we'll add an `examine` command.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-4.2.py
+```{literalinclude} ../../pythonclass/adventure/adventure-4.2.py
 :class: full-width
 :linenos:
 :start-at: 'def do_examine'
@@ -1421,7 +1421,7 @@ In this section we'll add an `examine` command.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-4.2.py
+```{literalinclude} ../../pythonclass/adventure/adventure-4.2.py
 :class: full-width
 :linenos:
 :lineno-match:
@@ -1443,7 +1443,7 @@ calling the `do_examine()` function.
 
 ### Part 4.3: Finish examine command
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-4.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-4.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -1482,7 +1482,7 @@ dictionary and print its information.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-4.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-4.3.py
 :class: full-width
 :linenos:
 :start-at: 'def do_examine'
@@ -1506,7 +1506,7 @@ dictionary and print its information.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-4.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-4.3.py
 :class: full-width
 :linenos:
 :start-at: "do_examine"
@@ -1542,7 +1542,7 @@ dictionary and print its information.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-4.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-4.3.py
 :class: full-width
 :linenos:
 :start-at: "def do_examine"
@@ -1562,7 +1562,7 @@ dictionary and print its information.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-4.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-4.3.py
 :class: full-width
 :linenos:
 :start-at: "def do_examine"
@@ -1580,7 +1580,7 @@ In this section we'll add the `look` command.
 
 ### Part 5.1: Add command
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-5.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-5.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -1613,7 +1613,7 @@ player types `l` or `look`.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-5.1.py
+```{literalinclude} ../../pythonclass/adventure/adventure-5.1.py
 :class: full-width
 :linenos:
 :lineno-match:
@@ -1637,7 +1637,7 @@ player types `l` or `look`.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-5.1.py
+```{literalinclude} ../../pythonclass/adventure/adventure-5.1.py
 :class: full-width
 :linenos:
 :lineno-match:
@@ -1652,7 +1652,7 @@ player types `l` or `look`.
 
 ### Part 5.2: Print place name and description
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-5.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-5.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -1686,7 +1686,7 @@ In this section we'll look up the place info and print the name and description.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-5.2.py
+```{literalinclude} ../../pythonclass/adventure/adventure-5.2.py
 :class: full-width
 :linenos:
 :lineno-match:
@@ -1701,7 +1701,7 @@ In this section we'll look up the place info and print the name and description.
 
 ### Part 5.3: Print the place items
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-5.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-5.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -1739,7 +1739,7 @@ items `"name"`.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-5.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-5.3.py
 :class: full-width
 :linenos:
 :lineno-match:
@@ -1774,7 +1774,7 @@ And if there are three or more items it will look like:
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-5.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-5.3.py
 :class: full-width
 :linenos:
 :lineno-match:
@@ -1787,7 +1787,7 @@ And if there are three or more items it will look like:
 
 ### Part 5.4: Print the nearby places
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-5.4.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-5.4.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -1823,7 +1823,7 @@ In this section we'll print the name of each of any places directly to the
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-5.4.py
+```{literalinclude} ../../pythonclass/adventure/adventure-5.4.py
 :class: full-width
 :linenos:
 :lineno-match:
@@ -1841,7 +1841,7 @@ In this section we'll add the `take` command.
 
 ### Part 6.1: Add command
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-6.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-6.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -1874,7 +1874,7 @@ player types `t`, `take`, or `grab`.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-6.1.py
+```{literalinclude} ../../pythonclass/adventure/adventure-6.1.py
 :class: full-width
 :linenos:
 :lineno-match:
@@ -1898,7 +1898,7 @@ player types `t`, `take`, or `grab`.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-6.1.py
+```{literalinclude} ../../pythonclass/adventure/adventure-6.1.py
 :class: full-width
 :linenos:
 :lineno-match:
@@ -1942,7 +1942,7 @@ item in the current place.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-6.2.py
+```{literalinclude} ../../pythonclass/adventure/adventure-6.2.py
 :class: full-width
 :linenos:
 :lineno-match:
@@ -1973,7 +1973,7 @@ item in the current place.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-6.2.py
+```{literalinclude} ../../pythonclass/adventure/adventure-6.2.py
 :class: full-width
 :linenos:
 :lineno-match:
@@ -2003,7 +2003,7 @@ item in the current place.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-6.2.py
+```{literalinclude} ../../pythonclass/adventure/adventure-6.2.py
 :class: full-width
 :linenos:
 :lineno-match:
@@ -2043,7 +2043,7 @@ In this section we'll actually take the item.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-6.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-6.3.py
 :class: full-width
 :linenos:
 :lineno-match:
@@ -2073,7 +2073,7 @@ place, and let the player know that it's done.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-6.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-6.3.py
 :class: full-width
 :linenos:
 :lineno-match:
@@ -2111,7 +2111,7 @@ In this section we'll modify `do_examine()` so it can be used to look at invento
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-6.4.py
+```{literalinclude} ../../pythonclass/adventure/adventure-6.4.py
 :class: full-width
 :linenos:
 :lineno-match:
@@ -2129,7 +2129,7 @@ In this section we'll add the `inventory` command.
 
 ### Part 7.1: Add command
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-7.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-7.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -2162,7 +2162,7 @@ player types `i`, or `inventory`.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-7.1.py
+```{literalinclude} ../../pythonclass/adventure/adventure-7.1.py
 :class: full-width
 :linenos:
 :lineno-match:
@@ -2186,7 +2186,7 @@ player types `i`, or `inventory`.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-7.1.py
+```{literalinclude} ../../pythonclass/adventure/adventure-7.1.py
 :class: full-width
 :linenos:
 :lineno-match:
@@ -2231,7 +2231,7 @@ In this section we'll print the players inventory.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-7.2.py
+```{literalinclude} ../../pythonclass/adventure/adventure-7.2.py
 :class: full-width
 :linenos:
 :lineno-match:
@@ -2248,7 +2248,7 @@ In this section we'll add the `drop` command.
 
 ### Part 8.1: Add command
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-8.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-8.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -2281,7 +2281,7 @@ player types `drop`.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-8.1.py
+```{literalinclude} ../../pythonclass/adventure/adventure-8.1.py
 :class: full-width
 :linenos:
 :lineno-match:
@@ -2304,7 +2304,7 @@ player types `drop`.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-8.1.py
+```{literalinclude} ../../pythonclass/adventure/adventure-8.1.py
 :class: full-width
 :linenos:
 :lineno-match:
@@ -2319,7 +2319,7 @@ player types `drop`.
 
 ### Part 8.2: Validate
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-8.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-8.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -2357,7 +2357,7 @@ have in inventory.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-8.2.py
+```{literalinclude} ../../pythonclass/adventure/adventure-8.2.py
 :class: full-width
 :linenos:
 :lineno-match:
@@ -2370,7 +2370,7 @@ have in inventory.
 
 ### Part 8.3: Drop it
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-8.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-8.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -2403,7 +2403,7 @@ it to the place items.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-8.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-8.3.py
 :class: full-width
 :linenos:
 :lineno-match:
@@ -2426,7 +2426,7 @@ it to the place items.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-8.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-8.3.py
 :class: full-width
 :linenos:
 :lineno-match:
@@ -2439,7 +2439,7 @@ it to the place items.
 Part 9: Refactoring
 -------------------
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-9.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-9.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -2490,7 +2490,7 @@ the program will end immediately.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-9.1.py
+```{literalinclude} ../../pythonclass/adventure/adventure-9.1.py
 :linenos:
 :lineno-match:
 :pyobject: 'abort'
@@ -2521,7 +2521,7 @@ Then because `abort()` exits the program immediately, we can remove the `return`
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-9.1.py
+```{literalinclude} ../../pythonclass/adventure/adventure-9.1.py
 :class: full-width
 :linenos:
 :lineno-match:
@@ -2550,7 +2550,7 @@ This is nearly exactly the same as the previous section.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-9.1.py
+```{literalinclude} ../../pythonclass/adventure/adventure-9.1.py
 :class: full-width
 :linenos:
 :lineno-match:
@@ -2582,7 +2582,7 @@ if we don't it means there's an error somewhere in the code.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-9.1.py
+```{literalinclude} ../../pythonclass/adventure/adventure-9.1.py
 :class: full-width
 :linenos:
 :lineno-match:
@@ -2597,7 +2597,7 @@ if we don't it means there's an error somewhere in the code.
 
 ### Part 9.2: Add get_place()
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-9.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-9.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -2638,7 +2638,7 @@ dictionary, and call `abort()` if it is not. That means that anywhere we call
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-9.2.py
+```{literalinclude} ../../pythonclass/adventure/adventure-9.2.py
 :linenos:
 :lineno-match:
 :pyobject: 'get_place'
@@ -2664,7 +2664,7 @@ dictionary, and call `abort()` if it is not. That means that anywhere we call
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-9.2.py
+```{literalinclude} ../../pythonclass/adventure/adventure-9.2.py
 :linenos:
 :lineno-match:
 :pyobject: 'do_go'
@@ -2683,7 +2683,7 @@ dictionary, and call `abort()` if it is not. That means that anywhere we call
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-9.2.py
+```{literalinclude} ../../pythonclass/adventure/adventure-9.2.py
 :linenos:
 :lineno-match:
 :pyobject: 'do_look'
@@ -2698,7 +2698,7 @@ dictionary, and call `abort()` if it is not. That means that anywhere we call
 
 `````{dropdown} do_take()
 
-```{literalinclude} adventure/adventure-9.2.py
+```{literalinclude} ../../pythonclass/adventure/adventure-9.2.py
 :linenos:
 :lineno-match:
 :pyobject: 'do_take'
@@ -2709,7 +2709,7 @@ dictionary, and call `abort()` if it is not. That means that anywhere we call
 
 `````{dropdown} do_examine()
 
-```{literalinclude} adventure/adventure-9.2.py
+```{literalinclude} ../../pythonclass/adventure/adventure-9.2.py
 :linenos:
 :lineno-match:
 :pyobject: 'do_examine'
@@ -2720,7 +2720,7 @@ dictionary, and call `abort()` if it is not. That means that anywhere we call
 
 `````{dropdown} do_drop()
 
-```{literalinclude} adventure/adventure-9.2.py
+```{literalinclude} ../../pythonclass/adventure/adventure-9.2.py
 :linenos:
 :lineno-match:
 :pyobject: 'do_drop'
@@ -2733,7 +2733,7 @@ dictionary, and call `abort()` if it is not. That means that anywhere we call
 
 ### Part 9.3: Add get_item()
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-9.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-9.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -2763,7 +2763,7 @@ dictionary and finally return the `item` otherwise.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-9.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-9.3.py
 :linenos:
 :lineno-match:
 :pyobject: 'get_item'
@@ -2785,7 +2785,7 @@ method with a call to `get_item()`.
 
 `````{dropdown} do_look()
 
-```{literalinclude} adventure/adventure-9.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-9.3.py
 :linenos:
 :lineno-match:
 :pyobject: 'do_look'
@@ -2796,7 +2796,7 @@ method with a call to `get_item()`.
 
 `````{dropdown} do_inventory()
 
-```{literalinclude} adventure/adventure-9.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-9.3.py
 :linenos:
 :lineno-match:
 :pyobject: 'do_inventory'
@@ -2819,7 +2819,7 @@ remove error handling that is done in `get_item()`.
 
 `````{dropdown} do_examine()
 
-```{literalinclude} adventure/adventure-9.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-9.3.py
 :linenos:
 :lineno-match:
 :pyobject: 'do_examine'
@@ -2830,7 +2830,7 @@ remove error handling that is done in `get_item()`.
 
 `````{dropdown} do_take()
 
-```{literalinclude} adventure/adventure-9.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-9.3.py
 :linenos:
 :lineno-match:
 :pyobject: 'do_take'
@@ -2841,7 +2841,7 @@ remove error handling that is done in `get_item()`.
 
 ### Part 9.4: Validation functions
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-9.4.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-9.4.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -2865,7 +2865,7 @@ item in inventory.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-9.4.py
+```{literalinclude} ../../pythonclass/adventure/adventure-9.4.py
 :linenos:
 :lineno-match:
 :pyobject: 'player_has'
@@ -2886,7 +2886,7 @@ call to `player_has()`.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-9.4.py
+```{literalinclude} ../../pythonclass/adventure/adventure-9.4.py
 :linenos:
 :lineno-match:
 :pyobject: do_drop
@@ -2907,7 +2907,7 @@ call to `player_has()`.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-9.4.py
+```{literalinclude} ../../pythonclass/adventure/adventure-9.4.py
 :linenos:
 :lineno-match:
 :pyobject: do_examine
@@ -2932,7 +2932,7 @@ item.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-9.4.py
+```{literalinclude} ../../pythonclass/adventure/adventure-9.4.py
 :linenos:
 :lineno-match:
 :pyobject: 'place_has'
@@ -2953,7 +2953,7 @@ call to `place_has()`.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-9.4.py
+```{literalinclude} ../../pythonclass/adventure/adventure-9.4.py
 :linenos:
 :lineno-match:
 :pyobject: do_take
@@ -2976,7 +2976,7 @@ call to `place_has()`.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-9.4.py
+```{literalinclude} ../../pythonclass/adventure/adventure-9.4.py
 :linenos:
 :lineno-match:
 :pyobject: do_examine
@@ -2997,7 +2997,7 @@ The `is_for_sale()` function will return `True` if an item is for sale.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-9.4.py
+```{literalinclude} ../../pythonclass/adventure/adventure-9.4.py
 :linenos:
 :lineno-match:
 :pyobject: is_for_sale
@@ -3018,7 +3018,7 @@ call to `is_for_sale()`.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-9.4.py
+```{literalinclude} ../../pythonclass/adventure/adventure-9.4.py
 :linenos:
 :lineno-match:
 :pyobject: do_shop
@@ -3029,7 +3029,7 @@ call to `is_for_sale()`.
 
 ### Part 9.5: Add `inventory_change()`
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-9.5.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-9.5.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -3071,7 +3071,7 @@ with a zero quantity won't show up in `do_inventory()`.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-9.5.py
+```{literalinclude} ../../pythonclass/adventure/adventure-9.5.py
 :linenos:
 :lineno-match:
 :pyobject: 'inventory_change'
@@ -3097,7 +3097,7 @@ argument, so it will default to `1`.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-9.5.py
+```{literalinclude} ../../pythonclass/adventure/adventure-9.5.py
 :linenos:
 :lineno-match:
 :pyobject: 'do_take'
@@ -3139,7 +3139,7 @@ do for now.)
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-9.5.py
+```{literalinclude} ../../pythonclass/adventure/adventure-9.5.py
 :linenos:
 :lineno-match:
 :pyobject: 'do_drop'
@@ -3152,7 +3152,7 @@ do for now.)
 
 ### Part 9.6: Add `place_add()`
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-9.6.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-9.6.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -3176,7 +3176,7 @@ adding the item key to the place list.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-9.6.py
+```{literalinclude} ../../pythonclass/adventure/adventure-9.6.py
 :linenos:
 :lineno-match:
 :pyobject: 'place_add'
@@ -3203,7 +3203,7 @@ Right now, this only happens in the `do_drop()` function.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-9.6.py
+```{literalinclude} ../../pythonclass/adventure/adventure-9.6.py
 :linenos:
 :lineno-match:
 :pyobject: 'do_drop'
@@ -3216,7 +3216,7 @@ Right now, this only happens in the `do_drop()` function.
 
 ### Part 9.7: Add `place_remove()`
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-9.7.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-9.7.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -3238,7 +3238,7 @@ from the place list.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-9.7.py
+```{literalinclude} ../../pythonclass/adventure/adventure-9.7.py
 :linenos:
 :lineno-match:
 :pyobject: 'place_remove'
@@ -3264,7 +3264,7 @@ place.  Right now, this only happens in the `do_take()` function.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-9.7.py
+```{literalinclude} ../../pythonclass/adventure/adventure-9.7.py
 :linenos:
 :lineno-match:
 :pyobject: 'do_take'
@@ -3284,7 +3284,7 @@ buy shop and examine commands.
 
 ### Part 10.1: Add market
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-10.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-10.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -3325,7 +3325,7 @@ navigate to and from there.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-10.1.py
+```{literalinclude} ../../pythonclass/adventure/adventure-10.1.py
 :linenos:
 :lineno-match:
 :start-at: 'PLACES = {'
@@ -3351,7 +3351,7 @@ than going through all items.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-10.1.py
+```{literalinclude} ../../pythonclass/adventure/adventure-10.1.py
 :linenos:
 :lineno-match:
 :pyobject: do_shop
@@ -3362,7 +3362,7 @@ than going through all items.
 
 ### Part 10.2: Add `place_can()`
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-10.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-10.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -3403,7 +3403,7 @@ In the next section we'll write a function to use that information.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-10.2.py
+```{literalinclude} ../../pythonclass/adventure/adventure-10.2.py
 :linenos:
 :lineno-match:
 :start-at: '"market": {'
@@ -3431,7 +3431,7 @@ for actions instead of items.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-10.2.py
+```{literalinclude} ../../pythonclass/adventure/adventure-10.2.py
 :linenos:
 :lineno-match:
 :pyobject: place_can
@@ -3452,7 +3452,7 @@ for actions instead of items.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-10.2.py
+```{literalinclude} ../../pythonclass/adventure/adventure-10.2.py
 :linenos:
 :lineno-match:
 :pyobject: do_shop
@@ -3465,7 +3465,7 @@ for actions instead of items.
 
 ### Part 10.3: Add buy command
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-10.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-10.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -3503,7 +3503,7 @@ list, and add gems to the items list.
 
 `````{dropdown} PLAYER
 
-```{literalinclude} adventure/adventure-10.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-10.3.py
 :linenos:
 :lineno-match:
 :start-at: 'PLAYER ='
@@ -3515,7 +3515,7 @@ list, and add gems to the items list.
 
 `````{dropdown} PLACES
 
-```{literalinclude} adventure/adventure-10.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-10.3.py
 :linenos:
 :lineno-match:
 :start-at: 'PLACES ='
@@ -3527,7 +3527,7 @@ list, and add gems to the items list.
 
 `````{dropdown} ITEMS
 
-```{literalinclude} adventure/adventure-10.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-10.3.py
 :linenos:
 :lineno-match:
 :start-at: 'ITEMS ='
@@ -3553,7 +3553,7 @@ Here we'll define the function that is called when the player types `"buy"`.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-10.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-10.3.py
 :linenos:
 :lineno-match:
 :start-at: 'def do_buy'
@@ -3575,7 +3575,7 @@ Here we'll define the function that is called when the player types `"buy"`.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-10.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-10.3.py
 :linenos:
 :lineno-match:
 :pyobject: main
@@ -3597,7 +3597,7 @@ Here we'll define the function that is called when the player types `"buy"`.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-10.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-10.3.py
 :linenos:
 :lineno-match:
 :start-at: 'def do_buy'
@@ -3620,7 +3620,7 @@ Here we'll define the function that is called when the player types `"buy"`.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-10.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-10.3.py
 :linenos:
 :lineno-match:
 :start-at: 'def do_buy'
@@ -3644,7 +3644,7 @@ Here we'll define the function that is called when the player types `"buy"`.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-10.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-10.3.py
 :linenos:
 :lineno-match:
 :start-at: 'def do_buy'
@@ -3671,7 +3671,7 @@ Here we'll define the function that is called when the player types `"buy"`.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-10.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-10.3.py
 :linenos:
 :lineno-match:
 :start-at: 'def do_buy'
@@ -3702,7 +3702,7 @@ Here we'll define the function that is called when the player types `"buy"`.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-10.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-10.3.py
 :linenos:
 :lineno-match:
 :start-at: 'def do_buy'
@@ -3727,7 +3727,7 @@ Here we'll define the function that is called when the player types `"buy"`.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-10.3.py
+```{literalinclude} ../../pythonclass/adventure/adventure-10.3.py
 :linenos:
 :lineno-match:
 :pyobject: 'do_buy'
@@ -3741,7 +3741,7 @@ Here we'll define the function that is called when the player types `"buy"`.
 
 ### Part 10.4: Clean up the shop
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/docs/exercises/adventure/adventure-10.4.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-10.4.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
 
 {{ clear }}
 
@@ -3778,7 +3778,7 @@ is also a good chance to make this look prettier.
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-10.4.py
+```{literalinclude} ../../pythonclass/adventure/adventure-10.4.py
 :linenos:
 :lineno-match:
 :pyobject: do_shop
@@ -3929,7 +3929,7 @@ where we can shop).
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-10.4.py
+```{literalinclude} ../../pythonclass/adventure/adventure-10.4.py
 :linenos:
 :lineno-match:
 :pyobject: do_examine
@@ -3946,7 +3946,7 @@ where we can shop).
 
 `````{dropdown} Code
 
-```{literalinclude} adventure/adventure-10.4.py
+```{literalinclude} ../../pythonclass/adventure/adventure-10.4.py
 :linenos:
 :lineno-match:
 :pyobject: do_examine

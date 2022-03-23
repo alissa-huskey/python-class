@@ -236,7 +236,7 @@ def do_shop():
     """List the items for sale."""
 
     if not place_can("shop"):
-        error(f"Sorry, you can't {action} here.")
+        error(f"Sorry, you can't shop here.")
         return
 
     place = get_place()
