@@ -205,6 +205,22 @@ def test_wrap(capsys):
         "wrap() should indent each line of wrapped output"
 
 
+def test_wrap_with_indent(capsys):
+    wrap("A drawing is simply a line going for a walk.", indent=2)
+
+    output = read(capsys)
+
+    assert output.startswith("    A drawing is simply a line")
+
+
+def test_wrap_with_after(capsys):
+    wrap("Confidence is 10% hard work and 90% delusion.", after=2)
+
+    output = read(capsys)
+
+    assert output.endswith("delusion.\n\n")
+
+
 def test_write(capsys):
     write("oh hai")
 
