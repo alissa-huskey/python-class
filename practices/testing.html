@@ -681,21 +681,23 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#part-3-pytest">
    Part 3: Pytest
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#part-3-1-install-pytest">
-   Part 3.1: Install
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     pytest
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#part-3-2-migrate-to-pytest">
-   Part 3.2: Migrate to Pytest
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-3-1-install-pytest">
+     Part 3.1: Install
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       pytest
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-3-2-migrate-to-pytest">
+     Part 3.2: Migrate to Pytest
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#part-4-test-best-practices">
@@ -821,6 +823,51 @@ const thebe_selector_output = ".output, .cell_output"
   <!-- markdownlint-disable no-inline-html no-alt-text -->
 <div class="section" id="testing">
 <h1>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#part-1-assertions" id="id39">Part 1: Assertions</a></p>
+<ul>
+<li><p><a class="reference internal" href="#part-1-1-examples" id="id40">Part 1.1 Examples</a></p></li>
+<li><p><a class="reference internal" href="#part-1-2-exercise-1" id="id41">Part 1.2: Exercise 1</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#part-2-unit-tests" id="id42">Part 2: Unit tests</a></p>
+<ul>
+<li><p><a class="reference internal" href="#part-2-1-a-basic-unit-test" id="id43">Part 2.1: A basic unit test</a></p></li>
+<li><p><a class="reference internal" href="#part-2-2-exercise-2" id="id44">Part 2.2: Exercise 2</a></p></li>
+<li><p><a class="reference internal" href="#part-2-3-testing-more-cases" id="id45">Part 2.3: Testing more cases</a></p></li>
+<li><p><a class="reference internal" href="#part-2-4-exercise-3" id="id46">Part 2.4: Exercise 3</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#part-3-pytest" id="id47">Part 3: Pytest</a></p>
+<ul>
+<li><p><a class="reference internal" href="#part-3-1-install-pytest" id="id48">Part 3.1: Install <code class="docutils literal notranslate"><span class="pre">pytest</span></code></a></p></li>
+<li><p><a class="reference internal" href="#part-3-2-migrate-to-pytest" id="id49">Part 3.2: Migrate to Pytest</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#part-4-test-best-practices" id="id50">Part 4: Test best practices</a></p>
+<ul>
+<li><p><a class="reference internal" href="#part-4-1-make-a-test-file" id="id51">Part 4.1: Make a test file</a></p></li>
+<li><p><a class="reference internal" href="#part-4-2-one-case-per-test-function" id="id52">Part 4.2: One case per test function</a></p></li>
+<li><p><a class="reference internal" href="#part-4-3-file-locations" id="id53">Part 4.3: File locations</a></p></li>
+<li><p><a class="reference internal" href="#part-4-4-configure-pytest" id="id54">Part 4.4: Configure pytest</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#part-5-writing-code-for-testing" id="id55">Part 5: Writing code for testing</a></p>
+<ul>
+<li><p><a class="reference internal" href="#part-5-1-keep-your-interface-separate" id="id56">Part 5.1: Keep your interface separate</a></p></li>
+<li><p><a class="reference internal" href="#part-5-2-isolate-external-services-dependencies" id="id57">Part 5.2: Isolate external services / dependencies</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#part-6-testing-in-vs-code" id="id58">Part 6: Testing in VS Code</a></p>
+<ul>
+<li><p><a class="reference internal" href="#part-6-1-setup" id="id59">Part 6.1: Setup</a></p></li>
+<li><p><a class="reference internal" href="#part-6-2-running-tests" id="id60">Part 6.2: Running tests</a></p></li>
+<li><p><a class="reference internal" href="#part-6-3-changing-tests" id="id61">Part 6.3: Changing tests</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">
@@ -835,7 +882,7 @@ tool for debugging is testing. As code gets more complicated making sure
 that things stay in working order becomes both increasingly important and
 increasingly difficult to eyeball.</p>
 <div class="section" id="part-1-assertions">
-<h2>Part 1: Assertions<a class="headerlink" href="#part-1-assertions" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#contents">Part 1: Assertions</a><a class="headerlink" href="#part-1-assertions" title="Permalink to this headline">¶</a></h2>
 <p>Python provides a builtin assert <a class="reference internal" href="../lessons/statements.html#term-statement"><span class="xref std std-term">statement</span></a>. Conceptually, the assert
 statement means, “the following must be true”. Or “if the following is not
 true raise an error.”</p>
@@ -894,7 +941,7 @@ see an <code class="docutils literal notranslate"><span class="pre">AssertionErr
 </div>
 </div>
 <div class="section" id="part-1-1-examples">
-<h3>Part 1.1 Examples<a class="headerlink" href="#part-1-1-examples" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 1.1 Examples</a><a class="headerlink" href="#part-1-1-examples" title="Permalink to this headline">¶</a></h3>
 <p>Like an <a class="reference internal" href="../if%20statement.html" title=""><span class="xref std std-term">if-statement</span></a> or a <a class="reference internal" href="../while%20loop.html" title=""><span class="xref std std-term">while-loop</span></a>, the first expression is
 evaluated in a <a class="reference internal" href="../lessons/conditional-statements.html#term-boolean-context"><span class="xref std std-term">boolean context</span></a>. You can use any expression that
 returns <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>, such as comparison operators or even function
@@ -928,7 +975,7 @@ calls.</p>
 </div>
 </div>
 <div class="section" id="part-1-2-exercise-1">
-<h3>Part 1.2: Exercise 1<a class="headerlink" href="#part-1-2-exercise-1" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 1.2: Exercise 1</a><a class="headerlink" href="#part-1-2-exercise-1" title="Permalink to this headline">¶</a></h3>
 <div class="exercise admonition" id="assertions">
 
 <p class="admonition-title"><span class="caption-number">Exercise 113 </span> (Assertions)</p>
@@ -988,7 +1035,7 @@ once each.</p></li>
 </div>
 </div>
 <div class="section" id="part-2-unit-tests">
-<h2>Part 2: Unit tests<a class="headerlink" href="#part-2-unit-tests" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#contents">Part 2: Unit tests</a><a class="headerlink" href="#part-2-unit-tests" title="Permalink to this headline">¶</a></h2>
 <div class="margin sidebar">
 <p class="sidebar-title"></p>
 <p><a class="btn btn-sm btn-outline-info text-info bg-white" href="https://github.com/alissa-huskey/python-class/blob/master/tests/test_greeting.py"><i class="fa fa-file-code text-info bg-white"></i> test_greeting.py</a></p>
@@ -997,7 +1044,7 @@ once each.</p></li>
 tests. A unit tests is one that tests one part of our code–for our purposes
 a single function.</p>
 <div class="section" id="part-2-1-a-basic-unit-test">
-<h3>Part 2.1: A basic unit test<a class="headerlink" href="#part-2-1-a-basic-unit-test" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 2.1: A basic unit test</a><a class="headerlink" href="#part-2-1-a-basic-unit-test" title="Permalink to this headline">¶</a></h3>
 <p>Say we have the following function.</p>
 <div class="literal-block-wrapper docutils container" id="id4">
 <div class="code-block-caption"><span class="caption-number">Listing 339 </span><span class="caption-text">greeting.py</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
@@ -1052,7 +1099,7 @@ tested. This will be shown in the event that the test fails.</p></li>
 </div>
 </div>
 <div class="section" id="part-2-2-exercise-2">
-<h3>Part 2.2: Exercise 2<a class="headerlink" href="#part-2-2-exercise-2" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 2.2: Exercise 2</a><a class="headerlink" href="#part-2-2-exercise-2" title="Permalink to this headline">¶</a></h3>
 <div class="exercise admonition" id="unit-test">
 
 <p class="admonition-title"><span class="caption-number">Exercise 114 </span> (Unit Test)</p>
@@ -1107,7 +1154,7 @@ tested. This will be shown in the event that the test fails.</p></li>
 </div>
 </div>
 <div class="section" id="part-2-3-testing-more-cases">
-<h3>Part 2.3: Testing more cases<a class="headerlink" href="#part-2-3-testing-more-cases" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 2.3: Testing more cases</a><a class="headerlink" href="#part-2-3-testing-more-cases" title="Permalink to this headline">¶</a></h3>
 <p>As is often the case, the <code class="docutils literal notranslate"><span class="pre">greeting()</span></code> function may return different kinds of
 results depending on its arguments. So we should be sure to test the
 different behavior that we expect.</p>
@@ -1193,7 +1240,7 @@ if we pass a number to the <code class="docutils literal notranslate"><span clas
 </div>
 </div>
 <div class="section" id="part-2-4-exercise-3">
-<h3>Part 2.4: Exercise 3<a class="headerlink" href="#part-2-4-exercise-3" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 2.4: Exercise 3</a><a class="headerlink" href="#part-2-4-exercise-3" title="Permalink to this headline">¶</a></h3>
 <div class="exercise admonition" id="detailed-unit-test">
 
 <p class="admonition-title"><span class="caption-number">Exercise 115 </span> (Detailed Unit Test)</p>
@@ -1305,16 +1352,15 @@ arguments:</p>
 </div>
 </div>
 <div class="section" id="part-3-pytest">
-<h2>Part 3: Pytest<a class="headerlink" href="#part-3-pytest" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#contents">Part 3: Pytest</a><a class="headerlink" href="#part-3-pytest" title="Permalink to this headline">¶</a></h2>
 <p>While it’s easy to run tests by calling them from inside a script, it’s more
 common to use a test runner.</p>
 <p>A test runner is a CLI tool that will run your tests and print a nicely
 formatted report of the results. Runners also often include a library that
 can be imported in your tests to provide tools and/or frameworks to aid in
 writing tests.</p>
-</div>
 <div class="section" id="part-3-1-install-pytest">
-<h2>Part 3.1: Install <code class="docutils literal notranslate"><span class="pre">pytest</span></code><a class="headerlink" href="#part-3-1-install-pytest" title="Permalink to this headline">¶</a></h2>
+<h3><a class="toc-backref" href="#contents">Part 3.1: Install <code class="docutils literal notranslate"><span class="pre">pytest</span></code></a><a class="headerlink" href="#part-3-1-install-pytest" title="Permalink to this headline">¶</a></h3>
 <p>For this lesson we’ll be using the <code class="docutils literal notranslate"><span class="pre">pytest</span></code> runner. It’s a Python module, so
 you can install it as you normally do modules.</p>
 <p>For <code class="docutils literal notranslate"><span class="pre">poetry</span></code> users:</p>
@@ -1333,7 +1379,7 @@ you can install it as you normally do modules.</p>
 </div>
 </div>
 <div class="section" id="part-3-2-migrate-to-pytest">
-<h2>Part 3.2: Migrate to Pytest<a class="headerlink" href="#part-3-2-migrate-to-pytest" title="Permalink to this headline">¶</a></h2>
+<h3><a class="toc-backref" href="#contents">Part 3.2: Migrate to Pytest</a><a class="headerlink" href="#part-3-2-migrate-to-pytest" title="Permalink to this headline">¶</a></h3>
 <p>To use the runner part of <code class="docutils literal notranslate"><span class="pre">pytest</span></code> we only have to make a minor change to the
 script to make it work with <code class="docutils literal notranslate"><span class="pre">pytest</span></code>. Simply put your <code class="docutils literal notranslate"><span class="pre">main()</span></code> call under a
 <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;</span></code> statement. This allows <code class="docutils literal notranslate"><span class="pre">pytest</span></code> to import your file
@@ -1460,14 +1506,15 @@ FAILED greeting.py::test_greeting - AssertionError: demo ...
 </div></div>
 <div class="clearfix"></div>
 </div>
+</div>
 <div class="section" id="part-4-test-best-practices">
-<h2>Part 4: Test best practices<a class="headerlink" href="#part-4-test-best-practices" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#contents">Part 4: Test best practices</a><a class="headerlink" href="#part-4-test-best-practices" title="Permalink to this headline">¶</a></h2>
 <div class="margin sidebar">
 <p class="sidebar-title"></p>
 <p><a class="btn btn-sm btn-outline-info text-info bg-white" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/greeting.py"><i class="fa fa-file-code text-info bg-white"></i> greeting.py</a></p>
 </div>
 <div class="section" id="part-4-1-make-a-test-file">
-<h3>Part 4.1: Make a test file<a class="headerlink" href="#part-4-1-make-a-test-file" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 4.1: Make a test file</a><a class="headerlink" href="#part-4-1-make-a-test-file" title="Permalink to this headline">¶</a></h3>
 <p>In Python tests are usually kept in a separate file starting with <code class="docutils literal notranslate"><span class="pre">test_</span></code>.</p>
 <p>Let’s move our <code class="docutils literal notranslate"><span class="pre">test_greeting()</span></code> function to a new file named
 <code class="docutils literal notranslate"><span class="pre">test_greeting.py</span></code> file.</p>
@@ -1562,7 +1609,7 @@ FAILED greeting.py::test_greeting - AssertionError: demo ...
 <div class="clearfix"></div>
 </div>
 <div class="section" id="part-4-2-one-case-per-test-function">
-<h3>Part 4.2: One case per test function<a class="headerlink" href="#part-4-2-one-case-per-test-function" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 4.2: One case per test function</a><a class="headerlink" href="#part-4-2-one-case-per-test-function" title="Permalink to this headline">¶</a></h3>
 <p>One test function with a bunch of assert messages is fine for a quick and
 dirty test. There are a few downsides though. For one thing, if one assertion
 fails, none of the others in the function will be run. It also can make it a
@@ -1683,7 +1730,7 @@ FAILED tests/test_greeting.py::test_greeting_fail - Asser...
 <div class="clearfix"></div>
 </div>
 <div class="section" id="part-4-3-file-locations">
-<h3>Part 4.3: File locations<a class="headerlink" href="#part-4-3-file-locations" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 4.3: File locations</a><a class="headerlink" href="#part-4-3-file-locations" title="Permalink to this headline">¶</a></h3>
 <p>For simple projects with just one or two Python modules it’s fine to keep
 your test files in the same directory (folder) as your python files. However,
 there’s a standard structure that is recommended for Python projects.</p>
@@ -1807,7 +1854,7 @@ FAILED test_greeting.py::test_greeting_fail - AssertionEr...
 </div>
 </div>
 <div class="section" id="part-4-4-configure-pytest">
-<h3>Part 4.4: Configure pytest<a class="headerlink" href="#part-4-4-configure-pytest" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 4.4: Configure pytest</a><a class="headerlink" href="#part-4-4-configure-pytest" title="Permalink to this headline">¶</a></h3>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">
@@ -1882,13 +1929,13 @@ FAILED test_greeting.py::test_greeting_fail - AssertionEr...
 </div>
 </div>
 <div class="section" id="part-5-writing-code-for-testing">
-<h2>Part 5: Writing code for testing<a class="headerlink" href="#part-5-writing-code-for-testing" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#contents">Part 5: Writing code for testing</a><a class="headerlink" href="#part-5-writing-code-for-testing" title="Permalink to this headline">¶</a></h2>
 <p>One of the benefits of writing tests it that it encourages you to write
 better code. However, this can take a bit of getting used to. So in this part
 of the lesson we’ll go over a few tips for writing code so that it’s easier
 to test.</p>
 <div class="section" id="part-5-1-keep-your-interface-separate">
-<h3>Part 5.1: Keep your interface separate<a class="headerlink" href="#part-5-1-keep-your-interface-separate" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 5.1: Keep your interface separate</a><a class="headerlink" href="#part-5-1-keep-your-interface-separate" title="Permalink to this headline">¶</a></h3>
 <p>Things like <code class="docutils literal notranslate"><span class="pre">input()</span></code> and <code class="docutils literal notranslate"><span class="pre">print()</span></code> statements are not easy to tests via unit
 tests. So keep the parts that take user input or display output to the user
 separate from the functions that determine behavior.</p>
@@ -2003,7 +2050,7 @@ little else, and calls to other functions.</p></li>
 </div>
 </div>
 <div class="section" id="part-5-2-isolate-external-services-dependencies">
-<h3>Part 5.2: Isolate external services / dependencies<a class="headerlink" href="#part-5-2-isolate-external-services-dependencies" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 5.2: Isolate external services / dependencies</a><a class="headerlink" href="#part-5-2-isolate-external-services-dependencies" title="Permalink to this headline">¶</a></h3>
 <p>When running tests you rarely want to modify real data or make live calls to
 external services. Instead, separate the code that makes those calls from the
 code that deals with the resulting data.</p>
@@ -2198,9 +2245,9 @@ code that deals with the resulting data.</p>
 </div>
 </div>
 <div class="section" id="part-6-testing-in-vs-code">
-<h2>Part 6: Testing in VS Code<a class="headerlink" href="#part-6-testing-in-vs-code" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#contents">Part 6: Testing in VS Code</a><a class="headerlink" href="#part-6-testing-in-vs-code" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="part-6-1-setup">
-<h3>Part 6.1: Setup<a class="headerlink" href="#part-6-1-setup" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 6.1: Setup</a><a class="headerlink" href="#part-6-1-setup" title="Permalink to this headline">¶</a></h3>
 <p>From the <span class="guilabel">Command Palette</span> select <span class="guilabel">Python: Configure Tests</span>.</p>
 <p><img alt="" src="../_images/test-configure.png" /></p>
 <p>Select <span class="guilabel">pytest</span> from the dropdown.</p>
@@ -2209,7 +2256,7 @@ code that deals with the resulting data.</p>
 <p><img alt="" src="../_images/test-configure-testdir.png" /></p>
 </div>
 <div class="section" id="part-6-2-running-tests">
-<h3>Part 6.2: Running tests<a class="headerlink" href="#part-6-2-running-tests" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 6.2: Running tests</a><a class="headerlink" href="#part-6-2-running-tests" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="step-1-click-tests">
 <h4>Step 1: Click Tests<a class="headerlink" href="#step-1-click-tests" title="Permalink to this headline">¶</a></h4>
 <p>Click the Test icon from the activity bar.</p>
@@ -2246,7 +2293,7 @@ seen in the <span class="guilabel">Python Test Log</span> which you can access b
 </div>
 </div>
 <div class="section" id="part-6-3-changing-tests">
-<h3>Part 6.3: Changing tests<a class="headerlink" href="#part-6-3-changing-tests" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 6.3: Changing tests</a><a class="headerlink" href="#part-6-3-changing-tests" title="Permalink to this headline">¶</a></h3>
 <p>If you make changes to your tests, you may need to nudge VS Code so that they
 are reflected.</p>
 <p>You can run <span class="guilabel">Python: Discover Tests</span> from the <span class="guilabel">Command Palette</span>:</p>
