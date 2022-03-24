@@ -1,12 +1,24 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 main() {
   local version="$1" cast prog
+  local -a cmd
+
+  DISABLE_RPROMPT=true ; export DISABLE_RPROMPT
 
   cast="docs/exercises/assets/adventure-${version}.cast"
-  prog="docs/exercises/adventure/adventure-${version}.py"
+  prog="pythonclass/adventure/adventure-${version}.py"
 
-  asciinema rec --quiet --overwrite "${cast}" --command "python ${prog}"
+  if [[ $# -gt 1 ]]; then
+    cmd=( "${@:2}" )
+  else
+    cmd=( python "$prog" )
+  fi
+
+  poetry run asciinema rec --quiet --idle-time-limit 1 \
+    --overwrite "${cast}" \
+    --env SHELL,TERM,DISABLE_RPROMPT \
+    --command "${cmd[*]}"
 }
 
 main ${1:+"$@"}
