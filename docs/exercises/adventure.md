@@ -4597,13 +4597,263 @@ a test at the beginning of each coding session and whenever something breaks.
 Going forward we'll be writing tests for all of our new code, and running them
 regularly.
 
-% Part 12: Read things
-% --------------------
+Part 12: Read things
+--------------------
+
+In this section we'll add the read command, which the player can use to read a
+clue from the book item.
+
+In this section we'll also start following an approach to coding called
+{term}`TDD`, or {term}`Test-Driven Development`. When following this process,
+you write your test first, then write the code that makes it pass.
+
+This technique has many advantages. You are forced to be very deliberate about
+exactly what you are trying to accomplish, which tends to lead to clearer
+thinking and cleaner code. You can be more confident that your code is working
+as intended and that it won't break in the future without you noticing.
+
+### Part 12.1: Add command
+
+{{ left }}
+
+In this section we'll be adding the read command.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.1.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+#### A. in `test_game.py`
+
+1. `[ ]` Import the `do_read` function
+1. `[ ]` Add `test_do_read()` function with one parameter `capsys`
+1. `[ ]` Call `do_read()` with an empty list as an argument
+1. `[ ]` Assign the results of `capsys.readouterr().out` to the variable `output`
+1. `[ ]` Write an assert statement that checks that the debug message
+         `"Trying to read: []"` is in `output`
+1. `[ ]` Run your tests, either at the command line or in VS Code. Since we
+         haven't written `do_read()` yet, you will get an error.
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/test_game-12.1.py
+:linenos:
+:lineno-match:
+:end-before: PLAYER
+:class: full-width
+:emphasize-lines: "9"
+
+```
+
+```{literalinclude} ../../pythonclass/adventure/test_game-12.1.py
+:linenos:
+:lineno-match:
+:start-at: "def test_do_read("
+:class: full-width
+:caption: test_game.py
+
+```
+
+`````
+
+#### B. in `adventure.py` add `do_read()`
+
+{{ left }}
+
+1. `[ ]` Add a `do_read()` function with one parameter `args`
+1. `[ ]` In it, use the `debug()` function to print something like {samp}`"Trying to read {args}."`.
+1. `[ ]` Run your test again. It should now pass.
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/adventure-12.1.py
+:linenos:
+:lineno-match:
+:start-at: "def do_read"
+:end-before: def
+:class: full-width
+:caption: adventure.py
+
+```
+
+`````
+{{ endcols }}
+
+#### C. in `adventure.py` in `main()`
+
+1. `[ ]` Add an `elif` that checks if `command` is `"read"`.
+   * `[ ]` if so, call `do_read()` and pass `args`.
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/adventure-12.1.py
+:class: full-width
+:linenos:
+:lineno-match:
+:start-at: def main()
+:end-before: 'if __name__'
+:emphasize-lines: "37-38"
+```
+
+`````
+
+### Part 12.2: Validate
+
+#### A. in `test_game.py`
+
+1. `[ ]` Change the name of `test_do_read()` to `test_do_read_no_args()`
+1. `[ ]` Add an assertion that checks if `"Error What do you want to read?"` is
+         in `output`
+1. `[ ]` Run your test. It should fail.
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/test_game-12.2.py
+:linenos:
+:lineno-match:
+:start-at: "def test_do_read_no_args"
+:class: full-width
+:caption: test_game.py
+:emphasize-lines: "9-"
+
+```
+
+`````
+
+#### B. in `adventure.py` in `do_read()`
+
+1. `[ ]` Check if `args` is falsy. If it is, use the `error()` function to
+         print an error that says: `"What do you want to read?"` then `return`
+1. `[ ]` Run your test again. It should pass.
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/adventure-12.2.py
+:linenos:
+:lineno-match:
+:start-at: "def do_read"
+:end-before: def
+:class: full-width
+:caption: test_game.py
+:emphasize-lines: "6-"
+
+```
+
+`````
+
+### Part 12.3: Validate more
+
+#### A. In `test_game.py`
+
+1. `[ ]` Add `test_do_read_missing_item()` function with the parameter `capsys`
+1. `[ ]` Call `do_read()` with a list and a any string that is not an item key for an argument
+1. `[ ]` Assign the results of `capsys.readouterr().out` to the variable `output`
+1. `[ ]` Write an assert statement that checks that the debug message
+         `"Trying to read: []"` is in `output`
+1. `[ ]` Write an assert statement that checks that the message
+         `"Sorry, I don't know what this is'"` is in `output`
+1. `[ ]` Run your test. It should fail.
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/test_game-12.3.py
+:linenos:
+:lineno-match:
+:start-at: "def test_do_read_missing_item"
+:class: full-width
+:caption: test_game.py
+
+```
+
+`````
+
+#### B. In `adventure.py` in `do_read()`
+
+1. `[ ]` assign the first item of the `args` list to the variable `name` and make it lowercase
+1. `[ ]` Write an if statement that checks if either the place or player has the item. If not:
+   * `[ ]` Use the `error()` function to print a message like: {samp}`"Sorry, I don't know what this is: {name}'"`
+   * `[ ]` return
+1. `[ ]` Run your test again. It should pass.
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/adventure-12.3.py
+:linenos:
+:lineno-match:
+:start-at: "def do_read"
+:end-before: def
+:class: full-width
+:caption: adventure.py
+:emphasize-lines: "11-"
+
+```
+
+`````
+
+### Part 12.4: Validate yet more
+
+#### A. In `test_game.py`
+
+1. `[ ]` import the `place_add` function
+1. `[ ]` Add `test_do_read_unreadable_item()` function with the parameter `capsys`
+1. `[ ]` Add a fake item to `adventure.ITEMS` with the key of your choice
+1. `[ ]` Use the `place_add()` function to add your fake item to the current place
+1. `[ ]` Call `do_read()` with a list containing your new key as the argument
+1. `[ ]` Assign the results of `capsys.readouterr().out` to the variable `output`
+1. `[ ]` Write an assert statement that checks that the message
+         {samp}`"Sorry, I don't can't read '{key}'"` is in `output`
+1. `[ ]` Run your test. It should fail.
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/test_game-12.4.py
+:linenos:
+:lineno-match:
+:start-at: "def test_do_read_unreadable_item"
+:class: full-width
+:caption: test_game.py
+
+```
+
+`````
+
+#### B. In `adventure.py` in `do_read()`
+
+1. `[ ]` Use the `get_item()` function to get the item dictionary and assign it to the variable `item`
+1. `[ ]` Check if the `"writing"` key is in the item dictionary. If not:
+   * `[ ]` Use the `error()` function to print an error message like: {samp}`"Sorry, I can't read '{name}'"`
+   * `[ ]` return
+1. `[ ]` Run your test again. It should pass.
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/adventure-12.4.py
+:linenos:
+:lineno-match:
+:start-at: "def do_read"
+:end-before: def
+:class: full-width
+:caption: adventure.py
+:emphasize-lines: "19-"
+
+```
+
+`````
 
 % TODO
+% - [ ] modify wrap: add indent and after
 % - [ ] add message and preface to book
 % - [ ] add read
-% - [ ] modify wrap: add indent and after
 % - [ ] add read command
 
 Reference
@@ -4623,6 +4873,11 @@ Don't repeat yourself
    A principle of software development aimed at reducing repetition of software
    patterns, replacing it with abstractions or using data normalization to
    avoid redundancy.
+
+TDD
+Test-Driven Development
+  A process for writing code that involves writing a test for how you want the
+  code to work before writing the code itself.
 
 ```
 

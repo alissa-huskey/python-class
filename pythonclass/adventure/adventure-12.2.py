@@ -98,23 +98,6 @@ ITEMS = {
         "description": (
             "A hefty leather-bound tome open to an interesting passage."
         ),
-        "writing": {
-            "preface": (
-                "The book is open to a page that reads:"
-            ),
-            "message": (
-                "At the edge of the woods is a cave that is home to a three"
-                "headed dragon, each with a different temperament.",
-
-                "Legend says that if you happen upon the dragon sleeping, the"
-                "brave may pet one of its three heads.",
-
-                "Choose the right head and you will be rewarded with great"
-                "fortunes.",
-
-                "But beware, choose poorly and it will surely mean your doom!",
-            ),
-        },
     },
     "gems": {
         "key": "gems",
@@ -133,10 +116,9 @@ def header(title):
     write(fx.bold(title))
     print()
 
-def wrap(text, indent=1, after=1):
+def wrap(text):
     """Print wrapped and indented text."""
-    # calculate the indentation
-    margin = (MARGIN * " ") * indent
+    margin = MARGIN * " "
 
     # wrap the text
     paragraph = textwrap.fill(
@@ -147,7 +129,7 @@ def wrap(text, indent=1, after=1):
     )
 
     # print the wrapped text
-    print(paragraph, end=("\n" * after))
+    print(paragraph)
 
 def write(text):
     """Print an indented line of game text."""
@@ -538,41 +520,14 @@ def do_buy(args):
 
 
 def do_read(args):
-    """Read at an item."""
+    """Read an item with a message."""
 
     debug(f"Trying to read: {args}")
 
-    # make sure the player said what they want to examine
+    # make sure the player said what they want to read
     if not args:
         error("What do you want to read?")
         return
-
-    # get the item entered by the user and make it lowercase
-    name = args[0].lower()
-
-    # make sure the item is in this place or in the players inventory
-    if not (place_has(name) or player_has(name)):
-        error(f"Sorry, I don't know what this is: {name!r}.")
-        return
-
-    # get the item dictionary
-    item = get_item(name)
-
-    # make sure it is an item you can read
-    if not "writing" in item:
-        error(f"Sorry, I can't read this {name}.")
-        return
-
-    # get the information to read
-    writing = item["writing"]
-
-    # print the item header
-    title = writing.get("preface", "It reads...")
-    header(title)
-
-    # print the quantity if the item is from inventory
-    for passage in writing.get("message"):
-        wrap(passage, indent=2, after=2)
 
 def main():
     header("Welcome!")
