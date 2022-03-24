@@ -1,6 +1,7 @@
 from pprint import pformat
 import pytest
 
+@pytest.mark.skip
 @pytest.mark.function("columnize")
 @pytest.mark.parametrize(
     "matrix,expected", [

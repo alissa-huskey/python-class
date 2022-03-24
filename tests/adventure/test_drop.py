@@ -1,5 +1,6 @@
 """Test the drop command"""
 
+from pythonclass.adventure import adventure
 from pythonclass.adventure.adventure import (
     do_drop,
     player_has,
@@ -21,30 +22,32 @@ def test_do_drop_no_args(capsys):
 
 
 def test_do_drop_missing_item(capsys):
-    do_drop(["nothing"])
-    output = read(capsys)
+    adventure.PLAYER["inventory"] = {}
+    do_drop(["anything"])
 
-    assert "Trying to drop: ['nothing']" in output, \
+    output = capsys.readouterr().out
+
+    assert "Trying to drop: ['anything']" in output, \
         "Debug message should be in output"
 
-    assert "You don't have any 'nothing'" in output, \
+    assert "You don't have any 'anything'" in output, \
         "User error should be in output"
 
 
 def test_do_drop(capsys):
-    inventory_change("book")
+    inventory_change("mic")
 
-    do_drop(["book"])
+    do_drop(["mic"])
     output = read(capsys)
 
-    assert "Trying to drop: ['book']" in output, \
+    assert "Trying to drop: ['mic']" in output, \
         "Debug message should be in output"
 
-    assert "You set down the book" in output, \
+    assert "You set down the mic" in output, \
         "User message should be in output"
 
-    assert place_has("book"), \
+    assert place_has("mic"), \
         "The dropped item should be in the place"
 
-    assert not player_has("book"), \
+    assert not player_has("mic"), \
         "The dropped item should not be in inventory"

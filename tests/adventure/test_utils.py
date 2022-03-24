@@ -48,35 +48,39 @@ def test_header(capsys):
     assert output == "\n  Headline\n\n"
 
 
-def test_inventory_change_exists_default(capsys):
-    inventory_change("gems")
+def test_inventory_change():
+    adventure.PLAYER["inventory"]["problems"] = 99
+    inventory_change("problems")
 
-    assert adventure.PLAYER["inventory"]["gems"] == 51, \
-        "The player should have 51 gems."
+    assert adventure.PLAYER["inventory"]["problems"] == 100, \
+        "Inventory change with no quantity argument should add 1."
 
 
-def test_inventory_change_default():
-    inventory_change("problem")
+def test_inventory_change_missing_key():
+    adventure.PLAYER["inventory"] = {}
+    inventory_change("brain")
 
-    assert "problem" in adventure.PLAYER["inventory"], \
-        "The 'problem' key should be in the inventory dictionary."
+    assert "brain" in adventure.PLAYER["inventory"], \
+        "inventory_change() should add missing keys to the inventory"
 
-    assert adventure.PLAYER["inventory"]["problem"] == 1, \
-        "The player should have one more gem."
+    assert adventure.PLAYER["inventory"]["brain"] == 1, \
+        "inventory_change() should add to zero if key was missing"
 
 
 def test_inventory_change_subtract():
-    inventory_change("gems", -1)
+    adventure.PLAYER["inventory"]["bottles of beer"] = 99
+    inventory_change("bottles of beer", -1)
 
-    assert adventure.PLAYER["inventory"]["gems"] == 49, \
-        "The player should have one less gem."
+    assert adventure.PLAYER["inventory"]["bottles of beer"] == 98, \
+        "inventory_change() should reduce inventory when qty is negative"
 
 
 def test_inventory_change_remove():
-    inventory_change("gems", -50)
+    adventure.PLAYER["inventory"]["chances"] = 1
+    inventory_change("chances", -1)
 
-    assert "gems" not in adventure.PLAYER["inventory"], \
-        "Gems should be removed from the player inventory."
+    assert "chances" not in adventure.PLAYER["inventory"], \
+        "inventory_change() should remove the item when there are none left"
 
 
 def test_is_for_sale():
