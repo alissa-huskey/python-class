@@ -103,16 +103,16 @@ ITEMS = {
                 "The book is open to a page that reads:"
             ),
             "message": (
-                "At the edge of the woods is a cave that is home to a three"
-                "headed dragon, each with a different temperament.",
+                "At the edge of the woods is a cave that is home to a three "
+                "headed dragon, each with a different temperament. "
 
-                "Legend says that if you happen upon the dragon sleeping, the"
-                "brave may pet one of its three heads.",
+                "Legend says that if you happen upon the dragon sleeping, the "
+                "brave may pet one of its three heads. "
 
-                "Choose the right head and you will be rewarded with great"
-                "fortunes.",
+                "Choose the right head and you will be rewarded with great "
+                "fortunes. "
 
-                "But beware, choose poorly and it will surely mean your doom!",
+                "But beware, choose poorly and it will surely mean your doom! "
             ),
         },
     },
@@ -133,10 +133,9 @@ def header(title):
     write(fx.bold(title))
     print()
 
-def wrap(text, indent=1, after=1):
+def wrap(text):
     """Print wrapped and indented text."""
-    # calculate the indentation
-    margin = (MARGIN * " ") * indent
+    margin = MARGIN * " "
 
     # wrap the text
     paragraph = textwrap.fill(
@@ -147,7 +146,7 @@ def wrap(text, indent=1, after=1):
     )
 
     # print the wrapped text
-    print(paragraph, end=("\n" * after))
+    print(paragraph)
 
 def write(text):
     """Print an indented line of game text."""
@@ -567,12 +566,10 @@ def do_read(args):
     writing = item["writing"]
 
     # print the item header
-    title = writing.get("preface", "It reads...")
-    header(title)
+    header(writing["title"])
 
-    # print the quantity if the item is from inventory
-    for passage in writing.get("message"):
-        wrap(passage, indent=2, after=2)
+    # print the quantity message
+    wrap(writing.get("message"))
 
 def main():
     header("Welcome!")

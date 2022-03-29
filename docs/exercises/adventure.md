@@ -3,6 +3,9 @@ substitutions:
   left:  '{{ leftcol | replace("col", "col-5") }}'
   right: '{{ rightcol | replace("col", "col-7") }}'
   icon: '{opticon}`file-code`'
+  source: '{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/%s," %s",type=link, cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`'
+  code: '{{link-badge}}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/{0}," {1}",type=link, cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`'
+  sources: '{{{{ code.format("adventure-{0}.py", "adventure.py") }}}} {{{{ code.format("test_game-{0}.py", "test_game.py") }}}}'
 
 jupytext:
   formats: md:myst
@@ -61,7 +64,7 @@ repo for it, if you're comfortable with git.)
 
 ### Part 1.2: The main() function
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-1.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-1.2.py", "source code") }}
 
 {{ clear }}
 
@@ -98,7 +101,7 @@ repo for it, if you're comfortable with git.)
 
 ### Part 1.3: Your first command: quit
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-1.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-1.3.py", "source code") }}
 
 {{ clear }}
 
@@ -145,7 +148,7 @@ command: the `quit` command.
 
 ### Part 1.4 Create `ITEMS`
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-1.4.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-1.4.py", "source code") }}
 
 {{ clear }}
 
@@ -198,7 +201,7 @@ ITEMS = {
 
 ### Part 1.5: Make `do_shop()` function
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-1.5.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-1.5.py", "source code") }}
 
 {{ clear }}
 
@@ -289,7 +292,7 @@ https://alissa-huskey.github.io/python-class/exercises/adventure.html
 
 ### Part 2.1: Split reply into command and arguments
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-2.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-2.1.py", "source code") }}
 
 {{ clear }}
 
@@ -358,7 +361,7 @@ the command, and `north` is the direction.
 
 ### Part 2.2: Create PLAYER and PLACES
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-2.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-2.2.py", "source code") }}
 
 {{ clear }}
 
@@ -560,7 +563,7 @@ PLACES = {
 
 ### Part 2.3: Write message functions
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-2.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-2.3.py", "source code") }}
 
 {{ clear }}
 
@@ -703,7 +706,7 @@ We'll also add a `error()` function which will print an error message.
 
 ### Part 2.4: Fill in `go` command
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-2.4.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-2.4.py", "source code") }}
 
 {{ clear }}
 
@@ -873,7 +876,7 @@ printing via our custom functions: `header()`, `wrap()`, `write()`,
 
 ### Part 3.1: Text wrapping
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-3.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-3.1.py", "source code") }}
 
 {{ clear }}
 
@@ -992,7 +995,7 @@ look at this section of the [functions lesson][keyword-args].
 
 ### Part 3.2: Colors
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-3.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-3.2.py", "source code") }}
 
 {{ clear }}
 
@@ -1077,7 +1080,7 @@ colorful.
 
 ### Part 3.3: Header and write functions
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-3.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-3.3.py", "source code") }}
 
 {{ clear }}
 
@@ -1254,7 +1257,7 @@ In this section we'll add the `examine` command.
 
 ### Part 4.1: Add new items
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-4.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-4.1.py", "source code") }}
 
 {{ clear }}
 
@@ -1363,7 +1366,7 @@ Be sure to test the `shop` command and make sure book and desk aren't listed.
 
 ### Part 4.2: Add `do_examine()`
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-4.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-4.2.py", "source code") }}
 
 {{ clear }}
 
@@ -1443,7 +1446,7 @@ calling the `do_examine()` function.
 
 ### Part 4.3: Finish examine command
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-4.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-4.3.py", "source code") }}
 
 {{ clear }}
 
@@ -1580,7 +1583,7 @@ In this section we'll add the `look` command.
 
 ### Part 5.1: Add command
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-5.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-5.1.py", "source code") }}
 
 {{ clear }}
 
@@ -1652,7 +1655,7 @@ player types `l` or `look`.
 
 ### Part 5.2: Print place name and description
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-5.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-5.2.py", "source code") }}
 
 {{ clear }}
 
@@ -1701,7 +1704,7 @@ In this section we'll look up the place info and print the name and description.
 
 ### Part 5.3: Print the place items
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-5.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-5.3.py", "source code") }}
 
 {{ clear }}
 
@@ -1787,7 +1790,7 @@ And if there are three or more items it will look like:
 
 ### Part 5.4: Print the nearby places
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-5.4.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-5.4.py", "source code") }}
 
 {{ clear }}
 
@@ -1841,7 +1844,7 @@ In this section we'll add the `take` command.
 
 ### Part 6.1: Add command
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-6.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-6.1.py", "source code") }}
 
 {{ clear }}
 
@@ -1912,6 +1915,10 @@ player types `t`, `take`, or `grab`.
 {{ endcols }}
 
 ### Part 6.2: Validate item
+
+{{ source | format("adventure-6.2.py", "source code") }}
+
+{{ clear }}
 
 {{ left }}
 
@@ -2016,6 +2023,10 @@ item in the current place.
 
 ### Part 6.3: Take it
 
+{{ source | format("adventure-6.3.py", "source code") }}
+
+{{ clear }}
+
 {{ left }}
 
 In this section we'll actually take the item.
@@ -2086,6 +2097,10 @@ place, and let the player know that it's done.
 
 ### Part 6.4: Examine inventory
 
+{{ source | format("adventure-6.4.py", "source code") }}
+
+{{ clear }}
+
 {{ left }}
 
 In this section we'll modify `do_examine()` so it can be used to look at inventory items.
@@ -2129,7 +2144,7 @@ In this section we'll add the `inventory` command.
 
 ### Part 7.1: Add command
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-7.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-7.1.py", "source code") }}
 
 {{ clear }}
 
@@ -2201,6 +2216,10 @@ player types `i`, or `inventory`.
 
 ### Part 7.2: Print inventory
 
+{{ source | format("adventure-7.2.py", "source code") }}
+
+{{ clear }}
+
 {{ left }}
 
 In this section we'll print the players inventory.
@@ -2248,7 +2267,7 @@ In this section we'll add the `drop` command.
 
 ### Part 8.1: Add command
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-8.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-8.1.py", "source code") }}
 
 {{ clear }}
 
@@ -2319,7 +2338,7 @@ player types `drop`.
 
 ### Part 8.2: Validate
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-8.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-8.2.py", "source code") }}
 
 {{ clear }}
 
@@ -2370,7 +2389,7 @@ have in inventory.
 
 ### Part 8.3: Drop it
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-8.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-8.3.py", "source code") }}
 
 {{ clear }}
 
@@ -2439,10 +2458,6 @@ it to the place items.
 Part 9: Refactoring
 -------------------
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-9.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
-
-{{ clear }}
-
 In this section we are going to work on refactoring our game.
 {term}`Refactoring <refactoring>` is when you change code to make the code
 better, but without changing what the software does.
@@ -2461,6 +2476,10 @@ in the places where the same code is repeated.
 [^DRY]: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
 
 ### Part 9.1: Add abort()
+
+{{ source | format("adventure-9.1.py", "source code") }}
+
+{{ clear }}
 
 The `abort()` function will be similar to the `error()` function, except it
 will exit the game immediately. This function will be for errors that only
@@ -2597,7 +2616,7 @@ if we don't it means there's an error somewhere in the code.
 
 ### Part 9.2: Add get_place()
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-9.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-9.2.py", "source code") }}
 
 {{ clear }}
 
@@ -2733,7 +2752,7 @@ dictionary, and call `abort()` if it is not. That means that anywhere we call
 
 ### Part 9.3: Add get_item()
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-9.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-9.3.py", "source code") }}
 
 {{ clear }}
 
@@ -2841,7 +2860,7 @@ remove error handling that is done in `get_item()`.
 
 ### Part 9.4: Validation functions
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-9.4.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-9.4.py", "source code") }}
 
 {{ clear }}
 
@@ -3029,7 +3048,7 @@ call to `is_for_sale()`.
 
 ### Part 9.5: Add `inventory_change()`
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-9.5.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-9.5.py", "source code") }}
 
 {{ clear }}
 
@@ -3152,7 +3171,7 @@ do for now.)
 
 ### Part 9.6: Add `place_add()`
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-9.6.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-9.6.py", "source code") }}
 
 {{ clear }}
 
@@ -3216,7 +3235,7 @@ Right now, this only happens in the `do_drop()` function.
 
 ### Part 9.7: Add `place_remove()`
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-9.7.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-9.7.py", "source code") }}
 
 {{ clear }}
 
@@ -3284,7 +3303,7 @@ buy shop and examine commands.
 
 ### Part 10.1: Add market
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-10.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-10.1.py", "source code") }}
 
 {{ clear }}
 
@@ -3362,7 +3381,7 @@ than going through all items.
 
 ### Part 10.2: Add `place_can()`
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-10.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-10.2.py", "source code") }}
 
 {{ clear }}
 
@@ -3465,7 +3484,7 @@ for actions instead of items.
 
 ### Part 10.3: Add buy command
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-10.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-10.3.py", "source code") }}
 
 {{ clear }}
 
@@ -3741,7 +3760,7 @@ Here we'll define the function that is called when the player types `"buy"`.
 
 ### Part 10.4: Clean up the shop
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-10.4.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-10.4.py", "source code") }}
 
 {{ clear }}
 
@@ -3968,7 +3987,7 @@ happen to play the part of the game that triggers it. Be sure to do the
 
 ### Part 11.1: Setup
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/test_game-11.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("test_game-11.1.py", "source code") }}
 
 {{ clear }}
 
@@ -4078,7 +4097,7 @@ that to work, we'll need to make sure of a couple of things.
 
 ### Part 11.2: Test `is_for_sale()`
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/test_game-11.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("test_game-11.2.py", "source code") }}
 
 {{ clear }}
 
@@ -4174,7 +4193,7 @@ item doesn't have a `"price"` key, `is_for_sale()` returns `False`.
 
 ### Part 11.3: Test `error()`
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/test_game-11.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("test_game-11.3.py", "source code") }}
 
 {{ clear }}
 
@@ -4247,7 +4266,7 @@ capture the printed output. After any code that prints we can call the
 
 ### Part 11.4: Test `debug()`
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/test_game-11.4.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("test_game-11.4.py", "source code") }}
 
 {{ clear }}
 
@@ -4306,7 +4325,7 @@ This should be very similar to `test_error()`.
 
 ### Part 11.5: Test `header()` and `write()`
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/test_game-11.5.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("test_game-11.5.py", "source code") }}
 
 {{ clear }}
 
@@ -4357,7 +4376,7 @@ Can you write tests for the `header()` and `write()` functions on your own?
 
 ### Part 11.6: Test `inventory_change()`
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/test_game-11.6.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("test_game-11.6.py", "source code") }}
 
 {{ clear }}
 
@@ -4542,7 +4561,7 @@ Can you add the next two tests on your own?
 
 ### Part 11.7: Test `do_drop()`
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/test_game-11.7.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("test_game-11.7.py", "source code") }}
 
 {{ clear }}
 
@@ -4704,6 +4723,10 @@ as intended and that it won't break in the future without you noticing.
 
 ### Part 12.1: Add command
 
+{{ sources.format("12.1") }}
+
+{{ clear }}
+
 In this section we'll be adding the read command.
 
 #### A. in `test_game.py`
@@ -4836,6 +4859,10 @@ Finally, we'll add the code to make the command work in the game.
 
 ### Part 12.2: Ensure item
 
+{{ sources.format("12.2") }}
+
+{{ clear }}
+
 {{ left }}
 
 In this section we'll make sure that the player entered the item that they want
@@ -4931,6 +4958,10 @@ Now we'll write the code to make our test pass.
 `````
 
 ### Part 12.3: Ensure item is here
+
+{{ sources.format("12.3") }}
+
+{{ clear }}
 
 {{ left }}
 
@@ -5033,6 +5064,10 @@ Now we'll add the code to make the test pass.
 `````
 
 ### Part 12.4: Ensure item is readable
+
+{{ sources.format("12.4") }}
+
+{{ clear }}
 
 {{ left }}
 
@@ -5137,11 +5172,142 @@ Now we'll write the code to make the test pass.
 
 `````
 
+### Part 12.5: Read things
+
+{{ sources.format("12.5") }}
+
+{{ clear }}
+
+In this section we'll finally provide a readable item and the `read` command
+will read it.
+
+#### A. In `test_game.py` write `test_do_read_in_place()`
+
+{{ left }}
+
+In this section we'll write a new test where we'll set up a fake item with a
+`"writing"` key containing the information that can be read and add it to the
+current place. Then we'll try to read it, and make sure the `"title"` and
+`"message"` are in `output`.
+
+{{ right }}
+
+`````{dropdown} Demo
+
+```{screencast} assets/adventure-12.5.A.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+1. `[ ]` Add a function `test_do_read_in_place()`
+1. `[ ]` Create a new item with a `"writing"` key that's a dictionary with a `"title"` and `"message"`
+1. `[ ]` Use the `place_add()` function to add it to the current place
+1. `[ ]` Call `do_read()` with the the key for your fake item
+1. `[ ]` Assign the results of `capsys.readouterr().out` to the variable `output`
+1. `[ ]` Write an assert statement that the title is in `output`
+1. `[ ]` Write an assert statement that the message is in `output`
+1. `[ ]` Run your test. It should fail.
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/test_game-12.5.py
+:linenos:
+:lineno-match:
+:start-at: "def test_do_read_in_place"
+:class: full-width
+:caption: test_game.py
+
+```
+
+`````
+
+#### B. In `adventure.py` in `do_read()`
+
+{{ left }}
+
+Now we'll write the code to actually read the item.
+
+{{ right }}
+
+`````{dropdown} Demo
+
+```{screencast} assets/adventure-12.5.B.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+1. `[ ]` Get the value associated with the `"writing"` key from the `item`
+         dictionary and assign it to the variable `writing`
+1. `[ ]` Use the `header()` function to print the `"title"` value from the `writing` dictionary
+1. `[ ]` Use the `wrap()` function to print the `"message"` value from the `writing` dictionary
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/adventure-12.5.py
+:linenos:
+:lineno-match:
+:start-at: "def do_read"
+:end-before: def
+:emphasize-lines: "27-"
+:class: full-width
+:caption: adventure.py
+
+```
+
+`````
+
+#### C. Add `"writing"` to `"book"` in `ITEMS`
+
+{{ left }}
+
+Now we'll finally give the player something to read.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.5.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+1. `[ ]` In the `"book"` dictionary in `ITEMS`, add a key `"writing"` with a
+         dictionary for the value.
+1. `[ ]` The `"writing"` dictionary should have two keys: `"title"` and
+         `"message"`.
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/adventure-12.5.py
+:linenos:
+:lineno-match:
+:start-at: '"book": {'
+:end-before: '"gems": {'
+:emphasize-lines: "8-"
+:class: full-width
+:caption: adventure.py
+
+```
+
+`````
+
 % TODO
+% - [x] add message and preface to book
+% - [x] add read
+% - [x] add read command
+% - [ ] add test_do_read_in_inventory()
+% - [ ] add default title
 % - [ ] modify wrap: add indent and after
-% - [ ] add message and preface to book
-% - [ ] add read
-% - [ ] add read command
 
 Reference
 ---------
