@@ -83,6 +83,7 @@ repo for it, if you're comfortable with git.)
 
 ```{screencast} assets/adventure-1.2.cast
 :rows: 16
+:poster: npt:0:02
 ```
 
 `````
@@ -128,6 +129,7 @@ command: the `quit` command.
 :open:
 
 ```{screencast} assets/adventure-1.3.cast
+:poster: npt:0:03
 :rows: 15
 ```
 
@@ -216,6 +218,7 @@ defined in `ITEMS` above.
 :open:
 
 ```{screencast} assets/adventure-1.5.cast
+:poster: npt:0:02
 :rows: 15
 ```
 
@@ -312,6 +315,7 @@ the command, and `north` is the direction.
 :open:
 
 ```{screencast} assets/adventure-2.1.cast
+:poster: npt:0:07
 :rows: 15
 ```
 
@@ -584,6 +588,7 @@ We'll also add a `error()` function which will print an error message.
 :open:
 
 ```{screencast} assets/adventure-2.3.cast
+:poster: npt:0:04
 :rows: 15
 ```
 
@@ -727,6 +732,7 @@ print the `"name"` and `"description"`.
 :open:
 
 ```{screencast} assets/adventure-2.4.cast
+:poster: npt:0:12
 :rows: 15
 ```
 
@@ -892,6 +898,7 @@ wrap the text so that it looks nice.
 :open:
 
 ```{screencast} assets/adventure-3.1.cast
+:poster: npt:0:02
 :rows: 15
 ```
 
@@ -1015,6 +1022,7 @@ colorful.
 :open:
 
 ```{screencast} assets/adventure-3.2.cast
+:poster: npt:0:03
 :rows: 15
 ```
 
@@ -1095,6 +1103,7 @@ headers and a `write()` function to print all other one-line messsages.
 :open:
 
 ```{screencast} assets/adventure-3.3.cast
+:poster: npt:0:03
 :rows: 15
 ```
 
@@ -1380,6 +1389,7 @@ In this section we'll add an `examine` command.
 :open:
 
 ```{screencast} assets/adventure-4.2.cast
+:poster: npt:0:03
 :rows: 16
 ```
 
@@ -1465,6 +1475,7 @@ dictionary and print its information.
 :open:
 
 ```{screencast} assets/adventure-4.3.cast
+:poster: npt:0:13
 :rows: 16
 ```
 
@@ -1598,6 +1609,7 @@ player types `l` or `look`.
 :open:
 
 ```{screencast} assets/adventure-5.1.cast
+:poster: npt:0:03
 :rows: 16
 ```
 
@@ -1669,6 +1681,7 @@ In this section we'll look up the place info and print the name and description.
 :open:
 
 ```{screencast} assets/adventure-5.2.cast
+:poster: npt:0:02
 :rows: 16
 ```
 
@@ -1718,6 +1731,7 @@ In this section we'll print the list of items in the current place.
 :open:
 
 ```{screencast} assets/adventure-5.3.cast
+:poster: npt:0:02
 :rows: 16
 ```
 
@@ -1805,6 +1819,7 @@ In this section we'll print the name of each of any places directly to the
 :open:
 
 ```{screencast} assets/adventure-5.4.cast
+:poster: npt:0:03
 :rows: 16
 ```
 
@@ -1859,6 +1874,7 @@ player types `t`, `take`, or `grab`.
 :open:
 
 ```{screencast} assets/adventure-6.1.cast
+:poster: npt:0:02
 :rows: 16
 ```
 
@@ -1931,6 +1947,7 @@ item in the current place.
 :open:
 
 ```{screencast} assets/adventure-6.2.cast
+:poster: npt:0:12
 :rows: 16
 ```
 
@@ -2037,6 +2054,7 @@ In this section we'll actually take the item.
 :open:
 
 ```{screencast} assets/adventure-6.3.cast
+:poster: npt:0:08
 :rows: 16
 ```
 
@@ -2111,6 +2129,7 @@ In this section we'll modify `do_examine()` so it can be used to look at invento
 :open:
 
 ```{screencast} assets/adventure-6.4.cast
+:poster: npt:0:32
 :rows: 16
 ```
 
@@ -2159,6 +2178,7 @@ player types `i`, or `inventory`.
 :open:
 
 ```{screencast} assets/adventure-7.1.cast
+:poster: npt:0:03
 :rows: 16
 ```
 
@@ -2230,6 +2250,7 @@ In this section we'll print the players inventory.
 :open:
 
 ```{screencast} assets/adventure-7.2.cast
+:poster: npt:0:06
 :rows: 16
 ```
 
@@ -2282,6 +2303,7 @@ player types `drop`.
 :open:
 
 ```{screencast} assets/adventure-8.1.cast
+:poster: npt:0:02
 :rows: 16
 ```
 
@@ -2353,6 +2375,7 @@ have in inventory.
 :open:
 
 ```{screencast} assets/adventure-8.2.cast
+:poster: npt:0:06
 :rows: 16
 ```
 
@@ -2404,6 +2427,7 @@ it to the place items.
 :open:
 
 ```{screencast} assets/adventure-8.3.cast
+:poster: npt:0:14
 :rows: 16
 ```
 
@@ -3318,6 +3342,8 @@ navigate to and from there.
 :open:
 
 ```{screencast} assets/adventure-10.1.cast
+:poster: npt:0:04
+:speed: 0.5
 :rows: 16
 ```
 
@@ -3401,6 +3427,8 @@ this time with the key `"can"`.
 :open:
 
 ```{screencast} assets/adventure-10.2.cast
+:poster: npt:0:02
+:speed: 0.5
 :rows: 16
 ```
 
@@ -3498,6 +3526,8 @@ Now we'll add the buy command.
 :open:
 
 ```{screencast} assets/adventure-10.3.cast
+:poster: npt:0:26
+:speed: 0.75
 :rows: 16
 ```
 
@@ -3774,6 +3804,8 @@ In this section we'll make a number of small changes to improve the shop and exa
 :open:
 
 ```{screencast} assets/adventure-10.4.cast
+:poster: npt:0:06
+:speed: 0.5
 :rows: 16
 ```
 
@@ -4001,6 +4033,8 @@ In this section we'll get a basic test up and running.
 :open:
 
 ```{screencast} assets/adventure-11.1.cast
+:poster: npt:0:06
+:speed: 1.25
 :rows: 16
 ```
 
@@ -4084,6 +4118,19 @@ that to work, we'll need to make sure of a couple of things.
 
 {{ endcols }}
 
+:::{tip}
+
+You can add the following to your `pyproject.toml` to always run `pytest` in verbose mode.
+
+```{code-block} toml
+:caption: pyproject.toml
+
+[tool.pytest.ini_options]
+addopts = "-v"
+```
+
+:::
+
 
 #### E. Run tests in vscode
 
@@ -4115,6 +4162,7 @@ the result with an `assert` statement.
 :open:
 
 ```{screencast} assets/adventure-11.2.cast
+:poster: npt:0:04
 :rows: 16
 ```
 
@@ -4210,6 +4258,7 @@ is printed to make sure it is what we expect.
 :open:
 
 ```{screencast} assets/adventure-11.3.cast
+:poster: npt:0:05
 :rows: 16
 ```
 
@@ -4280,6 +4329,7 @@ This should be very similar to `test_error()`.
 :open:
 
 ```{screencast} assets/adventure-11.4.cast
+:poster: npt:0:05
 :rows: 16
 ```
 
@@ -4339,6 +4389,7 @@ Can you write tests for the `header()` and `write()` functions on your own?
 :open:
 
 ```{screencast} assets/adventure-11.5.cast
+:poster: npt:0:04
 :rows: 16
 ```
 
@@ -4391,6 +4442,7 @@ state.
 :open:
 
 ```{screencast} assets/adventure-11.6.cast
+:poster: npt:0:04
 :rows: 16
 ```
 
@@ -4579,6 +4631,7 @@ We'll start with the `do_drop()` function.
 :open:
 
 ```{screencast} assets/adventure-11.7.cast
+:poster: npt:0:04
 :rows: 16
 ```
 
@@ -4741,6 +4794,7 @@ First we'll write the test, which we expect to fail.
 :open:
 
 ```{screencast} assets/adventure-12.1.A.cast
+:poster: npt:0:04
 :rows: 16
 ```
 
@@ -4791,6 +4845,7 @@ Now we'll write the code to make it work.
 :open:
 
 ```{screencast} assets/adventure-12.1.B.cast
+:poster: npt:0:05
 :rows: 16
 ```
 
@@ -4828,21 +4883,22 @@ Now we'll write the code to make it work.
 
 Finally, we'll add the code to make the command work in the game.
 
+1. `[ ]` Add an `elif` that checks if `command` is `"read"`.
+   * `[ ]` if so, call `do_read()` and pass `args`.
+
 {{ right }}
 
 `````{dropdown} Demo
 :open:
 
 ```{screencast} assets/adventure-12.1.cast
+:poster: npt:0:02
 :rows: 16
 ```
 
 `````
 
 {{ endcols }}
-
-1. `[ ]` Add an `elif` that checks if `command` is `"read"`.
-   * `[ ]` if so, call `do_read()` and pass `args`.
 
 `````{dropdown} Code
 
@@ -4874,6 +4930,8 @@ to read.
 :open:
 
 ```{screencast} assets/adventure-12.2.cast
+:poster: npt:0:02
+:speed: 0.75
 :rows: 16
 ```
 
@@ -4887,23 +4945,24 @@ to read.
 
 Now we'll add an assertion to check the output for an error message.
 
+1. `[ ]` Change the name of `test_do_read()` to `test_do_read_no_args()`
+1. `[ ]` Add an assertion that checks if `"Error What do you want to read?"` is
+         in `output`
+1. `[ ]` Run your test. It should fail.
+
 {{ right }}
 
 `````{dropdown} Demo
 :open:
 
 ```{screencast} assets/adventure-12.2.A.cast
+:poster: npt:0:05
 :rows: 16
 ```
 
 `````
 
 {{ endcols }}
-
-1. `[ ]` Change the name of `test_do_read()` to `test_do_read_no_args()`
-1. `[ ]` Add an assertion that checks if `"Error What do you want to read?"` is
-         in `output`
-1. `[ ]` Run your test. It should fail.
 
 `````{dropdown} Code
 
@@ -4925,22 +4984,23 @@ Now we'll add an assertion to check the output for an error message.
 
 Now we'll write the code to make our test pass.
 
+1. `[ ]` Check if `args` is falsy. If it is, use the `error()` function to
+         print an error that says: `"What do you want to read?"` then `return`
+1. `[ ]` Run your test again. It should pass.
+
 {{ right }}
 
 `````{dropdown} Demo
 :open:
 
 ```{screencast} assets/adventure-12.2.B.cast
+:poster: npt:0:04
 :rows: 16
 ```
 
 `````
 
 {{ endcols }}
-
-1. `[ ]` Check if `args` is falsy. If it is, use the `error()` function to
-         print an error that says: `"What do you want to read?"` then `return`
-1. `[ ]` Run your test again. It should pass.
 
 `````{dropdown} Code
 
@@ -4974,6 +5034,7 @@ this place or in inventory.
 :open:
 
 ```{screencast} assets/adventure-12.3.cast
+:poster: npt:0:03
 :rows: 16
 ```
 
@@ -4994,6 +5055,7 @@ this place or in inventory.
 :open:
 
 ```{screencast} assets/adventure-12.3.A.cast
+:poster: npt:0:05
 :rows: 16
 ```
 
@@ -5035,6 +5097,7 @@ Now we'll add the code to make the test pass.
 :open:
 
 ```{screencast} assets/adventure-12.3.B.cast
+:poster: npt:0:04
 :rows: 16
 ```
 
@@ -5080,6 +5143,7 @@ in fact, be read.
 :open:
 
 ```{screencast} assets/adventure-12.4.cast
+:poster: npt:0:03
 :rows: 16
 ```
 
@@ -5101,6 +5165,7 @@ it.
 :open:
 
 ```{screencast} assets/adventure-12.4.A.cast
+:poster: npt:0:05
 :rows: 16
 ```
 
@@ -5144,6 +5209,7 @@ Now we'll write the code to make the test pass.
 :open:
 
 ```{screencast} assets/adventure-12.4.B.cast
+:poster: npt:0:04
 :rows: 16
 ```
 
@@ -5195,6 +5261,7 @@ current place. Then we'll try to read it, and make sure the `"title"` and
 `````{dropdown} Demo
 
 ```{screencast} assets/adventure-12.5.A.cast
+:poster: npt:0:04
 :rows: 16
 ```
 
@@ -5236,6 +5303,7 @@ Now we'll write the code to actually read the item.
 `````{dropdown} Demo
 
 ```{screencast} assets/adventure-12.5.B.cast
+:poster: npt:0:05
 :rows: 16
 ```
 
@@ -5280,7 +5348,8 @@ Now we'll finally give the player something to read.
 :open:
 
 ```{screencast} assets/adventure-12.5.cast
-:rows: 16
+:poster: npt:0:03
+:rows: 18
 ```
 
 `````
@@ -5337,7 +5406,8 @@ level.
 :open:
 
 ```{screencast} assets/adventure-12.6.cast
-:rows: 16
+:rows: 18
+:poster: npt:0:02
 ```
 
 `````
@@ -5363,6 +5433,7 @@ function to test that the message has been indented an extra level.
 :open:
 
 ```{screencast} assets/adventure-12.6.A.cast
+:poster: npt:0:14
 :rows: 16
 ```
 
@@ -5409,6 +5480,7 @@ pass.
 :open:
 
 ```{screencast} assets/adventure-12.6.B.cast
+:poster: npt:0:07
 :rows: 16
 ```
 
@@ -5460,6 +5532,7 @@ testing that the lines are indented to `4` spaces instead of `2`.
 :open:
 
 ```{screencast} assets/adventure-12.6.C.cast
+:poster: npt:0:08
 :rows: 16
 ```
 
@@ -5511,6 +5584,7 @@ We're finally ready to modify the `wrap()` function to handle indention for us.
 :open:
 
 ```{screencast} assets/adventure-12.6.D.cast
+:poster: npt:0:07
 :rows: 16
 ```
 
@@ -5561,6 +5635,7 @@ Now we're finally ready to modify our `do_read()` function to use the new
 :open:
 
 ```{screencast} assets/adventure-12.6.E.cast
+:poster: npt:0:13
 :rows: 16
 ```
 
@@ -5606,7 +5681,8 @@ blank line between each one.
 :open:
 
 ```{screencast} assets/adventure-12.7.cast
-:rows: 16
+:rows: 22
+:poster: npt:0:02
 ```
 
 `````
@@ -5631,6 +5707,7 @@ that it still works if message is a string.
 :open:
 
 ```{screencast} assets/adventure-12.7.A.cast
+:poster: npt:0:10
 :rows: 16
 ```
 
@@ -5675,6 +5752,7 @@ iterable.
 :open:
 
 ```{screencast} assets/adventure-12.7.B.cast
+:poster: npt:0:09
 :rows: 16
 ```
 
@@ -5733,6 +5811,7 @@ Finally, we'll print the `blocks` list with two `"\n"` between each one.
 :open:
 
 ```{screencast} assets/adventure-12.7.C.cast
+:poster: npt:0:35
 :rows: 16
 ```
 
