@@ -4082,11 +4082,26 @@ that to work, we'll need to make sure of a couple of things.
 
 {{ clear }}
 
+{{ left }}
+
 For our first real test, we'll start with something simple. Let's test the
 `is_for_sale()` function.
 
 To do this, we'll call the `is_for_sale()` function with a fake item then check
 the result with an `assert` statement.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-11.2.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
 
 #### A. Write `test_is_for_sale()`
 
@@ -4163,10 +4178,25 @@ item doesn't have a `"price"` key, `is_for_sale()` returns `False`.
 
 {{ clear }}
 
+{{ left }}
+
 Let's add another easy test, this time of the `error()` function.
 
 Conceptually this will entail calling the `error()` function, then check what
 is printed to make sure it is what we expect.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-11.3.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
 
 ```{tip}
 
@@ -4221,9 +4251,24 @@ capture the printed output. After any code that prints we can call the
 
 {{ clear }}
 
-#### A. Write `test_debug()`
+{{ left }}
 
 This should be very similar to `test_error()`.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-11.4.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+#### A. Write `test_debug()`
 
 1. `[ ]` Import the `debug` function.
 
@@ -4265,7 +4310,22 @@ This should be very similar to `test_error()`.
 
 {{ clear }}
 
+{{ left }}
+
 Can you write tests for the `header()` and `write()` functions on your own?
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-11.5.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
 
 
 `````{dropdown} header()
@@ -4301,8 +4361,23 @@ Can you write tests for the `header()` and `write()` functions on your own?
 
 {{ clear }}
 
+{{ left }}
+
 In this section we'll write a test for the first function that changes the game
 state.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-11.6.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
 
 #### A. Add teardown
 
@@ -4471,11 +4546,26 @@ Can you add the next two tests on your own?
 
 {{ clear }}
 
+{{ left }}
+
 Now that we've learned how to write tests in general, how to test captured
 output, and how to safely test functions that change state, we can finally
 write a test for one of our command functions.
 
 We'll start with the `do_drop()` function.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-11.7.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
 
 :::{caution}
 
@@ -4614,24 +4704,26 @@ as intended and that it won't break in the future without you noticing.
 
 ### Part 12.1: Add command
 
+In this section we'll be adding the read command.
+
+#### A. in `test_game.py`
+
 {{ left }}
 
-In this section we'll be adding the read command.
+First we'll write the test, which we expect to fail.
 
 {{ right }}
 
 `````{dropdown} Demo
 :open:
 
-```{screencast} assets/adventure-12.1.cast
+```{screencast} assets/adventure-12.1.A.cast
 :rows: 16
 ```
 
 `````
 
 {{ endcols }}
-
-#### A. in `test_game.py`
 
 1. `[ ]` Import the `do_read` function
 1. `[ ]` Add `test_do_read()` function with one parameter `capsys`
@@ -4668,6 +4760,23 @@ In this section we'll be adding the read command.
 
 {{ left }}
 
+Now we'll write the code to make it work.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.1.B.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+{{ left }}
+
 1. `[ ]` Add a `do_read()` function with one parameter `args`
 1. `[ ]` In it, use the `debug()` function to print something like {samp}`"Trying to read {args}."`.
 1. `[ ]` Run your test again. It should now pass.
@@ -4687,9 +4796,27 @@ In this section we'll be adding the read command.
 ```
 
 `````
+
 {{ endcols }}
 
 #### C. in `adventure.py` in `main()`
+
+{{ left }}
+
+Finally, we'll add the code to make the command work in the game.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.1.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
 
 1. `[ ]` Add an `elif` that checks if `command` is `"read"`.
    * `[ ]` if so, call `do_read()` and pass `args`.

@@ -2,6 +2,8 @@ from adventure import (
     debug,
     error,
     is_for_sale,
+    header,
+    write,
 )
 
 def test_is_for_sale():
