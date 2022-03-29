@@ -90,7 +90,7 @@ def wrap(text):
 
 def write(text):
     """Print an indented line of game text."""
-    print(MARGIN, text, sep="")
+    print(MARGIN * " ", text, sep="")
 
 def error(message):
     """Print an error message."""
