@@ -221,3 +221,27 @@ def test_do_read_in_place(capsys):
 
     assert "The break in your line of fate" in output, \
         "The writing message {message!r} should be in output"
+
+
+def test_do_read_in_inventory(capsys):
+    title = "After studying the leaves I see..."
+    message = "Your future is uncertain."
+
+    adventure.ITEMS["tea leaves"] = {
+        "name": "Tea Leaves",
+        "writing": {
+            "title": title,
+            "message": message,
+        },
+    }
+
+    inventory_change("tea leaves")
+
+    do_read(["tea leaves"])
+    output = capsys.readouterr().out
+
+    assert "After studying the leaves I see..." in output, \
+        "The writing title {title!r} should be in output"
+
+    assert "Your future is uncertain" in output, \
+        "The writing message {message!r} should be in output"

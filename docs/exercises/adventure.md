@@ -5219,6 +5219,7 @@ current place. Then we'll try to read it, and make sure the `"title"` and
 :start-at: "def test_do_read_in_place"
 :class: full-width
 :caption: test_game.py
+:end-before: def
 
 ```
 
@@ -5301,11 +5302,29 @@ Now we'll finally give the player something to read.
 
 `````
 
+#### D. In `test_game.py` write `test_do_read_in_inventory()`
+
+Can you write a `test_do_read_in_inventory()` function on your own, to test that
+you can read a book if it is in your inventory but not in the current place?
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/test_game-12.5.py
+:linenos:
+:lineno-match:
+:start-at: 'def test_do_read_in_inventory'
+:class: full-width
+:caption: test_game.py
+
+```
+
+`````
+
 % TODO
 % - [x] add message and preface to book
 % - [x] add read
 % - [x] add read command
-% - [ ] add test_do_read_in_inventory()
+% - [x] add test_do_read_in_inventory()
 % - [ ] add default title
 % - [ ] modify wrap: add indent and after
 
