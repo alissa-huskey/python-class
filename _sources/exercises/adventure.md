@@ -3,6 +3,9 @@ substitutions:
   left:  '{{ leftcol | replace("col", "col-5") }}'
   right: '{{ rightcol | replace("col", "col-7") }}'
   icon: '{opticon}`file-code`'
+  source: '{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/%s," %s",type=link, cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`'
+  code: '{{link-badge}}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/{0}," {1}",type=link, cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`'
+  sources: '{{{{ code.format("adventure-{0}.py", "adventure.py") }}}} {{{{ code.format("test_game-{0}.py", "test_game.py") }}}}'
 
 jupytext:
   formats: md:myst
@@ -61,7 +64,7 @@ repo for it, if you're comfortable with git.)
 
 ### Part 1.2: The main() function
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-1.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-1.2.py", "source code") }}
 
 {{ clear }}
 
@@ -80,6 +83,7 @@ repo for it, if you're comfortable with git.)
 
 ```{screencast} assets/adventure-1.2.cast
 :rows: 16
+:poster: npt:0:02
 ```
 
 `````
@@ -98,7 +102,7 @@ repo for it, if you're comfortable with git.)
 
 ### Part 1.3: Your first command: quit
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-1.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-1.3.py", "source code") }}
 
 {{ clear }}
 
@@ -125,6 +129,7 @@ command: the `quit` command.
 :open:
 
 ```{screencast} assets/adventure-1.3.cast
+:poster: npt:0:03
 :rows: 15
 ```
 
@@ -145,7 +150,7 @@ command: the `quit` command.
 
 ### Part 1.4 Create `ITEMS`
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-1.4.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-1.4.py", "source code") }}
 
 {{ clear }}
 
@@ -198,7 +203,7 @@ ITEMS = {
 
 ### Part 1.5: Make `do_shop()` function
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-1.5.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-1.5.py", "source code") }}
 
 {{ clear }}
 
@@ -213,6 +218,7 @@ defined in `ITEMS` above.
 :open:
 
 ```{screencast} assets/adventure-1.5.cast
+:poster: npt:0:02
 :rows: 15
 ```
 
@@ -289,7 +295,7 @@ https://alissa-huskey.github.io/python-class/exercises/adventure.html
 
 ### Part 2.1: Split reply into command and arguments
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-2.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-2.1.py", "source code") }}
 
 {{ clear }}
 
@@ -309,6 +315,7 @@ the command, and `north` is the direction.
 :open:
 
 ```{screencast} assets/adventure-2.1.cast
+:poster: npt:0:07
 :rows: 15
 ```
 
@@ -358,7 +365,7 @@ the command, and `north` is the direction.
 
 ### Part 2.2: Create PLAYER and PLACES
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-2.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-2.2.py", "source code") }}
 
 {{ clear }}
 
@@ -560,7 +567,7 @@ PLACES = {
 
 ### Part 2.3: Write message functions
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-2.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-2.3.py", "source code") }}
 
 {{ clear }}
 
@@ -581,6 +588,7 @@ We'll also add a `error()` function which will print an error message.
 :open:
 
 ```{screencast} assets/adventure-2.3.cast
+:poster: npt:0:04
 :rows: 15
 ```
 
@@ -703,7 +711,7 @@ We'll also add a `error()` function which will print an error message.
 
 ### Part 2.4: Fill in `go` command
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-2.4.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-2.4.py", "source code") }}
 
 {{ clear }}
 
@@ -724,6 +732,7 @@ print the `"name"` and `"description"`.
 :open:
 
 ```{screencast} assets/adventure-2.4.cast
+:poster: npt:0:12
 :rows: 15
 ```
 
@@ -873,7 +882,7 @@ printing via our custom functions: `header()`, `wrap()`, `write()`,
 
 ### Part 3.1: Text wrapping
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-3.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-3.1.py", "source code") }}
 
 {{ clear }}
 
@@ -889,6 +898,7 @@ wrap the text so that it looks nice.
 :open:
 
 ```{screencast} assets/adventure-3.1.cast
+:poster: npt:0:02
 :rows: 15
 ```
 
@@ -992,7 +1002,7 @@ look at this section of the [functions lesson][keyword-args].
 
 ### Part 3.2: Colors
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-3.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-3.2.py", "source code") }}
 
 {{ clear }}
 
@@ -1012,6 +1022,7 @@ colorful.
 :open:
 
 ```{screencast} assets/adventure-3.2.cast
+:poster: npt:0:03
 :rows: 15
 ```
 
@@ -1077,7 +1088,7 @@ colorful.
 
 ### Part 3.3: Header and write functions
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-3.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-3.3.py", "source code") }}
 
 {{ clear }}
 
@@ -1092,6 +1103,7 @@ headers and a `write()` function to print all other one-line messsages.
 :open:
 
 ```{screencast} assets/adventure-3.3.cast
+:poster: npt:0:03
 :rows: 15
 ```
 
@@ -1254,7 +1266,7 @@ In this section we'll add the `examine` command.
 
 ### Part 4.1: Add new items
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-4.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-4.1.py", "source code") }}
 
 {{ clear }}
 
@@ -1363,7 +1375,7 @@ Be sure to test the `shop` command and make sure book and desk aren't listed.
 
 ### Part 4.2: Add `do_examine()`
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-4.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-4.2.py", "source code") }}
 
 {{ clear }}
 
@@ -1377,6 +1389,7 @@ In this section we'll add an `examine` command.
 :open:
 
 ```{screencast} assets/adventure-4.2.cast
+:poster: npt:0:03
 :rows: 16
 ```
 
@@ -1443,7 +1456,7 @@ calling the `do_examine()` function.
 
 ### Part 4.3: Finish examine command
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-4.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-4.3.py", "source code") }}
 
 {{ clear }}
 
@@ -1462,6 +1475,7 @@ dictionary and print its information.
 :open:
 
 ```{screencast} assets/adventure-4.3.cast
+:poster: npt:0:13
 :rows: 16
 ```
 
@@ -1580,7 +1594,7 @@ In this section we'll add the `look` command.
 
 ### Part 5.1: Add command
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-5.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-5.1.py", "source code") }}
 
 {{ clear }}
 
@@ -1595,6 +1609,7 @@ player types `l` or `look`.
 :open:
 
 ```{screencast} assets/adventure-5.1.cast
+:poster: npt:0:03
 :rows: 16
 ```
 
@@ -1652,7 +1667,7 @@ player types `l` or `look`.
 
 ### Part 5.2: Print place name and description
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-5.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-5.2.py", "source code") }}
 
 {{ clear }}
 
@@ -1666,6 +1681,7 @@ In this section we'll look up the place info and print the name and description.
 :open:
 
 ```{screencast} assets/adventure-5.2.cast
+:poster: npt:0:02
 :rows: 16
 ```
 
@@ -1701,7 +1717,7 @@ In this section we'll look up the place info and print the name and description.
 
 ### Part 5.3: Print the place items
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-5.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-5.3.py", "source code") }}
 
 {{ clear }}
 
@@ -1715,6 +1731,7 @@ In this section we'll print the list of items in the current place.
 :open:
 
 ```{screencast} assets/adventure-5.3.cast
+:poster: npt:0:02
 :rows: 16
 ```
 
@@ -1787,7 +1804,7 @@ And if there are three or more items it will look like:
 
 ### Part 5.4: Print the nearby places
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-5.4.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-5.4.py", "source code") }}
 
 {{ clear }}
 
@@ -1802,6 +1819,7 @@ In this section we'll print the name of each of any places directly to the
 :open:
 
 ```{screencast} assets/adventure-5.4.cast
+:poster: npt:0:03
 :rows: 16
 ```
 
@@ -1841,7 +1859,7 @@ In this section we'll add the `take` command.
 
 ### Part 6.1: Add command
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-6.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-6.1.py", "source code") }}
 
 {{ clear }}
 
@@ -1856,6 +1874,7 @@ player types `t`, `take`, or `grab`.
 :open:
 
 ```{screencast} assets/adventure-6.1.cast
+:poster: npt:0:02
 :rows: 16
 ```
 
@@ -1913,6 +1932,10 @@ player types `t`, `take`, or `grab`.
 
 ### Part 6.2: Validate item
 
+{{ source | format("adventure-6.2.py", "source code") }}
+
+{{ clear }}
+
 {{ left }}
 
 In this section we'll check to make sure that the player entered a valid, takable
@@ -1924,6 +1947,7 @@ item in the current place.
 :open:
 
 ```{screencast} assets/adventure-6.2.cast
+:poster: npt:0:12
 :rows: 16
 ```
 
@@ -2016,6 +2040,10 @@ item in the current place.
 
 ### Part 6.3: Take it
 
+{{ source | format("adventure-6.3.py", "source code") }}
+
+{{ clear }}
+
 {{ left }}
 
 In this section we'll actually take the item.
@@ -2026,6 +2054,7 @@ In this section we'll actually take the item.
 :open:
 
 ```{screencast} assets/adventure-6.3.cast
+:poster: npt:0:08
 :rows: 16
 ```
 
@@ -2086,6 +2115,10 @@ place, and let the player know that it's done.
 
 ### Part 6.4: Examine inventory
 
+{{ source | format("adventure-6.4.py", "source code") }}
+
+{{ clear }}
+
 {{ left }}
 
 In this section we'll modify `do_examine()` so it can be used to look at inventory items.
@@ -2096,6 +2129,7 @@ In this section we'll modify `do_examine()` so it can be used to look at invento
 :open:
 
 ```{screencast} assets/adventure-6.4.cast
+:poster: npt:0:32
 :rows: 16
 ```
 
@@ -2129,7 +2163,7 @@ In this section we'll add the `inventory` command.
 
 ### Part 7.1: Add command
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-7.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-7.1.py", "source code") }}
 
 {{ clear }}
 
@@ -2144,6 +2178,7 @@ player types `i`, or `inventory`.
 :open:
 
 ```{screencast} assets/adventure-7.1.cast
+:poster: npt:0:03
 :rows: 16
 ```
 
@@ -2201,6 +2236,10 @@ player types `i`, or `inventory`.
 
 ### Part 7.2: Print inventory
 
+{{ source | format("adventure-7.2.py", "source code") }}
+
+{{ clear }}
+
 {{ left }}
 
 In this section we'll print the players inventory.
@@ -2211,6 +2250,7 @@ In this section we'll print the players inventory.
 :open:
 
 ```{screencast} assets/adventure-7.2.cast
+:poster: npt:0:06
 :rows: 16
 ```
 
@@ -2248,7 +2288,7 @@ In this section we'll add the `drop` command.
 
 ### Part 8.1: Add command
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-8.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-8.1.py", "source code") }}
 
 {{ clear }}
 
@@ -2263,6 +2303,7 @@ player types `drop`.
 :open:
 
 ```{screencast} assets/adventure-8.1.cast
+:poster: npt:0:02
 :rows: 16
 ```
 
@@ -2319,7 +2360,7 @@ player types `drop`.
 
 ### Part 8.2: Validate
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-8.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-8.2.py", "source code") }}
 
 {{ clear }}
 
@@ -2334,6 +2375,7 @@ have in inventory.
 :open:
 
 ```{screencast} assets/adventure-8.2.cast
+:poster: npt:0:06
 :rows: 16
 ```
 
@@ -2370,7 +2412,7 @@ have in inventory.
 
 ### Part 8.3: Drop it
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-8.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-8.3.py", "source code") }}
 
 {{ clear }}
 
@@ -2385,6 +2427,7 @@ it to the place items.
 :open:
 
 ```{screencast} assets/adventure-8.3.cast
+:poster: npt:0:14
 :rows: 16
 ```
 
@@ -2439,10 +2482,6 @@ it to the place items.
 Part 9: Refactoring
 -------------------
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-9.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
-
-{{ clear }}
-
 In this section we are going to work on refactoring our game.
 {term}`Refactoring <refactoring>` is when you change code to make the code
 better, but without changing what the software does.
@@ -2461,6 +2500,10 @@ in the places where the same code is repeated.
 [^DRY]: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
 
 ### Part 9.1: Add abort()
+
+{{ source | format("adventure-9.1.py", "source code") }}
+
+{{ clear }}
 
 The `abort()` function will be similar to the `error()` function, except it
 will exit the game immediately. This function will be for errors that only
@@ -2597,7 +2640,7 @@ if we don't it means there's an error somewhere in the code.
 
 ### Part 9.2: Add get_place()
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-9.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-9.2.py", "source code") }}
 
 {{ clear }}
 
@@ -2733,7 +2776,7 @@ dictionary, and call `abort()` if it is not. That means that anywhere we call
 
 ### Part 9.3: Add get_item()
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-9.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-9.3.py", "source code") }}
 
 {{ clear }}
 
@@ -2841,7 +2884,7 @@ remove error handling that is done in `get_item()`.
 
 ### Part 9.4: Validation functions
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-9.4.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-9.4.py", "source code") }}
 
 {{ clear }}
 
@@ -3029,7 +3072,7 @@ call to `is_for_sale()`.
 
 ### Part 9.5: Add `inventory_change()`
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-9.5.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-9.5.py", "source code") }}
 
 {{ clear }}
 
@@ -3152,7 +3195,7 @@ do for now.)
 
 ### Part 9.6: Add `place_add()`
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-9.6.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-9.6.py", "source code") }}
 
 {{ clear }}
 
@@ -3216,7 +3259,7 @@ Right now, this only happens in the `do_drop()` function.
 
 ### Part 9.7: Add `place_remove()`
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-9.7.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-9.7.py", "source code") }}
 
 {{ clear }}
 
@@ -3284,7 +3327,7 @@ buy shop and examine commands.
 
 ### Part 10.1: Add market
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-10.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-10.1.py", "source code") }}
 
 {{ clear }}
 
@@ -3299,6 +3342,8 @@ navigate to and from there.
 :open:
 
 ```{screencast} assets/adventure-10.1.cast
+:poster: npt:0:04
+:speed: 0.5
 :rows: 16
 ```
 
@@ -3362,7 +3407,7 @@ than going through all items.
 
 ### Part 10.2: Add `place_can()`
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-10.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-10.2.py", "source code") }}
 
 {{ clear }}
 
@@ -3382,6 +3427,8 @@ this time with the key `"can"`.
 :open:
 
 ```{screencast} assets/adventure-10.2.cast
+:poster: npt:0:02
+:speed: 0.5
 :rows: 16
 ```
 
@@ -3465,7 +3512,7 @@ for actions instead of items.
 
 ### Part 10.3: Add buy command
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-10.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-10.3.py", "source code") }}
 
 {{ clear }}
 
@@ -3479,6 +3526,8 @@ Now we'll add the buy command.
 :open:
 
 ```{screencast} assets/adventure-10.3.cast
+:poster: npt:0:26
+:speed: 0.75
 :rows: 16
 ```
 
@@ -3741,7 +3790,7 @@ Here we'll define the function that is called when the player types `"buy"`.
 
 ### Part 10.4: Clean up the shop
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-10.4.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("adventure-10.4.py", "source code") }}
 
 {{ clear }}
 
@@ -3755,6 +3804,8 @@ In this section we'll make a number of small changes to improve the shop and exa
 :open:
 
 ```{screencast} assets/adventure-10.4.cast
+:poster: npt:0:06
+:speed: 0.5
 :rows: 16
 ```
 
@@ -3968,7 +4019,7 @@ happen to play the part of the game that triggers it. Be sure to do the
 
 ### Part 11.1: Setup
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/test_game-11.1.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("test_game-11.1.py", "source code") }}
 
 {{ clear }}
 
@@ -3982,6 +4033,8 @@ In this section we'll get a basic test up and running.
 :open:
 
 ```{screencast} assets/adventure-11.1.cast
+:poster: npt:0:06
+:speed: 1.25
 :rows: 16
 ```
 
@@ -4065,6 +4118,19 @@ that to work, we'll need to make sure of a couple of things.
 
 {{ endcols }}
 
+:::{tip}
+
+You can add the following to your `pyproject.toml` to always run `pytest` in verbose mode.
+
+```{code-block} toml
+:caption: pyproject.toml
+
+[tool.pytest.ini_options]
+addopts = "-v"
+```
+
+:::
+
 
 #### E. Run tests in vscode
 
@@ -4078,15 +4144,31 @@ that to work, we'll need to make sure of a couple of things.
 
 ### Part 11.2: Test `is_for_sale()`
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/test_game-11.2.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("test_game-11.2.py", "source code") }}
 
 {{ clear }}
+
+{{ left }}
 
 For our first real test, we'll start with something simple. Let's test the
 `is_for_sale()` function.
 
 To do this, we'll call the `is_for_sale()` function with a fake item then check
 the result with an `assert` statement.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-11.2.cast
+:poster: npt:0:04
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
 
 #### A. Write `test_is_for_sale()`
 
@@ -4159,14 +4241,30 @@ item doesn't have a `"price"` key, `is_for_sale()` returns `False`.
 
 ### Part 11.3: Test `error()`
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/test_game-11.3.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("test_game-11.3.py", "source code") }}
 
 {{ clear }}
+
+{{ left }}
 
 Let's add another easy test, this time of the `error()` function.
 
 Conceptually this will entail calling the `error()` function, then check what
 is printed to make sure it is what we expect.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-11.3.cast
+:poster: npt:0:05
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
 
 ```{tip}
 
@@ -4217,13 +4315,29 @@ capture the printed output. After any code that prints we can call the
 
 ### Part 11.4: Test `debug()`
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/test_game-11.4.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("test_game-11.4.py", "source code") }}
 
 {{ clear }}
 
-#### A. Write `test_debug()`
+{{ left }}
 
 This should be very similar to `test_error()`.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-11.4.cast
+:poster: npt:0:05
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+#### A. Write `test_debug()`
 
 1. `[ ]` Import the `debug` function.
 
@@ -4261,11 +4375,27 @@ This should be very similar to `test_error()`.
 
 ### Part 11.5: Test `header()` and `write()`
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/test_game-11.5.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("test_game-11.5.py", "source code") }}
 
 {{ clear }}
 
+{{ left }}
+
 Can you write tests for the `header()` and `write()` functions on your own?
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-11.5.cast
+:poster: npt:0:04
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
 
 
 `````{dropdown} header()
@@ -4297,12 +4427,28 @@ Can you write tests for the `header()` and `write()` functions on your own?
 
 ### Part 11.6: Test `inventory_change()`
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/test_game-11.6.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("test_game-11.6.py", "source code") }}
 
 {{ clear }}
 
+{{ left }}
+
 In this section we'll write a test for the first function that changes the game
 state.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-11.6.cast
+:poster: npt:0:04
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
 
 #### A. Add teardown
 
@@ -4467,15 +4613,31 @@ Can you add the next two tests on your own?
 
 ### Part 11.7: Test `do_drop()`
 
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/test_game-11.7.py," source code",cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`
+{{ source | format("test_game-11.7.py", "source code") }}
 
 {{ clear }}
+
+{{ left }}
 
 Now that we've learned how to write tests in general, how to test captured
 output, and how to safely test functions that change state, we can finally
 write a test for one of our command functions.
 
 We'll start with the `do_drop()` function.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-11.7.cast
+:poster: npt:0:04
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
 
 :::{caution}
 
@@ -4597,14 +4759,1133 @@ a test at the beginning of each coding session and whenever something breaks.
 Going forward we'll be writing tests for all of our new code, and running them
 regularly.
 
-% Part 12: Read things
-% --------------------
+Part 12: Read things
+--------------------
 
-% TODO
-% - [ ] add message and preface to book
-% - [ ] add read
-% - [ ] modify wrap: add indent and after
-% - [ ] add read command
+In this section we'll add the read command, which the player can use to read a
+clue from the book item.
+
+In this section we'll also start following an approach to coding called
+{term}`TDD`, or {term}`Test-Driven Development`. When following this process,
+you write your test first, then write the code that makes it pass.
+
+This technique has many advantages. You are forced to be very deliberate about
+exactly what you are trying to accomplish, which tends to lead to clearer
+thinking and cleaner code. You can be more confident that your code is working
+as intended and that it won't break in the future without you noticing.
+
+### Part 12.1: Add command
+
+{{ sources.format("12.1") }}
+
+{{ clear }}
+
+In this section we'll be adding the read command.
+
+#### A. in `test_game.py`
+
+{{ left }}
+
+First we'll write the test, which we expect to fail.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.1.A.cast
+:poster: npt:0:04
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+1. `[ ]` Import the `do_read` function
+1. `[ ]` Add `test_do_read()` function with one parameter `capsys`
+1. `[ ]` Call `do_read()` with an empty list as an argument
+1. `[ ]` Assign the results of `capsys.readouterr().out` to the variable `output`
+1. `[ ]` Write an assert statement that checks that the debug message
+         `"Trying to read: []"` is in `output`
+1. `[ ]` Run your tests, either at the command line or in VS Code. Since we
+         haven't written `do_read()` yet, you will get an error.
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/test_game-12.1.py
+:linenos:
+:lineno-match:
+:end-before: PLAYER
+:class: full-width
+:emphasize-lines: "9"
+
+```
+
+```{literalinclude} ../../pythonclass/adventure/test_game-12.1.py
+:linenos:
+:lineno-match:
+:start-at: "def test_do_read("
+:class: full-width
+:caption: test_game.py
+
+```
+
+`````
+
+#### B. in `adventure.py` add `do_read()`
+
+{{ left }}
+
+Now we'll write the code to make it work.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.1.B.cast
+:poster: npt:0:05
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+{{ left }}
+
+1. `[ ]` Add a `do_read()` function with one parameter `args`
+1. `[ ]` In it, use the `debug()` function to print something like {samp}`"Trying to read {args}."`.
+1. `[ ]` Run your test again. It should now pass.
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/adventure-12.1.py
+:linenos:
+:lineno-match:
+:start-at: "def do_read"
+:end-before: def
+:class: full-width
+:caption: adventure.py
+
+```
+
+`````
+
+{{ endcols }}
+
+#### C. in `adventure.py` in `main()`
+
+{{ left }}
+
+Finally, we'll add the code to make the command work in the game.
+
+1. `[ ]` Add an `elif` that checks if `command` is `"read"`.
+   * `[ ]` if so, call `do_read()` and pass `args`.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.1.cast
+:poster: npt:0:02
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/adventure-12.1.py
+:class: full-width
+:linenos:
+:lineno-match:
+:start-at: def main()
+:end-before: 'if __name__'
+:emphasize-lines: "37-38"
+```
+
+`````
+
+### Part 12.2: Ensure item
+
+{{ sources.format("12.2") }}
+
+{{ clear }}
+
+{{ left }}
+
+In this section we'll make sure that the player entered the item that they want
+to read.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.2.cast
+:poster: npt:0:02
+:speed: 0.75
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+#### A. in `test_game.py`
+
+{{ left }}
+
+Now we'll add an assertion to check the output for an error message.
+
+1. `[ ]` Change the name of `test_do_read()` to `test_do_read_no_args()`
+1. `[ ]` Add an assertion that checks if `"Error What do you want to read?"` is
+         in `output`
+1. `[ ]` Run your test. It should fail.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.2.A.cast
+:poster: npt:0:05
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/test_game-12.2.py
+:linenos:
+:lineno-match:
+:start-at: "def test_do_read_no_args"
+:class: full-width
+:caption: test_game.py
+:emphasize-lines: "9-"
+
+```
+
+`````
+
+#### B. in `adventure.py` in `do_read()`
+
+{{ left }}
+
+Now we'll write the code to make our test pass.
+
+1. `[ ]` Check if `args` is falsy. If it is, use the `error()` function to
+         print an error that says: `"What do you want to read?"` then `return`
+1. `[ ]` Run your test again. It should pass.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.2.B.cast
+:poster: npt:0:04
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/adventure-12.2.py
+:linenos:
+:lineno-match:
+:start-at: "def do_read"
+:end-before: def
+:class: full-width
+:caption: test_game.py
+:emphasize-lines: "6-"
+
+```
+
+`````
+
+### Part 12.3: Ensure item is here
+
+{{ sources.format("12.3") }}
+
+{{ clear }}
+
+{{ left }}
+
+In this section we'll make sure the item that the player typed is either in
+this place or in inventory.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.3.cast
+:poster: npt:0:03
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+#### A. In `test_game.py`
+
+{{ left }}
+
+In this section we'll write a new test to make sure that the item is either in
+this place or in inventory.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.3.A.cast
+:poster: npt:0:05
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+1. `[ ]` Add `test_do_read_missing_item()` function with the parameter `capsys`
+1. `[ ]` Call `do_read()` with a list and a any string that is not an item key for an argument
+1. `[ ]` Assign the results of `capsys.readouterr().out` to the variable `output`
+1. `[ ]` Write an assert statement that checks that the debug message
+         `"Trying to read: []"` is in `output`
+1. `[ ]` Write an assert statement that checks that the message
+         `"Sorry, I don't know what this is'"` is in `output`
+1. `[ ]` Run your test. It should fail.
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/test_game-12.3.py
+:linenos:
+:lineno-match:
+:start-at: "def test_do_read_missing_item"
+:class: full-width
+:caption: test_game.py
+
+```
+
+`````
+
+#### B. In `adventure.py` in `do_read()`
+
+{{ left }}
+
+Now we'll add the code to make the test pass.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.3.B.cast
+:poster: npt:0:04
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+1. `[ ]` assign the first item of the `args` list to the variable `name` and make it lowercase
+1. `[ ]` Write an if statement that checks if either the place or player has the item. If not:
+   * `[ ]` Use the `error()` function to print a message like: {samp}`"Sorry, I don't know what this is: {name}'"`
+   * `[ ]` return
+1. `[ ]` Run your test again. It should pass.
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/adventure-12.3.py
+:linenos:
+:lineno-match:
+:start-at: "def do_read"
+:end-before: def
+:class: full-width
+:caption: adventure.py
+:emphasize-lines: "11-"
+
+```
+
+`````
+
+### Part 12.4: Ensure item is readable
+
+{{ sources.format("12.4") }}
+
+{{ clear }}
+
+{{ left }}
+
+In this section we'll make sure that the item the player wants to be read can,
+in fact, be read.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.4.cast
+:poster: npt:0:03
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+#### A. In `test_game.py` write `test_do_read_unreadable_item()`
+
+{{ left }}
+
+In this section we'll add a test that will set up a fake (unreadable) item.
+Then we'll check to make sure  an error is printed if the player tries to read
+it.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.4.A.cast
+:poster: npt:0:05
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+
+1. `[ ]` import the `place_add` function
+1. `[ ]` Add `test_do_read_unreadable_item()` function with the parameter `capsys`
+1. `[ ]` Add a fake item to `adventure.ITEMS` with the key of your choice
+1. `[ ]` Use the `place_add()` function to add your fake item to the current place
+1. `[ ]` Call `do_read()` with a list containing your new key as the argument
+1. `[ ]` Assign the results of `capsys.readouterr().out` to the variable `output`
+1. `[ ]` Write an assert statement that checks that the message
+         {samp}`"Sorry, I don't can't read '{key}'"` is in `output`
+1. `[ ]` Run your test. It should fail.
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/test_game-12.4.py
+:linenos:
+:lineno-match:
+:start-at: "def test_do_read_unreadable_item"
+:class: full-width
+:caption: test_game.py
+
+```
+
+`````
+
+#### B. In `adventure.py` in `do_read()`
+
+{{ left }}
+
+Now we'll write the code to make the test pass.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.4.B.cast
+:poster: npt:0:04
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+1. `[ ]` Use the `get_item()` function to get the item dictionary and assign it to the variable `item`
+1. `[ ]` Check if the `"writing"` key is in the item dictionary. If not:
+   * `[ ]` Use the `error()` function to print an error message like: {samp}`"Sorry, I can't read '{name}'"`
+   * `[ ]` return
+1. `[ ]` Run your test again. It should pass.
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/adventure-12.4.py
+:linenos:
+:lineno-match:
+:start-at: "def do_read"
+:end-before: def
+:class: full-width
+:caption: adventure.py
+:emphasize-lines: "19-"
+
+```
+
+`````
+
+### Part 12.5: Read things
+
+{{ sources.format("12.5") }}
+
+{{ clear }}
+
+In this section we'll finally provide a readable item and the `read` command
+will read it.
+
+#### A. In `test_game.py` write `test_do_read_in_place()`
+
+{{ left }}
+
+In this section we'll write a new test where we'll set up a fake item with a
+`"writing"` key containing the information that can be read and add it to the
+current place. Then we'll try to read it, and make sure the `"title"` and
+`"message"` are in `output`.
+
+{{ right }}
+
+`````{dropdown} Demo
+
+```{screencast} assets/adventure-12.5.A.cast
+:poster: npt:0:04
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+1. `[ ]` Add a function `test_do_read_in_place()`
+1. `[ ]` Create a new item with a `"writing"` key that's a dictionary with a `"title"` and `"message"`
+1. `[ ]` Use the `place_add()` function to add it to the current place
+1. `[ ]` Call `do_read()` with the the key for your fake item
+1. `[ ]` Assign the results of `capsys.readouterr().out` to the variable `output`
+1. `[ ]` Write an assert statement that the title is in `output`
+1. `[ ]` Write an assert statement that the message is in `output`
+1. `[ ]` Run your test. It should fail.
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/test_game-12.5.py
+:linenos:
+:lineno-match:
+:start-at: "def test_do_read_in_place"
+:class: full-width
+:caption: test_game.py
+:end-before: def
+
+```
+
+`````
+
+#### B. In `adventure.py` in `do_read()`
+
+{{ left }}
+
+Now we'll write the code to actually read the item.
+
+{{ right }}
+
+`````{dropdown} Demo
+
+```{screencast} assets/adventure-12.5.B.cast
+:poster: npt:0:05
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+1. `[ ]` Get the value associated with the `"writing"` key from the `item`
+         dictionary and assign it to the variable `writing`
+1. `[ ]` Use the `header()` function to print the `"title"` value from the `writing` dictionary
+1. `[ ]` Use the `wrap()` function to print the `"message"` value from the `writing` dictionary
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/adventure-12.5.py
+:linenos:
+:lineno-match:
+:start-at: "def do_read"
+:end-before: def
+:emphasize-lines: "27-"
+:class: full-width
+:caption: adventure.py
+
+```
+
+`````
+
+#### C. Add `"writing"` to `"book"` in `ITEMS`
+
+{{ left }}
+
+Now we'll finally give the player something to read.
+
+1. `[ ]` In the `"book"` dictionary in `ITEMS`, add a key `"writing"` with a
+         dictionary for the value.
+1. `[ ]` The `"writing"` dictionary should have two keys: `"title"` and
+         `"message"`.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.5.cast
+:poster: npt:0:03
+:rows: 18
+```
+
+`````
+
+{{ endcols }}
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/adventure-12.5.py
+:linenos:
+:lineno-match:
+:start-at: '"book": {'
+:end-before: '"gems": {'
+:emphasize-lines: "8-"
+:class: full-width
+:caption: adventure.py
+
+```
+
+`````
+
+#### D. In `test_game.py` write `test_do_read_in_inventory()`
+
+Can you write a `test_do_read_in_inventory()` function on your own, to test that
+you can read a book if it is in your inventory but not in the current place?
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/test_game-12.5.py
+:linenos:
+:lineno-match:
+:start-at: 'def test_do_read_in_inventory'
+:class: full-width
+:caption: test_game.py
+
+```
+
+`````
+
+### Part 12.6: Indent message
+
+{{ sources.format("12.6") }}
+
+{{ clear }}
+
+{{ left }}
+
+In this section we're going to indent the message part of the writing an extra
+level.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.6.cast
+:rows: 18
+:poster: npt:0:02
+```
+
+`````
+
+{{ endcols }}
+
+#### A. In `test_game.py` modify `test_do_read_in_inventory()`
+
+{{ left }}
+
+In this section we're going to modify our `test_do_read_in_inventory()`
+function to test that the message has been indented an extra level.
+
+1. `[ ]` Call `.splitlines()` on `output` and assign it to the variable `lines`
+1. `[ ]` Write an `assert` statement that checks if the last item in `lines`
+         equals your fake items message with 4 spaces at the beginning.
+         (Assuming your message is short enough.)
+1. `[ ]` Run your test. It should fail.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.6.A.cast
+:poster: npt:0:14
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+:::{tip}
+
+When you run `pytest` at the command line, you can run a single test by adding
+{samp}`::{test_name}` after the filename. For example, here I used `pytest
+test_game.py::test_do_read_in_inventory`.
+
+:::
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/test_game-12.6.py
+:linenos:
+:lineno-match:
+:start-at: 'def test_do_read_in_inventory'
+:class: full-width
+:caption: test_game.py
+:emphasize-lines: "17, 22-23"
+
+```
+
+`````
+
+#### B. In `test_game.py` write `test_wrap()`
+
+{{ left }}
+
+Before we change any code in `do_read()`, we're actually going to modify the
+`wrap()` function to optionally add indentation. And since we don't have any
+tests for `wrap()` yet, we'll one before we change it.
+
+Since we're testing pre-existing behavior here, this is one we'll expect to
+pass.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.6.B.cast
+:poster: npt:0:07
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+1. `[ ]` Add a function `test_wrap()` that takes one parameter `capsys`
+1. `[ ]` Call `wrap()` with a string that is longer than the `WIDTH` in your game.
+1. `[ ]` Assign the results of `capsys.readouterr().out` to the variable `output`
+1. `[ ]` Call `.splitlines()` on `output` and assign it to the variable `lines`
+1. `[ ]` Write an `assert` statement that tests that the length of `lines` is greater than `1`
+1. `[ ]` Write an `assert` statement that tests that `output` contains the
+         first few words of the text argument.
+1. `[ ]` Write an `assert` statement that tests that `output` ends with the
+         last few words of the text argument, followed by a newline.
+1. `[ ]` Make sure that each string in `lines` starts with two, and no more than two, spaces.
+1. `[ ]` Run your test. It should pass.
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/test_game-12.6.py
+:linenos:
+:lineno-match:
+:start-at: 'def test_wrap'
+:end-before: def
+:class: full-width
+:caption: test_game.py
+
+```
+
+`````
+
+#### C. In `test_game.py` write `test_wrap_with_indent()`
+
+{{ left }}
+
+Now that we have the normal `wrap()` behavior tested, we'll add a (failing)
+test for the new behavior with the optional `indent` parameter we will be
+adding.
+
+This is going to be nearly identical to the `test_wrap()` function, except
+we'll be adding the keyword argument `indent=2` when we call `wrap()`, then
+testing that the lines are indented to `4` spaces instead of `2`.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.6.C.cast
+:poster: npt:0:08
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+1. `[ ]` Add a function `test_wrap_with_indent()` that takes one parameter `capsys`
+1. `[ ]` Call `wrap()` with a string that is longer than the `WIDTH` in your
+         game, followed by a keyword argument `indent` with a value of `2`.
+1. `[ ]` Assign the results of `capsys.readouterr().out` to the variable `output`
+1. `[ ]` Call `.splitlines()` on `output` and assign it to the variable `lines`
+1. `[ ]` Write an `assert` statement that tests that the length of `lines` is greater than `1`
+1. `[ ]` Write an `assert` statement that tests that `output` contains the
+         first few words of the text argument.
+1. `[ ]` Write an `assert` statement that tests that `output` ends with the
+         last few words of the text argument, followed by a newline.
+1. `[ ]` Make sure that each string in `lines` starts with four, and no more than four, spaces.
+1. `[ ]` Run your test. (Or however many extra spaces you would like.)  It should fail.
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/test_game-12.6.py
+:linenos:
+:lineno-match:
+:start-at: 'def test_wrap_with_indent'
+:end-before: def
+:class: full-width
+:caption: test_game.py
+
+```
+
+`````
+
+#### D. In `adventure.py` modify `wrap()`
+
+{{ left }}
+
+We're finally ready to modify the `wrap()` function to handle indention for us.
+
+1. `[ ]` Add an optional `indent` parameter to `wrap` with a default value of `1`
+1. `[ ]` When calculating `margin`, multiply the existing value by `indent`
+1. `[ ]` Run your `test_wrap_with_indent()` test. It should pass.
+1. `[ ]` Run your `test_wrap()` test. It should pass.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.6.D.cast
+:poster: npt:0:07
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+:::{tip}
+
+When you run `pytest` at the command line, you can use the
+{samp}`-k {KEYWORD}` flag to run all tests with names that contain
+`KEYWORD`. For example, here I use `pytest test_game.py -k test_wrap` to
+run both `test_wrap()` and `test_wrap_with_indent()`, but no other tests.
+
+:::
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/adventure-12.6.py
+:linenos:
+:lineno-match:
+:start-at: 'def wrap'
+:end-before: def
+:class: full-width
+:caption: test_game.py
+:emphasize-lines: "1-5"
+
+```
+
+`````
+
+#### E. In `adventure.py` modify `do_read()`
+
+{{ left }}
+
+Now we're finally ready to modify our `do_read()` function to use the new
+`indent` keyword argument in `wrap()`.
+
+1. `[ ]` When you print the item message by calling `wrap()` add a keyword
+         argument `indent` with a value of `2`. (Or more, to your taste. Just be
+         sure you update your test.)
+1. `[ ]` Run your `test_do_read_in_inventory` test. It should pass.
+1. `[ ]` Run all your tests. They should pass.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.6.E.cast
+:poster: npt:0:13
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/adventure-12.6.py
+:linenos:
+:lineno-match:
+:start-at: 'def do_read'
+:end-before: def
+:class: full-width
+:caption: test_game.py
+:emphasize-lines: "34"
+
+```
+
+`````
+
+### Part 12.7: Allow for stanzas
+
+{{ sources.format("12.7") }}
+
+{{ clear }}
+
+{{ left }}
+
+In this section we'll add functionality to break up a long message (in
+particular, our `book` message) into multiple stanzas.
+
+To accomplish this, we'll modify `wrap()` so that for its `text` argument it can
+take either a string or an iterable (a tuple or a list) of strings. If `text`
+is a string, it should print just the same as it does now. If `text` is a
+`tuple` or a `list`, each item should be wrapped seperately and printed with a
+blank line between each one.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.7.cast
+:rows: 22
+:poster: npt:0:02
+```
+
+`````
+
+{{ endcols }}
+
+#### A. In `test_game.py` modify `test_do_read_in_place()`
+
+{{ left }}
+
+In this section we'll modify the `test_do_read_in_place()` test so that the
+`"message"` in our fake item is either a tuple or a list, where each item
+represents a stanza. Then we'll add an assert statement to check that there are
+two `"\n"` before one of our stanzas.
+
+We'll leave the `test_do_read_in_inventory()` test alone, which will make sure
+that it still works if message is a string.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.7.A.cast
+:poster: npt:0:10
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+1. `[ ]` Modify value cooresponding to the `"message"` key in your fake items
+        `"writing"` dictionary to be either a tuple or a list of strings with multiple
+        items.
+1. `[ ]` Add an `assert` statement that checks to make sure that output
+         contains two blank lines, followed by the number of indentation
+         spaces, followed by the first few words of one of your message items.
+1. `[ ]` Run the test. It should fail.
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/test_game-12.7.py
+:linenos:
+:lineno-match:
+:start-at: 'def test_do_read_in_place'
+:end-before: def
+:class: full-width
+:caption: test_game.py
+:emphasize-lines: "3-9, 30,31"
+
+```
+
+`````
+
+#### B. In `test_game.py` write `test_wrap_with_iterable()`
+
+{{ left }}
+
+Once again, the real heavy lifting will be done in the `wrap()` function. So
+before we write any code we'll write a new `wrap()` test for when `text` is an
+iterable.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.7.B.cast
+:poster: npt:0:09
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+1. `[ ]` Add a function `test_wrap_with_iterable()` with one parameter `capsys`
+1. `[ ]` Set the variable `message` to a list or a tuple of strings.
+         (Consider using a few lyrics of a short song or rhyme.)
+1. `[ ]` Call the `wrap()` function with the argument `message`
+1. `[ ]` Assign the results of `capsys.readouterr().out` to the variable `output`
+1. `[ ]` Write an `assert` statement that makes sure part of one of our
+         `message` items is in `output`
+1. `[ ]` Write an `assert` statement to make sure that a parenthesis is
+         not in `output` if message is a `tuple`, or that a square bracket is not
+         in `output` if `message` is a list. This is to make sure that we
+         are not mistakenly printing the entire iterable instead of each
+         string in the iterable.
+1. `[ ]` Add an `assert` statement that checks to make sure that output
+         contains two blank lines, followed by the number of indentation
+         spaces, followed by the first few words of one of your `message` items.
+1. `[ ]` Run the test. It should fail.
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/test_game-12.7.py
+:linenos:
+:lineno-match:
+:start-at: 'def test_wrap_with_iterable'
+:end-before: def
+:class: full-width
+:caption: test_game.py
+
+```
+
+`````
+
+#### C. In `adventure.py` modify `wrap()`
+
+{{ left }}
+
+Now we are ready to change the `wrap()` function.
+
+First we'll turn `text` into a one-item iterable if it was a string, that way
+we always have something that we can safely iterate over.
+
+Then we'll iterate over each string in our new `text` iterable, wrap it the
+same way we already do, and append it to a list called `blocks`.
+
+Finally, we'll print the `blocks` list with two `"\n"` between each one.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.7.C.cast
+:poster: npt:0:35
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+:::{note}
+
+We don't need to make any changes to `do_read()` for this feature, since it
+already calls `wrap()` with whatever was in the item dictionary for
+`"message"`. So once you're done with this, all your tests should pass.
+
+:::
+
+1. `[ ]` Write an `if` statement to check if `text` is a string using the `isinstance()` function.
+   * `[ ]` If so, make a list or tuple containing `text` and assign it to the same variable, `text`.
+1. `[ ]` Make an empty list and assign it to the variable `blocks`
+1. `[ ]` Use a `for` loop to iterate over `text` using the variable name `stanza`
+   * `[ ]` Indent the line(s) where you assign `paragraph` to be inside your
+           `for` loop
+   * `[ ]` In your call to `textwrap.fill()`, instead of use `stanza` for the
+           first argument instead of `text`.
+   * `[ ]` Append `paragraph` to `blocks`
+1. `[ ]` You can either:
+   * `[ ]` Use [argument unpacking][unpacking] to send all of the items in the
+           `blocks` list as seperate arguments to the `print()` function, and the
+           keyword argument `sep` to print two newlines between each argument.
+   * `[ ]` [Join][join] the `blocks` list using two newlines as the delimiter,
+           then print the result.
+1. `[ ]` Run your `test_wrap_with_iterable()` test. It should pass.
+1. `[ ]` Run your `test_do_read_in_place()` test. It should pass.
+1. `[ ]` Run all your tests. They should pass.
+
+[unpacking]: ../lessons/in-depth/functions.html?#part-3-unpacking-arguments
+[join]: ../lessons/data-types/strings.html?highlight=join#part-2-splitting-and-joining
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/adventure-12.7.py
+:linenos:
+:lineno-match:
+:start-at: 'def wrap'
+:end-before: def
+:class: full-width
+:caption: adventure.py
+:emphasize-lines: "7-15, 25-28"
+
+```
+
+`````
+
+#### D. In `adventure.py` modify `ITEMS`
+
+Finally, change the `"message"` in your `"book"` item to be a list or a tuple
+of strings.
+
+And now that we're all liteate, feel free to scatter scrolls, signs and sticky
+notes all over your game!
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/adventure-12.7.py
+:linenos:
+:lineno-match:
+:start-at: '"book": {'
+:end-before: '"gems": {'
+:class: full-width
+:caption: adventure.py
+:emphasize-lines: "14, 17, 20, 22"
+
+```
+
+`````
 
 Reference
 ---------
@@ -4623,6 +5904,11 @@ Don't repeat yourself
    A principle of software development aimed at reducing repetition of software
    patterns, replacing it with abstractions or using data normalization to
    avoid redundancy.
+
+TDD
+Test-Driven Development
+  A process for writing code that involves writing a test for how you want the
+  code to work before writing the code itself.
 
 ```
 
