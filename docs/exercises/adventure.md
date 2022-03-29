@@ -4834,9 +4834,44 @@ Finally, we'll add the code to make the command work in the game.
 
 `````
 
-### Part 12.2: Validate
+### Part 12.2: Ensure item
+
+{{ left }}
+
+In this section we'll make sure that the player entered the item that they want
+to read.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.2.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
 
 #### A. in `test_game.py`
+
+{{ left }}
+
+Now we'll add an assertion to check the output for an error message.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.2.A.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
 
 1. `[ ]` Change the name of `test_do_read()` to `test_do_read_no_args()`
 1. `[ ]` Add an assertion that checks if `"Error What do you want to read?"` is
@@ -4859,6 +4894,23 @@ Finally, we'll add the code to make the command work in the game.
 
 #### B. in `adventure.py` in `do_read()`
 
+{{ left }}
+
+Now we'll write the code to make our test pass.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.2.B.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
 1. `[ ]` Check if `args` is falsy. If it is, use the `error()` function to
          print an error that says: `"What do you want to read?"` then `return`
 1. `[ ]` Run your test again. It should pass.
@@ -4878,9 +4930,45 @@ Finally, we'll add the code to make the command work in the game.
 
 `````
 
-### Part 12.3: Validate more
+### Part 12.3: Ensure item is here
+
+{{ left }}
+
+In this section we'll make sure the item that the player typed is either in
+this place or in inventory.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.3.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
 
 #### A. In `test_game.py`
+
+{{ left }}
+
+In this section we'll write a new test to make sure that the item is either in
+this place or in inventory.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.3.A.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
 
 1. `[ ]` Add `test_do_read_missing_item()` function with the parameter `capsys`
 1. `[ ]` Call `do_read()` with a list and a any string that is not an item key for an argument
@@ -4906,6 +4994,23 @@ Finally, we'll add the code to make the command work in the game.
 
 #### B. In `adventure.py` in `do_read()`
 
+{{ left }}
+
+Now we'll add the code to make the test pass.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.3.B.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
 1. `[ ]` assign the first item of the `args` list to the variable `name` and make it lowercase
 1. `[ ]` Write an if statement that checks if either the place or player has the item. If not:
    * `[ ]` Use the `error()` function to print a message like: {samp}`"Sorry, I don't know what this is: {name}'"`
@@ -4927,9 +5032,47 @@ Finally, we'll add the code to make the command work in the game.
 
 `````
 
-### Part 12.4: Validate yet more
+### Part 12.4: Ensure item is readable
+
+{{ left }}
+
+In this section we'll make sure that the item the player wants to be read can,
+in fact, be read.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.4.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
 
 #### A. In `test_game.py`
+
+{{ left }}
+
+In this section we'll add a test that will set up a fake (unreadable) item.
+Then we'll check to make sure  an error is printed if the player tries to read
+it.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.4.A.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
 
 1. `[ ]` import the `place_add` function
 1. `[ ]` Add `test_do_read_unreadable_item()` function with the parameter `capsys`
@@ -4955,6 +5098,23 @@ Finally, we'll add the code to make the command work in the game.
 `````
 
 #### B. In `adventure.py` in `do_read()`
+
+{{ left }}
+
+Now we'll write the code to make the test pass.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.4.B.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
 
 1. `[ ]` Use the `get_item()` function to get the item dictionary and assign it to the variable `item`
 1. `[ ]` Check if the `"writing"` key is in the item dictionary. If not:
