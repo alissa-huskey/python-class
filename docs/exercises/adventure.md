@@ -5087,7 +5087,7 @@ in fact, be read.
 
 {{ endcols }}
 
-#### A. In `test_game.py`
+#### A. In `test_game.py` write `test_do_read_unreadable_item()`
 
 {{ left }}
 
@@ -5269,6 +5269,11 @@ Now we'll write the code to actually read the item.
 
 Now we'll finally give the player something to read.
 
+1. `[ ]` In the `"book"` dictionary in `ITEMS`, add a key `"writing"` with a
+         dictionary for the value.
+1. `[ ]` The `"writing"` dictionary should have two keys: `"title"` and
+         `"message"`.
+
 {{ right }}
 
 `````{dropdown} Demo
@@ -5281,11 +5286,6 @@ Now we'll finally give the player something to read.
 `````
 
 {{ endcols }}
-
-1. `[ ]` In the `"book"` dictionary in `ITEMS`, add a key `"writing"` with a
-         dictionary for the value.
-1. `[ ]` The `"writing"` dictionary should have two keys: `"title"` and
-         `"message"`.
 
 `````{dropdown} Code
 
@@ -5319,6 +5319,271 @@ you can read a book if it is in your inventory but not in the current place?
 ```
 
 `````
+
+### Part 12.6: Indent message
+
+{{ sources.format("12.6") }}
+
+{{ clear }}
+
+{{ left }}
+
+In this section we're going to indent the message part of the writing an extra
+level.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.6.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+#### A. In `test_game.py` modify `test_do_read_in_inventory()`
+
+{{ left }}
+
+In this section we're going to modify our `test_do_read_in_inventory()`
+function to test that the message has been indented an extra level.
+
+1. `[ ]` Call `.splitlines()` on `output` and assign it to the variable `lines`
+1. `[ ]` Write an `assert` statement that checks if the last item in `lines`
+         equals your fake items message with 4 spaces at the beginning.
+         (Assuming your message is short enough.)
+1. `[ ]` Run your test. It should fail.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.6.A.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+:::{tip}
+
+When you run `pytest` at the command line, you can run a single test by adding
+{samp}`::{test_name}` after the filename. For example, here I used `pytest
+test_game.py::test_do_read_in_inventory`.
+
+:::
+
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/test_game-12.6.py
+:linenos:
+:lineno-match:
+:start-at: 'def test_do_read_in_inventory'
+:class: full-width
+:caption: test_game.py
+:emphasize-lines: "17, 22-23"
+
+```
+
+`````
+
+#### B. In `test_game.py` write `test_wrap()`
+
+{{ left }}
+
+Before we change any code in `do_read()`, we're actually going to modify the
+`wrap()` function to optionally add indentation. And since we don't have any
+tests for `wrap()` yet, we'll one before we change it.
+
+Since we're testing pre-existing behavior here, this is one we'll expect to
+pass.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.6.B.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+1. `[ ]` Add a function `test_wrap()` that takes one parameter `capsys`
+1. `[ ]` Call `wrap()` with a string that is longer than the `WIDTH` in your game.
+1. `[ ]` Assign the results of `capsys.readouterr().out` to the variable `output`
+1. `[ ]` Call `.splitlines()` on `output` and assign it to the variable `lines`
+1. `[ ]` Write an `assert` statement that tests that the length of `lines` is greater than `1`
+1. `[ ]` Write an `assert` statement that tests that `output` contains the
+         first few words of the text argument.
+1. `[ ]` Write an `assert` statement that tests that `output` ends with the
+         last few words of the text argument, followed by a newline.
+1. `[ ]` Make sure that each string in `lines` starts with two, and no more than two, spaces.
+1. `[ ]` Run your test. It should pass.
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/test_game-12.6.py
+:linenos:
+:lineno-match:
+:start-at: 'def test_wrap'
+:end-before: def
+:class: full-width
+:caption: test_game.py
+
+```
+
+`````
+
+#### C. In `test_game.py` write `test_wrap_with_indent()`
+
+{{ left }}
+
+Now that we have the normal `wrap()` behavior tested, we'll add a (failing)
+test for the new behavior with the optional `indent` parameter we will be
+adding.
+
+This is going to be nearly identical to the `test_wrap()` function, except
+we'll be adding the keyword argument `indent=2` when we call `wrap()`, then
+testing that the lines are indented to `4` spaces instead of `2`.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.6.C.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+1. `[ ]` Add a function `test_wrap_with_indent()` that takes one parameter `capsys`
+1. `[ ]` Call `wrap()` with a string that is longer than the `WIDTH` in your
+         game, followed by a keyword argument `indent` with a value of `2`.
+1. `[ ]` Assign the results of `capsys.readouterr().out` to the variable `output`
+1. `[ ]` Call `.splitlines()` on `output` and assign it to the variable `lines`
+1. `[ ]` Write an `assert` statement that tests that the length of `lines` is greater than `1`
+1. `[ ]` Write an `assert` statement that tests that `output` contains the
+         first few words of the text argument.
+1. `[ ]` Write an `assert` statement that tests that `output` ends with the
+         last few words of the text argument, followed by a newline.
+1. `[ ]` Make sure that each string in `lines` starts with four, and no more than four, spaces.
+1. `[ ]` Run your test. (Or however many extra spaces you would like.)  It should fail.
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/test_game-12.6.py
+:linenos:
+:lineno-match:
+:start-at: 'def test_wrap_with_indent'
+:end-before: def
+:class: full-width
+:caption: test_game.py
+
+```
+
+`````
+
+#### D. In `adventure.py` modify `wrap()`
+
+{{ left }}
+
+We're finally ready to modify the `wrap()` function to handle indention for us.
+
+1. `[ ]` Add an optional `indent` parameter to `wrap` with a default value of `1`
+1. `[ ]` When calculating `margin`, multiply the existing value by `indent`
+1. `[ ]` Run your `test_wrap_with_indent()` test. It should pass.
+1. `[ ]` Run your `test_wrap()` test. It should pass.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.6.D.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+:::{tip}
+
+When you run `pytest` at the command line, you can use the
+{samp}`-k {KEYWORD}` flag to run all tests with names that contain
+`KEYWORD`. For example, here I use `pytest test_game.py -k test_wrap` to
+run both `test_wrap()` and `test_wrap_with_indent()`, but no other tests.
+
+:::
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/adventure-12.6.py
+:linenos:
+:lineno-match:
+:start-at: 'def wrap'
+:end-before: def
+:class: full-width
+:caption: test_game.py
+:emphasize-lines: "1-5"
+
+```
+
+`````
+
+#### E. In `adventure.py` modify `do_read()`
+
+{{ left }}
+
+Now we're finally ready to modify our `do_read()` function to use the new
+`indent` keyword argument in `wrap()`.
+
+1. `[ ]` When you print the item message by calling `wrap()` add a keyword
+         argument `indent` with a value of `2`. (Or more, to your taste. Just be
+         sure you update your test.)
+1. `[ ]` Run your `test_do_read_in_inventory` test. It should pass.
+1. `[ ]` Run all your tests. They should pass.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.6.E.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/adventure-12.6.py
+:linenos:
+:lineno-match:
+:start-at: 'def do_read'
+:end-before: def
+:class: full-width
+:caption: test_game.py
+:emphasize-lines: "34"
+
+```
+
+`````
+
 
 % TODO
 % - [x] add message and preface to book

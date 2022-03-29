@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+#
+# copy a version bump of adventure related files
+#
+
+rootdir="$(cd "${0%/*}/.." && pwd -P)"
+
+main() {
+  local from_version="$1" srcdir="${rootdir}/pythonclass/adventure" major minor
+  autoload -U zmv
+
+  major=${from_version%%.*}
+  minor=${from_version##*.}
+  minor=$((minor + 1))
+
+  to_version="${major}.${minor}"
+
+  zmv -CW "pythonclass/adventure/*-${from_version}.py" "pythonclass/adventure/*-${to_version}.py"
+}
+
+main ${1:+"$@"}
