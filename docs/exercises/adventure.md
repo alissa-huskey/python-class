@@ -5378,7 +5378,6 @@ test_game.py::test_do_read_in_inventory`.
 
 :::
 
-
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/test_game-12.6.py
@@ -5584,14 +5583,230 @@ Now we're finally ready to modify our `do_read()` function to use the new
 
 `````
 
+### Part 12.7: Allow for stanzas
 
-% TODO
-% - [x] add message and preface to book
-% - [x] add read
-% - [x] add read command
-% - [x] add test_do_read_in_inventory()
-% - [ ] add default title
-% - [ ] modify wrap: add indent and after
+{{ sources.format("12.7") }}
+
+{{ clear }}
+
+{{ left }}
+
+In this section we'll add functionality to break up a long message (in
+particular, our `book` message) into multiple stanzas.
+
+To accomplish this, we'll modify `wrap()` so that for its `text` argument it can
+take either a string or an iterable (a tuple or a list) of strings. If `text`
+is a string, it should print just the same as it does now. If `text` is a
+`tuple` or a `list`, each item should be wrapped seperately and printed with a
+blank line between each one.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.7.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+#### A. In `test_game.py` modify `test_do_read_in_place()`
+
+{{ left }}
+
+In this section we'll modify the `test_do_read_in_place()` test so that the
+`"message"` in our fake item is either a tuple or a list, where each item
+represents a stanza. Then we'll add an assert statement to check that there are
+two `"\n"` before one of our stanzas.
+
+We'll leave the `test_do_read_in_inventory()` test alone, which will make sure
+that it still works if message is a string.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.7.A.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+1. `[ ]` Modify value cooresponding to the `"message"` key in your fake items
+        `"writing"` dictionary to be either a tuple or a list of strings with multiple
+        items.
+1. `[ ]` Add an `assert` statement that checks to make sure that output
+         contains two blank lines, followed by the number of indentation
+         spaces, followed by the first few words of one of your message items.
+1. `[ ]` Run the test. It should fail.
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/test_game-12.7.py
+:linenos:
+:lineno-match:
+:start-at: 'def test_do_read_in_place'
+:end-before: def
+:class: full-width
+:caption: test_game.py
+:emphasize-lines: "3-9, 30,31"
+
+```
+
+`````
+
+#### B. In `test_game.py` write `test_wrap_with_iterable()`
+
+{{ left }}
+
+Once again, the real heavy lifting will be done in the `wrap()` function. So
+before we write any code we'll write a new `wrap()` test for when `text` is an
+iterable.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.7.B.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+1. `[ ]` Add a function `test_wrap_with_iterable()` with one parameter `capsys`
+1. `[ ]` Set the variable `message` to a list or a tuple of strings.
+         (Consider using a few lyrics of a short song or rhyme.)
+1. `[ ]` Call the `wrap()` function with the argument `message`
+1. `[ ]` Assign the results of `capsys.readouterr().out` to the variable `output`
+1. `[ ]` Write an `assert` statement that makes sure part of one of our
+         `message` items is in `output`
+1. `[ ]` Write an `assert` statement to make sure that a parenthesis is
+         not in `output` if message is a `tuple`, or that a square bracket is not
+         in `output` if `message` is a list. This is to make sure that we
+         are not mistakenly printing the entire iterable instead of each
+         string in the iterable.
+1. `[ ]` Add an `assert` statement that checks to make sure that output
+         contains two blank lines, followed by the number of indentation
+         spaces, followed by the first few words of one of your `message` items.
+1. `[ ]` Run the test. It should fail.
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/test_game-12.7.py
+:linenos:
+:lineno-match:
+:start-at: 'def test_wrap_with_iterable'
+:end-before: def
+:class: full-width
+:caption: test_game.py
+
+```
+
+`````
+
+#### C. In `adventure.py` modify `wrap()`
+
+{{ left }}
+
+Now we are ready to change the `wrap()` function.
+
+First we'll turn `text` into a one-item iterable if it was a string, that way
+we always have something that we can safely iterate over.
+
+Then we'll iterate over each string in our new `text` iterable, wrap it the
+same way we already do, and append it to a list called `blocks`.
+
+Finally, we'll print the `blocks` list with two `"\n"` between each one.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-12.7.C.cast
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+:::{note}
+
+We don't need to make any changes to `do_read()` for this feature, since it
+already calls `wrap()` with whatever was in the item dictionary for
+`"message"`. So once you're done with this, all your tests should pass.
+
+:::
+
+1. `[ ]` Write an `if` statement to check if `text` is a string using the `isinstance()` function.
+   * `[ ]` If so, make a list or tuple containing `text` and assign it to the same variable, `text`.
+1. `[ ]` Make an empty list and assign it to the variable `blocks`
+1. `[ ]` Use a `for` loop to iterate over `text` using the variable name `stanza`
+   * `[ ]` Indent the line(s) where you assign `paragraph` to be inside your
+           `for` loop
+   * `[ ]` In your call to `textwrap.fill()`, instead of use `stanza` for the
+           first argument instead of `text`.
+   * `[ ]` Append `paragraph` to `blocks`
+1. `[ ]` You can either:
+   * `[ ]` Use [argument unpacking][unpacking] to send all of the items in the
+           `blocks` list as seperate arguments to the `print()` function, and the
+           keyword argument `sep` to print two newlines between each argument.
+   * `[ ]` [Join][join] the `blocks` list using two newlines as the delimiter,
+           then print the result.
+1. `[ ]` Run your `test_wrap_with_iterable()` test. It should pass.
+1. `[ ]` Run your `test_do_read_in_place()` test. It should pass.
+1. `[ ]` Run all your tests. They should pass.
+
+[unpacking]: ../lessons/in-depth/functions.html?#part-3-unpacking-arguments
+[join]: ../lessons/data-types/strings.html?highlight=join#part-2-splitting-and-joining
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/adventure-12.7.py
+:linenos:
+:lineno-match:
+:start-at: 'def wrap'
+:end-before: def
+:class: full-width
+:caption: adventure.py
+:emphasize-lines: "7-15, 25-28"
+
+```
+
+`````
+
+#### D. In `adventure.py` modify `ITEMS`
+
+Finally, change the `"message"` in your `"book"` item to be a list or a tuple
+of strings.
+
+And now that we're all liteate, feel free to scatter scrolls, signs and sticky
+notes all over your game!
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/adventure-12.7.py
+:linenos:
+:lineno-match:
+:start-at: '"book": {'
+:end-before: '"gems": {'
+:class: full-width
+:caption: adventure.py
+:emphasize-lines: "14, 17, 20, 22"
+
+```
+
+`````
 
 Reference
 ---------

@@ -104,15 +104,15 @@ ITEMS = {
             ),
             "message": (
                 "At the edge of the woods is a cave that is home to a three "
-                "headed dragon, each with a different temperament. "
+                "headed dragon, each with a different temperament. ",
 
                 "Legend says that if you happen upon the dragon sleeping, the "
-                "brave may pet one of its three heads. "
+                "brave may pet one of its three heads. ",
 
                 "Choose the right head and you will be rewarded with great "
-                "fortunes. "
+                "fortunes. ",
 
-                "But beware, choose poorly and it will surely mean your doom! "
+                "But beware, choose poorly and it will surely mean your doom!",
             ),
         },
     },
@@ -139,16 +139,28 @@ def wrap(text, indent=1):
     # calculate the indentation
     margin = (MARGIN * " ") * indent
 
-    # wrap the text
-    paragraph = textwrap.fill(
-        text,
-        WIDTH,
-        initial_indent=margin,
-        subsequent_indent=margin,
-    )
+    # if a string was passed, turn it into a single item tuple
+    if isinstance(text, str):
+        text = (text,)
+
+    # make an empty list for the wrapped blocks
+    blocks = []
+
+    # iterate over items
+    for stanza in text:
+
+        # wrap the text
+        paragraph = textwrap.fill(
+            stanza,
+            WIDTH,
+            initial_indent=margin,
+            subsequent_indent=margin,
+        )
+
+        blocks.append(paragraph)
 
     # print the wrapped text
-    print(paragraph)
+    print(*blocks, sep="\n\n")
 
 def write(text, indent=1):
     """Print an indented line of game text."""
