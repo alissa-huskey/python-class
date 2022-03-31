@@ -570,7 +570,7 @@ def do_read(args):
     item = get_item(name)
 
     # make sure it is an item you can read
-    if not "message" in item:
+    if "message" not in item:
         error(f"Sorry, I can't read {name!r}.")
         return
 

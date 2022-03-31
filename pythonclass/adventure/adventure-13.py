@@ -17,14 +17,17 @@ https://alissa-huskey.github.io/python-class/exercises/adventure.html
 |                                                        |
 +--------------------------------------------------------+
 
-Part 11: Read things
+Part 13: Drink Things
 
 """
 
 import re
 import textwrap
+from time import sleep
 
 from console import fg, bg, fx
+
+DELAY = 0.7
 
 WIDTH = 45
 
@@ -45,7 +48,7 @@ PLACES = {
         "name": "Your Cottage",
         "east": "town-square",
         "description": "A cozy stone cottage with a desk and a neatly made bed.",
-        "items": ["desk", "book"],
+        "items": ["desk", "book", "water"],
     },
     "town-square": {
         "key": "town-square",
@@ -83,6 +86,20 @@ ITEMS = {
         "description": "a 14 inch dagger with a double-edged blade",
         "price": -25,
     },
+    "water": {
+        "key": "water",
+        "name": "bottle of water",
+        "can_take": True,
+        "empty": False,
+        "description": (
+            "A bottle of water."
+        ),
+        "drink-message": (
+            "You pull the cork from the waxed leather bottle.",
+            "You take a deep drink of the cool liquid.",
+            "You feel refreshed.",
+        ),
+    },
     "desk": {
         "key": "desk",
         "name": "a desk",
@@ -98,23 +115,21 @@ ITEMS = {
         "description": (
             "A hefty leather-bound tome open to an interesting passage."
         ),
-        "writing": {
-            "title": (
-                "The book is open to a page that reads:"
-            ),
-            "message": (
-                "At the edge of the woods is a cave that is home to a three"
-                "headed dragon, each with a different temperament.",
+        "title": (
+            "The book is open to a page that reads:"
+        ),
+        "message": (
+            "At the edge of the woods is a cave that is home to a three "
+            "headed dragon, each with a different temperament. ",
 
-                "Legend says that if you happen upon the dragon sleeping, the"
-                "brave may pet one of its three heads.",
+            "Legend says that if you happen upon the dragon sleeping, the "
+            "brave may pet one of its three heads. ",
 
-                "Choose the right head and you will be rewarded with great"
-                "fortunes.",
+            "Choose the right head and you will be rewarded with great "
+            "fortunes. ",
 
-                "But beware, choose poorly and it will surely mean your doom!",
-            ),
-        },
+            "But beware, choose poorly and it will surely mean your doom!",
+        ),
     },
     "gems": {
         "key": "gems",
@@ -133,23 +148,37 @@ def header(title):
     write(fx.bold(title))
     print()
 
-def wrap(text, indent=1, after=1):
+def wrap(text, indent=1, delay=0):
     """Print wrapped and indented text."""
+
     # calculate the indentation
     margin = (MARGIN * " ") * indent
 
-    # wrap the text
-    paragraph = textwrap.fill(
-        text,
-        WIDTH,
-        initial_indent=margin,
-        subsequent_indent=margin,
-    )
+    # if a string was passed, turn it into a single item tuple
+    if isinstance(text, str):
+        text = (text,)
 
-    # print the wrapped text
-    print(paragraph, end=("\n" * after))
+    # iterate over items
+    for i, stanza in enumerate(text):
 
-def write(text):
+        # print an extra blank line before every stanza but the last
+        if i:
+            print()
+
+        # wrap the text
+        paragraph = textwrap.fill(
+            stanza,
+            WIDTH,
+            initial_indent=margin,
+            subsequent_indent=margin,
+        )
+
+        print(paragraph)
+        if delay:
+            sleep(delay)
+
+
+def write(text, indent=1):
     """Print an indented line of game text."""
     print(MARGIN*" ", text, sep="")
 
@@ -559,20 +588,62 @@ def do_read(args):
     item = get_item(name)
 
     # make sure it is an item you can read
-    if "writing" not in item:
+    if "message" not in item:
         error(f"Sorry, I can't read {name!r}.")
         return
 
-    # get the information to read
-    writing = item["writing"]
-
     # print the item header
-    title = writing.get("preface", "It reads...")
+    title = item.get("title", "It reads...")
     header(title)
 
-    # print the quantity if the item is from inventory
-    for passage in writing.get("message"):
-        wrap(passage, indent=2, after=2)
+    # print the item message
+    wrap(item["message"], indent=3)
+
+def do_drink(args):
+    do_consume("drink", args)
+
+
+def do_eat(args):
+    do_consume("eat", args)
+
+
+def do_consume(action, args):
+    """Eat or drink something"""
+    debug(f"Trying to {action}: {args}")
+
+    if not args:
+        error(f"What do you want to {action}?")
+        return
+
+    # get the item entered by the user and make it lowercase
+    name = args[0].lower()
+
+    # make sure the item is in this place or in the players inventory
+    if not player_has(name):
+        error(f"Sorry, you don't have any {name!r} to {action}.")
+        return
+
+    # get the item dictionary
+    item = get_item(name)
+
+    # make sure it is an item you can consume
+    if f"{action}-message" not in item:
+        error(f"Sorry, you can't {action} {name!r}.")
+        return
+
+    # make sure it isn't empty
+    if item.get("empty"):
+        wrap(f"You try to {action} {item['name']} but there isn't any left.'")
+        return
+
+    # either set to empty or remove from inventory
+    if item.get("empty") is False:
+        item["empty"] = True
+    else:
+        inventory_change(name, -1)
+
+    wrap(item[f"{action}-message"], delay=DELAY)
+
 
 def main():
     header("Welcome!")
@@ -618,6 +689,12 @@ def main():
 
         elif command == "buy":
             do_buy(args)
+
+        elif command == "eat":
+            do_eat(args)
+
+        elif command == "drink":
+            do_drink(args)
 
         else:
             error("No such command.")

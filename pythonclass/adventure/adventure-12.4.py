@@ -541,7 +541,7 @@ def do_read(args):
     item = get_item(name)
 
     # make sure it is an item you can read
-    if not "writing" in item:
+    if "writing" not in item:
         error(f"Sorry, I can't read {name!r}.")
         return
 
