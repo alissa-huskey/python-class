@@ -285,10 +285,8 @@ def test_do_read_in_place(capsys):
 
     adventure.ITEMS["your palm"] = {
         "name": "Your palm",
-        "writing": {
-            "title": title,
-            "message": message,
-        },
+        "title": title,
+        "message": message,
     }
 
     place_add("your palm")
@@ -312,10 +310,8 @@ def test_do_read_in_inventory(capsys):
 
     adventure.ITEMS["tea leaves"] = {
         "name": "Tea Leaves",
-        "writing": {
-            "title": title,
-            "message": message,
-        },
+        "title": title,
+        "message": message,
     }
 
     inventory_change("tea leaves")

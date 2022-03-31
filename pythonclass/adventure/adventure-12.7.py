@@ -98,23 +98,21 @@ ITEMS = {
         "description": (
             "A hefty leather-bound tome open to an interesting passage."
         ),
-        "writing": {
-            "title": (
-                "The book is open to a page that reads:"
-            ),
-            "message": (
-                "At the edge of the woods is a cave that is home to a three "
-                "headed dragon, each with a different temperament. ",
+        "title": (
+            "The book is open to a page that reads:"
+        ),
+        "message": (
+            "At the edge of the woods is a cave that is home to a three "
+            "headed dragon, each with a different temperament. ",
 
-                "Legend says that if you happen upon the dragon sleeping, the "
-                "brave may pet one of its three heads. ",
+            "Legend says that if you happen upon the dragon sleeping, the "
+            "brave may pet one of its three heads. ",
 
-                "Choose the right head and you will be rewarded with great "
-                "fortunes. ",
+            "Choose the right head and you will be rewarded with great "
+            "fortunes. ",
 
-                "But beware, choose poorly and it will surely mean your doom!",
-            ),
-        },
+            "But beware, choose poorly and it will surely mean your doom!",
+        ),
     },
     "gems": {
         "key": "gems",
@@ -572,18 +570,16 @@ def do_read(args):
     item = get_item(name)
 
     # make sure it is an item you can read
-    if not "writing" in item:
+    if not "message" in item:
         error(f"Sorry, I can't read {name!r}.")
         return
 
-    # get the information to read
-    writing = item["writing"]
-
     # print the item header
-    header(writing["title"])
+    title = item.get("title", "It reads...")
+    header(title)
 
     # print the item message
-    wrap(writing.get("message"), indent=3)
+    wrap(item["message"], indent=3)
 
 def main():
     header("Welcome!")
