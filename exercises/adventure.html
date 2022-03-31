@@ -2459,14 +2459,8 @@ const thebe_selector_output = ".output, .cell_output"
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#c-add-writing-to-book-in-items">
-       C. Add
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         "writing"
-        </span>
-       </code>
-       to
+      <a class="reference internal nav-link" href="#c-add-to-book-in-items">
+       C. Add to
        <code class="docutils literal notranslate">
         <span class="pre">
          "book"
@@ -12430,9 +12424,16 @@ Demo<div class="summary-down docutils">
 <div class="section" id="a-in-test-game-py-write-test-do-read-unreadable-item">
 <h4>A. In <code class="docutils literal notranslate"><span class="pre">test_game.py</span></code> write <code class="docutils literal notranslate"><span class="pre">test_do_read_unreadable_item()</span></code><a class="headerlink" href="#a-in-test-game-py-write-test-do-read-unreadable-item" title="Permalink to this headline">¶</a></h4>
 <div class="row"><div class="col-5 left-col-5">
-<p>In this section we’ll add a test that will set up a fake (unreadable) item.
-Then we’ll check to make sure  an error is printed if the player tries to read
-it.</p>
+<p>In this section we’ll be adding a test for when the player tries to read an
+item that cannot be read. It should:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add a fake unreadable item dictionary to the current place. An item is
+readable if it has a <code class="docutils literal notranslate"><span class="pre">&quot;message&quot;</span></code> key, so for a fake item all we really need
+is an empty dictionary.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Call <code class="docutils literal notranslate"><span class="pre">do_read()</span></code> with the arguments that would be passed to it if the player
+had typed <code class="samp docutils literal notranslate"><span class="pre">&quot;read</span> <em><span class="pre">FAKE_THING</span></em><span class="pre">&quot;</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Check the output for the appropriate error message</p></li>
+</ul>
 </div><div class="col-7">
 <details class="sphinx-bs dropdown card mb-3" open="open">
 <summary class="summary-title card-header">
@@ -12501,7 +12502,7 @@ Demo<div class="summary-down docutils">
 </details></div></div>
 <ol class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Use the <code class="docutils literal notranslate"><span class="pre">get_item()</span></code> function to get the item dictionary and assign it to the variable <code class="docutils literal notranslate"><span class="pre">item</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Check if the <code class="docutils literal notranslate"><span class="pre">&quot;writing&quot;</span></code> key is in the item dictionary. If not:</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Check if the <code class="docutils literal notranslate"><span class="pre">&quot;message&quot;</span></code> key is in the item dictionary. If not:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Use the <code class="docutils literal notranslate"><span class="pre">error()</span></code> function to print an error message like: <code class="samp docutils literal notranslate"><span class="pre">&quot;Sorry,</span> <span class="pre">I</span> <span class="pre">can't</span> <span class="pre">read</span> <span class="pre">'</span><em><span class="pre">name</span></em><span class="pre">'&quot;</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> return</p></li>
@@ -12584,10 +12585,9 @@ will read it.</p>
 <div class="section" id="a-in-test-game-py-write-test-do-read-in-place">
 <h4>A. In <code class="docutils literal notranslate"><span class="pre">test_game.py</span></code> write <code class="docutils literal notranslate"><span class="pre">test_do_read_in_place()</span></code><a class="headerlink" href="#a-in-test-game-py-write-test-do-read-in-place" title="Permalink to this headline">¶</a></h4>
 <div class="row"><div class="col-5 left-col-5">
-<p>In this section we’ll write a new test where we’ll set up a fake item with a
-<code class="docutils literal notranslate"><span class="pre">&quot;writing&quot;</span></code> key containing the information that can be read and add it to the
-current place. Then we’ll try to read it, and make sure the <code class="docutils literal notranslate"><span class="pre">&quot;title&quot;</span></code> and
-<code class="docutils literal notranslate"><span class="pre">&quot;message&quot;</span></code> are in <code class="docutils literal notranslate"><span class="pre">output</span></code>.</p>
+<p>In this section we’ll write a new test where we’ll set up a fake item with
+<code class="docutils literal notranslate"><span class="pre">&quot;message&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;title&quot;</span></code> keys containing the text to be read and add it to the
+current place. Then we’ll call <code class="docutils literal notranslate"><span class="pre">do_read()</span></code>and check for the expected output.</p>
 </div><div class="col-7">
 <details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
@@ -12600,7 +12600,8 @@ Demo<div class="summary-down docutils">
 </details></div></div>
 <ol class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add a function <code class="docutils literal notranslate"><span class="pre">test_do_read_in_place()</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Create a new item with a <code class="docutils literal notranslate"><span class="pre">&quot;writing&quot;</span></code> key that’s a dictionary with a <code class="docutils literal notranslate"><span class="pre">&quot;title&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;message&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Create a dictionary representing a fake item item with the keys
+<code class="docutils literal notranslate"><span class="pre">&quot;title&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;message&quot;</span></code> and whatever text you’d like for the values.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Use the <code class="docutils literal notranslate"><span class="pre">place_add()</span></code> function to add it to the current place</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Call <code class="docutils literal notranslate"><span class="pre">do_read()</span></code> with the the key for your fake item</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Assign the results of <code class="docutils literal notranslate"><span class="pre">capsys.readouterr().out</span></code> to the variable <code class="docutils literal notranslate"><span class="pre">output</span></code></p></li>
@@ -12684,10 +12685,11 @@ Demo<div class="summary-down docutils">
 <asciinema-player poster="npt:0:05" rows="16" src="assets/adventure-12.5.B.cast"></asciinema-player></div>
 </details></div></div>
 <ol class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Get the value associated with the <code class="docutils literal notranslate"><span class="pre">&quot;writing&quot;</span></code> key from the <code class="docutils literal notranslate"><span class="pre">item</span></code>
-dictionary and assign it to the variable <code class="docutils literal notranslate"><span class="pre">writing</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Use the <code class="docutils literal notranslate"><span class="pre">header()</span></code> function to print the <code class="docutils literal notranslate"><span class="pre">&quot;title&quot;</span></code> value from the <code class="docutils literal notranslate"><span class="pre">writing</span></code> dictionary</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Use the <code class="docutils literal notranslate"><span class="pre">wrap()</span></code> function to print the <code class="docutils literal notranslate"><span class="pre">&quot;message&quot;</span></code> value from the <code class="docutils literal notranslate"><span class="pre">writing</span></code> dictionary</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> If the <code class="docutils literal notranslate"><span class="pre">&quot;title&quot;</span></code> key exists in the <code class="docutils literal notranslate"><span class="pre">item</span></code> dictionary, Use the
+<code class="docutils literal notranslate"><span class="pre">header()</span></code> function to print that value. Otherwise print something
+like <code class="docutils literal notranslate"><span class="pre">&quot;It</span> <span class="pre">reads...&quot;</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Use the <code class="docutils literal notranslate"><span class="pre">wrap()</span></code> function to print the <code class="docutils literal notranslate"><span class="pre">&quot;message&quot;</span></code> value from the
+<code class="docutils literal notranslate"><span class="pre">item</span></code> dictionary.</p></li>
 </ol>
 <details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
@@ -12772,15 +12774,15 @@ Code<div class="summary-down docutils">
 </div>
 </div>
 </details></div>
-<div class="section" id="c-add-writing-to-book-in-items">
-<h4>C. Add <code class="docutils literal notranslate"><span class="pre">&quot;writing&quot;</span></code> to <code class="docutils literal notranslate"><span class="pre">&quot;book&quot;</span></code> in <code class="docutils literal notranslate"><span class="pre">ITEMS</span></code><a class="headerlink" href="#c-add-writing-to-book-in-items" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="c-add-to-book-in-items">
+<h4>C. Add to <code class="docutils literal notranslate"><span class="pre">&quot;book&quot;</span></code> in <code class="docutils literal notranslate"><span class="pre">ITEMS</span></code><a class="headerlink" href="#c-add-to-book-in-items" title="Permalink to this headline">¶</a></h4>
 <div class="row"><div class="col-5 left-col-5">
 <p>Now we’ll finally give the player something to read.</p>
 <ol class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> In the <code class="docutils literal notranslate"><span class="pre">&quot;book&quot;</span></code> dictionary in <code class="docutils literal notranslate"><span class="pre">ITEMS</span></code>, add a key <code class="docutils literal notranslate"><span class="pre">&quot;writing&quot;</span></code> with a
-dictionary for the value.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> The <code class="docutils literal notranslate"><span class="pre">&quot;writing&quot;</span></code> dictionary should have two keys: <code class="docutils literal notranslate"><span class="pre">&quot;title&quot;</span></code> and
-<code class="docutils literal notranslate"><span class="pre">&quot;message&quot;</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> In the <code class="docutils literal notranslate"><span class="pre">&quot;book&quot;</span></code> dictionary in <code class="docutils literal notranslate"><span class="pre">ITEMS</span></code>, add the key <code class="docutils literal notranslate"><span class="pre">&quot;title&quot;</span></code> with
+whatever text you’d like</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> In the <code class="docutils literal notranslate"><span class="pre">&quot;book&quot;</span></code> dictionary in <code class="docutils literal notranslate"><span class="pre">ITEMS</span></code>, add the key <code class="docutils literal notranslate"><span class="pre">&quot;message&quot;</span></code> with
+whatever text you’d like</p></li>
 </ol>
 </div><div class="col-7">
 <details class="sphinx-bs dropdown card mb-3" open="open">
@@ -12922,7 +12924,7 @@ Code<div class="summary-down docutils">
 <p><a class="sphinx-bs badge badge-info text-white fa fa-file-code float-right font-bold p-2 header-link reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-12.6.py"><span> adventure.py</span></a> <a class="sphinx-bs badge badge-info text-white fa fa-file-code float-right font-bold p-2 header-link reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/test_game-12.6.py"><span> test_game.py</span></a></p>
 <div class="clearfix"></div>
 <div class="row"><div class="col-5 left-col-5">
-<p>In this section we’re going to indent the message part of the writing an extra
+<p>In this section we’re going to indent the message part of the text an extra
 level.</p>
 </div><div class="col-7">
 <details class="sphinx-bs dropdown card mb-3" open="open">
@@ -13430,9 +13432,9 @@ Demo<div class="summary-down docutils">
 <asciinema-player poster="npt:0:10" rows="16" src="assets/adventure-12.7.A.cast"></asciinema-player></div>
 </details></div></div>
 <ol class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Modify value cooresponding to the <code class="docutils literal notranslate"><span class="pre">&quot;message&quot;</span></code> key in your fake items
-<code class="docutils literal notranslate"><span class="pre">&quot;writing&quot;</span></code> dictionary to be either a tuple or a list of strings with multiple
-items.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Modify the value cooresponding to the <code class="docutils literal notranslate"><span class="pre">&quot;message&quot;</span></code> key in your fake
+item dictionary to be either a tuple or a list of strings with
+multiple items.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add an <code class="docutils literal notranslate"><span class="pre">assert</span></code> statement that checks to make sure that output
 contains two blank lines, followed by the number of indentation
 spaces, followed by the first few words of one of your message items.</p></li>
@@ -13477,9 +13479,7 @@ Code<div class="summary-down docutils">
 <span class="normal">303</span>
 <span class="normal">304</span>
 <span class="normal">305</span>
-<span class="normal">306</span>
-<span class="normal">307</span>
-<span class="normal">308</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_do_read_in_place</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
+<span class="normal">306</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_do_read_in_place</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
     <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;After studying your palm I see...&quot;</span>
 <span class="hll">    <span class="n">message</span> <span class="o">=</span> <span class="p">(</span>
 </span><span class="hll">        <span class="s2">&quot;The break in your line of fate may indicate &quot;</span>
@@ -13491,10 +13491,8 @@ Code<div class="summary-down docutils">
 </span>
     <span class="n">adventure</span><span class="o">.</span><span class="n">ITEMS</span><span class="p">[</span><span class="s2">&quot;your palm&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Your palm&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;writing&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span>
-            <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="n">message</span><span class="p">,</span>
-        <span class="p">},</span>
+        <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="n">message</span><span class="p">,</span>
     <span class="p">}</span>
 
     <span class="n">place_add</span><span class="p">(</span><span class="s2">&quot;your palm&quot;</span><span class="p">)</span>
@@ -13508,11 +13506,11 @@ Code<div class="summary-down docutils">
     <span class="k">assert</span> <span class="s2">&quot;The break in your line of fate&quot;</span> <span class="ow">in</span> <span class="n">output</span><span class="p">,</span> \
         <span class="s2">&quot;The writing message </span><span class="si">{message!r}</span><span class="s2"> should be in output&quot;</span>
 
-<span class="hll">    <span class="k">assert</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">      You have more than&quot;</span> <span class="ow">in</span> <span class="n">output</span><span class="p">,</span> \
-</span><span class="hll">        <span class="s2">&quot;When message is an iterable, there should be two lines between each item&quot;</span>
-</span>
-
-</pre></div>
+    <span class="k">assert</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">      You have more than&quot;</span> <span class="ow">in</span> <span class="n">output</span><span class="p">,</span> \
+        <span class="s2">&quot;When message is an iterable, there should be two lines between each item&quot;</span>
+<span class="hll">
+</span><span class="hll">
+</span></pre></div>
 </td></tr></table></div>
 </div>
 </div>
@@ -13675,7 +13673,9 @@ Code<div class="summary-down docutils">
 </summary><div class="summary-content card-body docutils">
 <div class="literal-block-wrapper docutils container" id="id55">
 <div class="code-block-caption"><span class="caption-number">Listing 572 </span><span class="caption-text">adventure.py</span><a class="headerlink" href="#id55" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">136</span>
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
 <span class="normal">137</span>
 <span class="normal">138</span>
 <span class="normal">139</span>
@@ -13701,9 +13701,7 @@ Code<div class="summary-down docutils">
 <span class="normal">159</span>
 <span class="normal">160</span>
 <span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">wrap</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="normal">162</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">wrap</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Print wrapped and indented text.&quot;&quot;&quot;</span>
 
     <span class="c1"># calculate the indentation</span>
@@ -13774,33 +13772,29 @@ Code<div class="summary-down docutils">
 <span class="normal">113</span>
 <span class="normal">114</span>
 <span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="s2">&quot;book&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="normal">116</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="s2">&quot;book&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;book&quot;</span><span class="p">,</span>
         <span class="s2">&quot;can_take&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
         <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;a book&quot;</span><span class="p">,</span>
         <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="p">(</span>
             <span class="s2">&quot;A hefty leather-bound tome open to an interesting passage.&quot;</span>
         <span class="p">),</span>
-        <span class="s2">&quot;writing&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="p">(</span>
-                <span class="s2">&quot;The book is open to a page that reads:&quot;</span>
-            <span class="p">),</span>
-            <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="p">(</span>
-                <span class="s2">&quot;At the edge of the woods is a cave that is home to a three &quot;</span>
-<span class="hll">                <span class="s2">&quot;headed dragon, each with a different temperament. &quot;</span><span class="p">,</span>
-</span>
-                <span class="s2">&quot;Legend says that if you happen upon the dragon sleeping, the &quot;</span>
-<span class="hll">                <span class="s2">&quot;brave may pet one of its three heads. &quot;</span><span class="p">,</span>
-</span>
-                <span class="s2">&quot;Choose the right head and you will be rewarded with great &quot;</span>
-<span class="hll">                <span class="s2">&quot;fortunes. &quot;</span><span class="p">,</span>
-</span>
-<span class="hll">                <span class="s2">&quot;But beware, choose poorly and it will surely mean your doom!&quot;</span><span class="p">,</span>
-</span>            <span class="p">),</span>
-        <span class="p">},</span>
-    <span class="p">},</span>
+        <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="p">(</span>
+            <span class="s2">&quot;The book is open to a page that reads:&quot;</span>
+        <span class="p">),</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="p">(</span>
+            <span class="s2">&quot;At the edge of the woods is a cave that is home to a three &quot;</span>
+            <span class="s2">&quot;headed dragon, each with a different temperament. &quot;</span><span class="p">,</span>
+<span class="hll">
+</span>            <span class="s2">&quot;Legend says that if you happen upon the dragon sleeping, the &quot;</span>
+            <span class="s2">&quot;brave may pet one of its three heads. &quot;</span><span class="p">,</span>
+<span class="hll">
+</span>            <span class="s2">&quot;Choose the right head and you will be rewarded with great &quot;</span>
+            <span class="s2">&quot;fortunes. &quot;</span><span class="p">,</span>
+<span class="hll">
+</span>            <span class="s2">&quot;But beware, choose poorly and it will surely mean your doom!&quot;</span><span class="p">,</span>
+<span class="hll">        <span class="p">),</span>
+</span>    <span class="p">},</span>
 </pre></div>
 </td></tr></table></div>
 </div>

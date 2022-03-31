@@ -5155,9 +5155,16 @@ in fact, be read.
 
 {{ left }}
 
-In this section we'll add a test that will set up a fake (unreadable) item.
-Then we'll check to make sure  an error is printed if the player tries to read
-it.
+In this section we'll be adding a test for when the player tries to read an
+item that cannot be read. It should:
+
+* `[ ]` Add a fake unreadable item dictionary to the current place. An item is
+  readable if it has a `"message"` key, so for a fake item all we really need
+  is an empty dictionary.
+* `[ ]` Call `do_read()` with the arguments that would be passed to it if the player
+  had typed {samp}`"read {FAKE_THING}"`.
+* `[ ]` Check the output for the appropriate error message
+
 
 {{ right }}
 
@@ -5172,7 +5179,6 @@ it.
 `````
 
 {{ endcols }}
-
 
 1. `[ ]` import the `place_add` function
 1. `[ ]` Add `test_do_read_unreadable_item()` function with the parameter `capsys`
@@ -5218,7 +5224,7 @@ Now we'll write the code to make the test pass.
 {{ endcols }}
 
 1. `[ ]` Use the `get_item()` function to get the item dictionary and assign it to the variable `item`
-1. `[ ]` Check if the `"writing"` key is in the item dictionary. If not:
+1. `[ ]` Check if the `"message"` key is in the item dictionary. If not:
    * `[ ]` Use the `error()` function to print an error message like: {samp}`"Sorry, I can't read '{name}'"`
    * `[ ]` return
 1. `[ ]` Run your test again. It should pass.
@@ -5251,10 +5257,10 @@ will read it.
 
 {{ left }}
 
-In this section we'll write a new test where we'll set up a fake item with a
-`"writing"` key containing the information that can be read and add it to the
-current place. Then we'll try to read it, and make sure the `"title"` and
-`"message"` are in `output`.
+In this section we'll write a new test where we'll set up a fake item with 
+`"message"` and `"title"` keys containing the text to be read and add it to the
+current place. Then we'll call `do_read()`and check for the expected output.
+
 
 {{ right }}
 
@@ -5270,7 +5276,8 @@ current place. Then we'll try to read it, and make sure the `"title"` and
 {{ endcols }}
 
 1. `[ ]` Add a function `test_do_read_in_place()`
-1. `[ ]` Create a new item with a `"writing"` key that's a dictionary with a `"title"` and `"message"`
+1. `[ ]` Create a dictionary representing a fake item item with the keys
+         `"title"` and `"message"` and whatever text you'd like for the values.
 1. `[ ]` Use the `place_add()` function to add it to the current place
 1. `[ ]` Call `do_read()` with the the key for your fake item
 1. `[ ]` Assign the results of `capsys.readouterr().out` to the variable `output`
@@ -5311,10 +5318,11 @@ Now we'll write the code to actually read the item.
 
 {{ endcols }}
 
-1. `[ ]` Get the value associated with the `"writing"` key from the `item`
-         dictionary and assign it to the variable `writing`
-1. `[ ]` Use the `header()` function to print the `"title"` value from the `writing` dictionary
-1. `[ ]` Use the `wrap()` function to print the `"message"` value from the `writing` dictionary
+1. `[ ]` If the `"title"` key exists in the `item` dictionary, Use the
+         `header()` function to print that value. Otherwise print something
+         like `"It reads..."`.
+1. `[ ]` Use the `wrap()` function to print the `"message"` value from the
+         `item` dictionary.
 
 `````{dropdown} Code
 
@@ -5331,16 +5339,16 @@ Now we'll write the code to actually read the item.
 
 `````
 
-#### C. Add `"writing"` to `"book"` in `ITEMS`
+#### C. Add to `"book"` in `ITEMS`
 
 {{ left }}
 
 Now we'll finally give the player something to read.
 
-1. `[ ]` In the `"book"` dictionary in `ITEMS`, add a key `"writing"` with a
-         dictionary for the value.
-1. `[ ]` The `"writing"` dictionary should have two keys: `"title"` and
-         `"message"`.
+1. `[ ]` In the `"book"` dictionary in `ITEMS`, add the key `"title"` with
+         whatever text you'd like
+1. `[ ]` In the `"book"` dictionary in `ITEMS`, add the key `"message"` with
+         whatever text you'd like
 
 {{ right }}
 
@@ -5397,7 +5405,7 @@ you can read a book if it is in your inventory but not in the current place?
 
 {{ left }}
 
-In this section we're going to indent the message part of the writing an extra
+In this section we're going to indent the message part of the text an extra
 level.
 
 {{ right }}
@@ -5715,9 +5723,9 @@ that it still works if message is a string.
 
 {{ endcols }}
 
-1. `[ ]` Modify value cooresponding to the `"message"` key in your fake items
-        `"writing"` dictionary to be either a tuple or a list of strings with multiple
-        items.
+1. `[ ]` Modify the value cooresponding to the `"message"` key in your fake
+         item dictionary to be either a tuple or a list of strings with
+         multiple items.
 1. `[ ]` Add an `assert` statement that checks to make sure that output
          contains two blank lines, followed by the number of indentation
          spaces, followed by the first few words of one of your message items.
