@@ -5924,7 +5924,6 @@ Test-Driven Development
 
 - `[ ]` Add cave to `PLACES`, dragon to `ITEMS`
 - `[ ]` Add `do_pet()` in cave
-- `[ ]` Add `do_read()`
 - `[ ]` Add `do_help()`
 - `[ ]` Add item aliases
 - `[ ]` Aliases for `east`, `e` and other directions

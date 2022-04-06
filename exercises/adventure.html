@@ -45,9 +45,9 @@
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/custom.js"></script>
-    <script src="../_static/x-frame-bypass.js"></script>
     <script src="../_static/asciinema-player.js"></script>
+    <script src="../_static/x-frame-bypass.js"></script>
+    <script src="../_static/custom.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -11351,7 +11351,9 @@ copy the relevant code into your test file.</p>
 <span class="normal">29</span>
 <span class="normal">30</span>
 <span class="normal">31</span>
-<span class="normal">32</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="hll"><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="hll"><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
 </span><span class="hll">
 </span><span class="hll"><span class="kn">import</span> <span class="nn">pytest</span>
 </span><span class="hll">
@@ -11369,6 +11371,7 @@ copy the relevant code into your test file.</p>
 </span><span class="hll"><span class="n">PLAYER_STATE</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">)</span>
 </span><span class="hll"><span class="n">PLACES_STATE</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">adventure</span><span class="o">.</span><span class="n">PLACES</span><span class="p">)</span>
 </span><span class="hll"><span class="n">ITEMS_STATE</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">adventure</span><span class="o">.</span><span class="n">ITEMS</span><span class="p">)</span>
+</span><span class="hll"><span class="n">DEBUG_STATE</span> <span class="o">=</span> <span class="kc">True</span>
 </span><span class="hll">
 </span><span class="hll">
 </span><span class="hll"><span class="k">def</span> <span class="nf">revert</span><span class="p">():</span>
@@ -11376,6 +11379,7 @@ copy the relevant code into your test file.</p>
 </span><span class="hll">    <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">PLAYER_STATE</span><span class="p">)</span>
 </span><span class="hll">    <span class="n">adventure</span><span class="o">.</span><span class="n">PLACES</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">PLACES_STATE</span><span class="p">)</span>
 </span><span class="hll">    <span class="n">adventure</span><span class="o">.</span><span class="n">ITEMS</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">ITEMS_STATE</span><span class="p">)</span>
+</span><span class="hll">    <span class="n">adventure</span><span class="o">.</span><span class="n">DEBUG</span> <span class="o">=</span> <span class="n">DEBUG_STATE</span>
 </span><span class="hll">
 </span><span class="hll">
 </span><span class="hll"><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">autouse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -11418,13 +11422,13 @@ Code<div class="summary-down docutils">
 </summary><div class="summary-content card-body docutils">
 <div class="literal-block-wrapper docutils container" id="id28">
 <div class="code-block-caption"><span class="caption-number">Listing 545 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id28" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">84</span>
-<span class="normal">85</span>
-<span class="normal">86</span>
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">86</span>
 <span class="normal">87</span>
 <span class="normal">88</span>
 <span class="normal">89</span>
-<span class="normal">90</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_inventory_change</span><span class="p">():</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_inventory_change</span><span class="p">():</span>
     <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;inventory&quot;</span><span class="p">][</span><span class="s2">&quot;problems&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
     <span class="n">inventory_change</span><span class="p">(</span><span class="s2">&quot;problems&quot;</span><span class="p">)</span>
 
@@ -11457,9 +11461,7 @@ Code<div class="summary-down docutils">
 </summary><div class="summary-content card-body docutils">
 <div class="literal-block-wrapper docutils container" id="id29">
 <div class="code-block-caption"><span class="caption-number">Listing 546 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id29" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">84</span>
-<span class="normal">85</span>
-<span class="normal">86</span>
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">86</span>
 <span class="normal">87</span>
 <span class="normal">88</span>
 <span class="normal">89</span>
@@ -11468,7 +11470,9 @@ Code<div class="summary-down docutils">
 <span class="normal">92</span>
 <span class="normal">93</span>
 <span class="normal">94</span>
-<span class="normal">95</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_inventory_change</span><span class="p">():</span>
+<span class="normal">95</span>
+<span class="normal">96</span>
+<span class="normal">97</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_inventory_change</span><span class="p">():</span>
     <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;inventory&quot;</span><span class="p">][</span><span class="s2">&quot;problems&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
     <span class="n">inventory_change</span><span class="p">(</span><span class="s2">&quot;problems&quot;</span><span class="p">)</span>
 
@@ -11513,9 +11517,7 @@ Code<div class="summary-down docutils">
 </summary><div class="summary-content card-body docutils">
 <div class="literal-block-wrapper docutils container" id="id30">
 <div class="code-block-caption"><span class="caption-number">Listing 547 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id30" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 98</span>
 <span class="normal"> 99</span>
 <span class="normal">100</span>
 <span class="normal">101</span>
@@ -11523,7 +11525,9 @@ Code<div class="summary-down docutils">
 <span class="normal">103</span>
 <span class="normal">104</span>
 <span class="normal">105</span>
-<span class="normal">106</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_inventory_change_missing_key</span><span class="p">():</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_inventory_change_missing_key</span><span class="p">():</span>
     <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;inventory&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">inventory_change</span><span class="p">(</span><span class="s2">&quot;brain&quot;</span><span class="p">)</span>
 
@@ -11559,14 +11563,14 @@ test_inventory_change_subtract()<div class="summary-down docutils">
 </summary><div class="summary-content card-body docutils">
 <div class="literal-block-wrapper docutils container" id="id31">
 <div class="code-block-caption"><span class="caption-number">Listing 548 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id31" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">109</span>
 <span class="normal">110</span>
 <span class="normal">111</span>
 <span class="normal">112</span>
 <span class="normal">113</span>
-<span class="normal">114</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_inventory_change_subtract</span><span class="p">():</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_inventory_change_subtract</span><span class="p">():</span>
     <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;inventory&quot;</span><span class="p">][</span><span class="s2">&quot;bottles of beer&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
     <span class="n">inventory_change</span><span class="p">(</span><span class="s2">&quot;bottles of beer&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
@@ -11587,12 +11591,12 @@ test_inventory_change_remove()<div class="summary-down docutils">
 </summary><div class="summary-content card-body docutils">
 <div class="literal-block-wrapper docutils container" id="id32">
 <div class="code-block-caption"><span class="caption-number">Listing 549 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id32" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">117</span>
 <span class="normal">118</span>
 <span class="normal">119</span>
-<span class="normal">120</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_inventory_change_remove</span><span class="p">():</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_inventory_change_remove</span><span class="p">():</span>
     <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;inventory&quot;</span><span class="p">][</span><span class="s2">&quot;chances&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="n">inventory_change</span><span class="p">(</span><span class="s2">&quot;chances&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
@@ -11691,16 +11695,16 @@ Code<div class="summary-down docutils">
 </td></tr></table></div>
 <div class="literal-block-wrapper docutils container" id="id33">
 <div class="code-block-caption"><span class="caption-number">Listing 550 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id33" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span>
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">128</span>
 <span class="normal">129</span>
 <span class="normal">130</span>
 <span class="normal">131</span>
 <span class="normal">132</span>
 <span class="normal">133</span>
 <span class="normal">134</span>
-<span class="normal">135</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_do_drop_no_args</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_do_drop_no_args</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
     <span class="n">do_drop</span><span class="p">([])</span>
     <span class="n">output</span> <span class="o">=</span> <span class="n">capsys</span><span class="o">.</span><span class="n">readouterr</span><span class="p">()</span><span class="o">.</span><span class="n">out</span>
 
@@ -11737,9 +11741,7 @@ Code<div class="summary-down docutils">
 </summary><div class="summary-content card-body docutils">
 <div class="literal-block-wrapper docutils container" id="id34">
 <div class="code-block-caption"><span class="caption-number">Listing 551 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id34" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span>
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">138</span>
 <span class="normal">139</span>
 <span class="normal">140</span>
 <span class="normal">141</span>
@@ -11749,7 +11751,9 @@ Code<div class="summary-down docutils">
 <span class="normal">145</span>
 <span class="normal">146</span>
 <span class="normal">147</span>
-<span class="normal">148</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_do_drop_missing_item</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_do_drop_missing_item</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
     <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;inventory&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">do_drop</span><span class="p">([</span><span class="s2">&quot;anything&quot;</span><span class="p">])</span>
 
@@ -11794,9 +11798,7 @@ Code<div class="summary-down docutils">
 </summary><div class="summary-content card-body docutils">
 <div class="literal-block-wrapper docutils container" id="id35">
 <div class="code-block-caption"><span class="caption-number">Listing 552 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id35" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">149</span>
-<span class="normal">150</span>
-<span class="normal">151</span>
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">151</span>
 <span class="normal">152</span>
 <span class="normal">153</span>
 <span class="normal">154</span>
@@ -11810,7 +11812,9 @@ Code<div class="summary-down docutils">
 <span class="normal">162</span>
 <span class="normal">163</span>
 <span class="normal">164</span>
-<span class="normal">165</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_do_drop</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_do_drop</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
     <span class="n">inventory_change</span><span class="p">(</span><span class="s2">&quot;mic&quot;</span><span class="p">)</span>
 
     <span class="n">do_drop</span><span class="p">([</span><span class="s2">&quot;mic&quot;</span><span class="p">])</span>
@@ -11933,13 +11937,13 @@ Code<div class="summary-down docutils">
 </td></tr></table></div>
 <div class="literal-block-wrapper docutils container" id="id36">
 <div class="code-block-caption"><span class="caption-number">Listing 553 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id36" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span>
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">170</span>
 <span class="normal">171</span>
 <span class="normal">172</span>
 <span class="normal">173</span>
-<span class="normal">174</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_do_read</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_do_read</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
     <span class="n">do_read</span><span class="p">([])</span>
 
     <span class="n">output</span> <span class="o">=</span> <span class="n">capsys</span><span class="o">.</span><span class="n">readouterr</span><span class="p">()</span><span class="o">.</span><span class="n">out</span>
@@ -12178,16 +12182,16 @@ Code<div class="summary-down docutils">
 </summary><div class="summary-content card-body docutils">
 <div class="literal-block-wrapper docutils container" id="id38">
 <div class="code-block-caption"><span class="caption-number">Listing 555 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id38" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span>
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">170</span>
 <span class="normal">171</span>
 <span class="normal">172</span>
 <span class="normal">173</span>
 <span class="normal">174</span>
 <span class="normal">175</span>
 <span class="normal">176</span>
-<span class="normal">177</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_do_read_no_args</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_do_read_no_args</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
     <span class="n">do_read</span><span class="p">([])</span>
 
     <span class="n">output</span> <span class="o">=</span> <span class="n">capsys</span><span class="o">.</span><span class="n">readouterr</span><span class="p">()</span><span class="o">.</span><span class="n">out</span>
@@ -12306,16 +12310,16 @@ Code<div class="summary-down docutils">
 </summary><div class="summary-content card-body docutils">
 <div class="literal-block-wrapper docutils container" id="id40">
 <div class="code-block-caption"><span class="caption-number">Listing 557 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id40" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">179</span>
-<span class="normal">180</span>
-<span class="normal">181</span>
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">181</span>
 <span class="normal">182</span>
 <span class="normal">183</span>
 <span class="normal">184</span>
 <span class="normal">185</span>
 <span class="normal">186</span>
 <span class="normal">187</span>
-<span class="normal">188</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_do_read_missing_item</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_do_read_missing_item</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
     <span class="n">do_read</span><span class="p">([</span><span class="s2">&quot;missing&quot;</span><span class="p">])</span>
 
     <span class="n">output</span> <span class="o">=</span> <span class="n">capsys</span><span class="o">.</span><span class="n">readouterr</span><span class="p">()</span><span class="o">.</span><span class="n">out</span>
@@ -12464,15 +12468,15 @@ Code<div class="summary-down docutils">
 </summary><div class="summary-content card-body docutils">
 <div class="literal-block-wrapper docutils container" id="id42">
 <div class="code-block-caption"><span class="caption-number">Listing 559 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id42" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span>
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">193</span>
 <span class="normal">194</span>
 <span class="normal">195</span>
 <span class="normal">196</span>
 <span class="normal">197</span>
 <span class="normal">198</span>
-<span class="normal">199</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_do_read_unreadable_item</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_do_read_unreadable_item</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
     <span class="n">adventure</span><span class="o">.</span><span class="n">ITEMS</span><span class="p">[</span><span class="s2">&quot;your mind&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Your mind&quot;</span><span class="p">}</span>
     <span class="n">place_add</span><span class="p">(</span><span class="s2">&quot;your mind&quot;</span><span class="p">)</span>
 
@@ -12566,7 +12570,7 @@ Code<div class="summary-down docutils">
 </span><span class="hll">    <span class="n">item</span> <span class="o">=</span> <span class="n">get_item</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 </span><span class="hll">
 </span><span class="hll">    <span class="c1"># make sure it is an item you can read</span>
-</span><span class="hll">    <span class="k">if</span> <span class="ow">not</span> <span class="s2">&quot;writing&quot;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+</span><span class="hll">    <span class="k">if</span> <span class="s2">&quot;writing&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
 </span><span class="hll">        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorry, I can&#39;t read </span><span class="si">{</span><span class="n">name</span><span class="si">!r}</span><span class="s2">.&quot;</span><span class="p">)</span>
 </span><span class="hll">        <span class="k">return</span>
 </span><span class="hll">
@@ -12618,9 +12622,7 @@ Code<div class="summary-down docutils">
 </summary><div class="summary-content card-body docutils">
 <div class="literal-block-wrapper docutils container" id="id44">
 <div class="code-block-caption"><span class="caption-number">Listing 561 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id44" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">202</span>
-<span class="normal">203</span>
-<span class="normal">204</span>
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">204</span>
 <span class="normal">205</span>
 <span class="normal">206</span>
 <span class="normal">207</span>
@@ -12641,7 +12643,9 @@ Code<div class="summary-down docutils">
 <span class="normal">222</span>
 <span class="normal">223</span>
 <span class="normal">224</span>
-<span class="normal">225</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_do_read_in_place</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_do_read_in_place</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
     <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;After studying your palm I see...&quot;</span>
     <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;The break in your line of fate may indicate a change in location or career&quot;</span>
 
@@ -12756,7 +12760,7 @@ Code<div class="summary-down docutils">
     <span class="n">item</span> <span class="o">=</span> <span class="n">get_item</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 
     <span class="c1"># make sure it is an item you can read</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="s2">&quot;writing&quot;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s2">&quot;writing&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
         <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorry, I can&#39;t read </span><span class="si">{</span><span class="n">name</span><span class="si">!r}</span><span class="s2">.&quot;</span><span class="p">)</span>
         <span class="k">return</span>
 
@@ -12870,9 +12874,7 @@ Code<div class="summary-down docutils">
 </summary><div class="summary-content card-body docutils">
 <div class="literal-block-wrapper docutils container" id="id47">
 <div class="code-block-caption"><span class="caption-number">Listing 564 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id47" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">226</span>
-<span class="normal">227</span>
-<span class="normal">228</span>
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">228</span>
 <span class="normal">229</span>
 <span class="normal">230</span>
 <span class="normal">231</span>
@@ -12891,7 +12893,9 @@ Code<div class="summary-down docutils">
 <span class="normal">244</span>
 <span class="normal">245</span>
 <span class="normal">246</span>
-<span class="normal">247</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_do_read_in_inventory</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_do_read_in_inventory</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
     <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;After studying the leaves I see...&quot;</span>
     <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;Your future is uncertain.&quot;</span>
 
@@ -12972,9 +12976,7 @@ Code<div class="summary-down docutils">
 </summary><div class="summary-content card-body docutils">
 <div class="literal-block-wrapper docutils container" id="id48">
 <div class="code-block-caption"><span class="caption-number">Listing 565 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id48" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">276</span>
-<span class="normal">277</span>
-<span class="normal">278</span>
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">278</span>
 <span class="normal">279</span>
 <span class="normal">280</span>
 <span class="normal">281</span>
@@ -12994,7 +12996,9 @@ Code<div class="summary-down docutils">
 <span class="normal">295</span>
 <span class="normal">296</span>
 <span class="normal">297</span>
-<span class="normal">298</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_do_read_in_inventory</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_do_read_in_inventory</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
     <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;After studying the leaves I see...&quot;</span>
     <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;Your future is uncertain.&quot;</span>
 
@@ -13062,9 +13066,7 @@ Code<div class="summary-down docutils">
 </summary><div class="summary-content card-body docutils">
 <div class="literal-block-wrapper docutils container" id="id49">
 <div class="code-block-caption"><span class="caption-number">Listing 566 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id49" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 92</span>
 <span class="normal"> 93</span>
 <span class="normal"> 94</span>
 <span class="normal"> 95</span>
@@ -13085,7 +13087,9 @@ Code<div class="summary-down docutils">
 <span class="normal">110</span>
 <span class="normal">111</span>
 <span class="normal">112</span>
-<span class="normal">113</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_wrap</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_wrap</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
     <span class="n">wrap</span><span class="p">(</span>
         <span class="s2">&quot;I pass through many Me&#39;s in the course of my day, &quot;</span>
         <span class="s2">&quot;each one selfish with his time. The Lying-in-Bed &quot;</span>
@@ -13156,9 +13160,7 @@ Code<div class="summary-down docutils">
 </summary><div class="summary-content card-body docutils">
 <div class="literal-block-wrapper docutils container" id="id50">
 <div class="code-block-caption"><span class="caption-number">Listing 567 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id50" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">116</span>
 <span class="normal">117</span>
 <span class="normal">118</span>
 <span class="normal">119</span>
@@ -13180,7 +13182,9 @@ Code<div class="summary-down docutils">
 <span class="normal">135</span>
 <span class="normal">136</span>
 <span class="normal">137</span>
-<span class="normal">138</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_wrap_with_indent</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_wrap_with_indent</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
     <span class="n">wrap</span><span class="p">(</span>
         <span class="s2">&quot;To the absolutist in every craftsman, &quot;</span>
         <span class="s2">&quot;each imperfection is a failure; &quot;</span>
@@ -13371,7 +13375,7 @@ Code<div class="summary-down docutils">
     <span class="n">item</span> <span class="o">=</span> <span class="n">get_item</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 
     <span class="c1"># make sure it is an item you can read</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="s2">&quot;writing&quot;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s2">&quot;writing&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
         <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorry, I can&#39;t read </span><span class="si">{</span><span class="n">name</span><span class="si">!r}</span><span class="s2">.&quot;</span><span class="p">)</span>
         <span class="k">return</span>
 
@@ -13449,9 +13453,7 @@ Code<div class="summary-down docutils">
 </summary><div class="summary-content card-body docutils">
 <div class="literal-block-wrapper docutils container" id="id53">
 <div class="code-block-caption"><span class="caption-number">Listing 570 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id53" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">276</span>
-<span class="normal">277</span>
-<span class="normal">278</span>
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">278</span>
 <span class="normal">279</span>
 <span class="normal">280</span>
 <span class="normal">281</span>
@@ -13479,7 +13481,9 @@ Code<div class="summary-down docutils">
 <span class="normal">303</span>
 <span class="normal">304</span>
 <span class="normal">305</span>
-<span class="normal">306</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_do_read_in_place</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_do_read_in_place</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
     <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;After studying your palm I see...&quot;</span>
 <span class="hll">    <span class="n">message</span> <span class="o">=</span> <span class="p">(</span>
 </span><span class="hll">        <span class="s2">&quot;The break in your line of fate may indicate &quot;</span>
@@ -13558,9 +13562,7 @@ Code<div class="summary-down docutils">
 </summary><div class="summary-content card-body docutils">
 <div class="literal-block-wrapper docutils container" id="id54">
 <div class="code-block-caption"><span class="caption-number">Listing 571 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id54" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span>
+<div class="full-width highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">141</span>
 <span class="normal">142</span>
 <span class="normal">143</span>
 <span class="normal">144</span>
@@ -13581,7 +13583,9 @@ Code<div class="summary-down docutils">
 <span class="normal">159</span>
 <span class="normal">160</span>
 <span class="normal">161</span>
-<span class="normal">162</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_wrap_with_iterable</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_wrap_with_iterable</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
     <span class="n">message</span> <span class="o">=</span> <span class="p">(</span>
         <span class="s2">&quot;The exercise for centering oneself is a simple one.&quot;</span><span class="p">,</span>
 
@@ -13828,7 +13832,6 @@ code to work before writing the code itself.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add cave to <code class="docutils literal notranslate"><span class="pre">PLACES</span></code>, dragon to <code class="docutils literal notranslate"><span class="pre">ITEMS</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add <code class="docutils literal notranslate"><span class="pre">do_pet()</span></code> in cave</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add <code class="docutils literal notranslate"><span class="pre">do_read()</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add <code class="docutils literal notranslate"><span class="pre">do_help()</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add item aliases</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Aliases for <code class="docutils literal notranslate"><span class="pre">east</span></code>, <code class="docutils literal notranslate"><span class="pre">e</span></code> and other directions</p></li>
