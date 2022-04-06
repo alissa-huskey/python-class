@@ -16,6 +16,7 @@ from adventure import (
 PLAYER_STATE = deepcopy(adventure.PLAYER)
 PLACES_STATE = deepcopy(adventure.PLACES)
 ITEMS_STATE = deepcopy(adventure.ITEMS)
+DEBUG_STATE = True
 
 
 def revert():
@@ -23,6 +24,7 @@ def revert():
     adventure.PLAYER = deepcopy(PLAYER_STATE)
     adventure.PLACES = deepcopy(PLACES_STATE)
     adventure.ITEMS = deepcopy(ITEMS_STATE)
+    adventure.DEBUG = DEBUG_STATE
 
 
 @pytest.fixture(autouse=True)

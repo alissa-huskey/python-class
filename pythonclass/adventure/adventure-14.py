@@ -17,7 +17,7 @@ https://alissa-huskey.github.io/python-class/exercises/adventure.html
 |                                                        |
 +--------------------------------------------------------+
 
-Part 13: Eat & Drink
+Part 14: Health
 
 """
 
@@ -26,6 +26,7 @@ import textwrap
 from time import sleep
 
 from console import fg, bg, fx
+from console.progress import ProgressBar
 
 DELAY = 0.7
 
@@ -33,13 +34,22 @@ WIDTH = 45
 
 MARGIN = 2
 
-DEBUG = True
+DEBUG = False
+
+MAX_HEALTH = 100
+
+BAR = ProgressBar(
+    total=100.1,
+    width=WIDTH - len("Health") - 5,
+    clear_left=False,
+)
 
 # ## Game World Data #########################################################
 
 PLAYER = {
     "place": "home",
-    "inventory": {"gems": 50},
+    "inventory": {"gems": 0},
+    "health": MAX_HEALTH,
 }
 
 PLACES = {
@@ -91,6 +101,7 @@ ITEMS = {
         "name": "bottle of water",
         "can_take": True,
         "empty": False,
+        "impact": 1,
         "description": (
             "A bottle of water."
         ),
@@ -197,6 +208,12 @@ def abort(message):
     error(message)
     exit(1)
 
+
+def health_bar(progress):
+    """Print a progress bar"""
+    print(f"\n  Health {BAR(progress)}  ")
+
+
 # ## Data functions ##########################################################
 
 def get_place(key=None):
@@ -227,6 +244,27 @@ def get_item(key):
         abort(f"Woops! The information about {key!r} seems to be missing.")
 
     return item
+
+
+def game_over():
+    """Print a message and leave the game."""
+    write("You keel over dead.\n")
+    quit()
+
+
+def health_change(quantity):
+    """Add item to player inventory."""
+    before = PLAYER["health"]
+
+    PLAYER["health"] += quantity
+
+    if PLAYER["health"] > MAX_HEALTH:
+        PLAYER["health"] = MAX_HEALTH
+
+    if PLAYER["health"] < 0:
+        PLAYER["health"] = 0
+
+    return -(before - PLAYER["health"])
 
 
 def inventory_change(key, quantity=1):
@@ -474,6 +512,8 @@ def do_inventory():
 
     debug("Trying to show inventory.")
 
+    health_bar(PLAYER["health"])
+
     header("Inventory")
 
     if not PLAYER["inventory"]:
@@ -636,13 +676,26 @@ def do_consume(action, args):
         wrap(f"You try to {action} {item['name']} but there isn't any left.'")
         return
 
+    # print the action message
+    print()
+    wrap(item[f"{action}-message"], delay=DELAY)
+
+    # apply the item impact to the players health
+    impact = item.get("impact")
+
+    if impact:
+        points = health_change(impact)
+
+        verbs = ("gain", "loses")
+        print()
+        wrap(f"You {verbs[points<0]} {abs(points)} health points.")
+
+
     # either set to empty or remove from inventory
     if item.get("empty") is False:
         item["empty"] = True
     else:
         inventory_change(name, -1)
-
-    wrap(item[f"{action}-message"], delay=DELAY)
 
 
 def main():
@@ -650,6 +703,10 @@ def main():
 
     while True:
         debug(f"You are at: {PLAYER['place']}")
+        debug(f"You health is: {PLAYER['health']}")
+
+        if PLAYER['health'] <= 0:
+            game_over()
 
         reply = input(fg.cyan("> ")).strip()
         args = reply.split()

@@ -4,6 +4,7 @@ import pytest
 
 import adventure
 from adventure import (
+    health_bar,
     debug,
     do_drink,
     do_drop,
@@ -11,6 +12,7 @@ from adventure import (
     do_read,
     error,
     header,
+    health_change,
     inventory_change,
     is_for_sale,
     place_has,
@@ -29,6 +31,7 @@ DEBUG_STATE = True
 
 def revert():
     """Revert game data to its original state."""
+    adventure.DEBUG = True
     adventure.PLAYER = deepcopy(PLAYER_STATE)
     adventure.PLACES = deepcopy(PLACES_STATE)
     adventure.ITEMS = deepcopy(ITEMS_STATE)
@@ -68,11 +71,20 @@ def test_error(capsys):
         "The formatted error message should be printed."
 
 def test_debug(capsys):
+    adventure.DEBUG = True
     debug("Have some cake.")
 
     output = capsys.readouterr().out
     assert output == "# Have some cake.\n", \
         "The formatted debug message should be printed."
+
+def test_debug_false(capsys):
+    adventure.DEBUG = False
+    debug("Have some cake.")
+
+    output = capsys.readouterr().out
+    assert output == "", \
+        "No debug message should be printed if not in debug mode."
 
 
 def test_header(capsys):
@@ -183,6 +195,46 @@ def test_wrap_with_iterable(capsys):
 
     assert "\n\n  Stop thinking" in output, \
         "There should be two newlines between each printed message item"
+
+def test_health_change_add():
+    adventure.PLAYER["health"] = 50
+    impact = health_change(10)
+
+    assert impact == 10, \
+        "health_change() should return the amount added to health"
+
+    assert adventure.PLAYER["health"] == 60, \
+        "health_change() should add the quantity to player health"
+
+def test_health_change_subtract():
+    adventure.PLAYER["health"] = 50
+    impact = health_change(-10)
+
+    assert impact == -10, \
+        "health_change() should return the amount subtracted from health"
+
+    assert adventure.PLAYER["health"] == 40, \
+        "health_change() should add the quantity to player health"
+
+def test_health_gt_max():
+    adventure.PLAYER["health"] = adventure.MAX_HEALTH
+    impact = health_change(10)
+
+    assert impact == 0, \
+        "health_change() should return the amount actually added to health"
+
+    assert adventure.PLAYER["health"] == adventure.MAX_HEALTH, \
+        "health_change() should not allow health to go above MAX_HEALTH"
+
+def test_health_lt_zero():
+    adventure.PLAYER["health"] = 5
+    impact = health_change(-10)
+
+    assert adventure.PLAYER["health"] == 0, \
+        "health_change() should not allow health to go below zero"
+
+    assert impact == -5, \
+        "health_change() should return the amount actually subtracted from health"
 
 def test_inventory_change():
     adventure.PLAYER["inventory"]["problems"] = 99
@@ -437,6 +489,27 @@ def test_do_drink_emptyable(capsys):
         "But should now be empty"
 
 
+def test_do_eat_with_health(capsys):
+    adventure.DELAY = 0
+    adventure.PLAYER["health"] = 95
+    adventure.ITEMS["lies"] = {
+        "name": "lies",
+        "eat-message": "You eat up the beautiful lies.",
+        "impact": 10,
+    }
+    inventory_change("lies")
+
+    do_eat(["lies"])
+
+    output = capsys.readouterr().out
+
+    assert "You gain 5 health points." in output, \
+        "The player should be informed of the health impact."
+
+    assert adventure.PLAYER["health"] == 100, \
+        "The item impact should be applied to the player health."
+
+
 def test_do_drink(capsys):
     adventure.DELAY = 0
     adventure.ITEMS["praise"] = {
@@ -494,3 +567,33 @@ def test_do_eat(capsys):
 
     assert not player_has("your feelings"), \
         "The item should be removed from inventory."
+
+def test_health_bar(capsys):
+    health_bar(70)
+
+    output = capsys.readouterr().out
+
+    assert len(output) == adventure.WIDTH + 2, \
+        f"The width should be {adventure.WIDTH + 2} but is: {len(output)}"
+
+    assert "Health" in output, \
+        "The title should be in output"
+
+    assert "70%" in output, \
+        "The correct percentage should be in output"
+
+def test_health_bar_100(capsys):
+    health_bar(100)
+
+    output = capsys.readouterr().out
+
+    assert "100%" in output, \
+        "The total should show even at 100%"
+
+def test_health_bar_0(capsys):
+    health_bar(0)
+
+    output = capsys.readouterr().out
+
+    assert "0%" in output, \
+        "The total should show even at 0%"
