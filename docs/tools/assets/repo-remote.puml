@@ -1,0 +1,38 @@
+' A PlantUML diagram showing the components of a local and remote repository.
+'
+
+allowmixing
+left to right direction
+skinparam classattributeiconsize 0
+skinparam pageMargin 10
+hide class circle
+hide empty members
+
+title Local & Remote Repository
+
+!includesub https://raw.githubusercontent.com/alissa-huskey/python-class/master/docs/tools/assets/repo-local.puml!REPO_LOCAL
+
+folder "git remote" as gitremote {
+  card "**origin/HEAD**" <<ref>> as origin_head
+  card "**master**" <<branch>> as origin_master
+
+  frame "**object db**" as origin_objectdb {
+      map "**commits**" as origin_commits {
+          112e375 => Add ca..
+          c331b4d => gitign...
+          6a338d8 => format...
+          02c7a7a => minor ...
+          382421e => finish...
+          fa69673 => clean ...
+          92241db => reorga...
+          fb090a5 => add py...
+      }
+    }
+}
+
+'le : down
+'do : right
+
+commits o-le[hidden]- origin_commits
+origin_head -do-> origin_master
+origin_master -do-o origin_commits::112e375

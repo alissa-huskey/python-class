@@ -1,21 +1,11 @@
 Git
 ===
 
-Table of Contents
------------------
-
-* [Locally Grown](#locally-grown)
-* [Anatomy of a Repository](#anatomy-of-a-repository)
-* [Mo' repos, mo' versions](#mo-repos-mo-versions)
-   * [In Which I Digress](#in-which-i-digress)
-* [Remote Control](#remote-control)
-* [Let's talk committment](#lets-talk-committment)
-* [Altered States](#altered-states)
-   * [Local States](#local-states)
-   * [Relative-to-Remote States](#relative-to-remote-states)
-   * [State Changes](#state-changes)
-* [Glossary](#glossary)
-
+```{contents}
+:backlinks: top
+:local:
+:depth: 2
+```
 
 Locally Grown
 -------------
@@ -57,27 +47,9 @@ Every repository contains:
 
 Conceptually, your repository looks a little something like this:
 
-```
-                        +------------------------+     +----------------------+
-                        |    object-db           |     |  index               |
-                        |  +---------------------+     +----------------------+
-   HEAD ---> master ----+->| c331b4d gitign...------------+----------------+  |
-   (ref)     (branch)   |  | 6a338d8 Format... | |     |  | c331b4d tree   |  |
-                        |  | 02c7a7a Minor ... | |     |  +----------------+  |
-                        |  | 382421e Finish... | |     |  | pypet.py       |  |
-                        |  | fa69673 Clean ... | |     |  | README.md      |  |
-                        |  | 92241db Reorga... | |     |  | .replit        |  |
-                        |  | fb090a5 Add Py... | |     |  | ...            |  |
-                        |  | ...               | |     |  +----------------+  |
-                        |  +-------------------+ |     |                      |
-                        +------------------------+     |  +----------------+  |
-                                                       |  | staging        |  |
-                                                       |  +----------------+  |
-                                                       |  | +LICENCE.md    |  |
-                                                       |  | +bin/          |  |
-                                                       |  | ...            |  |
-                                                       |  +----------------+  |
-                                                       +----------------------+
+```{kroki}
+:type: plantuml
+:filename: assets/repo-local.puml
 ```
 
 Mo' repos, mo' versions
@@ -110,17 +82,22 @@ any other compatable repo.
 Imagine we all worked on the same codebase. The difference between the two
 systems would be somthing like this:
 
-```
-                                      |
-     Centeralized Version Control     |  Decentralized Version Control
-                                      |
-                                      |             Jayson
-            Central Repo              |           /   |   \
-            ------------              |          /    |    \
-             /  |   \                 |      Alissa---+---Github
-            /   |    \                |          \    |     /
-      Alissa  Jayson  Sean            |           \   |    /
-                                      |            \Sean_/
+```{kroki}
+:type: mermaid
+flowchart LR
+
+  subgraph Version Control
+    subgraph Centeralized
+      direction TB
+      central[Central Repo] <--> a1[Alissa] & j1[Jayson] & s1[Sean]
+    end
+
+    subgraph Decentralized
+      direction TB
+      Remote & Alissa <--> Jayson & Sean
+    end
+  end
+
 ```
 
 
@@ -129,8 +106,12 @@ Github as a hub to sync between different repos.
 
 The way I use it looks something like this:
 
+```{kroki}
+:type: mermaid
+flowchart LR
 
-      `Laptop <----------> Github <-----------> Repl.it`
+Laptop <--> Github <--> Repl.it
+```
 
 
 Remote Control
@@ -266,30 +247,14 @@ Here are the possible states of the local repository relative to the remote repo
 
 And finally, here is the workflow and how states change for each action.
 
+````{div} full-width
+```{kroki}
+:type: plantuml
+:class: full-width
+:caption: Git Sequence Diagram
+:filename: assets/git-sequence.puml
 ```
-  +--------------+--------------+--------------------------------------+-----------------------------+
-  | working tree |   index      |              head                    |           origin            |
-  +--------------+--------------+------------+----------+--------------|--------+----------+---------+
-  | local files  |  snapshot    |    ref     | snapshot |      db      |   db   | snapshot |  ref    |
-  +--------------+--------------+------------+----------+--------------|--------+----------+---------+
-  |              |              |            |          |              |        |          |         |
-  | [git add ----------->]      |            |          |              |        |          |         |
-  |              |              |            |          |              |        |          |         |
-  | [git commit -a ----->|----------->|----------->|----------->]      |        |          |         |
-  |              |              |            |          |              |        |          |         |
-  |              |              |            |          |              |        |          |         |
-  |              | [git commit ---------->|--+---->|----+------>]      |        |          |         |
-  |              |              |            |          |              |        |          |         |
-  |              |              |            |          | [git fetch <--------] |          |         |
-  |              |              |            |          |              |        |          |         |
-  |              |              | [git pull <-----------+-----|<-----------------------------------] |
-  |              |              |            |          |              |        |          |         |
-  |              |              |            |          |              |        |          |         |
-  |              |              | [git push <------------------------------>|---+---->|----+-------] |
-  |              |              |            |          |              |        |          |         |
-  |              |              |            |          |              |        |          |         |
-  +--------------+--------------+------------+----------+--------------+--------+----------+---------+
-```
+````
 
 Glossary
 --------
