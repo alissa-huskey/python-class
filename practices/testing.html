@@ -45,9 +45,9 @@
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/custom.js"></script>
     <script src="../_static/asciinema-player.js"></script>
     <script src="../_static/x-frame-bypass.js"></script>
-    <script src="../_static/custom.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -897,11 +897,11 @@ expression and an optional message to print if the assertion fails.</p>
 </div>
 </div>
 <p>It is equivalent to:</p>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="kc">True</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="kc">True</span><span class="p">:</span>
     <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">()</span>
-</pre></div>
-</td></tr></table></div>
+</pre></div></td></tr></table></div>
+</div>
 <p>As long as the assertion passes, nothing happens. If it fails though, you’ll
 see an <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code>.</p>
 <p>Here’s what it looks like when an assert statement fails.</p>
@@ -948,30 +948,30 @@ returns <code class="docutils literal notranslate"><span class="pre">True</span>
 calls.</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-number">Listing 336 </span><span class="caption-text">python shell</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">4</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">assert</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">4</span>
 <span class="k">assert</span> <span class="mi">3</span> <span class="o">&lt;</span> <span class="mi">10</span>
 <span class="k">assert</span> <span class="s2">&quot;Python&quot;</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">)</span>
-</pre></div>
-</td></tr></table></div>
+</pre></div></td></tr></table></div>
+</div>
 </div>
 <p>The <a class="reference internal" href="../lessons/conditional-statements.html#term-boolean-context"><span class="xref std std-term">boolean context</span></a> also means that <a class="term-missing reference internal" href="#" title=""><span class="xref std std-term">Truthiness</span></a> and <a class="term-missing reference internal" href="#" title=""><span class="xref std std-term">Falsiness</span></a> apply.</p>
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-number">Listing 337 </span><span class="caption-text">python shell</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="s2">&quot;a non-empty string is Truthy&quot;</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">assert</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="s2">&quot;a non-empty string is Truthy&quot;</span>
 <span class="k">assert</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;an empty string is Falsy&quot;</span>
 <span class="k">assert</span> <span class="mi">100</span><span class="p">,</span> <span class="s2">&quot;an non-zero number is Truthy&quot;</span>
 <span class="k">assert</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;zero is Falsy&quot;</span>
 <span class="k">assert</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="s2">&quot;a non-empty string is Truthy&quot;</span>
 <span class="k">assert</span> <span class="p">[],</span> <span class="s2">&quot;an empty list is Falsy&quot;</span>
-</pre></div>
-</td></tr></table></div>
+</pre></div></td></tr></table></div>
+</div>
 </div>
 </div>
 <div class="section" id="part-1-2-exercise-1">
@@ -1048,30 +1048,30 @@ a single function.</p>
 <p>Say we have the following function.</p>
 <div class="literal-block-wrapper docutils container" id="id4">
 <div class="code-block-caption"><span class="caption-number">Listing 339 </span><span class="caption-text">greeting.py</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">greeting</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span> <span class="nf">greeting</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a welcome message string, including formatted name unless it&#39;s blank.&quot;&quot;&quot;</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span><span class="p">:</span>
         <span class="k">return</span> <span class="s2">&quot;Welcome.&quot;</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Welcome </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.&quot;</span>
-</pre></div>
-</td></tr></table></div>
+</pre></div></td></tr></table></div>
+</div>
 </div>
 <p>Here’s a simple unit test for the function.</p>
 <div class="literal-block-wrapper docutils container" id="id5">
 <div class="code-block-caption"><span class="caption-number">Listing 340 </span><span class="caption-text">greeting.py</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_greeting</span><span class="p">():</span>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span> <span class="nf">test_greeting</span><span class="p">():</span>
     <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;buffy&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome Buffy.&quot;</span><span class="p">,</span> <span class="s1">&#39;should return &quot;Welcome Buffy.&quot;&#39;</span>
-</pre></div>
-</td></tr></table></div>
+</pre></div></td></tr></table></div>
+</div>
 </div>
 <p>Let’s break that down.</p>
 <p>The assertion on line <code class="docutils literal notranslate"><span class="pre">10</span></code> has three parts.</p>
@@ -1093,9 +1093,9 @@ tested. This will be shown in the event that the test fails.</p></li>
 <p>Now we can run the test by calling the test function.</p>
 <div class="literal-block-wrapper docutils container" id="id6">
 <div class="code-block-caption"><span class="caption-number">Listing 341 </span><span class="caption-text">greeting.py</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">test_greeting</span><span class="p">()</span>
-</pre></div>
-</td></tr></table></div>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">test_greeting</span><span class="p">()</span>
+</pre></div></td></tr></table></div>
+</div>
 </div>
 </div>
 <div class="section" id="part-2-2-exercise-2">
@@ -1105,19 +1105,19 @@ tested. This will be shown in the event that the test fails.</p></li>
 <p class="admonition-title"><span class="caption-number">Exercise 114 </span> (Unit Test)</p>
 <div class="section" id="exercise-content">
 <p>1. Copy the following function into a script.</p>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">endgame</span><span class="p">(</span><span class="n">is_winner</span><span class="p">):</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span> <span class="nf">endgame</span><span class="p">(</span><span class="n">is_winner</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a string to tell the player if they won or lost.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">is_winner</span><span class="p">:</span>
         <span class="k">return</span> <span class="s2">&quot;Congratulations, you won!&quot;</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="s2">&quot;You lost. Better luck next time!&quot;</span>
-</pre></div>
-</td></tr></table></div>
+</pre></div></td></tr></table></div>
+</div>
 <p>2. Write a test function to assert that when <code class="docutils literal notranslate"><span class="pre">True</span></code> is passed to the
 <code class="docutils literal notranslate"><span class="pre">endgame()</span></code> function it should return <code class="docutils literal notranslate"><span class="pre">&quot;Congratulations,</span> <span class="pre">you</span> <span class="pre">won!&quot;</span></code>.</p>
 <p>3. Don’t forget to call the test function!</p>
@@ -1127,7 +1127,7 @@ tested. This will be shown in the event that the test fails.</p></li>
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#unit-test"> Exercise 114 (Unit Test)</a></p>
 <div class="section" id="solution-content">
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1137,7 +1137,7 @@ tested. This will be shown in the event that the test fails.</p></li>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">endgame</span><span class="p">(</span><span class="n">is_winner</span><span class="p">):</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span> <span class="nf">endgame</span><span class="p">(</span><span class="n">is_winner</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a string to tell the player if they won or lost.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">is_winner</span><span class="p">:</span>
         <span class="k">return</span> <span class="s2">&quot;Congratulations, you won!&quot;</span>
@@ -1148,8 +1148,8 @@ tested. This will be shown in the event that the test fails.</p></li>
     <span class="k">assert</span> <span class="n">endgame</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Congratulations, you won!&quot;</span>
 
 <span class="n">test_endgame</span><span class="p">()</span>
-</pre></div>
-</td></tr></table></div>
+</pre></div></td></tr></table></div>
+</div>
 </div>
 </div>
 </div>
@@ -1164,7 +1164,7 @@ different behavior that we expect.</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id7">
 <div class="code-block-caption"><span class="caption-number">Listing 342 </span><span class="caption-text">greeting.py</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 9</span>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
@@ -1178,7 +1178,7 @@ different behavior that we expect.</p>
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
-<span class="normal">23</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_greeting</span><span class="p">():</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span> <span class="nf">test_greeting</span><span class="p">():</span>
     <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;buffy&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome Buffy.&quot;</span><span class="p">,</span> \
      <span class="s1">&#39;should return &quot;Welcome Buffy.&quot; with the lowercase name capitalized.&#39;</span>
 <span class="hll">
@@ -1193,14 +1193,14 @@ different behavior that we expect.</p>
 </span><span class="hll">
 </span><span class="hll">    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome.&quot;</span><span class="p">,</span> \
 </span><span class="hll">        <span class="s1">&#39;should return &quot;Welcome.&quot; if name is only whitespace.&#39;</span>
-</span></pre></div>
-</td></tr></table></div>
+</span></pre></div></td></tr></table></div>
+</div>
 </div>
 <p>Testing can also be a sort of documentation. For example, what would happen
 if we pass a number to the <code class="docutils literal notranslate"><span class="pre">greeting()</span></code> function?</p>
 <div class="literal-block-wrapper docutils container" id="id8">
 <div class="code-block-caption"><span class="caption-number">Listing 343 </span><span class="caption-text">greeting.py</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 9</span>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
@@ -1217,7 +1217,7 @@ if we pass a number to the <code class="docutils literal notranslate"><span clas
 <span class="normal">23</span>
 <span class="normal">24</span>
 <span class="normal">25</span>
-<span class="normal">26</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_greeting</span><span class="p">():</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span> <span class="nf">test_greeting</span><span class="p">():</span>
     <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;buffy&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome Buffy.&quot;</span><span class="p">,</span> \
      <span class="s1">&#39;should return &quot;Welcome Buffy.&quot; with the lowercase name capitalized.&#39;</span>
 
@@ -1235,8 +1235,8 @@ if we pass a number to the <code class="docutils literal notranslate"><span clas
 
 <span class="hll">    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;42&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome 42.&quot;</span><span class="p">,</span> \
 </span><span class="hll">        <span class="s1">&#39;should return &quot;Welcome 42.&quot; with no special handling for numbers.&#39;</span>
-</span></pre></div>
-</td></tr></table></div>
+</span></pre></div></td></tr></table></div>
+</div>
 </div>
 </div>
 <div class="section" id="part-2-4-exercise-3">
@@ -1246,7 +1246,7 @@ if we pass a number to the <code class="docutils literal notranslate"><span clas
 <p class="admonition-title"><span class="caption-number">Exercise 115 </span> (Detailed Unit Test)</p>
 <div class="section" id="exercise-content">
 <p>1. Copy the following function into a script.</p>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1261,7 +1261,7 @@ if we pass a number to the <code class="docutils literal notranslate"><span clas
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">letter_grade</span><span class="p">(</span><span class="n">score</span><span class="p">):</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span> <span class="nf">letter_grade</span><span class="p">(</span><span class="n">score</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return the letter grade for a particular number score&quot;&quot;&quot;</span>
     <span class="n">ranges</span> <span class="o">=</span> <span class="p">{</span>
         <span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">100</span><span class="p">):</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span>
@@ -1277,8 +1277,8 @@ if we pass a number to the <code class="docutils literal notranslate"><span clas
             <span class="k">return</span> <span class="n">letter</span>
     
     <span class="k">return</span> <span class="kc">False</span>
-</pre></div>
-</td></tr></table></div>
+</pre></div></td></tr></table></div>
+</div>
 <p>2. Write a test function that includes assertions for each of the following
 arguments:</p>
 <ul class="simple">
@@ -1292,7 +1292,7 @@ arguments:</p>
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#detailed-unit-test"> Exercise 115 (Detailed Unit Test)</a></p>
 <div class="section" id="solution-content">
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1318,7 +1318,7 @@ arguments:</p>
 <span class="normal">24</span>
 <span class="normal">25</span>
 <span class="normal">26</span>
-<span class="normal">27</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">letter_grade</span><span class="p">(</span><span class="n">score</span><span class="p">):</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span> <span class="nf">letter_grade</span><span class="p">(</span><span class="n">score</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return the letter grade for a particular number score&quot;&quot;&quot;</span>
     <span class="n">ranges</span> <span class="o">=</span> <span class="p">{</span>
         <span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">100</span><span class="p">):</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span>
@@ -1345,8 +1345,8 @@ arguments:</p>
     <span class="k">assert</span> <span class="ow">not</span> <span class="n">letter_grade</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">),</span> <span class="s2">&quot;number scores under 0 should return False&quot;</span>
 
 <span class="n">test_letter_grade</span><span class="p">()</span>
-</pre></div>
-</td></tr></table></div>
+</pre></div></td></tr></table></div>
+</div>
 </div>
 </div>
 </div>
@@ -1388,13 +1388,13 @@ as a module without running the script by calling <code class="docutils literal 
 itself, because <code class="docutils literal notranslate"><span class="pre">pytest</span></code> will handle that.</p>
 <div class="literal-block-wrapper docutils container" id="id11">
 <div class="code-block-caption"><span class="caption-number">Listing 346 </span><span class="caption-text">greeting.py</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">33</span>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">33</span>
 <span class="normal">34</span>
-<span class="normal">35</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="c1"># test_greeting()</span>
     <span class="n">main</span><span class="p">()</span>
-</pre></div>
-</td></tr></table></div>
+</pre></div></td></tr></table></div>
+</div>
 </div>
 <p>Now you can run the tests at the command line with the <code class="docutils literal notranslate"><span class="pre">pytest</span></code> command
 followed by the filename.</p>
@@ -1424,7 +1424,7 @@ greeting.py <span class=" -Color -Color-Green">.</span>                         
 <p>Let’s add a failing assertion so we can see what that looks like.</p>
 <div class="literal-block-wrapper docutils container" id="id14">
 <div class="code-block-caption"><span class="caption-number">Listing 349 </span><span class="caption-text">greeting.py</span><a class="headerlink" href="#id14" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 9</span>
+<div class="highlight-default notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
@@ -1444,7 +1444,7 @@ greeting.py <span class=" -Color -Color-Green">.</span>                         
 <span class="normal">26</span>
 <span class="normal">27</span>
 <span class="normal">28</span>
-<span class="normal">29</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_greeting</span><span class="p">():</span>
+<span class="normal">29</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span> <span class="nf">test_greeting</span><span class="p">():</span>
 <span class="hll">    <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;buffy&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> \
 </span><span class="hll">        <span class="s1">&#39;demo of a test failure&#39;</span>
 </span>
@@ -1465,8 +1465,8 @@ greeting.py <span class=" -Color -Color-Green">.</span>                         
 
     <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;42&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome 42.&quot;</span><span class="p">,</span> \
         <span class="s1">&#39;should return &quot;Welcome 42.&quot; no special handling for numbers.&#39;</span>
-</pre></div>
-</td></tr></table></div>
+</pre></div></td></tr></table></div>
+</div>
 </div>
 <p>Now rerun the tests at the command line.</p>
 <div class="row"><div class="col-4">
@@ -1522,7 +1522,7 @@ FAILED greeting.py::test_greeting - AssertionError: demo ...
 from our <code class="docutils literal notranslate"><span class="pre">greeting.py</span></code> file.</p>
 <div class="literal-block-wrapper docutils container" id="id17">
 <div class="code-block-caption"><span class="caption-number">Listing 352 </span><span class="caption-text">test_greeting.py</span><a class="headerlink" href="#id17" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1544,7 +1544,7 @@ from our <code class="docutils literal notranslate"><span class="pre">greeting.p
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
-<span class="normal">23</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">greeting</span> <span class="kn">import</span> <span class="n">greeting</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">from</span> <span class="nn">greeting</span> <span class="kn">import</span> <span class="n">greeting</span>
 
 <span class="k">def</span> <span class="nf">test_greeting</span><span class="p">():</span>
     <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;buffy&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> \
@@ -1567,8 +1567,8 @@ from our <code class="docutils literal notranslate"><span class="pre">greeting.p
 
     <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;42&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome 42.&quot;</span><span class="p">,</span> \
         <span class="s1">&#39;should return &quot;Welcome 42.&quot; no special handling for numbers.&#39;</span>
-</pre></div>
-</td></tr></table></div>
+</pre></div></td></tr></table></div>
+</div>
 </div>
 <p>To run the tests we’ll use <code class="docutils literal notranslate"><span class="pre">test_greeting.py</span></code> for the filename instead of <code class="docutils literal notranslate"><span class="pre">greeting.py</span></code>.</p>
 <div class="row"><div class="col-4">
@@ -1618,7 +1618,7 @@ bit more difficult to tell exactly which test failed.</p>
 <p>Let’s split the <code class="docutils literal notranslate"><span class="pre">test_greeting()</span></code> function up.</p>
 <div class="literal-block-wrapper docutils container" id="id20">
 <div class="code-block-caption"><span class="caption-number">Listing 355 </span><span class="caption-text">test_greeting.py</span><a class="headerlink" href="#id20" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1652,7 +1652,7 @@ bit more difficult to tell exactly which test failed.</p>
 <span class="normal">32</span>
 <span class="normal">33</span>
 <span class="normal">34</span>
-<span class="normal">35</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">greeting</span> <span class="kn">import</span> <span class="n">greeting</span>
+<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">from</span> <span class="nn">greeting</span> <span class="kn">import</span> <span class="n">greeting</span>
 
 <span class="k">def</span> <span class="nf">test_greeting_fail</span><span class="p">():</span>
     <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;buffy&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> \
@@ -1687,8 +1687,8 @@ bit more difficult to tell exactly which test failed.</p>
 <span class="k">def</span> <span class="nf">test_greeting_number</span><span class="p">():</span>
     <span class="k">assert</span> <span class="n">greeting</span><span class="p">(</span><span class="s2">&quot;42&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Welcome 42.&quot;</span><span class="p">,</span> \
         <span class="s1">&#39;should return &quot;Welcome 42.&quot; no special handling for numbers.&#39;</span>
-</pre></div>
-</td></tr></table></div>
+</pre></div></td></tr></table></div>
+</div>
 </div>
 <p>Now we can run the tests using the <code class="docutils literal notranslate"><span class="pre">-v</span></code> flag to get verbose output. This will
 show us the status of each individual test.</p>
@@ -2004,7 +2004,7 @@ little else, and calls to other functions.</p></li>
 </div>
 <div class="literal-block-wrapper docutils container" id="id35">
 <div class="code-block-caption"><span class="caption-number">Listing 370 </span><span class="caption-text">test_palindrome.py</span><a class="headerlink" href="#id35" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2024,7 +2024,7 @@ little else, and calls to other functions.</p></li>
 <span class="normal">18</span>
 <span class="normal">19</span>
 <span class="normal">20</span>
-<span class="normal">21</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pythonclass.lessons.palindrome</span> <span class="kn">import</span> <span class="n">is_palindrome</span><span class="p">,</span> <span class="n">message</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">from</span> <span class="nn">pythonclass.lessons.palindrome</span> <span class="kn">import</span> <span class="n">is_palindrome</span><span class="p">,</span> <span class="n">message</span>
 
 <span class="k">def</span> <span class="nf">test_is_palindrome_true</span><span class="p">():</span>
     <span class="k">assert</span> <span class="n">is_palindrome</span><span class="p">(</span><span class="s2">&quot;radar&quot;</span><span class="p">),</span> \
@@ -2045,8 +2045,8 @@ little else, and calls to other functions.</p></li>
 <span class="k">def</span> <span class="nf">test_message_yes</span><span class="p">():</span>
     <span class="k">assert</span> <span class="n">message</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;level&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;Yes, &quot;level&quot; is a palindrome.&#39;</span><span class="p">,</span> \
         <span class="s2">&quot;should return a message saying text is a palindrome if isit is True&quot;</span>
-</pre></div>
-</td></tr></table></div>
+</pre></div></td></tr></table></div>
+</div>
 </div>
 </div>
 <div class="section" id="part-5-2-isolate-external-services-dependencies">
@@ -2057,7 +2057,7 @@ code that deals with the resulting data.</p>
 <p class="centered">
 <strong>BEFORE</strong></p><div class="literal-block-wrapper docutils container" id="id36">
 <div class="code-block-caption"><span class="caption-number">Listing 371 </span><span class="caption-text">palindrome.py</span><a class="headerlink" href="#id36" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2069,7 +2069,7 @@ code that deals with the resulting data.</p>
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Print the local weather&quot;&quot;&quot;</span>
@@ -2082,8 +2082,8 @@ code that deals with the resulting data.</p>
      <span class="n">weather</span><span class="p">[</span><span class="s2">&quot;current_condition&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;weatherDesc&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;value&quot;</span><span class="p">])</span>
 
 <span class="n">main</span><span class="p">()</span>
-</pre></div>
-</td></tr></table></div>
+</pre></div></td></tr></table></div>
+</div>
 </div>
 <p class="centered">
 <strong>AFTER</strong></p><div class="margin sidebar">
@@ -2092,7 +2092,7 @@ code that deals with the resulting data.</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id37">
 <div class="code-block-caption"><span class="caption-number">Listing 372 </span><span class="caption-text">weather.py</span><a class="headerlink" href="#id37" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2119,7 +2119,7 @@ code that deals with the resulting data.</p>
 <span class="normal">25</span>
 <span class="normal">26</span>
 <span class="normal">27</span>
-<span class="normal">28</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="k">def</span> <span class="nf">get_weather</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a dictionary containing the temperature and description from</span>
@@ -2147,8 +2147,8 @@ code that deals with the resulting data.</p>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
-</pre></div>
-</td></tr></table></div>
+</pre></div></td></tr></table></div>
+</div>
 </div>
 <div class="margin sidebar">
 <p class="sidebar-title"></p>
@@ -2160,7 +2160,7 @@ code that deals with the resulting data.</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id38">
 <div class="code-block-caption"><span class="caption-number">Listing 373 </span><span class="caption-text">test_weather.py</span><a class="headerlink" href="#id38" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2199,7 +2199,7 @@ code that deals with the resulting data.</p>
 <span class="normal">37</span>
 <span class="normal">38</span>
 <span class="normal">39</span>
-<span class="normal">40</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pythonclass.lessons.weather</span> <span class="kn">import</span> <span class="n">format_weather</span><span class="p">,</span> <span class="n">get_weather</span>
+<span class="normal">40</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">from</span> <span class="nn">pythonclass.lessons.weather</span> <span class="kn">import</span> <span class="n">format_weather</span><span class="p">,</span> <span class="n">get_weather</span>
 
 <span class="k">def</span> <span class="nf">test_format_weather</span><span class="p">():</span>
 
@@ -2239,8 +2239,8 @@ code that deals with the resulting data.</p>
 
     <span class="k">assert</span> <span class="n">get_weather</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;temp&quot;</span><span class="p">:</span> <span class="s2">&quot;27&quot;</span><span class="p">,</span> <span class="s2">&quot;desc&quot;</span><span class="p">:</span> <span class="s2">&quot;Partly cloudy&quot;</span><span class="p">},</span> \
        <span class="s2">&quot;should extract a dict with temp and desc from request data&quot;</span>
-</pre></div>
-</td></tr></table></div>
+</pre></div></td></tr></table></div>
+</div>
 </div>
 </div>
 </div>
