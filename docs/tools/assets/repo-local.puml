@@ -1,0 +1,63 @@
+' A PlantUML diagram showing the components of a local repository.
+'
+
+allowmixing
+left to right direction
+skinparam classattributeiconsize 0
+skinparam pageMargin 10
+hide class circle
+hide empty members
+
+title Local Repository
+
+!startsub REPO_LOCAL
+
+folder "git local" as gitlocal {
+
+  card "**HEAD**" <<ref>> as head
+  card "**master**" <<branch>> as master
+
+  frame "**object db**" as objectdb {
+      map "**commits**" as commits {
+          c331b4d => gitign...
+          6a338d8 => format...
+          02c7a7a => minor ...
+          382421e => finish...
+          fa69673 => clean ...
+          92241db => reorga...
+          fb090a5 => add py...
+      }
+    }
+
+  frame "**index**" as index {
+    map "**c331b4d**" as tree <<tree>> {
+      598bec57 => .replit
+      73bb444b => pypet.py
+      26c39fd5 => readme.md
+    }
+
+    class "**staging**" as staging<added> {
+      +LICENSE
+    }
+  }
+}
+
+folder "**files**" as files {
+  class "**  working**\n **tree**" as working<+changes> <<contents>> {
+    .gitignore
+    bin/
+    LICENSE
+    pypet.py
+    readme.md
+}
+
+'le : down
+'do : right
+
+head -do-> master
+master -do-o commits::c331b4d
+commits::c331b4d o-do-||> tree
+tree -le[hidden]- staging
+tree -do[hidden]- working
+
+!endsub REPO_LOCAL
