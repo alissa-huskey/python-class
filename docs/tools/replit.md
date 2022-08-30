@@ -1,88 +1,259 @@
-Repl.it Tips
-============
+Replit
+======
 
-Table of Contents
------------------
+```{image} assets/replit-logo.svg
+:align: center
+```
 
-* [Recommended Settings](#recommended-settings)
-* [Creating New Scripts](#creating-new-scripts)
-* [Running New Scripts](#running-new-scripts)
-* [Using Git](#using-git)
-   * [Introduction](#introduction)
-   * [Quickref: Review, Commit &amp; Push Steps](#quickref-review-commit--push-steps)
-   * [Part 1: First Create a Github Account](#part-1-first-create-a-github-account)
-   * [Part 2: Connect it to your Repl.it](#part-2-connect-it-to-your-replit)
-   * [Part 3: Update the Repl.it Github Authorization](#part-3-update-the-replit-github-authorization)
-   * [Part 4: Review your changes](#part-4-review-your-changes)
-   * [Part 5: Commit &amp; Push Your Code](#part-5-commit--push-your-code)
-   * [Congratulations!](#congratulations)
+[Replit][] is a fast and free way to get you up and running with a
+{term}`development environment`, a place to write and execute code. It
+provides all the tools you need to create Python programs right from your web
+browser.
 
-Recommended Settings
---------------------
+It avoids a lot of the typical pain of setting up a coding environment and it
+is also cloud based so you can log in from any computer to view your code.
+Additionally, it provides tools for real-time collaboration which can be used
+for coding lessons, demos, feedback, and getting help with your code.
 
-On the left side, click the gear icon to change your settings.
+```{contents}
+:backlinks: top
+:local:
+:depth: 2
+```
 
-These are the settings I recommend:
+Part 1: Getting Started
+-----------------------
 
-    indent type: spaces
-    indent size: 4 spaces
-    wrapping: none
-    code intelligence: off
+### Part 1.1: Prerequisites
 
+Since Replit is a web application it won't matter whether you have a Mac or
+Windows or even Linux computer. You won't need to install or set up anything on
+your local computer.
 
-Creating New Scripts
---------------------
+All you need is a computer with:
 
-We'll be creating lots of scripts during our lessons.
-Each script will be in a different file.
+* a decent internet connection
+* a modern web browser ([Chrome][] recommended, or [Brave][] if you care about privacy)
+* a physical keyboard
 
-To create a new file:
+[Chrome]: https://www.google.com/chrome/
+[Brave]: https://brave.com/
 
-1. Click the "Files" icon on the left side. (It looks like a page.)
-   The "Files" pane will open with a list of your files.
+### Part 1.2: Sign up
 
-2. At the top of the "Files" pane, click the "Add file" icon
-   (It looks like a page with a green + sign.)
+1. Go to [Replit][replit] and create an account. *NOTE: You will have to check your
+   email and activate your account before you can sign in.*
+2. Once you have confirmed your email and signed in, click on the
+   {guilabel}`+ Create` button at the top of the left sidebar. You should be
+   prompted to create your first project aka developer environment, which is
+   referred to on this site as a Repl.
+3. Choose "Python" as your template. You can rename your project to anything
+   you like or keep the one that was generated for you.
+4. Click {guilabel}`+ Create Repl`.
+
+![](assets/replit-create.png)
+
+Now you have a powerful, cloud-based development environment that comes
+pre-installed with Python!
+
+### Part 1.3: The IDE
+
+A {term}`IDE` or *integrated development environment* is a program that
+consolidates several development tools wrapped up together into a unified user
+interface. Lets take a quick tour of the Replit IDE.
+
+![](assets/replit-ide.png)
+
+|  #  | UI Element      | Description                                     |
+|-----|-----------------|-------------------------------------------------|
+| `1` | **Sidebar**     | by default it shows the File Browser            |
+| `2` | **Code Editor** | where you will write and edit code              |
+| `3` | **Console**     | this is where you'll see your code in action    |
+| `4` | **Run button**  | click this to run your program                  |
+| `5` | **Menu bar**    | icons to switch the Sidebar to a different tool |
+
+You'll probably spend most of your time writing code in the (`1`) editor,
+running it using the (`4`) run button, then looking at the result in the (`3`)
+console.
+
+:::{seealso}
+
+[Replit Docs: Introduction to the IDE](https://docs.replit.com/tutorials/introduction-to-the-repl-it-ide)
+
+:::
+
+### Part 1.4: Running Python
+
+Now we'll write our first line of code and run it.
+
+![](assets/replit-running.gif)
+
+1. In the editor add the following:
+
+   ```{code-block}
+   :linenos:
+   print("Welcome to PyPet!")
+   ```
+
+2. Click the {guilabel}`Run` button. The console will output:
+
+   `Welcome to Pypet!`.
+
+You’ve just written your first line of Python!
+
+```{rst-class} centered
+```
+
+*♬♩♪♩ Happy dance! ♬♩♪♩*.
+
+The `print()` function in Python will print things in the console — it's very
+handy for learning Python and debugging your code.
+
+If you're stuck, take another look at the demo above.
+
+### Part 1.5 Settings
+
+```{image} assets/replit-settings.png
+:align: right
+```
+
+Click the gear icon at the bottom of the sidebar to change your settings.
+
+These are the settings I strongly recommend for Python programming.
+
+{{ clear }}
+
+| Setting           | Value    | Meaning                                                         |
+|-------------------|----------|-----------------------------------------------------------------|
+| Indent Type       | `spaces` | Use spaces instead of tabs for indenting                        |
+| Indent Size       | `4`      | Number of characters in one indentation                         |
+| Wrapping          | `none`   | Don't wrap text                                                 |
+| Code Intelligence | `off`    | Disable noisy typing suggestions. (Having to remember and type helps you learn) |
+
+### Part 1.6: Share your code
+
+To give your teacher and fellow students access to your project you'll need to
+invite them to join you in "multiplayer" mode.
+
+1. Click the {guilabel}`Invite` button on the right side of the top-bar.
+2. A dialog box will pop up. Copy the {guilabel}`join link` at the bottom.
+3. Send the link to whomever you wish to invite, or just post it in the Discord
+   sharing-work channel for your class.
+
+![](assets/replit-invite.png)
+
+Once granted access, collaborators will be able to see each-other type in
+real-time. Below is the main Replit account on the left and a second account
+which opened the multiplayer invite link on the right.
+
+![](assets/replit-multiplayer.gif)
+
+:::{seealso}
+
+- [Replit Docs: Shareing write-access](https://docs.replit.com/tutorials/introduction-to-the-repl-it-ide#sharing-write-access-multiplayer)
+
+:::
+
+Part 2: New scripts
+-------------------
+
+We'll be creating lots of scripts during our lessons. Each script will be in a
+different file.
+
+When a new Python project is created in Replit, it has one file by default,
+{file}`main.py`, and the {guilabel}`Run` button is all set up to run it. When
+it comes time to add another file, we'll have jump through a couple of hoops to
+get it all running smoothly.
+
+### Part 2.1: Add the file
+
+1. Click the {guilabel}`Files` icon at the top of the sidebar that looks like a page. The
+   {guilabel}`Files` pane will open with a list of your files.
+
+2. At the top of the {guilabel}`Files` pane on the right side, click the
+   {guilabel}`Add file` icon that looks like a page with a {guilabel}`+`.
 
 3. A new line will appear in your file list. Type a name for the file then hit enter.
-   The name should have no spaces and end in ".py".
-   For example "my_script.py" or "helloWorld.py".
+   The name should have no spaces, use underscores as seperators, and end in ".py".
 
+   For example {file}`my_script.py`.
 
-Running New Scripts
-------------------
+![](assets/replit-new-file.gif)
 
-After creating a new script, you will need to change what happens when you click "run >" at the top of the page.
+:::{seealso}
 
-1. Click the "Files" icon on the left side. (It looks like a page.)
-   The "Files" pane will open with a list of your files.
+- [Replit Docs: Adding more files to your software project](https://docs.replit.com/tutorials/introduction-to-the-repl-it-ide#adding-more-files-to-your-software-project)
+- [Replit Docs: Creating Files](https://docs.replit.com/getting-started/creating-files)
 
-2. Click on the file named ".replit" to edit it.
-   (Or if it does not exist, create it using the instructions above.)
+:::
 
-3. Add the line:
+### Part 2.2: Update Run Button
 
-*.replit*
+Now we just need to change what happens when you click the
+{guilabel}`Run` button.
+
+```{image} assets/replit-unhide-files.png
+:align: right
 ```
-run = "python3 <filename>"
-```
 
-  But replace "\<filename\>" with the name of the file you created.
+1. Click the last icon at the top right of the {guilabel}`Files` sidebar, then
+   select {guilabel}`Show hidden files`.
 
-Using Git
----------
+   {{ clear }}
 
-### Introduction
+2. Click on the {file}`.replit` file in the sidebar to edit it. In the editor,
+   you will see a file that starts out something like this.
 
-***Version control*** refers to a system for keeping track of and managing
-changes to a set of files. The most popular ***version control system*** today
-is `git`, which is what we will be using.
+   ```{code-block} python
+   :linenos:
+   :emphasize-lines: "2,5"
+   :caption: .replit
+   # The command that runs the program. If the interpreter field is set...
+   run = "python3 main.py"
+   # The primary language of the repl. There can be others, though!
+   language = "python3"
+   entrypoint = "main.py"
+   ```
+
+3. In the editor replace the two places it says `main.py` with the name of the
+   Python file you created. For example, if the file I created was named
+   {file}`solver.py`, my {file}`.replit` file would look like this:
+
+   ```{code-block} python
+   :linenos:
+   :emphasize-lines: "2,5"
+   :caption: .replit
+   # The command that runs the program. If the interpreter field is set...
+   run = "python3 solver.py"
+   # The primary language of the repl. There can be others, though!
+   language = "python3"
+   entrypoint = "solver.py"
+   ```
+
+Now when you click the {guilabel}`Run` button your new script will be executed.
+
+:::{seealso}
+
+[Replit Docs: Configuring a Repl](https://docs.replit.com/programming-ide/configuring-repl)
+
+:::
+
+Part 3: Using Git
+-----------------
+
+% https://docs.replit.com/programming-ide/git-with-replit
+
+### Part 3.1: Introduction
+
+{term}`Version control` refers to a system for keeping track of and managing
+changes to a set of files. The most popular version control system today is
+`git`, which is what we will be using.
 
 Version control can be used for any text-based files (school work, essays,
 books, manuals) but in software we're tracking changes to code and we refer to
-the group of source code files for any particular project as a ***codebase***.
-The set of version control data for a codebase or other group of of files is
-called a ***repository*** or ***repo***.
+the group of {term}`source code` files for any particular project as a
+{term}`codebase`. The set of version control data for a codebase or other group
+of of files is called a {term}`repository` or {term}`repo`.
 
 Version control can take a bit of getting used to, but it is one of those
 life-changing tools that you'll wonder how you ever lived without. Some of the
@@ -93,10 +264,10 @@ benefits include:
 * Review an older version of your work, or revert back to it.
 
 [Github](http://github.com/) is a service that provides hosting for git repos.
-Repl.it has an integration with Github that tucks away a lot of the complexity
+Replit has an integration with Github that tucks away a lot of the complexity
 behind a web interface.
 
-### Quickref: Review, Commit & Push Steps
+### Part 3.2: Quickref: Review, Commit & Push Steps
 
 Reviewing your changes then committing and pushing them is kind of like a fancy
 `ctrl+s`--that is, a best practice to get in the habit of doing so regularly
@@ -104,7 +275,7 @@ that it becomes automatic. This process should happen at the end of any
 significant change and definitely before you walk away from your code. You can go
 to bed angry, just don't go to bed without committing and pushing your code.
 
-Here are the steps to follow in Repl.it.
+Here are the steps to follow in Replit.
 
 **In the Console**
 
@@ -114,23 +285,23 @@ Here are the steps to follow in Repl.it.
 4. `git diff --staged` : Review your changes to check for mistakes.
     Make any neccessary change then repeat from step 1.
 
-**In Repl.it**
+**In Replit**
 
-5. Commit & Push : In Repl.it:
+5. Commit & Push : In Replit:
    - Click the ![fork][fork] **Version Control** link in the left-nav.
    - Add a brief description of your changes in the **What did you change?** text area.
    - Click **commit & push**.
 
 
-### Part 1: First Create a Github Account
+### Part 3.3: First Create a Github Account
 
 1. Create an account on [Github.com](http://github.com) or sign into your
    existing account.
 
 
-### Part 2: Connect it to your Repl.it
+### Part 3.4: Connect it to your Replit
 
-1. Open your your Repl.it repl.
+1. Open your your Replit repl.
 
 2. On the left side-nav click the second icon down: ![fork][fork]
    **Version Control**.
@@ -139,9 +310,9 @@ Here are the steps to follow in Repl.it.
    to...**
 
 4. It will ask you to Connect to Github. Click the button that says **Connect
-   Repl.it to your GitHubAccount**
+   Replit to your GitHubAccount**
 
-5. A new page will appear titled **Install & Authorize Repl.it Online IDE**.
+5. A new page will appear titled **Install & Authorize Replit Online IDE**.
    Click Save.
 
 6. The new window will close and you'll be back at your repl. Click the
@@ -151,11 +322,11 @@ Here are the steps to follow in Repl.it.
    name (perhaps "python-class"?) and click **Create GitHub repository**.
 
 
-### Part 3: Update the Repl.it Github Authorization
+### Part 3.5: Update the Replit Github Authorization
 
-When you authorized Repl.it for Github, you gave it blanket access to all
+When you authorized Replit for Github, you gave it blanket access to all
 current and future repos. Now that the repo is created, you can change the
-settings so that Repl.it only has access to that repo.
+settings so that Replit only has access to that repo.
 
 (You can skip this step if you don't care.)
 
@@ -167,7 +338,7 @@ settings so that Repl.it only has access to that repo.
 
 4. On the left side, click the **Applications** link.
 
-5. Under **Installed Github Apps** you should see **Repl.it Online IDE.**. Click
+5. Under **Installed Github Apps** you should see **Replit Online IDE.**. Click
    the **Configure** button.
 
 6. Under **Repository Access**, select the radio button next to **Only select
@@ -179,7 +350,7 @@ settings so that Repl.it only has access to that repo.
 8. Click the **Save** button.
 
 
-### Part 4: Review your changes
+### Part 3.6: Review your changes
 
 The web interface does not include any features to review your changes, so
 we'll have to use the command line.
@@ -291,7 +462,7 @@ and edit the file then repeat the `git add` and `git diff` steps to review it
 again.
 
 
-### Part 5: Commit & Push Your Code
+### Part 3.7: Commit & Push Your Code
 
 In git a ***commit*** is a record of a set of changes. The repository for your
 code exists both on repl.it and on github. In order to update the repo on
@@ -317,3 +488,35 @@ You've successfully created a git repository, reviewed your changes, commited
 them, and pushed them to github!
 
 [fork]: ../assets/code-branch.png "fork"
+
+Reference
+---------
+
+### Glossary
+
+```{glossary} software-development
+
+development environment
+dev env
+  A workspace to write and execute code. It's comprised of a collection of
+  processes and tools used to develop the {term}`source code` for a program.
+
+  It often consists of:
+
+    - an {term}`editor` to create or change code
+    - a debugger for troubleshooting
+    - the programming language that runs the code
+    - {term}`source control` for keeping track of changes
+    - the tools and processes for testing code
+    - the tools and processes for releasing changes to the current public version
+
+  Not to be confused with an {term}`integrated development environment` (IDE),
+  a program that consolidates several of these tools in one application.
+
+source code
+  The human-readable text written in a specific programming language. Often
+  used to mean the collection of source code files that make up a particlar
+  project or piece of software.
+```
+
+[replit]: https://replit.com/
