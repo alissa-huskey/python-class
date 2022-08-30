@@ -101,16 +101,6 @@ Now we'll write our first line of code and run it.
 
 You’ve just written your first line of Python!
 
-```{rst-class} centered
-```
-
-*♬♩♪♩ Happy dance! ♬♩♪♩*.
-
-The `print()` function in Python will print things in the console — it's very
-handy for learning Python and debugging your code.
-
-If you're stuck, take another look at the demo above.
-
 ### Part 1.5 Settings
 
 ```{image} assets/replit-settings.png

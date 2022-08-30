@@ -1,4 +1,8 @@
 ---
+substitutions:
+  left:  '{{ leftcol | replace("col", "col-5") }}'
+  right: '{{ rightcol | replace("col", "col-7") }}'
+  row: '{{ newrow | replace("col", "col-5") }}'
 jupytext:
   formats: md:myst
   text_representation:
@@ -10,7 +14,7 @@ kernelspec:
   name: python3
 ---
 Beginner Tutorial
-==================================
+=================
 
 > Approximate time ~ 2 hours
 
@@ -29,17 +33,11 @@ language called [Python][]. Following a project-driven learning philosophy you
 will learn as you build your own project. There will be GIFs and screenshots
 throughout this guide to make everything as clear as possible.
 
-As you complete this guide you'll be creating a virtual pet we'll call "Pypet"
+As you complete this guide you'll be creating a virtual pet we'll call "PyPet"
 (a "Python-pet"). Remember [tamagochis][]? (Or if you were born in the 90s then
 think POKEMON!) With each new Python programming concepts you learn, you will
-add new features to your "Pypet".
+add new features to your "PyPet".
 
-There are no software or computer requirements for this guide except that you
-need access to a web browser (which you obviously already have at this point).
-You will learn how to use a free tool called [Repl.it][replit] to set up your
-developer environment which takes away the typical pain of setting up a coding
-environment. It is also cloud based so you can log in from any computer to view
-your code.
 
 ### What is Python?
 
@@ -63,136 +61,230 @@ plethora of additional materials in the resources section of this guide.
 Part 1: Getting Started
 -----------------------
 
-:::{attention}
+To get our project off the ground we're going to get our development
+environment all set up and write what is essentially a 
+["Hello World!" program][hello-world] -- that is, one of the simplest possible
+programs that simply prints out a message -- usually `Hello World!`. 
 
-The instructions and screenshots in this section are for a service that seems
-to no longer be active, Nitrous.io. We will be using [Repl.it][replit] instead,
-but you'll have to muddle through the best you can until I get around to
-updating it.
+[hello-world]: https://en.wikipedia.org/wiki/%22Hello,_World!%22_program
 
-:::
+### Part 1.1: Replit
 
-To get started we'll need a "development environment", aka *a place to write
-and execute code*. For this we'll use [Repl.it][replit], a
-fast and free way to get you up and running. Repl.it is a cloud-based developer
-environment that works well for programming in python. Since Repl.it is a
-web application it won't matter whether you have a Mac or Windows or even Linux
-computer to run and test your code. Follow the instructions below to set up
-your Repl.it Development Environment.
+To get started we'll need a {term}`development environment`, aka *a place to
+write and execute code*. For this we'll use [Replit][replit], a fast and free
+way to get you up and running. 
 
-1. Go to [Repl.it][replit] and create an account. *NOTE: You will have to check your
-   email and activate your account before you can sign in.*
-2. Once you have confirmed your email and signed in, click the "open dashboard"
-   button on their [homepage][replit]. You should be prompted to create your
-   first project aka developer environment.
-3. First choose "Python" as your template. Next you can rename your box to
-   anything you like or just leave it as is. Finally, don't worry about the
-   optional section that says "Download a GitHub repo". Here's an example:
+Do everything in Part 1 of this [Replit Guide](../tools/replit.md) to get set
+up with an account and new project.
 
-	![](http://i.imgur.com/gBTqt8X.png)
+### Part 1.2: Your first line of code
 
-4. Click "Create Box" and then click "Next" until you see your box. Click on
-   your box and then launch your environment by clicking the orange IDE button
-   (which just stands for Integrated Development Environment). Now you have a
-   powerful, cloud-based development environment that comes pre-installed with
-   Python!
+Now we'll write our first line of code and run it.
 
-5. Let's take a quick tour:
-    - In the **left panel**, you’ll see the File Browser. Here you can navigate
-      the files in your home folder. At this point, you will just have the
-      "workspace" folder and a README file introducing you to Repl.it When you
-      have more files, you can open them in Repl.it’s text editor by double
-      clicking on them in the File Browser.
-    - The **middle panel** is the Text Editor. This is where you can write and
-      edit code.
-    - The **right panel** is for chatting if you’re using Repl.it in
-      collaborative mode. Close this window for now by clicking the X in the
-      upper right hand corner so you get more screen real estate.
-    - The **bottom panel** is your console for actually running your python
-      file.
+![](../tools/assets/replit-running.gif)
 
-![](http://i.imgur.com/6bXzy6A.png)
+#### A. Write code in the editor
 
-### Running Python for the first time
+{{ left }}
 
-Here is a GIF demonstrating how to run your first python program. Feel free to
-either skip down and read the steps in the text below.
+If you haven't already, add the following line in the editor: 
 
-![](http://i.imgur.com/kDyVy2I.gif)
+The `print()` function in Python will print things in the console — it's very
+handy for learning Python and debugging your code.
 
-1. Create a new file containing the following code in the text editor (middle panel):
+{{ right }}
 
-	```python
-	print("Welcome to Pypet!")
-	```
+```{literalinclude} ../../pythonclass/pypet/main-2.1.py
+:caption: main.py
+:class: full-width
+:linenos:
+:lines: "1"
+:lineno-match:
+```
 
-2. Go ahead and save the file as {file}`pypet.py`.
+{{ endcols }}
 
-3. Now type `python pypet.py` into your Repl.it console (in the bottom panel)
-   and hit enter. By doing this you are telling your console to open the file
-   `pypet.py` and execute it using the program called `python`. The console
-   will output "Welcome to Pypet!".
+#### B. Run it
 
-![](http://i.imgur.com/QNGI0Xx.png)
+Click the {guilabel}`Run` button. The console will output:
 
-You’ve just written your first print statement. *♬♩♪♩ Celebratory dance time! ♬♩♪♩*. The
-print statement is a python function which prints things in the console — it's
-very handy for learning Python and debugging your code.
+`Welcome to PyPet!`
 
-If you're stuck, take another look at the GIF above.
+You’ve just written your Python program!
+
+```{rst-class} centered
+```
+
+*♬♩♪♩ Happy dance! ♬♩♪♩*.
 
 [replit]: https://replit.com/
 
-Part 2: Creating your Pypet
+Part 2: Creating your PyPet
 ---------------------------
 
-In this section we're going to learn how to store some different kinds of basic
-information in [variables][].
+% ![](http://i.imgur.com/6o6eiaA.gif) 
 
-Variables are a way of storing information in Python. Below we"ll create
-different variables for our Pypet such as name, weight, etc. Below is a GIF
-that shows how you will create variables for your Pypet in this section. You
-can refer back to this as you follow along with the instructions below.
+::::{margin}
 
-![](http://i.imgur.com/6o6eiaA.gif)
+:::{seealso}
 
-1. Create a variable called `name` equal to `"Fluffy"` (or `"Spike"` or
-   `"Sir Patrick"`).
+- More on [variables][]
 
-   ```python
-   name = "Fluffy"
-   ```
+:::
 
-   Using an equals sign (`=`) sets a variable to a given value such as
-   `name = "Fluffy"`.
+::::
 
-   Variables can store different types of data. In this case, `name` is
-   something called a **string** because `"Fluffy"` has quotations around it. A
-   **string** is just a set of characters surrounded by quotations (for example
-   `"Bob"`, `"New York"` or `"h4ck3r"`). *NOTE: Strings can use either single or
-   double quotes in Python.* A string can also include numbers, so long as it"s
-   in between quotes. **Integers** on the other hand do not have quotations.
-   Let’s look at some additional data types.
+### Part 2.1: Setting Variables
 
-2. Create three additional variables to track `age`, `weight` and `hungry`.
+Variables are a way of storing information in Python. We'll use 
+variables to keep track of information about our PyPet such as name, weight,
+and so on.
 
-   ```python
-   name = "Fluffy"
-   age = 5
-   weight = 9.5
-   hungry = False
-   ```
+#### A. Add a variable
 
-   The `age` variable is an **integer** and therefore must be a whole number.
-   The `weight` variable is a **float**. Floats are a numbers that can have
-   values after the decimal point.  The `hungry` variable is a a **Boolean**.
-   Booleans store a value of either `True` or `False`. *NOTE: Don"t use
-   quotations for these three data types, otherwise they"d all be considered
-   strings*
+Use an equals sign (`=`) to set a variable to a given value such as
+`name = "Fluffy"`.
 
-3. Choose your Pypet"s "pic". We"ve included a few options you can use below,
-   but feel free to customize it. *NOTE: Keep your Pypet"s "pic" to just one
-   line as it will make the initial steps easier to follow.*
+::::{margin}
+
+:::{tip}
+
+There won't be any difference in the output when you run your program. Even
+though there is more code, we haven't printed anything else yet.
+
+:::
+
+::::
+
+  {{ left }}
+
+  Create a variable called `name` equal to `"Fluffy"` (or `"Spike"` or `"Sir
+  Patrick"` or whatever strikes your fancy.).
+
+  {{ right }}
+
+  ```{literalinclude} ../../pythonclass/pypet/main-2.1.py
+  :caption: main.py
+  :class: full-width
+  :linenos:
+  :lines: "1-3"
+  :lineno-match:
+  :emphasize-lines: "3"
+  ```
+
+  {{ endcols }}
+
+  Variables can store different types of data. In this case, `name` is
+  something called a {term}`string` because `"Fluffy"` has quotation marks
+  around it. (Either single or double quotes will work.)
+
+  A {term}`string` is just a set of characters surrounded by quotations. For
+  example `"Bob"`, `'New York'` or `"h4ck3r"`.  A string can also include
+  numbers, so long as it's in between quotes.
+
+#### B. Types of data
+
+  ::::{margin}
+
+  :::{tip}
+
+  Never put quotation marks around these data types.
+
+  :::
+
+  ::::
+
+  Let’s look at some additional data types.
+
+  {{ left }}
+
+  Create three more variables to track `age`, `weight` and `hungry`.
+
+  {{ right }}
+
+  ```{literalinclude} ../../pythonclass/pypet/main-2.1.py
+  :caption: main.py
+  :class: full-width
+  :linenos:
+  :lines: "1-6"
+  :lineno-match:
+  :emphasize-lines: "4-6"
+  ```
+
+  {{ endcols }}
+
+  * The `age` variable is an {term}`integer` and therefore must be a whole number.
+
+  * The `weight` variable is a {term}`float`. Floats are a numbers that can have
+  values after the decimal point.
+
+  * The `hungry` variable is a {term}`boolean` which may be either `True` or `False`.
+
+::::{margin}
+
+:::{admonition} Best practice
+
+A single space is recommended before and after the equals sign (`=`).
+
+:::
+
+::::
+
+#### C. Exercise
+
+{{ left }}
+
+Can you add another variable named `color` and give it a string value like
+`"white"`?
+
+{{ right }}
+
+:::{dropdown} See the answer
+
+```{literalinclude} ../../pythonclass/pypet/main-2.1.py
+:caption: main.py
+:class: full-width
+:linenos:
+:lineno-match:
+:emphasize-lines: "7"
+```
+
+:::
+
+{{ endcols }}
+
+### Part 2.2: Special characters
+
+Since this is a text-based program we'll have to get creative and use
+[ASCII art][ascii-art] to make a picture of your PyPet. 
+
+[ascii-art]: https://en.wikipedia.org/wiki/ASCII_art
+
+{{ leftcol | replace("col", "col-7") }}
+
+ASCII art is any sort of picture or diagram drawn using basic text symbols.
+While the simplest example is a smiley face: `:-)`, they can get a lot more
+sophisticated.
+
+{{ rightcol | replace("col", "col-5") }}
+
+```{code-block} text
+:caption: Bessie the cow
+ _________
+< oh hai.>
+ ---------
+       \   ,__,
+        \  (oo)____
+           (__)    )\
+              ||--|| *
+```
+
+{{ endcols }}
+
+For our purposes, we're going to go for a simple one-line picture like
+`(=^o.o^=)_`.
+
+  :::{dropdown} Choose an ASCII art animal
 
    {{ leftcol }}
 
@@ -226,52 +318,305 @@ can refer back to this as you follow along with the instructions below.
 
    {{ endcols }}
 
-   Or make up your own! `(^‘0M0’^)`
-
-   :::{admonition} Does your pic have a single quote (`'`), double quote (`"`) or backslash (`\\`)?
-   :class: important, dropdown
-   In strings we sometimes come across characters that require special
-   handling.
-
-   | Character              | Example      | What to Do                                                  |
-   |------------------------|--------------|-------------------------------------------------------------|
-   | **D**ouble quote (`"`) | `'@("_")@'`  | Enclose in single quotes to avoid closing the string early. |
-   | **S**ingle quote (`'`) | `"<('--')>"` | Enclose in double quotes to avoid closing the string early. |
-   | **B**ackslash (`\\`)   | `"(\\_/)"`   | Use two backslashes to avoid escaping the next character.   |
-
-   [More info][special-characters]
+   Or make up one of your own! `(^‘0M0’^)`
 
    :::
 
-4. Now add another variable that is a **string** containing this `pic` variable of our pet.
+{{ left }}
 
-   ```python
-   name = "Fluffy"
-   age = 5
-   weight = 9.5
-   hungry = False
-   pic = "(=^o.o^=)__"
-   ```
+Add another {term}`string` variable containing a one-line ASCII art `pic` of
+your pet.
 
-5. Add some print statements to your code so you can see your Pypet in the console.
+{{ right }}
 
-   ```python
-   name = "Fluffy"
-   age = 5
-   weight = 9.5
-   hungry = False
-   pic = "(=^o.o^=)__"
+```{literalinclude} ../../pythonclass/pypet/main-2.2.py
+:caption: main.py
+:class: full-width
+:linenos:
+:lineno-match:
+:emphasize-lines: "8"
+```
 
-   print("Hello " + name)
-   print(pic)
-   ```
-   By writing `print("Hello " + name)` we just concatenated (aka *linked
-   together*) the string `"Hello "` with the variable `name` so that the
-   console will print out `Hello Fluffy`. Don"t forget to type
-   `python pypet.py` in the console (bottom window) and hit enter after you
-   save to see this happen. Your console should look like:
+{{ endcols }}
 
-   ![](http://i.imgur.com/EDsC0Fk.png)
+:::{attention}
+
+Strings that contain a single quote (`'`), double quote (`"`) or backslash
+(`\`) require special handling.
+
+[More info][special-characters]
+
+:::
+
+---
+
+{{ left }}
+
+If a string contains **double quotes (`"`)** you must enclose it in single quotes
+to avoid closing the string early.
+
+{{ right }}
+
+```{code-block-hl} python
+:class: full-width
+:caption: main.py
+:linenos:
+:lineno-start: 7
+pic = !!!'!!!@("_")@!!!'!!!
+```
+
+{{ row }}
+
+If a string contains **single quotes (`"`)** you must enclose it in double quotes
+to avoid closing the string early.
+
+{{ right }}
+
+```{code-block-hl} python
+:class: full-width
+:caption: main.py
+:linenos:
+:lineno-start: 7
+pic = !!!"!!!<('--')>!!!"!!!
+```
+
+{{ row }}
+
+If a string contains a **backslash (`\`)** you must use two to avoid escaping the
+next character.
+
+{{ right }}
+
+```{code-block} python
+:class: full-width
+:caption: main.py
+:linenos:
+:lineno-start: 7
+pic = "(\\_/)"
+```
+
+{{ endcols }}
+
+### Part 2.3: Using variables
+
+You can use a variable that you previously created by simply placing the name
+of the variable where you would otherwise put the literal value.
+
+For example, imagine we wanted to print the name of your PyPet.
+
+{{ left }}
+
+We could do it the same way we did on the first line of our program--by putting the literal string
+`"Fluffy"` inside the parenthesis of the `print()` function.
+
+{{ right }}
+
+```{code-block} python
+:caption: main.py
+:linenos:
+:emphasize-lines: "10"
+print("Welcome to PyPet!")
+
+name = "Fluffy"
+age = 5
+weight = 9.5
+hungry = False
+color = "white"
+pic = "(=^o.o^=)__"
+
+print("Fluffy")
+```
+{{ endcols }}
+
+::::{margin}
+
+:::{tip}
+
+Never put quotation marks around variable names.
+
+:::
+
+::::
+
+{{ left }}
+
+Instead we will replace the the string `"Fluffy"` with the variable `name`.
+
+Since the variable `name` contains the string `"Fluffy"` it will have the exact
+same effect.
+
+{{ right }}
+
+```{literalinclude} ../../pythonclass/pypet/main-2.3.py
+:caption: main.py
+:class: full-width
+:linenos:
+:lines: "1-10"
+:lineno-match:
+:emphasize-lines: "10"
+```
+
+{{ row }}
+
+Can you add a line to print the `pic` variable?
+
+{{ right }}
+
+:::{dropdown} See the answer
+
+```{literalinclude} ../../pythonclass/pypet/main-2.3.py
+:caption: main.py
+:class: full-width
+:linenos:
+:lineno-match:
+:emphasize-lines: "11"
+```
+
+:::
+
+{{ endcols }}
+
+### Part 2.4: Combining strings
+
+Instead of printing just the PyPet name, we are going to change our program to
+print the message `"Hello from Fluffy"`.
+
+In order to do that we'll combine  the string `"Hello from "` with the `name`
+variable. This is called {term}`concatenation`.
+
+{{ left }}
+
+To combine the two strings put the `+` operator between them.
+
+{{ right }}
+
+```{code-block} python
+:caption: forms the string `"Hello from Fluffy"`
+:class: full-width
+"Hello from " + name
+```
+
+{{ endcols }}
+
+::::{margin}
+
+:::{attention}
+
+Be sure to include the space at the end of `"Hello from "`.
+
+:::
+
+::::
+
+{{ left }}
+
+Change the line where we previously printed `name` to add that small piece of
+code inside the parenthesis in the print function.
+
+{{ right }}
+
+```{literalinclude} ../../pythonclass/pypet/main-2.4.py
+:caption: main.py
+:class: full-width
+:linenos:
+:lineno-match:
+:emphasize-lines: "10"
+```
+
+{{ endcols }}
+
+### Part 2.5: Documentation
+
+We've taken in a lot of information so far. Now is a good time to think about
+writing some documentation to make our program easy to understand when we come
+back to it.
+
+#### A. Docstrings
+
+A {term}`docstring` is a special kind of string that is enclosed by
+tripple double-quotes (`"""`) or triple single-quotes( `'''`). When used as the very
+first line in a file it is documentation for that file.
+
+Docstrings have the added benefit of being able to span multiple lines.
+
+{{ left }}
+
+Add a docstring to your program that includes a brief description of the file,
+and any other information you deem relevant. For example, a link to this
+tutorial.
+
+{{ right }}
+
+```{literalinclude} ../../pythonclass/pypet/main-2.5.py
+:caption: main.py
+:class: full-width
+:linenos:
+:lines: "1-10"
+:lineno-match:
+:emphasize-lines: "1-7"
+```
+
+{{ endcols }}
+
+#### B. Comments
+
+::::{margin}
+
+:::{seealso}
+
+- More on [comments][]
+
+:::
+
+::::
+
+You can leave notes for future reference starting with a `#`. This tells Python
+to ignore everything that follows until the end of the line.
+
+Add some comments to your program describing what the code does.
+
+```{literalinclude} ../../pythonclass/pypet/main-2.5.py
+:caption: main.py
+:class: full-width
+:linenos:
+:lineno-match:
+:lines: "9-"
+:emphasize-lines: "1, 4, 11-12, 16"
+```
+
+::::{margin}
+
+:::{admonition} Best practice
+
+A space is recommended after the hash mark (`#`).
+
+:::
+
+::::
+
+#### C. Inline comments
+
+A comment doeesn't have to be at the beginning of the line as long as it is not
+inside of quotes.
+
+```{code-block-hl} python
+:caption: main.py
+:class: full-width
+:linenos:
+:lineno-start: 9
+
+# print to the screen by calling the print() function
+print("Welcome to PyPet!")
+
+# creating variables
+name = "Fluffy"       !!!# string: quote enclosed text!!!
+age = 5               !!!# integer: whole numbers!!!
+weight = 9.5          !!!# float: decimal numbers!!!
+hungry = False        !!!# boolean: True or False!!!
+color = "white"       !!!# string!!!
+pic = "(=^o.o^=)__"   !!!# string!!!
+```
+
 
 Part 3: Getting Organized
 -------------------------
@@ -287,7 +632,9 @@ follow along with the instructions below.
 1. Place your variables in a dictionary. Try using different values than the
    ones we have here.
 
-   ```python
+   ```{code-block} python
+   :caption: main.py
+   :linenos:
    cat = {
      "name": "Fluffy",
      "hungry": True,
@@ -305,9 +652,10 @@ follow along with the instructions below.
    dictionary attributes use a colon and need to include a comma `,` after each
    value (`"name":"Fluffy",`)
 
-2. Add a print statement to view your new Pypet dictionary in the console.
+2. Add a print statement to view your new PyPet dictionary in the console.
 
-   ```python
+   ```{code-block} python
+   :linenos:
    cat = {
      "name": "Fluffy",
      "hungry": True,
@@ -319,10 +667,11 @@ follow along with the instructions below.
    print(cat)
    ```
 
-3. Print your Pypet"s name and pic. You can access variables in an list by
+3. Print your PyPet's name and pic. You can access variables in an list by
    using the format `dictionary["attribute"]` such as `cat["name"]`.
 
-   ```python
+   ```{code-block} python
+   :linenos:
    cat = {
      "name": "Fluffy",
      "hungry": True,
@@ -342,7 +691,7 @@ follow along with the instructions below.
 
    Make sure to take another look at the GIF above if you get stuck.
 
-Part 4: Feeding your Pypet
+Part 4: Feeding your PyPet
 --------------------------
 
 Let"s "feed" our pypet using a Python function. A [function][] is a block of
@@ -354,7 +703,8 @@ attribute to `False` to show that it is no longer hungry.
 
 1. Create this simple function by writing the following below your other code.
 
-   ```python
+   ```{code-block} python
+   :linenos:
    def feed(pet):
       pet["hungry"] = False
    ```
@@ -366,9 +716,10 @@ attribute to `False` to show that it is no longer hungry.
    indented.*
 
 2. Add `feed(cat)` below your function to use the `feed` function on your
-   Pypet, in this case `cat`.
+   PyPet, in this case `cat`.
 
-   ```python
+   ```{code-block} python
+   :linenos:
    def feed(pet):
       pet["hungry"] = False
 
@@ -379,11 +730,12 @@ attribute to `False` to show that it is no longer hungry.
    in place of `pet`. `pet` acts as a placeholder for whatever variable we
    decide to pass into the function.
 
-   We should also increase the Pypet’s weight a bit since it has eaten.
+   We should also increase the PyPet’s weight a bit since it has eaten.
 
 3. Add `cat["weight"] = cat["weight"] + 1` to your `feed` function.
 
-   ```python
+   ```{code-block} python
+   :linenos:
    def feed(cat):
       cat["hungry"] = False
       cat["weight"] = cat["weight"] + 1
@@ -391,12 +743,13 @@ attribute to `False` to show that it is no longer hungry.
 
    Use this notation to increase floats and integers.
 
-4. Try setting your original Pypet’s hungry variable to `True` and include a
-  `print(cat)` statement after `feed(cat)` to see if your Pypet"s `hungry`
+4. Try setting your original PyPet’s hungry variable to `True` and include a
+  `print(cat)` statement after `feed(cat)` to see if your PyPet's `hungry`
   variable changed to `False` and their `weight` variable incrased.
 
-   ```python
-   print("Welome to Pypet!")
+   ```{code-block} python
+   :linenos:
+   print("Welome to PyPet!")
 
    cat = {
      "name": "Fluffy",
@@ -416,34 +769,35 @@ attribute to `False` to show that it is no longer hungry.
    ```
 
    When the cat is printed out the second time his weight attribute will have
-   increased. Don"t forget to save and then run your python file from the
+   increased. Don"t forget to save and then run your Python file from the
    console.
 
 Part 5: Making Choices
 ----------------------
 
-But what if our Pypet is not hungry? We need to take into account whether or
+But what if our PyPet is not hungry? We need to take into account whether or
 not the hungry variable is set to `True` or `False`. In order to know whether
-our Pypet is hungry, we are going to use an [if statement][]. In Python, if
+our PyPet is hungry, we are going to use an [if statement][]. In Python, if
 statements check to see whether a specific condition (such as whether or not
 `hungry = True`). Take a look at the GIF below to get an idea of what this
 looks like.
 
 ![](http://i.imgur.com/gKijQky.gif)
 
-If the Pypet is hungry the program will set his hungry variable to `False` and
-increase his weight. If the Pypet is not hungry then it will print
-`The Pypet is not hungry!` in the console.
+If the PyPet is hungry the program will set his hungry variable to `False` and
+increase his weight. If the PyPet is not hungry then it will print
+`The PyPet is not hungry!` in the console.
 
 1. Add an if statement inside of your function.
 
-   ```python
+   ```{code-block} python
+   :linenos:
    def feed(pet):
     if pet["hungry"] == True:
       pet["hungry"] = False
       pet["weight"] = pet["weight"] + 1
     else:
-      print("The Pypet is not hungry!")
+      print("The PyPet is not hungry!")
 
    print(cat)
    feed(cat)
@@ -453,20 +807,21 @@ increase his weight. If the Pypet is not hungry then it will print
    Notice that we use two equals sign (`==`) to check a condition (for example
    `pet["hungry"] == True`). Only if the condition is not met the code beneath
    the `else:` will execute. Remember, one equal sign is used to assigned a
-   value to a variable (`pet["hungry"] = True` makes our Pypet hungry), two
+   value to a variable (`pet["hungry"] = True` makes our PyPet hungry), two
    equal signs are used to check if a condition is true
-   (`pet["hungry"] == True` checks whether our Pypet is hungry).
+   (`pet["hungry"] == True` checks whether our PyPet is hungry).
 
 2. Add another `feed(cat)` below your function and try feeding the cat twice to
    see if the function worked!
 
-   ```python
+   ```{code-block} python
+   :linenos:
    def feed(pet):
       if pet["hungry"] == True:
           pet["hungry"] = False
           pet["weight"] = pet["weight"] + 1
       else:
-          print("The Pypet is not hungry!")
+          print("The PyPet is not hungry!")
 
    print(cat)
    feed(cat)
@@ -481,10 +836,11 @@ Part 6: Making Friends
 
 In this section we'll learn how to hold multiple values together in a [list][].
 
-1. Let’s create another Pypet using a dictionary. Add (or customize) the code
-   below under your previous Pypet dictionary.
+1. Let’s create another PyPet using a dictionary. Add (or customize) the code
+   below under your previous PyPet dictionary.
 
-   ```python
+   ```{code-block} python
+   :linenos:
    mouse = {
      "name": "Mouse",
      "age": 6,
@@ -494,17 +850,18 @@ In this section we'll learn how to hold multiple values together in a [list][].
    }
    ```
 
-   *NOTE: Make sure to place this new Pypet above your function (use the GIF as
+   *NOTE: Make sure to place this new PyPet above your function (use the GIF as
    reference if you are confused)*
 
-2. Create a list to hold both of your Pypets using `pets = [cat, mouse]`.
+2. Create a list to hold both of your PyPet using `pets = [cat, mouse]`.
 
-   ```python
+   ```{code-block} python
+   :linenos:
    pets = [cat, mouse]
    ```
 
-   Now that we have more than one Pypet we can store them in a Python list. A
-   [list][] is another data type; lists stores variables in order. If python
+   Now that we have more than one PyPet we can store them in a Python list. A
+   [list][] is another data type; lists stores variables in order. If Python
    isn"t the first programming language you are learning, you may have heard of
    this same concept in other programming languages as an array.
 
@@ -516,13 +873,14 @@ on each variable in a list we can use something in Python called a loop. The
 [for loop][] in Python has the ability to iterate over the items of any
 sequence, such as a list.
 
-```python
+```{code-block} python
+:linenos:
 for pet in pets:
 	feed(pet)
   	print(pet)
 ```
 
-Take a screenshot of your Pypets and tweet them [@Thinkful][] so I can share
+Take a screenshot of your PyPet and tweet them [@Thinkful][] so I can share
 your creation with the world!
 
 BONUS
@@ -534,13 +892,13 @@ features that you design yourself! Here are some ideas to get you started:
 - keep track of a health points variable
 - create a boolean variable for asleep
 - create a `play()` function
-- create a list of phrases your python can say at random
+- create a list of phrases your Python can say at random
 - get input from the user with `raw_input()`
 
 ## Conclusion & Resources
 
 Congrats for reaching the end of this guide! For your convenience we've placed
-a final version of our Pypet [on GitHub][pypet.py], if you would like to take a
+a final version of our PyPet [on GitHub][pypet.py], if you would like to take a
 look at the code. If you are stuck tweet [@Thinkful][] and we'd love to help.
 Feel free to customize any or all of your project and try new things.
 
@@ -549,19 +907,19 @@ the work you’ve done here, go through any of the additional resources below.
 
 Free Resources:
 
+- [Learn Python Programming][] -- a beginner-friendly step-by-step interactive
+  Python course provided by [Programiz][].
 - [The Official Python Tutorial][] -- this tutorial at [Python.org][]
   introduces the reader informally to the basic concepts and features of the
   Python language and system. It is not comprehensive, but rather touches on
   Python’s most noteworthy features, and will give you a good idea of the
   language’s flavor and style.
-- [Learn Python Programming][] -- a beginner-friendly step-by-step interactive
-  Python course provided by [Programiz][].
-- [Interactive Python](https://www.coursera.org/course/interactivepython) -- a
-  19 hour online course provided by [Coursera][] for students with little or no
-  computing background.
 - [Think Python 2e][] -- a book intended as an introduction to Python
   programming for beginners. It's available online or as a PDF download for
   free at [Green Tea Press][].
+- [Interactive Python](https://www.coursera.org/course/interactivepython) -- a
+  19 hour online course provided by [Coursera][] for students with little or no
+  computing background.
 - [Real Python][] -- a great resource for the budding developer full of
   articles on every Python-related topic you can imagine and then some.
 
@@ -585,6 +943,7 @@ Free Resources:
 [function]: http://www.tutorialspoint.com/python/python_functions.htm
 [list]: http://www.tutorialspoint.com/python/python_lists.htm
 [for loop]: http://www.tutorialspoint.com/python/python_for_loop.htm
+[comments]: https://docs.python.org/3/tutorial/introduction.html#
 
 Credits
 -------
@@ -611,3 +970,16 @@ It was adapted from one that was originally available[^1] on
 [^1]: The URL for the tutorial no longer works, but it was:
 
       https://www.thinkful.com/learn/guide-programming-fundamentals-in-python
+
+% TODO
+% ----
+%
+% [ ] fix replit screenshots and add to repl.it page
+% [ ] add section about comments
+% [ ] fancy up code blocks
+%     [ ] add captions
+%     [ ] fix line numbers
+%     [ ] highlight new code
+%     [ ] add exercises
+%     [ ] turn ordered lists into subheaders
+
