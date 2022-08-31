@@ -62,9 +62,9 @@ Part 1: Getting Started
 -----------------------
 
 To get our project off the ground we're going to get our development
-environment all set up and write what is essentially a 
+environment all set up and write what is essentially a
 ["Hello World!" program][hello-world] -- that is, one of the simplest possible
-programs that simply prints out a message -- usually `Hello World!`. 
+programs that simply prints out a message -- usually `Hello World!`.
 
 [hello-world]: https://en.wikipedia.org/wiki/%22Hello,_World!%22_program
 
@@ -72,7 +72,7 @@ programs that simply prints out a message -- usually `Hello World!`.
 
 To get started we'll need a {term}`development environment`, aka *a place to
 write and execute code*. For this we'll use [Replit][replit], a fast and free
-way to get you up and running. 
+way to get you up and running.
 
 Do everything in Part 1 of this [Replit Guide](../tools/replit.md) to get set
 up with an account and new project.
@@ -87,7 +87,7 @@ Now we'll write our first line of code and run it.
 
 {{ left }}
 
-If you haven't already, add the following line in the editor: 
+If you haven't already, add the following line in the editor:
 
 The `print()` function in Python will print things in the console — it's very
 handy for learning Python and debugging your code.
@@ -122,7 +122,7 @@ You’ve just written your Python program!
 Part 2: Creating your PyPet
 ---------------------------
 
-% ![](http://i.imgur.com/6o6eiaA.gif) 
+% ![](http://i.imgur.com/6o6eiaA.gif)
 
 ::::{margin}
 
@@ -136,7 +136,7 @@ Part 2: Creating your PyPet
 
 ### Part 2.1: Setting Variables
 
-Variables are a way of storing information in Python. We'll use 
+Variables are a way of storing information in Python. We'll use
 variables to keep track of information about our PyPet such as name, weight,
 and so on.
 
@@ -256,7 +256,7 @@ Can you add another variable named `color` and give it a string value like
 ### Part 2.2: Special characters
 
 Since this is a text-based program we'll have to get creative and use
-[ASCII art][ascii-art] to make a picture of your PyPet. 
+[ASCII art][ascii-art] to make a picture of your PyPet.
 
 [ascii-art]: https://en.wikipedia.org/wiki/ASCII_art
 
@@ -622,14 +622,14 @@ Part 3: Getting Organized
 -------------------------
 
 We need a way to tell Python that all of these values represent one pet. One
-way to do this is to use a Python [dictionary][]. 
+way to do this is to use a Python [dictionary][].
 
 A {term}`dictionary` allows you to group a bunch of different values together
 and assign the group to a single variable. The contents of a dictionary are
 arranged by {term}`key`, the unique identifier chosen to look up a particular
 {term}`value`.
 
-### Part 3.1 Make a `cat` dictionary 
+### Part 3.1 Make a `cat` dictionary
 
 ::::{margin}
 
@@ -733,83 +733,200 @@ to keep them for reference.
 Part 4: Feeding your PyPet
 --------------------------
 
-Let"s "feed" our pypet using a Python function. A [function][] is a block of
-organized, reusable code that is used to perform a single action. First, we
-must define our function — `feed` — which changes our pypet’s `hungry`
-attribute to `False` to show that it is no longer hungry.
+::::{margin}
 
-![](http://i.imgur.com/dmjTM4H.gif)
+:::{seealso}
 
-1. Create this simple function by writing the following below your other code.
+- More on [functions][]
 
-   ```{code-block} python
-   :linenos:
-   def feed(pet):
-      pet["hungry"] = False
-   ```
+:::
 
-   There are a couple of things to take note of here. By writing
-   `def feed(pet):` you defining a function called `feed` that accepts one
-   variable `pet`. You"ll also notice we indent the next line
-   `pet["hungry"] = False`. *NOTE: In python the contents of a function must be
-   indented.*
+::::
 
-2. Add `feed(cat)` below your function to use the `feed` function on your
-   PyPet, in this case `cat`.
+Let's "feed" our pypet using a Python function. A {term}`function` is a block
+of organized, reusable code that is used to perform a single action.
 
-   ```{code-block} python
-   :linenos:
-   def feed(pet):
-      pet["hungry"] = False
+::::{margin}
 
-   feed(cat)
-   ```
+:::{admonition} Best practice
 
-   By calling `feed(cat)` we are passing the variable `cat` into the function
-   in place of `pet`. `pet` acts as a placeholder for whatever variable we
-   decide to pass into the function.
+Functions should usually be defined near the top of the file.
 
-   We should also increase the PyPet’s weight a bit since it has eaten.
+:::
 
-3. Add `cat["weight"] = cat["weight"] + 1` to your `feed` function.
+::::
 
-   ```{code-block} python
-   :linenos:
-   def feed(cat):
-      cat["hungry"] = False
-      cat["weight"] = cat["weight"] + 1
-   ```
+### Part 4.1: Define `feed()`
 
-   Use this notation to increase floats and integers.
+First, we must define our function — `feed` — which changes our pypet’s
+`hungry` attribute to `False` to show that it is no longer hungry.
 
-4. Try setting your original PyPet’s hungry variable to `True` and include a
-  `print(cat)` statement after `feed(cat)` to see if your PyPet's `hungry`
-  variable changed to `False` and their `weight` variable incrased.
+{{ left }}
 
-   ```{code-block} python
-   :linenos:
-   print("Welome to PyPet!")
+Create this simple function by writing the following above your dictionary.
 
-   cat = {
-     "name": "Fluffy",
-     "hungry": True,
-     "weight": 9.5,
-     "age": 5,
-     "pic": "(=^o.o^=)__",
-   }
+{{ right }}
 
-   def feed(pet):
-      pet["hungry"] = False
-      pet["weight"] = pet["weight"] + 1
+```{literalinclude} ../../pythonclass/pypet/main-4.1.py
+:caption: main.py
+:class: full-width
+:linenos:
+:lines: "9-14"
+:emphasize-lines: "4-6"
+:lineno-match:
+```
 
-   print(cat)
-   feed(cat)
-   print(cat)
-   ```
+{{ endcols }}
 
-   When the cat is printed out the second time his weight attribute will have
-   increased. Don"t forget to save and then run your Python file from the
-   console.
+There are a couple of things to take note of here. By writing
+`def feed(pet):` you defining a function called `feed` that accepts one
+variable `pet`. You"ll also notice we indent the next line
+`pet["hungry"] = False`.
+
+*NOTE: In python the contents of a function must be indented.*
+
+### Part 4.2: Call the function
+
+{{ left }}
+
+Add `feed(cat)` below your function to use the `feed` function on your
+PyPet, in this case `cat`.
+
+{{ right }}
+
+```{literalinclude} ../../pythonclass/pypet/main-4.2.py
+:caption: main.py
+:class: full-width
+:linenos:
+:lines: "26-"
+:lineno-match:
+:emphasize-lines: "8-9"
+```
+
+{{ endcols }}
+
+By calling `feed(cat)` we are passing the variable `cat` into the function
+in place of `pet`. `pet` acts as a placeholder for whatever variable we
+decide to pass into the function.
+
+### Part 4.3: Increase the pet weight
+
+We should also increase the PyPet’s weight a bit since it has eaten.
+
+{{ left }}
+
+Add `cat["weight"] = cat["weight"] + 1` to your `feed` function.
+
+{{ right }}
+
+```{literalinclude} ../../pythonclass/pypet/main-4.3.py
+:caption: main.py
+:class: full-width
+:linenos:
+:lines: "12-15"
+:emphasize-lines: 4
+:lineno-match:
+```
+
+{{ endcols }}
+
+### Part 4.4: Test it
+
+We'll want to make sure it works correctly regardless of if your PyPet's
+`"hungry"` is `True` or `False`. So we'll add some temporary debugging
+statements so we can see what happens.
+
+::::{margin}
+
+:::{tip}
+
+You can pass multiple, comma-seperated arguments to the `print()` function to
+print them with a space between each.
+
+This is sometimes easier than {term}`concatenation`, especially for debugging.
+
+:::
+
+::::
+
+{{ left }}
+
+Add a line to print the `cat` dictionary and a message just before and after
+you call `feed()`.
+
+{{ right }}
+
+```{literalinclude} ../../pythonclass/pypet/main-4.4.py
+:caption: main.py
+:class: full-width
+:linenos:
+:lines: "33-"
+:emphasize-lines: "3, 5"
+:lineno-match:
+```
+
+{{ row }}
+
+Set or change your PyPet's `"hungry"` value to `True`.
+
+{{ right }}
+
+```{literalinclude} ../../pythonclass/pypet/main-4.4.py
+:caption: main.py
+:class: full-width
+:linenos:
+:lines: "18-25"
+:emphasize-lines: "5"
+:lineno-match:
+```
+
+{{ row }}
+
+Look at the output to confirm that the PyPet's hungy and weight values changed.
+They should be:
+
+{{ right }}
+
+| Key        | Before | After   |
+|------------|--------|---------|
+| `"hungry"` | `True` | `False` |
+| `"weight"` | `9.5`  | `10.5`  |
+
+
+{{ row }}
+
+Now try the opposite.
+
+Set or change your PyPet's `"hungry"` value to `False`.
+
+{{ right }}
+
+```{literalinclude} ../../pythonclass/pypet/main-4.4.2.py
+:caption: main.py
+:class: full-width
+:linenos:
+:lines: "18-25"
+:emphasize-lines: "5"
+:lineno-match:
+```
+
+{{ row }}
+
+Confirm that nothing has changed. The values should be:
+
+{{ right }}
+
+| Key        | Before  | After   |
+|------------|---------|---------|
+| `"hungry"` | `False` | `False` |
+| `"weight"` | `9.5`   | `9.5`   |
+
+{{ endcols }}
+
+
+When the cat is printed out the second time his weight attribute will have
+increased. Don"t forget to save and then run your Python file from the
+console.
 
 Part 5: Making Choices
 ----------------------
@@ -979,7 +1096,7 @@ Free Resources:
 [variables]: https://www.tutorialspoint.com/python/python_variable_types.htm
 [special-characters]: https://docs.python.org/3/tutorial/introduction.html#strings
 [dictionary]: https://www.tutorialspoint.com/python/python_dictionary.htm
-[function]: http://www.tutorialspoint.com/python/python_functions.htm
+[functions]: http://www.tutorialspoint.com/python/python_functions.htm
 [list]: http://www.tutorialspoint.com/python/python_lists.htm
 [for loop]: http://www.tutorialspoint.com/python/python_for_loop.htm
 [comments]: https://docs.python.org/3/tutorial/introduction.html#

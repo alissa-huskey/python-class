@@ -819,9 +819,8 @@ as seen {ref}`here <places-direction-to-place>`.
 
 #### D. (still) in do_go(): figure out where we're going
 
-Next we'll look up the new place name from the current place dictionary using
-the direction (ie. `"east"`) to as a key. If it's missing, that means the
-player can't go that direction from where they are.
+Next we'll get the info for where the player is going from `PLACES`, or print an
+error message if it's not found.
 
 1. `[ ]` use the `.get()` method on `PLACES` to get the value associated
          with the `new_name` key and assign it to `new_place`
