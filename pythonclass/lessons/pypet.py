@@ -1,9 +1,9 @@
 """
 Pypet Game
 
-From the tutorial found at:
+    From the tutorial found at:
 
-https://alissa-huskey.github.io/python-class/lessons/tutorial.html
+    https://alissa-huskey.github.io/python-class/lessons/tutorial.html
 """
 
 

@@ -621,75 +621,114 @@ pic = "(=^o.o^=)__"   !!!# string!!!
 Part 3: Getting Organized
 -------------------------
 
-We need a way to tell Python that all of these variables represent one cat (or
-dog, fish, creature, etc). One way to do this is to use a Python
-[dictionary][]. Dictionaries are a way of storing multiple variables that
-contain different values. Here is another GIF that you can refer back to as you
-follow along with the instructions below.
+We need a way to tell Python that all of these values represent one pet. One
+way to do this is to use a Python [dictionary][]. 
 
-![](http://i.imgur.com/yXLUVFA.gif)
+A {term}`dictionary` allows you to group a bunch of different values together
+and assign the group to a single variable. The contents of a dictionary are
+arranged by {term}`key`, the unique identifier chosen to look up a particular
+{term}`value`.
 
-1. Place your variables in a dictionary. Try using different values than the
-   ones we have here.
+### Part 3.1 Make a `cat` dictionary 
 
-   ```{code-block} python
-   :caption: main.py
-   :linenos:
-   cat = {
-     "name": "Fluffy",
-     "hungry": True,
-     "weight": 9.5,
-     "age": 5,
-     "pic": "(=^o.o^=)__",
-   }
+::::{margin}
 
-   ```
+:::{attention}
 
-   Here we’ve created a dictionary called `cat`. Each line contains a different
-   cat attribute. Attributes have both a *key* (ex. `"name"`, `"weight"`,
-   `"age"` etc) as well as a *value* (ex. `"Fluffy"`, `True`, `9.6` etc).
-   Unlike assigning variables, which use an equals sign (`name = "Fluffy"`),
-   dictionary attributes use a colon and need to include a comma `,` after each
-   value (`"name":"Fluffy",`)
+Variables use equals sign (`=`) and their names **are not** in quotes:
 
-2. Add a print statement to view your new PyPet dictionary in the console.
+`name = "Fluffy"`
 
-   ```{code-block} python
-   :linenos:
-   cat = {
-     "name": "Fluffy",
-     "hungry": True,
-     "weight": 9.5,
-     "age": 5,
-     "pic": "(=^o.o^=)__",
-   }
+Dictionary keys use colon (`:`) and their keys **may be** in quotes:
 
-   print(cat)
-   ```
+`"name": "Fluffy"`
 
-3. Print your PyPet's name and pic. You can access variables in an list by
-   using the format `dictionary["attribute"]` such as `cat["name"]`.
+:::
 
-   ```{code-block} python
-   :linenos:
-   cat = {
-     "name": "Fluffy",
-     "hungry": True,
-     "weight": 9.5,
-     "age": 5,
-     "pic": "(=^o.o^=)__",
-   }
+::::
 
-   print("Hello " + cat["name"])
-   print(cat["pic"])
+{{ left }}
 
-   print(cat)
-   ```
+Create a dictionary called assigned to the variable `cat` using curly-braces
+(`{ }`).
 
-   Don"t forget to first save your file and then run your file in the console
-   by typing `python pypet.py` and pressing enter.
+Inside the curly-braces add a list of attributes seperated by commas.
+Attributes have both a {term}`key` (like `"name"`, `"weight"`, `"age"`)
+as well as a {term}`value` (like `"Fluffy"`, `True`, `9.6`), with a colon `:`
+between the two.
 
-   Make sure to take another look at the GIF above if you get stuck.
+{{ right }}
+
+```{literalinclude} ../../pythonclass/pypet/main-3.1.py
+:caption: main.py
+:class: full-width
+:linenos:
+:lineno-match:
+:lines: "12-28"
+:emphasize-lines: "9-17"
+```
+
+{{ endcols }}
+
+### Part 3.2: Print the dictionary
+
+{{ left }}
+
+Change the last line so that it prints out the whole `cat` dictionary instead
+of the `pic`.
+
+{{ right }}
+
+```{literalinclude} ../../pythonclass/pypet/main-3.1.py
+:caption: main.py
+:class: full-width
+:linenos:
+:lineno-match:
+:lines: "20-"
+:emphasize-lines: "16"
+```
+
+{{ endcols }}
+
+### Part 3.3: Print dictionary values
+
+{{ left }}
+
+Print your PyPet's name and pic. You can access values in a dictionary the
+format `dictionary["key"]` such as `cat["name"]`.
+
+{{ right }}
+
+```{literalinclude} ../../pythonclass/pypet/main-3.3.py
+:caption: main.py
+:class: full-width
+:linenos:
+:lineno-match:
+:lines: "20-"
+:emphasize-lines: "13, 16"
+```
+
+{{ endcols }}
+
+### Part 3.4: Remove old stuff
+
+{{ left }}
+
+Remove the old variables, or you can just comment them out if you would prefer
+to keep them for reference.
+
+{{ right }}
+
+```{literalinclude} ../../pythonclass/pypet/main-3.4.py
+:caption: main.py
+:class: full-width
+:linenos:
+:lines: "9-"
+:lineno-match:
+```
+
+{{ endcols }}
+
 
 Part 4: Feeding your PyPet
 --------------------------
