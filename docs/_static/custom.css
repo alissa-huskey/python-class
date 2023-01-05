@@ -284,6 +284,35 @@ div.admonition.details p.admonition-title::after {
 /* exercise
 /********************/
 
+/* See:
+ * https://ebp-sphinx-exercise.readthedocs.io/en/latest/syntax.html#custom-css-or-javascript
+
+*/
+
+/* default colors ------------------------ */
+
+:root {
+    --border-color: rgb(20, 184, 166);
+    --background-color: #fff;
+    --title-background-color: rgba(20, 184, 166, 0.1);
+    --icon-bg-color: rgb(20, 184, 166);
+}
+
+div.calm {
+    background-color: var(--background-color);
+    border-color: var(--border-color);
+}
+
+div.calm p.admonition-title {
+    background-color: var(--title-background-color);
+}
+
+div.calm p.admonition-title::before {
+    color: var(--icon-bg-color);
+}
+
+/* end default --------------------------- */
+
 div.exercise.notitle p.admonition-title::after {
   display: none;
 }
@@ -721,3 +750,4 @@ body#conditional-statements table.table td {
   /* disable clicks */
   z-index: -2;
 }
+
