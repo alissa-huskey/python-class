@@ -673,7 +673,7 @@ def do_consume(action, args):
 
     # make sure it isn't empty
     if item.get("empty"):
-        wrap(f"You try to {action} {item['name']} but there isn't any left.'")
+        wrap(f"You try to {action} {item['name']} but there isn't any left.")
         return
 
     # print the action message

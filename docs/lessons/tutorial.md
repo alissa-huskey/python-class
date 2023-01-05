@@ -128,7 +128,7 @@ Part 2: Creating your PyPet
 
 :::{seealso}
 
-- More on [variables][]
+More on [variables][]
 
 :::
 
@@ -564,7 +564,7 @@ tutorial.
 
 :::{seealso}
 
-- More on [comments][]
+More on [comments][]
 
 :::
 
@@ -737,7 +737,7 @@ Part 4: Feeding your PyPet
 
 :::{seealso}
 
-- More on [functions][]
+More on [functions][]
 
 :::
 
@@ -832,9 +832,8 @@ Add `cat["weight"] = cat["weight"] + 1` to your `feed` function.
 
 ### Part 4.4: Test it
 
-We'll want to make sure it works correctly regardless of if your PyPet's
-`"hungry"` is `True` or `False`. So we'll add some temporary debugging
-statements so we can see what happens.
+We'll want to make sure it works correctly, so we'll add some temporary
+debugging statements so we can see what happens.
 
 ::::{margin}
 
@@ -892,100 +891,141 @@ They should be:
 | `"hungry"` | `True` | `False` |
 | `"weight"` | `9.5`  | `10.5`  |
 
-
-{{ row }}
-
-Now try the opposite.
-
-Set or change your PyPet's `"hungry"` value to `False`.
-
-{{ right }}
-
-```{literalinclude} ../../pythonclass/pypet/main-4.4.2.py
-:caption: main.py
-:class: full-width
-:linenos:
-:lines: "18-25"
-:emphasize-lines: "5"
-:lineno-match:
-```
-
-{{ row }}
-
-Confirm that nothing has changed. The values should be:
-
-{{ right }}
-
-| Key        | Before  | After   |
-|------------|---------|---------|
-| `"hungry"` | `False` | `False` |
-| `"weight"` | `9.5`   | `9.5`   |
-
 {{ endcols }}
 
+### Part 4.5: Exercises
 
-When the cat is printed out the second time his weight attribute will have
-increased. Don"t forget to save and then run your Python file from the
-console.
+#### A. hello() function
+
+```{exercise} Hello Exercise
+:label: pypet-hello-exercise
+:class: calm
+
+Can you write a function named `hello` that prints `"Hello World!"`?
+
+Don't forget to call it!
+
+```
+
+```{solution-start} pypet-hello-exercise
+:class: dropdown
+```
+
+```{code-cell} python
+def hello():
+  print("Hello World!")
+
+hello()
+```
+
+```{solution-end}
+```
+
+#### B. goodbye() function
+
+```{exercise} Goodbye Exercise
+:label: pypet-goodbye-exercise
+:class: calm
+
+Write a function named `goodbye` that takes one argument `name` and
+prints {samp}`Goodbye {NAME}!`
+
+Call it with your name.
+
+What happens when you call it multiple times with different names?
+```
+
+```{solution-start} pypet-goodbye-exercise
+:class: dropdown
+```
+
+```{code-cell} python
+:caption: code
+def goodbye(name):
+  print("Goodbye " + name + "!")
+
+goodbye("Cruel World")
+
+goodbye("sweetheart")
+goodbye("my friend")
+goodbye("stranger")
+goodbye("kiss")
+```
+
+```{solution-end}
+```
 
 Part 5: Making Choices
 ----------------------
 
+::::{margin}
+
+:::{seealso}
+
+More on [if statements][if statements]
+
+:::
+
+::::
+
 But what if our PyPet is not hungry? We need to take into account whether or
 not the hungry variable is set to `True` or `False`. In order to know whether
-our PyPet is hungry, we are going to use an [if statement][]. In Python, if
-statements check to see whether a specific condition (such as whether or not
-`hungry = True`). Take a look at the GIF below to get an idea of what this
-looks like.
+our PyPet is hungry, we are going to use an {term}`if statement`.
 
-![](http://i.imgur.com/gKijQky.gif)
+In Python, if statements check to see whether a specific condition (such as
+whether or not `hungry = True`).
 
 If the PyPet is hungry the program will set his hungry variable to `False` and
 increase his weight. If the PyPet is not hungry then it will print
 `The PyPet is not hungry!` in the console.
 
-1. Add an if statement inside of your function.
+::::{margin}
 
-   ```{code-block} python
-   :linenos:
-   def feed(pet):
-    if pet["hungry"] == True:
-      pet["hungry"] = False
-      pet["weight"] = pet["weight"] + 1
-    else:
-      print("The PyPet is not hungry!")
+:::{tip}
 
-   print(cat)
-   feed(cat)
-   print(cat)
-   ```
+One equals sign (`=`) sets variables.
 
-   Notice that we use two equals sign (`==`) to check a condition (for example
-   `pet["hungry"] == True`). Only if the condition is not met the code beneath
-   the `else:` will execute. Remember, one equal sign is used to assigned a
-   value to a variable (`pet["hungry"] = True` makes our PyPet hungry), two
-   equal signs are used to check if a condition is true
-   (`pet["hungry"] == True` checks whether our PyPet is hungry).
+Two equals signs (`==`) checks for equivilance.
 
-2. Add another `feed(cat)` below your function and try feeding the cat twice to
-   see if the function worked!
+:::
 
-   ```{code-block} python
-   :linenos:
-   def feed(pet):
-      if pet["hungry"] == True:
-          pet["hungry"] = False
-          pet["weight"] = pet["weight"] + 1
-      else:
-          print("The PyPet is not hungry!")
+::::
 
-   print(cat)
-   feed(cat)
-   print(cat)
-   feed(cat)
-   ```
+### Part 5.1: Add if statement
 
-If you get stuck don"t forget to look back at the GIF above!
+{{ left }}
+
+Add an if statement inside of your function.
+
+{{ right }}
+
+```{literalinclude} ../../pythonclass/pypet/main-5.1.py
+:caption: main.py
+:class: full-width
+:linenos:
+:lines: "12-18"
+:lineno-match:
+```
+
+{{ endcols }}
+
+Notice that we use two equals sign (`==`) to check a condition (for example
+`pet["hungry"] == True`). Only if the condition is not met the code beneath
+the `else:` will execute.
+
+Remember, one equal sign is used to assigned a
+value to a variable (`pet["hungry"] = True` makes our PyPet hungry), two
+equal signs are used to check if a condition is true
+(`pet["hungry"] == True` checks whether our PyPet is hungry).
+
+### Part 5.2: Make sure it works
+
+Repeat the steps from [Part 4](#part-4-4-test-it) to make sure the function
+still works.
+
+Then switch to the opposite `"hungry"` value and check the output to make sure
+that the before and after values are the same.
+
 
 Part 6: Making Friends
 ----------------------
@@ -1097,6 +1137,7 @@ Free Resources:
 [special-characters]: https://docs.python.org/3/tutorial/introduction.html#strings
 [dictionary]: https://www.tutorialspoint.com/python/python_dictionary.htm
 [functions]: http://www.tutorialspoint.com/python/python_functions.htm
+[if statements]: https://www.tutorialspoint.com/python/python_decision_making.htm
 [list]: http://www.tutorialspoint.com/python/python_lists.htm
 [for loop]: http://www.tutorialspoint.com/python/python_for_loop.htm
 [comments]: https://docs.python.org/3/tutorial/introduction.html#
@@ -1131,7 +1172,8 @@ It was adapted from one that was originally available[^1] on
 % ----
 %
 % [ ] fix replit screenshots and add to repl.it page
-% [ ] add section about comments
+% [x] add section about comments
+% [ ] add function docstring
 % [ ] fancy up code blocks
 %     [ ] add captions
 %     [ ] fix line numbers
