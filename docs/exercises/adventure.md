@@ -3968,7 +3968,7 @@ def do_shop():
 Let's show the price to `do_examine()` if we're in the market (or somewhere else
 where we can shop).
 
-1. `[ ]` In `do_shop()` after the header, check if:
+1. `[ ]` In `do_examine()` after the header, check if:
    * the place supports shopping by calling `place_can()` with the argument `"shop"` and
    * the place has the item by calling `place_has()` with the argument `name` and
    * the item is for sale by calling `is_for_sale()` with the argument `item`
