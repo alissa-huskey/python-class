@@ -2,6 +2,12 @@
 Poetry
 ======
 
+```{contents}
+:backlinks: top
+:local:
+:depth: 2
+```
+
 Poetry is the go-to dependency management and packaging tool used by Python
 developers. It takes the long and compicated toolchain available in the Python
 world and wraps it in a few easy to use best practices.
@@ -42,24 +48,6 @@ prints an error if it cannot be found.
 For managing Python versions use [pyenv](https://github.com/pyenv/pyenv) or [pyenv-win](https://github.com/pyenv-win/pyenv-win).
 :::
 
-Table of Contents
------------------
-
-* [Introduction](#introduction)
-* [Table of Contents](#table-of-contents)
-* [Quickref](#quickref)
-* [Project Setup](#project-setup)
-  * [New projects](#new-projects)
-  * [Existing projects](#existing-projects)
-* [Project configuration](#project-configuration)
-* [Managing Dependencies](#managing-dependencies)
-  * [Versions](#versions)
-  * [Adding, removing and installing](#adding-removing-and-installing)
-* [Using Poetry](#using-poetry)
-* [Getting info](#getting-info)
-* [Executable Scripts](#executable-scripts)
-* [Installing your package](#installing-your-package)
-* [Using Poetry with VS Code](#using-poetry-with-vs-code)
 
 
 Quickref

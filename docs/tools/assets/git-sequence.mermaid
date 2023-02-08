@@ -1,0 +1,98 @@
+%%
+%% Mermaid Sequence diagram showing which parts of a repo are effected using
+%% various git commands.
+%%
+
+%% IMPORTANT: Do NOT remove trailing whitespace.
+%%            Keep the space after the `:` in `par` statements
+%%            to avoid errors.
+%%
+
+sequenceDiagram
+  participant tree as Working Tree
+  participant index as Index
+  participant lhead as Local HEAD
+  participant ldb as Local DB
+  participant rdb as Remote DB
+  participant rhead as Remote HEAD
+
+  %% git clone
+  %% ==========================================
+  rect rgb(191, 223, 255)
+    note over rhead, tree: git clone
+    par
+      rhead --x ldb : 
+    and
+      rhead --x lhead : 
+    and
+      rhead --x index : 
+    and
+      rhead ->> tree : download new repository
+    end
+  end
+
+  %% git add
+  %% ==========================================
+  rect rgb(191, 223, 255)
+    note over tree, index: git add
+    tree ->> index : (untracked to staged)
+  end
+
+  %% git commit -a
+  %% ==========================================
+  rect rgb(191, 223, 255)
+    note over tree, ldb : git commit -a
+    par
+      tree --x index : 
+    and
+      tree --x lhead : 
+    and
+      tree ->> ldb : (untracked to committed)
+    end
+  end
+
+  %% git commit
+  %% ==========================================
+  rect rgb(191, 223, 255)
+    note over index, ldb: git commit
+    par
+      index --x lhead : 
+    and
+      index ->> ldb : (staged to committed)
+    end
+  end
+
+  %% git fetch
+  %% ==========================================
+  rect rgb(191, 223, 255)
+    note over ldb, rdb: git fetch
+    rdb ->> ldb : download commit data
+  end
+
+  %% git pull
+  %% ==========================================
+  rect rgb(191, 223, 255)
+    note over rhead, lhead: git pull
+    %% alt merge conflicts
+    %% else
+    %% end
+    par
+      rhead --x ldb : 
+    and
+      rhead --x lhead : 
+    and
+      rhead ->> tree : merge content into local from remote (behind/diverged to up to date)
+    end
+  end
+
+  %% git push
+  %% ==========================================
+  rect rgb(191, 223, 255)
+    note over lhead, rhead: git push
+    par
+      lhead --x rdb : 
+    and
+      lhead ->> rhead : merge content from local to remote (ahead/diverged to up to date)
+    end
+  end
+

@@ -445,8 +445,3 @@ Reference
 * [Format String Syntax](https://docs.python.org/3/library/string.html#format-specification-mini-language)
 
 :::
-
-
-
-% TODO
-% [ ] fill characters

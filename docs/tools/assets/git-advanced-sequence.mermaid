@@ -1,0 +1,77 @@
+sequenceDiagram
+  participant tree as Working Tree
+  participant index as Index
+  participant lhead as Local HEAD
+  participant ldb as Local DB
+  participant rdb as Remote DB
+  participant rhead as Remote HEAD
+
+  %% git add
+  %% ==========================================
+  rect rgb(191, 223, 255)
+    note over tree, index: git add
+    tree ->> index : (untracked to staged)
+  end
+
+  %% git commit -a
+  %% ==========================================
+  rect rgb(191, 223, 255)
+    note over tree, ldb : git commit -a
+    par
+      tree --x index :
+    and
+      tree --x lhead :
+    and
+      tree ->> ldb : (untracked to committed)
+    end
+  end
+
+  %% git commit
+  %% ==========================================
+  rect rgb(191, 223, 255)
+    note over index, ldb: git commit
+    par
+      index --x lhead :
+    and
+      index ->> ldb : (staged to committed)
+    end
+  end
+
+  %% git checkout
+  %% ==========================================
+  rect rgb(191, 223, 255)
+    note over tree, index: git checkout
+    index ->> tree : (staged to committed)
+  end
+
+  %% git reset --soft
+  %% ==========================================
+  rect rgb(191, 223, 255)
+    note over lhead: git reset --soft
+    ldb ->> lhead : reset HEAD to point to specified commit
+  end
+
+  %% git reset --mixed
+  %% ==========================================
+  rect rgb(191, 223, 255)
+    note over lhead: git reset --mixed (default)
+    par
+      ldb --x index :
+    and
+      ldb ->> lhead : reset index to match specified commit
+    end
+  end
+
+  %% git reset --hard
+  %% ==========================================
+  rect rgb(191, 223, 255)
+    note over lhead: git reset --hard
+    par
+      ldb --x index :
+    and
+      ldb --x lhead :
+    and
+      ldb ->> tree : reset content to match specified commit
+    end
+  end
+

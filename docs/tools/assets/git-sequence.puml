@@ -1,0 +1,115 @@
+'
+' PlantUML Sequence diagram showing which parts of a repo are effected using
+' various git commands.
+'
+
+' Setup
+' ==========================================================================
+
+<style>
+  arrow {
+    LineColor purple
+    LineThickness 1.5
+  }
+  note {
+    BackgroundColor white
+  }
+</style>
+
+skinparam SequenceDividerFontStyle         normal
+skinparam SequenceDividerBorderColor       MidnightBlue
+
+skinparam SequenceLifelineBackgroundColor  LightBlue
+skinparam SequenceLifelineBorderColor      purple
+
+' Participants
+' ==========================================================================
+
+box Local #MintCream
+
+participant "**Working Tree**" as tree  <<files>>
+participant "**Index**"        as index <<staged>>
+participant "**HEAD**"         as lhead <<ref>>
+participant "**DB**"           as ldb   <<history>>
+
+end box
+
+box Remote #GhostWhite
+
+participant "**DB**"           as rdb   <<history>>
+participant "**HEAD**"         as rhead <<ref>>
+
+end box
+
+' Messages
+' ==========================================================================
+
+== ""git clone"" ==
+  rnote across: download new repo
+
+  rhead -->  ldb    ++   :
+  ldb   -->  lhead  --++ :
+  lhead -->  index  --++ :
+  index -->o tree   --   :
+
+|||
+
+== ""git add"" ==
+  rnote across: add changes to index
+
+  tree  -->o index       :
+  hnote left             : untracked
+  hnote right            : staged
+
+|||
+
+== ""git commit -a"" ==
+  rnote across: add and store commit
+
+  tree  -->  index  ++   :
+  hnote left             : untracked
+  index -->  lhead  --++ :
+  lhead -->o ldb    --   :
+  hnote right            : committed
+
+|||
+
+== ""git commit"" ==
+  rnote across: store commit
+
+  index -->  lhead  ++   :
+  hnote left             : staged
+  lhead -->o ldb    --   :
+  hnote right            : committed
+
+|||
+
+== ""git fetch"" ==
+  rnote across: download commit data
+
+  rdb   -->o ldb         :
+
+|||
+
+== ""git pull"" ==
+  rnote across: merge content into local from remote
+
+  rhead -->  ldb    ++   :
+  hnote right            : behind/diverged
+  ldb   -->  lhead  --++ :
+  lhead -->o tree   --   :
+  hnote left             : up to date
+
+|||
+
+
+== ""git push"" ==
+  rnote across: merge content from local to remote
+
+  lhead -->  rdb    ++   :
+  hnote left             : ahead/diverged
+  rdb   -->o rhead  --   :
+  hnote right            : up to date
+
+|||
+

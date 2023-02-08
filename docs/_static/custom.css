@@ -8,6 +8,10 @@ div.contents {
   background-color: var(--light);
 }
 
+div.contents p {
+  margin: 0;
+}
+
 /********************
 /* code cells
 /********************/
@@ -50,6 +54,11 @@ div.cell_output.docutils.container > div.output > div.highlight {
 .cell > .prompt-out {
   /* color: #D84315; */
   margin-top: 1em;
+}
+
+.no-labels .prompt-in,
+.no-labels .prompt-out {
+  display: none;
 }
 
 /********************
@@ -138,12 +147,22 @@ details.dropdown.card .card-body {
 
 :root {
   --kw-cols: 3;
+  --dark-gray: #343a40;
 }
 
 details.keywords-list ul {
   columns: var(--kw-cols);
   -webkit-columns: var(--kw-cols);
   -moz-columns: var(--kw-cols);
+}
+
+p.header-link {
+  margin-top: -3em;
+  margin-bottom: 4em;
+}
+
+p.header-link a {
+  margin-left: 1em;
 }
 
 /********************
@@ -222,7 +241,7 @@ div pre:first-child {
  * (really needed after code blocks) */
 .right-col:after {
   display: block;
-  height: 1em; 
+  height: 1em;
   content: "";
 }
 
@@ -264,6 +283,35 @@ div.admonition.details p.admonition-title::after {
 
 /* exercise
 /********************/
+
+/* See:
+ * https://ebp-sphinx-exercise.readthedocs.io/en/latest/syntax.html#custom-css-or-javascript
+
+*/
+
+/* default colors ------------------------ */
+
+:root {
+    --border-color: rgb(20, 184, 166);
+    --background-color: #fff;
+    --title-background-color: rgba(20, 184, 166, 0.1);
+    --icon-bg-color: rgb(20, 184, 166);
+}
+
+div.calm {
+    background-color: var(--background-color);
+    border-color: var(--border-color);
+}
+
+div.calm p.admonition-title {
+    background-color: var(--title-background-color);
+}
+
+div.calm p.admonition-title::before {
+    color: var(--icon-bg-color);
+}
+
+/* end default --------------------------- */
 
 div.exercise.notitle p.admonition-title::after {
   display: none;
@@ -394,7 +442,7 @@ div.admonition.inventory {
 }
 
 /* ... */
-div.admonition thead {
+body#flow div.admonition thead {
   display: none;
 }
 
@@ -534,6 +582,25 @@ div.code-block-caption > span.caption-number {
 /********************
 /* individual pages
 /********************/
+
+/* replit
+/*--------------------------------------*/
+
+/* Hide the page title, since the Replit logo is there. */
+body#replit h1 {
+  display: none;
+}
+
+/* adventure exercise
+/*--------------------------------------*/
+
+body#tutorial h4,
+body#adventure h4 {
+  border-bottom: 1px solid var(--dark-gray);
+  font-size: 1em;
+  font-weight: 500;
+  color: var(--dark-gray) !important;
+}
 
 /* program flow
 /*--------------------------------------*/
@@ -683,3 +750,4 @@ body#conditional-statements table.table td {
   /* disable clicks */
   z-index: -2;
 }
+

@@ -398,13 +398,17 @@ element
 item
   An individual value in a {term}`collection`.
 
-index : data-types
+index : types
 index number
   An integer representing an elements position in a sequence.
 
 slice
   Selecting a range of elements from a collection. In Python, this is done
   either using {term}`subscription` or the `slice` type.
+
+sequence
+  A category of data types which are charactarized as ordered collection
+  accessed via index numbers, such as `list` and `tuple`.
 ```
 
 

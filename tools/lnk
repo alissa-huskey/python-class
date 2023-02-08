@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+#
+# create a symbolic link to a particular version of the adventure
+# game and test file if it exists
+#
+
+rootdir="$(cd "${0%/*}/.." && pwd -P)"
+
+main() {
+  local version="$1" srcdir="${rootdir}/pythonclass/adventure" name file
+
+  for name in adventure test_game; do
+    file="${srcdir}/${name}-${version}.py"
+    if [[ -f "$file" ]] ; then
+      ln -sf "${file}" "${rootdir}/${name}.py"
+    fi
+  done
+
+}
+
+main ${1:+"$@"}

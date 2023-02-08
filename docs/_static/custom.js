@@ -4,6 +4,25 @@ try {
   var session = {};
 }
 
+// add relative URL base
+window.addEventListener("DOMContentLoaded", (e) => {
+  console.log("python-class> setting relative URL base...");
+
+  url = document.location.href;
+
+  if (url.includes("github.io/alissa-huskey")) {
+    // get the slash after github.io/alissa-huskey/
+    base = url.substring(0, url.indexOf("/", 32));
+  } else {
+    base = document.location.origin;
+  }
+
+  console.log("python-class> base URL: " + base);
+
+  elm = $("head").add("base")
+  elm.attr["href"] = base
+});
+
 // remove href attribute from .missing-term
 window.addEventListener("DOMContentLoaded", (e) => {
   console.log("python-class> removing missing-term hrefs...");
@@ -53,6 +72,13 @@ window.addEventListener("DOMContentLoaded", (e) => {
       cap.remove()
       sib.append(cap)
   }
+});
+
+// add "header-link" to a.header-link parent p tag
+window.addEventListener("DOMContentLoaded", (e) => {
+  console.log("python-class> fixing header links...");
+
+  $("a.header-link").parents('p').addClass("header-link");
 });
 
 // add "full-width" class to literal-block-wrappers that contain a full-width div

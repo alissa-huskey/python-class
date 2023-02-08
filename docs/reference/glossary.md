@@ -86,6 +86,7 @@ null
 
 ```{glossary} software-development
 code editor
+editor
   A text editing program specifically for code with features like syntax
   highlighting and code formatting. Some examples include VS Code, Atom,
   Sublime, Textmate and Vim.

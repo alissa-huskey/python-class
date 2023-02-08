@@ -19,10 +19,15 @@ operations on files and directories.
 This part of the lesson is about the ways to get a list of files on your
 local computer.
 
-Listing files
--------------
+```{contents} Table of Contents
+:backlinks: entry
+:local:
+```
 
-### Directory contents
+Part 1: Listing files
+---------------------
+
+### Part 1.2: Directory contents
 
 `Path` objects provide an `iterdir()` method for iterating through the
 contents of a directory. Here's a simple example that prints contents of the
@@ -98,7 +103,7 @@ for f in cwd.iterdir():
 ```
 `````
 
-### Searching files
+### Part 1.3: Searching files
 
 `Path` objects provides a `glob()` method for simple, albeit limited, file
 searching. The `glob()` method uses a set of wildcard characters adopted from
@@ -158,10 +163,10 @@ for f in cwd.rglob("*.txt"):
 
 ```
 
-Directory operations
---------------------
+Part 2: Directory operations
+----------------------------
 
-### Creating directories
+### Part 2.1: Creating directories
 
 You can use the `mkdir()` method on a `Path` object to create a new
 directory.
@@ -216,7 +221,7 @@ tmp.mkdir(exist_ok=True)
 
 `````
 
-### Deleting directories
+### Part 2.2: Deleting directories
 
 To delete an empty directory use the `rmdir()` method on a `Path` object.
 
@@ -254,10 +259,10 @@ path.rmdir()
 
 `````
 
-File operations
----------------
+Part 3: File operations
+-----------------------
 
-### Creating empty files
+### Part 3.1: Creating empty files
 
 The command line command {command}`touch` will either update a file's
 timestamp of the last time it was accessed and modified, or create an empty
@@ -298,7 +303,7 @@ for i in range(1, 10):
 
 `````
 
-### Removing files
+### Part 3.2: Removing files
 
 To remove files use the `unlink()` method on a `Path` object. Since this
 deletes a file, it's a good to print the path and confirm with the user that
@@ -357,7 +362,7 @@ else:
 
 `````
 
-### Moving files
+### Part 3.3: Moving files
 
 `Path` objects provide a `replace()` method which can be used to move files. It
 takes a destination path argument which can be either a string or `Path` object
@@ -506,7 +511,7 @@ for from_path in Path.cwd().iterdir():
 
 `````
 
-### Renaming files
+### Part 3.4: Renaming files
 
 Renaming files is the same as moving files except instead of moving to a new
 directory, you are moving to the same directory but with a new name. Just like

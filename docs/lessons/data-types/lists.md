@@ -40,10 +40,10 @@ An ordered collection of arbitrary objects accessed via index numbers.
 
 {{ endcols }}
 
-Basics
-------
+Part 1: Basics
+--------------
 
-### Creating
+### Part 1.1 Creating
 
 There are several ways to create a new list. The simplest is to enclose the
 elements, seperated by commas, in square brackets (`[` and `]`):
@@ -80,7 +80,7 @@ Under the hood, the `cities` list looks like this:
 
 ```
 
-### Accessing
+### Part 1.2: Accessing
 
 Items are accessed via {term}`subscription`, using `[` `]` after the object
 to enclose a selector expression. For example, use the index number to select
@@ -106,7 +106,7 @@ cities[1] = "Amsterdam"
 print(cities)
 ```
 
-### Adding
+### Part 1.3: Adding
 
 To add an element to the end of a list, use the `.append()` method.
 
@@ -133,7 +133,7 @@ cities.extend(["San Francisco", "Brooklyn", "Denver"])
 print(cities)
 ```
 
-### Removing
+### Part 1.4: Removing
 
 Use the `del` keyword to remove an element by index.
 
@@ -151,7 +151,7 @@ cities.remove("London")
 print(cities)
 ```
 
-### Membership
+### Part 1.5: Membership
 
 Check if list contains value using the `in` operator:
 
@@ -173,7 +173,7 @@ Get the first index number of value:
 cities.index("Dublin")
 ```
 
-### Exercises
+### Part 1.6: Exercises
 
 `````{exercise} Random Lotto Numbers
 :label: lotto-numbers-exercise
@@ -222,8 +222,8 @@ print(numbers)
 
 `````
 
-Slices
-------
+Part 2: Slices
+--------------
 
 You often want to extract part of a list. This could be accomplished using a
 `for` loop, for example:
@@ -268,8 +268,8 @@ cities[:]
 ```
 
 
-Values
-------
+Part 3: Values
+--------------
 
 The `list` type is {term}`heterogeneous`, which means it can contain arbitrary
 objects of any type. So far in this lesson our example list has contained all
@@ -308,8 +308,8 @@ print(f"Dinner tonight is: {meals[0][2]}.")
 print(f"Tomorrow for breakfast we're having: {meals[1][0]}.")
 ```
 
-Iteration
----------
+Part 4: Iteration
+-----------------
 
 Iterate over each element using a `for` loop.
 
@@ -381,8 +381,8 @@ for i, (breakfast, lunch, dinner) in enumerate(meals):
    print()
 ```
 
-Sorting
--------
+Part 5: Sorting
+---------------
 
 ```{code-cell} python
 :tags: [remove-input, thebe-init]
@@ -472,8 +472,8 @@ pprint(fruit)
 
 {{ endcols }}
 
-Exercises
----------
+Part 6: Exercises
+-----------------
 
 `````{exercise} Delete Alternate Items
 :label: delete-alternates-exercise

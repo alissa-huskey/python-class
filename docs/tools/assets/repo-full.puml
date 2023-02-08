@@ -1,0 +1,116 @@
+@startuml
+
+allowmixing
+left to right direction
+skinparam classattributeiconsize 0
+skinparam pageMargin 10
+hide class circle
+hide empty members
+
+title Repository
+
+rectangle {
+
+  card "**head**" <<ref>> as head
+  card "**master**" <<branch>> as master
+
+  frame "**object db**" as objectdb {
+    together {
+      map "**commits**" as commits {
+          c331b4d => gitign...
+          6a338d8 => format...
+          02c7a7a => minor ...
+          382421e => finish...
+          fa69673 => clean ...
+          92241db => reorga...
+          fb090a5 => add py...
+      }
+
+      map "**blobs**" as blobs {
+          598bec57 => replit
+          73bb444b => pypet.py
+          26c39fd5 => readme.md
+      }
+    }
+
+    together {
+      file replit [
+        **598bec57**
+        ====
+<font:monospaced>                                                &#9;</font>
+        <code>
+          language = "bash"
+          run = "python3 pythonclass/pypet.py"
+        </code>
+      ]
+
+      file pypet [
+        **73bb444b**
+        ====
+<font:monospaced>                                                &#9;</font>
+        <code>
+          print("Welcome to Pypet!")
+
+          cat = {
+            "name": "Fluffy",
+          ...
+        </code>
+      ]
+
+      file readme [
+        **26c39fd5**
+        ====
+<font:monospaced>                                                &#9;</font>
+        <code>
+          Python Class
+          ============
+
+          This repo is for the lessons and code related ...
+        </code>
+      ]
+    }
+  }
+
+  frame "**index**" as index {
+    map "**c331b4d**" as tree <<tree>> {
+      598bec57 => .replit
+      73bb444b => pypet.py
+      26c39fd5 => readme.md
+    }
+
+    class "**staging**" as staging<added> {
+      +licence.md                                         
+      +bin/
+      ...
+    }
+  }
+}
+
+rectangle {
+  class "**  working**\n **tree**" as working<+changes> <<files>> {
+    licence.md
+    pypet.py
+    readme.md
+    bin/
+    ...
+}
+
+objectdb -le[hidden]- index
+index -le[hidden]- index
+blobs -le[hidden]- replit
+
+head --> master
+master --o commits::c331b4d
+commits::c331b4d o--> tree
+tree -[hidden]-> working
+
+blobs::598bec57 ..|> replit
+blobs::73bb444b ..|> pypet
+blobs::26c39fd5 ..|> readme
+
+tree::598bec57 -- replit
+tree::73bb444b -- pypet
+tree::26c39fd5 -- readme
+
+@enduml
+

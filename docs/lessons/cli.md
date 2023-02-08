@@ -4,11 +4,14 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
+    format_version: 0.12
+    jupytext_version: 1.9.1
 kernelspec:
-  display_name: Python 3
+  display_name: Python 3 (ipykernel)
   language: python
   name: python3
 ---
+
 CLI
 ===
 
@@ -207,7 +210,7 @@ $ export LANGUAGE=en
 
 In Python, we can access this using the `os.environ` dictionary.
 
-```{code-cell} python
+```{code-cell} ipython3
 :class: full-width
 
 import os
@@ -218,7 +221,7 @@ If you're not sure if the environment variable exists, use the `.get()` method,
 with an optional second argument that will be the value returned if it is
 missing.
 
-```{code-cell} python
+```{code-cell} ipython3
 :class: full-width
 
 import os
@@ -312,7 +315,7 @@ In Python, these can be accessed in the `sys` module.
 When you use the `print()` function, for example it prints to `stdout` by
 default. This is the same as:
 
-```{code-cell} python
+```{code-cell} ipython3
 import sys
 print("hello", file=sys.stdout)
 ```
@@ -322,14 +325,14 @@ represented as {term}`file handler` objects. As such, you can interact with
 them the same way you would with a normal file object. So yet another way to
 accomplish the same thing is:
 
-```{code-cell} python
+```{code-cell} ipython3
 import sys
 sys.stdout.write("hello\n")
 ```
 
 The most common use of file handlers is to write to `stderr` instead of `stdout`.
 
-```{code-cell} python
+```{code-cell} ipython3
 import sys
 print("Danger, Will Robinson!", file=sys.stderr)
 ```
@@ -614,7 +617,7 @@ Terminal size
 If you need to know the size of the terminal, you can use the
 `shutil.get_terminal_size()` function.
 
-```{code-cell} python
+```{code-cell} ipython3
 :class: full-width
 
 import shutil
@@ -624,7 +627,7 @@ shutil.get_terminal_size()
 It returns a `terminal_size` object, which provides the
 {term}`properties <property>` `columns` and `lines`.
 
-```{code-cell} python
+```{code-cell} ipython3
 :class: full-width
 
 import shutil
@@ -637,7 +640,7 @@ print("height:", size.lines)
 It is also a special kind of `tuple`, which means you can make use of multiple
 assignment.
 
-```{code-cell} python
+```{code-cell} ipython3
 :class: full-width
 
 import shutil
@@ -651,7 +654,7 @@ On systems where the size cannot be determined, the defaults `(80, 24)`
 will be used. To change the defaults, send an `tuple` argument with
 {samp}`({columns}, {lines})`.
 
-```{code-cell} python
+```{code-cell} ipython3
 :class: full-width
 
 import shutil
@@ -712,6 +715,233 @@ print(text.center(width))
 
 :::
 
+Colors and Styles
+-----------------
+
+Many terminals use ANSI escape codes to control the font colors and style and
+many other things.
+
+Fortunately, there are modules that handle all the complication of escape codes
+for us. The one I recommend is [console][console], which works on
+Mac/Linux/Windows.
+
+[console]: https://github.com/mixmastamyk/console
+
+:::{important}
+
+Not all systems support escape codes, though one avantage to using a module
+like this is that it does its best to detect if colors will work with that
+system, and if not, does nothing.
+
+Just be careful not to rely too heavily on colors and styles, so your program
+still works even if they don't show up. Also, be aware that some colors look
+different or are harder to read with a different background color, so its a
+good idea to test with a light and back background color.
+
+:::
+
+### Installation
+
+`````{tabs}
+
+````{tab} pip
+
+```{code-block} bash
+:caption: command line
+pip install console
+```
+
+````
+
+````{tab} poetry
+
+```{code-block} bash
+:caption: command line
+poetry add console
+```
+
+`````
+### Usage
+
+```{code-cell} ipython3
+:tags: [remove-input]
+
+from IPython.display import display, Markdown
+from console.style import ForegroundPalette, EffectsPalette
+from console.color_tables_x11 import x11_color_map
+
+def show(iter):
+    md = [f"* {x}\n" for x in iter]
+    display(Markdown("".join(md)))
+
+def palette(klass):
+    excluded = lambda x: x in ("end", "default") or x.startswith("_")
+    functions = [x for x in dir(klass) if not excluded(x)]
+    show(functions)
+
+def x11_colors():
+    show(x11_color_map.keys())
+```
+
+{{ leftcol }}
+
+To see a demo of all available features and how they work in your terminal you
+can run `console.demo` from the command line.
+
+{{ rightcol }}
+
+```{code-block} bash
+:caption: command line
+:class: full-width
+
+python -m console.demos
+```
+
+{{ br * 4 }}
+
+{{ newrow }}
+
+To change the text colors and styles, use the `fg`, `bg` and `fx` objects to
+change the foreground color, background color, and effects respectively.
+
+{{ rightcol }}
+
+```{code-block} python
+from console import fg, bg, fx
+```
+
+{{ newrow }}
+
+For text effects, use the methods on the `fx` object.
+
+{{ rightcol }}
+
+```{code-block} python
+print(fx.bold("Attention!"))
+```
+
+{{ newrow }}
+
+For foreground and background colors use methods on the `fg` and `bg` objects
+respectively, such as the 16 basic colors supported by most terminals.
+
+{{ rightcol }}
+
+```{code-block} python
+print(fg.green("SUCCESS"))
+print(bg.magenta("Information"))
+```
+
+{{ newrow }}
+
+Some terminals also provide an extended set of `256` indexed colors (shown in
+the aforementioned demo). Methods for these colors are named `i0` through
+`i255`.
+
+{{ rightcol }}
+
+```{code-block} python
+print(fg.i197("Error"))
+```
+
+{{ newrow }}
+
+For terminals that support "True", RGB, or 16 million colors, you can use any
+6-character hex color code prefixed with `t_`.
+
+{{ rightcol }}
+
+```{code-block} python
+print("default=" + fg.t_f4c2c2("None"))
+```
+
+{{ newrow }}
+
+Or you can use X11 color names, prefixed with `x_`.
+
+{{ rightcol }}
+
+```{code-block} python
+print(bg.midnightblue("Home"))
+print(fg.x_deepskyblue("Tutorial"))
+```
+
+{{ newrow }}
+
+You can combine a `fg`, `bg`, and/or `fx` object to create a custom, callable
+style.
+
+{{ rightcol }}
+
+```{code-block} python
+highlight = fx.italic + fg.yellow + bg.blue
+print(highlight("Great job!"))
+```
+{{ endcols }}
+
+### Available colors and styles
+
+<div class="row no-labels"><div class="col">
+
+```{rubric} Text Effects
+```
+
+Text effects methods available via the `fx` object:
+
+</div><div class="col">
+
+```{rubric} Basic Colors
+```
+
+Methods for the 16 basic colors available via the `fg` and `bg` objects.
+
+</div><div class="col">
+
+```{rubric} X11 Colors
+```
+
+Methods for RGB colors associated with [X11 color names][x11-colors] available
+via the `fg` and `bg` objects.
+
+[x11-colors]: https://en.wikipedia.org/wiki/X11_color_names
+
+</div></div>
+
+<div class="row no-labels"><div class="col">
+
+```{code-cell} ipython3
+:tags: [remove-input, hide-output, output_scroll]
+
+palette(EffectsPalette)
+```
+
+</div><div class="col">
+
+```{code-cell} ipython3
+:tags: [remove-input, hide-output, output_scroll]
+
+palette(ForegroundPalette)
+```
+
+</div><div class="col">
+
+```{code-cell} ipython3
+:tags: [remove-input, hide-output, output_scroll]
+
+x11_colors()
+```
+
+</div></div>
+
+### See Also
+
+:::{seealso}
+
+* [<i class="fa fa-github"></i> mixmastamyk/console][console]
+* [console docs](https://mixmastamyk.bitbucket.io/console/).
+* [colorhexa.com](https://www.colorhexa.com/color-names) -- a page with a list of an assortment of hex colors by name
+
+:::
 
 Reference
 ---------
@@ -752,6 +982,8 @@ status code
   A number between `0` and `255` returned by command line programs to indicate
   success or failure.
 ```
+
+
 
 ----
 

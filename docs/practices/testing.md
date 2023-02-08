@@ -21,6 +21,12 @@ kernelspec:
 Testing
 =======
 
+```{contents}
+:backlinks: top
+:local:
+:depth: 2
+```
+
 ```{seealso}
 
 * [Getting Started With Testing in Python](https://realpython.com/python-testing/)
@@ -415,8 +421,7 @@ formatted report of the results. Runners also often include a library that
 can be imported in your tests to provide tools and/or frameworks to aid in
 writing tests.
 
-Part 3.1: Install `pytest`
---------------------------
+### Part 3.1: Install `pytest`
 
 For this lesson we'll be using the `pytest` runner. It's a Python module, so
 you can install it as you normally do modules.
@@ -435,8 +440,7 @@ Otherwise:
 python -m pip install pytest
 ```
 
-Part 3.2: Migrate to Pytest
----------------------------
+### Part 3.2: Migrate to Pytest
 
 To use the runner part of `pytest` we only have to make a minor change to the
 script to make it work with `pytest`. Simply put your `main()` call under a

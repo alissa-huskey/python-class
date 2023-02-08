@@ -1,0 +1,25 @@
+#!/usr/bin/env zsh
+#
+# acp - copy a version bump of adventure related files
+#
+# usage: acp FROM_VERSION [TO_VERSION]
+#
+
+rootdir="$(cd "${0%/*}/.." && pwd -P)"
+
+main() {
+  local from_version="$1" to_version="$2" srcdir="${rootdir}/pythonclass/adventure" major minor
+  autoload -U zmv
+
+  if [[ -z "${to_version}" ]]; then
+    major=${from_version%%.*}
+    minor=${from_version##*.}
+    minor=$((minor + 1))
+
+    to_version="${major}.${minor}"
+  fi
+
+  zmv -CW "pythonclass/adventure/*-${from_version}.py" "pythonclass/adventure/*-${to_version}.py"
+}
+
+main ${1:+"$@"}
