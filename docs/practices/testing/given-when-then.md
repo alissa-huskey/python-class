@@ -6,27 +6,39 @@ Given, When, Then
 :local:
 ```
 
+```{margin}
 :::{important}
 
 Be sure to go through the [](testing.md) lesson first if you haven't already.
 
 :::
+```
 
+Introduction
+------------
 
-Given-When-Then is a formula for structuring tests that comes from BDD, which
-is a a written description of your product’s behavior from the users’
-perspectives comprised of the following sections:
+Given/When/Then is part of the Behaviour Driven Development (BDD) methodology,
+which is is an approach to developing interactive programs. It advocates a
+test-first approach to software development where tests are from the
+perspective of the end user and framed within the context of plain-English
+specifications.
 
-Given-When-Then (GWT) is a structured format for expressing scenarios with
-example data, including pre- and post-conditions.
+While there are entire frameworks to support Given/When/Then and other aspects
+of BDD, for our purposes we will simply be using it as a structure for thinking
+about and writing tests for interactive programs.
 
-* **Given**: the preconditions or context. Should put the test in a known good
-  state.
+Given/When/Then
+---------------
+
+The Given/When/Then formula structures tests around a written description of
+how your program is supposed to work.
+
+It is comprised of the following sections:
+
+* **Given**: the preconditions or context.
 * **When**: the action or behavior you are testing.
-* **Then**: what should happen or the observable results, effects.
+* **Then**: what should happen or the observable results and effects.
 
-Test cases are called Scenerios or Examples, and each tests a single behavior
-or action.
 
 ```python
 # GIVEN: The situation is...
@@ -40,6 +52,12 @@ or action.
 # GIVEN today is Sunday
 # WHEN I ask whether it's Friday yet
 # THEN I should be told "Nope"
+```
+
+```python
+# GIVEN that there are 99 bottles of beer on the wall
+# WHEN you take one down
+# THEN there should be 98 bottles of beer on the wall
 ```
 
 ```python
@@ -175,7 +193,7 @@ or action.
 # spirits/malt in liquor stores only
   liquor stores closed xmas.
 
-GIVEN: 
+GIVEN:
 ```
 
 
