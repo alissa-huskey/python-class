@@ -17,41 +17,29 @@ https://alissa-huskey.github.io/python-class/exercises/adventure.html
 |                                                        |
 +--------------------------------------------------------+
 
-Part 13: Dragons
+Part 13: Eat & Drink
 
 """
 
-import random
 import re
-from string import Template
 import textwrap
+from time import sleep
 
 from console import fg, bg, fx
+
+DELAY = 0.7
 
 WIDTH = 45
 
 MARGIN = 2
 
 DEBUG = True
+
 # ## Game World Data #########################################################
-
-COLORS = { "red" }
-
-MOODS = [
-    {
-        "mood": "cheerful",
-        "treasure": (3, 15),
-        "message": "thinks you're adorable! He gives you $gems gems!"
-    }
-]
-
-# placeholder -- maps colors to dragons
-DRAGONS = {}
 
 PLAYER = {
     "place": "home",
     "inventory": {"gems": 50},
-    "health": 100,
 }
 
 PLACES = {
@@ -60,7 +48,7 @@ PLACES = {
         "name": "Your Cottage",
         "east": "town-square",
         "description": "A cozy stone cottage with a desk and a neatly made bed.",
-        "items": ["desk", "book"],
+        "items": ["desk", "book", "water"],
     },
     "town-square": {
         "key": "town-square",
@@ -83,27 +71,6 @@ PLACES = {
             "painted menu hangs on the wall."
         ),
     },
-    "woods": {
-        "key": "",
-        "name": "",
-        "east": "",
-        "description": "",
-        "items": [],
-    },
-    "hill": {
-        "key": "",
-        "name": "",
-        "east": "",
-        "description": "",
-        "items": [],
-    },
-    "cave": {
-        "key": "",
-        "name": "",
-        "east": "",
-        "description": "",
-        "items": [],
-    },
 }
 
 ITEMS = {
@@ -118,6 +85,20 @@ ITEMS = {
         "name": "a dagger",
         "description": "a 14 inch dagger with a double-edged blade",
         "price": -25,
+    },
+    "water": {
+        "key": "water",
+        "name": "bottle of water",
+        "can_take": True,
+        "empty": False,
+        "description": (
+            "A bottle of water."
+        ),
+        "drink-message": (
+            "You pull the cork from the waxed leather bottle.",
+            "You take a deep drink of the cool liquid.",
+            "You feel refreshed.",
+        ),
     },
     "desk": {
         "key": "desk",
@@ -167,7 +148,7 @@ def header(title):
     write(fx.bold(title))
     print()
 
-def wrap(text, indent=1):
+def wrap(text, indent=1, delay=0):
     """Print wrapped and indented text."""
 
     # calculate the indentation
@@ -177,11 +158,12 @@ def wrap(text, indent=1):
     if isinstance(text, str):
         text = (text,)
 
-    # make an empty list for the wrapped blocks
-    blocks = []
-
     # iterate over items
-    for stanza in text:
+    for i, stanza in enumerate(text):
+
+        # print an extra blank line before every stanza but the last
+        if i:
+            print()
 
         # wrap the text
         paragraph = textwrap.fill(
@@ -191,10 +173,10 @@ def wrap(text, indent=1):
             subsequent_indent=margin,
         )
 
-        blocks.append(paragraph)
+        print(paragraph)
+        if delay:
+            sleep(delay)
 
-    # print the wrapped text
-    print(*blocks, sep="\n\n")
 
 def write(text, indent=1):
     """Print an indented line of game text."""
@@ -247,11 +229,6 @@ def get_item(key):
     return item
 
 
-def health_remove(amount):
-    PLAYER["health"] -= amount
-    quit_if_game_over()
-
-
 def inventory_change(key, quantity=1):
     """Add item to player inventory."""
     PLAYER["inventory"].setdefault(key, 0)
@@ -260,7 +237,6 @@ def inventory_change(key, quantity=1):
     # remove from inventory dictionary if quantity is zero
     if not PLAYER["inventory"][key]:
         PLAYER["inventory"].pop(key)
-
 
 def place_add(key):
     """Add an item to the current place."""
@@ -301,15 +277,6 @@ def place_can(action):
 def is_for_sale(item):
     """Return True if item is for sale (has a price)."""
     return "price" in item
-
-
-def quit_if_game_over():
-    """Exit the game if the player has no health"""
-    if PLAYER["health"]:
-        return
-
-    write("Game over.\n")
-    quit()
 
 # ## Action functions ########################################################
 
@@ -632,65 +599,50 @@ def do_read(args):
     # print the item message
     wrap(item["message"], indent=3)
 
-def do_pet(args):
-    """Pet dragons"""
+def do_drink(args):
+    do_consume("drink", args)
 
-    debug(f"Trying to pet: {args}")
 
-    # make sure they are somewhere they can pet dragons
-    if not place_can("pet"):
-        error("You can't do that here.")
+def do_eat(args):
+    do_consume("eat", args)
 
-    # remove the expected words from args
-    for word in ["dragon", "head"]:
-        if word in args:
-            args.remove(word)
 
-    # make sure the player said what they want to pet
+def do_consume(action, args):
+    """Eat or drink something"""
+    debug(f"Trying to {action}: {args}")
+
     if not args:
-        error("What do you want to pet?")
+        error(f"What do you want to {action}?")
         return
 
-    color = args[0].lower()
+    # get the item entered by the user and make it lowercase
+    name = args[0].lower()
 
-    # make sure they typed in a real color
-    if not color in COLORS:
-        error("I don't see a dragon that looks like that.")
+    # make sure the item is in this place or in the players inventory
+    if not player_has(name):
+        error(f"Sorry, you don't have any {name!r} to {action}.")
         return
 
-    # generate the DRAGONS dict and randomly assign each color to a dragon
-    global DRAGONS
-    if not DRAGONS:
-        random.shuffle(COLORS)
-        DRAGONS = dict(zip(COLORS, MOODS))
+    # get the item dictionary
+    item = get_item(name)
 
-    # get the dragon info for this color
-    dragon = DRAGONS[color]
-    dragon["color"] = color
+    # make sure it is an item you can consume
+    if f"{action}-message" not in item:
+        error(f"Sorry, you can't {action} {name!r}.")
+        return
 
-    # calculate the treasure
-    possible_treasure = dragon.get("treasure", (0, 0))
-    dragon["gems"] = random.randint(*possible_treasure)
+    # make sure it isn't empty
+    if item.get("empty"):
+        wrap(f"You try to {action} {item['name']} but there isn't any left.'")
+        return
 
-    # calculate the damage
-    possible_damage = dragon.get("damage", (0, 0))
-    dragon["damage"] = random.randint(*possible_damage)
+    # either set to empty or remove from inventory
+    if item.get("empty") is False:
+        item["empty"] = True
+    else:
+        inventory_change(name, -1)
 
-    # add the treasure to the players inventory
-    if dragon["gems"]:
-        inventory_change("gems", dragon["gems"])
-
-    # remove health
-    if dragon["damage"]:
-        health_remove(dragon["damage"])
-
-    # generate the message
-    tpl = Template(f'The $mood $color dragon {dragon["message"]}')
-    text = tpl.safe_substitute(dragon)
-    write(text)
-
-    # reset the DRAGONS dict
-    DRAGONS = {}
+    wrap(item[f"{action}-message"], delay=DELAY)
 
 
 def main():
@@ -737,6 +689,12 @@ def main():
 
         elif command == "buy":
             do_buy(args)
+
+        elif command == "eat":
+            do_eat(args)
+
+        elif command == "drink":
+            do_drink(args)
 
         else:
             error("No such command.")

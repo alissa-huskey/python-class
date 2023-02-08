@@ -5,18 +5,17 @@ import pytest
 import adventure
 from adventure import (
     debug,
+    do_drink,
     do_drop,
+    do_eat,
     do_read,
-    do_pet,
     error,
     header,
-    health_remove,
     inventory_change,
     is_for_sale,
     place_has,
     player_has,
     place_add,
-    quit_if_game_over,
     wrap,
     write,
 )
@@ -41,25 +40,6 @@ def teardown(request):
     """Auto-add teardown method to all tests."""
     request.addfinalizer(revert)
 
-########### meta test
-
-def test_teardown():
-    assert "problems" not in adventure.PLAYER["inventory"], \
-        "Each test should start with a fresh data set."
-
-########### game data test functions
-
-
-def test_health_remove():
-    # GIVEN: The player has some health
-    adventure.PLAYER["health"] = 100
-
-    # WHEN: You call health_remove()
-    health_remove(50)
-
-    # THEN: The player should have less health
-    assert adventure.PLAYER["health"] == 50
-
 def test_is_for_sale():
     fake_item = {
         "name": "An Expensive Thing",
@@ -80,73 +60,6 @@ def test_is_for_sale_without_price():
     assert not result, \
         "is_for_sale() should return False if the item doesn't have a price"
 
-def test_inventory_change():
-    adventure.PLAYER["inventory"]["problems"] = 99
-    inventory_change("problems")
-
-    assert adventure.PLAYER["inventory"]["problems"] == 100, \
-        "inventory_change() with no quantity argument should add 1."
-
-def test_inventory_change_missing_key():
-    adventure.PLAYER["inventory"] = {}
-    inventory_change("brain")
-
-    assert "brain" in adventure.PLAYER["inventory"], \
-        "inventory_change() should add missing keys to the inventory"
-
-    assert adventure.PLAYER["inventory"]["brain"] == 1, \
-        "inventory_change() should add to zero if key was missing"
-
-
-def test_inventory_change_subtract():
-    adventure.PLAYER["inventory"]["bottles of beer"] = 99
-    inventory_change("bottles of beer", -1)
-
-    assert adventure.PLAYER["inventory"]["bottles of beer"] == 98, \
-        "inventory_change() should reduce inventory when qty is negative"
-
-
-def test_inventory_change_remove():
-    adventure.PLAYER["inventory"]["chances"] = 1
-    inventory_change("chances", -1)
-
-    assert "chances" not in adventure.PLAYER["inventory"], \
-        "inventory_change() should remove the item when there are none left"
-
-
-def test_quit_if_game_not_over(capsys):
-    # GIVEN: Player health is greater than 0
-    adventure.PLAYER["health"] = 5
-
-    # WHEN: When quit_if_game_over() is called
-    quit_if_game_over()
-    output = capsys.readouterr().out
-
-    # THEN: The game over should not be printed
-    assert "Game over" not in output
-
-    # AND: The game should not end
-    ...
-
-
-def test_quit_if_game_over(capsys):
-    # GIVEN: Player health is less than or equal to 0
-    adventure.PLAYER["health"] = 0
-
-    # WHEN: When quit_if_game_over() is called
-    with pytest.raises(SystemExit) as ex:
-        quit_if_game_over()
-
-    output = capsys.readouterr().out
-
-    # THEN: The game over message should be printed
-    assert "Game over" in output
-
-    # AND: The game should end
-    ...
-
-########### printing function tests
-
 def test_error(capsys):
     error("You ruined everything.")
     output = capsys.readouterr().out
@@ -155,50 +68,84 @@ def test_error(capsys):
         "The formatted error message should be printed."
 
 def test_debug(capsys):
+    # GIVEN: that debug mode is enabled
+    adventure.DEBUG = True
+
+    # WHEN: debug() is called
     debug("Have some cake.")
 
+    # THEN: the debug message should be printed
     output = capsys.readouterr().out
     assert output == "# Have some cake.\n", \
         "The formatted debug message should be printed."
 
 
+def test_debug_false(capsys):
+    """
+      GIVEN: debug mode is disabled
+      WHEN: debug() is called
+      THEN: the debug message should be printed
+    """
+    # GIVEN: debug mode is disabled
+    adventure.DEBUG = False
+
+    # WHEN: debug() is called
+    debug("Have some cake.")
+
+    # THEN: the debug message should be printed
+    output = capsys.readouterr().out
+    assert output == "", \
+        "No debug message should be printed if not in debug mode."
+
 def test_header(capsys):
+    # WHEN: header() is called
     header("Headline")
 
+    # THEN: the formatted header should be printed
     output = capsys.readouterr().out
     assert output == "\n  Headline\n\n", \
         "The formatted header should be printed."
 
 
 def test_write(capsys):
+    # when write() is called
     write("oh hai")
 
+    # THEN: the indented message should be printed followed by a new line
     output = capsys.readouterr().out
     assert output == "  oh hai\n", \
         "write() should print the indented text followed by a new line"
 
 
 def test_wrap(capsys):
+    # WHEN: wrap() is called
     wrap(
         "I pass through many Me's in the course of my day, "
         "each one selfish with his time. The Lying-in-Bed "
         "me and the Enjoying-the-Hot-Shower Me are particularly "
         "selfish. The Late Me loathes the pair of them."
     )
+
+    # THEN: wrap() should print the indented, wrapped text
     output = capsys.readouterr().out
     lines = output.splitlines()
 
+    # AND: the message should be printed
     assert "I pass through" in output, \
         "wrap() should print the text indented."
 
+    # AND: the end of the message should be printed followed by a newline
     assert output.endswith("pair of them.\n"), \
         "wrap() should print the text"
 
+    # AND: the long message should be broken up onto mulitple lines
     assert len(lines) > 1, "wrap() should break long text onto multiple lines"
 
+    # AND: all lines should be indented
     assert all([line.startswith("  ") for line in lines]), \
         "wrap() should indent all lines"
 
+    # AND: all lines should be indented 2 spaces
     assert all([line[2] != " " for line in lines]), \
         "wrap() should indent all lines 2 spaces"
 
@@ -227,6 +174,26 @@ def test_wrap_with_indent(capsys):
     assert all([line[4] != " " for line in lines]), \
         "wrap() should indent all lines 4 spaces"
 
+def test_wrap_with_delay(capsys):
+    message = (
+        "A Dark time comes.",
+        "My time.",
+        "If it offends you.",
+        "Stop Me.",
+    )
+    wrap(message, delay=0.01)
+
+    output = capsys.readouterr().out
+
+    assert "(" not in output, \
+        "output should not contain parenthesis representing a tuple"
+
+    assert "A Dark time comes" in output, \
+        "wrap() should print the text."
+
+    assert "\n\n  My time." in output, \
+        "There should be two newlines between each printed message item"
+
 def test_wrap_with_iterable(capsys):
     message = (
         "The exercise for centering oneself is a simple one.",
@@ -251,15 +218,70 @@ def test_wrap_with_iterable(capsys):
     assert "\n\n  Stop thinking" in output, \
         "There should be two newlines between each printed message item"
 
-########### command function tests
+def test_inventory_change():
+    adventure.PLAYER["inventory"]["problems"] = 99
+    inventory_change("problems")
+
+    assert adventure.PLAYER["inventory"]["problems"] == 100, \
+        "inventory_change() with no quantity argument should add 1."
+
+def test_teardown():
+    assert "problems" not in adventure.PLAYER["inventory"], \
+        "Each test should start with a fresh data set."
+
+
+def test_inventory_change_missing_key():
+    # GIVEN: players inventory without the desired key
+    adventure.PLAYER["inventory"] = {}
+
+    # WHEN: inventory_change() is called with a key and no quantity argument
+    inventory_change("brain")
+
+
+    # THEN: the key should be added to players inventory
+    assert "brain" in adventure.PLAYER["inventory"], \
+        "inventory_change() should add missing keys to the inventory"
+
+    # AND: the quantity in inventory should be 1
+    assert adventure.PLAYER["inventory"]["brain"] == 1, \
+        "inventory_change() should add to zero if key was missing"
+
+
+def test_inventory_change_subtract():
+    # GIVEN: a player inventory that contains the desired key
+    adventure.PLAYER["inventory"]["bottles of beer"] = 99
+
+    # WHEN: inventory_change() is called with a negative number
+    inventory_change("bottles of beer", -1)
+
+    assert adventure.PLAYER["inventory"]["bottles of beer"] == 98, \
+    assert adventure.PLAYER["inventory"]["bottles of beer"] == 98, \
+        "inventory_change() should reduce inventory when qty is negative"
+
+
+def test_inventory_change_remove():
+    # GIVEN: a player inventory that contains the desired key
+    adventure.PLAYER["inventory"]["chances"] = 1
+    # WHEN: inventory_change() is called with a negaive number that will result
+    #       in a quantity of zero
+    inventory_change("chances", -1)
+
+    # THEN: the key should be removed from player inventory
+    assert "chances" not in adventure.PLAYER["inventory"], \
+        "inventory_change() should remove the item when there are none left"
+
 
 def test_do_drop_no_args(capsys):
+    # WHEN: do_drop() is called with an empty list
     do_drop([])
     output = capsys.readouterr().out
 
+    # THEN: the basic debug message should be printed
     assert "Trying to drop: []" in output, \
         "Debug message should be in output"
-    assert "Error What do you want to drop?" in output, \
+
+    # AND: an error message should be printed
+    assert "What do you want to drop?" in output, \
         "User error should be in output"
 
 
@@ -380,159 +402,147 @@ def test_do_read_in_inventory(capsys):
     assert lines[-1] == "      Your future is uncertain.", \
         "The writing message {message!r} should be indented an extra level."
 
-def test_do_pet_no_args(capsys):
-    # GIVEN: any scenerio
+def test_do_drink_no_args(capsys):
+    do_drink([])
 
-    # WHEN: the player types "pet" with no arguments
-    do_pet([])
     output = capsys.readouterr().out
 
-    # THEN: an error message should be printed
-    assert "What do you want to pet" in output
+    assert "Trying to drink: []" in output, \
+        "Debug message should be in output"
 
-def test_do_pet_no_color(capsys):
-    # GIVEN: any scenerio
+    assert "Error What do you want to drink?" in output, \
+        "User error should be in output"
 
-    # WHEN: the player types "pet" with only the words "dragon" and/or "head"
-    do_pet(["dragon", "head"])
+def test_do_drink_not_in_inventory(capsys):
+    adventure.ITEMS["atmosphere"] = {
+        "name": "the atmosphere",
+        "drink-message": (
+            "You drink in the warm and cheerful atmosphere."
+        ),
+    }
+    do_drink(["atmosphere"])
+
     output = capsys.readouterr().out
 
-    # THEN: an error message should be printed
-    assert "What do you want to pet" in output
+    assert "Error Sorry, you don't have any 'atmosphere' to drink." in output, \
+        "User error should be in output"
 
-def test_do_pet_cant_pet(capsys):
-    # GIVEN: The player is in a place where they can't pet anything
-    adventure.PLAYER["place"] = "nowhere"
-    adventure.PLACES["nowhere"] = {
-        "name": "The Void",
-        "can": [],
+def test_do_drink_not_drinkable(capsys):
+    adventure.ITEMS["x"] = {
+        "name": "x",
     }
+    inventory_change("x")
 
-    # WHEN: They try to pet something
-    do_pet(["red", "dragon"])
+    do_drink(["x"])
+
     output = capsys.readouterr().out
 
-    # THEN: An error message should be printed
-    assert "You can't do that" in output
+    assert "Error Sorry, you can't drink 'x'." in output, \
+        "User error should be in output"
 
-def test_do_pet_wrong_color(capsys):
-    # GIVEN: There are three colors of dragon heads
-    adventure.COLORS = ["red", "green", "blue"]
-
-    # AND: The player is in a place where they can pet dragons
-    adventure.PLAYER["place"] = "cave"
-    adventure.PLACES["cave"] = {
-        "name": "A cave",
-        "can": ["pet"],
+def test_do_drink_empty(capsys):
+    adventure.DELAY = 0
+    adventure.ITEMS["blood"] = {
+        "name": "the blood of your enemies",
+        "drink-message": (
+            "You greedily drink up the blood of your enemies.",
+            "It tastes of sweet revenge.",
+        ),
+        "empty": True,
     }
+    inventory_change("blood")
 
-    # WHEN: They try to pet a dragon with a color that doesn't exist
-    do_pet(["purple"])
+    do_drink(["blood"])
+
     output = capsys.readouterr().out
 
-    # THEN: An error message should be printed
-    assert "I don't see a dragon" in output
+    assert "You try to drink the blood of your enemies" in output, \
+        "User error should be in output"
 
-def test_do_pet_cheerful_dragon(capsys):
-    # GIVEN: The player has some amount of coins
-    adventure.PLAYER["inventory"] = {"gems": 10}
 
-    # AND: The player has a certain amount of health
-    adventure.PLAYER["health"] = 90
-
-    # AND: The player is in a place where they can pet a dragon
-    adventure.PLAYER["place"] = "cave"
-    adventure.PLACES["cave"] = {
-        "name": "A cave",
-        "can": ["pet"]
+def test_do_drink_emptyable(capsys):
+    adventure.DELAY = 0
+    adventure.ITEMS["tears"] = {
+        "name": "tears",
+        "drink-message": "You drink the delicious tears of your rivals.",
+        "empty": False,
     }
+    inventory_change("tears")
 
-    # AND: There is a dragon that gives treasure
-    adventure.DRAGONS = {
-        "red": {
-            "mood": "cheerful",
-            "treasure": (10, 10),
-            "message": "likes you and gives you $gems gems.",
-        }
-    }
+    do_drink(["tears"])
 
-    # WHEN: the player pets that head
-    do_pet(["red", "dragon"])
     output = capsys.readouterr().out
 
-    # THEN: The player should get treasure
-    assert adventure.PLAYER["inventory"]["gems"] == 20
+    assert "Trying to drink: ['tears']" in output, \
+        "Debug message should be in output"
 
-    # AND: The player's health should be the same
-    assert adventure.PLAYER["health"] == 90
+    assert "(" not in output, \
+        "The drink message should be in output"
 
-    # AND: The player should see a message about what happened
-    assert "likes you" in output
+    assert "You drink the delicious" in output, \
+        "The drink message should be in output"
+
+    assert player_has("tears"), \
+        "The item should still be in inventory"
+
+    assert adventure.ITEMS["tears"]["empty"], \
+        "But should now be empty"
 
 
-def test_do_pet_cranky_dragon(capsys):
-    # GIVEN: There is a dragon head that causes damage
-    adventure.DRAGONS = {
-        "red": {
-            "mood": "cranky",
-            "damage": (10, 10),
-            "message": "pushes you away causing you",
-        }
+def test_do_drink(capsys):
+    adventure.DELAY = 0
+    adventure.ITEMS["praise"] = {
+        "name": "praise",
+        "drink-message": (
+            "You stand back and admire your handwork...",
+            "As you drink in the praise of your adoring fans."
+        ),
     }
+    inventory_change("praise")
 
-    # AND: The player has a certain amount of health
-    adventure.PLAYER["health"] = 100
+    do_drink(["praise"])
 
-    # AND: The player has some amount of gems
-    adventure.PLAYER["inventory"] = {"gems": 10}
-
-    # WHEN: The player pets that head
-    do_pet(["red", "head"])
     output = capsys.readouterr().out
 
-    # THEN: The player's health should be reduced
-    assert adventure.PLAYER["health"] == 90
+    assert "Trying to drink: ['praise']" in output, \
+        "Debug message should be in output"
 
-    # AND: The player's gems should not be changed
-    assert adventure.PLAYER["inventory"]["gems"] == 10
+    assert "(" not in output, \
+        "output should not contain parenthesis representing a tuple"
 
-    # AND: The player should see a message about what happened
-    assert "Error" in output
+    assert "You stand back" in output, \
+        "The drink message should be in output"
+
+    assert "\n\n  As you drink in" in output, \
+        "The drink message should be in output"
+
+    assert not player_has("praise"), \
+        "The item should be removed from inventory."
 
 
-def test_do_pet_lonely_dragon(capsys):
-    # GIVEN: There is a dragon head that causes damage and gives treasure
-    adventure.DRAGONS = {
-        "blue": {
-            "mood": "lonely",
-            "damage": (10, 10),
-            "treasure": (20, 20),
-            "message": "squeezes you",
-        }
+def test_do_eat(capsys):
+    adventure.DELAY = 0
+    adventure.ITEMS["your feelings"] = {
+        "name": "your feelings",
+        "eat-message": (
+            "It's the wee hours of the morning, and you're eating"
+            "your feelings."
+        ),
     }
+    inventory_change("your feelings")
 
-    # AND: The player is in a place where they can pet dragons
-    adventure.PLAYER["place"] = "cave"
-    adventure.PLACES["cave"] = {
-        "name": "A cave",
-        "can": ["pet"]
-    }
+    do_eat(["your feelings"])
 
-    # AND: The player has a certain amount of health
-    adventure.PLAYER["health"] = 100
-
-    # AND: The player has a certain number of gems
-    adventure.PLAYER["gems"] = 10
-
-    # WHEN: The player pets that head
-    do_pet(["blue", "head"])
     output = capsys.readouterr().out
 
-    # THEN: The player's health should be reduced
-    assert adventure.PLAYER["health"] == 90
+    assert "Trying to eat: ['your feelings']" in output, \
+        "Debug message should be in output"
 
-    # THEN: The player should get treasure
-    assert adventure.PLAYER["inventory"]["gems"] > 10
+    assert "(" not in output, \
+        "The eat message should be in output"
 
-    # AND: The player should see a message about what happened
-    assert "squeezes you" in output
+    assert "It's the wee hours" in output, \
+        "The eat message should be in output"
+
+    assert not player_has("your feelings"), \
+        "The item should be removed from inventory."
