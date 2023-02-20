@@ -10,13 +10,12 @@ from adventure import (
     do_pet,
     error,
     header,
-    health_remove,
+    health_change,
     inventory_change,
     is_for_sale,
     place_has,
     player_has,
     place_add,
-    quit_if_game_over,
     wrap,
     write,
 )
@@ -49,16 +48,22 @@ def test_teardown():
 
 ########### game data test functions
 
-
-def test_health_remove():
+@pytest.mark.parametrize(
+    "start, amount, result, message", [
+        (100, -50, 50, "a negative number should be subtracted"),
+        (10, 50, 60, "a positive number should be added"),
+        (90, 20, 100, "the max health should be 100"),
+        (20, -30, 0, "the min health should be 0"),
+])
+def test_health_change(start, amount, result, message):
     # GIVEN: The player has some health
-    adventure.PLAYER["health"] = 100
+    adventure.PLAYER["health"] = start
 
-    # WHEN: You call health_remove()
-    health_remove(50)
+    # WHEN: You call health_change()
+    health_change(amount)
 
-    # THEN: The player should have less health
-    assert adventure.PLAYER["health"] == 50
+    # THEN: The player health should be adjusted
+    assert adventure.PLAYER["health"] == result, message
 
 def test_is_for_sale():
     fake_item = {
@@ -113,37 +118,6 @@ def test_inventory_change_remove():
     assert "chances" not in adventure.PLAYER["inventory"], \
         "inventory_change() should remove the item when there are none left"
 
-
-def test_quit_if_game_not_over(capsys):
-    # GIVEN: Player health is greater than 0
-    adventure.PLAYER["health"] = 5
-
-    # WHEN: When quit_if_game_over() is called
-    quit_if_game_over()
-    output = capsys.readouterr().out
-
-    # THEN: The game over should not be printed
-    assert "Game over" not in output
-
-    # AND: The game should not end
-    ...
-
-
-def test_quit_if_game_over(capsys):
-    # GIVEN: Player health is less than or equal to 0
-    adventure.PLAYER["health"] = 0
-
-    # WHEN: When quit_if_game_over() is called
-    with pytest.raises(SystemExit) as ex:
-        quit_if_game_over()
-
-    output = capsys.readouterr().out
-
-    # THEN: The game over message should be printed
-    assert "Game over" in output
-
-    # AND: The game should end
-    ...
 
 ########### printing function tests
 
@@ -475,7 +449,7 @@ def test_do_pet_cranky_dragon(capsys):
     adventure.DRAGONS = {
         "red": {
             "mood": "cranky",
-            "damage": (10, 10),
+            "damage": (-10, -10),
             "message": "pushes you away causing you",
         }
     }
@@ -505,7 +479,7 @@ def test_do_pet_lonely_dragon(capsys):
     adventure.DRAGONS = {
         "blue": {
             "mood": "lonely",
-            "damage": (10, 10),
+            "damage": (-10, -10),
             "treasure": (20, 20),
             "message": "squeezes you",
         }

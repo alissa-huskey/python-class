@@ -33,6 +33,7 @@ WIDTH = 45
 MARGIN = 2
 
 DEBUG = True
+
 # ## Game World Data #########################################################
 
 COLORS = { "red" }
@@ -42,7 +43,25 @@ MOODS = [
         "mood": "cheerful",
         "treasure": (3, 15),
         "message": "thinks you're adorable! He gives you $gems gems!"
-    }
+    },
+    {
+        "mood": "grumpy",
+        "damage": (-15, -3),
+        "message": (
+            "wants to be left alone. The heat from his mighty sigh "
+            f"singes your hair, costing you $damage in health."
+        ),
+    },
+    {
+        "mood": "lonely",
+        "treasure": (8, 25),
+        "damage": (-25, -8),
+        "message": (
+            "is just SO happy to see you! He gives you a whopping "
+            f"$amount gems! Then he hugs you, squeezes you, and calls "
+            f"you George... costing you $damage in health."
+        )
+    },
 ]
 
 # placeholder -- maps colors to dragons
@@ -247,9 +266,17 @@ def get_item(key):
     return item
 
 
-def health_remove(amount):
-    PLAYER["health"] -= amount
-    quit_if_game_over()
+def health_change(amount):
+    """Add the following (positive or negative) amount to health, but limit to 0-100"""
+    PLAYER["health"] += amount
+
+    # don't let health go below zero
+    if PLAYER["health"] < 0:
+        PLAYER["health"] = 0
+
+    # cap health at 100
+    if PLAYER["health"] > 100:
+        PLAYER["health"] = 100
 
 
 def inventory_change(key, quantity=1):
@@ -302,14 +329,6 @@ def is_for_sale(item):
     """Return True if item is for sale (has a price)."""
     return "price" in item
 
-
-def quit_if_game_over():
-    """Exit the game if the player has no health"""
-    if PLAYER["health"]:
-        return
-
-    write("Game over.\n")
-    quit()
 
 # ## Action functions ########################################################
 
@@ -682,7 +701,7 @@ def do_pet(args):
 
     # remove health
     if dragon["damage"]:
-        health_remove(dragon["damage"])
+        health_change(dragon["damage"])
 
     # generate the message
     tpl = Template(f'The $mood $color dragon {dragon["message"]}')
@@ -744,6 +763,11 @@ def main():
 
         # print a blank line no matter what
         print()
+
+        # exit the game if player has no health
+        if not PLAYER["health"]:
+            write("Game over.\n")
+            quit()
 
 if __name__ == "__main__":
     main()
