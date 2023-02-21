@@ -22,11 +22,10 @@ Part 13: Dragons
 """
 
 import random
-import re
-from string import Template
 import textwrap
+from string import Template
 
-from console import fg, bg, fx
+from console import fg, fx
 
 WIDTH = 45
 
@@ -36,7 +35,7 @@ DEBUG = True
 
 # ## Game World Data #########################################################
 
-COLORS = { "red" }
+COLORS = ("red", "black", "silver")
 
 MOODS = [
     {
@@ -49,7 +48,7 @@ MOODS = [
         "damage": (-15, -3),
         "message": (
             "wants to be left alone. The heat from his mighty sigh "
-            f"singes your hair, costing you $damage in health."
+            "singes your hair, costing you $damage in health."
         ),
     },
     {
@@ -58,8 +57,8 @@ MOODS = [
         "damage": (-25, -8),
         "message": (
             "is just SO happy to see you! He gives you a whopping "
-            f"$amount gems! Then he hugs you, squeezes you, and calls "
-            f"you George... costing you $damage in health."
+            "$amount gems! Then he hugs you, squeezes you, and calls "
+            "you George... costing you $damage in health."
         )
     },
 ]
@@ -85,6 +84,7 @@ PLACES = {
         "key": "town-square",
         "name": "The Town Square",
         "west": "home",
+        "east": "woods",
         "north": "market",
         "description": (
             "A large open space surrounded by buildings with a burbling "
@@ -103,24 +103,48 @@ PLACES = {
         ),
     },
     "woods": {
-        "key": "",
-        "name": "",
-        "east": "",
-        "description": "",
+        "key": "woods",
+        "name": "The Woods",
+        "east": "hill",
+        "west": "town-square",
+        "description": (
+            "A dirt road meanders under a canopy of autumn leaves in brilliant "
+            "hues of gold and crimson.",
+
+            "You hear a stream burbling somewhere out of sight. Leaves crunch "
+            "under your feet on the sun dappled forest floor.",
+
+            "You see an ancient moss-covered hollow tree, its gnarled and twisted "
+            "branches looming over you. On the opposite side, a fallen log juts "
+            "partway into the road.",
+        ),
         "items": [],
     },
     "hill": {
-        "key": "",
-        "name": "",
-        "east": "",
-        "description": "",
+        "key": "hill",
+        "name": "A grassy hill",
+        "west": "woods",
+        "south": "cave",
+        "description": (
+            "A winding path leads up the slope of a grassy hill. The air is "
+            "warm here.",
+            "At the top of the hill, you see that the path continues to the "
+            "down to the south. In that direction you can make out a cave by "
+            "the shore of a lake."
+        ),
         "items": [],
     },
     "cave": {
-        "key": "",
-        "name": "",
-        "east": "",
-        "description": "",
+        "key": "cave",
+        "name": "A cave",
+        "north": "hill",
+        "description": (
+            "Your footsteps echo as you step into the vast cavern.",
+            "Shafts of sunlight slice through the gloom, playing against the "
+            "landscape of glittering treasure.",
+            "Resting atop a mound of gold, a collosal dragon rests curled up snugly. "
+            "Its three enormous heads snore softly, each in turn.",
+        ),
         "items": [],
     },
 }
@@ -180,11 +204,13 @@ ITEMS = {
 
 # ## Message functions #######################################################
 
+
 def header(title):
     """Print a header"""
     print()
     write(fx.bold(title))
     print()
+
 
 def wrap(text, indent=1):
     """Print wrapped and indented text."""
@@ -215,13 +241,16 @@ def wrap(text, indent=1):
     # print the wrapped text
     print(*blocks, sep="\n\n")
 
+
 def write(text, indent=1):
     """Print an indented line of game text."""
     print(MARGIN*" ", text, sep="")
 
+
 def error(message):
     """Print an error message."""
     print(f"{fg.red('! Error')} {message}\n")
+
 
 def debug(message):
     """Print a debug message if in debug mode."""
@@ -229,12 +258,15 @@ def debug(message):
         return
     print(fg.lightblack(f"# {message}"))
 
+
 def abort(message):
     """Print a fatal error message then exit the game."""
     error(message)
     exit(1)
 
+
 # ## Data functions ##########################################################
+
 
 def get_place(key=None):
     """Return the place information from the PLACES dictionary, either
@@ -254,6 +286,7 @@ def get_place(key=None):
         abort(f"Woops! The information about {key!r} seems to be missing.")
 
     return place
+
 
 def get_item(key):
     """Return item information from ITEMS dictionary associated with key. If no
@@ -299,6 +332,7 @@ def place_add(key):
     if key not in place["items"]:
         place["items"].append(key)
 
+
 def place_remove(key):
     """Remove an item from the current place."""
     # get the current place
@@ -310,20 +344,24 @@ def place_remove(key):
 
 # ## Validation functions ####################################################
 
+
 def player_has(key, qty=1):
     """Return True if the player has at least qty item(s) associated with key in
        their inventory."""
     return key in PLAYER["inventory"] and PLAYER["inventory"][key] >= qty
+
 
 def place_has(item):
     """Return True if current place has a particular item."""
     place = get_place()
     return item in place.get("items", [])
 
+
 def place_can(action):
     """Return True if the current place supports a particular action."""
     place = get_place()
     return action in place.get("can", [])
+
 
 def is_for_sale(item):
     """Return True if item is for sale (has a price)."""
@@ -332,11 +370,12 @@ def is_for_sale(item):
 
 # ## Action functions ########################################################
 
+
 def do_shop():
     """List the items for sale."""
 
     if not place_can("shop"):
-        error(f"Sorry, you can't shop here.")
+        error("Sorry, you can't shop here.")
         return
 
     place = get_place()
@@ -348,14 +387,19 @@ def do_shop():
         if not is_for_sale(item):
             continue
 
-        write(f'{item["name"]:<13}  {item["description"]:<45}  {abs(item["price"]):>2} gems')
+        write(
+            f'{item["name"]:<13}  {item["description"]:<45}  '
+            f'{abs(item["price"]):>2} gems'
+        )
 
     print()
+
 
 def do_quit():
     """Exit the game."""
     write("Ok, goodbye.\n")
     quit()
+
 
 def do_look():
     """Look at the current place"""
@@ -410,6 +454,7 @@ def do_look():
         destination = get_place(name)
         write(f"To the {direction} is {destination['name']}.")
 
+
 def do_examine(args):
     """Look at an item in the current place."""
 
@@ -419,9 +464,6 @@ def do_examine(args):
     if not args:
         error("What do you want to examine?")
         return
-
-    # look up where the player is now
-    place = get_place()
 
     # get the item entered by the user and make it lowercase
     name = args[0].lower()
@@ -448,6 +490,7 @@ def do_examine(args):
         print()
 
     wrap(item["description"])
+
 
 def do_go(args):
     """Move to a different place"""
@@ -488,6 +531,7 @@ def do_go(args):
     header(f"{new_place['name']}")
     wrap(new_place["description"])
 
+
 def do_take(args):
     """Pick up an item and add it to inventory."""
     debug(f"Trying to take: {args}")
@@ -521,6 +565,7 @@ def do_take(args):
 
     wrap(f"You pick up {item['name']} and put it in your pack.")
 
+
 def do_inventory():
     """Show the players inventory"""
 
@@ -537,6 +582,7 @@ def do_inventory():
         write(f"(x{qty:>2})  {item['name']}")
 
     print()
+
 
 def do_drop(args):
     """Remove an item from inventory"""
@@ -603,7 +649,10 @@ def do_buy(args):
     price = abs(item["price"])
     if not player_has("gems", price):
         gems = PLAYER["inventory"].get("gems", 0)
-        error(f"Sorry, you can't afford {item['name']} because it costs {price} and you only have {gems}.")
+        error(
+            f"Sorry, you can't afford {item['name']} "
+            f"because it costs {price} and you only have {gems}."
+        )
         return
 
     # remove gems from inventory
@@ -651,6 +700,7 @@ def do_read(args):
     # print the item message
     wrap(item["message"], indent=3)
 
+
 def do_pet(args):
     """Pet dragons"""
 
@@ -673,7 +723,7 @@ def do_pet(args):
     color = args[0].lower()
 
     # make sure they typed in a real color
-    if not color in COLORS:
+    if color not in COLORS:
         error("I don't see a dragon that looks like that.")
         return
 
@@ -769,6 +819,6 @@ def main():
             write("Game over.\n")
             quit()
 
+
 if __name__ == "__main__":
     main()
-

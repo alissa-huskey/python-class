@@ -17,14 +17,13 @@ https://alissa-huskey.github.io/python-class/exercises/adventure.html
 |                                                        |
 +--------------------------------------------------------+
 
-Part 12: Read things
+Part 13: Dragons
 
 """
 
-import re
 import textwrap
 
-from console import fg, bg, fx
+from console import fg, fx
 
 WIDTH = 45
 
@@ -37,6 +36,7 @@ DEBUG = True
 PLAYER = {
     "place": "home",
     "inventory": {"gems": 50},
+    "health": 100,
 }
 
 PLACES = {
@@ -98,6 +98,21 @@ ITEMS = {
         "description": (
             "A hefty leather-bound tome open to an interesting passage."
         ),
+        "title": (
+            "The book is open to a page that reads:"
+        ),
+        "message": (
+            "At the edge of the woods is a cave that is home to a three "
+            "headed dragon, each with a different temperament. ",
+
+            "Legend says that if you happen upon the dragon sleeping, the "
+            "brave may pet one of its three heads. ",
+
+            "Choose the right head and you will be rewarded with great "
+            "fortunes. ",
+
+            "But beware, choose poorly and it will surely mean your doom!",
+        ),
     },
     "gems": {
         "key": "gems",
@@ -110,34 +125,53 @@ ITEMS = {
 
 # ## Message functions #######################################################
 
+
 def header(title):
     """Print a header"""
     print()
     write(fx.bold(title))
     print()
 
-def wrap(text):
-    """Print wrapped and indented text."""
-    margin = MARGIN * " "
 
-    # wrap the text
-    paragraph = textwrap.fill(
-        text,
-        WIDTH,
-        initial_indent=margin,
-        subsequent_indent=margin,
-    )
+def wrap(text, indent=1):
+    """Print wrapped and indented text."""
+
+    # calculate the indentation
+    margin = (MARGIN * " ") * indent
+
+    # if a string was passed, turn it into a single item tuple
+    if isinstance(text, str):
+        text = (text,)
+
+    # make an empty list for the wrapped blocks
+    blocks = []
+
+    # iterate over items
+    for stanza in text:
+
+        # wrap the text
+        paragraph = textwrap.fill(
+            stanza,
+            WIDTH,
+            initial_indent=margin,
+            subsequent_indent=margin,
+        )
+
+        blocks.append(paragraph)
 
     # print the wrapped text
-    print(paragraph)
+    print(*blocks, sep="\n\n")
 
-def write(text):
+
+def write(text, indent=1):
     """Print an indented line of game text."""
     print(MARGIN*" ", text, sep="")
+
 
 def error(message):
     """Print an error message."""
     print(f"{fg.red('! Error')} {message}\n")
+
 
 def debug(message):
     """Print a debug message if in debug mode."""
@@ -145,12 +179,15 @@ def debug(message):
         return
     print(fg.lightblack(f"# {message}"))
 
+
 def abort(message):
     """Print a fatal error message then exit the game."""
     error(message)
     exit(1)
 
+
 # ## Data functions ##########################################################
+
 
 def get_place(key=None):
     """Return the place information from the PLACES dictionary, either
@@ -171,6 +208,7 @@ def get_place(key=None):
 
     return place
 
+
 def get_item(key):
     """Return item information from ITEMS dictionary associated with key. If no
        item is found, print an error message and return None."""
@@ -182,6 +220,19 @@ def get_item(key):
     return item
 
 
+def health_change(amount):
+    """Add the following (positive or negative) amount to health, but limit to 0-100"""
+    PLAYER["health"] += amount
+
+    # don't let health go below zero
+    if PLAYER["health"] < 0:
+        PLAYER["health"] = 0
+
+    # cap health at 100
+    if PLAYER["health"] > 100:
+        PLAYER["health"] = 100
+
+
 def inventory_change(key, quantity=1):
     """Add item to player inventory."""
     PLAYER["inventory"].setdefault(key, 0)
@@ -190,6 +241,7 @@ def inventory_change(key, quantity=1):
     # remove from inventory dictionary if quantity is zero
     if not PLAYER["inventory"][key]:
         PLAYER["inventory"].pop(key)
+
 
 def place_add(key):
     """Add an item to the current place."""
@@ -200,6 +252,7 @@ def place_add(key):
     place.setdefault("items", [])
     if key not in place["items"]:
         place["items"].append(key)
+
 
 def place_remove(key):
     """Remove an item from the current place."""
@@ -212,32 +265,38 @@ def place_remove(key):
 
 # ## Validation functions ####################################################
 
+
 def player_has(key, qty=1):
     """Return True if the player has at least qty item(s) associated with key in
        their inventory."""
     return key in PLAYER["inventory"] and PLAYER["inventory"][key] >= qty
+
 
 def place_has(item):
     """Return True if current place has a particular item."""
     place = get_place()
     return item in place.get("items", [])
 
+
 def place_can(action):
     """Return True if the current place supports a particular action."""
     place = get_place()
     return action in place.get("can", [])
 
+
 def is_for_sale(item):
     """Return True if item is for sale (has a price)."""
     return "price" in item
 
+
 # ## Action functions ########################################################
+
 
 def do_shop():
     """List the items for sale."""
 
     if not place_can("shop"):
-        error(f"Sorry, you can't shop here.")
+        error("Sorry, you can't shop here.")
         return
 
     place = get_place()
@@ -249,14 +308,19 @@ def do_shop():
         if not is_for_sale(item):
             continue
 
-        write(f'{item["name"]:<13}  {item["description"]:<45}  {abs(item["price"]):>2} gems')
+        write(
+            f'{item["name"]:<13}  {item["description"]:<45}  '
+            f'{abs(item["price"]):>2} gems'
+        )
 
     print()
+
 
 def do_quit():
     """Exit the game."""
     write("Ok, goodbye.\n")
     quit()
+
 
 def do_look():
     """Look at the current place"""
@@ -311,6 +375,7 @@ def do_look():
         destination = get_place(name)
         write(f"To the {direction} is {destination['name']}.")
 
+
 def do_examine(args):
     """Look at an item in the current place."""
 
@@ -320,9 +385,6 @@ def do_examine(args):
     if not args:
         error("What do you want to examine?")
         return
-
-    # look up where the player is now
-    place = get_place()
 
     # get the item entered by the user and make it lowercase
     name = args[0].lower()
@@ -349,6 +411,7 @@ def do_examine(args):
         print()
 
     wrap(item["description"])
+
 
 def do_go(args):
     """Move to a different place"""
@@ -389,6 +452,7 @@ def do_go(args):
     header(f"{new_place['name']}")
     wrap(new_place["description"])
 
+
 def do_take(args):
     """Pick up an item and add it to inventory."""
     debug(f"Trying to take: {args}")
@@ -422,6 +486,7 @@ def do_take(args):
 
     wrap(f"You pick up {item['name']} and put it in your pack.")
 
+
 def do_inventory():
     """Show the players inventory"""
 
@@ -438,6 +503,7 @@ def do_inventory():
         write(f"(x{qty:>2})  {item['name']}")
 
     print()
+
 
 def do_drop(args):
     """Remove an item from inventory"""
@@ -504,7 +570,10 @@ def do_buy(args):
     price = abs(item["price"])
     if not player_has("gems", price):
         gems = PLAYER["inventory"].get("gems", 0)
-        error(f"Sorry, you can't afford {item['name']} because it costs {price} and you only have {gems}.")
+        error(
+            f"Sorry, you can't afford {item['name']} "
+            f"because it costs {price} and you only have {gems}."
+        )
         return
 
     # remove gems from inventory
@@ -528,6 +597,30 @@ def do_read(args):
     if not args:
         error("What do you want to read?")
         return
+
+    # get the item entered by the user and make it lowercase
+    name = args[0].lower()
+
+    # make sure the item is in this place or in the players inventory
+    if not (place_has(name) or player_has(name)):
+        error(f"Sorry, I don't know what this is: {name!r}.")
+        return
+
+    # get the item dictionary
+    item = get_item(name)
+
+    # make sure it is an item you can read
+    if "message" not in item:
+        error(f"Sorry, I can't read {name!r}.")
+        return
+
+    # print the item header
+    title = item.get("title", "It reads...")
+    header(title)
+
+    # print the item message
+    wrap(item["message"], indent=3)
+
 
 def main():
     header("Welcome!")
@@ -581,6 +674,11 @@ def main():
         # print a blank line no matter what
         print()
 
+        # exit the game if player has no health
+        if not PLAYER["health"]:
+            write("Game over.\n")
+            quit()
+
+
 if __name__ == "__main__":
     main()
-

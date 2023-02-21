@@ -17,7 +17,7 @@ https://alissa-huskey.github.io/python-class/exercises/adventure.html
 |                                                        |
 +--------------------------------------------------------+
 
-Part 12: Read things
+Part 11: Test Things
 
 """
 
@@ -119,7 +119,6 @@ def header(title):
 def wrap(text):
     """Print wrapped and indented text."""
     margin = MARGIN * " "
-
     # wrap the text
     paragraph = textwrap.fill(
         text,
@@ -518,17 +517,6 @@ def do_buy(args):
 
     wrap(f"You bought {item['name']}.")
 
-
-def do_read(args):
-    """Read an item with a message."""
-
-    debug(f"Trying to read: {args}")
-
-    # make sure the player said what they want to read
-    if not args:
-        error("What do you want to read?")
-        return
-
 def main():
     header("Welcome!")
 
@@ -565,9 +553,6 @@ def main():
         elif command in ("i", "inventory"):
             do_inventory()
 
-        elif command in ("r", "read"):
-            do_read(args)
-
         elif command == "drop":
             do_drop(args)
 
@@ -583,4 +568,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
