@@ -7,7 +7,6 @@ from adventure import (
     debug,
     do_drop,
     do_read,
-    do_pet,
     error,
     header,
     health_change,
@@ -50,23 +49,15 @@ def test_teardown():
 ########### game data test functions
 
 
-@pytest.mark.parametrize(
-    "start, amount, result, message", [
-        (100, -50, 50, "a negative number should be subtracted"),
-        (10, 50, 60, "a positive number should be added"),
-        (90, 20, 100, "the max health should be 100"),
-        (20, -30, 0, "the min health should be 0"),
-    ]
-)
-def test_health_change(start, amount, result, message):
+def test_health_change():
     # GIVEN: The player has some health
-    adventure.PLAYER["health"] = start
+    adventure.PLAYER["health"] = 50
 
     # WHEN: You call health_change()
-    health_change(amount)
+    health_change(10)
 
     # THEN: The player health should be adjusted
-    assert adventure.PLAYER["health"] == result, message
+    assert adventure.PLAYER["health"] == 10
 
 
 def test_is_for_sale():
@@ -368,165 +359,3 @@ def test_do_read_in_inventory(capsys):
 
     assert lines[-1] == "      Your future is uncertain.", \
         "The writing message {message!r} should be indented an extra level."
-
-
-def test_do_pet_no_args(capsys):
-    # GIVEN: any scenerio
-
-    # WHEN: the player types "pet" with no arguments
-    do_pet([])
-    output = capsys.readouterr().out
-
-    # THEN: an error message should be printed
-    assert "What do you want to pet" in output
-
-
-def test_do_pet_no_color(capsys):
-    # GIVEN: any scenerio
-
-    # WHEN: the player types "pet" with only the words "dragon" and/or "head"
-    do_pet(["dragon", "head"])
-    output = capsys.readouterr().out
-
-    # THEN: an error message should be printed
-    assert "What do you want to pet" in output
-
-
-def test_do_pet_cant_pet(capsys):
-    # GIVEN: The player is in a place where they can't pet anything
-    adventure.PLAYER["place"] = "nowhere"
-    adventure.PLACES["nowhere"] = {
-        "name": "The Void",
-        "can": [],
-    }
-
-    # WHEN: They try to pet something
-    do_pet(["red", "dragon"])
-    output = capsys.readouterr().out
-
-    # THEN: An error message should be printed
-    assert "You can't do that" in output
-
-
-def test_do_pet_wrong_color(capsys):
-    # GIVEN: There are three colors of dragon heads
-    adventure.COLORS = ["red", "green", "blue"]
-
-    # AND: The player is in a place where they can pet dragons
-    adventure.PLAYER["place"] = "cave"
-    adventure.PLACES["cave"] = {
-        "name": "A cave",
-        "can": ["pet"],
-    }
-
-    # WHEN: They try to pet a dragon with a color that doesn't exist
-    do_pet(["purple"])
-    output = capsys.readouterr().out
-
-    # THEN: An error message should be printed
-    assert "I don't see a dragon" in output
-
-
-def test_do_pet_cheerful_dragon(capsys):
-    # GIVEN: The player has some amount of coins
-    adventure.PLAYER["inventory"] = {"gems": 10}
-
-    # AND: The player has a certain amount of health
-    adventure.PLAYER["health"] = 90
-
-    # AND: The player is in a place where they can pet a dragon
-    adventure.PLAYER["place"] = "cave"
-    adventure.PLACES["cave"] = {
-        "name": "A cave",
-        "can": ["pet"]
-    }
-
-    # AND: There is a dragon that gives treasure
-    adventure.DRAGONS = {
-        "red": {
-            "mood": "cheerful",
-            "treasure": (10, 10),
-            "message": "likes you and gives you $gems gems.",
-        }
-    }
-
-    # WHEN: the player pets that head
-    do_pet(["red", "dragon"])
-    output = capsys.readouterr().out
-
-    # THEN: The player should get treasure
-    assert adventure.PLAYER["inventory"]["gems"] == 20
-
-    # AND: The player's health should be the same
-    assert adventure.PLAYER["health"] == 90
-
-    # AND: The player should see a message about what happened
-    assert "likes you" in output
-
-
-def test_do_pet_cranky_dragon(capsys):
-    # GIVEN: There is a dragon head that causes damage
-    adventure.DRAGONS = {
-        "red": {
-            "mood": "cranky",
-            "damage": (-10, -10),
-            "message": "pushes you away causing you",
-        }
-    }
-
-    # AND: The player has a certain amount of health
-    adventure.PLAYER["health"] = 100
-
-    # AND: The player has some amount of gems
-    adventure.PLAYER["inventory"] = {"gems": 10}
-
-    # WHEN: The player pets that head
-    do_pet(["red", "head"])
-    output = capsys.readouterr().out
-
-    # THEN: The player's health should be reduced
-    assert adventure.PLAYER["health"] == 90
-
-    # AND: The player's gems should not be changed
-    assert adventure.PLAYER["inventory"]["gems"] == 10
-
-    # AND: The player should see a message about what happened
-    assert "Error" in output
-
-
-def test_do_pet_lonely_dragon(capsys):
-    # GIVEN: There is a dragon head that causes damage and gives treasure
-    adventure.DRAGONS = {
-        "blue": {
-            "mood": "lonely",
-            "damage": (-10, -10),
-            "treasure": (20, 20),
-            "message": "squeezes you",
-        }
-    }
-
-    # AND: The player is in a place where they can pet dragons
-    adventure.PLAYER["place"] = "cave"
-    adventure.PLACES["cave"] = {
-        "name": "A cave",
-        "can": ["pet"]
-    }
-
-    # AND: The player has a certain amount of health
-    adventure.PLAYER["health"] = 100
-
-    # AND: The player has a certain number of gems
-    adventure.PLAYER["gems"] = 10
-
-    # WHEN: The player pets that head
-    do_pet(["blue", "head"])
-    output = capsys.readouterr().out
-
-    # THEN: The player's health should be reduced
-    assert adventure.PLAYER["health"] == 90
-
-    # THEN: The player should get treasure
-    assert adventure.PLAYER["inventory"]["gems"] > 10
-
-    # AND: The player should see a message about what happened
-    assert "squeezes you" in output

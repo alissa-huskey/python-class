@@ -5894,6 +5894,169 @@ notes all over your game!
 
 `````
 
+Part 13: Dragons
+----------------
+
+In this section we'll add the health and dragons.
+
+The `health_change()` function will work very much like the
+`inventory_change()` function.
+
+* it will take one `int` argument, `amount`
+* it will add the `amount` to `PLAYER["health"]` (to subtract, use a negative number)
+* it will check to make sure that `PLAYER["health"]` is not over `100`. if it is, set health to `100`
+* it will check to make sure that `PLAYER["health"]` is not under `0`. if it is, set health to `0`
+
+### Part 13.1: Add `health_change()`
+
+{{ sources.format("13.1") }}
+
+{{ clear }}
+
+In this function we'll add the simple version of the `health_change()`
+function, to simply add to the `PLAYER["health"]`.
+
+#### A. in `test_game.py` write `test_health_change()`
+
+Write the failing `test_health_change()`. The test at this point should just
+test that the `amount` argument is added to the players current health.
+
+`````{dropdown} Need help?
+1. `[ ]` Import `health_change`
+2. `[ ]` Add the function `test_health_change()`
+3. `[ ]` Set `PLAYER["health"]` to a positive number between `1` - `100`
+4. `[ ]` Call `health_change()` with an argument of a positive number
+5. `[ ]` assert that `PLAYER["health"]` is now correct
+6. `[ ]` Run your test. It should fail.
+
+`````
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/test_game-13.1.py
+:linenos:
+:lineno-match:
+:start-at: "from adventure import"
+:end-at: ")"
+:class: full-width
+:emphasize-lines: "7"
+
+```
+
+```{literalinclude} ../../pythonclass/adventure/test_game-13.1.py
+:linenos:
+:lineno-match:
+:start-at: "def test_health_change("
+:end-before: def
+:class: full-width
+
+```
+`````
+
+#### B. in `adventure.py` write `health_change()`
+
+Write the simple `health_change()` function. It should take one argument
+`amount` and add that value to `PLAYER["health"]`.
+
+`````{dropdown} Need help?
+1. `[ ]` Add the function `health_change()` with one argument `amount`
+2. `[ ]` Add `amount` to `PLAYER["health"]`
+3. `[ ]` Run your tests. They should now pass.
+
+`````
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/adventure-13.1.py
+:linenos:
+:lineno-match:
+:start-at: "def health_change("
+:end-before: "def"
+:class: full-width
+
+```
+
+`````
+
+### Part 13.2: Parameratize the test
+
+{{ sources.format("13.2") }}
+
+{{ clear }}
+
+In this section we'll modify the `test_health_change()` function to use
+parametrization. This allows us to use the same test for several different
+cases by changing a few values in the test to variables.
+
+### A. Parameratize test_health_change()
+
+1. `[ ]` Make the starting `PLAYER["health"]` value (in the GIVEN section) a variable `start`.
+2. `[ ]` Make the argument passed to `health_change()` (in the WHEN section) a variable `amount`
+3. `[ ]` Make the final `PLAYER["health"]` value (in the THEN section) a variable `result`
+4. `[ ]` Make (or add) the assert message (in the THEN section) a variable `message`
+    * `[ ]` If you didn't already have an assert message, it should be
+            similar to what was in your `THEN` description. ie:
+            `"a positive number should be added to player health"`
+5. `[ ]` Add the names of all four variables in order as parameters to the
+         `test_health_change()` function
+6. `[ ]` Immediately above `def` line call `@pytest.mark.parametrize()` with the following arguments:
+    * `[ ]` The first argument should be a string containing the name of all four variables in the same order as above0
+    * `[ ]` The second argument should be a list of tuples (put each tuple on its own line)
+    * `[ ]` The first tuple should contain all of the values that were in
+            your test before you changed them to variables, in the same order as above.
+7. `[ ]` Run your test. It should pass.
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/test_game-13.2.py
+:linenos:
+:lineno-match:
+:start-at: "@pytest.mark.parametrize"
+:end-before: "a negative number"
+:class: full-width
+
+```
+
+```{literalinclude} ../../pythonclass/adventure/test_game-13.2.py
+:linenos:
+:lineno-match:
+:start-after: "a negative number should be subtracted"
+:end-before: "def test_is_for_sale"
+:class: full-width
+
+```
+
+`````
+
+### B. Add another set of test parameters
+
+Where we would usually write a new test like `test_health_change_subtract()` to
+ensure a negative number subtracts from `PLAYER["health"]`, now we are just
+going to add a new tuple to the list passed to `@pytest.mark.parametrize()`.
+
+1. `[ ]` Add a new tuple to your `@pytest.mark.parametrize()` list that contains the values:
+   * `[ ]` A positive number for `start`
+   * `[ ]` A negative number for `amount`
+   * `[ ]` The result of subtracting `amount` from `start` for `result`
+   * `[ ]` A string describing the test case for `message` like:
+           `"a negative number should be subtractracted from player health"`
+1. `[ ]` Run your test. It should pass.
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/test_game-13.2.py
+:linenos:
+:lineno-match:
+:start-at: "@pytest.mark.parametrize"
+:end-before: "def test_is_for_sale"
+:emphasize-lines: "4"
+:class: full-width
+
+```
+
+`````
+
+
 Reference
 ---------
 
