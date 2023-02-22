@@ -36,6 +36,7 @@ DEBUG = True
 PLAYER = {
     "place": "home",
     "inventory": {"gems": 50},
+    "health": 100,
 }
 
 PLACES = {
@@ -672,6 +673,11 @@ def main():
 
         # print a blank line no matter what
         print()
+
+        # exit the game if player has no health
+        if not PLAYER["health"]:
+            write("Game over.\n")
+            quit()
 
 
 if __name__ == "__main__":

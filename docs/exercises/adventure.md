@@ -5991,7 +5991,7 @@ In this section we'll modify the `test_health_change()` function to use
 parametrization. This allows us to use the same test for several different
 cases by changing a few values in the test to variables.
 
-### A. Parameratize test_health_change()
+#### A. Parameratize test_health_change()
 
 1. `[ ]` Make the starting `PLAYER["health"]` value (in the GIVEN section) a variable `start`.
 2. `[ ]` Make the argument passed to `health_change()` (in the WHEN section) a variable `amount`
@@ -6033,7 +6033,7 @@ cases by changing a few values in the test to variables.
 
 `````
 
-### B. Add another set of test parameters
+#### B. Add another set of test parameters
 
 Where we would usually write a new test like `test_health_change_subtract()` to
 ensure a negative number subtracts from `PLAYER["health"]`, now we are just
@@ -6062,13 +6062,12 @@ going to add a new tuple to the list passed to `@pytest.mark.parametrize()`.
 
 `````
 
-Part 13.3: Add health limits
-----------------------------
+### Part 13.3: Add health limits
 
 In this section we're going to change the `health_change()` function so that
 `PLAYER["health"]` is always between `0` and `100`.
 
-### A. Add test case for health <= 0
+#### A. Add test case for health <= 0
 
 1. `[ ]` Add a new tuple to your `@pytest.mark.parametrize()` list that contains the values:
    * `[ ]` A positive number for `start`
@@ -6093,7 +6092,7 @@ In this section we're going to change the `health_change()` function so that
 
 `````
 
-### B. Modify `health_change()`
+#### B. Modify `health_change()`
 
 1. `[ ]` Check if `PLAYER["health"]` is less than zero
     * `[ ]` if so, set `PLAYER["health"]` to zero
@@ -6114,7 +6113,7 @@ In this section we're going to change the `health_change()` function so that
 
 `````
 
-### C. Add test case for health >= 100
+#### C. Add test case for health >= 100
 
 1. `[ ]` Add a new tuple to your `@pytest.mark.parametrize()` list that contains the values:
    * `[ ]` A positive number for `start`
@@ -6122,7 +6121,7 @@ In this section we're going to change the `health_change()` function so that
    * `[ ]` The number `100` for `amount`
    * `[ ]` A string describing the test case for `message` like:
            `"the max health should be 100"`
-1. `[ ]` Run your test. It should fail.
+2. `[ ]` Run your test. It should fail.
 
 `````{dropdown} Code
 
@@ -6139,7 +6138,7 @@ In this section we're going to change the `health_change()` function so that
 
 `````
 
-### D. Modify `health_change()`
+#### D. Modify `health_change()`
 
 1. `[ ]` Check if `PLAYER["health"]` is greater than `100`
     * `[ ]` if so, set `PLAYER["health"]` to `100`
@@ -6153,6 +6152,49 @@ In this section we're going to change the `health_change()` function so that
 :start-at: "def health_change"
 :end-before: "def"
 :emphasize-lines: "9-11"
+:class: full-width
+:caption: adventure.py
+
+```
+
+`````
+
+### Part 13.4: Finishing touches
+
+In this section we'll add a couple of finishing touches to the game.
+
+#### A. Add `PLAYER["health"]`
+
+1. `[ ]` Add a `"health"` key to the `PLAYER` dictionary with a value of `100`
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/adventure-13.4.py
+:linenos:
+:lineno-match:
+:start-at: "PLAYER ="
+:end-before: "PLACES"
+:emphasize-lines: "4"
+:class: full-width
+:caption: adventure.py
+
+```
+
+`````
+
+#### B. In `main()`
+
+1. `[ ]` At the very end of the `main()` function, check to make sure that the player still has health
+2. `[ ]` If not print something like `"Game over"` and call `quit()`
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/adventure-13.4.py
+:linenos:
+:lineno-match:
+:start-at: "def main"
+:end-before: "if __name__"
+:emphasize-lines: "53-"
 :class: full-width
 :caption: adventure.py
 

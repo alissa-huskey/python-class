@@ -36,7 +36,6 @@ DEBUG = True
 PLAYER = {
     "place": "home",
     "inventory": {"gems": 50},
-    "health": 100,
 }
 
 PLACES = {

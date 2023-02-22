@@ -17,11 +17,13 @@ https://alissa-huskey.github.io/python-class/exercises/adventure.html
 |                                                        |
 +--------------------------------------------------------+
 
-Part 13: Health
+Part 14: Dragons
 
 """
 
+import random
 import textwrap
+from string import Template
 
 from console import fg, fx
 
@@ -33,9 +35,41 @@ DEBUG = True
 
 # ## Game World Data #########################################################
 
+COLORS = ("red", "black", "silver")
+
+MOODS = [
+    {
+        "mood": "cheerful",
+        "treasure": (3, 15),
+        "message": "thinks you're adorable! He gives you $gems gems!"
+    },
+    {
+        "mood": "grumpy",
+        "damage": (-15, -3),
+        "message": (
+            "wants to be left alone. The heat from his mighty sigh "
+            "singes your hair, costing you $damage in health."
+        ),
+    },
+    {
+        "mood": "lonely",
+        "treasure": (8, 25),
+        "damage": (-25, -8),
+        "message": (
+            "is just SO happy to see you! He gives you a whopping "
+            "$amount gems! Then he hugs you, squeezes you, and calls "
+            "you George... costing you $damage in health."
+        )
+    },
+]
+
+# placeholder -- maps colors to dragons
+DRAGONS = {}
+
 PLAYER = {
     "place": "home",
     "inventory": {"gems": 50},
+    "health": 100,
 }
 
 PLACES = {
@@ -50,6 +84,7 @@ PLACES = {
         "key": "town-square",
         "name": "The Town Square",
         "west": "home",
+        "east": "woods",
         "north": "market",
         "description": (
             "A large open space surrounded by buildings with a burbling "
@@ -66,6 +101,51 @@ PLACES = {
             "A tidy store with shelves full of goods to buy. A wooden hand "
             "painted menu hangs on the wall."
         ),
+    },
+    "woods": {
+        "key": "woods",
+        "name": "The Woods",
+        "east": "hill",
+        "west": "town-square",
+        "description": (
+            "A dirt road meanders under a canopy of autumn leaves in brilliant "
+            "hues of gold and crimson.",
+
+            "You hear a stream burbling somewhere out of sight. Leaves crunch "
+            "under your feet on the sun dappled forest floor.",
+
+            "You see an ancient moss-covered hollow tree, its gnarled and twisted "
+            "branches looming over you. On the opposite side, a fallen log juts "
+            "partway into the road.",
+        ),
+        "items": [],
+    },
+    "hill": {
+        "key": "hill",
+        "name": "A grassy hill",
+        "west": "woods",
+        "south": "cave",
+        "description": (
+            "A winding path leads up the slope of a grassy hill. The air is "
+            "warm here.",
+            "At the top of the hill, you see that the path continues to the "
+            "down to the south. In that direction you can make out a cave by "
+            "the shore of a lake."
+        ),
+        "items": [],
+    },
+    "cave": {
+        "key": "cave",
+        "name": "A cave",
+        "north": "hill",
+        "description": (
+            "Your footsteps echo as you step into the vast cavern.",
+            "Shafts of sunlight slice through the gloom, playing against the "
+            "landscape of glittering treasure.",
+            "Resting atop a mound of gold, a collosal dragon rests curled up snugly. "
+            "Its three enormous heads snore softly, each in turn.",
+        ),
+        "items": [],
     },
 }
 
@@ -219,7 +299,7 @@ def get_item(key):
     return item
 
 
-def health_change(amount: int):
+def health_change(amount):
     """Add the following (positive or negative) amount to health, but limit to 0-100"""
     PLAYER["health"] += amount
 
@@ -621,6 +701,67 @@ def do_read(args):
     wrap(item["message"], indent=3)
 
 
+def do_pet(args):
+    """Pet dragons"""
+
+    debug(f"Trying to pet: {args}")
+
+    # make sure they are somewhere they can pet dragons
+    if not place_can("pet"):
+        error("You can't do that here.")
+
+    # remove the expected words from args
+    for word in ["dragon", "head"]:
+        if word in args:
+            args.remove(word)
+
+    # make sure the player said what they want to pet
+    if not args:
+        error("What do you want to pet?")
+        return
+
+    color = args[0].lower()
+
+    # make sure they typed in a real color
+    if color not in COLORS:
+        error("I don't see a dragon that looks like that.")
+        return
+
+    # generate the DRAGONS dict and randomly assign each color to a dragon
+    global DRAGONS
+    if not DRAGONS:
+        random.shuffle(COLORS)
+        DRAGONS = dict(zip(COLORS, MOODS))
+
+    # get the dragon info for this color
+    dragon = DRAGONS[color]
+    dragon["color"] = color
+
+    # calculate the treasure
+    possible_treasure = dragon.get("treasure", (0, 0))
+    dragon["gems"] = random.randint(*possible_treasure)
+
+    # calculate the damage
+    possible_damage = dragon.get("damage", (0, 0))
+    dragon["damage"] = random.randint(*possible_damage)
+
+    # add the treasure to the players inventory
+    if dragon["gems"]:
+        inventory_change("gems", dragon["gems"])
+
+    # remove health
+    if dragon["damage"]:
+        health_change(dragon["damage"])
+
+    # generate the message
+    tpl = Template(f'The $mood $color dragon {dragon["message"]}')
+    text = tpl.safe_substitute(dragon)
+    write(text)
+
+    # reset the DRAGONS dict
+    DRAGONS = {}
+
+
 def main():
     header("Welcome!")
 
@@ -672,6 +813,11 @@ def main():
 
         # print a blank line no matter what
         print()
+
+        # exit the game if player has no health
+        if not PLAYER["health"]:
+            write("Game over.\n")
+            quit()
 
 
 if __name__ == "__main__":
