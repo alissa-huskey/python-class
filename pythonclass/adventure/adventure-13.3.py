@@ -31,6 +31,8 @@ MARGIN = 2
 
 DEBUG = True
 
+MAX_HEALTH = 100
+
 # ## Game World Data #########################################################
 
 PLAYER = {
@@ -227,9 +229,9 @@ def health_change(amount: int):
     if PLAYER["health"] < 0:
         PLAYER["health"] = 0
 
-    # cap health at 100
-    if PLAYER["health"] > 100:
-        PLAYER["health"] = 100
+    # cap health
+    if PLAYER["health"] > MAX_HEALTH:
+        PLAYER["health"] = MAX_HEALTH
 
 
 def inventory_change(key, quantity=1):

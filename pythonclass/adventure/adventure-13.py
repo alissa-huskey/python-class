@@ -242,7 +242,7 @@ def health_change(amount: int):
     if PLAYER["health"] < 0:
         PLAYER["health"] = 0
 
-    # cap health at 100
+    # cap health
     if PLAYER["health"] > MAX_HEALTH:
         PLAYER["health"] = MAX_HEALTH
 
