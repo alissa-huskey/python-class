@@ -17,7 +17,7 @@ https://alissa-huskey.github.io/python-class/exercises/adventure.html
 |                                                        |
 +--------------------------------------------------------+
 
-Part 13: Dragons
+Part 13: Health
 
 """
 

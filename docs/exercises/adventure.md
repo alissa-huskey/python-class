@@ -5894,10 +5894,10 @@ notes all over your game!
 
 `````
 
-Part 13: Dragons
+Part 13: Health
 ----------------
 
-In this section we'll add the health and dragons.
+In this section we'll add the health.
 
 The `health_change()` function will work very much like the
 `inventory_change()` function.
@@ -5940,6 +5940,7 @@ test that the `amount` argument is added to the players current health.
 :end-at: ")"
 :class: full-width
 :emphasize-lines: "7"
+:caption: test_game.py
 
 ```
 
@@ -5949,6 +5950,7 @@ test that the `amount` argument is added to the players current health.
 :start-at: "def test_health_change("
 :end-before: def
 :class: full-width
+:caption: test_game.py
 
 ```
 `````
@@ -5973,6 +5975,7 @@ Write the simple `health_change()` function. It should take one argument
 :start-at: "def health_change("
 :end-before: "def"
 :class: full-width
+:caption: adventure.py
 
 ```
 
@@ -6014,6 +6017,7 @@ cases by changing a few values in the test to variables.
 :start-at: "@pytest.mark.parametrize"
 :end-before: "a negative number"
 :class: full-width
+:caption: test_game.py
 
 ```
 
@@ -6023,6 +6027,7 @@ cases by changing a few values in the test to variables.
 :start-after: "a negative number should be subtracted"
 :end-before: "def test_is_for_sale"
 :class: full-width
+:caption: test_game.py
 
 ```
 
@@ -6051,10 +6056,110 @@ going to add a new tuple to the list passed to `@pytest.mark.parametrize()`.
 :end-before: "def test_is_for_sale"
 :emphasize-lines: "4"
 :class: full-width
+:caption: test_game.py
 
 ```
 
 `````
+
+Part 13.3: Add health limits
+----------------------------
+
+In this section we're going to change the `health_change()` function so that
+`PLAYER["health"]` is always between `0` and `100`.
+
+### A. Add test case for health <= 0
+
+1. `[ ]` Add a new tuple to your `@pytest.mark.parametrize()` list that contains the values:
+   * `[ ]` A positive number for `start`
+   * `[ ]` A negative number for `amount` where the absolute value is greater than `start`
+   * `[ ]` The number `0` for `amount`
+   * `[ ]` A string describing the test case for `message` like:
+           `"the min health should be 0"`
+1. `[ ]` Run your test. It should fail.
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/test_game-13.3.py
+:linenos:
+:lineno-match:
+:start-at: "@pytest.mark.parametrize"
+:end-at: "the min health should be 0"
+:emphasize-lines: "5"
+:class: full-width
+:caption: test_game.py
+
+```
+
+`````
+
+### B. Modify `health_change()`
+
+1. `[ ]` Check if `PLAYER["health"]` is less than zero
+    * `[ ]` if so, set `PLAYER["health"]` to zero
+2. `[ ]` Run your tests. They should pass
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/adventure-13.3.py
+:linenos:
+:lineno-match:
+:start-at: "def health_change"
+:end-before: "cap health at 100"
+:emphasize-lines: "5-7"
+:class: full-width
+:caption: adventure.py
+
+```
+
+`````
+
+### C. Add test case for health >= 100
+
+1. `[ ]` Add a new tuple to your `@pytest.mark.parametrize()` list that contains the values:
+   * `[ ]` A positive number for `start`
+   * `[ ]` A positive number for `amount` that, when added to `start` will be greater than `100`
+   * `[ ]` The number `100` for `amount`
+   * `[ ]` A string describing the test case for `message` like:
+           `"the max health should be 100"`
+1. `[ ]` Run your test. It should fail.
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/test_game-13.3.py
+:linenos:
+:lineno-match:
+:start-at: "@pytest.mark.parametrize"
+:end-at: "def test_"
+:emphasize-lines: "6"
+:class: full-width
+:caption: test_game.py
+
+```
+
+`````
+
+### D. Modify `health_change()`
+
+1. `[ ]` Check if `PLAYER["health"]` is greater than `100`
+    * `[ ]` if so, set `PLAYER["health"]` to `100`
+2. `[ ]` Run your tests. They should pass
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/adventure-13.3.py
+:linenos:
+:lineno-match:
+:start-at: "def health_change"
+:end-before: "def"
+:emphasize-lines: "9-11"
+:class: full-width
+:caption: adventure.py
+
+```
+
+`````
+
 
 
 Reference

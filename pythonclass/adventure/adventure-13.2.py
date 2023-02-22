@@ -17,7 +17,7 @@ https://alissa-huskey.github.io/python-class/exercises/adventure.html
 |                                                        |
 +--------------------------------------------------------+
 
-Part 13: Dragons
+Part 13: Health
 
 """
 
@@ -223,6 +223,7 @@ def get_item(key):
 def health_change(amount: int):
     """Add the following (positive or negative) amount to health, but limit to 0-100"""
     PLAYER["health"] += amount
+
 
 def inventory_change(key, quantity=1):
     """Add item to player inventory."""

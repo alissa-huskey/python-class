@@ -1,0 +1,28 @@
+#!/usr/bin/env zsh
+#
+# bump -- make a new version of adventure.py and test_game.py
+#
+
+autoload -U zmv
+
+main() {
+  local file="${1:-adventure}" current version major minor bumped
+
+
+  [[ "$file" == "test" ]] && file="test_game"
+
+  current="$(readlink -f "adventure.py")"
+
+  version="${current##*-}"     # x.y.py
+  version="${version%.py}"     # x.y
+  major="${version%.*}"        # x
+  minor="${version#*.}"        # y
+  bumped=$((minor+1))
+
+  # echo "major: $major, minor: $minor, bumped: $bumped"
+
+  zmv -CW 'pythonclass/adventure/*'"-${major}.${minor}.py" 'pythonclass/adventure/*'"-${major}.${bumped}.py"
+  tools/lnk "${major}.${bumped}"
+}
+
+main ${1:="$@"}
