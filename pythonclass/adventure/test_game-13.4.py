@@ -17,6 +17,7 @@ from adventure import (
     place_add,
     wrap,
     write,
+    MAX_HEALTH,
 )
 
 
@@ -54,7 +55,7 @@ def test_teardown():
         (50, 10, 60, "a positive number should be added"),
         (50, -10, 40, "a negative number should be subtracted"),
         (20, -30, 0, "the min health should be 0"),
-        (90, 20, 100, "the max health should be 100"),
+        (90, 20, MAX_HEALTH, f"the max health should be {MAX_HEALTH}"),
     ]
 )
 def test_health_change(start, amount, result, message):

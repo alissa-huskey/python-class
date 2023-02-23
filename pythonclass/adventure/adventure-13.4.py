@@ -24,6 +24,7 @@ Part 13: Health
 import textwrap
 
 from console import fg, fx
+from console.progress import ProgressBar
 
 WIDTH = 45
 
@@ -31,12 +32,20 @@ MARGIN = 2
 
 DEBUG = True
 
+MAX_HEALTH = 100
+
+BAR = ProgressBar(
+    total=100.1,
+    width=WIDTH - len("Health") - 5,
+    clear_left=False,
+)
+
 # ## Game World Data #########################################################
 
 PLAYER = {
     "place": "home",
     "inventory": {"gems": 50},
-    "health": 100,
+    "health": MAX_HEALTH,
 }
 
 PLACES = {
@@ -186,6 +195,12 @@ def abort(message):
     exit(1)
 
 
+def health_bar(progress):
+    """Print a progress bar"""
+    print()
+    write(f"Health {BAR(progress)}  ")
+
+
 # ## Data functions ##########################################################
 
 
@@ -228,9 +243,9 @@ def health_change(amount: int):
     if PLAYER["health"] < 0:
         PLAYER["health"] = 0
 
-    # cap health at 100
-    if PLAYER["health"] > 100:
-        PLAYER["health"] = 100
+    # cap health
+    if PLAYER["health"] > MAX_HEALTH:
+        PLAYER["health"] = MAX_HEALTH
 
 
 def inventory_change(key, quantity=1):
@@ -491,6 +506,8 @@ def do_inventory():
     """Show the players inventory"""
 
     debug("Trying to show inventory.")
+
+    health_bar(PLAYER["health"])
 
     header("Inventory")
 
