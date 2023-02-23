@@ -5256,7 +5256,7 @@ will read it.
 
 {{ left }}
 
-In this section we'll write a new test where we'll set up a fake item with 
+In this section we'll write a new test where we'll set up a fake item with
 `"message"` and `"title"` keys containing the text to be read and add it to the
 current place. Then we'll call `do_read()`and check for the expected output.
 
@@ -6123,7 +6123,7 @@ In this section we're going to change the `health_change()` function so that
 :linenos:
 :lineno-match:
 :start-at: "import"
-:end-at: "# Game World Data"
+:end-before: "# Game World Data"
 :emphasize-lines: 11
 :class: full-width
 :caption: adventure.py
@@ -6191,9 +6191,10 @@ In this section we're going to change the `health_change()` function so that
 
 `````
 
-### Part 13.4: Finishing touches
+### Part 13.4: UX Changes
 
-In this section we'll add a couple of finishing touches to the game.
+In this section we'll add a few changes to integrate health with the game
+itself.
 
 #### A. Add `PLAYER["health"]`
 
@@ -6214,7 +6215,95 @@ In this section we'll add a couple of finishing touches to the game.
 
 `````
 
-#### B. In `main()`
+#### B. Add ProgressBar
+
+`````{margin}
+
+```{seealso}
+
+* [Console Docs](https://mixmastamyk.bitbucket.io/console/additional.html#progress-bars)
+
+```
+
+`````
+
+In this section we'll the progress bar feature of the
+[console](https://github.com/mixmastamyk/console) library.
+
+1. `[ ]` Import `ProgressBar` from `console.progress`
+2. `[ ]` Create a new global variable `BAR` and set it to a new `ProgressBar`
+         object. Send the keyword arguments to the constructor:
+   * `[ ]` `total`     : `100.1`
+   * `[ ]` `clear_left`: `False`
+   * `[ ]` `width`     : `WIDTH - len("Health") - 5`
+
+
+:::{note}
+
+* I use `100.1` for `total` to prevent the progress bar from changing to a
+  dimmed completed style when health is at `100`.
+* I set `clear_left` to `False` to prevet it from removing indentation and
+  `"Health"` text.
+
+:::
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/adventure-13.4.py
+:linenos:
+:lineno-match:
+:start-at: "import"
+:end-before: "# Game World Data"
+:emphasize-lines: "4, 14-18"
+:class: full-width
+:caption: adventure.py
+
+```
+
+`````
+
+#### C. Add function `health_bar()`
+
+1. `[ ]` Write a function `health_bar()` that takes one argument `progress`
+2. `[ ]` In use the `write()` command to print:
+    * `[ ]` `"Health"`
+    * `[ ]` the value returned when you call `BAR()` and pass the argument `progress`
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/adventure-13.4.py
+:linenos:
+:lineno-match:
+:start-at: "def health_bar"
+:end-before: "# Data functions"
+:class: full-width
+:caption: adventure.py
+
+```
+
+`````
+
+#### D. Add health bar to inventory command
+
+1. `[ ]` At the beginning of `do_inventory()` call `health_bar()` and pass the argument `PLAYER["health"]`
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/adventure-13.4.py
+:linenos:
+:lineno-match:
+:start-at: "def do_inventory"
+:end-before: "def"
+:emphasize-lines: 6
+:class: full-width
+:caption: adventure.py
+
+```
+
+`````
+
+
+#### E. In `main()`
 
 1. `[ ]` At the very end of the `main()` function, check to make sure that the player still has health
 2. `[ ]` If not print something like `"Game over"` and call `quit()`

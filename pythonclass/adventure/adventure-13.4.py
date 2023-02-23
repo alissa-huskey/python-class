@@ -24,6 +24,7 @@ Part 13: Health
 import textwrap
 
 from console import fg, fx
+from console.progress import ProgressBar
 
 WIDTH = 45
 
@@ -32,6 +33,12 @@ MARGIN = 2
 DEBUG = True
 
 MAX_HEALTH = 100
+
+BAR = ProgressBar(
+    total=100.1,
+    width=WIDTH - len("Health") - 5,
+    clear_left=False,
+)
 
 # ## Game World Data #########################################################
 
@@ -186,6 +193,12 @@ def abort(message):
     """Print a fatal error message then exit the game."""
     error(message)
     exit(1)
+
+
+def health_bar(progress):
+    """Print a progress bar"""
+    print()
+    write(f"Health {BAR(progress)}  ")
 
 
 # ## Data functions ##########################################################
@@ -493,6 +506,8 @@ def do_inventory():
     """Show the players inventory"""
 
     debug("Trying to show inventory.")
+
+    health_bar(PLAYER["health"])
 
     header("Inventory")
 
