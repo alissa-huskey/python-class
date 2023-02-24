@@ -995,7 +995,7 @@ most useful to make you more productive.
 
 :::
 
-:::{admonition}Tips and Reminders
+:::{admonition} Tips and Reminders
 
 :class: tip
 

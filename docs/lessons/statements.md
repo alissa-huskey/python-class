@@ -264,7 +264,13 @@ A function call may or may not be an expression. But a function call on a line
 by itself is always a valid statement, since it causes the statements inside
 the function to be executed.
 
-````{panels}
+:::::{grid} 2
+:gutter: 3
+:class-row: p-3
+
+:::{grid-item-card}
+:shadow: md
+
 Expressions
 ^^^
 evaluated
@@ -279,7 +285,10 @@ can contain expressions
 
 cannot contain statements
 
----
+:::
+
+:::{grid-item-card}
+:shadow: md
 
 Statements
 ^^^
@@ -296,7 +305,10 @@ can contain expressions
 
 contain statements when compound
 
----
+:::
+
+:::{grid-item-card}
+:shadow: md
 
 Expressions
 ^^^
@@ -310,7 +322,10 @@ include:
 may include:
 - function calls
 
----
+:::
+
+:::{grid-item-card}
+:shadow: md
 
 Statements
 ^^^
@@ -320,8 +335,10 @@ include:
 - function calls
 - lines that start with non-operator keywords
 
+:::
 
----
+:::{grid-item-card}
+:shadow: md
 
 Expressions
 ^^^
@@ -355,7 +372,11 @@ num % 2 == 0
 ```python
 is_even(1)
 ```
----
+
+:::
+
+:::{grid-item-card}
+:shadow: md
 
 Statements
 ^^^
@@ -387,7 +408,10 @@ def is_even(num):
 ```python
 is_even(1)
 ```
-````
+
+:::
+
+:::::
 
 
 

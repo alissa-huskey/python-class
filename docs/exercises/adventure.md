@@ -3,9 +3,27 @@ substitutions:
   left:  '{{ leftcol | replace("col", "col-5") }}'
   right: '{{ rightcol | replace("col", "col-7") }}'
   icon: '{opticon}`file-code`'
-  source: '{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/%s," %s",type=link, cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`'
-  code: '{{link-badge}}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/{0}," {1}",type=link, cls=badge-info text-white fa fa-file-code float-right font-bold p-2 header-link`'
-  sources: '{{{{ code.format("adventure-{0}.py", "adventure.py") }}}} {{{{ code.format("test_game-{0}.py", "test_game.py") }}}}'
+
+  # green "source code" badge linking to my github
+  # usage: {{ source | format("filename.py") }}
+  source: |
+    ```{div} float-right
+      {bdg-link-success}`source code <https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/%s>`
+    ```
+  # green badge linking to my github with configurable name
+  # note: double curley braces make one literal brace (for .format())
+  # usage: {{{{ code.format("filename.py", "text" }}}}
+  code: |
+    {{bdg-link-info-line}}`{0}.py <https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/{0}-{1}.py>`
+
+  # two green badges, one for adventure-VERSION.py and one for test_game-VERSION.py
+  # usage: {{ sources.format("VERSION") }}
+  # note: double curley braces make one literal brace (for .format())
+  sources: |
+    ```{{div}} float-right
+    {{{{ code.format("adventure", {0}) }}}} {{{{ code.format("test_game", {0}) }}}}
+    ```
+
 
 jupytext:
   formats: md:myst
@@ -64,7 +82,7 @@ repo for it, if you're comfortable with git.)
 
 ### Part 1.2: The main() function
 
-{{ source | format("adventure-1.2.py", "source code") }}
+{{ source | format("adventure-1.2.py") }}
 
 {{ clear }}
 
@@ -91,7 +109,6 @@ repo for it, if you're comfortable with git.)
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-1.2.py
-:class: full-width
 :linenos:
 ```
 
@@ -102,7 +119,7 @@ repo for it, if you're comfortable with git.)
 
 ### Part 1.3: Your first command: quit
 
-{{ source | format("adventure-1.3.py", "source code") }}
+{{ source | format("adventure-1.3.py") }}
 
 {{ clear }}
 
@@ -116,12 +133,6 @@ command: the `quit` command.
 1. `[ ]` Make a `do_quit()` function.
 1. `[ ]` In it, print `"Goodbye."`
 1. `[ ]` Then call `quit()`
-
-#### B. In main(), in the while loop:
-
-1. `[ ]` After getting `reply`, check if `reply` is equal to `q` or `quit`.
-1. `[ ]` If so, call `do_quit()`
-1. `[ ]` Otherwise, print a messsage like: `"No such command."` then `continue`
 
 {{ right }}
 
@@ -137,10 +148,15 @@ command: the `quit` command.
 
 {{ endcols }}
 
+#### B. In main(), in the while loop:
+
+1. `[ ]` After getting `reply`, check if `reply` is equal to `q` or `quit`.
+1. `[ ]` If so, call `do_quit()`
+1. `[ ]` Otherwise, print a messsage like: `"No such command."` then `continue`
+
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-1.3.py
-:class: full-width
 :linenos:
 :emphasize-lines: "5-9, 16-21"
 
@@ -150,7 +166,7 @@ command: the `quit` command.
 
 ### Part 1.4 Create `ITEMS`
 
-{{ source | format("adventure-1.4.py", "source code") }}
+{{ source | format("adventure-1.4.py") }}
 
 {{ clear }}
 
@@ -203,7 +219,7 @@ ITEMS = {
 
 ### Part 1.5: Make `do_shop()` function
 
-{{ source | format("adventure-1.5.py", "source code") }}
+{{ source | format("adventure-1.5.py") }}
 
 {{ clear }}
 
@@ -295,7 +311,7 @@ https://alissa-huskey.github.io/python-class/exercises/adventure.html
 
 ### Part 2.1: Split reply into command and arguments
 
-{{ source | format("adventure-2.1.py", "source code") }}
+{{ source | format("adventure-2.1.py") }}
 
 {{ clear }}
 
@@ -365,7 +381,7 @@ the command, and `north` is the direction.
 
 ### Part 2.2: Create PLAYER and PLACES
 
-{{ source | format("adventure-2.2.py", "source code") }}
+{{ source | format("adventure-2.2.py") }}
 
 {{ clear }}
 
@@ -392,7 +408,6 @@ Here is an example:
 
 ```{code-block-hl} python
 :name: places-direction-to-place
-:class: full-width
 
 PLACES = {
     "home": {
@@ -417,7 +432,6 @@ For example, going `"east"` from `"home"` is the `"town-square"`.
 {{ left }}
 
 ```{code-block-hl} python
-:class: full-width
 
 PLACES = {
     "home": {
@@ -438,7 +452,6 @@ PLACES = {
 {{ right }}
 
 ```{code-block-hl} python
-:class: full-width
 
 PLACES = {
     "home": {
@@ -465,7 +478,6 @@ Likewise, going `"west"` from the `"town-square"` is `"home"`.
 {{ left }}
 
 ```{code-block-hl} python
-:class: full-width
 
 PLACES = {
     "home": {
@@ -486,7 +498,6 @@ PLACES = {
 {{ right }}
 
 ```{code-block-hl} python
-:class: full-width
 
 PLACES = {
     !!!"home"!!!: {
@@ -516,7 +527,6 @@ from one place to another.
 {{ left }}
 
 ```{code-block-hl} python
-:class: full-width
 :name: player-to-places
 
 PLAYER = {
@@ -527,7 +537,6 @@ PLAYER = {
 {{ right }}
 
 ```{code-block-hl} python
-:class: full-width
 
 PLACES = {
     !!!"home"!!!: {
@@ -567,7 +576,7 @@ PLACES = {
 
 ### Part 2.3: Write message functions
 
-{{ source | format("adventure-2.3.py", "source code") }}
+{{ source | format("adventure-2.3.py") }}
 
 {{ clear }}
 
@@ -672,7 +681,6 @@ We'll also add a `error()` function which will print an error message.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-2.3.py
-:class: full-width
 :linenos:
 :lines: "69-71"
 :lineno-match:
@@ -696,7 +704,6 @@ We'll also add a `error()` function which will print an error message.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-2.3.py
-:class: full-width
 :linenos:
 :lines: "73-101"
 :lineno-match:
@@ -711,7 +718,7 @@ We'll also add a `error()` function which will print an error message.
 
 ### Part 2.4: Fill in `go` command
 
-{{ source | format("adventure-2.4.py", "source code") }}
+{{ source | format("adventure-2.4.py") }}
 
 {{ clear }}
 
@@ -758,7 +765,6 @@ list and that it is a valid direction.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-2.4.py
-:class: full-width
 :linenos:
 :lines: "69-85"
 :lineno-match:
@@ -881,7 +887,7 @@ printing via our custom functions: `header()`, `wrap()`, `write()`,
 
 ### Part 3.1: Text wrapping
 
-{{ source | format("adventure-3.1.py", "source code") }}
+{{ source | format("adventure-3.1.py") }}
 
 {{ clear }}
 
@@ -948,7 +954,6 @@ wrap the text so that it looks nice.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-3.1.py
-:class: full-width
 :linenos:
 :start-at: "# print information about the new place"
 :end-before: "def "
@@ -989,7 +994,6 @@ look at this section of the [functions lesson][keyword-args].
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-3.1.py
-:class: full-width
 :linenos:
 :start-at: 'def wrap'
 :end-before: 'def'
@@ -1001,7 +1005,7 @@ look at this section of the [functions lesson][keyword-args].
 
 ### Part 3.2: Colors
 
-{{ source | format("adventure-3.2.py", "source code") }}
+{{ source | format("adventure-3.2.py") }}
 
 {{ clear }}
 
@@ -1040,7 +1044,6 @@ colorful.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-3.2.py
-:class: full-width
 :linenos:
 :lines: "6-9"
 :lineno-match:
@@ -1064,7 +1067,6 @@ colorful.
 :open:
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-3.2.py
-:class: full-width
 :linenos:
 :lineno-match:
 :emphasize-lines: "3, 9"
@@ -1073,7 +1075,6 @@ colorful.
 ```
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-3.2.py
-:class: full-width
 :linenos:
 :lineno-match:
 :emphasize-lines: "7"
@@ -1087,7 +1088,7 @@ colorful.
 
 ### Part 3.3: Header and write functions
 
-{{ source | format("adventure-3.3.py", "source code") }}
+{{ source | format("adventure-3.3.py") }}
 
 {{ clear }}
 
@@ -1124,7 +1125,6 @@ indented at the same level, or to add any extra formatting.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-3.3.py
-:class: full-width
 :linenos:
 :start-at: 'def write'
 :end-before: 'def'
@@ -1156,7 +1156,6 @@ bold, but you can change it to suit your taste.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-3.3.py
-:class: full-width
 :linenos:
 :start-at: 'def header'
 :end-before: 'def'
@@ -1188,7 +1187,6 @@ Replace `print()` calls with `header()` and `write()` calls.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-3.3.py
-:class: full-width
 :linenos:
 :start-at: 'def do_shop'
 :end-before: 'def'
@@ -1220,7 +1218,6 @@ Replace `print()` call with `write()` call.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-3.3.py
-:class: full-width
 :linenos:
 :start-at: 'def do_quit'
 :end-before: 'def'
@@ -1245,7 +1242,6 @@ Replace `print()` call with `header()` call.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-3.3.py
-:class: full-width
 :linenos:
 :start-at: "# print information about the new place"
 :end-before: 'def'
@@ -1265,7 +1261,7 @@ In this section we'll add the `examine` command.
 
 ### Part 4.1: Add new items
 
-{{ source | format("adventure-4.1.py", "source code") }}
+{{ source | format("adventure-4.1.py") }}
 
 {{ clear }}
 
@@ -1294,7 +1290,6 @@ do the `shop` command.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-4.1.py
-:class: full-width
 :linenos:
 :lines: "40-68"
 :lineno-match:
@@ -1334,7 +1329,6 @@ a list that contains two items, the strings `"book"` and `"desk"`.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-4.1.py
-:class: full-width
 :linenos:
 :start-at: 'PLACES'
 :end-at: '},'
@@ -1358,7 +1352,6 @@ a list that contains two items, the strings `"book"` and `"desk"`.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-4.1.py
-:class: full-width
 :linenos:
 :start-at: 'def do_shop'
 :end-before: 'def do_'
@@ -1374,7 +1367,7 @@ Be sure to test the `shop` command and make sure book and desk aren't listed.
 
 ### Part 4.2: Add `do_examine()`
 
-{{ source | format("adventure-4.2.py", "source code") }}
+{{ source | format("adventure-4.2.py") }}
 
 {{ clear }}
 
@@ -1410,7 +1403,6 @@ In this section we'll add an `examine` command.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-4.2.py
-:class: full-width
 :linenos:
 :start-at: 'def do_examine'
 :end-before: 'def'
@@ -1434,7 +1426,6 @@ In this section we'll add an `examine` command.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-4.2.py
-:class: full-width
 :linenos:
 :lineno-match:
 :start-at: 'if command'
@@ -1455,7 +1446,7 @@ calling the `do_examine()` function.
 
 ### Part 4.3: Finish examine command
 
-{{ source | format("adventure-4.3.py", "source code") }}
+{{ source | format("adventure-4.3.py") }}
 
 {{ clear }}
 
@@ -1496,7 +1487,6 @@ dictionary and print its information.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-4.3.py
-:class: full-width
 :linenos:
 :start-at: 'def do_examine'
 :end-at: "return"
@@ -1520,7 +1510,6 @@ dictionary and print its information.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-4.3.py
-:class: full-width
 :linenos:
 :start-at: "do_examine"
 :end-at: "place ="
@@ -1556,7 +1545,6 @@ dictionary and print its information.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-4.3.py
-:class: full-width
 :linenos:
 :start-at: "def do_examine"
 :end-before: "# make sure the item is in the ITEMS dictionary"
@@ -1576,7 +1564,6 @@ dictionary and print its information.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-4.3.py
-:class: full-width
 :linenos:
 :start-at: "def do_examine"
 :end-before: "def"
@@ -1593,7 +1580,7 @@ In this section we'll add the `look` command.
 
 ### Part 5.1: Add command
 
-{{ source | format("adventure-5.1.py", "source code") }}
+{{ source | format("adventure-5.1.py") }}
 
 {{ clear }}
 
@@ -1628,7 +1615,6 @@ player types `l` or `look`.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-5.1.py
-:class: full-width
 :linenos:
 :lineno-match:
 :start-at: "def do_look"
@@ -1652,7 +1638,6 @@ player types `l` or `look`.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-5.1.py
-:class: full-width
 :linenos:
 :lineno-match:
 :start-at: "if command"
@@ -1666,7 +1651,7 @@ player types `l` or `look`.
 
 ### Part 5.2: Print place name and description
 
-{{ source | format("adventure-5.2.py", "source code") }}
+{{ source | format("adventure-5.2.py") }}
 
 {{ clear }}
 
@@ -1702,7 +1687,6 @@ In this section we'll look up the place info and print the name and description.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-5.2.py
-:class: full-width
 :linenos:
 :lineno-match:
 :start-at: "def do_look"
@@ -1716,7 +1700,7 @@ In this section we'll look up the place info and print the name and description.
 
 ### Part 5.3: Print the place items
 
-{{ source | format("adventure-5.3.py", "source code") }}
+{{ source | format("adventure-5.3.py") }}
 
 {{ clear }}
 
@@ -1756,7 +1740,6 @@ items `"name"`.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-5.3.py
-:class: full-width
 :linenos:
 :lineno-match:
 :start-at: "def do_look"
@@ -1791,7 +1774,6 @@ And if there are three or more items it will look like:
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-5.3.py
-:class: full-width
 :linenos:
 :lineno-match:
 :start-at: "if items"
@@ -1803,7 +1785,7 @@ And if there are three or more items it will look like:
 
 ### Part 5.4: Print the nearby places
 
-{{ source | format("adventure-5.4.py", "source code") }}
+{{ source | format("adventure-5.4.py") }}
 
 {{ clear }}
 
@@ -1841,7 +1823,6 @@ In this section we'll print the name of each of any places directly to the
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-5.4.py
-:class: full-width
 :linenos:
 :lineno-match:
 :start-at: "def do_look"
@@ -1858,7 +1839,7 @@ In this section we'll add the `take` command.
 
 ### Part 6.1: Add command
 
-{{ source | format("adventure-6.1.py", "source code") }}
+{{ source | format("adventure-6.1.py") }}
 
 {{ clear }}
 
@@ -1893,7 +1874,6 @@ player types `t`, `take`, or `grab`.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-6.1.py
-:class: full-width
 :linenos:
 :lineno-match:
 :start-at: "def do_take"
@@ -1917,7 +1897,6 @@ player types `t`, `take`, or `grab`.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-6.1.py
-:class: full-width
 :linenos:
 :lineno-match:
 :start-at: '        if command in ["q", "quit", "exit"]:'
@@ -1931,7 +1910,7 @@ player types `t`, `take`, or `grab`.
 
 ### Part 6.2: Validate item
 
-{{ source | format("adventure-6.2.py", "source code") }}
+{{ source | format("adventure-6.2.py") }}
 
 {{ clear }}
 
@@ -1966,7 +1945,6 @@ item in the current place.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-6.2.py
-:class: full-width
 :linenos:
 :lineno-match:
 :start-at: '    "book": {'
@@ -1997,7 +1975,6 @@ item in the current place.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-6.2.py
-:class: full-width
 :linenos:
 :lineno-match:
 :start-at: "def do_take"
@@ -2027,7 +2004,6 @@ item in the current place.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-6.2.py
-:class: full-width
 :linenos:
 :lineno-match:
 :start-at: "def do_take"
@@ -2039,7 +2015,7 @@ item in the current place.
 
 ### Part 6.3: Take it
 
-{{ source | format("adventure-6.3.py", "source code") }}
+{{ source | format("adventure-6.3.py") }}
 
 {{ clear }}
 
@@ -2072,7 +2048,6 @@ In this section we'll actually take the item.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-6.3.py
-:class: full-width
 :linenos:
 :lineno-match:
 :start-at: 'PLAYER = {'
@@ -2102,7 +2077,6 @@ place, and let the player know that it's done.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-6.3.py
-:class: full-width
 :linenos:
 :lineno-match:
 :start-at: 'def do_take(args):'
@@ -2114,7 +2088,7 @@ place, and let the player know that it's done.
 
 ### Part 6.4: Examine inventory
 
-{{ source | format("adventure-6.4.py", "source code") }}
+{{ source | format("adventure-6.4.py") }}
 
 {{ clear }}
 
@@ -2145,7 +2119,6 @@ In this section we'll modify `do_examine()` so it can be used to look at invento
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-6.4.py
-:class: full-width
 :linenos:
 :lineno-match:
 :start-at: "def do_examine"
@@ -2162,7 +2135,7 @@ In this section we'll add the `inventory` command.
 
 ### Part 7.1: Add command
 
-{{ source | format("adventure-7.1.py", "source code") }}
+{{ source | format("adventure-7.1.py") }}
 
 {{ clear }}
 
@@ -2197,7 +2170,6 @@ player types `i`, or `inventory`.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-7.1.py
-:class: full-width
 :linenos:
 :lineno-match:
 :start-at: 'def do_inventory():'
@@ -2221,7 +2193,6 @@ player types `i`, or `inventory`.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-7.1.py
-:class: full-width
 :linenos:
 :lineno-match:
 :start-at: '        if command in ["q", "quit", "exit"]:'
@@ -2235,7 +2206,7 @@ player types `i`, or `inventory`.
 
 ### Part 7.2: Print inventory
 
-{{ source | format("adventure-7.2.py", "source code") }}
+{{ source | format("adventure-7.2.py") }}
 
 {{ clear }}
 
@@ -2271,7 +2242,6 @@ In this section we'll print the players inventory.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-7.2.py
-:class: full-width
 :linenos:
 :lineno-match:
 :start-at: 'def do_inventory():'
@@ -2287,7 +2257,7 @@ In this section we'll add the `drop` command.
 
 ### Part 8.1: Add command
 
-{{ source | format("adventure-8.1.py", "source code") }}
+{{ source | format("adventure-8.1.py") }}
 
 {{ clear }}
 
@@ -2322,7 +2292,6 @@ player types `drop`.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-8.1.py
-:class: full-width
 :linenos:
 :lineno-match:
 :start-at: 'def do_drop'
@@ -2345,7 +2314,6 @@ player types `drop`.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-8.1.py
-:class: full-width
 :linenos:
 :lineno-match:
 :start-at: '        if command in ("q", "quit", "exit"):'
@@ -2359,7 +2327,7 @@ player types `drop`.
 
 ### Part 8.2: Validate
 
-{{ source | format("adventure-8.2.py", "source code") }}
+{{ source | format("adventure-8.2.py") }}
 
 {{ clear }}
 
@@ -2399,7 +2367,6 @@ have in inventory.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-8.2.py
-:class: full-width
 :linenos:
 :lineno-match:
 :start-at: 'def do_drop'
@@ -2411,7 +2378,7 @@ have in inventory.
 
 ### Part 8.3: Drop it
 
-{{ source | format("adventure-8.3.py", "source code") }}
+{{ source | format("adventure-8.3.py") }}
 
 {{ clear }}
 
@@ -2446,7 +2413,6 @@ it to the place items.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-8.3.py
-:class: full-width
 :linenos:
 :lineno-match:
 :start-at: 'def do_drop'
@@ -2469,7 +2435,6 @@ it to the place items.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-8.3.py
-:class: full-width
 :linenos:
 :lineno-match:
 :pyobject: 'do_drop'
@@ -2500,7 +2465,7 @@ in the places where the same code is repeated.
 
 ### Part 9.1: Add abort()
 
-{{ source | format("adventure-9.1.py", "source code") }}
+{{ source | format("adventure-9.1.py") }}
 
 {{ clear }}
 
@@ -2564,7 +2529,6 @@ Then because `abort()` exits the program immediately, we can remove the `return`
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-9.1.py
-:class: full-width
 :linenos:
 :lineno-match:
 :start-at: 'def do_take'
@@ -2593,7 +2557,6 @@ This is nearly exactly the same as the previous section.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-9.1.py
-:class: full-width
 :linenos:
 :lineno-match:
 :start-at: 'def do_examine'
@@ -2625,7 +2588,6 @@ if we don't it means there's an error somewhere in the code.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-9.1.py
-:class: full-width
 :linenos:
 :lineno-match:
 :start-at: 'def do_go'
@@ -2639,7 +2601,7 @@ if we don't it means there's an error somewhere in the code.
 
 ### Part 9.2: Add get_place()
 
-{{ source | format("adventure-9.2.py", "source code") }}
+{{ source | format("adventure-9.2.py") }}
 
 {{ clear }}
 
@@ -2733,6 +2695,7 @@ dictionary, and call `abort()` if it is not. That means that anywhere we call
 ```
 
 `````
+
 #### D. In `do_take()`, `do_examine()` and `do_drop()`
 
 1. `[ ]` Replace the existing value for `place` with a call to `get_place()`.
@@ -2771,11 +2734,9 @@ dictionary, and call `abort()` if it is not. That means that anywhere we call
 
 `````
 
-{{ endcols }}
-
 ### Part 9.3: Add get_item()
 
-{{ source | format("adventure-9.3.py", "source code") }}
+{{ source | format("adventure-9.3.py") }}
 
 {{ clear }}
 
@@ -2883,7 +2844,7 @@ remove error handling that is done in `get_item()`.
 
 ### Part 9.4: Validation functions
 
-{{ source | format("adventure-9.4.py", "source code") }}
+{{ source | format("adventure-9.4.py") }}
 
 {{ clear }}
 
@@ -3071,7 +3032,7 @@ call to `is_for_sale()`.
 
 ### Part 9.5: Add `inventory_change()`
 
-{{ source | format("adventure-9.5.py", "source code") }}
+{{ source | format("adventure-9.5.py") }}
 
 {{ clear }}
 
@@ -3194,7 +3155,7 @@ do for now.)
 
 ### Part 9.6: Add `place_add()`
 
-{{ source | format("adventure-9.6.py", "source code") }}
+{{ source | format("adventure-9.6.py") }}
 
 {{ clear }}
 
@@ -3258,7 +3219,7 @@ Right now, this only happens in the `do_drop()` function.
 
 ### Part 9.7: Add `place_remove()`
 
-{{ source | format("adventure-9.7.py", "source code") }}
+{{ source | format("adventure-9.7.py") }}
 
 {{ clear }}
 
@@ -3326,7 +3287,7 @@ buy shop and examine commands.
 
 ### Part 10.1: Add market
 
-{{ source | format("adventure-10.1.py", "source code") }}
+{{ source | format("adventure-10.1.py") }}
 
 {{ clear }}
 
@@ -3406,7 +3367,7 @@ than going through all items.
 
 ### Part 10.2: Add `place_can()`
 
-{{ source | format("adventure-10.2.py", "source code") }}
+{{ source | format("adventure-10.2.py") }}
 
 {{ clear }}
 
@@ -3511,7 +3472,7 @@ for actions instead of items.
 
 ### Part 10.3: Add buy command
 
-{{ source | format("adventure-10.3.py", "source code") }}
+{{ source | format("adventure-10.3.py") }}
 
 {{ clear }}
 
@@ -3789,7 +3750,7 @@ Here we'll define the function that is called when the player types `"buy"`.
 
 ### Part 10.4: Clean up the shop
 
-{{ source | format("adventure-10.4.py", "source code") }}
+{{ source | format("adventure-10.4.py") }}
 
 {{ clear }}
 
@@ -4018,7 +3979,7 @@ happen to play the part of the game that triggers it. Be sure to do the
 
 ### Part 11.1: Setup
 
-{{ source | format("test_game-11.1.py", "source code") }}
+{{ source | format('test_game-11.1.py') }}
 
 {{ clear }}
 
@@ -4044,15 +4005,15 @@ In this section we'll get a basic test up and running.
 #### A. Install pytest
 
 1. `[ ]` Install `pytest` using the instructions
-[here](../practices/testing.html#part-3-pytest).
+         [here](../practices/testing.html#part-3-pytest).
 1. `[ ]` To make sure it works, type `pytest --help` in the terminal.
 
 #### B. Configure VS Code
 
 1. `[ ]` Configure VS Code by following the first two steps
-[here](../practices/testing.html#part-6-testing-in-vs-code). When you are
-prompted to select the directory containing the tests, choose
-{guilabel}`. Root directory`.
+         [here](../practices/testing.html#part-6-testing-in-vs-code). When you are
+         prompted to select the directory containing the tests, choose
+         {guilabel}`. Root directory`.
 1. `[ ]` Install the extension [Python Test Explorer for Visual Studio Code][test-explorer].
          either from the marketplace or by typing the following into the terminal.
 
@@ -4109,6 +4070,7 @@ that to work, we'll need to make sure of a couple of things.
 :open:
 
 ```{literalinclude} ../../pythonclass/adventure/test_game-11.1.py
+:class: full-width
 :linenos:
 :caption: test_game.py
 ```
@@ -4143,7 +4105,7 @@ addopts = "-v"
 
 ### Part 11.2: Test `is_for_sale()`
 
-{{ source | format("test_game-11.2.py", "source code") }}
+{{ source | format("test_game-11.2.py") }}
 
 {{ clear }}
 
@@ -4233,14 +4195,13 @@ item doesn't have a `"price"` key, `is_for_sale()` returns `False`.
 ```{literalinclude} ../../pythonclass/adventure/test_game-11.2.py
 :linenos:
 :caption: test_game.py
-:emphasize-lines: "13-"
 ```
 
 `````
 
 ### Part 11.3: Test `error()`
 
-{{ source | format("test_game-11.3.py", "source code") }}
+{{ source | format("test_game-11.3.py") }}
 
 {{ clear }}
 
@@ -4314,7 +4275,7 @@ capture the printed output. After any code that prints we can call the
 
 ### Part 11.4: Test `debug()`
 
-{{ source | format("test_game-11.4.py", "source code") }}
+{{ source | format("test_game-11.4.py") }}
 
 {{ clear }}
 
@@ -4359,7 +4320,6 @@ This should be very similar to `test_error()`.
 :linenos:
 :lineno-match:
 :end-before: def
-:class: full-width
 ```
 
 ```{literalinclude} ../../pythonclass/adventure/test_game-11.4.py
@@ -4367,14 +4327,13 @@ This should be very similar to `test_error()`.
 :lineno-match:
 :start-at: 'def test_debug'
 :caption: test_game.py
-:class: full-width
 ```
 
 `````
 
 ### Part 11.5: Test `header()` and `write()`
 
-{{ source | format("test_game-11.5.py", "source code") }}
+{{ source | format("test_game-11.5.py") }}
 
 {{ clear }}
 
@@ -4405,7 +4364,6 @@ Can you write tests for the `header()` and `write()` functions on your own?
 :start-at: 'def test_header'
 :end-before: 'def'
 :caption: test_game.py
-:class: full-width
 ```
 
 `````
@@ -4418,7 +4376,6 @@ Can you write tests for the `header()` and `write()` functions on your own?
 :lineno-match:
 :start-at: 'def test_write'
 :caption: test_game.py
-:class: full-width
 :caption: test_game.py
 ```
 
@@ -4426,7 +4383,7 @@ Can you write tests for the `header()` and `write()` functions on your own?
 
 ### Part 11.6: Test `inventory_change()`
 
-{{ source | format("test_game-11.6.py", "source code") }}
+{{ source | format("test_game-11.6.py") }}
 
 {{ clear }}
 
@@ -4473,7 +4430,6 @@ copy the relevant code into your test file.
 :linenos:
 :lineno-match:
 :end-before: "def test_"
-:class: full-width
 :emphasize-lines: "1-5, 15-"
 :caption: test_game.py
 ```
@@ -4510,7 +4466,6 @@ So the first thing we'll do is add some fake data to `PLAYER["inventory"]`.
 :lineno-match:
 :start-at: "def test_inventory_change"
 :end-before: def
-:class: full-width
 :caption: test_game.py
 ```
 
@@ -4535,7 +4490,6 @@ In this test we'll make sure that the teardown code from
 :lineno-match:
 :start-at: "def test_inventory_change()"
 :end-before: "def test_inventory_change_"
-:class: full-width
 :emphasize-lines: "8-"
 :caption: test_game.py
 ```
@@ -4568,7 +4522,6 @@ dictionary.
 :lineno-match:
 :start-at: "def test_inventory_change_missing_key()"
 :end-before: def
-:class: full-width
 :caption: test_game.py
 ```
 
@@ -4592,7 +4545,6 @@ Can you add the next two tests on your own?
 :lineno-match:
 :start-at: "def test_inventory_change_subtract()"
 :end-before: def
-:class: full-width
 :caption: test_game.py
 ```
 
@@ -4604,7 +4556,6 @@ Can you add the next two tests on your own?
 :linenos:
 :lineno-match:
 :start-at: "def test_inventory_change_remove()"
-:class: full-width
 :caption: test_game.py
 ```
 
@@ -4612,7 +4563,7 @@ Can you add the next two tests on your own?
 
 ### Part 11.7: Test `do_drop()`
 
-{{ source | format("test_game-11.7.py", "source code") }}
+{{ source | format("test_game-11.7.py") }}
 
 {{ clear }}
 
@@ -4669,7 +4620,6 @@ type anything, they get the appropriate error message.
 :linenos:
 :lineno-match:
 :end-before: PLAYER
-:class: full-width
 :emphasize-lines: "8, 13-14"
 
 ```
@@ -4679,7 +4629,6 @@ type anything, they get the appropriate error message.
 :lineno-match:
 :start-at: "def test_do_drop_no_args"
 :end-before: def
-:class: full-width
 :caption: test_game.py
 
 ```
@@ -4706,7 +4655,6 @@ in inventory, they they get the appropriate error message.
 :lineno-match:
 :start-at: "def test_do_drop_missing_item"
 :end-before: def
-:class: full-width
 :caption: test_game.py
 
 ```
@@ -4738,7 +4686,6 @@ the place and removed from inventory.
 :linenos:
 :lineno-match:
 :start-at: "def test_do_drop("
-:class: full-width
 :caption: test_game.py
 
 ```
@@ -4816,7 +4763,6 @@ First we'll write the test, which we expect to fail.
 :linenos:
 :lineno-match:
 :end-before: PLAYER
-:class: full-width
 :emphasize-lines: "9"
 
 ```
@@ -4825,7 +4771,6 @@ First we'll write the test, which we expect to fail.
 :linenos:
 :lineno-match:
 :start-at: "def test_do_read("
-:class: full-width
 :caption: test_game.py
 
 ```
@@ -4867,7 +4812,6 @@ Now we'll write the code to make it work.
 :lineno-match:
 :start-at: "def do_read"
 :end-before: def
-:class: full-width
 :caption: adventure.py
 
 ```
@@ -4902,7 +4846,6 @@ Finally, we'll add the code to make the command work in the game.
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-12.1.py
-:class: full-width
 :linenos:
 :lineno-match:
 :start-at: def main()
@@ -4969,7 +4912,6 @@ Now we'll add an assertion to check the output for an error message.
 :linenos:
 :lineno-match:
 :start-at: "def test_do_read_no_args"
-:class: full-width
 :caption: test_game.py
 :emphasize-lines: "9-"
 
@@ -5008,7 +4950,6 @@ Now we'll write the code to make our test pass.
 :lineno-match:
 :start-at: "def do_read"
 :end-before: def
-:class: full-width
 :caption: test_game.py
 :emphasize-lines: "6-"
 
@@ -5077,7 +5018,6 @@ this place or in inventory.
 :linenos:
 :lineno-match:
 :start-at: "def test_do_read_missing_item"
-:class: full-width
 :caption: test_game.py
 
 ```
@@ -5117,7 +5057,6 @@ Now we'll add the code to make the test pass.
 :lineno-match:
 :start-at: "def do_read"
 :end-before: def
-:class: full-width
 :caption: adventure.py
 :emphasize-lines: "11-"
 
@@ -5195,7 +5134,6 @@ item that cannot be read. It should:
 :linenos:
 :lineno-match:
 :start-at: "def test_do_read_unreadable_item"
-:class: full-width
 :caption: test_game.py
 
 ```
@@ -5235,7 +5173,6 @@ Now we'll write the code to make the test pass.
 :lineno-match:
 :start-at: "def do_read"
 :end-before: def
-:class: full-width
 :caption: adventure.py
 :emphasize-lines: "19-"
 
@@ -5264,6 +5201,7 @@ current place. Then we'll call `do_read()`and check for the expected output.
 {{ right }}
 
 `````{dropdown} Demo
+:open:
 
 ```{screencast} assets/adventure-12.5.A.cast
 :poster: npt:0:04
@@ -5290,7 +5228,6 @@ current place. Then we'll call `do_read()`and check for the expected output.
 :linenos:
 :lineno-match:
 :start-at: "def test_do_read_in_place"
-:class: full-width
 :caption: test_game.py
 :end-before: def
 
@@ -5331,7 +5268,6 @@ Now we'll write the code to actually read the item.
 :start-at: "def do_read"
 :end-before: def
 :emphasize-lines: "27-"
-:class: full-width
 :caption: adventure.py
 
 ```
@@ -5371,7 +5307,6 @@ Now we'll finally give the player something to read.
 :start-at: '"book": {'
 :end-before: '"gems": {'
 :emphasize-lines: "8-"
-:class: full-width
 :caption: adventure.py
 
 ```
@@ -5389,7 +5324,6 @@ you can read a book if it is in your inventory but not in the current place?
 :linenos:
 :lineno-match:
 :start-at: 'def test_do_read_in_inventory'
-:class: full-width
 :caption: test_game.py
 
 ```
@@ -5462,7 +5396,6 @@ test_game.py::test_do_read_in_inventory`.
 :linenos:
 :lineno-match:
 :start-at: 'def test_do_read_in_inventory'
-:class: full-width
 :caption: test_game.py
 :emphasize-lines: "17, 22-23"
 
@@ -5514,7 +5447,6 @@ pass.
 :lineno-match:
 :start-at: 'def test_wrap'
 :end-before: def
-:class: full-width
 :caption: test_game.py
 
 ```
@@ -5567,7 +5499,6 @@ testing that the lines are indented to `4` spaces instead of `2`.
 :lineno-match:
 :start-at: 'def test_wrap_with_indent'
 :end-before: def
-:class: full-width
 :caption: test_game.py
 
 ```
@@ -5615,7 +5546,6 @@ run both `test_wrap()` and `test_wrap_with_indent()`, but no other tests.
 :lineno-match:
 :start-at: 'def wrap'
 :end-before: def
-:class: full-width
 :caption: test_game.py
 :emphasize-lines: "1-5"
 
@@ -5657,7 +5587,6 @@ Now we're finally ready to modify our `do_read()` function to use the new
 :lineno-match:
 :start-at: 'def do_read'
 :end-before: def
-:class: full-width
 :caption: test_game.py
 :emphasize-lines: "34"
 
@@ -5737,7 +5666,6 @@ that it still works if message is a string.
 :lineno-match:
 :start-at: 'def test_do_read_in_place'
 :end-before: def
-:class: full-width
 :caption: test_game.py
 :emphasize-lines: "3-9, 30,31"
 
@@ -5791,7 +5719,6 @@ iterable.
 :lineno-match:
 :start-at: 'def test_wrap_with_iterable'
 :end-before: def
-:class: full-width
 :caption: test_game.py
 
 ```
@@ -5863,7 +5790,6 @@ already calls `wrap()` with whatever was in the item dictionary for
 :lineno-match:
 :start-at: 'def wrap'
 :end-before: def
-:class: full-width
 :caption: adventure.py
 :emphasize-lines: "7-15, 25-28"
 
@@ -5886,7 +5812,6 @@ notes all over your game!
 :lineno-match:
 :start-at: '"book": {'
 :end-before: '"gems": {'
-:class: full-width
 :caption: adventure.py
 :emphasize-lines: "14, 17, 20, 22"
 
@@ -5938,7 +5863,6 @@ test that the `amount` argument is added to the players current health.
 :lineno-match:
 :start-at: "from adventure import"
 :end-at: ")"
-:class: full-width
 :emphasize-lines: "7"
 :caption: test_game.py
 
@@ -5949,7 +5873,6 @@ test that the `amount` argument is added to the players current health.
 :lineno-match:
 :start-at: "def test_health_change("
 :end-before: def
-:class: full-width
 :caption: test_game.py
 
 ```
@@ -5974,7 +5897,6 @@ Write the simple `health_change()` function. It should take one argument
 :lineno-match:
 :start-at: "def health_change("
 :end-before: "def"
-:class: full-width
 :caption: adventure.py
 
 ```
@@ -6016,7 +5938,6 @@ cases by changing a few values in the test to variables.
 :lineno-match:
 :start-at: "@pytest.mark.parametrize"
 :end-before: "a negative number"
-:class: full-width
 :caption: test_game.py
 
 ```
@@ -6026,7 +5947,6 @@ cases by changing a few values in the test to variables.
 :lineno-match:
 :start-after: "a negative number should be subtracted"
 :end-before: "def test_is_for_sale"
-:class: full-width
 :caption: test_game.py
 
 ```
@@ -6055,7 +5975,6 @@ going to add a new tuple to the list passed to `@pytest.mark.parametrize()`.
 :start-at: "@pytest.mark.parametrize"
 :end-before: "def test_is_for_sale"
 :emphasize-lines: "4"
-:class: full-width
 :caption: test_game.py
 
 ```
@@ -6085,7 +6004,6 @@ In this section we're going to change the `health_change()` function so that
 :start-at: "@pytest.mark.parametrize"
 :end-at: "the min health should be 0"
 :emphasize-lines: "5"
-:class: full-width
 :caption: test_game.py
 
 ```
@@ -6106,7 +6024,6 @@ In this section we're going to change the `health_change()` function so that
 :start-at: "def health_change"
 :end-before: "cap health"
 :emphasize-lines: "5-7"
-:class: full-width
 :caption: adventure.py
 
 ```
@@ -6125,7 +6042,6 @@ In this section we're going to change the `health_change()` function so that
 :start-at: "import"
 :end-before: "# Game World Data"
 :emphasize-lines: 11
-:class: full-width
 :caption: adventure.py
 
 ```
@@ -6152,7 +6068,6 @@ In this section we're going to change the `health_change()` function so that
 :start-at: "from adventure import"
 :end-at: ")"
 :emphasize-lines: "15"
-:class: full-width
 :caption: test_game.py
 
 ```
@@ -6163,7 +6078,6 @@ In this section we're going to change the `health_change()` function so that
 :start-at: "@pytest.mark.parametrize"
 :end-at: "def test_"
 :emphasize-lines: "6"
-:class: full-width
 :caption: test_game.py
 
 ```
@@ -6184,7 +6098,6 @@ In this section we're going to change the `health_change()` function so that
 :start-at: "def health_change"
 :end-before: "def"
 :emphasize-lines: "9-11"
-:class: full-width
 :caption: adventure.py
 
 ```
@@ -6208,7 +6121,6 @@ itself.
 :start-at: "PLAYER ="
 :end-before: "PLACES"
 :emphasize-lines: "4"
-:class: full-width
 :caption: adventure.py
 
 ```
@@ -6255,7 +6167,6 @@ In this section we'll the progress bar feature of the
 :start-at: "import"
 :end-before: "# Game World Data"
 :emphasize-lines: "4, 14-18"
-:class: full-width
 :caption: adventure.py
 
 ```
@@ -6276,7 +6187,6 @@ In this section we'll the progress bar feature of the
 :lineno-match:
 :start-at: "def health_bar"
 :end-before: "# Data functions"
-:class: full-width
 :caption: adventure.py
 
 ```
@@ -6295,7 +6205,6 @@ In this section we'll the progress bar feature of the
 :start-at: "def do_inventory"
 :end-before: "def"
 :emphasize-lines: 6
-:class: full-width
 :caption: adventure.py
 
 ```
@@ -6316,7 +6225,6 @@ In this section we'll the progress bar feature of the
 :start-at: "def main"
 :end-before: "if __name__"
 :emphasize-lines: "53-"
-:class: full-width
 :caption: adventure.py
 
 ```
