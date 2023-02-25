@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Syntax &#8212; Python Class</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,39 +20,39 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/asciinema-player.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/asciinema-player.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/custom.js"></script>
-    <script src="../_static/asciinema-player.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/x-frame-bypass.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+    <script src="../_static/asciinema-player.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
@@ -68,7 +70,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -77,9 +93,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
       
@@ -92,7 +109,7 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <p class="caption">
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Lessons
  </span>
@@ -379,7 +396,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Practices
  </span>
@@ -406,7 +423,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Tools
  </span>
@@ -454,7 +471,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../tools/replit.html">
-   Repl.it Tips
+   Replit
   </a>
  </li>
  <li class="toctree-l1">
@@ -478,7 +495,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Reference
  </span>
@@ -510,7 +527,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Exercises
  </span>
@@ -542,7 +559,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Admin
  </span>
@@ -556,88 +573,177 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/alissa-huskey/python-class"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        <a class="edit-button" href="https://github.com/alissa-huskey/python-class/edit/master/docs/lessons/syntax.md"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/alissa-huskey/python-class/master?urlpath=lab/tree/docs/lessons/syntax.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <button type="button" class="btn btn-secondary topbarbtn"
-            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
-                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
-        
-    </div>
-</div>
-
         </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
 
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/alissa-huskey/python-class/master?urlpath=lab/tree/docs/lessons/syntax.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/alissa-huskey/python-class"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/alissa-huskey/python-class/edit/master/docs/lessons/syntax.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduction">
    Introduction
@@ -787,17 +893,182 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Syntax</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#structure">
+   Structure
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#docstrings">
+     Docstrings
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comments">
+     Comments
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#keywords">
+     Keywords
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#statements">
+     Statements
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#expressions">
+     Expressions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#values">
+   Values
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variables">
+     Variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bracket-notation">
+     Bracket notation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dot-notation">
+     Dot notation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calls">
+     Calls
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#types">
+   Types
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#strings">
+     Strings
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lists">
+     Lists
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dictionaries">
+     Dictionaries
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tuples">
+     Tuples
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sets">
+     Sets
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#flow-control">
+   Flow Control
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#if-statements">
+     if statements
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#for-loops">
+     for loops
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#while-loops">
+     while loops
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#functions">
+     Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reference">
+   Reference
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#glossary">
+     Glossary
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#glossary-syntax">
+       Syntax
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#see-also">
+     See also
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="syntax">
-<h1>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="syntax">
+<h1>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">#</a></h1>
 <p>In this section we’ll learn the basic Python syntax.</p>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">Table of Contents</p>
@@ -849,8 +1120,8 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 </ul>
 </div>
-<div class="section" id="introduction">
-<h2><a class="toc-backref" href="#table-of-contents">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<section id="introduction">
+<h2><a class="toc-backref" href="#table-of-contents">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
 <p>Syntax is set of grammar and punctuation rules that define how to put words and
 symbols together to properly form a particular language.</p>
 <p>In the English language for example, we know a sentence is made up of a subject
@@ -858,9 +1129,9 @@ and predicate, that the first letter should be capitalized, and that
 it should end in a period, question mark, or exclamation point.</p>
 <p>Python is a programming language, intended to read by a computer. In order to
 write code that the computer can understand, we need to understand the syntax.</p>
-</div>
-<div class="section" id="structure">
-<h2><a class="toc-backref" href="#table-of-contents">Structure</a><a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="structure">
+<h2><a class="toc-backref" href="#table-of-contents">Structure</a><a class="headerlink" href="#structure" title="Permalink to this headline">#</a></h2>
 <p>A program is made up of a series of instructions which are read and executed in
 order from top to bottom.</p>
 <p>To get a better idea of what is involved, lets consider the following simple
@@ -887,155 +1158,137 @@ example:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                  Hello world!                                  
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                              Good morning world!                               
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="docstrings">
-<h3><a class="toc-backref" href="#table-of-contents">Docstrings</a><a class="headerlink" href="#docstrings" title="Permalink to this headline">¶</a></h3>
+<section id="docstrings">
+<h3><a class="toc-backref" href="#table-of-contents">Docstrings</a><a class="headerlink" href="#docstrings" title="Permalink to this headline">#</a></h3>
 <div class="row"><div class="col-5 left-col-5">
 <p>When the first line of a program or function is enclosed in triple single
 (<code class="docutils literal notranslate"><span class="pre">'''</span></code>) or triple double (<code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code>) quotes, it is a special kind of string
 intended for documentation called a <a class="reference internal" href="functions.html#term-docstring"><span class="xref std std-term">docstring</span></a>.</p>
 </div><div class="col-7">
-<div class="full-width highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="hll"><span class="sd">&quot;&quot;&quot;My first program&quot;&quot;&quot;</span>
-</span></pre></div></td></tr></table></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos">1</span><span class="sd">&quot;&quot;&quot;My first program&quot;&quot;&quot;</span>
+</span></pre></div>
 </div>
 </div></div>
-</div>
-<div class="section" id="comments">
-<h3><a class="toc-backref" href="#table-of-contents">Comments</a><a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="comments">
+<h3><a class="toc-backref" href="#table-of-contents">Comments</a><a class="headerlink" href="#comments" title="Permalink to this headline">#</a></h3>
 <div class="row"><div class="col-5 left-col-5">
 <p>You can leave notes for future reference starting with a <code class="docutils literal notranslate"><span class="pre">#</span></code>. This tells
 Python to ignore everything that follows until the end of the line.</p>
 </div><div class="col-7">
-<div class="full-width highlight-default notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="hll"><span class="c1"># put together the message and make it centered</span>
-</span><span class="n">message</span> <span class="o">=</span> <span class="p">(</span><span class="n">greeting</span> <span class="o">+</span> <span class="s2">&quot; world!&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos">1</span><span class="c1"># put together the message and make it centered</span>
+</span><span class="linenos">2</span><span class="n">message</span> <span class="o">=</span> <span class="p">(</span><span class="n">greeting</span> <span class="o">+</span> <span class="s2">&quot; world!&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
 </div>
 </div></div><div class="row"><div class="col-5 right-col-5">
 <p>A comment doesn’t have to be at the start of the line.</p>
 </div><div class="col-7">
-<div class="full-width highlight-python-hl notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">if</span> <span class="n">today</span><span class="o">.</span><span class="n">tm_hour</span> <span class="o">&lt;</span> <span class="mi">11</span><span class="p">:</span>
-  <span class="n">greeting</span> <span class="o">=</span> <span class="s2">&quot;Good morning&quot;</span>  <span class="c1 c1-Highlight"># before 12pm</span>
-</pre></div></td></tr></table></div>
+<div class="highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="linenos">11</span><span class="k">if</span> <span class="n">today</span><span class="o">.</span><span class="n">tm_hour</span> <span class="o">&lt;</span> <span class="mi">11</span><span class="p">:</span>
+<span class="linenos">12</span>  <span class="n">greeting</span> <span class="o">=</span> <span class="s2">&quot;Good morning&quot;</span>  <span class="c1 c1-Highlight"># before 12pm</span>
+</pre></div>
 </div>
 </div></div>
-</div>
-<div class="section" id="keywords">
-<h3><a class="toc-backref" href="#table-of-contents">Keywords</a><a class="headerlink" href="#keywords" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="keywords">
+<h3><a class="toc-backref" href="#table-of-contents">Keywords</a><a class="headerlink" href="#keywords" title="Permalink to this headline">#</a></h3>
 <div class="row"><div class="col-5 left-col-5">
 <p>Keywords are reserved words that have a special meaning in Python. A keyword
 cannot be used as a function or variable.</p>
 </div><div class="col-7">
-<div class="full-width highlight-python-hl notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn kn-Highlight">import</span><span class=" -Highlight"> </span><span class="n">time</span>
-<span class="kn kn-Highlight">import</span><span class=" -Highlight"> </span><span class="n">shutil</span>
-</pre></div></td></tr></table></div>
+<div class="highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn kn-Highlight">import</span><span class=" -Highlight"> </span><span class="n">time</span>
+<span class="linenos">2</span><span class="kn kn-Highlight">import</span><span class=" -Highlight"> </span><span class="n">shutil</span>
+</pre></div>
 </div>
-<div class="full-width highlight-python-hl notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><span class="k k-Highlight">if</span> <span class="n">today</span><span class="o">.</span><span class="n">tm_hour</span> <span class="o">&lt;</span> <span class="mi">11</span><span class="p">:</span>
-</pre></div></td></tr></table></div>
+<div class="highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="linenos">11</span><span class="k k-Highlight">if</span> <span class="n">today</span><span class="o">.</span><span class="n">tm_hour</span> <span class="o">&lt;</span> <span class="mi">11</span><span class="p">:</span>
+</pre></div>
 </div>
 </div></div><div class="row"><div class="col-5 right-col-5">
 <p>A list of all keywords is available in the <code class="docutils literal notranslate"><span class="pre">keyword</span></code> module <code class="docutils literal notranslate"><span class="pre">kwlist</span></code>.</p>
 </div><div class="col-7">
-<details class="sphinx-bs dropdown card mb-3 keywords-list">
-<summary class="summary-title card-header text-center">
-Show Keywords<div class="summary-down docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="summary-up docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="summary-content card-body docutils">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 keywords-list">
+<summary class="sd-summary-title sd-card-header text-center">
+Show Keywords<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <ul class="simple">
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">and</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">as</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">assert</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">async</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">await</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">break</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">class</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">continue</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">def</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">del</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">elif</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">else</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">except</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">finally</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">for</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">from</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">global</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">if</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">import</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">in</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">is</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">lambda</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">nonlocal</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">not</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">or</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">pass</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">raise</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">return</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">try</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">while</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">with</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">yield</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">and</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">as</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">assert</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">async</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">await</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">break</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">class</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">continue</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">def</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">del</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">elif</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">else</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">except</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">finally</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">for</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">from</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">global</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">if</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">import</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">in</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">is</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">lambda</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">nonlocal</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">not</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">or</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">pass</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">raise</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">return</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">try</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">while</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">with</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">yield</span></code></p></li>
 </ul>
 </div>
 </details></div></div>
-</div>
-<div class="section" id="statements">
-<h3><a class="toc-backref" href="#table-of-contents">Statements</a><a class="headerlink" href="#statements" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="statements">
+<h3><a class="toc-backref" href="#table-of-contents">Statements</a><a class="headerlink" href="#statements" title="Permalink to this headline">#</a></h3>
 <div class="row"><div class="col-5 left-col-5">
 <p>Code is made up of a series of instructions to the computer called
 <a class="reference internal" href="statements.html#term-statement"><span class="xref std std-term">statements</span></a>.</p>
 </div><div class="col-7">
-<details class="sphinx-bs dropdown card mb-3">
-<summary class="summary-title card-header text-center">
-<strong>…</strong><div class="summary-down docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="summary-up docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="summary-content card-body docutils">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header text-center">
+<strong>…</strong><div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-number">Listing 1 </span><span class="caption-text">all statements</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-python-hl notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">&quot;&quot;&quot;My first program&quot;&quot;&quot;</span>
-
-<span class="hll"><span class="kn">import</span> <span class="nn">time</span>
-</span><span class="hll">
-</span><span class="hll"><span class="n">width</span> <span class="o">=</span> <span class="mi">80</span>
-</span><span class="hll"><span class="n">today</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">()</span>
-</span><span class="hll">
-</span><span class="hll"><span class="n">greeting</span> <span class="o">=</span> <span class="s2">&quot;Hello&quot;</span>
-</span><span class="hll">
-</span><span class="hll"><span class="k">if</span> <span class="n">today</span><span class="o">.</span><span class="n">tm_hour</span> <span class="o">&lt;</span> <span class="mi">11</span><span class="p">:</span>
-</span>  <span class="n n-Highlight">greeting</span><span class=" -Highlight"> </span><span class="o o-Highlight">=</span><span class=" -Highlight"> </span><span class="s2 s2-Highlight">&quot;Good morning&quot;</span>  <span class="c1"># before 12pm</span>
-
-<span class="c1"># put together the message and make it centered</span>
-<span class="hll"><span class="n">message</span> <span class="o">=</span> <span class="p">(</span><span class="n">greeting</span> <span class="o">+</span> <span class="s2">&quot; world!&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">width</span><span class="p">)</span>
-</span><span class="hll">
-</span><span class="hll"><span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
-</span></pre></div></td></tr></table></div>
+<div class="code-block-caption"><span class="caption-number">Listing 28 </span><span class="caption-text">all statements</span><a class="headerlink" href="#id1" title="Permalink to this code">#</a></div>
+<div class="highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="sd">&quot;&quot;&quot;My first program&quot;&quot;&quot;</span>
+<span class="linenos"> 2</span>
+<span class="hll"><span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">time</span>
+</span><span class="hll"><span class="linenos"> 4</span>
+</span><span class="hll"><span class="linenos"> 5</span><span class="n">width</span> <span class="o">=</span> <span class="mi">80</span>
+</span><span class="hll"><span class="linenos"> 6</span><span class="n">today</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">()</span>
+</span><span class="hll"><span class="linenos"> 7</span>
+</span><span class="hll"><span class="linenos"> 8</span><span class="n">greeting</span> <span class="o">=</span> <span class="s2">&quot;Hello&quot;</span>
+</span><span class="hll"><span class="linenos"> 9</span>
+</span><span class="hll"><span class="linenos">10</span><span class="k">if</span> <span class="n">today</span><span class="o">.</span><span class="n">tm_hour</span> <span class="o">&lt;</span> <span class="mi">11</span><span class="p">:</span>
+</span><span class="linenos">11</span>  <span class="n n-Highlight">greeting</span><span class=" -Highlight"> </span><span class="o o-Highlight">=</span><span class=" -Highlight"> </span><span class="s2 s2-Highlight">&quot;Good morning&quot;</span>  <span class="c1"># before 12pm</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="c1"># put together the message and make it centered</span>
+<span class="hll"><span class="linenos">14</span><span class="n">message</span> <span class="o">=</span> <span class="p">(</span><span class="n">greeting</span> <span class="o">+</span> <span class="s2">&quot; world!&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">width</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">15</span>
+</span><span class="hll"><span class="linenos">16</span><span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+</span></pre></div>
 </div>
 </div>
 </div>
@@ -1044,48 +1297,35 @@ Show Keywords<div class="summary-down docutils">
 like a sentence that says what to do.</p>
 </div><div class="col-7">
 <div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-number">Listing 2 </span><span class="caption-text">a simple statement</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-python-hl notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">&quot;&quot;&quot;My first program&quot;&quot;&quot;</span>
-
-<span class="hll"><span class="kn">import</span> <span class="nn">time</span>
-</span></pre></div></td></tr></table></div>
+<div class="code-block-caption"><span class="caption-number">Listing 29 </span><span class="caption-text">a simple statement</span><a class="headerlink" href="#id2" title="Permalink to this code">#</a></div>
+<div class="highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="sd">&quot;&quot;&quot;My first program&quot;&quot;&quot;</span>
+<span class="linenos">2</span>
+<span class="hll"><span class="linenos">3</span><span class="kn">import</span> <span class="nn">time</span>
+</span></pre></div>
 </div>
 </div>
-<details class="sphinx-bs dropdown card mb-3">
-<summary class="summary-title card-header text-center">
-See more<div class="summary-down docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="summary-up docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="summary-content card-body docutils">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header text-center">
+See more<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-number">Listing 3 </span><span class="caption-text">all simple statements</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
-<div class="highlight-python-hl notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><span class="hll"><span class="n">width</span> <span class="o">=</span> <span class="mi">80</span>
-</span><span class="hll"><span class="n">today</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">()</span>
-</span><span class="hll">
-</span><span class="hll"><span class="n">greeting</span> <span class="o">=</span> <span class="s2">&quot;Hello&quot;</span>
-</span>
-<span class="k">if</span> <span class="n">today</span><span class="o">.</span><span class="n">tm_hour</span> <span class="o">&lt;</span> <span class="mi">11</span><span class="p">:</span>
-  <span class="n n-Highlight">greeting</span><span class=" -Highlight"> </span><span class="o o-Highlight">=</span><span class=" -Highlight"> </span><span class="s2 s2-Highlight">&quot;Good morning&quot;</span>  <span class="c1"># before 12pm</span>
-
-<span class="c1"># put together the message and make it centered</span>
-<span class="hll"><span class="n">message</span> <span class="o">=</span> <span class="p">(</span><span class="n">greeting</span> <span class="o">+</span> <span class="s2">&quot; world!&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">width</span><span class="p">)</span>
-</span><span class="hll">
-</span><span class="hll"><span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
-</span></pre></div></td></tr></table></div>
+<div class="code-block-caption"><span class="caption-number">Listing 30 </span><span class="caption-text">all simple statements</span><a class="headerlink" href="#id3" title="Permalink to this code">#</a></div>
+<div class="highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos"> 4</span><span class="n">width</span> <span class="o">=</span> <span class="mi">80</span>
+</span><span class="hll"><span class="linenos"> 5</span><span class="n">today</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">()</span>
+</span><span class="hll"><span class="linenos"> 6</span>
+</span><span class="hll"><span class="linenos"> 7</span><span class="n">greeting</span> <span class="o">=</span> <span class="s2">&quot;Hello&quot;</span>
+</span><span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="k">if</span> <span class="n">today</span><span class="o">.</span><span class="n">tm_hour</span> <span class="o">&lt;</span> <span class="mi">11</span><span class="p">:</span>
+<span class="linenos">10</span>  <span class="n n-Highlight">greeting</span><span class=" -Highlight"> </span><span class="o o-Highlight">=</span><span class=" -Highlight"> </span><span class="s2 s2-Highlight">&quot;Good morning&quot;</span>  <span class="c1"># before 12pm</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="c1"># put together the message and make it centered</span>
+<span class="hll"><span class="linenos">13</span><span class="n">message</span> <span class="o">=</span> <span class="p">(</span><span class="n">greeting</span> <span class="o">+</span> <span class="s2">&quot; world!&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">width</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">14</span>
+</span><span class="hll"><span class="linenos">15</span><span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+</span></pre></div>
 </div>
 </div>
 </div>
@@ -1116,78 +1356,60 @@ group together and control part of a program.</p>
 with a keyword and end with a colon (<code class="docutils literal notranslate"><span class="pre">:</span></code>).</p>
 </div><div class="col-7">
 <div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-number">Listing 4 </span><span class="caption-text">header line</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-python-hl notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><span class="k k-Highlight">if</span> <span class="n">today</span><span class="o">.</span><span class="n">tm_hour</span> <span class="o">&lt;</span> <span class="mi">11</span><span class="p p-Highlight">:</span>
-  <span class="n">greeting</span> <span class="o">=</span> <span class="s2">&quot;Good morning &quot;</span>  <span class="c1"># before 12pm</span>
-</pre></div></td></tr></table></div>
+<div class="code-block-caption"><span class="caption-number">Listing 31 </span><span class="caption-text">header line</span><a class="headerlink" href="#id4" title="Permalink to this code">#</a></div>
+<div class="highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="linenos">11</span><span class="k k-Highlight">if</span> <span class="n">today</span><span class="o">.</span><span class="n">tm_hour</span> <span class="o">&lt;</span> <span class="mi">11</span><span class="p p-Highlight">:</span>
+<span class="linenos">12</span>  <span class="n">greeting</span> <span class="o">=</span> <span class="s2">&quot;Good morning &quot;</span>  <span class="c1"># before 12pm</span>
+</pre></div>
 </div>
 </div>
 </div></div><div class="row"><div class="col-5 right-col-5">
 <p>Its <a class="reference internal" href="statements.html#term-body"><span class="xref std std-term">body</span></a> of statements are indented under the header.</p>
 </div><div class="col-7">
 <div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-number">Listing 5 </span><span class="caption-text">indented body line</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-python-hl notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">if</span> <span class="n">today</span><span class="o">.</span><span class="n">tm_hour</span> <span class="o">&lt;</span> <span class="mi">11</span><span class="p">:</span>
-<span class=" -Highlight">  </span><span class="n">greeting</span> <span class="o">=</span> <span class="s2">&quot;Good morning&quot;</span>  <span class="c1"># before 12pm</span>
-</pre></div></td></tr></table></div>
+<div class="code-block-caption"><span class="caption-number">Listing 32 </span><span class="caption-text">indented body line</span><a class="headerlink" href="#id5" title="Permalink to this code">#</a></div>
+<div class="highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="linenos">11</span><span class="k">if</span> <span class="n">today</span><span class="o">.</span><span class="n">tm_hour</span> <span class="o">&lt;</span> <span class="mi">11</span><span class="p">:</span>
+<span class="linenos">12</span><span class=" -Highlight">  </span><span class="n">greeting</span> <span class="o">=</span> <span class="s2">&quot;Good morning&quot;</span>  <span class="c1"># before 12pm</span>
+</pre></div>
 </div>
 </div>
 </div></div>
-</div>
-<div class="section" id="expressions">
-<h3><a class="toc-backref" href="#table-of-contents">Expressions</a><a class="headerlink" href="#expressions" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="expressions">
+<h3><a class="toc-backref" href="#table-of-contents">Expressions</a><a class="headerlink" href="#expressions" title="Permalink to this headline">#</a></h3>
 <div class="row"><div class="col-5 left-col-5">
 <p>A statement may contain one or more <a class="reference internal" href="expressions.html#term-expression"><span class="xref std std-term">expressions</span></a>, which is
 any piece of code that resolves to a value.</p>
 </div><div class="col-7">
-<div class="full-width highlight-python-hl notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">greeting</span> <span class="o">=</span> <span class="s2 s2-Highlight">&quot;Hello&quot;</span>
-</pre></div></td></tr></table></div>
+<div class="highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="linenos">9</span><span class="n">greeting</span> <span class="o">=</span> <span class="s2 s2-Highlight">&quot;Hello&quot;</span>
+</pre></div>
 </div>
-<details class="sphinx-bs dropdown card mb-3">
-<summary class="summary-title card-header text-center">
-See more<div class="summary-down docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="summary-up docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="summary-content card-body docutils">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header text-center">
+See more<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-number">Listing 6 </span><span class="caption-text">all expressions</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-python-hl notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd sd-Highlight">&quot;&quot;&quot;My first program&quot;&quot;&quot;</span>
-
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">shutil</span>
-
-<span class="n">width</span> <span class="o">=</span> <span class="mi mi-Highlight">80</span>
-<span class="n">today</span> <span class="o">=</span> <span class="n n-Highlight">time</span><span class="o o-Highlight">.</span><span class="n n-Highlight">localtime</span><span class="p p-Highlight">()</span>
-
-<span class="n">greeting</span> <span class="o">=</span> <span class="s2 s2-Highlight">&quot;Hello&quot;</span>
-
-<span class="k">if</span> <span class="n n-Highlight">today</span><span class="o o-Highlight">.</span><span class="n n-Highlight">tm_hour</span><span class=" -Highlight"> </span><span class="o o-Highlight">&lt;</span><span class=" -Highlight"> </span><span class="mi mi-Highlight">11</span><span class="p">:</span>
-  <span class="n">greeting</span> <span class="o">=</span> <span class="s2 s2-Highlight">&quot;Good morning&quot;</span>  <span class="c1"># before 12pm</span>
-
-<span class="c1"># put together the message and make it centered</span>
-<span class="n">message</span> <span class="o">=</span> <span class="p p-Highlight">(</span><span class="n n-Highlight">greeting</span><span class=" -Highlight"> </span><span class="o o-Highlight">+</span><span class=" -Highlight"> </span><span class="s2 s2-Highlight">&quot;world!&quot;</span><span class="p p-Highlight">)</span><span class="o o-Highlight">.</span><span class="n n-Highlight">center</span><span class="p p-Highlight">(</span><span class="n n-Highlight">width</span><span class="p p-Highlight">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n n-Highlight">message</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+<div class="code-block-caption"><span class="caption-number">Listing 33 </span><span class="caption-text">all expressions</span><a class="headerlink" href="#id6" title="Permalink to this code">#</a></div>
+<div class="highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="sd sd-Highlight">&quot;&quot;&quot;My first program&quot;&quot;&quot;</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">time</span>
+<span class="linenos"> 4</span><span class="kn">import</span> <span class="nn">shutil</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="n">width</span> <span class="o">=</span> <span class="mi mi-Highlight">80</span>
+<span class="linenos"> 7</span><span class="n">today</span> <span class="o">=</span> <span class="n n-Highlight">time</span><span class="o o-Highlight">.</span><span class="n n-Highlight">localtime</span><span class="p p-Highlight">()</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="n">greeting</span> <span class="o">=</span> <span class="s2 s2-Highlight">&quot;Hello&quot;</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="k">if</span> <span class="n n-Highlight">today</span><span class="o o-Highlight">.</span><span class="n n-Highlight">tm_hour</span><span class=" -Highlight"> </span><span class="o o-Highlight">&lt;</span><span class=" -Highlight"> </span><span class="mi mi-Highlight">11</span><span class="p">:</span>
+<span class="linenos">12</span>  <span class="n">greeting</span> <span class="o">=</span> <span class="s2 s2-Highlight">&quot;Good morning&quot;</span>  <span class="c1"># before 12pm</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="c1"># put together the message and make it centered</span>
+<span class="linenos">15</span><span class="n">message</span> <span class="o">=</span> <span class="p p-Highlight">(</span><span class="n n-Highlight">greeting</span><span class=" -Highlight"> </span><span class="o o-Highlight">+</span><span class=" -Highlight"> </span><span class="s2 s2-Highlight">&quot;world!&quot;</span><span class="p p-Highlight">)</span><span class="o o-Highlight">.</span><span class="n n-Highlight">center</span><span class="p p-Highlight">(</span><span class="n n-Highlight">width</span><span class="p p-Highlight">)</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="nb">print</span><span class="p">(</span><span class="n n-Highlight">message</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
 </div>
@@ -1195,8 +1417,8 @@ See more<div class="summary-down docutils">
 <p>Parentheses can be used around part of an expression to control order of
 operation or grouping.</p>
 </div><div class="col-7">
-<div class="full-width highlight-python-hl notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">message</span> <span class="o">=</span> <span class="p p-Highlight">(</span><span class="n n-Highlight">greeting</span><span class=" -Highlight"> </span><span class="o o-Highlight">+</span><span class=" -Highlight"> </span><span class="s2 s2-Highlight">&quot;world!&quot;</span><span class="p p-Highlight">)</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">width</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+<div class="highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="linenos">15</span><span class="n">message</span> <span class="o">=</span> <span class="p p-Highlight">(</span><span class="n n-Highlight">greeting</span><span class=" -Highlight"> </span><span class="o o-Highlight">+</span><span class=" -Highlight"> </span><span class="s2 s2-Highlight">&quot;world!&quot;</span><span class="p p-Highlight">)</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">width</span><span class="p">)</span>
+</pre></div>
 </div>
 <div class="br"></div><div class="br"></div>
 </div></div><div class="row"><div class="col-5 right-col-5">
@@ -1207,38 +1429,38 @@ together into the final result.</p>
 <p>They are evaluated in the order of inside outward then left to right.</p>
 </div><div class="col-7">
 <div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-number">Listing 7 </span><span class="caption-text">step #1 innermost variables and literal values: <br />
-<code class="docutils literal notranslate"><span class="pre">message</span> <span class="pre">=</span> <span class="pre">(&quot;Hello&quot;</span> <span class="pre">+</span> <span class="pre">&quot;world!&quot;).center(80)</span></code></span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">message</span> <span class="o">=</span> <span class="p">(</span><span class="n n-Highlight">greeting</span> <span class="o">+</span> <span class="s2 s2-Highlight">&quot;world!&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n n-Highlight">width</span><span class="p">)</span>
+<div class="code-block-caption"><span class="caption-number">Listing 34 </span><span class="caption-text">step #1 innermost variables and literal values: <br />
+<code class="docutils literal notranslate"><span class="pre">message</span> <span class="pre">=</span> <span class="pre">(&quot;Hello&quot;</span> <span class="pre">+</span> <span class="pre">&quot;world!&quot;).center(80)</span></code></span><a class="headerlink" href="#id7" title="Permalink to this code">#</a></div>
+<div class="highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">message</span> <span class="o">=</span> <span class="p">(</span><span class="n n-Highlight">greeting</span> <span class="o">+</span> <span class="s2 s2-Highlight">&quot;world!&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n n-Highlight">width</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="id8">
-<div class="code-block-caption"><span class="caption-number">Listing 8 </span><span class="caption-text">step #2 remaining inner expression: <br />
-<code class="docutils literal notranslate"><span class="pre">message</span> <span class="pre">=</span> <span class="pre">(&quot;Hello</span> <span class="pre">world!&quot;).center(80)</span></code></span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">message</span> <span class="o">=</span> <span class="p">(</span><span class="n n-Highlight">greeting</span><span class=" -Highlight"> </span><span class="o o-Highlight">+</span><span class=" -Highlight"> </span><span class="s2 s2-Highlight">&quot;world!&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">width</span><span class="p">)</span>
+<div class="code-block-caption"><span class="caption-number">Listing 35 </span><span class="caption-text">step #2 remaining inner expression: <br />
+<code class="docutils literal notranslate"><span class="pre">message</span> <span class="pre">=</span> <span class="pre">(&quot;Hello</span> <span class="pre">world!&quot;).center(80)</span></code></span><a class="headerlink" href="#id8" title="Permalink to this code">#</a></div>
+<div class="highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">message</span> <span class="o">=</span> <span class="p">(</span><span class="n n-Highlight">greeting</span><span class=" -Highlight"> </span><span class="o o-Highlight">+</span><span class=" -Highlight"> </span><span class="s2 s2-Highlight">&quot;world!&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">width</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="id9">
-<div class="code-block-caption"><span class="caption-number">Listing 9 </span><span class="caption-text">step #3 leftmost expression: <br />
-<code class="docutils literal notranslate"><span class="pre">message</span> <span class="pre">=</span> <span class="pre">&quot;Hello</span> <span class="pre">world!&quot;.center(80)</span></code></span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">message</span> <span class="o">=</span> <span class="p p-Highlight">(</span><span class="n n-Highlight">greeting</span><span class=" -Highlight"> </span><span class="o o-Highlight">+</span><span class=" -Highlight"> </span><span class="s2 s2-Highlight">&quot;world!&quot;</span><span class="p p-Highlight">)</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">width</span><span class="p">)</span>
+<div class="code-block-caption"><span class="caption-number">Listing 36 </span><span class="caption-text">step #3 leftmost expression: <br />
+<code class="docutils literal notranslate"><span class="pre">message</span> <span class="pre">=</span> <span class="pre">&quot;Hello</span> <span class="pre">world!&quot;.center(80)</span></code></span><a class="headerlink" href="#id9" title="Permalink to this code">#</a></div>
+<div class="highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">message</span> <span class="o">=</span> <span class="p p-Highlight">(</span><span class="n n-Highlight">greeting</span><span class=" -Highlight"> </span><span class="o o-Highlight">+</span><span class=" -Highlight"> </span><span class="s2 s2-Highlight">&quot;world!&quot;</span><span class="p p-Highlight">)</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">width</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="id10">
-<div class="code-block-caption"><span class="caption-number">Listing 10 </span><span class="caption-text">step #4 next expression to the right: <br />
-<code class="docutils literal notranslate"><span class="pre">message</span> <span class="pre">=</span> <span class="pre">&quot;</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">Hello</span> <span class="pre">world!</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">&quot;</span></code></span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">message</span> <span class="o">=</span> <span class="p p-Highlight">(</span><span class="n n-Highlight">greeting</span><span class=" -Highlight"> </span><span class="o o-Highlight">+</span><span class=" -Highlight"> </span><span class="s2 s2-Highlight">&quot;world!&quot;</span><span class="p p-Highlight">)</span><span class="o o-Highlight">.</span><span class="n n-Highlight">center</span><span class="p p-Highlight">(</span><span class="n n-Highlight">width</span><span class="p p-Highlight">)</span>
+<div class="code-block-caption"><span class="caption-number">Listing 37 </span><span class="caption-text">step #4 next expression to the right: <br />
+<code class="docutils literal notranslate"><span class="pre">message</span> <span class="pre">=</span> <span class="pre">&quot;</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">Hello</span> <span class="pre">world!</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">&quot;</span></code></span><a class="headerlink" href="#id10" title="Permalink to this code">#</a></div>
+<div class="highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">message</span> <span class="o">=</span> <span class="p p-Highlight">(</span><span class="n n-Highlight">greeting</span><span class=" -Highlight"> </span><span class="o o-Highlight">+</span><span class=" -Highlight"> </span><span class="s2 s2-Highlight">&quot;world!&quot;</span><span class="p p-Highlight">)</span><span class="o o-Highlight">.</span><span class="n n-Highlight">center</span><span class="p p-Highlight">(</span><span class="n n-Highlight">width</span><span class="p p-Highlight">)</span>
 </pre></div>
 </div>
 </div>
 </div></div>
-</div>
-</div>
-<div class="section" id="values">
-<h2><a class="toc-backref" href="#table-of-contents">Values</a><a class="headerlink" href="#values" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="values">
+<h2><a class="toc-backref" href="#table-of-contents">Values</a><a class="headerlink" href="#values" title="Permalink to this headline">#</a></h2>
 <p>Every value has a type and each type has its own syntax. Let’s take a look at
 the following example with a summary of the simple types and how variables are
 saved.</p>
@@ -1272,30 +1494,26 @@ saved.</p>
 </div>
 </div>
 </div>
-<div class="section" id="variables">
-<h3><a class="toc-backref" href="#table-of-contents">Variables</a><a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h3>
+<section id="variables">
+<h3><a class="toc-backref" href="#table-of-contents">Variables</a><a class="headerlink" href="#variables" title="Permalink to this headline">#</a></h3>
 <div class="row"><div class="col-5 left-col-5">
 <p>Save a value to be easily used later in the code by giving it a name.  To
 create a variable simply <a class="reference internal" href="#term-assign"><span class="xref std std-term">assign</span></a> a value to it it using the equals sign
 (<code class="docutils literal notranslate"><span class="pre">=</span></code>).</p>
 <p>Syntax: <code class="samp docutils literal notranslate"><em><span class="pre">NAME</span></em> <span class="pre">=</span> <em><span class="pre">VALUE</span></em></code></p>
 </div><div class="col-7">
-<div class="highlight-python-hl notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><span class="n n-Highlight">greeting</span><span class=" -Highlight"> </span><span class="o o-Highlight">=</span><span class=" -Highlight"> </span><span class="s2 s2-Highlight">&quot;Hello.&quot;</span> <span class="c1"># string         (str)</span>
-<span class="n n-Highlight">health</span><span class=" -Highlight"> </span><span class="o o-Highlight">=</span><span class=" -Highlight"> </span><span class="mi mi-Highlight">100</span>        <span class="c1"># integer        (int)</span>
-<span class="n n-Highlight">delay</span><span class=" -Highlight"> </span><span class="o o-Highlight">=</span><span class=" -Highlight"> </span><span class="mf mf-Highlight">0.1</span>         <span class="c1"># floating point (float)</span>
-<span class="n n-Highlight">verbose</span><span class=" -Highlight"> </span><span class="o o-Highlight">=</span><span class=" -Highlight"> </span><span class="kc kc-Highlight">True</span>      <span class="c1"># boolean        (bool)</span>
-<span class="n n-Highlight">winner</span><span class=" -Highlight"> </span><span class="o o-Highlight">=</span><span class=" -Highlight"> </span><span class="kc kc-Highlight">None</span>       <span class="c1"># NoneType</span>
-</pre></div></td></tr></table></div>
+<div class="highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n n-Highlight">greeting</span><span class=" -Highlight"> </span><span class="o o-Highlight">=</span><span class=" -Highlight"> </span><span class="s2 s2-Highlight">&quot;Hello.&quot;</span> <span class="c1"># string         (str)</span>
+<span class="linenos">2</span><span class="n n-Highlight">health</span><span class=" -Highlight"> </span><span class="o o-Highlight">=</span><span class=" -Highlight"> </span><span class="mi mi-Highlight">100</span>        <span class="c1"># integer        (int)</span>
+<span class="linenos">3</span><span class="n n-Highlight">delay</span><span class=" -Highlight"> </span><span class="o o-Highlight">=</span><span class=" -Highlight"> </span><span class="mf mf-Highlight">0.1</span>         <span class="c1"># floating point (float)</span>
+<span class="linenos">4</span><span class="n n-Highlight">verbose</span><span class=" -Highlight"> </span><span class="o o-Highlight">=</span><span class=" -Highlight"> </span><span class="kc kc-Highlight">True</span>      <span class="c1"># boolean        (bool)</span>
+<span class="linenos">5</span><span class="n n-Highlight">winner</span><span class=" -Highlight"> </span><span class="o o-Highlight">=</span><span class=" -Highlight"> </span><span class="kc kc-Highlight">None</span>       <span class="c1"># NoneType</span>
+</pre></div>
 </div>
 </div></div><div class="row"><div class="col-5 right-col-5">
 <p>To <a class="reference internal" href="../tools/git.html#term-reference"><span class="xref std std-term">reference</span></a> a variable, or retrieve the data you stored, use the variable name.</p>
 </div><div class="col-7">
-<div class="highlight-python-hl notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n n-Highlight">greeting</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+<div class="highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="linenos">7</span><span class="nb">print</span><span class="p">(</span><span class="n n-Highlight">greeting</span><span class="p">)</span>
+</pre></div>
 </div>
 </div></div><div class="row"><div class="col-5 right-col-5">
 <p>Assign multiple variables at once by putting the same number of variables on
@@ -1315,9 +1533,9 @@ sequence such as a list.</p>
 </pre></div>
 </div>
 </div></div>
-</div>
-<div class="section" id="bracket-notation">
-<h3><a class="toc-backref" href="#table-of-contents">Bracket notation</a><a class="headerlink" href="#bracket-notation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="bracket-notation">
+<h3><a class="toc-backref" href="#table-of-contents">Bracket notation</a><a class="headerlink" href="#bracket-notation" title="Permalink to this headline">#</a></h3>
 <p>Many <a class="reference internal" href="data-types/containers.html#term-container"><span class="xref std std-term">container</span></a> types (like lists and dictionaries) support the use of
 <a class="reference internal" href="data-types/containers.html#term-subscription"><span class="xref std std-term">subscription</span></a> or <a class="reference internal" href="data-types/containers.html#term-bracket-notation"><span class="xref std std-term">bracket notation</span></a> to select elements from the
 collection. Add square brackets (<code class="docutils literal notranslate"><span class="pre">[</span></code> <code class="docutils literal notranslate"><span class="pre">]</span></code>) after a value enclosing a selector
@@ -1360,9 +1578,9 @@ on any expression that results in a type that supports it.</p>
 </pre></div>
 </div>
 </div></div>
-</div>
-<div class="section" id="dot-notation">
-<h3><a class="toc-backref" href="#table-of-contents">Dot notation</a><a class="headerlink" href="#dot-notation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="dot-notation">
+<h3><a class="toc-backref" href="#table-of-contents">Dot notation</a><a class="headerlink" href="#dot-notation" title="Permalink to this headline">#</a></h3>
 <div class="row"><div class="col-5 left-col-5">
 <p>Use <a class="reference internal" href="data-types/objects.html#term-dot-notation"><span class="xref std std-term">dot notation</span></a> to access <a class="reference internal" href="../../member.html" title=""><span class="xref std std-term">members</span></a> of a given value by adding a
 period (<code class="docutils literal notranslate"><span class="pre">.</span></code>) after a value followed by the member name.</p>
@@ -1387,9 +1605,9 @@ value.</p>
 </pre></div>
 </div>
 </div></div>
-</div>
-<div class="section" id="calls">
-<h3><a class="toc-backref" href="#table-of-contents">Calls</a><a class="headerlink" href="#calls" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="calls">
+<h3><a class="toc-backref" href="#table-of-contents">Calls</a><a class="headerlink" href="#calls" title="Permalink to this headline">#</a></h3>
 <div class="row"><div class="col-5 left-col-5">
 <p>Call a function by adding a set of parenthesis after the name.</p>
 <p>Syntax: <code class="samp docutils literal notranslate"><em><span class="pre">NAME</span></em><span class="pre">()</span></code></p>
@@ -1440,10 +1658,10 @@ value.</p>
 </div>
 </div>
 </div></div>
-</div>
-</div>
-<div class="section" id="types">
-<h2><a class="toc-backref" href="#table-of-contents">Types</a><a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="types">
+<h2><a class="toc-backref" href="#table-of-contents">Types</a><a class="headerlink" href="#types" title="Permalink to this headline">#</a></h2>
 <p>Lets take a closer look at the standard built in types.</p>
 <table class="colwidths-given table">
 <colgroup>
@@ -1547,8 +1765,8 @@ that the value has not been set.</p></td>
 </tr>
 </tbody>
 </table>
-<div class="section" id="strings">
-<h3><a class="toc-backref" href="#table-of-contents">Strings</a><a class="headerlink" href="#strings" title="Permalink to this headline">¶</a></h3>
+<section id="strings">
+<h3><a class="toc-backref" href="#table-of-contents">Strings</a><a class="headerlink" href="#strings" title="Permalink to this headline">#</a></h3>
 <div class="row"><div class="col-5 left-col-5">
 <p>Strings store text data and can be enclosed in either single or double quotes.</p>
 </div><div class="col-7">
@@ -1700,9 +1918,9 @@ The total is $6.25.
 </div>
 </div>
 </div></div>
-</div>
-<div class="section" id="lists">
-<h3><a class="toc-backref" href="#table-of-contents">Lists</a><a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="lists">
+<h3><a class="toc-backref" href="#table-of-contents">Lists</a><a class="headerlink" href="#lists" title="Permalink to this headline">#</a></h3>
 <p>A list is an ordered collection of arbitrary objects.</p>
 <div class="row"><div class="col-5 left-col-5">
 <p>To create one, enclose comma-separated values in square brackets <br />
@@ -1767,9 +1985,9 @@ violet
 </div>
 </div>
 </div></div>
-</div>
-<div class="section" id="dictionaries">
-<h3><a class="toc-backref" href="#table-of-contents">Dictionaries</a><a class="headerlink" href="#dictionaries" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="dictionaries">
+<h3><a class="toc-backref" href="#table-of-contents">Dictionaries</a><a class="headerlink" href="#dictionaries" title="Permalink to this headline">#</a></h3>
 <p>A dictionary is a collection of key value pairs.</p>
 <div class="row"><div class="col-5 left-col-5">
 <p>To create one, enclose comma-separated key value pairs in curly braces (<code class="docutils literal notranslate"><span class="pre">{</span></code> <code class="docutils literal notranslate"><span class="pre">}</span></code>) with
@@ -1830,9 +2048,9 @@ Garfield : (=^o.o^=)__
 </div>
 </div>
 </div></div>
-</div>
-<div class="section" id="tuples">
-<h3><a class="toc-backref" href="#table-of-contents">Tuples</a><a class="headerlink" href="#tuples" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="tuples">
+<h3><a class="toc-backref" href="#table-of-contents">Tuples</a><a class="headerlink" href="#tuples" title="Permalink to this headline">#</a></h3>
 <p>A tuple is an immutable collection of arbitrary objects.</p>
 <div class="row"><div class="col-5 left-col-5">
 <p>To create one, enclose comma-separated values in parenthesis <br />
@@ -1945,9 +2163,9 @@ recent
 </div>
 </div></div>
 <p>Tuples are immutable, so items cannot be modified or removed.</p>
-</div>
-<div class="section" id="sets">
-<h3><a class="toc-backref" href="#table-of-contents">Sets</a><a class="headerlink" href="#sets" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="sets">
+<h3><a class="toc-backref" href="#table-of-contents">Sets</a><a class="headerlink" href="#sets" title="Permalink to this headline">#</a></h3>
 <p>A set is an unordered collection with no duplicate elements.</p>
 <div class="row"><div class="col-5 left-col-5">
 <p>To create one, enclose comma-separated values in curly braces <br />
@@ -1983,12 +2201,12 @@ empty set.</p>
 </div>
 </div></div>
 <p>Sets are unordered, so <a class="reference internal" href="data-types/containers.html#term-subscription"><span class="xref std std-term">subscription</span></a> is not supported.</p>
-</div>
-</div>
-<div class="section" id="flow-control">
-<h2><a class="toc-backref" href="#table-of-contents">Flow Control</a><a class="headerlink" href="#flow-control" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="if-statements">
-<h3><a class="toc-backref" href="#table-of-contents">if statements</a><a class="headerlink" href="#if-statements" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="flow-control">
+<h2><a class="toc-backref" href="#table-of-contents">Flow Control</a><a class="headerlink" href="#flow-control" title="Permalink to this headline">#</a></h2>
+<section id="if-statements">
+<h3><a class="toc-backref" href="#table-of-contents">if statements</a><a class="headerlink" href="#if-statements" title="Permalink to this headline">#</a></h3>
 <p><a class="reference internal" href="conditional-statements.html#term-if-statement"><span class="xref std std-term">If statements</span></a> are used to only execute code under
 certain conditions.</p>
 <div class="row"><div class="col-5 left-col-5">
@@ -2015,32 +2233,20 @@ certain conditions.</p>
 </div></div><div class="row"><div class="col-5 right-col-5">
 <p>In this example, <code class="docutils literal notranslate"><span class="pre">&quot;Would</span> <span class="pre">you</span> <span class="pre">like</span> <span class="pre">a</span> <span class="pre">beer?&quot;</span></code> will only be printed if <code class="docutils literal notranslate"><span class="pre">age</span> <span class="pre">&gt;=</span> <span class="pre">21</span></code>.</p>
 </div><div class="col-7">
-<div class="full-width highlight-default notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
-
-<span class="n">age</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">99</span><span class="p">)</span>
-
-<span class="hll"><span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">21</span><span class="p">:</span>
-</span><span class="hll">  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Would you like a beer?&quot;</span><span class="p">)</span>
-</span><span class="k">elif</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">12</span><span class="p">:</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Would you like a soda?&quot;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Would you like a juice?&quot;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello.&quot;</span><span class="p">)</span>
-
-</pre></div></td></tr></table></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">random</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">age</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">99</span><span class="p">)</span>
+<span class="linenos"> 4</span>
+<span class="hll"><span class="linenos"> 5</span><span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">21</span><span class="p">:</span>
+</span><span class="hll"><span class="linenos"> 6</span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Would you like a beer?&quot;</span><span class="p">)</span>
+</span><span class="linenos"> 7</span><span class="k">elif</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">12</span><span class="p">:</span>
+<span class="linenos"> 8</span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Would you like a soda?&quot;</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="k">elif</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>
+<span class="linenos">10</span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Would you like a juice?&quot;</span><span class="p">)</span>
+<span class="linenos">11</span><span class="k">else</span><span class="p">:</span>
+<span class="linenos">12</span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello.&quot;</span><span class="p">)</span>
+<span class="linenos">13</span>
+</pre></div>
 </div>
 </div></div><div class="row"><div class="col-5 right-col-5">
 <p>An if statement may contain zero or more <code class="docutils literal notranslate"><span class="pre">elif</span></code> clauses.</p>
@@ -2051,32 +2257,20 @@ certain conditions.</p>
 </div></div><div class="row"><div class="col-5 right-col-5">
 <p>This example contains two <code class="docutils literal notranslate"><span class="pre">elif</span></code> clauses.</p>
 </div><div class="col-7">
-<div class="full-width highlight-default notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
-
-<span class="n">age</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">99</span><span class="p">)</span>
-
-<span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">21</span><span class="p">:</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Would you like a beer?&quot;</span><span class="p">)</span>
-<span class="hll"><span class="k">elif</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">12</span><span class="p">:</span>
-</span><span class="hll">  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Would you like a soda?&quot;</span><span class="p">)</span>
-</span><span class="hll"><span class="k">elif</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>
-</span><span class="hll">  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Would you like a juice?&quot;</span><span class="p">)</span>
-</span><span class="k">else</span><span class="p">:</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello.&quot;</span><span class="p">)</span>
-
-</pre></div></td></tr></table></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">random</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">age</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">99</span><span class="p">)</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">21</span><span class="p">:</span>
+<span class="linenos"> 6</span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Would you like a beer?&quot;</span><span class="p">)</span>
+<span class="hll"><span class="linenos"> 7</span><span class="k">elif</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">12</span><span class="p">:</span>
+</span><span class="hll"><span class="linenos"> 8</span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Would you like a soda?&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos"> 9</span><span class="k">elif</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>
+</span><span class="hll"><span class="linenos">10</span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Would you like a juice?&quot;</span><span class="p">)</span>
+</span><span class="linenos">11</span><span class="k">else</span><span class="p">:</span>
+<span class="linenos">12</span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello.&quot;</span><span class="p">)</span>
+<span class="linenos">13</span>
+</pre></div>
 </div>
 </div></div><div class="row"><div class="col-5 right-col-5">
 <p>And an if statement may optionally end with an <code class="docutils literal notranslate"><span class="pre">else</span></code> clause. These body
@@ -2101,37 +2295,25 @@ statements will be executed if none of the previous conditions are met.</p>
 <p>In this example, <code class="docutils literal notranslate"><span class="pre">&quot;Hello.&quot;</span></code> is printed if all preceding conditions evaluated to
 <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 </div><div class="col-7">
-<div class="full-width highlight-default notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
-
-<span class="n">age</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">99</span><span class="p">)</span>
-
-<span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">21</span><span class="p">:</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Would you like a beer?&quot;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">12</span><span class="p">:</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Would you like a soda?&quot;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Would you like a juice?&quot;</span><span class="p">)</span>
-<span class="hll"><span class="k">else</span><span class="p">:</span>
-</span><span class="hll">  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello.&quot;</span><span class="p">)</span>
-</span>
-</pre></div></td></tr></table></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">random</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">age</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">99</span><span class="p">)</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">21</span><span class="p">:</span>
+<span class="linenos"> 6</span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Would you like a beer?&quot;</span><span class="p">)</span>
+<span class="linenos"> 7</span><span class="k">elif</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">12</span><span class="p">:</span>
+<span class="linenos"> 8</span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Would you like a soda?&quot;</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="k">elif</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>
+<span class="linenos">10</span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Would you like a juice?&quot;</span><span class="p">)</span>
+<span class="hll"><span class="linenos">11</span><span class="k">else</span><span class="p">:</span>
+</span><span class="hll"><span class="linenos">12</span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello.&quot;</span><span class="p">)</span>
+</span><span class="linenos">13</span>
+</pre></div>
 </div>
 </div></div>
-</div>
-<div class="section" id="for-loops">
-<h3><a class="toc-backref" href="#table-of-contents">for loops</a><a class="headerlink" href="#for-loops" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="for-loops">
+<h3><a class="toc-backref" href="#table-of-contents">for loops</a><a class="headerlink" href="#for-loops" title="Permalink to this headline">#</a></h3>
 <div class="row"><div class="col-5 left-col-5">
 <p>For loops are used to iterate over every element in a sequence and repeat a
 block of code each time.</p>
@@ -2159,17 +2341,15 @@ block of code each time.</p>
 </table>
 </div></div><div class="row"><div class="col-5 right-col-5">
 </div><div class="col-7">
-<div class="highlight-default notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;cherry&quot;</span><span class="p">]:</span>
-    <span class="n">letter</span> <span class="o">=</span> <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">letter</span><span class="si">}</span><span class="s2"> is for: </span><span class="si">{</span><span class="n">word</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;cherry&quot;</span><span class="p">]:</span>
+<span class="linenos">2</span>    <span class="n">letter</span> <span class="o">=</span> <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="linenos">3</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">letter</span><span class="si">}</span><span class="s2"> is for: </span><span class="si">{</span><span class="n">word</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</pre></div>
 </div>
 </div></div>
-</div>
-<div class="section" id="while-loops">
-<h3><a class="toc-backref" href="#table-of-contents">while loops</a><a class="headerlink" href="#while-loops" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="while-loops">
+<h3><a class="toc-backref" href="#table-of-contents">while loops</a><a class="headerlink" href="#while-loops" title="Permalink to this headline">#</a></h3>
 <div class="row"><div class="col-5 left-col-5">
 <p>A <code class="docutils literal notranslate"><span class="pre">while</span></code> loop is used to repeat a block of code as long as an
 expression evaluates to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
@@ -2194,25 +2374,19 @@ expression evaluates to <code class="docutils literal notranslate"><span class="
 </table>
 </div></div><div class="row"><div class="col-5 right-col-5">
 </div><div class="col-7">
-<div class="highlight-default notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-
-<span class="k">while</span> <span class="ow">not</span> <span class="n">name</span><span class="p">:</span>
-  <span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What is your name? &quot;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello there </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
-
-</pre></div></td></tr></table></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="k">while</span> <span class="ow">not</span> <span class="n">name</span><span class="p">:</span>
+<span class="linenos">4</span>  <span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What is your name? &quot;</span><span class="p">)</span>
+<span class="linenos">5</span>
+<span class="linenos">6</span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello there </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
+<span class="linenos">7</span>
+</pre></div>
 </div>
 </div></div>
-</div>
-<div class="section" id="functions">
-<h3><a class="toc-backref" href="#table-of-contents">Functions</a><a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="functions">
+<h3><a class="toc-backref" href="#table-of-contents">Functions</a><a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h3>
 <div class="row"><div class="col-5 left-col-5">
 <p>A <a class="reference internal" href="functions.html#term-function"><span class="xref std std-term">function</span></a> is a set of Python instructions or statements that can be
 executed, or called, later.</p>
@@ -2240,60 +2414,53 @@ executed, or called, later.</p>
 </table>
 </div></div><div class="row"><div class="col-5 right-col-5">
 </div><div class="col-7">
-<div class="highlight-default notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span> <span class="nf">line</span><span class="p">():</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------------------&quot;</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">see</span><span class="p">(</span><span class="n">pet</span><span class="p">):</span>
-  <span class="n">line</span><span class="p">()</span>
-  <span class="nb">print</span><span class="p">(</span><span class="n">pet</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="s2">&quot;the&quot;</span><span class="p">,</span> <span class="n">pet</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">],</span> <span class="n">pet</span><span class="p">[</span><span class="s2">&quot;kind&quot;</span><span class="p">])</span>
-  <span class="nb">print</span><span class="p">(</span><span class="n">pet</span><span class="p">[</span><span class="s2">&quot;pic&quot;</span><span class="p">])</span>
-
-</pre></div></td></tr></table></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">line</span><span class="p">():</span>
+<span class="linenos">2</span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------------------&quot;</span><span class="p">)</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="k">def</span> <span class="nf">see</span><span class="p">(</span><span class="n">pet</span><span class="p">):</span>
+<span class="linenos">5</span>  <span class="n">line</span><span class="p">()</span>
+<span class="linenos">6</span>  <span class="nb">print</span><span class="p">(</span><span class="n">pet</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="s2">&quot;the&quot;</span><span class="p">,</span> <span class="n">pet</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">],</span> <span class="n">pet</span><span class="p">[</span><span class="s2">&quot;kind&quot;</span><span class="p">])</span>
+<span class="linenos">7</span>  <span class="nb">print</span><span class="p">(</span><span class="n">pet</span><span class="p">[</span><span class="s2">&quot;pic&quot;</span><span class="p">])</span>
+<span class="linenos">8</span>
+</pre></div>
 </div>
 </div></div>
-</div>
-</div>
-<div class="section" id="reference">
-<h2><a class="toc-backref" href="#table-of-contents">Reference</a><a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="glossary">
-<h3><a class="toc-backref" href="#table-of-contents">Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="glossary-syntax">
-<h4><a class="toc-backref" href="#table-of-contents">Syntax</a><a class="headerlink" href="#glossary-syntax" title="Permalink to this headline">¶</a></h4>
+</section>
+</section>
+<section id="reference">
+<h2><a class="toc-backref" href="#table-of-contents">Reference</a><a class="headerlink" href="#reference" title="Permalink to this headline">#</a></h2>
+<section id="glossary">
+<h3><a class="toc-backref" href="#table-of-contents">Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this headline">#</a></h3>
+<section id="glossary-syntax">
+<h4><a class="toc-backref" href="#table-of-contents">Syntax</a><a class="headerlink" href="#glossary-syntax" title="Permalink to this headline">#</a></h4>
 <dl class="glossary simple">
-<dt id="term-chaining">chaining<a class="headerlink" href="#term-chaining" title="Permalink to this term">¶</a></dt><dt id="term-method-chaining">method chaining<a class="headerlink" href="#term-method-chaining" title="Permalink to this term">¶</a></dt><dd><p>Stringing together multiple <a class="reference internal" href="data-types/objects.html#term-dot-notation"><span class="xref std std-term">dot notation</span></a> attribute references.</p>
+<dt id="term-chaining">chaining<a class="headerlink" href="#term-chaining" title="Permalink to this term">#</a></dt><dt id="term-method-chaining">method chaining<a class="headerlink" href="#term-method-chaining" title="Permalink to this term">#</a></dt><dd><p>Stringing together multiple <a class="reference internal" href="data-types/objects.html#term-dot-notation"><span class="xref std std-term">dot notation</span></a> attribute references.</p>
 </dd>
-<dt id="term-comment">comment<a class="headerlink" href="#term-comment" title="Permalink to this term">¶</a></dt><dd><p>Parts in a source-code file which are ignored when the program is run. In
+<dt id="term-comment">comment<a class="headerlink" href="#term-comment" title="Permalink to this term">#</a></dt><dd><p>Parts in a source-code file which are ignored when the program is run. In
 Python add a <code class="docutils literal notranslate"><span class="pre">#</span></code> to the beginning a line to indicate that it is a comment.
 You can also comment out only part of a line by adding <code class="docutils literal notranslate"><span class="pre">#</span></code> followed by the
 comment text to the end of an expression. It is recommended to follow the <code class="docutils literal notranslate"><span class="pre">#</span></code>
 by a single space before the text of the comment.</p>
 </dd>
-<dt id="term-keyword">keyword<a class="headerlink" href="#term-keyword" title="Permalink to this term">¶</a></dt><dd><p>Reserved words that have special meanings in a programming language so that
+<dt id="term-keyword">keyword<a class="headerlink" href="#term-keyword" title="Permalink to this term">#</a></dt><dd><p>Reserved words that have special meanings in a programming language so that
 they cannot be used as an identifier. Some examples of keywords in Python are
 <code class="docutils literal notranslate"><span class="pre">for</span></code>, <code class="docutils literal notranslate"><span class="pre">if</span></code>, and <code class="docutils literal notranslate"><span class="pre">def</span></code>.</p>
 </dd>
-<dt id="term-syntax">syntax<a class="headerlink" href="#term-syntax" title="Permalink to this term">¶</a></dt><dd><p>A set of rules that determine how a programming language is understood by the
+<dt id="term-syntax">syntax<a class="headerlink" href="#term-syntax" title="Permalink to this term">#</a></dt><dd><p>A set of rules that determine how a programming language is understood by the
 computer. Grammar, but for code.</p>
 </dd>
-<dt id="term-assign">assign<a class="headerlink" href="#term-assign" title="Permalink to this term">¶</a></dt><dd><p>A <a class="reference internal" href="statements.html#term-statement"><span class="xref std std-term">statement</span></a> that sets the <a class="reference internal" href="expressions.html#term-value"><span class="xref std std-term">value</span></a> of a variable name.</p>
+<dt id="term-assign">assign<a class="headerlink" href="#term-assign" title="Permalink to this term">#</a></dt><dd><p>A <a class="reference internal" href="statements.html#term-statement"><span class="xref std std-term">statement</span></a> that sets the <a class="reference internal" href="expressions.html#term-value"><span class="xref std std-term">value</span></a> of a variable name.</p>
 </dd>
-<dt id="term-identifier">identifier<a class="headerlink" href="#term-identifier" title="Permalink to this term">¶</a></dt><dd><p>The name that refers to a some programming element, such as a variable,
+<dt id="term-identifier">identifier<a class="headerlink" href="#term-identifier" title="Permalink to this term">#</a></dt><dd><p>The name that refers to a some programming element, such as a variable,
 class, function or module.</p>
 </dd>
-<dt id="term-variable">variable<a class="headerlink" href="#term-variable" title="Permalink to this term">¶</a></dt><dd><p>A name given to a value.</p>
+<dt id="term-variable">variable<a class="headerlink" href="#term-variable" title="Permalink to this term">#</a></dt><dd><p>A name given to a value.</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="see-also">
-<h3><a class="toc-backref" href="#table-of-contents">See also</a><a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="see-also">
+<h3><a class="toc-backref" href="#table-of-contents">See also</a><a class="headerlink" href="#see-also" title="Permalink to this headline">#</a></h3>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">
@@ -2303,11 +2470,11 @@ class, function or module.</p>
 </ul>
 </div>
 <hr class="docutils" />
+</section>
+</section>
 <div class="toctree-wrapper compound">
 </div>
-</div>
-</div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2321,7 +2488,7 @@ class, function or module.</p>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./lessons"
         },
         predefinedOutput: true
@@ -2331,9 +2498,11 @@ class, function or module.</p>
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="fundamentals.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -2349,23 +2518,25 @@ class, function or module.</p>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Beginner Tutorial &#8212; Python Class</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,39 +20,39 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/asciinema-player.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/asciinema-player.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/custom.js"></script>
-    <script src="../_static/asciinema-player.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/x-frame-bypass.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+    <script src="../_static/asciinema-player.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
@@ -68,7 +70,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -77,9 +93,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
       
@@ -92,7 +109,7 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <p class="caption">
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Lessons
  </span>
@@ -379,7 +396,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Practices
  </span>
@@ -406,7 +423,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Tools
  </span>
@@ -454,7 +471,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../tools/replit.html">
-   Repl.it Tips
+   Replit
   </a>
  </li>
  <li class="toctree-l1">
@@ -478,7 +495,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Reference
  </span>
@@ -510,7 +527,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Exercises
  </span>
@@ -542,7 +559,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Admin
  </span>
@@ -556,88 +573,177 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/alissa-huskey/python-class"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        <a class="edit-button" href="https://github.com/alissa-huskey/python-class/edit/master/docs/lessons/tutorial.md"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/alissa-huskey/python-class/master?urlpath=lab/tree/docs/lessons/tutorial.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <button type="button" class="btn btn-secondary topbarbtn"
-            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
-                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
-        
-    </div>
-</div>
-
         </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
 
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/alissa-huskey/python-class/master?urlpath=lab/tree/docs/lessons/tutorial.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/alissa-huskey/python-class"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/alissa-huskey/python-class/edit/master/docs/lessons/tutorial.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduction">
    Introduction
@@ -656,31 +762,193 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#running-python-for-the-first-time">
-     Running Python for the first time
+    <a class="reference internal nav-link" href="#part-1-1-replit">
+     Part 1.1: Replit
     </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-1-2-your-first-line-of-code">
+     Part 1.2: Your first line of code
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#a-write-code-in-the-editor">
+       A. Write code in the editor
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#b-run-it">
+       B. Run it
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#part-2-creating-your-pypet">
-   Part 2: Creating your Pypet
+   Part 2: Creating your PyPet
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-2-1-setting-variables">
+     Part 2.1: Setting Variables
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#a-add-a-variable">
+       A. Add a variable
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#b-types-of-data">
+       B. Types of data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#c-exercise">
+       C. Exercise
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-2-2-special-characters">
+     Part 2.2: Special characters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-2-3-using-variables">
+     Part 2.3: Using variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-2-4-combining-strings">
+     Part 2.4: Combining strings
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-2-5-documentation">
+     Part 2.5: Documentation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#a-docstrings">
+       A. Docstrings
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#b-comments">
+       B. Comments
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#c-inline-comments">
+       C. Inline comments
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#part-3-getting-organized">
    Part 3: Getting Organized
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-3-1-make-a-cat-dictionary">
+     Part 3.1 Make a
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       cat
+      </span>
+     </code>
+     dictionary
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-3-2-print-the-dictionary">
+     Part 3.2: Print the dictionary
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-3-3-print-dictionary-values">
+     Part 3.3: Print dictionary values
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-3-4-remove-old-stuff">
+     Part 3.4: Remove old stuff
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#part-4-feeding-your-pypet">
-   Part 4: Feeding your Pypet
+   Part 4: Feeding your PyPet
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-4-1-define-feed">
+     Part 4.1: Define
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       feed()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-4-2-call-the-function">
+     Part 4.2: Call the function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-4-3-increase-the-pet-weight">
+     Part 4.3: Increase the pet weight
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-4-4-test-it">
+     Part 4.4: Test it
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-4-5-exercises">
+     Part 4.5: Exercises
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#a-hello-function">
+       A. hello() function
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#b-goodbye-function">
+       B. goodbye() function
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#part-5-making-choices">
    Part 5: Making Choices
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-5-1-add-if-statement">
+     Part 5.1: Add if statement
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-5-2-make-sure-it-works">
+     Part 5.2: Make sure it works
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#part-6-making-friends">
@@ -709,62 +977,334 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Beginner Tutorial</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-python">
+     What is Python?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-1-getting-started">
+   Part 1: Getting Started
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-1-1-replit">
+     Part 1.1: Replit
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-1-2-your-first-line-of-code">
+     Part 1.2: Your first line of code
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#a-write-code-in-the-editor">
+       A. Write code in the editor
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#b-run-it">
+       B. Run it
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-2-creating-your-pypet">
+   Part 2: Creating your PyPet
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-2-1-setting-variables">
+     Part 2.1: Setting Variables
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#a-add-a-variable">
+       A. Add a variable
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#b-types-of-data">
+       B. Types of data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#c-exercise">
+       C. Exercise
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-2-2-special-characters">
+     Part 2.2: Special characters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-2-3-using-variables">
+     Part 2.3: Using variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-2-4-combining-strings">
+     Part 2.4: Combining strings
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-2-5-documentation">
+     Part 2.5: Documentation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#a-docstrings">
+       A. Docstrings
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#b-comments">
+       B. Comments
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#c-inline-comments">
+       C. Inline comments
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-3-getting-organized">
+   Part 3: Getting Organized
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-3-1-make-a-cat-dictionary">
+     Part 3.1 Make a
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       cat
+      </span>
+     </code>
+     dictionary
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-3-2-print-the-dictionary">
+     Part 3.2: Print the dictionary
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-3-3-print-dictionary-values">
+     Part 3.3: Print dictionary values
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-3-4-remove-old-stuff">
+     Part 3.4: Remove old stuff
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-4-feeding-your-pypet">
+   Part 4: Feeding your PyPet
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-4-1-define-feed">
+     Part 4.1: Define
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       feed()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-4-2-call-the-function">
+     Part 4.2: Call the function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-4-3-increase-the-pet-weight">
+     Part 4.3: Increase the pet weight
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-4-4-test-it">
+     Part 4.4: Test it
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-4-5-exercises">
+     Part 4.5: Exercises
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#a-hello-function">
+       A. hello() function
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#b-goodbye-function">
+       B. goodbye() function
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-5-making-choices">
+   Part 5: Making Choices
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-5-1-add-if-statement">
+     Part 5.1: Add if statement
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-5-2-make-sure-it-works">
+     Part 5.2: Make sure it works
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-6-making-friends">
+   Part 6: Making Friends
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-7-going-in-circles">
+   Part 7: Going in Circles
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bonus">
+   BONUS
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion-resources">
+   Conclusion &amp; Resources
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#credits">
+   Credits
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="beginner-tutorial">
-<h1>Beginner Tutorial<a class="headerlink" href="#beginner-tutorial" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="beginner-tutorial">
+<h1>Beginner Tutorial<a class="headerlink" href="#beginner-tutorial" title="Permalink to this headline">#</a></h1>
 <blockquote>
 <div><p>Approximate time ~ 2 hours</p>
 </div></blockquote>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#introduction" id="id3">Introduction</a></p>
+<li><p><a class="reference internal" href="#introduction" id="id30">Introduction</a></p>
 <ul>
-<li><p><a class="reference internal" href="#what-is-python" id="id4">What is Python?</a></p></li>
+<li><p><a class="reference internal" href="#what-is-python" id="id31">What is Python?</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#part-1-getting-started" id="id5">Part 1: Getting Started</a></p>
+<li><p><a class="reference internal" href="#part-1-getting-started" id="id32">Part 1: Getting Started</a></p>
 <ul>
-<li><p><a class="reference internal" href="#running-python-for-the-first-time" id="id6">Running Python for the first time</a></p></li>
+<li><p><a class="reference internal" href="#part-1-1-replit" id="id33">Part 1.1: Replit</a></p></li>
+<li><p><a class="reference internal" href="#part-1-2-your-first-line-of-code" id="id34">Part 1.2: Your first line of code</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#part-2-creating-your-pypet" id="id7">Part 2: Creating your Pypet</a></p></li>
-<li><p><a class="reference internal" href="#part-3-getting-organized" id="id8">Part 3: Getting Organized</a></p></li>
-<li><p><a class="reference internal" href="#part-4-feeding-your-pypet" id="id9">Part 4: Feeding your Pypet</a></p></li>
-<li><p><a class="reference internal" href="#part-5-making-choices" id="id10">Part 5: Making Choices</a></p></li>
-<li><p><a class="reference internal" href="#part-6-making-friends" id="id11">Part 6: Making Friends</a></p></li>
-<li><p><a class="reference internal" href="#part-7-going-in-circles" id="id12">Part 7: Going in Circles</a></p></li>
-<li><p><a class="reference internal" href="#bonus" id="id13">BONUS</a></p></li>
-<li><p><a class="reference internal" href="#conclusion-resources" id="id14">Conclusion &amp; Resources</a></p></li>
-<li><p><a class="reference internal" href="#credits" id="id15">Credits</a></p></li>
+<li><p><a class="reference internal" href="#part-2-creating-your-pypet" id="id35">Part 2: Creating your PyPet</a></p>
+<ul>
+<li><p><a class="reference internal" href="#part-2-1-setting-variables" id="id36">Part 2.1: Setting Variables</a></p></li>
+<li><p><a class="reference internal" href="#part-2-2-special-characters" id="id37">Part 2.2: Special characters</a></p></li>
+<li><p><a class="reference internal" href="#part-2-3-using-variables" id="id38">Part 2.3: Using variables</a></p></li>
+<li><p><a class="reference internal" href="#part-2-4-combining-strings" id="id39">Part 2.4: Combining strings</a></p></li>
+<li><p><a class="reference internal" href="#part-2-5-documentation" id="id40">Part 2.5: Documentation</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#part-3-getting-organized" id="id41">Part 3: Getting Organized</a></p>
+<ul>
+<li><p><a class="reference internal" href="#part-3-1-make-a-cat-dictionary" id="id42">Part 3.1 Make a <code class="docutils literal notranslate"><span class="pre">cat</span></code> dictionary</a></p></li>
+<li><p><a class="reference internal" href="#part-3-2-print-the-dictionary" id="id43">Part 3.2: Print the dictionary</a></p></li>
+<li><p><a class="reference internal" href="#part-3-3-print-dictionary-values" id="id44">Part 3.3: Print dictionary values</a></p></li>
+<li><p><a class="reference internal" href="#part-3-4-remove-old-stuff" id="id45">Part 3.4: Remove old stuff</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#part-4-feeding-your-pypet" id="id46">Part 4: Feeding your PyPet</a></p>
+<ul>
+<li><p><a class="reference internal" href="#part-4-1-define-feed" id="id47">Part 4.1: Define <code class="docutils literal notranslate"><span class="pre">feed()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#part-4-2-call-the-function" id="id48">Part 4.2: Call the function</a></p></li>
+<li><p><a class="reference internal" href="#part-4-3-increase-the-pet-weight" id="id49">Part 4.3: Increase the pet weight</a></p></li>
+<li><p><a class="reference internal" href="#part-4-4-test-it" id="id50">Part 4.4: Test it</a></p></li>
+<li><p><a class="reference internal" href="#part-4-5-exercises" id="id51">Part 4.5: Exercises</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#part-5-making-choices" id="id52">Part 5: Making Choices</a></p>
+<ul>
+<li><p><a class="reference internal" href="#part-5-1-add-if-statement" id="id53">Part 5.1: Add if statement</a></p></li>
+<li><p><a class="reference internal" href="#part-5-2-make-sure-it-works" id="id54">Part 5.2: Make sure it works</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#part-6-making-friends" id="id55">Part 6: Making Friends</a></p></li>
+<li><p><a class="reference internal" href="#part-7-going-in-circles" id="id56">Part 7: Going in Circles</a></p></li>
+<li><p><a class="reference internal" href="#bonus" id="id57">BONUS</a></p></li>
+<li><p><a class="reference internal" href="#conclusion-resources" id="id58">Conclusion &amp; Resources</a></p></li>
+<li><p><a class="reference internal" href="#credits" id="id59">Credits</a></p></li>
 </ul>
 </div>
-<div class="section" id="introduction">
-<h2><a class="toc-backref" href="#contents">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<section id="introduction">
+<h2><a class="toc-backref" href="#contents">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
 <p>This guide was created for complete beginners (i.e. with no programming or
 computer science experience) and will teach you programming fundamentals in a
 language called <a class="reference external" href="https://en.wikipedia.org/wiki/Python_(programming_language)">Python</a>. Following a project-driven learning philosophy you
 will learn as you build your own project. There will be GIFs and screenshots
 throughout this guide to make everything as clear as possible.</p>
-<p>As you complete this guide you’ll be creating a virtual pet we’ll call “Pypet”
+<p>As you complete this guide you’ll be creating a virtual pet we’ll call “PyPet”
 (a “Python-pet”). Remember <a class="reference external" href="https://en.wikipedia.org/wiki/Tamagotchi">tamagochis</a>? (Or if you were born in the 90s then
 think POKEMON!) With each new Python programming concepts you learn, you will
-add new features to your “Pypet”.</p>
-<p>There are no software or computer requirements for this guide except that you
-need access to a web browser (which you obviously already have at this point).
-You will learn how to use a free tool called <a class="reference external" href="https://replit.com/">Repl.it</a> to set up your
-developer environment which takes away the typical pain of setting up a coding
-environment. It is also cloud based so you can log in from any computer to view
-your code.</p>
-<div class="section" id="what-is-python">
-<h3><a class="toc-backref" href="#contents">What is Python?</a><a class="headerlink" href="#what-is-python" title="Permalink to this headline">¶</a></h3>
+add new features to your “PyPet”.</p>
+<section id="what-is-python">
+<h3><a class="toc-backref" href="#contents">What is Python?</a><a class="headerlink" href="#what-is-python" title="Permalink to this headline">#</a></h3>
 <p>Python is a <a class="reference external" href="http://en.wikipedia.org/wiki/Scripting_language">scripting programming language</a> known for both its
 simplicity and wide breadth of applications. For this reason it is considered
 one of the best languages for beginners. Used for everything from Web
@@ -775,553 +1315,1097 @@ maintains a certain philosophy of best practices, described in Tim Peter’s
 famous <a class="reference external" href="https://www.python.org/dev/peps/pep-0020/">“Zen of Python”</a>. There is a large Python community both off and
 online that is welcoming and supportive of beginners, and you can find a
 plethora of additional materials in the resources section of this guide.</p>
-</div>
-</div>
-<div class="section" id="part-1-getting-started">
-<h2><a class="toc-backref" href="#contents">Part 1: Getting Started</a><a class="headerlink" href="#part-1-getting-started" title="Permalink to this headline">¶</a></h2>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>The instructions and screenshots in this section are for a service that seems
-to no longer be active, Nitrous.io. We will be using <a class="reference external" href="https://replit.com/">Repl.it</a> instead,
-but you’ll have to muddle through the best you can until I get around to
-updating it.</p>
-</div>
-<p>To get started we’ll need a “development environment”, aka <em>a place to write
-and execute code</em>. For this we’ll use <a class="reference external" href="https://replit.com/">Repl.it</a>, a
-fast and free way to get you up and running. Repl.it is a cloud-based developer
-environment that works well for programming in python. Since Repl.it is a
-web application it won’t matter whether you have a Mac or Windows or even Linux
-computer to run and test your code. Follow the instructions below to set up
-your Repl.it Development Environment.</p>
-<ol>
-<li><p>Go to <a class="reference external" href="https://replit.com/">Repl.it</a> and create an account. <em>NOTE: You will have to check your
-email and activate your account before you can sign in.</em></p></li>
-<li><p>Once you have confirmed your email and signed in, click the “open dashboard”
-button on their <a class="reference external" href="https://replit.com/">homepage</a>. You should be prompted to create your
-first project aka developer environment.</p></li>
-<li><p>First choose “Python” as your template. Next you can rename your box to
-anything you like or just leave it as is. Finally, don’t worry about the
-optional section that says “Download a GitHub repo”. Here’s an example:</p>
-<p><img alt="" src="http://i.imgur.com/gBTqt8X.png" /></p>
-</li>
-<li><p>Click “Create Box” and then click “Next” until you see your box. Click on
-your box and then launch your environment by clicking the orange IDE button
-(which just stands for Integrated Development Environment). Now you have a
-powerful, cloud-based development environment that comes pre-installed with
-Python!</p></li>
-<li><p>Let’s take a quick tour:</p>
-<ul class="simple">
-<li><p>In the <strong>left panel</strong>, you’ll see the File Browser. Here you can navigate
-the files in your home folder. At this point, you will just have the
-“workspace” folder and a README file introducing you to Repl.it When you
-have more files, you can open them in Repl.it’s text editor by double
-clicking on them in the File Browser.</p></li>
-<li><p>The <strong>middle panel</strong> is the Text Editor. This is where you can write and
-edit code.</p></li>
-<li><p>The <strong>right panel</strong> is for chatting if you’re using Repl.it in
-collaborative mode. Close this window for now by clicking the X in the
-upper right hand corner so you get more screen real estate.</p></li>
-<li><p>The <strong>bottom panel</strong> is your console for actually running your python
-file.</p></li>
-</ul>
-</li>
-</ol>
-<p><img alt="" src="http://i.imgur.com/6bXzy6A.png" /></p>
-<div class="section" id="running-python-for-the-first-time">
-<h3><a class="toc-backref" href="#contents">Running Python for the first time</a><a class="headerlink" href="#running-python-for-the-first-time" title="Permalink to this headline">¶</a></h3>
-<p>Here is a GIF demonstrating how to run your first python program. Feel free to
-either skip down and read the steps in the text below.</p>
-<p><img alt="" src="http://i.imgur.com/kDyVy2I.gif" /></p>
-<ol>
-<li><p>Create a new file containing the following code in the text editor (middle panel):</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome to Pypet!&quot;</span><span class="p">)</span>
+</section>
+</section>
+<section id="part-1-getting-started">
+<h2><a class="toc-backref" href="#contents">Part 1: Getting Started</a><a class="headerlink" href="#part-1-getting-started" title="Permalink to this headline">#</a></h2>
+<p>To get our project off the ground we’re going to get our development
+environment all set up and write what is essentially a
+<a class="reference external" href="https://en.wikipedia.org/wiki/%22Hello,_World%21%22_program">“Hello World!” program</a> – that is, one of the simplest possible
+programs that simply prints out a message – usually <code class="docutils literal notranslate"><span class="pre">Hello</span> <span class="pre">World!</span></code>.</p>
+<section id="part-1-1-replit">
+<h3><a class="toc-backref" href="#contents">Part 1.1: Replit</a><a class="headerlink" href="#part-1-1-replit" title="Permalink to this headline">#</a></h3>
+<p>To get started we’ll need a <a class="reference internal" href="../tools/replit.html#term-development-environment"><span class="xref std std-term">development environment</span></a>, aka <em>a place to
+write and execute code</em>. For this we’ll use <a class="reference external" href="https://replit.com/">Replit</a>, a fast and free
+way to get you up and running.</p>
+<p>Do everything in Part 1 of this <a class="reference internal" href="../tools/replit.html"><span class="doc std std-doc">Replit Guide</span></a> to get set
+up with an account and new project.</p>
+</section>
+<section id="part-1-2-your-first-line-of-code">
+<h3><a class="toc-backref" href="#contents">Part 1.2: Your first line of code</a><a class="headerlink" href="#part-1-2-your-first-line-of-code" title="Permalink to this headline">#</a></h3>
+<p>Now we’ll write our first line of code and run it.</p>
+<p><img alt="" src="../_images/replit-running.gif" /></p>
+<section id="a-write-code-in-the-editor">
+<h4>A. Write code in the editor<a class="headerlink" href="#a-write-code-in-the-editor" title="Permalink to this headline">#</a></h4>
+<div class="row"><div class="col-5 left-col-5">
+<p>If you haven’t already, add the following line in the editor:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">print()</span></code> function in Python will print things in the console — it’s very
+handy for learning Python and debugging your code.</p>
+</div><div class="col-7">
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-number">Listing 1 </span><span class="caption-text">main.py</span><a class="headerlink" href="#id3" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome to PyPet!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</li>
-<li><p>Go ahead and save the file as <code class="file docutils literal notranslate"><span class="pre">pypet.py</span></code>.</p></li>
-<li><p>Now type <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">pypet.py</span></code> into your Repl.it console (in the bottom panel)
-and hit enter. By doing this you are telling your console to open the file
-<code class="docutils literal notranslate"><span class="pre">pypet.py</span></code> and execute it using the program called <code class="docutils literal notranslate"><span class="pre">python</span></code>. The console
-will output “Welcome to Pypet!”.</p></li>
-</ol>
-<p><img alt="" src="http://i.imgur.com/QNGI0Xx.png" /></p>
-<p>You’ve just written your first print statement. <em>♬♩♪♩ Celebratory dance time! ♬♩♪♩</em>. The
-print statement is a python function which prints things in the console — it’s
-very handy for learning Python and debugging your code.</p>
-<p>If you’re stuck, take another look at the GIF above.</p>
 </div>
+</div></div>
+</section>
+<section id="b-run-it">
+<h4>B. Run it<a class="headerlink" href="#b-run-it" title="Permalink to this headline">#</a></h4>
+<p>Click the <span class="guilabel">Run</span> button. The console will output:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Welcome</span> <span class="pre">to</span> <span class="pre">PyPet!</span></code></p>
+<p>You’ve just written your Python program!</p>
+<p class="centered"><em>♬♩♪♩ Happy dance! ♬♩♪♩</em>.</p>
+</section>
+</section>
+</section>
+<section id="part-2-creating-your-pypet">
+<h2><a class="toc-backref" href="#contents">Part 2: Creating your PyPet</a><a class="headerlink" href="#part-2-creating-your-pypet" title="Permalink to this headline">#</a></h2>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>More on <a class="reference external" href="https://www.tutorialspoint.com/python/python_variable_types.htm">variables</a></p>
 </div>
-<div class="section" id="part-2-creating-your-pypet">
-<h2><a class="toc-backref" href="#contents">Part 2: Creating your Pypet</a><a class="headerlink" href="#part-2-creating-your-pypet" title="Permalink to this headline">¶</a></h2>
-<p>In this section we’re going to learn how to store some different kinds of basic
-information in <a class="reference external" href="https://www.tutorialspoint.com/python/python_variable_types.htm">variables</a>.</p>
-<p>Variables are a way of storing information in Python. Below we”ll create
-different variables for our Pypet such as name, weight, etc. Below is a GIF
-that shows how you will create variables for your Pypet in this section. You
-can refer back to this as you follow along with the instructions below.</p>
-<p><img alt="" src="http://i.imgur.com/6o6eiaA.gif" /></p>
-<ol>
-<li><p>Create a variable called <code class="docutils literal notranslate"><span class="pre">name</span></code> equal to <code class="docutils literal notranslate"><span class="pre">&quot;Fluffy&quot;</span></code> (or <code class="docutils literal notranslate"><span class="pre">&quot;Spike&quot;</span></code> or
-<code class="docutils literal notranslate"><span class="pre">&quot;Sir</span> <span class="pre">Patrick&quot;</span></code>).</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Fluffy&quot;</span>
-</pre></div>
-</div>
-<p>Using an equals sign (<code class="docutils literal notranslate"><span class="pre">=</span></code>) sets a variable to a given value such as
+</aside>
+<section id="part-2-1-setting-variables">
+<h3><a class="toc-backref" href="#contents">Part 2.1: Setting Variables</a><a class="headerlink" href="#part-2-1-setting-variables" title="Permalink to this headline">#</a></h3>
+<p>Variables are a way of storing information in Python. We’ll use
+variables to keep track of information about our PyPet such as name, weight,
+and so on.</p>
+<section id="a-add-a-variable">
+<h4>A. Add a variable<a class="headerlink" href="#a-add-a-variable" title="Permalink to this headline">#</a></h4>
+<p>Use an equals sign (<code class="docutils literal notranslate"><span class="pre">=</span></code>) to set a variable to a given value such as
 <code class="docutils literal notranslate"><span class="pre">name</span> <span class="pre">=</span> <span class="pre">&quot;Fluffy&quot;</span></code>.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>There won’t be any difference in the output when you run your program. Even
+though there is more code, we haven’t printed anything else yet.</p>
+</div>
+</aside>
+<div class="row"><div class="col-5 left-col-5">
+<p>Create a variable called <code class="docutils literal notranslate"><span class="pre">name</span></code> equal to <code class="docutils literal notranslate"><span class="pre">&quot;Fluffy&quot;</span></code> (or <code class="docutils literal notranslate"><span class="pre">&quot;Spike&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;Sir</span>&#160;&#160; <span class="pre">Patrick&quot;</span></code> or whatever strikes your fancy.).</p>
+</div><div class="col-7">
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-number">Listing 2 </span><span class="caption-text">main.py</span><a class="headerlink" href="#id4" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome to PyPet!&quot;</span><span class="p">)</span>
+<span class="linenos">2</span>
+<span class="hll"><span class="linenos">3</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Fluffy&quot;</span>
+</span></pre></div>
+</div>
+</div>
+</div></div>
 <p>Variables can store different types of data. In this case, <code class="docutils literal notranslate"><span class="pre">name</span></code> is
-something called a <strong>string</strong> because <code class="docutils literal notranslate"><span class="pre">&quot;Fluffy&quot;</span></code> has quotations around it. A
-<strong>string</strong> is just a set of characters surrounded by quotations (for example
-<code class="docutils literal notranslate"><span class="pre">&quot;Bob&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;New</span> <span class="pre">York&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;h4ck3r&quot;</span></code>). <em>NOTE: Strings can use either single or
-double quotes in Python.</em> A string can also include numbers, so long as it”s
-in between quotes. <strong>Integers</strong> on the other hand do not have quotations.
-Let’s look at some additional data types.</p>
-</li>
-<li><p>Create three additional variables to track <code class="docutils literal notranslate"><span class="pre">age</span></code>, <code class="docutils literal notranslate"><span class="pre">weight</span></code> and <code class="docutils literal notranslate"><span class="pre">hungry</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Fluffy&quot;</span>
-<span class="n">age</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">weight</span> <span class="o">=</span> <span class="mf">9.5</span>
-<span class="n">hungry</span> <span class="o">=</span> <span class="kc">False</span>
+something called a <a class="reference internal" href="../reference/glossary.html#term-string"><span class="xref std std-term">string</span></a> because <code class="docutils literal notranslate"><span class="pre">&quot;Fluffy&quot;</span></code> has quotation marks
+around it. (Either single or double quotes will work.)</p>
+<p>A <a class="reference internal" href="../reference/glossary.html#term-string"><span class="xref std std-term">string</span></a> is just a set of characters surrounded by quotations. For
+example <code class="docutils literal notranslate"><span class="pre">&quot;Bob&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">'New</span> <span class="pre">York'</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;h4ck3r&quot;</span></code>.  A string can also include
+numbers, so long as it’s in between quotes.</p>
+</section>
+<section id="b-types-of-data">
+<h4>B. Types of data<a class="headerlink" href="#b-types-of-data" title="Permalink to this headline">#</a></h4>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Never put quotation marks around these data types.</p>
+</div>
+</aside>
+<p>Let’s look at some additional data types.</p>
+<div class="row"><div class="col-5 left-col-5">
+<p>Create three more variables to track <code class="docutils literal notranslate"><span class="pre">age</span></code>, <code class="docutils literal notranslate"><span class="pre">weight</span></code> and <code class="docutils literal notranslate"><span class="pre">hungry</span></code>.</p>
+</div><div class="col-7">
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-number">Listing 3 </span><span class="caption-text">main.py</span><a class="headerlink" href="#id5" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome to PyPet!&quot;</span><span class="p">)</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Fluffy&quot;</span>
+<span class="hll"><span class="linenos">4</span><span class="n">age</span> <span class="o">=</span> <span class="mi">5</span>
+</span><span class="hll"><span class="linenos">5</span><span class="n">weight</span> <span class="o">=</span> <span class="mf">9.5</span>
+</span><span class="hll"><span class="linenos">6</span><span class="n">hungry</span> <span class="o">=</span> <span class="kc">False</span>
+</span></pre></div>
+</div>
+</div>
+</div></div>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">age</span></code> variable is an <a class="reference internal" href="../reference/glossary.html#term-integer"><span class="xref std std-term">integer</span></a> and therefore must be a whole number.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">weight</span></code> variable is a <a class="reference internal" href="../reference/glossary.html#term-float"><span class="xref std std-term">float</span></a>. Floats are a numbers that can have
+values after the decimal point.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">hungry</span></code> variable is a <a class="reference internal" href="../reference/glossary.html#term-boolean"><span class="xref std std-term">boolean</span></a> which may be either <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition-best-practice admonition">
+<p class="admonition-title">Best practice</p>
+<p>A single space is recommended before and after the equals sign (<code class="docutils literal notranslate"><span class="pre">=</span></code>).</p>
+</div>
+</aside>
+</section>
+<section id="c-exercise">
+<h4>C. Exercise<a class="headerlink" href="#c-exercise" title="Permalink to this headline">#</a></h4>
+<div class="row"><div class="col-5 left-col-5">
+<p>Can you add another variable named <code class="docutils literal notranslate"><span class="pre">color</span></code> and give it a string value like
+<code class="docutils literal notranslate"><span class="pre">&quot;white&quot;</span></code>?</p>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+See the answer<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-number">Listing 4 </span><span class="caption-text">main.py</span><a class="headerlink" href="#id6" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome to PyPet!&quot;</span><span class="p">)</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Fluffy&quot;</span>
+<span class="linenos">4</span><span class="n">age</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="linenos">5</span><span class="n">weight</span> <span class="o">=</span> <span class="mf">9.5</span>
+<span class="linenos">6</span><span class="n">hungry</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="hll"><span class="linenos">7</span><span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
+</span></pre></div>
+</div>
+</div>
+</div>
+</details></div></div>
+</section>
+</section>
+<section id="part-2-2-special-characters">
+<h3><a class="toc-backref" href="#contents">Part 2.2: Special characters</a><a class="headerlink" href="#part-2-2-special-characters" title="Permalink to this headline">#</a></h3>
+<p>Since this is a text-based program we’ll have to get creative and use
+<a class="reference external" href="https://en.wikipedia.org/wiki/ASCII_art">ASCII art</a> to make a picture of your PyPet.</p>
+<div class="row"><div class="col-7 left-col-7">
+<p>ASCII art is any sort of picture or diagram drawn using basic text symbols.
+While the simplest example is a smiley face: <code class="docutils literal notranslate"><span class="pre">:-)</span></code>, they can get a lot more
+sophisticated.</p>
+</div><div class="col-5">
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-number">Listing 5 </span><span class="caption-text">Bessie the cow</span><a class="headerlink" href="#id7" title="Permalink to this code">#</a></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span> _________
+&lt; oh hai.&gt;
+ ---------
+       \   ,__,
+        \  (oo)____
+           (__)    )\
+              ||--|| *
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">age</span></code> variable is an <strong>integer</strong> and therefore must be a whole number.
-The <code class="docutils literal notranslate"><span class="pre">weight</span></code> variable is a <strong>float</strong>. Floats are a numbers that can have
-values after the decimal point.  The <code class="docutils literal notranslate"><span class="pre">hungry</span></code> variable is a a <strong>Boolean</strong>.
-Booleans store a value of either <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>. <em>NOTE: Don”t use
-quotations for these three data types, otherwise they”d all be considered
-strings</em></p>
-</li>
-<li><p>Choose your Pypet”s “pic”. We”ve included a few options you can use below,
-but feel free to customize it. <em>NOTE: Keep your Pypet”s “pic” to just one
-line as it will make the initial steps easier to follow.</em></p>
+</div>
+</div></div>
+<p>For our purposes, we’re going to go for a simple one-line picture like
+<code class="docutils literal notranslate"><span class="pre">(=^o.o^=)_</span></code>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Choose an ASCII art animal<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="row"><div class="col left-col">
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">*</span></code></p></th>
-<th class="head"><p>Animal</p></th>
-<th class="head"><p>Pic</p></th>
+<tr class="row-odd"><th class="head"><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">*</span></code></p></th>
+<th class="head"><p class="sd-card-text">Animal</p></th>
+<th class="head"><p class="sd-card-text">Pic</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p></p></td>
-<td><p>Alligator</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-^^,--,~</span></code></p></td>
+<tr class="row-even"><td><p class="sd-card-text"></p></td>
+<td><p class="sd-card-text">Alligator</p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">-^^,--,~</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p></p></td>
-<td><p>Bat</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">^O^</span></code></p></td>
+<tr class="row-odd"><td><p class="sd-card-text"></p></td>
+<td><p class="sd-card-text">Bat</p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">^O^</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p></p></td>
-<td><p>Bear</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">⊂(￣(ｴ)￣)⊃</span></code></p></td>
+<tr class="row-even"><td><p class="sd-card-text"></p></td>
+<td><p class="sd-card-text">Bear</p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">⊂(￣(ｴ)￣)⊃</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p></p></td>
-<td><p>Bird</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">,(u°)&gt;</span></code></p></td>
+<tr class="row-odd"><td><p class="sd-card-text"></p></td>
+<td><p class="sd-card-text">Bird</p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">,(u°)&gt;</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">B</span></code></p></td>
-<td><p>Bunny</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">(\\_/)</span></code></p></td>
+<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">B</span></code></p></td>
+<td><p class="sd-card-text">Bunny</p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">(\\_/)</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p></p></td>
-<td><p>Cat</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">(=^o.o^=)__</span></code></p></td>
+<tr class="row-odd"><td><p class="sd-card-text"></p></td>
+<td><p class="sd-card-text">Cat</p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">(=^o.o^=)__</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p></p></td>
-<td><p>Cthulhu</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">^(;,;)^</span></code></p></td>
+<tr class="row-even"><td><p class="sd-card-text"></p></td>
+<td><p class="sd-card-text">Cthulhu</p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">^(;,;)^</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p></p></td>
-<td><p>Fish</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">))))</span> <span class="pre">&gt;&lt;</span> </code></p></td>
+<tr class="row-odd"><td><p class="sd-card-text"></p></td>
+<td><p class="sd-card-text">Fish</p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">))))</span> <span class="pre">&gt;&lt;</span> </code></p></td>
 </tr>
-<tr class="row-even"><td><p></p></td>
-<td><p>Bat</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">=^..^=</span></code></p></td>
+<tr class="row-even"><td><p class="sd-card-text"></p></td>
+<td><p class="sd-card-text">Bat</p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">=^..^=</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p></p></td>
-<td><p>Koala</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">&#64;(</span> <span class="pre">*</span> <span class="pre">O</span> <span class="pre">*</span> <span class="pre">)&#64;</span></code></p></td>
+<tr class="row-odd"><td><p class="sd-card-text"></p></td>
+<td><p class="sd-card-text">Koala</p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">&#64;(</span> <span class="pre">*</span> <span class="pre">O</span> <span class="pre">*</span> <span class="pre">)&#64;</span></code></p></td>
 </tr>
 </tbody>
 </table>
 </div><div class="col">
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">*</span></code></p></th>
-<th class="head"><p>Animal</p></th>
-<th class="head"><p>Pic</p></th>
+<tr class="row-odd"><th class="head"><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">*</span></code></p></th>
+<th class="head"><p class="sd-card-text">Animal</p></th>
+<th class="head"><p class="sd-card-text">Pic</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">D</span></code></p></td>
-<td><p>Monkey</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">&#64;(&quot;_&quot;)&#64;</span></code></p></td>
+<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">D</span></code></p></td>
+<td><p class="sd-card-text">Monkey</p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">&#64;(&quot;_&quot;)&#64;</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p></p></td>
-<td><p>Mouse</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">&lt;:3</span> <span class="pre">)~~~~</span></code></p></td>
+<tr class="row-odd"><td><p class="sd-card-text"></p></td>
+<td><p class="sd-card-text">Mouse</p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">&lt;:3</span> <span class="pre">)~~~~</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p></p></td>
-<td><p>Owl</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">{O,o}</span></code></p></td>
+<tr class="row-even"><td><p class="sd-card-text"></p></td>
+<td><p class="sd-card-text">Owl</p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">{O,o}</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p></p></td>
-<td><p>Pig</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">^(*(oo)*)^</span></code></p></td>
+<tr class="row-odd"><td><p class="sd-card-text"></p></td>
+<td><p class="sd-card-text">Pig</p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">^(*(oo)*)^</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p></p></td>
-<td><p>Robot</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">d[</span> <span class="pre">o_0</span> <span class="pre">]b</span></code></p></td>
+<tr class="row-even"><td><p class="sd-card-text"></p></td>
+<td><p class="sd-card-text">Robot</p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">d[</span> <span class="pre">o_0</span> <span class="pre">]b</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">S</span></code></p></td>
-<td><p>Sheep</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">&lt;('--')&gt;</span></code></p></td>
+<tr class="row-odd"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">S</span></code></p></td>
+<td><p class="sd-card-text">Sheep</p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">&lt;('--')&gt;</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">B</span></code></p></td>
-<td><p>Snake</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">_/\\__/\\_/--{</span> <span class="pre">:&gt;~</span></code></p></td>
+<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">B</span></code></p></td>
+<td><p class="sd-card-text">Snake</p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">_/\\__/\\_/--{</span> <span class="pre">:&gt;~</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p></p></td>
-<td><p>Squid</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">くコ:彡</span></code></p></td>
+<tr class="row-odd"><td><p class="sd-card-text"></p></td>
+<td><p class="sd-card-text">Squid</p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">くコ:彡</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">B</span></code></p></td>
-<td><p>Toothless</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">/|\\{O_O}/|\\</span></code></p></td>
+<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">B</span></code></p></td>
+<td><p class="sd-card-text">Toothless</p></td>
+<td><p class="sd-card-text">`/</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">B</span></code></p></td>
-<td><p>Worm</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">_/\\__/\\__0&gt;</span></code></p></td>
+<tr class="row-odd"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">B</span></code></p></td>
+<td><p class="sd-card-text">Worm</p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">_/\\__/\\__0&gt;</span></code></p></td>
 </tr>
 </tbody>
 </table>
 </div></div>
-<p>Or make up your own! <code class="docutils literal notranslate"><span class="pre">(^‘0M0’^)</span></code></p>
-<div class="important dropdown admonition">
-<p class="admonition-title">Does your pic have a single quote (<code class="docutils literal notranslate"><span class="pre">'</span></code>), double quote (<code class="docutils literal notranslate"><span class="pre">&quot;</span></code>) or backslash (<code class="docutils literal notranslate"><span class="pre">\</span></code>)?</p>
-<p>In strings we sometimes come across characters that require special
-handling.</p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Character</p></th>
-<th class="head"><p>Example</p></th>
-<th class="head"><p>What to Do</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>D</strong>ouble quote (<code class="docutils literal notranslate"><span class="pre">&quot;</span></code>)</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">'&#64;(&quot;_&quot;)&#64;'</span></code></p></td>
-<td><p>Enclose in single quotes to avoid closing the string early.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>S</strong>ingle quote (<code class="docutils literal notranslate"><span class="pre">'</span></code>)</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">&quot;&lt;('--')&gt;&quot;</span></code></p></td>
-<td><p>Enclose in double quotes to avoid closing the string early.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>B</strong>ackslash (<code class="docutils literal notranslate"><span class="pre">\\</span></code>)</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">&quot;(\\_/)&quot;</span></code></p></td>
-<td><p>Use two backslashes to avoid escaping the next character.</p></td>
-</tr>
-</tbody>
-</table>
+<p class="sd-card-text">Or make up one of your own! <code class="docutils literal notranslate"><span class="pre">(^‘0M0’^)</span></code></p>
+</div>
+</details><div class="row"><div class="col-5 left-col-5">
+<p>Add another <a class="reference internal" href="../reference/glossary.html#term-string"><span class="xref std std-term">string</span></a> variable containing a one-line ASCII art <code class="docutils literal notranslate"><span class="pre">pic</span></code> of
+your pet.</p>
+</div><div class="col-7">
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-number">Listing 6 </span><span class="caption-text">main.py</span><a class="headerlink" href="#id8" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome to PyPet!&quot;</span><span class="p">)</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Fluffy&quot;</span>
+<span class="linenos">4</span><span class="n">age</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="linenos">5</span><span class="n">weight</span> <span class="o">=</span> <span class="mf">9.5</span>
+<span class="linenos">6</span><span class="n">hungry</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="linenos">7</span><span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
+<span class="hll"><span class="linenos">8</span><span class="n">pic</span> <span class="o">=</span> <span class="s2">&quot;(=^o.o^=)__&quot;</span>
+</span></pre></div>
+</div>
+</div>
+</div></div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Strings that contain a single quote (<code class="docutils literal notranslate"><span class="pre">'</span></code>), double quote (<code class="docutils literal notranslate"><span class="pre">&quot;</span></code>) or backslash
+(<code class="docutils literal notranslate"><span class="pre">\</span></code>) require special handling.</p>
 <p><a class="reference external" href="https://docs.python.org/3/tutorial/introduction.html#strings">More info</a></p>
 </div>
-</li>
-<li><p>Now add another variable that is a <strong>string</strong> containing this <code class="docutils literal notranslate"><span class="pre">pic</span></code> variable of our pet.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Fluffy&quot;</span>
-<span class="n">age</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">weight</span> <span class="o">=</span> <span class="mf">9.5</span>
-<span class="n">hungry</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="n">pic</span> <span class="o">=</span> <span class="s2">&quot;(=^o.o^=)__&quot;</span>
+<hr class="docutils" />
+<div class="row"><div class="col-5 left-col-5">
+<p>If a string contains <strong>double quotes (<code class="docutils literal notranslate"><span class="pre">&quot;</span></code>)</strong> you must enclose it in single quotes
+to avoid closing the string early.</p>
+</div><div class="col-7">
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-number">Listing 7 </span><span class="caption-text">main.py</span><a class="headerlink" href="#id9" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="linenos">7</span><span class="n">pic</span> <span class="o">=</span> <span class="s1 s1-Highlight">&#39;</span><span class="o">@</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)</span><span class="o">@</span><span class="s1 s1-Highlight">&#39;</span>
 </pre></div>
 </div>
-</li>
-<li><p>Add some print statements to your code so you can see your Pypet in the console.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Fluffy&quot;</span>
-<span class="n">age</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">weight</span> <span class="o">=</span> <span class="mf">9.5</span>
-<span class="n">hungry</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="n">pic</span> <span class="o">=</span> <span class="s2">&quot;(=^o.o^=)__&quot;</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello &quot;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">pic</span><span class="p">)</span>
+</div>
+</div></div><div class="row"><div class="col-5 right-col-5">
+<p>If a string contains <strong>single quotes (<code class="docutils literal notranslate"><span class="pre">&quot;</span></code>)</strong> you must enclose it in double quotes
+to avoid closing the string early.</p>
+</div><div class="col-7">
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-number">Listing 8 </span><span class="caption-text">main.py</span><a class="headerlink" href="#id10" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="linenos">7</span><span class="n">pic</span> <span class="o">=</span> <span class="s2 s2-Highlight">&quot;</span><span class="o">&lt;</span><span class="p">(</span><span class="s1">&#39;--&#39;</span><span class="p">)</span><span class="o">&gt;</span><span class="s2 s2-Highlight">&quot;</span>
 </pre></div>
 </div>
-<p>By writing <code class="docutils literal notranslate"><span class="pre">print(&quot;Hello</span> <span class="pre">&quot;</span> <span class="pre">+</span> <span class="pre">name)</span></code> we just concatenated (aka <em>linked
-together</em>) the string <code class="docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">&quot;</span></code> with the variable <code class="docutils literal notranslate"><span class="pre">name</span></code> so that the
-console will print out <code class="docutils literal notranslate"><span class="pre">Hello</span> <span class="pre">Fluffy</span></code>. Don”t forget to type
-<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">pypet.py</span></code> in the console (bottom window) and hit enter after you
-save to see this happen. Your console should look like:</p>
-<p><img alt="" src="http://i.imgur.com/EDsC0Fk.png" /></p>
-</li>
-</ol>
 </div>
-<div class="section" id="part-3-getting-organized">
-<h2><a class="toc-backref" href="#contents">Part 3: Getting Organized</a><a class="headerlink" href="#part-3-getting-organized" title="Permalink to this headline">¶</a></h2>
-<p>We need a way to tell Python that all of these variables represent one cat (or
-dog, fish, creature, etc). One way to do this is to use a Python
-<a class="reference external" href="https://www.tutorialspoint.com/python/python_dictionary.htm">dictionary</a>. Dictionaries are a way of storing multiple variables that
-contain different values. Here is another GIF that you can refer back to as you
-follow along with the instructions below.</p>
-<p><img alt="" src="http://i.imgur.com/yXLUVFA.gif" /></p>
-<ol>
-<li><p>Place your variables in a dictionary. Try using different values than the
-ones we have here.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Fluffy&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;hungry&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-  <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mf">9.5</span><span class="p">,</span>
-  <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-  <span class="s2">&quot;pic&quot;</span><span class="p">:</span> <span class="s2">&quot;(=^o.o^=)__&quot;</span><span class="p">,</span>
-<span class="p">}</span>
-
+</div></div><div class="row"><div class="col-5 right-col-5">
+<p>If a string contains a <strong>backslash (<code class="docutils literal notranslate"><span class="pre">\</span></code>)</strong> you must use two to avoid escaping the
+next character.</p>
+</div><div class="col-7">
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-number">Listing 9 </span><span class="caption-text">main.py</span><a class="headerlink" href="#id11" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">7</span><span class="n">pic</span> <span class="o">=</span> <span class="s2">&quot;(</span><span class="se">\\</span><span class="s2">_/)&quot;</span>
 </pre></div>
 </div>
-<p>Here we’ve created a dictionary called <code class="docutils literal notranslate"><span class="pre">cat</span></code>. Each line contains a different
-cat attribute. Attributes have both a <em>key</em> (ex. <code class="docutils literal notranslate"><span class="pre">&quot;name&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;weight&quot;</span></code>,
-<code class="docutils literal notranslate"><span class="pre">&quot;age&quot;</span></code> etc) as well as a <em>value</em> (ex. <code class="docutils literal notranslate"><span class="pre">&quot;Fluffy&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">9.6</span></code> etc).
-Unlike assigning variables, which use an equals sign (<code class="docutils literal notranslate"><span class="pre">name</span> <span class="pre">=</span> <span class="pre">&quot;Fluffy&quot;</span></code>),
-dictionary attributes use a colon and need to include a comma <code class="docutils literal notranslate"><span class="pre">,</span></code> after each
-value (<code class="docutils literal notranslate"><span class="pre">&quot;name&quot;:&quot;Fluffy&quot;,</span></code>)</p>
-</li>
-<li><p>Add a print statement to view your new Pypet dictionary in the console.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Fluffy&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;hungry&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-  <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mf">9.5</span><span class="p">,</span>
-  <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-  <span class="s2">&quot;pic&quot;</span><span class="p">:</span> <span class="s2">&quot;(=^o.o^=)__&quot;</span><span class="p">,</span>
-<span class="p">}</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">cat</span><span class="p">)</span>
+</div>
+</div></div>
+</section>
+<section id="part-2-3-using-variables">
+<h3><a class="toc-backref" href="#contents">Part 2.3: Using variables</a><a class="headerlink" href="#part-2-3-using-variables" title="Permalink to this headline">#</a></h3>
+<p>You can use a variable that you previously created by simply placing the name
+of the variable where you would otherwise put the literal value.</p>
+<p>For example, imagine we wanted to print the name of your PyPet.</p>
+<div class="row"><div class="col-5 left-col-5">
+<p>We could do it the same way we did on the first line of our program–by putting the literal string
+<code class="docutils literal notranslate"><span class="pre">&quot;Fluffy&quot;</span></code> inside the parenthesis of the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function.</p>
+</div><div class="col-7">
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-number">Listing 10 </span><span class="caption-text">main.py</span><a class="headerlink" href="#id12" title="Permalink to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome to PyPet!&quot;</span><span class="p">)</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Fluffy&quot;</span>
+<span class="linenos"> 4</span><span class="n">age</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="linenos"> 5</span><span class="n">weight</span> <span class="o">=</span> <span class="mf">9.5</span>
+<span class="linenos"> 6</span><span class="n">hungry</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="linenos"> 7</span><span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
+<span class="linenos"> 8</span><span class="n">pic</span> <span class="o">=</span> <span class="s2">&quot;(=^o.o^=)__&quot;</span>
+<span class="linenos"> 9</span>
+<span class="hll"><span class="linenos">10</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fluffy&quot;</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+</div></div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Never put quotation marks around variable names.</p>
+</div>
+</aside>
+<div class="row"><div class="col-5 left-col-5">
+<p>Instead we will replace the the string <code class="docutils literal notranslate"><span class="pre">&quot;Fluffy&quot;</span></code> with the variable <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
+<p>Since the variable <code class="docutils literal notranslate"><span class="pre">name</span></code> contains the string <code class="docutils literal notranslate"><span class="pre">&quot;Fluffy&quot;</span></code> it will have the exact
+same effect.</p>
+</div><div class="col-7">
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-number">Listing 11 </span><span class="caption-text">main.py</span><a class="headerlink" href="#id13" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome to PyPet!&quot;</span><span class="p">)</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Fluffy&quot;</span>
+<span class="linenos"> 4</span><span class="n">age</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="linenos"> 5</span><span class="n">weight</span> <span class="o">=</span> <span class="mf">9.5</span>
+<span class="linenos"> 6</span><span class="n">hungry</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="linenos"> 7</span><span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
+<span class="linenos"> 8</span><span class="n">pic</span> <span class="o">=</span> <span class="s2">&quot;(=^o.o^=)__&quot;</span>
+<span class="linenos"> 9</span>
+<span class="hll"><span class="linenos">10</span><span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+</div></div><div class="row"><div class="col-5 right-col-5">
+<p>Can you add a line to print the <code class="docutils literal notranslate"><span class="pre">pic</span></code> variable?</p>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+See the answer<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-number">Listing 12 </span><span class="caption-text">main.py</span><a class="headerlink" href="#id14" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome to PyPet!&quot;</span><span class="p">)</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Fluffy&quot;</span>
+<span class="linenos"> 4</span><span class="n">age</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="linenos"> 5</span><span class="n">weight</span> <span class="o">=</span> <span class="mf">9.5</span>
+<span class="linenos"> 6</span><span class="n">hungry</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="linenos"> 7</span><span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
+<span class="linenos"> 8</span><span class="n">pic</span> <span class="o">=</span> <span class="s2">&quot;(=^o.o^=)__&quot;</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="hll"><span class="linenos">11</span><span class="nb">print</span><span class="p">(</span><span class="n">pic</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+</div>
+</details></div></div>
+</section>
+<section id="part-2-4-combining-strings">
+<h3><a class="toc-backref" href="#contents">Part 2.4: Combining strings</a><a class="headerlink" href="#part-2-4-combining-strings" title="Permalink to this headline">#</a></h3>
+<p>Instead of printing just the PyPet name, we are going to change our program to
+print the message <code class="docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">from</span> <span class="pre">Fluffy&quot;</span></code>.</p>
+<p>In order to do that we’ll combine  the string <code class="docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">from</span> <span class="pre">&quot;</span></code> with the <code class="docutils literal notranslate"><span class="pre">name</span></code>
+variable. This is called <a class="reference internal" href="../reference/glossary.html#term-concatenation"><span class="xref std std-term">concatenation</span></a>.</p>
+<div class="row"><div class="col-5 left-col-5">
+<p>To combine the two strings put the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator between them.</p>
+</div><div class="col-7">
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-number">Listing 13 </span><span class="caption-text">forms the string <code class="docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">from</span> <span class="pre">Fluffy&quot;</span></code></span><a class="headerlink" href="#id15" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Hello from &quot;</span> <span class="o">+</span> <span class="n">name</span>
 </pre></div>
 </div>
-</li>
-<li><p>Print your Pypet”s name and pic. You can access variables in an list by
-using the format <code class="docutils literal notranslate"><span class="pre">dictionary[&quot;attribute&quot;]</span></code> such as <code class="docutils literal notranslate"><span class="pre">cat[&quot;name&quot;]</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Fluffy&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;hungry&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-  <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mf">9.5</span><span class="p">,</span>
-  <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-  <span class="s2">&quot;pic&quot;</span><span class="p">:</span> <span class="s2">&quot;(=^o.o^=)__&quot;</span><span class="p">,</span>
-<span class="p">}</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello &quot;</span> <span class="o">+</span> <span class="n">cat</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">cat</span><span class="p">[</span><span class="s2">&quot;pic&quot;</span><span class="p">])</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">cat</span><span class="p">)</span>
+</div>
+</div></div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Be sure to include the space at the end of <code class="docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">from</span> <span class="pre">&quot;</span></code>.</p>
+</div>
+</aside>
+<div class="row"><div class="col-5 left-col-5">
+<p>Change the line where we previously printed <code class="docutils literal notranslate"><span class="pre">name</span></code> to add that small piece of
+code inside the parenthesis in the print function.</p>
+</div><div class="col-7">
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-number">Listing 14 </span><span class="caption-text">main.py</span><a class="headerlink" href="#id16" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome to PyPet!&quot;</span><span class="p">)</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Fluffy&quot;</span>
+<span class="linenos"> 4</span><span class="n">age</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="linenos"> 5</span><span class="n">weight</span> <span class="o">=</span> <span class="mf">9.5</span>
+<span class="linenos"> 6</span><span class="n">hungry</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="linenos"> 7</span><span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
+<span class="linenos"> 8</span><span class="n">pic</span> <span class="o">=</span> <span class="s2">&quot;(=^o.o^=)__&quot;</span>
+<span class="linenos"> 9</span>
+<span class="hll"><span class="linenos">10</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello from &quot;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
+</span><span class="linenos">11</span><span class="nb">print</span><span class="p">(</span><span class="n">pic</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Don”t forget to first save your file and then run your file in the console
-by typing <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">pypet.py</span></code> and pressing enter.</p>
-<p>Make sure to take another look at the GIF above if you get stuck.</p>
-</li>
-</ol>
 </div>
-<div class="section" id="part-4-feeding-your-pypet">
-<h2><a class="toc-backref" href="#contents">Part 4: Feeding your Pypet</a><a class="headerlink" href="#part-4-feeding-your-pypet" title="Permalink to this headline">¶</a></h2>
-<p>Let”s “feed” our pypet using a Python function. A <a class="reference external" href="http://www.tutorialspoint.com/python/python_functions.htm">function</a> is a block of
-organized, reusable code that is used to perform a single action. First, we
-must define our function — <code class="docutils literal notranslate"><span class="pre">feed</span></code> — which changes our pypet’s <code class="docutils literal notranslate"><span class="pre">hungry</span></code>
-attribute to <code class="docutils literal notranslate"><span class="pre">False</span></code> to show that it is no longer hungry.</p>
-<p><img alt="" src="http://i.imgur.com/dmjTM4H.gif" /></p>
-<ol>
-<li><p>Create this simple function by writing the following below your other code.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">feed</span><span class="p">(</span><span class="n">pet</span><span class="p">):</span>
-   <span class="n">pet</span><span class="p">[</span><span class="s2">&quot;hungry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+</div></div>
+</section>
+<section id="part-2-5-documentation">
+<h3><a class="toc-backref" href="#contents">Part 2.5: Documentation</a><a class="headerlink" href="#part-2-5-documentation" title="Permalink to this headline">#</a></h3>
+<p>We’ve taken in a lot of information so far. Now is a good time to think about
+writing some documentation to make our program easy to understand when we come
+back to it.</p>
+<section id="a-docstrings">
+<h4>A. Docstrings<a class="headerlink" href="#a-docstrings" title="Permalink to this headline">#</a></h4>
+<p>A <a class="reference internal" href="functions.html#term-docstring"><span class="xref std std-term">docstring</span></a> is a special kind of string that is enclosed by
+tripple double-quotes (<code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code>) or triple single-quotes( <code class="docutils literal notranslate"><span class="pre">'''</span></code>). When used as the very
+first line in a file it is documentation for that file.</p>
+<p>Docstrings have the added benefit of being able to span multiple lines.</p>
+<div class="row"><div class="col-5 left-col-5">
+<p>Add a docstring to your program that includes a brief description of the file,
+and any other information you deem relevant. For example, a link to this
+tutorial.</p>
+</div><div class="col-7">
+<div class="literal-block-wrapper docutils container" id="id17">
+<div class="code-block-caption"><span class="caption-number">Listing 15 </span><span class="caption-text">main.py</span><a class="headerlink" href="#id17" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-default notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos"> 1</span><span class="sd">&quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos"> 2</span><span class="sd">Pypet Game</span>
+</span><span class="hll"><span class="linenos"> 3</span>
+</span><span class="hll"><span class="linenos"> 4</span><span class="sd">    From the tutorial found at:</span>
+</span><span class="hll"><span class="linenos"> 5</span>
+</span><span class="hll"><span class="linenos"> 6</span><span class="sd">    https://alissa-huskey.github.io/python-class/lessons/tutorial.html</span>
+</span><span class="hll"><span class="linenos"> 7</span><span class="sd">&quot;&quot;&quot;</span>
+</span><span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="c1"># print to the screen by calling the print() function</span>
+<span class="linenos">10</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome to PyPet!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div></div>
+</section>
+<section id="b-comments">
+<h4>B. Comments<a class="headerlink" href="#b-comments" title="Permalink to this headline">#</a></h4>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>More on <a class="reference external" href="https://docs.python.org/3/tutorial/introduction.html">comments</a></p>
+</div>
+</aside>
+<p>You can leave notes for future reference starting with a <code class="docutils literal notranslate"><span class="pre">#</span></code>. This tells Python
+to ignore everything that follows until the end of the line.</p>
+<p>Add some comments to your program describing what the code does.</p>
+<div class="literal-block-wrapper docutils container" id="id18">
+<div class="code-block-caption"><span class="caption-number">Listing 16 </span><span class="caption-text">main.py</span><a class="headerlink" href="#id18" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-default notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos"> 9</span><span class="c1"># print to the screen by calling the print() function</span>
+</span><span class="linenos">10</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome to PyPet!&quot;</span><span class="p">)</span>
+<span class="linenos">11</span>
+<span class="hll"><span class="linenos">12</span><span class="c1"># variables</span>
+</span><span class="linenos">13</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Fluffy&quot;</span>
+<span class="linenos">14</span><span class="n">age</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="linenos">15</span><span class="n">weight</span> <span class="o">=</span> <span class="mf">9.5</span>
+<span class="linenos">16</span><span class="n">hungry</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="linenos">17</span><span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
+<span class="linenos">18</span><span class="n">pic</span> <span class="o">=</span> <span class="s2">&quot;(=^o.o^=)__&quot;</span>
+<span class="hll"><span class="linenos">19</span>
+</span><span class="hll"><span class="linenos">20</span><span class="c1"># use the name variable to form a new message</span>
+</span><span class="linenos">21</span><span class="c1"># by concatenating two strings, then print it</span>
+<span class="linenos">22</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello from &quot;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
+<span class="linenos">23</span>
+<span class="hll"><span class="linenos">24</span><span class="c1"># print the pic variable</span>
+</span><span class="linenos">25</span><span class="nb">print</span><span class="p">(</span><span class="n">pic</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition-best-practice admonition">
+<p class="admonition-title">Best practice</p>
+<p>A space is recommended after the hash mark (<code class="docutils literal notranslate"><span class="pre">#</span></code>).</p>
+</div>
+</aside>
+</section>
+<section id="c-inline-comments">
+<h4>C. Inline comments<a class="headerlink" href="#c-inline-comments" title="Permalink to this headline">#</a></h4>
+<p>A comment doeesn’t have to be at the beginning of the line as long as it is not
+inside of quotes.</p>
+<div class="literal-block-wrapper docutils container" id="id19">
+<div class="code-block-caption"><span class="caption-number">Listing 17 </span><span class="caption-text">main.py</span><a class="headerlink" href="#id19" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 9</span><span class="c1"># print to the screen by calling the print() function</span>
+<span class="linenos">10</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome to PyPet!&quot;</span><span class="p">)</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="c1"># creating variables</span>
+<span class="linenos">13</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Fluffy&quot;</span>       <span class="c1 c1-Highlight"># string: quote enclosed text</span>
+<span class="linenos">14</span><span class="n">age</span> <span class="o">=</span> <span class="mi">5</span>               <span class="c1 c1-Highlight"># integer: whole numbers</span>
+<span class="linenos">15</span><span class="n">weight</span> <span class="o">=</span> <span class="mf">9.5</span>          <span class="c1 c1-Highlight"># float: decimal numbers</span>
+<span class="linenos">16</span><span class="n">hungry</span> <span class="o">=</span> <span class="kc">False</span>        <span class="c1 c1-Highlight"># boolean: True or False</span>
+<span class="linenos">17</span><span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>       <span class="c1 c1-Highlight"># string</span>
+<span class="linenos">18</span><span class="n">pic</span> <span class="o">=</span> <span class="s2">&quot;(=^o.o^=)__&quot;</span>   <span class="c1 c1-Highlight"># string</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="part-3-getting-organized">
+<h2><a class="toc-backref" href="#contents">Part 3: Getting Organized</a><a class="headerlink" href="#part-3-getting-organized" title="Permalink to this headline">#</a></h2>
+<p>We need a way to tell Python that all of these values represent one pet. One
+way to do this is to use a Python <a class="reference external" href="https://www.tutorialspoint.com/python/python_dictionary.htm">dictionary</a>.</p>
+<p>A <a class="reference internal" href="../reference/glossary.html#term-dictionary"><span class="xref std std-term">dictionary</span></a> allows you to group a bunch of different values together
+and assign the group to a single variable. The contents of a dictionary are
+arranged by <a class="reference internal" href="../reference/glossary.html#term-key"><span class="xref std std-term">key</span></a>, the unique identifier chosen to look up a particular
+<a class="reference internal" href="expressions.html#term-value"><span class="xref std std-term">value</span></a>.</p>
+<section id="part-3-1-make-a-cat-dictionary">
+<h3><a class="toc-backref" href="#contents">Part 3.1 Make a <code class="docutils literal notranslate"><span class="pre">cat</span></code> dictionary</a><a class="headerlink" href="#part-3-1-make-a-cat-dictionary" title="Permalink to this headline">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Variables use equals sign (<code class="docutils literal notranslate"><span class="pre">=</span></code>) and their names <strong>are not</strong> in quotes:</p>
+<p><code class="docutils literal notranslate"><span class="pre">name</span> <span class="pre">=</span> <span class="pre">&quot;Fluffy&quot;</span></code></p>
+<p>Dictionary keys use colon (<code class="docutils literal notranslate"><span class="pre">:</span></code>) and their keys <strong>may be</strong> in quotes:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;name&quot;:</span> <span class="pre">&quot;Fluffy&quot;</span></code></p>
+</div>
+</aside>
+<div class="row"><div class="col-5 left-col-5">
+<p>Create a dictionary called assigned to the variable <code class="docutils literal notranslate"><span class="pre">cat</span></code> using curly-braces
+(<code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">}</span></code>).</p>
+<p>Inside the curly-braces add a list of attributes seperated by commas.
+Attributes have both a <a class="reference internal" href="../reference/glossary.html#term-key"><span class="xref std std-term">key</span></a> (like <code class="docutils literal notranslate"><span class="pre">&quot;name&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;weight&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;age&quot;</span></code>)
+as well as a <a class="reference internal" href="expressions.html#term-value"><span class="xref std std-term">value</span></a> (like <code class="docutils literal notranslate"><span class="pre">&quot;Fluffy&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">9.6</span></code>), with a colon <code class="docutils literal notranslate"><span class="pre">:</span></code>
+between the two.</p>
+</div><div class="col-7">
+<div class="literal-block-wrapper docutils container" id="id20">
+<div class="code-block-caption"><span class="caption-number">Listing 18 </span><span class="caption-text">main.py</span><a class="headerlink" href="#id20" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">12</span><span class="c1"># variables and types</span>
+<span class="linenos">13</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Fluffy&quot;</span>       <span class="c1"># string: quote enclosed text</span>
+<span class="linenos">14</span><span class="n">age</span> <span class="o">=</span> <span class="mi">5</span>               <span class="c1"># integer: whole numbers</span>
+<span class="linenos">15</span><span class="n">weight</span> <span class="o">=</span> <span class="mf">9.5</span>          <span class="c1"># float: decimal numbers</span>
+<span class="linenos">16</span><span class="n">hungry</span> <span class="o">=</span> <span class="kc">False</span>        <span class="c1"># boolean: True or False</span>
+<span class="linenos">17</span><span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>       <span class="c1"># string</span>
+<span class="linenos">18</span><span class="n">pic</span> <span class="o">=</span> <span class="s2">&quot;(=^o.o^=)__&quot;</span>   <span class="c1"># string</span>
+<span class="linenos">19</span>
+<span class="hll"><span class="linenos">20</span><span class="c1"># dictionary</span>
+</span><span class="hll"><span class="linenos">21</span><span class="n">cat</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="hll"><span class="linenos">22</span>    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Fluffy&quot;</span><span class="p">,</span>
+</span><span class="hll"><span class="linenos">23</span>    <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+</span><span class="hll"><span class="linenos">24</span>    <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mf">9.5</span><span class="p">,</span>
+</span><span class="hll"><span class="linenos">25</span>    <span class="s2">&quot;hungry&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+</span><span class="hll"><span class="linenos">26</span>    <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span>
+</span><span class="hll"><span class="linenos">27</span>    <span class="s2">&quot;pic&quot;</span><span class="p">:</span> <span class="s2">&quot;(=^o.o^=)__&quot;</span><span class="p">,</span>
+</span><span class="hll"><span class="linenos">28</span><span class="p">}</span>
+</span></pre></div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="part-3-2-print-the-dictionary">
+<h3><a class="toc-backref" href="#contents">Part 3.2: Print the dictionary</a><a class="headerlink" href="#part-3-2-print-the-dictionary" title="Permalink to this headline">#</a></h3>
+<div class="row"><div class="col-5 left-col-5">
+<p>Change the last line so that it prints out the whole <code class="docutils literal notranslate"><span class="pre">cat</span></code> dictionary instead
+of the <code class="docutils literal notranslate"><span class="pre">pic</span></code>.</p>
+</div><div class="col-7">
+<div class="literal-block-wrapper docutils container" id="id21">
+<div class="code-block-caption"><span class="caption-number">Listing 19 </span><span class="caption-text">main.py</span><a class="headerlink" href="#id21" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">20</span><span class="c1"># dictionary</span>
+<span class="linenos">21</span><span class="n">cat</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos">22</span>    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Fluffy&quot;</span><span class="p">,</span>
+<span class="linenos">23</span>    <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+<span class="linenos">24</span>    <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mf">9.5</span><span class="p">,</span>
+<span class="linenos">25</span>    <span class="s2">&quot;hungry&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<span class="linenos">26</span>    <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span>
+<span class="linenos">27</span>    <span class="s2">&quot;pic&quot;</span><span class="p">:</span> <span class="s2">&quot;(=^o.o^=)__&quot;</span><span class="p">,</span>
+<span class="linenos">28</span><span class="p">}</span>
+<span class="linenos">29</span>
+<span class="linenos">30</span><span class="c1"># use the name variable to form a new message</span>
+<span class="linenos">31</span><span class="c1"># by concatenating two strings, then print it</span>
+<span class="linenos">32</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello from &quot;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
+<span class="linenos">33</span>
+<span class="linenos">34</span><span class="c1"># print the cat variable</span>
+<span class="hll"><span class="linenos">35</span><span class="nb">print</span><span class="p">(</span><span class="n">cat</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="part-3-3-print-dictionary-values">
+<h3><a class="toc-backref" href="#contents">Part 3.3: Print dictionary values</a><a class="headerlink" href="#part-3-3-print-dictionary-values" title="Permalink to this headline">#</a></h3>
+<div class="row"><div class="col-5 left-col-5">
+<p>Print your PyPet’s name and pic. You can access values in a dictionary the
+format <code class="docutils literal notranslate"><span class="pre">dictionary[&quot;key&quot;]</span></code> such as <code class="docutils literal notranslate"><span class="pre">cat[&quot;name&quot;]</span></code>.</p>
+</div><div class="col-7">
+<div class="literal-block-wrapper docutils container" id="id22">
+<div class="code-block-caption"><span class="caption-number">Listing 20 </span><span class="caption-text">main.py</span><a class="headerlink" href="#id22" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">20</span><span class="c1"># dictionary</span>
+<span class="linenos">21</span><span class="n">cat</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos">22</span>    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Fluffy&quot;</span><span class="p">,</span>
+<span class="linenos">23</span>    <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+<span class="linenos">24</span>    <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mf">9.5</span><span class="p">,</span>
+<span class="linenos">25</span>    <span class="s2">&quot;hungry&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<span class="linenos">26</span>    <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span>
+<span class="linenos">27</span>    <span class="s2">&quot;pic&quot;</span><span class="p">:</span> <span class="s2">&quot;(=^o.o^=)__&quot;</span><span class="p">,</span>
+<span class="linenos">28</span><span class="p">}</span>
+<span class="linenos">29</span>
+<span class="linenos">30</span><span class="c1"># use the name variable to form a new message</span>
+<span class="linenos">31</span><span class="c1"># by concatenating two strings, then print it</span>
+<span class="hll"><span class="linenos">32</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello &quot;</span> <span class="o">+</span> <span class="n">cat</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+</span><span class="linenos">33</span>
+<span class="linenos">34</span><span class="c1"># print the pet picture</span>
+<span class="hll"><span class="linenos">35</span><span class="nb">print</span><span class="p">(</span><span class="n">cat</span><span class="p">[</span><span class="s2">&quot;pic&quot;</span><span class="p">])</span>
+</span></pre></div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="part-3-4-remove-old-stuff">
+<h3><a class="toc-backref" href="#contents">Part 3.4: Remove old stuff</a><a class="headerlink" href="#part-3-4-remove-old-stuff" title="Permalink to this headline">#</a></h3>
+<div class="row"><div class="col-5 left-col-5">
+<p>Remove the old variables, or you can just comment them out if you would prefer
+to keep them for reference.</p>
+</div><div class="col-7">
+<div class="literal-block-wrapper docutils container" id="id23">
+<div class="code-block-caption"><span class="caption-number">Listing 21 </span><span class="caption-text">main.py</span><a class="headerlink" href="#id23" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 9</span><span class="c1"># print to the screen by calling the print() function</span>
+<span class="linenos">10</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome to PyPet!&quot;</span><span class="p">)</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="c1"># dictionary</span>
+<span class="linenos">13</span><span class="n">cat</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos">14</span>    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Fluffy&quot;</span><span class="p">,</span>
+<span class="linenos">15</span>    <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+<span class="linenos">16</span>    <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mf">9.5</span><span class="p">,</span>
+<span class="linenos">17</span>    <span class="s2">&quot;hungry&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<span class="linenos">18</span>    <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span>
+<span class="linenos">19</span>    <span class="s2">&quot;pic&quot;</span><span class="p">:</span> <span class="s2">&quot;(=^o.o^=)__&quot;</span><span class="p">,</span>
+<span class="linenos">20</span><span class="p">}</span>
+<span class="linenos">21</span>
+<span class="linenos">22</span><span class="c1"># use the name variable to form a new message</span>
+<span class="linenos">23</span><span class="c1"># by concatenating two strings, then print it</span>
+<span class="linenos">24</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello &quot;</span> <span class="o">+</span> <span class="n">cat</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+<span class="linenos">25</span>
+<span class="linenos">26</span><span class="c1"># print the pet picture</span>
+<span class="linenos">27</span><span class="nb">print</span><span class="p">(</span><span class="n">cat</span><span class="p">[</span><span class="s2">&quot;pic&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+</section>
+</section>
+<section id="part-4-feeding-your-pypet">
+<h2><a class="toc-backref" href="#contents">Part 4: Feeding your PyPet</a><a class="headerlink" href="#part-4-feeding-your-pypet" title="Permalink to this headline">#</a></h2>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>More on <a class="reference external" href="http://www.tutorialspoint.com/python/python_functions.htm">functions</a></p>
+</div>
+</aside>
+<p>Let’s “feed” our pypet using a Python function. A <a class="reference internal" href="functions.html#term-function"><span class="xref std std-term">function</span></a> is a block
+of organized, reusable code that is used to perform a single action.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition-best-practice admonition">
+<p class="admonition-title">Best practice</p>
+<p>Functions should usually be defined near the top of the file.</p>
+</div>
+</aside>
+<section id="part-4-1-define-feed">
+<h3><a class="toc-backref" href="#contents">Part 4.1: Define <code class="docutils literal notranslate"><span class="pre">feed()</span></code></a><a class="headerlink" href="#part-4-1-define-feed" title="Permalink to this headline">#</a></h3>
+<p>First, we must define our function — <code class="docutils literal notranslate"><span class="pre">feed</span></code> — which changes our pypet’s
+<code class="docutils literal notranslate"><span class="pre">hungry</span></code> attribute to <code class="docutils literal notranslate"><span class="pre">False</span></code> to show that it is no longer hungry.</p>
+<div class="row"><div class="col-5 left-col-5">
+<p>Create this simple function by writing the following above your dictionary.</p>
+</div><div class="col-7">
+<div class="literal-block-wrapper docutils container" id="id24">
+<div class="code-block-caption"><span class="caption-number">Listing 22 </span><span class="caption-text">main.py</span><a class="headerlink" href="#id24" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 9</span><span class="c1"># print to the screen by calling the print() function</span>
+<span class="linenos">10</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome to PyPet!&quot;</span><span class="p">)</span>
+<span class="linenos">11</span>
+<span class="hll"><span class="linenos">12</span><span class="c1"># function</span>
+</span><span class="hll"><span class="linenos">13</span><span class="k">def</span> <span class="nf">feed</span><span class="p">(</span><span class="n">pet</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">14</span>    <span class="n">pet</span><span class="p">[</span><span class="s2">&quot;hungry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+</span></pre></div>
+</div>
+</div>
+</div></div>
 <p>There are a couple of things to take note of here. By writing
 <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">feed(pet):</span></code> you defining a function called <code class="docutils literal notranslate"><span class="pre">feed</span></code> that accepts one
 variable <code class="docutils literal notranslate"><span class="pre">pet</span></code>. You”ll also notice we indent the next line
-<code class="docutils literal notranslate"><span class="pre">pet[&quot;hungry&quot;]</span> <span class="pre">=</span> <span class="pre">False</span></code>. <em>NOTE: In python the contents of a function must be
-indented.</em></p>
-</li>
-<li><p>Add <code class="docutils literal notranslate"><span class="pre">feed(cat)</span></code> below your function to use the <code class="docutils literal notranslate"><span class="pre">feed</span></code> function on your
-Pypet, in this case <code class="docutils literal notranslate"><span class="pre">cat</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">feed</span><span class="p">(</span><span class="n">pet</span><span class="p">):</span>
-   <span class="n">pet</span><span class="p">[</span><span class="s2">&quot;hungry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
-
-<span class="n">feed</span><span class="p">(</span><span class="n">cat</span><span class="p">)</span>
-</pre></div>
+<code class="docutils literal notranslate"><span class="pre">pet[&quot;hungry&quot;]</span> <span class="pre">=</span> <span class="pre">False</span></code>.</p>
+<p><em>NOTE: In python the contents of a function must be indented.</em></p>
+</section>
+<section id="part-4-2-call-the-function">
+<h3><a class="toc-backref" href="#contents">Part 4.2: Call the function</a><a class="headerlink" href="#part-4-2-call-the-function" title="Permalink to this headline">#</a></h3>
+<div class="row"><div class="col-5 left-col-5">
+<p>Add <code class="docutils literal notranslate"><span class="pre">feed(cat)</span></code> below your function to use the <code class="docutils literal notranslate"><span class="pre">feed</span></code> function on your
+PyPet, in this case <code class="docutils literal notranslate"><span class="pre">cat</span></code>.</p>
+</div><div class="col-7">
+<div class="literal-block-wrapper docutils container" id="id25">
+<div class="code-block-caption"><span class="caption-number">Listing 23 </span><span class="caption-text">main.py</span><a class="headerlink" href="#id25" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">26</span><span class="c1"># use the name variable to form a new message</span>
+<span class="linenos">27</span><span class="c1"># by concatenating two strings, then print it</span>
+<span class="linenos">28</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello &quot;</span> <span class="o">+</span> <span class="n">cat</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+<span class="linenos">29</span>
+<span class="linenos">30</span><span class="c1"># print the pet picture</span>
+<span class="linenos">31</span><span class="nb">print</span><span class="p">(</span><span class="n">cat</span><span class="p">[</span><span class="s2">&quot;pic&quot;</span><span class="p">])</span>
+<span class="linenos">32</span>
+<span class="hll"><span class="linenos">33</span><span class="c1"># call the feed function</span>
+</span><span class="hll"><span class="linenos">34</span><span class="n">feed</span><span class="p">(</span><span class="n">cat</span><span class="p">)</span>
+</span></pre></div>
 </div>
+</div>
+</div></div>
 <p>By calling <code class="docutils literal notranslate"><span class="pre">feed(cat)</span></code> we are passing the variable <code class="docutils literal notranslate"><span class="pre">cat</span></code> into the function
 in place of <code class="docutils literal notranslate"><span class="pre">pet</span></code>. <code class="docutils literal notranslate"><span class="pre">pet</span></code> acts as a placeholder for whatever variable we
 decide to pass into the function.</p>
-<p>We should also increase the Pypet’s weight a bit since it has eaten.</p>
-</li>
-<li><p>Add <code class="docutils literal notranslate"><span class="pre">cat[&quot;weight&quot;]</span> <span class="pre">=</span> <span class="pre">cat[&quot;weight&quot;]</span> <span class="pre">+</span> <span class="pre">1</span></code> to your <code class="docutils literal notranslate"><span class="pre">feed</span></code> function.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">feed</span><span class="p">(</span><span class="n">cat</span><span class="p">):</span>
-   <span class="n">cat</span><span class="p">[</span><span class="s2">&quot;hungry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
-   <span class="n">cat</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cat</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+</section>
+<section id="part-4-3-increase-the-pet-weight">
+<h3><a class="toc-backref" href="#contents">Part 4.3: Increase the pet weight</a><a class="headerlink" href="#part-4-3-increase-the-pet-weight" title="Permalink to this headline">#</a></h3>
+<p>We should also increase the PyPet’s weight a bit since it has eaten.</p>
+<div class="row"><div class="col-5 left-col-5">
+<p>Add <code class="docutils literal notranslate"><span class="pre">cat[&quot;weight&quot;]</span> <span class="pre">=</span> <span class="pre">cat[&quot;weight&quot;]</span> <span class="pre">+</span> <span class="pre">1</span></code> to your <code class="docutils literal notranslate"><span class="pre">feed</span></code> function.</p>
+</div><div class="col-7">
+<div class="literal-block-wrapper docutils container" id="id26">
+<div class="code-block-caption"><span class="caption-number">Listing 24 </span><span class="caption-text">main.py</span><a class="headerlink" href="#id26" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">12</span><span class="c1"># function</span>
+<span class="linenos">13</span><span class="k">def</span> <span class="nf">feed</span><span class="p">(</span><span class="n">pet</span><span class="p">):</span>
+<span class="linenos">14</span>    <span class="n">pet</span><span class="p">[</span><span class="s2">&quot;hungry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="hll"><span class="linenos">15</span>    <span class="n">cat</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cat</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+</span></pre></div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="part-4-4-test-it">
+<h3><a class="toc-backref" href="#contents">Part 4.4: Test it</a><a class="headerlink" href="#part-4-4-test-it" title="Permalink to this headline">#</a></h3>
+<p>We’ll want to make sure it works correctly, so we’ll add some temporary
+debugging statements so we can see what happens.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can pass multiple, comma-seperated arguments to the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function to
+print them with a space between each.</p>
+<p>This is sometimes easier than <a class="reference internal" href="../reference/glossary.html#term-concatenation"><span class="xref std std-term">concatenation</span></a>, especially for debugging.</p>
+</div>
+</aside>
+<div class="row"><div class="col-5 left-col-5">
+<p>Add a line to print the <code class="docutils literal notranslate"><span class="pre">cat</span></code> dictionary and a message just before and after
+you call <code class="docutils literal notranslate"><span class="pre">feed()</span></code>.</p>
+</div><div class="col-7">
+<div class="literal-block-wrapper docutils container" id="id27">
+<div class="code-block-caption"><span class="caption-number">Listing 25 </span><span class="caption-text">main.py</span><a class="headerlink" href="#id27" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">33</span>
+<span class="linenos">34</span><span class="c1"># call the feed function</span>
+<span class="hll"><span class="linenos">35</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Before feeding:&quot;</span><span class="p">,</span> <span class="n">cat</span><span class="p">)</span>
+</span><span class="linenos">36</span><span class="n">feed</span><span class="p">(</span><span class="n">cat</span><span class="p">)</span>
+<span class="hll"><span class="linenos">37</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;After feeding:&quot;</span><span class="p">,</span> <span class="n">cat</span><span class="p">)</span>
+</span><span class="linenos">38</span>
 </pre></div>
 </div>
-<p>Use this notation to increase floats and integers.</p>
-</li>
-<li><p>Try setting your original Pypet’s hungry variable to <code class="docutils literal notranslate"><span class="pre">True</span></code> and include a
-<code class="docutils literal notranslate"><span class="pre">print(cat)</span></code> statement after <code class="docutils literal notranslate"><span class="pre">feed(cat)</span></code> to see if your Pypet”s <code class="docutils literal notranslate"><span class="pre">hungry</span></code>
-variable changed to <code class="docutils literal notranslate"><span class="pre">False</span></code> and their <code class="docutils literal notranslate"><span class="pre">weight</span></code> variable incrased.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welome to Pypet!&quot;</span><span class="p">)</span>
-
-<span class="n">cat</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Fluffy&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;hungry&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-  <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mf">9.5</span><span class="p">,</span>
-  <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-  <span class="s2">&quot;pic&quot;</span><span class="p">:</span> <span class="s2">&quot;(=^o.o^=)__&quot;</span><span class="p">,</span>
-<span class="p">}</span>
-
-<span class="k">def</span> <span class="nf">feed</span><span class="p">(</span><span class="n">pet</span><span class="p">):</span>
-   <span class="n">pet</span><span class="p">[</span><span class="s2">&quot;hungry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
-   <span class="n">pet</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pet</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">cat</span><span class="p">)</span>
-<span class="n">feed</span><span class="p">(</span><span class="n">cat</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">cat</span><span class="p">)</span>
+</div>
+</div></div><div class="row"><div class="col-5 right-col-5">
+<p>Set or change your PyPet’s <code class="docutils literal notranslate"><span class="pre">&quot;hungry&quot;</span></code> value to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+</div><div class="col-7">
+<div class="literal-block-wrapper docutils container" id="id28">
+<div class="code-block-caption"><span class="caption-number">Listing 26 </span><span class="caption-text">main.py</span><a class="headerlink" href="#id28" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">18</span><span class="n">cat</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos">19</span>    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Fluffy&quot;</span><span class="p">,</span>
+<span class="linenos">20</span>    <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+<span class="linenos">21</span>    <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mf">9.5</span><span class="p">,</span>
+<span class="hll"><span class="linenos">22</span>    <span class="s2">&quot;hungry&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+</span><span class="linenos">23</span>    <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span>
+<span class="linenos">24</span>    <span class="s2">&quot;pic&quot;</span><span class="p">:</span> <span class="s2">&quot;(=^o.o^=)__&quot;</span><span class="p">,</span>
+<span class="linenos">25</span><span class="p">}</span>
 </pre></div>
 </div>
-<p>When the cat is printed out the second time his weight attribute will have
-increased. Don”t forget to save and then run your python file from the
-console.</p>
-</li>
-</ol>
 </div>
-<div class="section" id="part-5-making-choices">
-<h2><a class="toc-backref" href="#contents">Part 5: Making Choices</a><a class="headerlink" href="#part-5-making-choices" title="Permalink to this headline">¶</a></h2>
-<p>But what if our Pypet is not hungry? We need to take into account whether or
+</div></div><div class="row"><div class="col-5 right-col-5">
+<p>Look at the output to confirm that the PyPet’s hungy and weight values changed.
+They should be:</p>
+</div><div class="col-7">
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Before</p></th>
+<th class="head"><p>After</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;hungry&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;weight&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">9.5</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">10.5</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</section>
+<section id="part-4-5-exercises">
+<h3><a class="toc-backref" href="#contents">Part 4.5: Exercises</a><a class="headerlink" href="#part-4-5-exercises" title="Permalink to this headline">#</a></h3>
+<section id="a-hello-function">
+<h4>A. hello() function<a class="headerlink" href="#a-hello-function" title="Permalink to this headline">#</a></h4>
+<div class="exercise calm admonition" id="pypet-hello-exercise">
+
+<p class="admonition-title"><span class="caption-number">Exercise 1 </span> (Hello Exercise)</p>
+<section id="exercise-content">
+<p>Can you write a function named <code class="docutils literal notranslate"><span class="pre">hello</span></code> that prints <code class="docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">World!&quot;</span></code>?</p>
+<p>Don’t forget to call it!</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="lessons/tutorial-solution-1">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#pypet-hello-exercise"> Exercise 1 (Hello Exercise)</a></p>
+<section id="solution-content">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">)</span>
+
+<span class="n">hello</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello World!
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</section>
+<section id="b-goodbye-function">
+<h4>B. goodbye() function<a class="headerlink" href="#b-goodbye-function" title="Permalink to this headline">#</a></h4>
+<div class="exercise calm admonition" id="pypet-goodbye-exercise">
+
+<p class="admonition-title"><span class="caption-number">Exercise 2 </span> (Goodbye Exercise)</p>
+<section id="exercise-content">
+<p>Write a function named <code class="docutils literal notranslate"><span class="pre">goodbye</span></code> that takes one argument <code class="docutils literal notranslate"><span class="pre">name</span></code> and
+prints <code class="samp docutils literal notranslate"><span class="pre">Goodbye</span> <em><span class="pre">NAME</span></em><span class="pre">!</span></code></p>
+<p>Call it with your name.</p>
+<p>What happens when you call it multiple times with different names?</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="lessons/tutorial-solution-3">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#pypet-goodbye-exercise"> Exercise 2 (Goodbye Exercise)</a></p>
+<section id="solution-content">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">goodbye</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Goodbye &quot;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;!&quot;</span><span class="p">)</span>
+
+<span class="n">goodbye</span><span class="p">(</span><span class="s2">&quot;Cruel World&quot;</span><span class="p">)</span>
+
+<span class="n">goodbye</span><span class="p">(</span><span class="s2">&quot;sweetheart&quot;</span><span class="p">)</span>
+<span class="n">goodbye</span><span class="p">(</span><span class="s2">&quot;my friend&quot;</span><span class="p">)</span>
+<span class="n">goodbye</span><span class="p">(</span><span class="s2">&quot;stranger&quot;</span><span class="p">)</span>
+<span class="n">goodbye</span><span class="p">(</span><span class="s2">&quot;kiss&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Goodbye Cruel World!
+Goodbye sweetheart!
+Goodbye my friend!
+Goodbye stranger!
+Goodbye kiss!
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</section>
+</section>
+</section>
+<section id="part-5-making-choices">
+<h2><a class="toc-backref" href="#contents">Part 5: Making Choices</a><a class="headerlink" href="#part-5-making-choices" title="Permalink to this headline">#</a></h2>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>More on <a class="reference external" href="https://www.tutorialspoint.com/python/python_decision_making.htm">if statements</a></p>
+</div>
+</aside>
+<p>But what if our PyPet is not hungry? We need to take into account whether or
 not the hungry variable is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>. In order to know whether
-our Pypet is hungry, we are going to use an [if statement][]. In Python, if
-statements check to see whether a specific condition (such as whether or not
-<code class="docutils literal notranslate"><span class="pre">hungry</span> <span class="pre">=</span> <span class="pre">True</span></code>). Take a look at the GIF below to get an idea of what this
-looks like.</p>
-<p><img alt="" src="http://i.imgur.com/gKijQky.gif" /></p>
-<p>If the Pypet is hungry the program will set his hungry variable to <code class="docutils literal notranslate"><span class="pre">False</span></code> and
-increase his weight. If the Pypet is not hungry then it will print
-<code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">Pypet</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">hungry!</span></code> in the console.</p>
-<ol>
-<li><p>Add an if statement inside of your function.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">feed</span><span class="p">(</span><span class="n">pet</span><span class="p">):</span>
- <span class="k">if</span> <span class="n">pet</span><span class="p">[</span><span class="s2">&quot;hungry&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
-   <span class="n">pet</span><span class="p">[</span><span class="s2">&quot;hungry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
-   <span class="n">pet</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pet</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
- <span class="k">else</span><span class="p">:</span>
-   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The Pypet is not hungry!&quot;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">cat</span><span class="p">)</span>
-<span class="n">feed</span><span class="p">(</span><span class="n">cat</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">cat</span><span class="p">)</span>
+our PyPet is hungry, we are going to use an <a class="reference internal" href="conditional-statements.html#term-if-statement"><span class="xref std std-term">if statement</span></a>.</p>
+<p>In Python, if statements check to see whether a specific condition (such as
+whether or not <code class="docutils literal notranslate"><span class="pre">hungry</span> <span class="pre">=</span> <span class="pre">True</span></code>).</p>
+<p>If the PyPet is hungry the program will set his hungry variable to <code class="docutils literal notranslate"><span class="pre">False</span></code> and
+increase his weight. If the PyPet is not hungry then it will print
+<code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">PyPet</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">hungry!</span></code> in the console.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>One equals sign (<code class="docutils literal notranslate"><span class="pre">=</span></code>) sets variables.</p>
+<p>Two equals signs (<code class="docutils literal notranslate"><span class="pre">==</span></code>) checks for equivilance.</p>
+</div>
+</aside>
+<section id="part-5-1-add-if-statement">
+<h3><a class="toc-backref" href="#contents">Part 5.1: Add if statement</a><a class="headerlink" href="#part-5-1-add-if-statement" title="Permalink to this headline">#</a></h3>
+<div class="row"><div class="col-5 left-col-5">
+<p>Add an if statement inside of your function.</p>
+</div><div class="col-7">
+<div class="literal-block-wrapper docutils container" id="id29">
+<div class="code-block-caption"><span class="caption-number">Listing 27 </span><span class="caption-text">main.py</span><a class="headerlink" href="#id29" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">12</span><span class="c1"># function</span>
+<span class="linenos">13</span><span class="k">def</span> <span class="nf">feed</span><span class="p">(</span><span class="n">pet</span><span class="p">):</span>
+<span class="linenos">14</span>    <span class="k">if</span> <span class="n">pet</span><span class="p">[</span><span class="s2">&quot;hungry&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+<span class="linenos">15</span>      <span class="n">pet</span><span class="p">[</span><span class="s2">&quot;hungry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="linenos">16</span>      <span class="n">pet</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pet</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="linenos">17</span>    <span class="k">else</span><span class="p">:</span>
+<span class="linenos">18</span>      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The PyPet is not hungry!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div></div>
 <p>Notice that we use two equals sign (<code class="docutils literal notranslate"><span class="pre">==</span></code>) to check a condition (for example
 <code class="docutils literal notranslate"><span class="pre">pet[&quot;hungry&quot;]</span> <span class="pre">==</span> <span class="pre">True</span></code>). Only if the condition is not met the code beneath
-the <code class="docutils literal notranslate"><span class="pre">else:</span></code> will execute. Remember, one equal sign is used to assigned a
-value to a variable (<code class="docutils literal notranslate"><span class="pre">pet[&quot;hungry&quot;]</span> <span class="pre">=</span> <span class="pre">True</span></code> makes our Pypet hungry), two
+the <code class="docutils literal notranslate"><span class="pre">else:</span></code> will execute.</p>
+<p>Remember, one equal sign is used to assigned a
+value to a variable (<code class="docutils literal notranslate"><span class="pre">pet[&quot;hungry&quot;]</span> <span class="pre">=</span> <span class="pre">True</span></code> makes our PyPet hungry), two
 equal signs are used to check if a condition is true
-(<code class="docutils literal notranslate"><span class="pre">pet[&quot;hungry&quot;]</span> <span class="pre">==</span> <span class="pre">True</span></code> checks whether our Pypet is hungry).</p>
-</li>
-<li><p>Add another <code class="docutils literal notranslate"><span class="pre">feed(cat)</span></code> below your function and try feeding the cat twice to
-see if the function worked!</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">feed</span><span class="p">(</span><span class="n">pet</span><span class="p">):</span>
-   <span class="k">if</span> <span class="n">pet</span><span class="p">[</span><span class="s2">&quot;hungry&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
-       <span class="n">pet</span><span class="p">[</span><span class="s2">&quot;hungry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
-       <span class="n">pet</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pet</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
-   <span class="k">else</span><span class="p">:</span>
-       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The Pypet is not hungry!&quot;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">cat</span><span class="p">)</span>
-<span class="n">feed</span><span class="p">(</span><span class="n">cat</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">cat</span><span class="p">)</span>
-<span class="n">feed</span><span class="p">(</span><span class="n">cat</span><span class="p">)</span>
-</pre></div>
-</div>
-</li>
-</ol>
-<p>If you get stuck don”t forget to look back at the GIF above!</p>
-</div>
-<div class="section" id="part-6-making-friends">
-<h2><a class="toc-backref" href="#contents">Part 6: Making Friends</a><a class="headerlink" href="#part-6-making-friends" title="Permalink to this headline">¶</a></h2>
+(<code class="docutils literal notranslate"><span class="pre">pet[&quot;hungry&quot;]</span> <span class="pre">==</span> <span class="pre">True</span></code> checks whether our PyPet is hungry).</p>
+</section>
+<section id="part-5-2-make-sure-it-works">
+<h3><a class="toc-backref" href="#contents">Part 5.2: Make sure it works</a><a class="headerlink" href="#part-5-2-make-sure-it-works" title="Permalink to this headline">#</a></h3>
+<p>Repeat the steps from <a class="reference external" href="#part-4-4-test-it">Part 4</a> to make sure the function
+still works.</p>
+<p>Then switch to the opposite <code class="docutils literal notranslate"><span class="pre">&quot;hungry&quot;</span></code> value and check the output to make sure
+that the before and after values are the same.</p>
+</section>
+</section>
+<section id="part-6-making-friends">
+<h2><a class="toc-backref" href="#contents">Part 6: Making Friends</a><a class="headerlink" href="#part-6-making-friends" title="Permalink to this headline">#</a></h2>
 <p>In this section we’ll learn how to hold multiple values together in a <a class="reference external" href="http://www.tutorialspoint.com/python/python_lists.htm">list</a>.</p>
 <ol>
-<li><p>Let’s create another Pypet using a dictionary. Add (or customize) the code
-below under your previous Pypet dictionary.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mouse</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Mouse&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
-  <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span>
-  <span class="s2">&quot;hungry&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-  <span class="s2">&quot;pic&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;:3 )~~~~&quot;</span><span class="p">,</span>
-<span class="p">}</span>
+<li><p>Let’s create another PyPet using a dictionary. Add (or customize) the code
+below under your previous PyPet dictionary.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">mouse</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos">2</span>  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Mouse&quot;</span><span class="p">,</span>
+<span class="linenos">3</span>  <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+<span class="linenos">4</span>  <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span>
+<span class="linenos">5</span>  <span class="s2">&quot;hungry&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+<span class="linenos">6</span>  <span class="s2">&quot;pic&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;:3 )~~~~&quot;</span><span class="p">,</span>
+<span class="linenos">7</span><span class="p">}</span>
 </pre></div>
 </div>
-<p><em>NOTE: Make sure to place this new Pypet above your function (use the GIF as
+<p><em>NOTE: Make sure to place this new PyPet above your function (use the GIF as
 reference if you are confused)</em></p>
 </li>
-<li><p>Create a list to hold both of your Pypets using <code class="docutils literal notranslate"><span class="pre">pets</span> <span class="pre">=</span> <span class="pre">[cat,</span> <span class="pre">mouse]</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pets</span> <span class="o">=</span> <span class="p">[</span><span class="n">cat</span><span class="p">,</span> <span class="n">mouse</span><span class="p">]</span>
+<li><p>Create a list to hold both of your PyPet using <code class="docutils literal notranslate"><span class="pre">pets</span> <span class="pre">=</span> <span class="pre">[cat,</span> <span class="pre">mouse]</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">pets</span> <span class="o">=</span> <span class="p">[</span><span class="n">cat</span><span class="p">,</span> <span class="n">mouse</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Now that we have more than one Pypet we can store them in a Python list. A
-<a class="reference external" href="http://www.tutorialspoint.com/python/python_lists.htm">list</a> is another data type; lists stores variables in order. If python
+<p>Now that we have more than one PyPet we can store them in a Python list. A
+<a class="reference external" href="http://www.tutorialspoint.com/python/python_lists.htm">list</a> is another data type; lists stores variables in order. If Python
 isn”t the first programming language you are learning, you may have heard of
 this same concept in other programming languages as an array.</p>
 </li>
 </ol>
-</div>
-<div class="section" id="part-7-going-in-circles">
-<h2><a class="toc-backref" href="#contents">Part 7: Going in Circles</a><a class="headerlink" href="#part-7-going-in-circles" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="part-7-going-in-circles">
+<h2><a class="toc-backref" href="#contents">Part 7: Going in Circles</a><a class="headerlink" href="#part-7-going-in-circles" title="Permalink to this headline">#</a></h2>
 <p>What if we want to feed all the pets in our list? If we want to run a function
 on each variable in a list we can use something in Python called a loop. The
 <a class="reference external" href="http://www.tutorialspoint.com/python/python_for_loop.htm">for loop</a> in Python has the ability to iterate over the items of any
 sequence, such as a list.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">pet</span> <span class="ow">in</span> <span class="n">pets</span><span class="p">:</span>
-	<span class="n">feed</span><span class="p">(</span><span class="n">pet</span><span class="p">)</span>
-  	<span class="nb">print</span><span class="p">(</span><span class="n">pet</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">for</span> <span class="n">pet</span> <span class="ow">in</span> <span class="n">pets</span><span class="p">:</span>
+<span class="linenos">2</span>	<span class="n">feed</span><span class="p">(</span><span class="n">pet</span><span class="p">)</span>
+<span class="linenos">3</span>  	<span class="nb">print</span><span class="p">(</span><span class="n">pet</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Take a screenshot of your Pypets and tweet them <a class="reference external" href="https://twitter.com/thinkful">&#64;Thinkful</a> so I can share
+<p>Take a screenshot of your PyPet and tweet them <a class="reference external" href="https://twitter.com/thinkful">&#64;Thinkful</a> so I can share
 your creation with the world!</p>
-</div>
-<div class="section" id="bonus">
-<h2><a class="toc-backref" href="#contents">BONUS</a><a class="headerlink" href="#bonus" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="bonus">
+<h2><a class="toc-backref" href="#contents">BONUS</a><a class="headerlink" href="#bonus" title="Permalink to this headline">#</a></h2>
 <p>Once you have completed the steps above, you should feel free to add additional
 features that you design yourself! Here are some ideas to get you started:</p>
 <ul class="simple">
 <li><p>keep track of a health points variable</p></li>
 <li><p>create a boolean variable for asleep</p></li>
 <li><p>create a <code class="docutils literal notranslate"><span class="pre">play()</span></code> function</p></li>
-<li><p>create a list of phrases your python can say at random</p></li>
+<li><p>create a list of phrases your Python can say at random</p></li>
 <li><p>get input from the user with <code class="docutils literal notranslate"><span class="pre">raw_input()</span></code></p></li>
 </ul>
-</div>
-<div class="section" id="conclusion-resources">
-<h2><a class="toc-backref" href="#contents">Conclusion &amp; Resources</a><a class="headerlink" href="#conclusion-resources" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="conclusion-resources">
+<h2><a class="toc-backref" href="#contents">Conclusion &amp; Resources</a><a class="headerlink" href="#conclusion-resources" title="Permalink to this headline">#</a></h2>
 <p>Congrats for reaching the end of this guide! For your convenience we’ve placed
-a final version of our Pypet <a class="reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/pypet.py">on GitHub</a>, if you would like to take a
+a final version of our PyPet <a class="reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/pypet.py">on GitHub</a>, if you would like to take a
 look at the code. If you are stuck tweet <a class="reference external" href="https://twitter.com/thinkful">&#64;Thinkful</a> and we’d love to help.
 Feel free to customize any or all of your project and try new things.</p>
 <p>This guide is just the beginning of what you can do with Python. If you enjoyed
 the work you’ve done here, go through any of the additional resources below.</p>
 <p>Free Resources:</p>
 <ul class="simple">
+<li><p><a class="reference external" href="https://www.programiz.com/python-programming">Learn Python Programming</a> – a beginner-friendly step-by-step interactive
+Python course provided by <a class="reference external" href="https://www.programiz.com/">Programiz</a>.</p></li>
 <li><p><a class="reference external" href="https://docs.python.org/3/tutorial/index.html">The Official Python Tutorial</a> – this tutorial at <a class="reference external" href="https://www.python.org/">Python.org</a>
 introduces the reader informally to the basic concepts and features of the
 Python language and system. It is not comprehensive, but rather touches on
 Python’s most noteworthy features, and will give you a good idea of the
 language’s flavor and style.</p></li>
-<li><p><a class="reference external" href="https://www.programiz.com/python-programming">Learn Python Programming</a> – a beginner-friendly step-by-step interactive
-Python course provided by <a class="reference external" href="https://www.programiz.com/">Programiz</a>.</p></li>
-<li><p><a class="reference external" href="https://www.coursera.org/course/interactivepython">Interactive Python</a> – a
-19 hour online course provided by <a class="reference external" href="https://www.coursera.org/">Coursera</a> for students with little or no
-computing background.</p></li>
 <li><p><a class="reference external" href="https://greenteapress.com/wp/think-python-2e/">Think Python 2e</a> – a book intended as an introduction to Python
 programming for beginners. It’s available online or as a PDF download for
 free at <a class="reference external" href="http://greenteapress.com/">Green Tea Press</a>.</p></li>
+<li><p><a class="reference external" href="https://www.coursera.org/course/interactivepython">Interactive Python</a> – a
+19 hour online course provided by <a class="reference external" href="https://www.coursera.org/">Coursera</a> for students with little or no
+computing background.</p></li>
 <li><p><a class="reference external" href="http://www.realpython.com/">Real Python</a> – a great resource for the budding developer full of
 articles on every Python-related topic you can imagine and then some.</p></li>
 </ul>
-</div>
-<div class="section" id="credits">
-<h2><a class="toc-backref" href="#contents">Credits</a><a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="credits">
+<h2><a class="toc-backref" href="#contents">Credits</a><a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
 <p>This tutorial can be found at its new home in <a class="reference external" href="https://alissa-huskey.github.io/python-class/index.html">Python Class</a>:</p>
 <p><a class="reference external" href="https://alissa-huskey.github.io/python-class/lessons/tutorial.html">https://alissa-huskey.github.io/python-class/lessons/tutorial.html</a></p>
 <p>It was adapted from one that was originally available<a class="footnote-reference brackets" href="#id2" id="id1">1</a> on
@@ -1340,8 +2424,8 @@ articles on every Python-related topic you can imagine and then some.</p></li>
 <p>https://www.thinkful.com/learn/guide-programming-fundamentals-in-python</p>
 </dd>
 </dl>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1355,7 +2439,7 @@ articles on every Python-related topic you can imagine and then some.</p></li>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./lessons"
         },
         predefinedOutput: true
@@ -1365,9 +2449,11 @@ articles on every Python-related topic you can imagine and then some.</p></li>
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="../intro.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1383,23 +2469,25 @@ articles on every Python-related topic you can imagine and then some.</p></li>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

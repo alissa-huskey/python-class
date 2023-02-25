@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Functions &#8212; Python Class</title>
     
-  <link href="../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,39 +20,39 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/asciinema-player.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/asciinema-player.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/custom.js"></script>
-    <script src="../../_static/asciinema-player.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/x-frame-bypass.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+    <script src="../../_static/asciinema-player.js"></script>
+    <script src="../../_static/custom.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
@@ -68,7 +70,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -77,9 +93,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
       
       
@@ -92,7 +109,7 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <p class="caption">
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Lessons
  </span>
@@ -379,7 +396,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Practices
  </span>
@@ -406,7 +423,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Tools
  </span>
@@ -454,7 +471,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../../tools/replit.html">
-   Repl.it Tips
+   Replit
   </a>
  </li>
  <li class="toctree-l1">
@@ -478,7 +495,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Reference
  </span>
@@ -510,7 +527,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Exercises
  </span>
@@ -542,7 +559,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Admin
  </span>
@@ -556,88 +573,177 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/alissa-huskey/python-class"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        <a class="edit-button" href="https://github.com/alissa-huskey/python-class/edit/master/docs/lessons/in-depth/functions.md"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/alissa-huskey/python-class/master?urlpath=lab/tree/docs/lessons/in-depth/functions.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <button type="button" class="btn btn-secondary topbarbtn"
-            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
-                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
-        
-    </div>
-</div>
-
         </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
 
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/alissa-huskey/python-class/master?urlpath=lab/tree/docs/lessons/in-depth/functions.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/alissa-huskey/python-class"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/alissa-huskey/python-class/edit/master/docs/lessons/in-depth/functions.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#part-1-optional-arguments">
    Part 1: Optional arguments
@@ -777,17 +883,172 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Functions</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-1-optional-arguments">
+   Part 1: Optional arguments
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-1-1-default-values">
+     Part 1.1: Default Values
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-1-2-exercise">
+     Part 1.2: Exercise
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-1-3-mutable-defaults">
+     Part 1.3: Mutable Defaults
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-2-arbitrary-arguments">
+   Part 2: Arbitrary arguments
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-2-1-positional">
+     Part 2.1: Positional
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-2-1-exercise">
+     Part 2.1: Exercise
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-2-2-keyword">
+     Part 2.2: Keyword
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-2-2-exercise">
+     Part 2.2: Exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-3-unpacking-arguments">
+   Part 3: Unpacking Arguments
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-3-1-sequences">
+     Part 3.1: Sequences
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-3-1-exercise">
+     Part 3.1: Exercise
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-3-1-mappings">
+     Part 3.1: Mappings
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-3-2-exercise">
+     Part 3.2: Exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-4-annotations">
+   Part 4: Annotations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-4-1-parameter-hints">
+     Part 4.1: Parameter Hints
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-4-2-variable-hints">
+     Part 4.2: Variable Hints
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-4-3-return-hints">
+     Part 4.3: Return hints
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-4-4-exercise">
+     Part 4.4: Exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-5-lambdas">
+   Part 5: Lambdas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-6-shorthand">
+   Part 6: Shorthand
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reference">
+   Reference
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#glossary">
+     Glossary
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#glossary-functions">
+       Functions
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#see-also">
+     See Also
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="functions">
-<h1>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="functions">
+<h1>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h1>
 <p>In this lesson you’ll learn about some slightly more advanced or obscure
 function writing.</p>
 <div class="admonition important">
@@ -838,10 +1099,10 @@ function writing.</p>
 </li>
 </ul>
 </div>
-<div class="section" id="part-1-optional-arguments">
-<h2><a class="toc-backref" href="#table-of-contents">Part 1: Optional arguments</a><a class="headerlink" href="#part-1-optional-arguments" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="part-1-1-default-values">
-<h3><a class="toc-backref" href="#table-of-contents">Part 1.1: Default Values</a><a class="headerlink" href="#part-1-1-default-values" title="Permalink to this headline">¶</a></h3>
+<section id="part-1-optional-arguments">
+<h2><a class="toc-backref" href="#table-of-contents">Part 1: Optional arguments</a><a class="headerlink" href="#part-1-optional-arguments" title="Permalink to this headline">#</a></h2>
+<section id="part-1-1-default-values">
+<h3><a class="toc-backref" href="#table-of-contents">Part 1.1: Default Values</a><a class="headerlink" href="#part-1-1-default-values" title="Permalink to this headline">#</a></h3>
 <div class="row"><div class="col left-col">
 <p>You can make an argument optional by giving it a default value.</p>
 </div><div class="col">
@@ -896,13 +1157,13 @@ values.</p>
 </div>
 </div>
 </div></div>
-</div>
-<div class="section" id="part-1-2-exercise">
-<h3><a class="toc-backref" href="#table-of-contents">Part 1.2: Exercise</a><a class="headerlink" href="#part-1-2-exercise" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="part-1-2-exercise">
+<h3><a class="toc-backref" href="#table-of-contents">Part 1.2: Exercise</a><a class="headerlink" href="#part-1-2-exercise" title="Permalink to this headline">#</a></h3>
 <div class="exercise admonition" id="defaults-exercise">
 
-<p class="admonition-title"><span class="caption-number">Exercise 86 </span> (Defaults)</p>
-<div class="section" id="exercise-content">
+<p class="admonition-title"><span class="caption-number">Exercise 88 </span> (Defaults)</p>
+<section id="exercise-content">
 <p>Define a function <code class="docutils literal notranslate"><span class="pre">write()</span></code> that takes three arguments:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">message</span></code></p></li>
@@ -912,41 +1173,32 @@ values.</p>
 <p>The function should print <code class="docutils literal notranslate"><span class="pre">message</span></code> with the specified number of blank lines
 <code class="docutils literal notranslate"><span class="pre">before</span></code> and <code class="docutils literal notranslate"><span class="pre">after</span></code>, then print the string <code class="docutils literal notranslate"><span class="pre">&quot;----&quot;</span></code> at the end.</p>
 <p>Call it with all variations of missing and present default arguments.</p>
-</div>
+</section>
 </div>
 <div class="solution dropdown admonition" id="lessons/in-depth/functions-solution-1">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#defaults-exercise"> Exercise 86 (Defaults)</a></p>
-<div class="section" id="solution-content">
+<p class="admonition-title">Solution to<a class="reference internal" href="#defaults-exercise"> Exercise 88 (Defaults)</a></p>
+<section id="solution-content">
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-number">Listing 268 </span><span class="caption-text">Defaults Exercise</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">before</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">after</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">*</span><span class="n">before</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-  <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">*</span><span class="n">after</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----&quot;</span><span class="p">)</span>
-
-<span class="n">write</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
-<span class="n">write</span><span class="p">(</span><span class="s2">&quot;bonjour&quot;</span><span class="p">,</span> <span class="n">after</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">write</span><span class="p">(</span><span class="s2">&quot;hola&quot;</span><span class="p">,</span> <span class="n">before</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">write</span><span class="p">(</span><span class="s2">&quot;aloha&quot;</span><span class="p">,</span> <span class="n">before</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">after</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+<div class="code-block-caption"><span class="caption-number">Listing 295 </span><span class="caption-text">Defaults Exercise</span><a class="headerlink" href="#id1" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">before</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">after</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="linenos"> 2</span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">*</span><span class="n">before</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="linenos"> 3</span>  <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+<span class="linenos"> 4</span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">*</span><span class="n">after</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="linenos"> 5</span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----&quot;</span><span class="p">)</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
+<span class="linenos"> 8</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;bonjour&quot;</span><span class="p">,</span> <span class="n">after</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;hola&quot;</span><span class="p">,</span> <span class="n">before</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;aloha&quot;</span><span class="p">,</span> <span class="n">before</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">after</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
+</section>
 </div>
-</div>
-</div>
-<div class="section" id="part-1-3-mutable-defaults">
-<h3><a class="toc-backref" href="#table-of-contents">Part 1.3: Mutable Defaults</a><a class="headerlink" href="#part-1-3-mutable-defaults" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="part-1-3-mutable-defaults">
+<h3><a class="toc-backref" href="#table-of-contents">Part 1.3: Mutable Defaults</a><a class="headerlink" href="#part-1-3-mutable-defaults" title="Permalink to this headline">#</a></h3>
 <div class="row"><div class="col left-col">
 <p>Avoid using a <a class="reference internal" href="../../reference/glossary.html#term-mutable"><span class="xref std std-term">mutable</span></a> object as a default value, since it is evaluated
 only once when the function is defined.</p>
@@ -974,9 +1226,9 @@ object</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140435778962176 {&#39;title&#39;: &#39;home&#39;}
-140435778962176 {&#39;title&#39;: &#39;home&#39;}
-140435778957824 {&#39;title&#39;: &#39;School Work&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>139998085219584 {&#39;title&#39;: &#39;home&#39;}
+139998085219584 {&#39;title&#39;: &#39;home&#39;}
+139998085218688 {&#39;title&#39;: &#39;School Work&#39;}
 </pre></div>
 </div>
 </div>
@@ -1010,9 +1262,9 @@ and assigned.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140435779235328 {&#39;title&#39;: &#39;home&#39;}
-140435779235520 {&#39;title&#39;: &#39;work&#39;}
-140435778961216 {&#39;title&#39;: &#39;School Work&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>139998085226752 {&#39;title&#39;: &#39;home&#39;}
+139998085218880 {&#39;title&#39;: &#39;work&#39;}
+139998085227840 {&#39;title&#39;: &#39;School Work&#39;}
 </pre></div>
 </div>
 </div>
@@ -1043,22 +1295,22 @@ and assigned.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140435778951040 {&#39;title&#39;: &#39;home&#39;}
-140435779211584 {&#39;title&#39;: &#39;work&#39;}
-140435778948736 {&#39;title&#39;: &#39;School Work&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>139998119107968 {&#39;title&#39;: &#39;home&#39;}
+139998085035264 {&#39;title&#39;: &#39;work&#39;}
+139998085227008 {&#39;title&#39;: &#39;School Work&#39;}
 </pre></div>
 </div>
 </div>
 </div>
 </div></div>
-</div>
-</div>
-<div class="section" id="part-2-arbitrary-arguments">
-<h2><a class="toc-backref" href="#table-of-contents">Part 2: Arbitrary arguments</a><a class="headerlink" href="#part-2-arbitrary-arguments" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="part-2-arbitrary-arguments">
+<h2><a class="toc-backref" href="#table-of-contents">Part 2: Arbitrary arguments</a><a class="headerlink" href="#part-2-arbitrary-arguments" title="Permalink to this headline">#</a></h2>
 <p>Sometimes you want a function to be able to take an arbitrary arguments. These
 are called <a class="reference internal" href="#term-variadic"><span class="xref std std-term">variadic</span></a> arguments.</p>
-<div class="section" id="part-2-1-positional">
-<h3><a class="toc-backref" href="#table-of-contents">Part 2.1: Positional</a><a class="headerlink" href="#part-2-1-positional" title="Permalink to this headline">¶</a></h3>
+<section id="part-2-1-positional">
+<h3><a class="toc-backref" href="#table-of-contents">Part 2.1: Positional</a><a class="headerlink" href="#part-2-1-positional" title="Permalink to this headline">#</a></h3>
 <div class="row"><div class="col left-col">
 <p>This can be done with a single asterisk before a parameter name.  Any
 positional arguments will then be in a tuple with that name, in this case
@@ -1180,13 +1432,13 @@ default values. If you send it as a positional argument, it will be part of
 </div>
 </div>
 </div></div>
-</div>
-<div class="section" id="part-2-1-exercise">
-<h3><a class="toc-backref" href="#table-of-contents">Part 2.1: Exercise</a><a class="headerlink" href="#part-2-1-exercise" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="part-2-1-exercise">
+<h3><a class="toc-backref" href="#table-of-contents">Part 2.1: Exercise</a><a class="headerlink" href="#part-2-1-exercise" title="Permalink to this headline">#</a></h3>
 <div class="exercise admonition" id="arbitrary-positional-exercise">
 
-<p class="admonition-title"><span class="caption-number">Exercise 87 </span> (Arbitrary Positional Arguments)</p>
-<div class="section" id="exercise-content">
+<p class="admonition-title"><span class="caption-number">Exercise 89 </span> (Arbitrary Positional Arguments)</p>
+<section id="exercise-content">
 <p>Modify your <code class="docutils literal notranslate"><span class="pre">write()</span></code> so that it takes an arbitrary number of positional
 arguments instead of message. It should converts all to strings then join them
 with a space between each before printing.</p>
@@ -1197,37 +1449,30 @@ with a space between each before printing.</p>
 
 </pre></div>
 </div>
-</div>
+</section>
 </div>
 <div class="solution dropdown admonition" id="lessons/in-depth/functions-solution-3">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#arbitrary-positional-exercise"> Exercise 87 (Arbitrary Positional Arguments)</a></p>
-<div class="section" id="solution-content">
+<p class="admonition-title">Solution to<a class="reference internal" href="#arbitrary-positional-exercise"> Exercise 89 (Arbitrary Positional Arguments)</a></p>
+<section id="solution-content">
 <div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-number">Listing 269 </span><span class="caption-text">Arbitrary Positional Arguments Exercise</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">before</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">after</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-    <span class="n">args</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
-    <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">*</span><span class="n">before</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">*</span><span class="n">after</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----&quot;</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+<div class="code-block-caption"><span class="caption-number">Listing 296 </span><span class="caption-text">Arbitrary Positional Arguments Exercise</span><a class="headerlink" href="#id2" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">before</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">after</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="linenos">2</span>    <span class="n">args</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+<span class="linenos">3</span>    <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">*</span><span class="n">before</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="linenos">6</span>    <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+<span class="linenos">7</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">*</span><span class="n">after</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="linenos">8</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----&quot;</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
+</section>
 </div>
-</div>
-</div>
-<div class="section" id="part-2-2-keyword">
-<h3><a class="toc-backref" href="#table-of-contents">Part 2.2: Keyword</a><a class="headerlink" href="#part-2-2-keyword" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="part-2-2-keyword">
+<h3><a class="toc-backref" href="#table-of-contents">Part 2.2: Keyword</a><a class="headerlink" href="#part-2-2-keyword" title="Permalink to this headline">#</a></h3>
 <div class="row"><div class="col left-col">
 <p>To take arbitrary keyword arguments, put two asterisks before a parameter name.</p>
 </div><div class="col">
@@ -1273,13 +1518,13 @@ function definition.</p>
 </div>
 </div>
 </div></div>
-</div>
-<div class="section" id="part-2-2-exercise">
-<h3><a class="toc-backref" href="#table-of-contents">Part 2.2: Exercise</a><a class="headerlink" href="#part-2-2-exercise" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="part-2-2-exercise">
+<h3><a class="toc-backref" href="#table-of-contents">Part 2.2: Exercise</a><a class="headerlink" href="#part-2-2-exercise" title="Permalink to this headline">#</a></h3>
 <div class="exercise admonition" id="arbitrary-keyword-exercise">
 
-<p class="admonition-title"><span class="caption-number">Exercise 88 </span> (Arbitrary Keyword Arguments)</p>
-<div class="section" id="exercise-content">
+<p class="admonition-title"><span class="caption-number">Exercise 90 </span> (Arbitrary Keyword Arguments)</p>
+<section id="exercise-content">
 <p>Modify <code class="docutils literal notranslate"><span class="pre">write()</span></code> to also take arbitrary keyword arguments. Each keyword
 argument should be formatted into a string: <code class="samp docutils literal notranslate"><em><span class="pre">NAME</span></em><span class="pre">=</span><em><span class="pre">VALUE</span></em></code>, then
 printed (along with any arguments) seperated by commas.</p>
@@ -1290,45 +1535,37 @@ printed (along with any arguments) seperated by commas.</p>
 
 </pre></div>
 </div>
-</div>
+</section>
 </div>
 <div class="solution dropdown admonition" id="lessons/in-depth/functions-solution-5">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#arbitrary-keyword-exercise"> Exercise 88 (Arbitrary Keyword Arguments)</a></p>
-<div class="section" id="solution-content">
+<p class="admonition-title">Solution to<a class="reference internal" href="#arbitrary-keyword-exercise"> Exercise 90 (Arbitrary Keyword Arguments)</a></p>
+<section id="solution-content">
 <div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-number">Listing 270 </span><span class="caption-text">Arbitrary Keyword Arguments Exercise</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">before</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">after</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
-    <span class="n">args</span> <span class="o">+=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">v</span><span class="si">!r}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
-    <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">*</span><span class="n">before</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">*</span><span class="n">after</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----&quot;</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+<div class="code-block-caption"><span class="caption-number">Listing 297 </span><span class="caption-text">Arbitrary Keyword Arguments Exercise</span><a class="headerlink" href="#id3" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">before</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">after</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="linenos">2</span>    <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
+<span class="linenos">3</span>    <span class="n">args</span> <span class="o">+=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">v</span><span class="si">!r}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+<span class="linenos">4</span>    <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+<span class="linenos">5</span>
+<span class="linenos">6</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">*</span><span class="n">before</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="linenos">7</span>    <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+<span class="linenos">8</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">*</span><span class="n">after</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="linenos">9</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----&quot;</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
+</section>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="part-3-unpacking-arguments">
-<h2><a class="toc-backref" href="#table-of-contents">Part 3: Unpacking Arguments</a><a class="headerlink" href="#part-3-unpacking-arguments" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="part-3-unpacking-arguments">
+<h2><a class="toc-backref" href="#table-of-contents">Part 3: Unpacking Arguments</a><a class="headerlink" href="#part-3-unpacking-arguments" title="Permalink to this headline">#</a></h2>
 <p>Sometimes want a function to take arbitrary arguments, sometimes you want to
 send all of the values in a list or dictionary as arguments to a function. This
 is known as <a class="reference internal" href="#term-unpacking"><span class="xref std std-term">unpacking</span></a>.</p>
-<div class="section" id="part-3-1-sequences">
-<h3><a class="toc-backref" href="#table-of-contents">Part 3.1: Sequences</a><a class="headerlink" href="#part-3-1-sequences" title="Permalink to this headline">¶</a></h3>
+<section id="part-3-1-sequences">
+<h3><a class="toc-backref" href="#table-of-contents">Part 3.1: Sequences</a><a class="headerlink" href="#part-3-1-sequences" title="Permalink to this headline">#</a></h3>
 <div class="row"><div class="col left-col">
 <p>To send all elements in a list, tuple, or other <a class="reference internal" href="../data-types/containers.html#term-sequence"><span class="xref std std-term">sequence</span></a>, put an asterisk
 before the object.</p>
@@ -1423,49 +1660,41 @@ Lily
 </div>
 </div>
 </div></div>
-</div>
-<div class="section" id="part-3-1-exercise">
-<h3><a class="toc-backref" href="#table-of-contents">Part 3.1: Exercise</a><a class="headerlink" href="#part-3-1-exercise" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="part-3-1-exercise">
+<h3><a class="toc-backref" href="#table-of-contents">Part 3.1: Exercise</a><a class="headerlink" href="#part-3-1-exercise" title="Permalink to this headline">#</a></h3>
 <div class="exercise admonition" id="unpacking-sequences-exercise">
 
-<p class="admonition-title"><span class="caption-number">Exercise 89 </span> (Unpacking Sequences)</p>
-<div class="section" id="exercise-content">
+<p class="admonition-title"><span class="caption-number">Exercise 91 </span> (Unpacking Sequences)</p>
+<section id="exercise-content">
 <p>Make a list of cities you’ve lived in. Print them by unpacking the list as
 arguments to the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function. Bonus: Mix with positional and keyword
 arguments.</p>
-</div>
+</section>
 </div>
 <div class="solution dropdown admonition" id="lessons/in-depth/functions-solution-7">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#unpacking-sequences-exercise"> Exercise 89 (Unpacking Sequences)</a></p>
-<div class="section" id="solution-content">
+<p class="admonition-title">Solution to<a class="reference internal" href="#unpacking-sequences-exercise"> Exercise 91 (Unpacking Sequences)</a></p>
+<section id="solution-content">
 <div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-number">Listing 271 </span><span class="caption-text">Unpacking Sequences Exercise</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">cities</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;Oceanside, CA&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;San Francisco, CA&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;Lafayette, CA&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;Denver, CO&quot;</span><span class="p">,</span>
-<span class="p">]</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">cities</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cities I&#39;ve lived in:&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">cities</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+<div class="code-block-caption"><span class="caption-number">Listing 298 </span><span class="caption-text">Unpacking Sequences Exercise</span><a class="headerlink" href="#id4" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">cities</span> <span class="o">=</span> <span class="p">[</span>
+<span class="linenos">2</span>    <span class="s2">&quot;Oceanside, CA&quot;</span><span class="p">,</span>
+<span class="linenos">3</span>    <span class="s2">&quot;San Francisco, CA&quot;</span><span class="p">,</span>
+<span class="linenos">4</span>    <span class="s2">&quot;Lafayette, CA&quot;</span><span class="p">,</span>
+<span class="linenos">5</span>    <span class="s2">&quot;Denver, CO&quot;</span><span class="p">,</span>
+<span class="linenos">6</span><span class="p">]</span>
+<span class="linenos">7</span>
+<span class="linenos">8</span><span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">cities</span><span class="p">)</span>
+<span class="linenos">9</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cities I&#39;ve lived in:&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">cities</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
+</section>
 </div>
-</div>
-</div>
-<div class="section" id="part-3-1-mappings">
-<h3><a class="toc-backref" href="#table-of-contents">Part 3.1: Mappings</a><a class="headerlink" href="#part-3-1-mappings" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="part-3-1-mappings">
+<h3><a class="toc-backref" href="#table-of-contents">Part 3.1: Mappings</a><a class="headerlink" href="#part-3-1-mappings" title="Permalink to this headline">#</a></h3>
 <div class="row"><div class="col left-col">
 <p>To send all elements of a dictionary as <a class="reference internal" href="../keyword%20argument.html" title=""><span class="xref std std-term">keyword arguments</span></a>, put two
 asterisks before the dictionary.</p>
@@ -1538,41 +1767,40 @@ asterisks before the dictionary.</p>
 </div>
 </div>
 </div></div>
-</div>
-<div class="section" id="part-3-2-exercise">
-<h3><a class="toc-backref" href="#table-of-contents">Part 3.2: Exercise</a><a class="headerlink" href="#part-3-2-exercise" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="part-3-2-exercise">
+<h3><a class="toc-backref" href="#table-of-contents">Part 3.2: Exercise</a><a class="headerlink" href="#part-3-2-exercise" title="Permalink to this headline">#</a></h3>
 <div class="exercise admonition" id="unpacking-mappings-exercise">
 
-<p class="admonition-title"><span class="caption-number">Exercise 90 </span> (Unpacking Mappings)</p>
-<div class="section" id="exercise-content">
+<p class="admonition-title"><span class="caption-number">Exercise 92 </span> (Unpacking Mappings)</p>
+<section id="exercise-content">
 <p>Make a dictionary called <code class="docutils literal notranslate"><span class="pre">options</span></code> that includes some of the values for <code class="docutils literal notranslate"><span class="pre">sep</span></code>,
 <code class="docutils literal notranslate"><span class="pre">end</span></code> or <code class="docutils literal notranslate"><span class="pre">file</span></code>. Unpack <code class="docutils literal notranslate"><span class="pre">options</span></code> it as arguments to <code class="docutils literal notranslate"><span class="pre">print()</span></code> after printing
 your previous list of cities.</p>
-</div>
+</section>
 </div>
 <div class="solution dropdown admonition" id="lessons/in-depth/functions-solution-9">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#unpacking-mappings-exercise"> Exercise 90 (Unpacking Mappings)</a></p>
-<div class="section" id="solution-content">
+<p class="admonition-title">Solution to<a class="reference internal" href="#unpacking-mappings-exercise"> Exercise 92 (Unpacking Mappings)</a></p>
+<section id="solution-content">
 <div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-number">Listing 272 </span><span class="caption-text">Unpacking Mappings Exercise</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">options</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;sep&quot;</span><span class="p">:</span> <span class="s2">&quot;; &quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">}</span>
-<span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">cities</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+<div class="code-block-caption"><span class="caption-number">Listing 299 </span><span class="caption-text">Unpacking Mappings Exercise</span><a class="headerlink" href="#id5" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">options</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;sep&quot;</span><span class="p">:</span> <span class="s2">&quot;; &quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">}</span>
+<span class="linenos">2</span><span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">cities</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
+</section>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="part-4-annotations">
-<h2><a class="toc-backref" href="#table-of-contents">Part 4: Annotations</a><a class="headerlink" href="#part-4-annotations" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="part-4-annotations">
+<h2><a class="toc-backref" href="#table-of-contents">Part 4: Annotations</a><a class="headerlink" href="#part-4-annotations" title="Permalink to this headline">#</a></h2>
 <p>Python provides a syntax for documenting the type of various values called
 annotations. While annotations have no effect on how a function behaves, it can
 be helpful in clarifying the intended usage.</p>
-<div class="section" id="part-4-1-parameter-hints">
-<h3><a class="toc-backref" href="#table-of-contents">Part 4.1: Parameter Hints</a><a class="headerlink" href="#part-4-1-parameter-hints" title="Permalink to this headline">¶</a></h3>
+<section id="part-4-1-parameter-hints">
+<h3><a class="toc-backref" href="#table-of-contents">Part 4.1: Parameter Hints</a><a class="headerlink" href="#part-4-1-parameter-hints" title="Permalink to this headline">#</a></h3>
 <div class="row"><div class="col left-col">
 <p>You can specify the expected type of each parameter by adding a colon after the
 parameter name, followed by the type.</p>
@@ -1582,9 +1810,9 @@ parameter name, followed by the type.</p>
 </pre></div>
 </div>
 </div></div>
-</div>
-<div class="section" id="part-4-2-variable-hints">
-<h3><a class="toc-backref" href="#table-of-contents">Part 4.2: Variable Hints</a><a class="headerlink" href="#part-4-2-variable-hints" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="part-4-2-variable-hints">
+<h3><a class="toc-backref" href="#table-of-contents">Part 4.2: Variable Hints</a><a class="headerlink" href="#part-4-2-variable-hints" title="Permalink to this headline">#</a></h3>
 <div class="row"><div class="col left-col">
 <p>Incidentally, you can specify the type of a particular variable the same
 way.</p>
@@ -1594,9 +1822,9 @@ way.</p>
 </pre></div>
 </div>
 </div></div>
-</div>
-<div class="section" id="part-4-3-return-hints">
-<h3><a class="toc-backref" href="#table-of-contents">Part 4.3: Return hints</a><a class="headerlink" href="#part-4-3-return-hints" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="part-4-3-return-hints">
+<h3><a class="toc-backref" href="#table-of-contents">Part 4.3: Return hints</a><a class="headerlink" href="#part-4-3-return-hints" title="Permalink to this headline">#</a></h3>
 <div class="row"><div class="col left-col">
 <p>You can specify the type of any returned value by adding <code class="docutils literal notranslate"><span class="pre">-&gt;</span></code> followed by the
 type before the colon.</p>
@@ -1610,49 +1838,44 @@ type before the colon.</p>
 </div></div>
 <p>Be aware that is strictly documentation. An annotation does not change or
 enforce the type of a given value.</p>
-</div>
-<div class="section" id="part-4-4-exercise">
-<h3><a class="toc-backref" href="#table-of-contents">Part 4.4: Exercise</a><a class="headerlink" href="#part-4-4-exercise" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="part-4-4-exercise">
+<h3><a class="toc-backref" href="#table-of-contents">Part 4.4: Exercise</a><a class="headerlink" href="#part-4-4-exercise" title="Permalink to this headline">#</a></h3>
 <div class="exercise admonition" id="annotations-exercise">
 
-<p class="admonition-title"><span class="caption-number">Exercise 91 </span> (Annotations)</p>
-<div class="section" id="exercise-content">
+<p class="admonition-title"><span class="caption-number">Exercise 93 </span> (Annotations)</p>
+<section id="exercise-content">
 <p>Write a function <code class="docutils literal notranslate"><span class="pre">get_keys()</span></code> that takes two arguments: <code class="docutils literal notranslate"><span class="pre">source</span></code> (dict) and
 <code class="docutils literal notranslate"><span class="pre">keys</span></code> (list).  It should return a dictionary containing all key value pairs
 from <code class="docutils literal notranslate"><span class="pre">source</span></code> for keys in <code class="docutils literal notranslate"><span class="pre">keys</span></code>.</p>
 <p>Annotate both the parameters and return value.</p>
 <p>** Example Usage**</p>
-<div class="full-width highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">string</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">alpha</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">27</span><span class="p">)))</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">get_keys</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">])</span>
-<span class="go">{&#39;x&#39;: 24, &#39;y&#39;: 25, &#39;z&#39;: 26}</span>
-</pre></div></td></tr></table></div>
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">string</span>
+<span class="linenos">2</span><span class="gp">&gt;&gt;&gt; </span><span class="n">alpha</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">27</span><span class="p">)))</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_keys</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">])</span>
+<span class="linenos">5</span><span class="go">{&#39;x&#39;: 24, &#39;y&#39;: 25, &#39;z&#39;: 26}</span>
+</pre></div>
 </div>
-</div>
+</section>
 </div>
 <div class="solution dropdown admonition" id="lessons/in-depth/functions-solution-11">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#annotations-exercise"> Exercise 91 (Annotations)</a></p>
-<div class="section" id="solution-content">
+<p class="admonition-title">Solution to<a class="reference internal" href="#annotations-exercise"> Exercise 93 (Annotations)</a></p>
+<section id="solution-content">
 <div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-number">Listing 273 </span><span class="caption-text">Annotations Exercise</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span> <span class="nf">get_keys</span><span class="p">(</span><span class="n">source</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">keys</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-     <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">source</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">}</span>
-</pre></div></td></tr></table></div>
+<div class="code-block-caption"><span class="caption-number">Listing 300 </span><span class="caption-text">Annotations Exercise</span><a class="headerlink" href="#id6" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">get_keys</span><span class="p">(</span><span class="n">source</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">keys</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="linenos">2</span>     <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">source</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">}</span>
+</pre></div>
 </div>
 </div>
+</section>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="part-5-lambdas">
-<h2><a class="toc-backref" href="#table-of-contents">Part 5: Lambdas</a><a class="headerlink" href="#part-5-lambdas" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="part-5-lambdas">
+<h2><a class="toc-backref" href="#table-of-contents">Part 5: Lambdas</a><a class="headerlink" href="#part-5-lambdas" title="Permalink to this headline">#</a></h2>
 <p>Python provides an inline syntax for short functions that return the results of
 a single expression called <a class="reference internal" href="#term-lambda"><span class="xref std std-term">lambdas</span></a>.</p>
 <div class="row"><div class="col left-col">
@@ -1674,45 +1897,44 @@ a single expression called <a class="reference internal" href="#term-lambda"><sp
 </pre></div>
 </div>
 </div></div>
-</div>
-<div class="section" id="part-6-shorthand">
-<h2><a class="toc-backref" href="#table-of-contents">Part 6: Shorthand</a><a class="headerlink" href="#part-6-shorthand" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="part-6-shorthand">
+<h2><a class="toc-backref" href="#table-of-contents">Part 6: Shorthand</a><a class="headerlink" href="#part-6-shorthand" title="Permalink to this headline">#</a></h2>
 <p>It is possible, though not recommended, to write a function (or any other
 compound statement) all on one line, assuming that it contains a single line.</p>
 <p>The following two functions are equivalent.</p>
 <div class="row"><div class="col left-col">
-<div class="full-width highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+<span class="linenos">2</span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
+</pre></div>
 </div>
 </div><div class="col">
-<div class="full-width highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span> <span class="nf">hello</span><span class="p">():</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">hello</span><span class="p">():</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
+</pre></div>
 </div>
 </div></div>
-</div>
-<div class="section" id="reference">
-<h2><a class="toc-backref" href="#table-of-contents">Reference</a><a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="glossary">
-<h3><a class="toc-backref" href="#table-of-contents">Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="glossary-functions">
-<h4>Functions<a class="headerlink" href="#glossary-functions" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="reference">
+<h2><a class="toc-backref" href="#table-of-contents">Reference</a><a class="headerlink" href="#reference" title="Permalink to this headline">#</a></h2>
+<section id="glossary">
+<h3><a class="toc-backref" href="#table-of-contents">Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this headline">#</a></h3>
+<section id="glossary-functions">
+<h4>Functions<a class="headerlink" href="#glossary-functions" title="Permalink to this headline">#</a></h4>
 <dl class="glossary simple">
-<dt id="term-variadic">variadic<a class="headerlink" href="#term-variadic" title="Permalink to this term">¶</a></dt><dt id="term-variadic-arguments">variadic arguments<a class="headerlink" href="#term-variadic-arguments" title="Permalink to this term">¶</a></dt><dd><p>When any number of arguments may be passed to a function or method.</p>
+<dt id="term-variadic">variadic<a class="headerlink" href="#term-variadic" title="Permalink to this term">#</a></dt><dt id="term-variadic-arguments">variadic arguments<a class="headerlink" href="#term-variadic-arguments" title="Permalink to this term">#</a></dt><dd><p>When any number of arguments may be passed to a function or method.</p>
 </dd>
-<dt id="term-annotations">annotations<a class="headerlink" href="#term-annotations" title="Permalink to this term">¶</a></dt><dt id="term-type-hints">type hints<a class="headerlink" href="#term-type-hints" title="Permalink to this term">¶</a></dt><dd><p>Syntax for specifying the type of a variable, class attribute, function
+<dt id="term-annotations">annotations<a class="headerlink" href="#term-annotations" title="Permalink to this term">#</a></dt><dt id="term-type-hints">type hints<a class="headerlink" href="#term-type-hints" title="Permalink to this term">#</a></dt><dd><p>Syntax for specifying the type of a variable, class attribute, function
 parameter or return value.</p>
 </dd>
-<dt id="term-lambda">lambda<a class="headerlink" href="#term-lambda" title="Permalink to this term">¶</a></dt><dd><p>An anonymous inline function consisting of a single expression.</p>
+<dt id="term-lambda">lambda<a class="headerlink" href="#term-lambda" title="Permalink to this term">#</a></dt><dd><p>An anonymous inline function consisting of a single expression.</p>
 </dd>
-<dt id="term-unpacking">unpacking<a class="headerlink" href="#term-unpacking" title="Permalink to this term">¶</a></dt><dt id="term-unpacking-arguments">unpacking arguments<a class="headerlink" href="#term-unpacking-arguments" title="Permalink to this term">¶</a></dt><dd><p>Sending all elements in a collection as arguments to a function call.</p>
+<dt id="term-unpacking">unpacking<a class="headerlink" href="#term-unpacking" title="Permalink to this term">#</a></dt><dt id="term-unpacking-arguments">unpacking arguments<a class="headerlink" href="#term-unpacking-arguments" title="Permalink to this term">#</a></dt><dd><p>Sending all elements in a collection as arguments to a function call.</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="see-also">
-<h3><a class="toc-backref" href="#table-of-contents">See Also</a><a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="see-also">
+<h3><a class="toc-backref" href="#table-of-contents">See Also</a><a class="headerlink" href="#see-also" title="Permalink to this headline">#</a></h3>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">
@@ -1723,9 +1945,9 @@ parameter or return value.</p>
 <li><p><a class="reference external" href="https://realpython.com/defining-your-own-python-function/">Defining Your Own Python Function</a></p></li>
 </ul>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1739,7 +1961,7 @@ parameter or return value.</p>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./lessons/in-depth"
         },
         predefinedOutput: true
@@ -1749,9 +1971,11 @@ parameter or return value.</p>
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="structure.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1767,23 +1991,25 @@ parameter or return value.</p>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

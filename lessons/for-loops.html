@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>For Loops &#8212; Python Class</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,39 +20,39 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/asciinema-player.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/asciinema-player.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/custom.js"></script>
-    <script src="../_static/asciinema-player.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/x-frame-bypass.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+    <script src="../_static/asciinema-player.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
@@ -68,7 +70,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -77,9 +93,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
       
@@ -92,7 +109,7 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <p class="caption">
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Lessons
  </span>
@@ -379,7 +396,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Practices
  </span>
@@ -406,7 +423,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Tools
  </span>
@@ -454,7 +471,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../tools/replit.html">
-   Repl.it Tips
+   Replit
   </a>
  </li>
  <li class="toctree-l1">
@@ -478,7 +495,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Reference
  </span>
@@ -510,7 +527,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Exercises
  </span>
@@ -542,7 +559,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Admin
  </span>
@@ -556,88 +573,177 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/alissa-huskey/python-class"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        <a class="edit-button" href="https://github.com/alissa-huskey/python-class/edit/master/docs/lessons/for-loops.md"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/alissa-huskey/python-class/master?urlpath=lab/tree/docs/lessons/for-loops.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <button type="button" class="btn btn-secondary topbarbtn"
-            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
-                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
-        
-    </div>
-</div>
-
         </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
 
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/alissa-huskey/python-class/master?urlpath=lab/tree/docs/lessons/for-loops.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/alissa-huskey/python-class"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/alissa-huskey/python-class/edit/master/docs/lessons/for-loops.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#syntax">
    Syntax
@@ -766,17 +872,161 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>For Loops</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#syntax">
+   Syntax
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise">
+     Exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#iterables-and-iterators">
+   Iterables and iterators
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#under-the-hood">
+   Under the hood
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multiple-assignment">
+   Multiple assignment
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#incrementing">
+   Incrementing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     Exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comparing-loops">
+   Comparing loops
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-a-list-iteration-with-next">
+     Example A: list iteration with
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       next()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-b-range-iteration-with-next">
+     Example B: range iteration with
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       next()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-c-list-iteration-with-subscription">
+     Example C: list iteration with subscription
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-d-string-iteration-with-subscription">
+     Example D: string iteration with subscription
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reference">
+   Reference
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#glossary">
+     Glossary
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#glossary-for-loops">
+       For Loops
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#see-also">
+     See also
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="for-loops">
-<h1>For Loops<a class="headerlink" href="#for-loops" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="for-loops">
+<h1>For Loops<a class="headerlink" href="#for-loops" title="Permalink to this headline">#</a></h1>
 <p>A <code class="docutils literal notranslate"><span class="pre">while</span></code> loop continues for as long as a condition is met, a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop on the
 other hand repeats for every element in an iterable.</p>
 <div class="contents local topic" id="table-of-contents">
@@ -828,8 +1078,8 @@ other hand repeats for every element in an iterable.</p>
 </li>
 </ul>
 </div>
-<div class="section" id="syntax">
-<h2><a class="toc-backref" href="#table-of-contents">Syntax</a><a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
+<section id="syntax">
+<h2><a class="toc-backref" href="#table-of-contents">Syntax</a><a class="headerlink" href="#syntax" title="Permalink to this headline">#</a></h2>
 <p>The syntax for a for loop is:</p>
 <div class="row"><div class="col-5 left-col-5">
 <pre class="literal-block"><code class="samp docutils literal notranslate"><span class="pre">for</span> <em><span class="pre">VAR</span></em> <span class="pre">in</span> <em><span class="pre">ITERABLE</span></em><span class="pre">:</span></code>
@@ -856,58 +1106,47 @@ other hand repeats for every element in an iterable.</p>
 </div></div>
 <p>Here’s a simple example that iterates over a <code class="docutils literal notranslate"><span class="pre">list</span></code> of strings.</p>
 <div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-number">Listing 49 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">for</span></code> loop example</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-default notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;cherry&quot;</span><span class="p">]:</span>
-    <span class="n">letter</span> <span class="o">=</span> <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">letter</span><span class="si">}</span><span class="s2"> is for: </span><span class="si">{</span><span class="n">word</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+<div class="code-block-caption"><span class="caption-number">Listing 76 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">for</span></code> loop example</span><a class="headerlink" href="#id5" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;cherry&quot;</span><span class="p">]:</span>
+<span class="linenos">2</span>    <span class="n">letter</span> <span class="o">=</span> <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="linenos">3</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">letter</span><span class="si">}</span><span class="s2"> is for: </span><span class="si">{</span><span class="n">word</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
-<div class="section" id="exercise">
-<h3><a class="toc-backref" href="#table-of-contents">Exercise</a><a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h3>
+<section id="exercise">
+<h3><a class="toc-backref" href="#table-of-contents">Exercise</a><a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h3>
 <div class="exercise admonition" id="movies-exercise">
 
-<p class="admonition-title"><span class="caption-number">Exercise 27 </span> (Movies)</p>
-<div class="section" id="exercise-content">
+<p class="admonition-title"><span class="caption-number">Exercise 29 </span> (Movies)</p>
+<section id="exercise-content">
 <p>Iterate over a <code class="docutils literal notranslate"><span class="pre">list</span></code> of <code class="docutils literal notranslate"><span class="pre">movies</span></code> and print each one out using a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.</p>
-</div>
+</section>
 </div>
 <div class="solution dropdown admonition" id="lessons/for-loops-solution-1">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#movies-exercise"> Exercise 27 (Movies)</a></p>
-<div class="section" id="solution-content">
+<p class="admonition-title">Solution to<a class="reference internal" href="#movies-exercise"> Exercise 29 (Movies)</a></p>
+<section id="solution-content">
 <div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-number">Listing 50 </span><span class="caption-text">Movies Exercise</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">movies</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="s2">&quot;Treasure Planet&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;Finding Nemo&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;Kung Fu Panda&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;Wall-E&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;Lilo &amp; Stitch&quot;</span><span class="p">,</span>
-<span class="p">]</span>
-
-<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">movies</span><span class="p">:</span>
-  <span class="nb">print</span><span class="p">(</span><span class="n">movie</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+<div class="code-block-caption"><span class="caption-number">Listing 77 </span><span class="caption-text">Movies Exercise</span><a class="headerlink" href="#id6" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">movies</span> <span class="o">=</span> <span class="p">[</span>
+<span class="linenos"> 2</span>  <span class="s2">&quot;Treasure Planet&quot;</span><span class="p">,</span>
+<span class="linenos"> 3</span>  <span class="s2">&quot;Finding Nemo&quot;</span><span class="p">,</span>
+<span class="linenos"> 4</span>  <span class="s2">&quot;Kung Fu Panda&quot;</span><span class="p">,</span>
+<span class="linenos"> 5</span>  <span class="s2">&quot;Wall-E&quot;</span><span class="p">,</span>
+<span class="linenos"> 6</span>  <span class="s2">&quot;Lilo &amp; Stitch&quot;</span><span class="p">,</span>
+<span class="linenos"> 7</span><span class="p">]</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">movies</span><span class="p">:</span>
+<span class="linenos">10</span>  <span class="nb">print</span><span class="p">(</span><span class="n">movie</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
+</section>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="iterables-and-iterators">
-<h2><a class="toc-backref" href="#table-of-contents">Iterables and iterators</a><a class="headerlink" href="#iterables-and-iterators" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="iterables-and-iterators">
+<h2><a class="toc-backref" href="#table-of-contents">Iterables and iterators</a><a class="headerlink" href="#iterables-and-iterators" title="Permalink to this headline">#</a></h2>
 <p>Some objects in Python are <a class="reference internal" href="#term-iterable"><span class="xref std std-term">iterable</span></a>–that is, an object that can be
 itereated over. For example, <code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">tuple</span></code> and <code class="docutils literal notranslate"><span class="pre">range</span></code> objects are all
 iterable.</p>
@@ -970,7 +1209,7 @@ encounter a <code class="docutils literal notranslate"><span class="pre">StopIte
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">StopIteration</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
-<span class="nn">Input In [5],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">next</span><span class="p">(</span><span class="n">colors_iterator</span><span class="p">)</span>
 
 <span class="ne">StopIteration</span>: 
@@ -978,25 +1217,25 @@ encounter a <code class="docutils literal notranslate"><span class="pre">StopIte
 </div>
 </div>
 </div>
-<div class="section" id="id1">
-<h3><a class="toc-backref" href="#table-of-contents">Exercise</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<section id="id1">
+<h3><a class="toc-backref" href="#table-of-contents">Exercise</a><a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <div class="exercise admonition" id="iterator-exercise">
 
-<p class="admonition-title"><span class="caption-number">Exercise 28 </span> (Iterators)</p>
-<div class="section" id="exercise-content">
+<p class="admonition-title"><span class="caption-number">Exercise 30 </span> (Iterators)</p>
+<section id="exercise-content">
 <ol class="simple">
 <li><p>Create a list containing the letters in your name assigned to the variable <code class="docutils literal notranslate"><span class="pre">letters</span></code>.</p></li>
 <li><p>Convert the list to an iterator using the <code class="docutils literal notranslate"><span class="pre">iter()</span></code> function and assign it to the variable <code class="docutils literal notranslate"><span class="pre">letters_iterator</span></code>.</p></li>
 <li><p>Keep calling <code class="docutils literal notranslate"><span class="pre">next()</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">letters_iterator</span></code> until you encounter a <code class="docutils literal notranslate"><span class="pre">StopIteration</span></code> exception.</p></li>
 </ol>
-</div>
+</section>
 </div>
 <div class="solution dropdown admonition" id="lessons/for-loops-solution-3">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#iterator-exercise"> Exercise 28 (Iterators)</a></p>
-<div class="section" id="solution-content">
+<p class="admonition-title">Solution to<a class="reference internal" href="#iterator-exercise"> Exercise 30 (Iterators)</a></p>
+<section id="solution-content">
 <div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-number">Listing 51 </span><span class="caption-text">Iterators Exercise</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 78 </span><span class="caption-text">Iterators Exercise</span><a class="headerlink" href="#id7" title="Permalink to this code">#</a></div>
 <div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">letters</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s2">&quot;alissa&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">letters_iterator</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">letters</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">letters_iterator</span><span class="p">)</span>
@@ -1025,12 +1264,12 @@ encounter a <code class="docutils literal notranslate"><span class="pre">StopIte
 </pre></div>
 </div>
 </div>
+</section>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="under-the-hood">
-<h2><a class="toc-backref" href="#table-of-contents">Under the hood</a><a class="headerlink" href="#under-the-hood" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="under-the-hood">
+<h2><a class="toc-backref" href="#table-of-contents">Under the hood</a><a class="headerlink" href="#under-the-hood" title="Permalink to this headline">#</a></h2>
 <p>Now that you know what iterables and iterators are, we demystify for loops.</p>
 <p>Lets look at the syntax again.</p>
 <pre class="literal-block"><code class="samp docutils literal notranslate"><span class="pre">for</span> <em><span class="pre">VAR</span></em> <span class="pre">in</span> <em><span class="pre">ITERABLE</span></em><span class="pre">:</span></code>
@@ -1093,7 +1332,7 @@ House Tyrell
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">StopIteration</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
-<span class="nn">Input In [7],</span> in <span class="ni">&lt;cell line: 4&gt;</span><span class="nt">()</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># loop forever</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="c1"># assign VAR to the results of next()</span>
@@ -1191,12 +1430,12 @@ House Tyrell
 </pre></div>
 </div>
 </div></div>
-<div class="section" id="id2">
-<h3><a class="toc-backref" href="#table-of-contents">Exercise</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<section id="id2">
+<h3><a class="toc-backref" href="#table-of-contents">Exercise</a><a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
 <div class="exercise admonition" id="characters-exercise">
 
-<p class="admonition-title"><span class="caption-number">Exercise 29 </span> (Game Characters)</p>
-<div class="section" id="exercise-content">
+<p class="admonition-title"><span class="caption-number">Exercise 31 </span> (Game Characters)</p>
+<section id="exercise-content">
 <ol class="simple">
 <li><p>Make a <code class="docutils literal notranslate"><span class="pre">list</span></code> of game character <code class="docutils literal notranslate"><span class="pre">roles</span></code>.</p></li>
 <li><p>write a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop</p>
@@ -1215,54 +1454,39 @@ House Tyrell
 </ol>
 </li>
 </ol>
-</div>
+</section>
 </div>
 <div class="solution dropdown admonition" id="lessons/for-loops-solution-5">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#characters-exercise"> Exercise 29 (Game Characters)</a></p>
-<div class="section" id="solution-content">
+<p class="admonition-title">Solution to<a class="reference internal" href="#characters-exercise"> Exercise 31 (Game Characters)</a></p>
+<section id="solution-content">
 <div class="literal-block-wrapper docutils container" id="id8">
-<div class="code-block-caption"><span class="caption-number">Listing 52 </span><span class="caption-text">Characters Exercise</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">WIDTH</span> <span class="o">=</span> <span class="mi">30</span>
-<span class="n">roles</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;mage&quot;</span><span class="p">,</span> <span class="s2">&quot;thief&quot;</span><span class="p">,</span> <span class="s2">&quot;warrior&quot;</span><span class="p">]</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;WHILE LOOP &quot;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">WIDTH</span><span class="p">,</span> <span class="s2">&quot;#&quot;</span><span class="p">))</span>
-<span class="n">roles_iterator</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">roles</span><span class="p">)</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="k">try</span><span class="p">:</span>
-      <span class="n">role</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">roles_iterator</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
-        <span class="k">break</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">role</span><span class="p">)</span>
-
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;FOR LOOP &quot;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">WIDTH</span><span class="p">,</span> <span class="s2">&quot;#&quot;</span><span class="p">))</span>
-<span class="k">for</span> <span class="n">role</span> <span class="ow">in</span> <span class="n">roles</span><span class="p">:</span>
-  <span class="nb">print</span><span class="p">(</span><span class="n">role</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+<div class="code-block-caption"><span class="caption-number">Listing 79 </span><span class="caption-text">Characters Exercise</span><a class="headerlink" href="#id8" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">WIDTH</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="linenos"> 2</span><span class="n">roles</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;mage&quot;</span><span class="p">,</span> <span class="s2">&quot;thief&quot;</span><span class="p">,</span> <span class="s2">&quot;warrior&quot;</span><span class="p">]</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;WHILE LOOP &quot;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">WIDTH</span><span class="p">,</span> <span class="s2">&quot;#&quot;</span><span class="p">))</span>
+<span class="linenos"> 5</span><span class="n">roles_iterator</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">roles</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="linenos"> 7</span>    <span class="k">try</span><span class="p">:</span>
+<span class="linenos"> 8</span>      <span class="n">role</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">roles_iterator</span><span class="p">)</span>
+<span class="linenos"> 9</span>    <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+<span class="linenos">10</span>        <span class="k">break</span>
+<span class="linenos">11</span>    <span class="nb">print</span><span class="p">(</span><span class="n">role</span><span class="p">)</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;FOR LOOP &quot;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">WIDTH</span><span class="p">,</span> <span class="s2">&quot;#&quot;</span><span class="p">))</span>
+<span class="linenos">15</span><span class="k">for</span> <span class="n">role</span> <span class="ow">in</span> <span class="n">roles</span><span class="p">:</span>
+<span class="linenos">16</span>  <span class="nb">print</span><span class="p">(</span><span class="n">role</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
+</section>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="multiple-assignment">
-<h2><a class="toc-backref" href="#table-of-contents">Multiple assignment</a><a class="headerlink" href="#multiple-assignment" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="multiple-assignment">
+<h2><a class="toc-backref" href="#table-of-contents">Multiple assignment</a><a class="headerlink" href="#multiple-assignment" title="Permalink to this headline">#</a></h2>
 <p>Depending on the type passed to it, <code class="docutils literal notranslate"><span class="pre">next()</span></code> may sometimes return more than one
 value. The classic example of this is <code class="samp docutils literal notranslate"><em><span class="pre">dict</span></em><span class="pre">.items()</span></code>.</p>
 <div class="cell docutils container">
@@ -1382,66 +1606,43 @@ The spade suit is black.
 </div>
 <p>Here they are side by side.</p>
 <div class="row"><div class="col">
-<div class="full-width highlight-python-hl notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">suites</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s2">&quot;heart&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;diamond&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;club&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;spade&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
-<span class="p">}</span>
-
-<span class="n">suites_iterator</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n n-Highlight">suites</span><span class="o o-Highlight">.</span><span class="n n-Highlight">items</span><span class="p p-Highlight">()</span><span class="p">)</span>
-
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="k">try</span><span class="p">:</span>
-      <span class="n n-Highlight">suit</span><span class="p p-Highlight">,</span><span class=" -Highlight"> </span><span class="n n-Highlight">color</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">suites_iterator</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
-      <span class="k">break</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The </span><span class="si">{</span><span class="n">suit</span><span class="si">}</span><span class="s2"> suit is </span><span class="si">{</span><span class="n">color</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+<div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">suites</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos"> 2</span>  <span class="s2">&quot;heart&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span>
+<span class="linenos"> 3</span>  <span class="s2">&quot;diamond&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span>
+<span class="linenos"> 4</span>  <span class="s2">&quot;club&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
+<span class="linenos"> 5</span>  <span class="s2">&quot;spade&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
+<span class="linenos"> 6</span><span class="p">}</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="n">suites_iterator</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n n-Highlight">suites</span><span class="o o-Highlight">.</span><span class="n n-Highlight">items</span><span class="p p-Highlight">()</span><span class="p">)</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="linenos">11</span>    <span class="k">try</span><span class="p">:</span>
+<span class="linenos">12</span>      <span class="n n-Highlight">suit</span><span class="p p-Highlight">,</span><span class=" -Highlight"> </span><span class="n n-Highlight">color</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">suites_iterator</span><span class="p">)</span>
+<span class="linenos">13</span>    <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+<span class="linenos">14</span>      <span class="k">break</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The </span><span class="si">{</span><span class="n">suit</span><span class="si">}</span><span class="s2"> suit is </span><span class="si">{</span><span class="n">color</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</pre></div>
 </div>
 </div><div class="col">
-<div class="full-width highlight-python-hl notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">suites</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s2">&quot;heart&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;diamond&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;club&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;spade&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
-<span class="p">}</span>
-
-<span class="k">for</span> <span class="n n-Highlight">suit</span><span class="p p-Highlight">,</span><span class=" -Highlight"> </span><span class="n n-Highlight">color</span> <span class="ow">in</span> <span class="n n-Highlight">suites</span><span class="o o-Highlight">.</span><span class="n n-Highlight">items</span><span class="p p-Highlight">()</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The </span><span class="si">{</span><span class="n">suit</span><span class="si">}</span><span class="s2"> suit is </span><span class="si">{</span><span class="n">color</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+<div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">suites</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos">2</span>  <span class="s2">&quot;heart&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span>
+<span class="linenos">3</span>  <span class="s2">&quot;diamond&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span>
+<span class="linenos">4</span>  <span class="s2">&quot;club&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
+<span class="linenos">5</span>  <span class="s2">&quot;spade&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
+<span class="linenos">6</span><span class="p">}</span>
+<span class="linenos">7</span>
+<span class="linenos">8</span><span class="k">for</span> <span class="n n-Highlight">suit</span><span class="p p-Highlight">,</span><span class=" -Highlight"> </span><span class="n n-Highlight">color</span> <span class="ow">in</span> <span class="n n-Highlight">suites</span><span class="o o-Highlight">.</span><span class="n n-Highlight">items</span><span class="p p-Highlight">()</span><span class="p">:</span>
+<span class="linenos">9</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The </span><span class="si">{</span><span class="n">suit</span><span class="si">}</span><span class="s2"> suit is </span><span class="si">{</span><span class="n">color</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</pre></div>
 </div>
 </div></div>
-<div class="section" id="id3">
-<h3><a class="toc-backref" href="#table-of-contents">Exercise</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<section id="id3">
+<h3><a class="toc-backref" href="#table-of-contents">Exercise</a><a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
 <div class="exercise admonition" id="toolss-exercise">
 
-<p class="admonition-title"><span class="caption-number">Exercise 30 </span> (Game Tools)</p>
-<div class="section" id="exercise-content">
+<p class="admonition-title"><span class="caption-number">Exercise 32 </span> (Game Tools)</p>
+<section id="exercise-content">
 <ol class="simple">
 <li><p>Make a <code class="docutils literal notranslate"><span class="pre">dict</span></code> of game character <code class="docutils literal notranslate"><span class="pre">tools</span></code>, where the key is the <code class="docutils literal notranslate"><span class="pre">role</span></code> and the value is a <code class="docutils literal notranslate"><span class="pre">tool</span></code>.</p></li>
 <li><p>write a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop</p>
@@ -1460,60 +1661,42 @@ The spade suit is black.
 </ol>
 </li>
 </ol>
-</div>
+</section>
 </div>
 <div class="solution dropdown admonition" id="lessons/for-loops-solution-7">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#skills-exercise"> Exercise 32 (Game Skills)</a></p>
-<div class="section" id="solution-content">
+<p class="admonition-title">Solution to<a class="reference internal" href="#skills-exercise"> Exercise 34 (Game Skills)</a></p>
+<section id="solution-content">
 <div class="literal-block-wrapper docutils container" id="id9">
-<div class="code-block-caption"><span class="caption-number">Listing 53 </span><span class="caption-text">Skills Exercise</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">WIDTH</span> <span class="o">=</span> <span class="mi">30</span>
-<span class="n">tools</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s2">&quot;mage&quot;</span><span class="p">:</span> <span class="s2">&quot;wand&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;thief&quot;</span><span class="p">:</span> <span class="s2">&quot;lockpick set&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;warrior&quot;</span><span class="p">:</span> <span class="s2">&quot;sword&quot;</span><span class="p">,</span>
-<span class="p">}</span>
-<span class="n">tools_iter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">tools</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;WHILE LOOP &quot;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">WIDTH</span><span class="p">,</span> <span class="s2">&quot;#&quot;</span><span class="p">))</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-  <span class="k">try</span><span class="p">:</span>
-    <span class="n">role</span><span class="p">,</span> <span class="n">tool</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">tools_iter</span><span class="p">)</span>
-  <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
-    <span class="k">break</span>
-  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;A </span><span class="si">{</span><span class="n">role</span><span class="si">}</span><span class="s2">s favorite tool is their trusty: </span><span class="si">{</span><span class="n">tool</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;FOR LOOP &quot;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">WIDTH</span><span class="p">,</span> <span class="s2">&quot;#&quot;</span><span class="p">))</span>
-<span class="k">for</span> <span class="n">role</span><span class="p">,</span> <span class="n">tool</span> <span class="ow">in</span> <span class="n">tools</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;A </span><span class="si">{</span><span class="n">role</span><span class="si">}</span><span class="s2">s favorite tool is their trusty: </span><span class="si">{</span><span class="n">tool</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+<div class="code-block-caption"><span class="caption-number">Listing 80 </span><span class="caption-text">Skills Exercise</span><a class="headerlink" href="#id9" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">WIDTH</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="linenos"> 2</span><span class="n">tools</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos"> 3</span>  <span class="s2">&quot;mage&quot;</span><span class="p">:</span> <span class="s2">&quot;wand&quot;</span><span class="p">,</span>
+<span class="linenos"> 4</span>  <span class="s2">&quot;thief&quot;</span><span class="p">:</span> <span class="s2">&quot;lockpick set&quot;</span><span class="p">,</span>
+<span class="linenos"> 5</span>  <span class="s2">&quot;warrior&quot;</span><span class="p">:</span> <span class="s2">&quot;sword&quot;</span><span class="p">,</span>
+<span class="linenos"> 6</span><span class="p">}</span>
+<span class="linenos"> 7</span><span class="n">tools_iter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">tools</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;WHILE LOOP &quot;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">WIDTH</span><span class="p">,</span> <span class="s2">&quot;#&quot;</span><span class="p">))</span>
+<span class="linenos">10</span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="linenos">11</span>  <span class="k">try</span><span class="p">:</span>
+<span class="linenos">12</span>    <span class="n">role</span><span class="p">,</span> <span class="n">tool</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">tools_iter</span><span class="p">)</span>
+<span class="linenos">13</span>  <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+<span class="linenos">14</span>    <span class="k">break</span>
+<span class="linenos">15</span>  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;A </span><span class="si">{</span><span class="n">role</span><span class="si">}</span><span class="s2">s favorite tool is their trusty: </span><span class="si">{</span><span class="n">tool</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;FOR LOOP &quot;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">WIDTH</span><span class="p">,</span> <span class="s2">&quot;#&quot;</span><span class="p">))</span>
+<span class="linenos">18</span><span class="k">for</span> <span class="n">role</span><span class="p">,</span> <span class="n">tool</span> <span class="ow">in</span> <span class="n">tools</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="linenos">19</span>  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;A </span><span class="si">{</span><span class="n">role</span><span class="si">}</span><span class="s2">s favorite tool is their trusty: </span><span class="si">{</span><span class="n">tool</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
+</section>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="incrementing">
-<h2><a class="toc-backref" href="#table-of-contents">Incrementing</a><a class="headerlink" href="#incrementing" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="incrementing">
+<h2><a class="toc-backref" href="#table-of-contents">Incrementing</a><a class="headerlink" href="#incrementing" title="Permalink to this headline">#</a></h2>
 <p>Sometimes we need to keep track of the number associated with each item in an
 iterable. One way to do this would be to increment a number each iteration.</p>
 <div class="cell docutils container">
@@ -1662,37 +1845,37 @@ tuple containing the key and value like so: <code class="samp docutils literal n
 </div>
 </div>
 </div>
-<div class="section" id="id4">
-<h3><a class="toc-backref" href="#table-of-contents">Exercise</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<section id="id4">
+<h3><a class="toc-backref" href="#table-of-contents">Exercise</a><a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
 <div class="exercise admonition" id="number-names-exercise">
 
-<p class="admonition-title"><span class="caption-number">Exercise 31 </span> (Number Names)</p>
-<div class="section" id="exercise-content">
+<p class="admonition-title"><span class="caption-number">Exercise 33 </span> (Number Names)</p>
+<section id="exercise-content">
 <p>Use the <code class="docutils literal notranslate"><span class="pre">enumerate</span></code> function to print the numerical values <code class="docutils literal notranslate"><span class="pre">1</span></code> through <code class="docutils literal notranslate"><span class="pre">5</span></code> next
 to the names of those numbers (<code class="docutils literal notranslate"><span class="pre">&quot;one&quot;</span></code> through <code class="docutils literal notranslate"><span class="pre">&quot;five&quot;</span></code>).</p>
-<details class="sphinx-bs dropdown card mb-3">
-<summary class="summary-title card-header">
-Need help?<div class="summary-down docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="summary-up docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="summary-content card-body docutils">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Need help?<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <ol class="simple">
-<li><p class="card-text">Make a list assigned to the variable <code class="docutils literal notranslate"><span class="pre">numbers</span></code> containing the names of the
+<li><p class="sd-card-text">Make a list assigned to the variable <code class="docutils literal notranslate"><span class="pre">numbers</span></code> containing the names of the
 numbers <code class="docutils literal notranslate"><span class="pre">&quot;one&quot;</span></code> through <code class="docutils literal notranslate"><span class="pre">&quot;five&quot;</span></code>.</p></li>
-<li><p class="card-text">Write a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop using the variable names <code class="docutils literal notranslate"><span class="pre">i</span></code> and <code class="docutils literal notranslate"><span class="pre">name</span></code> that iterates over
+<li><p class="sd-card-text">Write a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop using the variable names <code class="docutils literal notranslate"><span class="pre">i</span></code> and <code class="docutils literal notranslate"><span class="pre">name</span></code> that iterates over
 the value returned from calling <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> with the arguments <code class="docutils literal notranslate"><span class="pre">numbers</span></code>
 and <code class="docutils literal notranslate"><span class="pre">1</span></code>. <br />
 In the for loop:</p>
 <ul class="simple">
-<li><p class="card-text">print <code class="docutils literal notranslate"><span class="pre">i</span></code> and <code class="docutils literal notranslate"><span class="pre">name</span></code></p></li>
+<li><p class="sd-card-text">print <code class="docutils literal notranslate"><span class="pre">i</span></code> and <code class="docutils literal notranslate"><span class="pre">name</span></code></p></li>
 </ul>
 </li>
 </ol>
 </div>
 </details><p><strong>Example output</strong>:</p>
 <div class="literal-block-wrapper docutils container" id="id10">
-<div class="code-block-caption"><span class="caption-number">Listing 54 </span><span class="caption-text">example output</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 81 </span><span class="caption-text">example output</span><a class="headerlink" href="#id10" title="Permalink to this code">#</a></div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1 one
 2 two
 3 three
@@ -1701,35 +1884,32 @@ In the for loop:</p>
 </pre></div>
 </div>
 </div>
-</div>
+</section>
 </div>
 <div class="solution dropdown admonition" id="lessons/for-loops-solution-9">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#number-names-exercise"> Exercise 31 (Number Names)</a></p>
-<div class="section" id="solution-content">
+<p class="admonition-title">Solution to<a class="reference internal" href="#number-names-exercise"> Exercise 33 (Number Names)</a></p>
+<section id="solution-content">
 <div class="literal-block-wrapper docutils container" id="id11">
-<div class="code-block-caption"><span class="caption-number">Listing 55 </span><span class="caption-text">Number Names Exercise</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="s2">&quot;three&quot;</span><span class="p">,</span> <span class="s2">&quot;four&quot;</span><span class="p">,</span> <span class="s2">&quot;five&quot;</span><span class="p">]</span>
-
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">numbers</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
-  <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+<div class="code-block-caption"><span class="caption-number">Listing 82 </span><span class="caption-text">Number Names Exercise</span><a class="headerlink" href="#id11" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="s2">&quot;three&quot;</span><span class="p">,</span> <span class="s2">&quot;four&quot;</span><span class="p">,</span> <span class="s2">&quot;five&quot;</span><span class="p">]</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">numbers</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+<span class="linenos">4</span>  <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
+</section>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="comparing-loops">
-<h2><a class="toc-backref" href="#table-of-contents">Comparing loops</a><a class="headerlink" href="#comparing-loops" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="comparing-loops">
+<h2><a class="toc-backref" href="#table-of-contents">Comparing loops</a><a class="headerlink" href="#comparing-loops" title="Permalink to this headline">#</a></h2>
 <p>Lets do some side-by-side comparisons of the same code written as a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop
 and a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.</p>
 <p>On the left will be the <code class="docutils literal notranslate"><span class="pre">while</span></code> loop code and on the right will be the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop code.</p>
-<div class="section" id="example-a-list-iteration-with-next">
-<h3><a class="toc-backref" href="#table-of-contents">Example A: list iteration with <code class="docutils literal notranslate"><span class="pre">next()</span></code></a><a class="headerlink" href="#example-a-list-iteration-with-next" title="Permalink to this headline">¶</a></h3>
+<section id="example-a-list-iteration-with-next">
+<h3><a class="toc-backref" href="#table-of-contents">Example A: list iteration with <code class="docutils literal notranslate"><span class="pre">next()</span></code></a><a class="headerlink" href="#example-a-list-iteration-with-next" title="Permalink to this headline">#</a></h3>
 <p>In this example we’ll iterate over a <code class="docutils literal notranslate"><span class="pre">colors</span></code> <code class="docutils literal notranslate"><span class="pre">list</span></code>.</p>
 <p>On the left we will use a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop to iterate over a <code class="docutils literal notranslate"><span class="pre">list</span></code> by converting
 it using the <code class="docutils literal notranslate"><span class="pre">iter()</span></code> function, then calling <code class="docutils literal notranslate"><span class="pre">next()</span></code> on the resulting
@@ -1738,7 +1918,7 @@ iterator.</p>
 <code class="docutils literal notranslate"><span class="pre">next()</span></code> happens behind the scenes.</p>
 <div class="row"><div class="col">
 <div class="literal-block-wrapper docutils container" id="id12">
-<div class="code-block-caption"><span class="caption-number">Listing 56 </span><span class="caption-text">Iter example A-1: <code class="docutils literal notranslate"><span class="pre">list</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">while</span></code> loop</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 83 </span><span class="caption-text">Iter example A-1: <code class="docutils literal notranslate"><span class="pre">list</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">while</span></code> loop</span><a class="headerlink" href="#id12" title="Permalink to this code">#</a></div>
 <div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
 <span class="n">colors_iterator</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n n-Highlight">colors</span><span class="p">)</span>
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -1752,7 +1932,7 @@ iterator.</p>
 </div>
 </div><div class="col">
 <div class="literal-block-wrapper docutils container" id="id13">
-<div class="code-block-caption"><span class="caption-number">Listing 57 </span><span class="caption-text">Iter example A-2: <code class="docutils literal notranslate"><span class="pre">list</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">for</span></code> loop</span><a class="headerlink" href="#id13" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 84 </span><span class="caption-text">Iter example A-2: <code class="docutils literal notranslate"><span class="pre">list</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">for</span></code> loop</span><a class="headerlink" href="#id13" title="Permalink to this code">#</a></div>
 <div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
 <span class="k">for</span> <span class="n n-Highlight">color</span> <span class="ow">in</span> <span class="n n-Highlight">colors</span><span class="p">:</span>
   <span class="nb">print</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
@@ -1760,9 +1940,9 @@ iterator.</p>
 </div>
 </div>
 </div></div>
-</div>
-<div class="section" id="example-b-range-iteration-with-next">
-<h3><a class="toc-backref" href="#table-of-contents">Example B: range iteration with <code class="docutils literal notranslate"><span class="pre">next()</span></code></a><a class="headerlink" href="#example-b-range-iteration-with-next" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="example-b-range-iteration-with-next">
+<h3><a class="toc-backref" href="#table-of-contents">Example B: range iteration with <code class="docutils literal notranslate"><span class="pre">next()</span></code></a><a class="headerlink" href="#example-b-range-iteration-with-next" title="Permalink to this headline">#</a></h3>
 <p>Lets do the same comparison with a <code class="docutils literal notranslate"><span class="pre">range</span></code> object.</p>
 <p>On the left we will use a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop to iterate over a <code class="docutils literal notranslate"><span class="pre">range</span></code> by converting
 it using the <code class="docutils literal notranslate"><span class="pre">iter()</span></code> function, then calling <code class="docutils literal notranslate"><span class="pre">next()</span></code> on the resulting
@@ -1770,7 +1950,7 @@ iterator.</p>
 <p>On the right is the same code as a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.</p>
 <div class="row"><div class="col">
 <div class="literal-block-wrapper docutils container" id="id14">
-<div class="code-block-caption"><span class="caption-number">Listing 58 </span><span class="caption-text">Iter example B-1: <code class="docutils literal notranslate"><span class="pre">range</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">while</span></code> loop (error surpressed)</span><a class="headerlink" href="#id14" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 85 </span><span class="caption-text">Iter example B-1: <code class="docutils literal notranslate"><span class="pre">range</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">while</span></code> loop (error surpressed)</span><a class="headerlink" href="#id14" title="Permalink to this code">#</a></div>
 <div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">numbers_iter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n n-Highlight">numbers</span><span class="p">)</span>
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -1785,7 +1965,7 @@ iterator.</p>
 </div>
 </div><div class="col">
 <div class="literal-block-wrapper docutils container" id="id15">
-<div class="code-block-caption"><span class="caption-number">Listing 59 </span><span class="caption-text">Iter example B-2: <code class="docutils literal notranslate"><span class="pre">range</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">for</span></code> loop</span><a class="headerlink" href="#id15" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 86 </span><span class="caption-text">Iter example B-2: <code class="docutils literal notranslate"><span class="pre">range</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">for</span></code> loop</span><a class="headerlink" href="#id15" title="Permalink to this code">#</a></div>
 <div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="k">for</span> <span class="n n-Highlight">num</span> <span class="ow">in</span> <span class="n n-Highlight">numbers</span><span class="p">:</span>
   <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
@@ -1793,9 +1973,9 @@ iterator.</p>
 </div>
 </div>
 </div></div>
-</div>
-<div class="section" id="example-c-list-iteration-with-subscription">
-<h3><a class="toc-backref" href="#table-of-contents">Example C: list iteration with subscription</a><a class="headerlink" href="#example-c-list-iteration-with-subscription" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="example-c-list-iteration-with-subscription">
+<h3><a class="toc-backref" href="#table-of-contents">Example C: list iteration with subscription</a><a class="headerlink" href="#example-c-list-iteration-with-subscription" title="Permalink to this headline">#</a></h3>
 <p>In this example we’ll iterate over the <code class="docutils literal notranslate"><span class="pre">colors</span></code> <code class="docutils literal notranslate"><span class="pre">list</span></code> as before, except now
 we’ll use an incrementing index number to get each element using
 <a class="reference internal" href="data-types/containers.html#term-bracket-notation"><span class="xref std std-term">bracket notation</span></a> or <a class="reference internal" href="data-types/containers.html#term-subscription"><span class="xref std std-term">subscription</span></a>.</p>
@@ -1807,7 +1987,7 @@ bracket notation.</p>
 behavior.</p>
 <div class="row"><div class="col">
 <div class="literal-block-wrapper docutils container" id="id16">
-<div class="code-block-caption"><span class="caption-number">Listing 60 </span><span class="caption-text">Bracket example C-1: <code class="docutils literal notranslate"><span class="pre">list</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">while</span></code> loop</span><a class="headerlink" href="#id16" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 87 </span><span class="caption-text">Bracket example C-1: <code class="docutils literal notranslate"><span class="pre">list</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">while</span></code> loop</span><a class="headerlink" href="#id16" title="Permalink to this code">#</a></div>
 <div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
 <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
 
@@ -1820,7 +2000,7 @@ behavior.</p>
 </div>
 </div><div class="col">
 <div class="literal-block-wrapper docutils container" id="id17">
-<div class="code-block-caption"><span class="caption-number">Listing 61 </span><span class="caption-text">Subscript example C-2: <code class="docutils literal notranslate"><span class="pre">list</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">for</span></code> loop</span><a class="headerlink" href="#id17" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 88 </span><span class="caption-text">Subscript example C-2: <code class="docutils literal notranslate"><span class="pre">list</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">for</span></code> loop</span><a class="headerlink" href="#id17" title="Permalink to this code">#</a></div>
 <div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n n-Highlight">color</span> <span class="ow">in</span> <span class="n n-Highlight">colors</span><span class="p">:</span>
@@ -1829,14 +2009,14 @@ behavior.</p>
 </div>
 </div>
 </div></div>
-</div>
-<div class="section" id="example-d-string-iteration-with-subscription">
-<h3><a class="toc-backref" href="#table-of-contents">Example D: string iteration with subscription</a><a class="headerlink" href="#example-d-string-iteration-with-subscription" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="example-d-string-iteration-with-subscription">
+<h3><a class="toc-backref" href="#table-of-contents">Example D: string iteration with subscription</a><a class="headerlink" href="#example-d-string-iteration-with-subscription" title="Permalink to this headline">#</a></h3>
 <p>In this example we’ll iterate over each <code class="docutils literal notranslate"><span class="pre">letter</span></code> in the string <code class="docutils literal notranslate"><span class="pre">word</span></code> using
 bracket notaton.</p>
 <div class="row"><div class="col">
 <div class="literal-block-wrapper docutils container" id="id18">
-<div class="code-block-caption"><span class="caption-number">Listing 62 </span><span class="caption-text">Bracket example D-1: <code class="docutils literal notranslate"><span class="pre">str</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">while</span></code> loop</span><a class="headerlink" href="#id18" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 89 </span><span class="caption-text">Bracket example D-1: <code class="docutils literal notranslate"><span class="pre">str</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">while</span></code> loop</span><a class="headerlink" href="#id18" title="Permalink to this code">#</a></div>
 <div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">word</span> <span class="o">=</span> <span class="s2">&quot;flibbertigibbet&quot;</span>
 <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
 
@@ -1849,7 +2029,7 @@ bracket notaton.</p>
 </div>
 </div><div class="col">
 <div class="literal-block-wrapper docutils container" id="id19">
-<div class="code-block-caption"><span class="caption-number">Listing 63 </span><span class="caption-text">Bracket example D-2: <code class="docutils literal notranslate"><span class="pre">list</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">for</span></code> loop</span><a class="headerlink" href="#id19" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 90 </span><span class="caption-text">Bracket example D-2: <code class="docutils literal notranslate"><span class="pre">list</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">for</span></code> loop</span><a class="headerlink" href="#id19" title="Permalink to this code">#</a></div>
 <div class="full-width highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="n">word</span> <span class="o">=</span> <span class="s2">&quot;flibbertigibbet&quot;</span>
 
 <span class="k">for</span> <span class="n n-Highlight">letter</span> <span class="ow">in</span> <span class="n n-Highlight">word</span><span class="p">:</span>
@@ -1858,14 +2038,14 @@ bracket notaton.</p>
 </div>
 </div>
 </div></div>
-</div>
-</div>
-<div class="section" id="exercises">
-<h2><a class="toc-backref" href="#table-of-contents">Exercises</a><a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="exercises">
+<h2><a class="toc-backref" href="#table-of-contents">Exercises</a><a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
 <div class="exercise admonition" id="skills-exercise">
 
-<p class="admonition-title"><span class="caption-number">Exercise 32 </span> (Game Skills)</p>
-<div class="section" id="exercise-content">
+<p class="admonition-title"><span class="caption-number">Exercise 34 </span> (Game Skills)</p>
+<section id="exercise-content">
 <ol class="simple">
 <li><p>Make a <code class="docutils literal notranslate"><span class="pre">list</span></code> of game character <code class="docutils literal notranslate"><span class="pre">skills</span></code>.</p></li>
 <li><p>write a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop</p>
@@ -1890,48 +2070,36 @@ bracket notaton.</p>
 </ol>
 </li>
 </ol>
-</div>
+</section>
 </div>
 <div class="solution dropdown admonition" id="lessons/for-loops-solution-11">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#skills-exercise"> Exercise 32 (Game Skills)</a></p>
-<div class="section" id="solution-content">
+<p class="admonition-title">Solution to<a class="reference internal" href="#skills-exercise"> Exercise 34 (Game Skills)</a></p>
+<section id="solution-content">
 <div class="literal-block-wrapper docutils container" id="id20">
-<div class="code-block-caption"><span class="caption-number">Listing 64 </span><span class="caption-text">Skills Exercise</span><a class="headerlink" href="#id20" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">WIDTH</span> <span class="o">=</span> <span class="mi">30</span>
-<span class="n">skills</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;heal&quot;</span><span class="p">,</span> <span class="s2">&quot;attack&quot;</span><span class="p">,</span> <span class="s2">&quot;acquire&quot;</span><span class="p">]</span>
-<span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;WHILE LOOP &quot;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">WIDTH</span><span class="p">,</span> <span class="s2">&quot;#&quot;</span><span class="p">))</span>
-<span class="k">while</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">skills</span><span class="p">):</span>
-  <span class="n">skill</span> <span class="o">=</span> <span class="n">skills</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
-  <span class="nb">print</span><span class="p">(</span><span class="n">skill</span><span class="p">)</span>
-  <span class="n">idx</span> <span class="o">+=</span> <span class="mi">1</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;FOR LOOP &quot;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">WIDTH</span><span class="p">,</span> <span class="s2">&quot;#&quot;</span><span class="p">))</span>
-<span class="k">for</span> <span class="n">skill</span> <span class="ow">in</span> <span class="n">skills</span><span class="p">:</span>
-  <span class="nb">print</span><span class="p">(</span><span class="n">skill</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+<div class="code-block-caption"><span class="caption-number">Listing 91 </span><span class="caption-text">Skills Exercise</span><a class="headerlink" href="#id20" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">WIDTH</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="linenos"> 2</span><span class="n">skills</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;heal&quot;</span><span class="p">,</span> <span class="s2">&quot;attack&quot;</span><span class="p">,</span> <span class="s2">&quot;acquire&quot;</span><span class="p">]</span>
+<span class="linenos"> 3</span><span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;WHILE LOOP &quot;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">WIDTH</span><span class="p">,</span> <span class="s2">&quot;#&quot;</span><span class="p">))</span>
+<span class="linenos"> 6</span><span class="k">while</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">skills</span><span class="p">):</span>
+<span class="linenos"> 7</span>  <span class="n">skill</span> <span class="o">=</span> <span class="n">skills</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+<span class="linenos"> 8</span>  <span class="nb">print</span><span class="p">(</span><span class="n">skill</span><span class="p">)</span>
+<span class="linenos"> 9</span>  <span class="n">idx</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;FOR LOOP &quot;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">WIDTH</span><span class="p">,</span> <span class="s2">&quot;#&quot;</span><span class="p">))</span>
+<span class="linenos">12</span><span class="k">for</span> <span class="n">skill</span> <span class="ow">in</span> <span class="n">skills</span><span class="p">:</span>
+<span class="linenos">13</span>  <span class="nb">print</span><span class="p">(</span><span class="n">skill</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
-</div>
+</section>
 </div>
 <div class="exercise admonition" id="label-exercise">
 
-<p class="admonition-title"><span class="caption-number">Exercise 33 </span> (Weekdays)</p>
-<div class="section" id="exercise-content">
+<p class="admonition-title"><span class="caption-number">Exercise 35 </span> (Weekdays)</p>
+<section id="exercise-content">
 <p>Print the weekday names horizontally and seperated by <code class="docutils literal notranslate"><span class="pre">|</span></code>.</p>
 <ol class="simple">
 <li><p>Make a <code class="docutils literal notranslate"><span class="pre">WEEKDAYS</span></code> <code class="docutils literal notranslate"><span class="pre">list</span></code> of names.</p></li>
@@ -1942,68 +2110,52 @@ with seperated by vertical bars (<code class="docutils literal notranslate"><spa
 </ol>
 <p>Example output:</p>
 <p><code class="docutils literal notranslate"><span class="pre">|</span>&#160;&#160; <span class="pre">Monday</span>&#160;&#160; <span class="pre">|</span>&#160; <span class="pre">Tuesday</span>&#160;&#160; <span class="pre">|</span> <span class="pre">Wednesday</span>&#160; <span class="pre">|</span>&#160; <span class="pre">Thursday</span>&#160; <span class="pre">|</span>&#160;&#160; <span class="pre">Friday</span>&#160;&#160; <span class="pre">|</span></code></p>
-</div>
+</section>
 </div>
 <div class="solution dropdown admonition" id="lessons/for-loops-solution-13">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#label-exercise"> Exercise 33 (Weekdays)</a></p>
-<div class="section" id="solution-content">
+<p class="admonition-title">Solution to<a class="reference internal" href="#label-exercise"> Exercise 35 (Weekdays)</a></p>
+<section id="solution-content">
 <div class="literal-block-wrapper docutils container" id="id21">
-<div class="code-block-caption"><span class="caption-number">Listing 65 </span><span class="caption-text">Weekdays Exercise</span><a class="headerlink" href="#id21" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">SIZE</span><span class="o">=</span><span class="mi">10</span>
-<span class="n">SEP</span> <span class="o">=</span> <span class="s2">&quot; | &quot;</span>
-<span class="n">WEEKDAYS</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="s2">&quot;Monday&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;Tuesday&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;Wednesday&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;Thursday&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;Friday&quot;</span><span class="p">,</span>
-<span class="p">]</span>
-
-<span class="n">strings</span> <span class="o">=</span> <span class="p">[</span><span class="n">SEP</span><span class="p">]</span>
-
-<span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="n">WEEKDAYS</span><span class="p">:</span>
-  <span class="n">title</span> <span class="o">=</span> <span class="n">day</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">SIZE</span><span class="p">)</span>
-  <span class="n">strings</span> <span class="o">=</span> <span class="n">strings</span> <span class="o">+</span> <span class="p">[</span><span class="n">title</span><span class="p">,</span> <span class="n">SEP</span><span class="p">]</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">strings</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+<div class="code-block-caption"><span class="caption-number">Listing 92 </span><span class="caption-text">Weekdays Exercise</span><a class="headerlink" href="#id21" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">SIZE</span><span class="o">=</span><span class="mi">10</span>
+<span class="linenos"> 2</span><span class="n">SEP</span> <span class="o">=</span> <span class="s2">&quot; | &quot;</span>
+<span class="linenos"> 3</span><span class="n">WEEKDAYS</span> <span class="o">=</span> <span class="p">[</span>
+<span class="linenos"> 4</span>  <span class="s2">&quot;Monday&quot;</span><span class="p">,</span>
+<span class="linenos"> 5</span>  <span class="s2">&quot;Tuesday&quot;</span><span class="p">,</span>
+<span class="linenos"> 6</span>  <span class="s2">&quot;Wednesday&quot;</span><span class="p">,</span>
+<span class="linenos"> 7</span>  <span class="s2">&quot;Thursday&quot;</span><span class="p">,</span>
+<span class="linenos"> 8</span>  <span class="s2">&quot;Friday&quot;</span><span class="p">,</span>
+<span class="linenos"> 9</span><span class="p">]</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="n">strings</span> <span class="o">=</span> <span class="p">[</span><span class="n">SEP</span><span class="p">]</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="n">WEEKDAYS</span><span class="p">:</span>
+<span class="linenos">14</span>  <span class="n">title</span> <span class="o">=</span> <span class="n">day</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">SIZE</span><span class="p">)</span>
+<span class="linenos">15</span>  <span class="n">strings</span> <span class="o">=</span> <span class="n">strings</span> <span class="o">+</span> <span class="p">[</span><span class="n">title</span><span class="p">,</span> <span class="n">SEP</span><span class="p">]</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">strings</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
+</section>
 </div>
-</div>
-</div>
-<div class="section" id="reference">
-<h2><a class="toc-backref" href="#table-of-contents">Reference</a><a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="glossary">
-<h3><a class="toc-backref" href="#table-of-contents">Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="glossary-for-loops">
-<h4><a class="toc-backref" href="#table-of-contents">For Loops</a><a class="headerlink" href="#glossary-for-loops" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="reference">
+<h2><a class="toc-backref" href="#table-of-contents">Reference</a><a class="headerlink" href="#reference" title="Permalink to this headline">#</a></h2>
+<section id="glossary">
+<h3><a class="toc-backref" href="#table-of-contents">Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this headline">#</a></h3>
+<section id="glossary-for-loops">
+<h4><a class="toc-backref" href="#table-of-contents">For Loops</a><a class="headerlink" href="#glossary-for-loops" title="Permalink to this headline">#</a></h4>
 <dl class="glossary simple">
-<dt id="term-iterable">iterable<a class="headerlink" href="#term-iterable" title="Permalink to this term">¶</a></dt><dd><p>An object that can be iterated over. One that provides the <code class="docutils literal notranslate"><span class="pre">.__iter__()</span></code>
+<dt id="term-iterable">iterable<a class="headerlink" href="#term-iterable" title="Permalink to this term">#</a></dt><dd><p>An object that can be iterated over. One that provides the <code class="docutils literal notranslate"><span class="pre">.__iter__()</span></code>
 method used by the <code class="docutils literal notranslate"><span class="pre">iter()</span></code> function.</p>
 </dd>
-<dt id="term-iterator">iterator<a class="headerlink" href="#term-iterator" title="Permalink to this term">¶</a></dt><dd><p>An object that provides a <code class="docutils literal notranslate"><span class="pre">.__next__()</span></code> method, used by the built in function
+<dt id="term-iterator">iterator<a class="headerlink" href="#term-iterator" title="Permalink to this term">#</a></dt><dd><p>An object that provides a <code class="docutils literal notranslate"><span class="pre">.__next__()</span></code> method, used by the built in function
 <code class="docutils literal notranslate"><span class="pre">next()</span></code>,  which, when called repeatedly, will keep returning elements until
 there are no more left.</p>
 </dd>
-<dt id="term-multiple-assignment">multiple assignment<a class="headerlink" href="#term-multiple-assignment" title="Permalink to this term">¶</a></dt><dd><p>Assigning the contents of an itrable to multiple variables on the same line
+<dt id="term-multiple-assignment">multiple assignment<a class="headerlink" href="#term-multiple-assignment" title="Permalink to this term">#</a></dt><dd><p>Assigning the contents of an itrable to multiple variables on the same line
 with the same number of variables names to the left of the <code class="docutils literal notranslate"><span class="pre">=</span></code> as there are
 items in the iterable seperated by <code class="docutils literal notranslate"><span class="pre">,</span></code>. <br />
 For example: <br />
@@ -2011,10 +2163,10 @@ For example: <br />
 <code class="docutils literal notranslate"><span class="pre">first,</span> <span class="pre">last</span> <span class="pre">=</span> <span class="pre">&quot;a&quot;,</span> <span class="pre">&quot;b&quot;</span></code></p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="see-also">
-<h3><a class="toc-backref" href="#table-of-contents">See also</a><a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="see-also">
+<h3><a class="toc-backref" href="#table-of-contents">See also</a><a class="headerlink" href="#see-also" title="Permalink to this headline">#</a></h3>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">
@@ -2025,9 +2177,9 @@ For example: <br />
 </ul>
 </div>
 <hr class="docutils" />
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2041,7 +2193,7 @@ For example: <br />
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./lessons"
         },
         predefinedOutput: true
@@ -2051,9 +2203,11 @@ For example: <br />
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="while-loops.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -2069,23 +2223,25 @@ For example: <br />
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

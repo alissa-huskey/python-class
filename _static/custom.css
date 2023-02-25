@@ -145,6 +145,18 @@ details.dropdown.card .card-body {
   overflow: auto;
 }
 
+.sd-card-footer.text-light p.sd-card-text {
+  color: #c1c3c5;
+}
+
+.sd-card-body.text-white p.sd-card-text {
+  color: #fff;
+}
+
+.sd-card-header {
+  background-color: var(--color-card-header) !important;
+}
+
 :root {
   --kw-cols: 3;
   --dark-gray: #343a40;
@@ -212,6 +224,10 @@ table.table tr td {
 table.table.notitle thead th.head {
   border: 0;
   padding: 0;
+}
+
+tr:last-child {
+  border-bottom: 0px !important;
 }
 
 /********************
@@ -283,6 +299,36 @@ div.admonition.details p.admonition-title::after {
 
 /* exercise
 /********************/
+
+/* See:
+ * https://ebp-sphinx-exercise.readthedocs.io/en/latest/syntax.html#custom-css-or-javascript
+
+*/
+
+/* default colors ------------------------ */
+
+:root {
+    --border-color: rgb(20, 184, 166);
+    --background-color: #fff;
+    --title-background-color: rgba(20, 184, 166, 0.1);
+    --icon-bg-color: rgb(20, 184, 166);
+    --color-card-header: rgba(0, 0, 0, 0.03) !important;
+}
+
+div.calm {
+    background-color: var(--background-color);
+    border-color: var(--border-color);
+}
+
+div.calm p.admonition-title {
+    background-color: var(--title-background-color);
+}
+
+div.calm p.admonition-title::before {
+    color: var(--icon-bg-color);
+}
+
+/* end default --------------------------- */
 
 div.exercise.notitle p.admonition-title::after {
   display: none;
@@ -466,6 +512,8 @@ a.reference.term-missing span.std-term {
  * - shrink the width and height to the content size
  *   so captions are centered and wrapped correctly
  * */
+
+/* disable to see how it works after jb update
 div.literal-block-wrapper {
   width: max-content;
   height: max-content;
@@ -485,6 +533,7 @@ div.full-width table tbody {
 div.full-width table tbody td.code {
   width: 100%;
 }
+ * */
 
 /* code-block container
  * - remove the space between the code block and caption
@@ -537,9 +586,12 @@ div.code-block-caption {
   color: #6c757d;
 }
 
+
+/* disable to see how it works after jb update
 .full-width div.code-block-caption {
   text-align: left;
 }
+ * */
 
 /* caption number ("Listing {n}")
  * - hide
@@ -554,9 +606,25 @@ div.code-block-caption > span.caption-number {
 /* individual pages
 /********************/
 
+/* reading-code
+/*--------------------------------------*/
+
+body#reading-code p.sidebar-title {
+  background-color: #ccc;
+}
+
+/* replit
+/*--------------------------------------*/
+
+/* Hide the page title, since the Replit logo is there. */
+body#replit h1 {
+  display: none;
+}
+
 /* adventure exercise
 /*--------------------------------------*/
 
+body#tutorial h4,
 body#adventure h4 {
   border-bottom: 1px solid var(--dark-gray);
   font-size: 1em;
@@ -712,3 +780,4 @@ body#conditional-statements table.table td {
   /* disable clicks */
   z-index: -2;
 }
+

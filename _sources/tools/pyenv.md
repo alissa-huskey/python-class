@@ -5,7 +5,7 @@ pyenv is a command line tool that lets you easily install and switch between
 multiple versions of Python.
 
 
-```{contents}
+```{contents} Table of Contents
 :backlinks: top
 :local:
 :depth: 2
@@ -18,7 +18,8 @@ multiple versions of Python.
 * [Installing pyenv on macOS](https://binx.io/blog/2019/04/12/installing-pyenv-on-macos/)
 ```
 
-### Install
+Install
+-------
 
 ```{code-block} console
 :caption: command line
@@ -41,7 +42,8 @@ echo 'export PATH="~/.pyenv/bin:$PATH"\neval "$(pyenv init -)"' >> ~/.bash_profi
 ```
 Then close your terminal and start a new one.
 
-### Quickref
+Quickref
+--------
 
 | command                                 | description                                   |
 |-----------------------------------------|-----------------------------------------------|

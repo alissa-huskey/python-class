@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Chapter 3: Guess the Number &#8212; Python Class</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,39 +20,39 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/asciinema-player.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/asciinema-player.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/custom.js"></script>
-    <script src="../_static/asciinema-player.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/x-frame-bypass.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+    <script src="../_static/asciinema-player.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
@@ -68,7 +70,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -77,9 +93,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
       
@@ -92,7 +109,7 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <p class="caption">
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Lessons
  </span>
@@ -379,7 +396,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Practices
  </span>
@@ -406,7 +423,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Tools
  </span>
@@ -454,7 +471,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../tools/replit.html">
-   Repl.it Tips
+   Replit
   </a>
  </li>
  <li class="toctree-l1">
@@ -478,7 +495,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Reference
  </span>
@@ -510,7 +527,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Exercises
  </span>
@@ -542,7 +559,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Admin
  </span>
@@ -556,88 +573,177 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/alissa-huskey/python-class"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        <a class="edit-button" href="https://github.com/alissa-huskey/python-class/edit/master/docs/lessons/03_guess_the_number.md"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/alissa-huskey/python-class/master?urlpath=lab/tree/docs/lessons/03_guess_the_number.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <button type="button" class="btn btn-secondary topbarbtn"
-            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
-                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
-        
-    </div>
-</div>
-
         </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
 
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/alissa-huskey/python-class/master?urlpath=lab/tree/docs/lessons/03_guess_the_number.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/alissa-huskey/python-class"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/alissa-huskey/python-class/edit/master/docs/lessons/03_guess_the_number.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#part-1-setup">
    Part 1. Setup
@@ -751,17 +857,146 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Chapter 3: Guess the Number</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-1-setup">
+   Part 1. Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-2-use-the-random-module">
+   Part 2. Use the
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     random
+    </span>
+   </code>
+   Module
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#try-it-in-the-python-shell">
+     Try it in the Python Shell
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#edit-guess-py">
+     Edit
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       guess.py
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-3-welcome-the-player">
+   Part 3: Welcome the Player
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Edit
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       guess.py
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-4-let-the-player-guess">
+   Part 4: Let the Player Guess
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Edit
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       guess.py
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-5-check-the-guess">
+   Part 5: Check the Guess
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Edit
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       guess.py
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-6-check-if-the-player-won">
+   Part 6: Check if the Player Won
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     Edit
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       guess.py
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-7-make-it-your-own">
+   Part 7: Make it your own
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-we-ve-learned">
+   What we’ve learned
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="chapter-3-guess-the-number">
-<h1>Chapter 3: Guess the Number<a class="headerlink" href="#chapter-3-guess-the-number" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-3-guess-the-number">
+<h1>Chapter 3: Guess the Number<a class="headerlink" href="#chapter-3-guess-the-number" title="Permalink to this headline">#</a></h1>
 <blockquote>
 <div><p>Based on: <a class="reference external" href="http://inventwithpython.com/invent4thed/chapter3.html">Chapter 3: Guess the Number</a></p>
 </div></blockquote>
@@ -808,8 +1043,8 @@ from now on we’ll call the user the player.</p>
 <li><p><a class="reference internal" href="#what-we-ve-learned" id="id25">What we’ve learned</a></p></li>
 </ul>
 </div>
-<div class="section" id="part-1-setup">
-<h2><a class="toc-backref" href="#table-of-contents">Part 1. Setup</a><a class="headerlink" href="#part-1-setup" title="Permalink to this headline">¶</a></h2>
+<section id="part-1-setup">
+<h2><a class="toc-backref" href="#table-of-contents">Part 1. Setup</a><a class="headerlink" href="#part-1-setup" title="Permalink to this headline">#</a></h2>
 <p>Create a new file called <code class="docutils literal notranslate"><span class="pre">guess.py</span></code>.</p>
 <div class="tip admonition">
 <p class="admonition-title">Repl.it</p>
@@ -819,16 +1054,16 @@ from now on we’ll call the user the player.</p>
 <p>Start by adding a docstring, surrounded by three double or single quotes, to
 the first line of your file with a brief description of this script.</p>
 <div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-number">Listing 315 </span><span class="caption-text">guess.py</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">&quot;&quot;&quot;This is a Guess the Number game.&quot;&quot;&quot;</span>
-</pre></div></td></tr></table></div>
+<div class="code-block-caption"><span class="caption-number">Listing 342 </span><span class="caption-text">guess.py</span><a class="headerlink" href="#id5" title="Permalink to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="sd">&quot;&quot;&quot;This is a Guess the Number game.&quot;&quot;&quot;</span>
+</pre></div>
 </div>
 </div>
 <p>Even though the script doesn’t do anything yet, go ahead and run it to make
 sure there are no errors.</p>
-</div>
-<div class="section" id="part-2-use-the-random-module">
-<h2><a class="toc-backref" href="#table-of-contents">Part 2. Use the <code class="docutils literal notranslate"><span class="pre">random</span></code> Module</a><a class="headerlink" href="#part-2-use-the-random-module" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="part-2-use-the-random-module">
+<h2><a class="toc-backref" href="#table-of-contents">Part 2. Use the <code class="docutils literal notranslate"><span class="pre">random</span></code> Module</a><a class="headerlink" href="#part-2-use-the-random-module" title="Permalink to this headline">#</a></h2>
 <p>Python provides some functions that are built into the language like the
 <code class="docutils literal notranslate"><span class="pre">print()</span></code> function that you are already familiar with. There are even more
 functions available through <a class="reference internal" href="../../module.html" title=""><span class="xref std std-term">modules</span></a>.</p>
@@ -843,15 +1078,15 @@ number.</p>
 function name.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">randint()</span></code> function takes two arguments. The first is the minimum
 number, the second is the maximum number.</p>
-<div class="section" id="try-it-in-the-python-shell">
-<h3><a class="toc-backref" href="#table-of-contents">Try it in the Python Shell</a><a class="headerlink" href="#try-it-in-the-python-shell" title="Permalink to this headline">¶</a></h3>
+<section id="try-it-in-the-python-shell">
+<h3><a class="toc-backref" href="#table-of-contents">Try it in the Python Shell</a><a class="headerlink" href="#try-it-in-the-python-shell" title="Permalink to this headline">#</a></h3>
 <p>The <a class="reference internal" href="../tools/python-shell.html#term-Python-shell"><span class="xref std std-term">Python shell</span></a> is an easy way to execute Python code interactively.
 You can think of it kind of like a whiteboard for code. It lets you quickly try
 small code snippets to see how they work. (See also <a class="reference internal" href="../tools/python-shell.html"><span class="doc std std-doc">Python Shell</span></a>.)</p>
 <p>At the command line, start a Python shell by typing <code class="docutils literal notranslate"><span class="pre">python</span></code>. The prompt will
 change to <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code>.</p>
 <div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-number">Listing 316 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 343 </span><span class="caption-text">Python shell</span><a class="headerlink" href="#id6" title="Permalink to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Python</span> <span class="mf">3.8.3</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">May</span> <span class="mi">14</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">20</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mi">43</span><span class="p">)</span>
 <span class="p">[</span><span class="n">GCC</span> <span class="mf">7.5.0</span><span class="p">]</span> <span class="n">on</span> <span class="n">linux</span>
 <span class="n">Type</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright&quot;</span><span class="p">,</span> <span class="s2">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s2">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
@@ -865,67 +1100,54 @@ change to <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&
 <p class="admonition-title">Hint</p>
 <p>In the Python shell, you can hit the up arrow to fill in the last line you typed again.</p>
 </div>
-</div>
-<div class="section" id="edit-guess-py">
-<h3><a class="toc-backref" href="#table-of-contents">Edit <code class="docutils literal notranslate"><span class="pre">guess.py</span></code></a><a class="headerlink" href="#edit-guess-py" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="edit-guess-py">
+<h3><a class="toc-backref" href="#table-of-contents">Edit <code class="docutils literal notranslate"><span class="pre">guess.py</span></code></a><a class="headerlink" href="#edit-guess-py" title="Permalink to this headline">#</a></h3>
 <p>Now that you understand how importing works, import the module, then save
 a random number to the <code class="docutils literal notranslate"><span class="pre">number</span></code> variable by calling <code class="docutils literal notranslate"><span class="pre">random.randint()</span></code>.</p>
 <p>Let’s also set the maximum number of guesses.</p>
 <div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-number">Listing 317 </span><span class="caption-text">guess.py</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">&quot;&quot;&quot;This is a Guess the Number game.&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">random</span>
-
-<span class="hll"><span class="n">number</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
-</span><span class="hll"><span class="n">max_guesses</span> <span class="o">=</span> <span class="mi">6</span>
-</span></pre></div></td></tr></table></div>
+<div class="code-block-caption"><span class="caption-number">Listing 344 </span><span class="caption-text">guess.py</span><a class="headerlink" href="#id7" title="Permalink to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="sd">&quot;&quot;&quot;This is a Guess the Number game.&quot;&quot;&quot;</span>
+<span class="linenos">2</span><span class="kn">import</span> <span class="nn">random</span>
+<span class="linenos">3</span>
+<span class="hll"><span class="linenos">4</span><span class="n">number</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">5</span><span class="n">max_guesses</span> <span class="o">=</span> <span class="mi">6</span>
+</span></pre></div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="part-3-welcome-the-player">
-<h2><a class="toc-backref" href="#table-of-contents">Part 3: Welcome the Player</a><a class="headerlink" href="#part-3-welcome-the-player" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="part-3-welcome-the-player">
+<h2><a class="toc-backref" href="#table-of-contents">Part 3: Welcome the Player</a><a class="headerlink" href="#part-3-welcome-the-player" title="Permalink to this headline">#</a></h2>
 <p>We’ve used the <code class="docutils literal notranslate"><span class="pre">input()</span></code> function before to get feedback from the user. It
 can take an optional <a class="reference internal" href="functions.html#term-argument"><span class="xref std std-term">argument</span></a>, a string that will be presented to
 the user as a prompt just to the left of their cursor.</p>
 <p>Let’s use this new way of calling <code class="docutils literal notranslate"><span class="pre">input()</span></code> to get the players name and
 then use <code class="docutils literal notranslate"><span class="pre">print()</span></code> to greet them.</p>
-<div class="section" id="id1">
-<h3><a class="toc-backref" href="#table-of-contents">Edit <code class="docutils literal notranslate"><span class="pre">guess.py</span></code></a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<section id="id1">
+<h3><a class="toc-backref" href="#table-of-contents">Edit <code class="docutils literal notranslate"><span class="pre">guess.py</span></code></a><a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <div class="literal-block-wrapper docutils container" id="id8">
-<div class="code-block-caption"><span class="caption-number">Listing 318 </span><span class="caption-text">guess.py</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">&quot;&quot;&quot;This is a Guess the Number game.&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">random</span>
-
-<span class="n">number</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
-<span class="n">max_guesses</span> <span class="o">=</span> <span class="mi">6</span>
-
-<span class="hll"><span class="n">player</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Hello! What is your name? &quot;</span><span class="p">)</span>
-</span><span class="hll"><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello &quot;</span> <span class="o">+</span> <span class="n">player</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>
-</span><span class="hll"><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I am thinking of a number between 1 and 20.&quot;</span><span class="p">)</span>
-</span><span class="hll"><span class="nb">print</span><span class="p">()</span>
-</span></pre></div></td></tr></table></div>
+<div class="code-block-caption"><span class="caption-number">Listing 345 </span><span class="caption-text">guess.py</span><a class="headerlink" href="#id8" title="Permalink to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="sd">&quot;&quot;&quot;This is a Guess the Number game.&quot;&quot;&quot;</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">random</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="n">number</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="linenos"> 5</span><span class="n">max_guesses</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="linenos"> 6</span>
+<span class="hll"><span class="linenos"> 7</span><span class="n">player</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Hello! What is your name? &quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos"> 8</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello &quot;</span> <span class="o">+</span> <span class="n">player</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos"> 9</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I am thinking of a number between 1 and 20.&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">10</span><span class="nb">print</span><span class="p">()</span>
+</span></pre></div>
 </div>
 </div>
 <p>Note the space after the <code class="docutils literal notranslate"><span class="pre">?</span></code> in the <code class="docutils literal notranslate"><span class="pre">input()</span></code> line. This way there will be
 a space between the prompt and the cursor.</p>
-</div>
-</div>
-<div class="section" id="part-4-let-the-player-guess">
-<h2><a class="toc-backref" href="#table-of-contents">Part 4: Let the Player Guess</a><a class="headerlink" href="#part-4-let-the-player-guess" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="part-4-let-the-player-guess">
+<h2><a class="toc-backref" href="#table-of-contents">Part 4: Let the Player Guess</a><a class="headerlink" href="#part-4-let-the-player-guess" title="Permalink to this headline">#</a></h2>
 <p>We’ve used a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop before to loop over items in a list. Here we will
 use the <code class="docutils literal notranslate"><span class="pre">range()</span></code> function, which allows us to easily repeat the loop
 a specific number of times. We will give it two arguments: the starting
@@ -934,113 +1156,74 @@ number and the <code class="docutils literal notranslate"><span class="pre">max_
 passed it only one argument. It can take as many arguments as you want and
 it will convert them each to strings and then print them with spaces
 in-between. Let’s use this handy way to print the guess number each round.</p>
-<div class="section" id="id2">
-<h3><a class="toc-backref" href="#table-of-contents">Edit <code class="docutils literal notranslate"><span class="pre">guess.py</span></code></a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<section id="id2">
+<h3><a class="toc-backref" href="#table-of-contents">Edit <code class="docutils literal notranslate"><span class="pre">guess.py</span></code></a><a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
 <div class="literal-block-wrapper docutils container" id="id9">
-<div class="code-block-caption"><span class="caption-number">Listing 319 </span><span class="caption-text">guess.py</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">&quot;&quot;&quot;This is a Guess the Number game.&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">random</span>
-
-<span class="n">number</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
-<span class="n">max_guesses</span> <span class="o">=</span> <span class="mi">6</span>
-
-<span class="n">player</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Hello! What is your name? &quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello &quot;</span> <span class="o">+</span> <span class="n">player</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I am thinking of a number between 1 and 20.&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">()</span>
-
-<span class="hll"><span class="k">for</span> <span class="n">guess_count</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_guesses</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-</span><span class="hll">    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Guess&quot;</span><span class="p">,</span> <span class="n">guess_count</span><span class="p">,</span> <span class="s2">&quot;of&quot;</span><span class="p">,</span> <span class="n">max_guesses</span><span class="p">)</span>
-</span><span class="hll">    <span class="n">guess</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Your guess: &quot;</span><span class="p">)</span>
-</span></pre></div></td></tr></table></div>
+<div class="code-block-caption"><span class="caption-number">Listing 346 </span><span class="caption-text">guess.py</span><a class="headerlink" href="#id9" title="Permalink to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="sd">&quot;&quot;&quot;This is a Guess the Number game.&quot;&quot;&quot;</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">random</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="n">number</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="linenos"> 5</span><span class="n">max_guesses</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="n">player</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Hello! What is your name? &quot;</span><span class="p">)</span>
+<span class="linenos"> 8</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello &quot;</span> <span class="o">+</span> <span class="n">player</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I am thinking of a number between 1 and 20.&quot;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="nb">print</span><span class="p">()</span>
+<span class="linenos">11</span>
+<span class="hll"><span class="linenos">12</span><span class="k">for</span> <span class="n">guess_count</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_guesses</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">13</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Guess&quot;</span><span class="p">,</span> <span class="n">guess_count</span><span class="p">,</span> <span class="s2">&quot;of&quot;</span><span class="p">,</span> <span class="n">max_guesses</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">14</span>    <span class="n">guess</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Your guess: &quot;</span><span class="p">)</span>
+</span></pre></div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="part-5-check-the-guess">
-<h2><a class="toc-backref" href="#table-of-contents">Part 5: Check the Guess</a><a class="headerlink" href="#part-5-check-the-guess" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="part-5-check-the-guess">
+<h2><a class="toc-backref" href="#table-of-contents">Part 5: Check the Guess</a><a class="headerlink" href="#part-5-check-the-guess" title="Permalink to this headline">#</a></h2>
 <p>The value in the <code class="docutils literal notranslate"><span class="pre">guess</span></code> variable is a string, because <code class="docutils literal notranslate"><span class="pre">input()</span></code> always
 returns a string. But we need a number variable to check the guess. To
 convert a string to an integer, we will use the <code class="docutils literal notranslate"><span class="pre">int()</span></code> function.</p>
 <p>Once it is converted, we can use an <a class="reference internal" href="conditional-statements.html#term-if-statement"><span class="xref std std-term">if statement</span></a> to check it. We’ll
 use the <code class="docutils literal notranslate"><span class="pre">break</span></code> keyword to exit the loop early if the guess is correct.</p>
-<div class="section" id="id3">
-<h3><a class="toc-backref" href="#table-of-contents">Edit <code class="docutils literal notranslate"><span class="pre">guess.py</span></code></a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<section id="id3">
+<h3><a class="toc-backref" href="#table-of-contents">Edit <code class="docutils literal notranslate"><span class="pre">guess.py</span></code></a><a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
 <div class="literal-block-wrapper docutils container" id="id10">
-<div class="code-block-caption"><span class="caption-number">Listing 320 </span><span class="caption-text">guess.py</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">&quot;&quot;&quot;This is a Guess the Number game.&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">random</span>
-
-<span class="n">number</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
-<span class="n">max_guesses</span> <span class="o">=</span> <span class="mi">6</span>
-
-<span class="n">player</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Hello! What is your name? &quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello &quot;</span> <span class="o">+</span> <span class="n">player</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I am thinking of a number between 1 and 20.&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">()</span>
-
-<span class="k">for</span> <span class="n">guess_count</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_guesses</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Guess&quot;</span><span class="p">,</span> <span class="n">guess_count</span><span class="p">,</span> <span class="s2">&quot;of&quot;</span><span class="p">,</span> <span class="n">max_guesses</span><span class="p">)</span>
-
-    <span class="n">guess</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Your guess: &quot;</span><span class="p">)</span>
-<span class="hll">    <span class="n">guess</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">guess</span><span class="p">)</span>
-</span><span class="hll">
-</span><span class="hll">    <span class="k">if</span> <span class="n">guess</span> <span class="o">&lt;</span> <span class="n">number</span><span class="p">:</span>
-</span><span class="hll">        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Your guess is too low.&#39;</span><span class="p">)</span>
-</span><span class="hll">
-</span><span class="hll">    <span class="k">elif</span> <span class="n">guess</span> <span class="o">&gt;</span> <span class="n">number</span><span class="p">:</span>
-</span><span class="hll">        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Your guess is too high.&#39;</span><span class="p">)</span>
-</span><span class="hll">
-</span><span class="hll">    <span class="k">else</span><span class="p">:</span>
-</span><span class="hll">        <span class="k">break</span>
-</span><span class="hll">
-</span><span class="hll">    <span class="nb">print</span><span class="p">()</span>
-</span></pre></div></td></tr></table></div>
+<div class="code-block-caption"><span class="caption-number">Listing 347 </span><span class="caption-text">guess.py</span><a class="headerlink" href="#id10" title="Permalink to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="sd">&quot;&quot;&quot;This is a Guess the Number game.&quot;&quot;&quot;</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">random</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="n">number</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="linenos"> 5</span><span class="n">max_guesses</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="n">player</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Hello! What is your name? &quot;</span><span class="p">)</span>
+<span class="linenos"> 8</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello &quot;</span> <span class="o">+</span> <span class="n">player</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I am thinking of a number between 1 and 20.&quot;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="nb">print</span><span class="p">()</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="k">for</span> <span class="n">guess_count</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_guesses</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+<span class="linenos">13</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Guess&quot;</span><span class="p">,</span> <span class="n">guess_count</span><span class="p">,</span> <span class="s2">&quot;of&quot;</span><span class="p">,</span> <span class="n">max_guesses</span><span class="p">)</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span>    <span class="n">guess</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Your guess: &quot;</span><span class="p">)</span>
+<span class="hll"><span class="linenos">16</span>    <span class="n">guess</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">guess</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">17</span>
+</span><span class="hll"><span class="linenos">18</span>    <span class="k">if</span> <span class="n">guess</span> <span class="o">&lt;</span> <span class="n">number</span><span class="p">:</span>
+</span><span class="hll"><span class="linenos">19</span>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Your guess is too low.&#39;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">20</span>
+</span><span class="hll"><span class="linenos">21</span>    <span class="k">elif</span> <span class="n">guess</span> <span class="o">&gt;</span> <span class="n">number</span><span class="p">:</span>
+</span><span class="hll"><span class="linenos">22</span>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Your guess is too high.&#39;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">23</span>
+</span><span class="hll"><span class="linenos">24</span>    <span class="k">else</span><span class="p">:</span>
+</span><span class="hll"><span class="linenos">25</span>        <span class="k">break</span>
+</span><span class="hll"><span class="linenos">26</span>
+</span><span class="hll"><span class="linenos">27</span>    <span class="nb">print</span><span class="p">()</span>
+</span></pre></div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="part-6-check-if-the-player-won">
-<h2><a class="toc-backref" href="#table-of-contents">Part 6: Check if the Player Won</a><a class="headerlink" href="#part-6-check-if-the-player-won" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="part-6-check-if-the-player-won">
+<h2><a class="toc-backref" href="#table-of-contents">Part 6: Check if the Player Won</a><a class="headerlink" href="#part-6-check-if-the-player-won" title="Permalink to this headline">#</a></h2>
 <p>When the code runs to the point where it exits the <a class="term-missing reference internal" href="#" title=""><span class="xref std std-term">for loop</span></a> both the
 <code class="docutils literal notranslate"><span class="pre">guess</span></code> and the <code class="docutils literal notranslate"><span class="pre">guess_count</span></code> variables will still be the last value each
 was set to when the loop ran for the final time.</p>
@@ -1050,88 +1233,53 @@ the player won or not and print out a message for each case.</p>
 need them to be strings in order to <a class="reference internal" href="../reference/glossary.html#term-concatenate"><span class="xref std std-term">concatenate</span></a> them in the message
 we print at the of the game. To convert an int to a string use the
 <code class="docutils literal notranslate"><span class="pre">str()</span></code> function.</p>
-<div class="section" id="id4">
-<h3><a class="toc-backref" href="#table-of-contents">Edit <code class="docutils literal notranslate"><span class="pre">guess.py</span></code></a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<section id="id4">
+<h3><a class="toc-backref" href="#table-of-contents">Edit <code class="docutils literal notranslate"><span class="pre">guess.py</span></code></a><a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
 <div class="literal-block-wrapper docutils container" id="id11">
-<div class="code-block-caption"><span class="caption-number">Listing 321 </span><span class="caption-text">guess.py</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
-<div class="full-width highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><span class="sd">&quot;&quot;&quot;This is a Guess the Number game.&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">random</span>
-
-<span class="n">number</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
-<span class="n">max_guesses</span> <span class="o">=</span> <span class="mi">6</span>
-
-<span class="n">player</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Hello! What is your name? &quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello &quot;</span> <span class="o">+</span> <span class="n">player</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I am thinking of a number between 1 and 20.&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">()</span>
-
-<span class="k">for</span> <span class="n">guess_count</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_guesses</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Guess&quot;</span><span class="p">,</span> <span class="n">guess_count</span><span class="p">,</span> <span class="s2">&quot;of&quot;</span><span class="p">,</span> <span class="n">max_guesses</span><span class="p">)</span>
-
-    <span class="n">guess</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Your guess: &quot;</span><span class="p">)</span>
-    <span class="n">guess</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">guess</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">guess</span> <span class="o">&lt;</span> <span class="n">number</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Your guess is too low.&#39;</span><span class="p">)</span>
-
-    <span class="k">elif</span> <span class="n">guess</span> <span class="o">&gt;</span> <span class="n">number</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Your guess is too high.&#39;</span><span class="p">)</span>
-
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">break</span>
-
-    <span class="nb">print</span><span class="p">()</span>
-
-
-<span class="hll"><span class="k">if</span> <span class="n">guess</span> <span class="o">==</span> <span class="n">number</span><span class="p">:</span>
-</span><span class="hll">    <span class="n">guess_count</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">guess_count</span><span class="p">)</span>
-</span><span class="hll">    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Good job, &quot;</span> <span class="o">+</span> <span class="n">player</span> <span class="o">+</span> <span class="s2">&quot;! You guessed my number in &quot;</span> <span class="o">+</span> <span class="n">guess_count</span> <span class="o">+</span> <span class="s2">&quot; guesses!&quot;</span><span class="p">)</span>
-</span><span class="hll">
-</span><span class="hll"><span class="k">else</span><span class="p">:</span>
-</span><span class="hll">    <span class="n">number</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
-</span><span class="hll">    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nope. The number I was thinking of was &quot;</span> <span class="o">+</span> <span class="n">number</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>
-</span></pre></div></td></tr></table></div>
+<div class="code-block-caption"><span class="caption-number">Listing 348 </span><span class="caption-text">guess.py</span><a class="headerlink" href="#id11" title="Permalink to this code">#</a></div>
+<div class="full-width highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="sd">&quot;&quot;&quot;This is a Guess the Number game.&quot;&quot;&quot;</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">random</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="n">number</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="linenos"> 5</span><span class="n">max_guesses</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="n">player</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Hello! What is your name? &quot;</span><span class="p">)</span>
+<span class="linenos"> 8</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello &quot;</span> <span class="o">+</span> <span class="n">player</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I am thinking of a number between 1 and 20.&quot;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="nb">print</span><span class="p">()</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="k">for</span> <span class="n">guess_count</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_guesses</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+<span class="linenos">13</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Guess&quot;</span><span class="p">,</span> <span class="n">guess_count</span><span class="p">,</span> <span class="s2">&quot;of&quot;</span><span class="p">,</span> <span class="n">max_guesses</span><span class="p">)</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span>    <span class="n">guess</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Your guess: &quot;</span><span class="p">)</span>
+<span class="linenos">16</span>    <span class="n">guess</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">guess</span><span class="p">)</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span>    <span class="k">if</span> <span class="n">guess</span> <span class="o">&lt;</span> <span class="n">number</span><span class="p">:</span>
+<span class="linenos">19</span>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Your guess is too low.&#39;</span><span class="p">)</span>
+<span class="linenos">20</span>
+<span class="linenos">21</span>    <span class="k">elif</span> <span class="n">guess</span> <span class="o">&gt;</span> <span class="n">number</span><span class="p">:</span>
+<span class="linenos">22</span>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Your guess is too high.&#39;</span><span class="p">)</span>
+<span class="linenos">23</span>
+<span class="linenos">24</span>    <span class="k">else</span><span class="p">:</span>
+<span class="linenos">25</span>        <span class="k">break</span>
+<span class="linenos">26</span>
+<span class="linenos">27</span>    <span class="nb">print</span><span class="p">()</span>
+<span class="linenos">28</span>
+<span class="linenos">29</span>
+<span class="hll"><span class="linenos">30</span><span class="k">if</span> <span class="n">guess</span> <span class="o">==</span> <span class="n">number</span><span class="p">:</span>
+</span><span class="hll"><span class="linenos">31</span>    <span class="n">guess_count</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">guess_count</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">32</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Good job, &quot;</span> <span class="o">+</span> <span class="n">player</span> <span class="o">+</span> <span class="s2">&quot;! You guessed my number in &quot;</span> <span class="o">+</span> <span class="n">guess_count</span> <span class="o">+</span> <span class="s2">&quot; guesses!&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">33</span>
+</span><span class="hll"><span class="linenos">34</span><span class="k">else</span><span class="p">:</span>
+</span><span class="hll"><span class="linenos">35</span>    <span class="n">number</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">36</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nope. The number I was thinking of was &quot;</span> <span class="o">+</span> <span class="n">number</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>
+</span></pre></div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="part-7-make-it-your-own">
-<h2><a class="toc-backref" href="#table-of-contents">Part 7: Make it your own</a><a class="headerlink" href="#part-7-make-it-your-own" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="part-7-make-it-your-own">
+<h2><a class="toc-backref" href="#table-of-contents">Part 7: Make it your own</a><a class="headerlink" href="#part-7-make-it-your-own" title="Permalink to this headline">#</a></h2>
 <p>Change the game to make it your own. Here are some ideas.</p>
 <ul class="simple">
 <li><p>Check to see if the player name is your own. If it is, let yourself
@@ -1149,9 +1297,9 @@ get further away, print out an extra message to let them know.</p></li>
 chance to play again. Keep track of their wins, losses and total number
 of games played and print it at the end of each round.</p></li>
 </ul>
-</div>
-<div class="section" id="what-we-ve-learned">
-<h2><a class="toc-backref" href="#table-of-contents">What we’ve learned</a><a class="headerlink" href="#what-we-ve-learned" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="what-we-ve-learned">
+<h2><a class="toc-backref" href="#table-of-contents">What we’ve learned</a><a class="headerlink" href="#what-we-ve-learned" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>How to import a module and call its functions.</p></li>
 <li><p>How to convert between strings and integers.</p></li>
@@ -1160,8 +1308,8 @@ of games played and print it at the end of each round.</p></li>
 <li><p>How to pass multiple arguments to the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function to
 easily print spaces between them.</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1175,7 +1323,7 @@ easily print spaces between them.</p></li>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./lessons"
         },
         predefinedOutput: true
@@ -1185,9 +1333,11 @@ easily print spaces between them.</p></li>
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="game-book.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1203,23 +1353,25 @@ easily print spaces between them.</p></li>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

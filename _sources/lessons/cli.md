@@ -4,11 +4,14 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
+    format_version: 0.12
+    jupytext_version: 1.9.1
 kernelspec:
-  display_name: Python 3
+  display_name: Python 3 (ipykernel)
   language: python
   name: python3
 ---
+
 CLI
 ===
 
@@ -207,7 +210,7 @@ $ export LANGUAGE=en
 
 In Python, we can access this using the `os.environ` dictionary.
 
-```{code-cell} python
+```{code-cell} ipython3
 :class: full-width
 
 import os
@@ -218,7 +221,7 @@ If you're not sure if the environment variable exists, use the `.get()` method,
 with an optional second argument that will be the value returned if it is
 missing.
 
-```{code-cell} python
+```{code-cell} ipython3
 :class: full-width
 
 import os
@@ -312,7 +315,7 @@ In Python, these can be accessed in the `sys` module.
 When you use the `print()` function, for example it prints to `stdout` by
 default. This is the same as:
 
-```{code-cell} python
+```{code-cell} ipython3
 import sys
 print("hello", file=sys.stdout)
 ```
@@ -322,14 +325,14 @@ represented as {term}`file handler` objects. As such, you can interact with
 them the same way you would with a normal file object. So yet another way to
 accomplish the same thing is:
 
-```{code-cell} python
+```{code-cell} ipython3
 import sys
 sys.stdout.write("hello\n")
 ```
 
 The most common use of file handlers is to write to `stderr` instead of `stdout`.
 
-```{code-cell} python
+```{code-cell} ipython3
 import sys
 print("Danger, Will Robinson!", file=sys.stderr)
 ```
@@ -614,7 +617,7 @@ Terminal size
 If you need to know the size of the terminal, you can use the
 `shutil.get_terminal_size()` function.
 
-```{code-cell} python
+```{code-cell} ipython3
 :class: full-width
 
 import shutil
@@ -624,7 +627,7 @@ shutil.get_terminal_size()
 It returns a `terminal_size` object, which provides the
 {term}`properties <property>` `columns` and `lines`.
 
-```{code-cell} python
+```{code-cell} ipython3
 :class: full-width
 
 import shutil
@@ -637,7 +640,7 @@ print("height:", size.lines)
 It is also a special kind of `tuple`, which means you can make use of multiple
 assignment.
 
-```{code-cell} python
+```{code-cell} ipython3
 :class: full-width
 
 import shutil
@@ -651,7 +654,7 @@ On systems where the size cannot be determined, the defaults `(80, 24)`
 will be used. To change the defaults, send an `tuple` argument with
 {samp}`({columns}, {lines})`.
 
-```{code-cell} python
+```{code-cell} ipython3
 :class: full-width
 
 import shutil
@@ -760,8 +763,9 @@ poetry add console
 `````
 ### Usage
 
-```{code-cell} python
+```{code-cell} ipython3
 :tags: [remove-input]
+
 from IPython.display import display, Markdown
 from console.style import ForegroundPalette, EffectsPalette
 from console.color_tables_x11 import x11_color_map
@@ -905,7 +909,7 @@ via the `fg` and `bg` objects.
 
 <div class="row no-labels"><div class="col">
 
-```{code-cell} python
+```{code-cell} ipython3
 :tags: [remove-input, hide-output, output_scroll]
 
 palette(EffectsPalette)
@@ -913,7 +917,7 @@ palette(EffectsPalette)
 
 </div><div class="col">
 
-```{code-cell} python
+```{code-cell} ipython3
 :tags: [remove-input, hide-output, output_scroll]
 
 palette(ForegroundPalette)
@@ -921,7 +925,7 @@ palette(ForegroundPalette)
 
 </div><div class="col">
 
-```{code-cell} python
+```{code-cell} ipython3
 :tags: [remove-input, hide-output, output_scroll]
 
 x11_colors()
@@ -999,4 +1003,3 @@ status code
 %     [ ] termcolor
 % [ ] version, usage, help
 % [ ] if __name__ == "__main__"
-

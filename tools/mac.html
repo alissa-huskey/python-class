@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Mac Dev Env for Python &#8212; Python Class</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,39 +20,39 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/asciinema-player.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/asciinema-player.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/custom.js"></script>
-    <script src="../_static/asciinema-player.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/x-frame-bypass.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+    <script src="../_static/asciinema-player.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
@@ -68,7 +70,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -77,9 +93,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
       
@@ -92,7 +109,7 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <p class="caption">
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Lessons
  </span>
@@ -379,7 +396,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Practices
  </span>
@@ -406,7 +423,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Tools
  </span>
@@ -454,7 +471,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="replit.html">
-   Repl.it Tips
+   Replit
   </a>
  </li>
  <li class="toctree-l1">
@@ -478,7 +495,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Reference
  </span>
@@ -510,7 +527,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Exercises
  </span>
@@ -542,7 +559,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Admin
  </span>
@@ -556,8 +573,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
 </div>
 
 
@@ -565,59 +587,116 @@ const thebe_selector_output = ".output, .cell_output"
 
 
           
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
     
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/alissa-huskey/python-class"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
+    <div class="header-article row sticky-top noprint">
         
-        <a class="edit-button" href="https://github.com/alissa-huskey/python-class/edit/master/docs/tools/mac.md"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/alissa-huskey/python-class"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/alissa-huskey/python-class/edit/master/docs/tools/mac.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
     </div>
 </div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#quickstart">
    Quickstart
@@ -699,17 +778,114 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Mac Dev Env for Python</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quickstart">
+   Quickstart
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#steps">
+   Steps
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-1-xcode">
+     Step 1: XCode
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-2-find-create-your-startup-file">
+     Step 2: Find/create your startup file
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-3-homebrew">
+     Step 3: Homebrew
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-4-asdf">
+     Step 4: asdf
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-5-python">
+     Step 5: Python
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-6-poetry">
+     Step 6: Poetry
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-7-vs-code">
+     Step 7: VS Code
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-8-vs-code-extensions">
+     Step 8: VS Code extensions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#troubleshooting">
+   Troubleshooting
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#issue-a-arm64-apple-not-recognized">
+     Issue A: arm64-apple not recognized
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#issue-b-unexpected-output-of-arch-on-osx">
+     Issue B: Unexpected output of ‘arch’ on OSX
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#issue-c-sendfile-zipimport-bzip-lzma-errors">
+     Issue C: sendfile, zipimport, bzip, _lzma errors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#issue-d-build-failed">
+     Issue D: BUILD FAILED
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="mac-dev-env-for-python">
-<h1>Mac Dev Env for Python<a class="headerlink" href="#mac-dev-env-for-python" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="mac-dev-env-for-python">
+<h1>Mac Dev Env for Python<a class="headerlink" href="#mac-dev-env-for-python" title="Permalink to this headline">#</a></h1>
 <p>Mac tool recommendations and setup guide for Python development.</p>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">Table of Contents</p>
@@ -737,21 +913,21 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 </ul>
 </div>
-<div class="section" id="quickstart">
-<h2><a class="toc-backref" href="#id9">Quickstart</a><a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h2>
+<section id="quickstart">
+<h2><a class="toc-backref" href="#id9">Quickstart</a><a class="headerlink" href="#quickstart" title="Permalink to this headline">#</a></h2>
 <p>The <a class="reference external" href="https://github.com/alissa-huskey/python-class-setup">Python Class Setup</a> tool will guide you step-by-step through
 the setup process.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[[</span> -d ~/.setup <span class="o">]]</span> <span class="o">||</span> git clone https://github.com/alissa-huskey/python-class-setup.git ~/.setup
-<span class="nb">cd</span> ~/.setup
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[[</span><span class="w"> </span>-d<span class="w"> </span>~/.setup<span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/alissa-huskey/python-class-setup.git<span class="w"> </span>~/.setup
+<span class="nb">cd</span><span class="w"> </span>~/.setup
 ./bin/setup-mac
 </pre></div>
 </div>
 <p><img alt="screenshot" src="../_images/python-class-setup.png" /></p>
-</div>
-<div class="section" id="steps">
-<h2><a class="toc-backref" href="#id10">Steps</a><a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="step-1-xcode">
-<h3><a class="toc-backref" href="#id11">Step 1: XCode</a><a class="headerlink" href="#step-1-xcode" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="steps">
+<h2><a class="toc-backref" href="#id10">Steps</a><a class="headerlink" href="#steps" title="Permalink to this headline">#</a></h2>
+<section id="step-1-xcode">
+<h3><a class="toc-backref" href="#id11">Step 1: XCode</a><a class="headerlink" href="#step-1-xcode" title="Permalink to this headline">#</a></h3>
 <p>XCode is the Apple IDE (integrated development environment), a tool for writing
 code. It also contains the foundational tools and libraries that other programs
 rely on, and that programmers use when writing code.</p>
@@ -763,27 +939,27 @@ rely on, and that programmers use when writing code.</p>
 prompting you to log into your apple account and accept the terms of service.
 After you follow the prompts, the download and installation will begin.</p>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-number">Listing 492 </span><span class="caption-text">command line</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>xcode-select --install
+<div class="code-block-caption"><span class="caption-number">Listing 519 </span><span class="caption-text">command line</span><a class="headerlink" href="#id1" title="Permalink to this code">#</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>xcode-select<span class="w"> </span>--install
 </pre></div>
 </div>
 </div>
 <p>When it finishes run the following to accept the license.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo xcodebuild -runFirstLaunch
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>xcodebuild<span class="w"> </span>-runFirstLaunch
 </pre></div>
 </div>
 <p>If installing from the command line does not work for some reason, you can
 install XCode via the Apple App Store.</p>
-</div>
-<div class="section" id="step-2-find-create-your-startup-file">
-<h3><a class="toc-backref" href="#id12">Step 2: Find/create your startup file</a><a class="headerlink" href="#step-2-find-create-your-startup-file" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="step-2-find-create-your-startup-file">
+<h3><a class="toc-backref" href="#id12">Step 2: Find/create your startup file</a><a class="headerlink" href="#step-2-find-create-your-startup-file" title="Permalink to this headline">#</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>You can run the <code class="docutils literal notranslate"><span class="pre">make-shellrc</span></code> tool to find and generate a startup file for
 you.</p>
 <p>Copy the following and paste it into a terminal:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[[</span> -d ~/.setup <span class="o">]]</span> <span class="o">||</span> git clone https://github.com/alissa-huskey/python-class-setup.git ~/.setup
-<span class="nb">cd</span> ~/.setup
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[[</span><span class="w"> </span>-d<span class="w"> </span>~/.setup<span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/alissa-huskey/python-class-setup.git<span class="w"> </span>~/.setup
+<span class="nb">cd</span><span class="w"> </span>~/.setup
 ./bin/make-shellrc
 </pre></div>
 </div>
@@ -792,7 +968,7 @@ you.</p>
 of those files is in your home directory and is where you will put
 configuration for things we’ll install in some of the following steps.</p>
 <p>First you need to find out what your shell is by typing:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="nv">$SHELL</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="nv">$SHELL</span>
 </pre></div>
 </div>
 <p>You will most likely see either <code class="docutils literal notranslate"><span class="pre">/bin/zsh</span></code> or <code class="docutils literal notranslate"><span class="pre">/bin/bash</span></code>.</p>
@@ -801,98 +977,98 @@ configuration for things we’ll install in some of the following steps.</p>
 <li><p>If your shell is <code class="docutils literal notranslate"><span class="pre">/bin/zsh</span></code>, your startup file is <code class="docutils literal notranslate"><span class="pre">~/.zshrc</span></code>.</p></li>
 <li><p>If your shell is <code class="docutils literal notranslate"><span class="pre">/bin/bash</span></code>, your startup file is <code class="docutils literal notranslate"><span class="pre">~/.bash_profile</span></code>.</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[[</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">SHELL</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">=</span>~ zsh$ <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nv">initfile</span><span class="o">=</span><span class="nv">$HOME</span>/.zshrc
-<span class="o">[[</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">SHELL</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">=</span>~ bash$ <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nv">initfile</span><span class="o">=</span><span class="nv">$HOME</span>/.bash_profile
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">SHELL</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span>~<span class="w"> </span>zsh$<span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nv">initfile</span><span class="o">=</span><span class="nv">$HOME</span>/.zshrc
+<span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">SHELL</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span>~<span class="w"> </span>bash$<span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nv">initfile</span><span class="o">=</span><span class="nv">$HOME</span>/.bash_profile
 
-touch <span class="s2">&quot;</span><span class="si">${</span><span class="nv">initfile</span><span class="si">}</span><span class="s2">&quot;</span>
+touch<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">initfile</span><span class="si">}</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
 <p>In later steps when you see <code class="docutils literal notranslate"><span class="pre">initfile</span></code>, be sure to replace with the path to
 your file.</p>
-</div>
-<div class="section" id="step-3-homebrew">
-<h3><a class="toc-backref" href="#id13">Step 3: Homebrew</a><a class="headerlink" href="#step-3-homebrew" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="step-3-homebrew">
+<h3><a class="toc-backref" href="#id13">Step 3: Homebrew</a><a class="headerlink" href="#step-3-homebrew" title="Permalink to this headline">#</a></h3>
 <p>Homebrew is a package manager for macOS.  It simplifies the installing,
 upgrading and uninstalling of software, especially tools used by developers.</p>
 <p>We’ll use this to install software in future steps.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/bin/bash -c <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh<span class="k">)</span><span class="s2">&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/bin/bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/Homebrew/install/master/install.sh<span class="k">)</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
 <p>If you have an M1 chip, you will also need to add the following to your startup
 file.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/opt/homebrew/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
-<span class="nb">export</span> PATH
+<span class="nb">export</span><span class="w"> </span>PATH
 </pre></div>
 </div>
 <p>See the <a class="reference internal" href="homebrew.html"><span class="doc std std-doc">homebrew guide</span></a>.</p>
-</div>
-<div class="section" id="step-4-asdf">
-<h3><a class="toc-backref" href="#id14">Step 4: asdf</a><a class="headerlink" href="#step-4-asdf" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="step-4-asdf">
+<h3><a class="toc-backref" href="#id14">Step 4: asdf</a><a class="headerlink" href="#step-4-asdf" title="Permalink to this headline">#</a></h3>
 <p>asdf is a command line tool that lets you easily install and switch between
 multiple versions of Python or other languages.</p>
 <div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-number">Listing 493 </span><span class="caption-text">command line</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 520 </span><span class="caption-text">command line</span><a class="headerlink" href="#id2" title="Permalink to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># install asdf</span>
-brew install asdf
+brew<span class="w"> </span>install<span class="w"> </span>asdf
 </pre></div>
 </div>
 </div>
 <p>Then you’ll need to add the following line to your startup file:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> <span class="s2">&quot;</span><span class="k">$(</span>brew --prefix asdf<span class="k">)</span><span class="s2">/libexec/asdf.sh&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>brew<span class="w"> </span>--prefix<span class="w"> </span>asdf<span class="k">)</span><span class="s2">/libexec/asdf.sh&quot;</span>
 </pre></div>
 </div>
 <p>See the <a class="reference internal" href="asdf.html"><span class="doc std std-doc">asdf guide</span></a>.</p>
-</div>
-<div class="section" id="step-5-python">
-<h3><a class="toc-backref" href="#id15">Step 5: Python</a><a class="headerlink" href="#step-5-python" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="step-5-python">
+<h3><a class="toc-backref" href="#id15">Step 5: Python</a><a class="headerlink" href="#step-5-python" title="Permalink to this headline">#</a></h3>
 <blockquote>
 <div><p>This is for installing Python 3.8, but feel free to replace <code class="docutils literal notranslate"><span class="pre">3.8.11</span></code> with any
 version in <code class="docutils literal notranslate"><span class="pre">asdf</span> <span class="pre">list</span> <span class="pre">all</span> <span class="pre">python</span></code>.</p>
 </div></blockquote>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># install prerequisites</span>
-brew install zlib openssl readline xz bzip2 asdf
+brew<span class="w"> </span>install<span class="w"> </span>zlib<span class="w"> </span>openssl<span class="w"> </span>readline<span class="w"> </span>xz<span class="w"> </span>bzip2<span class="w"> </span>asdf
 
 <span class="c1"># install python</span>
-asdf install python <span class="m">3</span>.8.11
-asdf global python <span class="m">3</span>.8.11
+asdf<span class="w"> </span>install<span class="w"> </span>python<span class="w"> </span><span class="m">3</span>.8.11
+asdf<span class="w"> </span>global<span class="w"> </span>python<span class="w"> </span><span class="m">3</span>.8.11
 </pre></div>
 </div>
-</div>
-<div class="section" id="step-6-poetry">
-<h3><a class="toc-backref" href="#id16">Step 6: Poetry</a><a class="headerlink" href="#step-6-poetry" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="step-6-poetry">
+<h3><a class="toc-backref" href="#id16">Step 6: Poetry</a><a class="headerlink" href="#step-6-poetry" title="Permalink to this headline">#</a></h3>
 <p>Poetry is a tool that helps you make keep track of and install the dependencies
 needed for each project.</p>
 <p>This step is optional.</p>
 <p>To install poetry run the following:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sSL https://install.python-poetry.org <span class="p">|</span> python3 -
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-sSL<span class="w"> </span>https://install.python-poetry.org<span class="w"> </span><span class="p">|</span><span class="w"> </span>python3<span class="w"> </span>-
 </pre></div>
 </div>
 <p>Then add to your startup file:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.poetry/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
-<span class="nb">export</span> PATH
+<span class="nb">export</span><span class="w"> </span>PATH
 </pre></div>
 </div>
 <p>See the full <a class="reference internal" href="poetry.html"><span class="doc std std-doc">Poetry Guide</span></a>.</p>
-</div>
-<div class="section" id="step-7-vs-code">
-<h3><a class="toc-backref" href="#id17">Step 7: VS Code</a><a class="headerlink" href="#step-7-vs-code" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="step-7-vs-code">
+<h3><a class="toc-backref" href="#id17">Step 7: VS Code</a><a class="headerlink" href="#step-7-vs-code" title="Permalink to this headline">#</a></h3>
 <p>Install Visual Studio Code via homebrew:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew install --cask visual-studio-code
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>--cask<span class="w"> </span>visual-studio-code
 </pre></div>
 </div>
 <p>Or you can <a class="reference external" href="https://code.visualstudio.com/#alt-downloads">download</a> the package from the Visual Studio Code website.</p>
 <p>See the <a class="reference internal" href="vscode.html"><span class="doc std std-doc">VS Code Intro</span></a>.</p>
-</div>
-<div class="section" id="step-8-vs-code-extensions">
-<h3><a class="toc-backref" href="#id18">Step 8: VS Code extensions</a><a class="headerlink" href="#step-8-vs-code-extensions" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="step-8-vs-code-extensions">
+<h3><a class="toc-backref" href="#id18">Step 8: VS Code extensions</a><a class="headerlink" href="#step-8-vs-code-extensions" title="Permalink to this headline">#</a></h3>
 <p>You can install the recommended extensions via the <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=alissahuskey.vscode-python-class">PythonClass</a> extension.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>code --install-extension alissahuskey.vscode-python-class
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>code<span class="w"> </span>--install-extension<span class="w"> </span>alissahuskey.vscode-python-class
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="troubleshooting">
-<h2><a class="toc-backref" href="#id19">Troubleshooting</a><a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="troubleshooting">
+<h2><a class="toc-backref" href="#id19">Troubleshooting</a><a class="headerlink" href="#troubleshooting" title="Permalink to this headline">#</a></h2>
 <p>This section is for various issues installing Python on macs.</p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
@@ -902,19 +1078,19 @@ needed for each project.</p>
 <li><p><a class="reference internal" href="#issue-d-build-failed" id="id27">Issue D: BUILD FAILED</a></p></li>
 </ul>
 </div>
-<div class="section" id="issue-a-arm64-apple-not-recognized">
-<h3><a class="toc-backref" href="#id24">Issue A: arm64-apple not recognized</a><a class="headerlink" href="#issue-a-arm64-apple-not-recognized" title="Permalink to this headline">¶</a></h3>
+<section id="issue-a-arm64-apple-not-recognized">
+<h3><a class="toc-backref" href="#id24">Issue A: arm64-apple not recognized</a><a class="headerlink" href="#issue-a-arm64-apple-not-recognized" title="Permalink to this headline">#</a></h3>
 <p>The install fails before building with the error</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">Invalid</span> <span class="n">configuration</span> <span class="n">arm64</span><span class="o">-</span><span class="n">apple</span><span class="o">-</span><span class="n">darwin21</span><span class="mf">.3.0</span><span class="p">:</span> <span class="n">machine</span> <span class="n">arm64</span><span class="o">-</span><span class="n">apple</span> <span class="ow">not</span> <span class="n">recognized</span>
 </pre></div>
 </div>
-<details class="sphinx-bs dropdown card mb-3">
-<summary class="summary-title card-header card-title">
-Error<div class="summary-down docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="summary-up docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="summary-content card-body docutils">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Error<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>BUILD FAILED (OS X 12.2.1 using python-build 2.2.4-1-6-g44db3b03)
 
 Inspect or clean up the working tree at /var/folders/jg/spf3ymn14710q5h5bl7p3wlw0000gn/T/python-build.20220304160204.18295
@@ -929,37 +1105,37 @@ make: *** No targets specified and no makefile found.  Stop.
 </pre></div>
 </div>
 </div>
-</details><details class="sphinx-bs dropdown card mb-3" open="open">
-<summary class="summary-title card-header">
-Solution<div class="summary-down docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="summary-up docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="summary-content card-body docutils">
-<p class="card-text">This happens on macs with the M1 chip when the the GNU version of <code class="docutils literal notranslate"><span class="pre">uname</span></code>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">This happens on macs with the M1 chip when the the GNU version of <code class="docutils literal notranslate"><span class="pre">uname</span></code>
 (from the <code class="docutils literal notranslate"><span class="pre">coreutils</span></code> homebrew package) is installed.</p>
-<p class="card-text">There is a patch for this that can be applied on install.</p>
-<div class="tabbed-set docutils">
-<input checked="checked" id="2f8c9aa3-a2a5-408c-a7b2-cc12772bd25d" name="1dcb26e8-4ccd-42a3-be46-84fc9fd582dd" type="radio">
-</input><label class="tabbed-label" for="2f8c9aa3-a2a5-408c-a7b2-cc12772bd25d">
-asdf</label><div class="tabbed-content docutils">
-<p class="card-text">Apply the patch by setting the <code class="docutils literal notranslate"><span class="pre">ASDF_PYTHON_PATCH_URL</span></code> environment variable.</p>
+<p class="sd-card-text">There is a patch for this that can be applied on install.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="6b4649b4-becf-4c9f-9392-07872da210cb" name="a6afd0cf-f962-45c8-8d80-9a4a1ea7b7b5" type="radio">
+</input><label class="sd-tab-label" for="6b4649b4-becf-4c9f-9392-07872da210cb">
+asdf</label><div class="sd-tab-content docutils">
+<p class="sd-card-text">Apply the patch by setting the <code class="docutils literal notranslate"><span class="pre">ASDF_PYTHON_PATCH_URL</span></code> environment variable.</p>
 <div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-number">Listing 494 </span><span class="caption-text">Command line</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">ASDF_PYTHON_PATCH_URL</span><span class="o">=</span><span class="s2">&quot;https://gist.githubusercontent.com/xight/74f84b8bde9ac6f539c3db20c2897d46/raw/cf2fd7ff5572afafb54d062f866e40d5e65cab43/config-sub.patch&quot;</span>
-asdf install python <span class="m">3</span>.8.11
+<div class="code-block-caption"><span class="caption-number">Listing 521 </span><span class="caption-text">Command line</span><a class="headerlink" href="#id3" title="Permalink to this code">#</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">ASDF_PYTHON_PATCH_URL</span><span class="o">=</span><span class="s2">&quot;https://gist.githubusercontent.com/xight/74f84b8bde9ac6f539c3db20c2897d46/raw/cf2fd7ff5572afafb54d062f866e40d5e65cab43/config-sub.patch&quot;</span>
+asdf<span class="w"> </span>install<span class="w"> </span>python<span class="w"> </span><span class="m">3</span>.8.11
 </pre></div>
 </div>
 </div>
 </div>
-<input id="2b71353d-59d3-4439-a2c9-c1e09aadeceb" name="1dcb26e8-4ccd-42a3-be46-84fc9fd582dd" type="radio">
-</input><label class="tabbed-label" for="2b71353d-59d3-4439-a2c9-c1e09aadeceb">
-pyenv</label><div class="tabbed-content docutils">
-<p class="card-text">Apply the patch using the –patch flag.</p>
+<input id="117e9bfd-d44a-4ba0-84d9-4a3460639de6" name="a6afd0cf-f962-45c8-8d80-9a4a1ea7b7b5" type="radio">
+</input><label class="sd-tab-label" for="117e9bfd-d44a-4ba0-84d9-4a3460639de6">
+pyenv</label><div class="sd-tab-content docutils">
+<p class="sd-card-text">Apply the patch using the –patch flag.</p>
 <div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-number">Listing 495 </span><span class="caption-text">Command line</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pyenv install --patch <span class="m">3</span>.8.11 &lt; <span class="se">\</span>
-  &lt;<span class="o">(</span>curl -sSL https://gist.githubusercontent.com/xight/74f84b8bde9ac6f539c3db20c2897d46/raw/cf2fd7ff5572afafb54d062f866e40d5e65cab43/config-sub.patch<span class="o">)</span>
+<div class="code-block-caption"><span class="caption-number">Listing 522 </span><span class="caption-text">Command line</span><a class="headerlink" href="#id4" title="Permalink to this code">#</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pyenv<span class="w"> </span>install<span class="w"> </span>--patch<span class="w"> </span><span class="m">3</span>.8.11<span class="w"> </span>&lt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span>https://gist.githubusercontent.com/xight/74f84b8bde9ac6f539c3db20c2897d46/raw/cf2fd7ff5572afafb54d062f866e40d5e65cab43/config-sub.patch<span class="o">)</span>
 </pre></div>
 </div>
 </div>
@@ -974,9 +1150,9 @@ pyenv</label><div class="tabbed-content docutils">
 <li><p><a class="reference external" href="https://gist.githubusercontent.com/xight/74f84b8bde9ac6f539c3db20c2897d46/raw/cf2fd7ff5572afafb54d062f866e40d5e65cab43/config-sub.patch">patch</a></p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="issue-b-unexpected-output-of-arch-on-osx">
-<h3><a class="toc-backref" href="#id25">Issue B: Unexpected output of ‘arch’ on OSX</a><a class="headerlink" href="#issue-b-unexpected-output-of-arch-on-osx" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="issue-b-unexpected-output-of-arch-on-osx">
+<h3><a class="toc-backref" href="#id25">Issue B: Unexpected output of ‘arch’ on OSX</a><a class="headerlink" href="#issue-b-unexpected-output-of-arch-on-osx" title="Permalink to this headline">#</a></h3>
 <p>The install fails before building with the error</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">Unexpected</span> <span class="n">output</span> <span class="n">of</span> <span class="s1">&#39;arch&#39;</span> <span class="n">on</span> <span class="n">OSX</span>
 </pre></div>
@@ -987,37 +1163,37 @@ pyenv</label><div class="tabbed-content docutils">
 <li><p><a class="reference external" href="https://github.com/pyenv/pyenv/issues/1768">python bug report</a></p></li>
 </ul>
 </div>
-<details class="sphinx-bs dropdown card mb-3" open="open">
-<summary class="summary-title card-header">
-Solution<div class="summary-down docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="summary-up docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="summary-content card-body docutils">
-<p class="card-text">This happens on macs with the M1 chip if it is not supported for that
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">This happens on macs with the M1 chip if it is not supported for that
 particular version.</p>
-<p class="card-text">There may be a patch available <a class="reference external" href="https://github.com/Homebrew/formula-patches/tree/master/python">here</a> depending on your version.</p>
-<div class="tabbed-set docutils">
-<input checked="checked" id="eecbf859-036f-4f57-8ac0-f6c737bc4097" name="63289b00-2a41-4bc7-9df6-e85d1749e990" type="radio">
-</input><label class="tabbed-label" for="eecbf859-036f-4f57-8ac0-f6c737bc4097">
-asdf</label><div class="tabbed-content docutils">
-<p class="card-text">Apply the patch by setting the <code class="docutils literal notranslate"><span class="pre">ASDF_PYTHON_PATCH_URL</span></code> environment variable.</p>
+<p class="sd-card-text">There may be a patch available <a class="reference external" href="https://github.com/Homebrew/formula-patches/tree/master/python">here</a> depending on your version.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="437b872c-e753-4549-8210-1df2645e98b6" name="a0fa4262-53d0-43ac-aa92-c160f64ab44d" type="radio">
+</input><label class="sd-tab-label" for="437b872c-e753-4549-8210-1df2645e98b6">
+asdf</label><div class="sd-tab-content docutils">
+<p class="sd-card-text">Apply the patch by setting the <code class="docutils literal notranslate"><span class="pre">ASDF_PYTHON_PATCH_URL</span></code> environment variable.</p>
 <div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-number">Listing 496 </span><span class="caption-text">Command line</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">ASDF_PYTHON_PATCH_URL</span><span class="o">=</span><span class="s2">&quot;PATCH_URL&quot;</span>
-asdf install python <span class="m">3</span>.8.11
+<div class="code-block-caption"><span class="caption-number">Listing 523 </span><span class="caption-text">Command line</span><a class="headerlink" href="#id5" title="Permalink to this code">#</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">ASDF_PYTHON_PATCH_URL</span><span class="o">=</span><span class="s2">&quot;PATCH_URL&quot;</span>
+asdf<span class="w"> </span>install<span class="w"> </span>python<span class="w"> </span><span class="m">3</span>.8.11
 </pre></div>
 </div>
 </div>
 </div>
-<input id="e8e35167-361e-4e1b-982f-be847c65b3b9" name="63289b00-2a41-4bc7-9df6-e85d1749e990" type="radio">
-</input><label class="tabbed-label" for="e8e35167-361e-4e1b-982f-be847c65b3b9">
-pyenv</label><div class="tabbed-content docutils">
-<p class="card-text">Apply the patch using the –patch flag.</p>
+<input id="937acca8-e173-4c8e-9ab7-515942fe09a6" name="a0fa4262-53d0-43ac-aa92-c160f64ab44d" type="radio">
+</input><label class="sd-tab-label" for="937acca8-e173-4c8e-9ab7-515942fe09a6">
+pyenv</label><div class="sd-tab-content docutils">
+<p class="sd-card-text">Apply the patch using the –patch flag.</p>
 <div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-number">Listing 497 </span><span class="caption-text">Command line</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pyenv install --patch <span class="m">3</span>.8.11 &lt; <span class="se">\</span>
-  &lt;<span class="o">(</span>curl -sSL PATCH_URL<span class="o">)</span>
+<div class="code-block-caption"><span class="caption-number">Listing 524 </span><span class="caption-text">Command line</span><a class="headerlink" href="#id6" title="Permalink to this code">#</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pyenv<span class="w"> </span>install<span class="w"> </span>--patch<span class="w"> </span><span class="m">3</span>.8.11<span class="w"> </span>&lt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span>PATCH_URL<span class="o">)</span>
 </pre></div>
 </div>
 </div>
@@ -1030,9 +1206,9 @@ pyenv</label><div class="tabbed-content docutils">
 <li><p><a class="reference external" href="https://github.com/pyenv/pyenv/issues/1768">pyenv bug report</a></p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="issue-c-sendfile-zipimport-bzip-lzma-errors">
-<h3><a class="toc-backref" href="#id26">Issue C: sendfile, zipimport, bzip, _lzma errors</a><a class="headerlink" href="#issue-c-sendfile-zipimport-bzip-lzma-errors" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="issue-c-sendfile-zipimport-bzip-lzma-errors">
+<h3><a class="toc-backref" href="#id26">Issue C: sendfile, zipimport, bzip, _lzma errors</a><a class="headerlink" href="#issue-c-sendfile-zipimport-bzip-lzma-errors" title="Permalink to this headline">#</a></h3>
 <p>The install fails when building with one of the following errors:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">implicit</span> <span class="n">declaration</span> <span class="n">of</span> <span class="n">function</span> <span class="s1">&#39;sendfile&#39;</span> <span class="ow">is</span> <span class="n">invalid</span> <span class="ow">in</span> <span class="n">C99</span>
 </pre></div>
@@ -1046,34 +1222,34 @@ pyenv</label><div class="tabbed-content docutils">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  No module named ‘_lzma’
 </pre></div>
 </div>
-<details class="sphinx-bs dropdown card mb-3" open="open">
-<summary class="summary-title card-header">
-Solution<div class="summary-down docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="summary-up docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="summary-content card-body docutils">
-<p class="card-text">These errors happen either because some dependencies are not installed, the
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">These errors happen either because some dependencies are not installed, the
 dependency that is installed is broken in some way, or the python build cannot
 find them.</p>
-<p class="card-text">First, install or reinstall all dependencies.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> pkg <span class="k">in</span> zlib openssl readline xz bzip2<span class="p">;</span> <span class="k">do</span> 
-    brew uninstall <span class="nv">$pkg</span> <span class="m">2</span>&gt; /dev/null
-    brew install <span class="nv">$pkg</span>
+<p class="sd-card-text">First, install or reinstall all dependencies.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span>pkg<span class="w"> </span><span class="k">in</span><span class="w"> </span>zlib<span class="w"> </span>openssl<span class="w"> </span>readline<span class="w"> </span>xz<span class="w"> </span>bzip2<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>
+<span class="w">    </span>brew<span class="w"> </span>uninstall<span class="w"> </span><span class="nv">$pkg</span><span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>/dev/null
+<span class="w">    </span>brew<span class="w"> </span>install<span class="w"> </span><span class="nv">$pkg</span>
 <span class="k">done</span>
 </pre></div>
 </div>
-<p class="card-text">Then use this script to generate a <code class="docutils literal notranslate"><span class="pre">.flags</span></code> file.  This contains shell commands
+<p class="sd-card-text">Then use this script to generate a <code class="docutils literal notranslate"><span class="pre">.flags</span></code> file.  This contains shell commands
 to set the <code class="docutils literal notranslate"><span class="pre">CFLAGS</span></code> and <code class="docutils literal notranslate"><span class="pre">LDFLAGS</span></code> environment variables so that they contain
 the paths to the locations of all dependencies on your system.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sSl https://raw.githubusercontent.com/alissa-huskey/python-class-setup/main/bin/flags.sh <span class="p">|</span> bash
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-sSl<span class="w"> </span>https://raw.githubusercontent.com/alissa-huskey/python-class-setup/main/bin/flags.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
 </pre></div>
 </div>
-<p class="card-text">Apply the envionment varibles to your current terminal session by sourcing the
+<p class="sd-card-text">Apply the envionment varibles to your current terminal session by sourcing the
 file, then install Python the way you normally would. After you’re done, you
 can remove the <code class="docutils literal notranslate"><span class="pre">.flags</span></code> file if you want.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> .flags
-asdf install python VERSION <span class="o">&amp;&amp;</span> rm .flags
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>.flags
+asdf<span class="w"> </span>install<span class="w"> </span>python<span class="w"> </span>VERSION<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>.flags
 </pre></div>
 </div>
 </div>
@@ -1085,46 +1261,46 @@ asdf install python VERSION <span class="o">&amp;&amp;</span> rm .flags
 <li><p><a class="reference external" href="https://medium.com/dive-into-ml-ai/managing-issues-of-macos-and-pyenv-a78ce1e85e9d">Managing macOS + python issues</a></p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="issue-d-build-failed">
-<h3><a class="toc-backref" href="#id27">Issue D: BUILD FAILED</a><a class="headerlink" href="#issue-d-build-failed" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="issue-d-build-failed">
+<h3><a class="toc-backref" href="#id27">Issue D: BUILD FAILED</a><a class="headerlink" href="#issue-d-build-failed" title="Permalink to this headline">#</a></h3>
 <p>The install fails before building with an error that looks like the following
 with no other useful error messages.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">BUILD</span> <span class="n">FAILED</span> <span class="p">(</span><span class="n">OS</span> <span class="n">X</span> <span class="n">XX</span><span class="o">.</span><span class="n">X</span> <span class="n">using</span> <span class="n">python</span><span class="o">-</span><span class="n">build</span> <span class="n">XXXXXXXX</span><span class="p">)</span>
 </pre></div>
 </div>
-<details class="sphinx-bs dropdown card mb-3" open="open">
-<summary class="summary-title card-header">
-Solution<div class="summary-down docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="summary-up docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="summary-content card-body docutils">
-<p class="card-text">This happens on macOS 11+ because the configure script searches for a release
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">This happens on macOS 11+ because the configure script searches for a release
 version (from <code class="docutils literal notranslate"><span class="pre">uname</span> <span class="pre">-r</span></code>) of <code class="docutils literal notranslate"><span class="pre">1*.*</span></code> and as of macOS 11 the release version is
 <code class="docutils literal notranslate"><span class="pre">2*.*</span></code>.</p>
-<p class="card-text">There is a patch for this that can be applied on install.</p>
-<div class="tabbed-set docutils">
-<input checked="checked" id="d43f639a-660e-419c-9eb1-9b95bc6d009e" name="235a3188-4bbd-40c8-9b63-184383992cdd" type="radio">
-</input><label class="tabbed-label" for="d43f639a-660e-419c-9eb1-9b95bc6d009e">
-asdf</label><div class="tabbed-content docutils">
-<p class="card-text">Apply the patch by setting the <code class="docutils literal notranslate"><span class="pre">ASDF_PYTHON_PATCH_URL</span></code> environment variable.</p>
+<p class="sd-card-text">There is a patch for this that can be applied on install.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="e9c6d887-233c-4035-b7da-77fde9139544" name="ae16f55d-e844-41c8-8fb9-3435e79563f4" type="radio">
+</input><label class="sd-tab-label" for="e9c6d887-233c-4035-b7da-77fde9139544">
+asdf</label><div class="sd-tab-content docutils">
+<p class="sd-card-text">Apply the patch by setting the <code class="docutils literal notranslate"><span class="pre">ASDF_PYTHON_PATCH_URL</span></code> environment variable.</p>
 <div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-number">Listing 498 </span><span class="caption-text">Command line</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">ASDF_PYTHON_PATCH_URL</span><span class="o">=</span><span class="s2">&quot;https://github.com/python/cpython/commit/8ea6353.patch?full_index=1&quot;</span>
-asdf install python <span class="m">3</span>.8.11
+<div class="code-block-caption"><span class="caption-number">Listing 525 </span><span class="caption-text">Command line</span><a class="headerlink" href="#id7" title="Permalink to this code">#</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">ASDF_PYTHON_PATCH_URL</span><span class="o">=</span><span class="s2">&quot;https://github.com/python/cpython/commit/8ea6353.patch?full_index=1&quot;</span>
+asdf<span class="w"> </span>install<span class="w"> </span>python<span class="w"> </span><span class="m">3</span>.8.11
 </pre></div>
 </div>
 </div>
 </div>
-<input id="05a8d719-4d38-4adc-8112-511cc322aa02" name="235a3188-4bbd-40c8-9b63-184383992cdd" type="radio">
-</input><label class="tabbed-label" for="05a8d719-4d38-4adc-8112-511cc322aa02">
-pyenv</label><div class="tabbed-content docutils">
-<p class="card-text">Apply the patch using the –patch flag.</p>
+<input id="2115cc72-0b1d-4813-947d-c152f81c7c46" name="ae16f55d-e844-41c8-8fb9-3435e79563f4" type="radio">
+</input><label class="sd-tab-label" for="2115cc72-0b1d-4813-947d-c152f81c7c46">
+pyenv</label><div class="sd-tab-content docutils">
+<p class="sd-card-text">Apply the patch using the –patch flag.</p>
 <div class="literal-block-wrapper docutils container" id="id8">
-<div class="code-block-caption"><span class="caption-number">Listing 499 </span><span class="caption-text">Command line</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pyenv install --patch <span class="m">3</span>.8.11 &lt; <span class="se">\</span>
-  &lt;<span class="o">(</span>curl -sSL https://github.com/python/cpython/commit/8ea6353.patch?full_index<span class="o">=</span><span class="m">1</span><span class="o">)</span>
+<div class="code-block-caption"><span class="caption-number">Listing 526 </span><span class="caption-text">Command line</span><a class="headerlink" href="#id8" title="Permalink to this code">#</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pyenv<span class="w"> </span>install<span class="w"> </span>--patch<span class="w"> </span><span class="m">3</span>.8.11<span class="w"> </span>&lt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span>https://github.com/python/cpython/commit/8ea6353.patch?full_index<span class="o">=</span><span class="m">1</span><span class="o">)</span>
 </pre></div>
 </div>
 </div>
@@ -1139,9 +1315,9 @@ pyenv</label><div class="tabbed-content docutils">
 <li><p><a class="reference external" href="https://github.com/python/cpython/commit/8ea6353.patch?full_index=1">patch</a></p></li>
 </ul>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1155,7 +1331,7 @@ pyenv</label><div class="tabbed-content docutils">
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./tools"
         },
         predefinedOutput: true
@@ -1165,9 +1341,11 @@ pyenv</label><div class="tabbed-content docutils">
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="poetry.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1183,23 +1361,25 @@ pyenv</label><div class="tabbed-content docutils">
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Git &#8212; Python Class</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,39 +20,39 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/asciinema-player.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/asciinema-player.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/custom.js"></script>
-    <script src="../_static/asciinema-player.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/x-frame-bypass.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+    <script src="../_static/asciinema-player.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
@@ -68,7 +70,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -77,9 +93,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
       
@@ -92,7 +109,7 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <p class="caption">
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Lessons
  </span>
@@ -379,7 +396,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Practices
  </span>
@@ -406,7 +423,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Tools
  </span>
@@ -454,7 +471,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="replit.html">
-   Repl.it Tips
+   Replit
   </a>
  </li>
  <li class="toctree-l1">
@@ -478,7 +495,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Reference
  </span>
@@ -510,7 +527,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Exercises
  </span>
@@ -542,7 +559,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Admin
  </span>
@@ -556,8 +573,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
 </div>
 
 
@@ -565,59 +587,116 @@ const thebe_selector_output = ".output, .cell_output"
 
 
           
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
     
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/alissa-huskey/python-class"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
+    <div class="header-article row sticky-top noprint">
         
-        <a class="edit-button" href="https://github.com/alissa-huskey/python-class/edit/master/docs/tools/git.md"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/alissa-huskey/python-class"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/alissa-huskey/python-class/edit/master/docs/tools/git.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
     </div>
 </div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#locally-grown">
    Locally Grown
@@ -686,17 +765,101 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Git</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#locally-grown">
+   Locally Grown
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#anatomy-of-a-repository">
+   Anatomy of a Repository
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mo-repos-mo-versions">
+   Mo’ repos, mo’ versions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-which-i-digress">
+     In Which I Digress
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#remote-control">
+   Remote Control
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#let-s-talk-committment">
+   Let’s talk committment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#altered-states">
+   Altered States
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#local-states">
+     Local States
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#relative-to-remote-states">
+     Relative-to-Remote States
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#state-changes">
+     State Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#glossary">
+   Glossary
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#glossary-version-control">
+     Version Control
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="git">
-<h1>Git<a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="git">
+<h1>Git<a class="headerlink" href="#git" title="Permalink to this headline">#</a></h1>
 <div class="contents local topic" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#locally-grown" id="id2">Locally Grown</a></p></li>
@@ -722,15 +885,15 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 </ul>
 </div>
-<div class="section" id="locally-grown">
-<h2><a class="toc-backref" href="#contents">Locally Grown</a><a class="headerlink" href="#locally-grown" title="Permalink to this headline">¶</a></h2>
+<section id="locally-grown">
+<h2><a class="toc-backref" href="#contents">Locally Grown</a><a class="headerlink" href="#locally-grown" title="Permalink to this headline">#</a></h2>
 <p>Your set of files that you work on locally is sometimes called a <strong>working
 directory</strong>, <strong>working copy</strong>, <strong>working tree</strong> or <strong>local checkout</strong>.</p>
 <p>A <strong>tree</strong> is the directory structure and contents of your files, or a snapshot
 of them from a particular point in time.</p>
-</div>
-<div class="section" id="anatomy-of-a-repository">
-<h2><a class="toc-backref" href="#contents">Anatomy of a Repository</a><a class="headerlink" href="#anatomy-of-a-repository" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="anatomy-of-a-repository">
+<h2><a class="toc-backref" href="#contents">Anatomy of a Repository</a><a class="headerlink" href="#anatomy-of-a-repository" title="Permalink to this headline">#</a></h2>
 <p>We’ve already talked about how a repository is the version control data for
 your codebase. Now we’ll go into a little more detail about what kind of
 information git stores and what that means for how to use it.</p>
@@ -751,9 +914,9 @@ the forseeable future.</p></li>
 plus the changes you’ve staged for commit.</p></li>
 </ul>
 <p>Conceptually, your repository looks a little something like this:</p>
-<img alt="' A PlantUML diagram showing the components of a local repository. '  allowmixing left to right direction skinparam classattributeiconsize 0 skinparam pageMargin 10 hide class circle hide empty members  title Local Repository  !startsub REPO_LOCAL  folder &quot;git local&quot; as gitlocal {    card &quot;**HEAD**&quot; &lt;&lt;ref&gt;&gt; as head   card &quot;**master**&quot; &lt;&lt;branch&gt;&gt; as master    frame &quot;**object db**&quot; as objectdb {       map &quot;**commits**&quot; as commits {           c331b4d =&gt; gitign...           6a338d8 =&gt; format...           02c7a7a =&gt; minor ...           382421e =&gt; finish...           fa69673 =&gt; clean ...           92241db =&gt; reorga...           fb090a5 =&gt; add py...       }     }    frame &quot;**index**&quot; as index {     map &quot;**c331b4d**&quot; as tree &lt;&lt;tree&gt;&gt; {       598bec57 =&gt; .replit       73bb444b =&gt; pypet.py       26c39fd5 =&gt; readme.md     }      class &quot;**staging**&quot; as staging&lt;added&gt; {       +LICENSE     }   } }  folder &quot;**files**&quot; as files {   class &quot;**  working**\n **tree**&quot; as working&lt;+changes&gt; &lt;&lt;contents&gt;&gt; {     .gitignore     bin/     LICENSE     pypet.py     readme.md }  'le : down 'do : right  head -do-&gt; master master -do-o commits::c331b4d commits::c331b4d o-do-||&gt; tree tree -le[hidden]- staging tree -do[hidden]- working  !endsub REPO_LOCAL " class="kroki kroki-plantuml" src="../_images/kroki-d614f46201b47b040abf03be9486ad1162344005.svg" /></div>
-<div class="section" id="mo-repos-mo-versions">
-<h2><a class="toc-backref" href="#contents">Mo’ repos, mo’ versions</a><a class="headerlink" href="#mo-repos-mo-versions" title="Permalink to this headline">¶</a></h2>
+<img alt="' A PlantUML diagram showing the components of a local repository. '  allowmixing left to right direction skinparam classattributeiconsize 0 skinparam pageMargin 10 hide class circle hide empty members  title Local Repository  !startsub REPO_LOCAL  folder &quot;git local&quot; as gitlocal {    card &quot;**HEAD**&quot; &lt;&lt;ref&gt;&gt; as head   card &quot;**master**&quot; &lt;&lt;branch&gt;&gt; as master    frame &quot;**object db**&quot; as objectdb {       map &quot;**commits**&quot; as commits {           c331b4d =&gt; gitign...           6a338d8 =&gt; format...           02c7a7a =&gt; minor ...           382421e =&gt; finish...           fa69673 =&gt; clean ...           92241db =&gt; reorga...           fb090a5 =&gt; add py...       }     }    frame &quot;**index**&quot; as index {     map &quot;**c331b4d**&quot; as tree &lt;&lt;tree&gt;&gt; {       598bec57 =&gt; .replit       73bb444b =&gt; pypet.py       26c39fd5 =&gt; readme.md     }      class &quot;**staging**&quot; as staging&lt;added&gt; {       +LICENSE     }   } }  folder &quot;**files**&quot; as files {   class &quot;**  working**\n **tree**&quot; as working&lt;+changes&gt; &lt;&lt;contents&gt;&gt; {     .gitignore     bin/     LICENSE     pypet.py     readme.md }  'le : down 'do : right  head -do-&gt; master master -do-o commits::c331b4d commits::c331b4d o-do-||&gt; tree tree -le[hidden]- staging tree -do[hidden]- working  !endsub REPO_LOCAL " class="kroki kroki-plantuml" src="../_images/kroki-d614f46201b47b040abf03be9486ad1162344005.svg" /></section>
+<section id="mo-repos-mo-versions">
+<h2><a class="toc-backref" href="#contents">Mo’ repos, mo’ versions</a><a class="headerlink" href="#mo-repos-mo-versions" title="Permalink to this headline">#</a></h2>
 <p>But wait, there’s more!</p>
 <p>There are actually at least two repositories of your files.</p>
 <ul class="simple">
@@ -763,8 +926,8 @@ it is where you’re editing the files so we’ll refer to it as a <strong>local
 <li><p>Eventually you may also have an actually-local local repository on your
 computer.</p></li>
 </ul>
-<div class="section" id="in-which-i-digress">
-<h3><a class="toc-backref" href="#contents">In Which I Digress</a><a class="headerlink" href="#in-which-i-digress" title="Permalink to this headline">¶</a></h3>
+<section id="in-which-i-digress">
+<h3><a class="toc-backref" href="#contents">In Which I Digress</a><a class="headerlink" href="#in-which-i-digress" title="Permalink to this headline">#</a></h3>
 <p>Git is a special kind of version control system called <strong>Distributed version
 control</strong>. As opposed to <strong>Centralized Version Control Systems</strong> that have one
 central repository that all other repositories were required to communicate
@@ -779,10 +942,10 @@ systems would be somthing like this:</p>
 <img alt="flowchart LR    subgraph Version Control     subgraph Centeralized       direction TB       central[Central Repo] &lt;--&gt; a1[Alissa] &amp; j1[Jayson] &amp; s1[Sean]     end      subgraph Decentralized       direction TB       Remote &amp; Alissa &lt;--&gt; Jayson &amp; Sean     end   end" class="kroki kroki-mermaid" src="../_images/kroki-ef00e4974cafc4ef3f96224ca3562d352453e006.svg" /><p>Even though something like that is technically possible, in practice we’ll use
 Github as a hub to sync between different repos.</p>
 <p>The way I use it looks something like this:</p>
-<img alt="flowchart LR  Laptop &lt;--&gt; Github &lt;--&gt; Repl.it" class="kroki kroki-mermaid" src="../_images/kroki-64e6702d8e186e89494009e084b69d7c0838689b.svg" /></div>
-</div>
-<div class="section" id="remote-control">
-<h2><a class="toc-backref" href="#contents">Remote Control</a><a class="headerlink" href="#remote-control" title="Permalink to this headline">¶</a></h2>
+<img alt="flowchart LR  Laptop &lt;--&gt; Github &lt;--&gt; Repl.it" class="kroki kroki-mermaid" src="../_images/kroki-64e6702d8e186e89494009e084b69d7c0838689b.svg" /></section>
+</section>
+<section id="remote-control">
+<h2><a class="toc-backref" href="#contents">Remote Control</a><a class="headerlink" href="#remote-control" title="Permalink to this headline">#</a></h2>
 <p>When you have a remote repository that you want to send changes to, it is
 sometimes refereed to as an <strong>upstream repo</strong> or just a <strong>remote repository</strong>.
 For us, that will be the Github repo.</p>
@@ -824,9 +987,9 @@ remote repo.</p>
                           <span class="o">+------------------------+</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="let-s-talk-committment">
-<h2><a class="toc-backref" href="#contents">Let’s talk committment</a><a class="headerlink" href="#let-s-talk-committment" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="let-s-talk-committment">
+<h2><a class="toc-backref" href="#contents">Let’s talk committment</a><a class="headerlink" href="#let-s-talk-committment" title="Permalink to this headline">#</a></h2>
 <p>It’s time to zoom in on commits. A <strong>commit</strong> is a set of changes recorded in
 git. Sometimes also called a <strong>revision</strong> or a <strong>change log</strong>. Every commit has:</p>
 <ul class="simple">
@@ -842,9 +1005,9 @@ that git and other programs understand. It’s very similar to the output of
 <li><p>Historical data detailing the ancestery of the commit.</p></li>
 <li><p>Metadata like the date, author, and commit message.</p></li>
 </ul>
-</div>
-<div class="section" id="altered-states">
-<h2><a class="toc-backref" href="#contents">Altered States</a><a class="headerlink" href="#altered-states" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="altered-states">
+<h2><a class="toc-backref" href="#contents">Altered States</a><a class="headerlink" href="#altered-states" title="Permalink to this headline">#</a></h2>
 <p>Now that you are a little more familiar with the pieces and how they fit
 togther, let’s talk about what that means.</p>
 <p>There are now potentially many different versions of your files that may exist
@@ -876,8 +1039,8 @@ at any given time:</p>
 </ul>
 </li>
 </ul>
-<div class="section" id="local-states">
-<h3><a class="toc-backref" href="#contents">Local States</a><a class="headerlink" href="#local-states" title="Permalink to this headline">¶</a></h3>
+<section id="local-states">
+<h3><a class="toc-backref" href="#contents">Local States</a><a class="headerlink" href="#local-states" title="Permalink to this headline">#</a></h3>
 <p>Here are the possible states of local file changes.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="o">+------------------------------------------+----------------+-----------------------------------------+</span>
   <span class="o">|</span>  <span class="n">status</span>                                  <span class="o">|</span>  <span class="n">where</span>         <span class="o">|</span>  <span class="n">description</span>                            <span class="o">|</span>
@@ -893,9 +1056,9 @@ at any given time:</p>
 time. This can happen if you stage a commit, then make additional changes to
 the same file. It is actually the chunks of changes that are tracked, rather
 than the file as a whole.</p>
-</div>
-<div class="section" id="relative-to-remote-states">
-<h3><a class="toc-backref" href="#contents">Relative-to-Remote States</a><a class="headerlink" href="#relative-to-remote-states" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="relative-to-remote-states">
+<h3><a class="toc-backref" href="#contents">Relative-to-Remote States</a><a class="headerlink" href="#relative-to-remote-states" title="Permalink to this headline">#</a></h3>
 <p>Here are the possible states of the local repository relative to the remote repository.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="o">+---------------+---------------------------------------------------------------+</span>
   <span class="o">|</span> <span class="n">status</span>        <span class="o">|</span> <span class="n">description</span>                                                   <span class="o">|</span>
@@ -907,74 +1070,76 @@ than the file as a whole.</p>
   <span class="o">+---------------+---------------------------------------------------------------+</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="state-changes">
-<h3><a class="toc-backref" href="#contents">State Changes</a><a class="headerlink" href="#state-changes" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="state-changes">
+<h3><a class="toc-backref" href="#contents">State Changes</a><a class="headerlink" href="#state-changes" title="Permalink to this headline">#</a></h3>
 <p>And finally, here is the workflow and how states change for each action.</p>
 <div class="full-width docutils">
-<div class="kroki kroki-plantuml figure align-default" id="id1">
-<img alt="' ' PlantUML Sequence diagram showing which parts of a repo are effected using ' various git commands. '  ' Setup ' ==========================================================================  &lt;style&gt;   arrow {     LineColor purple     LineThickness 1.5   }   note {     BackgroundColor white   } &lt;/style&gt;  skinparam SequenceDividerFontStyle         normal skinparam SequenceDividerBorderColor       MidnightBlue  skinparam SequenceLifelineBackgroundColor  LightBlue skinparam SequenceLifelineBorderColor      purple  ' Participants ' ==========================================================================  box Local #MintCream  participant &quot;**Working Tree**&quot; as tree  &lt;&lt;files&gt;&gt; participant &quot;**Index**&quot;        as index &lt;&lt;staged&gt;&gt; participant &quot;**HEAD**&quot;         as lhead &lt;&lt;ref&gt;&gt; participant &quot;**DB**&quot;           as ldb   &lt;&lt;history&gt;&gt;  end box  box Remote #GhostWhite  participant &quot;**DB**&quot;           as rdb   &lt;&lt;history&gt;&gt; participant &quot;**HEAD**&quot;         as rhead &lt;&lt;ref&gt;&gt;  end box  ' Messages ' ==========================================================================  == &quot;&quot;git clone&quot;&quot; ==   rnote across: download new repo    rhead --&gt;  ldb    ++   :   ldb   --&gt;  lhead  --++ :   lhead --&gt;  index  --++ :   index --&gt;o tree   --   :  |||  == &quot;&quot;git add&quot;&quot; ==   rnote across: add changes to index    tree  --&gt;o index       :   hnote left             : untracked   hnote right            : staged  |||  == &quot;&quot;git commit -a&quot;&quot; ==   rnote across: add and store commit    tree  --&gt;  index  ++   :   hnote left             : untracked   index --&gt;  lhead  --++ :   lhead --&gt;o ldb    --   :   hnote right            : committed  |||  == &quot;&quot;git commit&quot;&quot; ==   rnote across: store commit    index --&gt;  lhead  ++   :   hnote left             : staged   lhead --&gt;o ldb    --   :   hnote right            : committed  |||  == &quot;&quot;git fetch&quot;&quot; ==   rnote across: download commit data    rdb   --&gt;o ldb         :  |||  == &quot;&quot;git pull&quot;&quot; ==   rnote across: merge content into local from remote    rhead --&gt;  ldb    ++   :   hnote right            : behind/diverged   ldb   --&gt;  lhead  --++ :   lhead --&gt;o tree   --   :   hnote left             : up to date  |||   == &quot;&quot;git push&quot;&quot; ==   rnote across: merge content from local to remote    lhead --&gt;  rdb    ++   :   hnote left             : ahead/diverged   rdb   --&gt;o rhead  --   :   hnote right            : up to date  |||  " class="kroki kroki-plantuml full-width" src="../_images/kroki-b5152868b6640f616426144020dfa3b74b716333.svg" /><p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Git Sequence Diagram</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<figure class="kroki kroki-plantuml align-default" id="id1">
+<img alt="' ' PlantUML Sequence diagram showing which parts of a repo are effected using ' various git commands. '  ' Setup ' ==========================================================================  &lt;style&gt;   arrow {     LineColor purple     LineThickness 1.5   }   note {     BackgroundColor white   } &lt;/style&gt;  skinparam SequenceDividerFontStyle         normal skinparam SequenceDividerBorderColor       MidnightBlue  skinparam SequenceLifelineBackgroundColor  LightBlue skinparam SequenceLifelineBorderColor      purple  ' Participants ' ==========================================================================  box Local #MintCream  participant &quot;**Working Tree**&quot; as tree  &lt;&lt;files&gt;&gt; participant &quot;**Index**&quot;        as index &lt;&lt;staged&gt;&gt; participant &quot;**HEAD**&quot;         as lhead &lt;&lt;ref&gt;&gt; participant &quot;**DB**&quot;           as ldb   &lt;&lt;history&gt;&gt;  end box  box Remote #GhostWhite  participant &quot;**DB**&quot;           as rdb   &lt;&lt;history&gt;&gt; participant &quot;**HEAD**&quot;         as rhead &lt;&lt;ref&gt;&gt;  end box  ' Messages ' ==========================================================================  == &quot;&quot;git clone&quot;&quot; ==   rnote across: download new repo    rhead --&gt;  ldb    ++   :   ldb   --&gt;  lhead  --++ :   lhead --&gt;  index  --++ :   index --&gt;o tree   --   :  |||  == &quot;&quot;git add&quot;&quot; ==   rnote across: add changes to index    tree  --&gt;o index       :   hnote left             : untracked   hnote right            : staged  |||  == &quot;&quot;git commit -a&quot;&quot; ==   rnote across: add and store commit    tree  --&gt;  index  ++   :   hnote left             : untracked   index --&gt;  lhead  --++ :   lhead --&gt;o ldb    --   :   hnote right            : committed  |||  == &quot;&quot;git commit&quot;&quot; ==   rnote across: store commit    index --&gt;  lhead  ++   :   hnote left             : staged   lhead --&gt;o ldb    --   :   hnote right            : committed  |||  == &quot;&quot;git fetch&quot;&quot; ==   rnote across: download commit data    rdb   --&gt;o ldb         :  |||  == &quot;&quot;git pull&quot;&quot; ==   rnote across: merge content into local from remote    rhead --&gt;  ldb    ++   :   hnote right            : behind/diverged   ldb   --&gt;  lhead  --++ :   lhead --&gt;o tree   --   :   hnote left             : up to date  |||   == &quot;&quot;git push&quot;&quot; ==   rnote across: merge content from local to remote    lhead --&gt;  rdb    ++   :   hnote left             : ahead/diverged   rdb   --&gt;o rhead  --   :   hnote right            : up to date  |||  " class="kroki kroki-plantuml full-width" src="../_images/kroki-b5152868b6640f616426144020dfa3b74b716333.svg" /><figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Git Sequence Diagram</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="glossary">
-<h2><a class="toc-backref" href="#contents">Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="glossary-version-control">
-<h3><a class="toc-backref" href="#contents">Version Control</a><a class="headerlink" href="#glossary-version-control" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="glossary">
+<h2><a class="toc-backref" href="#contents">Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this headline">#</a></h2>
+<section id="glossary-version-control">
+<h3><a class="toc-backref" href="#contents">Version Control</a><a class="headerlink" href="#glossary-version-control" title="Permalink to this headline">#</a></h3>
 <dl class="glossary simple">
-<dt id="term-branch">branch<a class="headerlink" href="#term-branch" title="Permalink to this term">¶</a></dt><dd><p>A container that has a name and stores set of commits. Every repository is
+<dt id="term-branch">branch<a class="headerlink" href="#term-branch" title="Permalink to this term">#</a></dt><dd><p>A container that has a name and stores set of commits. Every repository is
 created with a default branch named <a class="reference internal" href="#term-master"><span class="xref std std-term">master</span></a>.</p>
 </dd>
-<dt id="term-codebase">codebase<a class="headerlink" href="#term-codebase" title="Permalink to this term">¶</a></dt><dd><p>A set source code files that make up a software system, application,
+<dt id="term-codebase">codebase<a class="headerlink" href="#term-codebase" title="Permalink to this term">#</a></dt><dd><p>A set source code files that make up a software system, application,
 component or project.</p>
 </dd>
-<dt id="term-commit">commit<a class="headerlink" href="#term-commit" title="Permalink to this term">¶</a></dt><dt id="term-revision">revision<a class="headerlink" href="#term-revision" title="Permalink to this term">¶</a></dt><dt id="term-change-log">change log<a class="headerlink" href="#term-change-log" title="Permalink to this term">¶</a></dt><dd><p>A set of changes recorded in version control.</p>
+<dt id="term-commit">commit<a class="headerlink" href="#term-commit" title="Permalink to this term">#</a></dt><dt id="term-revision">revision<a class="headerlink" href="#term-revision" title="Permalink to this term">#</a></dt><dt id="term-change-log">change log<a class="headerlink" href="#term-change-log" title="Permalink to this term">#</a></dt><dd><p>A set of changes recorded in version control.</p>
 </dd>
-<dt id="term-distributed-version-control">distributed version control<a class="headerlink" href="#term-distributed-version-control" title="Permalink to this term">¶</a></dt><dd><p>As opposed to <a class="term-missing reference internal" href="#" title=""><span class="xref std std-term">centralized version control</span></a> systems that have one central
+<dt id="term-distributed-version-control">distributed version control<a class="headerlink" href="#term-distributed-version-control" title="Permalink to this term">#</a></dt><dd><p>As opposed to <a class="term-missing reference internal" href="#" title=""><span class="xref std std-term">centralized version control</span></a> systems that have one central
 repository that all other repositories were required to communicate with in
 order to commit changes. In distributed version control, every repo is self
 contained and any repo send changes to or receive changes from any other
 compatible repository.</p>
 </dd>
-<dt id="term-HEAD">HEAD<a class="headerlink" href="#term-HEAD" title="Permalink to this term">¶</a></dt><dd><p>A reference to the current commit on the current branch. A reference is like
+<dt id="term-HEAD">HEAD<a class="headerlink" href="#term-HEAD" title="Permalink to this term">#</a></dt><dd><p>A reference to the current commit on the current branch. A reference is like
 a bookmark to a commit.</p>
 </dd>
-<dt id="term-index">index<a class="headerlink" href="#term-index" title="Permalink to this term">¶</a></dt><dd><p>A snapshot of your files at the time of the <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> commit plus the changes
+<dt id="term-index">index<a class="headerlink" href="#term-index" title="Permalink to this term">#</a></dt><dd><p>A snapshot of your files at the time of the <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> commit plus the changes
 you’ve staged for commit.</p>
 </dd>
-<dt id="term-master">master<a class="headerlink" href="#term-master" title="Permalink to this term">¶</a></dt><dt id="term-main">main<a class="headerlink" href="#term-main" title="Permalink to this term">¶</a></dt><dd><p>The default branch. Until recently the default branch was named master, but
+<dt id="term-master">master<a class="headerlink" href="#term-master" title="Permalink to this term">#</a></dt><dt id="term-main">main<a class="headerlink" href="#term-main" title="Permalink to this term">#</a></dt><dd><p>The default branch. Until recently the default branch was named master, but
 recently there has been a shift to naming the default branch main.</p>
 </dd>
-<dt id="term-object-database">object database<a class="headerlink" href="#term-object-database" title="Permalink to this term">¶</a></dt><dd><p>The history of all commits and the relationships between them.</p>
+<dt id="term-object-database">object database<a class="headerlink" href="#term-object-database" title="Permalink to this term">#</a></dt><dd><p>The history of all commits and the relationships between them.</p>
 </dd>
-<dt id="term-origin">origin<a class="headerlink" href="#term-origin" title="Permalink to this term">¶</a></dt><dd><p>The default <a class="reference internal" href="#term-remote-repository"><span class="xref std std-term">remote repository</span></a>.</p>
+<dt id="term-origin">origin<a class="headerlink" href="#term-origin" title="Permalink to this term">#</a></dt><dd><p>The default <a class="reference internal" href="#term-remote-repository"><span class="xref std std-term">remote repository</span></a>.</p>
 </dd>
-<dt id="term-patch">patch<a class="headerlink" href="#term-patch" title="Permalink to this term">¶</a></dt><dd><p>The file detailing the exact changes between two versions in a structured
+<dt id="term-patch">patch<a class="headerlink" href="#term-patch" title="Permalink to this term">#</a></dt><dd><p>The file detailing the exact changes between two versions in a structured
 format that git and other programs understand. It’s very similar to the
 output of <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code>.</p>
 </dd>
-<dt id="term-reference">reference<a class="headerlink" href="#term-reference" title="Permalink to this term">¶</a></dt><dd><p>A pointer to a specific <a class="reference internal" href="#term-commit"><span class="xref std std-term">commit</span></a>.</p>
+<dt id="term-reference">reference<a class="headerlink" href="#term-reference" title="Permalink to this term">#</a></dt><dd><p>A pointer to a specific <a class="reference internal" href="#term-commit"><span class="xref std std-term">commit</span></a>.</p>
 </dd>
-<dt id="term-remote-repository">remote repository<a class="headerlink" href="#term-remote-repository" title="Permalink to this term">¶</a></dt><dt id="term-upstream-repo">upstream repo<a class="headerlink" href="#term-upstream-repo" title="Permalink to this term">¶</a></dt><dd><p>A repository that you send changes to.</p>
+<dt id="term-remote-repository">remote repository<a class="headerlink" href="#term-remote-repository" title="Permalink to this term">#</a></dt><dt id="term-upstream-repo">upstream repo<a class="headerlink" href="#term-upstream-repo" title="Permalink to this term">#</a></dt><dd><p>A repository that you send changes to.</p>
 </dd>
-<dt id="term-repository">repository<a class="headerlink" href="#term-repository" title="Permalink to this term">¶</a></dt><dt id="term-repo">repo<a class="headerlink" href="#term-repo" title="Permalink to this term">¶</a></dt><dd><p>The container for version-control information for a set of files.</p>
+<dt id="term-repository">repository<a class="headerlink" href="#term-repository" title="Permalink to this term">#</a></dt><dt id="term-repo">repo<a class="headerlink" href="#term-repo" title="Permalink to this term">#</a></dt><dd><p>The container for version-control information for a set of files.</p>
 </dd>
-<dt id="term-SHA">SHA<a class="headerlink" href="#term-SHA" title="Permalink to this term">¶</a></dt><dt id="term-hash">hash<a class="headerlink" href="#term-hash" title="Permalink to this term">¶</a></dt><dd><p>A 40-character unique identifier that points to a the rest of the data
+<dt id="term-SHA">SHA<a class="headerlink" href="#term-SHA" title="Permalink to this term">#</a></dt><dt id="term-hash">hash<a class="headerlink" href="#term-hash" title="Permalink to this term">#</a></dt><dd><p>A 40-character unique identifier that points to a the rest of the data
 related to the <a class="reference internal" href="#term-commit"><span class="xref std std-term">commit</span></a>. Basically, a commit ID. Here’s an example:
 <code class="docutils literal notranslate"><span class="pre">d16085b3b913e5bc5e351c0a7461051e9973629a</span></code></p>
 </dd>
-<dt id="term-tree">tree<a class="headerlink" href="#term-tree" title="Permalink to this term">¶</a></dt><dd><p>A snapshot of your files at the time of the <a class="reference internal" href="#term-HEAD"><span class="xref std std-term">HEAD</span></a> <a class="reference internal" href="#term-commit"><span class="xref std std-term">commit</span></a>.</p>
+<dt id="term-tree">tree<a class="headerlink" href="#term-tree" title="Permalink to this term">#</a></dt><dd><p>A snapshot of your files at the time of the <a class="reference internal" href="#term-HEAD"><span class="xref std std-term">HEAD</span></a> <a class="reference internal" href="#term-commit"><span class="xref std std-term">commit</span></a>.</p>
 </dd>
-<dt id="term-version-control">version control<a class="headerlink" href="#term-version-control" title="Permalink to this term">¶</a></dt><dt id="term-source-control">source control<a class="headerlink" href="#term-source-control" title="Permalink to this term">¶</a></dt><dt id="term-revision-control">revision control<a class="headerlink" href="#term-revision-control" title="Permalink to this term">¶</a></dt><dd><p>A method for keeping track of and managing changes to a set of files.</p>
+<dt id="term-version-control">version control<a class="headerlink" href="#term-version-control" title="Permalink to this term">#</a></dt><dt id="term-source-control">source control<a class="headerlink" href="#term-source-control" title="Permalink to this term">#</a></dt><dt id="term-revision-control">revision control<a class="headerlink" href="#term-revision-control" title="Permalink to this term">#</a></dt><dd><p>A method for keeping track of and managing changes to a set of files.</p>
 </dd>
-<dt id="term-version-control-system">version control system<a class="headerlink" href="#term-version-control-system" title="Permalink to this term">¶</a></dt><dt id="term-VCS">VCS<a class="headerlink" href="#term-VCS" title="Permalink to this term">¶</a></dt><dt id="term-revision-control-system">revision control system<a class="headerlink" href="#term-revision-control-system" title="Permalink to this term">¶</a></dt><dt id="term-source-control-management-system">source control management system<a class="headerlink" href="#term-source-control-management-system" title="Permalink to this term">¶</a></dt><dt id="term-SCM">SCM<a class="headerlink" href="#term-SCM" title="Permalink to this term">¶</a></dt><dd><p>A tool or set of tools for version control. The most popular today is Git,
+<dt id="term-version-control-system">version control system<a class="headerlink" href="#term-version-control-system" title="Permalink to this term">#</a></dt><dt id="term-VCS">VCS<a class="headerlink" href="#term-VCS" title="Permalink to this term">#</a></dt><dt id="term-revision-control-system">revision control system<a class="headerlink" href="#term-revision-control-system" title="Permalink to this term">#</a></dt><dt id="term-source-control-management-system">source control management system<a class="headerlink" href="#term-source-control-management-system" title="Permalink to this term">#</a></dt><dt id="term-SCM">SCM<a class="headerlink" href="#term-SCM" title="Permalink to this term">#</a></dt><dd><p>A tool or set of tools for version control. The most popular today is Git,
 but some other examples include Mercurial, Subversion, CVS and Perforce.</p>
 </dd>
 </dl>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -988,7 +1153,7 @@ but some other examples include Mercurial, Subversion, CVS and Perforce.</p>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./tools"
         },
         predefinedOutput: true
@@ -998,9 +1163,11 @@ but some other examples include Mercurial, Subversion, CVS and Perforce.</p>
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="terminal.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1016,23 +1183,25 @@ but some other examples include Mercurial, Subversion, CVS and Perforce.</p>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

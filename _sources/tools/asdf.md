@@ -15,7 +15,9 @@ tool-specific version managers like pyenv, rbenv, goenv and nvm.
 Install
 -------
 
-:::::{tabbed} Mac
+:::::{tab-set}
+
+:::{tab-item} Mac
 
 To install:
 
@@ -35,9 +37,9 @@ Then add the following to your startup file:
 $(brew --prefix asdf)/libexec/asdf.sh
 ```
 
-:::::
+:::
 
-:::::{tabbed} Other
+:::{tab-item} Other
 
 To install:
 
@@ -57,9 +59,11 @@ Then add the following to your startup file:
 . $HOME/.asdf/asdf.sh
 ```
 
-:::::
-
 Then close your terminal and start a new one.
+
+:::
+
+:::::
 
 Usage
 -----
