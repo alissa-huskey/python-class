@@ -18,6 +18,7 @@ from adventure import (
     place_add,
     wrap,
     write,
+    MAX_HEALTH,
 )
 
 
@@ -52,10 +53,10 @@ def test_teardown():
 
 @pytest.mark.parametrize(
     "start, amount, result, message", [
-        (100, -50, 50, "a negative number should be subtracted"),
-        (10, 50, 60, "a positive number should be added"),
-        (90, 20, 100, "the max health should be 100"),
+        (50, 10, 60, "a positive number should be added"),
+        (50, -10, 40, "a negative number should be subtracted"),
         (20, -30, 0, "the min health should be 0"),
+        (90, 20, MAX_HEALTH, f"the max health should be {MAX_HEALTH}"),
     ]
 )
 def test_health_change(start, amount, result, message):
@@ -370,6 +371,22 @@ def test_do_read_in_inventory(capsys):
         "The writing message {message!r} should be indented an extra level."
 
 
+def test_do_pet_cant_pet(capsys):
+    # GIVEN: The player is in a place where they can't pet anything
+    adventure.PLAYER["place"] = "nowhere"
+    adventure.PLACES["nowhere"] = {
+        "name": "The Void",
+        "can": [],
+    }
+
+    # WHEN: They try to pet something
+    do_pet(["red", "dragon"])
+    output = capsys.readouterr().out
+
+    # THEN: An error message should be printed
+    assert "You can't do that" in output
+
+
 def test_do_pet_no_args(capsys):
     # GIVEN: any scenerio
 
@@ -390,22 +407,6 @@ def test_do_pet_no_color(capsys):
 
     # THEN: an error message should be printed
     assert "What do you want to pet" in output
-
-
-def test_do_pet_cant_pet(capsys):
-    # GIVEN: The player is in a place where they can't pet anything
-    adventure.PLAYER["place"] = "nowhere"
-    adventure.PLACES["nowhere"] = {
-        "name": "The Void",
-        "can": [],
-    }
-
-    # WHEN: They try to pet something
-    do_pet(["red", "dragon"])
-    output = capsys.readouterr().out
-
-    # THEN: An error message should be printed
-    assert "You can't do that" in output
 
 
 def test_do_pet_wrong_color(capsys):
@@ -491,7 +492,7 @@ def test_do_pet_cranky_dragon(capsys):
     assert adventure.PLAYER["inventory"]["gems"] == 10
 
     # AND: The player should see a message about what happened
-    assert "Error" in output
+    assert "pushes you away" in output
 
 
 def test_do_pet_lonely_dragon(capsys):

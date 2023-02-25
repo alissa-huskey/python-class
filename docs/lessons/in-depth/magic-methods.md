@@ -32,7 +32,6 @@ methods that are defined for all types.
 
 ```{code-block} python
 :caption: Python shell
-:class: full-width
 >>> dir(object())
 ['__class__',
  '__delattr__',
@@ -68,7 +67,6 @@ cooresponding magic method or special attribute.
 {{ leftcol }}
 
 ```{code-block} python
-:class: full-width
 >>> value = 1
 
 >>> str(value)
@@ -76,13 +74,11 @@ cooresponding magic method or special attribute.
 ```
 
 ```{code-block} python
-:class: full-width
 >>> value == 2
 False
 ```
 
 ```{code-block} python
-:class: full-width
 >>> type(value)
 int
 ```
@@ -91,7 +87,6 @@ int
 {{ rightcol }}
 
 ```{code-block} python
-:class: full-width
 >>> value = 1
 
 >>> value.__str__()
@@ -99,13 +94,11 @@ int
 ```
 
 ```{code-block} python
-:class: full-width
 >>> value.__eq__(2)
 False
 ```
 
 ```{code-block} python
-:class: full-width
 >>> value.__class__
 int
 ```

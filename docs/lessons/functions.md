@@ -27,8 +27,9 @@ that can be executed later. If you're familiar with macros in spreadsheet
 programs, it's kind of like that.
 
 ```{contents} Table of Contents
-:backlinks: top
+:backlinks: entry
 :local:
+:depth: 2
 ```
 
 Part 1: Defining and calling
@@ -94,7 +95,7 @@ hello()
 
 {{ endcols }}
 
-### Part 1: Exercise
+### Part 1.1: Exercise
 
 ```{exercise} horizontal line function
 :label: hr-exercise
@@ -162,7 +163,6 @@ paranthesis when calling the function.
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 hello("John")
 ```
 
@@ -189,7 +189,6 @@ hello(!!!"Mary"!!!)
 Is equivalent to:
 
 ```{code-block-hl} python
-:class: full-width
 !!!name!!! = !!!"Mary"!!!
 message = "Hello " + name + "."
 print(message)
@@ -198,7 +197,7 @@ print(message)
 
 {{ endcols }}
 
-{{ newrow }}
+{{ leftcol }}
 
 Seperate multiple parameters with a comma.
 
@@ -225,7 +224,7 @@ greet("afternoon", "Mrs. Doe")
 
 {{ endcols }}
 
-### Part 2.1: Exercise
+### Part 2.2: Exercise
 
 `````{exercise} header function
 :label: header-exercise
@@ -252,7 +251,7 @@ def header(title):
 
 `````
 
-### Part 2.2: Positional Arguments
+### Part 2.3: Positional Arguments
 
 Most of the time functions are called using {term}`positional arguments <positional argument>`. That
 is, each argument is assigned based on its position in the argument list.
@@ -306,7 +305,7 @@ winners(
 
 {{ endcols }}
 
-### Part 2.3: Keyword Arguments
+### Part 2.4: Keyword Arguments
 
 {{ leftcol }}
 
@@ -429,7 +428,7 @@ print("555", "555", "5555", sep="-")
 
 {{ endcols }}
 
-### Part 2.3: Exercises
+### Part 2.5: Exercises
 
 ```{exercise} keyword arguments
 :label: keyword-arguments-exercise
@@ -666,7 +665,7 @@ string `"hello you"`.
 
 {{ endcols }}
 
-### Part 3: Exercise
+### Part 3.1: Exercise
 
 ```{exercise} random function
 :label: random-function-exercise
@@ -807,10 +806,10 @@ def prettify(message, align, width):
     return message
 ```
 
-Exercises
----------
+Part 5: Exercises
+-----------------
 
-### `welcome()` function
+### Part 5.1: `welcome()` function
 
 `````{exercise} welcome
 :label: extra-exercise-a
@@ -839,7 +838,7 @@ Welcome to coding class!
 
 `````
 
-### `letter_count()` function
+### Part 5.2: `letter_count()` function
 
 `````{exercise} letter_count
 :label: extra-exercise-b
@@ -875,7 +874,7 @@ There are 0 characters in ''.
 
 `````
 
-### `is_vowel()` function
+### Part 5.3: `is_vowel()` function
 
 `````{exercise} is_vowel
 :label: extra-exercise-c
@@ -937,7 +936,7 @@ is '' a vowel?: False
 
 `````
 
-### `tip()` function
+### Part 5.4: `tip()` function
 
 `````{exercise} tip
 :label: extra-exercise-d
@@ -981,7 +980,7 @@ A 10% tip on a $500 bill is: $50.0
 
 `````
 
-### `total()` function
+### Part 5.5: `total()` function
 
 `````{exercise} total
 :label: extra-exercise-e
@@ -1028,7 +1027,7 @@ The final total on a $500 bill including a 10% tip is: $550.0
 
 `````
 
-### Docstring exercise
+### Part 5.6: Docstring exercise
 
 ```{exercise} docstrings
 :label: docstrings-exercise

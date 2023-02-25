@@ -344,3 +344,4 @@ print(character, "has finished Level One.")
 An action is preformed on a variable when it is referenced. So even though the
 `character` variable is assigned on line `1`, it isn't referenced until line `19`.
 
+{{ clear }}

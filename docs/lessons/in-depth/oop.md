@@ -24,14 +24,13 @@ It allows us to define our own types and give those types properties and behavio
 :depth: 2
 ```
 
-Part 1: Classes
----------------
+Introduction
+------------
 
 Lets think back to our old pypet program. We had something like this:
 
 ```{code-block} python
 :caption: old pypet.py
-:class: full-width
 :linenos:
 
 cat = {
@@ -70,7 +69,8 @@ has a `name`, a `weight`, a `pic` and an `is_hungry` value.
 In this lesson we'll rewrite that using object oriented programming, staring by
 creating an `Animal` class.
 
-### Part 1.1: Simple Classes
+Part 1: Simple Classes
+----------------------
 
 {{ leftcol }}
 
@@ -79,7 +79,6 @@ Here is the simplest class.
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 class Animal:
     ...
 ```
@@ -91,7 +90,6 @@ Now we can create a new animal instance like so:
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 cat = Animal()
 type(cat)
 ```
@@ -103,7 +101,6 @@ We could assign properties to `cat` after it has been instantiated.
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 cat.name = "Flufosourus"
 cat.weight = 7
 cat.is_hungry = False
@@ -132,7 +129,6 @@ print(cat.pic)
 
 ```{code-block} python
 :caption: Car Class Exercise
-:class: full-width
 :linenos:
 
 class Car:
@@ -151,7 +147,8 @@ print(car.color, car.make, car.model, car.year)
 `````
 
 
-### Part 1.2: Constructors
+Part 2: Constructors
+--------------------
 
 Usually when we create a class, we have an idea of what properties it is going
 to have. Instead of relying on the programmer to assign arbitrary properties,
@@ -171,7 +168,6 @@ variable that refers to the object itself.
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 
 class Animal:
     def __init__(self):
@@ -185,7 +181,6 @@ Now lets see what happens when we create a new `Animal` object.
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 cat = Animal()
 ```
 
@@ -196,7 +191,6 @@ To make this class more useful, lets have `__init__` take the arguments `name`,
 values to their respective properties on the object.
 
 ```{code-cell} python
-:class: full-width
 
 class Animal:
     def __init__(self, name, pic, weight, is_hungry):
@@ -217,7 +211,6 @@ Now we can pass in arguments when we instantiate the object.
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 cat = Animal(
   "Flufosourus",
   "(=^o.o^=)__",
@@ -234,14 +227,13 @@ from `cat`.
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 print(cat.name)
 print(cat.pic)
 ```
 
 {{ endcols }}
 
-### Part 1.2 Exercise
+### Part 2.1 Exercise
 
 `````{exercise} Car Constructor
 :label: car-constructor-exercise
@@ -259,7 +251,6 @@ print(cat.pic)
 
 ```{code-block} python
 :caption: Car Constructor Exercise
-:class: full-width
 :linenos:
 
 class Car:
@@ -282,7 +273,8 @@ print(car.color, car.make, car.model, car.year)
 
 `````
 
-### Part 1.3 Default and Keyword Arguments
+Part 3: Default and Keyword Arguments
+-------------------------------------
 
 Often you want to give an property a default value if the user does not
 specify the value. You can do this in the method definition with
@@ -291,7 +283,6 @@ specify the value. You can do this in the method definition with
 Lets make `is_hungry` `False` by default.
 
 ```{code-cell} python
-:class: full-width
 
 class Animal:
     def __init__(self, name, pic, weight, is_hungry=False):
@@ -309,7 +300,6 @@ argument, and it will get set to `False`.
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 cat = Animal(
   "Flufosourus",
   "(=^o.o^=)__",
@@ -330,7 +320,6 @@ To do this, just put {samp}`{NAME}={VALUE}` when calling the constructor.
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 
 cat = Animal(
   name="Flufosourus",
@@ -341,7 +330,7 @@ cat = Animal(
 
 {{ endcols }}
 
-### Part 1.3 Exercises
+### Part 3.1 Exercises
 
 `````{exercise} Car Keyword Arguments
 :label: car-keyword-args-exercise
@@ -355,7 +344,6 @@ Modify where you create the car object to use keyword arguments.
 
 ```{code-block} python
 :caption: Car Keyword Arguments Exercise
-:class: full-width
 :linenos:
 
 car = Car(
@@ -389,7 +377,6 @@ car = Car(
 
 ```{code-block} python
 :caption: Car Default Exercise
-:class: full-width
 :linenos:
 
 class Car:
@@ -423,7 +410,8 @@ print(truck.color, truck.year, truck.make, truck.model, truck.is_clean)
 `````
 
 
-### Part 1.4: Methods
+Part 4: Methods
+---------------
 
 A benfit to writing things in an object oriented way is that data and the
 behavior associated with it are all packaged together. That means that an
@@ -432,7 +420,6 @@ objects methods already have access to its properties.
 To demonstrate this, lets add a `feed()` method to the `Animal` class.
 
 ```{code-cell} python
-:class: full-width
 
 class Animal:
     def __init__(self, name, pic, weight, is_hungry=False):
@@ -471,7 +458,6 @@ Now we can call `cat.feed()`.
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 
 cat.feed()
 ```
@@ -483,7 +469,6 @@ And we can see that `cat.weight` and `cat.is_hungry` have both been changed.
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 
 print(cat.weight)
 print(cat.is_hungry)
@@ -492,7 +477,7 @@ print(cat.is_hungry)
 
 {{ endcols }}
 
-### Part 1.4 Exercise
+### Part 4.1 Exercise
 
 `````{exercise} Car Method
 :label: car-method-exercise
@@ -510,7 +495,6 @@ print(cat.is_hungry)
 
 ```{code-block} python
 :caption: Car Method Exercise
-:class: full-width
 :linenos:
 
 class Car:
@@ -550,7 +534,8 @@ print(truck.is_clean)
 
 `````
 
-### Part 1.5: Class Properties
+Part 5: Class Properties
+------------------------
 
 When you set properties inside the class via `self.`, or outside of the class
 using an object that has already been instantiated, these properties are called
@@ -567,7 +552,6 @@ You can do this just like assigning any variable, except inside the class.
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 
 class Animal:
     ears = 2
@@ -636,7 +620,7 @@ print("Animal:", Animal.ears)
 
 {{ endcols }}
 
-### Part 1.5: Exercise
+### Part 5.1: Exercise
 
 `````{exercise} Class Properties
 :label: class-properties-exercise
@@ -652,7 +636,6 @@ to `2`. Print the value of `Car.doors`, `car.doors` and `truck.doors`.
 
 ```{code-block} python
 :caption: "Class Properties Exercise"
-:class: full-width
 :linenos:
 class Car:
     doors = 4
@@ -692,7 +675,8 @@ print(truck.doors)
 
 `````
 
-### Part 1.6: Gotchas with Mutable Types
+Part 6: Gotchas with Mutable Types
+----------------------------------
 
 You have to be careful with {term}`mutable` types when it comes to default
 arguments or class properties, as they can lead to unexpected behavior.
@@ -705,7 +689,6 @@ to an empty list.
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 
 class Animal:
     ears = 2
@@ -775,7 +758,6 @@ This is because the default value is created *when the method or function is
 defined*, __not__ when an object is instantiated.
 
 ```{code-cell} python
-:class: full-width
 
 class Animal:
     ears = 2
@@ -833,7 +815,6 @@ The moral of the story is, if you want a mutable property that is different for
 each instance of a class, assign it in the `__init__()` function.
 
 ```{code-cell} python
-:class: full-width
 
 class Animal:
     ears = 2
@@ -891,7 +872,7 @@ print(snake.toys)
 
 {{ endcols }}
 
-### Part 1.6: Exercise
+### Part 6.1: Exercise
 
 `````{exercise} Mutable Gotchas
 :label: mutable-gotchas-exercise

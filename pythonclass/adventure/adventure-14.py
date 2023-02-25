@@ -24,8 +24,10 @@ Part 14: Dragons
 import random
 import textwrap
 from string import Template
+from time import sleep
 
 from console import fg, fx
+from console.progress import ProgressBar
 
 WIDTH = 45
 
@@ -33,9 +35,19 @@ MARGIN = 2
 
 DEBUG = True
 
+DELAY = 1.5
+
+MAX_HEALTH = 100
+
+BAR = ProgressBar(
+    total=100.1,
+    width=WIDTH - len("Health") - 5,
+    clear_left=False,
+)
+
 # ## Game World Data #########################################################
 
-COLORS = ("red", "black", "silver")
+COLORS = ["red", "black", "silver"]
 
 MOODS = [
     {
@@ -57,7 +69,7 @@ MOODS = [
         "damage": (-25, -8),
         "message": (
             "is just SO happy to see you! He gives you a whopping "
-            "$amount gems! Then he hugs you, squeezes you, and calls "
+            "$gems gems! Then he hugs you, squeezes you, and calls "
             "you George... costing you $damage in health."
         )
     },
@@ -69,7 +81,7 @@ DRAGONS = {}
 PLAYER = {
     "place": "home",
     "inventory": {"gems": 50},
-    "health": 100,
+    "health": MAX_HEALTH,
 }
 
 PLACES = {
@@ -146,6 +158,7 @@ PLACES = {
             "Its three enormous heads snore softly, each in turn.",
         ),
         "items": [],
+        "can": ["pet"],
     },
 }
 
@@ -265,6 +278,12 @@ def abort(message):
     exit(1)
 
 
+def health_bar(progress):
+    """Print a progress bar"""
+    print()
+    write(f"Health {BAR(progress)}  ")
+
+
 # ## Data functions ##########################################################
 
 
@@ -299,7 +318,7 @@ def get_item(key):
     return item
 
 
-def health_change(amount):
+def health_change(amount: int):
     """Add the following (positive or negative) amount to health, but limit to 0-100"""
     PLAYER["health"] += amount
 
@@ -307,9 +326,9 @@ def health_change(amount):
     if PLAYER["health"] < 0:
         PLAYER["health"] = 0
 
-    # cap health at 100
-    if PLAYER["health"] > 100:
-        PLAYER["health"] = 100
+    # cap health
+    if PLAYER["health"] > MAX_HEALTH:
+        PLAYER["health"] = MAX_HEALTH
 
 
 def inventory_change(key, quantity=1):
@@ -571,6 +590,8 @@ def do_inventory():
 
     debug("Trying to show inventory.")
 
+    health_bar(PLAYER["health"])
+
     header("Inventory")
 
     if not PLAYER["inventory"]:
@@ -706,6 +727,11 @@ def do_pet(args):
 
     debug(f"Trying to pet: {args}")
 
+    # make sure the player said what they want to pet
+    if not args:
+        error("What do you want to pet?")
+        return
+
     # make sure they are somewhere they can pet dragons
     if not place_can("pet"):
         error("You can't do that here.")
@@ -714,11 +740,6 @@ def do_pet(args):
     for word in ["dragon", "head"]:
         if word in args:
             args.remove(word)
-
-    # make sure the player said what they want to pet
-    if not args:
-        error("What do you want to pet?")
-        return
 
     color = args[0].lower()
 
@@ -753,10 +774,22 @@ def do_pet(args):
     if dragon["damage"]:
         health_change(dragon["damage"])
 
+    sentences = (
+        "You creep forward...",
+        "...gingerly reach out your hand...",
+        f"...and gently pat the dragon's {color} head.",
+    )
+
+    for text in sentences:
+        print()
+        write(text)
+        sleep(DELAY)
+
     # generate the message
     tpl = Template(f'The $mood $color dragon {dragon["message"]}')
     text = tpl.safe_substitute(dragon)
-    write(text)
+    print()
+    wrap(text)
 
     # reset the DRAGONS dict
     DRAGONS = {}
@@ -806,6 +839,9 @@ def main():
 
         elif command == "buy":
             do_buy(args)
+
+        elif command == "pet":
+            do_pet(args)
 
         else:
             error("No such command.")
