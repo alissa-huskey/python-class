@@ -6195,7 +6195,23 @@ In this section we'll the progress bar feature of the
 
 #### D. Add health bar to inventory command
 
+{{ left }}
+
 1. `[ ]` At the beginning of `do_inventory()` call `health_bar()` and pass the argument `PLAYER["health"]`
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-13.4.cast
+:poster: npt:0:03
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
 
 `````{dropdown} Code
 
