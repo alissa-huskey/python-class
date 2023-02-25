@@ -1,15 +1,4 @@
 ---
-substitutions:
-  output: |
-    ```{panels}
-    :container: m-0 p-0
-    :body: text-monospace text-white bg-dark
-    :card: shadow-none m-0 p-0
-    :footer: text-white-50 bg-secondary
-    OUTPUT
-    ++++++++++++++
-    output
-    ```
 jupytext:
   formats: md:myst
   text_representation:
@@ -58,7 +47,7 @@ knowing how to read and understand code. So for this exercise we're going to
 practice reading code.
 
 We'll step through a small code sample, similar to how we did in in our
-file:///Users/alissahuskey/Dropbox/projects/python-class/docs/_build/html/index.html[](flow.md) lesson. For each line that we walk through, you'll see a
+[Program Flow](flow.md) lesson. For each line that we walk through, you'll see a
 section that looks like this. (Labels in blue are just for this example.)
 
 
@@ -103,19 +92,15 @@ section that looks like this. (Labels in blue are just for this example.)
 
 % output ------------------------------
 
-```{panels}
-:container: m-0 p-0
-:body: text-monospace text-white bg-dark
-:card: shadow-none m-0 p-0
-:footer: text-white-50 bg-secondary
-
+:::{jinja}
+{% set contents %}
 Starting level 1
 
 **Welcome Yoshi**
+{% endset %}
 
-++++++++++++++
-output
-```
+{% include "lessons/reading-code-output.jinja" %}
+:::
 
 ```{div} alert, alert-primary
 **↑ Output**
@@ -144,6 +129,8 @@ print("Welcome", name)
 
 {{clear}}
 
+---
+
 % -------------------------------------
 % END EXAMPLE
 % =====================================
@@ -161,70 +148,31 @@ Reading a while loop
 
 Let's walk through a simple while loop.
 
-
 % =====================================
 % START LINE 1
 % -------------------------------------
 
-% ~~~~~~~~~~~~~
-% start sidebar
-% ~~~~~~~~~~~~~
+:::{jinja}
+{% set line = 1 %}
 
-`````{sidebar} line 1
-
-% start context -----------------------
-
-```{admonition} variables
-
+{% set variables %}
 *none*
+{% endset %}
 
-```
-
-% evaluation steps --------------------
-
-```{code-block} python
-:caption: steps to evaluate line
-:class: full-width
+{% set evaluation %}
 >>> total = 0
-```
+{% endset %}
 
-% output ------------------------------
-
-```{panels}
-:container: m-0 p-0
-:body: text-monospace text-white bg-dark
-:card: shadow-none m-0 p-0
-:footer: text-white-50 bg-secondary
-
+{% set output %}
 &nbsp;
+{% endset %}
 
-++++++++++++++
-output
-```
+{% set em_lines = "1" %}
 
-`````
+{% include "lessons/reading-code-step.jinja" ignore missing %}
+:::
 
-% ~~~~~~~~~~~
-% end sidebar
-% ~~~~~~~~~~~
-
-% code --------------------------------
-
-```{code-block} python
-:linenos:
-:emphasize-lines: 1, 1
-
-total = 0
-i = 0
-while i < 3:
-    print("loop", i)
-    total = total + i
-    i = i + 1
-print("The total is:", total)
-
-```
-
-{{clear}}
+{{ clear }}
 
 ---
 
@@ -240,63 +188,29 @@ print("The total is:", total)
 % start sidebar
 % ~~~~~~~~~~~~~
 
-`````{sidebar} line 2
+:::{jinja}
+{% set line = 2 %}
 
-% start context -----------------------
-
-```{admonition} variables
-
+{% set variables %}
 |         |     |
 |---------|-----|
 | `total` | `0` |
+{% endset %}
 
-```
-
-% evaluation steps --------------------
-
-```{code-block} python
-:caption: steps to evaluate line
-:class: full-width
+{% set evaluation %}
 >>> i = 0
-```
+{% endset %}
 
-% output ------------------------------
-
-```{panels}
-:container: m-0 p-0
-:body: text-monospace text-white bg-dark
-:card: shadow-none m-0 p-0
-:footer: text-white-50 bg-secondary
-
+{% set output %}
 &nbsp;
+{% endset %}
 
-++++++++++++++
-output
-```
+{% set em_lines = "2" %}
 
-`````
+{% include "lessons/reading-code-step.jinja" ignore missing %}
+:::
 
-% ~~~~~~~~~~~
-% end sidebar
-% ~~~~~~~~~~~
-
-% code --------------------------------
-
-```{code-block} python
-:linenos:
-:emphasize-lines: 2, 2
-
-total = 0
-i = 0
-while i < 3:
-    print("loop", i)
-    total = total + i
-    i = i + 1
-print("The total is:", total)
-
-```
-
-{{clear}}
+{{ clear }}
 
 ---
 
@@ -308,69 +222,31 @@ print("The total is:", total)
 % START LOOP 0, LINE 3
 % -------------------------------------
 
-% ~~~~~~~~~~~~~
-% start sidebar
-% ~~~~~~~~~~~~~
+:::{jinja}
+{% set loop, line = (0, 3) %}
 
-`````{sidebar} loop 0, line 3
-
-% start context -----------------------
-
-```{admonition} variables
-
+{% set variables %}
 |         |     |
 |---------|-----|
 | `total` | `0` |
 | `i`     | `0` |
+{% endset %}
 
-```
-
-% evaluation steps --------------------
-
-```{code-block} python
-:caption: steps to evaluate line
-:class: full-width
+{% set evaluation %}
 >>> i < 3
->>> 0 < 3  # True, so go to line 4True  # True, so go to line 4
-```
+>>> 0 < 3  # True, so go to line 4
+{% endset %}
 
-% output ------------------------------
-
-```{panels}
-:container: m-0 p-0
-:body: text-monospace text-white bg-dark
-:card: shadow-none m-0 p-0
-:footer: text-white-50 bg-secondary
-
+{% set output %}
 &nbsp;
+{% endset %}
 
-++++++++++++++
-output
-```
+{% set em_lines = "3" %}
 
-`````
+{% include "lessons/reading-code-step.jinja" ignore missing %}
+:::
 
-% ~~~~~~~~~~~
-% end sidebar
-% ~~~~~~~~~~~
-
-% code --------------------------------
-
-```{code-block} python
-:linenos:
-:emphasize-lines: 3, 3
-
-total = 0
-i = 0
-while i < 3:
-    print("loop", i)
-    total = total + i
-    i = i + 1
-print("The total is:", total)
-
-```
-
-{{clear}}
+{{ clear }}
 
 ---
 
@@ -386,65 +262,31 @@ print("The total is:", total)
 % start sidebar
 % ~~~~~~~~~~~~~
 
-`````{sidebar} loop 0, line 4
+:::{jinja}
+{% set loop, line = (0, 4) %}
 
-% start context -----------------------
-
-```{admonition} variables
-
+{% set variables %}
 |         |     |
 |---------|-----|
 | `total` | `0` |
 | `i`     | `0` |
+{% endset %}
 
-```
-
-% evaluation steps --------------------
-
-```{code-block} python
-:caption: steps to evaluate line
-:class: full-width
+{% set evaluation %}
 >>> print("loop", i)
 >>> print("loop", 0)
-```
+{% endset %}
 
-% output ------------------------------
-
-```{panels}
-:container: m-0 p-0
-:body: text-monospace text-white bg-dark
-:card: shadow-none m-0 p-0
-:footer: text-white-50 bg-secondary
-
+{% set output %}
 **loop 0**
+{% endset %}
 
-++++++++++++++
-output
-```
+{% set em_lines = "4" %}
 
-`````
+{% include "lessons/reading-code-step.jinja" ignore missing %}
+:::
 
-% ~~~~~~~~~~~
-% end sidebar
-% ~~~~~~~~~~~
-
-% code --------------------------------
-
-```{code-block} python
-:linenos:
-:emphasize-lines: 4, 4
-
-total = 0
-i = 0
-while i < 3:
-    print("loop", i)
-    total = total + i
-    i = i + 1
-print("The total is:", total)
-
-```
-
-{{clear}}
+{{ clear }}
 
 ---
 
@@ -456,70 +298,32 @@ print("The total is:", total)
 % START LOOP 0, LINE 5
 % -------------------------------------
 
-% ~~~~~~~~~~~~~
-% start sidebar
-% ~~~~~~~~~~~~~
+:::{jinja}
+{% set loop, line = (0, 5) %}
 
-`````{sidebar} loop 0, line 5
-
-% start context -----------------------
-
-```{admonition} variables
-
+{% set variables %}
 |         |     |
 |---------|-----|
 | `total` | `0` |
 | `i`     | `0` |
+{% endset %}
 
-```
-
-% evaluation steps --------------------
-
-```{code-block} python
-:caption: steps to evaluate line
-:class: full-width
+{% set evaluation %}
 >>> total = total + i
 >>> total = 0 + 0
 >>> total = 0
-```
+{% endset %}
 
-% output ------------------------------
-
-```{panels}
-:container: m-0 p-0
-:body: text-monospace text-white bg-dark
-:card: shadow-none m-0 p-0
-:footer: text-white-50 bg-secondary
-
+{% set output %}
 loop 0
+{% endset %}
 
-++++++++++++++
-output
-```
+{% set em_lines = "5" %}
 
-`````
+{% include "lessons/reading-code-step.jinja" ignore missing %}
+:::
 
-% ~~~~~~~~~~~
-% end sidebar
-% ~~~~~~~~~~~
-
-% code --------------------------------
-
-```{code-block} python
-:linenos:
-:emphasize-lines: 5, 5
-
-total = 0
-i = 0
-while i < 3:
-    print("loop", i)
-    total = total + i
-    i = i + 1
-print("The total is:", total)
-
-```
-
-{{clear}}
+{{ clear }}
 
 ---
 
@@ -535,67 +339,33 @@ print("The total is:", total)
 % start sidebar
 % ~~~~~~~~~~~~~
 
-`````{sidebar} loop 0, line 6
+:::{jinja}
+{% set loop, line = (0, 6) %}
 
-% start context -----------------------
-
-```{admonition} variables
-
+{% set variables %}
 |         |     |
 |---------|-----|
 | `total` | `0` |
 | `i`     | `0` |
+{% endset %}
 
-```
-
-% evaluation steps --------------------
-
-```{code-block} python
-:caption: steps to evaluate line
-:class: full-width
+{% set evaluation %}
 >>> i = i + 1
 >>> i = 0 + 1
 >>> i = 1
 >>> # end of loop, go to line 3
-```
+{% endset %}
 
-% output ------------------------------
-
-```{panels}
-:container: m-0 p-0
-:body: text-monospace text-white bg-dark
-:card: shadow-none m-0 p-0
-:footer: text-white-50 bg-secondary
-
+{% set output %}
 loop 0
+{% endset %}
 
-++++++++++++++
-output
-```
+{% set em_lines = "6" %}
 
-`````
+{% include "lessons/reading-code-step.jinja" ignore missing %}
+:::
 
-% ~~~~~~~~~~~
-% end sidebar
-% ~~~~~~~~~~~
-
-% code --------------------------------
-
-```{code-block} python
-:linenos:
-:emphasize-lines: 6, 6
-
-total = 0
-i = 0
-while i < 3:
-    print("loop", i)
-    total = total + i
-    i = i + 1
-print("The total is:", total)
-
-```
-
-{{clear}}
+{{ clear }}
 
 ---
 
@@ -611,66 +381,32 @@ print("The total is:", total)
 % start sidebar
 % ~~~~~~~~~~~~~
 
-`````{sidebar} loop 1, line 3
+:::{jinja}
+{% set loop, line = (1, 3) %}
 
-% start context -----------------------
-
-```{admonition} variables
-
+{% set variables %}
 |         |     |
 |---------|-----|
 | `total` | `0` |
 | `i`     | `1` |
+{% endset %}
 
-```
-
-% evaluation steps --------------------
-
-```{code-block} python
-:caption: steps to evaluate line
-:class: full-width
+{% set evaluation %}
 >>> i < 3
 >>> 1 < 3  # True, so go to line 4
 >>> True  # True, so go to line 4
-```
+{% endset %}
 
-% output ------------------------------
-
-```{panels}
-:container: m-0 p-0
-:body: text-monospace text-white bg-dark
-:card: shadow-none m-0 p-0
-:footer: text-white-50 bg-secondary
-
+{% set output %}
 loop 0
+{% endset %}
 
-++++++++++++++
-output
-```
+{% set em_lines = "3" %}
 
-`````
+{% include "lessons/reading-code-step.jinja" ignore missing %}
+:::
 
-% ~~~~~~~~~~~
-% end sidebar
-% ~~~~~~~~~~~
-
-% code --------------------------------
-
-```{code-block} python
-:linenos:
-:emphasize-lines: 3, 3
-
-total = 0
-i = 0
-while i < 3:
-    print("loop", i)
-    total = total + i
-    i = i + 1
-print("The total is:", total)
-
-```
-
-{{clear}}
+{{ clear }}
 
 ---
 
@@ -686,67 +422,33 @@ print("The total is:", total)
 % start sidebar
 % ~~~~~~~~~~~~~
 
-`````{sidebar} loop 1, line 4
+:::{jinja}
+{% set loop, line = (1, 4) %}
 
-% start context -----------------------
-
-```{admonition} variables
-
+{% set variables %}
 |         |     |
 |---------|-----|
 | `total` | `0` |
 | `i`     | `1` |
+{% endset %}
 
-```
-
-% evaluation steps --------------------
-
-```{code-block} python
-:caption: steps to evaluate line
-:class: full-width
+{% set evaluation %}
 >>> print("loop", i)
 >>> print("loop", 1)
-```
+{% endset %}
 
-% output ------------------------------
-
-```{panels}
-:container: m-0 p-0
-:body: text-monospace text-white bg-dark
-:card: shadow-none m-0 p-0
-:footer: text-white-50 bg-secondary
-
+{% set output %}
 loop 0
 
 **loop 1**
+{% endset %}
 
-++++++++++++++
-output
-```
+{% set em_lines = "4" %}
 
-`````
+{% include "lessons/reading-code-step.jinja" ignore missing %}
+:::
 
-% ~~~~~~~~~~~
-% end sidebar
-% ~~~~~~~~~~~
-
-% code --------------------------------
-
-```{code-block} python
-:linenos:
-:emphasize-lines: 4, 4
-
-total = 0
-i = 0
-while i < 3:
-    print("loop", i)
-    total = total + i
-    i = i + 1
-print("The total is:", total)
-
-```
-
-{{clear}}
+{{ clear }}
 
 ---
 
@@ -762,68 +464,34 @@ print("The total is:", total)
 % start sidebar
 % ~~~~~~~~~~~~~
 
-`````{sidebar} loop 1, line 5
+:::{jinja}
+{% set loop, line = (1, 5) %}
 
-% start context -----------------------
-
-```{admonition} variables
-
+{% set variables %}
 |         |     |
 |---------|-----|
 | `total` | `0` |
 | `i`     | `1` |
+{% endset %}
 
-```
-
-% evaluation steps --------------------
-
-```{code-block} python
-:caption: steps to evaluate line
-:class: full-width
+{% set evaluation %}
 >>> total = total + i
 >>> total = 0 + 1
 >>> total = 1
-```
+{% endset %}
 
-% output ------------------------------
-
-```{panels}
-:container: m-0 p-0
-:body: text-monospace text-white bg-dark
-:card: shadow-none m-0 p-0
-:footer: text-white-50 bg-secondary
-
+{% set output %}
 loop 0
 
 loop 1
+{% endset %}
 
-++++++++++++++
-output
-```
+{% set em_lines = "5" %}
 
-`````
+{% include "lessons/reading-code-step.jinja" ignore missing %}
+:::
 
-% ~~~~~~~~~~~
-% end sidebar
-% ~~~~~~~~~~~
-
-% code --------------------------------
-
-```{code-block} python
-:linenos:
-:emphasize-lines: 5, 5
-
-total = 0
-i = 0
-while i < 3:
-    print("loop", i)
-    total = total + i
-    i = i + 1
-print("The total is:", total)
-
-```
-
-{{clear}}
+{{ clear }}
 
 ---
 
@@ -839,69 +507,35 @@ print("The total is:", total)
 % start sidebar
 % ~~~~~~~~~~~~~
 
-`````{sidebar} loop 1, line 6
+:::{jinja}
+{% set loop, line = (1, 6) %}
 
-% start context -----------------------
-
-```{admonition} variables
-
+{% set variables %}
 |         |     |
 |---------|-----|
 | `total` | `1` |
 | `i`     | `1` |
+{% endset %}
 
-```
-
-% evaluation steps --------------------
-
-```{code-block} python
-:caption: steps to evaluate line
-:class: full-width
+{% set evaluation %}
 >>> i = i + 1
 >>> i = 1 + 1
 >>> i = 2
 >>> # end of loop, go to line 3
-```
+{% endset %}
 
-% output ------------------------------
-
-```{panels}
-:container: m-0 p-0
-:body: text-monospace text-white bg-dark
-:card: shadow-none m-0 p-0
-:footer: text-white-50 bg-secondary
-
+{% set output %}
 loop 0
 
 loop 1
+{% endset %}
 
-++++++++++++++
-output
-```
+{% set em_lines = "6" %}
 
-`````
+{% include "lessons/reading-code-step.jinja" ignore missing %}
+:::
 
-% ~~~~~~~~~~~
-% end sidebar
-% ~~~~~~~~~~~
-
-% code --------------------------------
-
-```{code-block} python
-:linenos:
-:emphasize-lines: 6, 6
-
-total = 0
-i = 0
-while i < 3:
-    print("loop", i)
-    total = total + i
-    i = i + 1
-print("The total is:", total)
-
-```
-
-{{clear}}
+{{ clear }}
 
 ---
 
@@ -917,68 +551,34 @@ print("The total is:", total)
 % start sidebar
 % ~~~~~~~~~~~~~
 
-`````{sidebar} loop 2, line 3
+:::{jinja}
+{% set loop, line = (2, 3) %}
 
-% start context -----------------------
-
-```{admonition} variables
-
+{% set variables %}
 |         |     |
 |---------|-----|
 | `total` | `1` |
 | `i`     | `2` |
+{% endset %}
 
-```
-
-% evaluation steps --------------------
-
-```{code-block} python
-:caption: steps to evaluate line
-:class: full-width
+{% set evaluation %}
 >>> i < 3
 >>> 2 < 3  # True, go to line 4
 >>> True  # True, go to line 4
-```
+{% endset %}
 
-% output ------------------------------
-
-```{panels}
-:container: m-0 p-0
-:body: text-monospace text-white bg-dark
-:card: shadow-none m-0 p-0
-:footer: text-white-50 bg-secondary
-
+{% set output %}
 loop 0
 
 loop 1
+{% endset %}
 
-++++++++++++++
-output
-```
+{% set em_lines = "3" %}
 
-`````
+{% include "lessons/reading-code-step.jinja" ignore missing %}
+:::
 
-% ~~~~~~~~~~~
-% end sidebar
-% ~~~~~~~~~~~
-
-% code --------------------------------
-
-```{code-block} python
-:linenos:
-:emphasize-lines: 3, 3
-
-total = 0
-i = 0
-while i < 3:
-    print("loop", i)
-    total = total + i
-    i = i + 1
-print("The total is:", total)
-
-```
-
-{{clear}}
+{{ clear }}
 
 ---
 
@@ -994,69 +594,35 @@ print("The total is:", total)
 % start sidebar
 % ~~~~~~~~~~~~~
 
-`````{sidebar} loop 2, line 4
+:::{jinja}
+{% set loop, line = (2, 4) %}
 
-% start context -----------------------
-
-```{admonition} variables
-
+{% set variables %}
 |         |     |
 |---------|-----|
 | `total` | `1` |
 | `i`     | `2` |
+{% endset %}
 
-```
-
-% evaluation steps --------------------
-
-```{code-block} python
-:caption: steps to evaluate line
-:class: full-width
+{% set evaluation %}
 >>> print("loop", i)
 >>> print("loop", 2)
-```
+{% endset %}
 
-% output ------------------------------
-
-```{panels}
-:container: m-0 p-0
-:body: text-monospace text-white bg-dark
-:card: shadow-none m-0 p-0
-:footer: text-white-50 bg-secondary
-
+{% set output %}
 loop 0
 
 loop 1
 
 **loop 2**
+{% endset %}
 
-++++++++++++++
-output
-```
+{% set em_lines = "4" %}
 
-`````
+{% include "lessons/reading-code-step.jinja" ignore missing %}
+:::
 
-% ~~~~~~~~~~~
-% end sidebar
-% ~~~~~~~~~~~
-
-% code --------------------------------
-
-```{code-block} python
-:linenos:
-:emphasize-lines: 4, 4
-
-total = 0
-i = 0
-while i < 3:
-    print("loop", i)
-    total = total + i
-    i = i + 1
-print("The total is:", total)
-
-```
-
-{{clear}}
+{{ clear }}
 
 ---
 
@@ -1072,70 +638,36 @@ print("The total is:", total)
 % start sidebar
 % ~~~~~~~~~~~~~
 
-`````{sidebar} loop 2, line 5
+:::{jinja}
+{% set loop, line = (2, 5) %}
 
-% start context -----------------------
-
-```{admonition} variables
-
+{% set variables %}
 |         |     |
 |---------|-----|
 | `total` | `1` |
 | `i`     | `2` |
+{% endset %}
 
-```
-
-% evaluation steps --------------------
-
-```{code-block} python
-:caption: steps to evaluate line
-:class: full-width
+{% set evaluation %}
 >>> total = total + i
 >>> total = 1 + 2
 >>> total = 3
-```
+{% endset %}
 
-% output ------------------------------
-
-```{panels}
-:container: m-0 p-0
-:body: text-monospace text-white bg-dark
-:card: shadow-none m-0 p-0
-:footer: text-white-50 bg-secondary
-
+{% set output %}
 loop 0
 
 loop 1
 
 loop 2
+{% endset %}
 
-++++++++++++++
-output
-```
+{% set em_lines = "5" %}
 
-`````
+{% include "lessons/reading-code-step.jinja" ignore missing %}
+:::
 
-% ~~~~~~~~~~~
-% end sidebar
-% ~~~~~~~~~~~
-
-% code --------------------------------
-
-```{code-block} python
-:linenos:
-:emphasize-lines: 5, 5
-
-total = 0
-i = 0
-while i < 3:
-    print("loop", i)
-    total = total + i
-    i = i + 1
-print("The total is:", total)
-
-```
-
-{{clear}}
+{{ clear }}
 
 ---
 
@@ -1151,71 +683,37 @@ print("The total is:", total)
 % start sidebar
 % ~~~~~~~~~~~~~
 
-`````{sidebar} loop 2, line 6
+:::{jinja}
+{% set loop, line = (2, 6) %}
 
-% start context -----------------------
-
-```{admonition} variables
-
+{% set variables %}
 |         |     |
 |---------|-----|
 | `total` | `3` |
 | `i`     | `2` |
+{% endset %}
 
-```
-
-% evaluation steps --------------------
-
-```{code-block} python
-:caption: steps to evaluate line
-:class: full-width
+{% set evaluation %}
 >>> i = i + 1
 >>> i = 2 + 1
 >>> i = 3
 >>> # end of loop, go to line 3
-```
+{% endset %}
 
-% output ------------------------------
-
-```{panels}
-:container: m-0 p-0
-:body: text-monospace text-white bg-dark
-:card: shadow-none m-0 p-0
-:footer: text-white-50 bg-secondary
-
+{% set output %}
 loop 0
 
 loop 1
 
 loop 2
+{% endset %}
 
-++++++++++++++
-output
-```
+{% set em_lines = "6" %}
 
-`````
+{% include "lessons/reading-code-step.jinja" ignore missing %}
+:::
 
-% ~~~~~~~~~~~
-% end sidebar
-% ~~~~~~~~~~~
-
-% code --------------------------------
-
-```{code-block} python
-:linenos:
-:emphasize-lines: 6, 6
-
-total = 0
-i = 0
-while i < 3:
-    print("loop", i)
-    total = total + i
-    i = i + 1
-print("The total is:", total)
-
-```
-
-{{clear}}
+{{ clear }}
 
 ---
 
@@ -1227,74 +725,36 @@ print("The total is:", total)
 % START LOOP 3, LINE 3
 % -------------------------------------
 
-% ~~~~~~~~~~~~~
-% start sidebar
-% ~~~~~~~~~~~~~
+:::{jinja}
+{% set loop, line = (3, 3) %}
 
-`````{sidebar} loop 3, line 3
-
-% start context -----------------------
-
-```{admonition} variables
-
+{% set variables %}
 |         |     |
 |---------|-----|
 | `total` | `3` |
 | `i`     | `3` |
+{% endset %}
 
-```
-
-% evaluation steps --------------------
-
-```{code-block} python
-:caption: steps to evaluate line
-:class: full-width
+{% set evaluation %}
 >>> i < 3
 >>> 3 < 3
 >>> False  # False, so go to line 7
-```
+{% endset %}
 
-% output ------------------------------
-
-```{panels}
-:container: m-0 p-0
-:body: text-monospace text-white bg-dark
-:card: shadow-none m-0 p-0
-:footer: text-white-50 bg-secondary
-
+{% set output %}
 loop 0
 
 loop 1
 
 loop 2
+{% endset %}
 
-++++++++++++++
-output
-```
+{% set em_lines = "3" %}
 
-`````
+{% include "lessons/reading-code-step.jinja" ignore missing %}
+:::
 
-% ~~~~~~~~~~~
-% end sidebar
-% ~~~~~~~~~~~
-
-% code --------------------------------
-
-```{code-block} python
-:linenos:
-:emphasize-lines: 3, 3
-
-total = 0
-i = 0
-while i < 3:
-    print("loop", i)
-    total = total + i
-    i = i + 1
-print("The total is:", total)
-
-```
-
-{{clear}}
+{{ clear }}
 
 ---
 
@@ -1310,36 +770,22 @@ print("The total is:", total)
 % start sidebar
 % ~~~~~~~~~~~~~
 
-`````{sidebar} line 7
+:::{jinja}
+{% set line = 7 %}
 
-% start context -----------------------
-
-```{admonition} variables
-
+{% set variables %}
 |         |     |
 |---------|-----|
 | `total` | `3` |
 | `i`     | `3` |
+{% endset %}
 
-```
-
-% evaluation steps --------------------
-
-```{code-block} python
-:caption: steps to evaluate line
-:class: full-width
+{% set evaluation %}
 >>> print("The total is:", total)
 >>> print("The total is:", 3)
-```
+{% endset %}
 
-% output ------------------------------
-
-```{panels}
-:container: m-0 p-0
-:body: text-monospace text-white bg-dark
-:card: shadow-none m-0 p-0
-:footer: text-white-50 bg-secondary
-
+{% set output %}
 loop 0
 
 loop 1
@@ -1347,34 +793,14 @@ loop 1
 loop 2
 
 **The total is: 3**
+{% endset %}
 
-++++++++++++++
-output
-```
+{% set em_lines = "7" %}
 
-`````
+{% include "lessons/reading-code-step.jinja" ignore missing %}
+:::
 
-% ~~~~~~~~~~~
-% end sidebar
-% ~~~~~~~~~~~
-
-% code --------------------------------
-
-```{code-block} python
-:linenos:
-:emphasize-lines: 7, 7
-
-total = 0
-i = 0
-while i < 3:
-    print("loop", i)
-    total = total + i
-    i = i + 1
-print("The total is:", total)
-
-```
-
-{{clear}}
+{{ clear }}
 
 ---
 

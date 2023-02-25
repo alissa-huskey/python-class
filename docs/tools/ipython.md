@@ -71,7 +71,6 @@ Troubleshooting
 
 :::{dropdown} Error
 :open:
-:title: card-title
 
 This error occurs when attempting tab completion.
 
@@ -87,13 +86,15 @@ TypeError: __init__() got an unexpected keyword argument 'column'
 
 :::
 
-:::{dropdown} Solution
+::::::{dropdown} Solution
 :open:
 
 iPython `<=7.19` is incompatable with jedi version `0.18.0`.
 To resolve, downgrade `jedi` to version `0.17.2`.
 
-`````{tabbed} poetry
+::::{tab-set}
+
+`````{tab-item} poetry
 
 Modify your {file}`pyproject.toml` file and add the following `jedi`
 dependency just above the `ipython` dependency.
@@ -117,7 +118,7 @@ poetry update jedi
 
 `````
 
-`````{tabbed} pip
+`````{tab-item} pip
 
 In a terminal run:
 
@@ -128,7 +129,9 @@ python -m pip install -U jedi~=0.17.2
 
 `````
 
-:::
+::::
+
+::::::
 
 ```{seealso}
 
@@ -140,7 +143,6 @@ python -m pip install -U jedi~=0.17.2
 
 :::{dropdown} Error
 :open:
-:title: card-title
 
 This error occurs intermittently after hitting enter.
 
@@ -159,13 +161,15 @@ Exception [WinError 995] The I/O operation has been aborted because of either a 
 
 :::
 
-:::{dropdown} Solution
+::::::{dropdown} Solution
 :open:
 
 iPython ~7.13.0 on Windows does not work with a version 3+ of prompt-toolkit.
 To resolve, downgrade `prompt-toolkit` to version `2.x`.
 
-`````{tabbed} poetry
+:::::{tab-set}
+
+`````{tab-item} poetry
 
 Modify your {file}`pyproject.toml` file and add the following `prompt-toolkit`
 dependency just above the `ipython` dependency.
@@ -189,7 +193,7 @@ poetry update prompt-toolkit
 
 `````
 
-`````{tabbed} pip
+`````{tab-item} pip
 
 In a terminal run:
 
@@ -200,7 +204,7 @@ python -m pip install -U prompt-toolkit~=2.0
 
 `````
 
-:::
+::::::
 
 ```{seealso}
 

@@ -226,7 +226,6 @@ The install fails before building with the error
 ```
 
 :::{dropdown} Error
-:title: card-title
 
 ```
 BUILD FAILED (OS X 12.2.1 using python-build 2.2.4-1-6-g44db3b03)
@@ -252,7 +251,9 @@ This happens on macs with the M1 chip when the the GNU version of `uname`
 
 There is a patch for this that can be applied on install.
 
-`````{tabbed} asdf
+```````{tab-set}
+
+`````{tab-item} asdf
 
 Apply the patch by setting the `ASDF_PYTHON_PATCH_URL` environment variable.
 
@@ -264,7 +265,7 @@ asdf install python 3.8.11
 
 `````
 
-`````{tabbed} pyenv
+`````{tab-item} pyenv
 
 Apply the patch using the --patch flag.
 
@@ -275,6 +276,8 @@ pyenv install --patch 3.8.11 < \
 ```
 
 `````
+
+```````
 
 :::
 
@@ -310,7 +313,9 @@ There may be a patch available [here][patches] depending on your version.
 
 [patches]: https://github.com/Homebrew/formula-patches/tree/master/python
 
-`````{tabbed} asdf
+```````{tab-set}
+
+`````{tab-item} asdf
 
 Apply the patch by setting the `ASDF_PYTHON_PATCH_URL` environment variable.
 
@@ -322,7 +327,7 @@ asdf install python 3.8.11
 
 `````
 
-`````{tabbed} pyenv
+`````{tab-item} pyenv
 
 Apply the patch using the --patch flag.
 
@@ -333,6 +338,8 @@ pyenv install --patch 3.8.11 < \
 ```
 
 `````
+
+```````
 
 :::
 
@@ -425,7 +432,9 @@ version (from `uname -r`) of `1*.*` and as of macOS 11 the release version is
 
 There is a patch for this that can be applied on install.
 
-`````{tabbed} asdf
+```````{tab-set}
+
+`````{tab-item} asdf
 
 Apply the patch by setting the `ASDF_PYTHON_PATCH_URL` environment variable.
 
@@ -437,7 +446,7 @@ asdf install python 3.8.11
 
 `````
 
-`````{tabbed} pyenv
+`````{tab-item} pyenv
 
 Apply the patch using the --patch flag.
 
@@ -448,6 +457,8 @@ pyenv install --patch 3.8.11 < \
 ```
 
 `````
+
+```````
 
 :::
 

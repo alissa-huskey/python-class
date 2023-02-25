@@ -45,9 +45,11 @@ to get to the command line.
 Or, in the case of a terminal embedded in a suite of developer tools such as VS
 Code or Repl.it, it refers the terminal part of the application.
 
-### 2.1: Starting a terminal
+### 1.1: Starting a terminal
 
-```{tabbed} VS Code
+`````{tab-set}
+
+```{tab-item} VS Code
 
 To open and focus the shell, click the {guilabel}`Terminal` tab (usually in the
 bottom panel) or use the {{ ctrltick }} keyboard shortcut.
@@ -67,7 +69,7 @@ You should see something like this:
 
 ```
 
-```{tabbed} Repl.it
+```{tab-item} Repl.it
 
 To open and focus the shell, click the {guilabel}`Shell` tab in the right-most panel.
 
@@ -87,7 +89,7 @@ You should see something like this:
 
 ```
 
-```{tabbed} OS
+```{tab-item} OS
 
 :::::{tabs}
 
@@ -110,6 +112,8 @@ You should see something like this:
 :::::
 
 ```
+
+`````
 
 ### 1.2: The Prompt
 
@@ -272,7 +276,7 @@ Sometimes there is both a long and short version of the same option. For
 example, to print the usage for `python` you can use either `-h` or `--help`.
 
 
-### Summary
+#### Summary
 
 * Commands on the command line are programs.
 * Commands can take arguments, seperated by spaces. Single or double quotes are
@@ -290,7 +294,7 @@ example, to print the usage for `python` you can use either `-h` or `--help`.
   * `python` -- execute Python code
   * `uname` -- display system information
 
-### 2.3: Getting Help
+### 2.2: Getting Help
 
 Many programs, including `python`, take a `-h` or `--help` option which will
 show usage information about that particular program, usually including the
@@ -380,7 +384,7 @@ help: help [-dms] [pattern ...]
 ...
 ```
 
-### Summary
+#### Summary
 
 * Many programs will show usage information when a `-h` or `--help` option is
   passed. For example `python --help`.
@@ -389,7 +393,7 @@ help: help [-dms] [pattern ...]
 * The `help` program can be used to view usage information for shell builtin
   commands. For example `help echo`.
 
-### Exercise
+#### Exercise
 
 `````{exercise} CLI Help Exercise
 :label: cli-help-exercise
@@ -500,7 +504,7 @@ Find the flag for each of the following, then try using the command and flag.
 
 `````
 
-### 2.4: Getting around
+### 2.3: Getting around
 
 :::{important}
 
@@ -543,7 +547,7 @@ $ cd -
 $ cd -P
 ```
 
-### 2.5: Getting file information
+### 2.4: Getting file information
 
 To get information about a file use the `file` command.
 
@@ -620,7 +624,7 @@ $ tail README.md
 ```
 
 
-### 2.6: Making filesystem changes
+### 2.5: Making filesystem changes
 
 To move a file use the `mv` command.
 
@@ -667,7 +671,7 @@ $ mkdir x
 $ mkdir -p x
 ```
 
-### 2.7: Text processing
+### 2.6: Text processing
 
 Sort the contents of a file using the `sort` command.
 

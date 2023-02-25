@@ -48,7 +48,6 @@ To get a better idea of what is involved, lets consider the following simple
 example:
 
 ```{code-cell} python
-:class: full-width
 :linenos:
 """My first program"""
 
@@ -79,7 +78,6 @@ intended for documentation called a {term}`docstring`.
 {{ right }}
 
 ```{code-block} python
-:class: full-width
 :emphasize-lines: "1"
 :linenos:
 
@@ -98,7 +96,6 @@ Python to ignore everything that follows until the end of the line.
 {{ right }}
 
 ```{literalinclude} ../templates/examples/syntax.py
-:class: full-width
 :emphasize-lines: 1
 :lines: "14-15"
 :linenos:
@@ -112,7 +109,6 @@ A comment doesn't have to be at the start of the line.
 
 ```{code-block-hl} python
 :linenos:
-:class: full-width
 :lineno-start: 11
 
 if today.tm_hour < 11:
@@ -131,7 +127,6 @@ cannot be used as a function or variable.
 {{ right }}
 
 ```{code-block-hl} python
-:class: full-width
 :linenos:
 
 !!!import !!!time
@@ -139,7 +134,6 @@ cannot be used as a function or variable.
 ```
 
 ```{code-block-hl} python
-:class: full-width
 :lineno-start: 11
 
 !!!if!!! today.tm_hour < 11:
@@ -152,9 +146,10 @@ A list of all keywords is available in the `keyword` module `kwlist`.
 {{ right }}
 
 
+
 :::{dropdown} Show Keywords
-:title: +text-center
-:container: +keywords-list
+:class-container: +keywords-list
+:class-title: +text-center
 
 ```{include} keywords.md
 ```
@@ -173,7 +168,7 @@ Code is made up of a series of instructions to the computer called
 {{ right }}
 
 `````{dropdown} **...**
-:title: +text-center
+:class-title: +text-center
 
 ```{code-block-hl} python
 :linenos:
@@ -209,7 +204,6 @@ like a sentence that says what to do.
 
 ```{code-block-hl} python
 :linenos:
-:class: full-width
 :emphasize-lines: "3"
 :caption: a simple statement
 
@@ -219,7 +213,7 @@ import time
 ```
 
 `````{dropdown} See more
-:title: +text-center
+:class-title: +text-center
 
 ```{code-block-hl} python
 :linenos:
@@ -267,7 +261,6 @@ with a keyword and end with a colon (`:`).
 {{ right }}
 
 ```{code-block-hl} python
-:class: full-width
 :lineno-start: 11
 :caption: header line
 
@@ -282,7 +275,6 @@ Its {term}`body` of statements are indented under the header.
 {{ right }}
 
 ```{code-block-hl} python
-:class: full-width
 :lineno-start: 11
 :caption: indented body line
 
@@ -302,7 +294,6 @@ any piece of code that resolves to a value.
 {{ right }}
 
 ```{code-block-hl} python
-:class: full-width
 :linenos:
 :lineno-start: 9
 
@@ -310,10 +301,9 @@ greeting = !!!"Hello"!!!
 ```
 
 :::{dropdown} See more
-:title: +text-center
+:class-title: +text-center
 
 ```{code-block-hl} python
-:class: full-width
 :linenos:
 :caption: all expressions
 
@@ -346,7 +336,6 @@ operation or grouping.
 {{ right }}
 
 ```{code-block-hl} python
-:class: full-width
 :linenos:
 :lineno-start: 15
 
@@ -369,7 +358,6 @@ They are evaluated in the order of inside outward then left to right.
 
 ```{code-block-hl} python
 ---
-class: full-width
 caption: |
   step #1 innermost variables and literal values: \
   `message = ("Hello" + "world!").center(80)`
@@ -381,7 +369,6 @@ message = (!!!greeting!!! + !!!"world!"!!!).center(!!!width!!!)
 
 ```{code-block-hl} python
 ---
-class: full-width
 caption: |
   step #2 remaining inner expression: \
   `message = ("Hello world!").center(80)`
@@ -392,7 +379,6 @@ message = (!!!greeting + "world!"!!!).center(width)
 
 ```{code-block-hl} python
 ---
-class: full-width
 caption: |
   step #3 leftmost expression: \
   `message = "Hello world!".center(80)`
@@ -403,7 +389,6 @@ message = !!!(greeting + "world!")!!!.center(width)
 
 ```{code-block-hl} python
 ---
-class: full-width
 caption: |
   step #4 next expression to the right: \
   `message = "                                  Hello world!                                  "`
@@ -624,7 +609,6 @@ Syntax: {samp}`{NAME}()`
 {{ right }}
 
 ```{code-cell} python
-:class: full-width
 
 print()
 ```
@@ -638,7 +622,6 @@ Syntax: {samp}`{NAME}({ARG})`
 {{ right }}
 
 ```{code-cell} python
-:class: full-width
 
 print("Welcome!")
 ```
@@ -652,7 +635,6 @@ Syntax: {samp}`{NAME}({ARG1}, {ARG2}...)`
 {{ right }}
 
 ```{code-cell} python
-:class: full-width
 
 name = "Mario"
 print("Welcome", name)
@@ -1134,7 +1116,6 @@ In this example, `"Would you like a beer?"` will only be printed if `age >= 21`.
 {{ right }}
 
 ```{literalinclude} ../templates/examples/if.py
-:class: full-width
 :linenos:
 :emphasize-lines: "5-6"
 ```
@@ -1160,7 +1141,6 @@ This example contains two `elif` clauses.
 {{ right }}
 
 ```{literalinclude} ../templates/examples/if.py
-:class: full-width
 :linenos:
 :emphasize-lines: "7-10"
 ```
@@ -1188,7 +1168,6 @@ In this example, `"Hello."` is printed if all preceding conditions evaluated to
 {{ right }}
 
 ```{literalinclude} ../templates/examples/if.py
-:class: full-width
 :linenos:
 :emphasize-lines: "11-12"
 ```
