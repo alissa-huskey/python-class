@@ -16,52 +16,30 @@ I/O is a shorthand way of referring to input and output. The `input()` and
 `print()` functions are two examples of input and output. In this lesson
 we'll learn another: how to read from and write to files.
 
+```{include} ../toc.md
+```
 
-Table of Contents
------------------
-
-* [Reading Files](#reading-files)
-   * [Reading whole files](#reading-whole-files)
-      * [Part 1: Create groceries.txt](#part-1-create-groceries-txt)
-      * [Part 2: Print grocery list](#part-2-print-grocery-list)
-      * [Part 3: Exercise](#part-3-exercise)
-   * [Reading lines](#reading-lines)
-      * [Part 1: Use .readlines()](#part-1-use-readlines)
-      * [Part 2: Exercise](#part-2-exercise)
-* [Writing Files](#writing-files)
-   * [Creating or trucating](#creating-or-trucating)
-      * [Part 1: Write to packing.txt](#part-1-write-to-packing-txt)
-      * [Part 2: Exercise](#part-2-exercise-1)
-   * [Adding to files](#adding-to-files)
-      * [Part 1: Add to packing.txt](#part-1-add-to-packing-txt)
-      * [Part 2: Exercise](#part-2-exercise-2)
-* [Automatic file closing](#automatic-file-closing)
-   * [Part 1: the with statement](#part-1-the-with-statement)
-   * [Part 2: scores.txt](#part-2-scores-txt)
-   * [Part 3: Exercise](#part-3-exercise-1)
-* [Reference](#reference)
-   * [File Modes](#file-modes)
-   * [See Also](#see-also)
-   * [Glossary](#glossary)
-
-
-Reading Files
--------------
+Part 1: Reading Files
+---------------------
 
 Sometimes in our programs we need to access information that is stored in a
 file. In programming this is called reading a file and that's what we'll learn
 first.
 
-### Reading whole files
+### Part 1.1: Reading whole files
 
 In this section we will get the contents of a file containing a grocery list
 then then print it to the screen.
 
-#### Part 1: Create `groceries.txt`
+#### A. Create `groceries.txt`
+
+{{ leftcol }}
 
 First we'll need a file to read from. Paste the following lines into a new file
 {file}`groceries.txt`, located in the same directory you will be running the
 script from, or the {term}`working directory`.
+
+{{ rightcol }}
 
 ```{code-block} text
 :caption: groceries.txt
@@ -71,7 +49,9 @@ script from, or the {term}`working directory`.
 - flour
 ```
 
-#### Part 2: Print grocery list
+{{ endcols }}
+
+#### B. Create `groceries.py`
 
 1\. Create a second file {file}`groceries.py` also in the working directory.
 
@@ -112,7 +92,11 @@ print("=========")
 print(contents)
 ```
 
+{{ leftcol }}
+
 6\. When you run your script you should see a nicely formatted grocery list, all ready for a shopping trip.
+
+{{ rightcol }}
 
 ```{code-block} text
 :caption: output
@@ -123,7 +107,9 @@ Groceries
 - flour
 ```
 
-#### Part 3: Exercise
+{{ endcols }}
+
+### Part 1.2: Exercise
 
 `````{exercise} reading files
 :label: reading-files-exercise
@@ -132,9 +118,11 @@ In this exercise you'll be reading a file and printing its contents to the
 screen, just like you did above but with a different file.
 
 1. Copy the following text and paste it into a file named {file}`mug-brownie.md` in your working directory.
+   :::{dropdown} mud-brownie.md
    ```{literalinclude} mug-brownie.md
    :language: md
    ```
+   :::
 2. Create a new file {file}`recipe.py` for this exercise.
 3. Use the `open()` function to get a file handler for the {file}`mug-brownie.md` file.
 4. Use the `.read()` method to get the contents of the file and assign it to a variable `recipe`.
@@ -157,7 +145,7 @@ print(recipe)
 ```
 `````
 
-### Reading lines
+### Part 1.3: Reading lines
 
 Sometimes instead of getting the entire contents of a file at once, we want to
 go through each line line for more fine grained control.
@@ -165,7 +153,7 @@ go through each line line for more fine grained control.
 This is where the `.readlines()` method on file handler objects comes in. It
 returns a list, where each element is one line from the file.
 
-#### Part 1: Use `.readlines()`
+#### A. Modify `recipies.py`
 
 In this section we'll modify the `recipes.py` file to use the `.readlines()`
 method in a `for` loop.
@@ -211,7 +199,11 @@ for line in fh.readlines():
 fh.close()
 ```
 
+{{ leftcol }}
+
 6\. When you run your script the output should be the same.
+
+{{ rightcol }}
 
 ```{code-block} text
 :caption: output
@@ -222,7 +214,9 @@ Groceries
 - flour
 ```
 
-#### Part 2: Exercise
+{{ endcols }}
+
+### Part 1.4: Exercise
 
 `````{exercise} reading lines
 :label: readlines-exercise
@@ -231,13 +225,15 @@ In this exercise you'll be reading each line of a {file}`todo.txt` file using
 the `.readlines()` method then printing each line with a `*` at the beginning.
 
 1. Copy the following text and paste it into a file named {file}`todo.txt` in
-   your working directory.
+   your working directory that contains a list of items to do.
+   :::{dropdown} todo.txt
    ```{code-block} text
    :caption: "todo.txt"
    dishes
    laundry
    homework
    ```
+   :::
 2. Create a new file {file}`todo.py` for this exercise.
 3. Use the `open()` function to get a file handler for the {file}`todo.txt` file.
 4. Use a `for` loop to iterate over the list returned by `fh.readlines()` and
@@ -247,7 +243,11 @@ the `.readlines()` method then printing each line with a `*` at the beginning.
    string.
 6. Use the `.close()` method to close the file handler.
 
+{{ leftcol }}
+
 Your output should look like this:
+
+{{ rightcol }}
 
 ```{code-block} text
 :caption: output
@@ -255,6 +255,9 @@ Your output should look like this:
 * laundry
 * homework
 ```
+
+{{ endcols }}
+
 `````
 
 `````{solution} readlines-exercise
@@ -270,13 +273,13 @@ fh.close()
 ```
 `````
 
-Writing Files
--------------
+Part 2: Writing Files
+---------------------
 
 Sometimes we need to create or modify files. That's what we'll be learning in
 this section.
 
-### Creating or trucating
+### Part 2.1: Creating or trucating
 
 The `open()` function takes an optional `mode` argument, which is a string that
 indicates what we plan to do with the file. The default is `"r"` for read mode.
@@ -285,7 +288,7 @@ To write to a file though, we'll open it in write mode by passing the optional
 mode argument `"w"` to `open()`. Write mode will either create or overwrite the
 file and open it with permission to write.
 
-#### Part 1: Write to `packing.txt`
+#### A. Write to `packing.txt`
 
 In this section we're going write the contents of a `to_pack` list to a
 {file}`packing.txt` file.
@@ -345,7 +348,11 @@ if __name__ == "__main__":
   create_packing()
 ```
 
+{{ leftcol }}
+
 7\. Now open up your {file}`packing.txt` file. It should look something like this:
+
+{{ rightcol }}
 
 ```{code-block} text
 :caption: packing.txt
@@ -355,7 +362,9 @@ if __name__ == "__main__":
 - cash
 ```
 
-#### Part 2: Exercise
+{{ endcols }}
+
+### Part 2.2: Exercise
 
 `````{exercise} writing files
 :label: writing-files-exercise
@@ -374,7 +383,11 @@ In this exercise you'll make a `people` list and write it to a
 5. In the loop `.write()` a line to the buffer: {samp}`"[ ] {name}\n"`.
 6. `.close()` the file handler
 
+{{ leftcol }}
+
 {file}`xmas_shopping.txt` should look something like this:
+
+{{ rightcol }}
 
 ```{code-block} text
 :caption: xmas_shopping.txt
@@ -383,6 +396,9 @@ In this exercise you'll make a `people` list and write it to a
 [ ] Willow
 [ ] Giles
 ```
+
+{{ endcols }}
+
 `````
 
 `````{solution} writing-files-exercise
@@ -413,12 +429,12 @@ if __name__ == "__main__":
 ```
 `````
 
-### Adding to files
+### Part 2.3: Adding to files
 
 Often instead of writing a whole file from scratch we just want to add to the
 end of it.  That's when we want append mode.
 
-#### Part 1: Add to `packing.txt`
+#### A. Add to `packing.txt`
 
 In this section we're going append a single line to the {file}`packing.txt`
 file.
@@ -457,7 +473,11 @@ if __name__ == "__main__":
   addto_packing()
 ```
 
+{{ leftcol }}
+
 5\. After running your code the {file}`packing.txt` file should look something like this:
+
+{{ rightcol }}
 
 ```{code-block} text
 :caption: packing.txt
@@ -468,7 +488,9 @@ if __name__ == "__main__":
 - first aid kit
 ```
 
-#### Part 2: Exercise
+{{ endcols }}
+
+### Part 2.4: Exercise
 
 `````{exercise} appending to files
 :label: appending-to-files-exercise
@@ -483,7 +505,11 @@ file.
 3. `.write()` a line to the buffer: {samp}`"[ ] {name}\n"`.
 4. `.close()` the file handler
 
+{{ leftcol }}
+
 You should see the new name in {file}`xmas_shopping.txt`, something like:
+
+{{ rightcol }}
 
 ```{code-block} text
 :caption: xmas_shopping.txt
@@ -493,6 +519,9 @@ You should see the new name in {file}`xmas_shopping.txt`, something like:
 [ ] Giles
 [ ] Angel
 ```
+
+{{ endcols }}
+
 `````
 
 `````{solution} appending-to-files-exercise
@@ -521,8 +550,8 @@ if __name__ == "__main__":
 ```
 `````
 
-Automatic file closing
-----------------------
+Part 4: Automatic file closing
+------------------------------
 
 There are lots of reasons that it is important to always `.close()` a file
 handler object when you're done with it.
@@ -548,7 +577,7 @@ error after opening the file but before it is closed?
 That's where the `with` statement and {term}`context managers <context manager>`
 come in.
 
-### Part 1: the `with` statement
+### Part 4.1: the `with` statement
 
 File handlers in Python have the feature of being {term}`context managers`,
 which are objects designed to know how to do their own housekeeping for use in
@@ -634,7 +663,7 @@ print(contents)
 
 ```
 
-### Part 2: `scores.txt`
+### Part 4.2: `scores.txt`
 
 In this section we are going to use a `with` statement to append a line with
 random number to a `scores.txt` file.
@@ -677,14 +706,22 @@ if __name__ == "__main__":
     add_scores()
 ```
 
+{{ leftcol }}
+
 6\. After you run your script {file}`scores.txt` should contain a single number, something like this:
+
+{{ rightcol }}
 
 ```{code-block} text
 :caption: scores.txt
 85
 ```
 
-7\. Run your script a few more times. {file}`scores.txt` should have some new lines, something like thls.
+{{ newrow }}
+
+7\. Run your script a few more times. {file}`scores.txt` should have some new lines, something like this:
+
+{{ rightcol }}
 
 ```{code-block} text
 :caption: scores.txt
@@ -695,7 +732,9 @@ if __name__ == "__main__":
 39
 ```
 
-### Part 3: Exercise
+{{ endcols }}
+
+### Part 4.3: Exercise
 
 `````{exercise} with statements
 :label: with-statement-exercise
@@ -717,12 +756,19 @@ the `.readlines()` method then printing the last line.
    of the file.  Print {samp}`Your last score was: {score}` and use the `end`
    keyword argument to avoid adding an extra newline.
 
+{{ leftcol }}
+
 Your output should look something like this:
+
+{{ rightcol }}
 
 ```{code-block} text
 :caption: output
 Your last score was: 18
 ```
+
+{{ endcols }}
+
 `````
 
 `````{solution} with-statement-exercise

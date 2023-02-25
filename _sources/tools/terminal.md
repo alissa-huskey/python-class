@@ -16,10 +16,7 @@ Terminal
 
 > A brief tour of the command line on a terminal.
 
-
-```{contents} Table of Contents
-:backlinks: top
-:local:
+```{include} ../toc.md
 ```
 
 Introduction
@@ -145,7 +142,6 @@ example, try the `date` command, which prints the current date and time.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ date
 Thu Aug 19 04:45:47 MDT 2021
 ```
@@ -155,7 +151,6 @@ name.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ uname
 Darwin
 ```
@@ -169,7 +164,6 @@ not needed. In this example, we'll use the `echo` command with one argument:
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ echo Hello.
 Hello
 ```
@@ -325,7 +319,6 @@ used, then you can look up the man page for the pager program.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ man man
 man(1)                                                                                                    man(1)
 
@@ -352,7 +345,6 @@ with no arguments to get a list of shell commands.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ help
 Here is a list of topics for which special help is available:
 
@@ -516,7 +508,6 @@ To find out where you are use the `pwd` command.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ pwd
 /Users/pythonclass
 ```
@@ -525,7 +516,6 @@ To list files use the `ls` command.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ ls
 file1 file2 file3
 
@@ -540,7 +530,6 @@ To change directories use the `cd` command.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ cd Documents
 $ cd
 $ cd -
@@ -553,7 +542,6 @@ To get information about a file use the `file` command.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ file null.png
 null.png: PNG image data, 1200 x 904, 8-bit/color RGBA, non-interlaced
 
@@ -565,7 +553,6 @@ Use the `wc` command to get word, line and character counts.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ wc README.md
       64     184    2000 README.md
 
@@ -578,7 +565,6 @@ easiest way to show the entire contents of a file.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ cat hello.txt
 Hello python class!
 ```
@@ -587,7 +573,6 @@ Use the `less` command to scroll through a file.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ less README.md
 ```
 
@@ -596,7 +581,6 @@ file. The `-n` option can be used to specify the number of lines to show.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ head README.md
 Python Class
 ============
@@ -630,7 +614,6 @@ To move a file use the `mv` command.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ mv a b
 
 $ mv -i a b
@@ -642,7 +625,6 @@ To remove a file or directory use the `rm` command.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 
 $ rm a
 $ rm -I
@@ -654,7 +636,6 @@ To copy a file or directory use the `cp` command.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ cp a b
 $ cp -i a b
 $ cp -r
@@ -666,7 +647,6 @@ To create a directory use the `mkdir` command.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ mkdir x
 $ mkdir -p x
 ```
@@ -677,7 +657,6 @@ Sort the contents of a file using the `sort` command.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ sort x
 $ sort -u x
 $ sort -g x

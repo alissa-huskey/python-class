@@ -35,8 +35,8 @@ Python are alike.
 
 % [ ] immutable
 
-Common traits
--------------
+Part 1: Common traits
+---------------------
 
 All numeric types are based on the `numbers.Number` class, so they have some
 things in common.
@@ -45,7 +45,6 @@ They can be positive or negative.
 
 ```{code-block} python
 :caption: Python shell
-:class: full-width
 >>> -5
 -5
 
@@ -61,7 +60,6 @@ used interchangably with most operators, and converted into one another.
 
 ```{code-block} python
 :caption: Python shell
-:class: full-width
 >>> .5 < 5
 True
 
@@ -97,7 +95,6 @@ fact underscores can be used anywhere between digits.
 
 ```{code-block} python
 :caption: Python shell
-:class: full-width
 >>> 1_000_000
 1000000
 
@@ -113,7 +110,7 @@ fact underscores can be used anywhere between digits.
 
 [^python3.6]: Python 3.6+
 
-### Operators
+### Part 1.1: Operators
 
 The following operators are available to all numeric types.
 
@@ -146,7 +143,7 @@ The following operators are available to all numeric types.
 
 {{ endcols }}
 
-### Functions
+### Part 1.2: Functions
 
 Numeric types can all be used as arguments to the following built-in functions.
 
@@ -193,8 +190,8 @@ Numeric types can all be used as arguments to the following built-in functions.
   ```
 
 % (integers)=
-Integers
---------
+Part 2: Integers
+----------------
 
 {{ leftcol }}
 
@@ -213,7 +210,6 @@ An integer is a whole number with no decimal places.
 
 ```{code-block} python
 :caption: Python shell
-:class: full-width
 >>> -10
 -10
 
@@ -224,7 +220,7 @@ An integer is a whole number with no decimal places.
 25
 ```
 
-### Alternate bases
+### Part 2.1: Alternate bases
 
 The decimal is base `10`, which means it uses ten individual digits to
 represent all numbers. This is the most commonly used system and the one we use
@@ -242,7 +238,6 @@ syntax and functions for hexadecimal (base-16), octal (base-8), and binary
 
 ```{code-block} python
 :caption: Python shell
-:class: full-width
 >>> 0xff
 255
 
@@ -266,7 +261,6 @@ Moreover, the `int()` type takes an optional keyword argument `base` that can be
 
 ```{code-block} python
 :caption: Python shell
-:class: full-width
 >>> int('C', base=36)
 12
 
@@ -291,8 +285,8 @@ Moreover, the `int()` type takes an optional keyword argument `base` that can be
 % * [Python Bitwise Operators](https://www.geeksforgeeks.org/python-bitwise-operators/)
 % * [Bitwise Operators in Python](https://realpython.com/python-bitwise-operators/)
 
-Boolean
--------
+Part 3: Boolean
+---------------
 
 {{ leftcol }}
 
@@ -312,7 +306,6 @@ The boolean data type has just two values: `True` and `False`.
 
 ```{code-block} python
 :caption: Python shell
-:class: full-width
 >>> True
 True
 
@@ -330,7 +323,6 @@ It is the type that is returned when we use comparison operators:
 
 ```{code-block} python
 :caption: Python shell
-:class: full-width
 >>> 1 == 2
 False
 ```
@@ -339,7 +331,6 @@ It is the type that expressions are converted to to determine their truthiness.
 
 ```{code-block} python
 :caption: Python shell
-:class: full-width
 >>> bool("")
 False
 
@@ -374,7 +365,6 @@ means that we can usually use booleans as numbers for all intents and purposes.
 
 ```{code-block} python
 :caption: Python shell
-:class: full-width
 >>> True + True + True
 3
 
@@ -387,8 +377,8 @@ means that we can usually use booleans as numbers for all intents and purposes.
 'Yes'
 ```
 
-Floating point numbers
-----------------------
+Part 4: Floating point numbers
+------------------------------
 
 {{ leftcol }}
 
@@ -416,7 +406,7 @@ Floating point values are numbers with a decimal point.
 1.0
 ```
 
-### Members
+### Part 4.1: Members
 
 * `.is_integer()` -- Return True if the float is a whole number.
   ```{code-block} python
@@ -438,7 +428,7 @@ Floating point values are numbers with a decimal point.
   (1, 4)
   ```
 
-### E notation
+### Part 4.2: E notation
 
 Exponent notation or {term}`E notation` is a shorthand to express very large or
 very small numbers by using the letter `E` to mean "times `10` to the power of".
@@ -461,14 +451,13 @@ notation.
 1e+16
 ```
 
-### Limitations
+### Part 4.3: Limitations
 
 Float values have limitations depending on your system. You can look at
 `sys.float_info` to see the limitations of your system.
 
 ```{code-block} python
 :caption: Python shell
-:class: full-width
 >>> import sys
 
 >>> sys.float_info.max
@@ -486,7 +475,6 @@ get the special float value `inf` for infinity.
 
 ```{code-block} python
 :caption: Python shell
-:class: full-width
 >>> 2e400
 inf
 ```
@@ -496,7 +484,6 @@ unexpected results.
 
 ```{code-block} python
 :caption: Python shell
-:class: full-width
 >>> 0.1 + 0.2
 0.30000000000000004
 ```
@@ -507,14 +494,13 @@ answer for now is to use the `round()` function.
 
 ```{code-block} python
 :caption: Python shell
-:class: full-width
 >>> round(0.1 + 0.2, 1)
 0.3
 ```
 
 
-Complex numbers
----------------
+Part 5: Complex numbers
+-----------------------
 
 {{ leftcol | replace("col", "col-8")  }}
 
@@ -539,7 +525,6 @@ switched.
 
 ```{code-block} python
 :caption: Python shell
-:class: full-width
 >>> x = 3+5j
 
 >>> x
@@ -562,7 +547,6 @@ A complex number with a negative imaginary part can be expressed as
 
 ```{code-block} python
 :caption: Python shell
-:class: full-width
 >>> 3-5j
 (3-5j)
 
@@ -575,7 +559,6 @@ same as {samp}`0+{imag}j`.
 
 ```{code-block} python
 :caption: Python shell
-:class: full-width
 >>> x = 5j
 
 >>> x
@@ -598,7 +581,6 @@ Alternately use the `complex()` constructor with the arguments `real` and
 
 ```{code-block} python
 :caption: Python shell
-:class: full-width
 >>> a = complex(3, 5)
 
 >>> a
@@ -608,12 +590,11 @@ Alternately use the `complex()` constructor with the arguments `real` and
 (3.0, 5.0)
 ```
 
-### Members
+### Part 5.1: Members
 
 * `.conjugate()` -- Return the complex conjugate
   ```{code-block} python
   :caption: Python shell
-  :class: full-width
   >>> x = 3+5j
   >>> x.conjugate()
   (3-5j)
@@ -621,7 +602,6 @@ Alternately use the `complex()` constructor with the arguments `real` and
 * `imag` -- the imaginary part of a complex number
   ```{code-block} python
   :caption: Python shell
-  :class: full-width
   >>> x = 3+5j
   >>> x.imag
   5.0
@@ -629,7 +609,6 @@ Alternately use the `complex()` constructor with the arguments `real` and
 * `real` -- the real part of a complex number
   ```{code-block} python
   :caption: Python shell
-  :class: full-width
   >>> x = 3+5j
   >>> x.real
   3.0

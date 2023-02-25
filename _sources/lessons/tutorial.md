@@ -96,7 +96,6 @@ handy for learning Python and debugging your code.
 
 ```{literalinclude} ../../pythonclass/pypet/main-2.1.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lines: "1"
 :lineno-match:
@@ -165,7 +164,6 @@ though there is more code, we haven't printed anything else yet.
 
   ```{literalinclude} ../../pythonclass/pypet/main-2.1.py
   :caption: main.py
-  :class: full-width
   :linenos:
   :lines: "1-3"
   :lineno-match:
@@ -204,7 +202,6 @@ though there is more code, we haven't printed anything else yet.
 
   ```{literalinclude} ../../pythonclass/pypet/main-2.1.py
   :caption: main.py
-  :class: full-width
   :linenos:
   :lines: "1-6"
   :lineno-match:
@@ -243,7 +240,6 @@ Can you add another variable named `color` and give it a string value like
 
 ```{literalinclude} ../../pythonclass/pypet/main-2.1.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lineno-match:
 :emphasize-lines: "7"
@@ -331,7 +327,6 @@ your pet.
 
 ```{literalinclude} ../../pythonclass/pypet/main-2.2.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lineno-match:
 :emphasize-lines: "8"
@@ -358,7 +353,6 @@ to avoid closing the string early.
 {{ right }}
 
 ```{code-block-hl} python
-:class: full-width
 :caption: main.py
 :linenos:
 :lineno-start: 7
@@ -373,7 +367,6 @@ to avoid closing the string early.
 {{ right }}
 
 ```{code-block-hl} python
-:class: full-width
 :caption: main.py
 :linenos:
 :lineno-start: 7
@@ -388,7 +381,6 @@ next character.
 {{ right }}
 
 ```{code-block} python
-:class: full-width
 :caption: main.py
 :linenos:
 :lineno-start: 7
@@ -449,7 +441,6 @@ same effect.
 
 ```{literalinclude} ../../pythonclass/pypet/main-2.3.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lines: "1-10"
 :lineno-match:
@@ -466,7 +457,6 @@ Can you add a line to print the `pic` variable?
 
 ```{literalinclude} ../../pythonclass/pypet/main-2.3.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lineno-match:
 :emphasize-lines: "11"
@@ -492,7 +482,6 @@ To combine the two strings put the `+` operator between them.
 
 ```{code-block} python
 :caption: forms the string `"Hello from Fluffy"`
-:class: full-width
 "Hello from " + name
 ```
 
@@ -517,7 +506,6 @@ code inside the parenthesis in the print function.
 
 ```{literalinclude} ../../pythonclass/pypet/main-2.4.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lineno-match:
 :emphasize-lines: "10"
@@ -549,7 +537,6 @@ tutorial.
 
 ```{literalinclude} ../../pythonclass/pypet/main-2.5.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lines: "1-10"
 :lineno-match:
@@ -577,7 +564,6 @@ Add some comments to your program describing what the code does.
 
 ```{literalinclude} ../../pythonclass/pypet/main-2.5.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lineno-match:
 :lines: "9-"
@@ -601,7 +587,6 @@ inside of quotes.
 
 ```{code-block-hl} python
 :caption: main.py
-:class: full-width
 :linenos:
 :lineno-start: 9
 
@@ -661,7 +646,6 @@ between the two.
 
 ```{literalinclude} ../../pythonclass/pypet/main-3.1.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lineno-match:
 :lines: "12-28"
@@ -681,7 +665,6 @@ of the `pic`.
 
 ```{literalinclude} ../../pythonclass/pypet/main-3.1.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lineno-match:
 :lines: "20-"
@@ -701,7 +684,6 @@ format `dictionary["key"]` such as `cat["name"]`.
 
 ```{literalinclude} ../../pythonclass/pypet/main-3.3.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lineno-match:
 :lines: "20-"
@@ -721,7 +703,6 @@ to keep them for reference.
 
 ```{literalinclude} ../../pythonclass/pypet/main-3.4.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lines: "9-"
 :lineno-match:
@@ -769,7 +750,6 @@ Create this simple function by writing the following above your dictionary.
 
 ```{literalinclude} ../../pythonclass/pypet/main-4.1.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lines: "9-14"
 :emphasize-lines: "4-6"
@@ -796,7 +776,6 @@ PyPet, in this case `cat`.
 
 ```{literalinclude} ../../pythonclass/pypet/main-4.2.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lines: "26-"
 :lineno-match:
@@ -821,7 +800,6 @@ Add `cat["weight"] = cat["weight"] + 1` to your `feed` function.
 
 ```{literalinclude} ../../pythonclass/pypet/main-4.3.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lines: "12-15"
 :emphasize-lines: 4
@@ -857,7 +835,6 @@ you call `feed()`.
 
 ```{literalinclude} ../../pythonclass/pypet/main-4.4.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lines: "33-"
 :emphasize-lines: "3, 5"
@@ -872,7 +849,6 @@ Set or change your PyPet's `"hungry"` value to `True`.
 
 ```{literalinclude} ../../pythonclass/pypet/main-4.4.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lines: "18-25"
 :emphasize-lines: "5"
@@ -1001,7 +977,6 @@ Add an if statement inside of your function.
 
 ```{literalinclude} ../../pythonclass/pypet/main-5.1.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lines: "12-18"
 :lineno-match:

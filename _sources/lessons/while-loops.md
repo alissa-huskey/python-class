@@ -56,7 +56,6 @@ they answer.
 
 ```{literalinclude} ../templates/examples/while.py
 :caption: while loop example
-:class: full-width
 :linenos:
 ```
 
@@ -75,7 +74,6 @@ with either `"heads"` or `"tails"`. *Hint: Use the `not in` operator.*
 
 ```{code-block} python
 :caption: Heads or Tails Exercise
-:class: full-width
 :linenos:
 
 answer = None
@@ -97,7 +95,6 @@ the number is less than `50`.
 
 ```{code-block} python
 :caption: Random numbers less than 50 Exercise
-:class: full-width
 :linenos:
 
 import random
@@ -121,7 +118,6 @@ they reply with `"n"`.
 
 ```{code-block} python
 :caption: stopping a loop with `break`
-:class: full-width
 :linenos:
 
 import random
@@ -149,7 +145,6 @@ loop. *Hint: Use the `%` operator.*
 :class: dropdown
 
 ```{code-block} python
-:class: full-width
 :linenos:
 import random
 num = -1
@@ -174,7 +169,6 @@ the user does not enter a number.
 
 ```{code-block} python
 :caption: using the `continue` statement
-:class: full-width
 :linenos:
 
 balance = 100
@@ -206,7 +200,6 @@ while balance > 0:
 :class: dropdown
 
 ```{code-block} python
-:class: full-width
 :linenos:
 
 chances, rolls = 0, []
@@ -245,7 +238,6 @@ executing by {term}`incrementing` or {term}`decrementing` a number.
 
 ```{code-block} python
 :caption: incrementing the `i` variable
-:class: full-width
 :linenos:
 
 i = 0
@@ -269,7 +261,6 @@ current number then use the `time.sleep` function to pause for one second.
 :class: dropdown
 
 ```{code-block} python
-:class: full-width
 :linenos:
 
 import time
@@ -293,7 +284,6 @@ The simplest infinite loop is `while True` with no `break`:
 
 ```{code-block} python
 :caption: while `True`
-:class: full-width
 :linenos:
 
 import time
@@ -307,7 +297,6 @@ A common mistake is to forget to increment your counter, as demonstrated below.
 
 ```{code-block} python
 :caption: forgetting to increment `i`
-:class: full-width
 :linenos:
 
 import time
@@ -324,7 +313,6 @@ infinite loop is used to always return the user to a main menu.
 
 ```{code-block} python
 :caption: infinite loop used to keep a program running
-:class: full-width
 :linenos:
 
 CHOICES = {
@@ -365,7 +353,6 @@ Then we can use the `i` variable to access each item in the list.
 
 ```{code-block} python
 :caption: iterating over a list
-:class: full-width
 :linenos:
 
 i = 0
@@ -390,7 +377,6 @@ to print out each item in the list with the number next to it.
 
 ```{code-block} python
 :caption: Lunch Menu Exercise
-:class: full-width
 :linenos:
 
 choices = [
@@ -419,7 +405,6 @@ iterate over all of the characters in a string.
 
 ```{code-block} python
 :caption: iterating over the characters in a string
-:class: full-width
 :linenos:
 
 word = input("Enter a word: ")
@@ -444,7 +429,6 @@ vowels the use the `in` operator*)
 
 ```{code-block} python
 :caption: Vowels Exercise
-:class: full-width
 :linenos:
 
 VOWELS = ["a", "e", "i", "o", "u", "y"]
@@ -528,7 +512,6 @@ Print a multiplication table grid with `9` rows and `9` columns.
 
 ```{code-block} python
 :caption: Multiplication Table Exercise
-:class: full-width
 :linenos:
 
 SIZE = 9
@@ -568,7 +551,6 @@ Then end it with, {samp}`"What does it spell? {name}!"`
 
 ```{code-block} python
 :caption: Name Cheer Exercise
-:class: full-width
 :linenos:
 
 import time
@@ -611,7 +593,6 @@ print(NAME.upper() + "!")
 
 ```{code-block} python
 :caption: Check Password Exercise
-:class: full-width
 :linenos:
 
 secret = "00000"
@@ -648,7 +629,6 @@ fellow..."` three times, then "Which nobody can deny!" once.
 
 ```{code-block} python
 :caption: Jolly Good Fellow Exercise
-:class: full-width
 :linenos:
 
 i = 0
@@ -688,7 +668,6 @@ Print the 12 Days of Christmas song.
 
 ```{code-block} python
 :caption: 12 Days of Christmas Exercise
-:class: full-width
 :linenos:
 
 import time
@@ -773,7 +752,6 @@ Write a hangman game.
 
 ```{code-block} python
 :caption: Hangman Exercise
-:class: full-width
 :linenos:
 
 import random

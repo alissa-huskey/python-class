@@ -250,7 +250,6 @@ And finally, here is the workflow and how states change for each action.
 ````{div} full-width
 ```{kroki}
 :type: plantuml
-:class: full-width
 :caption: Git Sequence Diagram
 :filename: assets/git-sequence.puml
 ```

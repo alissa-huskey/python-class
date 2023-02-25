@@ -51,10 +51,7 @@ much simpler to start.).
 [game-demo]: https://replit.com/@alissahuskey/adventure
 [game-code]: https://github.com/alissa-huskey/adventure
 
-```{contents}
-:backlinks: top
-:local:
-:depth: 2
+```{include} ../toc.md
 ```
 
 Part 1: The game loop

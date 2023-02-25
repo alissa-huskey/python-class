@@ -23,7 +23,7 @@ Be sure to complete the fundamentals [](../functions.md) lesson first.
 :::
 
 ```{contents} Table of Contents
-:backlinks: top
+:backlinks: entry
 :local:
 :depth: 2
 ```
@@ -40,7 +40,6 @@ You can make an argument optional by giving it a default value.
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 def hr(width=20):
     print("-" * width)
 ```
@@ -52,7 +51,6 @@ When you call the function, you can pass an argument as you normally would.
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 hr(10)
 ```
 
@@ -63,7 +61,6 @@ Or skip the argument to use the default value.
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 hr()
 ```
 
@@ -75,7 +72,6 @@ values.
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 def hr(char, width=20):
     print(char * width)
 ```
@@ -105,7 +101,6 @@ Call it with all variations of missing and present default arguments.
 
 ```{code-block} python
 :caption: "Defaults Exercise"
-:class: full-width
 :linenos:
 
 def write(message, before=0, after=0):
@@ -132,7 +127,6 @@ only once when the function is defined.
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 def setup(project, options={}):
     if "title" not in options:
         options["title"] = project
@@ -148,7 +142,6 @@ object*.
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 setup("home")
 setup("work")
 setup("school", {"title": "School Work"})
@@ -162,7 +155,6 @@ function, assign the value if the argument is {term}`falsy`.
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 def setup(project, options=None):
     if not options:
         options = {}
@@ -179,7 +171,6 @@ and assigned.
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 setup("home")
 setup("work")
 setup("school", {"title": "School Work"})
@@ -194,7 +185,6 @@ A shorthand for this is:
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 def setup(project, options=None):
     options = options or {}
     if "title" not in options:
@@ -207,7 +197,6 @@ def setup(project, options=None):
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 setup("home")
 setup("work")
 setup("school", {"title": "School Work"})
@@ -251,7 +240,6 @@ positional arguments will then be in a tuple with that name, in this case
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 
 def thing(*args):
     print(args)
@@ -266,7 +254,6 @@ You can then call it with no arguments...
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 thing()
 ```
 
@@ -277,7 +264,6 @@ One argument...
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 thing("a")
 ```
 
@@ -288,7 +274,6 @@ Or any number of arguments...
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 thing("a", "b", "c", "d", "e")
 ```
 
@@ -300,7 +285,6 @@ be first in the function definition.
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 
 def thing(stuff, *args):
     print(stuff, args)
@@ -315,7 +299,6 @@ Arguments with default values go after `*args`.
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 
 def thing(stuff, *args, data=None):
     print(stuff, args, data)
@@ -333,13 +316,11 @@ default values. If you send it as a positional argument, it will be part of
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 
 thing("abc", [1, 2, 3])
 ```
 
 ```{code-cell} python
-:class: full-width
 
 thing("abc", data=[1, 2, 3])
 ```
@@ -371,7 +352,6 @@ abc, 123
 
 ```{code-block} python
 :caption: "Arbitrary Positional Arguments Exercise"
-:class: full-width
 :linenos:
 
 def write(*args, before=0, after=0):
@@ -397,7 +377,6 @@ To take arbitrary keyword arguments, put two asterisks before a parameter name.
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 def thing(**kwargs):
     print(kwargs)
     if "a" in kwargs:
@@ -412,7 +391,6 @@ The keyword arguments will then be in a dictionary with that name, in this case
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 thing(a=1, b=2, c=3)
 ```
 
@@ -424,7 +402,6 @@ function definition.
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 
 def thing(stuff, *args, data=None, **kwargs):
     print(stuff, args, data, kwargs)
@@ -459,7 +436,6 @@ abc 123 a=1 b=2.0 c='three'
 
 ```{code-block} python
 :caption: "Arbitrary Keyword Arguments Exercise"
-:class: full-width
 :linenos:
 
 def write(*args, before=0, after=0, **kwargs):
@@ -493,7 +469,6 @@ before the object.
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 birth_stones = [
     "Garnet",
     "Amethyst",
@@ -511,7 +486,6 @@ You can unpack more than one sequence.
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 birth_stones = [
     "Garnet",
     "Amethyst",
@@ -537,7 +511,6 @@ All unpacked sequences must go before any keyword arguments.
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 birth_stones = [
     "Garnet",
     "Amethyst",
@@ -558,7 +531,7 @@ print("Stones and flowers:", *birth_stones, *flowers, sep="\n")
 
 {{ endcols }}
 
-### Part 3.1: Exercise
+### Part 3.2: Exercise
 
 `````{exercise} Unpacking Sequences
 :label: unpacking-sequences-exercise
@@ -574,7 +547,6 @@ arguments.
 
 ```{code-block} python
 :caption: "Unpacking Sequences Exercise"
-:class: full-width
 :linenos:
 
 cities = [
@@ -591,7 +563,7 @@ print("Cities I've lived in:", *cities, sep="\n")
 
 `````
 
-### Part 3.1: Mappings
+### Part 3.3: Mappings
 
 {{ leftcol }}
 
@@ -601,7 +573,6 @@ asterisks before the dictionary.
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 def show(red, green, blue, hex_code):
     print(f"Hex Color: #{hex_code} is RGB: ({red}, {green}, {blue})")
 
@@ -622,7 +593,6 @@ As with unpacking sequences, you can unpack multiple dictionaries.
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 
 color = {
   "hex_code": "21abcd",
@@ -644,7 +614,6 @@ The unpacked keyword arguments must go after any positional arguments.
 {{ rightcol }}
 
 ```{code-cell} python
-:class: full-width
 color = {
     "green": 0,
     "blue": 0,
@@ -655,7 +624,7 @@ show(255, **color, hex_code="#FF0000")
 
 {{ endcols }}
 
-### Part 3.2: Exercise
+### Part 3.4: Exercise
 
 `````{exercise} Unpacking Mappings
 :label: unpacking-mappings-exercise
@@ -671,7 +640,6 @@ your previous list of cities.
 
 ```{code-block} python
 :caption: "Unpacking Mappings Exercise"
-:class: full-width
 :linenos:
 
 options = {"sep": "; ", "end": "\n\n"}
@@ -698,7 +666,6 @@ parameter name, followed by the type.
 {{ rightcol }}
 
 ```{code-block-hl} python
-:class: full-width
 
 def debug(message!!!: str!!!):
     print(message)
@@ -716,7 +683,6 @@ way.
 {{ rightcol }}
 
 ```{code-block-hl} python
-:class: full-width
 
 maximum!!!: int!!! = 100
 name!!!: str!!!
@@ -734,7 +700,6 @@ type before the colon.
 {{ rightcol }}
 
 ```{code-block-hl} python
-:class: full-width
 
 from random import randint
 
@@ -761,7 +726,6 @@ Annotate both the parameters and return value.
 ** Example Usage**
 
 ```{code-block} python
-:class: full-width
 :linenos:
 
 >>> import string
@@ -778,7 +742,6 @@ Annotate both the parameters and return value.
 
 ```{code-block} python
 :caption: "Annotations Exercise"
-:class: full-width
 :linenos:
 
 def get_keys(source: dict, keys: list) -> dict:
@@ -796,7 +759,6 @@ a single expression called {term}`lambdas <lambda>`.
 {{ leftcol }}
 
 ```{code-block-hl} python
-:class: full-width
 
 def random():
     return !!!randint(1, 100)!!!
@@ -805,7 +767,6 @@ def random():
 {{ rightcol }}
 
 ```{code-block-hl} python
-:class: full-width
 
 random = lambda: !!!randint(1, 100)!!!
 ```
@@ -813,7 +774,6 @@ random = lambda: !!!randint(1, 100)!!!
 {{ newrow }}
 
 ```{code-block-hl} python
-:class: full-width
 
 def random(!!!limit!!!):
     return !!!randint(1, limit)!!!
@@ -822,7 +782,6 @@ def random(!!!limit!!!):
 {{ rightcol }}
 
 ```{code-block-hl} python
-:class: full-width
 
 random = lambda !!!limit!!!: !!!randint(1, limit)!!!
 ```
@@ -844,7 +803,6 @@ The following two functions are equivalent.
 {{ leftcol }}
 
 ```{code-block} python
-:class: full-width
 :linenos:
 
 def hello():
@@ -855,7 +813,6 @@ def hello():
 {{ rightcol }}
 
 ```{code-block} python
-:class: full-width
 :linenos:
 
 def hello(): print("hello")
