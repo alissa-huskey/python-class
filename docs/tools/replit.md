@@ -15,10 +15,7 @@ is also cloud based so you can log in from any computer to view your code.
 Additionally, it provides tools for real-time collaboration which can be used
 for coding lessons, demos, feedback, and getting help with your code.
 
-```{contents}
-:backlinks: top
-:local:
-:depth: 2
+```{include} ../toc.md
 ```
 
 Part 1: Getting Started
@@ -99,7 +96,7 @@ Now we'll write our first line of code and run it.
 
    `Welcome to Pypet!`.
 
-You’ve just written your first line of Python!
+You've just written your first line of Python!
 
 ### Part 1.5 Settings
 
@@ -140,7 +137,7 @@ which opened the multiplayer invite link on the right.
 
 :::{seealso}
 
-- [Replit Docs: Shareing write-access](https://docs.replit.com/tutorials/introduction-to-the-repl-it-ide#sharing-write-access-multiplayer)
+- [Replit Docs: Sharing write-access](https://docs.replit.com/tutorials/introduction-to-the-repl-it-ide#sharing-write-access-multiplayer)
 
 :::
 
@@ -164,7 +161,7 @@ get it all running smoothly.
    {guilabel}`Add file` icon that looks like a page with a {guilabel}`+`.
 
 3. A new line will appear in your file list. Type a name for the file then hit enter.
-   The name should have no spaces, use underscores as seperators, and end in ".py".
+   The name should have no spaces, use underscores as separators, and end in ".py".
 
    For example {file}`my_script.py`.
 
@@ -273,7 +270,7 @@ Here are the steps to follow in Replit.
 2. `git add .` : Stage all changes.
 3. `git status` : Sanity check to ensure that all changes are now staged.
 4. `git diff --staged` : Review your changes to check for mistakes.
-    Make any neccessary change then repeat from step 1.
+    Make any necessary change then repeat from step 1.
 
 **In Replit**
 
@@ -425,7 +422,7 @@ In the Console pane type:
 > git diff --staged
 ```
 
-This command will show you a ***diff*** of your changes--that is, a the chunk
+This command will show you a ***diff*** of your changes--that is, the chunk
 of changes from each file that was changed.
 
 ```bash
@@ -469,12 +466,12 @@ github with your commits on repl.it the changes will be ***pushed*** to Github.
 
 3. Click the **commit & push** button. If all goes well, your new commit will
    appear under **Previous Commits** and the **commit & push** button will
-   dissappear.
+   disappear.
 
 
 ### Congratulations!
 
-You've successfully created a git repository, reviewed your changes, commited
+You've successfully created a git repository, reviewed your changes, committed
 them, and pushed them to github!
 
 [fork]: ../assets/code-branch.png "fork"

@@ -1,7 +1,7 @@
 
 ### Operator dunder methods
 
-Below are tables matching operators to their cooresponding dunder methods.
+Below are tables matching operators to their corresponding dunder methods.
 
 #### Arithmetic Operators
 

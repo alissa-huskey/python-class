@@ -23,9 +23,7 @@ stored in `csv` files in the `data/flashcards` directory.
 Instructions
 ------------
 
-```{contents}
-:backlinks: top
-:local:
+```{include} ../toc.md
 ```
 
 ### Part 1: Make a `csv` file
@@ -258,7 +256,7 @@ Now lets keep track of which card the user is on, and what their score is.
 
 ### Part 13: Prettify flashcards
 
-This part is about making the the flashcards look nicer. Feel free to adjust
+This part is about making the flashcards look nicer. Feel free to adjust
 these suggestions to your taste.
 
 

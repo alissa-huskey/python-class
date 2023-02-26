@@ -15,6 +15,9 @@ what is in the scope at that point and experiment with code in the context of
 that line. From there you can go forward or backwards in the code or continue
 on until the next breakpoint.
 
+```{include} ../toc.md
+```
+
 Part 1: Setup
 -------------
 
@@ -167,7 +170,7 @@ The {guilabel}`Variables` section in the sidebar is just like the Variables box
 from the [](../lessons/reading-code.md) lesson. It lists everything that is defined at
 this point in the code execution and shows what it is set to.
 
-In our {file}`hello_world.py` debugging seession, you can see that the `msg`
+In our {file}`hello_world.py` debugging session, you can see that the `msg`
 variable listed with the value of `"Hello World"`.
 
 ![](https://code.visualstudio.com/assets/docs/python/tutorial/debug-step-02.png)
@@ -198,7 +201,7 @@ The results will appear in the larger area above.
 
 Let's use this to get more information about the `msg` variable.
 
-At the {guilabel}`DEBUG CONSOLE` prompt, type the the following commands and
+At the {guilabel}`DEBUG CONSOLE` prompt, type the following commands and
 then hit enter after each.
 
 ```{code-block} python
@@ -309,7 +312,7 @@ Notice that:
 
 ### Step 4.6: Continue
 
-Since this is the last line of the program use Continue to finish the progam.
+Since this is the last line of the program use Continue to finish the program.
 
 Click ![debug-action-continue][] on the debug toolbar or use the {kbd}`F5` keyboard
 shortcut to go to continue to the end of the program.

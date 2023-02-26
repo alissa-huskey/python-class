@@ -20,9 +20,7 @@ Syntax
 
 In this section we'll learn the basic Python syntax.
 
-```{contents} Table of Contents
-:backlinks: top
-:local:
+```{include} ../toc.md
 ```
 
 Introduction
@@ -587,7 +585,7 @@ any expression.
 {{ row }}
 
 This means it is possible to {term}`chain <chaining>` or string together
-multiple attribute references, as long as each concecutive member returns a
+multiple attribute references, as long as each consecutive member returns a
 value.
 
 {{ right }}

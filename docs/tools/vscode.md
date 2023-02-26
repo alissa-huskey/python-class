@@ -24,9 +24,7 @@ kernelspec:
 VS Code
 =======
 
-```{contents} Table of Contents
-:backlinks: top
-:local:
+```{include} ../toc.md
 ```
 
 Resources

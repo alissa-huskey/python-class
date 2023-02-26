@@ -26,10 +26,7 @@ A function is a set of Python instructions or {term}`statements <statement>`
 that can be executed later. If you're familiar with macros in spreadsheet
 programs, it's kind of like that.
 
-```{contents} Table of Contents
-:backlinks: entry
-:local:
-:depth: 2
+```{include} ../toc.md
 ```
 
 Part 1: Defining and calling
@@ -141,7 +138,7 @@ function is done being executed.
 {{ leftcol }}
 
 To define a function with a parameter, put the parameter (variable) name you
-picked inside the paranthesis on the `def` line.
+picked inside the parenthesis on the `def` line.
 
 {{ rightcol }}
 
@@ -158,7 +155,7 @@ def hello(name):
 {{ leftcol }}
 
 Similarly, put the {term}`argument`, (the variable value) inside the
-paranthesis when calling the function.
+parenthesis when calling the function.
 
 {{ rightcol }}
 
@@ -199,7 +196,7 @@ print(message)
 
 {{ leftcol }}
 
-Seperate multiple parameters with a comma.
+Separate multiple parameters with a comma.
 
 {{ rightcol }}
 
@@ -766,7 +763,7 @@ Ideally all functions should have a simple doctring describing what the
 function does, any parameters, and any return value. For simple functions a
 one line brief description will do the trick.
 
-For more complicated functions, you can take advantage of the multiline
+For more complicated functions, you can take advantage of the multi-line
 abilities of docstrings to add detailed information. Here's a long docstring
 example.
 

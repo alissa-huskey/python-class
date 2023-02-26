@@ -23,9 +23,7 @@ Strings
 
 An ordered collection of characters accessed via index numbers.
 
-```{contents} Table of Contents
-:backlinks: top
-:local:
+```{include} ../../toc.md
 ```
 
 {{ rightcol | replace("col", "col-4 text-right") }}
@@ -723,7 +721,7 @@ word.count("at")
 
 {{ newrow }}
 
-You can find out the index number of the first occurance of a letter or substring.
+You can find out the index number of the first occurrence of a letter or substring.
 
 {{ rightcol }}
 

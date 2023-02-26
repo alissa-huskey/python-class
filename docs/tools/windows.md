@@ -14,10 +14,7 @@ Windows Dev Env for Python
 
 Windows tool recommendations and setup guide for Python development.
 
-
-```{contents} Table of Contents
-:backlinks: entry
-:local:
+```{include} ../toc.md
 ```
 
 Part 1: Discord

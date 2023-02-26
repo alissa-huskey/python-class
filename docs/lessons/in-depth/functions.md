@@ -22,10 +22,7 @@ Be sure to complete the fundamentals [](../functions.md) lesson first.
 
 :::
 
-```{contents} Table of Contents
-:backlinks: entry
-:local:
-:depth: 2
+```{include} ../../toc.md
 ```
 
 Part 1: Optional arguments

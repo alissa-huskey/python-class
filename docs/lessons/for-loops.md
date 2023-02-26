@@ -16,10 +16,7 @@ For Loops
 A `while` loop continues for as long as a condition is met, a `for` loop on the
 other hand repeats for every element in an iterable.
 
-```{contents} Table of Contents
-:backlinks: entry
-:local:
-:depth: 2
+```{include} ../toc.md
 ```
 
 Part 1: Syntax
@@ -79,7 +76,7 @@ Part 2: Iterables and iterators
 -------------------------------
 
 Some objects in Python are {term}`iterable`--that is, an object that can be
-itereated over. For example, `list`, `tuple` and `range` objects are all
+iterated over. For example, `list`, `tuple` and `range` objects are all
 iterable.
 
 All iterables can be converted to an {term}`iterator`, which is an object that
@@ -212,7 +209,7 @@ while True:
 ```
 
 This is close, but we're still seeing that `StopIteration` exception. To
-supress it we'll need a try-except block.
+suppress it we'll need a try-except block.
 
 ```{code-cell} python
 :tags: [raises-exception]
@@ -365,8 +362,8 @@ item
 ```
 
 Or we could use {term}`multiple assignment` to assign each item in the `tuple`
-to a cooresponding variable. There must be the same number of variables to the
-left of the `=` as there are items in the `tuple` seperated by `,`.
+to a corresponding variable. There must be the same number of variables to the
+left of the `=` as there are items in the `tuple` separated by `,`.
 
 ```{code-cell} python
 suit, color = next(suites_iterator)
@@ -544,7 +541,7 @@ But what happens if you want to enumerate an iterable that yields multiple
 items per iteration? Is it possible to assign the number and the other items to
 their respective variable names?
 
-Lets take a look at what happens when we pass a {samp}`{dict}.items()` iteratable to
+Lets take a look at what happens when we pass a {samp}`{dict}.items()` treatable to
 `enumerate()`.
 
 ```{code-cell} python
@@ -559,10 +556,10 @@ suites = {
 list(enumerate(suites.items()))
 ```
 
-The iterable now yields a tuple containing a the count, and each item is a
+The iterable now yields a tuple containing the count, and each item is a
 tuple containing the key and value like so: {samp}`({COUNT}, ({KEY}, {VALUE}))`
 
-To use this in a for loop, simply encose the key-value tuple in parenthesis.
+To use this in a for loop, simply enclose the key-value tuple in parenthesis.
 
 ```{code-cell} python
 
@@ -749,7 +746,7 @@ for !!!color!!! in !!!colors!!!:
 ### Part 6.4: string iteration with subscription
 
 In this example we'll iterate over each `letter` in the string `word` using
-bracket notaton.
+bracket notation.
 
 <div class="row"><div class="col">
 

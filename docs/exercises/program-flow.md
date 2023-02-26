@@ -121,13 +121,13 @@ Last week we discussed that...
   keyword.
 * When you {term}`call` a function, it is like using the skill. This is when
   the stored statements are actually {term}`executed <execute>`.
-* You call a function by using its name, followed by parenthisis.
+* You call a function by using its name, followed by parenthesis.
 * Functions can take {term}`arguments`.
-* When defining the function, these go inside the parenthisis of the
+* When defining the function, these go inside the parenthesis of the
   {term}`header` line which creates a temporary variable that only exists
   inside the function.
-* When calling functions, arguments are passed inside the parenthisis of the
-  calling line with commas seperating them.
+* When calling functions, arguments are passed inside the parenthesis of the
+  calling line with commas separating them.
 
 ### Step 1: Make a character info function
 

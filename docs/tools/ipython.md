@@ -12,24 +12,15 @@ kernelspec:
 IPython
 =======
 
-
-Table of Contents
------------------
-
-* [Tips](#tips)
-   * [Tip 1: quickref](#tip-1-quickref)
-   * [Tip 2: Save history to file](#tip-2-save-history-to-file)
-* [Troubleshooting](#troubleshooting)
-   * [unexpected keyword argument 'column'](#unexpected-keyword-argument-column)
-   * [Unhandled exception in event loop](#unhandled-exception-in-event-loop)
-
+```{include} ../toc.md
+```
 
 Tips
 ----
 
 ### Tip 1: quickref
 
-You can use the `%quickref` magic command to get a a quick introduction to
+You can use the `%quickref` magic command to get a quick introduction to
 IPythons features.
 
 ```{code-block} text
@@ -89,7 +80,7 @@ TypeError: __init__() got an unexpected keyword argument 'column'
 ::::::{dropdown} Solution
 :open:
 
-iPython `<=7.19` is incompatable with jedi version `0.18.0`.
+iPython `<=7.19` is incompatible with jedi version `0.18.0`.
 To resolve, downgrade `jedi` to version `0.17.2`.
 
 ::::{tab-set}

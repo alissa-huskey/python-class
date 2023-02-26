@@ -3,16 +3,17 @@
 
 """
 PyPet Battle Game:
-* Two fighters are randomly chosen from a list of PETS, each starting with a
-health of 100
-* Print out details about the chosen fighters
-* Each fighter takes a turn attacking the other until one fighter wins.
+
+[ ] Two fighters are randomly chosen from a list of PETS, each starting with a
+    health of 100
+[ ] Print out details about the chosen fighters
+[ ] Each fighter takes a turn attacking the other until one fighter wins.
     - Each attack will have a description and do randomly selected amount of
-    damage between 10-30
+      damage between 10-30
     - Each attack will print out the description of the attack, the damage it
-    did, and the health of each fighter at the end of the turn
+      did, and the health of each fighter at the end of the turn
     - Whoever reaches 0 first loses and the other player wins.
-* At the end of the game, announce the winner
+[ ] At the end of the game, announce the winner
 """
 
 # The convention is to name modules (Python files) using

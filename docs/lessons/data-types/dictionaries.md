@@ -17,9 +17,7 @@ Dictionaries
 
 A collection of *key: value* pairs.
 
-```{contents} Table of Contents
-:backlinks: top
-:local:
+```{include} ../../toc.md
 ```
 
 {{ rightcol | replace("col", "col-4 text-right") }}
@@ -52,7 +50,7 @@ where the you can look up a word (the key) to get its meaning (the value).
 
 ### Creating
 
-To create a dictionary, enclose comma-seperated key value pairs in curly braces
+To create a dictionary, enclose comma-separated key value pairs in curly braces
 `{` `}` with a `:` between each key and value.
 
 ```{code-cell} python

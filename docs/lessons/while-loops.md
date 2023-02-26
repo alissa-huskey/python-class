@@ -17,11 +17,8 @@ Normally Python reads one statement at a time, one at a time. But loops give us
 the ability to repeat a set of statements. In this lesson we will be learning
 about `while` loops.
 
-```{contents} Table of Contents
-:backlinks: top
-:local:
+```{include} ../toc.md
 ```
-
 
 Introduction
 ------------
@@ -346,7 +343,7 @@ main()
 
 You can use a `while` loop to iterate over the items in a list. To do this
 we'll increment an `i` variable just like we did above but we'll use the
-`len()` function to determine the length of the list and therfore how many
+`len()` function to determine the length of the list and therefore how many
 times the loop should repeat.
 
 Then we can use the `i` variable to access each item in the list.

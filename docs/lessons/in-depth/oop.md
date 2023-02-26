@@ -18,10 +18,7 @@ types, instead of functions or dictionaries.
 
 It allows us to define our own types and give those types properties and behaviors.
 
-```{contents} Table of Contents
-:backlinks: top
-:local:
-:depth: 2
+```{include} ../../toc.md
 ```
 
 Introduction
@@ -63,7 +60,7 @@ if __name__ == "__main__":
   main()
 ```
 
-There are a lot of similarites between each of our pets, aren't there? Each one
+There are a lot of similarities between each of our pets, aren't there? Each one
 has a `name`, a `weight`, a `pic` and an `is_hungry` value.
 
 In this lesson we'll rewrite that using object oriented programming, staring by
@@ -413,7 +410,7 @@ print(truck.color, truck.year, truck.make, truck.model, truck.is_clean)
 Part 4: Methods
 ---------------
 
-A benfit to writing things in an object oriented way is that data and the
+A benefit to writing things in an object oriented way is that data and the
 behavior associated with it are all packaged together. That means that an
 objects methods already have access to its properties.
 

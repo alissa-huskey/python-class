@@ -1,9 +1,7 @@
 List Exercises
 ==============
 
-```{contents} Table of Contents
-:backlinks: top
-:local:
+```{include} ../toc.md
 ```
 
 Hand of Cards

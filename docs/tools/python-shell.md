@@ -20,9 +20,7 @@ the shell is open.
 You can access it from a few places but here I want to show you how to use it
 from repl.it.
 
-```{contents} Table of Contents
-:backlinks: top
-:local:
+```{include} ../toc.md
 ```
 
 Part 1. Open the Python Shell
@@ -79,7 +77,7 @@ The green border tells you that this code that you can edit live on this site
 (by clicking the ![launch][] icon at the top of the page), or type into your
 own Python shell.
 
-The box labeled `In` is input code and the box labled `Out` is output.
+The box labeled `In` is input code and the box labeled `Out` is output.
 
 [launch]: ../assets/rocket-icon.png
 
@@ -160,7 +158,7 @@ Imagine we made a mistake.
 SyntaxError: EOL while scanning string literal
 ```
 
-We can hit the up-arrow once to bring the last line back, then fix the misake
+We can hit the up-arrow once to bring the last line back, then fix the mistake
 and press enter.
 
 ```{code-block} python
@@ -267,7 +265,7 @@ Part 7. Get help
 The Python Shell includes a handy `help()` function that you can use to get
 more information about all sorts of things.
 
-You can pass it a string with the name of a funciton you would like more information about.
+You can pass it a string with the name of a function you would like more information about.
 
 ```{code-cell} python
 :tags: [output_scroll]

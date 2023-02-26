@@ -53,6 +53,13 @@ parse: &parse
     br                      : '<div class="br"></div>'
     sourcebadge             : '{{bdg-link-success}}`source code <{0}>`'
 
+    # teal badge linking to my github with configurable name
+    # note: double curley braces make one literal brace (for .format())
+    # usage: {{{{ code.format("filename.py", "text" }}}}
+    code: |
+      {{bdg-link-info-line}}`{0} <https://github.com/alissa-huskey/python-class/blob/master/pythonclass/{1}>`
+
+
 launch_buttons: &launch_buttons
   notebook_interface        : jupyterlab
   binderhub_url             : https://mybinder.org

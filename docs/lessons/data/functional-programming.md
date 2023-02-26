@@ -12,8 +12,7 @@ kernelspec:
 Functional Programming
 ======================
 
-```{contents} Table of Contents
-:backlinks: "entry"
+```{include} ../../toc.md
 ```
 
 Introduction
@@ -311,7 +310,7 @@ Part 2: Filter
 Generating a new collection containing only items that match a certain condition
 is called {term}`filtering <filter>`.
 
-### Part 2.1: Proceedural
+### Part 2.1: Procedural
 
 {{ leftcol }}
 
@@ -415,7 +414,7 @@ Part 3: Reducing
 operation, cumulatively, to each element in a collection to arrive at a single
 value is called {term}`reducing <reduce>`.
 
-### Part 3.1: Proceedural
+### Part 3.1: Procedural
 
 {{ leftcol }}
 

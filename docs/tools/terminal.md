@@ -29,13 +29,13 @@ When people use the term {term}`console`, {term}`command line`,
 {term}`terminal` or {term}`shell`, they usually mean the {term}`Operating System Shell`.
 
 The command line uses a {term}`shell` scripting language like {term}`bash`,
-{term}`zsh` or {term}`PowerShell` to interact with the the underlying
+{term}`zsh` or {term}`PowerShell` to interact with the underlying
 operating system.
 
 Part 1: The terminal
 --------------------
 
-While the term "terminal" is often used synonomously with
+While the term "terminal" is often used synonymously with
 "the {term}`command line`", it actually refers to the application that you run
 to get to the command line.
 
@@ -158,7 +158,7 @@ Darwin
 The `echo` command is very similar to the Python `print()` command--it prints
 any arguments that follow to the screen, followed by a newline.
 
-On the command line, arguments are seperated by spaces and quotes are usually
+On the command line, arguments are separated by spaces and quotes are usually
 not needed. In this example, we'll use the `echo` command with one argument:
 `Hello.`.
 
@@ -191,7 +191,7 @@ $ python hello.py
 hello
 ```
 
-Since spaces are used to seperate arguments, this can cause problems if a
+Since spaces are used to separate arguments, this can cause problems if a
 filename that includes spaces. (Which is one of the reasons that's not
 recommended.)
 
@@ -229,7 +229,7 @@ Sat Aug 21 23:12:33 UTC 2021
 
 Some commands allow short options to be combined together. For example, the
 `uname` uses the `-s` flag to print operating system name and the `-r` flag to
-print the release, which can be passed two seperate arguments.
+print the release, which can be passed two separate arguments.
 
 ```{code-block} console
 :caption: command line
@@ -273,7 +273,7 @@ example, to print the usage for `python` you can use either `-h` or `--help`.
 #### Summary
 
 * Commands on the command line are programs.
-* Commands can take arguments, seperated by spaces. Single or double quotes are
+* Commands can take arguments, separated by spaces. Single or double quotes are
   only needed to enclose arguments with spaces or other special characters.
 * {term}`flags <flag>` or {term}`options <option>` are special arguments that
   start with a dash (`-`).
@@ -608,7 +608,7 @@ $ tail README.md
 ```
 
 
-### 2.5: Making filesystem changes
+### 2.5: Making file system changes
 
 To move a file use the `mv` command.
 

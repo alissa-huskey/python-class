@@ -53,7 +53,7 @@ problem. That is, it breaks it down into multiple expressions.
 Here are some examples of expressions
 
 ```python
-3                        # a stand-alone vaue is the simplest expression
+3                        # a stand-alone value is the simplest expression
 "hello"                  # a stand-alone string value
 today                    # a variable (when assigned)
 yesterday = today - 1    # two expressions: #1: today - 1, #2: yesterday = 15

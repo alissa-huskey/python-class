@@ -18,10 +18,7 @@ Beginner Tutorial
 
 > Approximate time ~ 2 hours
 
-```{contents}
-:backlinks: top
-:local:
-:depth: 2
+```{include} ../toc.md
 ```
 
 Introduction
@@ -109,7 +106,7 @@ Click the {guilabel}`Run` button. The console will output:
 
 `Welcome to PyPet!`
 
-You’ve just written your Python program!
+You've just written your Python program!
 
 ```{rst-class} centered
 ```
@@ -432,7 +429,7 @@ Never put quotation marks around variable names.
 
 {{ left }}
 
-Instead we will replace the the string `"Fluffy"` with the variable `name`.
+Instead we will replace the string `"Fluffy"` with the variable `name`.
 
 Since the variable `name` contains the string `"Fluffy"` it will have the exact
 same effect.
@@ -522,7 +519,7 @@ back to it.
 #### A. Docstrings
 
 A {term}`docstring` is a special kind of string that is enclosed by
-tripple double-quotes (`"""`) or triple single-quotes( `'''`). When used as the very
+triple double-quotes (`"""`) or triple single-quotes( `'''`). When used as the very
 first line in a file it is documentation for that file.
 
 Docstrings have the added benefit of being able to span multiple lines.
@@ -582,7 +579,7 @@ A space is recommended after the hash mark (`#`).
 
 #### C. Inline comments
 
-A comment doeesn't have to be at the beginning of the line as long as it is not
+A comment doesn't have to be at the beginning of the line as long as it is not
 inside of quotes.
 
 ```{code-block-hl} python
@@ -637,7 +634,7 @@ Dictionary keys use colon (`:`) and their keys **may be** in quotes:
 Create a dictionary called assigned to the variable `cat` using curly-braces
 (`{ }`).
 
-Inside the curly-braces add a list of attributes seperated by commas.
+Inside the curly-braces add a list of attributes separated by commas.
 Attributes have both a {term}`key` (like `"name"`, `"weight"`, `"age"`)
 as well as a {term}`value` (like `"Fluffy"`, `True`, `9.6`), with a colon `:`
 between the two.
@@ -817,7 +814,7 @@ debugging statements so we can see what happens.
 
 :::{tip}
 
-You can pass multiple, comma-seperated arguments to the `print()` function to
+You can pass multiple, comma-separated arguments to the `print()` function to
 print them with a space between each.
 
 This is sometimes easier than {term}`concatenation`, especially for debugging.
@@ -857,7 +854,7 @@ Set or change your PyPet's `"hungry"` value to `True`.
 
 {{ row }}
 
-Look at the output to confirm that the PyPet's hungy and weight values changed.
+Look at the output to confirm that the PyPet's hunky and weight values changed.
 They should be:
 
 {{ right }}
@@ -961,7 +958,7 @@ increase his weight. If the PyPet is not hungry then it will print
 
 One equals sign (`=`) sets variables.
 
-Two equals signs (`==`) checks for equivilance.
+Two equals signs (`==`) checks for equivalence.
 
 :::
 
@@ -1033,7 +1030,7 @@ In this section we'll learn how to hold multiple values together in a [list][].
 
    Now that we have more than one PyPet we can store them in a Python list. A
    [list][] is another data type; lists stores variables in order. If Python
-   isn"t the first programming language you are learning, you may have heard of
+   isn't the first programming language you are learning, you may have heard of
    this same concept in other programming languages as an array.
 
 Part 7: Going in Circles
@@ -1074,7 +1071,7 @@ look at the code. If you are stuck tweet [@Thinkful][] and we'd love to help.
 Feel free to customize any or all of your project and try new things.
 
 This guide is just the beginning of what you can do with Python. If you enjoyed
-the work you’ve done here, go through any of the additional resources below.
+the work you've done here, go through any of the additional resources below.
 
 Free Resources:
 

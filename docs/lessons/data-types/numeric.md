@@ -5,9 +5,7 @@ Nearly every program uses numbers at some point, whether you are keeping track
 of a game score or doing calculations for graphics. In this lesson we'll be
 learning about the numeric types provided by Python.
 
-```{contents} Table of Contents
-:backlinks: top
-:local:
+```{include} ../../toc.md
 ```
 
 Introduction
@@ -56,7 +54,7 @@ They can be positive or negative.
 ```
 
 They almost always play nicely together--they can be compared to one another,
-used interchangably with most operators, and converted into one another.
+used interchangeably with most operators, and converted into one another.
 
 ```{code-block} python
 :caption: Python shell
@@ -479,7 +477,7 @@ get the special float value `inf` for infinity.
 inf
 ```
 
-The limitations inherint to the way float values are stored can cause
+The limitations inherent to the way float values are stored can cause
 unexpected results.
 
 ```{code-block} python
@@ -520,7 +518,7 @@ scientific, geometry, or calculus calculations.
 
 They are comprised of a real component combined with a `+` to an imaginary
 component indicated with a `j` or `J`.  The most commonly syntax is
-{samp}`{real}+{imag}J` but the order of the real and imaginiary parts can be
+{samp}`{real}+{imag}J` but the order of the real and imaginary parts can be
 switched.
 
 ```{code-block} python

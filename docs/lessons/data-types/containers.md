@@ -1,9 +1,7 @@
 Containers
 ==========
 
-```{contents} Table of Contents
-:backlinks: top
-:local:
+```{include} ../../toc.md
 ```
 
 Introduction

@@ -4,10 +4,7 @@ Objects
 Python has a special type `object` which is the ancestor to all types in
 Python.
 
-```{contents} Table of Contents
-:backlinks: entry
-:local:
-:depth: 2
+```{include} ../../toc.md
 ```
 
 Part 1: Introduction
@@ -303,7 +300,7 @@ goes over the things that are effected by the object type.
 
 ### Part 3.1: Arguments
 
-Functions and methods usually expect certian types of arguments, and you'll run
+Functions and methods usually expect certain types of arguments, and you'll run
 into some kind of error if you try to pass the wrong type.
 
 For example, you can use the `len()` function with any kind of iterable--like,
