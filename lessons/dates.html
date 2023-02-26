@@ -389,8 +389,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="05_dragon_realm.html">
-     Chapter 5: Dragon Realm
+    <a class="reference internal" href="dragon-realm.html">
+     Dragon Realm
     </a>
    </li>
   </ul>
@@ -965,56 +965,59 @@ title="Edit this page"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="dates-and-times">
 <h1>Dates and Times<a class="headerlink" href="#dates-and-times" title="Permalink to this headline">#</a></h1>
-<div class="contents local topic" id="table-of-contents">
-<p class="topic-title">Table of Contents</p>
+<p>Dealing with dates and times is vital to many programming tasks from something
+as simple as displaying the current date and time to pulling up all of the
+records that were created during a particular period of time.</p>
+<p>Dates and times have a surprising amount of complexity, between timezones,
+daylight savings times, leap years, and varying month lengths. Luckily modern
+Python programmers don’t need to figure this all out, but instead can rely on
+libraries to handle to package it into a few (relatively) simple types.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Table of Contents<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#part-1-datetime-objects" id="id2">Part 1: Datetime objects</a></p>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-1-datetime-objects" id="id2">Part 1: Datetime objects</a></p>
 <ul>
-<li><p><a class="reference internal" href="#part-1-1-the-current-date-and-time" id="id3">Part 1.1: The current date and time</a></p></li>
-<li><p><a class="reference internal" href="#part-1-2-simple-date-and-time-formatting" id="id4">Part 1.2: Simple date and time formatting</a></p></li>
-<li><p><a class="reference internal" href="#part-1-3-individual-values" id="id5">Part 1.3: Individual values</a></p></li>
-<li><p><a class="reference internal" href="#part-1-4-getting-a-specific-date" id="id6">Part 1.4: Getting a specific date</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-1-1-the-current-date-and-time" id="id3">Part 1.1: The current date and time</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-1-2-simple-date-and-time-formatting" id="id4">Part 1.2: Simple date and time formatting</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-1-3-individual-values" id="id5">Part 1.3: Individual values</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-1-4-getting-a-specific-date" id="id6">Part 1.4: Getting a specific date</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#part-2-date-formatting" id="id7">Part 2: Date formatting</a></p>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-2-date-formatting" id="id7">Part 2: Date formatting</a></p>
 <ul>
-<li><p><a class="reference internal" href="#part-2-1-displaying" id="id8">Part 2.1: Displaying</a></p></li>
-<li><p><a class="reference internal" href="#part-2-2-interpreting" id="id9">Part 2.2: Interpreting</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-2-1-displaying" id="id8">Part 2.1: Displaying</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-2-2-interpreting" id="id9">Part 2.2: Interpreting</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#part-3-relative-dates-and-times" id="id10">Part 3: Relative dates and times</a></p>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-3-relative-dates-and-times" id="id10">Part 3: Relative dates and times</a></p>
 <ul>
-<li><p><a class="reference internal" href="#part-3-1-durations" id="id11">Part 3.1: Durations</a></p></li>
-<li><p><a class="reference internal" href="#part-3-2-adding-and-subtracting-from-dates" id="id12">Part 3.2: Adding and subtracting from dates</a></p></li>
-<li><p><a class="reference internal" href="#part-3-3-difference-between-dates" id="id13">Part 3.3: Difference between dates</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-3-1-durations" id="id11">Part 3.1: Durations</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-3-2-adding-and-subtracting-from-dates" id="id12">Part 3.2: Adding and subtracting from dates</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-3-3-difference-between-dates" id="id13">Part 3.3: Difference between dates</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#reference" id="id14">Reference</a></p>
+<li><p class="sd-card-text"><a class="reference internal" href="#reference" id="id14">Reference</a></p>
 <ul>
-<li><p><a class="reference internal" href="#format-codes" id="id15">Format Codes</a></p></li>
-<li><p><a class="reference internal" href="#see-also" id="id16">See also</a></p></li>
-<li><p><a class="reference internal" href="#glossary" id="id17">Glossary</a></p>
-<ul>
-<li><p><a class="reference internal" href="#glossary-Dates" id="id18">Dates</a></p></li>
-</ul>
-</li>
+<li><p class="sd-card-text"><a class="reference internal" href="#format-codes" id="id15">Format Codes</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#see-also" id="id16">See also</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#glossary" id="id17">Glossary</a></p></li>
 </ul>
 </li>
 </ul>
 </div>
-<p>Dealing with dates and times is vital to many progamming tasks from something
-as simple as displaying the current date and time to pulling up all of the
-records that were created during a particular period of time.</p>
-<p>Dates and times have a surprising amount of complexity, between timezones,
-daylight savings times, leap years, and varrying month lengths. Luckily modern
-Python programmers don’t need to figure this all out, but instead can rely on
-libraries to handle to package it into a few (relatively) simple types.</p>
-<section id="part-1-datetime-objects">
-<h2><a class="toc-backref" href="#table-of-contents">Part 1: Datetime objects</a><a class="headerlink" href="#part-1-datetime-objects" title="Permalink to this headline">#</a></h2>
+</div>
+</details><section id="part-1-datetime-objects">
+<h2><a class="toc-backref" href="#contents">Part 1: Datetime objects</a><a class="headerlink" href="#part-1-datetime-objects" title="Permalink to this headline">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">datetime</span></code> module provides types for manipulating dates and times. In this
 lesson we’ll learn about the <code class="docutils literal notranslate"><span class="pre">datetime</span></code> type.</p>
 <section id="part-1-1-the-current-date-and-time">
-<h3><a class="toc-backref" href="#table-of-contents">Part 1.1: The current date and time</a><a class="headerlink" href="#part-1-1-the-current-date-and-time" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 1.1: The current date and time</a><a class="headerlink" href="#part-1-1-the-current-date-and-time" title="Permalink to this headline">#</a></h3>
 <p>To get the current date and time, first you’ll need to import the <code class="docutils literal notranslate"><span class="pre">datetime</span></code>
 type from the <code class="docutils literal notranslate"><span class="pre">datetime</span></code> module. Then you can call the <code class="docutils literal notranslate"><span class="pre">.today()</span></code> method, which
 will return a <code class="docutils literal notranslate"><span class="pre">datetime</span></code> object with the current date and time.</p>
@@ -1028,7 +1031,7 @@ will return a <code class="docutils literal notranslate"><span class="pre">datet
 </div>
 </section>
 <section id="part-1-2-simple-date-and-time-formatting">
-<h3><a class="toc-backref" href="#table-of-contents">Part 1.2: Simple date and time formatting</a><a class="headerlink" href="#part-1-2-simple-date-and-time-formatting" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 1.2: Simple date and time formatting</a><a class="headerlink" href="#part-1-2-simple-date-and-time-formatting" title="Permalink to this headline">#</a></h3>
 <p>If you want to display a human-readable date or time, you can convert a
 datetime object to a string using the <code class="docutils literal notranslate"><span class="pre">str</span></code> type.</p>
 <div class="cell docutils container">
@@ -1038,7 +1041,7 @@ datetime object to a string using the <code class="docutils literal notranslate"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-02-25 23:42:49.872902
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-02-26 11:31:13.438341
 </pre></div>
 </div>
 </div>
@@ -1053,15 +1056,15 @@ respectively, then convert the returned value to a string.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-02-25
-23:42:49.872902
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-02-26
+11:31:13.438341
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="part-1-3-individual-values">
-<h3><a class="toc-backref" href="#table-of-contents">Part 1.3: Individual values</a><a class="headerlink" href="#part-1-3-individual-values" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 1.3: Individual values</a><a class="headerlink" href="#part-1-3-individual-values" title="Permalink to this headline">#</a></h3>
 <p>You can access individual parts of a <code class="docutils literal notranslate"><span class="pre">datetime</span></code> object via the following
 properties:</p>
 <ul class="simple">
@@ -1088,11 +1091,11 @@ properties:</p>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023
 2
-25
-23
-42
-49
-872902
+26
+11
+31
+13
+438341
 </pre></div>
 </div>
 </div>
@@ -1106,7 +1109,7 @@ an integer between <code class="docutils literal notranslate"><span class="pre">
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
 </pre></div>
 </div>
 </div>
@@ -1136,14 +1139,14 @@ value of <code class="docutils literal notranslate"><span class="pre">day_name</
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saturday
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sunday
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="part-1-4-getting-a-specific-date">
-<h3><a class="toc-backref" href="#table-of-contents">Part 1.4: Getting a specific date</a><a class="headerlink" href="#part-1-4-getting-a-specific-date" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 1.4: Getting a specific date</a><a class="headerlink" href="#part-1-4-getting-a-specific-date" title="Permalink to this headline">#</a></h3>
 <p>To create a <code class="docutils literal notranslate"><span class="pre">datetime</span></code> object with some other date and time, call the
 <code class="docutils literal notranslate"><span class="pre">datetime</span></code> type and pass integer arguments for at least the <code class="docutils literal notranslate"><span class="pre">year</span></code>, <code class="docutils literal notranslate"><span class="pre">month</span></code> and
 <code class="docutils literal notranslate"><span class="pre">day</span></code>.</p>
@@ -1178,19 +1181,19 @@ release of Python<a class="footnote-reference brackets" href="#python-release" i
 </section>
 </section>
 <section id="part-2-date-formatting">
-<h2><a class="toc-backref" href="#table-of-contents">Part 2: Date formatting</a><a class="headerlink" href="#part-2-date-formatting" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#contents">Part 2: Date formatting</a><a class="headerlink" href="#part-2-date-formatting" title="Permalink to this headline">#</a></h2>
 <p>Since there are so many ways to represent a date or time, most programming
 languages provide a fairly standard set of <a class="reference internal" href="#term-date-formatting-codes"><span class="xref std std-term">date formatting codes</span></a>, where
 each code is a character prefixed by a <code class="docutils literal notranslate"><span class="pre">%</span></code> that is used to represent a
 particular field and presentation.</p>
 <p>These can then be put together in a string to indicate a how a date should be
-diplayed or interpreted.</p>
+displayed or interpreted.</p>
 <p>For example, the string <code class="docutils literal notranslate"><span class="pre">&quot;%Y-%m-%d</span> <span class="pre">%H:%M:%S&quot;</span></code> would represent a date like
 <code class="docutils literal notranslate"><span class="pre">&quot;1991-02-19</span> <span class="pre">10:35:26&quot;</span></code>.</p>
 <p>For a full list of format codes see the <a class="reference external" href="#format-codes">format codes table</a> in
 the reference section of this page.</p>
 <section id="part-2-1-displaying">
-<h3><a class="toc-backref" href="#table-of-contents">Part 2.1: Displaying</a><a class="headerlink" href="#part-2-1-displaying" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 2.1: Displaying</a><a class="headerlink" href="#part-2-1-displaying" title="Permalink to this headline">#</a></h3>
 <p>To display a date in a particular format, use the <code class="docutils literal notranslate"><span class="pre">.strftime()</span></code> method on a
 <code class="docutils literal notranslate"><span class="pre">datetime</span></code> object, and pass it a string with the date format you wish to use.</p>
 <div class="cell docutils container">
@@ -1200,14 +1203,14 @@ the reference section of this page.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-02-25 23:42:49
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-02-26 11:31:13
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="part-2-2-interpreting">
-<h3><a class="toc-backref" href="#table-of-contents">Part 2.2: Interpreting</a><a class="headerlink" href="#part-2-2-interpreting" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 2.2: Interpreting</a><a class="headerlink" href="#part-2-2-interpreting" title="Permalink to this headline">#</a></h3>
 <p>If you have a date string that you want to turn into a <code class="docutils literal notranslate"><span class="pre">datetime</span></code> object, use
 the <code class="docutils literal notranslate"><span class="pre">.strptime()</span></code> method on the <code class="docutils literal notranslate"><span class="pre">datetime</span></code> type. Pass it two arguments: the
 date string and the format string.</p>
@@ -1226,11 +1229,11 @@ date string and the format string.</p>
 </section>
 </section>
 <section id="part-3-relative-dates-and-times">
-<h2><a class="toc-backref" href="#table-of-contents">Part 3: Relative dates and times</a><a class="headerlink" href="#part-3-relative-dates-and-times" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#contents">Part 3: Relative dates and times</a><a class="headerlink" href="#part-3-relative-dates-and-times" title="Permalink to this headline">#</a></h2>
 <p>When working with dates and times we often care about the amount of time since
 or until a particular date, or the times between two dates and times.</p>
 <section id="part-3-1-durations">
-<h3><a class="toc-backref" href="#table-of-contents">Part 3.1: Durations</a><a class="headerlink" href="#part-3-1-durations" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 3.1: Durations</a><a class="headerlink" href="#part-3-1-durations" title="Permalink to this headline">#</a></h3>
 <p>Python provides the <code class="docutils literal notranslate"><span class="pre">timedelta</span></code> type to represent a duration of time, which you
 can import from the <code class="docutils literal notranslate"><span class="pre">datetime</span></code> module.</p>
 <p>To construct a <code class="docutils literal notranslate"><span class="pre">timedelta</span></code> object, pass a keyword argument with an integer
@@ -1316,7 +1319,7 @@ create a <code class="docutils literal notranslate"><span class="pre">moment</sp
 </div>
 </section>
 <section id="part-3-2-adding-and-subtracting-from-dates">
-<h3><a class="toc-backref" href="#table-of-contents">Part 3.2: Adding and subtracting from dates</a><a class="headerlink" href="#part-3-2-adding-and-subtracting-from-dates" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 3.2: Adding and subtracting from dates</a><a class="headerlink" href="#part-3-2-adding-and-subtracting-from-dates" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">week</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
@@ -1327,7 +1330,7 @@ create a <code class="docutils literal notranslate"><span class="pre">moment</sp
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>last week: 2023-02-18 23:42:49.872902
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>last week: 2023-02-19 11:31:13.438341
 </pre></div>
 </div>
 </div>
@@ -1341,14 +1344,14 @@ create a <code class="docutils literal notranslate"><span class="pre">moment</sp
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tomorrow: 2023-02-26 23:42:49.872902
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tomorrow: 2023-02-27 11:31:13.438341
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="part-3-3-difference-between-dates">
-<h3><a class="toc-backref" href="#table-of-contents">Part 3.3: Difference between dates</a><a class="headerlink" href="#part-3-3-difference-between-dates" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 3.3: Difference between dates</a><a class="headerlink" href="#part-3-3-difference-between-dates" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">birthday</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
@@ -1359,7 +1362,7 @@ create a <code class="docutils literal notranslate"><span class="pre">moment</sp
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>995 days, 23:42:49.872902
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>996 days, 11:31:13.438341
 </pre></div>
 </div>
 </div>
@@ -1367,9 +1370,9 @@ create a <code class="docutils literal notranslate"><span class="pre">moment</sp
 </section>
 </section>
 <section id="reference">
-<h2><a class="toc-backref" href="#table-of-contents">Reference</a><a class="headerlink" href="#reference" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#contents">Reference</a><a class="headerlink" href="#reference" title="Permalink to this headline">#</a></h2>
 <section id="format-codes">
-<h3><a class="toc-backref" href="#table-of-contents">Format Codes</a><a class="headerlink" href="#format-codes" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Format Codes</a><a class="headerlink" href="#format-codes" title="Permalink to this headline">#</a></h3>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Code(s)</p></th>
@@ -1606,7 +1609,7 @@ create a <code class="docutils literal notranslate"><span class="pre">moment</sp
 </table>
 </section>
 <section id="see-also">
-<h3><a class="toc-backref" href="#table-of-contents">See also</a><a class="headerlink" href="#see-also" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">See also</a><a class="headerlink" href="#see-also" title="Permalink to this headline">#</a></h3>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">
@@ -1618,9 +1621,9 @@ create a <code class="docutils literal notranslate"><span class="pre">moment</sp
 </div>
 </section>
 <section id="glossary">
-<h3><a class="toc-backref" href="#table-of-contents">Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this headline">#</a></h3>
 <section id="glossary-Dates">
-<h4><a class="toc-backref" href="#table-of-contents">Dates</a><a class="headerlink" href="#glossary-Dates" title="Permalink to this headline">#</a></h4>
+<h4>Dates<a class="headerlink" href="#glossary-Dates" title="Permalink to this headline">#</a></h4>
 <dl class="glossary simple">
 <dt id="term-date-formatting-codes">date formatting codes<a class="headerlink" href="#term-date-formatting-codes" title="Permalink to this term">#</a></dt><dd><p>A set of characters prefixed by <code class="docutils literal notranslate"><span class="pre">%</span></code> which represent a particular date or time
 field and presentation. For example <code class="docutils literal notranslate"><span class="pre">&quot;%m&quot;</span></code> is for the month as a number <code class="docutils literal notranslate"><span class="pre">01</span></code>-<code class="docutils literal notranslate"><span class="pre">12</span></code>

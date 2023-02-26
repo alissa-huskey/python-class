@@ -14,7 +14,7 @@ These are special methods used by some Python mechanism under the hood such as:
 * **Functions** -- some are called when the builtin function of the same name
 * is called. For example the `.__format__()` method is called by the
   `format()` function.
-* **Operators** -- there are magic methods cooresponding to each operator. For
+* **Operators** -- there are magic methods corresponding to each operator. For
   example the `.__add__()` method is called by the `+` operator.
 * **Statements** -- some statements call magic methods. For example when the
   `del` statement is used on an object attribute the `.__del__()` method is
@@ -62,7 +62,7 @@ While magic methods are intended for internal use, there is nothing stopping
 you from calling them directly.
 
 Here are a few examples of normal Python code and the same thing via the
-cooresponding magic method or special attribute.
+corresponding magic method or special attribute.
 
 {{ leftcol }}
 

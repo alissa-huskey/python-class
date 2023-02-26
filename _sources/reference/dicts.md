@@ -1,9 +1,7 @@
 Dictionaries
 ============
 
-```{contents} Table of Contents
-:backlinks: top
-:local:
+```{include} ../toc.md
 ```
 
 Creating

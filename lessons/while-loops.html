@@ -389,8 +389,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="05_dragon_realm.html">
-     Chapter 5: Dragon Realm
+    <a class="reference internal" href="dragon-realm.html">
+     Dragon Realm
     </a>
    </li>
   </ul>
@@ -986,52 +986,43 @@ title="Edit this page"
 <p>Normally Python reads one statement at a time, one at a time. But loops give us
 the ability to repeat a set of statements. In this lesson we will be learning
 about <code class="docutils literal notranslate"><span class="pre">while</span></code> loops.</p>
-<div class="contents local topic" id="table-of-contents">
-<p class="topic-title">Table of Contents</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Table of Contents<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#introduction" id="id23">Introduction</a></p></li>
-<li><p><a class="reference internal" href="#syntax" id="id24">Syntax</a></p>
+<li><p class="sd-card-text"><a class="reference internal" href="#introduction" id="id23">Introduction</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#syntax" id="id24">Syntax</a></p>
 <ul>
-<li><p><a class="reference internal" href="#exercises" id="id25">Exercises</a></p></li>
-<li><p><a class="reference internal" href="#quitting-a-loop" id="id26">Quitting a loop</a></p>
-<ul>
-<li><p><a class="reference internal" href="#exercise" id="id27">Exercise</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#exercises" id="id25">Exercises</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#quitting-a-loop" id="id26">Quitting a loop</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#skipping-part-of-an-iteration" id="id27">Skipping part of an iteration</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#skipping-part-of-an-iteration" id="id28">Skipping part of an iteration</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#loop-patterns" id="id28">Loop patterns</a></p>
+<ul>
+<li><p class="sd-card-text"><a class="reference internal" href="#incrementing-and-decrementing" id="id29">Incrementing and decrementing</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#infinite-loops" id="id30">Infinite loops</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#iterating-over-a-list" id="id31">Iterating over a list</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#nested-loops" id="id32">Nested loops</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#loop-patterns" id="id29">Loop patterns</a></p>
+<li><p class="sd-card-text"><a class="reference internal" href="#id3" id="id33">Exercises</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#reference" id="id34">Reference</a></p>
 <ul>
-<li><p><a class="reference internal" href="#incrementing-and-decrementing" id="id30">Incrementing and decrementing</a></p>
-<ul>
-<li><p><a class="reference internal" href="#id1" id="id31">Exercise</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#infinite-loops" id="id32">Infinite loops</a></p></li>
-<li><p><a class="reference internal" href="#iterating-over-a-list" id="id33">Iterating over a list</a></p></li>
-<li><p><a class="reference internal" href="#nested-loops" id="id34">Nested loops</a></p>
-<ul>
-<li><p><a class="reference internal" href="#id2" id="id35">Exercises</a></p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#id3" id="id36">Exercises</a></p></li>
-<li><p><a class="reference internal" href="#reference" id="id37">Reference</a></p>
-<ul>
-<li><p><a class="reference internal" href="#glossary" id="id38">Glossary</a></p>
-<ul>
-<li><p><a class="reference internal" href="#glossary-while-loops" id="id39">While Loops</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#see-also" id="id40">See also</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#glossary" id="id35">Glossary</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#see-also" id="id36">See also</a></p></li>
 </ul>
 </li>
 </ul>
 </div>
-<section id="introduction">
-<h2><a class="toc-backref" href="#table-of-contents">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+</div>
+</details><section id="introduction">
+<h2><a class="toc-backref" href="#contents">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
 <p>A <a class="reference internal" href="#term-while-loop"><span class="xref std std-term">while loop</span></a> is a <a class="reference internal" href="statements.html#term-compound-statement"><span class="xref std std-term">compound statement</span></a>. Like an <a class="reference internal" href="conditional-statements.html#term-if-statement"><span class="xref std std-term">if statement</span></a>
 while loops include a conditional expression and a <a class="reference internal" href="statements.html#term-suite"><span class="xref std std-term">suite</span></a> of
 statements that will be repeated until the expression evaluates to <a class="reference internal" href="conditional-statements.html#term-falsy"><span class="xref std std-term">falsy</span></a>.</p>
@@ -1040,7 +1031,7 @@ statements that will be repeated until the expression evaluates to <a class="ref
 <a class="reference internal" href="../reference/glossary.html#term-iterating"><span class="xref std std-term">iterating</span></a>.</p>
 </section>
 <section id="syntax">
-<h2><a class="toc-backref" href="#table-of-contents">Syntax</a><a class="headerlink" href="#syntax" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#contents">Syntax</a><a class="headerlink" href="#syntax" title="Permalink to this headline">#</a></h2>
 <p>The syntax for a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop is:</p>
 <div class="row"><div class="col-5 left-col-5">
 <pre class="literal-block"><code class="samp docutils literal notranslate"><span class="pre">while</span> <em><span class="pre">CONDITION</span></em><span class="pre">:</span></code>
@@ -1077,7 +1068,7 @@ they answer.</p>
 </div>
 </div>
 <section id="exercises">
-<h3><a class="toc-backref" href="#table-of-contents">Exercises</a><a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Exercises</a><a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h3>
 <div class="exercise admonition" id="heads-or-tails-exercise">
 
 <p class="admonition-title"><span class="caption-number">Exercise 16 </span> (Heads or Tails)</p>
@@ -1127,7 +1118,7 @@ the number is less than <code class="docutils literal notranslate"><span class="
 </div>
 </section>
 <section id="quitting-a-loop">
-<h3><a class="toc-backref" href="#table-of-contents">Quitting a loop</a><a class="headerlink" href="#quitting-a-loop" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Quitting a loop</a><a class="headerlink" href="#quitting-a-loop" title="Permalink to this headline">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">break</span></code> statement can be used to stop loop iteration.</p>
 <p>This example intentionally creates an infinite loop then in each iteration asks
 the user if they would like to keep going and uses the <code class="docutils literal notranslate"><span class="pre">break</span></code> statement if
@@ -1146,7 +1137,7 @@ they reply with <code class="docutils literal notranslate"><span class="pre">&qu
 </div>
 </div>
 <section id="exercise">
-<h4><a class="toc-backref" href="#table-of-contents">Exercise</a><a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h4>
+<h4>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h4>
 <div class="exercise admonition" id="random-number-not-divisible-by-ten-exercise">
 
 <p class="admonition-title"><span class="caption-number">Exercise 18 </span> (Random number not divisible by ten)</p>
@@ -1175,7 +1166,7 @@ loop. <em>Hint: Use the <code class="docutils literal notranslate"><span class="
 </section>
 </section>
 <section id="skipping-part-of-an-iteration">
-<h3><a class="toc-backref" href="#table-of-contents">Skipping part of an iteration</a><a class="headerlink" href="#skipping-part-of-an-iteration" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Skipping part of an iteration</a><a class="headerlink" href="#skipping-part-of-an-iteration" title="Permalink to this headline">#</a></h3>
 <p>You can skip the rest of the statements in a loop iteration by using the
 <code class="docutils literal notranslate"><span class="pre">continue</span></code> statement.</p>
 <p>This example uses the <code class="docutils literal notranslate"><span class="pre">continue</span></code> statement to skip the rest of the iteration if
@@ -1239,10 +1230,10 @@ the user does not enter a number.</p>
 </section>
 </section>
 <section id="loop-patterns">
-<h2><a class="toc-backref" href="#table-of-contents">Loop patterns</a><a class="headerlink" href="#loop-patterns" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#contents">Loop patterns</a><a class="headerlink" href="#loop-patterns" title="Permalink to this headline">#</a></h2>
 <p>In this section we’re going to go over some of the ways that loops are commonly used.</p>
 <section id="incrementing-and-decrementing">
-<h3><a class="toc-backref" href="#table-of-contents">Incrementing and decrementing</a><a class="headerlink" href="#incrementing-and-decrementing" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Incrementing and decrementing</a><a class="headerlink" href="#incrementing-and-decrementing" title="Permalink to this headline">#</a></h3>
 <p>Often in programming we want to repeat a suite of statements a specific number
 of times.</p>
 <p>One way to do this is to keep track of which iteration the loop is currently
@@ -1258,7 +1249,7 @@ executing by <a class="reference internal" href="#term-incrementing"><span class
 </div>
 </div>
 <section id="id1">
-<h4><a class="toc-backref" href="#table-of-contents">Exercise</a><a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<h4>Exercise<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
 <div class="exercise admonition" id="countdown-exercise">
 
 <p class="admonition-title"><span class="caption-number">Exercise 20 </span> (Countdown)</p>
@@ -1285,7 +1276,7 @@ current number then use the <code class="docutils literal notranslate"><span cla
 </section>
 </section>
 <section id="infinite-loops">
-<h3><a class="toc-backref" href="#table-of-contents">Infinite loops</a><a class="headerlink" href="#infinite-loops" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Infinite loops</a><a class="headerlink" href="#infinite-loops" title="Permalink to this headline">#</a></h3>
 <p>When a program is written in such a way that the loop condition is always met
 the result is called an <a class="reference internal" href="#term-infinite-loop"><span class="xref std std-term">infinite loop</span></a>. These are easy to cause by
 mistake.</p>
@@ -1346,10 +1337,10 @@ infinite loop is used to always return the user to a main menu.</p>
 </div>
 </section>
 <section id="iterating-over-a-list">
-<h3><a class="toc-backref" href="#table-of-contents">Iterating over a list</a><a class="headerlink" href="#iterating-over-a-list" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Iterating over a list</a><a class="headerlink" href="#iterating-over-a-list" title="Permalink to this headline">#</a></h3>
 <p>You can use a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop to iterate over the items in a list. To do this
 we’ll increment an <code class="docutils literal notranslate"><span class="pre">i</span></code> variable just like we did above but we’ll use the
-<code class="docutils literal notranslate"><span class="pre">len()</span></code> function to determine the length of the list and therfore how many
+<code class="docutils literal notranslate"><span class="pre">len()</span></code> function to determine the length of the list and therefore how many
 times the loop should repeat.</p>
 <p>Then we can use the <code class="docutils literal notranslate"><span class="pre">i</span></code> variable to access each item in the list.</p>
 <div class="literal-block-wrapper docutils container" id="id13">
@@ -1445,7 +1436,7 @@ vowels the use the <code class="docutils literal notranslate"><span class="pre">
 </div>
 </section>
 <section id="nested-loops">
-<h3><a class="toc-backref" href="#table-of-contents">Nested loops</a><a class="headerlink" href="#nested-loops" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Nested loops</a><a class="headerlink" href="#nested-loops" title="Permalink to this headline">#</a></h3>
 <p>Just like you can have an if statement inside of another if statement, you can
 also have a while loop inside of another while loop.</p>
 <p>This example prints out a score card for three rounds of three players each.</p>
@@ -1527,7 +1518,7 @@ current value of <code class="docutils literal notranslate"><span class="pre">r<
 </div>
 </div>
 <section id="id2">
-<h4><a class="toc-backref" href="#table-of-contents">Exercises</a><a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<h4>Exercises<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
 <div class="exercise admonition" id="multiplication-table-exercise">
 
 <p class="admonition-title"><span class="caption-number">Exercise 23 </span> (multiplication-table)</p>
@@ -1566,7 +1557,7 @@ current value of <code class="docutils literal notranslate"><span class="pre">r<
 </section>
 </section>
 <section id="id3">
-<h2><a class="toc-backref" href="#table-of-contents">Exercises</a><a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#contents">Exercises</a><a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
 <div class="exercise admonition" id="name-cheer-exercise">
 
 <p class="admonition-title"><span class="caption-number">Exercise 24 </span> (Name Cheer)</p>
@@ -1939,11 +1930,11 @@ example: <code class="docutils literal notranslate"><span class="pre">5</span> <
 </div>
 </section>
 <section id="reference">
-<h2><a class="toc-backref" href="#table-of-contents">Reference</a><a class="headerlink" href="#reference" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#contents">Reference</a><a class="headerlink" href="#reference" title="Permalink to this headline">#</a></h2>
 <section id="glossary">
-<h3><a class="toc-backref" href="#table-of-contents">Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this headline">#</a></h3>
 <section id="glossary-while-loops">
-<h4><a class="toc-backref" href="#table-of-contents">While Loops</a><a class="headerlink" href="#glossary-while-loops" title="Permalink to this headline">#</a></h4>
+<h4>While Loops<a class="headerlink" href="#glossary-while-loops" title="Permalink to this headline">#</a></h4>
 <dl class="glossary simple">
 <dt id="term-while-loop">while loop<a class="headerlink" href="#term-while-loop" title="Permalink to this term">#</a></dt><dd><p>A <a class="reference internal" href="statements.html#term-compound-statement"><span class="xref std std-term">compound statement</span></a> that repeats a <a class="reference internal" href="statements.html#term-suite"><span class="xref std std-term">suite</span></a> of statements as
 long as a <a class="reference internal" href="conditional-statements.html#term-condition"><span class="xref std std-term">condition</span></a> evaluates to <a class="reference internal" href="conditional-statements.html#term-truthy"><span class="xref std std-term">truthy</span></a>.</p>
@@ -1958,7 +1949,7 @@ long as a <a class="reference internal" href="conditional-statements.html#term-c
 </section>
 </section>
 <section id="see-also">
-<h3><a class="toc-backref" href="#table-of-contents">See also</a><a class="headerlink" href="#see-also" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">See also</a><a class="headerlink" href="#see-also" title="Permalink to this headline">#</a></h3>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">

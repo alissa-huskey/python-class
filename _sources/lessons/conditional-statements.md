@@ -12,6 +12,9 @@ kernelspec:
 Conditional Statements
 ======================
 
+```{include} ../toc.md
+```
+
 
 If Statements
 -------------
@@ -211,7 +214,7 @@ determines if the resulting value is {term}`truthy` or {term}`falsy`.
 
 A truthy value is one that Python considers to be the equivalent of `True`,
 while a falsy value is one that Python considers to be the equivalent of
-`False`. It determies this by first converting it to a `boolean` value, which
+`False`. It determines this by first converting it to a `boolean` value, which
 can be done using the `bool()` function.
 
 Some examples of falsy values are

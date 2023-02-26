@@ -389,8 +389,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../05_dragon_realm.html">
-     Chapter 5: Dragon Realm
+    <a class="reference internal" href="../dragon-realm.html">
+     Dragon Realm
     </a>
    </li>
   </ul>
@@ -1050,8 +1050,50 @@ title="Edit this page"
 <h1>Structuring Python Projects<a class="headerlink" href="#structuring-python-projects" title="Permalink to this headline">#</a></h1>
 <p>This lesson will discuss how to organize the code in your Python project and
 how Python then finds your code.</p>
-<section id="modules">
-<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">#</a></h2>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Table of Contents<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference internal" href="#modules" id="id12">Modules</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#packages" id="id13">Packages</a></p>
+<ul>
+<li><p class="sd-card-text"><a class="reference internal" href="#subpackages" id="id14">Subpackages</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#relative-imports" id="id15">Relative imports</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#the-init-py-file" id="id16">The <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file</a></p></li>
+</ul>
+</li>
+<li><p class="sd-card-text"><a class="reference internal" href="#the-python-search-path" id="id17">The Python Search Path</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#executable-scripts" id="id18">Executable scripts</a></p>
+<ul>
+<li><p class="sd-card-text"><a class="reference internal" href="#boil-it-down" id="id19">Boil it down</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#the-script" id="id20">The script</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#making-the-script-executable" id="id21">Making the script executable</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#running-the-script" id="id22">Running the script</a></p></li>
+</ul>
+</li>
+<li><p class="sd-card-text"><a class="reference internal" href="#exercise" id="id23">Exercise</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#directory-structure" id="id24">Directory structure</a></p>
+<ul>
+<li><p class="sd-card-text"><a class="reference internal" href="#directories" id="id25">Directories</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#files" id="id26">Files</a></p></li>
+</ul>
+</li>
+<li><p class="sd-card-text"><a class="reference internal" href="#see-also" id="id27">See also</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#glossary" id="id28">Glossary</a></p>
+<ul>
+<li><p class="sd-card-text"><a class="reference internal" href="#glossary-structure" id="id29">Structure</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</details><section id="modules">
+<h2><a class="toc-backref" href="#contents">Modules</a><a class="headerlink" href="#modules" title="Permalink to this headline">#</a></h2>
 <p>A module is a file that contains Python code like that can be <a class="term-missing reference internal" href="#" title=""><span class="xref std std-term">imported</span></a>
 into other Python files. This can be used to split your code into multiple
 files so that your code is more organized.</p>
@@ -1108,7 +1150,7 @@ interchangeable component like a plugin or library.</p>
 </div>
 </section>
 <section id="packages">
-<h2>Packages<a class="headerlink" href="#packages" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#contents">Packages</a><a class="headerlink" href="#packages" title="Permalink to this headline">#</a></h2>
 <p>A package is a group of modules in the same directory which also contains a
 file named <code class="file docutils literal notranslate"><span class="pre">__init__.py</span></code>.</p>
 <p>For example, imagine we have a hangman package with two modules. The
@@ -1141,7 +1183,7 @@ module contains the functions to play the game.</p>
 </pre></div>
 </div>
 <section id="subpackages">
-<h3>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Subpackages</a><a class="headerlink" href="#subpackages" title="Permalink to this headline">#</a></h3>
 <p>You can further divide your code into subpackages, for example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hangman</span><span class="o">/</span>
 <span class="o">|--</span> <span class="n">words</span><span class="o">/</span>
@@ -1163,7 +1205,7 @@ available as part of your package.</p>
 </div>
 </section>
 <section id="relative-imports">
-<h3>Relative imports<a class="headerlink" href="#relative-imports" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Relative imports</a><a class="headerlink" href="#relative-imports" title="Permalink to this headline">#</a></h3>
 <p>When importing from within the same package, you can use the shorthand <code class="docutils literal notranslate"><span class="pre">.</span></code>.</p>
 <div class="literal-block-wrapper docutils container" id="id4">
 <div class="code-block-caption"><span class="caption-number">Listing 287 </span><span class="caption-text">main.py</span><a class="headerlink" href="#id4" title="Permalink to this code">#</a></div>
@@ -1186,7 +1228,7 @@ the <code class="docutils literal notranslate"><span class="pre">abort</span></c
 </div>
 </section>
 <section id="the-init-py-file">
-<h3>The <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file<a class="headerlink" href="#the-init-py-file" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">The <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file</a><a class="headerlink" href="#the-init-py-file" title="Permalink to this headline">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file is executed when the package is imported. This file
 can be, and often is, blank. This can also be used to set up variables or
 general purpose functions for your module.</p>
@@ -1203,7 +1245,7 @@ general purpose functions for your module.</p>
 </section>
 </section>
 <section id="the-python-search-path">
-<h2>The Python Search Path<a class="headerlink" href="#the-python-search-path" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#contents">The Python Search Path</a><a class="headerlink" href="#the-python-search-path" title="Permalink to this headline">#</a></h2>
 <p>When Python looks for a module or package it checks:</p>
 <ul class="simple">
 <li><p>the built-in modules and packages</p></li>
@@ -1217,7 +1259,7 @@ general purpose functions for your module.</p>
 </ul>
 </section>
 <section id="executable-scripts">
-<h2>Executable scripts<a class="headerlink" href="#executable-scripts" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#contents">Executable scripts</a><a class="headerlink" href="#executable-scripts" title="Permalink to this headline">#</a></h2>
 <p>When your code is in a package, it can be a little confusing how to go about
 running it in a reliable way. In this part of the lesson we’ll walk through
 how to create an executable script that imports your own package.</p>
@@ -1232,7 +1274,7 @@ how to create an executable script that imports your own package.</p>
 </pre></div>
 </div>
 <section id="boil-it-down">
-<h3>Boil it down<a class="headerlink" href="#boil-it-down" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Boil it down</a><a class="headerlink" href="#boil-it-down" title="Permalink to this headline">#</a></h3>
 <p>You first want to provide a minimal interface, a single function if possible,
 that will be used by your script. So first we’ll create a <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file that
 contains a single a <code class="docutils literal notranslate"><span class="pre">main()</span></code> function.</p>
@@ -1248,7 +1290,7 @@ contains a single a <code class="docutils literal notranslate"><span class="pre"
 </div>
 </section>
 <section id="the-script">
-<h3>The script<a class="headerlink" href="#the-script" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">The script</a><a class="headerlink" href="#the-script" title="Permalink to this headline">#</a></h3>
 <p>Traditionally the <code class="docutils literal notranslate"><span class="pre">bin</span></code> directory (or <code class="docutils literal notranslate"><span class="pre">Scripts</span></code> on Windows) is used to store
 executable scripts. We’ll create the <code class="docutils literal notranslate"><span class="pre">play</span></code> script there.</p>
 <div class="literal-block-wrapper docutils container" id="id8">
@@ -1285,7 +1327,7 @@ modify the <code class="docutils literal notranslate"><span class="pre">sys.path
 </div>
 </section>
 <section id="making-the-script-executable">
-<h3>Making the script executable<a class="headerlink" href="#making-the-script-executable" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Making the script executable</a><a class="headerlink" href="#making-the-script-executable" title="Permalink to this headline">#</a></h3>
 <p>Make it executable by running the <code class="docutils literal notranslate"><span class="pre">chmod</span></code> command.</p>
 <div class="literal-block-wrapper docutils container" id="id10">
 <div class="code-block-caption"><span class="caption-number">Listing 293 </span><span class="caption-text">command line</span><a class="headerlink" href="#id10" title="Permalink to this code">#</a></div>
@@ -1295,7 +1337,7 @@ modify the <code class="docutils literal notranslate"><span class="pre">sys.path
 </div>
 </section>
 <section id="running-the-script">
-<h3>Running the script<a class="headerlink" href="#running-the-script" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Running the script</a><a class="headerlink" href="#running-the-script" title="Permalink to this headline">#</a></h3>
 <p>To run the script:</p>
 <div class="literal-block-wrapper docutils container" id="id11">
 <div class="code-block-caption"><span class="caption-number">Listing 294 </span><span class="caption-text">command line</span><a class="headerlink" href="#id11" title="Permalink to this code">#</a></div>
@@ -1306,7 +1348,7 @@ modify the <code class="docutils literal notranslate"><span class="pre">sys.path
 </section>
 </section>
 <section id="exercise">
-<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#contents">Exercise</a><a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
 <div class="exercise admonition" id="lessons/in-depth/structure-exercise-0">
 
 <p class="admonition-title"><span class="caption-number">Exercise 85 </span> (Hello World package)</p>
@@ -1360,7 +1402,7 @@ modify the <code class="docutils literal notranslate"><span class="pre">sys.path
 </div>
 </section>
 <section id="directory-structure">
-<h2>Directory structure<a class="headerlink" href="#directory-structure" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#contents">Directory structure</a><a class="headerlink" href="#directory-structure" title="Permalink to this headline">#</a></h2>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">
@@ -1403,7 +1445,7 @@ modify the <code class="docutils literal notranslate"><span class="pre">sys.path
 </pre></div>
 </div>
 <section id="directories">
-<h3>Directories<a class="headerlink" href="#directories" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Directories</a><a class="headerlink" href="#directories" title="Permalink to this headline">#</a></h3>
 <section id="git">
 <h4>.git<a class="headerlink" href="#git" title="Permalink to this headline">#</a></h4>
 <p>This is the folder that is created when you use the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code> command and
@@ -1496,7 +1538,7 @@ needed.</p>
 </section>
 </section>
 <section id="files">
-<h3>Files<a class="headerlink" href="#files" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Files</a><a class="headerlink" href="#files" title="Permalink to this headline">#</a></h3>
 <section id="editorconfig">
 <h4>.editorconfig<a class="headerlink" href="#editorconfig" title="Permalink to this headline">#</a></h4>
 <p>Used in conjunction with the <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig">EditorConfig VS Code extension</a>,
@@ -1552,7 +1594,7 @@ variables or run other commands for this project.</p>
 </section>
 </section>
 <section id="see-also">
-<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#contents">See also</a><a class="headerlink" href="#see-also" title="Permalink to this headline">#</a></h2>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">
@@ -1563,9 +1605,9 @@ variables or run other commands for this project.</p>
 </div>
 </section>
 <section id="glossary">
-<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#contents">Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this headline">#</a></h2>
 <section id="glossary-structure">
-<h3>Structure<a class="headerlink" href="#glossary-structure" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Structure</a><a class="headerlink" href="#glossary-structure" title="Permalink to this headline">#</a></h3>
 <dl class="glossary simple">
 <dt id="term-module">module<a class="headerlink" href="#term-module" title="Permalink to this term">#</a></dt><dd><p>a file containing of reusable code, like function definitions and global
 variables, that can be imported into other programs</p>

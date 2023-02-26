@@ -13,10 +13,7 @@ computer.
 Paths are used in pretty much all programming languages as well as on the
 command line, which we'll be learning about today.
 
-```{contents} Table of Contents
-:backlinks: top
-:depth: 2
-:local:
+```{include} ../toc.md
 ```
 
 Part 1. Exploring files on the command line
@@ -242,7 +239,7 @@ a file or directory.
 * {samp}`{path}.is_file()`
 * {samp}`{path}.is_dir()`
 
-The following example checks to be sure that the a {file}`README.md` file
+The following example checks to be sure that the {file}`README.md` file
 exists and that it is a normal file before trying to read it.
 
 ```{code-block} python

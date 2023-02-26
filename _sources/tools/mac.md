@@ -4,9 +4,7 @@ Mac Dev Env for Python
 Mac tool recommendations and setup guide for Python development.
 
 
-```{contents} Table of Contents
-:backlinks: entry
-:local:
+```{include} ../toc.md
 ```
 
 Quickstart
@@ -212,9 +210,7 @@ Troubleshooting
 
 This section is for various issues installing Python on macs.
 
-```{contents}
-:backlinks: entry
-:local:
+```{include} ../toc.md
 ```
 
 ### Issue A: arm64-apple not recognized
@@ -246,7 +242,7 @@ make: *** No targets specified and no makefile found.  Stop.
 :::{dropdown} Solution
 :open:
 
-This happens on macs with the M1 chip when the the GNU version of `uname`
+This happens on macs with the M1 chip when the GNU version of `uname`
 (from the `coreutils` homebrew package) is installed.
 
 There is a patch for this that can be applied on install.
@@ -394,7 +390,7 @@ the paths to the locations of all dependencies on your system.
 curl -sSl https://raw.githubusercontent.com/alissa-huskey/python-class-setup/main/bin/flags.sh | bash
 ```
 
-Apply the envionment varibles to your current terminal session by sourcing the
+Apply the environment variables to your current terminal session by sourcing the
 file, then install Python the way you normally would. After you're done, you
 can remove the `.flags` file if you want.
 
@@ -408,7 +404,7 @@ asdf install python VERSION && rm .flags
 :::{seealso}
 
 * [pyenv bug report #1740](https://github.com/pyenv/pyenv/issues/1740)
-* [puenv bug report #1737](https://github.com/pyenv/pyenv/issues/1737)
+* [pyenv bug report #1737](https://github.com/pyenv/pyenv/issues/1737)
 * [Managing macOS + python issues](https://medium.com/dive-into-ml-ai/managing-issues-of-macos-and-pyenv-a78ce1e85e9d)
 
 :::

@@ -1,12 +1,15 @@
 Web APIs
 ========
 
-```{contents}
-:backlinks: top
-:local:
+```{div} float-right
+{{ code.format("web_apis.py", "lessons/web_apis.py") }}
 ```
 
-{lesson}`web_apis.py`
+In this lesson you will learn about web APIs and how to interact with in Python
+them using the [requests](https://docs.python-requests.org/en/latest/index.html) module.
+
+```{include} ../toc.md
+```
 
 Part 1: Setup
 -------------
@@ -297,7 +300,7 @@ like the `print` function would be rather less useful if we couldn't pass it
 the strings to print, so would the web be a good deal more dull if we didn't
 have a way to pass parameters.
 
-Happily paramaters can be passed as part of the URL. A `?` is used to seperate
+Happily parameters can be passed as part of the URL. A `?` is used to separate
 the resource from the parameters. Then the `&` is used between parameters.
 
 For example, to search google we need to submit a search query.  Google uses
@@ -313,14 +316,14 @@ The `wttr.in` service that we used before has an extensive query language
 * `http://wttr.in/SFO?lang=de&format=j1`
 
 (Much of the `wttr.in` query language is fairly non-standard, so in some ways
-it's not the best example. On the other hand, it does show the flexability.
+it's not the best example. On the other hand, it does show the flexibility.
 Plus, it's fun to play around with.)
 
 Keep an eye on your URL bar over the next few days to see what jumps out at
-you. I use this knowledge often to bypass slow pages and occationally to get
+you. I use this knowledge often to bypass slow pages and occasionally to get
 around a bug.
 
-:::{admonition} Sidenote
+:::{admonition} Side note
 
 In modern browsers you can usually type in spaces and other special
 characters directly into the URL bar. After you hit enter you may notice
@@ -360,7 +363,7 @@ curl "https://fourtonfish.com/hellosalut/?lang=de"
 ```
 
 Now we'll do the same thing in Python using the `requests` module. The
-`requests.get` function takes an optional argument `params` which acceps a
+`requests.get` function takes an optional argument `params` which access a
 hash.
 
 #### Step 2: Add it to `apis.py`
@@ -380,10 +383,10 @@ def request_hello():
     print(data['hello'])
 ```
 
-:::{admonition} Sidenote
+:::{admonition} Side note
 
 The syntax for sending `params` is called `keyword arguments` or
-occationally `named arguments`.  It referrs to when an argument is passed
+occasionally `named arguments`.  It refers to when an argument is passed
 with {samp}`{name}={value}` instead of just the `value`.
 
 We've come across it before -- the `print` function has a keyword argument
@@ -665,7 +668,7 @@ Here is an imaginary address book API. In this example, the noun would be the `c
 As you've already learned, you use the `requests.get()` method to make a `GET`
 request in Python.
 
-The `requests` module has methods that coorespond to each of the other HTTP
+The `requests` module has methods that correspond to each of the other HTTP
 request methods as well. So, to make a `POST` method you would call
 `requests.post()`.  To make a `PUT` method, you call `requests.put()` and so
 on.
@@ -721,11 +724,11 @@ def request_todo():
 
 * The `PATCH` method is for requests that will *update only* the *part(s)* of
   *a single, specific record* that are included in the request data while
-  leaving the rest of the record data alone. Endpoints should be *singluar*,
+  leaving the rest of the record data alone. Endpoints should be *singular*,
   for example `/contact/42` or `/contact/42/addresses/work`.
 
 The difference between `PUT` and `PATCH` can be confusing, so I'll use our
-imaginary contacts API to demostrate. 
+imaginary contacts API to demonstrate.
 
 First we'll use the `GET` method to take a look at an (imaginary) contact.
 
@@ -784,7 +787,7 @@ Joe's contact info
 }
 ```
 
-Since the the request only included the `phone` data, all of the other fields
+Since the request only included the `phone` data, all of the other fields
 were replaced with `null` (which is like Python's `None`). Some APIs might
 instead refuse to process the update and respond with a `400 (Bad Request)`
 status if all expected data fields are not present in the request.
@@ -855,7 +858,7 @@ You can also use the `-d` or `--data` flag  to pass data along with the `-H` or
 `--header` flag to specify the `Content-Type`. For example, you could do the
 same `to-do` exercise from above using curl.
 
-> Sidenote: You can use `\` on the command line to break a command into multiple lines.
+> Side note: You can use `\` on the command line to break a command into multiple lines.
 
 ```{code-block} sh
 ---
@@ -973,7 +976,7 @@ Provide a way for the user to optionally view more or different card views. For 
   `In-Progress` and `To Do`.)
 
 * Add a search option, that allows the user to specify a part of a name and/or
-  description to search for. 
+  description to search for.
 
 * Allow the user to filter cards by fields, such as the `label`(s), if you are
   `subscribed`, `due` date (overdue, due soon), etc.
@@ -1009,7 +1012,7 @@ most useful to make you more productive.
   down further.
 
 * Save your progress and run your script frequently after any change, even when
-  the change seem insignifigent. You want to catch errors and unexpected
+  the change seem insignificant. You want to catch errors and unexpected
   results as soon as they happen.
 
 * Don't be shy about asking for help from me or your fellow classmates.

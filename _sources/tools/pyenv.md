@@ -5,10 +5,7 @@ pyenv is a command line tool that lets you easily install and switch between
 multiple versions of Python.
 
 
-```{contents} Table of Contents
-:backlinks: top
-:local:
-:depth: 2
+```{include} ../toc.md
 ```
 
 ```{seealso}

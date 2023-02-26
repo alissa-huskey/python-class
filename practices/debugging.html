@@ -389,8 +389,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../lessons/05_dragon_realm.html">
-     Chapter 5: Dragon Realm
+    <a class="reference internal" href="../lessons/dragon-realm.html">
+     Dragon Realm
     </a>
    </li>
   </ul>
@@ -1787,14 +1787,104 @@ point you want to know more about. Then the program is paused so you can see
 what is in the scope at that point and experiment with code in the context of
 that line. From there you can go forward or backwards in the code or continue
 on until the next breakpoint.</p>
-<section id="part-1-setup">
-<h2>Part 1: Setup<a class="headerlink" href="#part-1-setup" title="Permalink to this headline">#</a></h2>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Table of Contents<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference internal" href="#part-1-setup" id="id8">Part 1: Setup</a></p>
+<ul>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-1-create-hello-world" id="id9">Step 1: Create Hello World</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-2-configure" id="id10">Step 2: Configure</a></p></li>
+</ul>
+</li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-2-run-the-debugger" id="id11">Part 2: Run the debugger</a></p>
+<ul>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-1-add-a-breakpoint" id="id12">Step 1: Add a breakpoint</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-2-start-the-debugger" id="id13">Step 2: Start the debugger</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-3-open-the-debug-console" id="id14">Step 3: Open the debug console</a></p></li>
+</ul>
+</li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-3-inspecting-data" id="id15">Part 3: Inspecting data</a></p>
+<ul>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-1-variables-in-the-sidebar" id="id16">Step 1: Variables in the sidebar</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-2-editor-hover" id="id17">Step 2: Editor hover</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-3-the-debug-console" id="id18">Step 3: The debug console</a></p></li>
+</ul>
+</li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-4-basic-stepping" id="id19">Part 4: Basic stepping</a></p>
+<ul>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-4-1-modify-hello-world-py" id="id20">Step 4.1: Modify <code class="file docutils literal notranslate"><span class="pre">hello_world.py</span></code></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-4-2-step-into-line-4" id="id21">Step 4.2: Step Into – Line <code class="docutils literal notranslate"><span class="pre">4</span></code></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-4-3-step-into-line-5" id="id22">Step 4.3: Step Into – Line <code class="docutils literal notranslate"><span class="pre">5</span></code></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-4-4-step-into-line-7" id="id23">Step 4.4: Step Into – Line <code class="docutils literal notranslate"><span class="pre">7</span></code></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-4-5-step-into-line-8" id="id24">Step 4.5: Step Into – Line <code class="docutils literal notranslate"><span class="pre">8</span></code></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-4-6-continue" id="id25">Step 4.6: Continue</a></p></li>
+</ul>
+</li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-5-steeping-through-loops" id="id26">Part 5: Steeping through loops</a></p>
+<ul>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-5-1-modify-hello-world-py" id="id27">Step 5.1: Modify <code class="file docutils literal notranslate"><span class="pre">hello_world.py</span></code></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-5-2-modify-your-breakpoints" id="id28">Step 5.2: Modify your breakpoints</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-5-3-run-the-debugger" id="id29">Step 5.3: Run the debugger</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-5-4-step-into-loop-1-line-7" id="id30">Step 5.4: Step Into – Loop <code class="docutils literal notranslate"><span class="pre">1</span></code>, Line <code class="docutils literal notranslate"><span class="pre">7</span></code></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-5-5-step-into-loop-1-line-8" id="id31">Step 5.5: Step Into – Loop <code class="docutils literal notranslate"><span class="pre">1</span></code>, Line <code class="docutils literal notranslate"><span class="pre">8</span></code></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-5-6-step-into-loop-2-line-7" id="id32">Step 5.6: Step Into – Loop <code class="docutils literal notranslate"><span class="pre">2</span></code>, Line <code class="docutils literal notranslate"><span class="pre">7</span></code></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-5-7-step-into-loop-2-line-8" id="id33">Step 5.7: Step Into – Loop <code class="docutils literal notranslate"><span class="pre">2</span></code>, Line <code class="docutils literal notranslate"><span class="pre">8</span></code></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-5-8-step-into-loop-3-line-7" id="id34">Step 5.8: Step Into – Loop <code class="docutils literal notranslate"><span class="pre">3</span></code>, Line <code class="docutils literal notranslate"><span class="pre">7</span></code></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-5-9-step-into-loop-3-line-8" id="id35">Step 5.9: Step Into – Loop <code class="docutils literal notranslate"><span class="pre">3</span></code>, Line <code class="docutils literal notranslate"><span class="pre">8</span></code></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-5-10-step-into-line-10" id="id36">Step 5.10: Step Into – Line <code class="docutils literal notranslate"><span class="pre">10</span></code></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-5-11-stop-the-debugger" id="id37">Step 5.11: Stop the debugger</a></p></li>
+</ul>
+</li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-6-stepping-through-functions" id="id38">Part 6: Stepping through functions</a></p>
+<ul>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-6-1-setup" id="id39">Step 6.1: Setup</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-6-2-run-the-debugger" id="id40">Step 6.2: Run the debugger</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-6-3-line-7" id="id41">Step 6.3: Line <code class="docutils literal notranslate"><span class="pre">7</span></code></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-6-4-line-10" id="id42">Step 6.4: Line <code class="docutils literal notranslate"><span class="pre">10</span></code></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-6-5-line-15" id="id43">Step 6.5: Line <code class="docutils literal notranslate"><span class="pre">15</span></code></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-6-6-main-line-11" id="id44">Step 6.6: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">11</span></code></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-6-7-main-message-line-8" id="id45">Step 6.7: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">message()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">8</span></code></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-6-8-main-line-11" id="id46">Step 6.8: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">11</span></code></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-6-9-main-line-12" id="id47">Step 6.9: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">12</span></code></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-6-10-main-message-line-8" id="id48">Step 6.10: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">message()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">8</span></code></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-6-11-main-line-12" id="id49">Step 6.11: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">12</span></code></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-6-12-main-line-13" id="id50">Step 6.12: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">13</span></code></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-6-13-main-message-line-8" id="id51">Step 6.13: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">message()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">8</span></code></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-6-14-main-line-13" id="id52">Step 6.14: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">13</span></code></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-6-15-line-15" id="id53">Step 6.15: Line <code class="docutils literal notranslate"><span class="pre">15</span></code></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#step-16-16-stop-the-debugger" id="id54">Step 16.16: Stop the debugger</a></p></li>
+</ul>
+</li>
+<li><p class="sd-card-text"><a class="reference internal" href="#reference" id="id55">Reference</a></p>
+<ul>
+<li><p class="sd-card-text"><a class="reference internal" href="#overview" id="id56">Overview</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#the-debug-toolbar" id="id57">The debug toolbar</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#debug-console" id="id58">Debug Console</a></p></li>
+</ul>
+</li>
+<li><p class="sd-card-text"><a class="reference internal" href="#see-also" id="id59">See Also</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#glossary" id="id60">Glossary</a></p>
+<ul>
+<li><p class="sd-card-text"><a class="reference internal" href="#glossary-programming-concepts" id="id61">Programming Concepts</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</details><section id="part-1-setup">
+<h2><a class="toc-backref" href="#contents">Part 1: Setup</a><a class="headerlink" href="#part-1-setup" title="Permalink to this headline">#</a></h2>
 <section id="step-1-create-hello-world">
-<h3>Step 1: Create Hello World<a class="headerlink" href="#step-1-create-hello-world" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 1: Create Hello World</a><a class="headerlink" href="#step-1-create-hello-world" title="Permalink to this headline">#</a></h3>
 <p>In VS Code, create a file named <code class="file docutils literal notranslate"><span class="pre">hello_world.py</span></code> and paste the
 following code and save it.</p>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-number">Listing 401 </span><span class="caption-text">hello_world.py</span><a class="headerlink" href="#id1" title="Permalink to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 519 </span><span class="caption-text">hello_world.py</span><a class="headerlink" href="#id1" title="Permalink to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Hello World&quot;</span>
 <span class="linenos">2</span><span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 </pre></div>
@@ -1802,7 +1892,7 @@ following code and save it.</p>
 </div>
 </section>
 <section id="step-2-configure">
-<h3>Step 2: Configure<a class="headerlink" href="#step-2-configure" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 2: Configure</a><a class="headerlink" href="#step-2-configure" title="Permalink to this headline">#</a></h3>
 <p>The first time you run the debugger for a particular project you’ll need to
 configure it for that project. These settings are saved in the
 <code class="file docutils literal notranslate"><span class="pre">.vscode/launch.json</span></code> file which can be generated for you.</p>
@@ -1819,7 +1909,7 @@ Palette.</p>
 <p>IV. Add a comma to the end of the line that starts with <code class="docutils literal notranslate"><span class="pre">&quot;console&quot;</span></code>, then add a
 new line <code class="docutils literal notranslate"><span class="pre">&quot;redirectOutput&quot;:</span> <span class="pre">true</span></code>.</p>
 <div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-number">Listing 402 </span><span class="caption-text">launch.json</span><a class="headerlink" href="#id2" title="Permalink to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 520 </span><span class="caption-text">launch.json</span><a class="headerlink" href="#id2" title="Permalink to this code">#</a></div>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="p">{</span>
 <span class="linenos"> 2</span><span class="w">	</span><span class="c1">// Use IntelliSense to learn about possible attributes.</span>
 <span class="linenos"> 3</span><span class="w">	</span><span class="c1">// Hover to view descriptions of existing attributes.</span>
@@ -1853,9 +1943,9 @@ around <code class="docutils literal notranslate"><span class="pre">redirectOutp
 </section>
 </section>
 <section id="part-2-run-the-debugger">
-<h2>Part 2: Run the debugger<a class="headerlink" href="#part-2-run-the-debugger" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#contents">Part 2: Run the debugger</a><a class="headerlink" href="#part-2-run-the-debugger" title="Permalink to this headline">#</a></h2>
 <section id="step-1-add-a-breakpoint">
-<h3>Step 1: Add a breakpoint<a class="headerlink" href="#step-1-add-a-breakpoint" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 1: Add a breakpoint</a><a class="headerlink" href="#step-1-add-a-breakpoint" title="Permalink to this headline">#</a></h3>
 <p>The debugger will run the program normally until it hits a
 <a class="reference internal" href="#term-breakpoint"><span class="xref std std-term">breakpoint</span></a>, the place where we tell it to pause the program. Without
 any breakpoints the program will run normally. So we’ll start by adding a
@@ -1866,7 +1956,7 @@ solid red and stay there after you move your cursor.</p>
 <p><img alt="" src="https://code.visualstudio.com/assets/docs/python/tutorial/breakpoint-set.png" /></p>
 </section>
 <section id="step-2-start-the-debugger">
-<h3>Step 2: Start the debugger<a class="headerlink" href="#step-2-start-the-debugger" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 2: Start the debugger</a><a class="headerlink" href="#step-2-start-the-debugger" title="Permalink to this headline">#</a></h3>
 <div class="tip admonition">
 <p class="admonition-title">Shortcut Key</p>
 <table class="colwidths-auto table">
@@ -1896,7 +1986,7 @@ will be highlighted with a yellow arrow in the gutter.</p>
 <p><img alt="" src="../_images/debug-editor-current.png" /></p>
 </section>
 <section id="step-3-open-the-debug-console">
-<h3>Step 3: Open the debug console<a class="headerlink" href="#step-3-open-the-debug-console" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 3: Open the debug console</a><a class="headerlink" href="#step-3-open-the-debug-console" title="Permalink to this headline">#</a></h3>
 <div class="tip admonition">
 <p class="admonition-title">Shortcut Key</p>
 <table class="colwidths-auto table">
@@ -1923,25 +2013,25 @@ changed via the <code class="docutils literal notranslate"><span class="pre">red
 </section>
 </section>
 <section id="part-3-inspecting-data">
-<h2>Part 3: Inspecting data<a class="headerlink" href="#part-3-inspecting-data" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#contents">Part 3: Inspecting data</a><a class="headerlink" href="#part-3-inspecting-data" title="Permalink to this headline">#</a></h2>
 <section id="step-1-variables-in-the-sidebar">
-<h3>Step 1: Variables in the sidebar<a class="headerlink" href="#step-1-variables-in-the-sidebar" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 1: Variables in the sidebar</a><a class="headerlink" href="#step-1-variables-in-the-sidebar" title="Permalink to this headline">#</a></h3>
 <p>The <span class="guilabel">Variables</span> section in the sidebar is just like the Variables box
 from the <a class="reference internal" href="../lessons/reading-code.html"><span class="doc std std-doc">Reading Code</span></a> lesson. It lists everything that is defined at
 this point in the code execution and shows what it is set to.</p>
-<p>In our <code class="file docutils literal notranslate"><span class="pre">hello_world.py</span></code> debugging seession, you can see that the <code class="docutils literal notranslate"><span class="pre">msg</span></code>
+<p>In our <code class="file docutils literal notranslate"><span class="pre">hello_world.py</span></code> debugging session, you can see that the <code class="docutils literal notranslate"><span class="pre">msg</span></code>
 variable listed with the value of <code class="docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">World&quot;</span></code>.</p>
 <p><img alt="" src="https://code.visualstudio.com/assets/docs/python/tutorial/debug-step-02.png" /></p>
 </section>
 <section id="step-2-editor-hover">
-<h3>Step 2: Editor hover<a class="headerlink" href="#step-2-editor-hover" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 2: Editor hover</a><a class="headerlink" href="#step-2-editor-hover" title="Permalink to this headline">#</a></h3>
 <p>You can also use the editor to see the current value of a variable. If you
 hover your cursor over the variable name <code class="docutils literal notranslate"><span class="pre">msg</span></code>, a tooltip will pop up showing
 you its current value.</p>
 <p><img alt="" src="../_images/debug-editor-hover.png" /></p>
 </section>
 <section id="step-3-the-debug-console">
-<h3>Step 3: The debug console<a class="headerlink" href="#step-3-the-debug-console" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 3: The debug console</a><a class="headerlink" href="#step-3-the-debug-console" title="Permalink to this headline">#</a></h3>
 <p>Finally, you can use the <span class="guilabel">DEBUG CONSOLE</span> to get more information
 about your data and more.</p>
 <p>The <span class="guilabel">DEBUG CONSOLE</span> is where you will see your programs output if
@@ -1953,10 +2043,10 @@ input just like you would at a <strong class="command">Python</strong> or <stron
 The results will appear in the larger area above.</p>
 <p><img alt="" src="../_images/debug-console-detail.png" /></p>
 <p>Let’s use this to get more information about the <code class="docutils literal notranslate"><span class="pre">msg</span></code> variable.</p>
-<p>At the <span class="guilabel">DEBUG CONSOLE</span> prompt, type the the following commands and
+<p>At the <span class="guilabel">DEBUG CONSOLE</span> prompt, type the following commands and
 then hit enter after each.</p>
 <div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-number">Listing 403 </span><span class="caption-text">debug console prompt</span><a class="headerlink" href="#id3" title="Permalink to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 521 </span><span class="caption-text">debug console prompt</span><a class="headerlink" href="#id3" title="Permalink to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">msg</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
@@ -1973,16 +2063,16 @@ up or down arrows to scroll through the list.</p>
 </section>
 </section>
 <section id="part-4-basic-stepping">
-<h2>Part 4: Basic stepping<a class="headerlink" href="#part-4-basic-stepping" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#contents">Part 4: Basic stepping</a><a class="headerlink" href="#part-4-basic-stepping" title="Permalink to this headline">#</a></h2>
 <p>Let’s learn how to use the debugger to walk through the code just like we did
 in the <a class="reference internal" href="../lessons/reading-code.html"><span class="doc std std-doc">Reading Code</span></a> lesson.</p>
 <section id="step-4-1-modify-hello-world-py">
-<h3>Step 4.1: Modify <code class="file docutils literal notranslate"><span class="pre">hello_world.py</span></code><a class="headerlink" href="#step-4-1-modify-hello-world-py" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 4.1: Modify <code class="file docutils literal notranslate"><span class="pre">hello_world.py</span></code></a><a class="headerlink" href="#step-4-1-modify-hello-world-py" title="Permalink to this headline">#</a></h3>
 <p>Let’s start by adding to the <code class="file docutils literal notranslate"><span class="pre">hello_world.py</span></code> file so we have a little
 more to work with.</p>
 <p>Add the following to the <code class="file docutils literal notranslate"><span class="pre">hello_world.py</span></code> file.</p>
 <div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-number">Listing 404 </span><span class="caption-text">hello_world.py</span><a class="headerlink" href="#id4" title="Permalink to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 522 </span><span class="caption-text">hello_world.py</span><a class="headerlink" href="#id4" title="Permalink to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Hello World&quot;</span>
 <span class="linenos">2</span><span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 <span class="linenos">3</span>
@@ -1999,7 +2089,7 @@ more to work with.</p>
 <kbd class="kbd docutils literal notranslate">⇧⌃F5</kbd> keyboard shortcut.</p>
 </section>
 <section id="step-4-2-step-into-line-4">
-<h3>Step 4.2: Step Into – Line <code class="docutils literal notranslate"><span class="pre">4</span></code><a class="headerlink" href="#step-4-2-step-into-line-4" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 4.2: Step Into – Line <code class="docutils literal notranslate"><span class="pre">4</span></code></a><a class="headerlink" href="#step-4-2-step-into-line-4" title="Permalink to this headline">#</a></h3>
 <p>For this exercise we’ll be using the Step Into tool, which will step through the
 code one line at a time <em>in the order that they are executed</em>. The line highlighted in the
 debugger is the line that is <em>about</em> to execute.</p>
@@ -2014,7 +2104,7 @@ keyboard shortcut to go to the next line.</p>
 <p><img alt="" src="../_images/debug-basic-stepping-a.png" /></p>
 </section>
 <section id="step-4-3-step-into-line-5">
-<h3>Step 4.3: Step Into – Line <code class="docutils literal notranslate"><span class="pre">5</span></code><a class="headerlink" href="#step-4-3-step-into-line-5" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 4.3: Step Into – Line <code class="docutils literal notranslate"><span class="pre">5</span></code></a><a class="headerlink" href="#step-4-3-step-into-line-5" title="Permalink to this headline">#</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p>Notice that:</p>
@@ -2027,7 +2117,7 @@ section of the sidebar.</p></li>
 <p><img alt="" src="../_images/debug-basic-stepping-b.png" /></p>
 </section>
 <section id="step-4-4-step-into-line-7">
-<h3>Step 4.4: Step Into – Line <code class="docutils literal notranslate"><span class="pre">7</span></code><a class="headerlink" href="#step-4-4-step-into-line-7" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 4.4: Step Into – Line <code class="docutils literal notranslate"><span class="pre">7</span></code></a><a class="headerlink" href="#step-4-4-step-into-line-7" title="Permalink to this headline">#</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p>Notice that:</p>
@@ -2039,7 +2129,7 @@ appears in the <span class="guilabel">DEBUG CONSOLE</span>.</p></li>
 <p><img alt="" src="../_images/debug-basic-stepping-c.png" /></p>
 </section>
 <section id="step-4-5-step-into-line-8">
-<h3>Step 4.5: Step Into – Line <code class="docutils literal notranslate"><span class="pre">8</span></code><a class="headerlink" href="#step-4-5-step-into-line-8" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 4.5: Step Into – Line <code class="docutils literal notranslate"><span class="pre">8</span></code></a><a class="headerlink" href="#step-4-5-step-into-line-8" title="Permalink to this headline">#</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p>Notice that:</p>
@@ -2051,8 +2141,8 @@ keyboard shortcut to go to the next line.</p>
 <p><img alt="" src="../_images/debug-basic-stepping-d.png" /></p>
 </section>
 <section id="step-4-6-continue">
-<h3>Step 4.6: Continue<a class="headerlink" href="#step-4-6-continue" title="Permalink to this headline">#</a></h3>
-<p>Since this is the last line of the program use Continue to finish the progam.</p>
+<h3><a class="toc-backref" href="#contents">Step 4.6: Continue</a><a class="headerlink" href="#step-4-6-continue" title="Permalink to this headline">#</a></h3>
+<p>Since this is the last line of the program use Continue to finish the program.</p>
 <p>Click <img alt="debug-action-continue" src="../_images/debug-action-continue.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F5</kbd> keyboard
 shortcut to go to continue to the end of the program.</p>
 <p>Notice that:</p>
@@ -2065,15 +2155,15 @@ shortcut to go to continue to the end of the program.</p>
 </section>
 </section>
 <section id="part-5-steeping-through-loops">
-<h2>Part 5: Steeping through loops<a class="headerlink" href="#part-5-steeping-through-loops" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#contents">Part 5: Steeping through loops</a><a class="headerlink" href="#part-5-steeping-through-loops" title="Permalink to this headline">#</a></h2>
 <p>Let’s see what happens when we do the same exercise, but this time with a for
 loop.</p>
 <section id="step-5-1-modify-hello-world-py">
-<h3>Step 5.1: Modify <code class="file docutils literal notranslate"><span class="pre">hello_world.py</span></code><a class="headerlink" href="#step-5-1-modify-hello-world-py" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 5.1: Modify <code class="file docutils literal notranslate"><span class="pre">hello_world.py</span></code></a><a class="headerlink" href="#step-5-1-modify-hello-world-py" title="Permalink to this headline">#</a></h3>
 <p>Let’s change <code class="file docutils literal notranslate"><span class="pre">hello_world.py</span></code> so that it uses a for loop.</p>
 <p>Change the <code class="file docutils literal notranslate"><span class="pre">hello_world.py</span></code> file so that it contains the following.</p>
 <div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-number">Listing 405 </span><span class="caption-text">hello_world.py</span><a class="headerlink" href="#id5" title="Permalink to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 523 </span><span class="caption-text">hello_world.py</span><a class="headerlink" href="#id5" title="Permalink to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">messages</span> <span class="o">=</span> <span class="p">[</span>
 <span class="linenos"> 2</span>    <span class="s2">&quot;Hello World&quot;</span><span class="p">,</span>
 <span class="linenos"> 3</span>    <span class="s2">&quot;It&#39;s a lovely day for coding, isn&#39;t it?&quot;</span><span class="p">,</span>
@@ -2090,17 +2180,17 @@ loop.</p>
 <p>Save the file.</p>
 </section>
 <section id="step-5-2-modify-your-breakpoints">
-<h3>Step 5.2: Modify your breakpoints<a class="headerlink" href="#step-5-2-modify-your-breakpoints" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 5.2: Modify your breakpoints</a><a class="headerlink" href="#step-5-2-modify-your-breakpoints" title="Permalink to this headline">#</a></h3>
 <p>Remove the breakpoint from line <code class="docutils literal notranslate"><span class="pre">2</span></code> then add a breakpoint to line <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
 <p><img alt="" src="../_images/debug-step-loops-breakpoints.png" /></p>
 </section>
 <section id="step-5-3-run-the-debugger">
-<h3>Step 5.3: Run the debugger<a class="headerlink" href="#step-5-3-run-the-debugger" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 5.3: Run the debugger</a><a class="headerlink" href="#step-5-3-run-the-debugger" title="Permalink to this headline">#</a></h3>
 <p>Run the debugger by clicking <img alt="debug-action-run" src="../_images/debug-action-run.png" /> in the <strong>sidebar</strong> or by using the <kbd class="kbd docutils literal notranslate">F5</kbd> keyboard shortcut.</p>
 <p><img alt="" src="../_images/debug-step-loops-run.png" /></p>
 </section>
 <section id="step-5-4-step-into-loop-1-line-7">
-<h3>Step 5.4: Step Into – Loop <code class="docutils literal notranslate"><span class="pre">1</span></code>, Line <code class="docutils literal notranslate"><span class="pre">7</span></code><a class="headerlink" href="#step-5-4-step-into-loop-1-line-7" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 5.4: Step Into – Loop <code class="docutils literal notranslate"><span class="pre">1</span></code>, Line <code class="docutils literal notranslate"><span class="pre">7</span></code></a><a class="headerlink" href="#step-5-4-step-into-loop-1-line-7" title="Permalink to this headline">#</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p>Notice that:</p>
@@ -2115,7 +2205,7 @@ Click that to expand the section to see more details.</p>
 <p><img alt="" src="../_images/debug-step-loops-variables-expand.png" /></p>
 </section>
 <section id="step-5-5-step-into-loop-1-line-8">
-<h3>Step 5.5: Step Into – Loop <code class="docutils literal notranslate"><span class="pre">1</span></code>, Line <code class="docutils literal notranslate"><span class="pre">8</span></code><a class="headerlink" href="#step-5-5-step-into-loop-1-line-8" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 5.5: Step Into – Loop <code class="docutils literal notranslate"><span class="pre">1</span></code>, Line <code class="docutils literal notranslate"><span class="pre">8</span></code></a><a class="headerlink" href="#step-5-5-step-into-loop-1-line-8" title="Permalink to this headline">#</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p>Notice that:</p>
@@ -2127,7 +2217,7 @@ listed in the <span class="guilabel">VARIABLES</span> section of the sidebar.</p
 <p><img alt="" src="../_images/debug-step-loops-b.png" /></p>
 </section>
 <section id="step-5-6-step-into-loop-2-line-7">
-<h3>Step 5.6: Step Into – Loop <code class="docutils literal notranslate"><span class="pre">2</span></code>, Line <code class="docutils literal notranslate"><span class="pre">7</span></code><a class="headerlink" href="#step-5-6-step-into-loop-2-line-7" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 5.6: Step Into – Loop <code class="docutils literal notranslate"><span class="pre">2</span></code>, Line <code class="docutils literal notranslate"><span class="pre">7</span></code></a><a class="headerlink" href="#step-5-6-step-into-loop-2-line-7" title="Permalink to this headline">#</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p>This time, instead of going to the next line in the file, the debugger goes to
@@ -2141,7 +2231,7 @@ appears in the <span class="guilabel">DEBUG CONSOLE</span>.</p></li>
 <p><img alt="" src="../_images/debug-step-loops-c.png" /></p>
 </section>
 <section id="step-5-7-step-into-loop-2-line-8">
-<h3>Step 5.7: Step Into – Loop <code class="docutils literal notranslate"><span class="pre">2</span></code>, Line <code class="docutils literal notranslate"><span class="pre">8</span></code><a class="headerlink" href="#step-5-7-step-into-loop-2-line-8" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 5.7: Step Into – Loop <code class="docutils literal notranslate"><span class="pre">2</span></code>, Line <code class="docutils literal notranslate"><span class="pre">8</span></code></a><a class="headerlink" href="#step-5-7-step-into-loop-2-line-8" title="Permalink to this headline">#</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p>Notice that:</p>
@@ -2153,7 +2243,7 @@ updated in the <span class="guilabel">VARIABLES</span> section of the sidebar.</
 <p><img alt="" src="../_images/debug-step-loops-d.png" /></p>
 </section>
 <section id="step-5-8-step-into-loop-3-line-7">
-<h3>Step 5.8: Step Into – Loop <code class="docutils literal notranslate"><span class="pre">3</span></code>, Line <code class="docutils literal notranslate"><span class="pre">7</span></code><a class="headerlink" href="#step-5-8-step-into-loop-3-line-7" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 5.8: Step Into – Loop <code class="docutils literal notranslate"><span class="pre">3</span></code>, Line <code class="docutils literal notranslate"><span class="pre">7</span></code></a><a class="headerlink" href="#step-5-8-step-into-loop-3-line-7" title="Permalink to this headline">#</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p>This time, instead of going to the next line in the file, the debugger goes to
@@ -2166,7 +2256,7 @@ appears in the <span class="guilabel">DEBUG CONSOLE</span>.</p></li>
 </ul>
 </section>
 <section id="step-5-9-step-into-loop-3-line-8">
-<h3>Step 5.9: Step Into – Loop <code class="docutils literal notranslate"><span class="pre">3</span></code>, Line <code class="docutils literal notranslate"><span class="pre">8</span></code><a class="headerlink" href="#step-5-9-step-into-loop-3-line-8" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 5.9: Step Into – Loop <code class="docutils literal notranslate"><span class="pre">3</span></code>, Line <code class="docutils literal notranslate"><span class="pre">8</span></code></a><a class="headerlink" href="#step-5-9-step-into-loop-3-line-8" title="Permalink to this headline">#</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p>Notice that:</p>
@@ -2178,7 +2268,7 @@ updated in the <span class="guilabel">VARIABLES</span> section of the sidebar.</
 <p><img alt="" src="../_images/debug-step-loops-f.png" /></p>
 </section>
 <section id="step-5-10-step-into-line-10">
-<h3>Step 5.10: Step Into – Line <code class="docutils literal notranslate"><span class="pre">10</span></code><a class="headerlink" href="#step-5-10-step-into-line-10" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 5.10: Step Into – Line <code class="docutils literal notranslate"><span class="pre">10</span></code></a><a class="headerlink" href="#step-5-10-step-into-line-10" title="Permalink to this headline">#</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p>Notice that:</p>
@@ -2195,21 +2285,21 @@ of the program in the debugger.</p>
 </div>
 </section>
 <section id="step-5-11-stop-the-debugger">
-<h3>Step 5.11: Stop the debugger<a class="headerlink" href="#step-5-11-stop-the-debugger" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 5.11: Stop the debugger</a><a class="headerlink" href="#step-5-11-stop-the-debugger" title="Permalink to this headline">#</a></h3>
 <p>Click <img alt="debug-action-stop" src="../_images/debug-action-stop.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">⇧F5</kbd>
 keyboard shortcut to stop the debugger.</p>
 </section>
 </section>
 <section id="part-6-stepping-through-functions">
-<h2>Part 6: Stepping through functions<a class="headerlink" href="#part-6-stepping-through-functions" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#contents">Part 6: Stepping through functions</a><a class="headerlink" href="#part-6-stepping-through-functions" title="Permalink to this headline">#</a></h2>
 <p>Let’s see what happens when we do the same exercise, but this time with
 functions.</p>
 <section id="step-6-1-setup">
-<h3>Step 6.1: Setup<a class="headerlink" href="#step-6-1-setup" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 6.1: Setup</a><a class="headerlink" href="#step-6-1-setup" title="Permalink to this headline">#</a></h3>
 <p>Let’s change <code class="file docutils literal notranslate"><span class="pre">hello_world.py</span></code> so that it uses functions.</p>
 <p>Change the <code class="file docutils literal notranslate"><span class="pre">hello_world.py</span></code> file so that it contains the following.</p>
 <div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-number">Listing 406 </span><span class="caption-text">hello_world.py</span><a class="headerlink" href="#id6" title="Permalink to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 524 </span><span class="caption-text">hello_world.py</span><a class="headerlink" href="#id6" title="Permalink to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">MESSAGES</span> <span class="o">=</span> <span class="p">[</span>
 <span class="linenos"> 2</span>    <span class="s2">&quot;Hello World&quot;</span><span class="p">,</span>
 <span class="linenos"> 3</span>    <span class="s2">&quot;It&#39;s a lovely day for coding, isn&#39;t it?&quot;</span><span class="p">,</span>
@@ -2231,18 +2321,18 @@ functions.</p>
 <p>Save the file and make sure your breakpoint is on line <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
 </section>
 <section id="step-6-2-run-the-debugger">
-<h3>Step 6.2: Run the debugger<a class="headerlink" href="#step-6-2-run-the-debugger" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 6.2: Run the debugger</a><a class="headerlink" href="#step-6-2-run-the-debugger" title="Permalink to this headline">#</a></h3>
 <p>Run the debugger by clicking <img alt="debug-action-run" src="../_images/debug-action-run.png" /> in the <strong>sidebar</strong> or by using the <kbd class="kbd docutils literal notranslate">F5</kbd> keyboard shortcut.</p>
 <p><img alt="" src="../_images/debug-step-functions-a.png" /></p>
 </section>
 <section id="step-6-3-line-7">
-<h3>Step 6.3: Line <code class="docutils literal notranslate"><span class="pre">7</span></code><a class="headerlink" href="#step-6-3-line-7" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 6.3: Line <code class="docutils literal notranslate"><span class="pre">7</span></code></a><a class="headerlink" href="#step-6-3-line-7" title="Permalink to this headline">#</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p><img alt="" src="../_images/debug-step-functions-b.png" /></p>
 </section>
 <section id="step-6-4-line-10">
-<h3>Step 6.4: Line <code class="docutils literal notranslate"><span class="pre">10</span></code><a class="headerlink" href="#step-6-4-line-10" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 6.4: Line <code class="docutils literal notranslate"><span class="pre">10</span></code></a><a class="headerlink" href="#step-6-4-line-10" title="Permalink to this headline">#</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p>Notice that under <span class="guilabel">VARIABLES –&gt; Locals</span> there is a new listing:
@@ -2254,7 +2344,7 @@ where the <code class="docutils literal notranslate"><span class="pre">message()
 <p><img alt="" src="../_images/debug-step-functions-function-vars.png" /></p>
 </section>
 <section id="step-6-5-line-15">
-<h3>Step 6.5: Line <code class="docutils literal notranslate"><span class="pre">15</span></code><a class="headerlink" href="#step-6-5-line-15" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 6.5: Line <code class="docutils literal notranslate"><span class="pre">15</span></code></a><a class="headerlink" href="#step-6-5-line-15" title="Permalink to this headline">#</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p>Notice that under <span class="guilabel">VARIABLES –&gt; Locals</span> there is a new listing:
@@ -2266,76 +2356,76 @@ where the <code class="docutils literal notranslate"><span class="pre">main()</s
 <p><img alt="" src="../_images/debug-step-functions-d-function-vars.png" /></p>
 </section>
 <section id="step-6-6-main-line-11">
-<h3>Step 6.6: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">11</span></code><a class="headerlink" href="#step-6-6-main-line-11" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 6.6: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">11</span></code></a><a class="headerlink" href="#step-6-6-main-line-11" title="Permalink to this headline">#</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p><img alt="" src="../_images/debug-step-functions-e.png" /></p>
 </section>
 <section id="step-6-7-main-message-line-8">
-<h3>Step 6.7: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">message()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">8</span></code><a class="headerlink" href="#step-6-7-main-message-line-8" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 6.7: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">message()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">8</span></code></a><a class="headerlink" href="#step-6-7-main-message-line-8" title="Permalink to this headline">#</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p><img alt="" src="../_images/debug-step-functions-f.png" /></p>
 </section>
 <section id="step-6-8-main-line-11">
-<h3>Step 6.8: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">11</span></code><a class="headerlink" href="#step-6-8-main-line-11" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 6.8: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">11</span></code></a><a class="headerlink" href="#step-6-8-main-line-11" title="Permalink to this headline">#</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p><img alt="" src="../_images/debug-step-functions-g.png" /></p>
 </section>
 <section id="step-6-9-main-line-12">
-<h3>Step 6.9: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">12</span></code><a class="headerlink" href="#step-6-9-main-line-12" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 6.9: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">12</span></code></a><a class="headerlink" href="#step-6-9-main-line-12" title="Permalink to this headline">#</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p><img alt="" src="../_images/debug-step-functions-h.png" /></p>
 </section>
 <section id="step-6-10-main-message-line-8">
-<h3>Step 6.10: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">message()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">8</span></code><a class="headerlink" href="#step-6-10-main-message-line-8" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 6.10: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">message()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">8</span></code></a><a class="headerlink" href="#step-6-10-main-message-line-8" title="Permalink to this headline">#</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p><img alt="" src="../_images/debug-step-functions-i.png" /></p>
 </section>
 <section id="step-6-11-main-line-12">
-<h3>Step 6.11: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">12</span></code><a class="headerlink" href="#step-6-11-main-line-12" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 6.11: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">12</span></code></a><a class="headerlink" href="#step-6-11-main-line-12" title="Permalink to this headline">#</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p><img alt="" src="../_images/debug-step-functions-j.png" /></p>
 </section>
 <section id="step-6-12-main-line-13">
-<h3>Step 6.12: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">13</span></code><a class="headerlink" href="#step-6-12-main-line-13" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 6.12: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">13</span></code></a><a class="headerlink" href="#step-6-12-main-line-13" title="Permalink to this headline">#</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p><img alt="" src="../_images/debug-step-functions-k.png" /></p>
 </section>
 <section id="step-6-13-main-message-line-8">
-<h3>Step 6.13: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">message()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">8</span></code><a class="headerlink" href="#step-6-13-main-message-line-8" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 6.13: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">message()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">8</span></code></a><a class="headerlink" href="#step-6-13-main-message-line-8" title="Permalink to this headline">#</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p><img alt="" src="../_images/debug-step-functions-l.png" /></p>
 </section>
 <section id="step-6-14-main-line-13">
-<h3>Step 6.14: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">13</span></code><a class="headerlink" href="#step-6-14-main-line-13" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 6.14: <code class="docutils literal notranslate"><span class="pre">main()</span></code> &gt; Line <code class="docutils literal notranslate"><span class="pre">13</span></code></a><a class="headerlink" href="#step-6-14-main-line-13" title="Permalink to this headline">#</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p><img alt="" src="../_images/debug-step-functions-m.png" /></p>
 </section>
 <section id="step-6-15-line-15">
-<h3>Step 6.15: Line <code class="docutils literal notranslate"><span class="pre">15</span></code><a class="headerlink" href="#step-6-15-line-15" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 6.15: Line <code class="docutils literal notranslate"><span class="pre">15</span></code></a><a class="headerlink" href="#step-6-15-line-15" title="Permalink to this headline">#</a></h3>
 <p>Click <img alt="debug-action-step-in" src="../_images/debug-action-step-in.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">F11</kbd>
 keyboard shortcut to go to the next line.</p>
 <p><img alt="" src="../_images/debug-step-functions-n.png" /></p>
 </section>
 <section id="step-16-16-stop-the-debugger">
-<h3>Step 16.16: Stop the debugger<a class="headerlink" href="#step-16-16-stop-the-debugger" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Step 16.16: Stop the debugger</a><a class="headerlink" href="#step-16-16-stop-the-debugger" title="Permalink to this headline">#</a></h3>
 <p>Click <img alt="debug-action-stop" src="../_images/debug-action-stop.png" /> on the debug toolbar or use the <kbd class="kbd docutils literal notranslate">⇧F5</kbd>
 keyboard shortcut to stop the debugger.</p>
 </section>
 </section>
 <hr class="docutils" />
 <section id="reference">
-<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#contents">Reference</a><a class="headerlink" href="#reference" title="Permalink to this headline">#</a></h2>
 <section id="overview">
-<h3>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h3>
 <p><img alt="" src="../_images/debug-parts-marked.png" /></p>
 <table class="colwidths-auto no-headers table">
 <thead>
@@ -2366,7 +2456,7 @@ keyboard shortcut to stop the debugger.</p>
 </table>
 </section>
 <section id="the-debug-toolbar">
-<h3>The debug toolbar<a class="headerlink" href="#the-debug-toolbar" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">The debug toolbar</a><a class="headerlink" href="#the-debug-toolbar" title="Permalink to this headline">#</a></h3>
 <p>The debug toolbar is a controller widget that’s usually found hovering near the
 top of the editor.</p>
 <p><img alt="" src="../_images/debug-toolbar.png" /></p>
@@ -2415,12 +2505,12 @@ top of the editor.</p>
 </table>
 </section>
 <section id="debug-console">
-<h3>Debug Console<a class="headerlink" href="#debug-console" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Debug Console</a><a class="headerlink" href="#debug-console" title="Permalink to this headline">#</a></h3>
 <p><img alt="" src="../_images/debug-console-detail.png" /></p>
 </section>
 </section>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#contents">See Also</a><a class="headerlink" href="#see-also" title="Permalink to this headline">#</a></h2>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">
@@ -2430,9 +2520,9 @@ top of the editor.</p>
 </div>
 </section>
 <section id="glossary">
-<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#contents">Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this headline">#</a></h2>
 <section id="glossary-programming-concepts">
-<h3>Programming Concepts<a class="headerlink" href="#glossary-programming-concepts" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Programming Concepts</a><a class="headerlink" href="#glossary-programming-concepts" title="Permalink to this headline">#</a></h3>
 <dl class="glossary simple">
 <dt id="term-breakpoint">breakpoint<a class="headerlink" href="#term-breakpoint" title="Permalink to this term">#</a></dt><dd><p>A place for the debugger to pause the program.</p>
 </dd>

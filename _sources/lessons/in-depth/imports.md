@@ -3,6 +3,9 @@ Imports
 
 There are a number of ways to import modules.
 
+```{include} ../../toc.md
+```
+
 Whole Module Import
 -------------------
 

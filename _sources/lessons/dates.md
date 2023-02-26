@@ -13,19 +13,17 @@ kernelspec:
 Dates and Times
 ===============
 
-```{contents} Table of Contents
-:backlinks: top
-:local:
-```
-
-Dealing with dates and times is vital to many progamming tasks from something
+Dealing with dates and times is vital to many programming tasks from something
 as simple as displaying the current date and time to pulling up all of the
 records that were created during a particular period of time.
 
 Dates and times have a surprising amount of complexity, between timezones,
-daylight savings times, leap years, and varrying month lengths. Luckily modern
+daylight savings times, leap years, and varying month lengths. Luckily modern
 Python programmers don't need to figure this all out, but instead can rely on
 libraries to handle to package it into a few (relatively) simple types.
+
+```{include} ../toc.md
+```
 
 Part 1: Datetime objects
 ------------------------
@@ -140,7 +138,7 @@ each code is a character prefixed by a `%` that is used to represent a
 particular field and presentation.
 
 These can then be put together in a string to indicate a how a date should be
-diplayed or interpreted.
+displayed or interpreted.
 
 For example, the string `"%Y-%m-%d %H:%M:%S"` would represent a date like
 `"1991-02-19 10:35:26"`.

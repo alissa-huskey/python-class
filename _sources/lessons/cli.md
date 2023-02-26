@@ -36,7 +36,7 @@ Part 1: Arguments
 -----------------
 
 Just like functions can take arguments, so can programs. This is done on the
-command line, typically seperated by spaces, with multi-word arguments
+command line, typically separated by spaces, with multi-word arguments
 surrounded by single or double quotes.
 
 In Python, those arguments can be accessed at `sys.argv` which stores a list of
@@ -191,7 +191,7 @@ $ echo $TMPDIR
 
 To set an environment variable, use the `typeset` or `export` command as in the
 following example. (Note: The variable only exists only for the duration of
-your current terminal sesson.)
+your current terminal session.)
 
 ```{code-block} console
 :caption: command line
@@ -324,7 +324,7 @@ import sys
 print("Danger, Will Robinson!", file=sys.stderr)
 ```
 
-This is useful because on those streams can be handled seperately on the
+This is useful because on those streams can be handled separately on the
 command line. While a complete lesson on {term}`redirection` is outside of the
 scope of this lesson, the most common use case is to send a particular stream
 to a different destination with the syntax: {samp}`{COMMAND} {FD}> {DESTINATION}`.
@@ -702,7 +702,7 @@ Mac/Linux/Windows.
 
 :::{important}
 
-Not all systems support escape codes, though one avantage to using a module
+Not all systems support escape codes, though one advantage to using a module
 like this is that it does its best to detect if colors will work with that
 system, and if not, does nothing.
 

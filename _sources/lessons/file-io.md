@@ -153,7 +153,7 @@ go through each line line for more fine grained control.
 This is where the `.readlines()` method on file handler objects comes in. It
 returns a list, where each element is one line from the file.
 
-#### A. Modify `recipies.py`
+#### A. Modify `recipes.py`
 
 In this section we'll modify the `recipes.py` file to use the `.readlines()`
 method in a `for` loop.
@@ -279,7 +279,7 @@ Part 2: Writing Files
 Sometimes we need to create or modify files. That's what we'll be learning in
 this section.
 
-### Part 2.1: Creating or trucating
+### Part 2.1: Creating or truncating
 
 The `open()` function takes an optional `mode` argument, which is a string that
 indicates what we plan to do with the file. The default is `"r"` for read mode.
@@ -557,9 +557,9 @@ There are lots of reasons that it is important to always `.close()` a file
 handler object when you're done with it.
 
 - In theory Python is supposed to close any open file handlers when a program
-  ends, but it's not a guarentee.
+  ends, but it's not a guarantee.
 - The more files are open, the more resources are used, and the more space is
-  taken up in memory. Leaving things open unneccassarily could slow down your
+  taken up in memory. Leaving things open unnecessarily could slow down your
   program and your computer while your program runs.
 - File changes usually don't go into effect until you close the file handler.
   If another part of your program is counting on those changes, you'll run into
@@ -567,8 +567,8 @@ handler object when you're done with it.
 - There are limits to how many files a computer can have open at a time. While
   it is rare to bump up against those limits in normal operation, it's
   certainly the kind of trouble a programmer can get themselves into by
-  mistake. (Imagine opening files in an infinate loop!)
-- Some operating sytems treat open files as locked, which may prevent you from
+  mistake. (Imagine opening files in an infinite loop!)
+- Some operating systems treat open files as locked, which may prevent you from
   reading the file with another program or even deleting it.
 
 But sometimes mistakes happen. It's easy to forget, and what if there is an

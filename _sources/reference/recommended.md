@@ -3,9 +3,7 @@ Recommended Resources
 
 <script type="module" src="/_static/x-frame-bypass.js"></script>
 
-```{contents} Table of Contents
-:backlinks: top
-:local:
+```{include} ../toc.md
 ```
 
 Books and tutorials
@@ -77,7 +75,7 @@ A Python tutorial with lot of examples.
 :title: Python for you and me
 ```
 
-A nicely formatted online book to learn Python targetted at beginners with plenty of code samples.
+A nicely formatted online book to learn Python targeted at beginners with plenty of code samples.
 
 {{ rightcol }}
 

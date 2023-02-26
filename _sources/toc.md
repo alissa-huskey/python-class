@@ -1,5 +1,7 @@
-```{contents} Table of Contents
+:::{dropdown} Table of Contents
+```{contents}
 :backlinks: top
 :local:
 :depth: 2
 ```
+:::

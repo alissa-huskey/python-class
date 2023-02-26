@@ -8,20 +8,14 @@ substitutions:
   # usage: {{ source | format("filename.py") }}
   source: |
     ```{div} float-right
-      {bdg-link-success}`source code <https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/%s>`
+      {bdg-link-info-line}`source code <https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/%s>`
     ```
-  # green badge linking to my github with configurable name
-  # note: double curley braces make one literal brace (for .format())
-  # usage: {{{{ code.format("filename.py", "text" }}}}
-  code: |
-    {{bdg-link-info-line}}`{0}.py <https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/{0}-{1}.py>`
-
   # two green badges, one for adventure-VERSION.py and one for test_game-VERSION.py
   # usage: {{ sources.format("VERSION") }}
   # note: double curley braces make one literal brace (for .format())
   sources: |
     ```{{div}} float-right
-    {{{{ code.format("adventure", {0}) }}}} {{{{ code.format("test_game", {0}) }}}}
+    {{{{ code.format("adventure.py", "adventure/adventure-{0}.py") }}}} {{{{ code.format("test_game.py", "adventure/test_game-{0}.py") }}}}
     ```
 
 
@@ -58,14 +52,14 @@ Part 1: The game loop
 ---------------------
 
 In this section we'll be writing the game loop--the main interface that allows
-the player to enter commads, do something, print messages to the player, and
+the player to enter commands, do something, print messages to the player, and
 continue with the game.
 
 We'll write a `main()` function to be the core of this interface. In it we'll
 use an infinite `while` loop to run the game. Every time the loop runs it will
 ask the player for input, then do something based on their response.
 
-We will eventually write a function to coorespond to each of the commands
+We will eventually write a function to correspond to each of the commands
 available in the game, which will be called from `main()` when the player enters
 the relevant command.
 
@@ -149,7 +143,7 @@ command: the `quit` command.
 
 1. `[ ]` After getting `reply`, check if `reply` is equal to `q` or `quit`.
 1. `[ ]` If so, call `do_quit()`
-1. `[ ]` Otherwise, print a messsage like: `"No such command."` then `continue`
+1. `[ ]` Otherwise, print a message like: `"No such command."` then `continue`
 
 `````{dropdown} Code
 
@@ -245,7 +239,7 @@ defined in `ITEMS` above.
 1. `[ ]` Have it print `"Items for sale."`
 1. `[ ]` Iterate over the `ITEMS` dictionary. Print the `name` and `description` of each.
 
-#### B. in main()
+#### B. In main()
 
 1. `[ ]` In between your `if` and `else`, add an `elif` clause that checks if `reply`
    is equal to `shop`.
@@ -548,7 +542,7 @@ PLACES = {
 
 {{ endcols }}
 
-#### A. at the top of your file
+#### A. At the top of your file
 
 1. `[ ]` Create a `PLAYER` dictionary with the key `"place"` and the value `"home"`.
 2. `[ ]` Create a `PLACES` dictionary where the key is a unique identifier for each place.
@@ -647,7 +641,7 @@ We'll also add a `error()` function which will print an error message.
 
 {{ endcols }}
 
-#### C. define error() function
+#### C. Define error() function
 
 {{ left }}
 
@@ -667,7 +661,7 @@ We'll also add a `error()` function which will print an error message.
 
 {{ endcols }}
 
-#### D. in do_go()
+#### D. In do_go()
 
 {{ left }}
 
@@ -688,7 +682,7 @@ We'll also add a `error()` function which will print an error message.
 
 {{ endcols }}
 
-#### E. in main(), in the while loop
+#### E. In main(), in the while loop
 
 1. `[ ]` At the beginning of the `while` loop call `debug()` with the message {samp}`You are at: {PLACE}`.
    Replace `PLACE` with the value in the `PLAYER` dictionary associated with the `"place"` key
@@ -744,7 +738,7 @@ print the `"name"` and `"description"`.
 
 {{ endcols }}
 
-#### A. in do_go(): ensure that the player typed a valid direction
+#### A. In do_go(): ensure that the player typed a valid direction
 
 In this section we'll be making sure there is at least one item in the `args`
 list and that it is a valid direction.
@@ -878,7 +872,7 @@ Part 3: Prettify
 In this section we'll start making things prettier by wrapping text and adding
 colors and styles.
 
-We'll also make sure that the way we print things is consitent by always
+We'll also make sure that the way we print things is consistent by always
 printing via our custom functions: `header()`, `wrap()`, `write()`,
 `error()`, or `debug()`.
 
@@ -908,7 +902,7 @@ wrap the text so that it looks nice.
 
 {{ endcols }}
 
-#### A. at the top of your file
+#### A. At the top of your file
 
 {{ left }}
 
@@ -974,7 +968,7 @@ look at this section of the [functions lesson][keyword-args].
 
 :::
 
-1. `[ ]` Mulitply a single space (`" "`) by `MARGIN` and assign it to the local
+1. `[ ]` Multiply a single space (`" "`) by `MARGIN` and assign it to the local
          variable `margin` (note that the two different cases).
 1. `[ ]` Remove the line where you previously printed `text`.
 1. `[ ]` Call the `fill()` function from the `textwrap` module and assign the
@@ -1092,7 +1086,7 @@ colorful.
 {{ left }}
 
 In this section we're going to write a `header()` function to print pretty
-headers and a `write()` function to print all other one-line messsages.
+headers and a `write()` function to print all other one-line messages.
 
 {{ right }}
 
@@ -1263,7 +1257,7 @@ In this section we'll add the `examine` command.
 {{ clear }}
 
 In this section we'll add a `"desk"` and `"book"` items to the `ITEMS`
-dictionary, which will eventualy be added to the `"home"` place. The book is
+dictionary, which will eventually be added to the `"home"` place. The book is
 where we'll find the hint about petting dragons.
 
 We'll also have to modify `do_shop()`, so that items without prices (like
@@ -1451,7 +1445,7 @@ calling the `do_examine()` function.
 
 In this section we'll write the rest of the `do_examine()` function.
 
-This will be very similar to the `do_go()` function. in that we'll need to make
+This will be very similar to the `do_go()` function. In that we'll need to make
 sure the player typed something after the command, (in `args`) and that it is
 an item in the current place; then we'll get the item from the `ITEMS`
 dictionary and print its information.
@@ -1521,7 +1515,7 @@ dictionary and print its information.
 #### C. Still in do_examine(): check the name
 
 1. `[ ]` assign the first element from the `args` list to the variable `name` and make it lowercase
-1. `[ ]` check if `name` is in the the list of items available at this place by:
+1. `[ ]` check if `name` is in the list of items available at this place by:
    * `[ ]` use an `if` statement with the following condition:
      * `[ ]` check if `name` is not in the list returned in the next step
      * `[ ]` use the `.get()` method on `place` and pass it two arguments:
@@ -1555,7 +1549,7 @@ dictionary and print its information.
 
 1. `[ ]` Get the value from the `ITEMS` dictionary associated with the `name`
          key and assign it to the variable `item`
-1. `[ ]` Using the `header()` funciton print the item name
+1. `[ ]` Using the `header()` function print the item name
 1. `[ ]` Using the `wrap()` function print the item description
 
 `````{dropdown} Code
@@ -1748,7 +1742,7 @@ items `"name"`.
 
 #### B: still in `do_look()`, in `if items`
 
-In this section we're going to construct a plain english sentence listing the items in this place. If there is only one item it will look like:
+In this section we're going to construct a plain English sentence listing the items in this place. If there is only one item it will look like:
 
     y
 
@@ -1913,7 +1907,7 @@ player types `t`, `take`, or `grab`.
 
 {{ left }}
 
-In this section we'll check to make sure that the player entered a valid, takable
+In this section we'll check to make sure that the player entered a valid, takeable
 item in the current place.
 
 {{ right }}
@@ -1981,7 +1975,7 @@ item in the current place.
 
 `````
 
-#### C: still in `do_take()`: make sure the item is takable
+#### C: still in `do_take()`: make sure the item is takeable
 
 1. `[ ]` Using `.get()`, get the value from `ITEMS` associated with the `name`
          key and assign it to the variable `item`.
@@ -2448,7 +2442,7 @@ In this section we are going to work on refactoring our game.
 better, but without changing what the software does.
 
 It is key to make changes in small, incremental steps which are tested
-regularily to ensure the program works properly throughout. Avoid tearing out
+regularly to ensure the program works properly throughout. Avoid tearing out
 and reworking vast swaths of code at a time, which will often leave you with a
 hopeless tangle of broken code.
 
@@ -2504,7 +2498,7 @@ the program will end immediately.
 
 {{ endcols }}
 
-#### B. in `do_take()`
+#### B. In `do_take()`
 
 Since we always expect to be able to find an item in the `ITEMS` dictionary for
 a key in the `place` items list, if we fail to find one that means that we
@@ -2517,7 +2511,7 @@ Then because `abort()` exits the program immediately, we can remove the `return`
 
 1. `[ ]` Call `abort()` instead of `error()` when you check if `item` is {term}`falsy`
 1. `[ ]` remove the `return` statement
-1. `[ ]` To test, temporarily change the key for `"book"` to somthing
+1. `[ ]` To test, temporarily change the key for `"book"` to something
          else, then type `take book` from home. It should print an error message
          then exit the program. After verifying that it works, change it back.
 
@@ -2537,7 +2531,7 @@ Then because `abort()` exits the program immediately, we can remove the `return`
 
 {{ endcols }}
 
-#### C. in `do_examine()`
+#### C. In `do_examine()`
 
 This is nearly exactly the same as the previous section.
 
@@ -2545,7 +2539,7 @@ This is nearly exactly the same as the previous section.
 
 1. `[ ]` Call `abort()` instead of `error()` when you check if `name` is not in `ITEMS`
 1. `[ ]` remove the `return` statement
-1. `[ ]` To test, temporarily change the key for `"book"` to somthing
+1. `[ ]` To test, temporarily change the key for `"book"` to something
          else, then type `take book` from home. It should print an error message
          then exit the program. After verifying that it works, change it back.
 
@@ -2565,7 +2559,7 @@ This is nearly exactly the same as the previous section.
 
 {{ endcols }}
 
-#### D. in `do_go()`
+#### D. In `do_go()`
 
 Similar to the previous two sections, we always expect to be able to find an
 place in the `PLACES` dictionary for a key from another `place` dictionary, so
@@ -2576,7 +2570,7 @@ if we don't it means there's an error somewhere in the code.
 
 1. `[ ]` Call `abort()` instead of `error()` when you check if `new_place` is {term}`truthy`
 1. `[ ]` remove the `return` statement
-1. `[ ]` To test, temporarily change the value for `home["east"]` to somthing
+1. `[ ]` To test, temporarily change the value for `home["east"]` to something
          else, then type `go east` from home. It should print an error message
          then exit the program. After verifying that it works, change it back.
 
@@ -2627,7 +2621,7 @@ dictionary, and call `abort()` if it is not. That means that anywhere we call
 
 1. `[ ]` define a `get_place()` function that takes one optional argument `key` with a default value of `None`
 1. `[ ]` if `key` is {term}`falsy` then assign `key` to the value of the `PLAYER` dict associated with the `"place"` value
-1. `[ ]` get the value from the `PLACES` dictionary assocated from the `key` key and assign it to the variable `place`
+1. `[ ]` get the value from the `PLACES` dictionary associated from the `key` key and assign it to the variable `place`
 1. `[ ]` If `place` is {term}`falsy`,
      * `[ ]` Use the `abort()` function to print an error message like:
 
@@ -2751,7 +2745,7 @@ dictionary and finally return the `item` otherwise.
 {{ left }}
 
 1. `[ ]` define a `get_item()` function that takes one argument `key`
-1. `[ ]` use the `.get()` method on the `ITEMS` dictionary to get the value assocated from the `key` key and assign it to the variable `item`
+1. `[ ]` use the `.get()` method on the `ITEMS` dictionary to get the value associated from the `key` key and assign it to the variable `item`
 1. `[ ]` If `item` is {term}`falsy`,
      * `[ ]` Use the `abort()` function to print an error message like:
 
@@ -2898,7 +2892,7 @@ call to `player_has()`.
 #### C. Call `player_has()` from `do_examine()`
 
 1. `[ ]` Find the if statement where we check to see if the item is not in
-         either the the current place or the inventory.
+         either the current place or the inventory.
 1. `[ ]` Replace the part of the condition that checks with a call to
          `player_has()` and pass the argument `name()`. (Be sure to keep the
          `not`, as well as the part that checks if the item is in the current
@@ -3062,7 +3056,7 @@ with a zero quantity won't show up in `do_inventory()`.
          with the `"inventory"` key) for the `key` key.
 
    *Hint: Use the `+=` operator.*
-1. `[ ]` Check if the value assocated with `key` in the players inventory is
+1. `[ ]` Check if the value associated with `key` in the players inventory is
          {term}`falsy`, or if it is less than or equal to zero.
     * `[ ]` If so, remove that key from the player's inventory by calling the
             `.pop()` method on the inventory dictionary with the `key` argument.
@@ -3313,7 +3307,7 @@ navigate to and from there.
 {{ left }}
 
 1. `[ ]` Add a `"market"` dictionary to your `PLACES` dictionary.
-   * `[ ]` Be sure to add the relavant directions. For example, since I have it just north of `"town-square"`
+   * `[ ]` Be sure to add the relevant directions. For example, since I have it just north of `"town-square"`
            I have `"south": "town-square"`.  But you can put it somewhere else if
            it suits you.
    * `[ ]` Also add the `"items"` list with a list of keys of the items that
@@ -3348,7 +3342,7 @@ than going through all items.
 1. `[ ]` Change your for loop, instead of iterating over `ITEMS.values()`, use the
          `.get()` method on `place` with the arguments `"items"` and an empty list, and
          iterate over that instead. Also rename the variable from `item` to `key`.
-1. `[ ]` Inside the the for loop at the beginning, call `get_item()` with the
+1. `[ ]` Inside the for loop at the beginning, call `get_item()` with the
          argument `key` and assign it to the variable `item`.
 
 `````{dropdown} Code
@@ -3694,7 +3688,7 @@ Here we'll define the function that is called when the player types `"buy"`.
 {{ left }}
 
 1. `[ ]` Get the price from the item dictionary, and make it positive (if
-         neccessary) by calling `abs()`, then assign it to the variable `price`
+         necessary) by calling `abs()`, then assign it to the variable `price`
 1. `[ ]` Check if the player has enough gems by calling `player_has()` with the
          arguments `"gems"` and `price`. If not:
    * `[ ]` Get the number of gems the player currently has from the `PLAYER`
@@ -3804,7 +3798,7 @@ of the following.
 
 ##### I. Truncate the description
 
-The simplist way to handle too-long descriptions is to truncate them so that
+The simplest way to handle too-long descriptions is to truncate them so that
 they are all limited to a specific width. There are a few ways to do this, but
 here we'll use the `textwrap.shorten()` function.
 
@@ -3847,7 +3841,7 @@ def do_shop():
 
 ##### II. Add a short `"summary"` to items dictionary
 
-Another way to deal with the problem is to seperate the long `"description"`
+Another way to deal with the problem is to separate the long `"description"`
 from a shorter `"summary"` in the `ITEMS` dictionaries. Then here in
 `do_shop()` we'll print the `"summary"`, and in `do_examine()` we'll show the
 longer description.
@@ -4641,8 +4635,8 @@ in inventory, they they get the appropriate error message.
 1. `[ ]` Set `adventure.PLAYER["inventory"]` to an empty dictionary.
 1. `[ ]` Call `do_drop()` with a list containing an any string as an argument
 1. `[ ]` Assign the results of `capsys.readouterr().out` to the variable `output`
-1. `[ ]` Write an assert statement that the appropiate debug message is in `output`
-1. `[ ]` Write an assert statement that the appropiate error message is in `output`
+1. `[ ]` Write an assert statement that the appropriate debug message is in `output`
+1. `[ ]` Write an assert statement that the appropriate error message is in `output`
 1. `[ ]` Run your tests, either at the command line or in VS Code.
 
 `````{dropdown} Code
@@ -4667,10 +4661,10 @@ the place and removed from inventory.
 1. `[ ]` Add the function `test_do_drop()` with the parameter `capsys`
 1. `[ ]` Call the `inventory_change()` function with the key of your choice to
          add a fake item to inventory
-1. `[ ]` Call `do_drop()` with a list containing an the key as an argument
+1. `[ ]` Call `do_drop()` with a list containing the key as an argument
 1. `[ ]` Assign the results of `capsys.readouterr().out` to the variable `output`
-1. `[ ]` Write an assert statement that the appropiate debug message is in `output`
-1. `[ ]` Write an assert statement that the appropiate message is in `output`
+1. `[ ]` Write an assert statement that the appropriate debug message is in `output`
+1. `[ ]` Write an assert statement that the appropriate message is in `output`
 1. `[ ]` Write an assert statement that calls the `place_has()` function with
          the key to make sure the item was added to the place.
 1. `[ ]` Write an assert statement that calls the `player_has()` function with
@@ -4694,7 +4688,7 @@ the place and removed from inventory.
 We've held off on writing tests until now because I felt you needed more
 experience coding before adding another potentially confusing component.
 Ideally though, you want to write your tests at the same time you write the
-cooresponding code. As you can see, back-filling can be a drudge.
+corresponding code. As you can see, back-filling can be a drudge.
 
 Unless you're excited about writing all of your tests now, I'd recommend adding
 a test at the beginning of each coding session and whenever something breaks.
@@ -4725,7 +4719,7 @@ as intended and that it won't break in the future without you noticing.
 
 In this section we'll be adding the read command.
 
-#### A. in `test_game.py`
+#### A. In `test_game.py`
 
 {{ left }}
 
@@ -4774,7 +4768,7 @@ First we'll write the test, which we expect to fail.
 
 `````
 
-#### B. in `adventure.py` add `do_read()`
+#### B. In `adventure.py` add `do_read()`
 
 {{ left }}
 
@@ -4817,7 +4811,7 @@ Now we'll write the code to make it work.
 
 {{ endcols }}
 
-#### C. in `adventure.py` in `main()`
+#### C. In `adventure.py` in `main()`
 
 {{ left }}
 
@@ -4878,7 +4872,7 @@ to read.
 
 {{ endcols }}
 
-#### A. in `test_game.py`
+#### A. In `test_game.py`
 
 {{ left }}
 
@@ -4916,7 +4910,7 @@ Now we'll add an assertion to check the output for an error message.
 
 `````
 
-#### B. in `adventure.py` in `do_read()`
+#### B. In `adventure.py` in `do_read()`
 
 {{ left }}
 
@@ -5213,7 +5207,7 @@ current place. Then we'll call `do_read()`and check for the expected output.
 1. `[ ]` Create a dictionary representing a fake item item with the keys
          `"title"` and `"message"` and whatever text you'd like for the values.
 1. `[ ]` Use the `place_add()` function to add it to the current place
-1. `[ ]` Call `do_read()` with the the key for your fake item
+1. `[ ]` Call `do_read()` with the key for your fake item
 1. `[ ]` Assign the results of `capsys.readouterr().out` to the variable `output`
 1. `[ ]` Write an assert statement that the title is in `output`
 1. `[ ]` Write an assert statement that the message is in `output`
@@ -5605,7 +5599,7 @@ particular, our `book` message) into multiple stanzas.
 To accomplish this, we'll modify `wrap()` so that for its `text` argument it can
 take either a string or an iterable (a tuple or a list) of strings. If `text`
 is a string, it should print just the same as it does now. If `text` is a
-`tuple` or a `list`, each item should be wrapped seperately and printed with a
+`tuple` or a `list`, each item should be wrapped separately and printed with a
 blank line between each one.
 
 {{ right }}
@@ -5648,7 +5642,7 @@ that it still works if message is a string.
 
 {{ endcols }}
 
-1. `[ ]` Modify the value cooresponding to the `"message"` key in your fake
+1. `[ ]` Modify the value corresponding to the `"message"` key in your fake
          item dictionary to be either a tuple or a list of strings with
          multiple items.
 1. `[ ]` Add an `assert` statement that checks to make sure that output
@@ -5769,7 +5763,7 @@ already calls `wrap()` with whatever was in the item dictionary for
    * `[ ]` Append `paragraph` to `blocks`
 1. `[ ]` You can either:
    * `[ ]` Use [argument unpacking][unpacking] to send all of the items in the
-           `blocks` list as seperate arguments to the `print()` function, and the
+           `blocks` list as separate arguments to the `print()` function, and the
            keyword argument `sep` to print two newlines between each argument.
    * `[ ]` [Join][join] the `blocks` list using two newlines as the delimiter,
            then print the result.
@@ -5799,7 +5793,7 @@ already calls `wrap()` with whatever was in the item dictionary for
 Finally, change the `"message"` in your `"book"` item to be a list or a tuple
 of strings.
 
-And now that we're all liteate, feel free to scatter scrolls, signs and sticky
+And now that we're all literate, feel free to scatter scrolls, signs and sticky
 notes all over your game!
 
 `````{dropdown} Code
@@ -5826,8 +5820,8 @@ The `health_change()` function will work very much like the
 
 * it will take one `int` argument, `amount`
 * it will add the `amount` to `PLAYER["health"]` (to subtract, use a negative number)
-* it will check to make sure that `PLAYER["health"]` is not over `100`. if it is, set health to `100`
-* it will check to make sure that `PLAYER["health"]` is not under `0`. if it is, set health to `0`
+* it will check to make sure that `PLAYER["health"]` is not over `100`. If it is, set health to `100`
+* it will check to make sure that `PLAYER["health"]` is not under `0`. If it is, set health to `0`
 
 ### Part 13.1: Add `health_change()`
 
@@ -5838,7 +5832,7 @@ The `health_change()` function will work very much like the
 In this function we'll add the simple version of the `health_change()`
 function, to simply add to the `PLAYER["health"]`.
 
-#### A. in `test_game.py` write `test_health_change()`
+#### A. In `test_game.py` write `test_health_change()`
 
 Write the failing `test_health_change()`. The test at this point should just
 test that the `amount` argument is added to the players current health.
@@ -5875,7 +5869,7 @@ test that the `amount` argument is added to the players current health.
 ```
 `````
 
-#### B. in `adventure.py` write `health_change()`
+#### B. In `adventure.py` write `health_change()`
 
 Write the simple `health_change()` function. It should take one argument
 `amount` and add that value to `PLAYER["health"]`.
@@ -5900,7 +5894,7 @@ Write the simple `health_change()` function. It should take one argument
 
 `````
 
-### Part 13.2: Parameratize the test
+### Part 13.2: Parameterize the test
 
 {{ sources.format("13.2") }}
 
@@ -5910,7 +5904,7 @@ In this section we'll modify the `test_health_change()` function to use
 parametrization. This allows us to use the same test for several different
 cases by changing a few values in the test to variables.
 
-#### A. Parameratize test_health_change()
+#### A. Parameterize test_health_change()
 
 1. `[ ]` Make the starting `PLAYER["health"]` value (in the GIVEN section) a variable `start`.
 2. `[ ]` Make the argument passed to `health_change()` (in the WHEN section) a variable `amount`
@@ -5922,7 +5916,7 @@ cases by changing a few values in the test to variables.
 5. `[ ]` Add the names of all four variables in order as parameters to the
          `test_health_change()` function
 6. `[ ]` Immediately above `def` line call `@pytest.mark.parametrize()` with the following arguments:
-    * `[ ]` The first argument should be a string containing the name of all four variables in the same order as above0
+    * `[ ]` The first argument should be a string containing the name of all four variables in the same order as above
     * `[ ]` The second argument should be a list of tuples (put each tuple on its own line)
     * `[ ]` The first tuple should contain all of the values that were in
             your test before you changed them to variables, in the same order as above.
@@ -6151,7 +6145,7 @@ In this section we'll the progress bar feature of the
 
 * I use `100.1` for `total` to prevent the progress bar from changing to a
   dimmed completed style when health is at `100`.
-* I set `clear_left` to `False` to prevet it from removing indentation and
+* I set `clear_left` to `False` to prevent it from removing indentation and
   `"Health"` text.
 
 :::

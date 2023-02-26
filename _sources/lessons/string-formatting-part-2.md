@@ -15,6 +15,9 @@ kernelspec:
 String formatting: Part 2
 =========================
 
+```{include} ../toc.md
+```
+
 In [part 1](string-formatting-part-1.md) we learned about formatting strings,
 sometimes called the formatting spec (short for specification), which are used
 to tell Python how a value should be displayed. And we learned how to use them
@@ -137,7 +140,7 @@ Or you can include the position to change the order in which they appear.
 
 {{ newrow }}
 
-Another advantage of `.format()` is that anything not in curley braces is
+Another advantage of `.format()` is that anything not in curly braces is
 interpreted literally.
 
 {{ rightcol }}

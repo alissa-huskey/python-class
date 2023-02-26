@@ -1,0 +1,2510 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Dragon Realm &#8212; Python Class</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/asciinema-player.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/x-frame-bypass.js"></script>
+    <script src="../_static/asciinema-player.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://alissa-huskey.github.io/python-class/lessons/dragon-realm.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Problem Solving" href="../practices/problem-solving.html" />
+    <link rel="prev" title="Chapter 3: Guess the Number" href="03_guess_the_number.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Python Class</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lessons
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="tutorial.html">
+   Beginner Tutorial
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="fundamentals.html">
+   Fundamentals
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="syntax.html">
+     Syntax
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="expressions.html">
+       Expressions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="statements.html">
+       Statements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="variables.html">
+       Variables
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="flow-control.html">
+     Flow Control
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="conditional-statements.html">
+       Conditional Statements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="functions.html">
+       Functions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="while-loops.html">
+       While loops
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="for-loops.html">
+       For Loops
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="flow.html">
+       Program Flow
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="string-formatting-part-1.html">
+       String formatting: Part 1
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="string-formatting-part-2.html">
+       String formatting: Part 2
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="reading-code.html">
+       Reading Code
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="data-types/index.html">
+     Data Types
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="data-types/objects.html">
+       Objects
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="data-types/numeric.html">
+       Numeric Types
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="data-types/containers.html">
+       Containers
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+      <label for="toctree-checkbox-5">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="data-types/lists.html">
+         Lists
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="data-types/dictionaries.html">
+         Dictionaries
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="data-types/strings.html">
+         Strings
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="files.html">
+     Files
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="file-io.html">
+       File I/O
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="paths.html">
+       Paths
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="file-system-operations.html">
+       File System Operations
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="in-depth/index.html">
+   In Depth
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cli.html">
+     CLI
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="in-depth/imports.html">
+     Imports
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="in-depth/magic-methods.html">
+     Magic methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="in-depth/structure.html">
+     Structuring Python Projects
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="in-depth/functions.html">
+     Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="in-depth/oop.html">
+     Object Oriented Programming
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="data/index.html">
+   Data
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data/functional-programming.html">
+     Functional Programming
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="misc.html">
+   Misc
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="dates.html">
+     Dates and Times
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="web-apis.html">
+     Web APIs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="battle.html">
+     PyPet Battle
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="game-book.html">
+   Invent Games Book
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_guess_the_number.html">
+     Chapter 3: Guess the Number
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Dragon Realm
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Practices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../practices/problem-solving.html">
+   Problem Solving
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../practices/testing.html">
+   Testing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../practices/debugging.html">
+   Using a Debugger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../practices/data-inspection.html">
+   Data Inspection
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tools
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/terminal.html">
+   Terminal
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/git.html">
+   Git
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/vscode.html">
+   VS Code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/python-shell.html">
+   Python Shell
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/ipython.html">
+   IPython
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/poetry.html">
+   Poetry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/mac.html">
+   Mac Dev Env for Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/windows.html">
+   Windows Dev Env for Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/replit.html">
+   Replit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/screencasts.html">
+   Screencasts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/homebrew.html">
+   Homebrew
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/asdf.html">
+   asdf
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tools/pyenv.html">
+   pyenv
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/recommended.html">
+   Recommended Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/dicts.html">
+   Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reference/lists.html">
+   Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/template.py">
+   Script Template
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Exercises
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/program-flow.html">
+   Program Flow Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/list-exercises.html">
+   List Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/list-string-exercises.html">
+   List String Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/flashcards.html">
+   Flashcards Project
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exercises/adventure.html">
+   Adventure Game
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Admin
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../orphans.html">
+   Orphaned Terms
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/alissa-huskey/python-class/master?urlpath=lab/tree/docs/lessons/dragon-realm.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/alissa-huskey/python-class"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/alissa-huskey/python-class/edit/master/docs/lessons/dragon-realm.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-1-a-script-template-shebang-docstring-scope">
+   Part 1: A Script Template: Shebang, Docstring, Scope
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-1-1-shebang-encoding">
+     Part 1.1: Shebang, Encoding
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-1-2-docstrings">
+     Part 1.2: Docstrings
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-1-3-scope-main-and-main">
+     Part 1.3: Scope,
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       __main__
+      </span>
+     </code>
+     and
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       main()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-2-beginning-and-end">
+   Part 2: Beginning and end
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-2-1-global-variables">
+     Part 2.1: Global Variables
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#a-conventions">
+       A. Conventions
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#b-add-width">
+       B. Add
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         WIDTH
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-2-2-intro">
+     Part 2.2: intro()
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#a-multi-line-strings">
+       A. Multi-line strings
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#b-newlines">
+       B. Newlines
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#c-add-intro">
+       C. Add
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         intro()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#keep-playing">
+     2.3. Keep playing
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#a-input">
+       A.
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         input()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#b-objects-and-str-lower">
+       B. Objects and
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         str.lower()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#b-boolean-and-membership-operators">
+       B. Boolean and Membership Operators
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#c-repeating-strings">
+       C. Repeating strings
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#e-while-loops">
+       E. while loops
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#f-in-main">
+       F. In
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         main()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-3-player-choose-a-cave">
+   Part 3: Player,
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     choose()
+    </span>
+   </code>
+   a Cave
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-3-1-conditionals-expressions-resolve-to-boolean-values">
+     Part 3.1: Conditionals Expressions Resolve to Boolean Values
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-3-2-method-chaining">
+     Part 3.2: Method Chaining
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-4-enter-the-cave">
+   Part 4: Enter the Cave
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-5-prettier-output-with-describe">
+   Part 5: Prettier output with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     describe()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-6-wrap-text-using-the-textwrap-module">
+   Part 6: Wrap text using the
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     textwrap
+    </span>
+   </code>
+   module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-7-pick-the-friendly-dragon">
+   Part 7: Pick the Friendly Dragon
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-7-1-accessing-list-elements">
+     Part 7.1 Accessing List Elements
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-8-the-dragon-acts">
+   Part 8: The Dragon Acts
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-8-1-dictionary-keys">
+     Part 8.1: Dictionary Keys
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#make-it-your-own">
+   Make it Your Own
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-we-ve-learned">
+   What We’ve Learned
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Dragon Realm</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-1-a-script-template-shebang-docstring-scope">
+   Part 1: A Script Template: Shebang, Docstring, Scope
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-1-1-shebang-encoding">
+     Part 1.1: Shebang, Encoding
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-1-2-docstrings">
+     Part 1.2: Docstrings
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-1-3-scope-main-and-main">
+     Part 1.3: Scope,
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       __main__
+      </span>
+     </code>
+     and
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       main()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-2-beginning-and-end">
+   Part 2: Beginning and end
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-2-1-global-variables">
+     Part 2.1: Global Variables
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#a-conventions">
+       A. Conventions
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#b-add-width">
+       B. Add
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         WIDTH
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-2-2-intro">
+     Part 2.2: intro()
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#a-multi-line-strings">
+       A. Multi-line strings
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#b-newlines">
+       B. Newlines
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#c-add-intro">
+       C. Add
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         intro()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#keep-playing">
+     2.3. Keep playing
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#a-input">
+       A.
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         input()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#b-objects-and-str-lower">
+       B. Objects and
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         str.lower()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#b-boolean-and-membership-operators">
+       B. Boolean and Membership Operators
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#c-repeating-strings">
+       C. Repeating strings
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#e-while-loops">
+       E. while loops
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#f-in-main">
+       F. In
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         main()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-3-player-choose-a-cave">
+   Part 3: Player,
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     choose()
+    </span>
+   </code>
+   a Cave
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-3-1-conditionals-expressions-resolve-to-boolean-values">
+     Part 3.1: Conditionals Expressions Resolve to Boolean Values
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-3-2-method-chaining">
+     Part 3.2: Method Chaining
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-4-enter-the-cave">
+   Part 4: Enter the Cave
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-5-prettier-output-with-describe">
+   Part 5: Prettier output with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     describe()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-6-wrap-text-using-the-textwrap-module">
+   Part 6: Wrap text using the
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     textwrap
+    </span>
+   </code>
+   module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-7-pick-the-friendly-dragon">
+   Part 7: Pick the Friendly Dragon
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-7-1-accessing-list-elements">
+     Part 7.1 Accessing List Elements
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-8-the-dragon-acts">
+   Part 8: The Dragon Acts
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-8-1-dictionary-keys">
+     Part 8.1: Dictionary Keys
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#make-it-your-own">
+   Make it Your Own
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-we-ve-learned">
+   What We’ve Learned
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="dragon-realm">
+<h1>Dragon Realm<a class="headerlink" href="#dragon-realm" title="Permalink to this headline">#</a></h1>
+<div class="float-right docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/dragonrealm/dragon_realm.py"><span>dragon_realm.py</span></a></p>
+</div>
+<blockquote>
+<div><p>Based on:
+http://inventwithpython.com/invent4thed/chapter5.html</p>
+</div></blockquote>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Table of Contents<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference internal" href="#introduction" id="id33">Introduction</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-1-a-script-template-shebang-docstring-scope" id="id34">Part 1: A Script Template: Shebang, Docstring, Scope</a></p>
+<ul>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-1-1-shebang-encoding" id="id35">Part 1.1: Shebang, Encoding</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-1-2-docstrings" id="id36">Part 1.2: Docstrings</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-1-3-scope-main-and-main" id="id37">Part 1.3: Scope, <code class="docutils literal notranslate"><span class="pre">__main__</span></code> and <code class="docutils literal notranslate"><span class="pre">main()</span></code></a></p></li>
+</ul>
+</li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-2-beginning-and-end" id="id38">Part 2: Beginning and end</a></p>
+<ul>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-2-1-global-variables" id="id39">Part 2.1: Global Variables</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-2-2-intro" id="id40">Part 2.2: intro()</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#keep-playing" id="id41">2.3. Keep playing</a></p></li>
+</ul>
+</li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-3-player-choose-a-cave" id="id42">Part 3: Player, <code class="docutils literal notranslate"><span class="pre">choose()</span></code> a Cave</a></p>
+<ul>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-3-1-conditionals-expressions-resolve-to-boolean-values" id="id43">Part 3.1: Conditionals Expressions Resolve to Boolean Values</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-3-2-method-chaining" id="id44">Part 3.2: Method Chaining</a></p></li>
+</ul>
+</li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-4-enter-the-cave" id="id45">Part 4: Enter the Cave</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-5-prettier-output-with-describe" id="id46">Part 5: Prettier output with <code class="docutils literal notranslate"><span class="pre">describe()</span></code></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-6-wrap-text-using-the-textwrap-module" id="id47">Part 6: Wrap text using the <code class="docutils literal notranslate"><span class="pre">textwrap</span></code> module</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-7-pick-the-friendly-dragon" id="id48">Part 7: Pick the Friendly Dragon</a></p>
+<ul>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-7-1-accessing-list-elements" id="id49">Part 7.1 Accessing List Elements</a></p></li>
+</ul>
+</li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-8-the-dragon-acts" id="id50">Part 8: The Dragon Acts</a></p>
+<ul>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-8-1-dictionary-keys" id="id51">Part 8.1: Dictionary Keys</a></p></li>
+</ul>
+</li>
+<li><p class="sd-card-text"><a class="reference internal" href="#make-it-your-own" id="id52">Make it Your Own</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#what-we-ve-learned" id="id53">What We’ve Learned</a></p></li>
+</ul>
+</div>
+</div>
+</details><section id="introduction">
+<h2><a class="toc-backref" href="#contents">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<p>The game you will create in this chapter is called Dragon Realm. The player
+decides between two caves which hold either treasure or certain doom.</p>
+<asciinema-player poster="npt:0:01" rows="15" src="assets/dragon_realm.cast"></asciinema-player></section>
+<section id="part-1-a-script-template-shebang-docstring-scope">
+<h2><a class="toc-backref" href="#contents">Part 1: A Script Template: Shebang, Docstring, Scope</a><a class="headerlink" href="#part-1-a-script-template-shebang-docstring-scope" title="Permalink to this headline">#</a></h2>
+<div class="float-right docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/dragonrealm/dragon_realm_part1.py"><span>dragon_realm.py</span></a></p>
+</div>
+<p>We’re going to start with a bare bones script that will serve as a template for
+all future scripts.</p>
+<p>Follow the instructions in <a class="reference internal" href="../tools/replit.html"><span class="doc std std-doc">Repl.it Tips</span></a> to create
+a new file called <code class="docutils literal notranslate"><span class="pre">dragon_realm.py</span></code> and change your <code class="docutils literal notranslate"><span class="pre">.replit</span></code> file to run it.
+Copy and paste the following code into it.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number">Listing 445 </span><span class="caption-text">dragon_realm.py</span><a class="headerlink" href="#id1" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="ch">#!/usr/bin/env python3</span>
+<span class="linenos"> 2</span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 5</span><span class="sd">Dragon Realm - A game where the player decides between two caves, which hold</span>
+<span class="linenos"> 6</span><span class="sd">  either treasure or certain doom.</span>
+<span class="linenos"> 7</span><span class="sd">  Inspired by: http://inventwithpython.com/invent4thed/chapter5.html</span>
+<span class="linenos"> 8</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="linenos">12</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;The Dragon Realm Game&quot;&quot;&quot;</span>
+<span class="linenos">13</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome to Dragon Realm!&quot;</span><span class="p">)</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="c1"># this means that if this script is executed, then</span>
+<span class="linenos">17</span><span class="c1"># the main() function will be called</span>
+<span class="linenos">18</span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="linenos">19</span>    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</details><section id="part-1-1-shebang-encoding">
+<h3><a class="toc-backref" href="#contents">Part 1.1: Shebang, Encoding</a><a class="headerlink" href="#part-1-1-shebang-encoding" title="Permalink to this headline">#</a></h3>
+<p>The very first line of any executable file (script) is the <em><strong>shebang</strong></em> line.
+The line starts with a <code class="docutils literal notranslate"><span class="pre">#!</span></code> then is immediately followed (without a space) by
+the path to the interpreter. In this case it is telling the computer to run
+this script using <code class="docutils literal notranslate"><span class="pre">python3</span></code>.</p>
+<p>The next line tells Python (as well as some editors) what the <em><strong>encoding</strong></em> to
+expect. That is, what kinds of characters. This line might be different if, for
+example, we were going to include Chinese characters.</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number">Listing 446 </span><span class="caption-text">dragon_realm.py</span><a class="headerlink" href="#id2" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="ch">#!/usr/bin/env python3</span>
+<span class="linenos">2</span><span class="c1"># -*- coding: utf-8 -*-</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="part-1-2-docstrings">
+<h3><a class="toc-backref" href="#contents">Part 1.2: Docstrings</a><a class="headerlink" href="#part-1-2-docstrings" title="Permalink to this headline">#</a></h3>
+<p>The first <em><strong>expression</strong></em> in a Python script should always be a
+<em><strong>Docstring</strong></em>. A Docstring, surrounded by <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">'''</span></code>, is similar to a
+comment in that its contents will not be executed. Docstrings however, are
+stored by the interpreter as documentation for a particular file, module,
+class, or function.</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-number">Listing 447 </span><span class="caption-text">dragon_realm.py</span><a class="headerlink" href="#id3" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 4</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 5</span><span class="sd">Dragon Realm - A game where the player decides between two caves, which hold</span>
+<span class="linenos"> 6</span><span class="sd">  either treasure or certain doom.</span>
+<span class="linenos"> 7</span><span class="sd">  Inspired by: http://inventwithpython.com/invent4thed/chapter5.html</span>
+<span class="linenos"> 8</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="part-1-3-scope-main-and-main">
+<h3><a class="toc-backref" href="#contents">Part 1.3: Scope, <code class="docutils literal notranslate"><span class="pre">__main__</span></code> and <code class="docutils literal notranslate"><span class="pre">main()</span></code></a><a class="headerlink" href="#part-1-3-scope-main-and-main" title="Permalink to this headline">#</a></h3>
+<p>Up until now we have been writing all our code in the body of the file. (Aside
+from a few functions in the PyPet project.) This is what is referred to as the
+<em><strong>global scope</strong></em> or <em><strong>global namespace</strong></em>.</p>
+<p>Scope refers to the place where an identifier (variable or function) can be
+used. When a variable is defined in the body of the file it is available to
+everything in the file–globally. When a variable is defined in a function it
+is only available to the code inside of that function.</p>
+<p>It is a good idea to keep the amount of code in the global scope to a minimum.
+This avoids problems like accidentally reusing the same variable name and
+causing unintended results.</p>
+<p>In order to achieve this, organize code into functions.  The convention is to
+write a function called <code class="docutils literal notranslate"><span class="pre">main()</span></code> and call it when your script is executed.</p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">main()</span></code> has a docstring too. This will describe the purpose of the
+function.</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-number">Listing 448 </span><span class="caption-text">dragon_realm.py</span><a class="headerlink" href="#id4" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">11</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="linenos">12</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;The Dragon Realm Game&quot;&quot;&quot;</span>
+<span class="linenos">13</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome to Dragon Realm!&quot;</span><span class="p">)</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="c1"># this means that if this script is executed, then</span>
+<span class="linenos">17</span><span class="c1"># the main() function will be called</span>
+<span class="linenos">18</span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="linenos">19</span>    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="part-2-beginning-and-end">
+<h2><a class="toc-backref" href="#contents">Part 2: Beginning and end</a><a class="headerlink" href="#part-2-beginning-and-end" title="Permalink to this headline">#</a></h2>
+<div class="float-right docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/dragonrealm/dragon_realm_part2.py"><span>dragon_realm.py</span></a></p>
+</div>
+<p>In this section we’ll add a description of the imaginary game world that will
+be printed when the player first starts the game.</p>
+<p>At the end of the game, we’ll ask the player if they want to continue instead
+of just exiting.</p>
+<section id="part-2-1-global-variables">
+<h3><a class="toc-backref" href="#contents">Part 2.1: Global Variables</a><a class="headerlink" href="#part-2-1-global-variables" title="Permalink to this headline">#</a></h3>
+<p>Global variables are called that because they are available to everything in
+the file. Whereas a variable that is defined inside a function is called a
+local variable, and it goes away when the function is done executing.</p>
+<section id="a-conventions">
+<h4>A. Conventions<a class="headerlink" href="#a-conventions" title="Permalink to this headline">#</a></h4>
+<div class="row"><div class="col left-col">
+<p>You generally want to define them at the top of the file, and name them with
+<code class="docutils literal notranslate"><span class="pre">ALL_CAPS</span></code> to help you tell them apart from local variables.</p>
+</div><div class="col">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MY_GLOBAL</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="b-add-width">
+<h4>B. Add <code class="docutils literal notranslate"><span class="pre">WIDTH</span></code><a class="headerlink" href="#b-add-width" title="Permalink to this headline">#</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">WIDTH</span></code> global variable is for the number of horizontal characters we want our
+game to take up.</p>
+<ol class="simple">
+<li><p>Add the global variable <code class="docutils literal notranslate"><span class="pre">WIDTH</span></code> under the docstring and set it to <code class="docutils literal notranslate"><span class="pre">58</span></code> as a
+starting point. (You can always change it later.)</p></li>
+</ol>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-number">Listing 449 </span><span class="caption-text">dragon_realm.py</span><a class="headerlink" href="#id5" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 4</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 5</span><span class="sd">Dragon Realm - A game where the player decides between two caves, which hold</span>
+<span class="linenos"> 6</span><span class="sd">  either treasure or certain doom.</span>
+<span class="linenos"> 7</span><span class="sd">  Inspired by: http://inventwithpython.com/invent4thed/chapter5.html</span>
+<span class="linenos"> 8</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 9</span>
+<span class="hll"><span class="linenos">10</span><span class="n">WIDTH</span> <span class="o">=</span> <span class="mi">58</span>
+</span></pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="part-2-2-intro">
+<h3><a class="toc-backref" href="#contents">Part 2.2: intro()</a><a class="headerlink" href="#part-2-2-intro" title="Permalink to this headline">#</a></h3>
+<p>In this section we’ll write the <code class="docutils literal notranslate"><span class="pre">intro()</span></code> function which will print out a
+paragraph to the player that describes the players surroundings.</p>
+<section id="a-multi-line-strings">
+<h4>A. Multi-line strings<a class="headerlink" href="#a-multi-line-strings" title="Permalink to this headline">#</a></h4>
+<div class="row"><div class="col left-col">
+<p>You can use the docstring syntax to make a string and use it anywhere you would
+normally use a string. This is useful if you have a multi-line string such as
+the paragraph we want to print in the <code class="docutils literal notranslate"><span class="pre">intro()</span></code> function.</p>
+<p>This will retain all whitespace–both newlines and indentation.</p>
+</div><div class="col">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">  a</span>
+<span class="s2">    b</span>
+<span class="s2">      c</span>
+<span class="s2">        d</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  a
+    b
+      c
+        d
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="b-newlines">
+<h4>B. Newlines<a class="headerlink" href="#b-newlines" title="Permalink to this headline">#</a></h4>
+<div class="row"><div class="col left-col">
+<p>The backslash (<code class="docutils literal notranslate"><span class="pre">\</span></code>) in a string tells Python that the next character has
+special meaning. <code class="docutils literal notranslate"><span class="pre">\n</span></code>, for example, is for a new line</p>
+</div><div class="col">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a</span><span class="se">\n</span><span class="s2">b</span><span class="se">\n</span><span class="s2">c</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a
+b
+c
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="c-add-intro">
+<h4>C. Add <code class="docutils literal notranslate"><span class="pre">intro()</span></code><a class="headerlink" href="#c-add-intro" title="Permalink to this headline">#</a></h4>
+<p>Let’s use the concepts we just learned to define the <code class="docutils literal notranslate"><span class="pre">intro()</span></code> function.</p>
+<ol class="simple">
+<li><p>Define the <code class="docutils literal notranslate"><span class="pre">intro()</span></code> function</p></li>
+<li><p>Add a docstring describing what the function does</p></li>
+<li><p>Using docstring syntax, print the intro description copied from below (or make up your own!)</p></li>
+</ol>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-number">Listing 450 </span><span class="caption-text">dragon_realm.py: intro()</span><a class="headerlink" href="#id6" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">13</span><span class="k">def</span> <span class="nf">intro</span><span class="p">():</span>
+<span class="linenos">14</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Display the introduction description to the player&quot;&quot;&quot;</span>
+<span class="linenos">15</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;You are in a land full of dragons. In front of you,</span>
+<span class="linenos">16</span><span class="s2">you see two caves. In one cave, the dragon is friendly</span>
+<span class="linenos">17</span><span class="s2">and will share his treasure with you. The other dragon</span>
+<span class="linenos">18</span><span class="s2">is greedy and hungry, and will eat you on sight.</span><span class="se">\n</span><span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="keep-playing">
+<h3><a class="toc-backref" href="#contents">2.3. Keep playing</a><a class="headerlink" href="#keep-playing" title="Permalink to this headline">#</a></h3>
+<p>In this section we’ll ask the player if they want to keep playing when the game
+ends, instead of just exiting.</p>
+<section id="a-input">
+<h4>A. <code class="docutils literal notranslate"><span class="pre">input()</span></code><a class="headerlink" href="#a-input" title="Permalink to this headline">#</a></h4>
+<p>To make a program interactive, we need to get feedback from the user. To do this
+we call the <code class="docutils literal notranslate"><span class="pre">input()</span></code> function and whatever the user types will be returned.</p>
+<div class="row"><div class="col left-col">
+<p>The syntax is:</p>
+</div><div class="col">
+<p><code class="samp docutils literal notranslate"><em><span class="pre">VAR</span></em> <span class="pre">=</span> <span class="pre">input(</span><em><span class="pre">PROMPT</span></em><span class="pre">)</span></code></p>
+</div></div><div class="row"><div class="col right-col">
+<p>In this example, whatever the user typed before hitting enter would be assigned
+to the variable <code class="docutils literal notranslate"><span class="pre">response</span></code>.</p>
+</div><div class="col">
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-number">Listing 451 </span><span class="caption-text">example</span><a class="headerlink" href="#id7" title="Permalink to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Are you sure? &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div></div><div class="row"><div class="col right-col">
+<p>The user would see something like this:</p>
+</div><div class="col">
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-number">Listing 452 </span><span class="caption-text">prompt</span><a class="headerlink" href="#id8" title="Permalink to this code">#</a></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Are you sure? ▉
+</pre></div>
+</div>
+</div>
+</div></div>
+<p>Be sure to always add the space at the end of the prompt string, otherwise
+there will be no space between the text the user sees and their cursor.</p>
+<p>We’ll use the <code class="docutils literal notranslate"><span class="pre">input()</span></code> function to ask the player if they want to keep
+playing.</p>
+</section>
+<section id="b-objects-and-str-lower">
+<h4>B. Objects and <code class="docutils literal notranslate"><span class="pre">str.lower()</span></code><a class="headerlink" href="#b-objects-and-str-lower" title="Permalink to this headline">#</a></h4>
+<p>In Python, all values are <a class="reference internal" href="../../object.html" title=""><span class="xref std std-term">objects</span></a>. An object is data that can have values
+and functions attached to it. An objects values are called <a class="reference internal" href="../../attribute.html" title=""><span class="xref std std-term">attributes</span></a> and
+its functions are called <a class="reference internal" href="../../method.html" title=""><span class="xref std std-term">methods</span></a>.</p>
+<div class="row"><div class="col left-col">
+<p>For example, <code class="docutils literal notranslate"><span class="pre">list</span></code> objects have a method <code class="docutils literal notranslate"><span class="pre">.count()</span></code> which will tell you how
+many of a certain thing the list contains.</p>
+</div><div class="col">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">votes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
+<span class="n">votes</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col right-col">
+<p>If you want to know what methods or attributes an object has you can use the
+<code class="docutils literal notranslate"><span class="pre">dir()</span></code> function and pass it either an object or a type. (Just scroll past all
+the ones that start with <code class="docutils literal notranslate"><span class="pre">__</span></code> for now.)</p>
+</div><div class="col">
+<div class="cell tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">dir</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;__add__&#39;,
+ &#39;__class__&#39;,
+ &#39;__contains__&#39;,
+ &#39;__delattr__&#39;,
+ &#39;__dir__&#39;,
+ &#39;__doc__&#39;,
+ &#39;__eq__&#39;,
+ &#39;__format__&#39;,
+ &#39;__ge__&#39;,
+ &#39;__getattribute__&#39;,
+ &#39;__getitem__&#39;,
+ &#39;__getnewargs__&#39;,
+ &#39;__gt__&#39;,
+ &#39;__hash__&#39;,
+ &#39;__init__&#39;,
+ &#39;__init_subclass__&#39;,
+ &#39;__iter__&#39;,
+ &#39;__le__&#39;,
+ &#39;__len__&#39;,
+ &#39;__lt__&#39;,
+ &#39;__mod__&#39;,
+ &#39;__mul__&#39;,
+ &#39;__ne__&#39;,
+ &#39;__new__&#39;,
+ &#39;__reduce__&#39;,
+ &#39;__reduce_ex__&#39;,
+ &#39;__repr__&#39;,
+ &#39;__rmod__&#39;,
+ &#39;__rmul__&#39;,
+ &#39;__setattr__&#39;,
+ &#39;__sizeof__&#39;,
+ &#39;__str__&#39;,
+ &#39;__subclasshook__&#39;,
+ &#39;capitalize&#39;,
+ &#39;casefold&#39;,
+ &#39;center&#39;,
+ &#39;count&#39;,
+ &#39;encode&#39;,
+ &#39;endswith&#39;,
+ &#39;expandtabs&#39;,
+ &#39;find&#39;,
+ &#39;format&#39;,
+ &#39;format_map&#39;,
+ &#39;index&#39;,
+ &#39;isalnum&#39;,
+ &#39;isalpha&#39;,
+ &#39;isascii&#39;,
+ &#39;isdecimal&#39;,
+ &#39;isdigit&#39;,
+ &#39;isidentifier&#39;,
+ &#39;islower&#39;,
+ &#39;isnumeric&#39;,
+ &#39;isprintable&#39;,
+ &#39;isspace&#39;,
+ &#39;istitle&#39;,
+ &#39;isupper&#39;,
+ &#39;join&#39;,
+ &#39;ljust&#39;,
+ &#39;lower&#39;,
+ &#39;lstrip&#39;,
+ &#39;maketrans&#39;,
+ &#39;partition&#39;,
+ &#39;replace&#39;,
+ &#39;rfind&#39;,
+ &#39;rindex&#39;,
+ &#39;rjust&#39;,
+ &#39;rpartition&#39;,
+ &#39;rsplit&#39;,
+ &#39;rstrip&#39;,
+ &#39;split&#39;,
+ &#39;splitlines&#39;,
+ &#39;startswith&#39;,
+ &#39;strip&#39;,
+ &#39;swapcase&#39;,
+ &#39;title&#39;,
+ &#39;translate&#39;,
+ &#39;upper&#39;,
+ &#39;zfill&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col right-col">
+<p>You can use the <code class="docutils literal notranslate"><span class="pre">help()</span></code> function to get more information about a method.</p>
+<p>You can use either the object (like <code class="docutils literal notranslate"><span class="pre">&quot;hello&quot;</span></code>) or the type (like <code class="docutils literal notranslate"><span class="pre">str</span></code>)
+followed by a dot and the method name.</p>
+</div><div class="col">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on method_descriptor:
+
+lower(self, /)
+    Return a copy of the string converted to lowercase.
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col right-col">
+<p>You can see that <code class="docutils literal notranslate"><span class="pre">str</span></code> objects have a <code class="docutils literal notranslate"><span class="pre">.lower()</span></code> method. Let’s try it out.</p>
+</div><div class="col">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;OH HAI THERE&quot;</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;oh hai there&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<p>We’ll use the <code class="docutils literal notranslate"><span class="pre">.lower()</span></code> function to change the player’s answer to lower case.
+That way we’ll understand if they type <code class="docutils literal notranslate"><span class="pre">&quot;YES&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Yes&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;yes&quot;</span></code>.</p>
+</section>
+<section id="b-boolean-and-membership-operators">
+<h4>B. Boolean and Membership Operators<a class="headerlink" href="#b-boolean-and-membership-operators" title="Permalink to this headline">#</a></h4>
+<p>In programming, sometimes we don’t just want to see if something is the same as
+something else, but the same as a couple of things.</p>
+<div class="row"><div class="col left-col">
+<p>One way that we could do this would be using the <code class="docutils literal notranslate"><span class="pre">or</span></code> boolean operator.</p>
+</div><div class="col">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">answer</span> <span class="o">=</span> <span class="s2">&quot;Y&quot;</span>
+<span class="n">answer</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;y&quot;</span> <span class="ow">or</span> <span class="n">answer</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;yes&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col right-col">
+<p>We’re going to learn to use the <code class="docutils literal notranslate"><span class="pre">in</span></code> operator to easily check if a <code class="docutils literal notranslate"><span class="pre">value</span></code> is a
+member of a <code class="docutils literal notranslate"><span class="pre">sequence</span></code>.</p>
+<p>The syntax is:</p>
+</div><div class="col">
+<p><code class="docutils literal notranslate"><span class="pre">&lt;value&gt;</span> <span class="pre">in</span> <span class="pre">&lt;sequence&gt;</span></code></p>
+</div></div><div class="row"><div class="col right-col">
+<p>For example:</p>
+</div><div class="col">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">answer</span> <span class="o">=</span> <span class="s2">&quot;Y&quot;</span>
+<span class="n">answer</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;yes&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<p>We’ll use the <code class="docutils literal notranslate"><span class="pre">in</span></code> operator to check the player’s answer against multiple
+acceptable answers.</p>
+</section>
+<section id="c-repeating-strings">
+<h4>C. Repeating strings<a class="headerlink" href="#c-repeating-strings" title="Permalink to this headline">#</a></h4>
+<div class="row"><div class="col left-col">
+<p>Python provides an easy way to repeat a string using multiplication. Just use
+the <code class="docutils literal notranslate"><span class="pre">*</span></code> operator to multiply a <code class="docutils literal notranslate"><span class="pre">str</span></code> by an <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p>
+</div><div class="col">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;echo... &quot;</span> <span class="o">*</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;echo... echo... echo... &#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div></div><div class="row"><div class="col right-col">
+<p>This is a handy way to quickly make a visual line that is whatever width you
+want.</p>
+</div><div class="col">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;~&quot;</span> <span class="o">*</span> <span class="mi">30</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<p>We’ll use this to print a line at the start of each game.</p>
+</section>
+<section id="e-while-loops">
+<h4>E. while loops<a class="headerlink" href="#e-while-loops" title="Permalink to this headline">#</a></h4>
+<p>Sometimes we want our program to repeat the same steps over and over again. One
+way to do this is to use a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop which will repeat the same block of
+code as long as a certain condition is met.</p>
+<div class="row"><div class="col left-col">
+<p>The syntax is:</p>
+</div><div class="col">
+<pre class="literal-block"><code class="samp docutils literal notranslate"><span class="pre">while</span> <em><span class="pre">CONDITION</span></em><span class="pre">:</span></code>
+<code class="samp docutils literal notranslate">&#160;&#160;&#160; <em><span class="pre">BODY</span></em></code></pre>
+<table class="colwidths-auto notitle table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CONDITION</span></code></p></td>
+<td><p>an expression evaluated in a <a class="reference internal" href="conditional-statements.html#term-boolean-context"><span class="xref std std-term">boolean context</span></a> that determines if the loop keeps going</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">BODY</span></code></p></td>
+<td><p>statements to execute each iteration</p></td>
+</tr>
+</tbody>
+</table>
+</div></div><div class="row"><div class="col right-col">
+<p>In this example if the user hits enter before typing anything, they’ll be asked
+again repeatedly until they do.</p>
+</div><div class="col">
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-number">Listing 453 </span><span class="caption-text">example</span><a class="headerlink" href="#id9" title="Permalink to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">answer</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+<span class="k">while</span> <span class="ow">not</span> <span class="n">answer</span><span class="p">:</span>
+  <span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Your choice: &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div></div><div class="row"><div class="col right-col">
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Beware of infinite loops!</p>
+</div>
+<p>Infinite loops happen when the condition is <em>always</em> met. While not
+inherently bad, they can wreak havoc on your system when unintended.</p>
+<p>This is a simple example of a <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">True</span></code> infinite loop.</p>
+</div><div class="col">
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-number">Listing 454 </span><span class="caption-text">example</span><a class="headerlink" href="#id10" title="Permalink to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;this is the song that never ends...&quot;</span><span class="p">)</span>
+  <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+<p>We’ll use a while loop in <code class="docutils literal notranslate"><span class="pre">main()</span></code> to let the user keep playing if they want to.</p>
+</section>
+<section id="f-in-main">
+<h4>F. In <code class="docutils literal notranslate"><span class="pre">main()</span></code><a class="headerlink" href="#f-in-main" title="Permalink to this headline">#</a></h4>
+<ol class="simple">
+<li><p>Change your docstring to reflect the way <code class="docutils literal notranslate"><span class="pre">main()</span></code> will work when we’re done</p></li>
+<li><p>Add a variable <code class="docutils literal notranslate"><span class="pre">answer</span></code> and set it to <code class="docutils literal notranslate"><span class="pre">&quot;yes&quot;</span></code></p></li>
+<li><p>Add a while loop that will keep going as long as lower cased <code class="docutils literal notranslate"><span class="pre">answer</span></code>
+matches any of a list of the strings <code class="docutils literal notranslate"><span class="pre">[&quot;y&quot;,</span> <span class="pre">&quot;yes&quot;]</span></code></p></li>
+<li><p>In the while loop:</p>
+<ul class="simple">
+<li><p>Print a line by multiplying a dash by <code class="docutils literal notranslate"><span class="pre">WIDTH</span></code>. Add a newline at the end</p></li>
+<li><p>Call the <code class="docutils literal notranslate"><span class="pre">intro()</span></code> function</p></li>
+<li><p>Ask the user if they want to play again using the <code class="docutils literal notranslate"><span class="pre">input()</span></code> function and
+assign the result to the variable <code class="docutils literal notranslate"><span class="pre">answer</span></code></p></li>
+</ul>
+</li>
+</ol>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-number">Listing 455 </span><span class="caption-text">dragon_realm.py: main()</span><a class="headerlink" href="#id11" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">21</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="hll"><span class="linenos">22</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Keep playing the game until the user doesn&#39;t say yes&quot;&quot;&quot;</span>
+</span><span class="linenos">23</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome to Dragon Realm!&quot;</span><span class="p">)</span>
+<span class="hll"><span class="linenos">24</span>    <span class="n">again</span> <span class="o">=</span> <span class="s2">&quot;yes&quot;</span>
+</span><span class="hll"><span class="linenos">25</span>    <span class="k">while</span> <span class="n">again</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;yes&quot;</span><span class="p">]:</span>
+</span><span class="hll"><span class="linenos">26</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">27</span>        <span class="n">intro</span><span class="p">()</span>
+</span><span class="hll"><span class="linenos">28</span>        <span class="n">again</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Play again? &quot;</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="part-3-player-choose-a-cave">
+<h2><a class="toc-backref" href="#contents">Part 3: Player, <code class="docutils literal notranslate"><span class="pre">choose()</span></code> a Cave</a><a class="headerlink" href="#part-3-player-choose-a-cave" title="Permalink to this headline">#</a></h2>
+<p>In this section we will prompt the player to choose a cave, then make sure
+their response is a valid cave.</p>
+<div class="float-right docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/dragonrealm/dragon_realm_part3.py"><span>dragon_realm.py</span></a></p>
+</div>
+<p>Add a global variable <code class="docutils literal notranslate"><span class="pre">CAVES</span></code> to the top of your script where <code class="docutils literal notranslate"><span class="pre">WIDTH</span></code> is
+defined.</p>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-number">Listing 456 </span><span class="caption-text">dragon_realm.py: global variables</span><a class="headerlink" href="#id12" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">WIDTH</span> <span class="o">=</span> <span class="mi">58</span>
+<span class="hll"><span class="linenos">2</span><span class="n">CAVES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="s2">&quot;left&quot;</span><span class="p">]</span>
+</span></pre></div>
+</div>
+</div>
+<p>Add the <code class="docutils literal notranslate"><span class="pre">valid_cave()</span></code> function</p>
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-number">Listing 457 </span><span class="caption-text">dragon_realm.py: valid_cave()</span><a class="headerlink" href="#id13" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">valid_cave</span><span class="p">(</span><span class="n">response</span><span class="p">):</span>
+<span class="linenos">2</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Return True if response is in the list of valid CAVES&quot;&quot;&quot;</span>
+<span class="linenos">3</span>    <span class="k">return</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">CAVES</span>
+</pre></div>
+</div>
+</div>
+<p>Add the <code class="docutils literal notranslate"><span class="pre">choose()</span></code> function</p>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-number">Listing 458 </span><span class="caption-text">dragon_realm.py: choose()</span><a class="headerlink" href="#id14" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">def</span> <span class="nf">choose</span><span class="p">():</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Prompt the player to choose &quot;right&quot; or &quot;left&quot; then return response.&quot;&quot;&quot;</span>
+<span class="linenos"> 3</span>    <span class="n">cave</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="linenos"> 4</span>    <span class="k">while</span> <span class="ow">not</span> <span class="n">valid_cave</span><span class="p">(</span><span class="n">cave</span><span class="p">):</span>
+<span class="linenos"> 5</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Do you enter the cave on the right or left?&quot;</span><span class="p">)</span>
+<span class="linenos"> 6</span>        <span class="n">cave</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;(right, left): &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span>        <span class="k">if</span> <span class="n">cave</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;q&quot;</span><span class="p">,</span> <span class="s2">&quot;quit&quot;</span><span class="p">,</span> <span class="s2">&quot;exit&quot;</span><span class="p">]:</span>
+<span class="linenos"> 9</span>            <span class="n">exit</span><span class="p">()</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span>        <span class="k">if</span> <span class="ow">not</span> <span class="n">valid_cave</span><span class="p">(</span><span class="n">cave</span><span class="p">):</span>
+<span class="linenos">12</span>            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Type &quot;right&quot; or &quot;left&quot;. </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span>    <span class="nb">print</span><span class="p">()</span>
+<span class="linenos">15</span>    <span class="k">return</span> <span class="n">cave</span>
+</pre></div>
+</div>
+</div>
+<p>Edit your <code class="docutils literal notranslate"><span class="pre">main()</span></code> function to add <code class="docutils literal notranslate"><span class="pre">cave</span> <span class="pre">=</span> <span class="pre">choose()</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-number">Listing 459 </span><span class="caption-text">dragon_realm.py: main()</span><a class="headerlink" href="#id15" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="linenos">2</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Keep playing the game until the user doesn&#39;t say yes&quot;&quot;&quot;</span>
+<span class="linenos">3</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome to Dragon Realm!&quot;</span><span class="p">)</span>
+<span class="linenos">4</span>    <span class="n">again</span> <span class="o">=</span> <span class="s2">&quot;yes&quot;</span>
+<span class="linenos">5</span>    <span class="k">while</span> <span class="n">again</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;yes&quot;</span><span class="p">]:</span>
+<span class="linenos">6</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">7</span>        <span class="n">intro</span><span class="p">()</span>
+<span class="hll"><span class="linenos">8</span>        <span class="n">cave</span> <span class="o">=</span> <span class="n">choose</span><span class="p">()</span>
+</span><span class="linenos">9</span>        <span class="n">again</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Play again? &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<section id="part-3-1-conditionals-expressions-resolve-to-boolean-values">
+<h3><a class="toc-backref" href="#contents">Part 3.1: Conditionals Expressions Resolve to Boolean Values</a><a class="headerlink" href="#part-3-1-conditionals-expressions-resolve-to-boolean-values" title="Permalink to this headline">#</a></h3>
+<p>We have used conditional expressions in if-statements</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">:</span>
+  <span class="o">...</span>
+</pre></div>
+</div>
+<p>And we have used conditional expressions in while-statements</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">:</span>
+  <span class="o">...</span>
+</pre></div>
+</div>
+<p>A key think to understand is that a conditional expression always resolves to a
+Boolean value, either <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span><span class="o">*</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">4</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;5&quot;</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">random</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">5</span> <span class="o">&lt;</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">57</span> <span class="ow">in</span> <span class="p">[</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="p">]</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>That means that we can treat a conditional expression as just another value.
+Which is why we can return the result of this conditional in the <code class="docutils literal notranslate"><span class="pre">valid_cave()</span></code>
+function.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">CAVES</span>
+</pre></div>
+</div>
+</section>
+<section id="part-3-2-method-chaining">
+<h3><a class="toc-backref" href="#contents">Part 3.2: Method Chaining</a><a class="headerlink" href="#part-3-2-method-chaining" title="Permalink to this headline">#</a></h3>
+<p>Since all values are objects in Python, all values may have methods. <em><strong>Method
+chaining</strong></em> is a way to take advantage of that to write less code.</p>
+<p>In this case, since <code class="docutils literal notranslate"><span class="pre">input()</span></code> always returns a string, we can call <code class="docutils literal notranslate"><span class="pre">lower()</span></code>
+from the return result of input() by chaining them together with a dot.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># these two lines of code...</span>
+    <span class="n">cave</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;(right, left): &quot;</span><span class="p">)</span>
+    <span class="n">cave</span> <span class="o">=</span> <span class="n">cave</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="c1"># have the same result as this one</span>
+    <span class="n">cave</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;(right, left): &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="part-4-enter-the-cave">
+<h2><a class="toc-backref" href="#contents">Part 4: Enter the Cave</a><a class="headerlink" href="#part-4-enter-the-cave" title="Permalink to this headline">#</a></h2>
+<p>Now that the player has picked a cave, it’s time to tell them what happens when
+they enter it. We’ll add a new <code class="docutils literal notranslate"><span class="pre">enter()</span></code> function and use the <code class="docutils literal notranslate"><span class="pre">sleep()</span></code>
+function in the <code class="docutils literal notranslate"><span class="pre">time</span></code> module to add a delay between messages.</p>
+<div class="float-right docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/dragonrealm/dragon_realm_part4.py"><span>dragon_realm.py</span></a></p>
+</div>
+<p>Above your global variables, import the <code class="docutils literal notranslate"><span class="pre">time</span></code> module.</p>
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-number">Listing 460 </span><span class="caption-text">dragon_realm.py: imports</span><a class="headerlink" href="#id16" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">2</span><span class="sd">Dragon Realm - A game where the player decides between two caves, which hold</span>
+<span class="linenos">3</span><span class="sd">  either treasure or certain doom.</span>
+<span class="linenos">4</span><span class="sd">  Inspired by: http://inventwithpython.com/invent4thed/chapter5.html</span>
+<span class="linenos">5</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">6</span>
+<span class="hll"><span class="linenos">7</span><span class="kn">import</span> <span class="nn">time</span>
+</span></pre></div>
+</div>
+</div>
+<p>Add a global variable <code class="docutils literal notranslate"><span class="pre">DELAY</span></code></p>
+<div class="literal-block-wrapper docutils container" id="id17">
+<div class="code-block-caption"><span class="caption-number">Listing 461 </span><span class="caption-text">dragon_realm.py: global variables</span><a class="headerlink" href="#id17" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 2</span><span class="sd">Dragon Realm - A game where the player decides between two caves, which hold</span>
+<span class="linenos"> 3</span><span class="sd">  either treasure or certain doom.</span>
+<span class="linenos"> 4</span><span class="sd">  Inspired by: http://inventwithpython.com/invent4thed/chapter5.html</span>
+<span class="linenos"> 5</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="kn">import</span> <span class="nn">time</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="n">WIDTH</span> <span class="o">=</span> <span class="mi">58</span>
+<span class="hll"><span class="linenos">10</span><span class="n">DELAY</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class="linenos">11</span><span class="n">CAVES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="s2">&quot;left&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>Add the <code class="docutils literal notranslate"><span class="pre">enter()</span></code> function</p>
+<div class="literal-block-wrapper docutils container" id="id18">
+<div class="code-block-caption"><span class="caption-number">Listing 462 </span><span class="caption-text">dragon_realm.py: enter()</span><a class="headerlink" href="#id18" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">def</span> <span class="nf">enter</span><span class="p">(</span><span class="n">cave</span><span class="p">):</span>
+<span class="linenos"> 2</span>    <span class="n">messages</span> <span class="o">=</span> <span class="p">[</span>
+<span class="linenos"> 3</span>        <span class="s2">&quot;You approach the cave...&quot;</span><span class="p">,</span>
+<span class="linenos"> 4</span>        <span class="s2">&quot;It is dark and spooky...&quot;</span><span class="p">,</span>
+<span class="linenos"> 5</span>        <span class="s2">&quot;A large dragon jumps out in front of you!&quot;</span><span class="p">,</span>
+<span class="linenos"> 6</span>        <span class="s2">&quot;He opens his jaws and...&quot;</span><span class="p">,</span>
+<span class="linenos"> 7</span>    <span class="p">]</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span>    <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">:</span>
+<span class="linenos">10</span>        <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+<span class="linenos">11</span>        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">DELAY</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>And change your <code class="docutils literal notranslate"><span class="pre">main()</span></code> function to call <code class="docutils literal notranslate"><span class="pre">enter()</span></code></p>
+<div class="literal-block-wrapper docutils container" id="id19">
+<div class="code-block-caption"><span class="caption-number">Listing 463 </span><span class="caption-text">dragon_realm.py: main()</span><a class="headerlink" href="#id19" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Keep playing the game until the user doesn&#39;t say yes&quot;&quot;&quot;</span>
+<span class="linenos"> 3</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Welcome to Dragon Realm!&quot;</span><span class="p">)</span>
+<span class="linenos"> 4</span>    <span class="n">again</span> <span class="o">=</span> <span class="s2">&quot;yes&quot;</span>
+<span class="linenos"> 5</span>    <span class="k">while</span> <span class="n">again</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;yes&quot;</span><span class="p">]:</span>
+<span class="linenos"> 6</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos"> 7</span>        <span class="n">intro</span><span class="p">()</span>
+<span class="linenos"> 8</span>        <span class="n">cave</span> <span class="o">=</span> <span class="n">choose</span><span class="p">()</span>
+<span class="hll"><span class="linenos"> 9</span>        <span class="n">enter</span><span class="p">(</span><span class="n">cave</span><span class="p">)</span>
+</span><span class="linenos">10</span>        <span class="n">again</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Play again? &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="part-5-prettier-output-with-describe">
+<h2><a class="toc-backref" href="#contents">Part 5: Prettier output with <code class="docutils literal notranslate"><span class="pre">describe()</span></code></a><a class="headerlink" href="#part-5-prettier-output-with-describe" title="Permalink to this headline">#</a></h2>
+<div class="float-right docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/dragonrealm/dragon_realm_part5.py"><span>dragon_realm.py</span></a></p>
+</div>
+<p>It is getting a little hard to tell which lines of the game are description and
+which parts are prompts. Lets make that clearer by indenting the text. To do
+that we’re going to add a function <code class="docutils literal notranslate"><span class="pre">describe()</span></code> which we’ll use to print
+anything that is not related to getting input.</p>
+<p>Add a <code class="docutils literal notranslate"><span class="pre">describe()</span></code> function</p>
+<div class="literal-block-wrapper docutils container" id="id20">
+<div class="code-block-caption"><span class="caption-number">Listing 464 </span><span class="caption-text">dragon_realm.py: describe()</span><a class="headerlink" href="#id20" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">describe</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+<span class="linenos">2</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Then change your <code class="docutils literal notranslate"><span class="pre">intro()</span></code> function to call it instead of <code class="docutils literal notranslate"><span class="pre">print()</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id21">
+<div class="code-block-caption"><span class="caption-number">Listing 465 </span><span class="caption-text">dragon_realm.py: intro()</span><a class="headerlink" href="#id21" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">intro</span><span class="p">():</span>
+<span class="linenos">2</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Display the introduction description to the player&quot;&quot;&quot;</span>
+<span class="hll"><span class="linenos">3</span>    <span class="n">describe</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;You are in a land full of dragons. In front of you,</span>
+</span><span class="linenos">4</span><span class="s2">you see two caves. In one cave, the dragon is friendly</span>
+<span class="linenos">5</span><span class="s2">and will share his treasure with you. The other dragon</span>
+<span class="linenos">6</span><span class="s2">is greedy and hungry, and will eat you on sight.</span><span class="se">\n</span><span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>And call <code class="docutils literal notranslate"><span class="pre">describe()</span></code> in <code class="docutils literal notranslate"><span class="pre">enter()</span></code></p>
+<div class="literal-block-wrapper docutils container" id="id22">
+<div class="code-block-caption"><span class="caption-number">Listing 466 </span><span class="caption-text">dragon_realm.py: enter()</span><a class="headerlink" href="#id22" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">def</span> <span class="nf">enter</span><span class="p">(</span><span class="n">cave</span><span class="p">):</span>
+<span class="linenos"> 2</span>    <span class="n">messages</span> <span class="o">=</span> <span class="p">[</span>
+<span class="linenos"> 3</span>        <span class="s2">&quot;You approach the cave...&quot;</span><span class="p">,</span>
+<span class="linenos"> 4</span>        <span class="s2">&quot;It is dark and spooky...&quot;</span><span class="p">,</span>
+<span class="linenos"> 5</span>        <span class="s2">&quot;A large dragon jumps out in front of you!&quot;</span><span class="p">,</span>
+<span class="linenos"> 6</span>        <span class="s2">&quot;He opens his jaws and...&quot;</span><span class="p">,</span>
+<span class="linenos"> 7</span>    <span class="p">]</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span>    <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">:</span>
+<span class="hll"><span class="linenos">10</span>        <span class="n">describe</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+</span><span class="linenos">11</span>        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">DELAY</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="part-6-wrap-text-using-the-textwrap-module">
+<h2><a class="toc-backref" href="#contents">Part 6: Wrap text using the <code class="docutils literal notranslate"><span class="pre">textwrap</span></code> module</a><a class="headerlink" href="#part-6-wrap-text-using-the-textwrap-module" title="Permalink to this headline">#</a></h2>
+<div class="float-right docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/dragonrealm/dragon_realm_part6.py"><span>dragon_realm.py</span></a></p>
+</div>
+<p>That looks nicer, but the intro looks funky because only the first line is
+indented. Let’s fix that by using the <code class="docutils literal notranslate"><span class="pre">textwrap</span></code> module’s <code class="docutils literal notranslate"><span class="pre">wrap()</span></code> function. It
+takes two arguments, the string to wrap, and the width to wrap it to. It
+returns a list where each item in the list is one line of the string.</p>
+<p>Import the <code class="docutils literal notranslate"><span class="pre">textwrap</span></code> module</p>
+<div class="literal-block-wrapper docutils container" id="id23">
+<div class="code-block-caption"><span class="caption-number">Listing 467 </span><span class="caption-text">dragon_realm.py: imports</span><a class="headerlink" href="#id23" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">2</span><span class="sd">Dragon Realm - A game where the player decides between two caves, which hold</span>
+<span class="linenos">3</span><span class="sd">  either treasure or certain doom.</span>
+<span class="linenos">4</span><span class="sd">  Inspired by: http://inventwithpython.com/invent4thed/chapter5.html</span>
+<span class="linenos">5</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">6</span>
+<span class="linenos">7</span><span class="kn">import</span> <span class="nn">time</span>
+<span class="hll"><span class="linenos">8</span><span class="kn">import</span> <span class="nn">textwrap</span>
+</span></pre></div>
+</div>
+</div>
+<p>Add a global variable <code class="docutils literal notranslate"><span class="pre">WRAP</span></code></p>
+<div class="literal-block-wrapper docutils container" id="id24">
+<div class="code-block-caption"><span class="caption-number">Listing 468 </span><span class="caption-text">dragon_realm.py: global variables</span><a class="headerlink" href="#id24" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 2</span><span class="sd">Dragon Realm - A game where the player decides between two caves, which hold</span>
+<span class="linenos"> 3</span><span class="sd">  either treasure or certain doom.</span>
+<span class="linenos"> 4</span><span class="sd">  Inspired by: http://inventwithpython.com/invent4thed/chapter5.html</span>
+<span class="linenos"> 5</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="kn">import</span> <span class="nn">time</span>
+<span class="linenos"> 8</span><span class="kn">import</span> <span class="nn">textwrap</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="n">WIDTH</span> <span class="o">=</span> <span class="mi">58</span>
+<span class="hll"><span class="linenos">11</span><span class="n">WRAP</span> <span class="o">=</span> <span class="mi">50</span>
+</span><span class="linenos">12</span><span class="n">DELAY</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="linenos">13</span><span class="n">CAVES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="s2">&quot;left&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>Then change your <code class="docutils literal notranslate"><span class="pre">describe()</span></code> function</p>
+<div class="literal-block-wrapper docutils container" id="id25">
+<div class="code-block-caption"><span class="caption-number">Listing 469 </span><span class="caption-text">dragon_realm.py: describe()</span><a class="headerlink" href="#id25" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">describe</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+<span class="hll"><span class="linenos">2</span>    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">textwrap</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">WRAP</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">3</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">wrap()</span></code> function strips trailing newlines so we’ll need to change the
+<code class="docutils literal notranslate"><span class="pre">intro()</span></code> function. Remove the <code class="docutils literal notranslate"><span class="pre">\n</span></code> and add a <code class="docutils literal notranslate"><span class="pre">print()</span></code> statement to the end of
+the function.</p>
+<div class="literal-block-wrapper docutils container" id="id26">
+<div class="code-block-caption"><span class="caption-number">Listing 470 </span><span class="caption-text">dragon_realm.py: intro()</span><a class="headerlink" href="#id26" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">intro</span><span class="p">():</span>
+<span class="linenos">2</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Display the introduction description to the player&quot;&quot;&quot;</span>
+<span class="linenos">3</span>    <span class="n">describe</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;You are in a land full of dragons. In front of you,</span>
+<span class="linenos">4</span><span class="s2">you see two caves. In one cave, the dragon is friendly</span>
+<span class="linenos">5</span><span class="s2">and will share his treasure with you. The other dragon</span>
+<span class="hll"><span class="linenos">6</span><span class="s2">is greedy and hungry, and will eat you on sight.&quot;&quot;&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">7</span>    <span class="nb">print</span><span class="p">()</span>
+</span></pre></div>
+</div>
+</div>
+</section>
+<section id="part-7-pick-the-friendly-dragon">
+<h2><a class="toc-backref" href="#contents">Part 7: Pick the Friendly Dragon</a><a class="headerlink" href="#part-7-pick-the-friendly-dragon" title="Permalink to this headline">#</a></h2>
+<div class="float-right docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/dragonrealm/dragon_realm_part7.py"><span>dragon_realm.py</span></a></p>
+</div>
+<p>Next we need to randomly pick a dragon to be the friendly one.</p>
+<p>Import the <code class="docutils literal notranslate"><span class="pre">random</span></code> module</p>
+<div class="literal-block-wrapper docutils container" id="id27">
+<div class="code-block-caption"><span class="caption-number">Listing 471 </span><span class="caption-text">dragon_realm.py: imports</span><a class="headerlink" href="#id27" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">2</span><span class="sd">Dragon Realm - A game where the player decides between two caves, which hold</span>
+<span class="linenos">3</span><span class="sd">  either treasure or certain doom.</span>
+<span class="linenos">4</span><span class="sd">  Inspired by: http://inventwithpython.com/invent4thed/chapter5.html</span>
+<span class="linenos">5</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">6</span>
+<span class="linenos">7</span><span class="kn">import</span> <span class="nn">time</span>
+<span class="linenos">8</span><span class="kn">import</span> <span class="nn">textwrap</span>
+<span class="hll"><span class="linenos">9</span><span class="kn">import</span> <span class="nn">random</span>
+</span></pre></div>
+</div>
+</div>
+<p>Add a <code class="docutils literal notranslate"><span class="pre">is_friendly()</span></code> function</p>
+<div class="literal-block-wrapper docutils container" id="id28">
+<div class="code-block-caption"><span class="caption-number">Listing 472 </span><span class="caption-text">dragon_realm.py: is_friendly()</span><a class="headerlink" href="#id28" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">is_friendly</span><span class="p">(</span><span class="n">dragon</span><span class="p">):</span>
+<span class="linenos">2</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Return True if dragon is in the randomly chosen friendly one&quot;&quot;&quot;</span>
+<span class="linenos">3</span>    <span class="n">friendly</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="linenos">4</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The friendly dragon is:&quot;</span><span class="p">,</span> <span class="n">CAVES</span><span class="p">[</span><span class="n">friendly</span><span class="p">])</span>
+<span class="linenos">5</span>    <span class="k">return</span> <span class="n">dragon</span> <span class="o">==</span> <span class="n">CAVES</span><span class="p">[</span><span class="n">friendly</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>Add a line to the end of your <code class="docutils literal notranslate"><span class="pre">enter()</span></code> function to save the resulting value</p>
+<div class="literal-block-wrapper docutils container" id="id29">
+<div class="code-block-caption"><span class="caption-number">Listing 473 </span><span class="caption-text">dragon_realm.py: enter()</span><a class="headerlink" href="#id29" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">def</span> <span class="nf">enter</span><span class="p">(</span><span class="n">cave</span><span class="p">):</span>
+<span class="linenos"> 2</span>    <span class="n">messages</span> <span class="o">=</span> <span class="p">[</span>
+<span class="linenos"> 3</span>        <span class="s2">&quot;You approach the cave...&quot;</span><span class="p">,</span>
+<span class="linenos"> 4</span>        <span class="s2">&quot;It is dark and spooky...&quot;</span><span class="p">,</span>
+<span class="linenos"> 5</span>        <span class="s2">&quot;A large dragon jumps out in front of you!&quot;</span><span class="p">,</span>
+<span class="linenos"> 6</span>        <span class="s2">&quot;He opens his jaws and...&quot;</span><span class="p">,</span>
+<span class="linenos"> 7</span>    <span class="p">]</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span>    <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">:</span>
+<span class="linenos">10</span>        <span class="n">describe</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+<span class="linenos">11</span>        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">DELAY</span><span class="p">)</span>
+<span class="linenos">12</span>
+<span class="hll"><span class="linenos">13</span>    <span class="n">nature</span> <span class="o">=</span> <span class="n">is_friendly</span><span class="p">(</span><span class="n">cave</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+<section id="part-7-1-accessing-list-elements">
+<h3><a class="toc-backref" href="#contents">Part 7.1 Accessing List Elements</a><a class="headerlink" href="#part-7-1-accessing-list-elements" title="Permalink to this headline">#</a></h3>
+<p>You may recall that dictionaries have keys. Dictionary elements can be accessed
+by adding square brackets to the end of the variable name containing the key.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">car</span> <span class="o">=</span> <span class="p">{</span>
+<span class="go">  &quot;brand&quot;: &quot;Ford&quot;,</span>
+<span class="go">  &quot;model&quot;: &quot;Mustang&quot;,</span>
+<span class="go">  &quot;year&quot;: 1964</span>
+<span class="go">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">car</span><span class="p">[</span><span class="s2">&quot;brand&quot;</span><span class="p">])</span>
+<span class="go">Ford</span>
+</pre></div>
+</div>
+<p>List elements have an <em><strong>index number</strong></em> which always starts at <code class="docutils literal notranslate"><span class="pre">0</span></code> and
+increases for each element in the list. List elements can be accessed by their
+index number the same way that dictionary elements can. Since the index is
+always a number, don’t use quotes.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">brands</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;Ford&quot;</span><span class="p">,</span> <span class="s2">&quot;Chevrolet&quot;</span><span class="p">,</span> <span class="s2">&quot;Honda&quot;</span> <span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">brands</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="go">Chevrolet</span>
+</pre></div>
+</div>
+<p>List elements are in the order they are added in, unless changed by the
+programmer.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">letters</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span> <span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">letters</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">3</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">letters</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span> <span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">letters</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="go">z</span>
+</pre></div>
+</div>
+<p>The CAVES list defined earlier contains the elements <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">&quot;right&quot;,</span> <span class="pre">&quot;left&quot;</span> <span class="pre">]</span></code>, which means that the value of <code class="docutils literal notranslate"><span class="pre">CAVES[0]</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;right&quot;</span></code> and the value of
+<code class="docutils literal notranslate"><span class="pre">CAVES[1]</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;left&quot;</span></code>.</p>
+<p>Here we generate a random number between <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">1</span></code> to use as the index in the
+<code class="docutils literal notranslate"><span class="pre">CAVES</span></code> list, so <code class="docutils literal notranslate"><span class="pre">CAVES[friendly]</span></code> will be either <code class="docutils literal notranslate"><span class="pre">&quot;right&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;left&quot;</span></code>.</p>
+<p>Then we compare it to the value of <code class="docutils literal notranslate"><span class="pre">dragon</span></code>. <code class="docutils literal notranslate"><span class="pre">dragon</span> <span class="pre">==</span> <span class="pre">CAVES[friendly]</span></code> will
+resolve to either <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>. That is the value that the function
+returns.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span>    <span class="n">friendly</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The friendly dragon is:&quot;</span><span class="p">,</span> <span class="n">CAVES</span><span class="p">[</span><span class="n">friendly</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">dragon</span> <span class="o">==</span> <span class="n">CAVES</span><span class="p">[</span><span class="n">friendly</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="part-8-the-dragon-acts">
+<h2><a class="toc-backref" href="#contents">Part 8: The Dragon Acts</a><a class="headerlink" href="#part-8-the-dragon-acts" title="Permalink to this headline">#</a></h2>
+<div class="float-right docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/dragonrealm/dragon_realm_part8.py"><span>dragon_realm.py</span></a></p>
+</div>
+<p>Finally, we’ll tell the player what the dragon does.</p>
+<p><strong>Edit Your Script</strong></p>
+<p>Add a <code class="docutils literal notranslate"><span class="pre">dragon()</span></code> function</p>
+<div class="literal-block-wrapper docutils container" id="id30">
+<div class="code-block-caption"><span class="caption-number">Listing 474 </span><span class="caption-text">dragon_realm.py: dragon()</span><a class="headerlink" href="#id30" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">def</span> <span class="nf">dragon</span><span class="p">(</span><span class="n">is_friendly</span><span class="p">):</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Print the dragon action for a friendly or unfriendly dragon&quot;&quot;&quot;</span>
+<span class="linenos"> 3</span>    <span class="n">actions</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos"> 4</span>        <span class="c1"># friendlyness: action</span>
+<span class="linenos"> 5</span>        <span class="kc">True</span><span class="p">:</span> <span class="s2">&quot;Gives you his treasure!&quot;</span><span class="p">,</span>
+<span class="linenos"> 6</span>        <span class="kc">False</span><span class="p">:</span> <span class="s2">&quot;Gobbles you down in one bite!&quot;</span><span class="p">,</span>
+<span class="linenos"> 7</span>    <span class="p">}</span>
+<span class="linenos"> 8</span>    <span class="nb">print</span><span class="p">()</span>
+<span class="linenos"> 9</span>    <span class="n">describe</span><span class="p">(</span><span class="n">actions</span><span class="p">[</span><span class="n">is_friendly</span><span class="p">])</span>
+<span class="linenos">10</span>    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>Add a line to the end of your <code class="docutils literal notranslate"><span class="pre">enter()</span></code> function to call it</p>
+<div class="literal-block-wrapper docutils container" id="id31">
+<div class="code-block-caption"><span class="caption-number">Listing 475 </span><span class="caption-text">dragon_realm.py: enter()</span><a class="headerlink" href="#id31" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">def</span> <span class="nf">enter</span><span class="p">(</span><span class="n">cave</span><span class="p">):</span>
+<span class="linenos"> 2</span>    <span class="n">messages</span> <span class="o">=</span> <span class="p">[</span>
+<span class="linenos"> 3</span>        <span class="s2">&quot;You approach the cave...&quot;</span><span class="p">,</span>
+<span class="linenos"> 4</span>        <span class="s2">&quot;It is dark and spooky...&quot;</span><span class="p">,</span>
+<span class="linenos"> 5</span>        <span class="s2">&quot;A large dragon jumps out in front of you!&quot;</span><span class="p">,</span>
+<span class="linenos"> 6</span>        <span class="s2">&quot;He opens his jaws and...&quot;</span><span class="p">,</span>
+<span class="linenos"> 7</span>    <span class="p">]</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span>    <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">:</span>
+<span class="linenos">10</span>        <span class="n">describe</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+<span class="linenos">11</span>        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">DELAY</span><span class="p">)</span>
+<span class="linenos">12</span>
+<span class="hll"><span class="linenos">13</span>    <span class="n">nature</span> <span class="o">=</span> <span class="n">is_friendly</span><span class="p">(</span><span class="n">cave</span><span class="p">)</span>
+</span><span class="linenos">14</span>    <span class="n">dragon</span><span class="p">(</span><span class="n">nature</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Finally, remove or comment out the <code class="docutils literal notranslate"><span class="pre">print()</span></code> line in your <code class="docutils literal notranslate"><span class="pre">is_friendly()</span></code> function</p>
+<div class="literal-block-wrapper docutils container" id="id32">
+<div class="code-block-caption"><span class="caption-number">Listing 476 </span><span class="caption-text">dragon_realm.py: is_friendly()</span><a class="headerlink" href="#id32" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">is_friendly</span><span class="p">(</span><span class="n">dragon</span><span class="p">):</span>
+<span class="linenos">2</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Return True if dragon is in the randomly chosen friendly one&quot;&quot;&quot;</span>
+<span class="linenos">3</span>    <span class="n">friendly</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="hll"><span class="linenos">4</span>    <span class="c1">#  print(&quot;The friendly dragon is:&quot;, CAVES[friendly])</span>
+</span><span class="linenos">5</span>    <span class="k">return</span> <span class="n">dragon</span> <span class="o">==</span> <span class="n">CAVES</span><span class="p">[</span><span class="n">friendly</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<section id="part-8-1-dictionary-keys">
+<h3><a class="toc-backref" href="#contents">Part 8.1: Dictionary Keys</a><a class="headerlink" href="#part-8-1-dictionary-keys" title="Permalink to this headline">#</a></h3>
+<p>In the past we’ve used strings for dictionary keys, but other types can be other
+keys too.</p>
+<p>Ints and Floats can be keys.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dewey</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span>  <span class="mi">610</span><span class="p">:</span> <span class="s2">&quot;Medicine &amp; health&quot;</span><span class="p">,</span>
+<span class="gp">... </span>  <span class="mf">610.3</span><span class="p">:</span> <span class="s2">&quot;Medical encyclopedias&quot;</span><span class="p">,</span>
+<span class="gp">... </span>  <span class="mf">610.6</span><span class="p">:</span> <span class="s2">&quot;Medical organizations &amp; professions&quot;</span><span class="p">,</span>
+<span class="gp">... </span>  <span class="mf">610.72</span><span class="p">:</span> <span class="s2">&quot;Medical research&quot;</span><span class="p">,</span>
+<span class="gp">... </span>  <span class="mf">610.9</span><span class="p">:</span> <span class="s2">&quot;Geography and history of medicine&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dewey</span><span class="p">[</span><span class="mi">610</span><span class="p">]</span>
+<span class="go">&#39;Medicine &amp; health&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dewey</span><span class="p">[</span><span class="mf">610.6</span><span class="p">]</span>
+<span class="go">&#39;Medical organizations &amp; professions&#39;</span>
+</pre></div>
+</div>
+<p>Booleans can be keys</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span> <span class="kc">True</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span> <span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="kc">True</span><span class="p">]</span>
+<span class="go">&#39;true&#39;</span>
+</pre></div>
+</div>
+<p>However, <code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span></code> are equal to <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">0</span></code> respectively, so you can’t
+mix them.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span> <span class="kc">True</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;zero&quot;</span> <span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="kc">True</span><span class="p">]</span>
+<span class="go">&#39;one&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="kc">False</span><span class="p">]</span>
+<span class="go">&#39;zero&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">&#39;one&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">&#39;zero&#39;</span>
+</pre></div>
+</div>
+<p>Here we’re using booleans as keys in the <code class="docutils literal notranslate"><span class="pre">actions</span></code> dictionary, then looking
+them up using <code class="docutils literal notranslate"><span class="pre">actions[is_friendly]</span></code>.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span>    <span class="n">actions</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="c1"># friendlyness: action</span>
+        <span class="kc">True</span><span class="p">:</span> <span class="s2">&quot;Gives you his treasure!&quot;</span><span class="p">,</span>
+        <span class="kc">False</span><span class="p">:</span> <span class="s2">&quot;Gobbles you down in one bite!&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>We could have written the dictionary like this:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span>    <span class="n">actions</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;friendly&quot;</span><span class="p">:</span> <span class="s2">&quot;Gives you his treasure!&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;unfriendly&quot;</span><span class="p">:</span> <span class="s2">&quot;Gobbles you down in one bite!&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>But then we would have had to add an if-statement based on the boolean value of
+the <code class="docutils literal notranslate"><span class="pre">is_friendly</span></code> variable.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="make-it-your-own">
+<h2><a class="toc-backref" href="#contents">Make it Your Own</a><a class="headerlink" href="#make-it-your-own" title="Permalink to this headline">#</a></h2>
+<p>Change the game to make it your own. Here are some ideas.</p>
+<ul class="simple">
+<li><p>Add a third cave in the middle with a silly dragon who does a little jig.</p></li>
+<li><p>Make a dictionary for each dragon and give them other details like names,
+colors, sizes, if they breath fire. Print the additional values when you walk
+in the cave.</p></li>
+<li><p>If the player gets treasure from the dragon, add another level to the game.
+Perhaps the player encounters a well and can either make a wish with coin, or
+take a drink. Randomly decide if the wish is granted, or if the water is
+poisoned.</p></li>
+<li><p>Add a rarely occurring event that may sometimes take place instead of the
+usual friendly/unfriendly actions. Perhaps the dragon transforms into a toad,
+or it falls in love with you. Calculate it by using some datetime information
+(like, it only occurs on Friday the 13th or after midnight on odd numbered
+days) combined with some randomness.</p></li>
+</ul>
+</section>
+<section id="what-we-ve-learned">
+<h2><a class="toc-backref" href="#contents">What We’ve Learned</a><a class="headerlink" href="#what-we-ve-learned" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>The shebang</p></li>
+<li><p>Docstrings as documentation</p></li>
+<li><p>Scope, <code class="docutils literal notranslate"><span class="pre">main()</span></code>, and global variables</p></li>
+<li><p>Docstrings as multi-line strings</p></li>
+<li><p>Objects</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">str.lower()</span></code>, <code class="docutils literal notranslate"><span class="pre">time.sleep()</span></code> and <code class="docutils literal notranslate"><span class="pre">textwrap.wrap()</span></code></p></li>
+<li><p>Repeating strings with <code class="docutils literal notranslate"><span class="pre">*</span></code></p></li>
+<li><p>Escape characters and <code class="docutils literal notranslate"><span class="pre">\n</span></code></p></li>
+<li><p>Method chaining</p></li>
+<li><p>List indexes and more dictionary key types</p></li>
+<li><p>Conditional expressions evaluate to boolean values</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">not</span></code>, <code class="docutils literal notranslate"><span class="pre">in</span></code> and <code class="docutils literal notranslate"><span class="pre">or</span></code> operators</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "alissa-huskey/python-class",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lessons"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="03_guess_the_number.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Chapter 3: Guess the Number</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../practices/problem-solving.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Problem Solving</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

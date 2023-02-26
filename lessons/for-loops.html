@@ -389,8 +389,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="05_dragon_realm.html">
-     Chapter 5: Dragon Realm
+    <a class="reference internal" href="dragon-realm.html">
+     Dragon Realm
     </a>
    </li>
   </ul>
@@ -1053,58 +1053,65 @@ title="Edit this page"
 <h1>For Loops<a class="headerlink" href="#for-loops" title="Permalink to this headline">#</a></h1>
 <p>A <code class="docutils literal notranslate"><span class="pre">while</span></code> loop continues for as long as a condition is met, a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop on the
 other hand repeats for every element in an iterable.</p>
-<div class="contents local topic" id="table-of-contents">
-<p class="topic-title">Table of Contents</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Table of Contents<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#part-1-syntax" id="id18">Part 1: Syntax</a></p>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-1-syntax" id="id18">Part 1: Syntax</a></p>
 <ul>
-<li><p><a class="reference internal" href="#part-1-1-exercise" id="id19">Part 1.1: Exercise</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-1-1-exercise" id="id19">Part 1.1: Exercise</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#part-2-iterables-and-iterators" id="id20">Part 2: Iterables and iterators</a></p>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-2-iterables-and-iterators" id="id20">Part 2: Iterables and iterators</a></p>
 <ul>
-<li><p><a class="reference internal" href="#part-2-1-exercise" id="id21">Part 2.1: Exercise</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-2-1-exercise" id="id21">Part 2.1: Exercise</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#part-3-under-the-hood" id="id22">Part 3: Under the hood</a></p>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-3-under-the-hood" id="id22">Part 3: Under the hood</a></p>
 <ul>
-<li><p><a class="reference internal" href="#part-3-1-exercise" id="id23">Part 3.1: Exercise</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-3-1-exercise" id="id23">Part 3.1: Exercise</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#part-4-multiple-assignment" id="id24">Part 4: Multiple assignment</a></p>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-4-multiple-assignment" id="id24">Part 4: Multiple assignment</a></p>
 <ul>
-<li><p><a class="reference internal" href="#part-4-1-exercise" id="id25">Part 4.1: Exercise</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-4-1-exercise" id="id25">Part 4.1: Exercise</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#part-5-incrementing" id="id26">Part 5: Incrementing</a></p>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-5-incrementing" id="id26">Part 5: Incrementing</a></p>
 <ul>
-<li><p><a class="reference internal" href="#part-5-1-exercise" id="id27">Part 5.1: Exercise</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-5-1-exercise" id="id27">Part 5.1: Exercise</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#part-6-comparing-loops" id="id28">Part 6: Comparing loops</a></p>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-6-comparing-loops" id="id28">Part 6: Comparing loops</a></p>
 <ul>
-<li><p><a class="reference internal" href="#part-6-1-list-iteration-with-next" id="id29">Part 6.1: list iteration with <code class="docutils literal notranslate"><span class="pre">next()</span></code></a></p></li>
-<li><p><a class="reference internal" href="#part-6-2-range-iteration-with-next" id="id30">Part 6.2: range iteration with <code class="docutils literal notranslate"><span class="pre">next()</span></code></a></p></li>
-<li><p><a class="reference internal" href="#part-6-3-list-iteration-with-subscription" id="id31">Part 6.3: list iteration with subscription</a></p></li>
-<li><p><a class="reference internal" href="#part-6-4-string-iteration-with-subscription" id="id32">Part 6.4: string iteration with subscription</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-6-1-list-iteration-with-next" id="id29">Part 6.1: list iteration with <code class="docutils literal notranslate"><span class="pre">next()</span></code></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-6-2-range-iteration-with-next" id="id30">Part 6.2: range iteration with <code class="docutils literal notranslate"><span class="pre">next()</span></code></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-6-3-list-iteration-with-subscription" id="id31">Part 6.3: list iteration with subscription</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-6-4-string-iteration-with-subscription" id="id32">Part 6.4: string iteration with subscription</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#part-7-exercises" id="id33">Part 7: Exercises</a></p>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-7-exercises" id="id33">Part 7: Exercises</a></p>
 <ul>
-<li><p><a class="reference internal" href="#part-7-1-game-skills" id="id34">Part 7.1: Game Skills</a></p></li>
-<li><p><a class="reference internal" href="#part-7-2-weekdays" id="id35">Part 7.2: Weekdays</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-7-1-game-skills" id="id34">Part 7.1: Game Skills</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#part-7-2-weekdays" id="id35">Part 7.2: Weekdays</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#reference" id="id36">Reference</a></p>
+<li><p class="sd-card-text"><a class="reference internal" href="#reference" id="id36">Reference</a></p>
 <ul>
-<li><p><a class="reference internal" href="#glossary" id="id37">Glossary</a></p></li>
-<li><p><a class="reference internal" href="#see-also" id="id38">See also</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#glossary" id="id37">Glossary</a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="#see-also" id="id38">See also</a></p></li>
 </ul>
 </li>
 </ul>
 </div>
-<section id="part-1-syntax">
-<h2><a class="toc-backref" href="#id18">Part 1: Syntax</a><a class="headerlink" href="#part-1-syntax" title="Permalink to this headline">#</a></h2>
+</div>
+</details><section id="part-1-syntax">
+<h2><a class="toc-backref" href="#contents">Part 1: Syntax</a><a class="headerlink" href="#part-1-syntax" title="Permalink to this headline">#</a></h2>
 <p>The syntax for a for loop is:</p>
 <div class="row"><div class="col-5 left-col-5">
 <pre class="literal-block"><code class="samp docutils literal notranslate"><span class="pre">for</span> <em><span class="pre">VAR</span></em> <span class="pre">in</span> <em><span class="pre">ITERABLE</span></em><span class="pre">:</span></code>
@@ -1118,7 +1125,7 @@ other hand repeats for every element in an iterable.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">VAR</span></code></p></td>
-<td><p>variable name (or comma-seperated list of names) to assign each item to</p></td>
+<td><p>variable name (or comma-separated list of names) to assign each item to</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ITERABLE</span></code></p></td>
 <td><p>object to iterate over.</p></td>
@@ -1139,7 +1146,7 @@ other hand repeats for every element in an iterable.</p>
 </div>
 </div>
 <section id="part-1-1-exercise">
-<h3><a class="toc-backref" href="#id19">Part 1.1: Exercise</a><a class="headerlink" href="#part-1-1-exercise" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 1.1: Exercise</a><a class="headerlink" href="#part-1-1-exercise" title="Permalink to this headline">#</a></h3>
 <div class="exercise admonition" id="movies-exercise">
 
 <p class="admonition-title"><span class="caption-number">Exercise 29 </span> (Movies)</p>
@@ -1171,9 +1178,9 @@ other hand repeats for every element in an iterable.</p>
 </section>
 </section>
 <section id="part-2-iterables-and-iterators">
-<h2><a class="toc-backref" href="#id20">Part 2: Iterables and iterators</a><a class="headerlink" href="#part-2-iterables-and-iterators" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#contents">Part 2: Iterables and iterators</a><a class="headerlink" href="#part-2-iterables-and-iterators" title="Permalink to this headline">#</a></h2>
 <p>Some objects in Python are <a class="reference internal" href="#term-iterable"><span class="xref std std-term">iterable</span></a>–that is, an object that can be
-itereated over. For example, <code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">tuple</span></code> and <code class="docutils literal notranslate"><span class="pre">range</span></code> objects are all
+iterated over. For example, <code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">tuple</span></code> and <code class="docutils literal notranslate"><span class="pre">range</span></code> objects are all
 iterable.</p>
 <p>All iterables can be converted to an <a class="reference internal" href="#term-iterator"><span class="xref std std-term">iterator</span></a>, which is an object that
 will keep returning elements until there are no more left.</p>
@@ -1243,7 +1250,7 @@ encounter a <code class="docutils literal notranslate"><span class="pre">StopIte
 </div>
 </div>
 <section id="part-2-1-exercise">
-<h3><a class="toc-backref" href="#id21">Part 2.1: Exercise</a><a class="headerlink" href="#part-2-1-exercise" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 2.1: Exercise</a><a class="headerlink" href="#part-2-1-exercise" title="Permalink to this headline">#</a></h3>
 <div class="exercise admonition" id="iterator-exercise">
 
 <p class="admonition-title"><span class="caption-number">Exercise 30 </span> (Iterators)</p>
@@ -1294,7 +1301,7 @@ encounter a <code class="docutils literal notranslate"><span class="pre">StopIte
 </section>
 </section>
 <section id="part-3-under-the-hood">
-<h2><a class="toc-backref" href="#id22">Part 3: Under the hood</a><a class="headerlink" href="#part-3-under-the-hood" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#contents">Part 3: Under the hood</a><a class="headerlink" href="#part-3-under-the-hood" title="Permalink to this headline">#</a></h2>
 <p>Now that you know what iterables and iterators are, we demystify for loops.</p>
 <p>Lets look at the syntax again.</p>
 <pre class="literal-block"><code class="samp docutils literal notranslate"><span class="pre">for</span> <em><span class="pre">VAR</span></em> <span class="pre">in</span> <em><span class="pre">ITERABLE</span></em><span class="pre">:</span></code>
@@ -1371,7 +1378,7 @@ House Tyrell
 </div>
 </div>
 <p>This is close, but we’re still seeing that <code class="docutils literal notranslate"><span class="pre">StopIteration</span></code> exception. To
-supress it we’ll need a try-except block.</p>
+suppress it we’ll need a try-except block.</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create iterator</span>
@@ -1456,7 +1463,7 @@ House Tyrell
 </div>
 </div></div>
 <section id="part-3-1-exercise">
-<h3><a class="toc-backref" href="#id23">Part 3.1: Exercise</a><a class="headerlink" href="#part-3-1-exercise" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 3.1: Exercise</a><a class="headerlink" href="#part-3-1-exercise" title="Permalink to this headline">#</a></h3>
 <div class="exercise admonition" id="characters-exercise">
 
 <p class="admonition-title"><span class="caption-number">Exercise 31 </span> (Game Characters)</p>
@@ -1511,7 +1518,7 @@ House Tyrell
 </section>
 </section>
 <section id="part-4-multiple-assignment">
-<h2><a class="toc-backref" href="#id24">Part 4: Multiple assignment</a><a class="headerlink" href="#part-4-multiple-assignment" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#contents">Part 4: Multiple assignment</a><a class="headerlink" href="#part-4-multiple-assignment" title="Permalink to this headline">#</a></h2>
 <p>Depending on the type passed to it, <code class="docutils literal notranslate"><span class="pre">next()</span></code> may sometimes return more than one
 value. The classic example of this is <code class="samp docutils literal notranslate"><em><span class="pre">dict</span></em><span class="pre">.items()</span></code>.</p>
 <div class="cell docutils container">
@@ -1555,8 +1562,8 @@ assign this to a single variable, which will then contain the entire <code class
 </div>
 </div>
 <p>Or we could use <a class="reference internal" href="#term-multiple-assignment"><span class="xref std std-term">multiple assignment</span></a> to assign each item in the <code class="docutils literal notranslate"><span class="pre">tuple</span></code>
-to a cooresponding variable. There must be the same number of variables to the
-left of the <code class="docutils literal notranslate"><span class="pre">=</span></code> as there are items in the <code class="docutils literal notranslate"><span class="pre">tuple</span></code> seperated by <code class="docutils literal notranslate"><span class="pre">,</span></code>.</p>
+to a corresponding variable. There must be the same number of variables to the
+left of the <code class="docutils literal notranslate"><span class="pre">=</span></code> as there are items in the <code class="docutils literal notranslate"><span class="pre">tuple</span></code> separated by <code class="docutils literal notranslate"><span class="pre">,</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">suit</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">suites_iterator</span><span class="p">)</span>
@@ -1663,7 +1670,7 @@ The spade suit is black.
 </div>
 </div></div>
 <section id="part-4-1-exercise">
-<h3><a class="toc-backref" href="#id25">Part 4.1: Exercise</a><a class="headerlink" href="#part-4-1-exercise" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 4.1: Exercise</a><a class="headerlink" href="#part-4-1-exercise" title="Permalink to this headline">#</a></h3>
 <div class="exercise admonition" id="toolss-exercise">
 
 <p class="admonition-title"><span class="caption-number">Exercise 32 </span> (Game Tools)</p>
@@ -1721,7 +1728,7 @@ The spade suit is black.
 </section>
 </section>
 <section id="part-5-incrementing">
-<h2><a class="toc-backref" href="#id26">Part 5: Incrementing</a><a class="headerlink" href="#part-5-incrementing" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#contents">Part 5: Incrementing</a><a class="headerlink" href="#part-5-incrementing" title="Permalink to this headline">#</a></h2>
 <p>Sometimes we need to keep track of the number associated with each item in an
 iterable. One way to do this would be to increment a number each iteration.</p>
 <div class="cell docutils container">
@@ -1820,7 +1827,7 @@ second argument.</p>
 <p>But what happens if you want to enumerate an iterable that yields multiple
 items per iteration? Is it possible to assign the number and the other items to
 their respective variable names?</p>
-<p>Lets take a look at what happens when we pass a <code class="samp docutils literal notranslate"><em><span class="pre">dict</span></em><span class="pre">.items()</span></code> iteratable to
+<p>Lets take a look at what happens when we pass a <code class="samp docutils literal notranslate"><em><span class="pre">dict</span></em><span class="pre">.items()</span></code> treatable to
 <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1844,9 +1851,9 @@ their respective variable names?</p>
 </div>
 </div>
 </div>
-<p>The iterable now yields a tuple containing a the count, and each item is a
+<p>The iterable now yields a tuple containing the count, and each item is a
 tuple containing the key and value like so: <code class="samp docutils literal notranslate"><span class="pre">(</span><em><span class="pre">COUNT</span></em><span class="pre">,</span> <span class="pre">(</span><em><span class="pre">KEY</span></em><span class="pre">,</span> <em><span class="pre">VALUE</span></em><span class="pre">))</span></code></p>
-<p>To use this in a for loop, simply encose the key-value tuple in parenthesis.</p>
+<p>To use this in a for loop, simply enclose the key-value tuple in parenthesis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">suites</span> <span class="o">=</span> <span class="p">{</span>
@@ -1871,7 +1878,7 @@ tuple containing the key and value like so: <code class="samp docutils literal n
 </div>
 </div>
 <section id="part-5-1-exercise">
-<h3><a class="toc-backref" href="#id27">Part 5.1: Exercise</a><a class="headerlink" href="#part-5-1-exercise" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 5.1: Exercise</a><a class="headerlink" href="#part-5-1-exercise" title="Permalink to this headline">#</a></h3>
 <div class="exercise admonition" id="number-names-exercise">
 
 <p class="admonition-title"><span class="caption-number">Exercise 33 </span> (Number Names)</p>
@@ -1929,12 +1936,12 @@ In the for loop:</p>
 </section>
 </section>
 <section id="part-6-comparing-loops">
-<h2><a class="toc-backref" href="#id28">Part 6: Comparing loops</a><a class="headerlink" href="#part-6-comparing-loops" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#contents">Part 6: Comparing loops</a><a class="headerlink" href="#part-6-comparing-loops" title="Permalink to this headline">#</a></h2>
 <p>Lets do some side-by-side comparisons of the same code written as a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop
 and a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.</p>
 <p>On the left will be the <code class="docutils literal notranslate"><span class="pre">while</span></code> loop code and on the right will be the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop code.</p>
 <section id="part-6-1-list-iteration-with-next">
-<h3><a class="toc-backref" href="#id29">Part 6.1: list iteration with <code class="docutils literal notranslate"><span class="pre">next()</span></code></a><a class="headerlink" href="#part-6-1-list-iteration-with-next" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 6.1: list iteration with <code class="docutils literal notranslate"><span class="pre">next()</span></code></a><a class="headerlink" href="#part-6-1-list-iteration-with-next" title="Permalink to this headline">#</a></h3>
 <p>In this example we’ll iterate over a <code class="docutils literal notranslate"><span class="pre">colors</span></code> <code class="docutils literal notranslate"><span class="pre">list</span></code>.</p>
 <p>On the left we will use a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop to iterate over a <code class="docutils literal notranslate"><span class="pre">list</span></code> by converting
 it using the <code class="docutils literal notranslate"><span class="pre">iter()</span></code> function, then calling <code class="docutils literal notranslate"><span class="pre">next()</span></code> on the resulting
@@ -1967,7 +1974,7 @@ iterator.</p>
 </div></div>
 </section>
 <section id="part-6-2-range-iteration-with-next">
-<h3><a class="toc-backref" href="#id30">Part 6.2: range iteration with <code class="docutils literal notranslate"><span class="pre">next()</span></code></a><a class="headerlink" href="#part-6-2-range-iteration-with-next" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 6.2: range iteration with <code class="docutils literal notranslate"><span class="pre">next()</span></code></a><a class="headerlink" href="#part-6-2-range-iteration-with-next" title="Permalink to this headline">#</a></h3>
 <p>Lets do the same comparison with a <code class="docutils literal notranslate"><span class="pre">range</span></code> object.</p>
 <p>On the left we will use a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop to iterate over a <code class="docutils literal notranslate"><span class="pre">range</span></code> by converting
 it using the <code class="docutils literal notranslate"><span class="pre">iter()</span></code> function, then calling <code class="docutils literal notranslate"><span class="pre">next()</span></code> on the resulting
@@ -2000,7 +2007,7 @@ iterator.</p>
 </div></div>
 </section>
 <section id="part-6-3-list-iteration-with-subscription">
-<h3><a class="toc-backref" href="#id31">Part 6.3: list iteration with subscription</a><a class="headerlink" href="#part-6-3-list-iteration-with-subscription" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 6.3: list iteration with subscription</a><a class="headerlink" href="#part-6-3-list-iteration-with-subscription" title="Permalink to this headline">#</a></h3>
 <p>In this example we’ll iterate over the <code class="docutils literal notranslate"><span class="pre">colors</span></code> <code class="docutils literal notranslate"><span class="pre">list</span></code> as before, except now
 we’ll use an incrementing index number to get each element using
 <a class="reference internal" href="data-types/containers.html#term-bracket-notation"><span class="xref std std-term">bracket notation</span></a> or <a class="reference internal" href="data-types/containers.html#term-subscription"><span class="xref std std-term">subscription</span></a>.</p>
@@ -2036,9 +2043,9 @@ behavior.</p>
 </div></div>
 </section>
 <section id="part-6-4-string-iteration-with-subscription">
-<h3><a class="toc-backref" href="#id32">Part 6.4: string iteration with subscription</a><a class="headerlink" href="#part-6-4-string-iteration-with-subscription" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 6.4: string iteration with subscription</a><a class="headerlink" href="#part-6-4-string-iteration-with-subscription" title="Permalink to this headline">#</a></h3>
 <p>In this example we’ll iterate over each <code class="docutils literal notranslate"><span class="pre">letter</span></code> in the string <code class="docutils literal notranslate"><span class="pre">word</span></code> using
-bracket notaton.</p>
+bracket notation.</p>
 <div class="row"><div class="col">
 <div class="literal-block-wrapper docutils container" id="id14">
 <div class="code-block-caption"><span class="caption-number">Listing 89 </span><span class="caption-text">Bracket example D-1: <code class="docutils literal notranslate"><span class="pre">str</span></code> iteration via <code class="docutils literal notranslate"><span class="pre">while</span></code> loop</span><a class="headerlink" href="#id14" title="Permalink to this code">#</a></div>
@@ -2066,9 +2073,9 @@ bracket notaton.</p>
 </section>
 </section>
 <section id="part-7-exercises">
-<h2><a class="toc-backref" href="#id33">Part 7: Exercises</a><a class="headerlink" href="#part-7-exercises" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#contents">Part 7: Exercises</a><a class="headerlink" href="#part-7-exercises" title="Permalink to this headline">#</a></h2>
 <section id="part-7-1-game-skills">
-<h3><a class="toc-backref" href="#id34">Part 7.1: Game Skills</a><a class="headerlink" href="#part-7-1-game-skills" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 7.1: Game Skills</a><a class="headerlink" href="#part-7-1-game-skills" title="Permalink to this headline">#</a></h3>
 <div class="exercise admonition" id="skills-exercise">
 
 <p class="admonition-title"><span class="caption-number">Exercise 34 </span> (Game Skills)</p>
@@ -2125,7 +2132,7 @@ bracket notaton.</p>
 </div>
 </section>
 <section id="part-7-2-weekdays">
-<h3><a class="toc-backref" href="#id35">Part 7.2: Weekdays</a><a class="headerlink" href="#part-7-2-weekdays" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Part 7.2: Weekdays</a><a class="headerlink" href="#part-7-2-weekdays" title="Permalink to this headline">#</a></h3>
 <div class="exercise admonition" id="label-exercise">
 
 <p class="admonition-title"><span class="caption-number">Exercise 35 </span> (Weekdays)</p>
@@ -2173,9 +2180,9 @@ with seperated by vertical bars (<code class="docutils literal notranslate"><spa
 </section>
 </section>
 <section id="reference">
-<h2><a class="toc-backref" href="#id36">Reference</a><a class="headerlink" href="#reference" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#contents">Reference</a><a class="headerlink" href="#reference" title="Permalink to this headline">#</a></h2>
 <section id="glossary">
-<h3><a class="toc-backref" href="#id37">Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this headline">#</a></h3>
 <section id="glossary-for-loops">
 <h4>For Loops<a class="headerlink" href="#glossary-for-loops" title="Permalink to this headline">#</a></h4>
 <dl class="glossary simple">
@@ -2197,7 +2204,7 @@ For example: <br />
 </section>
 </section>
 <section id="see-also">
-<h3><a class="toc-backref" href="#id38">See also</a><a class="headerlink" href="#see-also" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#contents">See also</a><a class="headerlink" href="#see-also" title="Permalink to this headline">#</a></h3>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">

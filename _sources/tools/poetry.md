@@ -2,14 +2,8 @@
 Poetry
 ======
 
-```{contents}
-:backlinks: top
-:local:
-:depth: 2
-```
-
 Poetry is the go-to dependency management and packaging tool used by Python
-developers. It takes the long and compicated toolchain available in the Python
+developers. It takes the long and complicated toolchain available in the Python
 world and wraps it in a few easy to use best practices.
 
 [Poetry](https://python-poetry.org/docs) provides...
@@ -24,22 +18,8 @@ world and wraps it in a few easy to use best practices.
   like [PyPi](https://pypi.org/).
 ```
 
-:::{seealso}
-* [Poetry docs](https://python-poetry.org/docs)
-  Official Poetry documentation.
-
-* [Getting Started with Python Poetry](https://dev.to/bowmanjd/getting-started-with-python-poetry-3ica)
-  Article with a friendly Poetry intro, with both Windows and MacOS commands.
-
-* [Developing Python Projects with poetry](https://ron.sh/developing-python-projects-with-poetry/)
-  Article with a friendly Poetry intro, including a section on console scripts.
-
-* [Get started with pyenv & poetry](https://blog.jayway.com/2019/12/28/pyenv-poetry-saviours-in-the-python-chaos/)
-  Article with a friendly intro to both Poetry and pyenv.
-
-* Python projects with Poetry and VSCode [Part 1](https://www.pythoncheatsheet.org/blog/python-projects-with-poetry-and-vscode-part-1/)
-  Article covering installing Poetry, starting a project and managing dependencies.
-:::
+```{include} ../toc.md
+```
 
 :::{attention}
 Poetry does not manage installing or switching between Python versions.
@@ -611,4 +591,26 @@ caption: .vscode/settings.json
 
 * Python projects with Poetry and VSCode [Part 2](https://www.pythoncheatsheet.org/blog/python-projects-with-poetry-and-vscode-part-2/)
   Article covering starting and setting up VSCode when using Poetry.
+:::
+
+Reference
+---------
+
+### See also
+
+:::{seealso}
+* [Poetry docs](https://python-poetry.org/docs)
+  Official Poetry documentation.
+
+* [Getting Started with Python Poetry](https://dev.to/bowmanjd/getting-started-with-python-poetry-3ica)
+  Article with a friendly Poetry intro, with both Windows and MacOS commands.
+
+* [Developing Python Projects with poetry](https://ron.sh/developing-python-projects-with-poetry/)
+  Article with a friendly Poetry intro, including a section on console scripts.
+
+* [Get started with pyenv & poetry](https://blog.jayway.com/2019/12/28/pyenv-poetry-saviours-in-the-python-chaos/)
+  Article with a friendly intro to both Poetry and pyenv.
+
+* Python projects with Poetry and VSCode [Part 1](https://www.pythoncheatsheet.org/blog/python-projects-with-poetry-and-vscode-part-1/)
+  Article covering installing Poetry, starting a project and managing dependencies.
 :::

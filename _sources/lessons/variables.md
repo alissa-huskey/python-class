@@ -4,7 +4,7 @@ Variables
 A {term}`variable` is a container for storing data.
 
 Variables are made up of an {term}`identifier` and a {term}`value`. The
-identifer is the name, and the value is the data that is holds.
+identifier is the name, and the value is the data that is holds.
 
 To create a variable simply *assign* a value to it it, using the `=` operator.
 

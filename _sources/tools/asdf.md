@@ -3,13 +3,9 @@ asdf
 
 asdf is a command line tool that lets you easily install and switch between
 multiple versions of Python and other tools. It can replace a bunch of other
-tool-specific version managers like pyenv, rbenv, goenv and nvm.
+tool-specific version managers like pyenv, rbenv, goenv and nivm.
 
-
-```{contents} Table of Contents
-:backlinks: top
-:local:
-:depth: 2
+```{include} ../toc.md
 ```
 
 Install
@@ -73,7 +69,7 @@ with the `plugin add` command.
 $ asdf plugin add python
 ```
 
-Then then you can install the version or versons of the tool you need.
+Then then you can install the version or versions of the tool you need.
 
 ```{code-block} console
 :caption: command line
@@ -182,7 +178,7 @@ There are a couple of extra features provided by the asdf python plugin.
 If there are python modules that you want to be installed for every version of
 python, you can add them to the file `~/.default-python-packages`.
 
-For example, if you wanted to always install ipython you would put in the file:
+For example, if you wanted to always install IPython you would put in the file:
 
 ```{code-block} bash
 :caption: ~/.default-python-packages

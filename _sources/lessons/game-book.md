@@ -25,6 +25,6 @@ Chapter 5: Dragon Realm
 
 The player enters a dragon realm where they must choose between two caves.
 
-* [Lesson](05_dragon_realm.md)
+* [Lesson](dragon-realm.md)
 * [Book chapter](http://inventwithpython.com/invent4thed/chapter5.html)
 * {lesson}`dragonrealm/dragon_realm.py`
