@@ -1,17 +1,17 @@
 Given, When, Then
 =================
 
-```{contents}
-:backlinks: top
-:local:
+```{include} ../../toc.md
 ```
 
 ```{margin}
+
 :::{important}
 
-Be sure to go through the [](testing.md) lesson first if you haven't already.
+Be sure to go through the [](intro.md) lesson first if you haven't already.
 
 :::
+
 ```
 
 Introduction
