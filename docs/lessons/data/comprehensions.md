@@ -12,8 +12,7 @@ kernelspec:
 Comprehensions
 ==============
 
-```{contents}
-:local:
+```{include} ../../toc.md
 ```
 
 Part 1: List Comprehensions

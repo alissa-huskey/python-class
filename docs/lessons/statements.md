@@ -12,6 +12,9 @@ kernelspec:
 Statements
 ==========
 
+```{include} ../toc.md
+```
+
 A {term}`statement` is an instruction that Python can run or {term}`execute` as
 a unit.
 
@@ -132,7 +135,7 @@ import random; num = random.randint(1, 10)
 Compound Statements
 -------------------
 
-A {term}`compound statement` is a a number of statements grouped together as a
+A {term}`compound statement` is a number of statements grouped together as a
 single unit.  If a simple statement like a sentence, a compound statement is
 more like a paragraph.
 
@@ -152,7 +155,7 @@ def welcome_player():
 A compound statement is made up of at least one {term}`header` statement and
 the group of statements, called a {term}`suite`, that belong to it.
 
-A header statement always starts with a a keyword (like `def` or `if`) and ends
+A header statement always starts with a keyword (like `def` or `if`) and ends
 in a `:`. This header tells Python that a compound statement has started, that
 it is in charge of all of the indented lines to follow, and how and when they
 should be executed.
@@ -253,7 +256,7 @@ of overlap.
 
 One way to think of it is:
 
-  * if you can save the the result of the code to a variable, then it is an expression
+  * if you can save the result of the code to a variable, then it is an expression
   * if the result of the code causes something to happen it is a statement
 
 The string `"hello"` on a line by itself is does not cause anything to
@@ -264,7 +267,13 @@ A function call may or may not be an expression. But a function call on a line
 by itself is always a valid statement, since it causes the statements inside
 the function to be executed.
 
-````{panels}
+:::::{grid} 2
+:gutter: 3
+:class-row: p-3
+
+:::{grid-item-card}
+:shadow: md
+
 Expressions
 ^^^
 evaluated
@@ -279,7 +288,10 @@ can contain expressions
 
 cannot contain statements
 
----
+:::
+
+:::{grid-item-card}
+:shadow: md
 
 Statements
 ^^^
@@ -296,7 +308,10 @@ can contain expressions
 
 contain statements when compound
 
----
+:::
+
+:::{grid-item-card}
+:shadow: md
 
 Expressions
 ^^^
@@ -310,7 +325,10 @@ include:
 may include:
 - function calls
 
----
+:::
+
+:::{grid-item-card}
+:shadow: md
 
 Statements
 ^^^
@@ -320,8 +338,10 @@ include:
 - function calls
 - lines that start with non-operator keywords
 
+:::
 
----
+:::{grid-item-card}
+:shadow: md
 
 Expressions
 ^^^
@@ -355,7 +375,11 @@ num % 2 == 0
 ```python
 is_even(1)
 ```
----
+
+:::
+
+:::{grid-item-card}
+:shadow: md
 
 Statements
 ^^^
@@ -387,7 +411,10 @@ def is_even(num):
 ```python
 is_even(1)
 ```
-````
+
+:::
+
+:::::
 
 
 

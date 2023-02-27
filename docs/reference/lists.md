@@ -31,9 +31,7 @@ You can modify and execute any of the code on this page.
 [launch]: ../assets/rocket-icon.png
 [live]: ../assets/live-icon.png
 
-```{contents} Table of Contents
-:backlinks: top
-:local:
+```{include} ../toc.md
 ```
 
 Creating
@@ -115,7 +113,7 @@ print(letters[-1])
 
 Or the `SELECTOR` can be a {term}`slice`.
 
-The synax is either of the following.
+The syntax is either of the following.
 
 * {samp}`{COLLECTION}[{START}:{STOP}]`
 * {samp}`{COLLECTION}[{START}:{STOP}:{STEP}]`
@@ -161,7 +159,7 @@ print(numbers[:])
 ### Exceptions
 
 An `IndexError` exception will be raised for any selectors using using
-non-existant index numbers.
+non-existent index numbers.
 
 ```{code-cell} python
 :tags: [raises-exception]
@@ -243,7 +241,7 @@ animals.extend(["lynx", "ocelot", "puma"])
 pprint(animals)
 ```
 
-##### With concatonation
+##### With concatenation
 
 ```{code-cell} python
 animals = animals + ["skink", "turtle", "viper"]
@@ -257,7 +255,7 @@ animals += ["wolf", "zebra"]
 pprint(animals)
 ```
 
-##### Repeteadly with multiplication
+##### Repeatedly with multiplication
 
 ```{code-cell} python
 steps = ["rinse", "repeat"]
@@ -297,7 +295,7 @@ print(chars)
 
 #### By value
 
-Remove first occurance of value using the `.remove() method`:
+Remove first occurrence of value using the `.remove() method`:
 
 ```{code-cell} python
 chars = list("Hello world")

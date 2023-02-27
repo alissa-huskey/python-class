@@ -24,9 +24,7 @@ kernelspec:
 VS Code
 =======
 
-```{contents} Table of Contents
-:backlinks: top
-:local:
+```{include} ../toc.md
 ```
 
 Resources
@@ -103,11 +101,14 @@ Essential Keyboard Shortcuts
 
 `````{tab} MacOS
 
-````{panels}
-:card: shadow-none
+:::::{grid}
+:gutter: 2
+
+:::{grid-item-card}
+:shadow: none
 
 Editor
-^^^^^^
+^^^
 
 | Shortcut       | Action                    |
 |----------------|---------------------------|
@@ -115,10 +116,13 @@ Editor
 | {kbd}`⇧⌘K`     | Delete line               |
 | {kbd}`⌘/`      | Toggle (un/)comment line  |
 
----
+:::
+
+:::{grid-item-card}
+:shadow: none
 
 Navigation
-^^^^^^^^^^
+^^^
 
 | Shortcut       | Action                    |
 |----------------|---------------------------|
@@ -128,10 +132,13 @@ Navigation
 | {kbd}`⌘J`      | Toggle Panel              |
 | {{ ctrltick }} | Toggle Terminal           |
 
----
+:::
+
+:::{grid-item-card}
+:shadow: none
 
 Editor
-^^^^^^
+^^^
 
 | Shortcut       | Reverse        | Action                    |
 |----------------|----------------|---------------------------|
@@ -141,13 +148,15 @@ Editor
 | {kbd}`⌘]`      | {kbd}`⌘[`      | (Indent, Outdent)         |
 | {kbd}`⌘Z`      | {kbd}`⇧⌘Z`     | (Undo, Redo)              |
 
----
-:card: border-0
-:body: p-0
+
+:::
+
+:::{grid-item-card}
+:shadow: none
+:class-card: border-0
+:class-body: p-0
 
 ```{dropdown} Key
-:title: text-muted bg-white font-weight-bold
-:body: kbd-symbol-key no-headers
 
 |       |                    |
 |-------|--------------------|
@@ -158,20 +167,26 @@ Editor
 | `↑`   | {kbd}`Up arrow`    |
 | `↓`   | {kbd}`Down arrow`  |
 
-
 ```
 
-````
+:::
+
+:::::
+% /grid
 
 `````
+% /MacOS tab
 
 `````{tab} Windows/Linux
 
-````{panels}
-:card: shadow-none
+:::::{grid}
+:gutter: 2
+
+:::{grid-item-card}
+:shadow: none
 
 Editor
-^^^^^^
+^^^
 
 | Shortcut       | Action                    |
 |----------------|---------------------------|
@@ -179,10 +194,13 @@ Editor
 | {kbd}`⇧⌃K`     | Delete line               |
 | {kbd}`⌃/`      | Toggle (un/)comment line  |
 
----
+:::
+
+:::{grid-item-card}
+:shadow: none
 
 Navigation
-^^^^^^^^^^
+^^^
 
 | Shortcut       | Action                      |
 |----------------|-----------------------------|
@@ -192,10 +210,13 @@ Navigation
 | {kbd}`⌃J`      | Toggle Panel                |
 | {{ ctrltick }} | Toggle Terminal             |
 
----
+:::
+
+:::{grid-item-card}
+:shadow: none
 
 Editor
-^^^^^^
+^^^
 
 | Shortcut       | Reverse        | Action                    |
 |----------------|----------------|---------------------------|
@@ -205,13 +226,15 @@ Editor
 | {kbd}`⌃]`      | {kbd}`⌃[`      | (Indent, Outdent)         |
 | {kbd}`⌃Z`      | {kbd}`⇧⌃Z`     | (Undo, Redo)              |
 
----
-:card: border-0
-:body: p-0
+:::
+
+
+:::{grid-item-card}
+:shadow: none
+:class-card: border-0
+:class-body: p-0
 
 ```{dropdown} Key
-:title: text-muted bg-white font-weight-bold
-:body: kbd-symbol-key no-headers
 
 |       |                    |
 |-------|--------------------|
@@ -221,12 +244,15 @@ Editor
 | `↓`   | {kbd}`Down arrow`  |
 
 ```
+% /dropdown
 
-````
+:::
 
 `````
+% /Windows/Linux tab
 
 ```````
+% /tab-set
 
 :::{seealso}
 
@@ -258,7 +284,9 @@ to change.
 You can change your settings by either modifying your {file}`settings.json`
 file or using the Settings UI, whichever you find easiest.
 
-`````{tabbed} Settings (JSON)
+:::::{tab-set}
+
+`````{tab-item} Settings (JSON)
 
 On the left side of each section is a JSON dictionary containing the relevant
 settings for the {file}`settings.json` file.
@@ -279,7 +307,7 @@ document into the dictionary in your {file}`settings.json` file.
 
 `````
 
-`````{tabbed} Settings (UI)
+`````{tab-item} Settings (UI)
 
 On the right side of each section is a list of relevant settings from the
 Settings UI.
@@ -304,6 +332,8 @@ Settings UI followed by the setting name and value.
    setting in this document.
 
 `````
+
+:::::
 
 ```{seealso}
 

@@ -29,16 +29,14 @@ together just a few commands. Plus, they're a lot easier to write.
 In this lesson we'll learn about writing programs intended to be run in a
 command line environment.
 
-```{contents} Table of Contents
-:backlinks: top
-:local:
+```{include} ../toc.md
 ```
 
-Arguments
----------
+Part 1: Arguments
+-----------------
 
 Just like functions can take arguments, so can programs. This is done on the
-command line, typically seperated by spaces, with multi-word arguments
+command line, typically separated by spaces, with multi-word arguments
 surrounded by single or double quotes.
 
 In Python, those arguments can be accessed at `sys.argv` which stores a list of
@@ -50,7 +48,6 @@ conversion is often necessary.
 
 ```{code-block} python
 :caption: "example: program.py"
-:class: full-width
 :linenos:
 
 import sys
@@ -59,7 +56,6 @@ print(sys.argv)
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ python program.py arg1 arg2 arg3
 ['cli.py', 'arg1', 'arg2', 'arg3']
 
@@ -73,7 +69,6 @@ by default, or the number specified by the first argument if one exists.
 
 ```{code-block} python
 :caption: "example: randnums.py"
-:class: full-width
 :linenos:
 
 import sys
@@ -90,7 +85,6 @@ for _ in range(count):
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 
 $ python randnums.py
 50
@@ -102,7 +96,7 @@ $ python randnums.py 2
 46
 ```
 
-### Exercise
+### Part 1.1: Exercise
 
 `````{exercise} Countdown With Args Exercise
 :label: argv-exercise
@@ -151,7 +145,6 @@ $ python countdown.py 5
 
 ```{literalinclude} ../../pythonclass/exercises/countdown.py
 :caption: Countdown With Args Exercise
-:class: full-width
 :linenos:
 ```
 
@@ -171,8 +164,8 @@ $ python countdown.py 5
 
 `````
 
-Environment Variables
----------------------
+Part 2: Environment Variables
+-----------------------------
 
 Just like we can set variables in our programs, we can also set variables on
 the command line. There are known as {term}`environment variables`, and they
@@ -183,7 +176,6 @@ To reference a variable on the command line, prefix it with a `$`.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ echo $SHELL
 /bin/zsh
 
@@ -199,11 +191,10 @@ $ echo $TMPDIR
 
 To set an environment variable, use the `typeset` or `export` command as in the
 following example. (Note: The variable only exists only for the duration of
-your current terminal sesson.)
+your current terminal session.)
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ typeset -gx LANGUAGE=en
 $ export LANGUAGE=en
 ```
@@ -211,7 +202,6 @@ $ export LANGUAGE=en
 In Python, we can access this using the `os.environ` dictionary.
 
 ```{code-cell} ipython3
-:class: full-width
 
 import os
 print(os.environ["TERM"])
@@ -222,14 +212,13 @@ with an optional second argument that will be the value returned if it is
 missing.
 
 ```{code-cell} ipython3
-:class: full-width
 
 import os
 lang = os.environ.get("LANGUAGE", "en")
 print(lang)
 ```
 
-### Exercise
+### Part 2.1: Exercise
 
 `````{exercise} Environment Variables Exercise
 :label: envvar-exercise
@@ -245,7 +234,6 @@ Test it with the envionment variable not set, set to `""`, and set to a value li
 
 ```{code-block} python
 :caption: Environment Variables Exercise
-:class: full-width
 :linenos:
 :emphasize-lines: "4, 9-12"
 
@@ -275,7 +263,6 @@ for num in range(count, 0, -1):
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ python countdown.py
 3...
 2...
@@ -296,8 +283,8 @@ Counting down from 3.
 ```
 `````
 
-Input and Output
-----------------
+Part 3: Input and Output
+------------------------
 
 In a command line environment, input and output are handled via three special
 kinds of files called that serve as data streams: {term}`stdin`, {term}`stdout`
@@ -337,7 +324,7 @@ import sys
 print("Danger, Will Robinson!", file=sys.stderr)
 ```
 
-This is useful because on those streams can be handled seperately on the
+This is useful because on those streams can be handled separately on the
 command line. While a complete lesson on {term}`redirection` is outside of the
 scope of this lesson, the most common use case is to send a particular stream
 to a different destination with the syntax: {samp}`{COMMAND} {FD}> {DESTINATION}`.
@@ -347,7 +334,6 @@ The following for example sends the results of the `ls` command to the file
 
 ```{code-block} console
 :caption: command ine
-:class: full-width
 $ ls > files.txt
 ```
 
@@ -358,7 +344,6 @@ instead of `stdout`.
 
 ```{code-block} console
 :caption: command ine
-:class: full-width
 $ ls 2> errors.log
 file1 file2 file3
 
@@ -371,7 +356,6 @@ to `stdout`.
 
 ```{code-block} python
 :caption: using-stderr.py
-:class: full-width
 :linenos:
 
 import sys
@@ -385,7 +369,6 @@ be printed to the screen and excluded from the `messages.txt` file.
 
 ```{code-block} console
 :caption: command ine
-:class: full-width
 $ python using-stderr.py > messages.txt
 Danger, Will Robinson!
 
@@ -394,7 +377,7 @@ Welcome!
 Farewell.
 ```
 
-### Exercise
+### Part 3.1: Exercise
 
 `````{exercise} Stderr Exercise
 :label: stderr-exercise
@@ -414,7 +397,6 @@ Test this on the command line with more than one argument by:
 
 ```{code-block} python
 :caption: Stderr Exercise
-:class: full-width
 :linenos:
 :emphasize-lines: "14-15"
 """Countdown exercise for the CLI Lesson
@@ -443,7 +425,6 @@ for num in range(count, 0, -1):
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ python countdown.py 1
 1...
 
@@ -463,8 +444,8 @@ $ python countdown.py 1 2 2> /dev/null
 
 `````
 
-Exiting Programs
-----------------
+Part 4: Exiting Programs
+------------------------
 
 When a command line programs ends, it returns an {term}`exit code` to indicate
 success or failure. Traditionally an exit code of `0` indicates success and
@@ -476,7 +457,6 @@ Lets use the `ls` command as an example.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ ls
 file1 file2 file3
 
@@ -496,7 +476,6 @@ with an exit code of `1`.
 
 ```{code-block} python
 :caption: "example: randnums.py"
-:class: full-width
 :linenos:
 :emphasize-lines: "6-7"
 
@@ -520,7 +499,7 @@ for _ in range(count):
   print(random.randint(0, 100))
 ```
 
-### Exercise
+### Part 4.1: Exercise
 
 `````{exercise} Exiting Exercise
 :label: exiting-exercise
@@ -549,7 +528,6 @@ results of the `.isnumeric()` method is `False`.
 
 ```{code-block} python
 :caption: Exiting Exercise
-:class: full-width
 :linenos:
 :emphasize-lines: "18-20"
 
@@ -600,8 +578,8 @@ $ echo $?
 
 `````
 
-Terminal size
--------------
+Part 5: Terminal size
+---------------------
 
 ::::::{margin}
 
@@ -618,7 +596,6 @@ If you need to know the size of the terminal, you can use the
 `shutil.get_terminal_size()` function.
 
 ```{code-cell} ipython3
-:class: full-width
 
 import shutil
 shutil.get_terminal_size()
@@ -628,7 +605,6 @@ It returns a `terminal_size` object, which provides the
 {term}`properties <property>` `columns` and `lines`.
 
 ```{code-cell} ipython3
-:class: full-width
 
 import shutil
 
@@ -641,7 +617,6 @@ It is also a special kind of `tuple`, which means you can make use of multiple
 assignment.
 
 ```{code-cell} ipython3
-:class: full-width
 
 import shutil
 
@@ -655,7 +630,6 @@ will be used. To change the defaults, send an `tuple` argument with
 {samp}`({columns}, {lines})`.
 
 ```{code-cell} ipython3
-:class: full-width
 
 import shutil
 width, height = shutil.get_terminal_size((125, 33))
@@ -663,7 +637,7 @@ print("width:", width)
 print("height:", height)
 ```
 
-### Exercise
+### Part 5.1: Exercise
 
 `````{exercise} Terminal Size Exercise
 :label: termsize-exercise
@@ -695,7 +669,6 @@ the text `"Hello world!"` centered on the screen.
 
 ```{code-block} python
 :caption: Terminal Size Exercise
-:class: full-width
 :linenos:
 
 import shutil
@@ -715,8 +688,8 @@ print(text.center(width))
 
 :::
 
-Colors and Styles
------------------
+Part 6: Colors and Styles
+-------------------------
 
 Many terminals use ANSI escape codes to control the font colors and style and
 many other things.
@@ -729,7 +702,7 @@ Mac/Linux/Windows.
 
 :::{important}
 
-Not all systems support escape codes, though one avantage to using a module
+Not all systems support escape codes, though one advantage to using a module
 like this is that it does its best to detect if colors will work with that
 system, and if not, does nothing.
 
@@ -740,7 +713,7 @@ good idea to test with a light and back background color.
 
 :::
 
-### Installation
+### Part 6.1: Installation
 
 `````{tabs}
 
@@ -761,7 +734,7 @@ poetry add console
 ```
 
 `````
-### Usage
+### Part 6.2: Usage
 
 ```{code-cell} ipython3
 :tags: [remove-input]
@@ -792,7 +765,6 @@ can run `console.demo` from the command line.
 
 ```{code-block} bash
 :caption: command line
-:class: full-width
 
 python -m console.demos
 ```
@@ -879,7 +851,7 @@ print(highlight("Great job!"))
 ```
 {{ endcols }}
 
-### Available colors and styles
+### Part 6.3: Available colors and styles
 
 <div class="row no-labels"><div class="col">
 

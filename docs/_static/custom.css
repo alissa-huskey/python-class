@@ -158,6 +158,18 @@ details.dropdown.card .card-body {
   overflow: auto;
 }
 
+.sd-card-footer.text-light p.sd-card-text {
+  color: #c1c3c5;
+}
+
+.sd-card-body.text-white p.sd-card-text {
+  color: #fff;
+}
+
+.sd-card-header {
+  background-color: var(--color-card-header) !important;
+}
+
 :root {
   --kw-cols: 3;
   --dark-gray: #343a40;
@@ -225,6 +237,10 @@ table.table tr td {
 table.table.notitle thead th.head {
   border: 0;
   padding: 0;
+}
+
+tr:last-child {
+  border-bottom: 0px !important;
 }
 
 /********************
@@ -309,6 +325,7 @@ div.admonition.details p.admonition-title::after {
     --background-color: #fff;
     --title-background-color: rgba(20, 184, 166, 0.1);
     --icon-bg-color: rgb(20, 184, 166);
+    --color-card-header: rgba(0, 0, 0, 0.03) !important;
 }
 
 div.calm {
@@ -361,8 +378,10 @@ div.admonition.exercise p.admonition-title::after {
 .admonition.exercise .admonition.tip,
 .admonition.exercise .admonition.warning,
 .admonition.exercise .admonition.hint
-.admonition.solution {
-  background-color: var(--jp-layout-color0);
+.admonition.solution,
+.exercise details.sd-dropdown
+{
+  background-color: var(--background-color);
 }
 
 /* version
@@ -508,6 +527,8 @@ a.reference.term-missing span.std-term {
  * - shrink the width and height to the content size
  *   so captions are centered and wrapped correctly
  * */
+
+/* disable to see how it works after jb update
 div.literal-block-wrapper {
   width: max-content;
   height: max-content;
@@ -527,6 +548,7 @@ div.full-width table tbody {
 div.full-width table tbody td.code {
   width: 100%;
 }
+ * */
 
 /* code-block container
  * - remove the space between the code block and caption
@@ -579,9 +601,12 @@ div.code-block-caption {
   color: #6c757d;
 }
 
+
+/* disable to see how it works after jb update
 .full-width div.code-block-caption {
   text-align: left;
 }
+ * */
 
 /* caption number ("Listing {n}")
  * - hide
@@ -592,9 +617,21 @@ div.code-block-caption > span.caption-number {
   display: none;
 }
 
+/* slightly gray out line numbers in code samples */
+span.linenos {
+  color: #808080;
+}
+
 /********************
 /* individual pages
 /********************/
+
+/* reading-code
+/*--------------------------------------*/
+
+body#reading-code p.sidebar-title {
+  background-color: #ccc;
+}
 
 /* replit
 /*--------------------------------------*/
@@ -607,8 +644,12 @@ body#replit h1 {
 /* adventure exercise
 /*--------------------------------------*/
 
+body#battle h4,
 body#tutorial h4,
-body#adventure h4 {
+body#adventure h4,
+body#file-io h4,
+body#dragon-realm h4
+{
   border-bottom: 1px solid var(--dark-gray);
   font-size: 1em;
   font-weight: 500;

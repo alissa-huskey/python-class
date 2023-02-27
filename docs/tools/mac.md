@@ -4,9 +4,7 @@ Mac Dev Env for Python
 Mac tool recommendations and setup guide for Python development.
 
 
-```{contents} Table of Contents
-:backlinks: entry
-:local:
+```{include} ../toc.md
 ```
 
 Quickstart
@@ -212,9 +210,7 @@ Troubleshooting
 
 This section is for various issues installing Python on macs.
 
-```{contents}
-:backlinks: entry
-:local:
+```{include} ../toc.md
 ```
 
 ### Issue A: arm64-apple not recognized
@@ -226,7 +222,6 @@ The install fails before building with the error
 ```
 
 :::{dropdown} Error
-:title: card-title
 
 ```
 BUILD FAILED (OS X 12.2.1 using python-build 2.2.4-1-6-g44db3b03)
@@ -247,12 +242,14 @@ make: *** No targets specified and no makefile found.  Stop.
 :::{dropdown} Solution
 :open:
 
-This happens on macs with the M1 chip when the the GNU version of `uname`
+This happens on macs with the M1 chip when the GNU version of `uname`
 (from the `coreutils` homebrew package) is installed.
 
 There is a patch for this that can be applied on install.
 
-`````{tabbed} asdf
+```````{tab-set}
+
+`````{tab-item} asdf
 
 Apply the patch by setting the `ASDF_PYTHON_PATCH_URL` environment variable.
 
@@ -264,7 +261,7 @@ asdf install python 3.8.11
 
 `````
 
-`````{tabbed} pyenv
+`````{tab-item} pyenv
 
 Apply the patch using the --patch flag.
 
@@ -275,6 +272,8 @@ pyenv install --patch 3.8.11 < \
 ```
 
 `````
+
+```````
 
 :::
 
@@ -310,7 +309,9 @@ There may be a patch available [here][patches] depending on your version.
 
 [patches]: https://github.com/Homebrew/formula-patches/tree/master/python
 
-`````{tabbed} asdf
+```````{tab-set}
+
+`````{tab-item} asdf
 
 Apply the patch by setting the `ASDF_PYTHON_PATCH_URL` environment variable.
 
@@ -322,7 +323,7 @@ asdf install python 3.8.11
 
 `````
 
-`````{tabbed} pyenv
+`````{tab-item} pyenv
 
 Apply the patch using the --patch flag.
 
@@ -333,6 +334,8 @@ pyenv install --patch 3.8.11 < \
 ```
 
 `````
+
+```````
 
 :::
 
@@ -387,7 +390,7 @@ the paths to the locations of all dependencies on your system.
 curl -sSl https://raw.githubusercontent.com/alissa-huskey/python-class-setup/main/bin/flags.sh | bash
 ```
 
-Apply the envionment varibles to your current terminal session by sourcing the
+Apply the environment variables to your current terminal session by sourcing the
 file, then install Python the way you normally would. After you're done, you
 can remove the `.flags` file if you want.
 
@@ -401,7 +404,7 @@ asdf install python VERSION && rm .flags
 :::{seealso}
 
 * [pyenv bug report #1740](https://github.com/pyenv/pyenv/issues/1740)
-* [puenv bug report #1737](https://github.com/pyenv/pyenv/issues/1737)
+* [pyenv bug report #1737](https://github.com/pyenv/pyenv/issues/1737)
 * [Managing macOS + python issues](https://medium.com/dive-into-ml-ai/managing-issues-of-macos-and-pyenv-a78ce1e85e9d)
 
 :::
@@ -425,7 +428,9 @@ version (from `uname -r`) of `1*.*` and as of macOS 11 the release version is
 
 There is a patch for this that can be applied on install.
 
-`````{tabbed} asdf
+```````{tab-set}
+
+`````{tab-item} asdf
 
 Apply the patch by setting the `ASDF_PYTHON_PATCH_URL` environment variable.
 
@@ -437,7 +442,7 @@ asdf install python 3.8.11
 
 `````
 
-`````{tabbed} pyenv
+`````{tab-item} pyenv
 
 Apply the patch using the --patch flag.
 
@@ -448,6 +453,8 @@ pyenv install --patch 3.8.11 < \
 ```
 
 `````
+
+```````
 
 :::
 

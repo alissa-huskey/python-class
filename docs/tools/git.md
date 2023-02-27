@@ -1,10 +1,7 @@
 Git
 ===
 
-```{contents}
-:backlinks: top
-:local:
-:depth: 2
+```{include} ../toc.md
 ```
 
 Locally Grown
@@ -37,7 +34,7 @@ Every repository contains:
 * **HEAD** -- a reference to the current commit on the current branch. A
   reference is like a bookmark to a commit. Since we're not doing anything
   fancy, `HEAD` will point to the most recent commit on the `master` branch for
-  the forseeable future.
+  the foreseeable future.
 
 * the **tree** -- a snapshot of your files at the time of the `HEAD` commit.
 
@@ -77,10 +74,10 @@ commits and look up changes to their hearts content without having to consult
 any other repo.
 
 Additionally, every repo can send changes to or receive changes from
-any other compatable repo.
+any other compatible repo.
 
 Imagine we all worked on the same codebase. The difference between the two
-systems would be somthing like this:
+systems would be something like this:
 
 ```{kroki}
 :type: mermaid
@@ -123,7 +120,7 @@ For us, that will be the Github repo.
 
 Git gives our first remote repository the default name of **origin**. A special
 kind of branch is also created called a **tracking branch**. Its job is to
-store a copy of the object database for the cooresponding branch from the
+store a copy of the object database for the corresponding branch from the
 remote repo.
 
 So it turns out, our repo actually looks more like this.
@@ -162,13 +159,13 @@ So it turns out, our repo actually looks more like this.
                           +------------------------+
 ```
 
-Let's talk committment
-----------------------
+Let's talk commitment
+---------------------
 
 It's time to zoom in on commits. A **commit** is a set of changes recorded in
 git. Sometimes also called a **revision** or a **change log**. Every commit has:
 
-- a **SHA** or **hash** -- a 40-character unique identifier that points to a
+- a **SHA** or **hash** -- a 40-character unique identifier that points to
   the rest of the data related to the commit. Basically, a commit ID. Here's an
   example: `d16085b3b913e5bc5e351c0a7461051e9973629a`
 
@@ -178,7 +175,7 @@ git. Sometimes also called a **revision** or a **change log**. Every commit has:
 
 * the **tree** -- a snapshot of your files at the time of the commit.
 
-* Historical data detailing the ancestery of the commit.
+* Historical data detailing the ancestry of the commit.
 
 * Metadata like the date, author, and commit message.
 
@@ -187,7 +184,7 @@ Altered States
 --------------
 
 Now that you are a little more familiar with the pieces and how they fit
-togther, let's talk about what that means.
+together, let's talk about what that means.
 
 There are now potentially many different versions of your files that may exist
 at any given time:
@@ -250,7 +247,6 @@ And finally, here is the workflow and how states change for each action.
 ````{div} full-width
 ```{kroki}
 :type: plantuml
-:class: full-width
 :caption: Git Sequence Diagram
 :filename: assets/git-sequence.puml
 ```

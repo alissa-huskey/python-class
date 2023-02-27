@@ -4,9 +4,7 @@ Objects
 Python has a special type `object` which is the ancestor to all types in
 Python.
 
-```{contents} Table of Contents
-:backlinks: entry
-:local:
+```{include} ../../toc.md
 ```
 
 Part 1: Introduction
@@ -18,7 +16,6 @@ other type. But you can't really do much with an object instance.
 
 ```{code-block} python
 :caption: Python shell
-:class: full-width
 >>> type(object)
 type
 
@@ -33,7 +30,6 @@ integers all objects. All data in Python is an object.
 
 ```{code-block} python
 :caption: Python shell
-:class: full-width
 >>> isinstance("hello", object)
 True
 
@@ -66,7 +62,7 @@ imported from a module, for example: `random.randint()`.
 
 There are two kinds of members: attributes and methods.
 
-### Part 2.2: Attributes
+### Part 2.1: Attributes
 
 {term}`Attributes <attribute>`, sometimes called {term}`properties <property>`,
 are just like variables but they are attached to an object and accessed using
@@ -78,7 +74,6 @@ For example:
 * file objects have a `.mode` property
 
 ```{code-block} python
-:class: full-width
 :caption: Python shell
 >>> a_float = 1.0
 >>> a_float.real
@@ -97,7 +92,6 @@ If we try to access an attribute on an object that doesn't have it, we'll get
 an `AttributeError`.
 
 ```{code-block} python
-:class: full-width
 :caption: Python shell
 >>> a_string = "1"
 >>> a_string.real
@@ -126,7 +120,6 @@ For example:
   text from the file
 
 ```{code-block} python
-:class: full-width
 :caption: Python shell
 >>> a_string = "1"
 >>> a_string.isnumeric()
@@ -148,9 +141,7 @@ Just like with attributes, if we try to call a method on an object that doesn't
 have it we'll get an `AttributeError`.
 
 ```{code-block} python
-:class: full-width
 :caption: Python shell
-:class: full-width
 >>> a_int.isnumeric()
 ---------------------------------------------------------------------------
 AttributeError                            Traceback (most recent call last)
@@ -180,7 +171,6 @@ internal methods that are used by Python under the hood, so you can disregard
 those for now.)
 
 ```{code-block} python
-:class: full-width
 :caption: Python shell
 >>> dir(a_int)
 ['__abs__',
@@ -207,7 +197,6 @@ keys to scroll. To exit the help document and return to your normal Python
 shell press {kbd}`Q` or just scroll to the end of the document.
 
 ```{code-block} python
-:class: full-width
 :caption: Python shell
 >>> help(int)
 Help on int object:
@@ -249,7 +238,6 @@ member. The first argument is the value you want to check, the second argument
 is the name of the member, a `str`.
 
 ```{code-block} python
-:class: full-width
 :caption: Python shell
 >>> hasattr(a_float, "is_integer")
 True
@@ -265,7 +253,6 @@ You can then use the `callable()` function to find out if a member is method
 (if returns `True`) or a property (if it returns `False`).
 
 ```{code-block} python
-:class: full-width
 :caption: Python shell
 >>> callable(a_int.to_bytes)
 True
@@ -313,14 +300,13 @@ goes over the things that are effected by the object type.
 
 ### Part 3.1: Arguments
 
-Functions and methods usually expect certian types of arguments, and you'll run
+Functions and methods usually expect certain types of arguments, and you'll run
 into some kind of error if you try to pass the wrong type.
 
 For example, you can use the `len()` function with any kind of iterable--like,
 a `list`, a `dict` or a `str`.
 
 ```{code-block} python
-:class: full-width
 :caption: Python shell
 >>> len([1, 2, 3])
 3
@@ -336,7 +322,6 @@ But if we try to use the `len()` function with something that is not an
 iterable, like a `float` or an `int` we'll get a `TypeError`.
 
 ```{code-block} python
-:class: full-width
 :caption: Python shell
 >>> len(510)
 
@@ -349,7 +334,6 @@ TypeError: object of type 'int' has no len()
 ```
 
 ```{code-block} python
-:class: full-width
 :caption: Python shell
 >>> len("53.50")
 
@@ -365,7 +349,6 @@ Some functions though can be used with any type. For example, the `print()`
 function can take any object type as an argument.
 
 ```{code-block} python
-:class: full-width
 :caption: Python shell
 >>> print("five", "5", 55, 5.5)
 five 5 55 5.5
@@ -383,7 +366,6 @@ For example, you can use the `+` operator with a `str` and a `str`:
 
 ```{code-block} python
 :caption: Python shell
-:class: full-width
 >>> "5" + "5"
 '55'
 ```
@@ -392,7 +374,6 @@ An `int` and an `int`:
 
 ```{code-block} python
 :caption: Python shell
-:class: full-width
 >>> 5 + 5
 10
 ```
@@ -401,7 +382,6 @@ Or even an `int` and a `float`:
 
 ```{code-block} python
 :caption: Python shell
-:class: full-width
 >>> 5 + 5.0
 10.0
 ```
@@ -410,7 +390,6 @@ But if you try to use it with an `int` and a `str`, you'll get a `TypeError`.
 
 ```{code-block} python
 :caption: Python shell
-:class: full-width
 >>> "5" + 5
 ---------------------------------------------------------------------------
 TypeError                                 Traceback (most recent call last)
@@ -450,7 +429,6 @@ Here is a list of functions that can be used with any type.
 * {samp}`callable({object})` -- return `True` of `object` is callable.
   ```{code-block} python
   :caption: Python shell
-  :class: full-width
   >>> callable(dir)
   True
 
@@ -467,7 +445,6 @@ Here is a list of functions that can be used with any type.
 * {samp}`dir({object})` -- return a list of the member names belonging to `object`.
   ```{code-block} python
   :caption: Python shell
-  :class: full-width
   >>> dir(1)
   ['__abs__',
    '__add__',
@@ -486,7 +463,6 @@ Here is a list of functions that can be used with any type.
 * {samp}`hasattr({object}, {name})` -- return `True` if `object` has member `name`.
   ```{code-block} python
   :caption: Python shell
-  :class: full-width
   >>> fh = open("hello.txt")
   >>> hasattr(fh, "close")
   True
@@ -499,7 +475,6 @@ Here is a list of functions that can be used with any type.
   memory.
   ```{code-block} python
   :caption: Python shell
-  :class: full-width
   >>> a = [1, 2, 3]
   >>> b = a
   >>> c = [1, 2, 3]
@@ -518,7 +493,6 @@ Here is a list of functions that can be used with any type.
   `classes`) or one of its subclasses.
   ```{code-block} python
   :caption: Python shell
-  :class: full-width
   >>> isinstance("hello", str)
   True
 
@@ -548,7 +522,6 @@ Here is a list of functions that can be used with any type.
   This is used by the Python Shell to display the results of an expression.
   ```{code-block} python
   :caption: Python shell
-  :class: full-width
   >>> print(repr("hello"))
   'hello'
 
@@ -567,7 +540,6 @@ Here is a list of functions that can be used with any type.
 * {samp}`type({object})` -- return the `object` type.
   ```{code-block} python
   :caption: Python shell
-  :class: full-width
   >>> type(False)
   bool
 
@@ -585,7 +557,6 @@ Here is a list of functions that can be used with any type.
   Used by the `print()` function to convert all arguments before printing.
   ```{code-block} python
   :caption: Python shell
-  :class: full-width
   >>> print(str("hello"))
   hello
 

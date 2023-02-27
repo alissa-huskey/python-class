@@ -3,24 +3,21 @@ asdf
 
 asdf is a command line tool that lets you easily install and switch between
 multiple versions of Python and other tools. It can replace a bunch of other
-tool-specific version managers like pyenv, rbenv, goenv and nvm.
+tool-specific version managers like pyenv, rbenv, goenv and nivm.
 
-
-```{contents} Table of Contents
-:backlinks: top
-:local:
-:depth: 2
+```{include} ../toc.md
 ```
 
 Install
 -------
 
-:::::{tabbed} Mac
+:::::{tab-set}
+
+:::{tab-item} Mac
 
 To install:
 
 ```{code-block} console
-:class: full-width
 :caption: command line
 
 brew install asdf
@@ -30,20 +27,18 @@ Then add the following to your startup file:
 
 ```{code-block} console
 :caption: startup file
-:class: full-width
 
 $(brew --prefix asdf)/libexec/asdf.sh
 ```
 
-:::::
+:::
 
-:::::{tabbed} Other
+:::{tab-item} Other
 
 To install:
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.9.0
 ```
@@ -52,14 +47,15 @@ Then add the following to your startup file:
 
 ```{code-block} console
 :caption: startup file
-:class: full-width
 
 . $HOME/.asdf/asdf.sh
 ```
 
-:::::
-
 Then close your terminal and start a new one.
+
+:::
+
+:::::
 
 Usage
 -----
@@ -69,16 +65,14 @@ with the `plugin add` command.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 
 $ asdf plugin add python
 ```
 
-Then then you can install the version or versons of the tool you need.
+Then then you can install the version or versions of the tool you need.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 
 $ asdf install python 3.8.11
 $ asdf install python 3.9.1
@@ -88,7 +82,6 @@ Next, choose which version to use by default:
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 
 $ asdf global python 3.9.1
 ```
@@ -97,7 +90,6 @@ This adds the information to the file `~/.tool-versions` in your home directory.
 
 ```{code-block} console
 :caption: ~/.tool-versions
-:class: full-width
 
 $ python 3.9.1
 ```
@@ -106,7 +98,6 @@ Now you can test it out.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 
 $ python --version
 3.9.1
@@ -116,7 +107,6 @@ To configure a project to use a particular version of a tool, use the `asdf loca
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 
 $ cd my-project
 $ asdf local python 3.8.11
@@ -126,7 +116,6 @@ This saves the information in a file called `.tool-versions` in the current dire
 
 ```{code-block} console
 :caption: ./.tool-versions
-:class: full-width
 
 python 3.8.11
 ```
@@ -135,7 +124,6 @@ Now you can test it out:
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 
 $ python --version
 Python 3.8.11
@@ -150,7 +138,6 @@ version number, which tells asdf to install/use the most recent version.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 
 $ asdf plugin add ruby
 $ asdf install ruby latest
@@ -161,7 +148,6 @@ You can use the `asdf list` command to see a list of everything currently instal
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 
 $ asdf list
 python
@@ -176,7 +162,6 @@ are set.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 
 $ asdf current
 python          3.8.11          ./.tool-versions
@@ -193,11 +178,10 @@ There are a couple of extra features provided by the asdf python plugin.
 If there are python modules that you want to be installed for every version of
 python, you can add them to the file `~/.default-python-packages`.
 
-For example, if you wanted to always install ipython you would put in the file:
+For example, if you wanted to always install IPython you would put in the file:
 
 ```{code-block} bash
 :caption: ~/.default-python-packages
-:class: full-width
 
 ipython
 ```
@@ -216,7 +200,6 @@ URL of the patch file before doing the install.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 
 $ export ASDF_PYTHON_PATCH_URL="https://gist.githubusercontent.com/xight/74f84b8bde9ac6f539c3db20c2897d46/raw/cf2fd7ff5572afafb54d062f866e40d5e65cab43/config-sub.patch"
 $ asdf install python 3.8.11

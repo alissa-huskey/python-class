@@ -23,9 +23,7 @@ stored in `csv` files in the `data/flashcards` directory.
 Instructions
 ------------
 
-```{contents}
-:backlinks: top
-:local:
+```{include} ../toc.md
 ```
 
 ### Part 1: Make a `csv` file
@@ -258,7 +256,7 @@ Now lets keep track of which card the user is on, and what their score is.
 
 ### Part 13: Prettify flashcards
 
-This part is about making the the flashcards look nicer. Feel free to adjust
+This part is about making the flashcards look nicer. Feel free to adjust
 these suggestions to your taste.
 
 
@@ -432,10 +430,12 @@ Download the following flashcard files or feel free to make your own.
 Screencasts
 -----------
 
-`````{tabbed} Nila's
+:::::{tab-set}
+
+:::{tab-item} Nila's
 
 ```{div} text-right
-{link-badge}`https://github.com/Mazama1980/Repl.it/blob/master/flashcards.py,source code,cls=badge-success text-white p-2`
+{{ sourcebadge.format('https://github.com/Mazama1980/Repl.it/blob/master/flashcards.py') }}
 ```
 
 ```{screencast} assets/nila-flashcards.cast
@@ -447,13 +447,13 @@ Screencasts
 :author-url: "http://github.com/Mazama1980"
 ```
 
-`````
+:::
 
 
-`````{tabbed} Sean's
+:::{tab-item} Sean's
 
 ```{div} text-right
-{link-badge}`https://github.com/siporter43/mainpypet.py/blob/master/project_outrun/flashcards.py,source code,cls=badge-success text-white p-2`
+{{ sourcebadge.format('https://github.com/siporter43/mainpypet.py/blob/master/project_outrun/flashcards.py') }}
 ```
 
 ```{screencast} assets/sean-flashcards.cast
@@ -465,13 +465,13 @@ Screencasts
 :author-url: "http://github.com/siporter43"
 ```
 
-`````
+:::
 
 
-`````{tabbed} Brian's
+:::{tab-item} Brian's
 
 ```{div} text-right
-{link-badge}`https://github.com/muaddib576/python_fundamentals/blob/master/python_fundamentals/flashcards.py,source code,cls=badge-success text-white p-2`
+{{ sourcebadge.format('https://github.com/muaddib576/python_fundamentals/blob/master/python_fundamentals/flashcards.py') }}
 ```
 
 ```{screencast} assets/brian-flashcards.cast
@@ -483,12 +483,12 @@ Screencasts
 :author-url: "http://github.com/muaddib576"
 ```
 
-`````
+:::
 
-`````{tabbed} Alissa's
+:::{tab-item} Alissa's
 
 ```{div} text-right
-{link-badge}`https://github.com/alissa-huskey/python-class/blob/master/pythonclass/exercises/flashcards.py,source code,cls=badge-success text-white p-2`
+{{ sourcebadge.format('https://github.com/alissa-huskey/python-class/blob/master/pythonclass/exercises/flashcards.py') }}
 ```
 
 ```{screencast} assets/flashcards.cast
@@ -500,7 +500,9 @@ Screencasts
 :author-url: "http://github.com/alissa-huskey"
 ```
 
-`````
+:::
+
+:::::
 
 Reference
 ---------

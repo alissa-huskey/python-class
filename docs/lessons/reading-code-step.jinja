@@ -1,0 +1,50 @@
+% ~~~~~~~~~~~~~
+% start sidebar
+% ~~~~~~~~~~~~~
+
+{% if loop is defined %}
+  {% set title="loop {}, line {}".format(loop, line) %}
+{% else %}
+  {% set title="line {}".format(line) %}
+{% endif %}
+
+`````{sidebar} {{ title }}
+
+% start context -----------------------
+
+```{admonition} variables
+
+{{ variables }}
+
+```
+
+% evaluation steps --------------------
+
+```{code-block} python
+:caption: steps to evaluate line
+{{ evaluation }}
+```
+
+% output ------------------------------
+
+{% include "lessons/reading-code-output.jinja" %}
+
+`````
+
+% ~~~~~~~~~~~
+% end sidebar
+% ~~~~~~~~~~~
+
+% code --------------------------------
+
+```{code-block} python
+:linenos:
+:emphasize-lines: "{{ em_lines }}"
+total = 0
+i = 0
+while i < 3:
+    print("loop", i)
+    total = total + i
+    i = i + 1
+print("The total is:", total)
+```

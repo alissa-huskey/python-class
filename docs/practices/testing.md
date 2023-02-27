@@ -1,5 +1,5 @@
 Testing
 =======
 
-```{tableofcontents}
+```{include} ../toc.md
 ```

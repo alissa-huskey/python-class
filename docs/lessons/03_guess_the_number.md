@@ -12,7 +12,17 @@ kernelspec:
 Chapter 3: Guess the Number
 ===========================
 
+```{div} float-right
+{{ code.format("guess.py", "lessons/guess.py") }}
+```
+
 > Based on: [Chapter 3: Guess the Number](http://inventwithpython.com/invent4thed/chapter3.html)
+
+```{include} ../toc.md
+```
+
+Introduction
+------------
 
 In this chapter, you’re going to make a Guess the Number game. The computer
 will think of a secret number from `1` to `20` and ask the user to guess it.
@@ -24,11 +34,9 @@ a short program. You’ll learn how to convert values to different data
 types and when you would need to do this. Since this program is a game,
 from now on we’ll call the user the player.
 
-{lesson}`guess.py`
-
-```{contents} Table of Contents
-:backlinks: top
-:local:
+```{screencast} assets/dragon_realm.cast
+:poster: npt:0:01
+:rows: 15
 ```
 
 Part 1. Setup

@@ -7,7 +7,7 @@ Exercises
 
 Magic 8 ball:
 https://en.wikipedia.org/wiki/Magic_8-Ball
-- Make a list of 20 answers  where 10 are positive, 5 are non-committtal, and 5 are negative
+- Make a list of 20 answers  where 10 are positive, 5 are non-committal, and 5 are negative
 - Allow the user to ask a question
 - Display a progress message like "thinking..." and pause for effect
 - Randomly display one of the answers
@@ -54,7 +54,7 @@ Pig Latin Translator
 Pirate Translator
 1. As the user for a input
 2. Split the result into a list of words
-3. Iterate over every word and and swap out words like:
+3. Iterate over every word and swap out words like:
     - am, is: be
     - and: 'n
     - buddy friend: matey

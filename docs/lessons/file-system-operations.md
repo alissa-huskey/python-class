@@ -19,9 +19,7 @@ operations on files and directories.
 This part of the lesson is about the ways to get a list of files on your
 local computer.
 
-```{contents} Table of Contents
-:backlinks: entry
-:local:
+```{include} ../toc.md
 ```
 
 Part 1: Listing files
@@ -187,7 +185,7 @@ path.mkdir()
 
 The `mkdir()` method will raise an error if the directory already exists, so
 you could check the results of the `exists()` and `is_dir()` before calling
-it. But there's an easier way. Just pass the the optional `exist_ok` keyword
+it. But there's an easier way. Just pass the optional `exist_ok` keyword
 argument, as in the following example.
 
 ```{code-block} python

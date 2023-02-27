@@ -14,11 +14,20 @@ kernelspec:
 Data Inspection
 ===============
 
+:::::{margin}
+
+:::{seealso}
+* [Punk API](https://punkapi.com/documentation/v2)
+  Documentation
+:::
+
+:::::
+
 API Documentation is not always readily available or easy to understand. So we
 often end up just diving into the data to figure out what it contains and how
 to best use it.
 
-This lesson is going to be almost entirly in the Python interpreter, ideally
+This lesson is going to be almost entirely in the Python interpreter, ideally
 IPython.
 
 For this lesson we're going to use the [Punk
@@ -26,10 +35,8 @@ API](https://punkapi.com/documentation/v2) which searches BrewDog's catalog
 of beers. The goal will be to the name and a simple list of ingredients for the
 beer.
 
-:::{seealso}
-* [Punk API](https://punkapi.com/documentation/v2)
-  Documentation
-:::
+```{include} ../toc.md
+```
 
 Part 1: Imports and request
 ---------------------------

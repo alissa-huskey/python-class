@@ -24,6 +24,9 @@ are want the computer to do.
 -- Fred Brooks, The mythical man-month
   ```
 
+```{include} ../toc.md
+```
+
 Problem solving process
 -----------------------
 
@@ -106,7 +109,7 @@ A single-user game where the player is given 6 chances to guess all of the lette
 ```
 
 For more tightly scoped problems, solve the problem manually then describe each
-step in plain english.
+step in plain English.
 
 ```{code-block} python
 :caption: updated is_prime() function, now including the plan in comments
@@ -140,16 +143,16 @@ Ask yourself if this needs to be broken down further. If so, start back at at
 the first step for this new problem.
 
 Once you've got the problem broken down into a discreet chunk, simplify it if
-neccessary.
+necessary.
 
 - Isolate it from other code by using use hardcoded placeholders. This can be
   especially helpful when other parts of the program aren't written yet, if
-  you're not certian they are working, or if the data can be unpredictable.
+  you're not certain they are working, or if the data can be unpredictable.
 - Solve the easiest or most normal case first.
 
 #### B. Write pseudocode
 
-Write a plain english description of what the code should do. This can be a
+Write a plain English description of what the code should do. This can be a
 list of steps in comments. For simpler problems this may be the same as your
 plan.
 

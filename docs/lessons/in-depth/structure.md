@@ -4,6 +4,9 @@ Structuring Python Projects
 This lesson will discuss how to organize the code in your Python project and
 how Python then finds your code.
 
+```{include} ../../toc.md
+```
+
 Modules
 -------
 

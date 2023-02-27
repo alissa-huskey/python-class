@@ -12,6 +12,9 @@ kernelspec:
 String formatting: Part 1
 =========================
 
+```{include} ../toc.md
+```
+
 We often want to display text to the end user in a specific way. For example,
 we may want to display `25.375` as `$25.38` if it represents an amount of money
 but as `25%` if it represents a percentage.
@@ -24,7 +27,7 @@ The formatting string is a combination of specific letters or characters that
 controls the format. This is a mini-language with its own syntax, but this
 lesson will focus on a few of the most commonly used.
 
-Here's how you would use the `format()` method to print the aformentioned
+Here's how you would use the `format()` method to print the aforementioned
 examples. *Don't worry, this is just a teaser--I don't expect you to understand
 this yet.*
 
@@ -41,7 +44,7 @@ Presentation
 {{ leftcol }}
 
 At the core of a formatting strings is its presentation. Each letter
-cooresponds to a specific input value type and output presentation. The most
+corresponds to a specific input value type and output presentation. The most
 common are:
 
 {{ rightcol }}
@@ -97,7 +100,7 @@ Precision
 
 {{ leftcol }}
 
-Precison goes before the presentation, with the syntax:
+Precision goes before the presentation, with the syntax:
 
 {{ rightcol }}
 
@@ -425,7 +428,7 @@ Reference
 |----------|----------------|--------------|-----------------------------------------------------|--------------------------|----------------------------|
 | `s`      | `str`          | string       |                                                     | `"hello"`                | `"hello"`                  |
 | `d`, `i` | `int`          | decimal      | [^fmt-alias]                                        | `1000`                   | `"1000"`                   |
-| `n`      | `int`          | decimal      | with number sepertors                               | `1000`                   | `"1,000"`                  |
+| `n`      | `int`          | decimal      | with number superiors                               | `1000`                   | `"1,000"`                  |
 | `f`      | `float`, `int` | float        |                                                     | `1.0`                    | `"1.000000"`               |
 | `%`      | `float`, `int` | percent      |                                                     | `0.2`                    | `"20.000000%"`             |
 | `e`, `E` | `float`, `int` | float        | scientific notation                     [^fmt-case] | `1.5`                    | `"1.500000e+00"`           |

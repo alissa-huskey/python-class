@@ -16,10 +16,7 @@ Terminal
 
 > A brief tour of the command line on a terminal.
 
-
-```{contents} Table of Contents
-:backlinks: top
-:local:
+```{include} ../toc.md
 ```
 
 Introduction
@@ -32,22 +29,24 @@ When people use the term {term}`console`, {term}`command line`,
 {term}`terminal` or {term}`shell`, they usually mean the {term}`Operating System Shell`.
 
 The command line uses a {term}`shell` scripting language like {term}`bash`,
-{term}`zsh` or {term}`PowerShell` to interact with the the underlying
+{term}`zsh` or {term}`PowerShell` to interact with the underlying
 operating system.
 
 Part 1: The terminal
 --------------------
 
-While the term "terminal" is often used synonomously with
+While the term "terminal" is often used synonymously with
 "the {term}`command line`", it actually refers to the application that you run
 to get to the command line.
 
 Or, in the case of a terminal embedded in a suite of developer tools such as VS
 Code or Repl.it, it refers the terminal part of the application.
 
-### 2.1: Starting a terminal
+### 1.1: Starting a terminal
 
-```{tabbed} VS Code
+`````{tab-set}
+
+```{tab-item} VS Code
 
 To open and focus the shell, click the {guilabel}`Terminal` tab (usually in the
 bottom panel) or use the {{ ctrltick }} keyboard shortcut.
@@ -67,7 +66,7 @@ You should see something like this:
 
 ```
 
-```{tabbed} Repl.it
+```{tab-item} Repl.it
 
 To open and focus the shell, click the {guilabel}`Shell` tab in the right-most panel.
 
@@ -87,7 +86,7 @@ You should see something like this:
 
 ```
 
-```{tabbed} OS
+```{tab-item} OS
 
 :::::{tabs}
 
@@ -110,6 +109,8 @@ You should see something like this:
 :::::
 
 ```
+
+`````
 
 ### 1.2: The Prompt
 
@@ -141,7 +142,6 @@ example, try the `date` command, which prints the current date and time.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ date
 Thu Aug 19 04:45:47 MDT 2021
 ```
@@ -151,7 +151,6 @@ name.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ uname
 Darwin
 ```
@@ -159,13 +158,12 @@ Darwin
 The `echo` command is very similar to the Python `print()` command--it prints
 any arguments that follow to the screen, followed by a newline.
 
-On the command line, arguments are seperated by spaces and quotes are usually
+On the command line, arguments are separated by spaces and quotes are usually
 not needed. In this example, we'll use the `echo` command with one argument:
 `Hello.`.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ echo Hello.
 Hello
 ```
@@ -193,7 +191,7 @@ $ python hello.py
 hello
 ```
 
-Since spaces are used to seperate arguments, this can cause problems if a
+Since spaces are used to separate arguments, this can cause problems if a
 filename that includes spaces. (Which is one of the reasons that's not
 recommended.)
 
@@ -231,7 +229,7 @@ Sat Aug 21 23:12:33 UTC 2021
 
 Some commands allow short options to be combined together. For example, the
 `uname` uses the `-s` flag to print operating system name and the `-r` flag to
-print the release, which can be passed two seperate arguments.
+print the release, which can be passed two separate arguments.
 
 ```{code-block} console
 :caption: command line
@@ -272,10 +270,10 @@ Sometimes there is both a long and short version of the same option. For
 example, to print the usage for `python` you can use either `-h` or `--help`.
 
 
-### Summary
+#### Summary
 
 * Commands on the command line are programs.
-* Commands can take arguments, seperated by spaces. Single or double quotes are
+* Commands can take arguments, separated by spaces. Single or double quotes are
   only needed to enclose arguments with spaces or other special characters.
 * {term}`flags <flag>` or {term}`options <option>` are special arguments that
   start with a dash (`-`).
@@ -290,7 +288,7 @@ example, to print the usage for `python` you can use either `-h` or `--help`.
   * `python` -- execute Python code
   * `uname` -- display system information
 
-### 2.3: Getting Help
+### 2.2: Getting Help
 
 Many programs, including `python`, take a `-h` or `--help` option which will
 show usage information about that particular program, usually including the
@@ -321,7 +319,6 @@ used, then you can look up the man page for the pager program.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ man man
 man(1)                                                                                                    man(1)
 
@@ -348,7 +345,6 @@ with no arguments to get a list of shell commands.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ help
 Here is a list of topics for which special help is available:
 
@@ -380,7 +376,7 @@ help: help [-dms] [pattern ...]
 ...
 ```
 
-### Summary
+#### Summary
 
 * Many programs will show usage information when a `-h` or `--help` option is
   passed. For example `python --help`.
@@ -389,7 +385,7 @@ help: help [-dms] [pattern ...]
 * The `help` program can be used to view usage information for shell builtin
   commands. For example `help echo`.
 
-### Exercise
+#### Exercise
 
 `````{exercise} CLI Help Exercise
 :label: cli-help-exercise
@@ -500,7 +496,7 @@ Find the flag for each of the following, then try using the command and flag.
 
 `````
 
-### 2.4: Getting around
+### 2.3: Getting around
 
 :::{important}
 
@@ -512,7 +508,6 @@ To find out where you are use the `pwd` command.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ pwd
 /Users/pythonclass
 ```
@@ -521,7 +516,6 @@ To list files use the `ls` command.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ ls
 file1 file2 file3
 
@@ -536,20 +530,18 @@ To change directories use the `cd` command.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ cd Documents
 $ cd
 $ cd -
 $ cd -P
 ```
 
-### 2.5: Getting file information
+### 2.4: Getting file information
 
 To get information about a file use the `file` command.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ file null.png
 null.png: PNG image data, 1200 x 904, 8-bit/color RGBA, non-interlaced
 
@@ -561,7 +553,6 @@ Use the `wc` command to get word, line and character counts.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ wc README.md
       64     184    2000 README.md
 
@@ -574,7 +565,6 @@ easiest way to show the entire contents of a file.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ cat hello.txt
 Hello python class!
 ```
@@ -583,7 +573,6 @@ Use the `less` command to scroll through a file.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ less README.md
 ```
 
@@ -592,7 +581,6 @@ file. The `-n` option can be used to specify the number of lines to show.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ head README.md
 Python Class
 ============
@@ -620,13 +608,12 @@ $ tail README.md
 ```
 
 
-### 2.6: Making filesystem changes
+### 2.5: Making file system changes
 
 To move a file use the `mv` command.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ mv a b
 
 $ mv -i a b
@@ -638,7 +625,6 @@ To remove a file or directory use the `rm` command.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 
 $ rm a
 $ rm -I
@@ -650,7 +636,6 @@ To copy a file or directory use the `cp` command.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ cp a b
 $ cp -i a b
 $ cp -r
@@ -662,18 +647,16 @@ To create a directory use the `mkdir` command.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ mkdir x
 $ mkdir -p x
 ```
 
-### 2.7: Text processing
+### 2.6: Text processing
 
 Sort the contents of a file using the `sort` command.
 
 ```{code-block} console
 :caption: command line
-:class: full-width
 $ sort x
 $ sort -u x
 $ sort -g x

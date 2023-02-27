@@ -18,10 +18,7 @@ Beginner Tutorial
 
 > Approximate time ~ 2 hours
 
-```{contents}
-:backlinks: top
-:local:
-:depth: 2
+```{include} ../toc.md
 ```
 
 Introduction
@@ -96,7 +93,6 @@ handy for learning Python and debugging your code.
 
 ```{literalinclude} ../../pythonclass/pypet/main-2.1.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lines: "1"
 :lineno-match:
@@ -110,7 +106,7 @@ Click the {guilabel}`Run` button. The console will output:
 
 `Welcome to PyPet!`
 
-You’ve just written your Python program!
+You've just written your Python program!
 
 ```{rst-class} centered
 ```
@@ -165,7 +161,6 @@ though there is more code, we haven't printed anything else yet.
 
   ```{literalinclude} ../../pythonclass/pypet/main-2.1.py
   :caption: main.py
-  :class: full-width
   :linenos:
   :lines: "1-3"
   :lineno-match:
@@ -204,7 +199,6 @@ though there is more code, we haven't printed anything else yet.
 
   ```{literalinclude} ../../pythonclass/pypet/main-2.1.py
   :caption: main.py
-  :class: full-width
   :linenos:
   :lines: "1-6"
   :lineno-match:
@@ -243,7 +237,6 @@ Can you add another variable named `color` and give it a string value like
 
 ```{literalinclude} ../../pythonclass/pypet/main-2.1.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lineno-match:
 :emphasize-lines: "7"
@@ -331,7 +324,6 @@ your pet.
 
 ```{literalinclude} ../../pythonclass/pypet/main-2.2.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lineno-match:
 :emphasize-lines: "8"
@@ -358,7 +350,6 @@ to avoid closing the string early.
 {{ right }}
 
 ```{code-block-hl} python
-:class: full-width
 :caption: main.py
 :linenos:
 :lineno-start: 7
@@ -373,7 +364,6 @@ to avoid closing the string early.
 {{ right }}
 
 ```{code-block-hl} python
-:class: full-width
 :caption: main.py
 :linenos:
 :lineno-start: 7
@@ -388,7 +378,6 @@ next character.
 {{ right }}
 
 ```{code-block} python
-:class: full-width
 :caption: main.py
 :linenos:
 :lineno-start: 7
@@ -440,7 +429,7 @@ Never put quotation marks around variable names.
 
 {{ left }}
 
-Instead we will replace the the string `"Fluffy"` with the variable `name`.
+Instead we will replace the string `"Fluffy"` with the variable `name`.
 
 Since the variable `name` contains the string `"Fluffy"` it will have the exact
 same effect.
@@ -449,7 +438,6 @@ same effect.
 
 ```{literalinclude} ../../pythonclass/pypet/main-2.3.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lines: "1-10"
 :lineno-match:
@@ -466,7 +454,6 @@ Can you add a line to print the `pic` variable?
 
 ```{literalinclude} ../../pythonclass/pypet/main-2.3.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lineno-match:
 :emphasize-lines: "11"
@@ -492,7 +479,6 @@ To combine the two strings put the `+` operator between them.
 
 ```{code-block} python
 :caption: forms the string `"Hello from Fluffy"`
-:class: full-width
 "Hello from " + name
 ```
 
@@ -517,7 +503,6 @@ code inside the parenthesis in the print function.
 
 ```{literalinclude} ../../pythonclass/pypet/main-2.4.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lineno-match:
 :emphasize-lines: "10"
@@ -534,7 +519,7 @@ back to it.
 #### A. Docstrings
 
 A {term}`docstring` is a special kind of string that is enclosed by
-tripple double-quotes (`"""`) or triple single-quotes( `'''`). When used as the very
+triple double-quotes (`"""`) or triple single-quotes( `'''`). When used as the very
 first line in a file it is documentation for that file.
 
 Docstrings have the added benefit of being able to span multiple lines.
@@ -549,7 +534,6 @@ tutorial.
 
 ```{literalinclude} ../../pythonclass/pypet/main-2.5.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lines: "1-10"
 :lineno-match:
@@ -577,7 +561,6 @@ Add some comments to your program describing what the code does.
 
 ```{literalinclude} ../../pythonclass/pypet/main-2.5.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lineno-match:
 :lines: "9-"
@@ -596,12 +579,11 @@ A space is recommended after the hash mark (`#`).
 
 #### C. Inline comments
 
-A comment doeesn't have to be at the beginning of the line as long as it is not
+A comment doesn't have to be at the beginning of the line as long as it is not
 inside of quotes.
 
 ```{code-block-hl} python
 :caption: main.py
-:class: full-width
 :linenos:
 :lineno-start: 9
 
@@ -652,7 +634,7 @@ Dictionary keys use colon (`:`) and their keys **may be** in quotes:
 Create a dictionary called assigned to the variable `cat` using curly-braces
 (`{ }`).
 
-Inside the curly-braces add a list of attributes seperated by commas.
+Inside the curly-braces add a list of attributes separated by commas.
 Attributes have both a {term}`key` (like `"name"`, `"weight"`, `"age"`)
 as well as a {term}`value` (like `"Fluffy"`, `True`, `9.6`), with a colon `:`
 between the two.
@@ -661,7 +643,6 @@ between the two.
 
 ```{literalinclude} ../../pythonclass/pypet/main-3.1.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lineno-match:
 :lines: "12-28"
@@ -681,7 +662,6 @@ of the `pic`.
 
 ```{literalinclude} ../../pythonclass/pypet/main-3.1.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lineno-match:
 :lines: "20-"
@@ -701,7 +681,6 @@ format `dictionary["key"]` such as `cat["name"]`.
 
 ```{literalinclude} ../../pythonclass/pypet/main-3.3.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lineno-match:
 :lines: "20-"
@@ -721,7 +700,6 @@ to keep them for reference.
 
 ```{literalinclude} ../../pythonclass/pypet/main-3.4.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lines: "9-"
 :lineno-match:
@@ -769,7 +747,6 @@ Create this simple function by writing the following above your dictionary.
 
 ```{literalinclude} ../../pythonclass/pypet/main-4.1.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lines: "9-14"
 :emphasize-lines: "4-6"
@@ -796,7 +773,6 @@ PyPet, in this case `cat`.
 
 ```{literalinclude} ../../pythonclass/pypet/main-4.2.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lines: "26-"
 :lineno-match:
@@ -821,7 +797,6 @@ Add `cat["weight"] = cat["weight"] + 1` to your `feed` function.
 
 ```{literalinclude} ../../pythonclass/pypet/main-4.3.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lines: "12-15"
 :emphasize-lines: 4
@@ -839,7 +814,7 @@ debugging statements so we can see what happens.
 
 :::{tip}
 
-You can pass multiple, comma-seperated arguments to the `print()` function to
+You can pass multiple, comma-separated arguments to the `print()` function to
 print them with a space between each.
 
 This is sometimes easier than {term}`concatenation`, especially for debugging.
@@ -857,7 +832,6 @@ you call `feed()`.
 
 ```{literalinclude} ../../pythonclass/pypet/main-4.4.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lines: "33-"
 :emphasize-lines: "3, 5"
@@ -872,7 +846,6 @@ Set or change your PyPet's `"hungry"` value to `True`.
 
 ```{literalinclude} ../../pythonclass/pypet/main-4.4.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lines: "18-25"
 :emphasize-lines: "5"
@@ -881,7 +854,7 @@ Set or change your PyPet's `"hungry"` value to `True`.
 
 {{ row }}
 
-Look at the output to confirm that the PyPet's hungy and weight values changed.
+Look at the output to confirm that the PyPet's hunky and weight values changed.
 They should be:
 
 {{ right }}
@@ -985,7 +958,7 @@ increase his weight. If the PyPet is not hungry then it will print
 
 One equals sign (`=`) sets variables.
 
-Two equals signs (`==`) checks for equivilance.
+Two equals signs (`==`) checks for equivalence.
 
 :::
 
@@ -1001,7 +974,6 @@ Add an if statement inside of your function.
 
 ```{literalinclude} ../../pythonclass/pypet/main-5.1.py
 :caption: main.py
-:class: full-width
 :linenos:
 :lines: "12-18"
 :lineno-match:
@@ -1058,7 +1030,7 @@ In this section we'll learn how to hold multiple values together in a [list][].
 
    Now that we have more than one PyPet we can store them in a Python list. A
    [list][] is another data type; lists stores variables in order. If Python
-   isn"t the first programming language you are learning, you may have heard of
+   isn't the first programming language you are learning, you may have heard of
    this same concept in other programming languages as an array.
 
 Part 7: Going in Circles
@@ -1099,7 +1071,7 @@ look at the code. If you are stuck tweet [@Thinkful][] and we'd love to help.
 Feel free to customize any or all of your project and try new things.
 
 This guide is just the beginning of what you can do with Python. If you enjoyed
-the work you’ve done here, go through any of the additional resources below.
+the work you've done here, go through any of the additional resources below.
 
 Free Resources:
 

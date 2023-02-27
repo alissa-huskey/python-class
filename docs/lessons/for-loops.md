@@ -16,13 +16,11 @@ For Loops
 A `while` loop continues for as long as a condition is met, a `for` loop on the
 other hand repeats for every element in an iterable.
 
-```{contents} Table of Contents
-:backlinks: top
-:local:
+```{include} ../toc.md
 ```
 
-Syntax
-------
+Part 1: Syntax
+--------------
 
 The syntax for a for loop is:
 
@@ -42,11 +40,10 @@ Here's a simple example that iterates over a `list` of strings.
 
 ```{literalinclude} ../templates/examples/for.py
 :caption: "`for` loop example"
-:class: full-width
 :linenos:
 ```
 
-### Exercise
+### Part 1.1: Exercise
 
 ```{exercise} Movies
 :label: movies-exercise
@@ -59,7 +56,6 @@ Iterate over a `list` of `movies` and print each one out using a `for` loop.
 
 ```{code-block} python
 :caption: Movies Exercise
-:class: full-width
 :linenos:
 
 movies = [
@@ -76,11 +72,11 @@ for name in movies:
 
 `````
 
-Iterables and iterators
------------------------
+Part 2: Iterables and iterators
+-------------------------------
 
 Some objects in Python are {term}`iterable`--that is, an object that can be
-itereated over. For example, `list`, `tuple` and `range` objects are all
+iterated over. For example, `list`, `tuple` and `range` objects are all
 iterable.
 
 All iterables can be converted to an {term}`iterator`, which is an object that
@@ -90,7 +86,6 @@ To demonstrate this we'll create a `colors` `list` then convert the it to a
 `colors_iterator` using the `iter()` function.
 
 ```{code-cell} python
-:class: full-width
 colors = ["red", "green", "blue"]
 colors_iterator = iter(colors)
 ```
@@ -115,7 +110,7 @@ next(colors_iterator)
 next(colors_iterator)
 ```
 
-### Exercise
+### Part 2.1: Exercise
 
 ```{exercise} Iterators
 :label: iterator-exercise
@@ -130,7 +125,6 @@ next(colors_iterator)
 
 ```{code-block} python
 :caption:  Iterators Exercise
-:class: full-width
 
 >>> letters = list("alissa")
 >>> letters_iterator = iter(letters)
@@ -161,8 +155,8 @@ StopIteration                             Traceback (most recent call last)
 ```
 `````
 
-Under the hood
---------------
+Part 3: Under the hood
+----------------------
 
 Now that you know what iterables and iterators are, we demystify for loops.
 
@@ -184,7 +178,6 @@ of a `for` loop. First we'll create a `houses` list, and convert it to a
 `houses_iter` using the `iter()` function.
 
 ```{code-cell} python
-:class: full-width
 # create iterable
 houses = [
   "Arryn",
@@ -205,7 +198,6 @@ houses_iter = iter(houses)
 Now we'll call `next()` in a `while` loop, and assign the results to `name`.
 
 ```{code-cell} python
-:class: full-width
 :tags: [raises-exception]
 # loop forever
 while True:
@@ -217,10 +209,9 @@ while True:
 ```
 
 This is close, but we're still seeing that `StopIteration` exception. To
-supress it we'll need a try-except block.
+suppress it we'll need a try-except block.
 
 ```{code-cell} python
-:class: full-width
 :tags: [raises-exception]
 
 # create iterator
@@ -251,7 +242,6 @@ Now we have a `while` loop that replicates the behavior of a `for` loop. Here th
 <div class="row"><div class="col">
 
 ```{code-block-hl} python
-:class: full-width
 houses = [
   "Arryn",
   "Baratheon",
@@ -279,7 +269,6 @@ while True:
 </div><div class="col">
 
 ```{code-block-hl} python
-:class: full-width
 houses = [
   "Arryn",
   "Baratheon",
@@ -298,7 +287,7 @@ for !!!name!!! in !!!houses!!!:
 ```
 </div></div>
 
-### Exercise
+### Part 3.1: Exercise
 
 ```{exercise} Game Characters
 :label: characters-exercise
@@ -321,7 +310,6 @@ for !!!name!!! in !!!houses!!!:
 
 ```{code-block} python
 :caption: Characters Exercise
-:class: full-width
 :linenos:
 
 WIDTH = 30
@@ -345,14 +333,13 @@ for role in roles:
 
 `````
 
-Multiple assignment
--------------------
+Part 4: Multiple assignment
+---------------------------
 
 Depending on the type passed to it, `next()` may sometimes return more than one
 value. The classic example of this is {samp}`{dict}.items()`.
 
 ```{code-cell} python
-:class: full-width
 suites = {
   "heart": "red",
   "diamond": "red",
@@ -375,8 +362,8 @@ item
 ```
 
 Or we could use {term}`multiple assignment` to assign each item in the `tuple`
-to a cooresponding variable. There must be the same number of variables to the
-left of the `=` as there are items in the `tuple` seperated by `,`.
+to a corresponding variable. There must be the same number of variables to the
+left of the `=` as there are items in the `tuple` separated by `,`.
 
 ```{code-cell} python
 suit, color = next(suites_iterator)
@@ -393,7 +380,6 @@ color
 Lets put this assignment fanciness in a `while` loop.
 
 ```{code-cell} python
-:class: full-width
 suites_iterator = iter(suites.items())
 
 while True:
@@ -408,7 +394,6 @@ while True:
 And lets see how it looks in a `for` loop.
 
 ```{code-cell} python
-:class: full-width
 for suit, color in suites.items():
     print(f"The {suit} suit is {color}.")
 ```
@@ -418,7 +403,6 @@ Here they are side by side.
 <div class="row"><div class="col">
 
 ```{code-block-hl} python
-:class: full-width
 :linenos:
 
 suites = {
@@ -441,7 +425,6 @@ while True:
 </div><div class="col">
 
 ```{code-block-hl} python
-:class: full-width
 :linenos:
 
 suites = {
@@ -458,7 +441,7 @@ for !!!suit, color!!! in !!!suites.items()!!!:
 
 </div></div>
 
-### Exercise
+### Part 4.1: Exercise
 
 ```{exercise} Game Tools
 :label: toolss-exercise
@@ -481,7 +464,6 @@ for !!!suit, color!!! in !!!suites.items()!!!:
 
 ```{code-block} python
 :caption: Skills Exercise
-:class: full-width
 :linenos:
 
 WIDTH = 30
@@ -508,8 +490,8 @@ for role, tool in tools.items():
 
 `````
 
-Incrementing
-------------
+Part 5: Incrementing
+--------------------
 
 Sometimes we need to keep track of the number associated with each item in an
 iterable. One way to do this would be to increment a number each iteration.
@@ -559,11 +541,10 @@ But what happens if you want to enumerate an iterable that yields multiple
 items per iteration? Is it possible to assign the number and the other items to
 their respective variable names?
 
-Lets take a look at what happens when we pass a {samp}`{dict}.items()` iteratable to
+Lets take a look at what happens when we pass a {samp}`{dict}.items()` treatable to
 `enumerate()`.
 
 ```{code-cell} python
-:class: full-width
 
 suites = {
   "heart": "red",
@@ -575,13 +556,12 @@ suites = {
 list(enumerate(suites.items()))
 ```
 
-The iterable now yields a tuple containing a the count, and each item is a
+The iterable now yields a tuple containing the count, and each item is a
 tuple containing the key and value like so: {samp}`({COUNT}, ({KEY}, {VALUE}))`
 
-To use this in a for loop, simply encose the key-value tuple in parenthesis.
+To use this in a for loop, simply enclose the key-value tuple in parenthesis.
 
 ```{code-cell} python
-:class: full-width
 
 suites = {
   "heart": "red",
@@ -595,7 +575,7 @@ for i, (suit, color) in enumerate(suites.items(), 1):
 ```
 
 
-### Exercise
+### Part 5.1: Exercise
 
 `````{exercise} Number Names
 :label: number-names-exercise
@@ -631,7 +611,6 @@ and `1`. \
 
 ```{code-block} python
 :caption: Number Names Exercise
-:class: full-width
 :linenos:
 
 numbers = ["one", "two", "three", "four", "five"]
@@ -643,15 +622,15 @@ for i, name in enumerate(numbers, 1):
 
 `````
 
-Comparing loops
----------------
+Part 6: Comparing loops
+-----------------------
 
 Lets do some side-by-side comparisons of the same code written as a `while` loop
 and a `for` loop.
 
 On the left will be the `while` loop code and on the right will be the `for` loop code.
 
-### Example A: list iteration with `next()`
+### Part 6.1: list iteration with `next()`
 
 In this example we'll iterate over a `colors` `list`.
 
@@ -666,7 +645,6 @@ On the right the same code as a `for` loop, where the use of `iter()` and
 
 ```{code-block-hl} python
 :caption: "Iter example A-1: `list` iteration via `while` loop"
-:class: full-width
 colors = ["red", "green", "blue"]
 colors_iterator = iter(!!!colors!!!)
 while True:
@@ -681,7 +659,6 @@ while True:
 
 ```{code-block-hl} python
 :caption: "Iter example A-2: `list` iteration via `for` loop"
-:class: full-width
 colors = ["red", "green", "blue"]
 for !!!color!!! in !!!colors!!!:
   print(color)
@@ -689,7 +666,7 @@ for !!!color!!! in !!!colors!!!:
 
 </div></div>
 
-### Example B: range iteration with `next()`
+### Part 6.2: range iteration with `next()`
 
 Lets do the same comparison with a `range` object.
 
@@ -703,7 +680,6 @@ On the right is the same code as a `for` loop.
 
 ```{code-block-hl} python
 :caption: "Iter example B-1: `range` iteration via `while` loop (error surpressed)"
-:class: full-width
 numbers = range(1, 4)
 numbers_iter = iter(!!!numbers!!!)
 while True:
@@ -719,7 +695,6 @@ while True:
 
 ```{code-block-hl} python
 :caption: "Iter example B-2: `range` iteration via `for` loop"
-:class: full-width
 numbers = range(1, 4)
 for !!!num!!! in !!!numbers!!!:
   print(num)
@@ -727,7 +702,7 @@ for !!!num!!! in !!!numbers!!!:
 
 </div></div>
 
-### Example C: list iteration with subscription
+### Part 6.3: list iteration with subscription
 
 In this example we'll iterate over the `colors` `list` as before, except now
 we'll use an incrementing index number to get each element using
@@ -745,7 +720,6 @@ behavior.
 
 ```{code-block-hl} python
 :caption: "Bracket example C-1: `list` iteration via `while` loop"
-:class: full-width
 
 colors = ["red", "green", "blue"]
 idx = 0
@@ -760,7 +734,6 @@ while idx < len(!!!colors!!!):
 
 ```{code-block-hl} python
 :caption: "Subscript example C-2: `list` iteration via `for` loop"
-:class: full-width
 
 colors = ["red", "green", "blue"]
 
@@ -770,16 +743,15 @@ for !!!color!!! in !!!colors!!!:
 
 </div></div>
 
-### Example D: string iteration with subscription
+### Part 6.4: string iteration with subscription
 
 In this example we'll iterate over each `letter` in the string `word` using
-bracket notaton.
+bracket notation.
 
 <div class="row"><div class="col">
 
 ```{code-block-hl} python
 :caption: "Bracket example D-1: `str` iteration via `while` loop"
-:class: full-width
 
 word = "flibbertigibbet"
 idx = 0
@@ -794,7 +766,6 @@ while idx < len(!!!word!!!):
 
 ```{code-block-hl} python
 :caption: "Bracket example D-2: `list` iteration via `for` loop"
-:class: full-width
 
 word = "flibbertigibbet"
 
@@ -804,8 +775,10 @@ for !!!letter!!! in !!!word!!!:
 
 </div></div>
 
-Exercises
----------
+Part 7: Exercises
+-----------------
+
+### Part 7.1: Game Skills
 
 ```{exercise} Game Skills
 :label: skills-exercise
@@ -828,7 +801,6 @@ Exercises
 
 ```{code-block} python
 :caption: Skills Exercise
-:class: full-width
 :linenos:
 
 WIDTH = 30
@@ -848,6 +820,8 @@ for skill in skills:
 ```
 
 `````
+
+### Part 7.2: Weekdays
 
 ```{exercise} Weekdays
 :label: label-exercise
@@ -872,7 +846,6 @@ Example output:
 
 ```{code-block} python
 :caption: Weekdays Exercise
-:class: full-width
 :linenos:
 
 SIZE=10

@@ -17,7 +17,7 @@ https://alissa-huskey.github.io/python-class/exercises/adventure.html
 |                                                        |
 +--------------------------------------------------------+
 
-Part 11: Read things
+Part 12: Read things
 
 """
 

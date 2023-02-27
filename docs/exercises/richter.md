@@ -2,7 +2,7 @@ Richter scale
 =============
 
 Write a `quake_desc` function that takes one argument: `magnitude`, a number.
-return the description associated with the magnitude, as shown in the table
+Return the description associated with the magnitude, as shown in the table
 below.
 
 | Min       | Max  | Description           |
@@ -15,7 +15,7 @@ below.
 | 6         | `>` 7  | strong              |
 | 7         | `>` 8  | major               |
 | 8         | `>` 10 | great               |
-| 10        | `*`    | meteroic            |
+| 10        | `*`    | meteoric            |
 
 
 ```python

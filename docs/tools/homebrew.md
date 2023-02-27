@@ -4,10 +4,7 @@ Homebrew
 Homebrew is a package manager for macOS.  It simplifies the installing,
 upgrading and uninstalling of software, especially tools used by developers.
 
-```{contents}
-:backlinks: top
-:local:
-:depth: 2
+```{include} ../toc.md
 ```
 
 ```{seealso}
@@ -228,7 +225,7 @@ bash-completion		git			mas-cli/tap/mas		todo-txt
 ### Package info
 
 You can get more information about a package like the homepage and if/where it
-is installed, use the the `brew info` command.
+is installed, use the `brew info` command.
 
 ```{code-block} console
 $ brew info tree

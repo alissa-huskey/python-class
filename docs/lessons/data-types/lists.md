@@ -17,9 +17,7 @@ Lists
 
 An ordered collection of arbitrary objects accessed via index numbers.
 
-```{contents} Table of Contents
-:backlinks: top
-:local:
+```{include} ../../toc.md
 ```
 
 {{ rightcol | replace("col", "col-4 text-right") }}
@@ -46,7 +44,7 @@ Part 1: Basics
 ### Part 1.1 Creating
 
 There are several ways to create a new list. The simplest is to enclose the
-elements, seperated by commas, in square brackets (`[` and `]`):
+elements, separated by commas, in square brackets (`[` and `]`):
 
 ```{code-cell} python
 :tags: [thebe-init]
