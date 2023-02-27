@@ -727,11 +727,6 @@ def do_pet(args):
 
     debug(f"Trying to pet: {args}")
 
-    # make sure the player said what they want to pet
-    if not args:
-        error("What do you want to pet?")
-        return
-
     # make sure they are somewhere they can pet dragons
     if not place_can("pet"):
         error("You can't do that here.")
@@ -740,6 +735,11 @@ def do_pet(args):
     for word in ["dragon", "head"]:
         if word in args:
             args.remove(word)
+
+    # make sure the player said what they want to pet
+    if not args:
+        error("What do you want to pet?")
+        return
 
     color = args[0].lower()
 

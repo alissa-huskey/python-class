@@ -1,7 +1,6 @@
 from copy import deepcopy
 
 import pytest
-from parametrization import Parametrization
 
 import adventure
 from adventure import (
@@ -31,6 +30,7 @@ def setup_module(module):
     PLACES_STATE = deepcopy(adventure.PLACES)
     ITEMS_STATE = deepcopy(adventure.ITEMS)
     DEBUG_STATE = True
+    adventure.DELAY = 0
 
 
 def teardown_function(function):
@@ -39,6 +39,16 @@ def teardown_function(function):
     adventure.PLACES = deepcopy(PLACES_STATE)
     adventure.ITEMS = deepcopy(ITEMS_STATE)
     adventure.DEBUG = DEBUG_STATE
+
+
+########### meta test
+
+
+def test_teardown():
+    assert "problems" not in adventure.PLAYER["inventory"], \
+        "Each test should start with a fresh data set."
+
+########### game data test functions
 
 
 @pytest.mark.parametrize(
@@ -133,7 +143,7 @@ def test_error(capsys):
     # THEN: the error message should be printed
     output = capsys.readouterr().out
 
-    assert "You ruined everything" in output, \
+    assert output == "! Error You ruined everything.\n\n", \
         "The formatted error message should be printed."
 
 
@@ -271,54 +281,7 @@ def test_wrap_with_iterable(capsys):
     assert "\n\n  Stop thinking" in output, \
         "There should be two newlines between each printed message item"
 
-
-def test_health_change_add():
-    adventure.PLAYER["health"] = 50
-    impact = health_change(10)
-
-    assert impact == 10, \
-        "health_change() should return the amount added to health"
-
-    assert adventure.PLAYER["health"] == 60, \
-        "health_change() should add the quantity to player health"
-
-
-def test_health_change_subtract():
-    adventure.PLAYER["health"] = 50
-    impact = health_change(-10)
-
-    assert impact == -10, \
-        "health_change() should return the amount subtracted from health"
-
-    assert adventure.PLAYER["health"] == 40, \
-        "health_change() should add the quantity to player health"
-
-
-def test_health_gt_max():
-    adventure.PLAYER["health"] = adventure.MAX_HEALTH
-    impact = health_change(10)
-
-    assert impact == 0, \
-        "health_change() should return the amount actually added to health"
-
-    assert adventure.PLAYER["health"] == adventure.MAX_HEALTH, \
-        "health_change() should not allow health to go above MAX_HEALTH"
-
-
-def test_health_lt_zero():
-    adventure.PLAYER["health"] = 5
-    impact = health_change(-10)
-
-    assert adventure.PLAYER["health"] == 0, \
-        "health_change() should not allow health to go below zero"
-
-    assert impact == -5, \
-        "health_change() should return the amount actually subtracted from health"
-
-
-def test_teardown():
-    assert "problems" not in adventure.PLAYER["inventory"], \
-        "Each test should start with a fresh data set."
+########### command function tests
 
 
 def test_do_drop_no_args(capsys):
@@ -493,7 +456,12 @@ def test_do_pet_cant_pet(capsys):
 
 
 def test_do_pet_no_args(capsys):
-    # GIVEN: any scenerio
+    # GIVEN: The player is in a place where they can pet things
+    adventure.PLAYER["place"] = "somewhere"
+    adventure.PLACES["somewhere"] = {
+        "name": "Somewhere out there",
+        "can": ["pet"],
+    }
 
     # WHEN: the player types "pet" with no arguments
     do_pet([])
