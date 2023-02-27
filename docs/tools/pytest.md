@@ -12,7 +12,9 @@ On [writing pytest tests](../practices/testing/pytest-tests).
 Install
 -------
 
-:::::{tabbed} Poetry
+:::::::{tab-set}
+
+:::::{tab-item} Poetry
 
 ```{code-block} bash
 :caption: command line
@@ -28,7 +30,7 @@ poetry add --group dev pytest
 
 :::::
 
-:::::{tabbed} Pip
+:::::{tab-item} Pip
 
 ```{code-block} bash
 :caption: command line
@@ -36,6 +38,8 @@ python -m pip install pytest
 ```
 
 :::::
+
+:::::::
 
 Usage
 -----
