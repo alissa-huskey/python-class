@@ -2,6 +2,12 @@
 Poetry
 ======
 
+```{contents}
+:backlinks: top
+:local:
+:depth: 2
+```
+
 Poetry is the go-to dependency management and packaging tool used by Python
 developers. It takes the long and complicated toolchain available in the Python
 world and wraps it in a few easy to use best practices.

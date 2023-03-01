@@ -3966,7 +3966,7 @@ clue from the book.
 Since our program is starting to get complicated, we'll also start writing
 tests. This will help us find out if we break something, even if we don't
 happen to play the part of the game that triggers it. Be sure to do the
-[Testing Lesson](../practices/testing) if you haven't already.
+[Testing Lesson](../practices/testing/intro) if you haven't already.
 
 ### Part 11.1: Setup
 
