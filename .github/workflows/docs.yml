@@ -25,6 +25,7 @@ jobs:
 
     - name: Install dependencies
       run: |
+        poetry export --without-hashes --only=docs > docs/.requirements.txt
         pip install -r docs/.requirements.txt
 
     # generate static HTML files
