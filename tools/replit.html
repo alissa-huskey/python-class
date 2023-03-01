@@ -62,7 +62,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Screencasts" href="screencasts.html" />
-    <link rel="prev" title="Windows Dev Env for Python" href="windows.html" />
+    <link rel="prev" title="Python Shell" href="python-shell.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -407,10 +407,22 @@ const thebe_selector_output = ".output, .cell_output"
    Problem Solving
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../practices/testing.html">
-   Testing
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../practices/testing/intro.html">
+   Introduction to Tests
   </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../practices/testing/pytest-tests.html">
+     Pytest Tests
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../practices/debugging.html">
@@ -430,8 +442,8 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="terminal.html">
-   Terminal
+  <a class="reference internal" href="asdf.html">
+   asdf
   </a>
  </li>
  <li class="toctree-l1">
@@ -440,13 +452,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="vscode.html">
-   VS Code
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="python-shell.html">
-   Python Shell
+  <a class="reference internal" href="homebrew.html">
+   Homebrew
   </a>
  </li>
  <li class="toctree-l1">
@@ -455,18 +462,28 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="poetry.html">
-   Poetry
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="mac.html">
    Mac Dev Env for Python
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="windows.html">
-   Windows Dev Env for Python
+  <a class="reference internal" href="poetry.html">
+   Poetry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pyenv.html">
+   pyenv
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pytest.html">
+   Pytest
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python-shell.html">
+   Python Shell
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -480,18 +497,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="homebrew.html">
-   Homebrew
+  <a class="reference internal" href="terminal.html">
+   Terminal
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="asdf.html">
-   asdf
+  <a class="reference internal" href="vscode.html">
+   VS Code
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="pyenv.html">
-   pyenv
+  <a class="reference internal" href="windows.html">
+   Windows Dev Env for Python
   </a>
  </li>
 </ul>
@@ -1210,7 +1227,7 @@ select <span class="guilabel">Show hidden files</span>.</p>
 <li><p>Click on the <code class="file docutils literal notranslate"><span class="pre">.replit</span></code> file in the sidebar to edit it. In the editor,
 you will see a file that starts out something like this.</p>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-number">Listing 646 </span><span class="caption-text">.replit</span><a class="headerlink" href="#id1" title="Permalink to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 674 </span><span class="caption-text">.replit</span><a class="headerlink" href="#id1" title="Permalink to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># The command that runs the program. If the interpreter field is set...</span>
 <span class="hll"><span class="linenos">2</span><span class="n">run</span> <span class="o">=</span> <span class="s2">&quot;python3 main.py&quot;</span>
 </span><span class="linenos">3</span><span class="c1"># The primary language of the repl. There can be others, though!</span>
@@ -1224,7 +1241,7 @@ you will see a file that starts out something like this.</p>
 Python file you created. For example, if the file I created was named
 <code class="file docutils literal notranslate"><span class="pre">solver.py</span></code>, my <code class="file docutils literal notranslate"><span class="pre">.replit</span></code> file would look like this:</p>
 <div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-number">Listing 647 </span><span class="caption-text">.replit</span><a class="headerlink" href="#id2" title="Permalink to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 675 </span><span class="caption-text">.replit</span><a class="headerlink" href="#id2" title="Permalink to this code">#</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># The command that runs the program. If the interpreter field is set...</span>
 <span class="hll"><span class="linenos">2</span><span class="n">run</span> <span class="o">=</span> <span class="s2">&quot;python3 solver.py&quot;</span>
 </span><span class="linenos">3</span><span class="c1"># The primary language of the repl. There can be others, though!</span>
@@ -1507,11 +1524,11 @@ project or piece of software.</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="windows.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="python-shell.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Windows Dev Env for Python</p>
+            <p class="prev-next-title">Python Shell</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="screencasts.html" title="next page">

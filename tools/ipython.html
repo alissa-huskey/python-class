@@ -61,8 +61,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://alissa-huskey.github.io/python-class/tools/ipython.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Poetry" href="poetry.html" />
-    <link rel="prev" title="Python Shell" href="python-shell.html" />
+    <link rel="next" title="Mac Dev Env for Python" href="mac.html" />
+    <link rel="prev" title="Homebrew" href="homebrew.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -407,10 +407,22 @@ const thebe_selector_output = ".output, .cell_output"
    Problem Solving
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../practices/testing.html">
-   Testing
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../practices/testing/intro.html">
+   Introduction to Tests
   </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../practices/testing/pytest-tests.html">
+     Pytest Tests
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../practices/debugging.html">
@@ -430,8 +442,8 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="terminal.html">
-   Terminal
+  <a class="reference internal" href="asdf.html">
+   asdf
   </a>
  </li>
  <li class="toctree-l1">
@@ -440,13 +452,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="vscode.html">
-   VS Code
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="python-shell.html">
-   Python Shell
+  <a class="reference internal" href="homebrew.html">
+   Homebrew
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -455,18 +462,28 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="poetry.html">
-   Poetry
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="mac.html">
    Mac Dev Env for Python
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="windows.html">
-   Windows Dev Env for Python
+  <a class="reference internal" href="poetry.html">
+   Poetry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pyenv.html">
+   pyenv
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pytest.html">
+   Pytest
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python-shell.html">
+   Python Shell
   </a>
  </li>
  <li class="toctree-l1">
@@ -480,18 +497,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="homebrew.html">
-   Homebrew
+  <a class="reference internal" href="terminal.html">
+   Terminal
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="asdf.html">
-   asdf
+  <a class="reference internal" href="vscode.html">
+   VS Code
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="pyenv.html">
-   pyenv
+  <a class="reference internal" href="windows.html">
+   Windows Dev Env for Python
   </a>
  </li>
 </ul>
@@ -891,7 +908,7 @@ obj?, obj??      : Get help, or more help for object (also works as
 <p>You can save the history from your last session to the file in the directory
 you were in when you started <code class="docutils literal notranslate"><span class="pre">ipython</span></code> by using the <code class="docutils literal notranslate"><span class="pre">%save</span></code> magic command.</p>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-number">Listing 603 </span><span class="caption-text">ipython shell – save to a file named session.py</span><a class="headerlink" href="#id1" title="Permalink to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 618 </span><span class="caption-text">ipython shell – save to a file named session.py</span><a class="headerlink" href="#id1" title="Permalink to this code">#</a></div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1&gt;&gt;&gt; %save session ~1/
 The following commands were written to file `session.py`:
 import requests
@@ -937,13 +954,13 @@ Solution<div class="sd-summary-down docutils">
 <p class="sd-card-text">iPython <code class="docutils literal notranslate"><span class="pre">&lt;=7.19</span></code> is incompatible with jedi version <code class="docutils literal notranslate"><span class="pre">0.18.0</span></code>.
 To resolve, downgrade <code class="docutils literal notranslate"><span class="pre">jedi</span></code> to version <code class="docutils literal notranslate"><span class="pre">0.17.2</span></code>.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="b948d04e-68a2-4b8c-aa9c-dc53c79a92e5" name="ed25c208-4ed3-441b-ab3c-bff9021c47fa" type="radio">
-</input><label class="sd-tab-label" for="b948d04e-68a2-4b8c-aa9c-dc53c79a92e5">
+<input checked="checked" id="f5678ed4-7d78-4936-b703-68d1cd3e48e6" name="70b7842b-477b-4dd5-ae9d-151e21efb03f" type="radio">
+</input><label class="sd-tab-label" for="f5678ed4-7d78-4936-b703-68d1cd3e48e6">
 poetry</label><div class="sd-tab-content docutils">
 <p class="sd-card-text">Modify your <code class="file docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file and add the following <code class="docutils literal notranslate"><span class="pre">jedi</span></code>
 dependency just above the <code class="docutils literal notranslate"><span class="pre">ipython</span></code> dependency.</p>
 <div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-number">Listing 604 </span><span class="caption-text">pyproject.toml</span><a class="headerlink" href="#id2" title="Permalink to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 619 </span><span class="caption-text">pyproject.toml</span><a class="headerlink" href="#id2" title="Permalink to this code">#</a></div>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.poetry.dev-dependencies]</span>
 <span class="p">...</span>
 <span class="hll"><span class="n">jedi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;0.17.2&quot;</span><span class="w"> </span><span class="c1"># ipython &lt;=7.19</span>
@@ -953,18 +970,18 @@ dependency just above the <code class="docutils literal notranslate"><span class
 </div>
 <p class="sd-card-text">Then in a terminal run:</p>
 <div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-number">Listing 605 </span><span class="caption-text">terminal</span><a class="headerlink" href="#id3" title="Permalink to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 620 </span><span class="caption-text">terminal</span><a class="headerlink" href="#id3" title="Permalink to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>update<span class="w"> </span>jedi
 </pre></div>
 </div>
 </div>
 </div>
-<input id="d1ff2d1c-dd8b-45c5-b2f3-558873a91c7c" name="ed25c208-4ed3-441b-ab3c-bff9021c47fa" type="radio">
-</input><label class="sd-tab-label" for="d1ff2d1c-dd8b-45c5-b2f3-558873a91c7c">
+<input id="6d3b130a-7e63-458c-b5a8-499f453e958e" name="70b7842b-477b-4dd5-ae9d-151e21efb03f" type="radio">
+</input><label class="sd-tab-label" for="6d3b130a-7e63-458c-b5a8-499f453e958e">
 pip</label><div class="sd-tab-content docutils">
 <p class="sd-card-text">In a terminal run:</p>
 <div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-number">Listing 606 </span><span class="caption-text">terminal</span><a class="headerlink" href="#id4" title="Permalink to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 621 </span><span class="caption-text">terminal</span><a class="headerlink" href="#id4" title="Permalink to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>jedi~<span class="o">=</span><span class="m">0</span>.17.2
 </pre></div>
 </div>
@@ -1012,13 +1029,13 @@ Solution<div class="sd-summary-down docutils">
 <p class="sd-card-text">iPython ~7.13.0 on Windows does not work with a version 3+ of prompt-toolkit.
 To resolve, downgrade <code class="docutils literal notranslate"><span class="pre">prompt-toolkit</span></code> to version <code class="docutils literal notranslate"><span class="pre">2.x</span></code>.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="df51f682-62b4-4db3-bb6e-0f01425dd94a" name="7bc35ea1-e208-47b0-a289-72979994f14f" type="radio">
-</input><label class="sd-tab-label" for="df51f682-62b4-4db3-bb6e-0f01425dd94a">
+<input checked="checked" id="c19458f3-a422-4c59-a0c3-cc154154cebe" name="5646ec8d-4704-4e41-a874-9ba05cf8c703" type="radio">
+</input><label class="sd-tab-label" for="c19458f3-a422-4c59-a0c3-cc154154cebe">
 poetry</label><div class="sd-tab-content docutils">
 <p class="sd-card-text">Modify your <code class="file docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file and add the following <code class="docutils literal notranslate"><span class="pre">prompt-toolkit</span></code>
 dependency just above the <code class="docutils literal notranslate"><span class="pre">ipython</span></code> dependency.</p>
 <div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-number">Listing 607 </span><span class="caption-text">pyproject.toml</span><a class="headerlink" href="#id5" title="Permalink to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 622 </span><span class="caption-text">pyproject.toml</span><a class="headerlink" href="#id5" title="Permalink to this code">#</a></div>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.poetry.dev-dependencies]</span>
 <span class="p">...</span>
 <span class="hll"><span class="n">prompt-toolkit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;^2&quot;</span><span class="w"> </span><span class="c1"># ipython ~7.10</span>
@@ -1028,18 +1045,18 @@ dependency just above the <code class="docutils literal notranslate"><span class
 </div>
 <p class="sd-card-text">Then in a terminal run:</p>
 <div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-number">Listing 608 </span><span class="caption-text">terminal</span><a class="headerlink" href="#id6" title="Permalink to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 623 </span><span class="caption-text">terminal</span><a class="headerlink" href="#id6" title="Permalink to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>update<span class="w"> </span>prompt-toolkit
 </pre></div>
 </div>
 </div>
 </div>
-<input id="f11f8f85-98bc-4f58-8b01-89b0e87bfe3e" name="7bc35ea1-e208-47b0-a289-72979994f14f" type="radio">
-</input><label class="sd-tab-label" for="f11f8f85-98bc-4f58-8b01-89b0e87bfe3e">
+<input id="c200860a-8385-45a1-a3a4-e502aabbabff" name="5646ec8d-4704-4e41-a874-9ba05cf8c703" type="radio">
+</input><label class="sd-tab-label" for="c200860a-8385-45a1-a3a4-e502aabbabff">
 pip</label><div class="sd-tab-content docutils">
 <p class="sd-card-text">In a terminal run:</p>
 <div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-number">Listing 609 </span><span class="caption-text">terminal</span><a class="headerlink" href="#id7" title="Permalink to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 624 </span><span class="caption-text">terminal</span><a class="headerlink" href="#id7" title="Permalink to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>prompt-toolkit~<span class="o">=</span><span class="m">2</span>.0
 </pre></div>
 </div>
@@ -1085,17 +1102,17 @@ pip</label><div class="sd-tab-content docutils">
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="python-shell.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="homebrew.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Python Shell</p>
+            <p class="prev-next-title">Homebrew</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="poetry.html" title="next page">
+    <a class='right-next' id="next-link" href="mac.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Poetry</p>
+        <p class="prev-next-title">Mac Dev Env for Python</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

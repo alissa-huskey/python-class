@@ -16,28 +16,21 @@ kernelspec:
   language: python
   name: python3
 ---
-<!-- markdownlint-disable no-inline-html no-alt-text -->
 
-Testing
-=======
-
-```{include} ../toc.md
-```
-
-```{seealso}
-
-* [Getting Started With Testing in Python](https://realpython.com/python-testing/)
-* [pytest introduction](https://pythontesting.net/framework/pytest/pytest-introduction/)
-* [Python testing in Visual Studio Code](https://code.visualstudio.com/docs/python/testing#_example-test-walkthroughs)
-
-```
-
+Introduction to Tests
+=====================
 ![](assets/indicator-lights.jpg)
 
 A key part of writing code is figuring out why it isn't working and a key
 tool for debugging is testing. As code gets more complicated making sure
 that things stay in working order becomes both increasingly important and
 increasingly difficult to eyeball.
+
+```{contents}
+:backlinks: top
+:local:
+:depth: 2
+```
 
 Part 1: Assertions
 ------------------
@@ -146,7 +139,7 @@ AssertionError                            Traceback (most recent call last)
 <ipython-input-17-f9c022e29283> in <module>
 ----> 1 assert "gaz" == "Gaz"
 
-AssertionError:
+AssertionError: 
 
 >>> import random
 >>> num = random.randint(1, 100)
@@ -360,7 +353,7 @@ def letter_grade(score):
         min_score, max_score = score_range
         if score >= min_score and score <= max_score:
             return letter
-
+    
     return False
 ```
 
@@ -390,7 +383,7 @@ def letter_grade(score):
         min_score, max_score = score_range
         if score >= min_score and score <= max_score:
             return letter
-
+    
     return False
 
 def test_letter_grade():
@@ -477,7 +470,7 @@ pytest greeting.py
 =================== test session starts ====================
 platform darwin -- Python 3.8.1, pytest-6.2.1, py-1.10.0, ...
 rootdir: ...
-collected 1 item
+collected 1 item                                           
 
 greeting.py .                                        [100%]
 
@@ -538,7 +531,7 @@ pytest greeting.py
 =================== test session starts ====================
 platform darwin -- Python 3.8.1, pytest-6.2.1, py-1.10.0, ...
 rootdir: ...
-collected 1 item
+collected 1 item                                           
 
 greeting.py F                                        [100%]
 
@@ -625,7 +618,7 @@ pytest test_greeting.py
 =================== test session starts ====================
 platform darwin -- Python 3.8.1, pytest-6.2.1, py-1.10.0, ...
 rootdir: ...
-collected 1 item
+collected 1 item                                           
 
 greeting.py F                                        [100%]
 
@@ -721,7 +714,7 @@ pytest -v test_greeting.py
 =================== test session starts ====================
 platform darwin -- Python 3.8.1, pytest-6.2.2, ...
 rootdir: ..., configfile: pyproject.toml, testpaths: tests
-collected 7 items
+collected 7 items                                          
 
 tests/test_greeting.py F......                       [100%]
 
@@ -855,7 +848,7 @@ pytest -v tests
 platform darwin -- Python 3.8.1, pytest-6.2.1, py-1.10.0, ...
 cachedir: .pytest_cache
 rootdir: ...
-collected 7 items
+collected 7 items                                          
 
 test_greeting.py::test_greeting_fail FAILED          [ 14%]
 test_greeting.py::test_greeting PASSED               [ 28%]
@@ -936,7 +929,7 @@ pytest -v
 platform darwin -- Python 3.8.1, pytest-6.2.1, py-1.10.0, ...
 cachedir: .pytest_cache
 rootdir: ...
-collected 7 items
+collected 7 items                                          
 
 test_greeting.py::test_greeting_fail FAILED          [ 14%]
 test_greeting.py::test_greeting PASSED               [ 28%]
@@ -1268,3 +1261,14 @@ You can run {guilabel}`Python: Discover Tests` from the {guilabel}`Command Palet
 Or by clicking the icon at the top of the {guilabel}`TESTING` sidebar:
 
 ![](assets/test-sidebar-actions-discover.png)
+
+See also
+--------
+
+```{seealso}
+
+* [Getting Started With Testing in Python](https://realpython.com/python-testing/)
+* [pytest introduction](https://pythontesting.net/framework/pytest/pytest-introduction/)
+* [Python testing in Visual Studio Code](https://code.visualstudio.com/docs/python/testing#_example-test-walkthroughs)
+
+```
