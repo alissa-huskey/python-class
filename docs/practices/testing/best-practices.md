@@ -9,14 +9,14 @@ Writing Tests
 
 :::{important}
 
-Be sure to go through the [](testing.md) lesson first if you haven't already.
+Be sure to go through the [](intro.md) lesson first if you haven't already.
 
 :::
 
 Part x: Good tests
 ------------------
 
-* Fast -- 
+* Fast --
 * Complete -- The whole codebase should be tested and all possible cases.
 * Resiliant -- won't break if your code changes in trivial ways. Don't wrongly
   fail or pass. Don't fail intermittently.
@@ -32,47 +32,7 @@ Part x: Good tests
 Part x: TDD
 -----------
 
-### dos and don'ts
-
-|                       DONT                          |                        DO                             |
-|-----------------------------------------------------|-------------------------------------------------------|
-| include code or specific values                     | write general, plain english descriptions             |
-|                                                     |                                                       |
-|   `# WHEN you call add() with 2 and 5`              |   `# WHEN you call add() with two positive integers`  |
-|   `# THEN the returned value should be 7`           |   `# THEN the sum of both numbers should be returned` |
-|                                                     |                                                       |
-| include technical details                           | write conceptual descriptions                         |
-|                                                     |                                                       |
-|   `# WHEN place_remove() is called`                 |   `# WHEN place_removed() is called`                  |
-|   `# THEN key shouldn't be in PLACES[key]["items"]` |   `# THEN the item should be removed from the place`  |
-|                                                     |                                                       |
-| use throw-away data                                 | use realistic data                                    |
-|                                                     |                                                       |
-|   `# GIVEN a person dictionary`                     |   `# GIVEN a person dictionary`                       |
-|   `a = {"first": "abc", "last": "xyz"}`             |   `person = {"first": "Bob", "last": "Smith"}`        |
-|                                                     |                                                       |
-
-### Exercise
-
-* write GWT descriptions for your states [alcohol laws][alcohol-laws].
-
-[alcohol-laws]: https://en.wikipedia.org/wiki/List_of_alcohol_laws_of_the_United_States
-
-```
-# no
-# 7am-2am
-# beer, wine & liquor: 8am-midnight
-  3.2 beer: 5am-midnight
-# yes
-# no*
-# 21
-# 21 excpetion: ok for religious, medical, educational, private, non-selling with parent
-# spirits/malt in liquor stores only
-  liquor stores closed xmas.
-
-GIVEN: 
-```
-
+TODO
 
 Part x: Isolation
 -----------------

@@ -13,8 +13,8 @@ Pytest Tests
 ============
 
 Pytest is a testing framework for Python. In this document we'll discuss how to
-write tests that can be run with Pytest as well as how to use some of the extra
-features that Pytest provides for use in our test code.
+write tests for Pytest as well as some of the extra features that Pytest
+provides.
 
 For installation and other usage information, see the [Pytest tool guide](../../tools/pytest).
 
@@ -27,19 +27,17 @@ For installation and other usage information, see the [Pytest tool guide](../../
 Part 1: Writing tests
 ---------------------
 
-In this section we'll discuss how to write tests to be run with Pytest.
+In this section we'll discuss how to write tests for Pytest.
 
 ### Part 1.1: Hello World
 
-Pytest expects our tests to be located in files whose names begin with `test_`
-or end with `_test.py`.
+Pytest expects tests to be located in files whose names begin with `test_` or
+end with `_test.py`.
 
 Individual tests are written in functions that begins with `test_` and contain
 one or more `assert` statements which determine if it passes or fails.
 
-Say you have a file named `test_hello_world.py` that contains the single test
-function `test_truth()`. This test in turn contains a single assert statement
-which will always pass.
+Here's a simple example test that will always pass.
 
 ```{code-block} python
 :linenos:
@@ -129,20 +127,86 @@ FAILED test_hello_world.py::test_lies - assert False
 
 Let's take a closer look at that test output.
 
+:::{card}
+
 ```{code-block} pytest
 :caption: command line output
+:emphasize-lines: 8
+===================== test session starts ======================
+platform darwin -- Python 3.9.1, pytest-7.0.1, pluggy-1.0.0
+cachedir: .pytest_cache
+rootdir: ~/python-class, configfile: pyproject.toml
+plugins: pylama-8.3.7, typeguard-2.13.3
+collected 2 items
+
 test_hello_world.py .F                                   [100%]
 ```
 
 This line indicates the progress of each test file and each test in the file is
 represented by a single character following the filename.
 
-* the green `.` indicates the first passing test
-* the red `F` indicates the second failing test
-* `[100%]` means that all of the test found in the file were run
+| Test No | Symbol      | Means...           |
+|---------|-------------|--------------------|
+| 1       | `.` (green) | passing test       |
+| 2       | `F` (red)   | failing test       |
+|         | `[100%]`    | all tests were run |
+|         |             |                    |
+
+:::
+
+:::{card}
 
 ```{code-block} pytest
 :caption: command line output
+:emphasize-lines: "11-"
+===================== test session starts ======================
+platform darwin -- Python 3.9.1, pytest-7.0.1, pluggy-1.0.0
+cachedir: .pytest_cache
+rootdir: ~/python-class, configfile: pyproject.toml
+plugins: pylama-8.3.7, typeguard-2.13.3
+collected 2 items
+
+test_hello_world.py .F                                   [100%]
+
+=========================== FAILURES ===========================
+__________________________ test_lies ___________________________
+
+    def test_lies():
+>       assert False
+E       assert False
+```
+
+This section of the output shows you detailed information about each failing
+test.
+
+| Output                  | Means...                                                 |
+|-------------------------|----------------------------------------------------------|
+| `_____ test_lies _____` | start of info about `test_lies()` failure                |
+| `>       assert False`  | the line where the failure happened, indicated by `>`    |
+| `E       assert False`  | more information about the error, indicated by a red `E` |
+|                         |                                                          |
+
+If this was an error in your code instead of a failing `assert` there might
+be multiple lines beginning with `E` and a lot more information. In this case
+though there's no additional information so it looks the same as the line above.
+
+:::
+
+:::{card}
+
+```{code-block} pytest
+:caption: command line output
+:emphasize-lines: "18"
+$ pytest test_hello_world.py
+===================== test session starts ======================
+platform darwin -- Python 3.9.1, pytest-7.0.1, pluggy-1.0.0
+cachedir: .pytest_cache
+rootdir: ~/python-class, configfile: pyproject.toml
+plugins: pylama-8.3.7, typeguard-2.13.3
+collected 2 items
+
+test_hello_world.py .F                                   [100%]
+
 =========================== FAILURES ===========================
 __________________________ test_lies ___________________________
 
@@ -150,38 +214,62 @@ __________________________ test_lies ___________________________
 >       assert False
 E       assert False
 
-```
-
-This section of the output shows you detailed information about each failing
-test.
-
-* The `_____ test_lies _____` line indicates that this is the beginning  of the
-  information about the `test_lies()` test.
-* This is followed by a sample of the code where failure took place with the
-  specific line that caused the failure indicated with a `>`.
-* The red lines that start with `E` give you more detailed information about
-  the failure or error. In this case, there's no additional information so it
-  looks the same as the original line.
-
-```{code-cell}
-:tags: [remove-input]
-print("\x1b[31mtest_hello_world.py:5:\x1b[0m AssertionError")
+test_hello_world.py:5: AssertionError
 ```
 
 This line is probably the most useful of all. It tells you the three most
 important pieces of information:
 
-* the filename and line number where the failure took place
-* what kind of exception was encountered
+| Output                | Means...                             |
+|-----------------------|--------------------------------------|
+| `test_hello_world.py` | the file where the error occurred     |
+| `5`                   | the line number that it happened on   |
+| `AssertionError`      | the exception class that was raised  |
+|                       |                                      |
+
+:::
+
+:::{card}
+
 
 ```{code-block} pytest
 :caption: command line output
+:emphasize-lines: "19-"
+$ pytest test_hello_world.py
+===================== test session starts ======================
+platform darwin -- Python 3.9.1, pytest-7.0.1, pluggy-1.0.0
+cachedir: .pytest_cache
+rootdir: ~/python-class, configfile: pyproject.toml
+plugins: pylama-8.3.7, typeguard-2.13.3
+collected 2 items
+
+test_hello_world.py .F                                   [100%]
+
+=========================== FAILURES ===========================
+__________________________ test_lies ___________________________
+
+    def test_lies():
+>       assert False
+E       assert False
+
+test_hello_world.py:5: AssertionError
 =================== short test summary info ====================
 FAILED test_hello_world.py::test_lies - assert False
 ================= 1 failed, 1 passed in 0.05s ==================
 ```
 
 Finally, this line shows a summary of all the failures.
+
+| Output                | Means...                             |
+|-----------------------|--------------------------------------|
+| `test_hello_world.py` | the file where the error occurred    |
+| `test_lies`           | the test that failed                 |
+| `assert False`        | the code that failed                 |
+| `1 failed`            | total failing tests                  |
+| `1 passed`            | total passing tests                  |
+|                       |                                      |
+
+:::
 
 ### Part 1.4: Testing functions
 
@@ -548,10 +636,6 @@ Note that every time you call `readouterr()` it sets the `out` attribute to all
 of the content that has been sent to `stdout` since the function started or the
 last time `readouterr()` was called.
 
-For example the `output` variable on line `6` contains what was captured from
-lines `2` through `4`, while the `output` variable on line `12` contains what
-was printed on lines `8` through `10`.
-
 ```{code-block} python
 :linenos:
 :emphasize-lines: "6, 12"
@@ -573,9 +657,14 @@ def test_stdout(capsys):
 
 ```
 
+In this example
+
+* `output_1` on line `6` will contain what was printed on lines `2`-`4`
+* `output_2` on line `12` will contain what was printed on lines `8`-`10`
+
 ### Part 4.2: Testing stderr
 
-Many command line programs print errors to a seperate special file called
+Many command line programs print errors to a separate special file called
 `stderr`. This allows end users and other programs to do things that involve
 handling error messages differently from normal program output. For example to
 silence all errors or save a file that contains just the errors.
@@ -654,12 +743,13 @@ Part 5: Parametrization
 `````
 
 Parametrization is used to combine the multiple test that are *almost* exactly
-the same into one test case that takes arguments.
+the same into one test with several {term}`test cases <test case>` that are
+stored and run as a list of arguments to a single test function.
 
-### Part 5.1: parametrize
+### Part 5.1: Parametrize
 
 Remember our `can_drink()` function? Let's say we were very responsible and
-wrote tests to cover a whole bunch of cases.
+wrote a whole bunch of tests for it.
 
 ```{code-block} python
 :caption: test_my_project.py
@@ -695,13 +785,77 @@ def test_can_drink_100():
 Parametrization allows us to collapse that down into just one test with a few
 modifications.
 
-First, we'll refactor our test to add two parameters: `age` and `expected`.
-We'll use `age` for the argument to pass to `can_drink()` and `expected` in the
-assert statement to indicate if `is_allowed` should be `True` or `False`.
+#### A. Identify differences
+
+Identify what is different between the test functions.
+
+```{code-block-hl} python
+:caption: test_my_project.py
+:linenos:
+
+from my_project.main import can_drink
+
+def test_can_drink_15():
+    is_allowed = can_drink(!!!15!!!)
+    assert !!!not is_allowed!!!
+
+def test_can_drink_0():
+    is_allowed = can_drink(!!!0!!!)
+    assert !!!not is_allowed!!!
+
+def test_can_drink_negative():
+    is_allowed = can_drink(!!!-5!!!)
+    assert !!!not is_allowed!!!
+
+def test_can_drink_float():
+    is_allowed = can_drink(!!!17.5!!!)
+    assert !!!not is_allowed!!!
+
+def test_can_drink_21():
+    is_allowed = can_drink(!!!21!!!)
+    assert !!!is_allowed!!!
+
+def test_can_drink_100():
+    is_allowed = can_drink(!!!100!!!)
+    assert !!!is_allowed!!!
+```
+
+You can see that there are two things that change in these tests:
+
+1. The age that is passed to `can_drink()`
+2. Whether we expect `can_drink()` to return `True` or `False`.
+
+#### B. Add `age` variable
+
+We'll parametrize the age passed to the `can_drink()` function.
+
+1. Replace the argument passed to `can_drink()` with a variable `age`.
+2. Add `age` as a parameter in the declaration of `test_can_drink()`.
 
 ```{code-block} python
 :caption: test_my_project.py
 :linenos:
+:emphasize-lines: "3-4"
+
+from my_project.main import can_drink
+
+def test_can_drink(age):
+    is_allowed = can_drink(age)
+    assert not is_allowed
+```
+
+#### C. Add `expected` variable
+
+Next we'll parametrize the expected return value.
+
+1. Add `expected` as a parameter in the declaration of `test_can_drink()`.
+2. Change the assert statement condition to `== expected` (instead of
+   `is_allowed` or `not is_allowed`) .
+
+```{code-block} python
+:caption: test_my_project.py
+:linenos:
+:emphasize-lines: "3,5"
 
 from my_project.main import can_drink
 
@@ -710,43 +864,128 @@ def test_can_drink(age, expected):
     assert is_allowed == expected
 ```
 
-Now we'll import `pytest` and call `@pytest.mark.parametrize()` just above the
-test function.
+#### D. Add decorator
 
-The first argument is a list containing the variable names you use in the test
-function. In this case `age` and `expected`.
+Setup the test for parametrization.
 
-The second is a list of tuples where each contains the arguments to send to the
-test function for run instance.
+1. Import `pytest`.
+2. Call `@pytest.mark.parametrize()` immediately above the test function.
+   * The first argument should be list containing the parameter names from the
+     test function, in this case `age` and `expected`
+   * The second will eventually list of tuples, but let's start with an empty list
 
 ```{code-block} python
 :caption: test_my_project.py
 :linenos:
+:emphasize-lines: "5-6"
 
 from my_project.main import can_drink
 
 import pytest
 
-@pytest.mark.parametrize(
-    ["age", "expected"], [
-        (15, False),
-        (0, False),
-        (-5, False),
-        (17.5, False),
-        (21, True),
-        (100, True),
+@pytest.mark.parametrize(["age", "expected"], [
 ])
 def test_can_drink(age, expected):
     is_allowed = can_drink(age)
     assert is_allowed == expected
 ```
 
-Pytest will run the test for each tuple. So, for the first tuple `age` will be `15`
-and `expected` will be `False`; for the second `age` will be `0` and `expected`
-will be `False`; and so on.
+#### E. Add values for one test
+
+Each tuple represents what would have been a test otherwise, called a
+{term}`test case`.
+
+Each should contain the values for the variables in the same order they show up
+in in the first argument and the function declaration, in this case the values
+for `age` and `expected`.
+
+If we look at the first test, above, those values are `15` for `age` and
+`False` for `expected`.
+
+1. Add a tuple to the empty list from above that contains the values `15` and `False`.
+2. Now you can run your tests and it should pass.
+
+```{code-block} python
+:caption: test_my_project.py
+:linenos:
+:emphasize-lines: "6"
+
+from my_project.main import can_drink
+
+import pytest
+
+@pytest.mark.parametrize(["age", "expected"], [
+    (15, False),
+])
+def test_can_drink(age, expected):
+    is_allowed = can_drink(age)
+    assert is_allowed == expected
+```
+
+As it is written now, this is functionally the same as `test_can_drink_15()`
+from above. You should be able to run this test now.
+
+#### F. Add assert message
+
+When using parametrization, it is helpful to have a different assert message
+for each test case. That way if it does fail you can tell which one is the
+problem.
+
+1. Add `message` as a parameter in the declaration of `test_can_drink()`.
+1. Add `"message"` to the end of the list of variable names in the
+   `@pytest.mark.paramaratize()` call
+2. In the test add an assert message that that contains the variable `message`
+3. Add a string to the end of the test case tuple describing this specific case
+
+```{code-block} python
+:caption: test_my_project.py
+:linenos:
+:emphasize-lines: "5, 6, 8, 10-"
+
+from my_project.main import can_drink
+
+import pytest
+
+@pytest.mark.parametrize(["age", "expected", "message"], [
+    (15, False, "False when age is less than 21"),
+])
+def test_can_drink(age, expected, message):
+    is_allowed = can_drink(age)
+    assert is_allowed == expected, \
+        f"can_drink() should return {message}"
+```
+
+#### G. Add remaining test cases
+
+```{code-block} python
+:caption: test_my_project.py
+:linenos:
+:emphasize-lines: "7-11"
+
+from my_project.main import can_drink
+
+import pytest
+
+@pytest.mark.parametrize(["age", "expected", "message"], [
+    (15, False, "False when age is less than 21"),
+    (0, False, "False when age is zero"),
+    (-5, False, "False when age is a negative int"),
+    (17.5, False, "False when age is a negative float"),
+    (21, True, "True when age is exactly 21"),
+    (100, True, "True when age is over 21"),
+])
+def test_can_drink(age, expected, message):
+    is_allowed = can_drink(age)
+    assert is_allowed == expected, \
+        f"can_drink() should return {message}"
+```
+
+#### H. Run the tests
 
 If you run your tests in verbose mode with the `-v` flag, you will see a line
-for each tuple like so:
+for each test case with the values from each tuple inside brackets and
+separated by dashes. (I truncated the commit message here for formatting
+purposes, but your test output will show the whole thing.)
 
 ```{code-block} pytest
 :caption: command line output
@@ -758,31 +997,88 @@ rootdir: ~/python-class, configfile: pyproject.toml
 plugins: pylama-8.3.7, typeguard-2.13.3
 collected 6 items
 
-test_my_project.py::test_can_drink[15-False] PASSED      [ 16%]
-test_my_project.py::test_can_drink[0-False] PASSED       [ 33%]
-test_my_project.py::test_can_drink[-5-False] PASSED      [ 50%]
-test_my_project.py::test_can_drink[17.5-False] PASSED    [ 66%]
-test_my_project.py::test_can_drink[21-True] PASSED       [ 83%]
-test_my_project.py::test_can_drink[100-True] PASSED      [100%]
+test_my_project.py::test_can_drink[15-False-False...] PASSED    [ 16%]
+test_my_project.py::test_can_drink[0-False-False...] PASSED     [ 33%]
+test_my_project.py::test_can_drink[-5-False-False...] PASSED    [ 50%]
+test_my_project.py::test_can_drink[17.5-False-False...] PASSED  [ 66%]
+test_my_project.py::test_can_drink[21-True-True...] PASSED      [ 83%]
+test_my_project.py::test_can_drink[100-True-True...] PASSED     [100%]
 
 ====================== 6 passed in 0.01s =======================
 ```
 
+#### I. Failing test output
+
+Here's an example of what it looks like when a parametrized test fails.
+
+```{code-block} pytest
+:caption: command line output
+:emphasize-lines: "14, 16-17, 42"
+$ pytest -v test_my_project.py
+===================== test session starts ======================
+platform darwin -- Python 3.9.1, pytest-7.0.1, pluggy-1.0.0
+cachedir: .pytest_cache
+rootdir: ~/python-class, configfile: pyproject.toml
+plugins: pylama-8.3.7, typeguard-2.13.3
+collected 6 items
+
+test_my_project.py::test_can_drink[15-False-False...] PASSED    [ 16%]
+test_my_project.py::test_can_drink[0-False-False...] PASSED     [ 33%]
+test_my_project.py::test_can_drink[-5-False-False...] PASSED    [ 50%]
+
+=========================== FAILURES ===========================
+___ test_can_drink[-5-True-False when age is a negative int] ___
+
+age = -5, expected = True
+message = 'False when age is a negative int'
+
+    @pytest.mark.parametrize(["age", "expected", "message"], [
+        (15, False, "False when age is less than 21"),
+        (0, False, "False when age is zero"),
+        (-5, True, "False when age is a negative int"),
+        (17.5, False, "False when age is a negative float"),
+        (21, True, "True when age is exactly 21"),
+        (100, True, "True when age is over 21"),
+    ])
+    def test_can_drink(age, expected, message):
+        is_allowed = can_drink(age)
+>       assert is_allowed == expected, \
+            f"can_drink() should return {message}"
+E       AssertionError: can_drink() should return False when age is a negative int
+E       assert == failed. [pytest-clarity diff shown]
+E
+E         LHS vs RHS shown below
+E
+E         False
+E         True
+E
+
+test_my_project.py:24: AssertionError
+=================== short test summary info ====================
+FAILED test_my_project.py::test_can_drink[-5-True-False when age is a negative int] - AssertionError: can_drink() should return False when age is...
+!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!
+================= 1 failed, 2 passed in 0.08s ==================
+```
+
+You can figure out which test is failing by looking at:
+
+* The line starting with `___ test_can_drink` contains the parameters values in brackets separated by dashes
+* The lines immediately after that contain the more easily readable parameter names and values.
+* The line starting with `FAILED` in the test summary contains the parameters values in brackets separated by dashes
+
 ### Part 5.2: Skipping instances
 
-You may want to include instances that you know will fail to show that that
-usage is unsupported. To do this, make a test instance that calls
-`pytest.param()` (instead of a tuple) and include the keyword argument `marks`
-to indicate what mark to use.
+You may want to include test cases that you know will fail to, for example,
+document something that is broken or not supported.
 
-Below we add a `pytest.param()` instance where `age` is a string `"100"`.
-(`expected` is `None`, but it doesn't matter because the exception will happen
-on line `17`.) Then we pass the keyword argument `marks=pytest.mark.xfail` to
-indicate we expect that instance to fail.
+To do this, make a test instance that calls `pytest.param()` (instead of a
+tuple) and include the keyword argument `marks=pytest.mark.xfail` to indicate
+that it will fail.
 
 ```{code-block} python
 :caption: test_my_project.py
 :linenos:
+:emphasize-lines: 13
 
 from my_project.main import can_drink
 
@@ -804,11 +1100,17 @@ def test_can_drink(age, expected):
     assert is_allowed == expected
 ```
 
+In this example we add a failing test case for passing a string to
+`can_drink()` since it's not supported. (`expected` is `None`, but it doesn't
+matter because the exception will happen on line `17`.)
+
 When we run the tests in verbose mode Pytest will indicate that that test was
-marked as xfail.
+marked as `XFAIL`.
 
 ```{code-block} pytest
 :caption: command line output
+:emphasize-lines: 15
+
 $ pytest -v test_my_project.py
 ===================== test session starts ======================
 platform darwin -- Python 3.9.1, pytest-7.0.1, pluggy-1.0.0
@@ -841,9 +1143,13 @@ Part 6: Setup and Teardown
 
 `````
 
-For tests that need to load data or any other kind of information from the
-environment, it is important that each test start with a clean slate. In this
-section we'll talk about the different ways to accomplish this.
+For tests that depend on information from the environment, it is important that each
+test start with a clean slate. This is generally accomplished with setup and
+teardown code--that is, code designated to run at the start and end of a
+particular process.
+
+In this section we'll talk about a couple of the different ways that you can do
+this in Pytest tests.
 
 ### Part 6.1: Per-module setup/teardown functions
 
@@ -852,17 +1158,19 @@ For example, you may need to open and close a connection to a database, create
 and delete temporary directories, load the contents of a file, or initialize
 global variables.
 
-In Pytest tests you can do this by simply definining a `setup_module()` which
-will run once per file before tests and/or a `teardown_module()` which will run
-once per file after tests.
+In Pytest tests you can do this by simply defining a `setup_module()` function
+which will be executed once per file before all tests and/or a
+`teardown_module()` which will be run once per file after all tests.
 
-Here is an example that loads data files previously downloaded from
-`https://jsonplaceholder.typicode.com/` and saved in the directory
-`tests/.data` into a `STATE` dictionary.
+Here is an example that loads json files (downloaded from
+`https://jsonplaceholder.typicode.com/`) and stores the data in a global
+variable `STATE` which test all test functions can access.
 
 ```{code-block} python
 :caption: test_setup_teardown.py
 :linenos:
+:emphasize-lines: "4-12, 16, 23"
+
 from pathlib import Path
 import json
 
@@ -894,11 +1202,12 @@ def test_todo():
 
 ### Part 6.2: Per-test setup/teardown functions
 
-It is important to start each test with a clean slate to avoid test
-corruption--that is when you make changes to one test and it unexpectedly
-breaks other tests.
+It is important to start each test with a clean slate to avoid test corruption.
 
-Let's add an example to our `test_setup_teardown.py` file.
+#### A. Test corruption
+
+Test corruption is when changes made to to one test unexpectedly breaks other
+tests.
 
 ```{code-block} python
 :caption: test_setup_teardown.py
@@ -920,8 +1229,8 @@ def test_check_modified_state():
     assert not todo["completed"]
 ```
 
-When we run these tests, `test_check_modified_state()` will fail, because
-we changed the data on the previous test.
+When run `test_check_modified_state()` will fail because `todo["completed"]`
+was changed in the previous test.
 
 ```{code-block} pytest
 :caption: command line output
@@ -951,14 +1260,36 @@ FAILED tests/test_setup_teardown.py::test_check_modified_state - assert not True
 ================= 1 failed, 3 passed in 0.05s ==================
 ```
 
-To avoid this we need to add a `setup_function()` function which will be run
-before each test. We'll also add another global variable `DATA` which we'll use
-in the tests and reset from `STATE` using `deepcopy()` before each test.
+#### B. Define `setup_function()`
+
+`````{margin}
+
+```{tip}
+
+Sequence objects have a `.copy()` method that makes a shallow copy. That means
+that any nested objects are copied as references, so if you change the contents
+of the child object in the copy it will also change the contents of the child
+object in the original.
+
+Use `deepcopy()` to make copies of all nested child objects and contents
+recursively.
+
+```
+
+`````
+
+To avoid this we will define a `setup_function()` function which will be run
+before each test.
+
+This setup function will copy the data saved in the `STATE` variable to a new
+global variable `DATA`. The tests will then look at and make any changes to
+`DATA` and leave `STATE` alone.
 
 ```{code-block} python
 :caption: test_setup_teardown.py
 :linenos:
 :emphasize-lines: "2, 15-18, 22, 29, 37, 44"
+
 from pathlib import Path
 from copy import deepcopy
 import json
@@ -1038,18 +1369,17 @@ Part 7: Fixtures
 `````
 
 In tests we often need to do similar setup in many tests. As a project becomes
-larger, it becomes unweildy to create the same data over and over again.
+larger, it becomes unwieldy to come up with sample data over and over again.
 
 {term}`Fixtures <fixture>` are one way to approach this problem. In general
-terms, the fixtures comprise the known state of the test environment. In fact,
-you could consider data in setup and teardown functions from
-[Part 6](#part-6-setup-and-teardown) to be fixtures.
+terms, fixtures are the shared context of the {term}`test suite`. In fact, you
+the setup and teardown functions from [Part 6](#part-6-setup-and-teardown) are
+one example of fixtures in the most general sense.
 
 Different languages and testing frameworks have different systems for
 supporting fixtures, usually involving some form of setup/teardown.
-Traditionally though, the the term fixture refers to a single record of test
-data--from the setup/teardown section, each user or todo dictionary would be
-one fixture.
+Traditionally though, the term fixture refers to a single record of test
+data--for example a single user dictionary from `DATA`.
 
 Pytest has a unique and powerful approach to fixtures which can entirely
 replace setup and teardown functions. It might take a minute to wrap your head
@@ -1058,11 +1388,12 @@ around it though.
 ### Part 7.1: Basic Fixture
 
 In Pytest fixtures are set up as functions decorated with the `@pytest.fixture`
-decorator. The value that is returned from the function is the fixture data.
-are defined as functions and use the `@pytest.fixture` decorator. Then test
-functions declare the fixtures that they require as parameters.
+decorator and the return value is the fixture data itself.
 
-Here's an example of the {term}`"hello world" <hello world>` of Pytest fixtures.
+Tests request a fixtures by declaring them as parameters, which can then be
+used in the function like a variable.
+
+Here's an example of the {term}`"Hello World" <hello world>` of Pytest fixtures.
 
 ```{code-block} python
 :caption: test_fixtures.py
@@ -1094,8 +1425,7 @@ import pytest
 
 {{ newrow }}
 
-2\. The `@pytest.fixture` line is a decorator that tells Pytest to treat the
-next function as a fixture.
+2\. The decorator `@pytest.fixture` tells Pytest to treat the next function as a fixture.
 
 {{ rightcol }}
 
@@ -1112,9 +1442,9 @@ def true():
 
 {{ newrow }}
 
-3\. Now we define the fixture function. The value
-returned by the function is what will be used in test
-functions.
+3\. The return value from the fixture function is the fixture value.
+
+In this case the name of the fixture is `true` and the value is `True`.
 
 {{ rightcol }}
 
@@ -1131,9 +1461,11 @@ def true():
 
 {{ newrow }}
 
-4\. When we define a test function that requires the
-fixture, we use the fixture name as a parameter to the
+4\. The test requests a fixture by declaring the fixture name as a parameter in the
 test function.
+
+In this case the fixture named `true` is added as a parameter `test_truth()`
+test.
 
 {{ rightcol }}
 
@@ -1148,8 +1480,8 @@ def test_truth(true):
 
 {{ newrow }}
 
-5\. Finally, we use the fixture name in the test
-function the same way we would any other variable.
+5\. Finally, we use the fixture name in the test the same way we would any
+other variable.
 
 {{ rightcol }}
 
@@ -1164,16 +1496,15 @@ def test_truth(true):
 
 {{ endcols }}
 
-### Part 7.2: Example uses
+#### Example
 
-Fixtures can be used to store reusable data such as a dictionary of user
-information. It can also be used to return more sophisticated Python
-objects--for example, a `pathlib.Path`.
+Fixtures can be used to store reusable data of all kinds, from strings to
+dictionaries to `pathlib.Path` objects.
 
 ```{code-block} python
 :caption: test_fixtures.py
 :linenos:
-:emphasize-lines: "9-37, 42-47"
+:emphasize-lines: "9-17, 19-22, 27-28, 31-32"
 from pathlib import Path
 
 import pytest
@@ -1183,65 +1514,186 @@ def true():
     return True
 
 @pytest.fixture
-def user_bret():
+def bret():
+    """A user dictionary"""
     return {
     "id": 1,
     "name": "Leanne Graham",
     "username": "Bret",
     "email": "Sincere@april.biz",
-    "address": {
-      "street": "Kulas Light",
-      "suite": "Apt. 556",
-      "city": "Gwenborough",
-      "zipcode": "92998-3874",
-      "geo": {
-        "lat": "-37.3159",
-        "lng": "81.1496"
-      }
-    },
-    "phone": "1-770-736-8031 x56442",
-    "website": "hildegard.org",
-    "company": {
-      "name": "Romaguera-Crona",
-      "catchPhrase": "Multi-layered client-server neural-net",
-      "bs": "harness real-time e-markets"
-    }
   }
 
 @pytest.fixture
 def fixturedir():
+    """Path object to fixture data files"""
     return Path(__file__).parent / ".data"
 
 def test_truth(true):
     assert true == True
 
-def test_something_with_a_user(user_bret):
-    assert user_bret["id"] == 1
+def test_something_with_a_user(bret):
+    user = User(bret)
+    assert user.id == 1
 
 def test_something_from_fixturedir(fixturedir):
-    user_file = fixturedir / "users.json"
-    assert user_file.exists()
+    user = User(filename=fixturedir/"users.json")
+    assert user.id == 1
 ```
 
-### Part 7.3: Auto-use fixtures
+### Part 7.2: Fixtures Requesting Fixtures
 
-You can set up fixtures to be used automatically, so they don't have to be
-specified for each test. You can choose what {term}`scope` to use the fixtures
-in--that is, at what level functions should share the fixture before it is
-destroyed.
+The same way that a test can request a fixture, a fixture can request another
+fixture--by declaring it as a parameter to the fixture function.
 
-| Scope        | Shared with                          | When Fixture is Destroyed |
-|--------------|--------------------------------------|---------------------------|
-| **function** | a single test function               | end of each test          |
-| **class**    | all test methods in a class          | last test in the class    |
-| **module**   | all tests in a module (file)         | last test in the module   |
-| **package**  | all tests in the package (directory) | last test in the package  |
-| **session**  | all tests to be run                  | last test to be run       |
+```{literalinclude} ../../../pythonclass/lessons/test_fixture_fixtures.py
+:caption: test_fixtures.py
+:linenos:
+:emphasize-lines: "14, 19"
+:start-at: from pathlib
+```
 
+### Part 7.3: Scope
+
+In Pytest you can choose what {term}`scope <fixture scope>` a fixture is in--that is, at what
+level tests should share the fixture before it is destroyed. To do this pass
+{samp}`scope={SCOPE}` to the `@pytest.fixture()` decorator.
 
 ```{code-block} python
 :caption: test_fixtures.py
 :linenos:
+:emphasize-lines: 1
+
+@pytest.fixture(scope="module")
+def my_fixture():
+  ...
+```
+
+| Scope        | Shared with                            | When Fixture is Destroyed |
+|--------------|----------------------------------------|---------------------------|
+| **function** | a single test function *default*       | end of each test          |
+| **class**    | all test methods in a class            | last test in the class    |
+| **module**   | all tests in a module (file)           | last test in the module   |
+| **package**  | all tests in the package (directory)   | last test in the package  |
+| **session**  | all tests to be run                    | last test to be run       |
+
+The `STATE` and `DATA` setup and teardown could be written using fixtures instead.
+
+```{code-block} python
+:caption: test_fixtures.py
+:linenos:
+:emphasize-lines: "8-19, 22-25, 28-31, 34, 36, 42, 44, 51, 53, 59, 61"
+
+from copy import deepcopy
+import json
+from pathlib import Path
+
+import pytest
+
+
+@pytest.fixture(scope="module")
+def state():
+    """Load state from json testdata."""
+    data = {}
+
+    for resource in ["users", "todos"]:
+        #  file = Path(__file__).parent / ".data" / f"{resource}.json"
+        file = Path.cwd() / f"{resource}.json"
+        with file.open() as fh:
+            data[resource] = json.load(fh)
+
+    return data
+
+
+@pytest.fixture
+def users(state):
+    """Return a fresh set of data for each function."""
+    return deepcopy(state["users"])
+
+
+@pytest.fixture()
+def todos(state):
+    """Return a fresh set of data for each function."""
+    return deepcopy(state["todos"])
+
+
+def test_user(users):
+    """Test that the first user was loaded from the users.json file."""
+    user = users[0]
+
+    assert user["id"] == 1
+    assert user["name"] == "Leanne Graham"
+
+
+def test_todo(todos):
+    """Test that the first todo was loaded from the todos.json file."""
+    todo = todos[0]
+
+    assert todo["id"] == 1
+    assert todo["title"] == "delectus aut autem"
+    assert not todo["completed"]
+
+
+def test_modify_state(todos):
+    """Change the data"""
+    todo = todos[0]
+    todo["completed"] = True
+
+    assert todo["completed"]
+
+
+def test_check_modified_state(todos):
+    """Check the same data that was modified above."""
+    todo = todos[0]
+
+    assert not todo["completed"]
+```
+
+Reference
+---------
+
+Glossary
+--------
+
+```{glossary} testing
+test suite
+  A collection of tests.
+
+test case
+  In testing a test case is the individual unit of testing that checks for a
+  specific response to a particular set of inputs.
+
+  In Pytest parametrization each combination of test and data (or parameters)
+  is a test case. Each set of parameters is stored in a list of tuples passed
+  as the second argument to `@pytest.mark.parametrize`.
+
+fixture
+fixtures
+  In a test suite the fixtures provide a defined, reliable and consistent
+  shared context for the tests. This includes any preperation that is required
+  for one or more tests to run and may include things like setup and teardown
+  such as creating a database or temporary directories; environment setup like
+  configuration; or data to be used in individual test cases.
+
+  In Pytest fixtures are defined as functions marked with the `@pytest.fixture`
+  decorator that may or may not return fixture data.
+
+  When programmers refer to "a fixture" it usually refers to a single record of
+  test data--for example, a single user record.
+
+fixture scope
+  In Pytest the scope of a fixture determines the lifespan of a fixture. That
+  is, at what level a fixture should be shared between tests before it is
+  destroyed, and thus a new instance created the next time it is requested.
+
+  The default is that a fixture should exist only for the scope of a single
+  test function. A fixture scope may also be for the class, module, package or
+  session.
+
+hello world
+Hello World
+Hello World!
+  A small piece of code used to demonstrate the most basic syntax and setup of
+  a particular language or tool. Most a program to print "Hello World!"
 ```
 
 See also
@@ -1256,6 +1708,8 @@ See also
 
 ----
 
+<!--
+
 TODO:
 -----
 
@@ -1265,16 +1719,19 @@ TODO:
 - [x] capsys
 - [x] params
 - [ ] fixtures
-    - [ ] auto-use fixtures: function, module, session
-    - [ ] param fixtures
+    - [x] param fixtures
     - [ ] fixture fixtures
     - [ ] `--fixtures` flag
-    - [ ] conftest.py
     - [ ] fixture factories
-- [-] setup and teardown
+    - [ ] fixture and params
+    - [ ] builtin fixtures
+- [ ] conftest.py
+- [x] setup and teardown
 - [ ] mocks and stubs
 - [ ] temp files/directories
 - [ ] vscode
 - [ ] testing with debugger
   - [ ] [pdb++](https://github.com/pdbpp/pdbpp)
   - [ ] [pdbr](https://pypi.org/project/pdbr/)
+
+-->

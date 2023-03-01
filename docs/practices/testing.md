@@ -1,5 +1,0 @@
-Testing
-=======
-
-```{include} ../toc.md
-```
