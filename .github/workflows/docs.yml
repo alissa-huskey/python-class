@@ -15,14 +15,28 @@ jobs:
   deploy-docs:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    # checkout repo
+    # https://github.com/marketplace/actions/checkout
+    - name: Checkout Git Repo
+      uses: actions/checkout@v3
 
-    # install dependencies
-    - name: Set up Python 3.8
+    # install Python
+    # https://github.com/marketplace/actions/setup-python
+    - name: Install Python 3.8.16
       uses: actions/setup-python@v4
       with:
         python-version: 3.8.16
 
+    # install poetry
+    # https://github.com/marketplace/actions/poetry-install
+    - name: Install Poetry
+        - uses: knowsuchagency/poetry-install@v1
+      with:
+        python-version: "3.11.16"
+      env:
+        POETRY_VIRTUALENVS_CREATE: false
+
+    # install pip dependencies
     - name: Install dependencies
       run: |
         poetry export --without-hashes --only=docs > docs/.requirements.txt
@@ -36,6 +50,7 @@ jobs:
         jupyter-book build docs
 
     # push build to gh-pages branch
+    # https://github.com/peaceiris/actions-gh-pages
     - name: Deploy Docs
       uses: peaceiris/actions-gh-pages@v3.8.0
       with:
