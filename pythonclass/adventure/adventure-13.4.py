@@ -35,8 +35,8 @@ DEBUG = True
 MAX_HEALTH = 100
 
 BAR = ProgressBar(
-    total=100.1,
-    width=WIDTH - len("Health") - 5,
+    total=(MAX_HEALTH + 0.1),
+    width=(WIDTH - len("Health") - len("100%")),
     clear_left=False,
 )
 
@@ -195,10 +195,10 @@ def abort(message):
     exit(1)
 
 
-def health_bar(progress):
-    """Print a progress bar"""
+def health_bar():
+    """Print a progress bar showing player health"""
     print()
-    write(f"Health {BAR(progress)}  ")
+    write(f"Health {BAR(PLAYER['health'])}")
 
 
 # ## Data functions ##########################################################
@@ -507,7 +507,7 @@ def do_inventory():
 
     debug("Trying to show inventory.")
 
-    health_bar(PLAYER["health"])
+    health_bar()
 
     header("Inventory")
 

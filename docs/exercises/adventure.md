@@ -71,9 +71,9 @@ For now though, we're just setting up the basic framework.
 repo for it, if you're comfortable with git.)
 2. `[ ]` Give the file a docstring that includes the link to this page.
 
-### Part 1.2: The main() function
-
 {{ source | format("adventure-1.2.py") }}
+
+### Part 1.2: The main() function
 
 {{ clear }}
 
@@ -97,6 +97,8 @@ repo for it, if you're comfortable with git.)
 
 `````
 
+{{ endcols }}
+
 `````{dropdown} Code
 
 ```{literalinclude} ../../pythonclass/adventure/adventure-1.2.py
@@ -105,12 +107,11 @@ repo for it, if you're comfortable with git.)
 
 `````
 
-{{ endcols }}
-
-
-### Part 1.3: Your first command: quit
+{{ clear }}
 
 {{ source | format("adventure-1.3.py") }}
+
+### Part 1.3: Your first command: quit
 
 {{ clear }}
 
@@ -155,9 +156,9 @@ command: the `quit` command.
 
 `````
 
-### Part 1.4 Create `ITEMS`
-
 {{ source | format("adventure-1.4.py") }}
+
+### Part 1.4 Create `ITEMS`
 
 {{ clear }}
 
@@ -208,9 +209,9 @@ ITEMS = {
 
 `````
 
-### Part 1.5: Make `do_shop()` function
-
 {{ source | format("adventure-1.5.py") }}
+
+### Part 1.5: Make `do_shop()` function
 
 {{ clear }}
 
@@ -300,9 +301,9 @@ https://alissa-huskey.github.io/python-class/exercises/adventure.html
 
 ```
 
-### Part 2.1: Split reply into command and arguments
-
 {{ source | format("adventure-2.1.py") }}
+
+### Part 2.1: Split reply into command and arguments
 
 {{ clear }}
 
@@ -370,9 +371,9 @@ the command, and `north` is the direction.
 
 `````
 
-### Part 2.2: Create PLAYER and PLACES
-
 {{ source | format("adventure-2.2.py") }}
+
+### Part 2.2: Create PLAYER and PLACES
 
 {{ clear }}
 
@@ -565,9 +566,9 @@ PLACES = {
 
 `````
 
-### Part 2.3: Write message functions
-
 {{ source | format("adventure-2.3.py") }}
+
+### Part 2.3: Write message functions
 
 {{ clear }}
 
@@ -707,9 +708,9 @@ We'll also add a `error()` function which will print an error message.
 
 1. `[ ]` Test with `DEBUG` set to `True` as well as with `DEBUG` set to `False`
 
-### Part 2.4: Fill in `go` command
-
 {{ source | format("adventure-2.4.py") }}
+
+### Part 2.4: Fill in `go` command
 
 {{ clear }}
 
@@ -876,9 +877,9 @@ We'll also make sure that the way we print things is consistent by always
 printing via our custom functions: `header()`, `wrap()`, `write()`,
 `error()`, or `debug()`.
 
-### Part 3.1: Text wrapping
-
 {{ source | format("adventure-3.1.py") }}
+
+### Part 3.1: Text wrapping
 
 {{ clear }}
 
@@ -958,15 +959,18 @@ wrap the text so that it looks nice.
 
 #### D. In wrap()
 
-In this section we'll call `textwrap.fill()` function to wrap a paragraph of
-text.
+```{margin}
 
-:::{hint}
+:::{seealso}
 
-If you don't know how keyword arguments work or would like a refresher take a
-look at this section of the [functions lesson][keyword-args].
+Functions > [Keyword Arguments](../lessons/functions.html#part-2-4-keyword-arguments)
 
 :::
+
+```
+
+In this section we'll call `textwrap.fill()` function to wrap a paragraph of
+text.
 
 1. `[ ]` Multiply a single space (`" "`) by `MARGIN` and assign it to the local
          variable `margin` (note that the two different cases).
@@ -994,9 +998,9 @@ look at this section of the [functions lesson][keyword-args].
 
 `````
 
-### Part 3.2: Colors
-
 {{ source | format("adventure-3.2.py") }}
+
+### Part 3.2: Colors
 
 {{ clear }}
 
@@ -1077,9 +1081,9 @@ colorful.
 
 {{ endcols }}
 
-### Part 3.3: Header and write functions
-
 {{ source | format("adventure-3.3.py") }}
+
+### Part 3.3: Header and write functions
 
 {{ clear }}
 
@@ -1250,9 +1254,9 @@ Part 4: Examine items
 
 In this section we'll add the `examine` command.
 
-### Part 4.1: Add new items
-
 {{ source | format("adventure-4.1.py") }}
+
+### Part 4.1: Add new items
 
 {{ clear }}
 
@@ -1356,9 +1360,9 @@ a list that contains two items, the strings `"book"` and `"desk"`.
 
 Be sure to test the `shop` command and make sure book and desk aren't listed.
 
-### Part 4.2: Add `do_examine()`
-
 {{ source | format("adventure-4.2.py") }}
+
+### Part 4.2: Add `do_examine()`
 
 {{ clear }}
 
@@ -1435,9 +1439,9 @@ calling the `do_examine()` function.
 
 :::
 
-### Part 4.3: Finish examine command
-
 {{ source | format("adventure-4.3.py") }}
+
+### Part 4.3: Finish examine command
 
 {{ clear }}
 
@@ -1569,9 +1573,9 @@ Part 5: Look around
 
 In this section we'll add the `look` command.
 
-### Part 5.1: Add command
-
 {{ source | format("adventure-5.1.py") }}
+
+### Part 5.1: Add command
 
 {{ clear }}
 
@@ -1640,9 +1644,9 @@ player types `l` or `look`.
 
 {{ endcols }}
 
-### Part 5.2: Print place name and description
-
 {{ source | format("adventure-5.2.py") }}
+
+### Part 5.2: Print place name and description
 
 {{ clear }}
 
@@ -1689,9 +1693,9 @@ In this section we'll look up the place info and print the name and description.
 
 {{ endcols }}
 
-### Part 5.3: Print the place items
-
 {{ source | format("adventure-5.3.py") }}
+
+### Part 5.3: Print the place items
 
 {{ clear }}
 
@@ -1774,9 +1778,9 @@ And if there are three or more items it will look like:
 
 `````
 
-### Part 5.4: Print the nearby places
-
 {{ source | format("adventure-5.4.py") }}
+
+### Part 5.4: Print the nearby places
 
 {{ clear }}
 
@@ -1828,9 +1832,9 @@ Part 6: Take things
 
 In this section we'll add the `take` command.
 
-### Part 6.1: Add command
-
 {{ source | format("adventure-6.1.py") }}
+
+### Part 6.1: Add command
 
 {{ clear }}
 
@@ -1899,9 +1903,9 @@ player types `t`, `take`, or `grab`.
 
 {{ endcols }}
 
-### Part 6.2: Validate item
-
 {{ source | format("adventure-6.2.py") }}
+
+### Part 6.2: Validate item
 
 {{ clear }}
 
@@ -2004,9 +2008,9 @@ item in the current place.
 
 `````
 
-### Part 6.3: Take it
-
 {{ source | format("adventure-6.3.py") }}
+
+### Part 6.3: Take it
 
 {{ clear }}
 
@@ -2077,9 +2081,9 @@ place, and let the player know that it's done.
 
 `````
 
-### Part 6.4: Examine inventory
-
 {{ source | format("adventure-6.4.py") }}
+
+### Part 6.4: Examine inventory
 
 {{ clear }}
 
@@ -2124,9 +2128,9 @@ Part 7: Show inventory
 
 In this section we'll add the `inventory` command.
 
-### Part 7.1: Add command
-
 {{ source | format("adventure-7.1.py") }}
+
+### Part 7.1: Add command
 
 {{ clear }}
 
@@ -2195,9 +2199,9 @@ player types `i`, or `inventory`.
 
 {{ endcols }}
 
-### Part 7.2: Print inventory
-
 {{ source | format("adventure-7.2.py") }}
+
+### Part 7.2: Print inventory
 
 {{ clear }}
 
@@ -2246,9 +2250,9 @@ Part 8: Drop things
 
 In this section we'll add the `drop` command.
 
-### Part 8.1: Add command
-
 {{ source | format("adventure-8.1.py") }}
+
+### Part 8.1: Add command
 
 {{ clear }}
 
@@ -2316,9 +2320,9 @@ player types `drop`.
 
 {{ endcols }}
 
-### Part 8.2: Validate
-
 {{ source | format("adventure-8.2.py") }}
+
+### Part 8.2: Validate
 
 {{ clear }}
 
@@ -2367,9 +2371,9 @@ have in inventory.
 
 `````
 
-### Part 8.3: Drop it
-
 {{ source | format("adventure-8.3.py") }}
+
+### Part 8.3: Drop it
 
 {{ clear }}
 
@@ -2454,9 +2458,9 @@ in the places where the same code is repeated.
 
 [^DRY]: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
 
-### Part 9.1: Add abort()
-
 {{ source | format("adventure-9.1.py") }}
+
+### Part 9.1: Add abort()
 
 {{ clear }}
 
@@ -2590,9 +2594,9 @@ if we don't it means there's an error somewhere in the code.
 
 {{ endcols }}
 
-### Part 9.2: Add get_place()
-
 {{ source | format("adventure-9.2.py") }}
+
+### Part 9.2: Add get_place()
 
 {{ clear }}
 
@@ -2725,9 +2729,9 @@ dictionary, and call `abort()` if it is not. That means that anywhere we call
 
 `````
 
-### Part 9.3: Add get_item()
-
 {{ source | format("adventure-9.3.py") }}
+
+### Part 9.3: Add get_item()
 
 {{ clear }}
 
@@ -2833,9 +2837,9 @@ remove error handling that is done in `get_item()`.
 
 `````
 
-### Part 9.4: Validation functions
-
 {{ source | format("adventure-9.4.py") }}
+
+### Part 9.4: Validation functions
 
 {{ clear }}
 
@@ -3021,9 +3025,9 @@ call to `is_for_sale()`.
 
 `````
 
-### Part 9.5: Add `inventory_change()`
-
 {{ source | format("adventure-9.5.py") }}
+
+### Part 9.5: Add `inventory_change()`
 
 {{ clear }}
 
@@ -3144,9 +3148,9 @@ do for now.)
 
 {{ endcols }}
 
-### Part 9.6: Add `place_add()`
-
 {{ source | format("adventure-9.6.py") }}
+
+### Part 9.6: Add `place_add()`
 
 {{ clear }}
 
@@ -3208,9 +3212,9 @@ Right now, this only happens in the `do_drop()` function.
 
 {{ endcols }}
 
-### Part 9.7: Add `place_remove()`
-
 {{ source | format("adventure-9.7.py") }}
+
+### Part 9.7: Add `place_remove()`
 
 {{ clear }}
 
@@ -3276,9 +3280,9 @@ In this section we'll add the buy command, add the market, make sure that the
 buy and shop commands only work in the market, and make add information to the
 buy shop and examine commands.
 
-### Part 10.1: Add market
-
 {{ source | format("adventure-10.1.py") }}
+
+### Part 10.1: Add market
 
 {{ clear }}
 
@@ -3356,9 +3360,9 @@ than going through all items.
 
 `````
 
-### Part 10.2: Add `place_can()`
-
 {{ source | format("adventure-10.2.py") }}
+
+### Part 10.2: Add `place_can()`
 
 {{ clear }}
 
@@ -3461,9 +3465,9 @@ for actions instead of items.
 
 {{ endcols }}
 
-### Part 10.3: Add buy command
-
 {{ source | format("adventure-10.3.py") }}
+
+### Part 10.3: Add buy command
 
 {{ clear }}
 
@@ -3739,9 +3743,9 @@ Here we'll define the function that is called when the player types `"buy"`.
 {{ endcols }}
 
 
-### Part 10.4: Clean up the shop
-
 {{ source | format("adventure-10.4.py") }}
+
+### Part 10.4: Clean up the shop
 
 {{ clear }}
 
@@ -3960,6 +3964,14 @@ where we can shop).
 Part 11: Test things
 --------------------
 
+```{margin}
+
+:::{seealso}
+[](../practices/testing/intro)
+:::
+
+```
+
 In this section we'll add a read command, which the player will use to read a
 clue from the book.
 
@@ -3968,9 +3980,9 @@ tests. This will help us find out if we break something, even if we don't
 happen to play the part of the game that triggers it. Be sure to do the
 [Testing Lesson](../practices/testing/intro) if you haven't already.
 
-### Part 11.1: Setup
-
 {{ source | format('test_game-11.1.py') }}
+
+### Part 11.1: Setup
 
 {{ clear }}
 
@@ -4061,7 +4073,6 @@ that to work, we'll need to make sure of a couple of things.
 :open:
 
 ```{literalinclude} ../../pythonclass/adventure/test_game-11.1.py
-:class: full-width
 :linenos:
 :caption: test_game.py
 ```
@@ -4069,8 +4080,6 @@ that to work, we'll need to make sure of a couple of things.
 `````
 
 {{ endcols }}
-
-:::{tip}
 
 You can add the following to your `pyproject.toml` to always run `pytest` in verbose mode.
 
@@ -4081,22 +4090,25 @@ You can add the following to your `pyproject.toml` to always run `pytest` in ver
 addopts = "-v"
 ```
 
+#### E. Run tests in vscode
+
+```{margin}
+
+:::{seealso}
+Testing > [Running Tests](../practices/testing/intro.html#part-6-2-running-tests)
 :::
 
-
-#### E. Run tests in vscode
+```
 
 1. `[ ]` Click the {guilabel}`Testing` icon (that looks like a test beaker)
 1. `[ ]` You may need to click the {guilabel}`Refresh Tests` icon (that looks
          like a arrow in a circle) to find your tests.
 1. `[ ]` Click the {guilabel}`Run Tests` icon (that looks like a play button).
 
-(See [Running Tests](../practices/testing.html#part-6-2-running-tests) for more info.)
-
-
-### Part 11.2: Test `is_for_sale()`
 
 {{ source | format("test_game-11.2.py") }}
+
+### Part 11.2: Test `is_for_sale()`
 
 {{ clear }}
 
@@ -4190,9 +4202,9 @@ item doesn't have a `"price"` key, `is_for_sale()` returns `False`.
 
 `````
 
-### Part 11.3: Test `error()`
-
 {{ source | format("test_game-11.3.py") }}
+
+### Part 11.3: Test `error()`
 
 {{ clear }}
 
@@ -4264,9 +4276,9 @@ capture the printed output. After any code that prints we can call the
 
 `````
 
-### Part 11.4: Test `debug()`
-
 {{ source | format("test_game-11.4.py") }}
+
+### Part 11.4: Test `debug()`
 
 {{ clear }}
 
@@ -4322,9 +4334,9 @@ This should be very similar to `test_error()`.
 
 `````
 
-### Part 11.5: Test `header()` and `write()`
-
 {{ source | format("test_game-11.5.py") }}
+
+### Part 11.5: Test `header()` and `write()`
 
 {{ clear }}
 
@@ -4372,9 +4384,9 @@ Can you write tests for the `header()` and `write()` functions on your own?
 
 `````
 
-### Part 11.6: Test `inventory_change()`
-
 {{ source | format("test_game-11.6.py") }}
+
+### Part 11.6: Test `inventory_change()`
 
 {{ clear }}
 
@@ -4552,9 +4564,9 @@ Can you add the next two tests on your own?
 
 `````
 
-### Part 11.7: Test `do_drop()`
-
 {{ source | format("test_game-11.7.py") }}
+
+### Part 11.7: Test `do_drop()`
 
 {{ clear }}
 
@@ -4711,9 +4723,9 @@ exactly what you are trying to accomplish, which tends to lead to clearer
 thinking and cleaner code. You can be more confident that your code is working
 as intended and that it won't break in the future without you noticing.
 
-### Part 12.1: Add command
-
 {{ sources.format("12.1") }}
+
+### Part 12.1: Add command
 
 {{ clear }}
 
@@ -4846,9 +4858,9 @@ Finally, we'll add the code to make the command work in the game.
 
 `````
 
-### Part 12.2: Ensure item
-
 {{ sources.format("12.2") }}
+
+### Part 12.2: Ensure item
 
 {{ clear }}
 
@@ -4948,9 +4960,9 @@ Now we'll write the code to make our test pass.
 
 `````
 
-### Part 12.3: Ensure item is here
-
 {{ sources.format("12.3") }}
+
+### Part 12.3: Ensure item is here
 
 {{ clear }}
 
@@ -5055,9 +5067,9 @@ Now we'll add the code to make the test pass.
 
 `````
 
-### Part 12.4: Ensure item is readable
-
 {{ sources.format("12.4") }}
+
+### Part 12.4: Ensure item is readable
 
 {{ clear }}
 
@@ -5171,9 +5183,9 @@ Now we'll write the code to make the test pass.
 
 `````
 
-### Part 12.5: Read things
-
 {{ sources.format("12.5") }}
+
+### Part 12.5: Read things
 
 {{ clear }}
 
@@ -5321,9 +5333,9 @@ you can read a book if it is in your inventory but not in the current place?
 
 `````
 
-### Part 12.6: Indent message
-
 {{ sources.format("12.6") }}
+
+### Part 12.6: Indent message
 
 {{ clear }}
 
@@ -5585,9 +5597,9 @@ Now we're finally ready to modify our `do_read()` function to use the new
 
 `````
 
-### Part 12.7: Allow for stanzas
-
 {{ sources.format("12.7") }}
+
+### Part 12.7: Allow for stanzas
 
 {{ clear }}
 
@@ -5813,37 +5825,36 @@ notes all over your game!
 Part 13: Health
 ----------------
 
-In this section we'll add the health.
-
-The `health_change()` function will work very much like the
-`inventory_change()` function.
-
-* it will take one `int` argument, `amount`
-* it will add the `amount` to `PLAYER["health"]` (to subtract, use a negative number)
-* it will check to make sure that `PLAYER["health"]` is not over `100`. If it is, set health to `100`
-* it will check to make sure that `PLAYER["health"]` is not under `0`. If it is, set health to `0`
-
-### Part 13.1: Add `health_change()`
+In this section we'll add player health between `1` - `100` with a health
+progress bar on the inventory command.
 
 {{ sources.format("13.1") }}
 
+### Part 13.1: Add `health_change()`
+
 {{ clear }}
 
-In this function we'll add the simple version of the `health_change()`
-function, to simply add to the `PLAYER["health"]`.
+In this section we'll start the `health_change()` function which will work very
+much like `inventory_change()`. It should:
+
+* Take one `int` argument: `amount`.
+* Add the `amount` to `PLAYER["health"]`.
 
 #### A. In `test_game.py` write `test_health_change()`
 
-Write the failing `test_health_change()`. The test at this point should just
-test that the `amount` argument is added to the players current health.
+Write the `test_health_change()` function to test `health_change()`.
 
 `````{dropdown} Need help?
-1. `[ ]` Import `health_change`
-2. `[ ]` Add the function `test_health_change()`
-3. `[ ]` Set `PLAYER["health"]` to a positive number between `1` - `100`
-4. `[ ]` Call `health_change()` with an argument of a positive number
-5. `[ ]` assert that `PLAYER["health"]` is now correct
-6. `[ ]` Run your test. It should fail.
+1. Import `health_change`
+2. Add the function `test_health_change()`
+3. *GIVEN: the player has health*
+
+   Set `PLAYER["health"]` to a positive number between `1` - `100`
+4. *WHEN: you call `health_change()` with a positive number*
+5. *THEN: a positive number should be added to player health
+
+   assert that `PLAYER["health"]` is now correct
+6. Run your test. It should fail.
 
 `````
 
@@ -5871,8 +5882,7 @@ test that the `amount` argument is added to the players current health.
 
 #### B. In `adventure.py` write `health_change()`
 
-Write the simple `health_change()` function. It should take one argument
-`amount` and add that value to `PLAYER["health"]`.
+Write the `health_change()` function.
 
 `````{dropdown} Need help?
 1. `[ ]` Add the function `health_change()` with one argument `amount`
@@ -5894,68 +5904,140 @@ Write the simple `health_change()` function. It should take one argument
 
 `````
 
-### Part 13.2: Parameterize the test
-
 {{ sources.format("13.2") }}
 
-{{ clear }}
+### Part 13.2: Parameterize the test
 
 In this section we'll modify the `test_health_change()` function to use
 parametrization. This allows us to use the same test for several different
-cases by changing a few values in the test to variables.
+{term}`test cases` which are stored and run as a list of arguments to a single
+test function.
 
-#### A. Parameterize test_health_change()
+If you're not already familiar with parameterization, see
+[Pytest Tests > Parametrization][Parametrization].
 
-1. `[ ]` Make the starting `PLAYER["health"]` value (in the GIVEN section) a variable `start`.
-2. `[ ]` Make the argument passed to `health_change()` (in the WHEN section) a variable `amount`
-3. `[ ]` Make the final `PLAYER["health"]` value (in the THEN section) a variable `result`
-4. `[ ]` Make (or add) the assert message (in the THEN section) a variable `message`
-    * `[ ]` If you didn't already have an assert message, it should be
-            similar to what was in your `THEN` description. ie:
-            `"a positive number should be added to player health"`
-5. `[ ]` Add the names of all four variables in order as parameters to the
-         `test_health_change()` function
-6. `[ ]` Immediately above `def` line call `@pytest.mark.parametrize()` with the following arguments:
-    * `[ ]` The first argument should be a string containing the name of all four variables in the same order as above
-    * `[ ]` The second argument should be a list of tuples (put each tuple on its own line)
-    * `[ ]` The first tuple should contain all of the values that were in
-            your test before you changed them to variables, in the same order as above.
-7. `[ ]` Run your test. It should pass.
+[Parametrization]: ../practices/testing/pytest-tests.html#part-5-parametrization
 
-`````{dropdown} Code
+{{ clear }}
 
-```{literalinclude} ../../pythonclass/adventure/test_game-13.2.py
-:linenos:
-:lineno-match:
-:start-at: "@pytest.mark.parametrize"
-:end-before: "a negative number"
-:caption: test_game.py
+#### A. Parameterize `test_health_change()`
+
+```{margin}
+
+:::{seealso}
+
+Pytest Tests > [Parametrization][]
+
+:::
 
 ```
 
-```{literalinclude} ../../pythonclass/adventure/test_game-13.2.py
+In this section we will extract the values that we expect to be different in
+new test cases and turn them into four parameters and variables: `start`,
+`amount`, `result` and `message`.
+
+At the end of this section we will have a parameratized test with exactly one
+test case representing the original test. Functionally, nothing will change but
+we'll be set up to more easily add new test cases.
+
+1. Change the following values to variables. (Either keep the original
+   line commented out or otherwise make note the original values.)
+    ```{code-block-hl} python
+    :linenos:
+    :caption: test_game.py
+
+    def test_health_change():
+        # GIVEN: The player has some health
+        adventure.PLAYER["health"] = !!!50!!!
+
+        # WHEN: You call health_change()
+        health_change(!!!10!!!)
+
+        # THEN: The player health should be adjusted
+        assert adventure.PLAYER["health"] == !!!60!!!, \
+          !!!"the player health should be adjusted"!!!
+    ```
+   * Under *GIVEN*: Change the value assigned to `PLAYER["health"]` to the variable `start`.
+   * Under *WHEN*: Change the argument passed to `health_change()` the variable `amount`
+   * Under *THEN*: In the assert statement change the value that should equal
+     `PLAYER["health"]` to the variable `result`
+   * Under *THEN*: Change the assert message to the variable `message`
+
+     If you don't already have an assert message add one that is similar to the
+     *THEN* description. ie:
+
+     `"a positive number should be added to player health"`
+2. Add the four variables (`start`, `amount`, `result`, `message`) as
+   parameters to the `test_health_change()` function
+3. Immediately above the `def` line call `@pytest.mark.parametrize()` with the
+   following arguments:
+    * A list containing the name of all four variables in the same order as above
+    * A list of tuples with each tuple on its own line
+      * The first tuple should contain the values extracted from step #1 in
+        the same order as their cooresponding parameters:
+          `start`, `amount`, `result`, `message`.
+4. Change your *GIVEN*/*WHEN*/*THEN* comments to be more generic so that they
+   can apply to all test cases. For example, change:
+
+   `# THEN: The amount should be added to player health`
+
+   To:
+
+   `# THEN: The player health should be adjusted`
+5. Run your test. It should pass.
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/test_game-13.2.A.py
 :linenos:
 :lineno-match:
-:start-after: "a negative number should be subtracted"
-:end-before: "def test_is_for_sale"
+:start-at: "@pytest.mark.parametrize"
+:end-at: "assert"
 :caption: test_game.py
 
 ```
 
 `````
 
-#### B. Add another set of test parameters
+#### B. Add another test case
 
-Where we would usually write a new test like `test_health_change_subtract()` to
-ensure a negative number subtracts from `PLAYER["health"]`, now we are just
-going to add a new tuple to the list passed to `@pytest.mark.parametrize()`.
+In this section we are going to add a test case for passing a negative value to
+`health_change()` to effectively subtract that amount from player health.
 
-1. `[ ]` Add a new tuple to your `@pytest.mark.parametrize()` list that contains the values:
-   * `[ ]` A positive number for `start`
-   * `[ ]` A negative number for `amount`
-   * `[ ]` The result of subtracting `amount` from `start` for `result`
-   * `[ ]` A string describing the test case for `message` like:
-           `"a negative number should be subtractracted from player health"`
+If we were to write this as a non-parameratized test it would look something
+like:
+
+```{code-block-hl} python
+:linenos:
+:lineno-start: 64
+:caption: test_game.py
+
+def test_health_change_subtract():
+    # GIVEN: The player has some health
+    adventure.PLAYER["health"] = !!!50!!!
+
+    # WHEN: You call health_change() with a negative value
+    health_change(!!!-10!!!)
+
+    # THEN: The amount should be subtracted from player health
+    assert adventure.PLAYER["health"] == !!!-40!!!, \
+        !!!"a negative number should be subtracted from player health"!!!
+```
+
+
+Instead of writing this test though, we will add a test case tuple that
+contains the `start`, `amount`, `result` and `message` values that we would
+otherwise put in a `test_health_change_subtract()` test.
+
+1. `[ ]` Add a new tuple to the list of test case tuples that contains values
+         for each of the four parameters:
+
+   | Parameter | Value                             |
+   |-----------|-----------------------------------|
+   | `start`   | a positive `int`                  |
+   | `amount`  | a negative `int`                  |
+   | `result`  | `start` - `amount`                |
+   | `message` | a `str` describing this test case |
 1. `[ ]` Run your test. It should pass.
 
 `````{dropdown} Code
@@ -5964,7 +6046,7 @@ going to add a new tuple to the list passed to `@pytest.mark.parametrize()`.
 :linenos:
 :lineno-match:
 :start-at: "@pytest.mark.parametrize"
-:end-before: "def test_is_for_sale"
+:end-at: "assert"
 :emphasize-lines: "4"
 :caption: test_game.py
 
@@ -5974,18 +6056,48 @@ going to add a new tuple to the list passed to `@pytest.mark.parametrize()`.
 
 ### Part 13.3: Add health limits
 
-In this section we're going to change the `health_change()` function so that
+In this section we're going to modify the `health_change()` function so that
 `PLAYER["health"]` is always between `0` and `100`.
 
-#### A. Add test case for health <= 0
+#### A. Add test case for when `health < 0`
 
-1. `[ ]` Add a new tuple to your `@pytest.mark.parametrize()` list that contains the values:
-   * `[ ]` A positive number for `start`
-   * `[ ]` A negative number for `amount` where the absolute value is greater than `start`
-   * `[ ]` The number `0` for `amount`
-   * `[ ]` A string describing the test case for `message` like:
-           `"the min health should be 0"`
-1. `[ ]` Run your test. It should fail.
+In this section we will add a test case to ensure that even if `start` - `amount` is
+less than zero, player health is set to zero instead of a negative number
+
+If we were to write this as a non-parameratized test, it would look something like:
+
+`````{dropdown} test_health_change_minimum_health()
+
+```{code-block-hl} python
+:linenos:
+:lineno-start: 64
+:caption: test_game.py
+
+def test_health_change_minimum_health():
+    # GIVEN: The player has some health
+    adventure.PLAYER["health"] = !!!20!!!
+
+    # WHEN: You call health_change() with a negative number
+    #       which would make player health less than zero
+    health_change(!!!-30!!!)
+
+    # THEN: The player health should be zero
+    assert adventure.PLAYER["health"] == !!!0!!!, \
+        !!!"the minimum health should be 0"!!!
+```
+
+`````
+
+1. `[ ]` Add a new tuple to the list of test case tuples that contains values
+         for each of the four parameters:
+
+   | Parameter | Value                                                        |
+   |-----------|--------------------------------------------------------------|
+   | `start`   | a positive `int`                                             |
+   | `amount`  | a negative `int` that would make player health less than `0` |
+   | `result`  | `0`                                                          |
+   | `message` | a `str` describing this test case                            |
+2. `[ ]` Run your test. It should fail.
 
 `````{dropdown} Code
 
@@ -5993,7 +6105,7 @@ In this section we're going to change the `health_change()` function so that
 :linenos:
 :lineno-match:
 :start-at: "@pytest.mark.parametrize"
-:end-at: "the min health should be 0"
+:end-before: "MAX_HEALTH"
 :emphasize-lines: "5"
 :caption: test_game.py
 
@@ -6003,7 +6115,11 @@ In this section we're going to change the `health_change()` function so that
 
 #### B. Modify `health_change()`
 
-1. `[ ]` Check if `PLAYER["health"]` is less than zero
+In this section we will modify `health_change()` to make the above test case
+pass.
+
+1. `[ ]` At the end of the function, after `PLAYER["health"]` is changed, check
+   if `PLAYER["health"]` is less than zero
     * `[ ]` if so, set `PLAYER["health"]` to zero
 2. `[ ]` Run your tests. They should pass
 
@@ -6023,7 +6139,10 @@ In this section we're going to change the `health_change()` function so that
 
 #### C. In `adventure.py`
 
-1. `[ ]` Add global variable `MAX_HEALTH` and set to `100`
+In this section we'll add a global variable `MAX_HEALTH` to keep track of the
+maximum value for `PLAYER["health"]`.
+
+1. `[ ]` Add global variable `MAX_HEALTH` and set it to `100`
 
 `````{dropdown} Code
 
@@ -6039,17 +6158,47 @@ In this section we're going to change the `health_change()` function so that
 
 `````
 
-
 #### D. Add test case for `MAX_HEALTH`
 
+In this section we'll add a test case to ensure that even if `start` + `result`
+is greater than `MAX_HEALTH`, player health will be set to `MAX_HEALTH`.
+
+If we were to write this as a non-parameratized test it would look something
+like:
+
+`````{dropdown} test_health_change_maximum_health()
+
+```{code-block-hl} python
+:linenos:
+:lineno-start: 64
+:caption: test_game.py
+
+def test_health_change_maximum_health():
+    # GIVEN: The player has some health
+    adventure.PLAYER["health"] = !!!90!!!
+
+    # WHEN: You call health_change() with a positive number
+    #       which would make player health more than the maximum
+    health_change(!!!20!!!)
+
+    # THEN: The player health should be MAX_HEALTH
+    assert adventure.PLAYER["health"] == !!!MAX_HEALTH!!!, \
+        !!!f"the maximum health should be {MAX_HEALTH}"!!!
+```
+
+`````
+
 1. `[ ]` Import `MAX_HEALTH`
-1. `[ ]` Add a new tuple to your `@pytest.mark.parametrize()` list that contains the values:
-   * `[ ]` A positive number for `start`
-   * `[ ]` A positive number for `amount` that, when added to `start` will be greater than `100`
-   * `[ ]` `MAX_HEALTH` for `amount`
-   * `[ ]` A string describing the test case for `message` like:
-           `f"the max health should be {MAX_HEALTH}"`
-2. `[ ]` Run your test. It should fail.
+2. `[ ]` Add a new tuple to the list of test case tuples that contains values
+         for each of the four parameters:
+
+   | Parameter | Value                                                          |
+   |-----------|----------------------------------------------------------------|
+   | `start`   | a positive `int`                                               |
+   | `amount`  | a positive `int` that would make player health more than `100` |
+   | `result`  | `MAX_HEALTH`                                                   |
+   | `message` | a `str` describing this test case                              |
+3. `[ ]` Run your test. It should fail.
 
 `````{dropdown} Code
 
@@ -6077,7 +6226,11 @@ In this section we're going to change the `health_change()` function so that
 
 #### E. Modify `health_change()`
 
-1. `[ ]` Check if `PLAYER["health"]` is greater than `MAX_HEALTH`
+In this section we will modify `health_change()` to make the above test case
+pass.
+
+1. `[ ]` At the end of the function, check if `PLAYER["health"]` is greater
+         than `MAX_HEALTH`
     * `[ ]` if so, set `PLAYER["health"]` to `MAX_HEALTH`
 2. `[ ]` Run your tests. They should pass
 
@@ -6130,23 +6283,31 @@ itself.
 
 `````
 
-In this section we'll the progress bar feature of the
-[console](https://github.com/mixmastamyk/console) library.
+We're going to use the progress bar feature of the
+[console](https://github.com/mixmastamyk/console) library to add a health bar
+to the inventory command.
+
+In this section we'll add a global variable `BAR` which will be set to a
+`ProgressBar()` object. We'll use this later to print the progress bar.
 
 1. `[ ]` Import `ProgressBar` from `console.progress`
-2. `[ ]` Create a new global variable `BAR` and set it to a new `ProgressBar`
-         object. Send the keyword arguments to the constructor:
-   * `[ ]` `total`     : `100.1`
-   * `[ ]` `clear_left`: `False`
-   * `[ ]` `width`     : `WIDTH - len("Health") - 5`
+2. `[ ]` Create a new global variable `BAR` and set it to a new `ProgressBar()`
+         object with the following keyword arguments:
+
+   | Keyword      | Value                                 | Why                                                                        |
+   |--------------|---------------------------------------|----------------------------------------------------------------------------|
+   | `total`      | `MAX_HEALTH + 0.1`                    | prevent dimming of bar at `100%`                                           |
+   | `clear_left` | `False`                               | prevent removal of `"Health "` text to left of bar                         |
+   | `width`      | `WIDTH - len("Health") - len("100%")` | make bar width `WIDTH` minus the length of the other text on the same line |
+   |              |                                       |                                                                            |
 
 
 :::{note}
 
-* I use `100.1` for `total` to prevent the progress bar from changing to a
-  dimmed completed style when health is at `100`.
-* I set `clear_left` to `False` to prevent it from removing indentation and
-  `"Health"` text.
+From the command line you can run `python -m console.progress` to see a demo of
+the various progress bar styles.
+
+Feel free to play around and pick your own style.
 
 :::
 
@@ -6164,12 +6325,14 @@ In this section we'll the progress bar feature of the
 
 `````
 
-#### C. Add function `health_bar()`
+#### C. Add `health_bar()` function
 
-1. `[ ]` Write a function `health_bar()` that takes one argument `progress`
+In this section we'll add a function `health_bar()` which will print the health bar.
+
+1. `[ ]` Write a function `health_bar()`
 2. `[ ]` In use the `write()` command to print:
     * `[ ]` `"Health"`
-    * `[ ]` the value returned when you call `BAR()` and pass the argument `progress`
+    * `[ ]` the value returned when you call `BAR()` and pass the argument `PLAYER["health"]`
 
 `````{dropdown} Code
 
@@ -6184,11 +6347,14 @@ In this section we'll the progress bar feature of the
 
 `````
 
-#### D. Add health bar to inventory command
+#### D. In `do_inventory()`
+
+In this section we'll call `health_bar()` in the `do_inventory()` function to
+print the health bar.
 
 {{ left }}
 
-1. `[ ]` At the beginning of `do_inventory()` call `health_bar()` and pass the argument `PLAYER["health"]`
+1. `[ ]` At the beginning of `do_inventory()` call `health_bar()`
 
 {{ right }}
 
@@ -6220,6 +6386,8 @@ In this section we'll the progress bar feature of the
 
 
 #### E. In `main()`
+
+In this section we'll quit the game if player health is out of health.
 
 1. `[ ]` At the very end of the `main()` function, check to make sure that the player still has health
 2. `[ ]` If not print something like `"Game over"` and call `quit()`

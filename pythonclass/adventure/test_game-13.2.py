@@ -50,7 +50,7 @@ def test_teardown():
 
 
 @pytest.mark.parametrize(
-    "start, amount, result, message", [
+    ["start", "amount", "result", "message"], [
         (50, 10, 60, "a positive number should be added"),
         (50, -10, 40, "a negative number should be subtracted"),
     ]

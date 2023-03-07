@@ -49,16 +49,20 @@ def test_teardown():
 ########### game data test functions
 
 
-def test_health_change():
+@pytest.mark.parametrize(
+    ["start", "amount", "result", "message"], [
+        (50, 10, 60, "a positive number should be added"),
+    ]
+)
+def test_health_change(start, amount, result, message):
     # GIVEN: The player has some health
-    adventure.PLAYER["health"] = 50
+    adventure.PLAYER["health"] = start
 
-    # WHEN: You call health_change() with a positive value
-    health_change(10)
+    # WHEN: You call health_change()
+    health_change(amount)
 
-    # THEN: The amount should be added to player health
-    assert adventure.PLAYER["health"] == 60, \
-        "a positive number should be added to player health"
+    # THEN: The player health should be adjusted
+    assert adventure.PLAYER["health"] == result, message
 
 
 def test_is_for_sale():

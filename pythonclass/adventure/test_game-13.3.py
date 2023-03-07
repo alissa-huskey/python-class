@@ -51,10 +51,10 @@ def test_teardown():
 
 
 @pytest.mark.parametrize(
-    "start, amount, result, message", [
+    ["start", "amount", "result", "message"], [
         (50, 10, 60, "a positive number should be added"),
         (50, -10, 40, "a negative number should be subtracted"),
-        (20, -30, 0, "the min health should be 0"),
+        (20, -30, 0, "the minimum health should be 0"),
         (90, 20, MAX_HEALTH, f"the max health should be {MAX_HEALTH}"),
     ]
 )
