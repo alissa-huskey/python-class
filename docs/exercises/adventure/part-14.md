@@ -198,7 +198,7 @@ an error message.
 {{ right }}
 
    ```{dropdown} ...
-    * `[ ]` Call `do_pet()` with a list
+    * `[ ]` Call `do_pet()` with a list containing any string
     * `[ ]` Assign the results of `capsys.readouterr().out` to the variable `output`
    ```
 
@@ -293,10 +293,80 @@ and modify your other places so that you can get to it.
 
 {{ sources.format("14.3") }}
 
-Part 14.3: ...
---------------
+Part 14.3: Ensure args
+----------------------
 
 {{ clear }}
 
+In this section we'll make sure that the player typed what they want to pet.
+
+### A. In `test_game.py` add `test_do_pet_no_args()`
+
+In this section we'll write a `test_do_pet_no_args()` function. It should check
+that if the player does not type anything after `"pet"`, they'll see an error
+message.
+
+`````{dropdown} Need help?
+
+{{ left }}
+
+1\. *GIVEN: The player is in a place where they can pet things*
+
+{{ br }}
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Change `PLAYER` to put the player in a fake place
+    * `[ ]` Add a matching fake places dictionary to `PLACES`. The `"can"` key
+            should be an empty list.
+   ```
+
+{{ newrow }}
+
+2\. *WHEN: the player types "pet" with no arguments*
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Call `do_pet()` with an empty list
+    * `[ ]` Assign the results of `capsys.readouterr().out` to the variable `output`
+   ```
+
+{{ newrow }}
+
+3\. *THEN: an error message should be printed*
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` assert that an error message like `"What do you want to pet"` is in `output`
+   ```
+
+{{ endcols }}
+
+4\. Run your tests. They should fail.
+
+`````
+
+`````{dropdown} Code
+
+```{literalinclude} ../../../pythonclass/adventure/test_game-14.3.py
+:linenos:
+:lineno-match:
+:pyobject: "test_do_pet_no_args"
+:caption: test_game.py
+
+```
+
+`````
+
+
+1. `[ ]`
+1. `[ ]`
+1. `[ ]`
+1. `[ ]`
+1. `[ ]`
+    * `[ ]`
 1. `[ ]`
     * `[ ]`
