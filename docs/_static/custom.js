@@ -44,21 +44,34 @@ window.addEventListener("DOMContentLoaded", (e) => {
   prompt_out.insertBefore(".cell_output");
 });
 
-// make the name of the .html file the body tags id attribute
+// add page name as body id and parent directory names as body classes
 window.addEventListener("DOMContentLoaded", (e) => {
   console.log("python-class> setting body ID...");
 
   url = window.location.href.split("#")[0];
-  pagename = url.slice(url.lastIndexOf("/")+1);
+  parts = url.split('/');
+
+  parts.splice(0, 3); // remove http://domain.com
+  pagename = parts.pop(); // remove pagename.html
+
+  // remove python-class
+  if (parts[0] == "python-class") {
+    parts.shift();
+  }
 
   if (pagename.endsWith(".html")) {
     pagename = pagename.slice(0, pagename.lastIndexOf(".html"));
   }
 
-  console.log("python-class> pagename:", pagename);
+  console.log("python-class> body id:", pagename);
 
-  node = document.getElementsByTagName("body")[0];
-  node.id = pagename;
+  body = $('body')
+  body.attr('id', pagename)
+
+  for(i = 0; i < parts.length; i++) {
+    console.log("python-class> body class:", parts[i]);
+    body.addClass(parts[i])
+  }
 });
 
 // move the code-block captions to under the code blocks
