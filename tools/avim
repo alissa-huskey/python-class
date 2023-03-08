@@ -1,0 +1,139 @@
+#!/usr/bin/env zsh
+#
+# avim -- edit a version or versions of adventure.py and/or test_game.py
+#
+#
+# usage:
+#
+# adiff -h|--help [--last|--fin|--version VERSION] FILE [...FILE]
+
+setopt SH_WORD_SPLIT
+
+parse() {
+  local sn=1
+
+  while [[ $# -gt 0 ]]; do
+    arg="$1"
+    case "${arg}" in
+      -l|--last)       mode=last                           ;;
+      -f|--fin)        mode=fin                            ;;
+      -v|--version)    mode=version version="$2" sn=2      ;;
+      -h|--help)       mode=help                           ;;
+      *)
+        [[ "${arg}" == "test" ]] && arg="test_game"
+        [[ "${arg}" == "game" ]] && arg="adventure"
+
+        files+=( "${arg}" )
+    esac
+    shift $sn
+    sn=1
+  done
+
+  [[ ${#files} -eq 0 ]] && files=( adventure )
+}
+
+get_last() {
+  local f last_file
+
+  for f in "${srcdir}/${file}-"*(n); do
+    if [[ "${f##*/}" == "${current}" ]]; then
+      last_file="${last_file##*-}"               # x.x.py
+      versions+=( "${last_file%.py}" )           # x.x
+      break
+    fi
+
+    last_file="${f}"
+  done
+}
+
+get_final() {
+  local this_version major
+
+  this_version="${current##*-}"        # x.x.py
+  this_version="${this_version%.py}"   # x.x
+  major="${this_version%.*}"           # x
+
+  versions+=( "${major}" )
+}
+
+get_versions() {
+  local v
+
+  if [[ "${version}" =~ , ]]; then
+    for v in ${version//,/ } ; do  # split on ,
+      versions+=( "${v}" )
+    done
+  else
+    versions=( "$version" )
+  fi
+}
+
+usage() {
+  cat <<EOF
+
+   adiff -- and start a vimdiff between the two versions of
+            adventure.py or test_game.py
+
+   usage:
+
+   adiff [--last|--fin|--version VERSION] FILE
+   adiff -h|--help
+EOF
+}
+
+help() {
+  usage
+  cat <<EOF
+     -l,--last      diff the last version of this FILE
+     -f,--fin       diff the final version of this FILE
+     -v,--version   diff the specific version VERSION of FILE
+     -h,--help      print this help
+     FILE           which file to generate the diff for
+                    adventure|test[_game]
+EOF
+}
+
+get_paths() {
+  local file version path
+
+  for file in ${files[@]}; do
+    for version in ${versions}; do
+      path="${srcdir}/${file}-${version}.py"
+
+      if [[ ! -f "${path}" ]]; then
+        echo "file not found: ${path}" >&2
+        exit 1
+      fi
+
+      paths+=( "${path}" )
+
+    done
+  done
+}
+
+main() {
+  local current srcdir
+  local -a paths files versions
+
+  parse ${1:+"$@"}
+
+  srcdir="pythonclass/adventure"
+
+  current="$(readlink -f "${file}.py")"
+  current="${current##*/}"
+
+  case "${mode}" in
+
+    last)     get_last      ;;
+    fin)      get_final     ;;
+    version)  get_versions  ;;
+    help)     help ; exit   ;;
+  esac
+
+  get_paths
+
+  echo nvim "${paths[@]}"
+  nvim "${paths[@]}"
+}
+
+main ${1:+"$@"}

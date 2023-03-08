@@ -77,10 +77,10 @@ def test_is_for_sale():
         "price": "a lot",
     }
 
-    # when: is_for_sale() is called
+    # WHEN: is_for_sale() is called
     result = is_for_sale(fake_item)
 
-    # then: it should return True
+    # THEN: it should return True
     assert result, "is_for_sale() should return True if the item has a price"
 
 
@@ -189,7 +189,7 @@ def test_header(capsys):
 
 
 def test_write(capsys):
-    # when write() is called
+    # WHEN: write() is called
     write("oh hai")
 
     # THEN: the indented message should be printed followed by a new line
