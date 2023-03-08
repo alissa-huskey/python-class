@@ -21,7 +21,23 @@ Part 14.1: Add command
 
 {{ clear }}
 
+{{ left }}
+
 In this section we'll add the pet command.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-14.1.cast
+:poster: npt:0:03
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
 
 ### A. In `test_game.py` write `test_do_pet()`
 
@@ -95,10 +111,11 @@ message like {samp}`Trying to pet: `
 
 ### C. In `adventure.py` in `main()`
 
-{{ left }}
-
 Finally, add the code in `main()` so that when the player types `"pet"`, the
 `do_pet()` function will be called.
+
+
+{{ left }}
 
 `````{dropdown} Need help?
 
@@ -124,3 +141,162 @@ Finally, add the code in `main()` so that when the player types `"pet"`, the
 `````
 
 {{ endcols }}
+
+{{ sources.format("14.2") }}
+
+Part 14.2: Is petting allowed?
+------------------------------
+
+{{ clear }}
+
+{{ left }}
+
+In this section we'll check to make sure petting is allowed in the current place.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-14.2.cast
+:poster: npt:0:05
+:rows: 16
+```
+
+`````
+
+{{ endcols }}
+
+
+### A. In `test_game.py` write `test_do_pet_cant_pet()`
+
+In this section we'll write a `test_do_pet_cant_pet()` function. It should
+check that if the player tries to pet something when in a place where they
+aren't allowed (as defined by the place dictionary `"can"` list), they'll see
+an error message.
+
+`````{dropdown} Need help?
+
+{{ left }}
+
+1\. *GIVEN: The player is in a place where they can't pet anything*
+
+{{ br }}
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Change `PLAYER` to put the player in a fake place
+    * `[ ]` Add a matching fake places dictionary to `PLACES`. The `"can"` key
+            should be an empty list.
+   ```
+
+{{ newrow }}
+
+2\. *WHEN: They try to pet something*
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Call `do_pet()` with a list
+    * `[ ]` Assign the results of `capsys.readouterr().out` to the variable `output`
+   ```
+
+{{ newrow }}
+
+3\. *THEN: An error message should be printed*
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` assert that an error message like `"You can't do that"` is in `output`
+   ```
+
+{{ endcols }}
+
+4\. Run your tests. They should fail.
+
+`````
+
+`````{dropdown} Code
+
+```{literalinclude} ../../../pythonclass/adventure/test_game-14.2.py
+:linenos:
+:lineno-match:
+:pyobject: "test_do_pet_cant_pet"
+:caption: test_game.py
+
+```
+
+`````
+
+### B. In `adventure.py` in `do_pet()`
+
+Now we'll modify `do_pet()` function to check that if the current place is not
+able to use the pet command (as defined by the place dictionary `"can"` list)
+an error message will be printed and the function will return.
+
+{{ left }}
+
+`````{dropdown} Need help?
+
+1. `[ ]` Use the `place_can()` function to check if the place can `"pet"`. If not:
+    * `[ ]` Print an error message like `"You can't do that here."`
+    * `[ ]` return
+
+`````
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} ../../../pythonclass/adventure/adventure-14.2.py
+:linenos:
+:lineno-match:
+:pyobject: "do_pet"
+:emphasize-lines: "6-9"
+:caption: adventure.py
+
+```
+
+`````
+
+{{ endcols }}
+
+### C. In `adventure.py` in `PLACES`
+
+Now update the `PLACES` dictionary to add a cave where you can pet a dragon,
+and modify your other places so that you can get to it.
+
+`````{dropdown} Need help?
+
+1. `[ ]` Add a place called `cave` with the `"can"` key set to a list that
+         includes the string `"pet"`
+2. `[ ]` Modify the `"east"`, `"west"`, `"north"`, and `"south"` key(s) of your
+         other places so that the player can get to the cave.
+
+`````
+
+`````{dropdown} Code
+
+```{literalinclude} ../../../pythonclass/adventure/adventure-14.2.py
+:linenos:
+:lineno-match:
+:start-at: "PLACES ="
+:end-before: "ITEMS ="
+:emphasize-lines: "13, 31-76"
+:caption: adventure.py
+
+```
+
+`````
+
+{{ sources.format("14.3") }}
+
+Part 14.3: ...
+--------------
+
+{{ clear }}
+
+1. `[ ]`
+    * `[ ]`

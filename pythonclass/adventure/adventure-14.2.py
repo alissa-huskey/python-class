@@ -21,10 +21,7 @@ Part 14: Dragons
 
 """
 
-import random
 import textwrap
-from string import Template
-from time import sleep
 
 from console import fg, fx
 from console.progress import ProgressBar
@@ -35,8 +32,6 @@ MARGIN = 2
 
 DEBUG = True
 
-DELAY = 1.5
-
 MAX_HEALTH = 100
 
 BAR = ProgressBar(
@@ -46,37 +41,6 @@ BAR = ProgressBar(
 )
 
 # ## Game World Data #########################################################
-
-COLORS = ["red", "black", "silver"]
-
-MOODS = [
-    {
-        "mood": "cheerful",
-        "treasure": (3, 15),
-        "message": "thinks you're adorable! He gives you $gems gems!"
-    },
-    {
-        "mood": "grumpy",
-        "damage": (-15, -3),
-        "message": (
-            "wants to be left alone. The heat from his mighty sigh "
-            "singes your hair, costing you $damage in health."
-        ),
-    },
-    {
-        "mood": "lonely",
-        "treasure": (8, 25),
-        "damage": (-25, -8),
-        "message": (
-            "is just SO happy to see you! He gives you a whopping "
-            "$gems gems! Then he hugs you, squeezes you, and calls "
-            "you George... costing you $damage in health."
-        )
-    },
-]
-
-# placeholder -- maps colors to dragons
-DRAGONS = {}
 
 PLAYER = {
     "place": "home",
@@ -731,69 +695,6 @@ def do_pet(args):
     if not place_can("pet"):
         error("You can't do that here.")
         return
-
-    # remove the expected words from args
-    for word in ["dragon", "head"]:
-        if word in args:
-            args.remove(word)
-
-    # make sure the player said what they want to pet
-    if not args:
-        error("What do you want to pet?")
-        return
-
-    color = args[0].lower()
-
-    # make sure they typed in a real color
-    if color not in COLORS:
-        error("I don't see a dragon that looks like that.")
-        return
-
-    # generate the DRAGONS dict and randomly assign each color to a dragon
-    global DRAGONS
-    if not DRAGONS:
-        random.shuffle(COLORS)
-        DRAGONS = dict(zip(COLORS, MOODS))
-
-    # get the dragon info for this color
-    dragon = DRAGONS[color]
-    dragon["color"] = color
-
-    # calculate the treasure
-    possible_treasure = dragon.get("treasure", (0, 0))
-    dragon["gems"] = random.randint(*possible_treasure)
-
-    # calculate the damage
-    possible_damage = dragon.get("damage", (0, 0))
-    dragon["damage"] = random.randint(*possible_damage)
-
-    # add the treasure to the players inventory
-    if dragon["gems"]:
-        inventory_change("gems", dragon["gems"])
-
-    # remove health
-    if dragon["damage"]:
-        health_change(dragon["damage"])
-
-    sentences = (
-        "You creep forward...",
-        "...gingerly reach out your hand...",
-        f"...and gently pat the dragon's {color} head.",
-    )
-
-    for text in sentences:
-        print()
-        write(text)
-        sleep(DELAY)
-
-    # generate the message
-    tpl = Template(f'The $mood $color dragon {dragon["message"]}')
-    text = tpl.safe_substitute(dragon)
-    print()
-    wrap(text)
-
-    # reset the DRAGONS dict
-    DRAGONS = {}
 
 
 def main():
