@@ -10,9 +10,10 @@ kernelspec:
   name: python3
 ---
 Reference
----------
+=========
 
-### Glossary
+Glossary
+--------
 
 ```{glossary} adventure-game
 

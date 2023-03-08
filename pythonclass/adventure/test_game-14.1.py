@@ -438,17 +438,10 @@ def test_do_read_in_inventory(capsys):
         "The writing message {message!r} should be indented an extra level."
 
 
-def test_do_pet_cant_pet(capsys):
-    # GIVEN: The player is in a place where they can't pet anything
-    adventure.PLAYER["place"] = "nowhere"
-    adventure.PLACES["nowhere"] = {
-        "name": "The Void",
-        "can": [],
-    }
-
-    # WHEN: They try to pet something
-    do_pet(["red", "dragon"])
+def test_do_pet(capsys):
+    # WHEN: You call do_pet()
+    do_pet([])
     output = capsys.readouterr().out
 
-    # THEN: An error message should be printed
-    assert "You can't do that" in output
+    # THEN: A debug message should be printed
+    assert "Trying to pet: []" in output

@@ -26,7 +26,7 @@ exclude_patterns            :
                               - exercises/richter.md
                               - practices/testing/given-when-then.md
                               - practices/testing/best-practices.md
-                              - exercises/adventure/base.md
+                              - exercises/adventure/tpl.md
 
 execute:
   execute_notebooks         : force
@@ -55,12 +55,31 @@ parse: &parse
     endcols                 : '</div></div>'
     br                      : '<div class="br"></div>'
     sourcebadge             : '{{bdg-link-success}}`source code <{0}>`'
+    left                    : '{{ leftcol | replace("col", "col-5") }}'
+    right                   : '{{ rightcol | replace("col", "col-7") }}'
 
     # teal badge linking to my github with configurable name
     # note: double curley braces make one literal brace (for .format())
     # usage: {{{{ code.format("filename.py", "text" }}}}
     code: |
       {{bdg-link-info-line}}`{0} <https://github.com/alissa-huskey/python-class/blob/master/pythonclass/{1}>`
+
+    # for adventure game
+    # --------------------------------------------------------------
+
+    # green "source code" badge linking to my github
+    # usage: {{ source | format("filename.py") }}
+    source: |
+      ```{div} float-right
+        {bdg-link-info-line}`source code <https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/%s>`
+      ```
+    # two green badges, one for adventure-VERSION.py and one for test_game-VERSION.py
+    # usage: {{ sources.format("VERSION") }}
+    # note: double curley braces make one literal brace (for .format())
+    sources: |
+      ```{{div}} float-right
+      {{{{ code.format("adventure.py", "adventure/adventure-{0}.py") }}}} {{{{ code.format("test_game.py", "adventure/test_game-{0}.py") }}}}
+      ```
 
 
 launch_buttons: &launch_buttons
