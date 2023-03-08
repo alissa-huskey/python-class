@@ -1,0 +1,2188 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Part 13: Health &#8212; Python Class</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/asciinema-player.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/x-frame-bypass.js"></script>
+    <script src="../../_static/asciinema-player.js"></script>
+    <script src="../../_static/custom.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://alissa-huskey.github.io/python-class/exercises/adventure/part-13.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Reference" href="reference.html" />
+    <link rel="prev" title="Part 12: Read things" href="part-12.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Python Class</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lessons
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../lessons/tutorial.html">
+   Beginner Tutorial
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../lessons/fundamentals.html">
+   Fundamentals
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../lessons/syntax.html">
+     Syntax
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/expressions.html">
+       Expressions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/statements.html">
+       Statements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/variables.html">
+       Variables
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../lessons/flow-control.html">
+     Flow Control
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/conditional-statements.html">
+       Conditional Statements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/functions.html">
+       Functions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/while-loops.html">
+       While loops
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/for-loops.html">
+       For Loops
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/flow.html">
+       Program Flow
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/string-formatting-part-1.html">
+       String formatting: Part 1
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/string-formatting-part-2.html">
+       String formatting: Part 2
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/reading-code.html">
+       Reading Code
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../lessons/data-types/index.html">
+     Data Types
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/data-types/objects.html">
+       Objects
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/data-types/numeric.html">
+       Numeric Types
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../lessons/data-types/containers.html">
+       Containers
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+      <label for="toctree-checkbox-5">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../lessons/data-types/lists.html">
+         Lists
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../lessons/data-types/dictionaries.html">
+         Dictionaries
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../lessons/data-types/strings.html">
+         Strings
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../lessons/files.html">
+     Files
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/file-io.html">
+       File I/O
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/paths.html">
+       Paths
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/file-system-operations.html">
+       File System Operations
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../lessons/in-depth/index.html">
+   In Depth
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/cli.html">
+     CLI
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/in-depth/imports.html">
+     Imports
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/in-depth/magic-methods.html">
+     Magic methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/in-depth/structure.html">
+     Structuring Python Projects
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/in-depth/functions.html">
+     Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/in-depth/oop.html">
+     Object Oriented Programming
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../lessons/data/index.html">
+   Data
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/data/functional-programming.html">
+     Functional Programming
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../lessons/misc.html">
+   Misc
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/dates.html">
+     Dates and Times
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/web-apis.html">
+     Web APIs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/battle.html">
+     PyPet Battle
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../lessons/game-book.html">
+   Invent Games Book
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/03_guess_the_number.html">
+     Chapter 3: Guess the Number
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/dragon-realm.html">
+     Dragon Realm
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Practices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../practices/problem-solving.html">
+   Problem Solving
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../practices/testing/intro.html">
+   Introduction to Tests
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../practices/testing/pytest-tests.html">
+     Pytest Tests
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../practices/debugging.html">
+   Using a Debugger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../practices/data-inspection.html">
+   Data Inspection
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tools
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/asdf.html">
+   asdf
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/git.html">
+   Git
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/homebrew.html">
+   Homebrew
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/ipython.html">
+   IPython
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/mac.html">
+   Mac Dev Env for Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/poetry.html">
+   Poetry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/pyenv.html">
+   pyenv
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/pytest.html">
+   Pytest
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/python-shell.html">
+   Python Shell
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/replit.html">
+   Replit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/screencasts.html">
+   Screencasts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/terminal.html">
+   Terminal
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/vscode.html">
+   VS Code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/windows.html">
+   Windows Dev Env for Python
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/recommended.html">
+   Recommended Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/dicts.html">
+   Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/lists.html">
+   Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/template.py">
+   Script Template
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Exercises
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../program-flow.html">
+   Program Flow Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../list-exercises.html">
+   List Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../list-string-exercises.html">
+   List String Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../flashcards.html">
+   Flashcards Project
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="intro.html">
+   Adventure Game
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-01.html">
+     Part 1: The game loop
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-02.html">
+     Part 2: Go places
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-03.html">
+     Part 3: Prettify
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-04.html">
+     Part 4: Examine items
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-05.html">
+     Part 5: Look around
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-06.html">
+     Part 6: Take things
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-07.html">
+     Part 7: Show inventory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-08.html">
+     Part 8: Drop things
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-09.html">
+     Part 9: Refactoring
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-10.html">
+     Part 10: Buy things
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-11.html">
+     Part 11: Test things
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-12.html">
+     Part 12: Read things
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Part 13: Health
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="reference.html">
+     Reference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="todo.html">
+     TODO
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Admin
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../orphans.html">
+   Orphaned Terms
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/alissa-huskey/python-class/master?urlpath=lab/tree/docs/exercises/adventure/part-13.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/alissa-huskey/python-class"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/alissa-huskey/python-class/edit/master/docs/exercises/adventure/part-13.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-13-1-add-health-change">
+   Part 13.1: Add
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     health_change()
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-in-test-game-py-write-test-health-change">
+     A. In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_game.py
+      </span>
+     </code>
+     write
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_health_change()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-in-adventure-py-write-health-change">
+     B. In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       adventure.py
+      </span>
+     </code>
+     write
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       health_change()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-13-2-parameterize-the-test">
+   Part 13.2: Parameterize the test
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-parameterize-test-health-change">
+     A. Parameterize
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_health_change()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-add-another-test-case">
+     B. Add another test case
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-13-3-add-health-limits">
+   Part 13.3: Add health limits
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-add-test-case-for-when-health-0">
+     A. Add test case for when
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       health
+      </span>
+      <span class="pre">
+       &lt;
+      </span>
+      <span class="pre">
+       0
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-modify-health-change">
+     B. Modify
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       health_change()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#c-in-adventure-py">
+     C. In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       adventure.py
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#d-add-test-case-for-max-health">
+     D. Add test case for
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MAX_HEALTH
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#e-modify-health-change">
+     E. Modify
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       health_change()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-13-4-ux-changes">
+   Part 13.4: UX Changes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-add-player-health">
+     A. Add
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       PLAYER["health"]
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-add-progressbar">
+     B. Add ProgressBar
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#c-add-health-bar-function">
+     C. Add
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       health_bar()
+      </span>
+     </code>
+     function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#d-in-do-inventory">
+     D. In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_inventory()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#e-in-main">
+     E. In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       main()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Part 13: Health</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-13-1-add-health-change">
+   Part 13.1: Add
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     health_change()
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-in-test-game-py-write-test-health-change">
+     A. In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_game.py
+      </span>
+     </code>
+     write
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_health_change()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-in-adventure-py-write-health-change">
+     B. In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       adventure.py
+      </span>
+     </code>
+     write
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       health_change()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-13-2-parameterize-the-test">
+   Part 13.2: Parameterize the test
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-parameterize-test-health-change">
+     A. Parameterize
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_health_change()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-add-another-test-case">
+     B. Add another test case
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-13-3-add-health-limits">
+   Part 13.3: Add health limits
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-add-test-case-for-when-health-0">
+     A. Add test case for when
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       health
+      </span>
+      <span class="pre">
+       &lt;
+      </span>
+      <span class="pre">
+       0
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-modify-health-change">
+     B. Modify
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       health_change()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#c-in-adventure-py">
+     C. In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       adventure.py
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#d-add-test-case-for-max-health">
+     D. Add test case for
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MAX_HEALTH
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#e-modify-health-change">
+     E. Modify
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       health_change()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-13-4-ux-changes">
+   Part 13.4: UX Changes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-add-player-health">
+     A. Add
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       PLAYER["health"]
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-add-progressbar">
+     B. Add ProgressBar
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#c-add-health-bar-function">
+     C. Add
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       health_bar()
+      </span>
+     </code>
+     function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#d-in-do-inventory">
+     D. In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_inventory()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#e-in-main">
+     E. In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       main()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="part-13-health">
+<h1>Part 13: Health<a class="headerlink" href="#part-13-health" title="Permalink to this headline">#</a></h1>
+<p>In this section we’ll add player health between <code class="docutils literal notranslate"><span class="pre">1</span></code> - <code class="docutils literal notranslate"><span class="pre">100</span></code> with a health
+progress bar on the inventory command.</p>
+<div class="float-right docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-13.1.py"><span>adventure.py</span></a>
+ <a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/test_game-13.1.py"><span>test_game.py</span></a>
+</p>
+</div>
+<section id="part-13-1-add-health-change">
+<h2>Part 13.1: Add <code class="docutils literal notranslate"><span class="pre">health_change()</span></code><a class="headerlink" href="#part-13-1-add-health-change" title="Permalink to this headline">#</a></h2>
+<div class="clearfix"></div>
+<p>In this section we’ll start the <code class="docutils literal notranslate"><span class="pre">health_change()</span></code> function which will work very
+much like <code class="docutils literal notranslate"><span class="pre">inventory_change()</span></code>. It should:</p>
+<ul class="simple">
+<li><p>Take one <code class="docutils literal notranslate"><span class="pre">int</span></code> argument: <code class="docutils literal notranslate"><span class="pre">amount</span></code>.</p></li>
+<li><p>Add the <code class="docutils literal notranslate"><span class="pre">amount</span></code> to <code class="docutils literal notranslate"><span class="pre">PLAYER[&quot;health&quot;]</span></code>.</p></li>
+</ul>
+<section id="a-in-test-game-py-write-test-health-change">
+<h3>A. In <code class="docutils literal notranslate"><span class="pre">test_game.py</span></code> write <code class="docutils literal notranslate"><span class="pre">test_health_change()</span></code><a class="headerlink" href="#a-in-test-game-py-write-test-health-change" title="Permalink to this headline">#</a></h3>
+<p>Write the <code class="docutils literal notranslate"><span class="pre">test_health_change()</span></code> function to test <code class="docutils literal notranslate"><span class="pre">health_change()</span></code>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Need help?<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<ol>
+<li><p class="sd-card-text">Import <code class="docutils literal notranslate"><span class="pre">health_change</span></code></p></li>
+<li><p class="sd-card-text">Add the function <code class="docutils literal notranslate"><span class="pre">test_health_change()</span></code></p></li>
+<li><p class="sd-card-text"><em>GIVEN: the player has health</em></p>
+<p class="sd-card-text">Set <code class="docutils literal notranslate"><span class="pre">PLAYER[&quot;health&quot;]</span></code> to a positive number between <code class="docutils literal notranslate"><span class="pre">1</span></code> - <code class="docutils literal notranslate"><span class="pre">100</span></code></p>
+</li>
+<li><p class="sd-card-text"><em>WHEN: you call <code class="docutils literal notranslate"><span class="pre">health_change()</span></code> with a positive number</em></p></li>
+<li><p class="sd-card-text">*THEN: a positive number should be added to player health</p>
+<p class="sd-card-text">assert that <code class="docutils literal notranslate"><span class="pre">PLAYER[&quot;health&quot;]</span></code> is now correct</p>
+</li>
+<li><p class="sd-card-text">Run your test. It should fail.</p></li>
+</ol>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number">Listing 768 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id1" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 6</span><span class="kn">from</span> <span class="nn">adventure</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="linenos"> 7</span>    <span class="n">debug</span><span class="p">,</span>
+<span class="linenos"> 8</span>    <span class="n">do_drop</span><span class="p">,</span>
+<span class="linenos"> 9</span>    <span class="n">do_read</span><span class="p">,</span>
+<span class="linenos">10</span>    <span class="n">error</span><span class="p">,</span>
+<span class="linenos">11</span>    <span class="n">header</span><span class="p">,</span>
+<span class="hll"><span class="linenos">12</span>    <span class="n">health_change</span><span class="p">,</span>
+</span><span class="linenos">13</span>    <span class="n">inventory_change</span><span class="p">,</span>
+<span class="linenos">14</span>    <span class="n">is_for_sale</span><span class="p">,</span>
+<span class="linenos">15</span>    <span class="n">place_has</span><span class="p">,</span>
+<span class="linenos">16</span>    <span class="n">player_has</span><span class="p">,</span>
+<span class="linenos">17</span>    <span class="n">place_add</span><span class="p">,</span>
+<span class="linenos">18</span>    <span class="n">wrap</span><span class="p">,</span>
+<span class="linenos">19</span>    <span class="n">write</span><span class="p">,</span>
+<span class="linenos">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number">Listing 769 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id2" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">52</span><span class="k">def</span> <span class="nf">test_health_change</span><span class="p">():</span>
+<span class="linenos">53</span>    <span class="c1"># GIVEN: The player has some health</span>
+<span class="linenos">54</span>    <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;health&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="linenos">55</span>
+<span class="linenos">56</span>    <span class="c1"># WHEN: You call health_change() with a positive value</span>
+<span class="linenos">57</span>    <span class="n">health_change</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="linenos">58</span>
+<span class="linenos">59</span>    <span class="c1"># THEN: The amount should be added to player health</span>
+<span class="linenos">60</span>    <span class="k">assert</span> <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;health&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">60</span><span class="p">,</span> \
+<span class="linenos">61</span>        <span class="s2">&quot;a positive number should be added to player health&quot;</span>
+<span class="linenos">62</span>
+<span class="linenos">63</span>
+</pre></div>
+</div>
+</div>
+</div>
+</details></section>
+<section id="b-in-adventure-py-write-health-change">
+<h3>B. In <code class="docutils literal notranslate"><span class="pre">adventure.py</span></code> write <code class="docutils literal notranslate"><span class="pre">health_change()</span></code><a class="headerlink" href="#b-in-adventure-py-write-health-change" title="Permalink to this headline">#</a></h3>
+<p>Write the <code class="docutils literal notranslate"><span class="pre">health_change()</span></code> function.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Need help?<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<ol class="simple">
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add the function <code class="docutils literal notranslate"><span class="pre">health_change()</span></code> with one argument <code class="docutils literal notranslate"><span class="pre">amount</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add <code class="docutils literal notranslate"><span class="pre">amount</span></code> to <code class="docutils literal notranslate"><span class="pre">PLAYER[&quot;health&quot;]</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Run your tests. They should now pass.</p></li>
+</ol>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-number">Listing 770 </span><span class="caption-text">adventure.py</span><a class="headerlink" href="#id3" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">222</span><span class="k">def</span> <span class="nf">health_change</span><span class="p">(</span><span class="n">amount</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="linenos">223</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Add the following (positive or negative) amount to health, but limit to 0-100&quot;&quot;&quot;</span>
+<span class="linenos">224</span>    <span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;health&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">amount</span>
+<span class="linenos">225</span>
+<span class="linenos">226</span>
+</pre></div>
+</div>
+</div>
+</div>
+</details><div class="float-right docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-13.2.py"><span>adventure.py</span></a>
+ <a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/test_game-13.2.py"><span>test_game.py</span></a>
+</p>
+</div>
+</section>
+</section>
+<section id="part-13-2-parameterize-the-test">
+<h2>Part 13.2: Parameterize the test<a class="headerlink" href="#part-13-2-parameterize-the-test" title="Permalink to this headline">#</a></h2>
+<p>In this section we’ll modify the <code class="docutils literal notranslate"><span class="pre">test_health_change()</span></code> function to use
+parametrization. This allows us to use the same test for several different
+<a class="reference internal" href="../../test%20case.html" title=""><span class="xref std std-term">test cases</span></a> which are stored and run as a list of arguments to a single
+test function.</p>
+<p>If you’re not already familiar with parameterization, see
+<a class="reference external" href="../practices/testing/pytest-tests.html#part-5-parametrization">Pytest Tests &gt; Parametrization</a>.</p>
+<div class="clearfix"></div>
+<section id="a-parameterize-test-health-change">
+<h3>A. Parameterize <code class="docutils literal notranslate"><span class="pre">test_health_change()</span></code><a class="headerlink" href="#a-parameterize-test-health-change" title="Permalink to this headline">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Pytest Tests &gt; <a class="reference external" href="../practices/testing/pytest-tests.html#part-5-parametrization">Parametrization</a></p>
+</div>
+</aside>
+<p>In this section we will extract the values that we expect to be different in
+new test cases and turn them into four parameters and variables: <code class="docutils literal notranslate"><span class="pre">start</span></code>,
+<code class="docutils literal notranslate"><span class="pre">amount</span></code>, <code class="docutils literal notranslate"><span class="pre">result</span></code> and <code class="docutils literal notranslate"><span class="pre">message</span></code>.</p>
+<p>At the end of this section we will have a parameratized test with exactly one
+test case representing the original test. Functionally, nothing will change but
+we’ll be set up to more easily add new test cases.</p>
+<ol>
+<li><p>Change the following values to variables. (Either keep the original
+line commented out or otherwise make note the original values.)</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-number">Listing 771 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id4" title="Permalink to this code">#</a></div>
+<div class="highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">def</span> <span class="nf">test_health_change</span><span class="p">():</span>
+<span class="linenos"> 2</span>    <span class="c1"># GIVEN: The player has some health</span>
+<span class="linenos"> 3</span>    <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;health&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi mi-Highlight">50</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span>    <span class="c1"># WHEN: You call health_change()</span>
+<span class="linenos"> 6</span>    <span class="n">health_change</span><span class="p">(</span><span class="mi mi-Highlight">10</span><span class="p">)</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span>    <span class="c1"># THEN: The player health should be adjusted</span>
+<span class="linenos"> 9</span>    <span class="k">assert</span> <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;health&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi mi-Highlight">60</span><span class="p">,</span> \
+<span class="linenos">10</span>      <span class="s2 s2-Highlight">&quot;the player health should be adjusted&quot;</span>
+</pre></div>
+</div>
+</div>
+<ul>
+<li><p>Under <em>GIVEN</em>: Change the value assigned to <code class="docutils literal notranslate"><span class="pre">PLAYER[&quot;health&quot;]</span></code> to the variable <code class="docutils literal notranslate"><span class="pre">start</span></code>.</p></li>
+<li><p>Under <em>WHEN</em>: Change the argument passed to <code class="docutils literal notranslate"><span class="pre">health_change()</span></code> the variable <code class="docutils literal notranslate"><span class="pre">amount</span></code></p></li>
+<li><p>Under <em>THEN</em>: In the assert statement change the value that should equal
+<code class="docutils literal notranslate"><span class="pre">PLAYER[&quot;health&quot;]</span></code> to the variable <code class="docutils literal notranslate"><span class="pre">result</span></code></p></li>
+<li><p>Under <em>THEN</em>: Change the assert message to the variable <code class="docutils literal notranslate"><span class="pre">message</span></code></p>
+<p>If you don’t already have an assert message add one that is similar to the
+<em>THEN</em> description. ie:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;a</span> <span class="pre">positive</span> <span class="pre">number</span> <span class="pre">should</span> <span class="pre">be</span> <span class="pre">added</span> <span class="pre">to</span> <span class="pre">player</span> <span class="pre">health&quot;</span></code></p>
+</li>
+</ul>
+</li>
+<li><p>Add the four variables (<code class="docutils literal notranslate"><span class="pre">start</span></code>, <code class="docutils literal notranslate"><span class="pre">amount</span></code>, <code class="docutils literal notranslate"><span class="pre">result</span></code>, <code class="docutils literal notranslate"><span class="pre">message</span></code>) as
+parameters to the <code class="docutils literal notranslate"><span class="pre">test_health_change()</span></code> function</p></li>
+<li><p>Immediately above the <code class="docutils literal notranslate"><span class="pre">def</span></code> line call <code class="docutils literal notranslate"><span class="pre">&#64;pytest.mark.parametrize()</span></code> with the
+following arguments:</p>
+<ul class="simple">
+<li><p>A list containing the name of all four variables in the same order as above</p></li>
+<li><p>A list of tuples with each tuple on its own line</p>
+<ul>
+<li><p>The first tuple should contain the values extracted from step #1 in
+the same order as their cooresponding parameters:
+<code class="docutils literal notranslate"><span class="pre">start</span></code>, <code class="docutils literal notranslate"><span class="pre">amount</span></code>, <code class="docutils literal notranslate"><span class="pre">result</span></code>, <code class="docutils literal notranslate"><span class="pre">message</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Change your <em>GIVEN</em>/<em>WHEN</em>/<em>THEN</em> comments to be more generic so that they
+can apply to all test cases. For example, change:</p>
+<p><code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">THEN:</span> <span class="pre">The</span> <span class="pre">amount</span> <span class="pre">should</span> <span class="pre">be</span> <span class="pre">added</span> <span class="pre">to</span> <span class="pre">player</span> <span class="pre">health</span></code></p>
+<p>To:</p>
+<p><code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">THEN:</span> <span class="pre">The</span> <span class="pre">player</span> <span class="pre">health</span> <span class="pre">should</span> <span class="pre">be</span> <span class="pre">adjusted</span></code></p>
+</li>
+<li><p>Run your test. It should pass.</p></li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-number">Listing 772 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id5" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">52</span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span>
+<span class="linenos">53</span>    <span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">,</span> <span class="s2">&quot;result&quot;</span><span class="p">,</span> <span class="s2">&quot;message&quot;</span><span class="p">],</span> <span class="p">[</span>
+<span class="linenos">54</span>        <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="s2">&quot;a positive number should be added&quot;</span><span class="p">),</span>
+<span class="linenos">55</span>    <span class="p">]</span>
+<span class="linenos">56</span><span class="p">)</span>
+<span class="linenos">57</span><span class="k">def</span> <span class="nf">test_health_change</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+<span class="linenos">58</span>    <span class="c1"># GIVEN: The player has some health</span>
+<span class="linenos">59</span>    <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;health&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">start</span>
+<span class="linenos">60</span>
+<span class="linenos">61</span>    <span class="c1"># WHEN: You call health_change()</span>
+<span class="linenos">62</span>    <span class="n">health_change</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
+<span class="linenos">63</span>
+<span class="linenos">64</span>    <span class="c1"># THEN: The player health should be adjusted</span>
+<span class="linenos">65</span>    <span class="k">assert</span> <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;health&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">result</span><span class="p">,</span> <span class="n">message</span>
+</pre></div>
+</div>
+</div>
+</div>
+</details></section>
+<section id="b-add-another-test-case">
+<h3>B. Add another test case<a class="headerlink" href="#b-add-another-test-case" title="Permalink to this headline">#</a></h3>
+<p>In this section we are going to add a test case for passing a negative value to
+<code class="docutils literal notranslate"><span class="pre">health_change()</span></code> to effectively subtract that amount from player health.</p>
+<p>If we were to write this as a non-parameratized test it would look something
+like:</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-number">Listing 773 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id6" title="Permalink to this code">#</a></div>
+<div class="highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="linenos">64</span><span class="k">def</span> <span class="nf">test_health_change_subtract</span><span class="p">():</span>
+<span class="linenos">65</span>    <span class="c1"># GIVEN: The player has some health</span>
+<span class="linenos">66</span>    <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;health&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi mi-Highlight">50</span>
+<span class="linenos">67</span>
+<span class="linenos">68</span>    <span class="c1"># WHEN: You call health_change() with a negative value</span>
+<span class="linenos">69</span>    <span class="n">health_change</span><span class="p">(</span><span class="o o-Highlight">-</span><span class="mi mi-Highlight">10</span><span class="p">)</span>
+<span class="linenos">70</span>
+<span class="linenos">71</span>    <span class="c1"># THEN: The amount should be subtracted from player health</span>
+<span class="linenos">72</span>    <span class="k">assert</span> <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;health&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="o o-Highlight">-</span><span class="mi mi-Highlight">40</span><span class="p">,</span> \
+<span class="linenos">73</span>        <span class="s2 s2-Highlight">&quot;a negative number should be subtracted from player health&quot;</span>
+</pre></div>
+</div>
+</div>
+<p>Instead of writing this test though, we will add a test case tuple that
+contains the <code class="docutils literal notranslate"><span class="pre">start</span></code>, <code class="docutils literal notranslate"><span class="pre">amount</span></code>, <code class="docutils literal notranslate"><span class="pre">result</span></code> and <code class="docutils literal notranslate"><span class="pre">message</span></code> values that we would
+otherwise put in a <code class="docutils literal notranslate"><span class="pre">test_health_change_subtract()</span></code> test.</p>
+<ol>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add a new tuple to the list of test case tuples that contains values
+for each of the four parameters:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start</span></code></p></td>
+<td><p>a positive <code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">amount</span></code></p></td>
+<td><p>a negative <code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">result</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">start</span></code> - <code class="docutils literal notranslate"><span class="pre">amount</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">message</span></code></p></td>
+<td><p>a <code class="docutils literal notranslate"><span class="pre">str</span></code> describing this test case</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Run your test. It should pass.</p></li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-number">Listing 774 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id7" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">52</span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span>
+<span class="linenos">53</span>    <span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">,</span> <span class="s2">&quot;result&quot;</span><span class="p">,</span> <span class="s2">&quot;message&quot;</span><span class="p">],</span> <span class="p">[</span>
+<span class="linenos">54</span>        <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="s2">&quot;a positive number should be added&quot;</span><span class="p">),</span>
+<span class="hll"><span class="linenos">55</span>        <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="s2">&quot;a negative number should be subtracted&quot;</span><span class="p">),</span>
+</span><span class="linenos">56</span>    <span class="p">]</span>
+<span class="linenos">57</span><span class="p">)</span>
+<span class="linenos">58</span><span class="k">def</span> <span class="nf">test_health_change</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+<span class="linenos">59</span>    <span class="c1"># GIVEN: The player has some health</span>
+<span class="linenos">60</span>    <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;health&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">start</span>
+<span class="linenos">61</span>
+<span class="linenos">62</span>    <span class="c1"># WHEN: You call health_change()</span>
+<span class="linenos">63</span>    <span class="n">health_change</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
+<span class="linenos">64</span>
+<span class="linenos">65</span>    <span class="c1"># THEN: The player health should be adjusted</span>
+<span class="linenos">66</span>    <span class="k">assert</span> <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;health&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">result</span><span class="p">,</span> <span class="n">message</span>
+</pre></div>
+</div>
+</div>
+</div>
+</details></section>
+</section>
+<section id="part-13-3-add-health-limits">
+<h2>Part 13.3: Add health limits<a class="headerlink" href="#part-13-3-add-health-limits" title="Permalink to this headline">#</a></h2>
+<p>In this section we’re going to modify the <code class="docutils literal notranslate"><span class="pre">health_change()</span></code> function so that
+<code class="docutils literal notranslate"><span class="pre">PLAYER[&quot;health&quot;]</span></code> is always between <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">100</span></code>.</p>
+<section id="a-add-test-case-for-when-health-0">
+<h3>A. Add test case for when <code class="docutils literal notranslate"><span class="pre">health</span> <span class="pre">&lt;</span> <span class="pre">0</span></code><a class="headerlink" href="#a-add-test-case-for-when-health-0" title="Permalink to this headline">#</a></h3>
+<p>In this section we will add a test case to ensure that even if <code class="docutils literal notranslate"><span class="pre">start</span></code> - <code class="docutils literal notranslate"><span class="pre">amount</span></code> is
+less than zero, player health is set to zero instead of a negative number</p>
+<p>If we were to write this as a non-parameratized test, it would look something like:</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+test_health_change_minimum_health()<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-number">Listing 775 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id8" title="Permalink to this code">#</a></div>
+<div class="highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="linenos">64</span><span class="k">def</span> <span class="nf">test_health_change_minimum_health</span><span class="p">():</span>
+<span class="linenos">65</span>    <span class="c1"># GIVEN: The player has some health</span>
+<span class="linenos">66</span>    <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;health&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi mi-Highlight">20</span>
+<span class="linenos">67</span>
+<span class="linenos">68</span>    <span class="c1"># WHEN: You call health_change() with a negative number</span>
+<span class="linenos">69</span>    <span class="c1">#       which would make player health less than zero</span>
+<span class="linenos">70</span>    <span class="n">health_change</span><span class="p">(</span><span class="o o-Highlight">-</span><span class="mi mi-Highlight">30</span><span class="p">)</span>
+<span class="linenos">71</span>
+<span class="linenos">72</span>    <span class="c1"># THEN: The player health should be zero</span>
+<span class="linenos">73</span>    <span class="k">assert</span> <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;health&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi mi-Highlight">0</span><span class="p">,</span> \
+<span class="linenos">74</span>        <span class="s2 s2-Highlight">&quot;the minimum health should be 0&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</details><ol>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add a new tuple to the list of test case tuples that contains values
+for each of the four parameters:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start</span></code></p></td>
+<td><p>a positive <code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">amount</span></code></p></td>
+<td><p>a negative <code class="docutils literal notranslate"><span class="pre">int</span></code> that would make player health less than <code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">result</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">message</span></code></p></td>
+<td><p>a <code class="docutils literal notranslate"><span class="pre">str</span></code> describing this test case</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Run your test. It should fail.</p></li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-number">Listing 776 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id9" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">53</span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span>
+<span class="linenos">54</span>    <span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">,</span> <span class="s2">&quot;result&quot;</span><span class="p">,</span> <span class="s2">&quot;message&quot;</span><span class="p">],</span> <span class="p">[</span>
+<span class="linenos">55</span>        <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="s2">&quot;a positive number should be added&quot;</span><span class="p">),</span>
+<span class="linenos">56</span>        <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="s2">&quot;a negative number should be subtracted&quot;</span><span class="p">),</span>
+<span class="hll"><span class="linenos">57</span>        <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;the minimum health should be 0&quot;</span><span class="p">),</span>
+</span></pre></div>
+</div>
+</div>
+</div>
+</details></section>
+<section id="b-modify-health-change">
+<h3>B. Modify <code class="docutils literal notranslate"><span class="pre">health_change()</span></code><a class="headerlink" href="#b-modify-health-change" title="Permalink to this headline">#</a></h3>
+<p>In this section we will modify <code class="docutils literal notranslate"><span class="pre">health_change()</span></code> to make the above test case
+pass.</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> At the end of the function, after <code class="docutils literal notranslate"><span class="pre">PLAYER[&quot;health&quot;]</span></code> is changed, check
+if <code class="docutils literal notranslate"><span class="pre">PLAYER[&quot;health&quot;]</span></code> is less than zero</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> if so, set <code class="docutils literal notranslate"><span class="pre">PLAYER[&quot;health&quot;]</span></code> to zero</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Run your tests. They should pass</p></li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-number">Listing 777 </span><span class="caption-text">adventure.py</span><a class="headerlink" href="#id10" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">224</span><span class="k">def</span> <span class="nf">health_change</span><span class="p">(</span><span class="n">amount</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="linenos">225</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Add the following (positive or negative) amount to health, but limit to 0-100&quot;&quot;&quot;</span>
+<span class="linenos">226</span>    <span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;health&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">amount</span>
+<span class="linenos">227</span>
+<span class="hll"><span class="linenos">228</span>    <span class="c1"># don&#39;t let health go below zero</span>
+</span><span class="hll"><span class="linenos">229</span>    <span class="k">if</span> <span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;health&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class="hll"><span class="linenos">230</span>        <span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;health&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class="linenos">231</span>
+</pre></div>
+</div>
+</div>
+</div>
+</details></section>
+<section id="c-in-adventure-py">
+<h3>C. In <code class="docutils literal notranslate"><span class="pre">adventure.py</span></code><a class="headerlink" href="#c-in-adventure-py" title="Permalink to this headline">#</a></h3>
+<p>In this section we’ll add a global variable <code class="docutils literal notranslate"><span class="pre">MAX_HEALTH</span></code> to keep track of the
+maximum value for <code class="docutils literal notranslate"><span class="pre">PLAYER[&quot;health&quot;]</span></code>.</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add global variable <code class="docutils literal notranslate"><span class="pre">MAX_HEALTH</span></code> and set it to <code class="docutils literal notranslate"><span class="pre">100</span></code></p></li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-number">Listing 778 </span><span class="caption-text">adventure.py</span><a class="headerlink" href="#id11" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">24</span><span class="kn">import</span> <span class="nn">textwrap</span>
+<span class="linenos">25</span>
+<span class="linenos">26</span><span class="kn">from</span> <span class="nn">console</span> <span class="kn">import</span> <span class="n">fg</span><span class="p">,</span> <span class="n">fx</span>
+<span class="linenos">27</span>
+<span class="linenos">28</span><span class="n">WIDTH</span> <span class="o">=</span> <span class="mi">45</span>
+<span class="linenos">29</span>
+<span class="linenos">30</span><span class="n">MARGIN</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="linenos">31</span>
+<span class="linenos">32</span><span class="n">DEBUG</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos">33</span>
+<span class="hll"><span class="linenos">34</span><span class="n">MAX_HEALTH</span> <span class="o">=</span> <span class="mi">100</span>
+</span><span class="linenos">35</span>
+</pre></div>
+</div>
+</div>
+</div>
+</details></section>
+<section id="d-add-test-case-for-max-health">
+<h3>D. Add test case for <code class="docutils literal notranslate"><span class="pre">MAX_HEALTH</span></code><a class="headerlink" href="#d-add-test-case-for-max-health" title="Permalink to this headline">#</a></h3>
+<p>In this section we’ll add a test case to ensure that even if <code class="docutils literal notranslate"><span class="pre">start</span></code> + <code class="docutils literal notranslate"><span class="pre">result</span></code>
+is greater than <code class="docutils literal notranslate"><span class="pre">MAX_HEALTH</span></code>, player health will be set to <code class="docutils literal notranslate"><span class="pre">MAX_HEALTH</span></code>.</p>
+<p>If we were to write this as a non-parameratized test it would look something
+like:</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+test_health_change_maximum_health()<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-number">Listing 779 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id12" title="Permalink to this code">#</a></div>
+<div class="highlight-python-hl notranslate"><div class="highlight"><pre><span></span><span class="linenos">64</span><span class="k">def</span> <span class="nf">test_health_change_maximum_health</span><span class="p">():</span>
+<span class="linenos">65</span>    <span class="c1"># GIVEN: The player has some health</span>
+<span class="linenos">66</span>    <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;health&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi mi-Highlight">90</span>
+<span class="linenos">67</span>
+<span class="linenos">68</span>    <span class="c1"># WHEN: You call health_change() with a positive number</span>
+<span class="linenos">69</span>    <span class="c1">#       which would make player health more than the maximum</span>
+<span class="linenos">70</span>    <span class="n">health_change</span><span class="p">(</span><span class="mi mi-Highlight">20</span><span class="p">)</span>
+<span class="linenos">71</span>
+<span class="linenos">72</span>    <span class="c1"># THEN: The player health should be MAX_HEALTH</span>
+<span class="linenos">73</span>    <span class="k">assert</span> <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;health&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n n-Highlight">MAX_HEALTH</span><span class="p">,</span> \
+<span class="linenos">74</span>        <span class="sa sa-Highlight">f</span><span class="s2 s2-Highlight">&quot;the maximum health should be </span><span class="si si-Highlight">{</span><span class="n n-Highlight">MAX_HEALTH</span><span class="si si-Highlight">}</span><span class="s2 s2-Highlight">&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</details><ol>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Import <code class="docutils literal notranslate"><span class="pre">MAX_HEALTH</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add a new tuple to the list of test case tuples that contains values
+for each of the four parameters:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start</span></code></p></td>
+<td><p>a positive <code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">amount</span></code></p></td>
+<td><p>a positive <code class="docutils literal notranslate"><span class="pre">int</span></code> that would make player health more than <code class="docutils literal notranslate"><span class="pre">100</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">result</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MAX_HEALTH</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">message</span></code></p></td>
+<td><p>a <code class="docutils literal notranslate"><span class="pre">str</span></code> describing this test case</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Run your test. It should fail.</p></li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-number">Listing 780 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id13" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 6</span><span class="kn">from</span> <span class="nn">adventure</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="linenos"> 7</span>    <span class="n">debug</span><span class="p">,</span>
+<span class="linenos"> 8</span>    <span class="n">do_drop</span><span class="p">,</span>
+<span class="linenos"> 9</span>    <span class="n">do_read</span><span class="p">,</span>
+<span class="linenos">10</span>    <span class="n">error</span><span class="p">,</span>
+<span class="linenos">11</span>    <span class="n">header</span><span class="p">,</span>
+<span class="linenos">12</span>    <span class="n">health_change</span><span class="p">,</span>
+<span class="linenos">13</span>    <span class="n">inventory_change</span><span class="p">,</span>
+<span class="linenos">14</span>    <span class="n">is_for_sale</span><span class="p">,</span>
+<span class="linenos">15</span>    <span class="n">place_has</span><span class="p">,</span>
+<span class="linenos">16</span>    <span class="n">player_has</span><span class="p">,</span>
+<span class="linenos">17</span>    <span class="n">place_add</span><span class="p">,</span>
+<span class="linenos">18</span>    <span class="n">wrap</span><span class="p">,</span>
+<span class="linenos">19</span>    <span class="n">write</span><span class="p">,</span>
+<span class="hll"><span class="linenos">20</span>    <span class="n">MAX_HEALTH</span><span class="p">,</span>
+</span><span class="linenos">21</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-number">Listing 781 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id14" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">53</span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span>
+<span class="linenos">54</span>    <span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;amount&quot;</span><span class="p">,</span> <span class="s2">&quot;result&quot;</span><span class="p">,</span> <span class="s2">&quot;message&quot;</span><span class="p">],</span> <span class="p">[</span>
+<span class="linenos">55</span>        <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="s2">&quot;a positive number should be added&quot;</span><span class="p">),</span>
+<span class="linenos">56</span>        <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="s2">&quot;a negative number should be subtracted&quot;</span><span class="p">),</span>
+<span class="linenos">57</span>        <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;the minimum health should be 0&quot;</span><span class="p">),</span>
+<span class="hll"><span class="linenos">58</span>        <span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">MAX_HEALTH</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;the max health should be </span><span class="si">{</span><span class="n">MAX_HEALTH</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
+</span><span class="linenos">59</span>    <span class="p">]</span>
+<span class="linenos">60</span><span class="p">)</span>
+<span class="linenos">61</span><span class="k">def</span> <span class="nf">test_health_change</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+</pre></div>
+</div>
+</div>
+</div>
+</details></section>
+<section id="e-modify-health-change">
+<h3>E. Modify <code class="docutils literal notranslate"><span class="pre">health_change()</span></code><a class="headerlink" href="#e-modify-health-change" title="Permalink to this headline">#</a></h3>
+<p>In this section we will modify <code class="docutils literal notranslate"><span class="pre">health_change()</span></code> to make the above test case
+pass.</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> At the end of the function, check if <code class="docutils literal notranslate"><span class="pre">PLAYER[&quot;health&quot;]</span></code> is greater
+than <code class="docutils literal notranslate"><span class="pre">MAX_HEALTH</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> if so, set <code class="docutils literal notranslate"><span class="pre">PLAYER[&quot;health&quot;]</span></code> to <code class="docutils literal notranslate"><span class="pre">MAX_HEALTH</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Run your tests. They should pass</p></li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-number">Listing 782 </span><span class="caption-text">adventure.py</span><a class="headerlink" href="#id15" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">224</span><span class="k">def</span> <span class="nf">health_change</span><span class="p">(</span><span class="n">amount</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="linenos">225</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Add the following (positive or negative) amount to health, but limit to 0-100&quot;&quot;&quot;</span>
+<span class="linenos">226</span>    <span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;health&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">amount</span>
+<span class="linenos">227</span>
+<span class="linenos">228</span>    <span class="c1"># don&#39;t let health go below zero</span>
+<span class="linenos">229</span>    <span class="k">if</span> <span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;health&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">230</span>        <span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;health&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">231</span>
+<span class="hll"><span class="linenos">232</span>    <span class="c1"># cap health</span>
+</span><span class="hll"><span class="linenos">233</span>    <span class="k">if</span> <span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;health&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">MAX_HEALTH</span><span class="p">:</span>
+</span><span class="hll"><span class="linenos">234</span>        <span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;health&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">MAX_HEALTH</span>
+</span><span class="linenos">235</span>
+<span class="linenos">236</span>
+</pre></div>
+</div>
+</div>
+</div>
+</details></section>
+</section>
+<section id="part-13-4-ux-changes">
+<h2>Part 13.4: UX Changes<a class="headerlink" href="#part-13-4-ux-changes" title="Permalink to this headline">#</a></h2>
+<p>In this section we’ll add a few changes to integrate health with the game
+itself.</p>
+<section id="a-add-player-health">
+<h3>A. Add <code class="docutils literal notranslate"><span class="pre">PLAYER[&quot;health&quot;]</span></code><a class="headerlink" href="#a-add-player-health" title="Permalink to this headline">#</a></h3>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add a <code class="docutils literal notranslate"><span class="pre">&quot;health&quot;</span></code> key to the <code class="docutils literal notranslate"><span class="pre">PLAYER</span></code> dictionary with a value of <code class="docutils literal notranslate"><span class="pre">100</span></code></p></li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-number">Listing 783 </span><span class="caption-text">adventure.py</span><a class="headerlink" href="#id16" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">45</span><span class="n">PLAYER</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos">46</span>    <span class="s2">&quot;place&quot;</span><span class="p">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
+<span class="linenos">47</span>    <span class="s2">&quot;inventory&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;gems&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">},</span>
+<span class="hll"><span class="linenos">48</span>    <span class="s2">&quot;health&quot;</span><span class="p">:</span> <span class="n">MAX_HEALTH</span><span class="p">,</span>
+</span><span class="linenos">49</span><span class="p">}</span>
+<span class="linenos">50</span>
+</pre></div>
+</div>
+</div>
+</div>
+</details></section>
+<section id="b-add-progressbar">
+<h3>B. Add ProgressBar<a class="headerlink" href="#b-add-progressbar" title="Permalink to this headline">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://mixmastamyk.bitbucket.io/console/additional.html#progress-bars">Console Docs</a></p></li>
+</ul>
+</div>
+</aside>
+<p>We’re going to use the progress bar feature of the
+<a class="reference external" href="https://github.com/mixmastamyk/console">console</a> library to add a health bar
+to the inventory command.</p>
+<p>In this section we’ll add a global variable <code class="docutils literal notranslate"><span class="pre">BAR</span></code> which will be set to a
+<code class="docutils literal notranslate"><span class="pre">ProgressBar()</span></code> object. We’ll use this later to print the progress bar.</p>
+<ol>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Import <code class="docutils literal notranslate"><span class="pre">ProgressBar</span></code> from <code class="docutils literal notranslate"><span class="pre">console.progress</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Create a new global variable <code class="docutils literal notranslate"><span class="pre">BAR</span></code> and set it to a new <code class="docutils literal notranslate"><span class="pre">ProgressBar()</span></code>
+object with the following keyword arguments:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Keyword</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Why</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">total</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MAX_HEALTH</span> <span class="pre">+</span> <span class="pre">0.1</span></code></p></td>
+<td><p>prevent dimming of bar at <code class="docutils literal notranslate"><span class="pre">100%</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">clear_left</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p>prevent removal of <code class="docutils literal notranslate"><span class="pre">&quot;Health</span> <span class="pre">&quot;</span></code> text to left of bar</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">width</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">WIDTH</span> <span class="pre">-</span> <span class="pre">len(&quot;Health&quot;)</span> <span class="pre">-</span> <span class="pre">len(&quot;100%&quot;)</span></code></p></td>
+<td><p>make bar width <code class="docutils literal notranslate"><span class="pre">WIDTH</span></code> minus the length of the other text on the same line</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>From the command line you can run <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">console.progress</span></code> to see a demo of
+the various progress bar styles.</p>
+<p>Feel free to play around and pick your own style.</p>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id17">
+<div class="code-block-caption"><span class="caption-number">Listing 784 </span><span class="caption-text">adventure.py</span><a class="headerlink" href="#id17" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">24</span><span class="kn">import</span> <span class="nn">textwrap</span>
+<span class="linenos">25</span>
+<span class="linenos">26</span><span class="kn">from</span> <span class="nn">console</span> <span class="kn">import</span> <span class="n">fg</span><span class="p">,</span> <span class="n">fx</span>
+<span class="hll"><span class="linenos">27</span><span class="kn">from</span> <span class="nn">console.progress</span> <span class="kn">import</span> <span class="n">ProgressBar</span>
+</span><span class="linenos">28</span>
+<span class="linenos">29</span><span class="n">WIDTH</span> <span class="o">=</span> <span class="mi">45</span>
+<span class="linenos">30</span>
+<span class="linenos">31</span><span class="n">MARGIN</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="linenos">32</span>
+<span class="linenos">33</span><span class="n">DEBUG</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos">34</span>
+<span class="linenos">35</span><span class="n">MAX_HEALTH</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="linenos">36</span>
+<span class="hll"><span class="linenos">37</span><span class="n">BAR</span> <span class="o">=</span> <span class="n">ProgressBar</span><span class="p">(</span>
+</span><span class="hll"><span class="linenos">38</span>    <span class="n">total</span><span class="o">=</span><span class="p">(</span><span class="n">MAX_HEALTH</span> <span class="o">+</span> <span class="mf">0.1</span><span class="p">),</span>
+</span><span class="hll"><span class="linenos">39</span>    <span class="n">width</span><span class="o">=</span><span class="p">(</span><span class="n">WIDTH</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;Health&quot;</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;100%&quot;</span><span class="p">)),</span>
+</span><span class="hll"><span class="linenos">40</span>    <span class="n">clear_left</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span><span class="hll"><span class="linenos">41</span><span class="p">)</span>
+</span><span class="linenos">42</span>
+</pre></div>
+</div>
+</div>
+</div>
+</details></section>
+<section id="c-add-health-bar-function">
+<h3>C. Add <code class="docutils literal notranslate"><span class="pre">health_bar()</span></code> function<a class="headerlink" href="#c-add-health-bar-function" title="Permalink to this headline">#</a></h3>
+<p>In this section we’ll add a function <code class="docutils literal notranslate"><span class="pre">health_bar()</span></code> which will print the health bar.</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Write a function <code class="docutils literal notranslate"><span class="pre">health_bar()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> In use the <code class="docutils literal notranslate"><span class="pre">write()</span></code> command to print:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> <code class="docutils literal notranslate"><span class="pre">&quot;Health&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> the value returned when you call <code class="docutils literal notranslate"><span class="pre">BAR()</span></code> and pass the argument <code class="docutils literal notranslate"><span class="pre">PLAYER[&quot;health&quot;]</span></code></p></li>
+</ul>
+</li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id18">
+<div class="code-block-caption"><span class="caption-number">Listing 785 </span><span class="caption-text">adventure.py</span><a class="headerlink" href="#id18" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">198</span><span class="k">def</span> <span class="nf">health_bar</span><span class="p">():</span>
+<span class="linenos">199</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Print a progress bar showing player health&quot;&quot;&quot;</span>
+<span class="linenos">200</span>    <span class="nb">print</span><span class="p">()</span>
+<span class="linenos">201</span>    <span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Health </span><span class="si">{</span><span class="n">BAR</span><span class="p">(</span><span class="n">PLAYER</span><span class="p">[</span><span class="s1">&#39;health&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">202</span>
+<span class="linenos">203</span>
+</pre></div>
+</div>
+</div>
+</div>
+</details></section>
+<section id="d-in-do-inventory">
+<h3>D. In <code class="docutils literal notranslate"><span class="pre">do_inventory()</span></code><a class="headerlink" href="#d-in-do-inventory" title="Permalink to this headline">#</a></h3>
+<p>In this section we’ll call <code class="docutils literal notranslate"><span class="pre">health_bar()</span></code> in the <code class="docutils literal notranslate"><span class="pre">do_inventory()</span></code> function to
+print the health bar.</p>
+<div class="row"><div class="col-5 left-col-5">
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> At the beginning of <code class="docutils literal notranslate"><span class="pre">do_inventory()</span></code> call <code class="docutils literal notranslate"><span class="pre">health_bar()</span></code></p></li>
+</ol>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+Demo<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<asciinema-player poster="npt:0:03" rows="16" src="assets/adventure-13.4.cast"></asciinema-player></div>
+</details></div></div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id19">
+<div class="code-block-caption"><span class="caption-number">Listing 786 </span><span class="caption-text">adventure.py</span><a class="headerlink" href="#id19" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">505</span><span class="k">def</span> <span class="nf">do_inventory</span><span class="p">():</span>
+<span class="linenos">506</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Show the players inventory&quot;&quot;&quot;</span>
+<span class="linenos">507</span>
+<span class="linenos">508</span>    <span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Trying to show inventory.&quot;</span><span class="p">)</span>
+<span class="linenos">509</span>
+<span class="hll"><span class="linenos">510</span>    <span class="n">health_bar</span><span class="p">()</span>
+</span><span class="linenos">511</span>
+<span class="linenos">512</span>    <span class="n">header</span><span class="p">(</span><span class="s2">&quot;Inventory&quot;</span><span class="p">)</span>
+<span class="linenos">513</span>
+<span class="linenos">514</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;inventory&quot;</span><span class="p">]:</span>
+<span class="linenos">515</span>        <span class="n">write</span><span class="p">(</span><span class="s2">&quot;Empty.&quot;</span><span class="p">)</span>
+<span class="linenos">516</span>        <span class="k">return</span>
+<span class="linenos">517</span>
+<span class="linenos">518</span>    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">qty</span> <span class="ow">in</span> <span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;inventory&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="linenos">519</span>        <span class="n">item</span> <span class="o">=</span> <span class="n">get_item</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="linenos">520</span>        <span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(x</span><span class="si">{</span><span class="n">qty</span><span class="si">:</span><span class="s2">&gt;2</span><span class="si">}</span><span class="s2">)  </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">521</span>
+<span class="linenos">522</span>    <span class="nb">print</span><span class="p">()</span>
+<span class="linenos">523</span>
+<span class="linenos">524</span>
+</pre></div>
+</div>
+</div>
+</div>
+</details></section>
+<section id="e-in-main">
+<h3>E. In <code class="docutils literal notranslate"><span class="pre">main()</span></code><a class="headerlink" href="#e-in-main" title="Permalink to this headline">#</a></h3>
+<p>In this section we’ll quit the game if player health is out of health.</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> At the very end of the <code class="docutils literal notranslate"><span class="pre">main()</span></code> function, check to make sure that the player still has health</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> If not print something like <code class="docutils literal notranslate"><span class="pre">&quot;Game</span> <span class="pre">over&quot;</span></code> and call <code class="docutils literal notranslate"><span class="pre">quit()</span></code></p></li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id20">
+<div class="code-block-caption"><span class="caption-number">Listing 787 </span><span class="caption-text">adventure.py</span><a class="headerlink" href="#id20" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">642</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="linenos">643</span>    <span class="n">header</span><span class="p">(</span><span class="s2">&quot;Welcome!&quot;</span><span class="p">)</span>
+<span class="linenos">644</span>
+<span class="linenos">645</span>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="linenos">646</span>        <span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;You are at: </span><span class="si">{</span><span class="n">PLAYER</span><span class="p">[</span><span class="s1">&#39;place&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">647</span>
+<span class="linenos">648</span>        <span class="n">reply</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="n">fg</span><span class="o">.</span><span class="n">cyan</span><span class="p">(</span><span class="s2">&quot;&gt; &quot;</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="linenos">649</span>        <span class="n">args</span> <span class="o">=</span> <span class="n">reply</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="linenos">650</span>
+<span class="linenos">651</span>        <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">:</span>
+<span class="linenos">652</span>            <span class="k">continue</span>
+<span class="linenos">653</span>
+<span class="linenos">654</span>        <span class="n">command</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos">655</span>        <span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Command: </span><span class="si">{</span><span class="n">command</span><span class="si">!r}</span><span class="s2">, args: </span><span class="si">{</span><span class="n">args</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">656</span>
+<span class="linenos">657</span>        <span class="k">if</span> <span class="n">command</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">,</span> <span class="s2">&quot;quit&quot;</span><span class="p">,</span> <span class="s2">&quot;exit&quot;</span><span class="p">):</span>
+<span class="linenos">658</span>            <span class="n">do_quit</span><span class="p">()</span>
+<span class="linenos">659</span>
+<span class="linenos">660</span>        <span class="k">elif</span> <span class="n">command</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;shop&quot;</span><span class="p">):</span>
+<span class="linenos">661</span>            <span class="n">do_shop</span><span class="p">()</span>
+<span class="linenos">662</span>
+<span class="linenos">663</span>        <span class="k">elif</span> <span class="n">command</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="s2">&quot;go&quot;</span><span class="p">):</span>
+<span class="linenos">664</span>            <span class="n">do_go</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+<span class="linenos">665</span>
+<span class="linenos">666</span>        <span class="k">elif</span> <span class="n">command</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;exam&quot;</span><span class="p">,</span> <span class="s2">&quot;examine&quot;</span><span class="p">):</span>
+<span class="linenos">667</span>            <span class="n">do_examine</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+<span class="linenos">668</span>
+<span class="linenos">669</span>        <span class="k">elif</span> <span class="n">command</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="s2">&quot;look&quot;</span><span class="p">):</span>
+<span class="linenos">670</span>            <span class="n">do_look</span><span class="p">()</span>
+<span class="linenos">671</span>
+<span class="linenos">672</span>        <span class="k">elif</span> <span class="n">command</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="s2">&quot;take&quot;</span><span class="p">,</span> <span class="s2">&quot;grab&quot;</span><span class="p">):</span>
+<span class="linenos">673</span>            <span class="n">do_take</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+<span class="linenos">674</span>
+<span class="linenos">675</span>        <span class="k">elif</span> <span class="n">command</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;i&quot;</span><span class="p">,</span> <span class="s2">&quot;inventory&quot;</span><span class="p">):</span>
+<span class="linenos">676</span>            <span class="n">do_inventory</span><span class="p">()</span>
+<span class="linenos">677</span>
+<span class="linenos">678</span>        <span class="k">elif</span> <span class="n">command</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;read&quot;</span><span class="p">):</span>
+<span class="linenos">679</span>            <span class="n">do_read</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+<span class="linenos">680</span>
+<span class="linenos">681</span>        <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;drop&quot;</span><span class="p">:</span>
+<span class="linenos">682</span>            <span class="n">do_drop</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+<span class="linenos">683</span>
+<span class="linenos">684</span>        <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;buy&quot;</span><span class="p">:</span>
+<span class="linenos">685</span>            <span class="n">do_buy</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+<span class="linenos">686</span>
+<span class="linenos">687</span>        <span class="k">else</span><span class="p">:</span>
+<span class="linenos">688</span>            <span class="n">error</span><span class="p">(</span><span class="s2">&quot;No such command.&quot;</span><span class="p">)</span>
+<span class="linenos">689</span>            <span class="k">continue</span>
+<span class="linenos">690</span>
+<span class="linenos">691</span>        <span class="c1"># print a blank line no matter what</span>
+<span class="linenos">692</span>        <span class="nb">print</span><span class="p">()</span>
+<span class="linenos">693</span>
+<span class="hll"><span class="linenos">694</span>        <span class="c1"># exit the game if player has no health</span>
+</span><span class="hll"><span class="linenos">695</span>        <span class="k">if</span> <span class="ow">not</span> <span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;health&quot;</span><span class="p">]:</span>
+</span><span class="hll"><span class="linenos">696</span>            <span class="n">write</span><span class="p">(</span><span class="s2">&quot;Game over.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">697</span>            <span class="n">quit</span><span class="p">()</span>
+</span><span class="hll"><span class="linenos">698</span>
+</span><span class="hll"><span class="linenos">699</span>
+</span></pre></div>
+</div>
+</div>
+</div>
+</details></section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "alissa-huskey/python-class",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./exercises/adventure"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="part-12.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Part 12: Read things</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="reference.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Reference</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

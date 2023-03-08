@@ -1,0 +1,2530 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Part 10: Buy things &#8212; Python Class</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/asciinema-player.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/x-frame-bypass.js"></script>
+    <script src="../../_static/asciinema-player.js"></script>
+    <script src="../../_static/custom.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://alissa-huskey.github.io/python-class/exercises/adventure/part-10.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Part 11: Test things" href="part-11.html" />
+    <link rel="prev" title="Part 9: Refactoring" href="part-09.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Python Class</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lessons
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../lessons/tutorial.html">
+   Beginner Tutorial
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../lessons/fundamentals.html">
+   Fundamentals
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../lessons/syntax.html">
+     Syntax
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/expressions.html">
+       Expressions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/statements.html">
+       Statements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/variables.html">
+       Variables
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../lessons/flow-control.html">
+     Flow Control
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/conditional-statements.html">
+       Conditional Statements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/functions.html">
+       Functions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/while-loops.html">
+       While loops
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/for-loops.html">
+       For Loops
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/flow.html">
+       Program Flow
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/string-formatting-part-1.html">
+       String formatting: Part 1
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/string-formatting-part-2.html">
+       String formatting: Part 2
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/reading-code.html">
+       Reading Code
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../lessons/data-types/index.html">
+     Data Types
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/data-types/objects.html">
+       Objects
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/data-types/numeric.html">
+       Numeric Types
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../lessons/data-types/containers.html">
+       Containers
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+      <label for="toctree-checkbox-5">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../lessons/data-types/lists.html">
+         Lists
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../lessons/data-types/dictionaries.html">
+         Dictionaries
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../lessons/data-types/strings.html">
+         Strings
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../lessons/files.html">
+     Files
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/file-io.html">
+       File I/O
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/paths.html">
+       Paths
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/file-system-operations.html">
+       File System Operations
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../lessons/in-depth/index.html">
+   In Depth
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/cli.html">
+     CLI
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/in-depth/imports.html">
+     Imports
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/in-depth/magic-methods.html">
+     Magic methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/in-depth/structure.html">
+     Structuring Python Projects
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/in-depth/functions.html">
+     Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/in-depth/oop.html">
+     Object Oriented Programming
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../lessons/data/index.html">
+   Data
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/data/functional-programming.html">
+     Functional Programming
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../lessons/misc.html">
+   Misc
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/dates.html">
+     Dates and Times
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/web-apis.html">
+     Web APIs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/battle.html">
+     PyPet Battle
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../lessons/game-book.html">
+   Invent Games Book
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/03_guess_the_number.html">
+     Chapter 3: Guess the Number
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/dragon-realm.html">
+     Dragon Realm
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Practices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../practices/problem-solving.html">
+   Problem Solving
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../practices/testing/intro.html">
+   Introduction to Tests
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../practices/testing/pytest-tests.html">
+     Pytest Tests
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../practices/debugging.html">
+   Using a Debugger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../practices/data-inspection.html">
+   Data Inspection
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tools
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/asdf.html">
+   asdf
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/git.html">
+   Git
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/homebrew.html">
+   Homebrew
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/ipython.html">
+   IPython
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/mac.html">
+   Mac Dev Env for Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/poetry.html">
+   Poetry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/pyenv.html">
+   pyenv
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/pytest.html">
+   Pytest
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/python-shell.html">
+   Python Shell
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/replit.html">
+   Replit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/screencasts.html">
+   Screencasts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/terminal.html">
+   Terminal
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/vscode.html">
+   VS Code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/windows.html">
+   Windows Dev Env for Python
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/recommended.html">
+   Recommended Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/dicts.html">
+   Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/lists.html">
+   Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/template.py">
+   Script Template
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Exercises
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../program-flow.html">
+   Program Flow Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../list-exercises.html">
+   List Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../list-string-exercises.html">
+   List String Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../flashcards.html">
+   Flashcards Project
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="intro.html">
+   Adventure Game
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-01.html">
+     Part 1: The game loop
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-02.html">
+     Part 2: Go places
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-03.html">
+     Part 3: Prettify
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-04.html">
+     Part 4: Examine items
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-05.html">
+     Part 5: Look around
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-06.html">
+     Part 6: Take things
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-07.html">
+     Part 7: Show inventory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-08.html">
+     Part 8: Drop things
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-09.html">
+     Part 9: Refactoring
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Part 10: Buy things
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-11.html">
+     Part 11: Test things
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-12.html">
+     Part 12: Read things
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-13.html">
+     Part 13: Health
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="reference.html">
+     Reference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="todo.html">
+     TODO
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Admin
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../orphans.html">
+   Orphaned Terms
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/alissa-huskey/python-class/master?urlpath=lab/tree/docs/exercises/adventure/part-10.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/alissa-huskey/python-class"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/alissa-huskey/python-class/edit/master/docs/exercises/adventure/part-10.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-10-1-add-market">
+   Part 10.1: Add market
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-add-market-to-places">
+     A. Add market to
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       PLACES
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-in-do-shop-get-items-from-the-market">
+     B. In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_shop()
+      </span>
+     </code>
+     get items from the market
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-10-2-add-place-can">
+   Part 10.2: Add
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     place_can()
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-in-places-add-can-list-to-market">
+     A: In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       PLACES
+      </span>
+     </code>
+     add
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       "can"
+      </span>
+     </code>
+     list to market
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-define-place-can">
+     B: Define
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       place_can()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#c-call-place-can-from-do-shop">
+     C: Call
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       place_can()
+      </span>
+     </code>
+     from
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_shop()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-10-3-add-buy-command">
+   Part 10.3: Add buy command
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-add-game-info">
+     A. Add game info
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-define-a-do-buy-function">
+     B: Define a
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_buy()
+      </span>
+     </code>
+     function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#c-in-main">
+     C: In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       main()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#d-in-do-buy-make-sure-the-place-supports-buying">
+     D: In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_buy()
+      </span>
+     </code>
+     , Make sure the place supports buying
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#e-still-in-do-buy-make-sure-the-player-typed-in-something-to-buy">
+     E: Still in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_buy()
+      </span>
+     </code>
+     , make sure the player typed in something to buy
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#f-still-in-do-buy-make-sure-the-item-is-in-this-place">
+     F: Still in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_buy()
+      </span>
+     </code>
+     , make sure the item is in this place
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#g-still-in-do-buy-make-sure-the-item-is-for-sale">
+     G. Still in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_buy()
+      </span>
+     </code>
+     , make sure the item is for sale
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#h-still-in-do-buy-make-sure-the-player-can-afford-the-item">
+     H. Still in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_buy()
+      </span>
+     </code>
+     , make sure the player can afford the item
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#i-in-do-buy-buy-the-item">
+     I. In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_buy()
+      </span>
+     </code>
+     , buy the item
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-10-4-clean-up-the-shop">
+   Part 10.4: Clean up the shop
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-show-price-in-do-shop">
+     A: Show price in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_shop()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-handle-long-descriptions">
+     B. Handle long descriptions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#i-truncate-the-description">
+       I. Truncate the description
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ii-add-a-short-summary-to-items-dictionary">
+       II. Add a short
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         "summary"
+        </span>
+       </code>
+       to items dictionary
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#c-show-price-in-do-examine">
+     C. Show price in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_examine()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#d-show-inventory-quantity-in-do-examine">
+     D. Show inventory quantity in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_examine()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Part 10: Buy things</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-10-1-add-market">
+   Part 10.1: Add market
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-add-market-to-places">
+     A. Add market to
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       PLACES
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-in-do-shop-get-items-from-the-market">
+     B. In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_shop()
+      </span>
+     </code>
+     get items from the market
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-10-2-add-place-can">
+   Part 10.2: Add
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     place_can()
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-in-places-add-can-list-to-market">
+     A: In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       PLACES
+      </span>
+     </code>
+     add
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       "can"
+      </span>
+     </code>
+     list to market
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-define-place-can">
+     B: Define
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       place_can()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#c-call-place-can-from-do-shop">
+     C: Call
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       place_can()
+      </span>
+     </code>
+     from
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_shop()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-10-3-add-buy-command">
+   Part 10.3: Add buy command
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-add-game-info">
+     A. Add game info
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-define-a-do-buy-function">
+     B: Define a
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_buy()
+      </span>
+     </code>
+     function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#c-in-main">
+     C: In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       main()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#d-in-do-buy-make-sure-the-place-supports-buying">
+     D: In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_buy()
+      </span>
+     </code>
+     , Make sure the place supports buying
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#e-still-in-do-buy-make-sure-the-player-typed-in-something-to-buy">
+     E: Still in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_buy()
+      </span>
+     </code>
+     , make sure the player typed in something to buy
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#f-still-in-do-buy-make-sure-the-item-is-in-this-place">
+     F: Still in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_buy()
+      </span>
+     </code>
+     , make sure the item is in this place
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#g-still-in-do-buy-make-sure-the-item-is-for-sale">
+     G. Still in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_buy()
+      </span>
+     </code>
+     , make sure the item is for sale
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#h-still-in-do-buy-make-sure-the-player-can-afford-the-item">
+     H. Still in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_buy()
+      </span>
+     </code>
+     , make sure the player can afford the item
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#i-in-do-buy-buy-the-item">
+     I. In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_buy()
+      </span>
+     </code>
+     , buy the item
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-10-4-clean-up-the-shop">
+   Part 10.4: Clean up the shop
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-show-price-in-do-shop">
+     A: Show price in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_shop()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-handle-long-descriptions">
+     B. Handle long descriptions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#i-truncate-the-description">
+       I. Truncate the description
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ii-add-a-short-summary-to-items-dictionary">
+       II. Add a short
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         "summary"
+        </span>
+       </code>
+       to items dictionary
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#c-show-price-in-do-examine">
+     C. Show price in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_examine()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#d-show-inventory-quantity-in-do-examine">
+     D. Show inventory quantity in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_examine()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="part-10-buy-things">
+<h1>Part 10: Buy things<a class="headerlink" href="#part-10-buy-things" title="Permalink to this headline">#</a></h1>
+<p>In this section we’ll add the buy command, add the market, make sure that the
+buy and shop commands only work in the market, and make add information to the
+buy shop and examine commands.</p>
+<div class="float-right docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-10.1.py"><span>source code</span></a></p>
+</div>
+<section id="part-10-1-add-market">
+<h2>Part 10.1: Add market<a class="headerlink" href="#part-10-1-add-market" title="Permalink to this headline">#</a></h2>
+<div class="clearfix"></div>
+<div class="row"><div class="col-5 left-col-5">
+<p>First we’ll need to add the market to our <code class="docutils literal notranslate"><span class="pre">PLACES</span></code> dictionary so we can
+navigate to and from there.</p>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+Demo<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<asciinema-player poster="npt:0:04" speed="0.5" rows="16" src="assets/adventure-10.1.cast"></asciinema-player></div>
+</details></div></div>
+<section id="a-add-market-to-places">
+<h3>A. Add market to <code class="docutils literal notranslate"><span class="pre">PLACES</span></code><a class="headerlink" href="#a-add-market-to-places" title="Permalink to this headline">#</a></h3>
+<div class="row"><div class="col-5 left-col-5">
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add a <code class="docutils literal notranslate"><span class="pre">&quot;market&quot;</span></code> dictionary to your <code class="docutils literal notranslate"><span class="pre">PLACES</span></code> dictionary.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Be sure to add the relevant directions. For example, since I have it just north of <code class="docutils literal notranslate"><span class="pre">&quot;town-square&quot;</span></code>
+I have <code class="docutils literal notranslate"><span class="pre">&quot;south&quot;:</span> <span class="pre">&quot;town-square&quot;</span></code>.  But you can put it somewhere else if
+it suits you.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Also add the <code class="docutils literal notranslate"><span class="pre">&quot;items&quot;</span></code> list with a list of keys of the items that
+are for sale in the market. For example, I have <code class="docutils literal notranslate"><span class="pre">&quot;book&quot;</span></code> and
+<code class="docutils literal notranslate"><span class="pre">&quot;dagger&quot;</span></code> in mine.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add the direction values to the other adjacent place dictionaries. For
+example, in my <code class="docutils literal notranslate"><span class="pre">&quot;town-square&quot;</span></code> dictionary I have <code class="docutils literal notranslate"><span class="pre">&quot;north&quot;:</span> <span class="pre">&quot;market&quot;</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Test this by making sure you can get to and from the market.</p></li>
+</ol>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">43</span><span class="n">PLACES</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos">44</span>    <span class="s2">&quot;home&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="linenos">45</span>        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
+<span class="linenos">46</span>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Your Cottage&quot;</span><span class="p">,</span>
+<span class="linenos">47</span>        <span class="s2">&quot;east&quot;</span><span class="p">:</span> <span class="s2">&quot;town-square&quot;</span><span class="p">,</span>
+<span class="linenos">48</span>        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A cozy stone cottage with a desk and a neatly made bed.&quot;</span><span class="p">,</span>
+<span class="linenos">49</span>        <span class="s2">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;desk&quot;</span><span class="p">,</span> <span class="s2">&quot;book&quot;</span><span class="p">],</span>
+<span class="linenos">50</span>    <span class="p">},</span>
+<span class="linenos">51</span>    <span class="s2">&quot;town-square&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="linenos">52</span>        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;town-square&quot;</span><span class="p">,</span>
+<span class="linenos">53</span>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;The Town Square&quot;</span><span class="p">,</span>
+<span class="linenos">54</span>        <span class="s2">&quot;west&quot;</span><span class="p">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
+<span class="hll"><span class="linenos">55</span>        <span class="s2">&quot;north&quot;</span><span class="p">:</span> <span class="s2">&quot;market&quot;</span><span class="p">,</span>
+</span><span class="linenos">56</span>        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="p">(</span>
+<span class="linenos">57</span>            <span class="s2">&quot;A large open space surrounded by buildings with a burbling &quot;</span>
+<span class="linenos">58</span>            <span class="s2">&quot;fountain in the center.&quot;</span>
+<span class="linenos">59</span>        <span class="p">),</span>
+<span class="linenos">60</span>    <span class="p">},</span>
+<span class="hll"><span class="linenos">61</span>    <span class="s2">&quot;market&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class="hll"><span class="linenos">62</span>        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;market&quot;</span><span class="p">,</span>
+</span><span class="hll"><span class="linenos">63</span>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;The Market&quot;</span><span class="p">,</span>
+</span><span class="hll"><span class="linenos">64</span>        <span class="s2">&quot;south&quot;</span><span class="p">:</span> <span class="s2">&quot;town-square&quot;</span><span class="p">,</span>
+</span><span class="hll"><span class="linenos">65</span>        <span class="s2">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;elixr&quot;</span><span class="p">,</span> <span class="s2">&quot;dagger&quot;</span><span class="p">],</span>
+</span><span class="hll"><span class="linenos">66</span>        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="p">(</span>
+</span><span class="hll"><span class="linenos">67</span>            <span class="s2">&quot;A tidy store with shelves full of goods to buy. A wooden hand &quot;</span>
+</span><span class="hll"><span class="linenos">68</span>            <span class="s2">&quot;painted menu hangs on the wall.&quot;</span>
+</span><span class="hll"><span class="linenos">69</span>        <span class="p">),</span>
+</span><span class="hll"><span class="linenos">70</span>    <span class="p">},</span>
+</span><span class="linenos">71</span><span class="p">}</span>
+<span class="linenos">72</span>
+</pre></div>
+</div>
+</div>
+</details></div></div>
+</section>
+<section id="b-in-do-shop-get-items-from-the-market">
+<h3>B. In <code class="docutils literal notranslate"><span class="pre">do_shop()</span></code> get items from the market<a class="headerlink" href="#b-in-do-shop-get-items-from-the-market" title="Permalink to this headline">#</a></h3>
+<p>Now that we have a legit market, we can get our items from the market rather
+than going through all items.</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> At the beginning of the <code class="docutils literal notranslate"><span class="pre">do_shop()</span></code> function, get the market
+dictionary by calling <code class="docutils literal notranslate"><span class="pre">get_place()</span></code> and assign it to the variable <code class="docutils literal notranslate"><span class="pre">place</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Change your for loop, instead of iterating over <code class="docutils literal notranslate"><span class="pre">ITEMS.values()</span></code>, use the
+<code class="docutils literal notranslate"><span class="pre">.get()</span></code> method on <code class="docutils literal notranslate"><span class="pre">place</span></code> with the arguments <code class="docutils literal notranslate"><span class="pre">&quot;items&quot;</span></code> and an empty list, and
+iterate over that instead. Also rename the variable from <code class="docutils literal notranslate"><span class="pre">item</span></code> to <code class="docutils literal notranslate"><span class="pre">key</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Inside the for loop at the beginning, call <code class="docutils literal notranslate"><span class="pre">get_item()</span></code> with the
+argument <code class="docutils literal notranslate"><span class="pre">key</span></code> and assign it to the variable <code class="docutils literal notranslate"><span class="pre">item</span></code>.</p></li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">224</span><span class="k">def</span> <span class="nf">do_shop</span><span class="p">():</span>
+<span class="linenos">225</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;List the items for sale.&quot;&quot;&quot;</span>
+<span class="linenos">226</span>
+<span class="hll"><span class="linenos">227</span>    <span class="n">place</span> <span class="o">=</span> <span class="n">get_place</span><span class="p">()</span>
+</span><span class="linenos">228</span>
+<span class="linenos">229</span>    <span class="n">header</span><span class="p">(</span><span class="s2">&quot;Items for sale.&quot;</span><span class="p">)</span>
+<span class="linenos">230</span>
+<span class="hll"><span class="linenos">231</span>    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">place</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;items&quot;</span><span class="p">,</span> <span class="p">[]):</span>
+</span><span class="hll"><span class="linenos">232</span>        <span class="n">item</span> <span class="o">=</span> <span class="n">get_item</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+</span><span class="linenos">233</span>        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_for_sale</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+<span class="linenos">234</span>            <span class="k">continue</span>
+<span class="linenos">235</span>
+<span class="linenos">236</span>        <span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="si">:</span><span class="s1">&lt;13</span><span class="si">}</span><span class="s1">  </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="linenos">237</span>
+<span class="linenos">238</span>    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details><div class="float-right docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-10.2.py"><span>source code</span></a></p>
+</div>
+</section>
+</section>
+<section id="part-10-2-add-place-can">
+<h2>Part 10.2: Add <code class="docutils literal notranslate"><span class="pre">place_can()</span></code><a class="headerlink" href="#part-10-2-add-place-can" title="Permalink to this headline">#</a></h2>
+<div class="clearfix"></div>
+<div class="row"><div class="col-5 left-col-5">
+<p>Some commands can only happen when you are in a particular place. The way we
+initially wrote the <code class="docutils literal notranslate"><span class="pre">do_shop()</span></code> function, you can shop from anywhere. Now we’re
+going to store some extra information on place dictionaries to let us know if
+the action is restricted to certain places.</p>
+<p>Similar to place <code class="docutils literal notranslate"><span class="pre">&quot;items&quot;</span></code>, we’ll store this information as a list of strings,
+this time with the key <code class="docutils literal notranslate"><span class="pre">&quot;can&quot;</span></code>.</p>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+Demo<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<asciinema-player poster="npt:0:02" speed="0.5" rows="16" src="assets/adventure-10.2.cast"></asciinema-player></div>
+</details></div></div>
+<section id="a-in-places-add-can-list-to-market">
+<h3>A: In <code class="docutils literal notranslate"><span class="pre">PLACES</span></code> add <code class="docutils literal notranslate"><span class="pre">&quot;can&quot;</span></code> list to market<a class="headerlink" href="#a-in-places-add-can-list-to-market" title="Permalink to this headline">#</a></h3>
+<p>In the next section we’ll write a function to use that information.</p>
+<div class="row"><div class="col-5 left-col-5">
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> In your <code class="docutils literal notranslate"><span class="pre">market</span></code> place dictionary, add the key <code class="docutils literal notranslate"><span class="pre">&quot;can&quot;</span></code>; and for the
+value a list with one item, <code class="docutils literal notranslate"><span class="pre">&quot;shop&quot;</span></code>.</p></li>
+</ol>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">61</span>    <span class="s2">&quot;market&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="linenos">62</span>        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;market&quot;</span><span class="p">,</span>
+<span class="linenos">63</span>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;The Market&quot;</span><span class="p">,</span>
+<span class="linenos">64</span>        <span class="s2">&quot;south&quot;</span><span class="p">:</span> <span class="s2">&quot;town-square&quot;</span><span class="p">,</span>
+<span class="linenos">65</span>        <span class="s2">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;elixr&quot;</span><span class="p">,</span> <span class="s2">&quot;dagger&quot;</span><span class="p">],</span>
+<span class="hll"><span class="linenos">66</span>        <span class="s2">&quot;can&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;shop&quot;</span><span class="p">],</span>
+</span><span class="linenos">67</span>        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="p">(</span>
+<span class="linenos">68</span>            <span class="s2">&quot;A tidy store with shelves full of goods to buy. A wooden hand &quot;</span>
+<span class="linenos">69</span>            <span class="s2">&quot;painted menu hangs on the wall.&quot;</span>
+<span class="linenos">70</span>        <span class="p">),</span>
+<span class="linenos">71</span>    <span class="p">},</span>
+</pre></div>
+</div>
+</div>
+</details></div></div>
+</section>
+<section id="b-define-place-can">
+<h3>B: Define <code class="docutils literal notranslate"><span class="pre">place_can()</span></code><a class="headerlink" href="#b-define-place-can" title="Permalink to this headline">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">place_can()</span></code> function will let us know if a place supports a particular
+action. This function will be very similar to the <code class="docutils literal notranslate"><span class="pre">place_has()</span></code> function, but
+for actions instead of items.</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add the <code class="docutils literal notranslate"><span class="pre">place_can()</span></code> function that takes one argument, <code class="docutils literal notranslate"><span class="pre">action</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Get the current place by calling <code class="docutils literal notranslate"><span class="pre">get_place()</span></code> and assign it to the variable <code class="docutils literal notranslate"><span class="pre">place</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Check if <code class="docutils literal notranslate"><span class="pre">action</span></code> is not in the list of place items by calling
+<code class="docutils literal notranslate"><span class="pre">.get()</span></code> on <code class="docutils literal notranslate"><span class="pre">place</span></code> with the key <code class="docutils literal notranslate"><span class="pre">&quot;can&quot;</span></code> and an empty list for the default
+argument.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> If so, return <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Otherwise, return <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+</ul>
+</li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">219</span><span class="k">def</span> <span class="nf">place_can</span><span class="p">(</span><span class="n">action</span><span class="p">):</span>
+<span class="linenos">220</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Return True if the current place supports a particular action.&quot;&quot;&quot;</span>
+<span class="linenos">221</span>    <span class="n">place</span> <span class="o">=</span> <span class="n">get_place</span><span class="p">()</span>
+<span class="linenos">222</span>    <span class="k">return</span> <span class="n">action</span> <span class="ow">in</span> <span class="n">place</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;can&quot;</span><span class="p">,</span> <span class="p">[])</span>
+</pre></div>
+</div>
+</div>
+</details></section>
+<section id="c-call-place-can-from-do-shop">
+<h3>C: Call <code class="docutils literal notranslate"><span class="pre">place_can()</span></code> from <code class="docutils literal notranslate"><span class="pre">do_shop()</span></code><a class="headerlink" href="#c-call-place-can-from-do-shop" title="Permalink to this headline">#</a></h3>
+<div class="row"><div class="col-5 left-col-5">
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> In <code class="docutils literal notranslate"><span class="pre">do_shop()</span></code> at the very beginning of the function check if shopping
+is supported in the current place by calling <code class="docutils literal notranslate"><span class="pre">place_can()</span></code> with the
+argument <code class="docutils literal notranslate"><span class="pre">&quot;shop&quot;</span></code>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> If not, print an error message like <code class="samp docutils literal notranslate"><span class="pre">Sorry,</span> <span class="pre">you</span> <span class="pre">can't</span> <em><span class="pre">action</span></em> <span class="pre">here.</span></code> then return</p></li>
+</ul>
+</li>
+</ol>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">230</span><span class="k">def</span> <span class="nf">do_shop</span><span class="p">():</span>
+<span class="linenos">231</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;List the items for sale.&quot;&quot;&quot;</span>
+<span class="linenos">232</span>
+<span class="hll"><span class="linenos">233</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">place_can</span><span class="p">(</span><span class="s2">&quot;shop&quot;</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">234</span>        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorry, you can&#39;t shop here.&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">235</span>        <span class="k">return</span>
+</span><span class="linenos">236</span>
+<span class="linenos">237</span>    <span class="n">place</span> <span class="o">=</span> <span class="n">get_place</span><span class="p">()</span>
+<span class="linenos">238</span>
+<span class="linenos">239</span>    <span class="n">header</span><span class="p">(</span><span class="s2">&quot;Items for sale.&quot;</span><span class="p">)</span>
+<span class="linenos">240</span>
+<span class="linenos">241</span>    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">place</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;items&quot;</span><span class="p">,</span> <span class="p">[]):</span>
+<span class="linenos">242</span>        <span class="n">item</span> <span class="o">=</span> <span class="n">get_item</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="linenos">243</span>        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_for_sale</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+<span class="linenos">244</span>            <span class="k">continue</span>
+<span class="linenos">245</span>
+<span class="linenos">246</span>        <span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="si">:</span><span class="s1">&lt;13</span><span class="si">}</span><span class="s1">  </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="linenos">247</span>
+<span class="linenos">248</span>    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details></div></div>
+<div class="float-right docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-10.3.py"><span>source code</span></a></p>
+</div>
+</section>
+</section>
+<section id="part-10-3-add-buy-command">
+<h2>Part 10.3: Add buy command<a class="headerlink" href="#part-10-3-add-buy-command" title="Permalink to this headline">#</a></h2>
+<div class="clearfix"></div>
+<div class="row"><div class="col-5 left-col-5">
+<p>Now we’ll add the buy command.</p>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+Demo<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<asciinema-player poster="npt:0:26" speed="0.75" rows="16" src="assets/adventure-10.3.cast"></asciinema-player></div>
+</details></div></div>
+<section id="a-add-game-info">
+<h3>A. Add game info<a class="headerlink" href="#a-add-game-info" title="Permalink to this headline">#</a></h3>
+<p>First we’ll need to give the player some gems, add buy to the market <code class="docutils literal notranslate"><span class="pre">&quot;can&quot;</span></code>
+list, and add gems to the items list.</p>
+<div class="row"><div class="col-5 left-col-5">
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> For now, let’s give the player some free gems so we can test out
+buying things. Add a <code class="docutils literal notranslate"><span class="pre">&quot;gems&quot;</span></code> key to the <code class="docutils literal notranslate"><span class="pre">PLAYER</span></code> inventory dictionary with a
+value of <code class="docutils literal notranslate"><span class="pre">50</span></code> or so.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> In the <code class="docutils literal notranslate"><span class="pre">PLACES</span></code> dictionary, add a <code class="docutils literal notranslate"><span class="pre">&quot;buy&quot;</span></code> to the <code class="docutils literal notranslate"><span class="pre">&quot;can&quot;</span></code> list to the market dictionary.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> In <code class="docutils literal notranslate"><span class="pre">ITEMS</span></code> add a <code class="docutils literal notranslate"><span class="pre">&quot;gems&quot;</span></code> item.</p></li>
+</ol>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+PLAYER<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">37</span><span class="n">PLAYER</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos">38</span>    <span class="s2">&quot;place&quot;</span><span class="p">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
+<span class="hll"><span class="linenos">39</span>    <span class="s2">&quot;inventory&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;gems&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">},</span>
+</span><span class="linenos">40</span><span class="p">}</span>
+<span class="linenos">41</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+PLACES<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">42</span><span class="n">PLACES</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos">43</span>    <span class="s2">&quot;home&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="linenos">44</span>        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
+<span class="linenos">45</span>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Your Cottage&quot;</span><span class="p">,</span>
+<span class="linenos">46</span>        <span class="s2">&quot;east&quot;</span><span class="p">:</span> <span class="s2">&quot;town-square&quot;</span><span class="p">,</span>
+<span class="linenos">47</span>        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A cozy stone cottage with a desk and a neatly made bed.&quot;</span><span class="p">,</span>
+<span class="linenos">48</span>        <span class="s2">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;desk&quot;</span><span class="p">,</span> <span class="s2">&quot;book&quot;</span><span class="p">],</span>
+<span class="linenos">49</span>    <span class="p">},</span>
+<span class="linenos">50</span>    <span class="s2">&quot;town-square&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="linenos">51</span>        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;town-square&quot;</span><span class="p">,</span>
+<span class="linenos">52</span>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;The Town Square&quot;</span><span class="p">,</span>
+<span class="linenos">53</span>        <span class="s2">&quot;west&quot;</span><span class="p">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
+<span class="linenos">54</span>        <span class="s2">&quot;north&quot;</span><span class="p">:</span> <span class="s2">&quot;market&quot;</span><span class="p">,</span>
+<span class="linenos">55</span>        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="p">(</span>
+<span class="linenos">56</span>            <span class="s2">&quot;A large open space surrounded by buildings with a burbling &quot;</span>
+<span class="linenos">57</span>            <span class="s2">&quot;fountain in the center.&quot;</span>
+<span class="linenos">58</span>        <span class="p">),</span>
+<span class="linenos">59</span>    <span class="p">},</span>
+<span class="linenos">60</span>    <span class="s2">&quot;market&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="linenos">61</span>        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;market&quot;</span><span class="p">,</span>
+<span class="linenos">62</span>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;The Market&quot;</span><span class="p">,</span>
+<span class="linenos">63</span>        <span class="s2">&quot;south&quot;</span><span class="p">:</span> <span class="s2">&quot;town-square&quot;</span><span class="p">,</span>
+<span class="linenos">64</span>        <span class="s2">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;elixr&quot;</span><span class="p">,</span> <span class="s2">&quot;dagger&quot;</span><span class="p">],</span>
+<span class="hll"><span class="linenos">65</span>        <span class="s2">&quot;can&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;shop&quot;</span><span class="p">,</span> <span class="s2">&quot;buy&quot;</span><span class="p">],</span>
+</span><span class="linenos">66</span>        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="p">(</span>
+<span class="linenos">67</span>            <span class="s2">&quot;A tidy store with shelves full of goods to buy. A wooden hand &quot;</span>
+<span class="linenos">68</span>            <span class="s2">&quot;painted menu hangs on the wall.&quot;</span>
+<span class="linenos">69</span>        <span class="p">),</span>
+<span class="linenos">70</span>    <span class="p">},</span>
+<span class="linenos">71</span><span class="p">}</span>
+<span class="linenos">72</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+ITEMS<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 73</span><span class="n">ITEMS</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos"> 74</span>    <span class="s2">&quot;elixr&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="linenos"> 75</span>        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;elixr&quot;</span><span class="p">,</span>
+<span class="linenos"> 76</span>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;healing elixr&quot;</span><span class="p">,</span>
+<span class="linenos"> 77</span>        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;a magical elixr that will heal what ails ya&quot;</span><span class="p">,</span>
+<span class="linenos"> 78</span>        <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span>
+<span class="linenos"> 79</span>    <span class="p">},</span>
+<span class="linenos"> 80</span>    <span class="s2">&quot;dagger&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="linenos"> 81</span>        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;dagger&quot;</span><span class="p">,</span>
+<span class="linenos"> 82</span>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;a dagger&quot;</span><span class="p">,</span>
+<span class="linenos"> 83</span>        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;a 14 inch dagger with a double-edged blade&quot;</span><span class="p">,</span>
+<span class="linenos"> 84</span>        <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">25</span><span class="p">,</span>
+<span class="linenos"> 85</span>    <span class="p">},</span>
+<span class="linenos"> 86</span>    <span class="s2">&quot;desk&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="linenos"> 87</span>        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;desk&quot;</span><span class="p">,</span>
+<span class="linenos"> 88</span>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;a desk&quot;</span><span class="p">,</span>
+<span class="linenos"> 89</span>        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="p">(</span>
+<span class="linenos"> 90</span>            <span class="s2">&quot;A wooden desk with a large leather-bound book open on &quot;</span>
+<span class="linenos"> 91</span>            <span class="s2">&quot;its surface.&quot;</span>
+<span class="linenos"> 92</span>        <span class="p">),</span>
+<span class="linenos"> 93</span>    <span class="p">},</span>
+<span class="linenos"> 94</span>    <span class="s2">&quot;book&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="linenos"> 95</span>        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;book&quot;</span><span class="p">,</span>
+<span class="linenos"> 96</span>        <span class="s2">&quot;can_take&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<span class="linenos"> 97</span>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;a book&quot;</span><span class="p">,</span>
+<span class="linenos"> 98</span>        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="p">(</span>
+<span class="linenos"> 99</span>            <span class="s2">&quot;A hefty leather-bound tome open to an interesting passage.&quot;</span>
+<span class="linenos">100</span>        <span class="p">),</span>
+<span class="linenos">101</span>    <span class="p">},</span>
+<span class="hll"><span class="linenos">102</span>    <span class="s2">&quot;gems&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class="hll"><span class="linenos">103</span>        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;gems&quot;</span><span class="p">,</span>
+</span><span class="hll"><span class="linenos">104</span>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;gems&quot;</span><span class="p">,</span>
+</span><span class="hll"><span class="linenos">105</span>        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="p">(</span>
+</span><span class="hll"><span class="linenos">106</span>            <span class="s2">&quot;A pile of sparkling gems.&quot;</span>
+</span><span class="hll"><span class="linenos">107</span>        <span class="p">),</span>
+</span><span class="hll"><span class="linenos">108</span>    <span class="p">},</span>
+</span><span class="linenos">109</span><span class="p">}</span>
+<span class="linenos">110</span>
+</pre></div>
+</div>
+</div>
+</details></div></div>
+</section>
+<section id="b-define-a-do-buy-function">
+<h3>B: Define a <code class="docutils literal notranslate"><span class="pre">do_buy()</span></code> function<a class="headerlink" href="#b-define-a-do-buy-function" title="Permalink to this headline">#</a></h3>
+<p>Here we’ll define the function that is called when the player types <code class="docutils literal notranslate"><span class="pre">&quot;buy&quot;</span></code>.</p>
+<div class="row"><div class="col-5 left-col-5">
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Define a <code class="docutils literal notranslate"><span class="pre">do_buy()</span></code> function that takes one argument, <code class="docutils literal notranslate"><span class="pre">args</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> In it, use the <code class="docutils literal notranslate"><span class="pre">debug()</span></code> function to print something like <code class="samp docutils literal notranslate"><span class="pre">Trying</span> <span class="pre">to</span> <span class="pre">buy</span> <em><span class="pre">args</span></em><span class="pre">.</span></code></p></li>
+</ol>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">463</span><span class="k">def</span> <span class="nf">do_buy</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<span class="linenos">464</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Purchase an item.&quot;&quot;&quot;</span>
+<span class="linenos">465</span>
+<span class="linenos">466</span>    <span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Trying to buy: </span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details></div></div>
+</section>
+<section id="c-in-main">
+<h3>C: In <code class="docutils literal notranslate"><span class="pre">main()</span></code><a class="headerlink" href="#c-in-main" title="Permalink to this headline">#</a></h3>
+<div class="row"><div class="col-5 left-col-5">
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add an <code class="docutils literal notranslate"><span class="pre">elif</span></code> that checks if <code class="docutils literal notranslate"><span class="pre">command</span></code> is equal to <code class="docutils literal notranslate"><span class="pre">buy</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> If so, call <code class="docutils literal notranslate"><span class="pre">do_buy()</span></code> and pass <code class="docutils literal notranslate"><span class="pre">args</span></code></p></li>
+</ul>
+</li>
+</ol>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">510</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="linenos">511</span>    <span class="n">header</span><span class="p">(</span><span class="s2">&quot;Welcome!&quot;</span><span class="p">)</span>
+<span class="linenos">512</span>
+<span class="linenos">513</span>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="linenos">514</span>        <span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;You are at: </span><span class="si">{</span><span class="n">PLAYER</span><span class="p">[</span><span class="s1">&#39;place&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">515</span>
+<span class="linenos">516</span>        <span class="n">reply</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="n">fg</span><span class="o">.</span><span class="n">cyan</span><span class="p">(</span><span class="s2">&quot;&gt; &quot;</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="linenos">517</span>        <span class="n">args</span> <span class="o">=</span> <span class="n">reply</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="linenos">518</span>
+<span class="linenos">519</span>        <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">:</span>
+<span class="linenos">520</span>            <span class="k">continue</span>
+<span class="linenos">521</span>
+<span class="linenos">522</span>        <span class="n">command</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos">523</span>        <span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Command: </span><span class="si">{</span><span class="n">command</span><span class="si">!r}</span><span class="s2">, args: </span><span class="si">{</span><span class="n">args</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">524</span>
+<span class="linenos">525</span>        <span class="k">if</span> <span class="n">command</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">,</span> <span class="s2">&quot;quit&quot;</span><span class="p">,</span> <span class="s2">&quot;exit&quot;</span><span class="p">):</span>
+<span class="linenos">526</span>            <span class="n">do_quit</span><span class="p">()</span>
+<span class="linenos">527</span>
+<span class="linenos">528</span>        <span class="k">elif</span> <span class="n">command</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;shop&quot;</span><span class="p">):</span>
+<span class="linenos">529</span>            <span class="n">do_shop</span><span class="p">()</span>
+<span class="linenos">530</span>
+<span class="linenos">531</span>        <span class="k">elif</span> <span class="n">command</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="s2">&quot;go&quot;</span><span class="p">):</span>
+<span class="linenos">532</span>            <span class="n">do_go</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+<span class="linenos">533</span>
+<span class="linenos">534</span>        <span class="k">elif</span> <span class="n">command</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;exam&quot;</span><span class="p">,</span> <span class="s2">&quot;examine&quot;</span><span class="p">):</span>
+<span class="linenos">535</span>            <span class="n">do_examine</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+<span class="linenos">536</span>
+<span class="linenos">537</span>        <span class="k">elif</span> <span class="n">command</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="s2">&quot;look&quot;</span><span class="p">):</span>
+<span class="linenos">538</span>            <span class="n">do_look</span><span class="p">()</span>
+<span class="linenos">539</span>
+<span class="linenos">540</span>        <span class="k">elif</span> <span class="n">command</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="s2">&quot;take&quot;</span><span class="p">,</span> <span class="s2">&quot;grab&quot;</span><span class="p">):</span>
+<span class="linenos">541</span>            <span class="n">do_take</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+<span class="linenos">542</span>
+<span class="linenos">543</span>        <span class="k">elif</span> <span class="n">command</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;i&quot;</span><span class="p">,</span> <span class="s2">&quot;inventory&quot;</span><span class="p">):</span>
+<span class="linenos">544</span>            <span class="n">do_inventory</span><span class="p">()</span>
+<span class="linenos">545</span>
+<span class="linenos">546</span>        <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;drop&quot;</span><span class="p">:</span>
+<span class="linenos">547</span>            <span class="n">do_drop</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+<span class="linenos">548</span>
+<span class="hll"><span class="linenos">549</span>        <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;buy&quot;</span><span class="p">:</span>
+</span><span class="hll"><span class="linenos">550</span>            <span class="n">do_buy</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+</span><span class="linenos">551</span>
+<span class="linenos">552</span>        <span class="k">else</span><span class="p">:</span>
+<span class="linenos">553</span>            <span class="n">error</span><span class="p">(</span><span class="s2">&quot;No such command.&quot;</span><span class="p">)</span>
+<span class="linenos">554</span>            <span class="k">continue</span>
+<span class="linenos">555</span>
+<span class="linenos">556</span>        <span class="c1"># print a blank line no matter what</span>
+<span class="linenos">557</span>        <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details></div></div>
+</section>
+<section id="d-in-do-buy-make-sure-the-place-supports-buying">
+<h3>D: In <code class="docutils literal notranslate"><span class="pre">do_buy()</span></code>, Make sure the place supports buying<a class="headerlink" href="#d-in-do-buy-make-sure-the-place-supports-buying" title="Permalink to this headline">#</a></h3>
+<div class="row"><div class="col-5 left-col-5">
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Check if you can buy things in the current place buy calling <code class="docutils literal notranslate"><span class="pre">place_can()</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">&quot;buy&quot;</span></code>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> If not, print a message like <code class="samp docutils literal notranslate"><span class="pre">Sorry,</span> <span class="pre">you</span> <span class="pre">can't</span> <span class="pre">buy</span> <span class="pre">things</span> <span class="pre">here.</span></code> then return</p></li>
+</ul>
+</li>
+</ol>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">463</span><span class="k">def</span> <span class="nf">do_buy</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<span class="linenos">464</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Purchase an item.&quot;&quot;&quot;</span>
+<span class="linenos">465</span>
+<span class="linenos">466</span>    <span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Trying to buy: </span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+<span class="linenos">467</span>
+<span class="hll"><span class="linenos">468</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">place_can</span><span class="p">(</span><span class="s2">&quot;buy&quot;</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">469</span>        <span class="n">error</span><span class="p">(</span><span class="s2">&quot;Sorry, you can&#39;t buy things here.&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">470</span>        <span class="k">return</span>
+</span></pre></div>
+</div>
+</div>
+</details></div></div>
+</section>
+<section id="e-still-in-do-buy-make-sure-the-player-typed-in-something-to-buy">
+<h3>E: Still in <code class="docutils literal notranslate"><span class="pre">do_buy()</span></code>, make sure the player typed in something to buy<a class="headerlink" href="#e-still-in-do-buy-make-sure-the-player-typed-in-something-to-buy" title="Permalink to this headline">#</a></h3>
+<div class="row"><div class="col-5 left-col-5">
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Check if <code class="docutils literal notranslate"><span class="pre">args</span></code> is <a class="reference internal" href="../../lessons/conditional-statements.html#term-falsy"><span class="xref std std-term">falsy</span></a></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> If so, print a message with the <code class="docutils literal notranslate"><span class="pre">error()</span></code> function like <code class="docutils literal notranslate"><span class="pre">What</span> <span class="pre">do</span> <span class="pre">you</span> <span class="pre">want</span> <span class="pre">to</span> <span class="pre">buy?</span></code> then return</p></li>
+</ul>
+</li>
+</ol>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">463</span><span class="k">def</span> <span class="nf">do_buy</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<span class="linenos">464</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Purchase an item.&quot;&quot;&quot;</span>
+<span class="linenos">465</span>
+<span class="linenos">466</span>    <span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Trying to buy: </span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+<span class="linenos">467</span>
+<span class="linenos">468</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">place_can</span><span class="p">(</span><span class="s2">&quot;buy&quot;</span><span class="p">):</span>
+<span class="linenos">469</span>        <span class="n">error</span><span class="p">(</span><span class="s2">&quot;Sorry, you can&#39;t buy things here.&quot;</span><span class="p">)</span>
+<span class="linenos">470</span>        <span class="k">return</span>
+<span class="linenos">471</span>
+<span class="hll"><span class="linenos">472</span>    <span class="c1"># make sure the player typed an item</span>
+</span><span class="hll"><span class="linenos">473</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">:</span>
+</span><span class="hll"><span class="linenos">474</span>        <span class="n">error</span><span class="p">(</span><span class="s2">&quot;What do you want to buy?&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">475</span>        <span class="k">return</span>
+</span><span class="linenos">476</span>
+</pre></div>
+</div>
+</div>
+</details></div></div>
+</section>
+<section id="f-still-in-do-buy-make-sure-the-item-is-in-this-place">
+<h3>F: Still in <code class="docutils literal notranslate"><span class="pre">do_buy()</span></code>, make sure the item is in this place<a class="headerlink" href="#f-still-in-do-buy-make-sure-the-item-is-in-this-place" title="Permalink to this headline">#</a></h3>
+<div class="row"><div class="col-5 left-col-5">
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> assign the first item of the <code class="docutils literal notranslate"><span class="pre">args</span></code> list to the variable <code class="docutils literal notranslate"><span class="pre">name</span></code> and make it lowercase</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> check if the item is in this place by calling <code class="docutils literal notranslate"><span class="pre">place_has()</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">name</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> if not, print an error message <code class="docutils literal notranslate"><span class="pre">&quot;Sorry,</span> <span class="pre">I</span> <span class="pre">don't</span> <span class="pre">see</span> <span class="pre">a</span> <span class="pre">{name}</span> <span class="pre">here.&quot;</span></code> then return</p></li>
+</ul>
+</li>
+</ol>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">463</span><span class="k">def</span> <span class="nf">do_buy</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<span class="linenos">464</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Purchase an item.&quot;&quot;&quot;</span>
+<span class="linenos">465</span>
+<span class="linenos">466</span>    <span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Trying to buy: </span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+<span class="linenos">467</span>
+<span class="linenos">468</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">place_can</span><span class="p">(</span><span class="s2">&quot;buy&quot;</span><span class="p">):</span>
+<span class="linenos">469</span>        <span class="n">error</span><span class="p">(</span><span class="s2">&quot;Sorry, you can&#39;t buy things here.&quot;</span><span class="p">)</span>
+<span class="linenos">470</span>        <span class="k">return</span>
+<span class="linenos">471</span>
+<span class="linenos">472</span>    <span class="c1"># make sure the player typed an item</span>
+<span class="linenos">473</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">:</span>
+<span class="linenos">474</span>        <span class="n">error</span><span class="p">(</span><span class="s2">&quot;What do you want to buy?&quot;</span><span class="p">)</span>
+<span class="linenos">475</span>        <span class="k">return</span>
+<span class="linenos">476</span>
+<span class="hll"><span class="linenos">477</span>    <span class="c1"># get the item name from arguments</span>
+</span><span class="hll"><span class="linenos">478</span>    <span class="c1"># and make it lowercase</span>
+</span><span class="hll"><span class="linenos">479</span>    <span class="n">name</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</span><span class="hll"><span class="linenos">480</span>
+</span><span class="hll"><span class="linenos">481</span>    <span class="c1"># make sure the item is in this place</span>
+</span><span class="hll"><span class="linenos">482</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">place_has</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">483</span>        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorry, I don&#39;t see a </span><span class="si">{</span><span class="n">name</span><span class="si">!r}</span><span class="s2"> here.&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">484</span>        <span class="k">return</span>
+</span><span class="linenos">485</span>
+</pre></div>
+</div>
+</div>
+</details></div></div>
+</section>
+<section id="g-still-in-do-buy-make-sure-the-item-is-for-sale">
+<h3>G. Still in <code class="docutils literal notranslate"><span class="pre">do_buy()</span></code>, make sure the item is for sale<a class="headerlink" href="#g-still-in-do-buy-make-sure-the-item-is-for-sale" title="Permalink to this headline">#</a></h3>
+<div class="row"><div class="col-5 left-col-5">
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Get the item dictionary by calling <code class="docutils literal notranslate"><span class="pre">get_item()</span></code> with the
+argument <code class="docutils literal notranslate"><span class="pre">name</span></code> and assign it to the variable <code class="docutils literal notranslate"><span class="pre">item</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Check if the item is for sale by calling <code class="docutils literal notranslate"><span class="pre">is_for_sale()</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">item</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> If not print an error message like <code class="samp docutils literal notranslate"><span class="pre">Sorry,</span> <em><span class="pre">name</span></em> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">for</span> <span class="pre">sale</span></code> then return</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> To test this, add another item that is not for sale to the <code class="docutils literal notranslate"><span class="pre">market</span></code>,
+or temporarily remove the <code class="docutils literal notranslate"><span class="pre">&quot;price&quot;</span></code> from one of the items in your market.</p></li>
+</ol>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">463</span><span class="k">def</span> <span class="nf">do_buy</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<span class="linenos">464</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Purchase an item.&quot;&quot;&quot;</span>
+<span class="linenos">465</span>
+<span class="linenos">466</span>    <span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Trying to buy: </span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+<span class="linenos">467</span>
+<span class="linenos">468</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">place_can</span><span class="p">(</span><span class="s2">&quot;buy&quot;</span><span class="p">):</span>
+<span class="linenos">469</span>        <span class="n">error</span><span class="p">(</span><span class="s2">&quot;Sorry, you can&#39;t buy things here.&quot;</span><span class="p">)</span>
+<span class="linenos">470</span>        <span class="k">return</span>
+<span class="linenos">471</span>
+<span class="linenos">472</span>    <span class="c1"># make sure the player typed an item</span>
+<span class="linenos">473</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">:</span>
+<span class="linenos">474</span>        <span class="n">error</span><span class="p">(</span><span class="s2">&quot;What do you want to buy?&quot;</span><span class="p">)</span>
+<span class="linenos">475</span>        <span class="k">return</span>
+<span class="linenos">476</span>
+<span class="linenos">477</span>    <span class="c1"># get the item name from arguments</span>
+<span class="linenos">478</span>    <span class="c1"># and make it lowercase</span>
+<span class="linenos">479</span>    <span class="n">name</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="linenos">480</span>
+<span class="linenos">481</span>    <span class="c1"># make sure the item is in this place</span>
+<span class="linenos">482</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">place_has</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<span class="linenos">483</span>        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorry, I don&#39;t see a </span><span class="si">{</span><span class="n">name</span><span class="si">!r}</span><span class="s2"> here.&quot;</span><span class="p">)</span>
+<span class="linenos">484</span>        <span class="k">return</span>
+<span class="linenos">485</span>
+<span class="hll"><span class="linenos">486</span>    <span class="c1"># get the item information</span>
+</span><span class="hll"><span class="linenos">487</span>    <span class="n">item</span> <span class="o">=</span> <span class="n">get_item</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">488</span>
+</span><span class="hll"><span class="linenos">489</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_for_sale</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">490</span>        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorry, </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> is not for sale.&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">491</span>        <span class="k">return</span>
+</span><span class="linenos">492</span>
+</pre></div>
+</div>
+</div>
+</details></div></div>
+</section>
+<section id="h-still-in-do-buy-make-sure-the-player-can-afford-the-item">
+<h3>H. Still in <code class="docutils literal notranslate"><span class="pre">do_buy()</span></code>, make sure the player can afford the item<a class="headerlink" href="#h-still-in-do-buy-make-sure-the-player-can-afford-the-item" title="Permalink to this headline">#</a></h3>
+<div class="row"><div class="col-5 left-col-5">
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Get the price from the item dictionary, and make it positive (if
+necessary) by calling <code class="docutils literal notranslate"><span class="pre">abs()</span></code>, then assign it to the variable <code class="docutils literal notranslate"><span class="pre">price</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Check if the player has enough gems by calling <code class="docutils literal notranslate"><span class="pre">player_has()</span></code> with the
+arguments <code class="docutils literal notranslate"><span class="pre">&quot;gems&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">price</span></code>. If not:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Get the number of gems the player currently has from the <code class="docutils literal notranslate"><span class="pre">PLAYER</span></code>
+inventory dictionary by calling the <code class="docutils literal notranslate"><span class="pre">.get()</span></code> method with the arguments
+<code class="docutils literal notranslate"><span class="pre">&quot;gems&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">0</span></code> for the default value. Assign it to the variable <code class="docutils literal notranslate"><span class="pre">gems</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Print an error message like <code class="samp docutils literal notranslate"><span class="pre">Sorry,</span> <span class="pre">you</span> <span class="pre">can't</span> <span class="pre">afford</span> <em><span class="pre">name</span></em> <span class="pre">because</span> <span class="pre">it</span> <span class="pre">costs</span> <em><span class="pre">price</span></em> <span class="pre">and</span> <span class="pre">you</span> <span class="pre">only</span> <span class="pre">have</span> <em><span class="pre">gems</span></em><span class="pre">.</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> return</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> To test this, temporarily change the price of one of your items to be more than the amount of gems you have.</p></li>
+</ol>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">463</span><span class="k">def</span> <span class="nf">do_buy</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<span class="linenos">464</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Purchase an item.&quot;&quot;&quot;</span>
+<span class="linenos">465</span>
+<span class="linenos">466</span>    <span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Trying to buy: </span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+<span class="linenos">467</span>
+<span class="linenos">468</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">place_can</span><span class="p">(</span><span class="s2">&quot;buy&quot;</span><span class="p">):</span>
+<span class="linenos">469</span>        <span class="n">error</span><span class="p">(</span><span class="s2">&quot;Sorry, you can&#39;t buy things here.&quot;</span><span class="p">)</span>
+<span class="linenos">470</span>        <span class="k">return</span>
+<span class="linenos">471</span>
+<span class="linenos">472</span>    <span class="c1"># make sure the player typed an item</span>
+<span class="linenos">473</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">:</span>
+<span class="linenos">474</span>        <span class="n">error</span><span class="p">(</span><span class="s2">&quot;What do you want to buy?&quot;</span><span class="p">)</span>
+<span class="linenos">475</span>        <span class="k">return</span>
+<span class="linenos">476</span>
+<span class="linenos">477</span>    <span class="c1"># get the item name from arguments</span>
+<span class="linenos">478</span>    <span class="c1"># and make it lowercase</span>
+<span class="linenos">479</span>    <span class="n">name</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="linenos">480</span>
+<span class="linenos">481</span>    <span class="c1"># make sure the item is in this place</span>
+<span class="linenos">482</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">place_has</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<span class="linenos">483</span>        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorry, I don&#39;t see a </span><span class="si">{</span><span class="n">name</span><span class="si">!r}</span><span class="s2"> here.&quot;</span><span class="p">)</span>
+<span class="linenos">484</span>        <span class="k">return</span>
+<span class="linenos">485</span>
+<span class="linenos">486</span>    <span class="c1"># get the item information</span>
+<span class="linenos">487</span>    <span class="n">item</span> <span class="o">=</span> <span class="n">get_item</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="linenos">488</span>
+<span class="linenos">489</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_for_sale</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+<span class="linenos">490</span>        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorry, </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> is not for sale.&quot;</span><span class="p">)</span>
+<span class="linenos">491</span>        <span class="k">return</span>
+<span class="linenos">492</span>
+<span class="hll"><span class="linenos">493</span>    <span class="n">price</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">])</span>
+</span><span class="hll"><span class="linenos">494</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">player_has</span><span class="p">(</span><span class="s2">&quot;gems&quot;</span><span class="p">,</span> <span class="n">price</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">495</span>        <span class="n">gems</span> <span class="o">=</span> <span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;inventory&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;gems&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">496</span>        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorry, you can&#39;t afford </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> because it costs </span><span class="si">{</span><span class="n">price</span><span class="si">}</span><span class="s2"> and you only have </span><span class="si">{</span><span class="n">gems</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">497</span>        <span class="k">return</span>
+</span><span class="linenos">498</span>
+</pre></div>
+</div>
+</div>
+</details></div></div>
+</section>
+<section id="i-in-do-buy-buy-the-item">
+<h3>I. In <code class="docutils literal notranslate"><span class="pre">do_buy()</span></code>, buy the item<a class="headerlink" href="#i-in-do-buy-buy-the-item" title="Permalink to this headline">#</a></h3>
+<div class="row"><div class="col-5 left-col-5">
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Remove gems from inventory by calling <code class="docutils literal notranslate"><span class="pre">inventory_change()</span></code> with the values <code class="docutils literal notranslate"><span class="pre">&quot;gems&quot;</span></code> and negative <code class="docutils literal notranslate"><span class="pre">price</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add the item to inventory by calling <code class="docutils literal notranslate"><span class="pre">inventory_change()</span></code> with the value <code class="docutils literal notranslate"><span class="pre">name</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Remove the item from the current place by calling <code class="docutils literal notranslate"><span class="pre">place_remove()</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">name</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Print a message like <code class="samp docutils literal notranslate"><span class="pre">&quot;You</span> <span class="pre">bought</span> <em><span class="pre">name</span></em><span class="pre">.&quot;</span></code></p></li>
+</ol>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">463</span><span class="k">def</span> <span class="nf">do_buy</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<span class="linenos">464</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Purchase an item.&quot;&quot;&quot;</span>
+<span class="linenos">465</span>
+<span class="linenos">466</span>    <span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Trying to buy: </span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+<span class="linenos">467</span>
+<span class="linenos">468</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">place_can</span><span class="p">(</span><span class="s2">&quot;buy&quot;</span><span class="p">):</span>
+<span class="linenos">469</span>        <span class="n">error</span><span class="p">(</span><span class="s2">&quot;Sorry, you can&#39;t buy things here.&quot;</span><span class="p">)</span>
+<span class="linenos">470</span>        <span class="k">return</span>
+<span class="linenos">471</span>
+<span class="linenos">472</span>    <span class="c1"># make sure the player typed an item</span>
+<span class="linenos">473</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">:</span>
+<span class="linenos">474</span>        <span class="n">error</span><span class="p">(</span><span class="s2">&quot;What do you want to buy?&quot;</span><span class="p">)</span>
+<span class="linenos">475</span>        <span class="k">return</span>
+<span class="linenos">476</span>
+<span class="linenos">477</span>    <span class="c1"># get the item name from arguments</span>
+<span class="linenos">478</span>    <span class="c1"># and make it lowercase</span>
+<span class="linenos">479</span>    <span class="n">name</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="linenos">480</span>
+<span class="linenos">481</span>    <span class="c1"># make sure the item is in this place</span>
+<span class="linenos">482</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">place_has</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<span class="linenos">483</span>        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorry, I don&#39;t see a </span><span class="si">{</span><span class="n">name</span><span class="si">!r}</span><span class="s2"> here.&quot;</span><span class="p">)</span>
+<span class="linenos">484</span>        <span class="k">return</span>
+<span class="linenos">485</span>
+<span class="linenos">486</span>    <span class="c1"># get the item information</span>
+<span class="linenos">487</span>    <span class="n">item</span> <span class="o">=</span> <span class="n">get_item</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="linenos">488</span>
+<span class="linenos">489</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_for_sale</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+<span class="linenos">490</span>        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorry, </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> is not for sale.&quot;</span><span class="p">)</span>
+<span class="linenos">491</span>        <span class="k">return</span>
+<span class="linenos">492</span>
+<span class="linenos">493</span>    <span class="n">price</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">])</span>
+<span class="linenos">494</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">player_has</span><span class="p">(</span><span class="s2">&quot;gems&quot;</span><span class="p">,</span> <span class="n">price</span><span class="p">):</span>
+<span class="linenos">495</span>        <span class="n">gems</span> <span class="o">=</span> <span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;inventory&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;gems&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="linenos">496</span>        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorry, you can&#39;t afford </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> because it costs </span><span class="si">{</span><span class="n">price</span><span class="si">}</span><span class="s2"> and you only have </span><span class="si">{</span><span class="n">gems</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+<span class="linenos">497</span>        <span class="k">return</span>
+<span class="linenos">498</span>
+<span class="hll"><span class="linenos">499</span>    <span class="c1"># remove gems from inventory</span>
+</span><span class="hll"><span class="linenos">500</span>    <span class="n">inventory_change</span><span class="p">(</span><span class="s2">&quot;gems&quot;</span><span class="p">,</span> <span class="o">-</span><span class="n">price</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">501</span>
+</span><span class="hll"><span class="linenos">502</span>    <span class="c1"># add item to inventory</span>
+</span><span class="hll"><span class="linenos">503</span>    <span class="n">inventory_change</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">504</span>
+</span><span class="hll"><span class="linenos">505</span>    <span class="c1"># remove item from place</span>
+</span><span class="hll"><span class="linenos">506</span>    <span class="n">place_remove</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">507</span>
+</span><span class="hll"><span class="linenos">508</span>    <span class="n">wrap</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;You bought </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+</details></div></div>
+<div class="float-right docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-10.4.py"><span>source code</span></a></p>
+</div>
+</section>
+</section>
+<section id="part-10-4-clean-up-the-shop">
+<h2>Part 10.4: Clean up the shop<a class="headerlink" href="#part-10-4-clean-up-the-shop" title="Permalink to this headline">#</a></h2>
+<div class="clearfix"></div>
+<div class="row"><div class="col-2 left-col-2">
+<p>In this section we’ll make a number of small changes to improve the shop and examine commands.</p>
+</div><div class="col-10">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+Demo<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<asciinema-player poster="npt:0:06" speed="0.5" rows="16" src="assets/adventure-10.4.cast"></asciinema-player></div>
+</details></div></div>
+<section id="a-show-price-in-do-shop">
+<h3>A: Show price in <code class="docutils literal notranslate"><span class="pre">do_shop()</span></code><a class="headerlink" href="#a-show-price-in-do-shop" title="Permalink to this headline">#</a></h3>
+<p>We should add the price to the information we print out about each item. This
+is also a good chance to make this look prettier.</p>
+<div class="row"><div class="col-5 left-col-5">
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Print the <code class="docutils literal notranslate"><span class="pre">item</span></code> <code class="docutils literal notranslate"><span class="pre">&quot;price&quot;</span></code> along with the name and description. If the
+number is negative, call <code class="docutils literal notranslate"><span class="pre">abs()</span></code> to make it a positive number.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Use <a class="reference internal" href="../../lessons/string-formatting-part-1.html"><span class="doc std std-doc">string formatting</span></a> to align
+the information into columns.</p></li>
+</ol>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">235</span><span class="k">def</span> <span class="nf">do_shop</span><span class="p">():</span>
+<span class="linenos">236</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;List the items for sale.&quot;&quot;&quot;</span>
+<span class="linenos">237</span>
+<span class="linenos">238</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">place_can</span><span class="p">(</span><span class="s2">&quot;shop&quot;</span><span class="p">):</span>
+<span class="linenos">239</span>        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorry, you can&#39;t shop here.&quot;</span><span class="p">)</span>
+<span class="linenos">240</span>        <span class="k">return</span>
+<span class="linenos">241</span>
+<span class="linenos">242</span>    <span class="n">place</span> <span class="o">=</span> <span class="n">get_place</span><span class="p">()</span>
+<span class="linenos">243</span>
+<span class="linenos">244</span>    <span class="n">header</span><span class="p">(</span><span class="s2">&quot;Items for sale.&quot;</span><span class="p">)</span>
+<span class="linenos">245</span>
+<span class="linenos">246</span>    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">place</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;items&quot;</span><span class="p">,</span> <span class="p">[]):</span>
+<span class="linenos">247</span>        <span class="n">item</span> <span class="o">=</span> <span class="n">get_item</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="linenos">248</span>        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_for_sale</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+<span class="linenos">249</span>            <span class="k">continue</span>
+<span class="linenos">250</span>
+<span class="hll"><span class="linenos">251</span>        <span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="si">:</span><span class="s1">&lt;13</span><span class="si">}</span><span class="s1">  </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">]</span><span class="si">:</span><span class="s1">&lt;45</span><span class="si">}</span><span class="s1">  </span><span class="si">{</span><span class="nb">abs</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">])</span><span class="si">:</span><span class="s1">&gt;2</span><span class="si">}</span><span class="s1"> gems&#39;</span><span class="p">)</span>
+</span><span class="linenos">252</span>
+<span class="linenos">253</span>    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details></div></div>
+</section>
+<section id="b-handle-long-descriptions">
+<h3>B. Handle long descriptions<a class="headerlink" href="#b-handle-long-descriptions" title="Permalink to this headline">#</a></h3>
+<p>If your item descriptions are too long for a single line, you can do either one
+of the following.</p>
+<section id="i-truncate-the-description">
+<h4>I. Truncate the description<a class="headerlink" href="#i-truncate-the-description" title="Permalink to this headline">#</a></h4>
+<p>The simplest way to handle too-long descriptions is to truncate them so that
+they are all limited to a specific width. There are a few ways to do this, but
+here we’ll use the <code class="docutils literal notranslate"><span class="pre">textwrap.shorten()</span></code> function.</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> In your for loop, before you call <code class="docutils literal notranslate"><span class="pre">write()</span></code> to print the line, call
+<code class="docutils literal notranslate"><span class="pre">textwrap.shorten()</span></code> with two arguments: the item description, and the desired
+maximum width. Assign it to the variable <code class="docutils literal notranslate"><span class="pre">description</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> In the argument to your <code class="docutils literal notranslate"><span class="pre">write()</span></code> function, replace
+<code class="docutils literal notranslate"><span class="pre">item[&quot;description&quot;]</span></code> with <code class="docutils literal notranslate"><span class="pre">description</span></code>.</p></li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">233</span><span class="k">def</span> <span class="nf">do_shop</span><span class="p">():</span>
+<span class="linenos">234</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;List the items for sale.&quot;&quot;&quot;</span>
+<span class="linenos">235</span>
+<span class="linenos">236</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">place_can</span><span class="p">(</span><span class="s2">&quot;shop&quot;</span><span class="p">):</span>
+<span class="linenos">237</span>        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorry, you can&#39;t </span><span class="si">{</span><span class="n">action</span><span class="si">}</span><span class="s2"> here.&quot;</span><span class="p">)</span>
+<span class="linenos">238</span>        <span class="k">return</span>
+<span class="linenos">239</span>
+<span class="linenos">240</span>    <span class="n">place</span> <span class="o">=</span> <span class="n">get_place</span><span class="p">()</span>
+<span class="linenos">241</span>
+<span class="linenos">242</span>    <span class="n">header</span><span class="p">(</span><span class="s2">&quot;Items for sale.&quot;</span><span class="p">)</span>
+<span class="linenos">243</span>
+<span class="linenos">244</span>    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">place</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;items&quot;</span><span class="p">,</span> <span class="p">[]):</span>
+<span class="linenos">245</span>        <span class="n">item</span> <span class="o">=</span> <span class="n">get_item</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="linenos">246</span>        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_for_sale</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+<span class="linenos">247</span>            <span class="k">continue</span>
+<span class="linenos">248</span>
+<span class="hll"><span class="linenos">249</span>        <span class="n">description</span> <span class="o">=</span> <span class="n">textwrap</span><span class="o">.</span><span class="n">shorten</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">],</span> <span class="mi">30</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">250</span>        <span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="si">:</span><span class="s1">&lt;13</span><span class="si">}</span><span class="s1">  </span><span class="si">{</span><span class="n">description</span><span class="si">:</span><span class="s1">&lt;30</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="nb">abs</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">])</span><span class="si">:</span><span class="s1">&gt;2</span><span class="si">}</span><span class="s1"> gems&#39;</span><span class="p">)</span>
+</span><span class="linenos">251</span>
+<span class="linenos">252</span>    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details></section>
+<section id="ii-add-a-short-summary-to-items-dictionary">
+<h4>II. Add a short <code class="docutils literal notranslate"><span class="pre">&quot;summary&quot;</span></code> to items dictionary<a class="headerlink" href="#ii-add-a-short-summary-to-items-dictionary" title="Permalink to this headline">#</a></h4>
+<p>Another way to deal with the problem is to separate the long <code class="docutils literal notranslate"><span class="pre">&quot;description&quot;</span></code>
+from a shorter <code class="docutils literal notranslate"><span class="pre">&quot;summary&quot;</span></code> in the <code class="docutils literal notranslate"><span class="pre">ITEMS</span></code> dictionaries. Then here in
+<code class="docutils literal notranslate"><span class="pre">do_shop()</span></code> we’ll print the <code class="docutils literal notranslate"><span class="pre">&quot;summary&quot;</span></code>, and in <code class="docutils literal notranslate"><span class="pre">do_examine()</span></code> we’ll show the
+longer description.</p>
+<p>This is fancier, but it will require coming up with more data for each item in
+your game.</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> In each dictionary in <code class="docutils literal notranslate"><span class="pre">ITEMS</span></code> add a key <code class="docutils literal notranslate"><span class="pre">&quot;summary&quot;</span></code> with a one-line
+description of the item.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> In <code class="docutils literal notranslate"><span class="pre">do_shop</span></code> when printing the item information, replace
+<code class="docutils literal notranslate"><span class="pre">item[&quot;description&quot;]</span></code> with <code class="docutils literal notranslate"><span class="pre">item[&quot;summary&quot;]</span></code>.</p></li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+ITEMS<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">73</span>    <span class="s2">&quot;elixr&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="linenos">74</span>        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;elixr&quot;</span><span class="p">,</span>
+<span class="linenos">75</span>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;healing elixr&quot;</span><span class="p">,</span>
+<span class="hll"><span class="linenos">76</span>        <span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;a healing elixer&quot;</span><span class="p">,</span>
+</span><span class="hll"><span class="linenos">77</span>        <span class="s2">&quot;desc&quot;</span><span class="p">:</span> <span class="p">(</span>
+</span><span class="hll"><span class="linenos">78</span>            <span class="s2">&quot;A small corked bottle filled with a swirling green liquid. &quot;</span>
+</span><span class="hll"><span class="linenos">79</span>            <span class="s2">&quot;It is said to have magical healing properties.&quot;</span>
+</span><span class="hll"><span class="linenos">80</span>        <span class="p">),</span>
+</span><span class="linenos">81</span>        <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span>
+<span class="linenos">82</span>    <span class="p">},</span>
+<span class="linenos">83</span>    <span class="s2">&quot;dagger&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="linenos">84</span>        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;dagger&quot;</span><span class="p">,</span>
+<span class="linenos">85</span>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;a dagger&quot;</span><span class="p">,</span>
+<span class="hll"><span class="linenos">86</span>        <span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;a double-edged 14 inch dagger&quot;</span><span class="p">,</span>
+</span><span class="hll"><span class="linenos">87</span>        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="p">(</span>
+</span><span class="hll"><span class="linenos">88</span>            <span class="s2">&quot;A double-edged 14 inch dagger with a crescent shaped hardwood &quot;</span>
+</span><span class="hll"><span class="linenos">89</span>            <span class="s2">&quot;grip, metal cross guard, and curved studded metal pommel.&quot;</span>
+</span><span class="hll"><span class="linenos">90</span>        <span class="p">),</span>
+</span><span class="linenos">91</span>        <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">25</span><span class="p">,</span>
+<span class="linenos">92</span>    <span class="p">},</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+do_shop()<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">233</span><span class="k">def</span> <span class="nf">do_shop</span><span class="p">():</span>
+<span class="linenos">234</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;List the items for sale.&quot;&quot;&quot;</span>
+<span class="linenos">235</span>
+<span class="linenos">236</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">place_can</span><span class="p">(</span><span class="s2">&quot;shop&quot;</span><span class="p">):</span>
+<span class="linenos">237</span>        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorry, you can&#39;t </span><span class="si">{</span><span class="n">action</span><span class="si">}</span><span class="s2"> here.&quot;</span><span class="p">)</span>
+<span class="linenos">238</span>        <span class="k">return</span>
+<span class="linenos">239</span>
+<span class="linenos">240</span>    <span class="n">place</span> <span class="o">=</span> <span class="n">get_place</span><span class="p">()</span>
+<span class="linenos">241</span>
+<span class="linenos">242</span>    <span class="n">header</span><span class="p">(</span><span class="s2">&quot;Items for sale.&quot;</span><span class="p">)</span>
+<span class="linenos">243</span>
+<span class="linenos">244</span>    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">place</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;items&quot;</span><span class="p">,</span> <span class="p">[]):</span>
+<span class="linenos">245</span>        <span class="n">item</span> <span class="o">=</span> <span class="n">get_item</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="linenos">246</span>        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_for_sale</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+<span class="linenos">247</span>            <span class="k">continue</span>
+<span class="linenos">248</span>
+<span class="hll"><span class="linenos">249</span>        <span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="si">:</span><span class="s1">&lt;13</span><span class="si">}</span><span class="s1">  </span><span class="si">{</span><span class="n">items</span><span class="p">[</span><span class="s2">&quot;summary&quot;</span><span class="p">]</span><span class="si">:</span><span class="s1">&lt;30</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="nb">abs</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">])</span><span class="si">:</span><span class="s1">&gt;2</span><span class="si">}</span><span class="s1"> gems&#39;</span><span class="p">)</span>
+</span><span class="linenos">250</span>
+<span class="linenos">251</span>    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details></section>
+</section>
+<section id="c-show-price-in-do-examine">
+<h3>C. Show price in <code class="docutils literal notranslate"><span class="pre">do_examine()</span></code><a class="headerlink" href="#c-show-price-in-do-examine" title="Permalink to this headline">#</a></h3>
+<p>Let’s show the price to <code class="docutils literal notranslate"><span class="pre">do_examine()</span></code> if we’re in the market (or somewhere else
+where we can shop).</p>
+<ol>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> In <code class="docutils literal notranslate"><span class="pre">do_examine()</span></code> after the header, check if:</p>
+<ul class="simple">
+<li><p>the place supports shopping by calling <code class="docutils literal notranslate"><span class="pre">place_can()</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">&quot;shop&quot;</span></code> and</p></li>
+<li><p>the place has the item by calling <code class="docutils literal notranslate"><span class="pre">place_has()</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">name</span></code> and</p></li>
+<li><p>the item is for sale by calling <code class="docutils literal notranslate"><span class="pre">is_for_sale()</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">item</span></code></p></li>
+</ul>
+<p>If so:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> print the <code class="docutils literal notranslate"><span class="pre">item</span></code> <code class="docutils literal notranslate"><span class="pre">&quot;price&quot;</span></code></p></li>
+</ul>
+</li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">313</span><span class="k">def</span> <span class="nf">do_examine</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<span class="linenos">314</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Look at an item in the current place.&quot;&quot;&quot;</span>
+<span class="linenos">315</span>
+<span class="linenos">316</span>    <span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Trying to examine: </span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">317</span>
+<span class="linenos">318</span>    <span class="c1"># make sure the player said what they want to examine</span>
+<span class="linenos">319</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">:</span>
+<span class="linenos">320</span>        <span class="n">error</span><span class="p">(</span><span class="s2">&quot;What do you want to examine?&quot;</span><span class="p">)</span>
+<span class="linenos">321</span>        <span class="k">return</span>
+<span class="linenos">322</span>
+<span class="linenos">323</span>    <span class="c1"># look up where the player is now</span>
+<span class="linenos">324</span>    <span class="n">place</span> <span class="o">=</span> <span class="n">get_place</span><span class="p">()</span>
+<span class="linenos">325</span>
+<span class="linenos">326</span>    <span class="c1"># get the item entered by the user and make it lowercase</span>
+<span class="linenos">327</span>    <span class="n">name</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="linenos">328</span>
+<span class="linenos">329</span>    <span class="c1"># make sure the item is in this place or in the players inventory</span>
+<span class="linenos">330</span>    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">place_has</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="ow">or</span> <span class="n">player_has</span><span class="p">(</span><span class="n">name</span><span class="p">)):</span>
+<span class="linenos">331</span>        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorry, I don&#39;t know what this is: </span><span class="si">{</span><span class="n">name</span><span class="si">!r}</span><span class="s2">.&quot;</span><span class="p">)</span>
+<span class="linenos">332</span>        <span class="k">return</span>
+<span class="linenos">333</span>
+<span class="linenos">334</span>    <span class="c1"># get the item dictionary</span>
+<span class="linenos">335</span>    <span class="n">item</span> <span class="o">=</span> <span class="n">get_item</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="linenos">336</span>
+<span class="linenos">337</span>    <span class="c1"># print the item information</span>
+<span class="linenos">338</span>    <span class="n">header</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">title</span><span class="p">())</span>
+<span class="linenos">339</span>
+<span class="hll"><span class="linenos">340</span>    <span class="c1"># print the price if we&#39;re in the market</span>
+</span><span class="hll"><span class="linenos">341</span>    <span class="k">if</span> <span class="n">place_can</span><span class="p">(</span><span class="s2">&quot;shop&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">place_has</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="ow">and</span> <span class="n">is_for_sale</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">342</span>        <span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">abs</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2"> gems&quot;</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="n">WIDTH</span> <span class="o">-</span> <span class="n">MARGIN</span><span class="p">))</span>
+</span><span class="hll"><span class="linenos">343</span>        <span class="nb">print</span><span class="p">()</span>
+</span><span class="linenos">344</span>
+<span class="linenos">345</span>    <span class="c1"># print the quantity if the item is from inventory</span>
+<span class="linenos">346</span>    <span class="k">elif</span> <span class="n">player_has</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<span class="linenos">347</span>        <span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(x</span><span class="si">{</span><span class="n">PLAYER</span><span class="p">[</span><span class="s1">&#39;inventory&#39;</span><span class="p">][</span><span class="n">name</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="n">WIDTH</span> <span class="o">-</span> <span class="n">MARGIN</span><span class="p">))</span>
+<span class="linenos">348</span>        <span class="nb">print</span><span class="p">()</span>
+<span class="linenos">349</span>
+<span class="linenos">350</span>    <span class="n">wrap</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</details></section>
+<section id="d-show-inventory-quantity-in-do-examine">
+<h3>D. Show inventory quantity in <code class="docutils literal notranslate"><span class="pre">do_examine()</span></code><a class="headerlink" href="#d-show-inventory-quantity-in-do-examine" title="Permalink to this headline">#</a></h3>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Check if the player has the item in inventory by calling <code class="docutils literal notranslate"><span class="pre">player_has()</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">name</span></code>. If so:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Print the quantity from the <code class="docutils literal notranslate"><span class="pre">PLAYER</span></code> inventory dictionary for <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p></li>
+</ul>
+</li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">313</span><span class="k">def</span> <span class="nf">do_examine</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<span class="linenos">314</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Look at an item in the current place.&quot;&quot;&quot;</span>
+<span class="linenos">315</span>
+<span class="linenos">316</span>    <span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Trying to examine: </span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">317</span>
+<span class="linenos">318</span>    <span class="c1"># make sure the player said what they want to examine</span>
+<span class="linenos">319</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">:</span>
+<span class="linenos">320</span>        <span class="n">error</span><span class="p">(</span><span class="s2">&quot;What do you want to examine?&quot;</span><span class="p">)</span>
+<span class="linenos">321</span>        <span class="k">return</span>
+<span class="linenos">322</span>
+<span class="linenos">323</span>    <span class="c1"># look up where the player is now</span>
+<span class="linenos">324</span>    <span class="n">place</span> <span class="o">=</span> <span class="n">get_place</span><span class="p">()</span>
+<span class="linenos">325</span>
+<span class="linenos">326</span>    <span class="c1"># get the item entered by the user and make it lowercase</span>
+<span class="linenos">327</span>    <span class="n">name</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="linenos">328</span>
+<span class="linenos">329</span>    <span class="c1"># make sure the item is in this place or in the players inventory</span>
+<span class="linenos">330</span>    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">place_has</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="ow">or</span> <span class="n">player_has</span><span class="p">(</span><span class="n">name</span><span class="p">)):</span>
+<span class="linenos">331</span>        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorry, I don&#39;t know what this is: </span><span class="si">{</span><span class="n">name</span><span class="si">!r}</span><span class="s2">.&quot;</span><span class="p">)</span>
+<span class="linenos">332</span>        <span class="k">return</span>
+<span class="linenos">333</span>
+<span class="linenos">334</span>    <span class="c1"># get the item dictionary</span>
+<span class="linenos">335</span>    <span class="n">item</span> <span class="o">=</span> <span class="n">get_item</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="linenos">336</span>
+<span class="linenos">337</span>    <span class="c1"># print the item information</span>
+<span class="linenos">338</span>    <span class="n">header</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">title</span><span class="p">())</span>
+<span class="linenos">339</span>
+<span class="linenos">340</span>    <span class="c1"># print the price if we&#39;re in the market</span>
+<span class="linenos">341</span>    <span class="k">if</span> <span class="n">place_can</span><span class="p">(</span><span class="s2">&quot;shop&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">place_has</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="ow">and</span> <span class="n">is_for_sale</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+<span class="linenos">342</span>        <span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">abs</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2"> gems&quot;</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="n">WIDTH</span> <span class="o">-</span> <span class="n">MARGIN</span><span class="p">))</span>
+<span class="linenos">343</span>        <span class="nb">print</span><span class="p">()</span>
+<span class="linenos">344</span>
+<span class="hll"><span class="linenos">345</span>    <span class="c1"># print the quantity if the item is from inventory</span>
+</span><span class="hll"><span class="linenos">346</span>    <span class="k">elif</span> <span class="n">player_has</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">347</span>        <span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(x</span><span class="si">{</span><span class="n">PLAYER</span><span class="p">[</span><span class="s1">&#39;inventory&#39;</span><span class="p">][</span><span class="n">name</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="n">WIDTH</span> <span class="o">-</span> <span class="n">MARGIN</span><span class="p">))</span>
+</span><span class="hll"><span class="linenos">348</span>        <span class="nb">print</span><span class="p">()</span>
+</span><span class="linenos">349</span>
+<span class="linenos">350</span>    <span class="n">wrap</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</details></section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "alissa-huskey/python-class",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./exercises/adventure"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="part-09.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Part 9: Refactoring</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="part-11.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Part 11: Test things</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

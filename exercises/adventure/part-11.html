@@ -1,0 +1,2323 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Part 11: Test things &#8212; Python Class</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/asciinema-player.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/x-frame-bypass.js"></script>
+    <script src="../../_static/asciinema-player.js"></script>
+    <script src="../../_static/custom.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://alissa-huskey.github.io/python-class/exercises/adventure/part-11.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Part 12: Read things" href="part-12.html" />
+    <link rel="prev" title="Part 10: Buy things" href="part-10.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Python Class</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lessons
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../lessons/tutorial.html">
+   Beginner Tutorial
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../lessons/fundamentals.html">
+   Fundamentals
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../lessons/syntax.html">
+     Syntax
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/expressions.html">
+       Expressions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/statements.html">
+       Statements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/variables.html">
+       Variables
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../lessons/flow-control.html">
+     Flow Control
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/conditional-statements.html">
+       Conditional Statements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/functions.html">
+       Functions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/while-loops.html">
+       While loops
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/for-loops.html">
+       For Loops
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/flow.html">
+       Program Flow
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/string-formatting-part-1.html">
+       String formatting: Part 1
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/string-formatting-part-2.html">
+       String formatting: Part 2
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/reading-code.html">
+       Reading Code
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../lessons/data-types/index.html">
+     Data Types
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/data-types/objects.html">
+       Objects
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/data-types/numeric.html">
+       Numeric Types
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../lessons/data-types/containers.html">
+       Containers
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+      <label for="toctree-checkbox-5">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../lessons/data-types/lists.html">
+         Lists
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../lessons/data-types/dictionaries.html">
+         Dictionaries
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../lessons/data-types/strings.html">
+         Strings
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../lessons/files.html">
+     Files
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/file-io.html">
+       File I/O
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/paths.html">
+       Paths
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/file-system-operations.html">
+       File System Operations
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../lessons/in-depth/index.html">
+   In Depth
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/cli.html">
+     CLI
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/in-depth/imports.html">
+     Imports
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/in-depth/magic-methods.html">
+     Magic methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/in-depth/structure.html">
+     Structuring Python Projects
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/in-depth/functions.html">
+     Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/in-depth/oop.html">
+     Object Oriented Programming
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../lessons/data/index.html">
+   Data
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/data/functional-programming.html">
+     Functional Programming
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../lessons/misc.html">
+   Misc
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/dates.html">
+     Dates and Times
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/web-apis.html">
+     Web APIs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/battle.html">
+     PyPet Battle
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../lessons/game-book.html">
+   Invent Games Book
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/03_guess_the_number.html">
+     Chapter 3: Guess the Number
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/dragon-realm.html">
+     Dragon Realm
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Practices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../practices/problem-solving.html">
+   Problem Solving
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../practices/testing/intro.html">
+   Introduction to Tests
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../practices/testing/pytest-tests.html">
+     Pytest Tests
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../practices/debugging.html">
+   Using a Debugger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../practices/data-inspection.html">
+   Data Inspection
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tools
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/asdf.html">
+   asdf
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/git.html">
+   Git
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/homebrew.html">
+   Homebrew
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/ipython.html">
+   IPython
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/mac.html">
+   Mac Dev Env for Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/poetry.html">
+   Poetry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/pyenv.html">
+   pyenv
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/pytest.html">
+   Pytest
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/python-shell.html">
+   Python Shell
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/replit.html">
+   Replit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/screencasts.html">
+   Screencasts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/terminal.html">
+   Terminal
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/vscode.html">
+   VS Code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/windows.html">
+   Windows Dev Env for Python
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/recommended.html">
+   Recommended Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/dicts.html">
+   Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/lists.html">
+   Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/template.py">
+   Script Template
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Exercises
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../program-flow.html">
+   Program Flow Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../list-exercises.html">
+   List Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../list-string-exercises.html">
+   List String Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../flashcards.html">
+   Flashcards Project
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="intro.html">
+   Adventure Game
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-01.html">
+     Part 1: The game loop
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-02.html">
+     Part 2: Go places
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-03.html">
+     Part 3: Prettify
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-04.html">
+     Part 4: Examine items
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-05.html">
+     Part 5: Look around
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-06.html">
+     Part 6: Take things
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-07.html">
+     Part 7: Show inventory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-08.html">
+     Part 8: Drop things
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-09.html">
+     Part 9: Refactoring
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-10.html">
+     Part 10: Buy things
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Part 11: Test things
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-12.html">
+     Part 12: Read things
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-13.html">
+     Part 13: Health
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="reference.html">
+     Reference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="todo.html">
+     TODO
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Admin
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../orphans.html">
+   Orphaned Terms
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/alissa-huskey/python-class/master?urlpath=lab/tree/docs/exercises/adventure/part-11.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/alissa-huskey/python-class"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/alissa-huskey/python-class/edit/master/docs/exercises/adventure/part-11.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-11-1-setup">
+   Part 11.1: Setup
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-install-pytest">
+     A. Install pytest
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-configure-vs-code">
+     B. Configure VS Code
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#c-prepare-for-import">
+     C. Prepare for import
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#d-create-and-run-tests">
+     D. Create and run tests
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#e-run-tests-in-vscode">
+     E. Run tests in vscode
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-11-2-test-is-for-sale">
+   Part 11.2: Test
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     is_for_sale()
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-write-test-is-for-sale">
+     A. Write
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_is_for_sale()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-write-test-is-for-sale-without-price">
+     B. Write
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_is_for_sale_without_price()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-11-3-test-error">
+   Part 11.3: Test
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     error()
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-write-test-error">
+     A. Write
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_error()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-11-4-test-debug">
+   Part 11.4: Test
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     debug()
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-write-test-debug">
+     A. Write
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_debug()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-11-5-test-header-and-write">
+   Part 11.5: Test
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     header()
+    </span>
+   </code>
+   and
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     write()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-11-6-test-inventory-change">
+   Part 11.6: Test
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     inventory_change()
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-add-teardown">
+     A. Add teardown
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-write-test-inventory-change">
+     B. Write
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_inventory_change()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#c-write-test-teardown">
+     C. Write
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_teardown()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#d-write-test-inventory-change-missing-key">
+     D. Write
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_inventory_change_missing_key()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#e-additional-test-cases">
+     E. Additional test cases
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-11-7-test-do-drop">
+   Part 11.7: Test
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     do_drop()
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-write-test-do-drop-no-args">
+     A. Write
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_do_drop_no_args()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-write-test-do-drop-missing-item">
+     B. Write
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_do_drop_missing_item()
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#c-write-test-do-drop">
+       C. Write
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         test_do_drop()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#and-the-rest">
+     And the rest
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Part 11: Test things</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-11-1-setup">
+   Part 11.1: Setup
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-install-pytest">
+     A. Install pytest
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-configure-vs-code">
+     B. Configure VS Code
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#c-prepare-for-import">
+     C. Prepare for import
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#d-create-and-run-tests">
+     D. Create and run tests
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#e-run-tests-in-vscode">
+     E. Run tests in vscode
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-11-2-test-is-for-sale">
+   Part 11.2: Test
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     is_for_sale()
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-write-test-is-for-sale">
+     A. Write
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_is_for_sale()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-write-test-is-for-sale-without-price">
+     B. Write
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_is_for_sale_without_price()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-11-3-test-error">
+   Part 11.3: Test
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     error()
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-write-test-error">
+     A. Write
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_error()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-11-4-test-debug">
+   Part 11.4: Test
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     debug()
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-write-test-debug">
+     A. Write
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_debug()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-11-5-test-header-and-write">
+   Part 11.5: Test
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     header()
+    </span>
+   </code>
+   and
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     write()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-11-6-test-inventory-change">
+   Part 11.6: Test
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     inventory_change()
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-add-teardown">
+     A. Add teardown
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-write-test-inventory-change">
+     B. Write
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_inventory_change()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#c-write-test-teardown">
+     C. Write
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_teardown()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#d-write-test-inventory-change-missing-key">
+     D. Write
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_inventory_change_missing_key()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#e-additional-test-cases">
+     E. Additional test cases
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-11-7-test-do-drop">
+   Part 11.7: Test
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     do_drop()
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-write-test-do-drop-no-args">
+     A. Write
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_do_drop_no_args()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-write-test-do-drop-missing-item">
+     B. Write
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_do_drop_missing_item()
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#c-write-test-do-drop">
+       C. Write
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         test_do_drop()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#and-the-rest">
+     And the rest
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="part-11-test-things">
+<h1>Part 11: Test things<a class="headerlink" href="#part-11-test-things" title="Permalink to this headline">#</a></h1>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../../practices/testing/intro.html"><span class="doc std std-doc">Introduction to Tests</span></a></p>
+</div>
+</aside>
+<p>In this section we’ll add a read command, which the player will use to read a
+clue from the book.</p>
+<p>Since our program is starting to get complicated, we’ll also start writing
+tests. This will help us find out if we break something, even if we don’t
+happen to play the part of the game that triggers it. Be sure to do the
+<a class="reference internal" href="../../practices/testing/intro.html"><span class="doc std std-doc">Testing Lesson</span></a> if you haven’t already.</p>
+<div class="float-right docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/test_game-11.1.py"><span>source code</span></a></p>
+</div>
+<section id="part-11-1-setup">
+<h2>Part 11.1: Setup<a class="headerlink" href="#part-11-1-setup" title="Permalink to this headline">#</a></h2>
+<div class="clearfix"></div>
+<div class="row"><div class="col-5 left-col-5">
+<p>In this section we’ll get a basic test up and running.</p>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+Demo<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<asciinema-player poster="npt:0:06" speed="1.25" rows="16" src="assets/adventure-11.1.cast"></asciinema-player></div>
+</details></div></div>
+<section id="a-install-pytest">
+<h3>A. Install pytest<a class="headerlink" href="#a-install-pytest" title="Permalink to this headline">#</a></h3>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Install <code class="docutils literal notranslate"><span class="pre">pytest</span></code> using the instructions
+<a class="reference external" href="/practices/testing.html#part-3-pytest">here</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> To make sure it works, type <code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">--help</span></code> in the terminal.</p></li>
+</ol>
+</section>
+<section id="b-configure-vs-code">
+<h3>B. Configure VS Code<a class="headerlink" href="#b-configure-vs-code" title="Permalink to this headline">#</a></h3>
+<ol>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Configure VS Code by following the first two steps
+<a class="reference external" href="/practices/testing.html#part-6-testing-in-vs-code">here</a>. When you are
+prompted to select the directory containing the tests, choose
+<span class="guilabel">. Root directory</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Install the extension <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=LittleFoxTeam.vscode-python-test-adapter">Python Test Explorer for Visual Studio Code</a>.
+either from the marketplace or by typing the following into the terminal.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">code --install-extension littlefoxteam.vscode-python-test-adapter</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> You may need to restart vscode.</p></li>
+</ol>
+</section>
+<section id="c-prepare-for-import">
+<h3>C. Prepare for import<a class="headerlink" href="#c-prepare-for-import" title="Permalink to this headline">#</a></h3>
+<p>In order to run tests, we’ll need to treat our game like a module. In order for
+that to work, we’ll need to make sure of a couple of things.</p>
+<ol>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> When you call <code class="docutils literal notranslate"><span class="pre">main()</span></code>, it must be under a <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;</span></code>
+statement. Otherwise <code class="docutils literal notranslate"><span class="pre">main()</span></code> will be called when you do an import, and bad
+things will happen. (See <a class="reference external" href="#part-1-2-the-main-function">Part 1.2</a> for
+more info.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> The filename for your game must be all lowercased with no spaces or
+other special characters except for underscores (<code class="docutils literal notranslate"><span class="pre">_</span></code>). Rename your
+file if you need to.</p>
+<div class="row"><div class="col left-col">
+<p><strong>Good</strong>:</p>
+<ul class="simple">
+<li><p><code class="file docutils literal notranslate"><span class="pre">adventure_game.py</span></code></p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">game.py</span></code></p></li>
+</ul>
+</div><div class="col">
+<p><strong>Bad</strong>:</p>
+<ul class="simple">
+<li><p><code class="file docutils literal notranslate"><span class="pre">Adventure</span> <span class="pre">Game.py</span></code></p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">My-Game.py</span></code></p></li>
+</ul>
+</div></div>
+</li>
+</ol>
+</section>
+<section id="d-create-and-run-tests">
+<h3>D. Create and run tests<a class="headerlink" href="#d-create-and-run-tests" title="Permalink to this headline">#</a></h3>
+<div class="row"><div class="col-5 left-col-5">
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Create a new file named <code class="docutils literal notranslate"><span class="pre">test_game.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> In it, import your module with something like <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">adventure</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Write a function called <code class="docutils literal notranslate"><span class="pre">test_truth()</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> In it, write a simple assert statement <code class="docutils literal notranslate"><span class="pre">assert</span> <span class="pre">True</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Run your test by typing <code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">-v</span> <span class="pre">test_game.py</span></code> in the terminal.</p></li>
+</ol>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number">Listing 730 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id1" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">adventure</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="k">def</span> <span class="nf">test_truth</span><span class="p">():</span>
+<span class="linenos">4</span>    <span class="k">assert</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+</details></div></div>
+<p>You can add the following to your <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> to always run <code class="docutils literal notranslate"><span class="pre">pytest</span></code> in verbose mode.</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number">Listing 731 </span><span class="caption-text">pyproject.toml</span><a class="headerlink" href="#id2" title="Permalink to this code">#</a></div>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.pytest.ini_options]</span>
+<span class="n">addopts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;-v&quot;</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="e-run-tests-in-vscode">
+<h3>E. Run tests in vscode<a class="headerlink" href="#e-run-tests-in-vscode" title="Permalink to this headline">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Testing &gt; <a class="reference external" href="/practices/testing/intro.html#part-6-2-running-tests">Running Tests</a></p>
+</div>
+</aside>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Click the <span class="guilabel">Testing</span> icon (that looks like a test beaker)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> You may need to click the <span class="guilabel">Refresh Tests</span> icon (that looks
+like a arrow in a circle) to find your tests.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Click the <span class="guilabel">Run Tests</span> icon (that looks like a play button).</p></li>
+</ol>
+<div class="float-right docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/test_game-11.2.py"><span>source code</span></a></p>
+</div>
+</section>
+</section>
+<section id="part-11-2-test-is-for-sale">
+<h2>Part 11.2: Test <code class="docutils literal notranslate"><span class="pre">is_for_sale()</span></code><a class="headerlink" href="#part-11-2-test-is-for-sale" title="Permalink to this headline">#</a></h2>
+<div class="clearfix"></div>
+<div class="row"><div class="col-5 left-col-5">
+<p>For our first real test, we’ll start with something simple. Let’s test the
+<code class="docutils literal notranslate"><span class="pre">is_for_sale()</span></code> function.</p>
+<p>To do this, we’ll call the <code class="docutils literal notranslate"><span class="pre">is_for_sale()</span></code> function with a fake item then check
+the result with an <code class="docutils literal notranslate"><span class="pre">assert</span></code> statement.</p>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+Demo<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<asciinema-player poster="npt:0:04" rows="16" src="assets/adventure-11.2.cast"></asciinema-player></div>
+</details></div></div>
+<section id="a-write-test-is-for-sale">
+<h3>A. Write <code class="docutils literal notranslate"><span class="pre">test_is_for_sale()</span></code><a class="headerlink" href="#a-write-test-is-for-sale" title="Permalink to this headline">#</a></h3>
+<p>This first test will make sure that when <code class="docutils literal notranslate"><span class="pre">is_for_sale()</span></code> is called with an item
+with a <code class="docutils literal notranslate"><span class="pre">&quot;price&quot;</span></code> key it returns <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<ol>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Modify the line where you import your game module to instead just
+import <code class="docutils literal notranslate"><span class="pre">is_for_sale</span></code> which should look something like
+<code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">adventure</span> <span class="pre">import</span> <span class="pre">is_for_sale</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Write a function called <code class="docutils literal notranslate"><span class="pre">test_is_for_sale()</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Make a fake item to pass to <code class="docutils literal notranslate"><span class="pre">is_for_sale()</span></code>.</p>
+<p>We know that an item is a dictionary, and that <code class="docutils literal notranslate"><span class="pre">is_for_sale()</span></code> checks to
+see if the dictionary has a <code class="docutils literal notranslate"><span class="pre">&quot;price&quot;</span></code> key. So all you really need for your
+fake item is a dictionary with a <code class="docutils literal notranslate"><span class="pre">&quot;price&quot;</span></code> key–for our purposes, it
+doesn’t even matter what the value is. But to make it a little more clear,
+we’ll add a <code class="docutils literal notranslate"><span class="pre">&quot;name&quot;</span></code> as well.</p>
+<p>Make a dictionary with <code class="docutils literal notranslate"><span class="pre">&quot;name&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;price&quot;</span></code> keys and assign it to the
+variable <code class="docutils literal notranslate"><span class="pre">fake_item</span></code>.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Call <code class="docutils literal notranslate"><span class="pre">is_for_sale()</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">fake_item</span></code> and assign it to
+the variable <code class="docutils literal notranslate"><span class="pre">result</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Write an <code class="docutils literal notranslate"><span class="pre">assert</span></code> statement that checks if <code class="docutils literal notranslate"><span class="pre">result</span></code> is truthy, and has
+a failure message like:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;is_for_sale()</span> <span class="pre">should</span> <span class="pre">return</span> <span class="pre">True</span> <span class="pre">if</span> <span class="pre">the</span> <span class="pre">item</span> <span class="pre">has</span> <span class="pre">a</span> <span class="pre">price&quot;</span></code></p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Run your test, either at the command line or in VS Code.</p></li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-number">Listing 732 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id3" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">adventure</span> <span class="kn">import</span> <span class="n">is_for_sale</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">def</span> <span class="nf">test_is_for_sale</span><span class="p">():</span>
+<span class="linenos"> 4</span>    <span class="n">fake_item</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos"> 5</span>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;An Expensive Thing&quot;</span><span class="p">,</span>
+<span class="linenos"> 6</span>        <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="s2">&quot;a lot&quot;</span><span class="p">,</span>
+<span class="linenos"> 7</span>    <span class="p">}</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span>    <span class="n">result</span> <span class="o">=</span> <span class="n">is_for_sale</span><span class="p">(</span><span class="n">fake_item</span><span class="p">)</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span>    <span class="k">assert</span> <span class="n">result</span><span class="p">,</span> <span class="s2">&quot;is_for_sale() should return True if the item has a price&quot;</span>
+<span class="linenos">12</span>
+</pre></div>
+</div>
+</div>
+</div>
+</details></section>
+<section id="b-write-test-is-for-sale-without-price">
+<h3>B. Write <code class="docutils literal notranslate"><span class="pre">test_is_for_sale_without_price()</span></code><a class="headerlink" href="#b-write-test-is-for-sale-without-price" title="Permalink to this headline">#</a></h3>
+<p>We want to make sure to test the opposite condition as well – that when an
+item doesn’t have a <code class="docutils literal notranslate"><span class="pre">&quot;price&quot;</span></code> key, <code class="docutils literal notranslate"><span class="pre">is_for_sale()</span></code> returns <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<ol>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Write a function called <code class="docutils literal notranslate"><span class="pre">test_is_for_sale_without_price()</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Make a fake item to pass to <code class="docutils literal notranslate"><span class="pre">is_for_sale()</span></code>.</p>
+<p>This time all that matters is that it is a dictionary <em>without</em> a <code class="docutils literal notranslate"><span class="pre">&quot;price&quot;</span></code>
+key. But like before, let’s include a <code class="docutils literal notranslate"><span class="pre">&quot;name&quot;</span></code> key for the sake of clarity.</p>
+<p>Make a dictionary with a <code class="docutils literal notranslate"><span class="pre">&quot;name&quot;</span></code> key and assign it to the variable
+<code class="docutils literal notranslate"><span class="pre">fake_item</span></code>.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Call <code class="docutils literal notranslate"><span class="pre">is_for_sale()</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">fake_item</span></code> and assign it to
+the variable <code class="docutils literal notranslate"><span class="pre">result</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Write an <code class="docutils literal notranslate"><span class="pre">assert</span></code> statement that checks if <code class="docutils literal notranslate"><span class="pre">result</span></code> is falsy, and has
+a failure message like:</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Run your tests, either at the command line or in VS Code.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;is_for_sale()</span> <span class="pre">should</span> <span class="pre">return</span> <span class="pre">False</span> <span class="pre">if</span> <span class="pre">the</span> <span class="pre">item</span> <span class="pre">doesn't</span> <span class="pre">have</span> <span class="pre">a</span> <span class="pre">price&quot;</span></code></p>
+</li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-number">Listing 733 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id4" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">adventure</span> <span class="kn">import</span> <span class="n">is_for_sale</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">def</span> <span class="nf">test_is_for_sale</span><span class="p">():</span>
+<span class="linenos"> 4</span>    <span class="n">fake_item</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos"> 5</span>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;An Expensive Thing&quot;</span><span class="p">,</span>
+<span class="linenos"> 6</span>        <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="s2">&quot;a lot&quot;</span><span class="p">,</span>
+<span class="linenos"> 7</span>    <span class="p">}</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span>    <span class="n">result</span> <span class="o">=</span> <span class="n">is_for_sale</span><span class="p">(</span><span class="n">fake_item</span><span class="p">)</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span>    <span class="k">assert</span> <span class="n">result</span><span class="p">,</span> <span class="s2">&quot;is_for_sale() should return True if the item has a price&quot;</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="k">def</span> <span class="nf">test_is_for_sale_without_price</span><span class="p">():</span>
+<span class="linenos">14</span>    <span class="n">fake_item</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos">15</span>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;A Priceless Thing&quot;</span><span class="p">,</span>
+<span class="linenos">16</span>    <span class="p">}</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span>    <span class="n">result</span> <span class="o">=</span> <span class="n">is_for_sale</span><span class="p">(</span><span class="n">fake_item</span><span class="p">)</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span>    <span class="k">assert</span> <span class="ow">not</span> <span class="n">result</span><span class="p">,</span> \
+<span class="linenos">21</span>        <span class="s2">&quot;is_for_sale() should return False if the item doesn&#39;t have a price&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</details><div class="float-right docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/test_game-11.3.py"><span>source code</span></a></p>
+</div>
+</section>
+</section>
+<section id="part-11-3-test-error">
+<h2>Part 11.3: Test <code class="docutils literal notranslate"><span class="pre">error()</span></code><a class="headerlink" href="#part-11-3-test-error" title="Permalink to this headline">#</a></h2>
+<div class="clearfix"></div>
+<div class="row"><div class="col-5 left-col-5">
+<p>Let’s add another easy test, this time of the <code class="docutils literal notranslate"><span class="pre">error()</span></code> function.</p>
+<p>Conceptually this will entail calling the <code class="docutils literal notranslate"><span class="pre">error()</span></code> function, then check what
+is printed to make sure it is what we expect.</p>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+Demo<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<asciinema-player poster="npt:0:05" rows="16" src="assets/adventure-11.3.cast"></asciinema-player></div>
+</details></div></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The console module automatically detects if the code is being run by another
+program (say, from a test) and disables colors and effects if so. This is
+handy, so you won’t have to account for those escape code characters in your
+tests.</p>
+</div>
+<section id="a-write-test-error">
+<h3>A. Write <code class="docutils literal notranslate"><span class="pre">test_error()</span></code><a class="headerlink" href="#a-write-test-error" title="Permalink to this headline">#</a></h3>
+<p>With <code class="docutils literal notranslate"><span class="pre">is_for_sale()</span></code> we were able to check the value returned by the function.
+This is typically how functions and unit tests should be written.</p>
+<p>Since our game is interactive though, we’ve been printing rather than returning
+a lot of the time. To test functions like that we’ll have to take an extra step
+of capturing the output–that is, sending the text somewhere we can access it
+intead of actually printing it.</p>
+<p>To do this we’ll use a special object provided by pytest called <code class="docutils literal notranslate"><span class="pre">capsys</span></code> to
+capture the printed output. After any code that prints we can call the
+<code class="docutils literal notranslate"><span class="pre">.readouterr()</span></code> method to retrieve the captured output, and access it via the
+<code class="docutils literal notranslate"><span class="pre">.out</span></code> property of the resulting object.</p>
+<ol>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add <code class="docutils literal notranslate"><span class="pre">error</span></code> to your import line, something like:
+<code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">adventure</span> <span class="pre">import</span> <span class="pre">is_for_sale,</span> <span class="pre">error</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add a <code class="docutils literal notranslate"><span class="pre">test_error()</span></code> function with the parameter <code class="docutils literal notranslate"><span class="pre">capsys</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Call <code class="docutils literal notranslate"><span class="pre">error()</span></code> with any message you like</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Assign the results of <code class="docutils literal notranslate"><span class="pre">capsys.readouterr().out</span></code> to the variable <code class="docutils literal notranslate"><span class="pre">output</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Write an assert statement that <code class="docutils literal notranslate"><span class="pre">output</span></code> equals what you expect to be
+printed, with a failure message like:</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Run your tests, either at the command line or in VS Code.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;The</span> <span class="pre">formatted</span> <span class="pre">error</span> <span class="pre">message</span> <span class="pre">should</span> <span class="pre">be</span> <span class="pre">printed.&quot;</span></code></p>
+</li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-number">Listing 734 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id5" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">adventure</span> <span class="kn">import</span> <span class="n">error</span><span class="p">,</span> <span class="n">is_for_sale</span>
+</span><span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">def</span> <span class="nf">test_is_for_sale</span><span class="p">():</span>
+<span class="linenos"> 4</span>    <span class="n">fake_item</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos"> 5</span>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;An Expensive Thing&quot;</span><span class="p">,</span>
+<span class="linenos"> 6</span>        <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="s2">&quot;a lot&quot;</span><span class="p">,</span>
+<span class="linenos"> 7</span>    <span class="p">}</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span>    <span class="n">result</span> <span class="o">=</span> <span class="n">is_for_sale</span><span class="p">(</span><span class="n">fake_item</span><span class="p">)</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span>    <span class="k">assert</span> <span class="n">result</span><span class="p">,</span> <span class="s2">&quot;is_for_sale() should return True if the item has a price&quot;</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="k">def</span> <span class="nf">test_is_for_sale_without_price</span><span class="p">():</span>
+<span class="linenos">14</span>    <span class="n">fake_item</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos">15</span>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;A Priceless Thing&quot;</span><span class="p">,</span>
+<span class="linenos">16</span>    <span class="p">}</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span>    <span class="n">result</span> <span class="o">=</span> <span class="n">is_for_sale</span><span class="p">(</span><span class="n">fake_item</span><span class="p">)</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span>    <span class="k">assert</span> <span class="ow">not</span> <span class="n">result</span><span class="p">,</span> \
+<span class="linenos">21</span>        <span class="s2">&quot;is_for_sale() should return False if the item doesn&#39;t have a price&quot;</span>
+<span class="linenos">22</span>
+<span class="hll"><span class="linenos">23</span><span class="k">def</span> <span class="nf">test_error</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">24</span>    <span class="n">error</span><span class="p">(</span><span class="s2">&quot;You ruined everything.&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">25</span>    <span class="n">output</span> <span class="o">=</span> <span class="n">capsys</span><span class="o">.</span><span class="n">readouterr</span><span class="p">()</span><span class="o">.</span><span class="n">out</span>
+</span><span class="hll"><span class="linenos">26</span>
+</span><span class="hll"><span class="linenos">27</span>    <span class="k">assert</span> <span class="n">output</span> <span class="o">==</span> <span class="s2">&quot;! Error You ruined everything.</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span> \
+</span><span class="hll"><span class="linenos">28</span>        <span class="s2">&quot;The formatted error message should be printed.&quot;</span>
+</span></pre></div>
+</div>
+</div>
+</div>
+</details><div class="float-right docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/test_game-11.4.py"><span>source code</span></a></p>
+</div>
+</section>
+</section>
+<section id="part-11-4-test-debug">
+<h2>Part 11.4: Test <code class="docutils literal notranslate"><span class="pre">debug()</span></code><a class="headerlink" href="#part-11-4-test-debug" title="Permalink to this headline">#</a></h2>
+<div class="clearfix"></div>
+<div class="row"><div class="col-5 left-col-5">
+<p>This should be very similar to <code class="docutils literal notranslate"><span class="pre">test_error()</span></code>.</p>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+Demo<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<asciinema-player poster="npt:0:05" rows="16" src="assets/adventure-11.4.cast"></asciinema-player></div>
+</details></div></div>
+<section id="a-write-test-debug">
+<h3>A. Write <code class="docutils literal notranslate"><span class="pre">test_debug()</span></code><a class="headerlink" href="#a-write-test-debug" title="Permalink to this headline">#</a></h3>
+<ol>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Import the <code class="docutils literal notranslate"><span class="pre">debug</span></code> function.</p>
+<p>Since your import line is starting to get long, you might want to break it
+up onto multiple lines. Add an open parenthesis before the first function
+name, then put each function on its own line, ending with the closed
+parenthesis on a its own line.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add a <code class="docutils literal notranslate"><span class="pre">test_debug()</span></code> function with the parameter <code class="docutils literal notranslate"><span class="pre">capsys</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Call <code class="docutils literal notranslate"><span class="pre">debug()</span></code> with any message you like</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Assign the results of <code class="docutils literal notranslate"><span class="pre">capsys.readouterr().out</span></code> to the variable <code class="docutils literal notranslate"><span class="pre">output</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Write an assert statement that <code class="docutils literal notranslate"><span class="pre">output</span></code> equals what you expect to be
+printed, with a failure message like:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;The</span> <span class="pre">formatted</span> <span class="pre">debug</span> <span class="pre">message</span> <span class="pre">should</span> <span class="pre">be</span> <span class="pre">printed.&quot;</span></code></p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Run your tests, either at the command line or in VS Code.</p></li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">adventure</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="linenos">2</span>    <span class="n">debug</span><span class="p">,</span>
+<span class="linenos">3</span>    <span class="n">error</span><span class="p">,</span>
+<span class="linenos">4</span>    <span class="n">header</span><span class="p">,</span>
+<span class="linenos">5</span>    <span class="n">is_for_sale</span><span class="p">,</span>
+<span class="linenos">6</span>    <span class="n">write</span><span class="p">,</span>
+<span class="linenos">7</span><span class="p">)</span>
+<span class="linenos">8</span>
+</pre></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-number">Listing 735 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id6" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">36</span><span class="k">def</span> <span class="nf">test_debug</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
+<span class="linenos">37</span>    <span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Have some cake.&quot;</span><span class="p">)</span>
+<span class="linenos">38</span>
+<span class="linenos">39</span>    <span class="n">output</span> <span class="o">=</span> <span class="n">capsys</span><span class="o">.</span><span class="n">readouterr</span><span class="p">()</span><span class="o">.</span><span class="n">out</span>
+<span class="linenos">40</span>    <span class="k">assert</span> <span class="n">output</span> <span class="o">==</span> <span class="s2">&quot;# Have some cake.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> \
+<span class="linenos">41</span>        <span class="s2">&quot;The formatted debug message should be printed.&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</details><div class="float-right docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/test_game-11.5.py"><span>source code</span></a></p>
+</div>
+</section>
+</section>
+<section id="part-11-5-test-header-and-write">
+<h2>Part 11.5: Test <code class="docutils literal notranslate"><span class="pre">header()</span></code> and <code class="docutils literal notranslate"><span class="pre">write()</span></code><a class="headerlink" href="#part-11-5-test-header-and-write" title="Permalink to this headline">#</a></h2>
+<div class="clearfix"></div>
+<div class="row"><div class="col-5 left-col-5">
+<p>Can you write tests for the <code class="docutils literal notranslate"><span class="pre">header()</span></code> and <code class="docutils literal notranslate"><span class="pre">write()</span></code> functions on your own?</p>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+Demo<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<asciinema-player poster="npt:0:04" rows="16" src="assets/adventure-11.5.cast"></asciinema-player></div>
+</details></div></div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+header()<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-number">Listing 736 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id7" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">43</span><span class="k">def</span> <span class="nf">test_header</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
+<span class="linenos">44</span>    <span class="n">header</span><span class="p">(</span><span class="s2">&quot;Headline&quot;</span><span class="p">)</span>
+<span class="linenos">45</span>
+<span class="linenos">46</span>    <span class="n">output</span> <span class="o">=</span> <span class="n">capsys</span><span class="o">.</span><span class="n">readouterr</span><span class="p">()</span><span class="o">.</span><span class="n">out</span>
+<span class="linenos">47</span>    <span class="k">assert</span> <span class="n">output</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">  Headline</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span> \
+<span class="linenos">48</span>        <span class="s2">&quot;The formatted header should be printed.&quot;</span>
+<span class="linenos">49</span>
+<span class="linenos">50</span>
+</pre></div>
+</div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+write()<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-number">Listing 737 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id8" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">51</span><span class="k">def</span> <span class="nf">test_write</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
+<span class="linenos">52</span>    <span class="n">write</span><span class="p">(</span><span class="s2">&quot;oh hai&quot;</span><span class="p">)</span>
+<span class="linenos">53</span>
+<span class="linenos">54</span>    <span class="n">output</span> <span class="o">=</span> <span class="n">capsys</span><span class="o">.</span><span class="n">readouterr</span><span class="p">()</span><span class="o">.</span><span class="n">out</span>
+<span class="linenos">55</span>    <span class="k">assert</span> <span class="n">output</span> <span class="o">==</span> <span class="s2">&quot;  oh hai</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> \
+<span class="linenos">56</span>        <span class="s2">&quot;write() should print the indented text followed by a new line&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</details><div class="float-right docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/test_game-11.6.py"><span>source code</span></a></p>
+</div>
+</section>
+<section id="part-11-6-test-inventory-change">
+<h2>Part 11.6: Test <code class="docutils literal notranslate"><span class="pre">inventory_change()</span></code><a class="headerlink" href="#part-11-6-test-inventory-change" title="Permalink to this headline">#</a></h2>
+<div class="clearfix"></div>
+<div class="row"><div class="col-5 left-col-5">
+<p>In this section we’ll write a test for the first function that changes the game
+state.</p>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+Demo<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<asciinema-player poster="npt:0:04" rows="16" src="assets/adventure-11.6.cast"></asciinema-player></div>
+</details></div></div>
+<section id="a-add-teardown">
+<h3>A. Add teardown<a class="headerlink" href="#a-add-teardown" title="Permalink to this headline">#</a></h3>
+<p>Much of our code cares about or interacts with the state of the game–that is,
+the data we have stored in <code class="docutils literal notranslate"><span class="pre">PLAYER</span></code>, <code class="docutils literal notranslate"><span class="pre">PLACES</span></code> and <code class="docutils literal notranslate"><span class="pre">ITEMS</span></code>.</p>
+<p>When writing tests that modify state, it’s important to make sure that each
+test is fully independent–that is, each test should be able to be run alone or
+alongside other tests in any order. One component of that is making sure that
+each test starts with a clean slate.</p>
+<p>For this section we’ll be adding teardown code–that is, code that will cleanup
+after each test. Our code will save copies of our three state dictionaries
+before anything is changed. Then in the teardown function we’ll copy those
+dictionaries back into our module.</p>
+<p>To get the teardown function to run after each test we’ll need to jump through
+a few extra hoops, by taking advantage of some advanced pytest features. It’s
+not important that you understand this right now–you can go ahead and just
+copy the relevant code into your test file.</p>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-number">Listing 738 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id9" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+</span><span class="hll"><span class="linenos"> 2</span>
+</span><span class="hll"><span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">pytest</span>
+</span><span class="hll"><span class="linenos"> 4</span>
+</span><span class="hll"><span class="linenos"> 5</span><span class="kn">import</span> <span class="nn">adventure</span>
+</span><span class="linenos"> 6</span><span class="kn">from</span> <span class="nn">adventure</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="linenos"> 7</span>    <span class="n">debug</span><span class="p">,</span>
+<span class="linenos"> 8</span>    <span class="n">error</span><span class="p">,</span>
+<span class="linenos"> 9</span>    <span class="n">header</span><span class="p">,</span>
+<span class="linenos">10</span>    <span class="n">inventory_change</span><span class="p">,</span>
+<span class="linenos">11</span>    <span class="n">is_for_sale</span><span class="p">,</span>
+<span class="linenos">12</span>    <span class="n">write</span><span class="p">,</span>
+<span class="linenos">13</span><span class="p">)</span>
+<span class="linenos">14</span>
+<span class="hll"><span class="linenos">15</span>
+</span><span class="hll"><span class="linenos">16</span><span class="n">PLAYER_STATE</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">17</span><span class="n">PLACES_STATE</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">adventure</span><span class="o">.</span><span class="n">PLACES</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">18</span><span class="n">ITEMS_STATE</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">adventure</span><span class="o">.</span><span class="n">ITEMS</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">19</span><span class="n">DEBUG_STATE</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span class="hll"><span class="linenos">20</span>
+</span><span class="hll"><span class="linenos">21</span>
+</span><span class="hll"><span class="linenos">22</span><span class="k">def</span> <span class="nf">revert</span><span class="p">():</span>
+</span><span class="hll"><span class="linenos">23</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Revert game data to its original state.&quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos">24</span>    <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">PLAYER_STATE</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">25</span>    <span class="n">adventure</span><span class="o">.</span><span class="n">PLACES</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">PLACES_STATE</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">26</span>    <span class="n">adventure</span><span class="o">.</span><span class="n">ITEMS</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">ITEMS_STATE</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">27</span>    <span class="n">adventure</span><span class="o">.</span><span class="n">DEBUG</span> <span class="o">=</span> <span class="n">DEBUG_STATE</span>
+</span><span class="hll"><span class="linenos">28</span>
+</span><span class="hll"><span class="linenos">29</span>
+</span><span class="hll"><span class="linenos">30</span><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">autouse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">31</span><span class="k">def</span> <span class="nf">teardown</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">32</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Auto-add teardown method to all tests.&quot;&quot;&quot;</span>
+</span><span class="hll"><span class="linenos">33</span>    <span class="n">request</span><span class="o">.</span><span class="n">addfinalizer</span><span class="p">(</span><span class="n">revert</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">34</span>
+</span></pre></div>
+</div>
+</div>
+</section>
+<section id="b-write-test-inventory-change">
+<h3>B. Write <code class="docutils literal notranslate"><span class="pre">test_inventory_change()</span></code><a class="headerlink" href="#b-write-test-inventory-change" title="Permalink to this headline">#</a></h3>
+<p>Another rule of thumb when writing tests that deal with state is that the test
+should assume as little as possible.</p>
+<p>For example, I happen to have <code class="docutils literal notranslate"><span class="pre">PLAYER[&quot;inventory&quot;][&quot;gems&quot;]</span></code> set to <code class="docutils literal notranslate"><span class="pre">50</span></code> right
+now. So I could write this test to call <code class="docutils literal notranslate"><span class="pre">inventory_change(&quot;gems&quot;)</span></code> then check
+that <code class="docutils literal notranslate"><span class="pre">PLAYER[&quot;inventory&quot;][&quot;gems&quot;]</span> <span class="pre">==</span> <span class="pre">51</span></code>. The problem is, if I change my code
+later to start with <code class="docutils literal notranslate"><span class="pre">0</span></code> gems, or rename gems to coins this test would fail even
+though the the <code class="docutils literal notranslate"><span class="pre">inventory_change()</span></code> function would still work just fine.</p>
+<p>So the first thing we’ll do is add some fake data to <code class="docutils literal notranslate"><span class="pre">PLAYER[&quot;inventory&quot;]</span></code>.</p>
+<ol>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Import the <code class="docutils literal notranslate"><span class="pre">inventory_change</span></code> function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add a <code class="docutils literal notranslate"><span class="pre">test_inventory_change()</span></code> function</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add a key of your choice to <code class="docutils literal notranslate"><span class="pre">adventure.PLAYER[&quot;inventory&quot;]</span></code> with
+whatever quantity you’d like.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Call <code class="docutils literal notranslate"><span class="pre">inventory_change()</span></code> with your new key as the argument</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Write an <code class="docutils literal notranslate"><span class="pre">assert</span></code> statement that checks that the quantity for that key
+is now equal to whatever it was before plus one. Give it a failure message like:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;inventory_change()</span> <span class="pre">with</span> <span class="pre">no</span> <span class="pre">quantity</span> <span class="pre">argument</span> <span class="pre">should</span> <span class="pre">add</span> <span class="pre">1.&quot;</span></code></p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Run your tests, either at the command line or in VS Code.</p></li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-number">Listing 739 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id10" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">86</span><span class="k">def</span> <span class="nf">test_inventory_change</span><span class="p">():</span>
+<span class="linenos">87</span>    <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;inventory&quot;</span><span class="p">][</span><span class="s2">&quot;problems&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
+<span class="linenos">88</span>    <span class="n">inventory_change</span><span class="p">(</span><span class="s2">&quot;problems&quot;</span><span class="p">)</span>
+<span class="linenos">89</span>
+<span class="linenos">90</span>    <span class="k">assert</span> <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;inventory&quot;</span><span class="p">][</span><span class="s2">&quot;problems&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">100</span><span class="p">,</span> \
+<span class="linenos">91</span>        <span class="s2">&quot;inventory_change() with no quantity argument should add 1.&quot;</span>
+<span class="linenos">92</span>
+</pre></div>
+</div>
+</div>
+</div>
+</details></section>
+<section id="c-write-test-teardown">
+<h3>C. Write <code class="docutils literal notranslate"><span class="pre">test_teardown()</span></code><a class="headerlink" href="#c-write-test-teardown" title="Permalink to this headline">#</a></h3>
+<p>In this test we’ll make sure that the teardown code from
+<a class="reference external" href="#a-add-teardown">part A</a> is working.</p>
+<ol>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add a <code class="docutils literal notranslate"><span class="pre">test_teardown()</span></code> function</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add an <code class="docutils literal notranslate"><span class="pre">assert</span></code> statement that the key you added in the previous test
+is not in <code class="docutils literal notranslate"><span class="pre">PLAYER[&quot;inventory&quot;]</span></code> with a failure message like:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;Each</span> <span class="pre">test</span> <span class="pre">should</span> <span class="pre">start</span> <span class="pre">with</span> <span class="pre">a</span> <span class="pre">fresh</span> <span class="pre">data</span> <span class="pre">set.&quot;</span></code></p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Run your tests, either at the command line or in VS Code.</p></li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-number">Listing 740 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id11" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">86</span><span class="k">def</span> <span class="nf">test_inventory_change</span><span class="p">():</span>
+<span class="linenos">87</span>    <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;inventory&quot;</span><span class="p">][</span><span class="s2">&quot;problems&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
+<span class="linenos">88</span>    <span class="n">inventory_change</span><span class="p">(</span><span class="s2">&quot;problems&quot;</span><span class="p">)</span>
+<span class="linenos">89</span>
+<span class="linenos">90</span>    <span class="k">assert</span> <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;inventory&quot;</span><span class="p">][</span><span class="s2">&quot;problems&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">100</span><span class="p">,</span> \
+<span class="linenos">91</span>        <span class="s2">&quot;inventory_change() with no quantity argument should add 1.&quot;</span>
+<span class="linenos">92</span>
+<span class="hll"><span class="linenos">93</span><span class="k">def</span> <span class="nf">test_teardown</span><span class="p">():</span>
+</span><span class="hll"><span class="linenos">94</span>    <span class="k">assert</span> <span class="s2">&quot;problems&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;inventory&quot;</span><span class="p">],</span> \
+</span><span class="hll"><span class="linenos">95</span>        <span class="s2">&quot;Each test should start with a fresh data set.&quot;</span>
+</span><span class="hll"><span class="linenos">96</span>
+</span><span class="hll"><span class="linenos">97</span>
+</span></pre></div>
+</div>
+</div>
+</div>
+</details></section>
+<section id="d-write-test-inventory-change-missing-key">
+<h3>D. Write <code class="docutils literal notranslate"><span class="pre">test_inventory_change_missing_key()</span></code><a class="headerlink" href="#d-write-test-inventory-change-missing-key" title="Permalink to this headline">#</a></h3>
+<p>Now we’ll add another test case for <code class="docutils literal notranslate"><span class="pre">inventory_change()</span></code>. This one will make
+sure that the function works even when the key is not already in the inventory
+dictionary.</p>
+<ol>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add a <code class="docutils literal notranslate"><span class="pre">test_inventory_change_missing_key()</span></code> function</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Set <code class="docutils literal notranslate"><span class="pre">adventure.PLAYER[&quot;inventory&quot;]</span></code> to an empty dictionary.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Call <code class="docutils literal notranslate"><span class="pre">inventory_change()</span></code> with the key of your choice.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Write an <code class="docutils literal notranslate"><span class="pre">assert</span></code> statement that checks your new key is in the
+inventory dictionary.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;inventory_change()</span> <span class="pre">should</span> <span class="pre">add</span> <span class="pre">missing</span> <span class="pre">keys</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">inventory&quot;</span></code></p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Write an <code class="docutils literal notranslate"><span class="pre">assert</span></code> statement that checks that the quantity for that key
+is now equal to <code class="docutils literal notranslate"><span class="pre">1</span></code>. Give it a failure message like:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;inventory_change()</span> <span class="pre">with</span> <span class="pre">no</span> <span class="pre">quantity</span> <span class="pre">argument</span> <span class="pre">should</span> <span class="pre">add</span> <span class="pre">1.&quot;</span></code></p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Run your tests, either at the command line or in VS Code.</p></li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-number">Listing 741 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id12" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 98</span><span class="k">def</span> <span class="nf">test_inventory_change_missing_key</span><span class="p">():</span>
+<span class="linenos"> 99</span>    <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;inventory&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="linenos">100</span>    <span class="n">inventory_change</span><span class="p">(</span><span class="s2">&quot;brain&quot;</span><span class="p">)</span>
+<span class="linenos">101</span>
+<span class="linenos">102</span>    <span class="k">assert</span> <span class="s2">&quot;brain&quot;</span> <span class="ow">in</span> <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;inventory&quot;</span><span class="p">],</span> \
+<span class="linenos">103</span>        <span class="s2">&quot;inventory_change() should add missing keys to the inventory&quot;</span>
+<span class="linenos">104</span>
+<span class="linenos">105</span>    <span class="k">assert</span> <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;inventory&quot;</span><span class="p">][</span><span class="s2">&quot;brain&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> \
+<span class="linenos">106</span>        <span class="s2">&quot;inventory_change() should add to zero if key was missing&quot;</span>
+<span class="linenos">107</span>
+<span class="linenos">108</span>
+</pre></div>
+</div>
+</div>
+</div>
+</details></section>
+<section id="e-additional-test-cases">
+<h3>E. Additional test cases<a class="headerlink" href="#e-additional-test-cases" title="Permalink to this headline">#</a></h3>
+<p>Can you add the next two tests on your own?</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> <code class="docutils literal notranslate"><span class="pre">inventory_change_subtract()</span></code> should use a negative number for the
+quantity argument and assert that that amount was subtracted from
+inventory</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> <code class="docutils literal notranslate"><span class="pre">inventory_change_remove()</span></code> should use a negative number for the
+quantity argument so that there will be <code class="docutils literal notranslate"><span class="pre">0</span></code> left and assert that the key was
+removed from inventory</p></li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+test_inventory_change_subtract()<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-number">Listing 742 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id13" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">109</span><span class="k">def</span> <span class="nf">test_inventory_change_subtract</span><span class="p">():</span>
+<span class="linenos">110</span>    <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;inventory&quot;</span><span class="p">][</span><span class="s2">&quot;bottles of beer&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
+<span class="linenos">111</span>    <span class="n">inventory_change</span><span class="p">(</span><span class="s2">&quot;bottles of beer&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="linenos">112</span>
+<span class="linenos">113</span>    <span class="k">assert</span> <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;inventory&quot;</span><span class="p">][</span><span class="s2">&quot;bottles of beer&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">98</span><span class="p">,</span> \
+<span class="linenos">114</span>        <span class="s2">&quot;inventory_change() should reduce inventory when qty is negative&quot;</span>
+<span class="linenos">115</span>
+<span class="linenos">116</span>
+</pre></div>
+</div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+test_inventory_change_remove()<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-number">Listing 743 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id14" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">117</span><span class="k">def</span> <span class="nf">test_inventory_change_remove</span><span class="p">():</span>
+<span class="linenos">118</span>    <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;inventory&quot;</span><span class="p">][</span><span class="s2">&quot;chances&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="linenos">119</span>    <span class="n">inventory_change</span><span class="p">(</span><span class="s2">&quot;chances&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="linenos">120</span>
+<span class="linenos">121</span>    <span class="k">assert</span> <span class="s2">&quot;chances&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;inventory&quot;</span><span class="p">],</span> \
+<span class="linenos">122</span>        <span class="s2">&quot;inventory_change() should remove the item when there are none left&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</details><div class="float-right docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/test_game-11.7.py"><span>source code</span></a></p>
+</div>
+</section>
+</section>
+<section id="part-11-7-test-do-drop">
+<h2>Part 11.7: Test <code class="docutils literal notranslate"><span class="pre">do_drop()</span></code><a class="headerlink" href="#part-11-7-test-do-drop" title="Permalink to this headline">#</a></h2>
+<div class="clearfix"></div>
+<div class="row"><div class="col-5 left-col-5">
+<p>Now that we’ve learned how to write tests in general, how to test captured
+output, and how to safely test functions that change state, we can finally
+write a test for one of our command functions.</p>
+<p>We’ll start with the <code class="docutils literal notranslate"><span class="pre">do_drop()</span></code> function.</p>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+Demo<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<asciinema-player poster="npt:0:04" rows="16" src="assets/adventure-11.7.cast"></asciinema-player></div>
+</details></div></div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>We’re going to use the <code class="docutils literal notranslate"><span class="pre">inventory_change()</span></code>, <code class="docutils literal notranslate"><span class="pre">player_has()</span></code>, and <code class="docutils literal notranslate"><span class="pre">place_has()</span></code>
+functions to help in our <code class="docutils literal notranslate"><span class="pre">do_drop()</span></code> tests. It would be a good idea to write
+tests for <code class="docutils literal notranslate"><span class="pre">player_has()</span></code> and <code class="docutils literal notranslate"><span class="pre">place_has()</span></code> first, that way you know that those
+functions work reliably before using them in another test.</p>
+<p>I encourage you to work on those. However, we won’t be going into those tests
+in detail here.</p>
+</div>
+<section id="a-write-test-do-drop-no-args">
+<h3>A. Write <code class="docutils literal notranslate"><span class="pre">test_do_drop_no_args()</span></code><a class="headerlink" href="#a-write-test-do-drop-no-args" title="Permalink to this headline">#</a></h3>
+<p>The first test case is very simple. We want to check that if the user didn’t
+type anything, they get the appropriate error message.</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Import the functions <code class="docutils literal notranslate"><span class="pre">do_drop</span></code>, <code class="docutils literal notranslate"><span class="pre">player_has</span></code> and <code class="docutils literal notranslate"><span class="pre">place_has</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add the function <code class="docutils literal notranslate"><span class="pre">test_do_drop_no_args()</span></code> with the parameter <code class="docutils literal notranslate"><span class="pre">capsys</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Call <code class="docutils literal notranslate"><span class="pre">do_drop()</span></code> with an empty list for an argument</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Assign the results of <code class="docutils literal notranslate"><span class="pre">capsys.readouterr().out</span></code> to the variable <code class="docutils literal notranslate"><span class="pre">output</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Write an assert statement that the appropiate debug message is in <code class="docutils literal notranslate"><span class="pre">output</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Write an assert statement that the appropiate error message is in <code class="docutils literal notranslate"><span class="pre">output</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Run your tests, either at the command line or in VS Code.</p></li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">pytest</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="kn">import</span> <span class="nn">adventure</span>
+<span class="linenos"> 6</span><span class="kn">from</span> <span class="nn">adventure</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="linenos"> 7</span>    <span class="n">debug</span><span class="p">,</span>
+<span class="hll"><span class="linenos"> 8</span>    <span class="n">do_drop</span><span class="p">,</span>
+</span><span class="linenos"> 9</span>    <span class="n">error</span><span class="p">,</span>
+<span class="linenos">10</span>    <span class="n">header</span><span class="p">,</span>
+<span class="linenos">11</span>    <span class="n">inventory_change</span><span class="p">,</span>
+<span class="linenos">12</span>    <span class="n">is_for_sale</span><span class="p">,</span>
+<span class="hll"><span class="linenos">13</span>    <span class="n">place_has</span><span class="p">,</span>
+</span><span class="hll"><span class="linenos">14</span>    <span class="n">player_has</span><span class="p">,</span>
+</span><span class="linenos">15</span>    <span class="n">write</span><span class="p">,</span>
+<span class="linenos">16</span><span class="p">)</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span>
+</pre></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-number">Listing 744 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id15" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">128</span><span class="k">def</span> <span class="nf">test_do_drop_no_args</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
+<span class="linenos">129</span>    <span class="n">do_drop</span><span class="p">([])</span>
+<span class="linenos">130</span>    <span class="n">output</span> <span class="o">=</span> <span class="n">capsys</span><span class="o">.</span><span class="n">readouterr</span><span class="p">()</span><span class="o">.</span><span class="n">out</span>
+<span class="linenos">131</span>
+<span class="linenos">132</span>    <span class="k">assert</span> <span class="s2">&quot;Trying to drop: []&quot;</span> <span class="ow">in</span> <span class="n">output</span><span class="p">,</span> \
+<span class="linenos">133</span>        <span class="s2">&quot;Debug message should be in output&quot;</span>
+<span class="linenos">134</span>    <span class="k">assert</span> <span class="s2">&quot;Error What do you want to drop?&quot;</span> <span class="ow">in</span> <span class="n">output</span><span class="p">,</span> \
+<span class="linenos">135</span>        <span class="s2">&quot;User error should be in output&quot;</span>
+<span class="linenos">136</span>
+<span class="linenos">137</span>
+</pre></div>
+</div>
+</div>
+</div>
+</details></section>
+<section id="b-write-test-do-drop-missing-item">
+<h3>B. Write <code class="docutils literal notranslate"><span class="pre">test_do_drop_missing_item()</span></code><a class="headerlink" href="#b-write-test-do-drop-missing-item" title="Permalink to this headline">#</a></h3>
+<p>This test will check that if the player tries to drop something they don’t have
+in inventory, they they get the appropriate error message.</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add the function <code class="docutils literal notranslate"><span class="pre">test_do_drop_missing_item()</span></code> with the parameter <code class="docutils literal notranslate"><span class="pre">capsys</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Set <code class="docutils literal notranslate"><span class="pre">adventure.PLAYER[&quot;inventory&quot;]</span></code> to an empty dictionary.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Call <code class="docutils literal notranslate"><span class="pre">do_drop()</span></code> with a list containing an any string as an argument</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Assign the results of <code class="docutils literal notranslate"><span class="pre">capsys.readouterr().out</span></code> to the variable <code class="docutils literal notranslate"><span class="pre">output</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Write an assert statement that the appropriate debug message is in <code class="docutils literal notranslate"><span class="pre">output</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Write an assert statement that the appropriate error message is in <code class="docutils literal notranslate"><span class="pre">output</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Run your tests, either at the command line or in VS Code.</p></li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-number">Listing 745 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id16" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">138</span><span class="k">def</span> <span class="nf">test_do_drop_missing_item</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
+<span class="linenos">139</span>    <span class="n">adventure</span><span class="o">.</span><span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;inventory&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="linenos">140</span>    <span class="n">do_drop</span><span class="p">([</span><span class="s2">&quot;anything&quot;</span><span class="p">])</span>
+<span class="linenos">141</span>
+<span class="linenos">142</span>    <span class="n">output</span> <span class="o">=</span> <span class="n">capsys</span><span class="o">.</span><span class="n">readouterr</span><span class="p">()</span><span class="o">.</span><span class="n">out</span>
+<span class="linenos">143</span>
+<span class="linenos">144</span>    <span class="k">assert</span> <span class="s2">&quot;Trying to drop: [&#39;anything&#39;]&quot;</span> <span class="ow">in</span> <span class="n">output</span><span class="p">,</span> \
+<span class="linenos">145</span>        <span class="s2">&quot;Debug message should be in output&quot;</span>
+<span class="linenos">146</span>
+<span class="linenos">147</span>    <span class="k">assert</span> <span class="s2">&quot;You don&#39;t have any &#39;anything&#39;&quot;</span> <span class="ow">in</span> <span class="n">output</span><span class="p">,</span> \
+<span class="linenos">148</span>        <span class="s2">&quot;User error should be in output&quot;</span>
+<span class="linenos">149</span>
+<span class="linenos">150</span>
+</pre></div>
+</div>
+</div>
+</div>
+</details><section id="c-write-test-do-drop">
+<h4>C. Write <code class="docutils literal notranslate"><span class="pre">test_do_drop()</span></code><a class="headerlink" href="#c-write-test-do-drop" title="Permalink to this headline">#</a></h4>
+<p>This test will successfully drop something, then make sure that it was added to
+the place and removed from inventory.</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add the function <code class="docutils literal notranslate"><span class="pre">test_do_drop()</span></code> with the parameter <code class="docutils literal notranslate"><span class="pre">capsys</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Call the <code class="docutils literal notranslate"><span class="pre">inventory_change()</span></code> function with the key of your choice to
+add a fake item to inventory</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Call <code class="docutils literal notranslate"><span class="pre">do_drop()</span></code> with a list containing the key as an argument</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Assign the results of <code class="docutils literal notranslate"><span class="pre">capsys.readouterr().out</span></code> to the variable <code class="docutils literal notranslate"><span class="pre">output</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Write an assert statement that the appropriate debug message is in <code class="docutils literal notranslate"><span class="pre">output</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Write an assert statement that the appropriate message is in <code class="docutils literal notranslate"><span class="pre">output</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Write an assert statement that calls the <code class="docutils literal notranslate"><span class="pre">place_has()</span></code> function with
+the key to make sure the item was added to the place.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Write an assert statement that calls the <code class="docutils literal notranslate"><span class="pre">player_has()</span></code> function with
+the key to make sure the item is not in inventory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Run your tests, either at the command line or in VS Code.</p></li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="literal-block-wrapper docutils container" id="id17">
+<div class="code-block-caption"><span class="caption-number">Listing 746 </span><span class="caption-text">test_game.py</span><a class="headerlink" href="#id17" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">151</span><span class="k">def</span> <span class="nf">test_do_drop</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
+<span class="linenos">152</span>    <span class="n">inventory_change</span><span class="p">(</span><span class="s2">&quot;mic&quot;</span><span class="p">)</span>
+<span class="linenos">153</span>
+<span class="linenos">154</span>    <span class="n">do_drop</span><span class="p">([</span><span class="s2">&quot;mic&quot;</span><span class="p">])</span>
+<span class="linenos">155</span>    <span class="n">output</span> <span class="o">=</span> <span class="n">capsys</span><span class="o">.</span><span class="n">readouterr</span><span class="p">()</span><span class="o">.</span><span class="n">out</span>
+<span class="linenos">156</span>
+<span class="linenos">157</span>    <span class="k">assert</span> <span class="s2">&quot;Trying to drop: [&#39;mic&#39;]&quot;</span> <span class="ow">in</span> <span class="n">output</span><span class="p">,</span> \
+<span class="linenos">158</span>        <span class="s2">&quot;Debug message should be in output&quot;</span>
+<span class="linenos">159</span>
+<span class="linenos">160</span>    <span class="k">assert</span> <span class="s2">&quot;You set down the mic&quot;</span> <span class="ow">in</span> <span class="n">output</span><span class="p">,</span> \
+<span class="linenos">161</span>        <span class="s2">&quot;User message should be in output&quot;</span>
+<span class="linenos">162</span>
+<span class="linenos">163</span>    <span class="k">assert</span> <span class="n">place_has</span><span class="p">(</span><span class="s2">&quot;mic&quot;</span><span class="p">),</span> \
+<span class="linenos">164</span>        <span class="s2">&quot;The dropped item should be in the place&quot;</span>
+<span class="linenos">165</span>
+<span class="linenos">166</span>    <span class="k">assert</span> <span class="ow">not</span> <span class="n">player_has</span><span class="p">(</span><span class="s2">&quot;mic&quot;</span><span class="p">),</span> \
+<span class="linenos">167</span>        <span class="s2">&quot;The dropped item should not be in inventory&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</details></section>
+</section>
+<section id="and-the-rest">
+<h3>And the rest<a class="headerlink" href="#and-the-rest" title="Permalink to this headline">#</a></h3>
+<p>We’ve held off on writing tests until now because I felt you needed more
+experience coding before adding another potentially confusing component.
+Ideally though, you want to write your tests at the same time you write the
+corresponding code. As you can see, back-filling can be a drudge.</p>
+<p>Unless you’re excited about writing all of your tests now, I’d recommend adding
+a test at the beginning of each coding session and whenever something breaks.</p>
+<p>Going forward we’ll be writing tests for all of our new code, and running them
+regularly.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "alissa-huskey/python-class",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./exercises/adventure"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="part-10.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Part 10: Buy things</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="part-12.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Part 12: Read things</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

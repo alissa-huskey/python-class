@@ -1,0 +1,1605 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Part 6: Take things &#8212; Python Class</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/asciinema-player.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/x-frame-bypass.js"></script>
+    <script src="../../_static/asciinema-player.js"></script>
+    <script src="../../_static/custom.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://alissa-huskey.github.io/python-class/exercises/adventure/part-06.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Part 7: Show inventory" href="part-07.html" />
+    <link rel="prev" title="Part 5: Look around" href="part-05.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Python Class</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lessons
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../lessons/tutorial.html">
+   Beginner Tutorial
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../lessons/fundamentals.html">
+   Fundamentals
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../lessons/syntax.html">
+     Syntax
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/expressions.html">
+       Expressions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/statements.html">
+       Statements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/variables.html">
+       Variables
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../lessons/flow-control.html">
+     Flow Control
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/conditional-statements.html">
+       Conditional Statements
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/functions.html">
+       Functions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/while-loops.html">
+       While loops
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/for-loops.html">
+       For Loops
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/flow.html">
+       Program Flow
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/string-formatting-part-1.html">
+       String formatting: Part 1
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/string-formatting-part-2.html">
+       String formatting: Part 2
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/reading-code.html">
+       Reading Code
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../lessons/data-types/index.html">
+     Data Types
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/data-types/objects.html">
+       Objects
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/data-types/numeric.html">
+       Numeric Types
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../lessons/data-types/containers.html">
+       Containers
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+      <label for="toctree-checkbox-5">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../lessons/data-types/lists.html">
+         Lists
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../lessons/data-types/dictionaries.html">
+         Dictionaries
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../lessons/data-types/strings.html">
+         Strings
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../lessons/files.html">
+     Files
+    </a>
+    <input checked class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/file-io.html">
+       File I/O
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/paths.html">
+       Paths
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lessons/file-system-operations.html">
+       File System Operations
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../lessons/in-depth/index.html">
+   In Depth
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/cli.html">
+     CLI
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/in-depth/imports.html">
+     Imports
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/in-depth/magic-methods.html">
+     Magic methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/in-depth/structure.html">
+     Structuring Python Projects
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/in-depth/functions.html">
+     Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/in-depth/oop.html">
+     Object Oriented Programming
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../lessons/data/index.html">
+   Data
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/data/functional-programming.html">
+     Functional Programming
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../lessons/misc.html">
+   Misc
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/dates.html">
+     Dates and Times
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/web-apis.html">
+     Web APIs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/battle.html">
+     PyPet Battle
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../lessons/game-book.html">
+   Invent Games Book
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/03_guess_the_number.html">
+     Chapter 3: Guess the Number
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lessons/dragon-realm.html">
+     Dragon Realm
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Practices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../practices/problem-solving.html">
+   Problem Solving
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../practices/testing/intro.html">
+   Introduction to Tests
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../practices/testing/pytest-tests.html">
+     Pytest Tests
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../practices/debugging.html">
+   Using a Debugger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../practices/data-inspection.html">
+   Data Inspection
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tools
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/asdf.html">
+   asdf
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/git.html">
+   Git
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/homebrew.html">
+   Homebrew
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/ipython.html">
+   IPython
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/mac.html">
+   Mac Dev Env for Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/poetry.html">
+   Poetry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/pyenv.html">
+   pyenv
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/pytest.html">
+   Pytest
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/python-shell.html">
+   Python Shell
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/replit.html">
+   Replit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/screencasts.html">
+   Screencasts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/terminal.html">
+   Terminal
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/vscode.html">
+   VS Code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tools/windows.html">
+   Windows Dev Env for Python
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/recommended.html">
+   Recommended Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/dicts.html">
+   Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/lists.html">
+   Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/template.py">
+   Script Template
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Exercises
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../program-flow.html">
+   Program Flow Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../list-exercises.html">
+   List Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../list-string-exercises.html">
+   List String Exercises
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../flashcards.html">
+   Flashcards Project
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="intro.html">
+   Adventure Game
+  </a>
+  <input checked class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-01.html">
+     Part 1: The game loop
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-02.html">
+     Part 2: Go places
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-03.html">
+     Part 3: Prettify
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-04.html">
+     Part 4: Examine items
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-05.html">
+     Part 5: Look around
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Part 6: Take things
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-07.html">
+     Part 7: Show inventory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-08.html">
+     Part 8: Drop things
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-09.html">
+     Part 9: Refactoring
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-10.html">
+     Part 10: Buy things
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-11.html">
+     Part 11: Test things
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-12.html">
+     Part 12: Read things
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="part-13.html">
+     Part 13: Health
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="reference.html">
+     Reference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="todo.html">
+     TODO
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Admin
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../orphans.html">
+   Orphaned Terms
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/alissa-huskey/python-class/master?urlpath=lab/tree/docs/exercises/adventure/part-06.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/alissa-huskey/python-class"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/alissa-huskey/python-class/edit/master/docs/exercises/adventure/part-06.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-6-1-add-command">
+   Part 6.1: Add command
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-define-a-do-take-function">
+     A: Define a
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_take()
+      </span>
+     </code>
+     function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-in-main-in-the-while-loop">
+     B: in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       main()
+      </span>
+     </code>
+     , in the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       while
+      </span>
+     </code>
+     loop
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-6-2-validate-item">
+   Part 6.2: Validate item
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-in-items">
+     A: in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       ITEMS
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-in-do-take-make-sure-the-item-is-valid-in-the-current-place">
+     B: in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_take()
+      </span>
+     </code>
+     : make sure the item is valid in the current place
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#c-still-in-do-take-make-sure-the-item-is-takeable">
+     C: still in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_take()
+      </span>
+     </code>
+     : make sure the item is takeable
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-6-3-take-it">
+   Part 6.3: Take it
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-in-player">
+     A: in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       PLAYER
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-in-do-take">
+     B: in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_take()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-6-4-examine-inventory">
+   Part 6.4: Examine inventory
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-in-do-examine">
+     A: in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_examine()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Part 6: Take things</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-6-1-add-command">
+   Part 6.1: Add command
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-define-a-do-take-function">
+     A: Define a
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_take()
+      </span>
+     </code>
+     function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-in-main-in-the-while-loop">
+     B: in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       main()
+      </span>
+     </code>
+     , in the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       while
+      </span>
+     </code>
+     loop
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-6-2-validate-item">
+   Part 6.2: Validate item
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-in-items">
+     A: in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       ITEMS
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-in-do-take-make-sure-the-item-is-valid-in-the-current-place">
+     B: in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_take()
+      </span>
+     </code>
+     : make sure the item is valid in the current place
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#c-still-in-do-take-make-sure-the-item-is-takeable">
+     C: still in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_take()
+      </span>
+     </code>
+     : make sure the item is takeable
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-6-3-take-it">
+   Part 6.3: Take it
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-in-player">
+     A: in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       PLAYER
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-in-do-take">
+     B: in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_take()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-6-4-examine-inventory">
+   Part 6.4: Examine inventory
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-in-do-examine">
+     A: in
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       do_examine()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="part-6-take-things">
+<h1>Part 6: Take things<a class="headerlink" href="#part-6-take-things" title="Permalink to this headline">#</a></h1>
+<p>In this section we’ll add the <code class="docutils literal notranslate"><span class="pre">take</span></code> command.</p>
+<div class="float-right docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-6.1.py"><span>source code</span></a></p>
+</div>
+<section id="part-6-1-add-command">
+<h2>Part 6.1: Add command<a class="headerlink" href="#part-6-1-add-command" title="Permalink to this headline">#</a></h2>
+<div class="clearfix"></div>
+<div class="row"><div class="col-5 left-col-5">
+<p>In this section we’ll define a <code class="docutils literal notranslate"><span class="pre">do_take()</span></code> function that gets called when the
+player types <code class="docutils literal notranslate"><span class="pre">t</span></code>, <code class="docutils literal notranslate"><span class="pre">take</span></code>, or <code class="docutils literal notranslate"><span class="pre">grab</span></code>.</p>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+Demo<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<asciinema-player poster="npt:0:02" rows="16" src="assets/adventure-6.1.cast"></asciinema-player></div>
+</details></div></div>
+<section id="a-define-a-do-take-function">
+<h3>A: Define a <code class="docutils literal notranslate"><span class="pre">do_take()</span></code> function<a class="headerlink" href="#a-define-a-do-take-function" title="Permalink to this headline">#</a></h3>
+<div class="row"><div class="col-5 left-col-5">
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Define a <code class="docutils literal notranslate"><span class="pre">do_take()</span></code> function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> In it, use the <code class="docutils literal notranslate"><span class="pre">debug()</span></code> function to print something like <code class="samp docutils literal notranslate"><span class="pre">&quot;Trying</span> <span class="pre">to</span> <span class="pre">take:</span> <em><span class="pre">args</span></em><span class="pre">.&quot;</span></code>.</p></li>
+</ol>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">257</span><span class="k">def</span> <span class="nf">do_take</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<span class="linenos">258</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Pick up an item and add it to inventory.&quot;&quot;&quot;</span>
+<span class="linenos">259</span>    <span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Trying to take: </span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">260</span>
+</pre></div>
+</div>
+</div>
+</details></div></div>
+</section>
+<section id="b-in-main-in-the-while-loop">
+<h3>B: in <code class="docutils literal notranslate"><span class="pre">main()</span></code>, in the <code class="docutils literal notranslate"><span class="pre">while</span></code> loop<a class="headerlink" href="#b-in-main-in-the-while-loop" title="Permalink to this headline">#</a></h3>
+<div class="row"><div class="col-5 left-col-5">
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add an <code class="docutils literal notranslate"><span class="pre">elif</span></code> that checks if <code class="docutils literal notranslate"><span class="pre">command</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;t&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;take&quot;</span></code> or
+<code class="docutils literal notranslate"><span class="pre">&quot;grab&quot;</span></code>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> if so, call <code class="docutils literal notranslate"><span class="pre">do_take()</span></code></p></li>
+</ul>
+</li>
+</ol>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">276</span>        <span class="k">if</span> <span class="n">command</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;q&quot;</span><span class="p">,</span> <span class="s2">&quot;quit&quot;</span><span class="p">,</span> <span class="s2">&quot;exit&quot;</span><span class="p">]:</span>
+<span class="linenos">277</span>            <span class="n">do_quit</span><span class="p">()</span>
+<span class="linenos">278</span>
+<span class="linenos">279</span>        <span class="k">elif</span> <span class="n">command</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;shop&quot;</span><span class="p">):</span>
+<span class="linenos">280</span>            <span class="n">do_shop</span><span class="p">()</span>
+<span class="linenos">281</span>
+<span class="linenos">282</span>        <span class="k">elif</span> <span class="n">command</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="s2">&quot;go&quot;</span><span class="p">):</span>
+<span class="linenos">283</span>            <span class="n">do_go</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+<span class="linenos">284</span>
+<span class="linenos">285</span>        <span class="k">elif</span> <span class="n">command</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;exam&quot;</span><span class="p">,</span> <span class="s2">&quot;examine&quot;</span><span class="p">):</span>
+<span class="linenos">286</span>            <span class="n">do_examine</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+<span class="linenos">287</span>
+<span class="linenos">288</span>        <span class="k">elif</span> <span class="n">command</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="s2">&quot;look&quot;</span><span class="p">):</span>
+<span class="linenos">289</span>            <span class="n">do_look</span><span class="p">()</span>
+<span class="linenos">290</span>
+<span class="hll"><span class="linenos">291</span>        <span class="k">elif</span> <span class="n">command</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="s2">&quot;take&quot;</span><span class="p">,</span> <span class="s2">&quot;grab&quot;</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">292</span>            <span class="n">do_take</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+</span><span class="linenos">293</span>
+<span class="linenos">294</span>        <span class="k">else</span><span class="p">:</span>
+<span class="linenos">295</span>            <span class="n">error</span><span class="p">(</span><span class="s2">&quot;No such command.&quot;</span><span class="p">)</span>
+<span class="linenos">296</span>            <span class="k">continue</span>
+</pre></div>
+</div>
+</div>
+</details></div></div>
+<div class="float-right docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-6.2.py"><span>source code</span></a></p>
+</div>
+</section>
+</section>
+<section id="part-6-2-validate-item">
+<h2>Part 6.2: Validate item<a class="headerlink" href="#part-6-2-validate-item" title="Permalink to this headline">#</a></h2>
+<div class="clearfix"></div>
+<div class="row"><div class="col-5 left-col-5">
+<p>In this section we’ll check to make sure that the player entered a valid, takeable
+item in the current place.</p>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+Demo<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<asciinema-player poster="npt:0:12" rows="16" src="assets/adventure-6.2.cast"></asciinema-player></div>
+</details></div></div>
+<section id="a-in-items">
+<h3>A: in <code class="docutils literal notranslate"><span class="pre">ITEMS</span></code><a class="headerlink" href="#a-in-items" title="Permalink to this headline">#</a></h3>
+<div class="row"><div class="col-5 left-col-5">
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> For any item you wish for the player to be able to <code class="docutils literal notranslate"><span class="pre">take</span></code>, add
+<code class="docutils literal notranslate"><span class="pre">&quot;can_take&quot;:</span> <span class="pre">True</span></code> to the items dictionary.</p></li>
+</ol>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">61</span>    <span class="s2">&quot;book&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="linenos">62</span>        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;book&quot;</span><span class="p">,</span>
+<span class="hll"><span class="linenos">63</span>        <span class="s2">&quot;can_take&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+</span><span class="linenos">64</span>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;a book&quot;</span><span class="p">,</span>
+<span class="linenos">65</span>        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="p">(</span>
+<span class="linenos">66</span>            <span class="s2">&quot;A hefty leather-bound tome open to an interesting passage.&quot;</span>
+<span class="linenos">67</span>        <span class="p">),</span>
+<span class="linenos">68</span>    <span class="p">},</span>
+</pre></div>
+</div>
+</div>
+</details></div></div>
+</section>
+<section id="b-in-do-take-make-sure-the-item-is-valid-in-the-current-place">
+<h3>B: in <code class="docutils literal notranslate"><span class="pre">do_take()</span></code>: make sure the item is valid in the current place<a class="headerlink" href="#b-in-do-take-make-sure-the-item-is-valid-in-the-current-place" title="Permalink to this headline">#</a></h3>
+<ol>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Check to see if <code class="docutils literal notranslate"><span class="pre">args</span></code> is <a class="reference internal" href="../../lessons/conditional-statements.html#term-falsy"><span class="xref std std-term">falsy</span></a>, if so:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Use the <code class="docutils literal notranslate"><span class="pre">error()</span></code> function to print a message saying:
+<code class="docutils literal notranslate"><span class="pre">&quot;Which</span> <span class="pre">way</span> <span class="pre">do</span> <span class="pre">you</span> <span class="pre">want</span> <span class="pre">to</span> <span class="pre">go?&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> return</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> get the value from <code class="docutils literal notranslate"><span class="pre">PLAYER</span></code> associated with the <code class="docutils literal notranslate"><span class="pre">&quot;place&quot;</span></code> key and assign it to <code class="docutils literal notranslate"><span class="pre">place_name</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> get the value from <code class="docutils literal notranslate"><span class="pre">PLACES</span></code> associated with <code class="docutils literal notranslate"><span class="pre">place_name</span></code> and assign it to <code class="docutils literal notranslate"><span class="pre">place</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> assign the first item of the <code class="docutils literal notranslate"><span class="pre">args</span></code> list to the variable <code class="docutils literal notranslate"><span class="pre">name</span></code> and make it lowercase</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Get the list of items in the <code class="docutils literal notranslate"><span class="pre">place</span></code> dictionary using <code class="docutils literal notranslate"><span class="pre">.get()</span></code> with a
+default value of <code class="docutils literal notranslate"><span class="pre">[]</span></code>. Check to see if <code class="docutils literal notranslate"><span class="pre">name</span></code> is in the list. If not:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Print an error message like:</p>
+<p><code class="samp docutils literal notranslate"><span class="pre">&quot;Sorry,</span> <span class="pre">I</span> <span class="pre">don't</span> <span class="pre">see</span> <span class="pre">a</span> <em><span class="pre">name</span></em> <span class="pre">here.&quot;</span></code></p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> <code class="docutils literal notranslate"><span class="pre">return</span></code></p></li>
+</ul>
+</li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">258</span><span class="k">def</span> <span class="nf">do_take</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<span class="linenos">259</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Pick up an item and add it to inventory.&quot;&quot;&quot;</span>
+<span class="linenos">260</span>    <span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Trying to take: </span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">261</span>
+<span class="hll"><span class="linenos">262</span>    <span class="c1"># make sure the player typed an item</span>
+</span><span class="hll"><span class="linenos">263</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">:</span>
+</span><span class="hll"><span class="linenos">264</span>        <span class="n">error</span><span class="p">(</span><span class="s2">&quot;What do you want to take?&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">265</span>        <span class="k">return</span>
+</span><span class="hll"><span class="linenos">266</span>
+</span><span class="hll"><span class="linenos">267</span>    <span class="c1"># get the item name from arguments</span>
+</span><span class="hll"><span class="linenos">268</span>    <span class="c1"># and make it lowercase</span>
+</span><span class="hll"><span class="linenos">269</span>    <span class="n">name</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</span><span class="hll"><span class="linenos">270</span>
+</span><span class="hll"><span class="linenos">271</span>    <span class="c1"># look up where the player is now</span>
+</span><span class="hll"><span class="linenos">272</span>    <span class="n">place_name</span> <span class="o">=</span> <span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;place&quot;</span><span class="p">]</span>
+</span><span class="hll"><span class="linenos">273</span>    <span class="n">place</span> <span class="o">=</span> <span class="n">PLACES</span><span class="p">[</span><span class="n">place_name</span><span class="p">]</span>
+</span><span class="hll"><span class="linenos">274</span>
+</span><span class="hll"><span class="linenos">275</span>    <span class="c1"># make sure the item is in this place</span>
+</span><span class="hll"><span class="linenos">276</span>    <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">place</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;items&quot;</span><span class="p">,</span> <span class="p">[]):</span>
+</span><span class="hll"><span class="linenos">277</span>        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorry, I don&#39;t see a </span><span class="si">{</span><span class="n">name</span><span class="si">!r}</span><span class="s2"> here.&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">278</span>        <span class="k">return</span>
+</span><span class="hll"><span class="linenos">279</span>
+</span></pre></div>
+</div>
+</div>
+</details></section>
+<section id="c-still-in-do-take-make-sure-the-item-is-takeable">
+<h3>C: still in <code class="docutils literal notranslate"><span class="pre">do_take()</span></code>: make sure the item is takeable<a class="headerlink" href="#c-still-in-do-take-make-sure-the-item-is-takeable" title="Permalink to this headline">#</a></h3>
+<ol>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Using <code class="docutils literal notranslate"><span class="pre">.get()</span></code>, get the value from <code class="docutils literal notranslate"><span class="pre">ITEMS</span></code> associated with the <code class="docutils literal notranslate"><span class="pre">name</span></code>
+key and assign it to the variable <code class="docutils literal notranslate"><span class="pre">item</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> If <code class="docutils literal notranslate"><span class="pre">item</span></code> is <a class="reference internal" href="../../lessons/conditional-statements.html#term-falsy"><span class="xref std std-term">falsy</span></a>,</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Print an error message like:</p>
+<p><code class="samp docutils literal notranslate"><span class="pre">&quot;Woops!</span> <span class="pre">The</span> <span class="pre">information</span> <span class="pre">about</span> <em><span class="pre">name!r</span></em> <span class="pre">seems</span> <span class="pre">to</span> <span class="pre">be</span> <span class="pre">missing.&quot;</span></code></p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> <code class="docutils literal notranslate"><span class="pre">return</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Using <code class="docutils literal notranslate"><span class="pre">.get()</span></code>, get the value from <code class="docutils literal notranslate"><span class="pre">item</span></code> associated with the <code class="docutils literal notranslate"><span class="pre">&quot;can_take&quot;</span></code>
+key. Check to see if it is <a class="reference internal" href="../../lessons/conditional-statements.html#term-falsy"><span class="xref std std-term">falsy</span></a>. If so:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Use <code class="docutils literal notranslate"><span class="pre">wrap()</span></code> to print a message like:</p>
+<p><code class="samp docutils literal notranslate"><span class="pre">&quot;You</span> <span class="pre">try</span> <span class="pre">to</span> <span class="pre">pick</span> <span class="pre">up</span> <em><span class="pre">item['name']</span></em><span class="pre">,</span> <span class="pre">but</span> <span class="pre">you</span> <span class="pre">find</span> <span class="pre">you</span> <span class="pre">aren't</span> <span class="pre">able</span> <span class="pre">to</span> <span class="pre">lift</span> <span class="pre">it.&quot;</span></code></p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> <code class="docutils literal notranslate"><span class="pre">return</span></code></p></li>
+</ul>
+</li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">258</span><span class="k">def</span> <span class="nf">do_take</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<span class="linenos">259</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Pick up an item and add it to inventory.&quot;&quot;&quot;</span>
+<span class="linenos">260</span>    <span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Trying to take: </span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">261</span>
+<span class="linenos">262</span>    <span class="c1"># make sure the player typed an item</span>
+<span class="linenos">263</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">:</span>
+<span class="linenos">264</span>        <span class="n">error</span><span class="p">(</span><span class="s2">&quot;What do you want to take?&quot;</span><span class="p">)</span>
+<span class="linenos">265</span>        <span class="k">return</span>
+<span class="linenos">266</span>
+<span class="linenos">267</span>    <span class="c1"># get the item name from arguments</span>
+<span class="linenos">268</span>    <span class="c1"># and make it lowercase</span>
+<span class="linenos">269</span>    <span class="n">name</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="linenos">270</span>
+<span class="linenos">271</span>    <span class="c1"># look up where the player is now</span>
+<span class="linenos">272</span>    <span class="n">place_name</span> <span class="o">=</span> <span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;place&quot;</span><span class="p">]</span>
+<span class="linenos">273</span>    <span class="n">place</span> <span class="o">=</span> <span class="n">PLACES</span><span class="p">[</span><span class="n">place_name</span><span class="p">]</span>
+<span class="linenos">274</span>
+<span class="linenos">275</span>    <span class="c1"># make sure the item is in this place</span>
+<span class="linenos">276</span>    <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">place</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;items&quot;</span><span class="p">,</span> <span class="p">[]):</span>
+<span class="linenos">277</span>        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorry, I don&#39;t see a </span><span class="si">{</span><span class="n">name</span><span class="si">!r}</span><span class="s2"> here.&quot;</span><span class="p">)</span>
+<span class="linenos">278</span>        <span class="k">return</span>
+<span class="linenos">279</span>
+<span class="hll"><span class="linenos">280</span>    <span class="c1"># get the item information</span>
+</span><span class="hll"><span class="linenos">281</span>    <span class="n">item</span> <span class="o">=</span> <span class="n">ITEMS</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">282</span>
+</span><span class="hll"><span class="linenos">283</span>    <span class="c1"># make sure the item is in the ITEMS dictionary</span>
+</span><span class="hll"><span class="linenos">284</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">item</span><span class="p">:</span>
+</span><span class="hll"><span class="linenos">285</span>        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Woops! The information about </span><span class="si">{</span><span class="n">name</span><span class="si">!r}</span><span class="s2"> seems to be missing.&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">286</span>        <span class="k">return</span>
+</span><span class="hll"><span class="linenos">287</span>
+</span><span class="hll"><span class="linenos">288</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;can_take&quot;</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos">289</span>        <span class="n">wrap</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;You try to pick up </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">, but you find you aren&#39;t able to lift it.&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">290</span>        <span class="k">return</span>
+</span><span class="hll"><span class="linenos">291</span>
+</span></pre></div>
+</div>
+</div>
+</details><div class="float-right docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-6.3.py"><span>source code</span></a></p>
+</div>
+</section>
+</section>
+<section id="part-6-3-take-it">
+<h2>Part 6.3: Take it<a class="headerlink" href="#part-6-3-take-it" title="Permalink to this headline">#</a></h2>
+<div class="clearfix"></div>
+<div class="row"><div class="col-5 left-col-5">
+<p>In this section we’ll actually take the item.</p>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+Demo<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<asciinema-player poster="npt:0:08" rows="16" src="assets/adventure-6.3.cast"></asciinema-player></div>
+</details></div></div>
+<section id="a-in-player">
+<h3>A: in <code class="docutils literal notranslate"><span class="pre">PLAYER</span></code><a class="headerlink" href="#a-in-player" title="Permalink to this headline">#</a></h3>
+<div class="row"><div class="col-5 left-col-5">
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add <code class="docutils literal notranslate"><span class="pre">&quot;inventory&quot;:</span> <span class="pre">{}</span></code> to the <code class="docutils literal notranslate"><span class="pre">PLAYER</span></code> dictionary.</p></li>
+</ol>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">17</span><span class="n">PLAYER</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos">18</span>    <span class="s2">&quot;place&quot;</span><span class="p">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
+<span class="hll"><span class="linenos">19</span>    <span class="s2">&quot;inventory&quot;</span><span class="p">:</span> <span class="p">{},</span>
+</span></pre></div>
+</div>
+</div>
+</details></div></div>
+</section>
+<section id="b-in-do-take">
+<h3>B: in <code class="docutils literal notranslate"><span class="pre">do_take()</span></code><a class="headerlink" href="#b-in-do-take" title="Permalink to this headline">#</a></h3>
+<p>In this section we will add the item to our inventory, remove it from the
+place, and let the player know that it’s done.</p>
+<ol>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Call <code class="docutils literal notranslate"><span class="pre">.setdefault()</span></code> on <code class="docutils literal notranslate"><span class="pre">PLAYER[&quot;inventory&quot;]</span></code> with the arguments <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<p>This will set the current inventory for <code class="docutils literal notranslate"><span class="pre">name</span></code> to <code class="docutils literal notranslate"><span class="pre">0</span></code> if it is not already
+in our inventory.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add <code class="docutils literal notranslate"><span class="pre">1</span></code> to <code class="docutils literal notranslate"><span class="pre">PLAYER[&quot;inventory&quot;][name]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Remove <code class="docutils literal notranslate"><span class="pre">name</span></code> from the <code class="docutils literal notranslate"><span class="pre">place[&quot;items&quot;]</span></code> list using the <code class="docutils literal notranslate"><span class="pre">.remove()</span></code> method</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Use the <code class="docutils literal notranslate"><span class="pre">wrap()</span></code> function to print a message like:</p>
+<p><code class="samp docutils literal notranslate"><span class="pre">&quot;You</span> <span class="pre">pick</span> <span class="pre">up</span> <em><span class="pre">name</span></em> <span class="pre">and</span> <span class="pre">put</span> <span class="pre">it</span> <span class="pre">in</span> <span class="pre">your</span> <span class="pre">pack.&quot;</span></code></p>
+</li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">259</span><span class="k">def</span> <span class="nf">do_take</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<span class="linenos">260</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Pick up an item and add it to inventory.&quot;&quot;&quot;</span>
+<span class="linenos">261</span>    <span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Trying to take: </span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">262</span>
+<span class="linenos">263</span>    <span class="c1"># make sure the player typed an item</span>
+<span class="linenos">264</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">:</span>
+<span class="linenos">265</span>        <span class="n">error</span><span class="p">(</span><span class="s2">&quot;What do you want to take?&quot;</span><span class="p">)</span>
+<span class="linenos">266</span>        <span class="k">return</span>
+<span class="linenos">267</span>
+<span class="linenos">268</span>    <span class="c1"># get the item name from arguments</span>
+<span class="linenos">269</span>    <span class="c1"># and make it lowercase</span>
+<span class="linenos">270</span>    <span class="n">name</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="linenos">271</span>
+<span class="linenos">272</span>    <span class="c1"># look up where the player is now</span>
+<span class="linenos">273</span>    <span class="n">place_name</span> <span class="o">=</span> <span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;place&quot;</span><span class="p">]</span>
+<span class="linenos">274</span>    <span class="n">place</span> <span class="o">=</span> <span class="n">PLACES</span><span class="p">[</span><span class="n">place_name</span><span class="p">]</span>
+<span class="linenos">275</span>
+<span class="linenos">276</span>    <span class="c1"># make sure the item is in this place</span>
+<span class="linenos">277</span>    <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">place</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;items&quot;</span><span class="p">,</span> <span class="p">[]):</span>
+<span class="linenos">278</span>        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorry, I don&#39;t see a </span><span class="si">{</span><span class="n">name</span><span class="si">!r}</span><span class="s2"> here.&quot;</span><span class="p">)</span>
+<span class="linenos">279</span>        <span class="k">return</span>
+<span class="linenos">280</span>
+<span class="linenos">281</span>    <span class="c1"># get the item information</span>
+<span class="linenos">282</span>    <span class="n">item</span> <span class="o">=</span> <span class="n">ITEMS</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="linenos">283</span>
+<span class="linenos">284</span>    <span class="c1"># make sure the item is in the ITEMS dictionary</span>
+<span class="linenos">285</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">item</span><span class="p">:</span>
+<span class="linenos">286</span>        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Woops! The information about </span><span class="si">{</span><span class="n">name</span><span class="si">!r}</span><span class="s2"> seems to be missing.&quot;</span><span class="p">)</span>
+<span class="linenos">287</span>        <span class="k">return</span>
+<span class="linenos">288</span>
+<span class="linenos">289</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;can_take&quot;</span><span class="p">):</span>
+<span class="linenos">290</span>        <span class="n">wrap</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;You try to pick up </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">, but you find you aren&#39;t able to lift it.&quot;</span><span class="p">)</span>
+<span class="linenos">291</span>        <span class="k">return</span>
+<span class="linenos">292</span>
+<span class="hll"><span class="linenos">293</span>    <span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;inventory&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">294</span>    <span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;inventory&quot;</span><span class="p">][</span><span class="n">name</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class="hll"><span class="linenos">295</span>    <span class="n">place</span><span class="p">[</span><span class="s2">&quot;items&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">296</span>
+</span><span class="hll"><span class="linenos">297</span>    <span class="n">wrap</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;You pick up </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> and put it in your pack.&quot;</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+</details><div class="float-right docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-6.4.py"><span>source code</span></a></p>
+</div>
+</section>
+</section>
+<section id="part-6-4-examine-inventory">
+<h2>Part 6.4: Examine inventory<a class="headerlink" href="#part-6-4-examine-inventory" title="Permalink to this headline">#</a></h2>
+<div class="clearfix"></div>
+<div class="row"><div class="col-5 left-col-5">
+<p>In this section we’ll modify <code class="docutils literal notranslate"><span class="pre">do_examine()</span></code> so it can be used to look at inventory items.</p>
+</div><div class="col-7">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+Demo<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<asciinema-player poster="npt:0:32" rows="16" src="assets/adventure-6.4.cast"></asciinema-player></div>
+</details></div></div>
+<section id="a-in-do-examine">
+<h3>A: in <code class="docutils literal notranslate"><span class="pre">do_examine()</span></code><a class="headerlink" href="#a-in-do-examine" title="Permalink to this headline">#</a></h3>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Find the if statement where you check if <code class="docutils literal notranslate"><span class="pre">name</span></code> is not in the <code class="docutils literal notranslate"><span class="pre">place</span></code>
+items list. Modify it so that it shows the error if <code class="docutils literal notranslate"><span class="pre">name</span></code> is not in
+<code class="docutils literal notranslate"><span class="pre">place</span></code> items <strong>and</strong> <code class="docutils literal notranslate"><span class="pre">name</span></code> is not in <code class="docutils literal notranslate"><span class="pre">PLAYER[&quot;inventory&quot;]</span></code>.</p></li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Code<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">178</span><span class="k">def</span> <span class="nf">do_examine</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<span class="linenos">179</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Look at an item in the current place.&quot;&quot;&quot;</span>
+<span class="linenos">180</span>
+<span class="linenos">181</span>    <span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Trying to examine: </span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">182</span>
+<span class="linenos">183</span>    <span class="c1"># make sure the player said what they want to examine</span>
+<span class="linenos">184</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">:</span>
+<span class="linenos">185</span>        <span class="n">error</span><span class="p">(</span><span class="s2">&quot;What do you want to examine?&quot;</span><span class="p">)</span>
+<span class="linenos">186</span>        <span class="k">return</span>
+<span class="linenos">187</span>
+<span class="linenos">188</span>    <span class="c1"># look up where the player is now</span>
+<span class="linenos">189</span>    <span class="n">place_name</span> <span class="o">=</span> <span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;place&quot;</span><span class="p">]</span>
+<span class="linenos">190</span>    <span class="n">place</span> <span class="o">=</span> <span class="n">PLACES</span><span class="p">[</span><span class="n">place_name</span><span class="p">]</span>
+<span class="linenos">191</span>
+<span class="linenos">192</span>    <span class="c1"># get the item entered by the user and make it lowercase</span>
+<span class="linenos">193</span>    <span class="n">name</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="linenos">194</span>
+<span class="linenos">195</span>    <span class="c1"># make sure the item is in this place or in the players inventory</span>
+<span class="hll"><span class="linenos">196</span>    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">name</span> <span class="ow">in</span> <span class="n">place</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;items&quot;</span><span class="p">,</span> <span class="p">[])</span> <span class="ow">or</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">PLAYER</span><span class="p">[</span><span class="s2">&quot;inventory&quot;</span><span class="p">]):</span>
+</span><span class="linenos">197</span>        <span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorry, I don&#39;t know what this is: </span><span class="si">{</span><span class="n">name</span><span class="si">!r}</span><span class="s2">.&quot;</span><span class="p">)</span>
+<span class="linenos">198</span>        <span class="k">return</span>
+<span class="linenos">199</span>
+</pre></div>
+</div>
+</div>
+</details></section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "alissa-huskey/python-class",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./exercises/adventure"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="part-05.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Part 5: Look around</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="part-07.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Part 7: Show inventory</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
