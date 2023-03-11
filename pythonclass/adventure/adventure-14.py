@@ -28,6 +28,8 @@ from time import sleep
 
 from console import fg, fx
 from console.progress import ProgressBar
+from console.utils import clear_line
+from console.screen import sc
 
 WIDTH = 45
 
@@ -282,6 +284,16 @@ def health_bar():
     """Print a progress bar showing player health"""
     print()
     write(f"Health {BAR(PLAYER['health'])}")
+
+
+def prompt():
+    """Display the input prompt and return the user input string."""
+    # fix asciinema screencast rendering
+    # go up a line then clear it
+    print(sc.move_up(1), clear_line(), sep="", end="")
+    return input(fg.cyan("> ")).strip()
+
+
 
 
 # ## Data functions ##########################################################
@@ -802,7 +814,7 @@ def main():
     while True:
         debug(f"You are at: {PLAYER['place']}")
 
-        reply = input(fg.cyan("> ")).strip()
+        reply = prompt()
         args = reply.split()
 
         if not args:

@@ -32,7 +32,6 @@ In this section we'll add the pet command.
 
 ```{screencast} assets/adventure-14.1.cast
 :poster: npt:0:03
-:rows: 16
 ```
 
 `````
@@ -160,7 +159,6 @@ In this section we'll check to make sure petting is allowed in the current place
 
 ```{screencast} assets/adventure-14.2.cast
 :poster: npt:0:05
-:rows: 16
 ```
 
 `````
@@ -298,7 +296,23 @@ Part 14.3: Ensure args
 
 {{ clear }}
 
-In this section we'll make sure that the player typed what they want to pet.
+{{ left }}
+
+In this section we'll make sure that the player typed what they want to pet, or
+print an error if they didn't.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-14.3.cast
+:poster: npt:0:10
+```
+
+`````
+
+{{ endcols }}
 
 ### A. In `test_game.py` add `test_do_pet_no_args()`
 
@@ -361,6 +375,301 @@ message.
 
 `````
 
+### B. In `adventure.py` in `do_pet()`
+
+{{ left }}
+
+`````{dropdown} Need help?
+
+1. `[ ]` Check if `args` is empty. If so:
+    * `[ ]` Print an error message like `"What do you want to pet?"`
+    * `[ ]` return
+
+`````
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} ../../../pythonclass/adventure/adventure-14.3.py
+:linenos:
+:lineno-match:
+:pyobject: "do_pet"
+:emphasize-lines: "11-"
+:caption: adventure.py
+
+```
+
+`````
+
+{{ sources.format("14.4") }}
+
+Part 14.4: Ensure color
+-----------------------
+
+{{ clear }}
+
+This command is a little different from previous commands, because we want the
+player to be able to type a few different things.
+
+{{ left }}
+
+We expect the player to type something like:
+
+`pet red dragon`
+
+But we would also accept:
+
+`pet red dragon head`
+
+Or:
+
+`pet red head`
+
+Or even:
+
+`pet red`
+
+{{ right }}
+
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-14.4.cast
+:poster: npt:0:10
+```
+
+`````
+
+{{ endcols }}
+
+
+So we'll need to make sure that the player typed something in addition to
+`"dragon"` and `"head"` and that it is a valid color.
+
+### A. In `test_game.py` add `test_do_pet_no_color()`
+
+In this section we'll write a `test_do_pet_no_color()` test. It should
+check that the player typed something in addition to `"dragon"` and/or
+`"head"`.
+
+`````{dropdown} Need help?
+
+{{ left }}
+
+1\. *GIVEN: The player is in a place where they can pet things*
+
+{{ br }}
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Change `PLAYER` to put the player in a fake place
+    * `[ ]` Add a matching fake places dictionary to `PLACES`. The `"can"` key
+            should be an empty list.
+   ```
+
+{{ newrow }}
+
+2\. *WHEN: the player types "pet" without typing a color*
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Call `do_pet()` with a list containing the words `"dragon"` and/or `"head"`
+    * `[ ]` Assign the results of `capsys.readouterr().out` to the variable `output`
+   ```
+
+{{ newrow }}
+
+3\. *THEN: an error message should be printed*
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` assert that an error message like `"What do you want to pet"` is in `output`
+   ```
+
+{{ endcols }}
+
+4\. Run your tests. They should fail.
+
+`````
+
+`````{dropdown} Code
+
+```{literalinclude} ../../../pythonclass/adventure/test_game-14.4.py
+:linenos:
+:lineno-match:
+:pyobject: "test_do_pet_no_color"
+:caption: test_game.py
+
+```
+
+`````
+
+### B. In `adventure.py` in `do_pet()`
+
+To support extra words like `"dragon"` and `"head"`, we're simply going to
+remove them from `args`.
+
+If we do this *before* we check to make sure that `args` is not empty, then
+we'll get the same error message if they type `pet` as when they type `pet
+dragon`.
+
+`````{dropdown} Need help?
+
+Do this *before* the line with `if not args:`
+
+1. `[ ]` Make a list of allowed words like `["dragon", "head"]` and iterate
+         over it. For each one:
+    * `[ ]` Check if the word is in `args`. If so:
+      * `[ ]` Remove it from `args`
+1. `[ ]` Run your tests. They should pass.
+
+`````
+
+`````{dropdown} Code
+
+```{literalinclude} ../../../pythonclass/adventure/adventure-14.4.py
+:linenos:
+:lineno-match:
+:start-at: "def do_pet"
+:end-before: "color ="
+:emphasize-lines: "11-14"
+:caption: adventure.py
+
+```
+
+`````
+
+### C. In `test_game.py` add `test_do_pet_invalid_color()`
+
+We'll add a new test `test_do_pet_invalid_color()` to make sure the color is
+valid. We'll use a global variable `adventure.COLORS` to store the list of
+valid colors.
+
+`````{dropdown} Need help?
+
+{{ left }}
+
+1\. *GIVEN: There are three colors of dragon heads*
+
+{{ br }}
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Assign `adventure.COLORS` to a list of colors
+   ```
+
+{{ newrow }}
+
+1\. *AND: The player is in a place where they can pet things*
+
+{{ br }}
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Change `PLAYER` to put the player in a fake place
+    * `[ ]` Add a matching fake places dictionary to `PLACES`. The `"can"` key
+            should be an empty list.
+   ```
+
+{{ newrow }}
+
+2\. *WHEN: They try to pet a dragon with a color that doesn't exist*
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Call `do_pet()` with a list containing the a word that is not a color
+    * `[ ]` Assign the results of `capsys.readouterr().out` to the variable `output`
+   ```
+
+{{ newrow }}
+
+3\. *THEN: an error message should be printed*
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` assert that an error message like `"I don't see that dragon"` is in `output`
+   ```
+
+{{ endcols }}
+
+4\. Run your tests. They should fail.
+
+`````
+
+`````{dropdown} Code
+
+```{literalinclude} ../../../pythonclass/adventure/test_game-14.4.py
+:linenos:
+:lineno-match:
+:pyobject: "test_do_pet_invalid_color"
+:caption: test_game.py
+
+```
+
+`````
+
+### D. In `adventure.py` add `COLORS`
+
+{{ left }}
+
+At the top of your script where your other global variables are, add a new
+global variable `COLORS` and set it to a list with three colors in it.
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} ../../../pythonclass/adventure/adventure-14.4.py
+:linenos:
+:lineno-match:
+:start-at: "import"
+:end-before: "PLAYER = "
+:emphasize-lines: "22"
+:caption: adventure.py
+
+```
+
+`````
+
+{{ endcols }}
+
+### E. In `adventure.py` in `do_pet()`
+
+We can now assume that anything left in the `args` list is the color. We'll
+check that it is in the `COLORS` list, or print an error message if it is not.
+
+`````{dropdown} Need help?
+
+1. `[ ]` Assign the first item from `args` to the variable `color`
+1. `[ ]` Check to make sure that `color` is in the list of `COLORS`. If not:
+    * `[ ]` Print an error message like: `"I don't see a dragon that looks like that."`
+    * `[ ]` return
+
+`````
+
+`````{dropdown} Code
+
+```{literalinclude} ../../../pythonclass/adventure/adventure-14.4.py
+:linenos:
+:lineno-match:
+:pyobject: "do_pet"
+:emphasize-lines: "21-"
+:caption: adventure.py
+
+```
+
+`````
+
+---
 
 1. `[ ]`
 1. `[ ]`

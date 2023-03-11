@@ -44,6 +44,8 @@ BAR = ProgressBar(
 
 # ## Game World Data #########################################################
 
+COLORS = ["red", "black", "silver"]
+
 PLAYER = {
     "place": "home",
     "inventory": {"gems": 50},
@@ -706,9 +708,21 @@ def do_pet(args):
         error("You can't do that here.")
         return
 
+    # remove the expected words from args
+    for word in ["dragon", "head"]:
+        if word in args:
+            args.remove(word)
+
     # make sure the player said what they want to pet
     if not args:
         error("What do you want to pet?")
+        return
+
+    color = args[0].lower()
+
+    # make sure they typed in a real color
+    if color not in COLORS:
+        error("I don't see a dragon that looks like that.")
         return
 
 
