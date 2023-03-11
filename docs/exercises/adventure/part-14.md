@@ -666,10 +666,28 @@ Part 14.5: Pick a dragon
 
 {{ sources.format("14.5") }}
 
-In this section we are going to make a global list `MOODS` to store information
-about each dragon in dictionaries. We'll add more to this later, but for now
-each dictionary just needs a single key `"mood"` with a string for the dragon's
-mood, for example `"cheerful"`.
+{{ left }}
+
+In this section we'll randomly pick a dragon mood and print a debug message
+about it.
+
+We'll make a global list `MOODS` to store information about each dragon in
+dictionaries. We'll add more to this later, but for now each dictionary just
+needs a single key `"mood"` with a string for the dragon's mood, for example
+`"cheerful"`.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-14.5.cast
+:poster: npt:0:10
+```
+
+`````
+
+{{ endcols }}
 
 Then when the player pets one of the dragon heads, randomly select one of the
 dragon dictionaries and print a debug message that says which dragon was
@@ -714,7 +732,7 @@ respectively.
 
 {{ newrow }}
 
-3\. *AND: There is one a dragon*
+3\. *AND: There is one dragon*
 
 {{ br }}
 
@@ -854,6 +872,202 @@ that dictionary, then print a debug message with information about the dragon.
 ```
 
 `````
+
+Part 14.6: Treasure
+-------------------
+
+{{ sources.format("14.6") }}
+
+{{ left }}
+
+In this section we're going to write the code so that some of the dragons will
+give the player gems.
+
+In order to do this we'll add a `"treasure"` key to some of the dragon
+dictionaries `MOODS`. The value will be a tuple containing the minimum and
+maximum possible gems that particular dragon might give.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-14.6.cast
+:poster: npt:0:10
+```
+
+`````
+
+{{ endcols }}
+
+Then in the `do_pet()` function we'll retrieve the range of possible treasure
+from the dragon dictionary, randomly pick a number in that range, then add that
+amount the player gems and print a message to tell the player what happened.
+
+
+### A. In `test_game.py` modify `test_do_pet_cheerful_dragon()`
+
+In this section we'll modify the `test_do_pet_cheerful_dragon()` test to add
+the `"treasure"` key to the single dictionary in `MOODS`, and a tuple
+containing two numbers (the minimum and maximum possible treasure) as the value.
+
+Then we'll need to check that the number if gems in the player's inventory was
+increased.
+
+`````{dropdown} Need help?
+
+{{ left }}
+
+3\. Modify *AND: There is one dragon*
+
+{{ br }}
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Add a `"treasure"` key to the dragon dictionaries in `MOODS` for
+           * the `"cheerful"` and `"lonely"` dragons:
+      * `[ ]` The key should be `"treasure"`
+      * `[ ]` The value should a tuple with two numbers representing the
+              minimum and maximum possible treasure. ie `(10, 20)`.
+
+    :::{tip}
+
+    If we want to know the exact treasure amount you can use the same
+    number for the minimum and maximum, for example: `(10, 10)`.
+
+    :::
+
+   ```
+
+{{ newrow }}
+
+5\. After *WHEN* add *AND: The player has some gems*
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Set the `"gems"` in `PLAYER` inventory to a number
+   ```
+
+{{ newrow }}
+
+5\. After *THEN* add *AND: The player should get treasure*
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` assert that the gems in `PLAYER` inventory is more than it was before
+   ```
+
+{{ newrow }}
+
+5\. After *THEN* add *AND: The player should see a message about what happened*
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` assert a message like {samp}`"gave you {GEMS} gems"` is in `output`
+   ```
+
+{{ endcols }}
+
+6\. Run your tests. They should fail.
+
+`````
+
+`````{dropdown} Code
+
+```{literalinclude} ../../../pythonclass/adventure/test_game-14.6.py
+:linenos:
+:lineno-match:
+:pyobject: "test_do_pet_cheerful_dragon"
+:emphasize-lines: "15, 18-19, 28-"
+:caption: test_game.py
+
+```
+
+`````
+
+### B. In `adventure.py` modify `MOODS`
+
+Modify the dragon dictionaries in the `MOODS` list to add `"treasure"` tuples
+for the `"cheerful"` and `"lonely"` dragons.
+
+`````{dropdown} Need help?
+
+* `[ ]` Add a `"treasure"` key to the single dictionary in `MOODS` list for the
+       `"cheerful"` and `"lonely"` dragons
+  * `[ ]` The key should be `"treasure"`
+  * `[ ]` The value should a tuple with two numbers representing the
+          minimum and maximum amount of treasure. ie `(10, 20)`.
+
+`````
+
+`````{dropdown} Code
+
+```{literalinclude} ../../../pythonclass/adventure/adventure-14.6.py
+:linenos:
+:lineno-match:
+:start-at: "MOODS ="
+:end-at: "]"
+:emphasize-lines: "4, 11"
+:caption: adventure.py
+
+```
+
+`````
+
+### B. In `adventure.py` modify `do_pet()`
+
+In this section we'll retrieve the range of possible treasure from the `dragon`
+dictionary (if the `"treasure"` key exists) then use the two numbers in the
+`random.randint()` function to get the number of gems to give the player.
+
+Then we'll add that number of gems to the player's inventory and print a
+message about it.
+
+`````{margin}
+
+```{seealso}
+
+For how to pass all iterable items as arguments to a function see [Functions >
+Unpacking][unpacking].
+
+```
+
+`````
+
+[unpacking]: ../../lessons/in-depth/functions.html#part-3-unpacking-arguments
+
+`````{dropdown} Need help?
+
+1. `[ ]` Use the `.get()` method on the `dragon` dictionary to get the value
+         for the `"treasure"` key and assign the result to `possible_treasure`.
+         Since not all dragons will have the `"treasure"` key, use the second
+         argument in `.get()` to set the default value to `(0, 0)`.
+1. `[ ]` Pass the minimum and maximum numbers from `possible_treasure` as
+         arguments to the `random.randint()` function and assign the results to
+         `dragon["gems"]`.
+1. `[ ]` Use the `inventory_change()` function to add `dragon["gems"]` to the
+         players inventory.
+1. `[ ]` Print a message like: {samp}`"The {MOOD} dragon gave you {GEMS} gems."`
+
+`````
+
+`````{dropdown} Code
+
+```{literalinclude} ../../../pythonclass/adventure/adventure-14.6.py
+:linenos:
+:lineno-match:
+:pyobject: do_pet
+:emphasize-lines: "34-"
+:caption: adventure.py
+
+```
+
+`````
+
 
 ---
 
