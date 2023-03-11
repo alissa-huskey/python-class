@@ -23,8 +23,6 @@ Part 14: Dragons
 
 import random
 import textwrap
-from string import Template
-from time import sleep
 
 from console import fg, fx
 from console.progress import ProgressBar
@@ -36,8 +34,6 @@ WIDTH = 45
 MARGIN = 2
 
 DEBUG = True
-
-DELAY = 1.5
 
 MAX_HEALTH = 100
 
@@ -768,42 +764,6 @@ def do_pet(args):
     # get the dragon info for this color
     dragon = DRAGONS[color]
     dragon["color"] = color
-
-    # calculate the treasure
-    possible_treasure = dragon.get("treasure", (0, 0))
-    dragon["gems"] = random.randint(*possible_treasure)
-
-    # calculate the damage
-    possible_damage = dragon.get("damage", (0, 0))
-    dragon["damage"] = random.randint(*possible_damage)
-
-    # add the treasure to the players inventory
-    if dragon["gems"]:
-        inventory_change("gems", dragon["gems"])
-
-    # remove health
-    if dragon["damage"]:
-        health_change(dragon["damage"])
-
-    sentences = (
-        "You creep forward...",
-        "...gingerly reach out your hand...",
-        f"...and gently pat the dragon's {color} head.",
-    )
-
-    for text in sentences:
-        print()
-        write(text)
-        sleep(DELAY)
-
-    # generate the message
-    tpl = Template(f'The $mood $color dragon {dragon["message"]}')
-    text = tpl.safe_substitute(dragon)
-    print()
-    wrap(text)
-
-    # reset the DRAGONS dict
-    DRAGONS = {}
 
 
 def main():

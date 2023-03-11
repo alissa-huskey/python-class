@@ -70,15 +70,19 @@ parse: &parse
     # green "source code" badge linking to my github
     # usage: {{ source | format("filename.py") }}
     source: |
-      ```{div} float-right
+      ```{div} float-right source-code
         {bdg-link-info-line}`source code <https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/%s>`
+
+      {{ clear }}
       ```
     # two green badges, one for adventure-VERSION.py and one for test_game-VERSION.py
     # usage: {{ sources.format("VERSION") }}
     # note: double curley braces make one literal brace (for .format())
     sources: |
-      ```{{div}} float-right
+      ```{{div}} float-right source-code source-code-{0}
       {{{{ code.format("adventure.py", "adventure/adventure-{0}.py") }}}} {{{{ code.format("test_game.py", "adventure/test_game-{0}.py") }}}}
+
+      {{{{ clear }}}}
       ```
 
 

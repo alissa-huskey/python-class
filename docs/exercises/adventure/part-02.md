@@ -36,7 +36,9 @@ You also may want to keep a map of the game world in a docstring or another
 text file. Here's an example of how you might represent a slightly more
 populated world.
 
-```python
+```{code-block} python
+:linenos:
+
 """
 Text-based adventure game
 https://alissa-huskey.github.io/python-class/exercises/adventure.html
@@ -55,12 +57,10 @@ https://alissa-huskey.github.io/python-class/exercises/adventure.html
 
 ```
 
-{{ source | format("adventure-2.1.py") }}
-
 Part 2.1: Split reply into command and arguments
 ------------------------------------------------
 
-{{ clear }}
+{{ source | format("adventure-2.1.py") }}
 
 {{ left }}
 
@@ -86,12 +86,12 @@ the command, and `north` is the direction.
 
 {{ endcols }}
 
-### A. Define do_go
+### A. Define `do_go()`
 
 1. `[ ]` Define a `do_go()` function that takes one argument: `args`.
 2. `[ ]` In `do_go()` print {samp}`Trying to go: {args}`
 
-### B. In main(), in the while loop
+### B. In `main()`, in the while loop
 
 1. `[ ]` Strip the value returned from `input()` using the `.strip()` method.
 
@@ -126,12 +126,10 @@ the command, and `north` is the direction.
 
 `````
 
+Part 2.2: Create `PLAYER` and `PLACES`
+--------------------------------------
+
 {{ source | format("adventure-2.2.py") }}
-
-Part 2.2: Create PLAYER and PLACES
-----------------------------------
-
-{{ clear }}
 
 Now we'll make global `PLACES` dictionary which will store information about
 the different areas in the game.
@@ -299,7 +297,7 @@ PLACES = {
 
 {{ endcols }}
 
-### A. At the top of your file
+### A. At the top of `adventure.py`
 
 1. `[ ]` Create a `PLAYER` dictionary with the key `"place"` and the value `"home"`.
 2. `[ ]` Create a `PLACES` dictionary where the key is a unique identifier for each place.
@@ -322,12 +320,10 @@ PLACES = {
 
 `````
 
-{{ source | format("adventure-2.3.py") }}
-
 Part 2.3: Write message functions
 ---------------------------------
 
-{{ clear }}
+{{ source | format("adventure-2.3.py") }}
 
 {{ left }}
 
@@ -354,7 +350,7 @@ We'll also add a `error()` function which will print an error message.
 
 {{ endcols }}
 
-### A. At the top of the file
+### A. At the top of `adventure.py`
 
 {{ left }}
 
@@ -376,7 +372,7 @@ We'll also add a `error()` function which will print an error message.
 {{ endcols }}
 
 
-### B. Define debug() function
+### B. Define `debug()`
 
 {{ left }}
 
@@ -399,7 +395,7 @@ We'll also add a `error()` function which will print an error message.
 
 {{ endcols }}
 
-### C. Define error() function
+### C. Define `error()`
 
 {{ left }}
 
@@ -419,7 +415,7 @@ We'll also add a `error()` function which will print an error message.
 
 {{ endcols }}
 
-### D. In do_go()
+### D. Modify `do_go()`
 
 {{ left }}
 
@@ -440,7 +436,7 @@ We'll also add a `error()` function which will print an error message.
 
 {{ endcols }}
 
-### E. In main(), in the while loop
+### E. In `main()`, in the while loop
 
 1. `[ ]` At the beginning of the `while` loop call `debug()` with the message {samp}`You are at: {PLACE}`.
    Replace `PLACE` with the value in the `PLAYER` dictionary associated with the `"place"` key
@@ -465,12 +461,10 @@ We'll also add a `error()` function which will print an error message.
 
 1. `[ ]` Test with `DEBUG` set to `True` as well as with `DEBUG` set to `False`
 
-{{ source | format("adventure-2.4.py") }}
-
 Part 2.4: Fill in `go` command
 ------------------------------
 
-{{ clear }}
+{{ source | format("adventure-2.4.py") }}
 
 {{ left }}
 
@@ -497,7 +491,7 @@ print the `"name"` and `"description"`.
 
 {{ endcols }}
 
-### A. In do_go(): ensure that the player typed a valid direction
+### A. Modify `do_go()`: ensure that the player typed a valid direction
 
 In this section we'll be making sure there is at least one item in the `args`
 list and that it is a valid direction.
@@ -523,7 +517,7 @@ list and that it is a valid direction.
 
 `````
 
-### B. (still) in do_go(): look up where the player is at
+### B. Modify `do_go()`: look up where the player is at
 
 In this section we'll be using the `PLAYER["place"]` to get the current place
 from the `PLACES` dictionary, as shown {ref}`here <player-to-places>`.
@@ -548,7 +542,7 @@ from the `PLACES` dictionary, as shown {ref}`here <player-to-places>`.
 
 {{ endcols }}
 
-### C. (still) in do_go(): look up what is in that direction from here
+### C. Modify `do_go()`: look up what is in that direction from here
 
 In this section we'll use the direction (ie. `"east"`) the player wants to go
 to look up the name of the next place (if any) in the current place dictionary
@@ -573,7 +567,7 @@ as seen {ref}`here <places-direction-to-place>`.
 `````
 
 
-### D. (still) in do_go(): figure out where we're going
+### D. Modify `do_go()`: figure out where we're going
 
 Next we'll get the info for where the player is going from `PLACES`, or print an
 error message if it's not found.
@@ -600,7 +594,7 @@ error message if it's not found.
 
 `````
 
-### E. (still) in do_go(): update the players place and describe it
+### E. Modify `do_go()`: update the players place and describe it
 
 Finally, we can now update the `PLAYER` dictionary to point to the new place
 name and print the place information.

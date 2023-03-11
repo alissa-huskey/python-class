@@ -14,12 +14,10 @@ Part 5: Look around
 
 In this section we'll add the `look` command.
 
-{{ source | format("adventure-5.1.py") }}
-
 Part 5.1: Add command
 ---------------------
 
-{{ clear }}
+{{ source | format("adventure-5.1.py") }}
 
 {{ left }}
 
@@ -40,7 +38,7 @@ player types `l` or `look`.
 
 {{ endcols }}
 
-### A: Define a `do_look()` function
+### A: Define `do_look()`
 
 {{ left }}
 
@@ -62,7 +60,7 @@ player types `l` or `look`.
 
 {{ endcols }}
 
-### B: in `main()`, in the `while` loop
+### B: Modify `main()`, in the while loop
 
 {{ left }}
 
@@ -86,12 +84,10 @@ player types `l` or `look`.
 
 {{ endcols }}
 
-{{ source | format("adventure-5.2.py") }}
-
 Part 5.2: Print place name and description
 ------------------------------------------
 
-{{ clear }}
+{{ source | format("adventure-5.2.py") }}
 
 {{ left }}
 
@@ -111,7 +107,7 @@ In this section we'll look up the place info and print the name and description.
 
 {{ endcols }}
 
-### A: In `do_look()`: look up and print the current place
+### A: Modify `do_look()`: look up and print the current place
 
 {{ left }}
 
@@ -136,12 +132,10 @@ In this section we'll look up the place info and print the name and description.
 
 {{ endcols }}
 
-{{ source | format("adventure-5.3.py") }}
-
 Part 5.3: Print the place items
 -------------------------------
 
-{{ clear }}
+{{ source | format("adventure-5.3.py") }}
 
 {{ left }}
 
@@ -161,7 +155,7 @@ In this section we'll print the list of items in the current place.
 
 {{ endcols }}
 
-### A: at the end of `do_look()`
+### A: Modify `do_look()`, at the end
 
 In this section you will use each of the items in the current places `"items"`
 list to get the item information from `ITEMS` then construct a list of each
@@ -188,7 +182,7 @@ items `"name"`.
 
 `````
 
-### B: still in `do_look()`, in `if items`
+### B: Modify `do_look()`, in `if items`
 
 In this section we're going to construct a plain English sentence listing the items in this place. If there is only one item it will look like:
 
@@ -222,12 +216,10 @@ And if there are three or more items it will look like:
 
 `````
 
-{{ source | format("adventure-5.4.py") }}
-
 Part 5.4: Print the nearby places
 ---------------------------------
 
-{{ clear }}
+{{ source | format("adventure-5.4.py") }}
 
 {{ left }}
 
@@ -249,7 +241,7 @@ In this section we'll print the name of each of any places directly to the
 {{ endcols }}
 
 
-### A: at the end of `do_look()`
+### A: Modify `do_look()`, at the end
 
 1. `[ ]` print a blank line
 1. `[ ]` Use a for loop to iterate over a list: `"north"`, `"east"`, `"south"`, and `"west"` using the variable name `direction`. For each one:

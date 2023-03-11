@@ -183,3 +183,25 @@ window.addEventListener("DOMContentLoaded", (e) => {
     AsciinemaPlayer.create(elm.getAttribute("src"), elm, options);
   }
 });
+
+// move source code links to top of the section so that the div is before the section header
+window.addEventListener("DOMContentLoaded", (e) => {
+  console.log("python-class:source-code> moving source code links to top of section...");
+
+  var elements = $('div.source-code');
+
+  console.log("python-class:source-code>", elements.length, "elements");
+
+  if (elements.length == 0) {
+    return;
+  }
+
+  for (var i = 0; i < elements.length; i++) {
+    var elm = elements[i];
+    console.log("python-class:source-code>", "source code links:", elm);
+
+    var section = elm.parentElement;
+    section.removeChild(elm);
+    section.prepend(elm);
+  }
+});

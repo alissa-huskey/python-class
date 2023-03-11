@@ -1,4 +1,7 @@
 ---
+substitutions:
+  testsource: '{{{{ source | format("test_game-{0}") }}}}'
+
 jupytext:
   formats: md:myst
   text_representation:
@@ -15,6 +18,7 @@ Part 11: Test things
 ```{margin}
 
 :::{seealso}
+
 [][testing]
 :::
 
@@ -28,12 +32,10 @@ tests. This will help us find out if we break something, even if we don't
 happen to play the part of the game that triggers it. Be sure to do the
 [Testing Lesson][testing] if you haven't already.
 
-{{ source | format("test_game-11.1.py") }}
-
 Part 11.1: Setup
 ----------------
 
-{{ clear }}
+{{ testsource.format("11.1.py") }}
 
 {{ left }}
 
@@ -54,7 +56,7 @@ In this section we'll get a basic test up and running.
 
 {{ endcols }}
 
-### A. Install pytest
+### A. Install `pytest`
 
 1. `[ ]` Install `pytest` using the instructions
          [here](/practices/testing.html#part-3-pytest).
@@ -155,12 +157,10 @@ Testing > [Running Tests](/practices/testing/intro.html#part-6-2-running-tests)
 1. `[ ]` Click the {guilabel}`Run Tests` icon (that looks like a play button).
 
 
-{{ source | format("test_game-11.2.py") }}
-
 Part 11.2: Test `is_for_sale()`
 -------------------------------
 
-{{ clear }}
+{{ testsource.format("11.2.py") }}
 
 {{ left }}
 
@@ -184,7 +184,7 @@ the result with an `assert` statement.
 
 {{ endcols }}
 
-### A. Write `test_is_for_sale()`
+### A. Define `test_is_for_sale()`
 
 This first test will make sure that when `is_for_sale()` is called with an item
 with a `"price"` key it returns `True`.
@@ -222,7 +222,7 @@ with a `"price"` key it returns `True`.
 
 `````
 
-### B. Write `test_is_for_sale_without_price()`
+### B. Define `test_is_for_sale_without_price()`
 
 We want to make sure to test the opposite condition as well -- that when an
 item doesn't have a `"price"` key, `is_for_sale()` returns `False`.
@@ -252,12 +252,10 @@ item doesn't have a `"price"` key, `is_for_sale()` returns `False`.
 
 `````
 
-{{ source | format("test_game-11.3.py") }}
-
 Part 11.3: Test `error()`
 -------------------------
 
-{{ clear }}
+{{ testsource.format("11.3.py") }}
 
 {{ left }}
 
@@ -289,7 +287,7 @@ tests.
 
 ```
 
-### A. Write `test_error()`
+### A. Define `test_error()`
 
 With `is_for_sale()` we were able to check the value returned by the function.
 This is typically how functions and unit tests should be written.
@@ -327,12 +325,10 @@ capture the printed output. After any code that prints we can call the
 
 `````
 
-{{ source | format("test_game-11.4.py") }}
-
 Part 11.4: Test `debug()`
 -------------------------
 
-{{ clear }}
+{{ testsource.format("11.4.py") }}
 
 {{ left }}
 
@@ -352,7 +348,7 @@ This should be very similar to `test_error()`.
 
 {{ endcols }}
 
-### A. Write `test_debug()`
+### A. Define `test_debug()`
 
 1. `[ ]` Import the `debug` function.
 
@@ -386,12 +382,10 @@ This should be very similar to `test_error()`.
 
 `````
 
-{{ source | format("test_game-11.5.py") }}
-
 Part 11.5: Test `header()` and `write()`
 ----------------------------------------
 
-{{ clear }}
+{{ testsource.format("11.5.py") }}
 
 {{ left }}
 
@@ -437,12 +431,10 @@ Can you write tests for the `header()` and `write()` functions on your own?
 
 `````
 
-{{ source | format("test_game-11.6.py") }}
-
 Part 11.6: Test `inventory_change()`
 ------------------------------------
 
-{{ clear }}
+{{ testsource.format("11.6.py") }}
 
 {{ left }}
 
@@ -491,7 +483,7 @@ copy the relevant code into your test file.
 :caption: test_game.py
 ```
 
-### B. Write `test_inventory_change()`
+### B. Define `test_inventory_change()`
 
 Another rule of thumb when writing tests that deal with state is that the test
 should assume as little as possible.
@@ -528,7 +520,7 @@ So the first thing we'll do is add some fake data to `PLAYER["inventory"]`.
 
 `````
 
-### C. Write `test_teardown()`
+### C. Define `test_teardown()`
 
 In this test we'll make sure that the teardown code from
 [part A](#a-add-teardown) is working.
@@ -553,7 +545,7 @@ In this test we'll make sure that the teardown code from
 
 `````
 
-### D. Write `test_inventory_change_missing_key()`
+### D. Define `test_inventory_change_missing_key()`
 
 Now we'll add another test case for `inventory_change()`. This one will make
 sure that the function works even when the key is not already in the inventory
@@ -618,12 +610,10 @@ Can you add the next two tests on your own?
 
 `````
 
-{{ source | format("test_game-11.7.py") }}
-
 Part 11.7: Test `do_drop()`
 ---------------------------
 
-{{ clear }}
+{{ testsource.format("11.7.py") }}
 
 {{ left }}
 
@@ -659,7 +649,7 @@ in detail here.
 
 :::
 
-### A. Write `test_do_drop_no_args()`
+### A. Define `test_do_drop_no_args()`
 
 The first test case is very simple. We want to check that if the user didn't
 type anything, they get the appropriate error message.
@@ -693,7 +683,7 @@ type anything, they get the appropriate error message.
 
 `````
 
-### B. Write `test_do_drop_missing_item()`
+### B. Define `test_do_drop_missing_item()`
 
 This test will check that if the player tries to drop something they don't have
 in inventory, they they get the appropriate error message.
@@ -720,7 +710,7 @@ in inventory, they they get the appropriate error message.
 `````
 
 
-#### C. Write `test_do_drop()`
+#### C. Define `test_do_drop()`
 
 This test will successfully drop something, then make sure that it was added to
 the place and removed from inventory.

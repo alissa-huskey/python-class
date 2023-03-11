@@ -16,12 +16,10 @@ In this section we'll add the buy command, add the market, make sure that the
 buy and shop commands only work in the market, and make add information to the
 buy shop and examine commands.
 
-{{ source | format("adventure-10.1.py") }}
-
 Part 10.1: Add market
 ---------------------
 
-{{ clear }}
+{{ source | format("adventure-10.1.py") }}
 
 {{ left }}
 
@@ -96,12 +94,10 @@ than going through all items.
 
 `````
 
-{{ source | format("adventure-10.2.py") }}
-
 Part 10.2: Add `place_can()`
 ----------------------------
 
-{{ clear }}
+{{ source | format("adventure-10.2.py") }}
 
 {{ left }}
 
@@ -202,12 +198,10 @@ for actions instead of items.
 
 {{ endcols }}
 
-{{ source | format("adventure-10.3.py") }}
-
 Part 10.3: Add buy command
 --------------------------
 
-{{ clear }}
+{{ source | format("adventure-10.3.py") }}
 
 {{ left }}
 
@@ -481,12 +475,10 @@ Here we'll define the function that is called when the player types `"buy"`.
 {{ endcols }}
 
 
-{{ source | format("adventure-10.4.py") }}
-
 Part 10.4: Clean up the shop
 ----------------------------
 
-{{ clear }}
+{{ source | format("adventure-10.4.py") }}
 
 {{ leftcol | replace("col", "col-2") }}
 
@@ -658,7 +650,7 @@ def do_shop():
 
 `````
 
-### C. Show price in `do_examine()`
+### C. In `do_examine()`: show price
 
 Let's show the price to `do_examine()` if we're in the market (or somewhere else
 where we can shop).
@@ -683,7 +675,7 @@ where we can shop).
 
 `````
 
-### D. Show inventory quantity in `do_examine()`
+### D. In `do_examine()`: show inventory quantity
 
 1. `[ ]` Check if the player has the item in inventory by calling `player_has()` with the argument `name`. If so:
    * `[ ]` Print the quantity from the `PLAYER` inventory dictionary for `name`.

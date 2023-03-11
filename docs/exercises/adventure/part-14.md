@@ -14,12 +14,10 @@ Part 14: Dragons
 
 In this section we will add a cave with a three headed dragon and the command to pet them.
 
-{{ sources.format("14.1") }}
-
 Part 14.1: Add command
 ----------------------
 
-{{ clear }}
+{{ sources.format("14.1") }}
 
 {{ left }}
 
@@ -38,7 +36,7 @@ In this section we'll add the pet command.
 
 {{ endcols }}
 
-### A. In `test_game.py` write `test_do_pet()`
+### A. In `test_game.py` define `test_do_pet()`
 
 First we'll write the test which we expect to fail. It will just test that when
 you call `do_pet()` a debug message is printed.
@@ -78,7 +76,7 @@ you call `do_pet()` a debug message is printed.
 
 `````
 
-### B. In `adventure.py` write `do_pet()`
+### B. In `adventure.py` define `do_pet()`
 
 Now we'll add the `do_pet()` function to our game. It should print a debug
 message like {samp}`Trying to pet: `
@@ -108,7 +106,7 @@ message like {samp}`Trying to pet: `
 
 {{ endcols }}
 
-### C. In `adventure.py` in `main()`
+### C. In `adventure.py` modify `main()`
 
 Finally, add the code in `main()` so that when the player types `"pet"`, the
 `do_pet()` function will be called.
@@ -141,12 +139,10 @@ Finally, add the code in `main()` so that when the player types `"pet"`, the
 
 {{ endcols }}
 
-{{ sources.format("14.2") }}
-
 Part 14.2: Is petting allowed?
 ------------------------------
 
-{{ clear }}
+{{ sources.format("14.2") }}
 
 {{ left }}
 
@@ -166,7 +162,7 @@ In this section we'll check to make sure petting is allowed in the current place
 {{ endcols }}
 
 
-### A. In `test_game.py` write `test_do_pet_cant_pet()`
+### A. In `test_game.py` define `test_do_pet_cant_pet()`
 
 In this section we'll write a `test_do_pet_cant_pet()` function. It should
 check that if the player tries to pet something when in a place where they
@@ -228,7 +224,7 @@ an error message.
 
 `````
 
-### B. In `adventure.py` in `do_pet()`
+### B. In `adventure.py` modify `do_pet()`: can pet
 
 Now we'll modify `do_pet()` function to check that if the current place is not
 able to use the pet command (as defined by the place dictionary `"can"` list)
@@ -261,7 +257,7 @@ an error message will be printed and the function will return.
 
 {{ endcols }}
 
-### C. In `adventure.py` in `PLACES`
+### C. In `adventure.py` modify `PLACES`
 
 Now update the `PLACES` dictionary to add a cave where you can pet a dragon,
 and modify your other places so that you can get to it.
@@ -289,12 +285,10 @@ and modify your other places so that you can get to it.
 
 `````
 
-{{ sources.format("14.3") }}
-
 Part 14.3: Ensure args
 ----------------------
 
-{{ clear }}
+{{ sources.format("14.3") }}
 
 {{ left }}
 
@@ -314,7 +308,7 @@ print an error if they didn't.
 
 {{ endcols }}
 
-### A. In `test_game.py` add `test_do_pet_no_args()`
+### A. In `test_game.py` define `test_do_pet_no_args()`
 
 In this section we'll write a `test_do_pet_no_args()` function. It should check
 that if the player does not type anything after `"pet"`, they'll see an error
@@ -375,7 +369,7 @@ message.
 
 `````
 
-### B. In `adventure.py` in `do_pet()`
+### B. In `adventure.py` modify `do_pet()`: ensure args
 
 {{ left }}
 
@@ -402,12 +396,10 @@ message.
 
 `````
 
-{{ sources.format("14.4") }}
-
 Part 14.4: Ensure color
 -----------------------
 
-{{ clear }}
+{{ sources.format("14.4") }}
 
 This command is a little different from previous commands, because we want the
 player to be able to type a few different things.
@@ -448,7 +440,7 @@ Or even:
 So we'll need to make sure that the player typed something in addition to
 `"dragon"` and `"head"` and that it is a valid color.
 
-### A. In `test_game.py` add `test_do_pet_no_color()`
+### A. In `test_game.py` define `test_do_pet_no_color()`
 
 In this section we'll write a `test_do_pet_no_color()` test. It should
 check that the player typed something in addition to `"dragon"` and/or
@@ -509,7 +501,7 @@ check that the player typed something in addition to `"dragon"` and/or
 
 `````
 
-### B. In `adventure.py` in `do_pet()`
+### B. In `adventure.py` modify `do_pet()`: remove ignored args
 
 To support extra words like `"dragon"` and `"head"`, we're simply going to
 remove them from `args`.
@@ -544,7 +536,7 @@ Do this *before* the line with `if not args:`
 
 `````
 
-### C. In `test_game.py` add `test_do_pet_invalid_color()`
+### C. In `test_game.py` define `test_do_pet_invalid_color()`
 
 We'll add a new test `test_do_pet_invalid_color()` to make sure the color is
 valid. We'll use a global variable `adventure.COLORS` to store the list of
@@ -642,7 +634,7 @@ global variable `COLORS` and set it to a list with three colors in it.
 
 {{ endcols }}
 
-### E. In `adventure.py` in `do_pet()`
+### E. In `adventure.py` modify `do_pet()`: ensure valid color
 
 We can now assume that anything left in the `args` list is the color. We'll
 check that it is in the `COLORS` list, or print an error message if it is not.
@@ -663,6 +655,98 @@ check that it is in the `COLORS` list, or print an error message if it is not.
 :lineno-match:
 :pyobject: "do_pet"
 :emphasize-lines: "21-"
+:caption: adventure.py
+
+```
+
+`````
+
+Part 14.5: Pick a dragon
+------------------------
+
+{{ sources.format("14.5") }}
+
+...
+
+### A. In `adventure.py` modify `do_pet()`
+
+
+
+`````{dropdown} Need help?
+
+1. `[ ]` import the `random` module
+
+`````
+
+`````{dropdown} Code
+
+```{literalinclude} ../../../pythonclass/adventure/adventure-14.5.py
+:linenos:
+:lineno-match:
+:start-at: "import"
+:end-before: "clear_line"
+:emphasize-lines: "1"
+:caption: adventure.py
+
+```
+
+`````
+
+### B. At the top of `adventure.py`
+
+...
+
+`````{dropdown} Need help?
+
+1. `[ ]`
+1. `[ ]`
+1. `[ ]`
+1. `[ ]`
+1. `[ ]`
+    * `[ ]`
+1. `[ ]`
+    * `[ ]`
+
+`````
+
+`````{dropdown} Code
+
+```{literalinclude} ../../../pythonclass/adventure/adventure-14.5.py
+:linenos:
+:lineno-match:
+:start-at: "COLORS ="
+:end-before: "PLACES ="
+:emphasize-lines: "3-30"
+:caption: adventure.py
+
+```
+
+`````
+
+### C. In `adventure.py` modify `do_pet()`
+
+...
+
+`````{dropdown} Need help?
+
+1. `[ ]`
+1. `[ ]`
+1. `[ ]`
+1. `[ ]`
+1. `[ ]`
+    * `[ ]`
+1. `[ ]`
+    * `[ ]`
+
+`````
+
+`````{dropdown} Code
+
+```{literalinclude} ../../../pythonclass/adventure/adventure-14.5.py
+:linenos:
+:lineno-match:
+:pyobject: do_pet
+:emphasize-lines: "28-"
 :caption: adventure.py
 
 ```
