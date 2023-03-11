@@ -666,17 +666,119 @@ Part 14.5: Pick a dragon
 
 {{ sources.format("14.5") }}
 
-...
+In this section we are going to make a global list `MOODS` to store information
+about each dragon in dictionaries. We'll add more to this later, but for now
+each dictionary just needs a single key `"mood"` with a string for the dragon's
+mood, for example `"cheerful"`.
 
-### A. In `adventure.py` modify `do_pet()`
+Then when the player pets one of the dragon heads, randomly select one of the
+dragon dictionaries and print a debug message that says which dragon was
+selected.
 
+### A. In `test_game.py` define `test_do_pet_cheerful_dragon()`
 
+In this section we'll start a test for when the player pets a cheerful dragon
+head and simply assert that a debug message was printed.
+
+In order to make sure we always get the cheerful dragon in the test, we'll set
+`COLORS` and `MOODS` to only contain one color and dragon dictionary
+respectively.
+
+`````{dropdown} Need help?
+
+{{ left }}
+
+1\. *GIVEN: The player is in a place where they can pet a dragon*
+
+{{ br }}
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Change `PLAYER` to put the player in a fake place
+    * `[ ]` Add a matching fake places dictionary to `PLACES`. The `"can"` key
+            should be an empty list.
+   ```
+
+{{ newrow }}
+
+2\. *AND: There is one color of dragon heads*
+
+{{ br }}
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Assign `adventure.COLORS` to a list containing one color
+   ```
+
+{{ newrow }}
+
+3\. *AND: There is one a dragon*
+
+{{ br }}
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Assign `adventure.DRAGONS` to a list containing one dictionary. The
+            dictionary should have the key `"mood"` and the string `"cheerful"` for
+            the value.
+   ```
+
+{{ newrow }}
+
+4\. *WHEN: The player pets that head*
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Call `do_pet()` with a list that contains the same color that is in `COLORS`
+    * `[ ]` Assign the results of `capsys.readouterr().out` to the variable `output`
+   ```
+
+{{ newrow }}
+
+5\. *THEN: A debug message should print*
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` assert that an debug message like `"You picked the cheerful red dragon."` is in `output`
+   ```
+
+{{ endcols }}
+
+6\. Run your tests. They should fail.
+
+`````
+
+`````{dropdown} Code
+
+```{literalinclude} ../../../pythonclass/adventure/test_game-14.5.py
+:linenos:
+:lineno-match:
+:pyobject: "test_do_pet_cheerful_dragon"
+:caption: test_game.py
+
+```
+
+`````
+
+### B. At the top of `adventure.py`: import `random`
+
+In order to randomly select a dragon dictionary from `MOODS` we'll need to
+import the `random` module.
+
+{{ left }}
 
 `````{dropdown} Need help?
 
 1. `[ ]` import the `random` module
 
 `````
+
+{{ right }}
 
 `````{dropdown} Code
 
@@ -692,20 +794,22 @@ Part 14.5: Pick a dragon
 
 `````
 
-### B. At the top of `adventure.py`
+{{ endcols }}
 
-...
+### C. At the top of `adventure.py`: add `MOODS`
+
+Add the global variable `MOODS` and assign it to a list where each item is a
+dictionary containing information about each of the dragon heads. For now each
+dictionary will only have one key `"mood"`.
+
+Add three dragon dictionaries for the moods `"cheerful"`, `"grumpy"` and
+`"lonely"`.
 
 `````{dropdown} Need help?
 
-1. `[ ]`
-1. `[ ]`
-1. `[ ]`
-1. `[ ]`
-1. `[ ]`
-    * `[ ]`
-1. `[ ]`
-    * `[ ]`
+1. `[ ]` Create global variable `MOODS` and assign it to a list. The list should contain:
+    * `[ ]` Three dictionaries. Each dictionary should contain:
+      * `[ ]` The key `"mood"` and string with the mood of that dragon, ie `"cheerful"`
 
 `````
 
@@ -716,27 +820,25 @@ Part 14.5: Pick a dragon
 :lineno-match:
 :start-at: "COLORS ="
 :end-before: "PLACES ="
-:emphasize-lines: "3-30"
+:emphasize-lines: "3-7"
 :caption: adventure.py
 
 ```
 
 `````
 
-### C. In `adventure.py` modify `do_pet()`
+### D. In `adventure.py` modify `do_pet()`
 
-...
+In this section we'll randomly select one of the dragons from `MOODS` using the
+`random.choice()` function. We'll add the `"color"` that the player selected to
+that dictionary, then print a debug message with information about the dragon.
 
 `````{dropdown} Need help?
 
-1. `[ ]`
-1. `[ ]`
-1. `[ ]`
-1. `[ ]`
-1. `[ ]`
-    * `[ ]`
-1. `[ ]`
-    * `[ ]`
+1. `[ ]` Call `random.choice()` with the argument `MOODS` and assign it to the
+         variable `dragon`.
+1. `[ ]` Set `dragon["color"]` to `color`
+1. `[ ]` Print a debug message like {samp}`"You picked the {MOOD} {COLOR} dragon."`
 
 `````
 

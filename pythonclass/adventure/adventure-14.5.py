@@ -26,8 +26,8 @@ import textwrap
 
 from console import fg, fx
 from console.progress import ProgressBar
-from console.utils import clear_line
 from console.screen import sc
+from console.utils import clear_line
 
 WIDTH = 45
 
@@ -48,33 +48,10 @@ BAR = ProgressBar(
 COLORS = ["red", "black", "silver"]
 
 MOODS = [
-    {
-        "mood": "cheerful",
-        "treasure": (3, 15),
-        "message": "thinks you're adorable! He gives you $gems gems!"
-    },
-    {
-        "mood": "grumpy",
-        "damage": (-15, -3),
-        "message": (
-            "wants to be left alone. The heat from his mighty sigh "
-            "singes your hair, costing you $damage in health."
-        ),
-    },
-    {
-        "mood": "lonely",
-        "treasure": (8, 25),
-        "damage": (-25, -8),
-        "message": (
-            "is just SO happy to see you! He gives you a whopping "
-            "$gems gems! Then he hugs you, squeezes you, and calls "
-            "you George... costing you $damage in health."
-        )
-    },
+    {"mood": "cheerful"},
+    {"mood": "grumpy"},
+    {"mood": "lonely"},
 ]
-
-# placeholder -- maps colors to dragons
-DRAGONS = {}
 
 PLAYER = {
     "place": "home",
@@ -755,15 +732,11 @@ def do_pet(args):
         error("I don't see a dragon that looks like that.")
         return
 
-    # generate the DRAGONS dict and randomly assign each color to a dragon
-    global DRAGONS
-    if not DRAGONS:
-        random.shuffle(COLORS)
-        DRAGONS = dict(zip(COLORS, MOODS))
-
     # get the dragon info for this color
-    dragon = DRAGONS[color]
+    dragon = random.choice(MOODS)
     dragon["color"] = color
+
+    debug(f"You picked the {dragon['mood']} {dragon['color']} dragon.")
 
 
 def main():

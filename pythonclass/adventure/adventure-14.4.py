@@ -25,8 +25,8 @@ import textwrap
 
 from console import fg, fx
 from console.progress import ProgressBar
-from console.utils import clear_line
 from console.screen import sc
+from console.utils import clear_line
 
 WIDTH = 45
 

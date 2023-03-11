@@ -515,37 +515,24 @@ def test_do_pet_invalid_color(capsys):
 
 
 def test_do_pet_cheerful_dragon(capsys):
-    # GIVEN: The player has some amount of coins
-    adventure.PLAYER["inventory"] = {"gems": 10}
-
-    # AND: The player has a certain amount of health
-    adventure.PLAYER["health"] = 90
-
-    # AND: The player is in a place where they can pet a dragon
+    # GIVEN: The player is in a place where they can pet a dragon
     adventure.PLAYER["place"] = "cave"
     adventure.PLACES["cave"] = {
         "name": "A cave",
         "can": ["pet"]
     }
 
-    # AND: There is a dragon that gives treasure
-    adventure.DRAGONS = {
-        "red": {
-            "mood": "cheerful",
-            "treasure": (10, 10),
-            "message": "likes you and gives you $gems gems.",
-        }
-    }
+    # AND: There is one color of dragon heads
+    adventure.COLORS = ["red"]
 
-    # WHEN: the player pets that head
+    # AND: There is one dragon
+    adventure.MOODS = [
+        {"mood": "cheerful"}
+    ]
+
+    # WHEN: The player pets that head
     do_pet(["red", "dragon"])
     output = capsys.readouterr().out
 
-    # THEN: The player should get treasure
-    assert adventure.PLAYER["inventory"]["gems"] == 20
-
-    # AND: The player's health should be the same
-    assert adventure.PLAYER["health"] == 90
-
-    # AND: The player should see a message about what happened
-    assert "likes you" in output
+    # THEN: A debug message should print
+    assert "You picked the cheerful red dragon." in output
