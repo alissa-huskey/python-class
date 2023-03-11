@@ -34,9 +34,8 @@ navigate to and from there.
 :open:
 
 ```{screencast} assets/adventure-10.1.cast
-:poster: npt:0:04
+:poster: npt:0:03
 :speed: 0.5
-:rows: 16
 ```
 
 `````
