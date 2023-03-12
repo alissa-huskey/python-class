@@ -54,7 +54,7 @@ you call `do_pet()` a debug message is printed.
 
 `````
 
-`````{dropdown} test_do_pet()
+`````{dropdown} Code
 
 ```{literalinclude} ../../../pythonclass/adventure/test_game-14.1.py
 :linenos:
@@ -106,7 +106,7 @@ message like {samp}`Trying to pet: `
 
 {{ endcols }}
 
-### C. In `adventure.py` modify `main()`
+### C. In `adventure.py` modify `main()`: add delay
 
 Finally, add the code in `main()` so that when the player types `"pet"`, the
 `do_pet()` function will be called.
@@ -689,7 +689,7 @@ needs a single key `"mood"` with a string for the dragon's mood, for example
 
 {{ endcols }}
 
-Then when the player pets one of the dragon heads, randomly select one of the
+Then when the player pets one of the dragon's heads, randomly select one of the
 dragon dictionaries and print a debug message that says which dragon was
 selected.
 
@@ -817,7 +817,7 @@ import the `random` module.
 ### C. At the top of `adventure.py`: add `MOODS`
 
 Add the global variable `MOODS` and assign it to a list where each item is a
-dictionary containing information about each of the dragon heads. For now each
+dictionary containing information about each of the dragon's heads. For now each
 dictionary will only have one key `"mood"`.
 
 Add three dragon dictionaries for the moods `"cheerful"`, `"grumpy"` and
@@ -885,7 +885,7 @@ give the player gems.
 
 In order to do this we'll add a `"treasure"` key to some of the dragon
 dictionaries `MOODS`. The value will be a tuple containing the minimum and
-maximum possible gems that particular dragon might give.
+maximum possible gems that a particular dragon might give.
 
 {{ right }}
 
@@ -903,7 +903,6 @@ maximum possible gems that particular dragon might give.
 Then in the `do_pet()` function we'll retrieve the range of possible treasure
 from the dragon dictionary, randomly pick a number in that range, then add that
 amount the player gems and print a message to tell the player what happened.
-
 
 ### A. In `test_game.py` modify `test_do_pet_cheerful_dragon()`
 
@@ -1038,7 +1037,6 @@ Unpacking][arg-unpacking].
 
 `````
 
-[unpacking]: ../../lessons/in-depth/functions.html#part-3-unpacking-arguments
 
 `````{dropdown} Need help?
 
@@ -1061,7 +1059,7 @@ Unpacking][arg-unpacking].
 :linenos:
 :lineno-match:
 :pyobject: do_pet
-:emphasize-lines: "1"
+:emphasize-lines: "34-"
 :caption: adventure.py
 
 ```
@@ -1080,7 +1078,7 @@ cause the player damage.
 
 In order to do this we'll add a `"damage"` key to some of the dragon
 dictionaries `MOODS`. The value will be a tuple containing the minimum and
-maximum possible damage that particular dragon might cause.
+maximum possible damage that a particular dragon might cause.
 
 {{ right }}
 
@@ -1150,10 +1148,9 @@ sure that the player's health does not change.
 
 `````
 
-
 ### B. In `test_game.py` define `test_do_pet_cranky_dragon()`
 
-In this section we'll modify define the `test_do_pet_cranky_dragon()` test. It
+In this section we'll define the `test_do_pet_cranky_dragon()` test. It
 will be very similar to `test_do_pet_cheerful_dragon()`, except we'll add a
 dragon dictionary to `MOODS` that has a `"damage"` key with a tuple of two
 negative numbers and we'll assert that `PLAYER["health"]` has decreased.
@@ -1360,27 +1357,457 @@ message about it.
 
 `````
 
-Part 14.8: Messages
--------------------
+### E. In `test_game.py` define `test_do_pet_lonely_dragon()`
 
-### C. In `adventure.py` modify `MOODS`
+In this section we'll define the `test_do_pet_lonely_dragon()` test. It will be
+just like combining the test for a `"cheerful"` dragon and a `"cranky"` dragon.
 
-Modify the dragon dictionaries in the `MOODS` list to add `"damage"` tuples
-for the `"cheerful"` and `"lonely"` dragons.
+That is, the dragon dictionary in `MOODS` should have *both* `"treasure"` and
+`"damage"`.
 
 `````{dropdown} Need help?
 
-* `[ ]` Add a `"damage"` key to the single dictionary in `MOODS` list for the
-       `"cheerful"` and `"lonely"` dragons
-  * `[ ]` The key should be `"damage"`
-  * `[ ]` The value should a tuple with two numbers representing the
-          minimum and maximum amount of damage. ie `(10, 20)`.
+{{ left }}
+
+1\. *GIVEN: The player is in a place where they can pet a dragon*
+
+{{ br }}
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Change `PLAYER` to put the player in a fake place
+    * `[ ]` Add a matching fake place dictionary to `PLACES`. The `"can"` key
+            should be a list containing the string `"pet"`
+   ```
+
+{{ newrow }}
+
+2\. *AND: There is one color of dragon heads*
+
+{{ br }}
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Assign `adventure.COLORS` to a list containing one color
+   ```
+
+{{ newrow }}
+
+3\. *AND: There is one dragon who causes damage and gives treasure*
+
+{{ br }}
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Assign `adventure.DRAGONS` to a list containing one dictionary that contains:
+      * `[ ]` the key `"mood"` and the string `"cranky"` for the value.
+      * `[ ]` the key `"treasure"` and a tuple with two positive numbers for the value
+      * `[ ]` the key `"damage"` and a tuple with two negative numbers for the value
+   ```
+
+{{ newrow }}
+
+4\. *AND: The player has a certain amount of health*
+
+{{ br }}
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Set `"health"` in the `PLAYER` dictionary to a number greater than `0` and less than `100`
+   ```
+
+{{ newrow }}
+
+5\. *AND: The player has some gems*
+
+{{ br }}
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Set `"gems"` in the `PLAYER["inventory"]` dictionary to a positive number
+   ```
+
+{{ newrow }}
+
+6\. *WHEN: The player pets that head*
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Call `do_pet()` with a list that contains the same color that is in `COLORS`
+    * `[ ]` Assign the results of `capsys.readouterr().out` to the variable `output`
+   ```
+
+{{ newrow }}
+
+7\. *THEN: A debug message should print*
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` assert that an debug message like `"You picked the lonely red dragon."` is in `output`
+   ```
+
+{{ newrow }}
+
+8\. *AND: The player's health should be reduced*
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` assert that the `PLAYER["health"]` is less than it was before
+   ```
+
+{{ newrow }}
+
+9\. *AND: The player should get treasure*
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` assert that the `PLAYER["inventory"]["gems"]` is more than it was before
+   ```
+
+{{ newrow }}
+
+10\. *AND: The player should see a message about what happened*
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` assert that an debug message like samp`"caused you {DAMAGE}" damage` is in `output`
+   ```
+
+
+{{ endcols }}
+
+6\. Run your tests. They should pass.
+
+`````
+
+`````{dropdown} test_do_pet_lonely_dragon()
+
+```{literalinclude} ../../../pythonclass/adventure/test_game-14.7.py
+:linenos:
+:lineno-match:
+:pyobject: "test_do_pet_lonely_dragon"
+:caption: test_game.py
+
+```
+
+`````
+
+Part 14.8: Pet the dragon
+-------------------------
+
+{{ sources.format("14.8") }}
+
+{{ left }}
+
+In this section we'll add a description of what happens when you pet a dragon's
+head, pausing between each line to give it a sense of drama.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-14.8.cast
+:poster: npt:0:15
+```
+
+`````
+
+{{ endcols }}
+
+### A. At the top of `adventure.py`: import `sleep` from `time`
+
+In order to add a pause for effect in between lines in the action description,
+we'll need to import the `sleep` function from the `time` module.
+
+{{ left }}
+
+`````{dropdown} Need help?
+
+1. `[ ]` import the `sleep` function from the `time` module
+
+`````
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} ../../../pythonclass/adventure/adventure-14.8.py
+:linenos:
+:lineno-match:
+:start-at: "from time"
+:end-at: "ProgressBar"
+:emphasize-lines: "1"
+:caption: adventure.py
+
+```
+
+`````
+
+{{ endcols }}
+
+### B. At the top of `adventure.py`: add `DELAY`
+
+{{ left }}
+
+At the top of your script where your other global variables are, add a new
+global variable `DELAY` and set it to a number that will be the number of
+seconds to pause for effect.
+
+`````{dropdown} Need help?
+
+1. `[ ]` Set `DELAY` to a number like `1`
+
+`````
+
+{{ right }}
+
+`````{dropdown} DELAY
+
+```{literalinclude} ../../../pythonclass/adventure/adventure-14.8.py
+:linenos:
+:lineno-match:
+:start-at: "WIDTH ="
+:end-before: "ProgressBar"
+:emphasize-lines: "7"
+:caption: adventure.py
+
+```
+
+`````
+
+{{ endcols }}
+
+### C. Modify `do_pet()`: add action description with delay
+
+In this section we're going to add a description of what happens when the player
+pets the dragon's head. To make it a little more exciting, we'll split the
+description onto three strings in a tuple. Something like:
+
+* `"You slowly creep forward..."`
+* `"...gingerly reach out your hand..."`
+* {samp}`"...and gently pat the dragon's {COLOR} head."`
+
+Before printing the messages about gems and damage, we'll iterate over the
+`sentences` tuple. In each iteration we'll print a blank line,
+print the string, and call `sleep()` with the argument `DELAY`.
+
+Finally we'll print one blank line at the end.
+
+`````{dropdown} Need help?
+
+1. `[ ]` Create a tuple (or list) assigned to `sentences` that contains the
+         three strings from above.
+1. `[ ]` **Above** the messages about gems and damage are printed, use a for
+         loop to iterate over `sentences` with the variable `text`.
+         In each iteration:
+    * `[ ]` Print a blank line.
+    * `[ ]` Use the `write()` function to print `text`.
+    * `[ ]` Call `sleep()` with the argument `DELAY`.
+1. `[ ]` Print a blank line.
+1. `[ ]` Play your game and see how it looks!
+
+`````
+
+`````{dropdown} do_pet()
+
+```{literalinclude} ../../../pythonclass/adventure/adventure-14.8.py
+:linenos:
+:lineno-match:
+:start-at: "# get the dragon info"
+:end-before: "def main"
+:emphasize-lines: "21-32"
+:caption: "adventure.py: `do_pet()`"
+
+```
+
+`````
+
+### D. At the top of `test_game.py`: set `adventure.DELAY`
+
+If you were to run your tests now, you would find that all of the
+`test_do_pet_*` tests run an awful lot slower. That's because `do_pet()` calls
+`sleep()` in the tests just like it does in the game.
+
+To avoid this problem, simply set `adventure.DELAY` to `0` near the top of your
+test file. Unlike the changes that we make in a *GIVEN* portion of a test, we
+only need to set `adventure.DELAY` once. Put it just under where you assign all
+of the `*_STATE` global variables.
+
+{{ left }}
+
+`````{dropdown} Need help?
+
+1. `[ ]` Find where you assign `PLAYER_STATE`, `DEBUG_STATE`, etc. Just under
+         that set `adventure.DELAY` to `0`
+1. `[ ]` Run your tests. They should pass and be as fast as usual.
+
+`````
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} ../../../pythonclass/adventure/test_game-14.8.py
+:linenos:
+:lineno-match:
+:pyobject: setup_module
+:emphasize-lines: "9"
+:caption: test_game.py
+
+```
+
+`````
+
+{{ endcols }}
+
+Part 14.9: Better messages
+--------------------------
+
+{{ sources.format("14.9") }}
+
+{{ left }}
+
+In this section we'll make nicer and more detailed messages for when each
+dragon causes damage or gives treasure.
+
+To do this we'll add a `"message"` key to each dragon dictionary in `MOODS`,
+which will have the end of the message for a value.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-14.9.cast
+:poster: npt:0:14
+```
+
+`````
+
+{{ endcols }}
+
+For example, say we want the message to be:
+
+`"The happy green dragon thinks you're great and gives you 100 gems!"`
+
+Then the `"message"` value would be:
+
+`"thinks you're great and gives you {gems} gems!"`
+
+It's important to note that value should contain the f-string style variables
+`{gems}` and/or `{damage}`, **but it should not actually be an f-string**.
+
+That way we can attach it to the beginning of the message in `do_pet()`, then
+call the `.format()` method on the resulting string to fill in all the
+variable values.
+
+### A. Modify `test_do_pet_*_dragon()`: add `"message"` to `MOODS`
+
+In this section we'll modify the three `test_do_pet_*_dragon()` tests to add
+the `"message"` key to the single dictionary in `MOODS` with the value bing a
+string that contains the f-string style variables `{gems}` and/or `{damage}`.
+
+`````{dropdown} Need help?
+
+{{ left }}
+
+1\. Modify *AND: There is one dragon who gives you treasure*
+
+{{ br }}
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Add the key `"message"` to the single dictionary in `MOODS` with the value:
+      * `[ ]` A string that is **not** an f-string but contains the f-string
+              style variables `{gems}` and/or `{damage}`.
+
+         It should be the part of the message that comes after
+         {samp}`"The {MOOD} {COLOR} dragon "` and describes what the
+         dragon does after the player pets it.
+
+   ```
+
+{{ endcols  }}
+
+2\. Run your tests. They should fail.
+
+`````
+
+`````{dropdown} test_do_pet_cheerful_dragon()
+
+```{literalinclude} ../../../pythonclass/adventure/test_game-14.9.py
+:linenos:
+:lineno-match:
+:start-at: "def test_do_pet_cheerful_dragon"
+:end-at: '}]'
+:emphasize-lines: "16"
+:caption: test_game.py
+
+```
+
+`````
+
+`````{dropdown} test_do_pet_cranky_dragon()
+
+```{literalinclude} ../../../pythonclass/adventure/test_game-14.9.py
+:linenos:
+:lineno-match:
+:start-at: "def test_do_pet_cranky_dragon"
+:end-at: '}]'
+:emphasize-lines: "16"
+:caption: test_game.py
+
+```
+
+`````
+
+`````{dropdown} test_do_pet_lonely_dragon()
+
+```{literalinclude} ../../../pythonclass/adventure/test_game-14.9.py
+:linenos:
+:lineno-match:
+:start-at: "def test_do_pet_lonely_dragon"
+:end-at: '}]'
+:emphasize-lines: "17"
+:caption: test_game.py
+
+```
+
+`````
+
+### B. In `adventure.py` modify `MOODS`: add `"message"`
+
+Modify the dragon dictionaries in the `MOODS` list to add `"message"` string
+for all three dragons.
+
+`````{dropdown} Need help?
+
+* `[ ]` Add the key `"message"` to the all three dragon dictionaries in
+        `MOODS` with the value:
+  * `[ ]` A string that is **not** an f-string but contains the f-string
+          style variables `{gems}` and/or `{damage}`.
+
+      It should be the part of the message that comes after
+      {samp}`"The {MOOD} {COLOR} dragon "` and describes what the
+      dragon does after the player pets it.
 
 `````
 
 `````{dropdown} MOODS
 
-```{literalinclude} ../../../pythonclass/adventure/adventure-14.8.py
+```{literalinclude} ../../../pythonclass/adventure/adventure-14.9.py
 :linenos:
 :lineno-match:
 :start-at: "MOODS ="
@@ -1392,39 +1819,56 @@ for the `"cheerful"` and `"lonely"` dragons.
 
 `````
 
-### C. At the top of `adventure.py`: import `Template` from `string`
+### C. Modify `do_pet()`: print the message
 
+`````{margin}
 
-`````{dropdown} Need help?
+```{seealso}
 
-* `[ ]`
-
-`````
-
-`````{dropdown} MOODS
-
-```{literalinclude} ../../../pythonclass/adventure/adventure-14.8.py
-:linenos:
-:lineno-match:
-:start-at: "MOODS ="
-:end-at: "]"
-:emphasize-lines: "4, 11"
-:caption: adventure.py
+* [String Formatting > str.format() method][str-format]
+* [Functions > Unpacking > Mappings][kwarg-unpacking] -- for how to pass all dictionary key value pairs as keyword arguments to a function see
 
 ```
 
 `````
 
----
+Now we'll combine the beginning of the message
+`"The {mood} {color} dragon "` with the string from `dragon["message"]`.
 
-1. `[ ]`
-1. `[ ]`
-1. `[ ]`
-1. `[ ]`
-1. `[ ]`
-    * `[ ]`
-1. `[ ]`
-    * `[ ]`
+Since the `dragon` dictionary already has the information about `mood`,
+`color`, and `gems` and/or `damage`, we can call `.format()` on the resulting
+string and pass the whole dictionary as keyword arguments. That will fill in
+all those variables with their corresponding values from the dictionary.
 
+Then we can replace the lines where we print the two old messages with a line
+printing the new message, wrapped.
+
+`````{dropdown} Need help?
+
+1. `[ ]` Remove the lines where you print the messages about gems and damage.
+1. `[ ]` Concatonate the string `"The {mood} {color} dragon "` with
+         `dragon["message"]` and assign the result to the variable `tpl`.
+1. `[ ]` Call the `.format()` method on `tpl` and pass all key-value pairs from
+         the `dragon` dictionary as keyword arguments. Assign the result to `text`.
+1. `[ ]` Use the `wrap()` function to print `text`.
+1. `[ ]` Run your tests. They should pass.
+
+`````
+
+`````{dropdown} do_pet()
+
+```{literalinclude} ../../../pythonclass/adventure/adventure-14.9.py
+:linenos:
+:lineno-match:
+:start-at: "# get the dragon info"
+:end-at: "wrap"
+:emphasize-lines: "34-"
+:caption: "adventure.py: `do_pet()`"
+
+```
+
+`````
 
 [arg-unpacking]: ../../lessons/in-depth/functions.html#part-3-unpacking-arguments
+[kwarg-unpacking]: ../../lessons/in-depth/functions.html#part-3-3-mappings
+[str-format]: ../../lessons/string-formatting-part-2.html#the-str-format-method

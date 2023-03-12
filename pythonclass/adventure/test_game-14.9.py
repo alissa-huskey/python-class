@@ -530,7 +530,7 @@ def test_do_pet_cheerful_dragon(capsys):
     adventure.MOODS = [{
         "mood": "cheerful",
         "treasure": (10, 10),
-        "message": "likes you and gives you $gems gems.",
+        "message": "likes you and gives you {gems} gems.",
     }]
 
     # AND: The player has some gems
@@ -553,7 +553,7 @@ def test_do_pet_cheerful_dragon(capsys):
     assert adventure.PLAYER["health"] == 90
 
     # AND: The player should see a message about what happened
-    assert "likes you" in output
+    assert "10 gems" in output
 
 
 def test_do_pet_cranky_dragon(capsys):
@@ -571,7 +571,7 @@ def test_do_pet_cranky_dragon(capsys):
     adventure.MOODS = [{
         "mood": "cranky",
         "damage": (-10, -10),
-        "message": "pushes you away causing you",
+        "message": "pushes you away causing you {damage} damage",
     }]
 
     # AND: The player has a certain amount of health
@@ -594,7 +594,7 @@ def test_do_pet_cranky_dragon(capsys):
     assert adventure.PLAYER["inventory"]["gems"] == 10
 
     # AND: The player should see a message about what happened
-    assert "pushes you away" in output
+    assert "-10 damage" in output
 
 
 def test_do_pet_lonely_dragon(capsys):
@@ -613,7 +613,7 @@ def test_do_pet_lonely_dragon(capsys):
         "mood": "lonely",
         "damage": (-10, -10),
         "treasure": (20, 20),
-        "message": "squeezes you",
+        "message": "throws {gems} gems at you causing you {damage} damage",
     }]
 
     # AND: The player has a certain amount of health
@@ -636,4 +636,5 @@ def test_do_pet_lonely_dragon(capsys):
     assert adventure.PLAYER["inventory"]["gems"] > 10
 
     # AND: The player should see a message about what happened
-    assert "squeezes you" in output
+    assert "20 gems" in output
+    assert "-10 damage" in output
