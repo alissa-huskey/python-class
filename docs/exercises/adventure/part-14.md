@@ -54,7 +54,7 @@ you call `do_pet()` a debug message is printed.
 
 `````
 
-`````{dropdown} Code
+`````{dropdown} test_do_pet()
 
 ```{literalinclude} ../../../pythonclass/adventure/test_game-14.1.py
 :linenos:
@@ -93,7 +93,7 @@ message like {samp}`Trying to pet: `
 
 {{ right }}
 
-`````{dropdown} Code
+`````{dropdown} do_pet()
 
 ```{literalinclude} ../../../pythonclass/adventure/adventure-14.1.py
 :linenos:
@@ -123,7 +123,7 @@ Finally, add the code in `main()` so that when the player types `"pet"`, the
 
 {{ right }}
 
-`````{dropdown} Code
+`````{dropdown} main()
 
 ```{literalinclude} ../../../pythonclass/adventure/adventure-14.1.py
 :linenos:
@@ -181,7 +181,7 @@ an error message.
 
    ```{dropdown} ...
     * `[ ]` Change `PLAYER` to put the player in a fake place
-    * `[ ]` Add a matching fake places dictionary to `PLACES`. The `"can"` key
+    * `[ ]` Add a matching fake place dictionary to `PLACES`. The `"can"` key
             should be an empty list.
    ```
 
@@ -212,7 +212,7 @@ an error message.
 
 `````
 
-`````{dropdown} Code
+`````{dropdown} test_do_pet_cant_pet()
 
 ```{literalinclude} ../../../pythonclass/adventure/test_game-14.2.py
 :linenos:
@@ -242,7 +242,7 @@ an error message will be printed and the function will return.
 
 {{ right }}
 
-`````{dropdown} Code
+`````{dropdown} do_pet()
 
 ```{literalinclude} ../../../pythonclass/adventure/adventure-14.2.py
 :linenos:
@@ -271,7 +271,7 @@ and modify your other places so that you can get to it.
 
 `````
 
-`````{dropdown} Code
+`````{dropdown} PLACES
 
 ```{literalinclude} ../../../pythonclass/adventure/adventure-14.2.py
 :linenos:
@@ -326,8 +326,8 @@ message.
 
    ```{dropdown} ...
     * `[ ]` Change `PLAYER` to put the player in a fake place
-    * `[ ]` Add a matching fake places dictionary to `PLACES`. The `"can"` key
-            should be an empty list.
+    * `[ ]` Add a matching fake place dictionary to `PLACES`. The `"can"` key
+            should be a list containing the string `"pet"`
    ```
 
 {{ newrow }}
@@ -357,7 +357,7 @@ message.
 
 `````
 
-`````{dropdown} Code
+`````{dropdown} test_do_pet_no_args()
 
 ```{literalinclude} ../../../pythonclass/adventure/test_game-14.3.py
 :linenos:
@@ -383,7 +383,7 @@ message.
 
 {{ right }}
 
-`````{dropdown} Code
+`````{dropdown} do_pet()
 
 ```{literalinclude} ../../../pythonclass/adventure/adventure-14.3.py
 :linenos:
@@ -458,8 +458,8 @@ check that the player typed something in addition to `"dragon"` and/or
 
    ```{dropdown} ...
     * `[ ]` Change `PLAYER` to put the player in a fake place
-    * `[ ]` Add a matching fake places dictionary to `PLACES`. The `"can"` key
-            should be an empty list.
+    * `[ ]` Add a matching fake place dictionary to `PLACES`. The `"can"` key
+            should be a list containing the string `"pet"`
    ```
 
 {{ newrow }}
@@ -489,7 +489,7 @@ check that the player typed something in addition to `"dragon"` and/or
 
 `````
 
-`````{dropdown} Code
+`````{dropdown} test_do_pet_no_color()
 
 ```{literalinclude} ../../../pythonclass/adventure/test_game-14.4.py
 :linenos:
@@ -522,7 +522,7 @@ Do this *before* the line with `if not args:`
 
 `````
 
-`````{dropdown} Code
+`````{dropdown} do_pet()
 
 ```{literalinclude} ../../../pythonclass/adventure/adventure-14.4.py
 :linenos:
@@ -566,7 +566,7 @@ valid colors.
 
    ```{dropdown} ...
     * `[ ]` Change `PLAYER` to put the player in a fake place
-    * `[ ]` Add a matching fake places dictionary to `PLACES`. The `"can"` key
+    * `[ ]` Add a matching fake place dictionary to `PLACES`. The `"can"` key
             should be an empty list.
    ```
 
@@ -597,7 +597,7 @@ valid colors.
 
 `````
 
-`````{dropdown} Code
+`````{dropdown} test_do_pet_invalid_color()
 
 ```{literalinclude} ../../../pythonclass/adventure/test_game-14.4.py
 :linenos:
@@ -618,7 +618,7 @@ global variable `COLORS` and set it to a list with three colors in it.
 
 {{ right }}
 
-`````{dropdown} Code
+`````{dropdown} COLORS
 
 ```{literalinclude} ../../../pythonclass/adventure/adventure-14.4.py
 :linenos:
@@ -648,7 +648,7 @@ check that it is in the `COLORS` list, or print an error message if it is not.
 
 `````
 
-`````{dropdown} Code
+`````{dropdown} do_pet()
 
 ```{literalinclude} ../../../pythonclass/adventure/adventure-14.4.py
 :linenos:
@@ -714,8 +714,8 @@ respectively.
 
    ```{dropdown} ...
     * `[ ]` Change `PLAYER` to put the player in a fake place
-    * `[ ]` Add a matching fake places dictionary to `PLACES`. The `"can"` key
-            should be an empty list.
+    * `[ ]` Add a matching fake place dictionary to `PLACES`. The `"can"` key
+            should be a list containing the string `"pet"`
    ```
 
 {{ newrow }}
@@ -771,7 +771,7 @@ respectively.
 
 `````
 
-`````{dropdown} Code
+`````{dropdown} test_do_pet_cheerful_dragon()
 
 ```{literalinclude} ../../../pythonclass/adventure/test_game-14.5.py
 :linenos:
@@ -831,7 +831,7 @@ Add three dragon dictionaries for the moods `"cheerful"`, `"grumpy"` and
 
 `````
 
-`````{dropdown} Code
+`````{dropdown} COLORS
 
 ```{literalinclude} ../../../pythonclass/adventure/adventure-14.5.py
 :linenos:
@@ -860,7 +860,7 @@ that dictionary, then print a debug message with information about the dragon.
 
 `````
 
-`````{dropdown} Code
+`````{dropdown} do_pet()
 
 ```{literalinclude} ../../../pythonclass/adventure/adventure-14.5.py
 :linenos:
@@ -976,7 +976,7 @@ increased.
 
 `````
 
-`````{dropdown} Code
+`````{dropdown} test_do_pet_cheerful_dragon()
 
 ```{literalinclude} ../../../pythonclass/adventure/test_game-14.6.py
 :linenos:
@@ -1004,7 +1004,7 @@ for the `"cheerful"` and `"lonely"` dragons.
 
 `````
 
-`````{dropdown} Code
+`````{dropdown} MOODS
 
 ```{literalinclude} ../../../pythonclass/adventure/adventure-14.6.py
 :linenos:
@@ -1032,7 +1032,7 @@ message about it.
 ```{seealso}
 
 For how to pass all iterable items as arguments to a function see [Functions >
-Unpacking][unpacking].
+Unpacking][arg-unpacking].
 
 ```
 
@@ -1055,19 +1055,365 @@ Unpacking][unpacking].
 
 `````
 
-`````{dropdown} Code
+`````{dropdown} do_pet()
 
 ```{literalinclude} ../../../pythonclass/adventure/adventure-14.6.py
 :linenos:
 :lineno-match:
 :pyobject: do_pet
-:emphasize-lines: "34-"
+:emphasize-lines: "1"
 :caption: adventure.py
 
 ```
 
 `````
 
+Part 14.7: Damage
+-----------------
+
+{{ sources.format("14.7") }}
+
+{{ left }}
+
+In this section we're going to write the code so that some of the dragons will
+cause the player damage.
+
+In order to do this we'll add a `"damage"` key to some of the dragon
+dictionaries `MOODS`. The value will be a tuple containing the minimum and
+maximum possible damage that particular dragon might cause.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-14.7.cast
+:poster: npt:0:10
+```
+
+`````
+
+{{ endcols }}
+
+Then in the `do_pet()` function we'll retrieve the range of possible damage
+from the dragon dictionary, randomly pick a number in that range, then subtract
+that amount the player health and print a message to tell the player what
+happened.
+
+### A. In `test_game.py` modify `test_do_pet_cheerful_dragon()`
+
+In this section we'll modify the `test_do_pet_cheerful_dragon()` test to make
+sure that the player's health does not change.
+
+`````{dropdown} Need help?
+
+{{ left }}
+
+1\. After *WHEN* add *AND: The player has a certain amount of health*
+
+{{ br }}
+
+{{ right }}
+
+   ```{dropdown} ...
+
+    * `[ ]` Set "health" value in the `PLAYER` dictionary to a number like `90`
+
+   ```
+
+{{ newrow }}
+
+2\. After *THEN* add *AND: The player's health should be the same*
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Assert that `PLAYER["health"]` is the same as it was before
+   ```
+
+{{ endcols }}
+
+3\. Run your tests. They should pass.
+
+`````
+
+`````{dropdown} test_do_pet_cheerful_dragon()
+
+```{literalinclude} ../../../pythonclass/adventure/test_game-14.7.py
+:linenos:
+:lineno-match:
+:pyobject: "test_do_pet_cheerful_dragon"
+:emphasize-lines: "21-22, 34-35"
+:caption: test_game.py
+
+```
+
+`````
+
+
+### B. In `test_game.py` define `test_do_pet_cranky_dragon()`
+
+In this section we'll modify define the `test_do_pet_cranky_dragon()` test. It
+will be very similar to `test_do_pet_cheerful_dragon()`, except we'll add a
+dragon dictionary to `MOODS` that has a `"damage"` key with a tuple of two
+negative numbers and we'll assert that `PLAYER["health"]` has decreased.
+
+`````{dropdown} Need help?
+
+{{ left }}
+
+1\. *GIVEN: The player is in a place where they can pet a dragon*
+
+{{ br }}
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Change `PLAYER` to put the player in a fake place
+    * `[ ]` Add a matching fake place dictionary to `PLACES`. The `"can"` key
+            should be a list containing the string `"pet"`
+   ```
+
+{{ newrow }}
+
+2\. *AND: There is one color of dragon heads*
+
+{{ br }}
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Assign `adventure.COLORS` to a list containing one color
+   ```
+
+{{ newrow }}
+
+3\. *AND: There is one dragon who causes damage*
+
+{{ br }}
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Assign `adventure.DRAGONS` to a list containing one dictionary that contains:
+      * `[ ]` the key `"mood"` and the string `"cranky"` for the value.
+      * `[ ]` the key `"damage"` and a tuple with two negative numbers for the value
+   ```
+
+{{ newrow }}
+
+4\. *AND: The player has a certain amount of health*
+
+{{ br }}
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Set `"health"` in the `PLAYER` dictionary to a number greater than `0` and less than `100`
+   ```
+
+{{ newrow }}
+
+5\. *AND: The player has some gems*
+
+{{ br }}
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Set `"gems"` in the `PLAYER["inventory"]` dictionary to a positive number
+   ```
+
+{{ newrow }}
+
+6\. *WHEN: The player pets that head*
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Call `do_pet()` with a list that contains the same color that is in `COLORS`
+    * `[ ]` Assign the results of `capsys.readouterr().out` to the variable `output`
+   ```
+
+{{ newrow }}
+
+7\. *THEN: A debug message should print*
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` assert that an debug message like `"You picked the cranky red dragon."` is in `output`
+   ```
+
+{{ newrow }}
+
+8\. *AND: The player's health should be reduced*
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` assert that the `PLAYER["health"]` is less than it was before
+   ```
+
+{{ newrow }}
+
+9\. *AND: The player's gems should not be changed*
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` assert that the `PLAYER["inventory"]["gems"]` is the same as it was before
+   ```
+
+{{ newrow }}
+
+10\. *AND: The player should see a message about what happened*
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` assert that an debug message like samp`"caused you {DAMAGE}" damage` is in `output`
+   ```
+
+
+{{ endcols }}
+
+6\. Run your tests. They should fail.
+
+`````
+
+`````{dropdown} test_do_pet_cranky_dragon()
+
+```{literalinclude} ../../../pythonclass/adventure/test_game-14.7.py
+:linenos:
+:lineno-match:
+:pyobject: "test_do_pet_cranky_dragon"
+:caption: test_game.py
+
+```
+
+`````
+
+### C. In `adventure.py` modify `MOODS`
+
+Modify the dragon dictionaries in the `MOODS` list to add `"damage"` tuples
+for the `"cranky"` and `"lonely"` dragons.
+
+`````{dropdown} Need help?
+
+* `[ ]` Add a `"damage"` key to the single dictionary in `MOODS` list for the
+       `"cranky"` and `"lonely"` dragons
+  * `[ ]` The key should be `"damage"`
+  * `[ ]` The value should a tuple with two numbers representing the
+          minimum and maximum amount of damage. ie `(-20, -10)`.
+
+`````
+
+`````{dropdown} MOODS
+
+```{literalinclude} ../../../pythonclass/adventure/adventure-14.7.py
+:linenos:
+:lineno-match:
+:start-at: "MOODS ="
+:end-at: "]"
+:emphasize-lines: "8, 13"
+:caption: adventure.py
+
+```
+
+`````
+
+### D. In `adventure.py` modify `do_pet()`
+
+In this section we'll retrieve the range of possible damage from the `dragon`
+dictionary (if the `"damage"` key exists) then use the two numbers in the
+`random.randint()` function to get the number of gems to give the player.
+
+Then we'll add that number of gems to the player's inventory and print a
+message about it.
+
+`````{dropdown} Need help?
+
+1. `[ ]` Use the `.get()` method on the `dragon` dictionary to get the value
+         for the `"damage"` key and assign the result to `possible_damage`.
+         Since not all dragons will have the `"damage"` key, use the second
+         argument in `.get()` to set the default value to `(0, 0)`.
+1. `[ ]` Pass the minimum and maximum numbers from `possible_damage` as
+         arguments to the `random.randint()` function and assign the results to
+         `dragon["damage"]`.
+1. `[ ]` Use the `health_change()` function to subtract `dragon["damage"]` from the
+         players health.
+1. `[ ]` Print a message like: {samp}`"The {MOOD} dragon caused you {DAMAGE} damage."`
+
+`````
+
+`````{dropdown} do_pet()
+
+```{literalinclude} ../../../pythonclass/adventure/adventure-14.7.py
+:linenos:
+:lineno-match:
+:pyobject: do_pet
+:emphasize-lines: "38-40, 45-46, 52-"
+:caption: adventure.py
+
+```
+
+`````
+
+Part 14.8: Messages
+-------------------
+
+### C. In `adventure.py` modify `MOODS`
+
+Modify the dragon dictionaries in the `MOODS` list to add `"damage"` tuples
+for the `"cheerful"` and `"lonely"` dragons.
+
+`````{dropdown} Need help?
+
+* `[ ]` Add a `"damage"` key to the single dictionary in `MOODS` list for the
+       `"cheerful"` and `"lonely"` dragons
+  * `[ ]` The key should be `"damage"`
+  * `[ ]` The value should a tuple with two numbers representing the
+          minimum and maximum amount of damage. ie `(10, 20)`.
+
+`````
+
+`````{dropdown} MOODS
+
+```{literalinclude} ../../../pythonclass/adventure/adventure-14.8.py
+:linenos:
+:lineno-match:
+:start-at: "MOODS ="
+:end-at: "]"
+:emphasize-lines: "5, 10-13, 19-23"
+:caption: adventure.py
+
+```
+
+`````
+
+### C. At the top of `adventure.py`: import `Template` from `string`
+
+
+`````{dropdown} Need help?
+
+* `[ ]`
+
+`````
+
+`````{dropdown} MOODS
+
+```{literalinclude} ../../../pythonclass/adventure/adventure-14.8.py
+:linenos:
+:lineno-match:
+:start-at: "MOODS ="
+:end-at: "]"
+:emphasize-lines: "4, 11"
+:caption: adventure.py
+
+```
+
+`````
 
 ---
 
@@ -1079,3 +1425,6 @@ Unpacking][unpacking].
     * `[ ]`
 1. `[ ]`
     * `[ ]`
+
+
+[arg-unpacking]: ../../lessons/in-depth/functions.html#part-3-unpacking-arguments

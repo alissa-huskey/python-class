@@ -54,10 +54,12 @@ MOODS = [
     },
     {
         "mood": "grumpy",
+        "damage": (-15, -3),
     },
     {
         "mood": "lonely",
         "treasure": (8, 25),
+        "damage": (-25, -8),
     },
 ]
 
@@ -750,12 +752,23 @@ def do_pet(args):
     possible_treasure = dragon.get("treasure", (0, 0))
     dragon["gems"] = random.randint(*possible_treasure)
 
+    # calculate the damage
+    possible_damage = dragon.get("damage", (0, 0))
+    dragon["damage"] = random.randint(*possible_damage)
+
     # add the treasure to the players inventory
     inventory_change("gems", dragon["gems"])
 
+    # reduce health
+    health_change(dragon["damage"])
+
     # print a message about gems
     if dragon["gems"]:
-        write(f"The {dragon['mood']} gave you {dragon['gems']} gems.")
+        write(f"The {dragon['mood']} dragon gives you {dragon['gems']} gems.")
+
+    # print a message about damage
+    if dragon["damage"]:
+        write(f"The {dragon['mood']} dragon causes you {dragon['damage']} damage.")
 
 
 def main():
