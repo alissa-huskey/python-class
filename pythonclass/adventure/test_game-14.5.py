@@ -526,7 +526,7 @@ def test_do_pet_cheerful_dragon(capsys):
     adventure.COLORS = ["red"]
 
     # AND: There is one dragon
-    adventure.MOODS = [
+    adventure.DRAGONS = [
         {"mood": "cheerful"}
     ]
 

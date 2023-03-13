@@ -671,7 +671,7 @@ Part 14.5: Pick a dragon
 In this section we'll randomly pick a dragon mood and print a debug message
 about it.
 
-We'll make a global list `MOODS` to store information about each dragon in
+We'll make a global list `DRAGONS` to store information about each dragon in
 dictionaries. We'll add more to this later, but for now each dictionary just
 needs a single key `"mood"` with a string for the dragon's mood, for example
 `"cheerful"`.
@@ -699,7 +699,7 @@ In this section we'll start a test for when the player pets a cheerful dragon
 head and simply assert that a debug message was printed.
 
 In order to make sure we always get the cheerful dragon in the test, we'll set
-`COLORS` and `MOODS` to only contain one color and dragon dictionary
+`COLORS` and `DRAGONS` to only contain one color and dragon dictionary
 respectively.
 
 `````{dropdown} Need help?
@@ -785,7 +785,7 @@ respectively.
 
 ### B. At the top of `adventure.py`: import `random`
 
-In order to randomly select a dragon dictionary from `MOODS` we'll need to
+In order to randomly select a dragon dictionary from `DRAGONS` we'll need to
 import the `random` module.
 
 {{ left }}
@@ -814,9 +814,9 @@ import the `random` module.
 
 {{ endcols }}
 
-### C. At the top of `adventure.py`: add `MOODS`
+### C. At the top of `adventure.py`: add `DRAGONS`
 
-Add the global variable `MOODS` and assign it to a list where each item is a
+Add the global variable `DRAGONS` and assign it to a list where each item is a
 dictionary containing information about each of the dragon's heads. For now each
 dictionary will only have one key `"mood"`.
 
@@ -825,7 +825,7 @@ Add three dragon dictionaries for the moods `"cheerful"`, `"grumpy"` and
 
 `````{dropdown} Need help?
 
-1. `[ ]` Create global variable `MOODS` and assign it to a list. The list should contain:
+1. `[ ]` Create global variable `DRAGONS` and assign it to a list. The list should contain:
     * `[ ]` Three dictionaries. Each dictionary should contain:
       * `[ ]` The key `"mood"` and string with the mood of that dragon, ie `"cheerful"`
 
@@ -847,13 +847,13 @@ Add three dragon dictionaries for the moods `"cheerful"`, `"grumpy"` and
 
 ### D. In `adventure.py` modify `do_pet()`
 
-In this section we'll randomly select one of the dragons from `MOODS` using the
+In this section we'll randomly select one of the dragons from `DRAGONS` using the
 `random.choice()` function. We'll add the `"color"` that the player selected to
 that dictionary, then print a debug message with information about the dragon.
 
 `````{dropdown} Need help?
 
-1. `[ ]` Call `random.choice()` with the argument `MOODS` and assign it to the
+1. `[ ]` Call `random.choice()` with the argument `DRAGONS` and assign it to the
          variable `dragon`.
 1. `[ ]` Set `dragon["color"]` to `color`
 1. `[ ]` Print a debug message like {samp}`"You picked the {MOOD} {COLOR} dragon."`
@@ -884,7 +884,7 @@ In this section we're going to write the code so that some of the dragons will
 give the player gems.
 
 In order to do this we'll add a `"treasure"` key to some of the dragon
-dictionaries `MOODS`. The value will be a tuple containing the minimum and
+dictionaries `DRAGONS`. The value will be a tuple containing the minimum and
 maximum possible gems that a particular dragon might give.
 
 {{ right }}
@@ -907,7 +907,7 @@ amount the player gems and print a message to tell the player what happened.
 ### A. In `test_game.py` modify `test_do_pet_cheerful_dragon()`
 
 In this section we'll modify the `test_do_pet_cheerful_dragon()` test to add
-the `"treasure"` key to the single dictionary in `MOODS`, and a tuple
+the `"treasure"` key to the single dictionary in `DRAGONS`, and a tuple
 containing two numbers (the minimum and maximum possible treasure) as the value.
 
 Then we'll need to check that the number if gems in the player's inventory was
@@ -924,7 +924,7 @@ increased.
 {{ right }}
 
    ```{dropdown} ...
-    * `[ ]` Add a `"treasure"` key to the dragon dictionaries in `MOODS` for
+    * `[ ]` Add a `"treasure"` key to the dragon dictionaries in `DRAGONS` for
            * the `"cheerful"` and `"lonely"` dragons:
       * `[ ]` The key should be `"treasure"`
       * `[ ]` The value should a tuple with two numbers representing the
@@ -988,14 +988,14 @@ increased.
 
 `````
 
-### B. In `adventure.py` modify `MOODS`
+### B. In `adventure.py` modify `DRAGONS`
 
-Modify the dragon dictionaries in the `MOODS` list to add `"treasure"` tuples
+Modify the dragon dictionaries in the `DRAGONS` list to add `"treasure"` tuples
 for the `"cheerful"` and `"lonely"` dragons.
 
 `````{dropdown} Need help?
 
-* `[ ]` Add a `"treasure"` key to the single dictionary in `MOODS` list for the
+* `[ ]` Add a `"treasure"` key to the single dictionary in `DRAGONS` list for the
        `"cheerful"` and `"lonely"` dragons
   * `[ ]` The key should be `"treasure"`
   * `[ ]` The value should a tuple with two numbers representing the
@@ -1003,12 +1003,12 @@ for the `"cheerful"` and `"lonely"` dragons.
 
 `````
 
-`````{dropdown} MOODS
+`````{dropdown} DRAGONS
 
 ```{literalinclude} ../../../pythonclass/adventure/adventure-14.6.py
 :linenos:
 :lineno-match:
-:start-at: "MOODS ="
+:start-at: "DRAGONS ="
 :end-at: "]"
 :emphasize-lines: "4, 11"
 :caption: adventure.py
@@ -1077,7 +1077,7 @@ In this section we're going to write the code so that some of the dragons will
 cause the player damage.
 
 In order to do this we'll add a `"damage"` key to some of the dragon
-dictionaries `MOODS`. The value will be a tuple containing the minimum and
+dictionaries `DRAGONS`. The value will be a tuple containing the minimum and
 maximum possible damage that a particular dragon might cause.
 
 {{ right }}
@@ -1152,7 +1152,7 @@ sure that the player's health does not change.
 
 In this section we'll define the `test_do_pet_cranky_dragon()` test. It
 will be very similar to `test_do_pet_cheerful_dragon()`, except we'll add a
-dragon dictionary to `MOODS` that has a `"damage"` key with a tuple of two
+dragon dictionary to `DRAGONS` that has a `"damage"` key with a tuple of two
 negative numbers and we'll assert that `PLAYER["health"]` has decreased.
 
 `````{dropdown} Need help?
@@ -1291,14 +1291,14 @@ negative numbers and we'll assert that `PLAYER["health"]` has decreased.
 
 `````
 
-### C. In `adventure.py` modify `MOODS`
+### C. In `adventure.py` modify `DRAGONS`
 
-Modify the dragon dictionaries in the `MOODS` list to add `"damage"` tuples
+Modify the dragon dictionaries in the `DRAGONS` list to add `"damage"` tuples
 for the `"cranky"` and `"lonely"` dragons.
 
 `````{dropdown} Need help?
 
-* `[ ]` Add a `"damage"` key to the single dictionary in `MOODS` list for the
+* `[ ]` Add a `"damage"` key to the single dictionary in `DRAGONS` list for the
        `"cranky"` and `"lonely"` dragons
   * `[ ]` The key should be `"damage"`
   * `[ ]` The value should a tuple with two numbers representing the
@@ -1306,12 +1306,12 @@ for the `"cranky"` and `"lonely"` dragons.
 
 `````
 
-`````{dropdown} MOODS
+`````{dropdown} DRAGONS
 
 ```{literalinclude} ../../../pythonclass/adventure/adventure-14.7.py
 :linenos:
 :lineno-match:
-:start-at: "MOODS ="
+:start-at: "DRAGONS ="
 :end-at: "]"
 :emphasize-lines: "8, 13"
 :caption: adventure.py
@@ -1337,10 +1337,10 @@ message about it.
          argument in `.get()` to set the default value to `(0, 0)`.
 1. `[ ]` Pass the minimum and maximum numbers from `possible_damage` as
          arguments to the `random.randint()` function and assign the results to
-         `dragon["damage"]`.
-1. `[ ]` Use the `health_change()` function to subtract `dragon["damage"]` from the
+         `dragon["health"]`.
+1. `[ ]` Use the `health_change()` function to subtract `dragon["health"]` from the
          players health.
-1. `[ ]` Print a message like: {samp}`"The {MOOD} dragon caused you {DAMAGE} damage."`
+1. `[ ]` Print a message like: {samp}`"The {MOOD} dragon caused you {HEALTH} damage."`
 
 `````
 
@@ -1362,7 +1362,7 @@ message about it.
 In this section we'll define the `test_do_pet_lonely_dragon()` test. It will be
 just like combining the test for a `"cheerful"` dragon and a `"cranky"` dragon.
 
-That is, the dragon dictionary in `MOODS` should have *both* `"treasure"` and
+That is, the dragon dictionary in `DRAGONS` should have *both* `"treasure"` and
 `"damage"`.
 
 `````{dropdown} Need help?
@@ -1480,7 +1480,7 @@ That is, the dragon dictionary in `MOODS` should have *both* `"treasure"` and
 {{ right }}
 
    ```{dropdown} ...
-    * `[ ]` assert that an debug message like samp`"caused you {DAMAGE}" damage` is in `output`
+    * `[ ]` assert that an debug message like samp`"caused you {HEALTH}" damage` is in `output`
    ```
 
 
@@ -1681,7 +1681,7 @@ Part 14.9: Better messages
 In this section we'll make nicer and more detailed messages for when each
 dragon causes damage or gives treasure.
 
-To do this we'll add a `"message"` key to each dragon dictionary in `MOODS`,
+To do this we'll add a `"message"` key to each dragon dictionary in `DRAGONS`,
 which will have the end of the message for a value.
 
 {{ right }}
@@ -1712,11 +1712,11 @@ That way we can attach it to the beginning of the message in `do_pet()`, then
 call the `.format()` method on the resulting string to fill in all the
 variable values.
 
-### A. Modify `test_do_pet_*_dragon()`: add `"message"` to `MOODS`
+### A. Modify `test_do_pet_*_dragon()`: add `"message"` to `DRAGONS`
 
 In this section we'll modify the three `test_do_pet_*_dragon()` tests to add
-the `"message"` key to the single dictionary in `MOODS` with the value bing a
-string that contains the f-string style variables `{gems}` and/or `{damage}`.
+the `"message"` key to the single dictionary in `DRAGONS` with the value bing a
+string that contains the f-string style variables `{gems}` and/or `{health}`.
 
 `````{dropdown} Need help?
 
@@ -1729,9 +1729,9 @@ string that contains the f-string style variables `{gems}` and/or `{damage}`.
 {{ right }}
 
    ```{dropdown} ...
-    * `[ ]` Add the key `"message"` to the single dictionary in `MOODS` with the value:
+    * `[ ]` Add the key `"message"` to the single dictionary in `DRAGONS` with the value:
       * `[ ]` A string that is **not** an f-string but contains the f-string
-              style variables `{gems}` and/or `{damage}`.
+              style variables `{gems}` and/or `{health}`.
 
          It should be the part of the message that comes after
          {samp}`"The {MOOD} {COLOR} dragon "` and describes what the
@@ -1787,17 +1787,17 @@ string that contains the f-string style variables `{gems}` and/or `{damage}`.
 
 `````
 
-### B. In `adventure.py` modify `MOODS`: add `"message"`
+### B. In `adventure.py` modify `DRAGONS`: add `"message"`
 
-Modify the dragon dictionaries in the `MOODS` list to add `"message"` string
+Modify the dragon dictionaries in the `DRAGONS` list to add `"message"` string
 for all three dragons.
 
 `````{dropdown} Need help?
 
 * `[ ]` Add the key `"message"` to the all three dragon dictionaries in
-        `MOODS` with the value:
+        `DRAGONS` with the value:
   * `[ ]` A string that is **not** an f-string but contains the f-string
-          style variables `{gems}` and/or `{damage}`.
+          style variables `{gems}` and/or `{health}`.
 
       It should be the part of the message that comes after
       {samp}`"The {MOOD} {COLOR} dragon "` and describes what the
@@ -1805,12 +1805,12 @@ for all three dragons.
 
 `````
 
-`````{dropdown} MOODS
+`````{dropdown} DRAGONS
 
 ```{literalinclude} ../../../pythonclass/adventure/adventure-14.9.py
 :linenos:
 :lineno-match:
-:start-at: "MOODS ="
+:start-at: "DRAGONS ="
 :end-at: "]"
 :emphasize-lines: "5, 10-13, 19-23"
 :caption: adventure.py
@@ -1836,7 +1836,7 @@ Now we'll combine the beginning of the message
 `"The {mood} {color} dragon "` with the string from `dragon["message"]`.
 
 Since the `dragon` dictionary already has the information about `mood`,
-`color`, and `gems` and/or `damage`, we can call `.format()` on the resulting
+`color`, and `gems` and/or `health`, we can call `.format()` on the resulting
 string and pass the whole dictionary as keyword arguments. That will fill in
 all those variables with their corresponding values from the dictionary.
 

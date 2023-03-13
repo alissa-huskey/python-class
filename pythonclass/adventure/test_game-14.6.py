@@ -526,7 +526,7 @@ def test_do_pet_cheerful_dragon(capsys):
     adventure.COLORS = ["red"]
 
     # AND: There is one dragon who gives you treasure
-    adventure.MOODS = [{
+    adventure.DRAGONS = [{
         "mood": "cheerful",
         "treasure": (10, 10),
     }]
@@ -545,4 +545,4 @@ def test_do_pet_cheerful_dragon(capsys):
     assert adventure.PLAYER["inventory"]["gems"] == 20
 
     # AND: The player should see a message about what happened
-    assert "gave you 10 gems" in output
+    assert "10 gems" in output

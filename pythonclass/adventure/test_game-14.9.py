@@ -527,7 +527,7 @@ def test_do_pet_cheerful_dragon(capsys):
     adventure.COLORS = ["red"]
 
     # AND: There is one dragon who gives you treasure
-    adventure.MOODS = [{
+    adventure.DRAGONS = [{
         "mood": "cheerful",
         "treasure": (10, 10),
         "message": "likes you and gives you {gems} gems.",
@@ -568,10 +568,10 @@ def test_do_pet_cranky_dragon(capsys):
     adventure.COLORS = ["red"]
 
     # AND: There is one dragon who causes damage
-    adventure.MOODS = [{
+    adventure.DRAGONS = [{
         "mood": "cranky",
         "damage": (-10, -10),
-        "message": "pushes you away causing you {damage} damage",
+        "message": "pushes you away causing you {health} damage",
     }]
 
     # AND: The player has a certain amount of health
@@ -609,11 +609,11 @@ def test_do_pet_lonely_dragon(capsys):
     adventure.COLORS = ["blue"]
 
     # AND: There is one dragon who gives treasure and causes damage
-    adventure.MOODS = [{
+    adventure.DRAGONS = [{
         "mood": "lonely",
         "damage": (-10, -10),
         "treasure": (20, 20),
-        "message": "throws {gems} gems at you causing you {damage} damage",
+        "message": "throws {gems} gems at you causing you {health} damage",
     }]
 
     # AND: The player has a certain amount of health

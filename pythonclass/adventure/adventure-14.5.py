@@ -47,7 +47,7 @@ BAR = ProgressBar(
 
 COLORS = ["red", "black", "silver"]
 
-MOODS = [
+DRAGONS = [
     {"mood": "cheerful"},
     {"mood": "grumpy"},
     {"mood": "lonely"},
@@ -733,7 +733,7 @@ def do_pet(args):
         return
 
     # get the dragon info for this color
-    dragon = random.choice(MOODS)
+    dragon = random.choice(DRAGONS)
     dragon["color"] = color
 
     debug(f"You picked the {dragon['mood']} {dragon['color']} dragon.")

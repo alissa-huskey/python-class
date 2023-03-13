@@ -50,7 +50,7 @@ BAR = ProgressBar(
 
 COLORS = ["red", "black", "silver"]
 
-MOODS = [
+DRAGONS = [
     {
         "mood": "cheerful",
         "treasure": (3, 15),
@@ -746,7 +746,7 @@ def do_pet(args):
         return
 
     # get the dragon info for this color
-    dragon = random.choice(MOODS)
+    dragon = random.choice(DRAGONS)
     dragon["color"] = color
 
     debug(f"You picked the {dragon['mood']} {dragon['color']} dragon.")
@@ -757,13 +757,13 @@ def do_pet(args):
 
     # calculate the damage
     possible_damage = dragon.get("damage", (0, 0))
-    dragon["damage"] = random.randint(*possible_damage)
+    dragon["health"] = random.randint(*possible_damage)
 
     # add the treasure to the players inventory
     inventory_change("gems", dragon["gems"])
 
     # reduce health
-    health_change(dragon["damage"])
+    health_change(dragon["health"])
 
     sentences = (
         "You slowly creep forward...",
@@ -783,8 +783,8 @@ def do_pet(args):
         write(f"The {dragon['mood']} dragon gives you {dragon['gems']} gems.")
 
     # print a message about damage
-    if dragon["damage"]:
-        write(f"The {dragon['mood']} dragon causes you {dragon['damage']} damage.")
+    if dragon["health"]:
+        write(f"The {dragon['mood']} dragon causes you {dragon['health']} damage.")
 
 
 def main():
