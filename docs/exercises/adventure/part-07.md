@@ -14,12 +14,10 @@ Part 7: Show inventory
 
 In this section we'll add the `inventory` command.
 
-{{ source | format("adventure-7.1.py") }}
-
 Part 7.1: Add command
 ---------------------
 
-{{ clear }}
+{{ source | format("adventure-7.1.py") }}
 
 {{ left }}
 
@@ -40,7 +38,7 @@ player types `i`, or `inventory`.
 
 {{ endcols }}
 
-### A: Define a `do_inventory()` function
+### A: Define `do_inventory()`
 
 {{ left }}
 
@@ -62,7 +60,7 @@ player types `i`, or `inventory`.
 
 {{ endcols }}
 
-### B: in `main()`, in the `while` loop
+### B: Modify `main()`, in the while loop
 
 {{ left }}
 
@@ -86,12 +84,10 @@ player types `i`, or `inventory`.
 
 {{ endcols }}
 
-{{ source | format("adventure-7.2.py") }}
-
 Part 7.2: Print inventory
 -------------------------
 
-{{ clear }}
+{{ source | format("adventure-7.2.py") }}
 
 {{ left }}
 
@@ -111,7 +107,7 @@ In this section we'll print the players inventory.
 
 {{ endcols }}
 
-### A: in `do_inventory()`
+### A: Modify `do_inventory()`
 
 1. `[ ]` Use the `header()` function to print `"Inventory"`
 1. `[ ]` If `PLAYER["inventory"]` is {term}`falsy`:

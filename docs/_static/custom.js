@@ -64,7 +64,6 @@ window.addEventListener("DOMContentLoaded", (e) => {
   }
 
   console.log("python-class> body id:", pagename);
-
   body = $('body')
   body.attr('id', pagename)
 
@@ -152,5 +151,57 @@ window.addEventListener("DOMContentLoaded", (e) => {
     tab = elms[0];
     deselectTabList(tab);
     selectTab(tab);
+  }
+});
+
+// attach player object to <asciinema-player> tags
+window.addEventListener("DOMContentLoaded", (e) => {
+  console.log("python-class:asciinema> adding asciinema players...");
+
+  elements = $('asciinema-player');
+
+  if (elements.length == 0) {
+    console.log("python-class:asciinema> No <asciinema-player> tags found");
+    return;
+  }
+  console.log("python-class:ascinema>", elements.length, "elements");
+
+  for (var i = 0; i < elements.length; i++) {
+    elm = elements[i];
+    console.log("python-class:ascinema>", "element:", elm);
+
+    attrs = elm.attributes
+    options = {}
+
+    // collect the attributes into an object
+    for (var x = 0; x < attrs.length; x++) {
+      a = attrs[x];
+      options[a.name] = a.value;
+    }
+
+    console.log("python-class:ascinema>", "attrs:", options);
+    AsciinemaPlayer.create(elm.getAttribute("src"), elm, options);
+  }
+});
+
+// move source code links to top of the section so that the div is before the section header
+window.addEventListener("DOMContentLoaded", (e) => {
+  console.log("python-class:source-code> moving source code links to top of section...");
+
+  var elements = $('div.source-code');
+
+  console.log("python-class:source-code>", elements.length, "elements");
+
+  if (elements.length == 0) {
+    return;
+  }
+
+  for (var i = 0; i < elements.length; i++) {
+    var elm = elements[i];
+    console.log("python-class:source-code>", "source code links:", elm);
+
+    var section = elm.parentElement;
+    section.removeChild(elm);
+    section.prepend(elm);
   }
 });

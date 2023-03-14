@@ -19,12 +19,10 @@ We'll also make sure that the way we print things is consistent by always
 printing via our custom functions: `header()`, `wrap()`, `write()`,
 `error()`, or `debug()`.
 
-{{ source | format("adventure-3.1.py") }}
-
 Part 3.1: Text wrapping
 -----------------------
 
-{{ clear }}
+{{ source | format("adventure-3.1.py") }}
 
 {{ left }}
 
@@ -46,7 +44,7 @@ wrap the text so that it looks nice.
 
 {{ endcols }}
 
-### A. At the top of your file
+### A. At the top of `adventure.py`
 
 {{ left }}
 
@@ -70,13 +68,13 @@ wrap the text so that it looks nice.
 {{ endcols }}
 
 
-### B. Make wrap()
+### B. Define `wrap()`
 
 1. `[ ]` Define a `wrap()` function which takes one argument `text`.
 1. `[ ]` For now, just print `text` in the function, so we can
          make sure it works.
 
-### C. In do_go(), at the end
+### C. Modify `do_go()`, at the end
 
 {{ left }}
 
@@ -100,7 +98,7 @@ wrap the text so that it looks nice.
 
 {{ endcols }}
 
-### D. In wrap()
+### D. Wrap `wrap()`
 
 ```{margin}
 
@@ -141,17 +139,15 @@ text.
 
 `````
 
-{{ source | format("adventure-3.2.py") }}
-
 Part 3.2: Colors
 ----------------
 
-{{ clear }}
+{{ source | format("adventure-3.2.py") }}
 
 In this section we're going to use the `console` module to make our game more
 colorful.
 
-### A. Install console
+### A. Install `console`
 
 {{ left }}
 
@@ -172,7 +168,7 @@ colorful.
 
 {{ endcols }}
 
-### B. At the top of your file
+### B. At the top of `adventure.py`
 
 {{ left }}
 
@@ -193,7 +189,7 @@ colorful.
 
 {{ endcols }}
 
-### C. In error(), debug(), other places...
+### C. Modify `error()`, `debug()`, other places...
 
 {{ left }}
 
@@ -225,12 +221,10 @@ colorful.
 
 {{ endcols }}
 
-{{ source | format("adventure-3.3.py") }}
-
 Part 3.3: Header and write functions
 ------------------------------------
 
-{{ clear }}
+{{ source | format("adventure-3.3.py") }}
 
 {{ left }}
 
@@ -252,7 +246,7 @@ headers and a `write()` function to print all other one-line messages.
 {{ endcols }}
 
 
-### A. Define write() function
+### A. Define `write()`
 
 {{ left }}
 
@@ -280,7 +274,7 @@ indented at the same level, or to add any extra formatting.
          followed by `text`. You can do this as an f-string or pass the keyword argument
          `sep` with the value `""` to avoid adding an extra space between them.
 
-### B. Define header() function
+### B. Define `header()`
 
 {{ left }}
 
@@ -316,7 +310,7 @@ bold, but you can change it to suit your taste.
    * `[ ]` Pass the result as an argument to `write()`.
    * `[ ]` Print a blank line.
 
-### C. In do_shop():
+### C. Modify `do_shop()`:
 
 {{ left }}
 
@@ -344,7 +338,7 @@ Replace `print()` calls with `header()` and `write()` calls.
          the call to the `print()` function to call the `write()`
          function instead.
 
-### D. In do_quit():
+### D. Modify `do_quit()`:
 
 {{ left }}
 
@@ -369,7 +363,7 @@ Replace `print()` call with `write()` call.
 
 {{ endcols }}
 
-### E. In do_go():
+### E. Modify `do_go()`:
 
 {{ left }}
 

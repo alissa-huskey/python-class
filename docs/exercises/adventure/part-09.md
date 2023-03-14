@@ -29,12 +29,10 @@ in the places where the same code is repeated.
 
 [^DRY]: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
 
+Part 9.1: Add `abort()`
+-----------------------
+
 {{ source | format("adventure-9.1.py") }}
-
-Part 9.1: Add abort()
----------------------
-
-{{ clear }}
 
 The `abort()` function will be similar to the `error()` function, except it
 will exit the game immediately. This function will be for errors that only
@@ -74,7 +72,7 @@ the program will end immediately.
 
 {{ endcols }}
 
-### B. In `do_take()`
+### B. Modify `do_take()`
 
 Since we always expect to be able to find an item in the `ITEMS` dictionary for
 a key in the `place` items list, if we fail to find one that means that we
@@ -107,7 +105,7 @@ Then because `abort()` exits the program immediately, we can remove the `return`
 
 {{ endcols }}
 
-### C. In `do_examine()`
+### C. Modify `do_examine()`
 
 This is nearly exactly the same as the previous section.
 
@@ -135,7 +133,7 @@ This is nearly exactly the same as the previous section.
 
 {{ endcols }}
 
-### D. In `do_go()`
+### D. Modify `do_go()`
 
 Similar to the previous two sections, we always expect to be able to find an
 place in the `PLACES` dictionary for a key from another `place` dictionary, so
@@ -166,12 +164,10 @@ if we don't it means there's an error somewhere in the code.
 
 {{ endcols }}
 
+Part 9.2: Add `get_place()`
+---------------------------
+
 {{ source | format("adventure-9.2.py") }}
-
-Part 9.2: Add get_place()
--------------------------
-
-{{ clear }}
 
 Since we're so often needing to get place information from the `PLACES`
 dictionary, we'll wrap this functionality into a function called `get_place()`
@@ -220,7 +216,7 @@ dictionary, and call `abort()` if it is not. That means that anywhere we call
 
 {{ endcols }}
 
-### B. In `do_go()`
+### B. Modify `do_go()`
 
 {{ left }}
 
@@ -247,7 +243,7 @@ dictionary, and call `abort()` if it is not. That means that anywhere we call
 
 {{ endcols }}
 
-### C. In `do_look()`
+### C. Modify `do_look()`
 
 1. `[ ]` Replace the existing value for `place` with a call to `get_place()`.
 1. `[ ]` Remove the line assigning `place_name` since that is taken care of in `get_place()`
@@ -264,7 +260,7 @@ dictionary, and call `abort()` if it is not. That means that anywhere we call
 
 `````
 
-### D. In `do_take()`, `do_examine()` and `do_drop()`
+### D. Modify `do_take()`, `do_examine()` and `do_drop()`
 
 1. `[ ]` Replace the existing value for `place` with a call to `get_place()`.
 1. `[ ]` Remove the line assigning `place_name` since that is taken care of in `get_place()`
@@ -302,12 +298,10 @@ dictionary, and call `abort()` if it is not. That means that anywhere we call
 
 `````
 
+Part 9.3: Add `get_item()`
+--------------------------
+
 {{ source | format("adventure-9.3.py") }}
-
-Part 9.3: Add get_item()
-------------------------
-
-{{ clear }}
 
 In this section we'll be adding a `get_item()` function which will be very
 similar to `get_place()` but for items instead of places.
@@ -345,7 +339,7 @@ dictionary and finally return the `item` otherwise.
 
 {{ endcols }}
 
-### B. Use `get_item()` in `do_look()` and `do_inventory()`
+### B. Modify `do_look()` and `do_inventory()`: call `get_item()`
 
 Throughout the rest of the program, you'll replace anywhere that you get an
 item from the `ITEMS` dictionary using {term}`subscription` or the `.get()`
@@ -377,7 +371,7 @@ method with a call to `get_item()`.
 
 `````
 
-### C. Use `get_item()` in `do_examine()` and `do_take()`
+### C. Modify `do_examine()` and `do_take()`: call `get_item()`
 
 In these functions we'll do a similar replacement as above. Additionally, we'll
 remove error handling that is done in `get_item()`.
@@ -411,12 +405,10 @@ remove error handling that is done in `get_item()`.
 
 `````
 
-{{ source | format("adventure-9.4.py") }}
-
 Part 9.4: Validation functions
 ------------------------------
 
-{{ clear }}
+{{ source | format("adventure-9.4.py") }}
 
 In this section we'll be several functions return `True` or `False` so that
 they can be used for things we commonly need to check. Specifically the
@@ -446,7 +438,7 @@ item in inventory.
 
 `````
 
-### B. Call `player_has()` from `do_drop()`
+### B. Modify `do_drop()`: call `player_has()`
 
 Now in our if statements where we check the same thing we can replace it with a
 call to `player_has()`.
@@ -600,12 +592,10 @@ call to `is_for_sale()`.
 
 `````
 
-{{ source | format("adventure-9.5.py") }}
-
 Part 9.5: Add `inventory_change()`
 ----------------------------------
 
-{{ clear }}
+{{ source | format("adventure-9.5.py") }}
 
 In this section we'll be adding an `inventory_change()` function that will add
 or remove items from the players inventory.
@@ -724,12 +714,10 @@ do for now.)
 
 {{ endcols }}
 
-{{ source | format("adventure-9.6.py") }}
-
 Part 9.6: Add `place_add()`
 ---------------------------
 
-{{ clear }}
+{{ source | format("adventure-9.6.py") }}
 
 In this section we'll be adding an `place_add()` function that will add
 an item to the current place.
@@ -789,12 +777,10 @@ Right now, this only happens in the `do_drop()` function.
 
 {{ endcols }}
 
-{{ source | format("adventure-9.7.py") }}
-
 Part 9.7: Add `place_remove()`
 ------------------------------
 
-{{ clear }}
+{{ source | format("adventure-9.7.py") }}
 
 In this section we'll be adding an `place_remove()` function that will remove
 an item from the current place.

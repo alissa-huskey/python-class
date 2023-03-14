@@ -173,9 +173,9 @@ Place(
 )
 
 Item(
-    key="elixr",
-    name="healing elixr",
-    description="a magical elixr that will heal what ails ya",
+    key="elixir",
+    name="healing elixir",
+    description="a magical elixir that will heal what ails ya",
     price=-10,
 )
 Item(

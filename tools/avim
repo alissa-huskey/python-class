@@ -5,7 +5,7 @@
 #
 # usage:
 #
-# adiff -h|--help [--last|--fin|--version VERSION] FILE [...FILE]
+# adiff -h|--help [-d|--dry-run] [--last|--fin|--version VERSION] FILE [...FILE]
 
 setopt SH_WORD_SPLIT
 
@@ -15,6 +15,7 @@ parse() {
   while [[ $# -gt 0 ]]; do
     arg="$1"
     case "${arg}" in
+      -d|--dryrun)     is_dryrun_mode=1                    ;;
       -l|--last)       mode=last                           ;;
       -f|--fin)        mode=fin                            ;;
       -v|--version)    mode=version version="$2" sn=2      ;;
@@ -98,7 +99,12 @@ get_paths() {
 
   for file in ${files[@]}; do
     for version in ${versions}; do
-      path="${srcdir}/${file}-${version}.py"
+      if [[ "${file}" == "doc" ]]; then
+        path="${docdir}/part-${version}.md"
+      else
+        path="${srcdir}/${file}-${version}.py"
+      fi
+
 
       if [[ ! -f "${path}" ]]; then
         echo "file not found: ${path}" >&2
@@ -111,13 +117,22 @@ get_paths() {
   done
 }
 
+err() {
+  :
+}
+
+cmd() {
+    printf "\e[2m> %s\e[0m\n" "${*}"
+}
+
 main() {
-  local current srcdir
+  local current srcdir docdir is_dryrun_mode
   local -a paths files versions
 
   parse ${1:+"$@"}
 
   srcdir="pythonclass/adventure"
+  docdir="docs/exercises/adventure"
 
   current="$(readlink -f "${file}.py")"
   current="${current##*/}"
@@ -132,8 +147,11 @@ main() {
 
   get_paths
 
-  echo nvim "${paths[@]}"
-  nvim "${paths[@]}"
+  if [[ -n "${is_dryrun_mode}" ]]; then
+    cmd nvim "${paths[@]}"
+  else
+    nvim "${paths[@]}"
+  fi
 }
 
 main ${1:+"$@"}

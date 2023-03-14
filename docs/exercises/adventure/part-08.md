@@ -14,12 +14,10 @@ Part 8: Drop things
 
 In this section we'll add the `drop` command.
 
-{{ source | format("adventure-8.1.py") }}
-
 Part 8.1: Add command
 ---------------------
 
-{{ clear }}
+{{ source | format("adventure-8.1.py") }}
 
 {{ left }}
 
@@ -40,7 +38,7 @@ player types `drop`.
 
 {{ endcols }}
 
-### A: Define a `do_drop()` function
+### A: Define `do_drop()`
 
 {{ left }}
 
@@ -62,7 +60,7 @@ player types `drop`.
 
 {{ endcols }}
 
-### B: in `main()`, in the `while` loop
+### B: Modify `main()`, in the while loop
 
 {{ left }}
 
@@ -85,12 +83,10 @@ player types `drop`.
 
 {{ endcols }}
 
-{{ source | format("adventure-8.2.py") }}
-
 Part 8.2: Validate
 ------------------
 
-{{ clear }}
+{{ source | format("adventure-8.2.py") }}
 
 {{ left }}
 
@@ -111,7 +107,7 @@ have in inventory.
 
 {{ endcols }}
 
-### A: in `do_drop()`
+### A: Modify `do_drop()`
 
 1. `[ ]` Check to see if `args` is {term}`falsy`, if so:
    * `[ ]` Use the `error()` function to print a message saying:
@@ -137,12 +133,10 @@ have in inventory.
 
 `````
 
-{{ source | format("adventure-8.3.py") }}
-
 Part 8.3: Drop it
 -----------------
 
-{{ clear }}
+{{ source | format("adventure-8.3.py") }}
 
 {{ left }}
 
@@ -163,7 +157,7 @@ it to the place items.
 
 {{ endcols }}
 
-### A: in `do_drop()`: remove from inventory
+### A: Modify `do_drop()`: remove from inventory
 
 1. `[ ]` subtract `1` from `PLAYER["inventory"][name]`
 1. `[ ]` remove item from inventory if the quantity is `0` by:
@@ -184,7 +178,7 @@ it to the place items.
 
 `````
 
-### B: still in `do_drop()`: add to place
+### B: Modify `do_drop()`: add to place
 
 1. `[ ]` get the value from `PLAYER` associated with the `"place"` key and assign it to `place_name`
 1. `[ ]` get the value from `PLACES` associated with `place_name` and assign it to `place`

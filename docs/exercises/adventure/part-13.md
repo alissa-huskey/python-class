@@ -15,12 +15,10 @@ Part 13: Health
 In this section we'll add player health between `1` - `100` with a health
 progress bar on the inventory command.
 
-{{ sources.format("13.1") }}
-
 Part 13.1: Add `health_change()`
 --------------------------------
 
-{{ clear }}
+{{ sources.format("13.1") }}
 
 In this section we'll start the `health_change()` function which will work very
 much like `inventory_change()`. It should:
@@ -28,7 +26,7 @@ much like `inventory_change()`. It should:
 * Take one `int` argument: `amount`.
 * Add the `amount` to `PLAYER["health"]`.
 
-### A. In `test_game.py` write `test_health_change()`
+### A. In `test_game.py` define `test_health_change()`
 
 Write the `test_health_change()` function to test `health_change()`.
 
@@ -68,7 +66,7 @@ Write the `test_health_change()` function to test `health_change()`.
 ```
 `````
 
-### B. In `adventure.py` write `health_change()`
+### B. In `adventure.py` define `health_change()`
 
 Write the `health_change()` function.
 
@@ -92,10 +90,10 @@ Write the `health_change()` function.
 
 `````
 
-{{ sources.format("13.2") }}
-
 Part 13.2: Parameterize the test
 --------------------------------
+
+{{ sources.format("13.2") }}
 
 In this section we'll modify the `test_health_change()` function to use
 parametrization. This allows us to use the same test for several different
@@ -109,7 +107,7 @@ If you're not already familiar with parameterization, see
 
 {{ clear }}
 
-### A. Parameterize `test_health_change()`
+### A. In `test_game.py` modify `test_health_change()`: parameterize
 
 ```{margin}
 
@@ -188,7 +186,7 @@ we'll be set up to more easily add new test cases.
 
 `````
 
-### B. Add another test case
+### B. In `test_game.py` above `test_health_change()`: Add another test case
 
 In this section we are going to add a test case for passing a negative value to
 `health_change()` to effectively subtract that amount from player health.
@@ -249,7 +247,7 @@ Part 13.3: Add health limits
 In this section we're going to modify the `health_change()` function so that
 `PLAYER["health"]` is always between `0` and `100`.
 
-### A. Add test case for when `health < 0`
+### A. In `test_game.py` above `test_health_change()`: ensure health > 0
 
 In this section we will add a test case to ensure that even if `start` - `amount` is
 less than zero, player health is set to zero instead of a negative number
@@ -303,7 +301,7 @@ def test_health_change_minimum_health():
 
 `````
 
-### B. Modify `health_change()`
+### B. In `adventure.py` modify `health_change()`
 
 In this section we will modify `health_change()` to make the above test case
 pass.
@@ -327,7 +325,7 @@ pass.
 
 `````
 
-### C. In `adventure.py`
+### C. At the top of `adventure.py`
 
 In this section we'll add a global variable `MAX_HEALTH` to keep track of the
 maximum value for `PLAYER["health"]`.
@@ -348,7 +346,7 @@ maximum value for `PLAYER["health"]`.
 
 `````
 
-### D. Add test case for `MAX_HEALTH`
+### D. In `test_game.py` above `test_health_change()`: ensure `MAX_HEALTH`
 
 In this section we'll add a test case to ensure that even if `start` + `result`
 is greater than `MAX_HEALTH`, player health will be set to `MAX_HEALTH`.
@@ -414,7 +412,7 @@ def test_health_change_maximum_health():
 
 `````
 
-### E. Modify `health_change()`
+### E. In `adventure.py` modify `health_change()`
 
 In this section we will modify `health_change()` to make the above test case
 pass.
@@ -444,7 +442,7 @@ Part 13.4: UX Changes
 In this section we'll add a few changes to integrate health with the game
 itself.
 
-### A. Add `PLAYER["health"]`
+### A. In `adventure.py` modify `PLAYER`
 
 1. `[ ]` Add a `"health"` key to the `PLAYER` dictionary with a value of `100`
 
@@ -462,7 +460,7 @@ itself.
 
 `````
 
-### B. Add ProgressBar
+### B. At the top of `adventure.py`: Add ProgressBar
 
 `````{margin}
 
@@ -516,7 +514,7 @@ Feel free to play around and pick your own style.
 
 `````
 
-### C. Add `health_bar()` function
+### C. In `adventure.py` define `health_bar()`
 
 In this section we'll add a function `health_bar()` which will print the health bar.
 
@@ -538,7 +536,7 @@ In this section we'll add a function `health_bar()` which will print the health 
 
 `````
 
-### D. In `do_inventory()`
+### D. In `adventure.py` modify `do_inventory()`
 
 In this section we'll call `health_bar()` in the `do_inventory()` function to
 print the health bar.
@@ -576,7 +574,7 @@ print the health bar.
 `````
 
 
-### E. In `main()`
+### E. In `adventure.py` modify `main()`
 
 In this section we'll quit the game if player health is out of health.
 

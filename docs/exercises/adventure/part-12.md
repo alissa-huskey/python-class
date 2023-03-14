@@ -24,16 +24,14 @@ exactly what you are trying to accomplish, which tends to lead to clearer
 thinking and cleaner code. You can be more confident that your code is working
 as intended and that it won't break in the future without you noticing.
 
-{{ sources.format("12.1") }}
-
 Part 12.1: Add command
 ----------------------
 
-{{ clear }}
+{{ sources.format("12.1") }}
 
 In this section we'll be adding the read command.
 
-### A. In `test_game.py`
+### A. In `test_game.py` define `test_do_read()`
 
 {{ left }}
 
@@ -82,7 +80,7 @@ First we'll write the test, which we expect to fail.
 
 `````
 
-### B. In `adventure.py` add `do_read()`
+### B. In `adventure.py` define `do_read()`
 
 {{ left }}
 
@@ -125,7 +123,7 @@ Now we'll write the code to make it work.
 
 {{ endcols }}
 
-### C. In `adventure.py` in `main()`
+### C. In `adventure.py` modify `main()`
 
 {{ left }}
 
@@ -160,12 +158,10 @@ Finally, we'll add the code to make the command work in the game.
 
 `````
 
-{{ sources.format("12.2") }}
-
 Part 12.2: Ensure item
 ----------------------
 
-{{ clear }}
+{{ sources.format("12.2") }}
 
 {{ left }}
 
@@ -187,7 +183,7 @@ to read.
 
 {{ endcols }}
 
-### A. In `test_game.py`
+### A. In `test_game.py` modify `test_do_read()`
 
 {{ left }}
 
@@ -225,7 +221,7 @@ Now we'll add an assertion to check the output for an error message.
 
 `````
 
-### B. In `adventure.py` in `do_read()`
+### B. In `adventure.py` modify `do_read()`
 
 {{ left }}
 
@@ -263,12 +259,10 @@ Now we'll write the code to make our test pass.
 
 `````
 
-{{ sources.format("12.3") }}
-
 Part 12.3: Ensure item is here
 ------------------------------
 
-{{ clear }}
+{{ sources.format("12.3") }}
 
 {{ left }}
 
@@ -289,7 +283,7 @@ this place or in inventory.
 
 {{ endcols }}
 
-### A. In `test_game.py`
+### A. In `test_game.py` define `test_do_read_missing_item()`
 
 {{ left }}
 
@@ -331,7 +325,7 @@ this place or in inventory.
 
 `````
 
-### B. In `adventure.py` in `do_read()`
+### B. In `adventure.py` modify `do_read()`
 
 {{ left }}
 
@@ -371,12 +365,10 @@ Now we'll add the code to make the test pass.
 
 `````
 
-{{ sources.format("12.4") }}
-
 Part 12.4: Ensure item is readable
 ----------------------------------
 
-{{ clear }}
+{{ sources.format("12.4") }}
 
 {{ left }}
 
@@ -397,7 +389,7 @@ in fact, be read.
 
 {{ endcols }}
 
-### A. In `test_game.py` write `test_do_read_unreadable_item()`
+### A. In `test_game.py` define `test_do_read_unreadable_item()`
 
 {{ left }}
 
@@ -448,7 +440,7 @@ item that cannot be read. It should:
 
 `````
 
-### B. In `adventure.py` in `do_read()`
+### B. In `adventure.py` modify `do_read()`
 
 {{ left }}
 
@@ -488,17 +480,15 @@ Now we'll write the code to make the test pass.
 
 `````
 
-{{ sources.format("12.5") }}
-
 Part 12.5: Read things
 ----------------------
 
-{{ clear }}
+{{ sources.format("12.5") }}
 
 In this section we'll finally provide a readable item and the `read` command
 will read it.
 
-### A. In `test_game.py` write `test_do_read_in_place()`
+### A. In `test_game.py` define `test_do_read_in_place()`
 
 {{ left }}
 
@@ -544,7 +534,7 @@ current place. Then we'll call `do_read()`and check for the expected output.
 
 `````
 
-### B. In `adventure.py` in `do_read()`
+### B. In `adventure.py` modify `do_read()`
 
 {{ left }}
 
@@ -583,7 +573,7 @@ Now we'll write the code to actually read the item.
 
 `````
 
-### C. Add to `"book"` in `ITEMS`
+### C. Modify `ITEMS`: add to `"book"`
 
 {{ left }}
 
@@ -622,7 +612,7 @@ Now we'll finally give the player something to read.
 
 `````
 
-### D. In `test_game.py` write `test_do_read_in_inventory()`
+### D. In `test_game.py` define `test_do_read_in_inventory()`
 
 Can you write a `test_do_read_in_inventory()` function on your own, to test that
 you can read a book if it is in your inventory but not in the current place?
@@ -639,12 +629,10 @@ you can read a book if it is in your inventory but not in the current place?
 
 `````
 
-{{ sources.format("12.6") }}
-
 Part 12.6: Indent message
 -------------------------
 
-{{ clear }}
+{{ sources.format("12.6") }}
 
 {{ left }}
 
@@ -713,7 +701,7 @@ test_game.py::test_do_read_in_inventory`.
 
 `````
 
-### B. In `test_game.py` write `test_wrap()`
+### B. In `test_game.py` define `test_wrap()`
 
 {{ left }}
 
@@ -763,7 +751,7 @@ pass.
 
 `````
 
-### C. In `test_game.py` write `test_wrap_with_indent()`
+### C. In `test_game.py` define `test_wrap_with_indent()`
 
 {{ left }}
 
@@ -904,12 +892,10 @@ Now we're finally ready to modify our `do_read()` function to use the new
 
 `````
 
-{{ sources.format("12.7") }}
-
 Part 12.7: Allow for stanzas
 ----------------------------
 
-{{ clear }}
+{{ sources.format("12.7") }}
 
 {{ left }}
 
@@ -984,7 +970,7 @@ that it still works if message is a string.
 
 `````
 
-### B. In `test_game.py` write `test_wrap_with_iterable()`
+### B. In `test_game.py` define `test_wrap_with_iterable()`
 
 {{ left }}
 
