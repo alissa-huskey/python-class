@@ -893,7 +893,7 @@ maximum possible gems that a particular dragon might give.
 :open:
 
 ```{screencast} assets/adventure-14.6.cast
-:poster: npt:0:10
+:poster: npt:0:12
 ```
 
 `````
