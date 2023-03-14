@@ -70,7 +70,7 @@ PLACES = {
         "key": "market",
         "name": "The Market",
         "south": "town-square",
-        "items": ["elixr", "dagger"],
+        "items": ["elixir", "dagger"],
         "can": ["shop", "buy"],
         "description": (
             "A tidy store with shelves full of goods to buy. A wooden hand "
@@ -80,10 +80,10 @@ PLACES = {
 }
 
 ITEMS = {
-    "elixr": {
-        "key": "elixr",
-        "name": "healing elixr",
-        "description": "a magical elixr that will heal what ails ya",
+    "elixir": {
+        "key": "elixir",
+        "name": "healing elixir",
+        "description": "a magical elixir that will heal what ails ya",
         "price": -10,
     },
     "dagger": {

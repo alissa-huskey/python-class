@@ -36,7 +36,7 @@ MARGIN = 2
 
 DEBUG = True
 
-DELAY = 1.5
+DELAY = 1.25
 
 MAX_HEALTH = 100
 
@@ -105,7 +105,7 @@ PLACES = {
         "key": "market",
         "name": "The Market",
         "south": "town-square",
-        "items": ["elixr", "dagger"],
+        "items": ["elixir", "dagger"],
         "can": ["shop", "buy"],
         "description": (
             "A tidy store with shelves full of goods to buy. A wooden hand "
@@ -142,7 +142,7 @@ PLACES = {
             "down to the south. In that direction you can make out a cave by "
             "the shore of a lake."
         ),
-        "items": [],
+        "items": ["dragon"],
     },
     "cave": {
         "key": "cave",
@@ -152,7 +152,7 @@ PLACES = {
             "Your footsteps echo as you step into the vast cavern.",
             "Shafts of sunlight slice through the gloom, playing against the "
             "landscape of glittering treasure.",
-            "Resting atop a mound of gold, a collosal dragon rests curled up snugly. "
+            "Resting atop a mound of gold, a colossal dragon rests curled up snugly. "
             "Its three enormous heads snore softly, each in turn.",
         ),
         "items": [],
@@ -161,10 +161,10 @@ PLACES = {
 }
 
 ITEMS = {
-    "elixr": {
-        "key": "elixr",
-        "name": "healing elixr",
-        "description": "a magical elixr that will heal what ails ya",
+    "elixir": {
+        "key": "elixir",
+        "name": "healing elixir",
+        "description": "a magical elixir that will heal what ails ya",
         "price": -10,
     },
     "dagger": {
@@ -752,14 +752,14 @@ def do_pet(args):
 
     # make sure they typed in a real color
     if color not in COLORS:
-        error("I don't see a dragon that looks like that.")
+        error("I don't see a dragon head that looks like that.")
         return
 
     # get the dragon info for this color
     dragon = random.choice(DRAGONS)
     dragon["color"] = color
 
-    debug(f"You picked the {dragon['mood']} {dragon['color']} dragon.")
+    debug(f"You picked the dragon's {dragon['mood']} {dragon['color']} head.")
 
     # calculate the treasure
     possible_treasure = dragon.get("treasure", (0, 0))
@@ -779,6 +779,8 @@ def do_pet(args):
         "You slowly creep forward...",
         "...gingerly reach out your hand...",
         f"...and gently pat the dragon's {color} head.",
+        "...",
+        "He blinks sleepy eyes and peers at you...",
     )
 
     for text in sentences:
@@ -789,7 +791,7 @@ def do_pet(args):
     print()
 
     # generate the message
-    tpl = "The {mood} {color} dragon " + dragon["message"]
+    tpl = "The dragon's {mood} {color} head " + dragon["message"]
     text = tpl.format(**dragon)
     wrap(text)
 

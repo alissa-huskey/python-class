@@ -92,7 +92,7 @@ PLACES = {
         "key": "market",
         "name": "The Market",
         "south": "town-square",
-        "items": ["elixr", "dagger"],
+        "items": ["elixir", "dagger"],
         "can": ["shop", "buy"],
         "description": (
             "A tidy store with shelves full of goods to buy. A wooden hand "
@@ -139,7 +139,7 @@ PLACES = {
             "Your footsteps echo as you step into the vast cavern.",
             "Shafts of sunlight slice through the gloom, playing against the "
             "landscape of glittering treasure.",
-            "Resting atop a mound of gold, a collosal dragon rests curled up snugly. "
+            "Resting atop a mound of gold, a colossal dragon rests curled up snugly. "
             "Its three enormous heads snore softly, each in turn.",
         ),
         "items": [],
@@ -148,10 +148,10 @@ PLACES = {
 }
 
 ITEMS = {
-    "elixr": {
-        "key": "elixr",
-        "name": "healing elixr",
-        "description": "a magical elixr that will heal what ails ya",
+    "elixir": {
+        "key": "elixir",
+        "name": "healing elixir",
+        "description": "a magical elixir that will heal what ails ya",
         "price": -10,
     },
     "dagger": {
@@ -746,7 +746,7 @@ def do_pet(args):
     dragon = random.choice(DRAGONS)
     dragon["color"] = color
 
-    debug(f"You picked the {dragon['mood']} {dragon['color']} dragon.")
+    debug(f"You picked the dragon's {dragon['mood']} {dragon['color']} head.")
 
     # calculate the treasure
     possible_treasure = dragon.get("treasure", (0, 0))
@@ -764,11 +764,11 @@ def do_pet(args):
 
     # print a message about gems
     if dragon["gems"]:
-        write(f"The {dragon['mood']} dragon gives you {dragon['gems']} gems.")
+        write(f"The dragon's {dragon['mood']} head gave you {dragon['gems']} gems.")
 
     # print a message about damage
     if dragon["health"]:
-        write(f"The {dragon['mood']} dragon causes you {dragon['health']} damage.")
+        write(f"The dragon's {dragon['mood']} head causes you {dragon['health']} damage.")
 
 
 def main():

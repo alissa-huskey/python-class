@@ -643,7 +643,7 @@ check that it is in the `COLORS` list, or print an error message if it is not.
 
 1. `[ ]` Assign the first item from `args` to the variable `color`
 1. `[ ]` Check to make sure that `color` is in the list of `COLORS`. If not:
-    * `[ ]` Print an error message like: `"I don't see a dragon that looks like that."`
+    * `[ ]` Print an error message like: `"I don't see a dragon head that looks like that."`
     * `[ ]` return
 
 `````
@@ -762,7 +762,7 @@ respectively.
 {{ right }}
 
    ```{dropdown} ...
-    * `[ ]` assert that an debug message like `"You picked the cheerful red dragon."` is in `output`
+    * `[ ]` assert that an debug message like `"You picked the dragon's cheerful red head."` is in `output`
    ```
 
 {{ endcols }}
@@ -856,7 +856,7 @@ that dictionary, then print a debug message with information about the dragon.
 1. `[ ]` Call `random.choice()` with the argument `DRAGONS` and assign it to the
          variable `dragon`.
 1. `[ ]` Set `dragon["color"]` to `color`
-1. `[ ]` Print a debug message like {samp}`"You picked the {MOOD} {COLOR} dragon."`
+1. `[ ]` Print a debug message like {samp}`"You picked the dragon's {MOOD} {COLOR} head."`
 
 `````
 
@@ -1049,7 +1049,7 @@ Unpacking][arg-unpacking].
          `dragon["gems"]`.
 1. `[ ]` Use the `inventory_change()` function to add `dragon["gems"]` to the
          players inventory.
-1. `[ ]` Print a message like: {samp}`"The {MOOD} dragon gave you {GEMS} gems."`
+1. `[ ]` Print a message like: {samp}`"The dragon's {MOOD} head gave you {GEMS} gems."`
 
 `````
 
@@ -1239,7 +1239,7 @@ negative numbers and we'll assert that `PLAYER["health"]` has decreased.
 {{ right }}
 
    ```{dropdown} ...
-    * `[ ]` assert that an debug message like `"You picked the cranky red dragon."` is in `output`
+    * `[ ]` assert that an debug message like `"You picked the dragon's cranky red head."` is in `output`
    ```
 
 {{ newrow }}
@@ -1340,7 +1340,7 @@ message about it.
          `dragon["health"]`.
 1. `[ ]` Use the `health_change()` function to subtract `dragon["health"]` from the
          players health.
-1. `[ ]` Print a message like: {samp}`"The {MOOD} dragon caused you {HEALTH} damage."`
+1. `[ ]` Print a message like: {samp}`"The dragon's {MOOD} head caused you {HEALTH} damage."`
 
 `````
 
@@ -1450,7 +1450,7 @@ That is, the dragon dictionary in `DRAGONS` should have *both* `"treasure"` and
 {{ right }}
 
    ```{dropdown} ...
-    * `[ ]` assert that an debug message like `"You picked the lonely red dragon."` is in `output`
+    * `[ ]` assert that an debug message like `"You picked the dragon's lonely red head."` is in `output`
    ```
 
 {{ newrow }}
@@ -1592,11 +1592,13 @@ seconds to pause for effect.
 
 In this section we're going to add a description of what happens when the player
 pets the dragon's head. To make it a little more exciting, we'll split the
-description onto three strings in a tuple. Something like:
+description onto multiple strings in a tuple. Something like:
 
 * `"You slowly creep forward..."`
 * `"...gingerly reach out your hand..."`
 * {samp}`"...and gently pat the dragon's {COLOR} head."`
+* `"..."`
+* `"He blinks sleepy eyes and peers at you..."`
 
 Before printing the messages about gems and damage, we'll iterate over the
 `sentences` tuple. In each iteration we'll print a blank line,
@@ -1734,7 +1736,7 @@ string that contains the f-string style variables `{gems}` and/or `{health}`.
               style variables `{gems}` and/or `{health}`.
 
          It should be the part of the message that comes after
-         {samp}`"The {MOOD} {COLOR} dragon "` and describes what the
+         {samp}`"The dragon's {MOOD} {COLOR} head"` and describes what the
          dragon does after the player pets it.
 
    ```
@@ -1800,7 +1802,7 @@ for all three dragons.
           style variables `{gems}` and/or `{health}`.
 
       It should be the part of the message that comes after
-      {samp}`"The {MOOD} {COLOR} dragon "` and describes what the
+      {samp}`"The dragon's {MOOD} {COLOR} head "` and describes what the
       dragon does after the player pets it.
 
 `````
@@ -1833,7 +1835,7 @@ for all three dragons.
 `````
 
 Now we'll combine the beginning of the message
-`"The {mood} {color} dragon "` with the string from `dragon["message"]`.
+`"The dragon's {mood} {color} head "` with the string from `dragon["message"]`.
 
 Since the `dragon` dictionary already has the information about `mood`,
 `color`, and `gems` and/or `health`, we can call `.format()` on the resulting
@@ -1846,7 +1848,7 @@ printing the new message, wrapped.
 `````{dropdown} Need help?
 
 1. `[ ]` Remove the lines where you print the messages about gems and damage.
-1. `[ ]` Concatonate the string `"The {mood} {color} dragon "` with
+1. `[ ]` Concatonate the string `"The dragon's {mood} {color} head "` with
          `dragon["message"]` and assign the result to the variable `tpl`.
 1. `[ ]` Call the `.format()` method on `tpl` and pass all key-value pairs from
          the `dragon` dictionary as keyword arguments. Assign the result to `text`.
@@ -1868,6 +1870,70 @@ printing the new message, wrapped.
 ```
 
 `````
+
+Part 14.10: Add dragon
+----------------------
+
+{{ sources.format("14.10") }}
+
+{{ left }}
+
+Finally, we'll add the dragon itself as an item in your cave so the player can
+examine it to find out the colors of each dragon head.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-14.10.cast
+:poster: npt:0:12
+```
+
+`````
+
+{{ endcols }}
+
+### A. In `adventure.py` modify `ITEMS`
+
+In your `ITEMS` dictionary, add a `"dragon"` key. Use the global variable
+`COLORS` in the description to list the colors of the dragon heads.
+
+`````{dropdown} ITEMS
+
+```{literalinclude} ../../../pythonclass/adventure/adventure-14.10.py
+:linenos:
+:lineno-match:
+:start-at: '"dragon": '
+:end-at: "   },"
+:caption: adventure.py
+
+```
+
+`````
+
+### B. In `adventure.py` modify `PLACES`
+
+{{ left }}
+
+
+{{ right }}
+
+`````{dropdown} COLORS
+
+```{literalinclude} ../../../pythonclass/adventure/adventure-14.10.py
+:linenos:
+:lineno-match:
+:start-at: '"cave": '
+:end-at: '   },'
+:emphasize-lines: "12"
+:caption: adventure.py
+
+```
+
+`````
+
+{{ endcols }}
 
 [arg-unpacking]: ../../lessons/in-depth/functions.html#part-3-unpacking-arguments
 [kwarg-unpacking]: ../../lessons/in-depth/functions.html#part-3-3-mappings
