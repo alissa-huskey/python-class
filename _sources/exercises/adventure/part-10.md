@@ -1,24 +1,4 @@
 ---
-substitutions:
-  left:  '{{ leftcol | replace("col", "col-5") }}'
-  right: '{{ rightcol | replace("col", "col-7") }}'
-  icon: '{opticon}`file-code`'
-
-  # green "source code" badge linking to my github
-  # usage: {{ source | format("filename.py") }}
-  source: |
-    ```{div} float-right
-      {bdg-link-info-line}`source code <https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/%s>`
-    ```
-  # two green badges, one for adventure-VERSION.py and one for test_game-VERSION.py
-  # usage: {{ sources.format("VERSION") }}
-  # note: double curley braces make one literal brace (for .format())
-  sources: |
-    ```{{div}} float-right
-    {{{{ code.format("adventure.py", "adventure/adventure-{0}.py") }}}} {{{{ code.format("test_game.py", "adventure/test_game-{0}.py") }}}}
-    ```
-
-
 jupytext:
   formats: md:myst
   text_representation:
@@ -36,12 +16,10 @@ In this section we'll add the buy command, add the market, make sure that the
 buy and shop commands only work in the market, and make add information to the
 buy shop and examine commands.
 
-{{ source | format("adventure-10.1.py") }}
-
 Part 10.1: Add market
 ---------------------
 
-{{ clear }}
+{{ source | format("adventure-10.1.py") }}
 
 {{ left }}
 
@@ -54,9 +32,8 @@ navigate to and from there.
 :open:
 
 ```{screencast} assets/adventure-10.1.cast
-:poster: npt:0:04
+:poster: npt:0:03
 :speed: 0.5
-:rows: 16
 ```
 
 `````
@@ -117,12 +94,10 @@ than going through all items.
 
 `````
 
-{{ source | format("adventure-10.2.py") }}
-
 Part 10.2: Add `place_can()`
 ----------------------------
 
-{{ clear }}
+{{ source | format("adventure-10.2.py") }}
 
 {{ left }}
 
@@ -223,12 +198,10 @@ for actions instead of items.
 
 {{ endcols }}
 
-{{ source | format("adventure-10.3.py") }}
-
 Part 10.3: Add buy command
 --------------------------
 
-{{ clear }}
+{{ source | format("adventure-10.3.py") }}
 
 {{ left }}
 
@@ -502,12 +475,10 @@ Here we'll define the function that is called when the player types `"buy"`.
 {{ endcols }}
 
 
-{{ source | format("adventure-10.4.py") }}
-
 Part 10.4: Clean up the shop
 ----------------------------
 
-{{ clear }}
+{{ source | format("adventure-10.4.py") }}
 
 {{ leftcol | replace("col", "col-2") }}
 
@@ -679,7 +650,7 @@ def do_shop():
 
 `````
 
-### C. Show price in `do_examine()`
+### C. In `do_examine()`: show price
 
 Let's show the price to `do_examine()` if we're in the market (or somewhere else
 where we can shop).
@@ -704,7 +675,7 @@ where we can shop).
 
 `````
 
-### D. Show inventory quantity in `do_examine()`
+### D. In `do_examine()`: show inventory quantity
 
 1. `[ ]` Check if the player has the item in inventory by calling `player_has()` with the argument `name`. If so:
    * `[ ]` Print the quantity from the `PLAYER` inventory dictionary for `name`.

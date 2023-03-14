@@ -1,24 +1,4 @@
 ---
-substitutions:
-  left:  '{{ leftcol | replace("col", "col-5") }}'
-  right: '{{ rightcol | replace("col", "col-7") }}'
-  icon: '{opticon}`file-code`'
-
-  # green "source code" badge linking to my github
-  # usage: {{ source | format("filename.py") }}
-  source: |
-    ```{div} float-right
-      {bdg-link-info-line}`source code <https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/%s>`
-    ```
-  # two green badges, one for adventure-VERSION.py and one for test_game-VERSION.py
-  # usage: {{ sources.format("VERSION") }}
-  # note: double curley braces make one literal brace (for .format())
-  sources: |
-    ```{{div}} float-right
-    {{{{ code.format("adventure.py", "adventure/adventure-{0}.py") }}}} {{{{ code.format("test_game.py", "adventure/test_game-{0}.py") }}}}
-    ```
-
-
 jupytext:
   formats: md:myst
   text_representation:
@@ -34,12 +14,10 @@ Part 7: Show inventory
 
 In this section we'll add the `inventory` command.
 
-{{ source | format("adventure-7.1.py") }}
-
 Part 7.1: Add command
 ---------------------
 
-{{ clear }}
+{{ source | format("adventure-7.1.py") }}
 
 {{ left }}
 
@@ -60,7 +38,7 @@ player types `i`, or `inventory`.
 
 {{ endcols }}
 
-### A: Define a `do_inventory()` function
+### A: Define `do_inventory()`
 
 {{ left }}
 
@@ -82,7 +60,7 @@ player types `i`, or `inventory`.
 
 {{ endcols }}
 
-### B: in `main()`, in the `while` loop
+### B: Modify `main()`, in the while loop
 
 {{ left }}
 
@@ -106,12 +84,10 @@ player types `i`, or `inventory`.
 
 {{ endcols }}
 
-{{ source | format("adventure-7.2.py") }}
-
 Part 7.2: Print inventory
 -------------------------
 
-{{ clear }}
+{{ source | format("adventure-7.2.py") }}
 
 {{ left }}
 
@@ -131,7 +107,7 @@ In this section we'll print the players inventory.
 
 {{ endcols }}
 
-### A: in `do_inventory()`
+### A: Modify `do_inventory()`
 
 1. `[ ]` Use the `header()` function to print `"Inventory"`
 1. `[ ]` If `PLAYER["inventory"]` is {term}`falsy`:

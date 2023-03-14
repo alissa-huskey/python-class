@@ -1,24 +1,4 @@
 ---
-substitutions:
-  left:  '{{ leftcol | replace("col", "col-5") }}'
-  right: '{{ rightcol | replace("col", "col-7") }}'
-  icon: '{opticon}`file-code`'
-
-  # green "source code" badge linking to my github
-  # usage: {{ source | format("filename.py") }}
-  source: |
-    ```{div} float-right
-      {bdg-link-info-line}`source code <https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/%s>`
-    ```
-  # two green badges, one for adventure-VERSION.py and one for test_game-VERSION.py
-  # usage: {{ sources.format("VERSION") }}
-  # note: double curley braces make one literal brace (for .format())
-  sources: |
-    ```{{div}} float-right
-    {{{{ code.format("adventure.py", "adventure/adventure-{0}.py") }}}} {{{{ code.format("test_game.py", "adventure/test_game-{0}.py") }}}}
-    ```
-
-
 jupytext:
   formats: md:myst
   text_representation:
@@ -53,12 +33,10 @@ Part 1.1: Setup
 repo for it, if you're comfortable with git.)
 2. `[ ]` Give the file a docstring that includes the link to this page.
 
+Part 1.2: Define `main()`
+-------------------------
+
 {{ source | format("adventure-1.2.py") }}
-
-Part 1.2: The main() function
------------------------------
-
-{{ clear }}
 
 {{ left }}
 
@@ -92,17 +70,15 @@ Part 1.2: The main() function
 
 {{ clear }}
 
+Part 1.3: Your first command: `quit`
+------------------------------------
+
 {{ source | format("adventure-1.3.py") }}
-
-Part 1.3: Your first command: quit
-----------------------------------
-
-{{ clear }}
 
 In this section we will actually look at what the player says, and make our first
 command: the `quit` command.
 
-### A. Make do_quit()
+### A. Define `do_quit()`
 
 {{ left }}
 
@@ -124,7 +100,7 @@ command: the `quit` command.
 
 {{ endcols }}
 
-### B. In main(), in the while loop:
+### B. In `main()`, in the while loop:
 
 1. `[ ]` After getting `reply`, check if `reply` is equal to `q` or `quit`.
 1. `[ ]` If so, call `do_quit()`
@@ -140,12 +116,10 @@ command: the `quit` command.
 
 `````
 
-{{ source | format("adventure-1.4.py") }}
-
 Part 1.4 Create `ITEMS`
 -----------------------
 
-{{ clear }}
+{{ source | format("adventure-1.4.py") }}
 
 We're going to make our first real command: `shop`. We're skipping ahead a bit
 so we can have our program do something interesting.
@@ -194,12 +168,10 @@ ITEMS = {
 
 `````
 
-{{ source | format("adventure-1.5.py") }}
-
 Part 1.5: Make `do_shop()` function
 -----------------------------------
 
-{{ clear }}
+{{ source | format("adventure-1.5.py") }}
 
 {{ left }}
 
@@ -220,13 +192,13 @@ defined in `ITEMS` above.
 
 {{ endcols }}
 
-### A. Define a do_shop() function
+### A. Define `do_shop()`
 
 1. `[ ]` Define a `do_shop()` function.
 1. `[ ]` Have it print `"Items for sale."`
 1. `[ ]` Iterate over the `ITEMS` dictionary. Print the `name` and `description` of each.
 
-### B. In main()
+### B. Modify `main()`
 
 1. `[ ]` In between your `if` and `else`, add an `elif` clause that checks if `reply`
    is equal to `shop`.

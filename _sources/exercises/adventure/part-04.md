@@ -1,24 +1,4 @@
 ---
-substitutions:
-  left:  '{{ leftcol | replace("col", "col-5") }}'
-  right: '{{ rightcol | replace("col", "col-7") }}'
-  icon: '{opticon}`file-code`'
-
-  # green "source code" badge linking to my github
-  # usage: {{ source | format("filename.py") }}
-  source: |
-    ```{div} float-right
-      {bdg-link-info-line}`source code <https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/%s>`
-    ```
-  # two green badges, one for adventure-VERSION.py and one for test_game-VERSION.py
-  # usage: {{ sources.format("VERSION") }}
-  # note: double curley braces make one literal brace (for .format())
-  sources: |
-    ```{{div}} float-right
-    {{{{ code.format("adventure.py", "adventure/adventure-{0}.py") }}}} {{{{ code.format("test_game.py", "adventure/test_game-{0}.py") }}}}
-    ```
-
-
 jupytext:
   formats: md:myst
   text_representation:
@@ -34,12 +14,10 @@ Part 4: Examine items
 
 In this section we'll add the `examine` command.
 
-{{ source | format("adventure-4.1.py") }}
-
 Part 4.1: Add new items
 -----------------------
 
-{{ clear }}
+{{ source | format("adventure-4.1.py") }}
 
 In this section we'll add a `"desk"` and `"book"` items to the `ITEMS`
 dictionary, which will eventually be added to the `"home"` place. The book is
@@ -52,7 +30,7 @@ Note: At the end of this section, there will be no difference in how the game
 behaves. But check and make sure that the book and desk are not listed when you
 do the `shop` command.
 
-### A. In ITEMS:
+### A. Modify `ITEMS`:
 
 {{ left }}
 
@@ -89,7 +67,7 @@ For now, keep the descriptions for both simple. Something like:
 Note: If you try the `shop` command before the next section, you will see
 `"book"` and `"desk"` in the list.
 
-### B. In PLACES:
+### B. Modify `PLACES`:
 
 We'll keep track of which items are in a particular place by adding a `"items"`
 key to the place dictionary. In this case, we're going to add the keys for the `"book"` and
@@ -116,7 +94,7 @@ a list that contains two items, the strings `"book"` and `"desk"`.
 
 {{ endcols }}
 
-### C. In do_shop(), in the for loop:
+### C. Modify `do_shop()`, in the for loop:
 
 {{ left }}
 
@@ -141,12 +119,10 @@ a list that contains two items, the strings `"book"` and `"desk"`.
 
 Be sure to test the `shop` command and make sure book and desk aren't listed.
 
-{{ source | format("adventure-4.2.py") }}
-
 Part 4.2: Add `do_examine()`
 ----------------------------
 
-{{ clear }}
+{{ source | format("adventure-4.2.py") }}
 
 {{ left }}
 
@@ -166,7 +142,7 @@ In this section we'll add an `examine` command.
 
 {{ endcols }}
 
-### A. Make do_examine():
+### A. Define `do_examine()`:
 
 {{ left }}
 
@@ -190,7 +166,7 @@ In this section we'll add an `examine` command.
 
 {{ endcols }}
 
-### B. In main(), in the while loop:
+### B. Modify `main()`, in the while loop:
 
 {{ left }}
 
@@ -221,12 +197,10 @@ calling the `do_examine()` function.
 
 :::
 
-{{ source | format("adventure-4.3.py") }}
-
 Part 4.3: Finish examine command
 --------------------------------
 
-{{ clear }}
+{{ source | format("adventure-4.3.py") }}
 
 {{ left }}
 
@@ -251,7 +225,7 @@ dictionary and print its information.
 
 {{ endcols }}
 
-### A. In do_examine() ensure args is not empty
+### A. Modify `do_examine()`: ensure args is not empty
 
 {{ left }}
 
@@ -276,7 +250,7 @@ dictionary and print its information.
 
 {{ endcols }}
 
-### B. Still in do_examine(): get the current place
+### B. Modify `do_examine()`: get the current place
 
 {{ left }}
 
@@ -299,7 +273,7 @@ dictionary and print its information.
 
 {{ endcols }}
 
-### C. Still in do_examine(): check the name
+### C. Modify `do_examine()`: check the name
 
 1. `[ ]` assign the first element from the `args` list to the variable `name` and make it lowercase
 1. `[ ]` check if `name` is in the list of items available at this place by:
@@ -332,7 +306,7 @@ dictionary and print its information.
 
 `````
 
-### D. Still in do_examine(): get and print the item info
+### D. Modify `do_examine()`: get and print the item info
 
 1. `[ ]` Get the value from the `ITEMS` dictionary associated with the `name`
          key and assign it to the variable `item`

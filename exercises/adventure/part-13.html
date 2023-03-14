@@ -29,8 +29,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/asciinema-player-3.1.2.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/asciinema-player.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -48,7 +48,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/x-frame-bypass.js"></script>
-    <script src="../../_static/asciinema-player.js"></script>
+    <script src="../../_static/asciinema-player-3.1.2.js"></script>
     <script src="../../_static/custom.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/design-tabs.js"></script>
@@ -61,7 +61,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://alissa-huskey.github.io/python-class/exercises/adventure/part-13.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Reference" href="reference.html" />
+    <link rel="next" title="Part 14: Dragons" href="part-14.html" />
     <link rel="prev" title="Part 12: Read things" href="part-12.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -646,6 +646,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="part-14.html">
+     Part 14: Dragons
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="reference.html">
      Reference
     </a>
@@ -854,14 +859,14 @@ title="Edit this page"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-in-test-game-py-write-test-health-change">
+    <a class="reference internal nav-link" href="#a-in-test-game-py-define-test-health-change">
      A. In
      <code class="docutils literal notranslate">
       <span class="pre">
        test_game.py
       </span>
      </code>
-     write
+     define
      <code class="docutils literal notranslate">
       <span class="pre">
        test_health_change()
@@ -870,14 +875,14 @@ title="Edit this page"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#b-in-adventure-py-write-health-change">
+    <a class="reference internal nav-link" href="#b-in-adventure-py-define-health-change">
      B. In
      <code class="docutils literal notranslate">
       <span class="pre">
        adventure.py
       </span>
      </code>
-     write
+     define
      <code class="docutils literal notranslate">
       <span class="pre">
        health_change()
@@ -893,18 +898,37 @@ title="Edit this page"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-parameterize-test-health-change">
-     A. Parameterize
+    <a class="reference internal nav-link" href="#a-in-test-game-py-modify-test-health-change-parameterize">
+     A. In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_game.py
+      </span>
+     </code>
+     modify
      <code class="docutils literal notranslate">
       <span class="pre">
        test_health_change()
       </span>
      </code>
+     : parameterize
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#b-add-another-test-case">
-     B. Add another test case
+    <a class="reference internal nav-link" href="#b-in-test-game-py-above-test-health-change-add-another-test-case">
+     B. In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_game.py
+      </span>
+     </code>
+     above
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_health_change()
+      </span>
+     </code>
+     : Add another test case
     </a>
    </li>
   </ul>
@@ -915,24 +939,31 @@ title="Edit this page"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-add-test-case-for-when-health-0">
-     A. Add test case for when
+    <a class="reference internal nav-link" href="#a-in-test-game-py-above-test-health-change-ensure-health-0">
+     A. In
      <code class="docutils literal notranslate">
       <span class="pre">
-       health
-      </span>
-      <span class="pre">
-       &lt;
-      </span>
-      <span class="pre">
-       0
+       test_game.py
       </span>
      </code>
+     above
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_health_change()
+      </span>
+     </code>
+     : ensure health &gt; 0
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#b-modify-health-change">
-     B. Modify
+    <a class="reference internal nav-link" href="#b-in-adventure-py-modify-health-change">
+     B. In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       adventure.py
+      </span>
+     </code>
+     modify
      <code class="docutils literal notranslate">
       <span class="pre">
        health_change()
@@ -941,8 +972,8 @@ title="Edit this page"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#c-in-adventure-py">
-     C. In
+    <a class="reference internal nav-link" href="#c-at-the-top-of-adventure-py">
+     C. At the top of
      <code class="docutils literal notranslate">
       <span class="pre">
        adventure.py
@@ -951,8 +982,20 @@ title="Edit this page"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#d-add-test-case-for-max-health">
-     D. Add test case for
+    <a class="reference internal nav-link" href="#d-in-test-game-py-above-test-health-change-ensure-max-health">
+     D. In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_game.py
+      </span>
+     </code>
+     above
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_health_change()
+      </span>
+     </code>
+     : ensure
      <code class="docutils literal notranslate">
       <span class="pre">
        MAX_HEALTH
@@ -961,8 +1004,14 @@ title="Edit this page"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#e-modify-health-change">
-     E. Modify
+    <a class="reference internal nav-link" href="#e-in-adventure-py-modify-health-change">
+     E. In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       adventure.py
+      </span>
+     </code>
+     modify
      <code class="docutils literal notranslate">
       <span class="pre">
        health_change()
@@ -978,34 +1027,57 @@ title="Edit this page"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-add-player-health">
-     A. Add
+    <a class="reference internal nav-link" href="#a-in-adventure-py-modify-player">
+     A. In
      <code class="docutils literal notranslate">
       <span class="pre">
-       PLAYER["health"]
+       adventure.py
+      </span>
+     </code>
+     modify
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       PLAYER
       </span>
      </code>
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#b-add-progressbar">
-     B. Add ProgressBar
+    <a class="reference internal nav-link" href="#b-at-the-top-of-adventure-py-add-progressbar">
+     B. At the top of
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       adventure.py
+      </span>
+     </code>
+     : Add ProgressBar
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#c-add-health-bar-function">
-     C. Add
+    <a class="reference internal nav-link" href="#c-in-adventure-py-define-health-bar">
+     C. In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       adventure.py
+      </span>
+     </code>
+     define
      <code class="docutils literal notranslate">
       <span class="pre">
        health_bar()
       </span>
      </code>
-     function
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#d-in-do-inventory">
+    <a class="reference internal nav-link" href="#d-in-adventure-py-modify-do-inventory">
      D. In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       adventure.py
+      </span>
+     </code>
+     modify
      <code class="docutils literal notranslate">
       <span class="pre">
        do_inventory()
@@ -1014,8 +1086,14 @@ title="Edit this page"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#e-in-main">
+    <a class="reference internal nav-link" href="#e-in-adventure-py-modify-main">
      E. In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       adventure.py
+      </span>
+     </code>
+     modify
      <code class="docutils literal notranslate">
       <span class="pre">
        main()
@@ -1055,14 +1133,14 @@ title="Edit this page"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-in-test-game-py-write-test-health-change">
+    <a class="reference internal nav-link" href="#a-in-test-game-py-define-test-health-change">
      A. In
      <code class="docutils literal notranslate">
       <span class="pre">
        test_game.py
       </span>
      </code>
-     write
+     define
      <code class="docutils literal notranslate">
       <span class="pre">
        test_health_change()
@@ -1071,14 +1149,14 @@ title="Edit this page"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#b-in-adventure-py-write-health-change">
+    <a class="reference internal nav-link" href="#b-in-adventure-py-define-health-change">
      B. In
      <code class="docutils literal notranslate">
       <span class="pre">
        adventure.py
       </span>
      </code>
-     write
+     define
      <code class="docutils literal notranslate">
       <span class="pre">
        health_change()
@@ -1094,18 +1172,37 @@ title="Edit this page"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-parameterize-test-health-change">
-     A. Parameterize
+    <a class="reference internal nav-link" href="#a-in-test-game-py-modify-test-health-change-parameterize">
+     A. In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_game.py
+      </span>
+     </code>
+     modify
      <code class="docutils literal notranslate">
       <span class="pre">
        test_health_change()
       </span>
      </code>
+     : parameterize
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#b-add-another-test-case">
-     B. Add another test case
+    <a class="reference internal nav-link" href="#b-in-test-game-py-above-test-health-change-add-another-test-case">
+     B. In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_game.py
+      </span>
+     </code>
+     above
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_health_change()
+      </span>
+     </code>
+     : Add another test case
     </a>
    </li>
   </ul>
@@ -1116,24 +1213,31 @@ title="Edit this page"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-add-test-case-for-when-health-0">
-     A. Add test case for when
+    <a class="reference internal nav-link" href="#a-in-test-game-py-above-test-health-change-ensure-health-0">
+     A. In
      <code class="docutils literal notranslate">
       <span class="pre">
-       health
-      </span>
-      <span class="pre">
-       &lt;
-      </span>
-      <span class="pre">
-       0
+       test_game.py
       </span>
      </code>
+     above
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_health_change()
+      </span>
+     </code>
+     : ensure health &gt; 0
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#b-modify-health-change">
-     B. Modify
+    <a class="reference internal nav-link" href="#b-in-adventure-py-modify-health-change">
+     B. In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       adventure.py
+      </span>
+     </code>
+     modify
      <code class="docutils literal notranslate">
       <span class="pre">
        health_change()
@@ -1142,8 +1246,8 @@ title="Edit this page"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#c-in-adventure-py">
-     C. In
+    <a class="reference internal nav-link" href="#c-at-the-top-of-adventure-py">
+     C. At the top of
      <code class="docutils literal notranslate">
       <span class="pre">
        adventure.py
@@ -1152,8 +1256,20 @@ title="Edit this page"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#d-add-test-case-for-max-health">
-     D. Add test case for
+    <a class="reference internal nav-link" href="#d-in-test-game-py-above-test-health-change-ensure-max-health">
+     D. In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_game.py
+      </span>
+     </code>
+     above
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test_health_change()
+      </span>
+     </code>
+     : ensure
      <code class="docutils literal notranslate">
       <span class="pre">
        MAX_HEALTH
@@ -1162,8 +1278,14 @@ title="Edit this page"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#e-modify-health-change">
-     E. Modify
+    <a class="reference internal nav-link" href="#e-in-adventure-py-modify-health-change">
+     E. In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       adventure.py
+      </span>
+     </code>
+     modify
      <code class="docutils literal notranslate">
       <span class="pre">
        health_change()
@@ -1179,34 +1301,57 @@ title="Edit this page"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-add-player-health">
-     A. Add
+    <a class="reference internal nav-link" href="#a-in-adventure-py-modify-player">
+     A. In
      <code class="docutils literal notranslate">
       <span class="pre">
-       PLAYER["health"]
+       adventure.py
+      </span>
+     </code>
+     modify
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       PLAYER
       </span>
      </code>
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#b-add-progressbar">
-     B. Add ProgressBar
+    <a class="reference internal nav-link" href="#b-at-the-top-of-adventure-py-add-progressbar">
+     B. At the top of
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       adventure.py
+      </span>
+     </code>
+     : Add ProgressBar
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#c-add-health-bar-function">
-     C. Add
+    <a class="reference internal nav-link" href="#c-in-adventure-py-define-health-bar">
+     C. In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       adventure.py
+      </span>
+     </code>
+     define
      <code class="docutils literal notranslate">
       <span class="pre">
        health_bar()
       </span>
      </code>
-     function
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#d-in-do-inventory">
+    <a class="reference internal nav-link" href="#d-in-adventure-py-modify-do-inventory">
      D. In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       adventure.py
+      </span>
+     </code>
+     modify
      <code class="docutils literal notranslate">
       <span class="pre">
        do_inventory()
@@ -1215,8 +1360,14 @@ title="Edit this page"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#e-in-main">
+    <a class="reference internal nav-link" href="#e-in-adventure-py-modify-main">
      E. In
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       adventure.py
+      </span>
+     </code>
+     modify
      <code class="docutils literal notranslate">
       <span class="pre">
        main()
@@ -1240,22 +1391,22 @@ title="Edit this page"
 <h1>Part 13: Health<a class="headerlink" href="#part-13-health" title="Permalink to this headline">#</a></h1>
 <p>In this section we’ll add player health between <code class="docutils literal notranslate"><span class="pre">1</span></code> - <code class="docutils literal notranslate"><span class="pre">100</span></code> with a health
 progress bar on the inventory command.</p>
-<div class="float-right docutils">
+<section id="part-13-1-add-health-change">
+<h2>Part 13.1: Add <code class="docutils literal notranslate"><span class="pre">health_change()</span></code><a class="headerlink" href="#part-13-1-add-health-change" title="Permalink to this headline">#</a></h2>
+<div class="float-right source-code source-code-13-1 docutils">
 <p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-13.1.py"><span>adventure.py</span></a>
  <a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/test_game-13.1.py"><span>test_game.py</span></a>
 </p>
-</div>
-<section id="part-13-1-add-health-change">
-<h2>Part 13.1: Add <code class="docutils literal notranslate"><span class="pre">health_change()</span></code><a class="headerlink" href="#part-13-1-add-health-change" title="Permalink to this headline">#</a></h2>
 <div class="clearfix"></div>
+</div>
 <p>In this section we’ll start the <code class="docutils literal notranslate"><span class="pre">health_change()</span></code> function which will work very
 much like <code class="docutils literal notranslate"><span class="pre">inventory_change()</span></code>. It should:</p>
 <ul class="simple">
 <li><p>Take one <code class="docutils literal notranslate"><span class="pre">int</span></code> argument: <code class="docutils literal notranslate"><span class="pre">amount</span></code>.</p></li>
 <li><p>Add the <code class="docutils literal notranslate"><span class="pre">amount</span></code> to <code class="docutils literal notranslate"><span class="pre">PLAYER[&quot;health&quot;]</span></code>.</p></li>
 </ul>
-<section id="a-in-test-game-py-write-test-health-change">
-<h3>A. In <code class="docutils literal notranslate"><span class="pre">test_game.py</span></code> write <code class="docutils literal notranslate"><span class="pre">test_health_change()</span></code><a class="headerlink" href="#a-in-test-game-py-write-test-health-change" title="Permalink to this headline">#</a></h3>
+<section id="a-in-test-game-py-define-test-health-change">
+<h3>A. In <code class="docutils literal notranslate"><span class="pre">test_game.py</span></code> define <code class="docutils literal notranslate"><span class="pre">test_health_change()</span></code><a class="headerlink" href="#a-in-test-game-py-define-test-health-change" title="Permalink to this headline">#</a></h3>
 <p>Write the <code class="docutils literal notranslate"><span class="pre">test_health_change()</span></code> function to test <code class="docutils literal notranslate"><span class="pre">health_change()</span></code>.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
@@ -1323,8 +1474,8 @@ Code<div class="sd-summary-down docutils">
 </div>
 </div>
 </details></section>
-<section id="b-in-adventure-py-write-health-change">
-<h3>B. In <code class="docutils literal notranslate"><span class="pre">adventure.py</span></code> write <code class="docutils literal notranslate"><span class="pre">health_change()</span></code><a class="headerlink" href="#b-in-adventure-py-write-health-change" title="Permalink to this headline">#</a></h3>
+<section id="b-in-adventure-py-define-health-change">
+<h3>B. In <code class="docutils literal notranslate"><span class="pre">adventure.py</span></code> define <code class="docutils literal notranslate"><span class="pre">health_change()</span></code><a class="headerlink" href="#b-in-adventure-py-define-health-change" title="Permalink to this headline">#</a></h3>
 <p>Write the <code class="docutils literal notranslate"><span class="pre">health_change()</span></code> function.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
@@ -1357,15 +1508,16 @@ Code<div class="sd-summary-down docutils">
 </div>
 </div>
 </div>
-</details><div class="float-right docutils">
-<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-13.2.py"><span>adventure.py</span></a>
- <a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/test_game-13.2.py"><span>test_game.py</span></a>
-</p>
-</div>
-</section>
+</details></section>
 </section>
 <section id="part-13-2-parameterize-the-test">
 <h2>Part 13.2: Parameterize the test<a class="headerlink" href="#part-13-2-parameterize-the-test" title="Permalink to this headline">#</a></h2>
+<div class="float-right source-code source-code-13-2 docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-13.2.py"><span>adventure.py</span></a>
+ <a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/test_game-13.2.py"><span>test_game.py</span></a>
+</p>
+<div class="clearfix"></div>
+</div>
 <p>In this section we’ll modify the <code class="docutils literal notranslate"><span class="pre">test_health_change()</span></code> function to use
 parametrization. This allows us to use the same test for several different
 <a class="reference internal" href="../../test%20case.html" title=""><span class="xref std std-term">test cases</span></a> which are stored and run as a list of arguments to a single
@@ -1373,8 +1525,8 @@ test function.</p>
 <p>If you’re not already familiar with parameterization, see
 <a class="reference external" href="../practices/testing/pytest-tests.html#part-5-parametrization">Pytest Tests &gt; Parametrization</a>.</p>
 <div class="clearfix"></div>
-<section id="a-parameterize-test-health-change">
-<h3>A. Parameterize <code class="docutils literal notranslate"><span class="pre">test_health_change()</span></code><a class="headerlink" href="#a-parameterize-test-health-change" title="Permalink to this headline">#</a></h3>
+<section id="a-in-test-game-py-modify-test-health-change-parameterize">
+<h3>A. In <code class="docutils literal notranslate"><span class="pre">test_game.py</span></code> modify <code class="docutils literal notranslate"><span class="pre">test_health_change()</span></code>: parameterize<a class="headerlink" href="#a-in-test-game-py-modify-test-health-change-parameterize" title="Permalink to this headline">#</a></h3>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition seealso">
@@ -1469,8 +1621,8 @@ Code<div class="sd-summary-down docutils">
 </div>
 </div>
 </details></section>
-<section id="b-add-another-test-case">
-<h3>B. Add another test case<a class="headerlink" href="#b-add-another-test-case" title="Permalink to this headline">#</a></h3>
+<section id="b-in-test-game-py-above-test-health-change-add-another-test-case">
+<h3>B. In <code class="docutils literal notranslate"><span class="pre">test_game.py</span></code> above <code class="docutils literal notranslate"><span class="pre">test_health_change()</span></code>: Add another test case<a class="headerlink" href="#b-in-test-game-py-above-test-health-change-add-another-test-case" title="Permalink to this headline">#</a></h3>
 <p>In this section we are going to add a test case for passing a negative value to
 <code class="docutils literal notranslate"><span class="pre">health_change()</span></code> to effectively subtract that amount from player health.</p>
 <p>If we were to write this as a non-parameratized test it would look something
@@ -1554,8 +1706,8 @@ Code<div class="sd-summary-down docutils">
 <h2>Part 13.3: Add health limits<a class="headerlink" href="#part-13-3-add-health-limits" title="Permalink to this headline">#</a></h2>
 <p>In this section we’re going to modify the <code class="docutils literal notranslate"><span class="pre">health_change()</span></code> function so that
 <code class="docutils literal notranslate"><span class="pre">PLAYER[&quot;health&quot;]</span></code> is always between <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">100</span></code>.</p>
-<section id="a-add-test-case-for-when-health-0">
-<h3>A. Add test case for when <code class="docutils literal notranslate"><span class="pre">health</span> <span class="pre">&lt;</span> <span class="pre">0</span></code><a class="headerlink" href="#a-add-test-case-for-when-health-0" title="Permalink to this headline">#</a></h3>
+<section id="a-in-test-game-py-above-test-health-change-ensure-health-0">
+<h3>A. In <code class="docutils literal notranslate"><span class="pre">test_game.py</span></code> above <code class="docutils literal notranslate"><span class="pre">test_health_change()</span></code>: ensure health &gt; 0<a class="headerlink" href="#a-in-test-game-py-above-test-health-change-ensure-health-0" title="Permalink to this headline">#</a></h3>
 <p>In this section we will add a test case to ensure that even if <code class="docutils literal notranslate"><span class="pre">start</span></code> - <code class="docutils literal notranslate"><span class="pre">amount</span></code> is
 less than zero, player health is set to zero instead of a negative number</p>
 <p>If we were to write this as a non-parameratized test, it would look something like:</p>
@@ -1629,8 +1781,8 @@ Code<div class="sd-summary-down docutils">
 </div>
 </div>
 </details></section>
-<section id="b-modify-health-change">
-<h3>B. Modify <code class="docutils literal notranslate"><span class="pre">health_change()</span></code><a class="headerlink" href="#b-modify-health-change" title="Permalink to this headline">#</a></h3>
+<section id="b-in-adventure-py-modify-health-change">
+<h3>B. In <code class="docutils literal notranslate"><span class="pre">adventure.py</span></code> modify <code class="docutils literal notranslate"><span class="pre">health_change()</span></code><a class="headerlink" href="#b-in-adventure-py-modify-health-change" title="Permalink to this headline">#</a></h3>
 <p>In this section we will modify <code class="docutils literal notranslate"><span class="pre">health_change()</span></code> to make the above test case
 pass.</p>
 <ol class="simple">
@@ -1664,8 +1816,8 @@ Code<div class="sd-summary-down docutils">
 </div>
 </div>
 </details></section>
-<section id="c-in-adventure-py">
-<h3>C. In <code class="docutils literal notranslate"><span class="pre">adventure.py</span></code><a class="headerlink" href="#c-in-adventure-py" title="Permalink to this headline">#</a></h3>
+<section id="c-at-the-top-of-adventure-py">
+<h3>C. At the top of <code class="docutils literal notranslate"><span class="pre">adventure.py</span></code><a class="headerlink" href="#c-at-the-top-of-adventure-py" title="Permalink to this headline">#</a></h3>
 <p>In this section we’ll add a global variable <code class="docutils literal notranslate"><span class="pre">MAX_HEALTH</span></code> to keep track of the
 maximum value for <code class="docutils literal notranslate"><span class="pre">PLAYER[&quot;health&quot;]</span></code>.</p>
 <ol class="simple">
@@ -1697,8 +1849,8 @@ Code<div class="sd-summary-down docutils">
 </div>
 </div>
 </details></section>
-<section id="d-add-test-case-for-max-health">
-<h3>D. Add test case for <code class="docutils literal notranslate"><span class="pre">MAX_HEALTH</span></code><a class="headerlink" href="#d-add-test-case-for-max-health" title="Permalink to this headline">#</a></h3>
+<section id="d-in-test-game-py-above-test-health-change-ensure-max-health">
+<h3>D. In <code class="docutils literal notranslate"><span class="pre">test_game.py</span></code> above <code class="docutils literal notranslate"><span class="pre">test_health_change()</span></code>: ensure <code class="docutils literal notranslate"><span class="pre">MAX_HEALTH</span></code><a class="headerlink" href="#d-in-test-game-py-above-test-health-change-ensure-max-health" title="Permalink to this headline">#</a></h3>
 <p>In this section we’ll add a test case to ensure that even if <code class="docutils literal notranslate"><span class="pre">start</span></code> + <code class="docutils literal notranslate"><span class="pre">result</span></code>
 is greater than <code class="docutils literal notranslate"><span class="pre">MAX_HEALTH</span></code>, player health will be set to <code class="docutils literal notranslate"><span class="pre">MAX_HEALTH</span></code>.</p>
 <p>If we were to write this as a non-parameratized test it would look something
@@ -1799,8 +1951,8 @@ Code<div class="sd-summary-down docutils">
 </div>
 </div>
 </details></section>
-<section id="e-modify-health-change">
-<h3>E. Modify <code class="docutils literal notranslate"><span class="pre">health_change()</span></code><a class="headerlink" href="#e-modify-health-change" title="Permalink to this headline">#</a></h3>
+<section id="e-in-adventure-py-modify-health-change">
+<h3>E. In <code class="docutils literal notranslate"><span class="pre">adventure.py</span></code> modify <code class="docutils literal notranslate"><span class="pre">health_change()</span></code><a class="headerlink" href="#e-in-adventure-py-modify-health-change" title="Permalink to this headline">#</a></h3>
 <p>In this section we will modify <code class="docutils literal notranslate"><span class="pre">health_change()</span></code> to make the above test case
 pass.</p>
 <ol class="simple">
@@ -1844,8 +1996,8 @@ Code<div class="sd-summary-down docutils">
 <h2>Part 13.4: UX Changes<a class="headerlink" href="#part-13-4-ux-changes" title="Permalink to this headline">#</a></h2>
 <p>In this section we’ll add a few changes to integrate health with the game
 itself.</p>
-<section id="a-add-player-health">
-<h3>A. Add <code class="docutils literal notranslate"><span class="pre">PLAYER[&quot;health&quot;]</span></code><a class="headerlink" href="#a-add-player-health" title="Permalink to this headline">#</a></h3>
+<section id="a-in-adventure-py-modify-player">
+<h3>A. In <code class="docutils literal notranslate"><span class="pre">adventure.py</span></code> modify <code class="docutils literal notranslate"><span class="pre">PLAYER</span></code><a class="headerlink" href="#a-in-adventure-py-modify-player" title="Permalink to this headline">#</a></h3>
 <ol class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add a <code class="docutils literal notranslate"><span class="pre">&quot;health&quot;</span></code> key to the <code class="docutils literal notranslate"><span class="pre">PLAYER</span></code> dictionary with a value of <code class="docutils literal notranslate"><span class="pre">100</span></code></p></li>
 </ol>
@@ -1869,8 +2021,8 @@ Code<div class="sd-summary-down docutils">
 </div>
 </div>
 </details></section>
-<section id="b-add-progressbar">
-<h3>B. Add ProgressBar<a class="headerlink" href="#b-add-progressbar" title="Permalink to this headline">#</a></h3>
+<section id="b-at-the-top-of-adventure-py-add-progressbar">
+<h3>B. At the top of <code class="docutils literal notranslate"><span class="pre">adventure.py</span></code>: Add ProgressBar<a class="headerlink" href="#b-at-the-top-of-adventure-py-add-progressbar" title="Permalink to this headline">#</a></h3>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition seealso">
@@ -1956,8 +2108,8 @@ Code<div class="sd-summary-down docutils">
 </div>
 </div>
 </details></section>
-<section id="c-add-health-bar-function">
-<h3>C. Add <code class="docutils literal notranslate"><span class="pre">health_bar()</span></code> function<a class="headerlink" href="#c-add-health-bar-function" title="Permalink to this headline">#</a></h3>
+<section id="c-in-adventure-py-define-health-bar">
+<h3>C. In <code class="docutils literal notranslate"><span class="pre">adventure.py</span></code> define <code class="docutils literal notranslate"><span class="pre">health_bar()</span></code><a class="headerlink" href="#c-in-adventure-py-define-health-bar" title="Permalink to this headline">#</a></h3>
 <p>In this section we’ll add a function <code class="docutils literal notranslate"><span class="pre">health_bar()</span></code> which will print the health bar.</p>
 <ol class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Write a function <code class="docutils literal notranslate"><span class="pre">health_bar()</span></code></p></li>
@@ -1988,8 +2140,8 @@ Code<div class="sd-summary-down docutils">
 </div>
 </div>
 </details></section>
-<section id="d-in-do-inventory">
-<h3>D. In <code class="docutils literal notranslate"><span class="pre">do_inventory()</span></code><a class="headerlink" href="#d-in-do-inventory" title="Permalink to this headline">#</a></h3>
+<section id="d-in-adventure-py-modify-do-inventory">
+<h3>D. In <code class="docutils literal notranslate"><span class="pre">adventure.py</span></code> modify <code class="docutils literal notranslate"><span class="pre">do_inventory()</span></code><a class="headerlink" href="#d-in-adventure-py-modify-do-inventory" title="Permalink to this headline">#</a></h3>
 <p>In this section we’ll call <code class="docutils literal notranslate"><span class="pre">health_bar()</span></code> in the <code class="docutils literal notranslate"><span class="pre">do_inventory()</span></code> function to
 print the health bar.</p>
 <div class="row"><div class="col-5 left-col-5">
@@ -2004,7 +2156,7 @@ Demo<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<asciinema-player poster="npt:0:03" rows="16" src="assets/adventure-13.4.cast"></asciinema-player></div>
+<asciinema-player cols="55" rows="16" terminalFontSize="big" poster="npt:0:03" src="assets/adventure-13.4.cast" id="screencast_adventure_13_4"></asciinema-player></div>
 </details></div></div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
@@ -2040,8 +2192,8 @@ Code<div class="sd-summary-down docutils">
 </div>
 </div>
 </details></section>
-<section id="e-in-main">
-<h3>E. In <code class="docutils literal notranslate"><span class="pre">main()</span></code><a class="headerlink" href="#e-in-main" title="Permalink to this headline">#</a></h3>
+<section id="e-in-adventure-py-modify-main">
+<h3>E. In <code class="docutils literal notranslate"><span class="pre">adventure.py</span></code> modify <code class="docutils literal notranslate"><span class="pre">main()</span></code><a class="headerlink" href="#e-in-adventure-py-modify-main" title="Permalink to this headline">#</a></h3>
 <p>In this section we’ll quit the game if player health is out of health.</p>
 <ol class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> At the very end of the <code class="docutils literal notranslate"><span class="pre">main()</span></code> function, check to make sure that the player still has health</p></li>
@@ -2156,10 +2308,10 @@ Code<div class="sd-summary-down docutils">
             <p class="prev-next-title">Part 12: Read things</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="reference.html" title="next page">
+    <a class='right-next' id="next-link" href="part-14.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Reference</p>
+        <p class="prev-next-title">Part 14: Dragons</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

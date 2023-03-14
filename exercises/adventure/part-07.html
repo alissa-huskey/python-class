@@ -29,8 +29,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/asciinema-player-3.1.2.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/asciinema-player.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -48,7 +48,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/x-frame-bypass.js"></script>
-    <script src="../../_static/asciinema-player.js"></script>
+    <script src="../../_static/asciinema-player-3.1.2.js"></script>
     <script src="../../_static/custom.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/design-tabs.js"></script>
@@ -646,6 +646,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="part-14.html">
+     Part 14: Dragons
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="reference.html">
      Reference
     </a>
@@ -849,31 +854,24 @@ title="Edit this page"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-define-a-do-inventory-function">
-     A: Define a
+    <a class="reference internal nav-link" href="#a-define-do-inventory">
+     A: Define
      <code class="docutils literal notranslate">
       <span class="pre">
        do_inventory()
       </span>
      </code>
-     function
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#b-in-main-in-the-while-loop">
-     B: in
+    <a class="reference internal nav-link" href="#b-modify-main-in-the-while-loop">
+     B: Modify
      <code class="docutils literal notranslate">
       <span class="pre">
        main()
       </span>
      </code>
-     , in the
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       while
-      </span>
-     </code>
-     loop
+     , in the while loop
     </a>
    </li>
   </ul>
@@ -884,8 +882,8 @@ title="Edit this page"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-in-do-inventory">
-     A: in
+    <a class="reference internal nav-link" href="#a-modify-do-inventory">
+     A: Modify
      <code class="docutils literal notranslate">
       <span class="pre">
        do_inventory()
@@ -920,31 +918,24 @@ title="Edit this page"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-define-a-do-inventory-function">
-     A: Define a
+    <a class="reference internal nav-link" href="#a-define-do-inventory">
+     A: Define
      <code class="docutils literal notranslate">
       <span class="pre">
        do_inventory()
       </span>
      </code>
-     function
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#b-in-main-in-the-while-loop">
-     B: in
+    <a class="reference internal nav-link" href="#b-modify-main-in-the-while-loop">
+     B: Modify
      <code class="docutils literal notranslate">
       <span class="pre">
        main()
       </span>
      </code>
-     , in the
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       while
-      </span>
-     </code>
-     loop
+     , in the while loop
     </a>
    </li>
   </ul>
@@ -955,8 +946,8 @@ title="Edit this page"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-in-do-inventory">
-     A: in
+    <a class="reference internal nav-link" href="#a-modify-do-inventory">
+     A: Modify
      <code class="docutils literal notranslate">
       <span class="pre">
        do_inventory()
@@ -979,12 +970,12 @@ title="Edit this page"
   <section class="tex2jax_ignore mathjax_ignore" id="part-7-show-inventory">
 <h1>Part 7: Show inventory<a class="headerlink" href="#part-7-show-inventory" title="Permalink to this headline">#</a></h1>
 <p>In this section we’ll add the <code class="docutils literal notranslate"><span class="pre">inventory</span></code> command.</p>
-<div class="float-right docutils">
-<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-7.1.py"><span>source code</span></a></p>
-</div>
 <section id="part-7-1-add-command">
 <h2>Part 7.1: Add command<a class="headerlink" href="#part-7-1-add-command" title="Permalink to this headline">#</a></h2>
+<div class="float-right source-code docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-7.1.py"><span>source code</span></a></p>
 <div class="clearfix"></div>
+</div>
 <div class="row"><div class="col-5 left-col-5">
 <p>In this section we’ll define a <code class="docutils literal notranslate"><span class="pre">do_inventory()</span></code> function that gets called when the
 player types <code class="docutils literal notranslate"><span class="pre">i</span></code>, or <code class="docutils literal notranslate"><span class="pre">inventory</span></code>.</p>
@@ -996,10 +987,10 @@ Demo<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<asciinema-player poster="npt:0:03" rows="16" src="assets/adventure-7.1.cast"></asciinema-player></div>
+<asciinema-player cols="55" rows="16" terminalFontSize="big" poster="npt:0:03" src="assets/adventure-7.1.cast" id="screencast_adventure_7_1"></asciinema-player></div>
 </details></div></div>
-<section id="a-define-a-do-inventory-function">
-<h3>A: Define a <code class="docutils literal notranslate"><span class="pre">do_inventory()</span></code> function<a class="headerlink" href="#a-define-a-do-inventory-function" title="Permalink to this headline">#</a></h3>
+<section id="a-define-do-inventory">
+<h3>A: Define <code class="docutils literal notranslate"><span class="pre">do_inventory()</span></code><a class="headerlink" href="#a-define-do-inventory" title="Permalink to this headline">#</a></h3>
 <div class="row"><div class="col-5 left-col-5">
 <ol class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Define a <code class="docutils literal notranslate"><span class="pre">do_inventory()</span></code> function.</p></li>
@@ -1022,8 +1013,8 @@ Code<div class="sd-summary-down docutils">
 </div>
 </details></div></div>
 </section>
-<section id="b-in-main-in-the-while-loop">
-<h3>B: in <code class="docutils literal notranslate"><span class="pre">main()</span></code>, in the <code class="docutils literal notranslate"><span class="pre">while</span></code> loop<a class="headerlink" href="#b-in-main-in-the-while-loop" title="Permalink to this headline">#</a></h3>
+<section id="b-modify-main-in-the-while-loop">
+<h3>B: Modify <code class="docutils literal notranslate"><span class="pre">main()</span></code>, in the while loop<a class="headerlink" href="#b-modify-main-in-the-while-loop" title="Permalink to this headline">#</a></h3>
 <div class="row"><div class="col-5 left-col-5">
 <ol class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Add an <code class="docutils literal notranslate"><span class="pre">elif</span></code> that checks if <code class="docutils literal notranslate"><span class="pre">command</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;i&quot;</span></code>, or
@@ -1069,14 +1060,14 @@ Code<div class="sd-summary-down docutils">
 </div>
 </div>
 </details></div></div>
-<div class="float-right docutils">
-<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-7.2.py"><span>source code</span></a></p>
-</div>
 </section>
 </section>
 <section id="part-7-2-print-inventory">
 <h2>Part 7.2: Print inventory<a class="headerlink" href="#part-7-2-print-inventory" title="Permalink to this headline">#</a></h2>
+<div class="float-right source-code docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-7.2.py"><span>source code</span></a></p>
 <div class="clearfix"></div>
+</div>
 <div class="row"><div class="col-5 left-col-5">
 <p>In this section we’ll print the players inventory.</p>
 </div><div class="col-7">
@@ -1087,10 +1078,10 @@ Demo<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<asciinema-player poster="npt:0:06" rows="16" src="assets/adventure-7.2.cast"></asciinema-player></div>
+<asciinema-player cols="55" rows="16" terminalFontSize="big" poster="npt:0:06" src="assets/adventure-7.2.cast" id="screencast_adventure_7_2"></asciinema-player></div>
 </details></div></div>
-<section id="a-in-do-inventory">
-<h3>A: in <code class="docutils literal notranslate"><span class="pre">do_inventory()</span></code><a class="headerlink" href="#a-in-do-inventory" title="Permalink to this headline">#</a></h3>
+<section id="a-modify-do-inventory">
+<h3>A: Modify <code class="docutils literal notranslate"><span class="pre">do_inventory()</span></code><a class="headerlink" href="#a-modify-do-inventory" title="Permalink to this headline">#</a></h3>
 <ol class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Use the <code class="docutils literal notranslate"><span class="pre">header()</span></code> function to print <code class="docutils literal notranslate"><span class="pre">&quot;Inventory&quot;</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> If <code class="docutils literal notranslate"><span class="pre">PLAYER[&quot;inventory&quot;]</span></code> is <a class="reference internal" href="../../lessons/conditional-statements.html#term-falsy"><span class="xref std std-term">falsy</span></a>:</p>

@@ -1,24 +1,4 @@
 ---
-substitutions:
-  left:  '{{ leftcol | replace("col", "col-5") }}'
-  right: '{{ rightcol | replace("col", "col-7") }}'
-  icon: '{opticon}`file-code`'
-
-  # green "source code" badge linking to my github
-  # usage: {{ source | format("filename.py") }}
-  source: |
-    ```{div} float-right
-      {bdg-link-info-line}`source code <https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/%s>`
-    ```
-  # two green badges, one for adventure-VERSION.py and one for test_game-VERSION.py
-  # usage: {{ sources.format("VERSION") }}
-  # note: double curley braces make one literal brace (for .format())
-  sources: |
-    ```{{div}} float-right
-    {{{{ code.format("adventure.py", "adventure/adventure-{0}.py") }}}} {{{{ code.format("test_game.py", "adventure/test_game-{0}.py") }}}}
-    ```
-
-
 jupytext:
   formats: md:myst
   text_representation:
@@ -34,12 +14,10 @@ Part 6: Take things
 
 In this section we'll add the `take` command.
 
-{{ source | format("adventure-6.1.py") }}
-
 Part 6.1: Add command
 ---------------------
 
-{{ clear }}
+{{ source | format("adventure-6.1.py") }}
 
 {{ left }}
 
@@ -60,7 +38,7 @@ player types `t`, `take`, or `grab`.
 
 {{ endcols }}
 
-### A: Define a `do_take()` function
+### A: Define `do_take()`
 
 {{ left }}
 
@@ -82,7 +60,7 @@ player types `t`, `take`, or `grab`.
 
 {{ endcols }}
 
-### B: in `main()`, in the `while` loop
+### B: Modify `main()`, in the while loop
 
 {{ left }}
 
@@ -106,12 +84,10 @@ player types `t`, `take`, or `grab`.
 
 {{ endcols }}
 
-{{ source | format("adventure-6.2.py") }}
-
 Part 6.2: Validate item
 -----------------------
 
-{{ clear }}
+{{ source | format("adventure-6.2.py") }}
 
 {{ left }}
 
@@ -132,7 +108,7 @@ item in the current place.
 
 {{ endcols }}
 
-### A: in `ITEMS`
+### A: Modify `ITEMS`
 
 {{ left }}
 
@@ -155,7 +131,7 @@ item in the current place.
 
 {{ endcols }}
 
-### B: in `do_take()`: make sure the item is valid in the current place
+### B: Modify `do_take()`: make sure the item is valid in the current place
 
 1. `[ ]` Check to see if `args` is {term}`falsy`, if so:
    * `[ ]` Use the `error()` function to print a message saying:
@@ -183,7 +159,7 @@ item in the current place.
 
 `````
 
-### C: still in `do_take()`: make sure the item is takeable
+### C: Modify `do_take()`: make sure the item is takeable
 
 1. `[ ]` Using `.get()`, get the value from `ITEMS` associated with the `name`
          key and assign it to the variable `item`.
@@ -212,12 +188,10 @@ item in the current place.
 
 `````
 
-{{ source | format("adventure-6.3.py") }}
-
 Part 6.3: Take it
 -----------------
 
-{{ clear }}
+{{ source | format("adventure-6.3.py") }}
 
 {{ left }}
 
@@ -237,7 +211,7 @@ In this section we'll actually take the item.
 
 {{ endcols }}
 
-### A: in `PLAYER`
+### A: Modify `PLAYER`
 
 {{ left }}
 
@@ -259,7 +233,7 @@ In this section we'll actually take the item.
 
 {{ endcols }}
 
-### B: in `do_take()`
+### B: Modify `do_take()`
 
 In this section we will add the item to our inventory, remove it from the
 place, and let the player know that it's done.
@@ -286,12 +260,10 @@ place, and let the player know that it's done.
 
 `````
 
-{{ source | format("adventure-6.4.py") }}
-
 Part 6.4: Examine inventory
 ---------------------------
 
-{{ clear }}
+{{ source | format("adventure-6.4.py") }}
 
 {{ left }}
 
@@ -311,7 +283,7 @@ In this section we'll modify `do_examine()` so it can be used to look at invento
 
 {{ endcols }}
 
-### A: in `do_examine()`
+### A: Modify `do_examine()`
 
 1. `[ ]` Find the if statement where you check if `name` is not in the `place`
          items list. Modify it so that it shows the error if `name` is not in

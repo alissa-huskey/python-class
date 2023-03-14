@@ -29,8 +29,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/asciinema-player-3.1.2.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/asciinema-player.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -48,7 +48,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/x-frame-bypass.js"></script>
-    <script src="../../_static/asciinema-player.js"></script>
+    <script src="../../_static/asciinema-player-3.1.2.js"></script>
     <script src="../../_static/custom.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/design-tabs.js"></script>
@@ -646,6 +646,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="part-14.html">
+     Part 14: Dragons
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="reference.html">
      Reference
     </a>
@@ -1064,23 +1069,25 @@ title="Edit this page"
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#c-show-price-in-do-examine">
-     C. Show price in
+    <a class="reference internal nav-link" href="#c-in-do-examine-show-price">
+     C. In
      <code class="docutils literal notranslate">
       <span class="pre">
        do_examine()
       </span>
      </code>
+     : show price
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#d-show-inventory-quantity-in-do-examine">
-     D. Show inventory quantity in
+    <a class="reference internal nav-link" href="#d-in-do-examine-show-inventory-quantity">
+     D. In
      <code class="docutils literal notranslate">
       <span class="pre">
        do_examine()
       </span>
      </code>
+     : show inventory quantity
     </a>
    </li>
   </ul>
@@ -1325,23 +1332,25 @@ title="Edit this page"
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#c-show-price-in-do-examine">
-     C. Show price in
+    <a class="reference internal nav-link" href="#c-in-do-examine-show-price">
+     C. In
      <code class="docutils literal notranslate">
       <span class="pre">
        do_examine()
       </span>
      </code>
+     : show price
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#d-show-inventory-quantity-in-do-examine">
-     D. Show inventory quantity in
+    <a class="reference internal nav-link" href="#d-in-do-examine-show-inventory-quantity">
+     D. In
      <code class="docutils literal notranslate">
       <span class="pre">
        do_examine()
       </span>
      </code>
+     : show inventory quantity
     </a>
    </li>
   </ul>
@@ -1361,12 +1370,12 @@ title="Edit this page"
 <p>In this section we’ll add the buy command, add the market, make sure that the
 buy and shop commands only work in the market, and make add information to the
 buy shop and examine commands.</p>
-<div class="float-right docutils">
-<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-10.1.py"><span>source code</span></a></p>
-</div>
 <section id="part-10-1-add-market">
 <h2>Part 10.1: Add market<a class="headerlink" href="#part-10-1-add-market" title="Permalink to this headline">#</a></h2>
+<div class="float-right source-code docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-10.1.py"><span>source code</span></a></p>
 <div class="clearfix"></div>
+</div>
 <div class="row"><div class="col-5 left-col-5">
 <p>First we’ll need to add the market to our <code class="docutils literal notranslate"><span class="pre">PLACES</span></code> dictionary so we can
 navigate to and from there.</p>
@@ -1378,7 +1387,7 @@ Demo<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<asciinema-player poster="npt:0:04" speed="0.5" rows="16" src="assets/adventure-10.1.cast"></asciinema-player></div>
+<asciinema-player cols="55" rows="16" terminalFontSize="big" poster="npt:0:03" speed="0.5" src="assets/adventure-10.1.cast" id="screencast_adventure_10_1"></asciinema-player></div>
 </details></div></div>
 <section id="a-add-market-to-places">
 <h3>A. Add market to <code class="docutils literal notranslate"><span class="pre">PLACES</span></code><a class="headerlink" href="#a-add-market-to-places" title="Permalink to this headline">#</a></h3>
@@ -1428,7 +1437,7 @@ Code<div class="sd-summary-down docutils">
 </span><span class="hll"><span class="linenos">62</span>        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;market&quot;</span><span class="p">,</span>
 </span><span class="hll"><span class="linenos">63</span>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;The Market&quot;</span><span class="p">,</span>
 </span><span class="hll"><span class="linenos">64</span>        <span class="s2">&quot;south&quot;</span><span class="p">:</span> <span class="s2">&quot;town-square&quot;</span><span class="p">,</span>
-</span><span class="hll"><span class="linenos">65</span>        <span class="s2">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;elixr&quot;</span><span class="p">,</span> <span class="s2">&quot;dagger&quot;</span><span class="p">],</span>
+</span><span class="hll"><span class="linenos">65</span>        <span class="s2">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;elixir&quot;</span><span class="p">,</span> <span class="s2">&quot;dagger&quot;</span><span class="p">],</span>
 </span><span class="hll"><span class="linenos">66</span>        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="p">(</span>
 </span><span class="hll"><span class="linenos">67</span>            <span class="s2">&quot;A tidy store with shelves full of goods to buy. A wooden hand &quot;</span>
 </span><span class="hll"><span class="linenos">68</span>            <span class="s2">&quot;painted menu hangs on the wall.&quot;</span>
@@ -1479,14 +1488,14 @@ Code<div class="sd-summary-down docutils">
 </pre></div>
 </div>
 </div>
-</details><div class="float-right docutils">
-<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-10.2.py"><span>source code</span></a></p>
-</div>
-</section>
+</details></section>
 </section>
 <section id="part-10-2-add-place-can">
 <h2>Part 10.2: Add <code class="docutils literal notranslate"><span class="pre">place_can()</span></code><a class="headerlink" href="#part-10-2-add-place-can" title="Permalink to this headline">#</a></h2>
+<div class="float-right source-code docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-10.2.py"><span>source code</span></a></p>
 <div class="clearfix"></div>
+</div>
 <div class="row"><div class="col-5 left-col-5">
 <p>Some commands can only happen when you are in a particular place. The way we
 initially wrote the <code class="docutils literal notranslate"><span class="pre">do_shop()</span></code> function, you can shop from anywhere. Now we’re
@@ -1502,7 +1511,7 @@ Demo<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<asciinema-player poster="npt:0:02" speed="0.5" rows="16" src="assets/adventure-10.2.cast"></asciinema-player></div>
+<asciinema-player cols="55" rows="16" terminalFontSize="big" poster="npt:0:02" speed="0.5" src="assets/adventure-10.2.cast" id="screencast_adventure_10_2"></asciinema-player></div>
 </details></div></div>
 <section id="a-in-places-add-can-list-to-market">
 <h3>A: In <code class="docutils literal notranslate"><span class="pre">PLACES</span></code> add <code class="docutils literal notranslate"><span class="pre">&quot;can&quot;</span></code> list to market<a class="headerlink" href="#a-in-places-add-can-list-to-market" title="Permalink to this headline">#</a></h3>
@@ -1524,7 +1533,7 @@ Code<div class="sd-summary-down docutils">
 <span class="linenos">62</span>        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;market&quot;</span><span class="p">,</span>
 <span class="linenos">63</span>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;The Market&quot;</span><span class="p">,</span>
 <span class="linenos">64</span>        <span class="s2">&quot;south&quot;</span><span class="p">:</span> <span class="s2">&quot;town-square&quot;</span><span class="p">,</span>
-<span class="linenos">65</span>        <span class="s2">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;elixr&quot;</span><span class="p">,</span> <span class="s2">&quot;dagger&quot;</span><span class="p">],</span>
+<span class="linenos">65</span>        <span class="s2">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;elixir&quot;</span><span class="p">,</span> <span class="s2">&quot;dagger&quot;</span><span class="p">],</span>
 <span class="hll"><span class="linenos">66</span>        <span class="s2">&quot;can&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;shop&quot;</span><span class="p">],</span>
 </span><span class="linenos">67</span>        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="p">(</span>
 <span class="linenos">68</span>            <span class="s2">&quot;A tidy store with shelves full of goods to buy. A wooden hand &quot;</span>
@@ -1611,14 +1620,14 @@ Code<div class="sd-summary-down docutils">
 </div>
 </div>
 </details></div></div>
-<div class="float-right docutils">
-<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-10.3.py"><span>source code</span></a></p>
-</div>
 </section>
 </section>
 <section id="part-10-3-add-buy-command">
 <h2>Part 10.3: Add buy command<a class="headerlink" href="#part-10-3-add-buy-command" title="Permalink to this headline">#</a></h2>
+<div class="float-right source-code docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-10.3.py"><span>source code</span></a></p>
 <div class="clearfix"></div>
+</div>
 <div class="row"><div class="col-5 left-col-5">
 <p>Now we’ll add the buy command.</p>
 </div><div class="col-7">
@@ -1629,7 +1638,7 @@ Demo<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<asciinema-player poster="npt:0:26" speed="0.75" rows="16" src="assets/adventure-10.3.cast"></asciinema-player></div>
+<asciinema-player cols="55" rows="16" terminalFontSize="big" poster="npt:0:26" speed="0.75" src="assets/adventure-10.3.cast" id="screencast_adventure_10_3"></asciinema-player></div>
 </details></div></div>
 <section id="a-add-game-info">
 <h3>A. Add game info<a class="headerlink" href="#a-add-game-info" title="Permalink to this headline">#</a></h3>
@@ -1688,7 +1697,7 @@ PLACES<div class="sd-summary-down docutils">
 <span class="linenos">61</span>        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;market&quot;</span><span class="p">,</span>
 <span class="linenos">62</span>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;The Market&quot;</span><span class="p">,</span>
 <span class="linenos">63</span>        <span class="s2">&quot;south&quot;</span><span class="p">:</span> <span class="s2">&quot;town-square&quot;</span><span class="p">,</span>
-<span class="linenos">64</span>        <span class="s2">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;elixr&quot;</span><span class="p">,</span> <span class="s2">&quot;dagger&quot;</span><span class="p">],</span>
+<span class="linenos">64</span>        <span class="s2">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;elixir&quot;</span><span class="p">,</span> <span class="s2">&quot;dagger&quot;</span><span class="p">],</span>
 <span class="hll"><span class="linenos">65</span>        <span class="s2">&quot;can&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;shop&quot;</span><span class="p">,</span> <span class="s2">&quot;buy&quot;</span><span class="p">],</span>
 </span><span class="linenos">66</span>        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="p">(</span>
 <span class="linenos">67</span>            <span class="s2">&quot;A tidy store with shelves full of goods to buy. A wooden hand &quot;</span>
@@ -1708,10 +1717,10 @@ ITEMS<div class="sd-summary-down docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 73</span><span class="n">ITEMS</span> <span class="o">=</span> <span class="p">{</span>
-<span class="linenos"> 74</span>    <span class="s2">&quot;elixr&quot;</span><span class="p">:</span> <span class="p">{</span>
-<span class="linenos"> 75</span>        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;elixr&quot;</span><span class="p">,</span>
-<span class="linenos"> 76</span>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;healing elixr&quot;</span><span class="p">,</span>
-<span class="linenos"> 77</span>        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;a magical elixr that will heal what ails ya&quot;</span><span class="p">,</span>
+<span class="linenos"> 74</span>    <span class="s2">&quot;elixir&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="linenos"> 75</span>        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;elixir&quot;</span><span class="p">,</span>
+<span class="linenos"> 76</span>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;healing elixir&quot;</span><span class="p">,</span>
+<span class="linenos"> 77</span>        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;a magical elixir that will heal what ails ya&quot;</span><span class="p">,</span>
 <span class="linenos"> 78</span>        <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span>
 <span class="linenos"> 79</span>    <span class="p">},</span>
 <span class="linenos"> 80</span>    <span class="s2">&quot;dagger&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -2152,14 +2161,14 @@ Code<div class="sd-summary-down docutils">
 </div>
 </div>
 </details></div></div>
-<div class="float-right docutils">
-<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-10.4.py"><span>source code</span></a></p>
-</div>
 </section>
 </section>
 <section id="part-10-4-clean-up-the-shop">
 <h2>Part 10.4: Clean up the shop<a class="headerlink" href="#part-10-4-clean-up-the-shop" title="Permalink to this headline">#</a></h2>
+<div class="float-right source-code docutils">
+<p><a class="sd-sphinx-override sd-badge sd-outline-info sd-text-info reference external" href="https://github.com/alissa-huskey/python-class/blob/master/pythonclass/adventure/adventure-10.4.py"><span>source code</span></a></p>
 <div class="clearfix"></div>
+</div>
 <div class="row"><div class="col-2 left-col-2">
 <p>In this section we’ll make a number of small changes to improve the shop and examine commands.</p>
 </div><div class="col-10">
@@ -2170,7 +2179,7 @@ Demo<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<asciinema-player poster="npt:0:06" speed="0.5" rows="16" src="assets/adventure-10.4.cast"></asciinema-player></div>
+<asciinema-player cols="55" rows="16" terminalFontSize="big" poster="npt:0:06" speed="0.5" src="assets/adventure-10.4.cast" id="screencast_adventure_10_4"></asciinema-player></div>
 </details></div></div>
 <section id="a-show-price-in-do-shop">
 <h3>A: Show price in <code class="docutils literal notranslate"><span class="pre">do_shop()</span></code><a class="headerlink" href="#a-show-price-in-do-shop" title="Permalink to this headline">#</a></h3>
@@ -2337,8 +2346,8 @@ do_shop()<div class="sd-summary-down docutils">
 </div>
 </details></section>
 </section>
-<section id="c-show-price-in-do-examine">
-<h3>C. Show price in <code class="docutils literal notranslate"><span class="pre">do_examine()</span></code><a class="headerlink" href="#c-show-price-in-do-examine" title="Permalink to this headline">#</a></h3>
+<section id="c-in-do-examine-show-price">
+<h3>C. In <code class="docutils literal notranslate"><span class="pre">do_examine()</span></code>: show price<a class="headerlink" href="#c-in-do-examine-show-price" title="Permalink to this headline">#</a></h3>
 <p>Let’s show the price to <code class="docutils literal notranslate"><span class="pre">do_examine()</span></code> if we’re in the market (or somewhere else
 where we can shop).</p>
 <ol>
@@ -2403,8 +2412,8 @@ Code<div class="sd-summary-down docutils">
 </div>
 </div>
 </details></section>
-<section id="d-show-inventory-quantity-in-do-examine">
-<h3>D. Show inventory quantity in <code class="docutils literal notranslate"><span class="pre">do_examine()</span></code><a class="headerlink" href="#d-show-inventory-quantity-in-do-examine" title="Permalink to this headline">#</a></h3>
+<section id="d-in-do-examine-show-inventory-quantity">
+<h3>D. In <code class="docutils literal notranslate"><span class="pre">do_examine()</span></code>: show inventory quantity<a class="headerlink" href="#d-in-do-examine-show-inventory-quantity" title="Permalink to this headline">#</a></h3>
 <ol class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> Check if the player has the item in inventory by calling <code class="docutils literal notranslate"><span class="pre">player_has()</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">name</span></code>. If so:</p>
 <ul class="simple">
