@@ -101,9 +101,7 @@ parametrization. This allows us to use the same test for several different
 test function.
 
 If you're not already familiar with parameterization, see
-[Pytest Tests > Parametrization][Parametrization].
-
-[Parametrization]: ../practices/testing/pytest-tests.html#part-5-parametrization
+[Pytest Tests > Parametrization][parametrization].
 
 {{ clear }}
 
@@ -113,7 +111,7 @@ If you're not already familiar with parameterization, see
 
 :::{seealso}
 
-Pytest Tests > [Parametrization][]
+Pytest Tests > [parametrization][]
 
 :::
 
@@ -594,3 +592,5 @@ In this section we'll quit the game if player health is out of health.
 ```
 
 `````
+
+[parametrization]: practices:testing:pytest-tests:parametrize

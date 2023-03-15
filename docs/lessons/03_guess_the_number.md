@@ -48,7 +48,7 @@ Create a new file called `guess.py`.
 :class: tip
 
 For more information on creating and running new scripts on Repl.it see
-[Repl.it Tips](../tools/replit.html#running-new-scripts).
+[Repl.it Tips](tools:replit:new-scripts).
 
 :::
 

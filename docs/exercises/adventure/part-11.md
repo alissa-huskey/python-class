@@ -1,6 +1,7 @@
 ---
-substitutions:
-  testsource: '{{{{ source | format("test_game-{0}") }}}}'
+myst:
+  substitutions:
+    testsource: '{{{{ source | format("test_game-{0}") }}}}'
 
 jupytext:
   formats: md:myst
@@ -59,13 +60,13 @@ In this section we'll get a basic test up and running.
 ### A. Install `pytest`
 
 1. `[ ]` Install `pytest` using the instructions
-         [here](/practices/testing.html#part-3-pytest).
+         [here](/tools/pytest).
 1. `[ ]` To make sure it works, type `pytest --help` in the terminal.
 
 ### B. Configure VS Code
 
 1. `[ ]` Configure VS Code by following the first two steps
-         [here](/practices/testing.html#part-6-testing-in-vs-code). When you are
+         [here](practices:testing:intro:testing-in-vs-code). When you are
          prompted to select the directory containing the tests, choose
          {guilabel}`. Root directory`.
 1. `[ ]` Install the extension [Python Test Explorer for Visual Studio Code][test-explorer].
@@ -85,7 +86,7 @@ that to work, we'll need to make sure of a couple of things.
 
 1. `[ ]` When you call `main()`, it must be under a `if __name__ == "__main__"`
          statement. Otherwise `main()` will be called when you do an import, and bad
-         things will happen. (See [Part 1.2](#part-1-2-the-main-function) for
+         things will happen. (See [Part 1.2](exercises:adventure:part-01:define-main) for
          more info.)
 1. `[ ]` The filename for your game must be all lowercased with no spaces or
          other special characters except for underscores (`_`). Rename your
@@ -146,7 +147,7 @@ addopts = "-v"
 ```{margin}
 
 :::{seealso}
-Testing > [Running Tests](/practices/testing/intro.html#part-6-2-running-tests)
+Testing > [Running Tests](practices:testing:intro:running-tests)
 :::
 
 ```

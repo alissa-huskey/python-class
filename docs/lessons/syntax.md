@@ -1,9 +1,10 @@
 ---
-substitutions:
-  left:  '{{ leftcol | replace("col", "col-5") }}'
-  right: '{{ rightcol | replace("col", "col-7") }}'
-  row: '{{ newrow | replace("col", "col-5") }}'
-  label: '<div class="text-right">Syntax:</div>'
+myst:
+  substitutions:
+    left:  '{{ leftcol | replace("col", "col-5") }}'
+    right: '{{ rightcol | replace("col", "col-7") }}'
+    row: '{{ newrow | replace("col", "col-5") }}'
+    label: '<div class="text-right">Syntax:</div>'
 
 jupytext:
   formats: md:myst

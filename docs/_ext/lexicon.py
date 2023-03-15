@@ -1,6 +1,6 @@
 """Lexicon Domain -- expanded glossary support"""
 
-from pprint import pformat
+from pprint import pformat  # noqa
 from collections import defaultdict
 from pathlib import Path
 
@@ -10,14 +10,9 @@ from sphinx.environment.collectors import EnvironmentCollector
 from sphinx.builders import Builder
 from sphinx.domains import Domain
 from sphinx.directives import SphinxDirective
-from sphinx.util import rst
-from sphinx.util.nodes import make_id, make_refnode
 from sphinx import addnodes
 from sphinx.domains.std import Glossary as SphinxGlossary
-from sphinx.util.docutils import register_directive
-from docutils.parsers.rst import directives
 from docutils import nodes
-from docutils import statemachine
 from more_itertools import first
 
 from logger import Logger
@@ -54,8 +49,8 @@ class Term(str):
     """Class for glossary Terms"""
 
     def normalize(self):
-        """Provide trimmed sha string"""
-        return self.lower().replace(" ", "-").rstrip("s")
+        """Return normalized term"""
+        nodes.fully_normalize_name(self).rstrip("s")
 
 
 class Glossary():
@@ -79,8 +74,8 @@ class Glossary():
     """top-level section node container"""
     _node: nodes.section
 
-    def __init__(self, doc: str=None, category: str="", num: int=None,
-                 elements: list=[[None]]):
+    def __init__(self, doc: str = None, category: str = "", num: int = None,
+                 elements: list = [[None]]):
         """Initializer
 
         Params
@@ -190,8 +185,8 @@ class GlossaryListing():
     """Node containing this listing"""
     node: nodes.definition_list_item
 
-    def __init__(self, glossary: Glossary=None,
-                 node: nodes.definition_list_item=None):
+    def __init__(self, glossary: Glossary = None,
+                 node: nodes.definition_list_item = None):
         """Initializer"""
         self.terms = []
         self.definitions = []
@@ -293,7 +288,6 @@ class GlossaryDirective(SphinxGlossary):
                 elif self.is_definition(node):
                     listing.add_definition(node.astext())
 
-
         return [glossary.node]
 
 
@@ -321,7 +315,8 @@ class LexiconDomain(Domain):
         return self.data['glossaries']
 
     def find_term(self, term: Term) -> GlossaryListing:
-        """Return GlossaryListing object matching Term from self.data['terms'] or None"""
+        """Return GlossaryListing object matching Term from self.data['terms']
+           or None"""
         assert isinstance(term, Term), "argument term (Term) required"
         match = self.data['terms'].get(term.normalize())
         found = "FOUND" if match else ""
@@ -356,11 +351,14 @@ class LexiconDomain(Domain):
         if match:
             refuri = builder.get_relative_uri(match.doc, match.identifier)
 
-        refnode = nodes.reference("", "",
-                                internal=True,
-                                reftitle="",
-                                refuri=refuri,
-                                refid=f"termref-{term}")
+        refnode = nodes.reference(
+            "", "",
+            internal=True,
+            reftitle="",
+            refuri=refuri,
+            refid=f"termref-{term}"
+        )
+
         if not match:
             refnode['classes'].append("term-missing")
 
@@ -409,11 +407,14 @@ def term_resolver(app: SphinxApplication, env: BuildEnvironment,
 class orphanedterms(nodes.General, nodes.Element):
     pass
 
+
 def visit_orphanedterms_node(self, node):
     self.visit_container(node)
 
+
 def depart_orphanedterms_node(self, node):
     self.depart_container(node)
+
 
 def generate_missing_glossary(app, doctree, docname):
     """."""
@@ -448,10 +449,12 @@ def init(app):
     """Initialize collector storage objects"""
     app.builder.env.orphans = defaultdict(set)
 
+
 def get_outdated_docs(app, env, added, changed, removed):
     lexicon = app.env.domains.get("lexicon")
     log("get_outdated_docs>", len(lexicon.outdated))
     return changed.union(lexicon.outdated)
+
 
 def setup(app):
     log("Lexicon Extension>", "setup()")

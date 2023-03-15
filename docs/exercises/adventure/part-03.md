@@ -104,7 +104,7 @@ wrap the text so that it looks nice.
 
 :::{seealso}
 
-Functions > [Keyword Arguments](../lessons/functions.html#part-2-4-keyword-arguments)
+Functions > [Keyword Arguments](lessons:functions:keyword-arguments)
 
 :::
 
@@ -123,8 +123,6 @@ text.
    * keyword argument `initial_indent` with the value `margin`
    * keyword argument `subsequent_indent` with the value `margin`
 1. `[ ]` Print `paragraph`.
-
-[keyword-args]: ../lessons/functions.html#part-2-3-keyword-arguments
 
 
 `````{dropdown} Code
@@ -151,7 +149,7 @@ colorful.
 
 {{ left }}
 
-1. `[ ]` Follow the instructions [here](../lessons/cli.html#installation) to install.
+1. `[ ]` Follow the instructions [here](lessons:cli:installation) to install.
 
 
 {{ right }}

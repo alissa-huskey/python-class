@@ -1,3 +1,18 @@
+---
+myst:
+  substitutions:
+    fork: '{fas}`code-fork;sd-text-primary`'
+
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
 Replit
 ======
 
@@ -275,7 +290,7 @@ Here are the steps to follow in Replit.
 **In Replit**
 
 5. Commit & Push : In Replit:
-   - Click the ![fork][fork] **Version Control** link in the left-nav.
+   - Click the {{ fork }} **Version Control** link in the left-nav.
    - Add a brief description of your changes in the **What did you change?** text area.
    - Click **commit & push**.
 
@@ -290,7 +305,7 @@ Here are the steps to follow in Replit.
 
 1. Open your your Replit repl.
 
-2. On the left side-nav click the second icon down: ![fork][fork]
+2. On the left side-nav click the second icon down: {{ fork }}`
    **Version Control**.
 
 3. At the top of the new left-most pane, click the button that says **Connect
@@ -455,7 +470,7 @@ In git a ***commit*** is a record of a set of changes. The repository for your
 code exists both on repl.it and on github. In order to update the repo on
 github with your commits on repl.it the changes will be ***pushed*** to Github.
 
-1. On the left side-nav, Click the![fork][fork] **Version
+1. On the left side-nav, Click the {{ fork }} **Version
    Control** icon again. In the left-most **Version Control** pane, it should
    now display a link to your newly created repository next to the github icon.
 
@@ -473,8 +488,6 @@ github with your commits on repl.it the changes will be ***pushed*** to Github.
 
 You've successfully created a git repository, reviewed your changes, committed
 them, and pushed them to github!
-
-[fork]: ../assets/code-branch.png "fork"
 
 Reference
 ---------

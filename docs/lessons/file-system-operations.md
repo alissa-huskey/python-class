@@ -157,7 +157,7 @@ for f in cwd.rglob("*.txt"):
 ```{seealso}
 
 * [Wikipedia > Glob](https://en.wikipedia.org/wiki/Glob_%28programming%29)
-* You can find a details on globbing in Python in the [reference section of this lesson](file-system-operations.html#globbing).
+* You can find a details on globbing in Python in the [reference section of this lesson](#globbing).
 
 ```
 

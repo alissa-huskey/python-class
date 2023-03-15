@@ -16,7 +16,7 @@ command line, which we'll be learning about today.
 ```{include} ../toc.md
 ```
 
-Part 1. Exploring files on the command line
+Part 1: Exploring files on the command line
 -------------------------------------------
 
 For this lesson, open a terminal. We'll use the `ls` command which lists

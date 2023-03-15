@@ -424,7 +424,8 @@ Part 7: Private Data
 
 :::{note}
 
-You'll need your `latitude` and `longitude` values from [Part 5.3](#part-53-solo-exercise---latitude-and-longitude).
+You'll need your `latitude` and `longitude` values from
+[Part 5.3](#part-53-solo-exercise---latitude-and-longitude)
 If you don't have them available run the `request_location()` function again.
 
 :::

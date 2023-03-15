@@ -95,11 +95,21 @@ dl.field-list {
   inline-size: fit-content;
 }
 
+/*
+ * sphinx-book-theme 1.0.0 adds duplicate colon
+ * dl > field-list > dt:after { content: ":" ; }
+*/
+dl.field-list > dt > span.colon {
+  display: none;
+}
+
 /********************
 /* misc
 /********************/
 
 .clear { clear: both; }
+
+.float-right { float: right; }
 
 .br {
   display: block;
@@ -190,18 +200,50 @@ p.header-link a {
   margin-left: 1em;
 }
 
+/********************
+/* step headers
+/********************/
+
+/* add bottom border to "A. Part X.X" headers */
 body#battle h4,
 body#tutorial h4,
 body#adventure h4,
 body#file-io h4,
 body#dragon-realm h4,
 body#pytest-tests h4,
-body.adventure h3
+body.adventure h3,
+body#intro.testing h4
 {
-  border-bottom: 1px solid var(--dark-gray);
-  font-size: 1em;
+  border-bottom: 1px solid var(--pst-color-text-base);
   font-weight: 500;
-  color: var(--dark-gray) !important;
+  /* font-size: var(--pst-font-size-h5); */
+}
+
+/* prevent code samples from overlapping bottom border  */
+body#battle h4 > code,
+body#tutorial h4 > code,
+body#adventure h4 > code,
+body#file-io h4 > code,
+body#dragon-realm h4 > code,
+body#pytest-tests h4 > code,
+body.adventure h3 > code
+{
+  border-bottom: inherit !important;
+  padding-bottom: 0 !important;
+}
+
+body#vscode .theme-header-container {
+  border-bottom: 1px solid var(--pst-color-border);
+  margin-bottom: 1.15rem;
+}
+
+body#vscode .theme-header-container > h4 {
+  margin-bottom: 0;
+  padding-bottom: 0.25rem;
+}
+
+body#vscode .theme-header-container > .clearfix {
+  line-height: 0;
 }
 
 /********************
@@ -255,6 +297,25 @@ table.table.notitle thead th.head {
 
 tr:last-child {
   border-bottom: 0px !important;
+}
+
+/********************
+/* sphinx-tabs-panel
+/********************/
+
+.sphinx-tabs-panel {
+  background-color: var(--pst-color-on-background);
+}
+
+.sphinx-tabs-tab {
+  border: 1px solid var(--pst-color-border);
+  margin-right: 1em !important;
+  margin-bottom: -2px;
+}
+
+.sphinx-tabs-tab[aria-selected="true"] {
+  background-color: var(--pst-color-surface);
+  border-bottom: 2px solid var(--pst-color-on-background);
 }
 
 /********************
@@ -357,28 +418,31 @@ div.calm p.admonition-title::before {
 
 /* end default --------------------------- */
 
-div.exercise.notitle p.admonition-title::after {
+.exercise.notitle p.admonition-title::after {
   display: none;
 }
 
-div.admonition.exercises p.admonition-title::after {
-  content: "Exercises";
-}
+/* div.admonition.exercises p.admonition-title::after { */
+/*   content: "Exercises"; */
+/* } */
 
-div.admonition.exercise p.admonition-title::after {
-  content: "Exercise";
-}
+/* div.admonition.exercise p.admonition-title::after { */
+/*   content: "Exercise"; */
+/* } */
 
 /* remove the "Exercise" suffix from regular admonitions inside of exercises */
-.admonition.exercise .admonition.attention p.admonition-title::after,
-.admonition.exercise .admonition.caution p.admonition-title::after,
-.admonition.exercise .admonition.danger p.admonition-title::after,
-.admonition.exercise .admonition.error p.admonition-title::after,
-.admonition.exercise .admonition.important p.admonition-title::after,
-.admonition.exercise .admonition.hint p.admonition-title::after,
-.admonition.exercise .admonition.tip p.admonition-title::after,
-.admonition.exercise .admonition.warning p.admonition-title::after,
-.admonition.exercise .admonition.hint p.admonition-title::after {
+/* .admonition.exercise .admonition.attention p.admonition-title::after, */
+/* .admonition.exercise .admonition.caution p.admonition-title::after, */
+/* .admonition.exercise .admonition.danger p.admonition-title::after, */
+/* .admonition.exercise .admonition.error p.admonition-title::after, */
+/* .admonition.exercise .admonition.important p.admonition-title::after, */
+/* .admonition.exercise .admonition.hint p.admonition-title::after, */
+/* .admonition.exercise .admonition.tip p.admonition-title::after, */
+/* .admonition.exercise .admonition.warning p.admonition-title::after, */
+/* .admonition.exercise .admonition.hint p.admonition-title::after { */
+/*   content: ""; */
+/* } */
+.admonition.exercise p.admonition-title::after {
   content: "";
 }
 
@@ -395,7 +459,7 @@ div.admonition.exercise p.admonition-title::after {
 .admonition.solution,
 .exercise details.sd-dropdown
 {
-  background-color: var(--background-color);
+  background-color: var(--pst-color-background);
 }
 
 /* version

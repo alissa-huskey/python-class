@@ -32,8 +32,8 @@ Part 1. Open the Python Shell
 :class: hint
 
 For help getting to the command line see [Starting a
-Terminal](../tools/terminal.html#starting-a-terminal) in the
-[Terminal](terminal.md) tool guide.
+Terminal](tools:terminal:starting-a-terminal) in the
+[Terminal](tools/terminal.md) tool guide.
 
 :::
 

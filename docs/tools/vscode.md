@@ -1,16 +1,26 @@
 ---
-substitutions:
-  ctrltick: <kbd class="kbd docutils literal notranslate">⌃`</kbd>
-  mktbtn: |
-    <a href="https://marketplace.visualstudio.com/items?itemName=ID" class="btn btn-small btn-outline-info bg-white text-info btn-block" role="button">Marketplace</a>
-  theme: |
-    <div role="navigation" class="mt-5 position-static navbar navbar-light bg-light align-bottom shadow-none">
-      <h4 role="span" class="navbar-brand m-0">NAME</h4>
-      <a href="https://vscodethemes.com/e/ID" class="btn btn-small btn-outline-info text-info bg-white" role="button">VSCodeThemes</a>
-      <a href="https://marketplace.visualstudio.com/items?itemName=ID" class="btn btn-small btn-outline-info bg-white text-info" role="button">Marketplace</a>
-    </div>
+myst:
+  substitutions:
+    ctrltick: <kbd class="kbd docutils literal notranslate">⌃`</kbd>
+    theme: |
+        `````{{div}} theme-header-container
+          ```{{div}} float-right
 
-    ![NAME][NAME]
+          {{bdg-link-info-line}}`VSCodeThemes <https://vscodethemes.com/e/{id}>`
+          {{bdg-link-info-line}}`Marketplace <https://marketplace.visualstudio.com/items?itemName={user}:{id}>`
+          ```
+
+          <h4 id='{id}'>{name}</h4>
+        `````
+
+          {{{{ clear }}}}
+
+          ```{{image}} assets/vscode-theme-{id}.png
+          :target: ../_images/vscode-theme-{id}.png
+          ```
+
+
+
 jupytext:
   formats: md:myst
   text_representation:
@@ -597,55 +607,28 @@ Themes
 
 ### Dark
 
-* [One Dark Pro Monokai Darker](#one-dark-pro-monokai-darker)
-* [Dolch Dark](#dolch-dark)
-* [Verdandi Alter Customized](#verdandi-alter-customized)
-* [Azure Dark](#azure-dark)
-* [Black Ocean](#black-ocean)
+{{ theme.format(name="One Dark Pro Monokai Darker", user="eserozvataf", id="one-dark-pro-monokai-darker") }}
 
-{{ theme | replace("NAME", "One Dark Pro Monokai Darker") | replace("ID", "eserozvataf.one-dark-pro-monokai-darker") }}
+{{ theme.format(name="Dolch Dark", user="be5invis", id="theme-dolch") }}
 
-{{ theme | replace("NAME", "Dolch Dark") | replace("ID", "be5invis.theme-dolch") }}
+{{ theme.format(name="Verdandi Alter Customized", user="Shirayuki", id="verdandi-alter-customized") }}
 
-{{ theme | replace("NAME", "Verdandi Alter Customized") | replace("ID", "Shirayuki.verdandi-alter-customized") }}
+{{ theme.format(name="Azure Dark", user="eddyw", id="azure-dark-theme") }}
 
-{{ theme | replace("NAME", "Azure Dark") | replace("ID", "eddyw.azure-dark-theme") }}
-
-{{ theme | replace("NAME", "Black Ocean") | replace("ID", "zamerick.black-ocean") }}
+{{ theme.format(name="Black Ocean", user="zamerick", id="black-ocean") }}
 
 ### Medium
 
-* [Nord Extra Dark](#nord-extra-dark)
-* [Subliminal](#subliminal)
-* [Pretentious Name](#pretentious-name)
-* [Mario Color](#mario-color)
+{{ theme.format(name="Nord Extra Dark", user="yamenarahman", id="nord-extra-dark") }}
 
-{{ theme | replace("NAME", "Nord Extra Dark") | replace("ID", "yamenarahman.nord-extra-dark") }}
+{{ theme.format(name="Subliminal", user="gaearon", id="subliminal") }}
 
-{{ theme | replace("NAME", "Subliminal") | replace("ID", "gaearon.subliminal") }}
+{{ theme.format(name="Pretentious Name", user="zhiayang", id="pretentious-name") }}
 
-{{ theme | replace("NAME", "Pretentious Name") | replace("ID", "zhiayang.pretentious-name") }}
-
-{{ theme | replace("NAME", "Mario Color") | replace("ID", "alphatr.mario-theme") }}
+{{ theme.format(name="Mario Color", user="alphatr", id="mario-theme") }}
 
 ### Light
 
-* [One Dark Raincoat Light](#one-dark-raincoat-light)
-* [Dolch Light](#dolch-light)
+{{ theme.format(name="One Dark Raincoat Light", user="ginfuru", id="onedark-raincoat-theme") }}
 
-{{ theme | replace("NAME", "One Dark Raincoat Light") | replace("ID", "ginfuru.ginfuru-onedark-raincoat-theme") }}
-
-{{ theme | replace("NAME", "Dolch Light") | replace("ID", "be5invis.theme-dolch") }}
-
-[One Dark Pro Monokai Darker]: ../assets/monokai-darker.png
-[Dolch Dark]: https://raw.githubusercontent.com/be5invis/vscode-theme-dolch/master/images/dolch.png
-[Verdandi Alter Customized]: ../assets/verdandi.png
-[Azure Dark]: https://raw.githubusercontent.com/eddyw/vscode-azuredark-theme/master/themes/screenshot.png
-[Black Ocean]: https://raw.githubusercontent.com/Zamerick/black-ocean/master/img/BlackOcean.png
-[Nord Extra Dark]: ../assets/nord.png
-[Subliminal]: https://raw.githubusercontent.com/gaearon/subliminal/master/screenshot.png
-[Pretentious Name]: ../assets/pretentious.png
-[Mario Color]: ../assets/mario.png
-[One Dark Raincoat Light]: ../assets/raincoat-light.png
-[Dolch Light]: ../assets/dolch-light.png
-
+{{ theme.format(name="Dolch Light", user="be5invis", id="theme-dolch") }}

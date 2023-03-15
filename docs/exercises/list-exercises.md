@@ -161,7 +161,7 @@ equally sized lists. Each child list is a "row".  It should return a string
 where each line contains the text in one row, and the columns are aligned.
 
 Note: This depends on the `max_lengths()` function from the
-[Column lengths exercise](#column-lengths).
+[Column lengths exercise](maxlengths-exercise).
 
 **Example Usage**
 

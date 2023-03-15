@@ -142,7 +142,7 @@ Here is some information on some of the configuration parameters available.
   - a list of Python modules that this project depends on. (For example `requests`.)
 * `[tool.poetry.dev-dependencies]`: a list of Python modules that this project uses during development. (For example `ipython`.)
 * `[build-system]`: details needed by Poetry. (You should rarely if ever need to change this section.)
-* `[tool.poetry.scripts]`: (optional) python executable scripts to be generated and installed as part of your package. See [Scripts](#Scripts) below.
+* `[tool.poetry.scripts]`: (optional) python executable scripts to be generated and installed as part of your package. See [Scripts](#executable-scripts) below.
 
 :::{seealso}
 * [python-poetry.org: The pyproject.toml file](https://python-poetry.org/docs/pyproject/)

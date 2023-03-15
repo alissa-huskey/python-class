@@ -1935,6 +1935,6 @@ In your `ITEMS` dictionary, add a `"dragon"` key. Use the global variable
 
 {{ endcols }}
 
-[arg-unpacking]: ../../lessons/in-depth/functions.html#part-3-unpacking-arguments
-[kwarg-unpacking]: ../../lessons/in-depth/functions.html#part-3-3-mappings
-[str-format]: ../../lessons/string-formatting-part-2.html#the-str-format-method
+[arg-unpacking]: lessons:in-depth:functions:unpacking-arguments
+[kwarg-unpacking]: lessons:in-depth:functions:mappings
+[str-format]: lessons:string-formatting-part-2:the-str-format-method

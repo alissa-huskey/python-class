@@ -40,8 +40,8 @@ html:
   baseurl                   : https://alissa-huskey.github.io/python-class/
 
 parse: &parse
-  # https://myst-parser.readthedocs.io/en/latest/using/syntax-optional.html#syntax-header-anchors
-  # myst_heading_anchors      : 5
+  # https://myst-parser.readthedocs.io/en/latest/configuration.html
+  myst_heading_anchors      : 5
   myst_enable_extensions    : &myst_enable_extensions
                               - substitution
                               - colon_fence
@@ -107,13 +107,14 @@ sphinx:
     fieldlist               : _ext
     screencast              : _ext
     screenshot              : _ext
+    bullseye                : _ext
   config                    :
     <<                      : *parse
     myst_enable_extensions  : *myst_enable_extensions
     extlinks                :
-      github                : [ http://github.com/alissa-huskey/python-class/blob/master/%s, "" ]
-      rawfile               : [ http://raw.githubusercontent.com/alissa-huskey/python-class/master/%s, "" ]
-      lesson                : [ http://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/%s, "" ]
+      github                : [ http://github.com/alissa-huskey/python-class/blob/master/%s, "github %s" ]
+      rawfile               : [ http://raw.githubusercontent.com/alissa-huskey/python-class/master/%s, "source %s" ]
+      lesson                : [ http://github.com/alissa-huskey/python-class/blob/master/pythonclass/lessons/%s, "lesson %s" ]
     html_show_copyright     : false
     html_css_files          : [ "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" ]
 
@@ -122,7 +123,6 @@ sphinx:
       # spinx-book-theme config
       # https://sphinx-book-theme.readthedocs.io/en/latest/configure.html
       show_navbar_depth     : 3
-      extra_navbar          : "" # sidebar footer (default: "Theme by the Executable Book Project")
       home_page_in_toc      : false
 
       repository_url        : *repo

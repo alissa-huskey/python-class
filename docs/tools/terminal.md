@@ -1,4 +1,8 @@
 ---
+myst:
+  substitutions:
+    ctrltick: <kbd class="kbd docutils literal notranslate">⌃`</kbd>
+
 jupytext:
   formats: md:myst
   text_representation:
@@ -8,8 +12,6 @@ kernelspec:
   display_name: Python 3
   language: python
   name: python3
-substitutions:
-  ctrltick: <kbd class="kbd docutils literal notranslate">⌃`</kbd>
 ---
 Terminal
 ========
@@ -500,7 +502,7 @@ Find the flag for each of the following, then try using the command and flag.
 
 :::{important}
 
-See also [paths lesson](paths#exploring-files-on-the-command-line).
+See also [paths lesson](lessons:paths:exploring-files-on-the-command-line).
 
 :::
 

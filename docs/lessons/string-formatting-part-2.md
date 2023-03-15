@@ -1,6 +1,7 @@
 ---
-substitutions:
-  label: '<div class="text-right">Syntax:</div>'
+myst:
+  substitutions:
+    label: '<div class="text-right">Syntax:</div>'
 
 jupytext:
   formats: md:myst

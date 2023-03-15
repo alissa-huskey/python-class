@@ -1,8 +1,10 @@
 ---
-substitutions:
-  left:  '{{ leftcol | replace("col", "col-5") }}'
-  right: '{{ rightcol | replace("col", "col-7") }}'
-  row: '{{ newrow | replace("col", "col-5") }}'
+myst:
+  substitutions:
+    left:  '{{ leftcol | replace("col", "col-5") }}'
+    right: '{{ rightcol | replace("col", "col-7") }}'
+    row: '{{ newrow | replace("col", "col-5") }}'
+
 jupytext:
   formats: md:myst
   text_representation:
@@ -992,12 +994,11 @@ equal signs are used to check if a condition is true
 
 ### Part 5.2: Make sure it works
 
-Repeat the steps from [Part 4](#part-4-4-test-it) to make sure the function
+Repeat the steps from [Part 4.4](#part-44-test-it) to make sure the function
 still works.
 
 Then switch to the opposite `"hungry"` value and check the output to make sure
 that the before and after values are the same.
-
 
 Part 6: Making Friends
 ----------------------

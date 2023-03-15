@@ -11,12 +11,30 @@ https://docutils.sourceforge.io/docs/ref/doctree.html#field-list
 
 from functools import partial, wraps
 from textwrap import shorten
+from logger import Logger
 
 from docutils.core import publish_doctree
 from docutils import nodes
-from myst_parser.main import to_docutils
+
+try:
+    from myst_parser.main import to_docutils
+except ImportError:
+    from myst_parser.mdit_to_docutils.base import make_document
+    from myst_parser.parsers.docutils_ import Parser
+
+    def to_docutils(markdown: str) -> nodes.document:
+        """Parse myst markdown and return docutils document."""
+        doc = make_document()
+        parser = Parser()
+        parser.parse(markdown, doc)
+        return doc
+
+
 from more_itertools import padded
 from sphinx.util.docutils import SphinxDirective
+
+
+log = Logger("fieldlist", enabled=False, level="info")
 
 
 def private(func):
@@ -45,14 +63,14 @@ class Field():
     @private
     def _get(self, name):
         """generic getter"""
-        if not name in self.__dict__:
+        if name not in self.__dict__:
             setattr(self, name, None)
         return getattr(self, name)
 
     @private
     def _get_node(self, name):
         """generic node getter"""
-        if not name in self.__dict__:
+        if name not in self.__dict__:
             setattr(self, name, None)
         node = getattr(self, name)
         return node.rawsource
@@ -73,15 +91,17 @@ class Field():
         if not self._body.children:
             return
 
+        log("self.body>", self.body)
+
         # parse body as myst
         doc = to_docutils(self.body)
+
         if not doc.children:
             return
 
         # replace old body with new
         self._body.children.clear()
         for node in doc.children:
-            #  breakpoint()
             self._body.append(node)
 
     def toxml(self):
@@ -92,7 +112,6 @@ class Field():
         if compact:
             options = {"indent": ""}
         return self.node.pformat(**options)
-
 
     node = property(
         partial(_get, name="node"),
@@ -114,6 +133,7 @@ class Field():
         partial(_del, name="body"),
         "field body (DOM Element: field)"
     )
+
 
 class FieldListDirective(SphinxDirective):
     has_content = True

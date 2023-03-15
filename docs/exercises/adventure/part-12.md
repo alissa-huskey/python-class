@@ -480,8 +480,8 @@ Now we'll write the code to make the test pass.
 
 `````
 
-Part 12.5: Read things
-----------------------
+Part 12.5: Read the message
+---------------------------
 
 {{ sources.format("12.5") }}
 
@@ -1077,8 +1077,8 @@ already calls `wrap()` with whatever was in the item dictionary for
 1. `[ ]` Run your `test_do_read_in_place()` test. It should pass.
 1. `[ ]` Run all your tests. They should pass.
 
-[unpacking]: ../lessons/in-depth/functions.html?#part-3-unpacking-arguments
-[join]: ../lessons/data-types/strings.html?highlight=join#part-2-splitting-and-joining
+[unpacking]: lessons:in-depth:functions:unpacking-arguments
+[join]: lessons/data-types/strings.md
 
 `````{dropdown} Code
 

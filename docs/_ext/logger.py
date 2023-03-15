@@ -5,6 +5,7 @@ import logging
 from pathlib import Path
 from sys import stderr, stdout
 
+
 class Logger():
     """Logging class"""
 
@@ -69,8 +70,8 @@ class Logger():
     """
     handler: logging.Handler
 
-    def __init__(self, name: str, output: str="file",
-                 enabled: bool=True, level=logging.DEBUG):
+    def __init__(self, name: str, output: str = "file",
+                 enabled: bool = True, level=logging.DEBUG):
         """Initializer
         Params
         ------
@@ -91,7 +92,7 @@ class Logger():
             level, output = 0, "null"
 
         self._init_attrs_()
-        self.logger = logging.getLogger(__file__)
+        self.logger = logging.getLogger(name)
         self.name = name
         self.enabled = enabled
         self.output = output
@@ -110,7 +111,7 @@ class Logger():
     def _init_methods_(self):
         """Create logging methods for levels"""
         for lvl in list(self.LEVELS.keys())[1:]:
-            level= getattr(logging, lvl)
+            level = getattr(logging, lvl)
             name = lvl.lower()
             method = self.mklog_fn(name, level)
             setattr(self, name, method)
@@ -119,7 +120,7 @@ class Logger():
         """Write startup messages to log stream"""
         num, level = self._lvl_(self.level)
         output, handler = self.output, repr(self.handler)
-        plain, line = " %(message)s", "="*self.WIDTH
+        plain, line = " %(message)s", "=" * self.WIDTH
         status = ("DISABLED", "ENABLED")[self.enabled]
 
         self.write(f"\n{line}")
@@ -294,4 +295,3 @@ class Logger():
         self._level, _ = self._lvl_(lvl)
         self.logger.setLevel(self._level)
         self.handler.setLevel(self._level)
-

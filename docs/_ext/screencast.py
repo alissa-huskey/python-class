@@ -30,27 +30,11 @@ from os.path import getmtime
 from docutils import nodes
 from sphinx.util.docutils import SphinxDirective
 from docutils.parsers.rst import directives
+from more_itertools import first_true
 
 
 def info(*args):
     print("---------->", *args, file=stderr)
-
-
-def cleanup(string):
-    """Return a cleaned up version of a string"""
-    replace = {
-        "assets/": "",
-        ".cast": "",
-        " ": "_",
-        "-": "_",
-        "/": "_",
-        ".": "_",
-    }
-
-    for x, y in replace.items():
-        string = string.replace(x, y)
-
-    return string
 
 
 def add_cast_files(app, config):
@@ -128,14 +112,24 @@ class ScreencastDirective(SphinxDirective):
     @property
     def id(self) -> 'str':
         """Return the html ID for this screencast"""
-        choices = (
+        name = first_true((
             self.options.get("title", ""),
             self.arguments[0],  # src
-        )
+        ))
 
-        for name in choices:
-            if name:
-                return cleanup(name)
+        return self.make_id(name)
+
+    def make_id(self, string) -> str:
+        """Convert `string` into an identifier and return it."""
+        replace = {
+            "assets/": "",
+            ".cast": "",
+        }
+
+        for x, y in replace.items():
+            string = string.replace(x, y)
+
+        return nodes.make_id(string)
 
     def run(self):
         filename = self.arguments[0]
