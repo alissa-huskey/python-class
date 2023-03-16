@@ -33,7 +33,7 @@ Part 1. Open the Python Shell
 
 For help getting to the command line see [Starting a
 Terminal](tools:terminal:starting-a-terminal) in the
-[Terminal](tools/terminal.md) tool guide.
+[Terminal](terminal.md) tool guide.
 
 :::
 

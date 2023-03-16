@@ -1078,7 +1078,7 @@ already calls `wrap()` with whatever was in the item dictionary for
 1. `[ ]` Run all your tests. They should pass.
 
 [unpacking]: lessons:in-depth:functions:unpacking-arguments
-[join]: lessons/data-types/strings.md
+[join]: ../../lessons/data-types/strings
 
 `````{dropdown} Code
 

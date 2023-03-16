@@ -424,6 +424,12 @@ Part 7: Private Data
 
 :::{note}
 
+<!--
+this will (hopefully) work when myst-parser >= 0.19.0
+and myst_heading_slug_func is set in _config.yml
+[Part 5.3](#part-5-3-solo-exercise-latitude-and-longitude)
+-->
+
 You'll need your `latitude` and `longitude` values from
 [Part 5.3](#part-53-solo-exercise---latitude-and-longitude)
 If you don't have them available run the `request_location()` function again.

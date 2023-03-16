@@ -994,6 +994,10 @@ equal signs are used to check if a condition is true
 
 ### Part 5.2: Make sure it works
 
+% this will (hopefully) work when myst-parser >= 0.19.0
+% and myst_heading_slug_func is set in _config.yml
+% [Part 4.4](#part-4-4-test-it)
+
 Repeat the steps from [Part 4.4](#part-44-test-it) to make sure the function
 still works.
 
