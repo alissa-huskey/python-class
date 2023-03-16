@@ -16,8 +16,9 @@ kernelspec:
 Replit
 ======
 
-```{image} assets/replit-logo.svg
+```{image} assets/replit-logo.png
 :align: center
+:class: m-1
 ```
 
 [Replit][] is a fast and free way to get you up and running with a
