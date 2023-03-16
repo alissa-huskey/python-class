@@ -8,6 +8,7 @@ from pprint import pformat  # noqa
 from typing import Dict, Tuple, List, Optional
 from collections import defaultdict
 from textwrap import TextWrapper
+from functools import cached_property
 
 from docutils import nodes
 from rich import inspect, print  # noqa
@@ -23,7 +24,7 @@ from more_itertools import first, first_true
 from logger import Logger
 
 
-log = Logger(Path(__file__).stem, enabled=True, level="debug")
+log = Logger(Path(__file__).stem, enabled=True, level="info")
 
 
 class Section():
@@ -57,7 +58,7 @@ class Section():
 
     def make_wrapper(prefix):
         """Text wrapper for warning log messages"""
-        indent = len(f"2023-03-15T21:17:24 [{prefix}]") * " "
+        indent = len(f"2023-03-15T21:17:24 [{prefix}] ") * " "
         return TextWrapper(
             width=100,
             initial_indent=indent,
@@ -90,7 +91,7 @@ class Section():
             self.error("No section id found")
         return id
 
-    @property
+    @cached_property
     def docname(self) -> str:
         """Return the name of the document that this section appears on"""
         return self.env.docname
@@ -99,87 +100,79 @@ class Section():
     def attrs(self):
         return self.node.attributes
 
-    @property
+    @cached_property
     def name(self):
         """Return the DOM name attibute for this section"""
-        if "data-name" not in self.attrs:
-            names = first_true(
-                (self.attrs["names"], self.attrs["dupnames"]),
-                [""],
-            )
-            name = first(names, None)
+        names = first_true(
+            (self.attrs["names"], self.attrs["dupnames"]),
+            [""],
+        )
+        name = first(names, None)
 
-            if not name:
-                self.error("No section name found")
+        if not name:
+            self.error("No section name found")
 
-            self.attrs["name"] = name
-            return self.attrs["name"]
+        return name
 
-    @property
+    @cached_property
     def label(self):
         """Return a label for section in the format of:
             dir:page:normalized-header
         """
-        if "data-label" not in self.attrs:
-            if not self.id:
-                return
-            docpath = self.docname.replace("/", ":")
-            header = self.part_matcher.sub("", self.id)
+        if not self.id:
+            return
+        docpath = self.docname.replace("/", ":")
+        header = self.part_matcher.sub("", self.id)
 
-            dom_path = [docpath, header]
+        dom_path = [docpath, header]
 
-            self.attrs["data-label"] = ":".join(dom_path)
+        return ":".join(dom_path)
 
-        return self.attrs["data-label"]
-
-    @property
+    @cached_property
     def parent(self) -> "Section":
         """Return a Section object for the parent node"""
         return self.__class__(self.env, self.node.parent)
 
-    @property
+    @cached_property
     def domain(self) -> Domain:
         """Return the std domain for this Sphinx app"""
         return self.env.get_domain('std')
 
-    @property
-    def title(self) -> nodes.title:
-        """Return the first node of this section only if it is a title node"""
+    @cached_property
+    def title(self) -> str:
+        """Return the text from the first node of this section only if it is a
+           title node"""
         title = first(self.node.children, None)
         if not isinstance(title, nodes.title):
             self.debug("no title", "")
             return
         return title.rawsource
 
-    @property
+    @cached_property
     def part(self) -> str:
         """Parse the part number from section id, set it to DOM attribute
            data-part, and return."""
-        if "data-part" not in self.attrs:
-            found = self.part_matcher.match(self.id)
-            if found:
-                part = found.group(1)
-            else:
-                part = ""
-            self.attrs["data-part"] = part
+        found = self.part_matcher.match(self.id)
+        if found:
+            part = found.group(1)
+        else:
+            part = ""
 
-        return self.attrs["data-part"].replace("-", ".")
+        part.replace("-", ".")
 
-    @property
+    @cached_property
     def step(self) -> str:
         """Parse the step number from section name, set it to DOM attribute
            data-step, and return."""
-        if "data-step" not in self.attrs:
-            found = self.step_matcher.match(self.name)
-            if found:
-                step = first_true(found.groups())
-            else:
-                step = ""
-            self.attrs["data-step"] = step.lower()
+        found = self.step_matcher.match(self.name)
+        if found:
+            step = first_true(found.groups())
+        else:
+            step = ""
 
-            if step:
-                self.debug("step header", f"step: {step}")
-        return self.attrs["data-step"]
+        if step:
+            self.debug("step header", f"step: {step}")
+        return step.lower()
 
     def error(self, msg):
         if not self.enable_logging:
@@ -313,8 +306,6 @@ class HeadingRefDomain(Domain):
 
     def note_heading(self, section: Section):
         """Add the target label to domain data for this heading"""
-        #  self.domain.labels[self.label] = (self.docname, self.id, self.name)
-        #  self.node.document.note_explicit_target(self.node)
         self.headings[section.label] = section
         self.heading_refs[section.docname].append(section.label)
 
@@ -331,12 +322,6 @@ class HeadingRefDomain(Domain):
         for docname in docnames:
             self.heading_refs[docname] += otherdata['heading_refs'][docname]
         self.headings.update(self.otherdata['headings'])
-
-
-#  def show_labels(app, exception):
-#      """Print the list of labels in the standard domain to stderr"""
-#      domain = app.env.get_domain('std')
-#      print(domain.labels)
 
 
 def setup(app):
