@@ -37,8 +37,8 @@ window.addEventListener("DOMContentLoaded", (e) => {
 window.addEventListener("DOMContentLoaded", (e) => {
   console.log("python-class> adding cell labels...");
 
-  prompt_in = jQuery("<div>").html("In:").addClass("prompt").addClass("prompt-in");
-  prompt_out = jQuery("<div>").html("Out:").addClass("prompt").addClass("prompt-out");
+  prompt_in = jQuery("<div>").html(">>> ").addClass("prompt").addClass("prompt-in");
+  prompt_out = jQuery("<div>").html("    ").addClass("prompt").addClass("prompt-out");
 
   prompt_in.insertBefore(".cell_input");
   prompt_out.insertBefore(".cell_output");

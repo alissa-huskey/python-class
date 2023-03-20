@@ -25,16 +25,16 @@
     - https://doughellmann.com/blog/2010/05/09/defining-custom-roles-in-sphinx/
     - https://protips.readthedocs.io/link-roles.html
     - https://repo.or.cz/docutils.git/tree/refs/heads/master:/docutils
-    - https://repo.or.cz/docutils.git/blob/refs/heads/master:/docutils/docutils/parsers/rst/roles.py
+    - https://repo.or.cz/docutils.git/blob/refs/heads/master:/docutils/docutils/parsers/rst/roles.py   # noqa
     - https://www.sphinx-doc.org/en/1.4.6/domains.html#the-restructuredtext-domain
 """
 import docutils.nodes as nodes
-from sphinx import roles
 import re
 
 REPO = "alissa-huskey/python-class"
 BRANCH = "master"
 SCHEMA = "http"
+
 
 def setup(app):
     # print("DEBUG myroles.setup()>", app.config.overrides)
@@ -93,6 +93,7 @@ def repo_url(text, relroot="", raw=False):
 
     return title, url
 
+
 def repo_raw_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
     """repo_raw role
        Role to generate a link to raw file in the repo.
@@ -113,6 +114,7 @@ def repo_raw_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
     node = nodes.reference(rawtext, title, refuri=url, **options)
     return [node], []
 
+
 def repo_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
     """repo role
        Role to generate a link to a file in the repo.
@@ -130,26 +132,6 @@ def repo_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
 
     """
     title, url = repo_url(text)
-    node = nodes.reference(rawtext, title, refuri=url, **options)
-    return [node], []
-
-def lesson_py_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
-    """lessons_py role
-       Add a link to the python script in the repo associated with a lesson.
-
-       Usage
-       -----
-
-       # MyST
-       {lesson_py}`path`
-       {lesson_py}`title <path>`
-
-       # reStructuredText
-       :lesson_py:`path`
-       :lesson_py:`title <path>`
-
-    """
-    title, url = repo_url(text, relroot="pythonclass/lessons")
     node = nodes.reference(rawtext, title, refuri=url, **options)
     return [node], []
 

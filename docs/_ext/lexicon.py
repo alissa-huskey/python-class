@@ -28,7 +28,7 @@ class OrphanedTermsDirective(SphinxDirective):
 
 
 class MissingTermsCollector(EnvironmentCollector):
-    """."""
+    """Class to collect terms that are missing."""
 
     def clear_doc(self, app, env, docname) -> None:
         if env.orphans[docname]:
