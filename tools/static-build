@@ -1,0 +1,17 @@
+#!/usr/bin/env zsh
+# shellcheck disable=all
+#
+# style-build -- copy all static files to build
+#
+
+setopt NULL_GLOB
+
+rootdir="$(cd "${0%/*}/.." && pwd -P)"
+
+main() {
+  local srcdir="${rootdir}/docs/_static" builddir="${rootdir}/docs/_build/html/_static"
+
+  cp -r ${srcdir}/* "${builddir}"
+}
+
+main

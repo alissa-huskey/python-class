@@ -1,0 +1,18 @@
+#!/usr/bin/env zsh
+# shellcheck disable=all
+#
+# scss-build -- compile .scss files to .css and remove
+#               original from build dir
+#
+
+setopt NULL_GLOB
+
+rootdir="$(cd "${0%/*}/.." && pwd -P)"
+
+main() {
+  local srcdir="${rootdir}/docs/scss" destdir="${rootdir}/docs/_static"
+
+  sass --watch "${srcdir}:${destdir}"
+}
+
+main

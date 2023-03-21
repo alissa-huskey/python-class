@@ -583,10 +583,7 @@ Part 5: Terminal size
 
 ::::::{margin}
 
-:::{admonition} Python Version
-:class: version
-
-3.3+
+:::{versionadded} Python 3.3+
 
 :::
 
