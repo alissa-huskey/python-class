@@ -1,20 +1,23 @@
 /* colors
    ~~~~~~~~~~~~ */
 
+// make sure the background color for everything inside
+// a code block is the same
+.highlight span.linenos,
 span.pre,
 code.literal,
 pre code span {
   background-color: inherit !important;
 }
 
-pre.literal-block,
-pre code {
-  background-color: var(--syntax-highlight-bg) !important;
-}
+// pre.literal-block,
+// pre code {
+//   background-color: var(--syntax-highlight-bg) !important;
+// }
 
-.literal-block code em span {
-  color: var(--pst-color-inline-code) !important;
-}
+// .literal-block code em span {
+//   color: var(--pst-color-inline-code) !important;
+// }
 
 /* text styling
    ~~~~~~~~~~~~ */
@@ -135,15 +138,19 @@ pre.literal-block {
 
 .no-labels .prompt-in,
 .no-labels .prompt-out {
-}
-
-.tag_remove-input > div.prompt-out {
   display: none;
 }
 
-.tag_remove-input > div.cell_output {
-  margin-left: 0;
+.tag_remove-input {
+  > div.prompt-out {
+    display: none;
+  }
+
+  > div.cell_output {
+    margin-left: 0;
+  }
 }
+
 
 /********************
 /* interactive blocks

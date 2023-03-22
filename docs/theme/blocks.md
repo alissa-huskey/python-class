@@ -100,26 +100,6 @@ Quoted Text
 >
 > Why didn't I think of that?
 
-Doctest Blocks
---------------
-
-<https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html#doctest-blocks>
-
-Doctest blocks are interactive Python sessions cut-and-pasted into docstrings.
-They are meant to illustrate usage by example, and provide an elegant and
-powerful testing environment via the doctest module in the Python standard
-library.
-
-
-```{code-block} python
->>> print('Python-specific usage examples; begun with ">>>"')
-Python-specific usage examples; begun with ">>>"
->>> print("(cut and pasted from interactive Python sessions)")
-(cut and pasted from interactive Python sessions)
->>> print("This is an intentionally very long line because I want to make sure that we are handling scrollable code blocks correctly.")
-This is an intentionally very long line because I want to make sure that we are handling scrollable code blocks correctly.
-```
-
 Parsed Literals
 ---------------
 
@@ -130,8 +110,5 @@ typewriter/monospaced typeface, like an ordinary literal block. Parsed literal
 blocks are useful for adding hyperlinks to code examples.
 
 ```{parsed-literal}
-
-# parsed-literal test
-curl -O http://someurl/release-0.1.0.tar-gz
-echo "This is an intentionally very long line because I want to make sure that we are handling scrollable code blocks correctly."
+Download at [http://someurl/release-0.1.0.tar-gz](http://someurl/release-0.1.0.tar-gz).
 ```

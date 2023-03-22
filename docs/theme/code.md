@@ -86,6 +86,25 @@ Emphasized Lines
         )
 ```
 
+Doctest Blocks
+--------------
+
+<https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html#doctest-blocks>
+
+Doctest blocks are interactive Python sessions cut-and-pasted into docstrings.
+They are meant to illustrate usage by example, and provide an elegant and
+powerful testing environment via the doctest module in the Python standard
+library.
+
+
+```{code-block} python
+>>> print('Python-specific usage examples; begun with ">>>"')
+Python-specific usage examples; begun with ">>>"
+>>> print("(cut and pasted from interactive Python sessions)")
+(cut and pasted from interactive Python sessions)
+>>> print("This is an intentionally very long line because I want to make sure that we are handling scrollable code blocks correctly.")
+This is an intentionally very long line because I want to make sure that we are handling scrollable code blocks correctly.
+```
 
 ``none`` highlighting
 ---------------------
@@ -120,11 +139,9 @@ Code Cells
 
 ```{code-cell} python
 :linenos:
-"""My first program"""
-
 import time
 
-width = 80
+width = 70
 today = time.localtime()
 
 greeting = "Hello"
