@@ -13,6 +13,7 @@ from http.server import HTTPServer, SimpleHTTPRequestHandler
 ROOTDIR = Path(__file__).parent.parent
 PORT = 1313
 
+
 class Handler(SimpleHTTPRequestHandler):
     """Request handler class that overwrites the directory"""
 
@@ -22,10 +23,12 @@ class Handler(SimpleHTTPRequestHandler):
         kwargs.pop("directory", None)
         super().__init__(*args, directory=str(self.directory), **kwargs)
 
+
 def main():
     print(f"Serving {Handler.directory} at: http://localhost:{PORT}\n")
     server = HTTPServer(("", PORT), Handler)
     server.serve_forever()
+
 
 if __name__ == "__main__":
     main()
