@@ -1,5 +1,6 @@
 /* Highlighting Colors
  * ==================================================================================== */
+
 /* NOTE: these are in colors.css */
 /*
 /* --syntax-highlight-bg
@@ -7,12 +8,13 @@
 /* --syntax-text
 /*
  * */
+
 :root,
 html.light,
-html[data-theme=light],
+html[data-theme="light"],
 .light-code,
 html.dark,
-html[data-theme=dark],
+html[data-theme="dark"],
 .dark-code {
   --syntax-pre-bg: var(--syntax-highlight-bg);
   --syntax-special-bg: #4f425d;
@@ -51,16 +53,18 @@ html[data-theme=dark],
 
 /* Syntax Tokens
  * ==================================================================================== */
+
 /* Comment {{{                                                                          */
 /* ------------------------------------------------------------------------------------ */
+
 .cell .highlight .err,
 .highlight .c,
-.cell .highlight .cm,
-.cell .highlight .cp,
-.cell .highlight .cpf,
-.cell .highlight .c1,
-.cell .highlight .cs,
-.cell .highlight .gd,
+.cell .highlight .cm,                                    /* .Hashbang */
+.cell .highlight .cp,                                    /* .Multiline */
+.cell .highlight .cpf,                                   /* .Preproc */
+.cell .highlight .c1,                                    /* .PreprocFile */
+.cell .highlight .cs,                                    /* .Single */
+.cell .highlight .gd,                                    /* .Special */
 .highlight .cm {
   color: var(--syntax-comment);
 }
@@ -78,20 +82,24 @@ html[data-theme=dark],
 /* Comment.Special */
 .highlight .cs {
   color: var(--syntax-comment);
-  background-color: var(--syntax-special-bg);
+  background-color: var(--syntax-special-bg) ;
 }
 
 /* }}} / Comment */
+
 /* Error {{{                                                                            */
 /* ------------------------------------------------------------------------------------ */
+
 .highlight .err {
   color: var(--syntax-invalid-illegal-text);
   background-color: var(--syntax-invalid-illegal-bg);
 }
 
 /* }}} /Error */
+
 /* Generic {{{                                                                          */
 /* ------------------------------------------------------------------------------------ */
+
 .highlight .g {
   color: var(--syntax-meta);
 }
@@ -142,7 +150,7 @@ html[data-theme=dark],
 .cell .highlight .gu,
 .highlight .gs {
   color: var(--syntax-markup-bold);
-  font-weight: bold;
+  font-weight: bold
 }
 
 /* Generic.Subheading */
@@ -157,8 +165,10 @@ html[data-theme=dark],
 }
 
 /* }}} / Generic */
+
 /* Keyword {{{                                                                          */
 /* ------------------------------------------------------------------------------------ */
+
 .cell .highlight .l,
 .highlight .k {
   color: var(--syntax-keyword);
@@ -202,8 +212,10 @@ html[data-theme=dark],
 }
 
 /* }}} / Keyword */
+
 /* Literal {{{                                                                          */
 /* ------------------------------------------------------------------------------------ */
+
 .cell .highlight .n,
 .highlight .l {
   color: var(--syntax-meta);
@@ -227,16 +239,16 @@ html[data-theme=dark],
 }
 
 /* Literal.Number */
-.cell .highlight .mf,
-.cell .highlight .mh,
-.cell .highlight .mi,
-.cell .highlight .mo,
-.cell .highlight .sa,
-.cell .highlight .sd,
-.highlight .mf,
-.highlight .mh,
-.highlight .mi,
-.highlight .mo { /* .Oct */
+.cell .highlight .mf,                                    /* .Bin */
+.cell .highlight .mh,                                    /* .Float */
+.cell .highlight .mi,                                    /* .Hex */
+.cell .highlight .mo,                                    /* .Integer */
+.cell .highlight .sa,                                    /* .Oct */
+.cell .highlight .sd,                                    /* .Delimiter */
+.highlight .mf,                                          /* .Float */
+.highlight .mh,                                          /* .Hex */
+.highlight .mi,                                          /* .Integer */
+.highlight .mo {                                         /* .Oct */
   color: var(--syntax-constant);
 }
 
@@ -244,33 +256,33 @@ html[data-theme=dark],
 .highlight .s,
 .cell .highlight .na,
 .cell .highlight .bp,
-.highlight .s2,
-.highlight .se,
-.highlight .si,
-.highlight .sx,
-.highlight .s1,
-.highlight .ss,
-.cell .highlight .sb,
-.cell .highlight .dl,
-.cell .highlight .se,
-.cell .highlight .sh,
-.cell .highlight .sx,
-.cell .highlight .ss,
-.highlight .sc { /* .Char */
+.highlight .s2,                                          /* .Double */
+.highlight .se,                                          /* .Escape */
+.highlight .si,                                          /* .Interpol */
+.highlight .sx,                                          /* .Other */
+.highlight .s1,                                          /* .Single */
+.highlight .ss,                                          /* .Symbol */
+.cell .highlight .sb,                                    /* .Affix */
+.cell .highlight .dl,                                    /* .Char */
+.cell .highlight .se,                                    /* .Double */
+.cell .highlight .sh,                                    /* .Escape */
+.cell .highlight .sx,                                    /* .Interpol */
+.cell .highlight .ss,                                    /* .Single */
+.highlight .sc {                                         /* .Char */
   color: var(--syntax-string);
 }
 
 /* Literal.String (docstrings) */
-.cell .highlight .s2,
-.cell .highlight .si,
-.highlight .sh { /* .Heredoc */
+.cell .highlight .s2,                                    /* .Doc */
+.cell .highlight .si,                                    /* .Heredoc */
+.highlight .sh {                                         /* .Heredoc */
   color: var(--syntax-comment);
 }
 
 /* Literal.String (regexp) )*/
-.cell .highlight .sr,
-.cell .highlight .s1,
-.highlight .sr { /* .Regex */
+.cell .highlight .sr,                                    /* .Other */
+.cell .highlight .s1,                                    /* .Regex */
+.highlight .sr {                                         /* .Regex */
   color: var(--syntax-regexp);
 }
 
@@ -281,55 +293,57 @@ html[data-theme=dark],
 }
 
 /* }}} / Literal */
+
 /* Name {{{                                                                             */
 /* ------------------------------------------------------------------------------------ */
+
 /* Name */
-.cell .highlight .vi,
-.cell .highlight .vi,
-.cell .highlight .nv,
-.cell .highlight .vg,
-.cell .highlight .vc,
+.cell .highlight .vi,                                    /* .Variable.Global */
+.cell .highlight .vi,                                    /* .Variable.Global */
+.cell .highlight .nv,                                    /* .Tag */
+.cell .highlight .vg,                                    /* .Function.Variable.Class */
+.cell .highlight .vc,                                    /* .Function.Magic */
 .highlight .nt {
   color: var(--syntax-tag);
 }
 
 /* Name (builtins) */
-.cell .highlight .nc,
-.highlight .nb,
-.cell .highlight .py,
-.cell .highlight .fm,
-.cell .highlight .nt { /*  .Property */
+.cell .highlight .nc,                                    /* .Builtin */
+.highlight .nb,                                          /* .Builtin */
+.cell .highlight .py,                                    /* .Other */
+.cell .highlight .fm,                                    /* .Builtin.Pseudo */
+.cell .highlight .nt {                                   /*  .Property */
   color: var(--syntax-builtin);
 }
 
 /* Name (constants) */
-.highlight .na,
-.cell .highlight .nb,
-.highlight .no,
-.cell .highlight .nb,
-.cell .highlight .nd,
-.cell .highlight .vm,
-.cell .highlight .il { /* .Variable.Magic */
+.highlight .na,                                          /* .Attribute */
+.cell .highlight .nb,                                    /* .Attribute */
+.highlight .no,                                          /* .Constant */
+.cell .highlight .nb,                                    /* .Attribute */
+.cell .highlight .nd,                                    /* .Constant */
+.cell .highlight .vm,                                    /* Variable.Instance */
+.cell .highlight .il {                                   /* .Variable.Magic */
   color: var(--syntax-constant);
 }
 
 /* Name (user defined objects) */
-.cell .highlight .no,
-.cell .highlight .nn,
-.cell .highlight .nl,
-.highlight .nf,
-.highlight .nc { /* .Class */
+.cell .highlight .no,                                    /* .Class */
+.cell .highlight .nn,                                    /* .Label */
+.cell .highlight .nl,                                    /* .Function */
+.highlight .nf,                                          /* .Function */
+.highlight .nc {                                         /* .Class */
   color: var(--syntax-definition);
 }
 
 /* Name (user-defined variables) */
 .cell .highlight .nt,
-.cell .highlight .o,
-.highlight .bp,
-.cell .highlight .ow,
-.highlight .vc,
-.highlight .vi,
-.highlight .vg { /* .Variable.Global */
+.cell .highlight .o,                                     /* .Builtin.Pseudo */
+.highlight .bp,                                          /* .Builtin.Pseudo */
+.cell .highlight .ow,                                    /* .Variable */
+.highlight .vc,                                          /* .Variable.Class */
+.highlight .vi,                                          /* .Variable.Instance */
+.highlight .vg {                                         /* .Variable.Global */
   color: var(--syntax-variable);
 }
 
@@ -352,27 +366,34 @@ html[data-theme=dark],
 }
 
 /* }}} / Name */
+
 /* Operator {{{                                                                         */
 /* ------------------------------------------------------------------------------------ */
+
 .cell .highlight .p,
 .highlight .o,
-.cell .highlight .ch,
-.cell .highlight .w,
-.cell .highlight .pm,
-.highlight .ow { /* .Word */
+.cell .highlight .ch,                                    /* Punctuation */
+.cell .highlight .w,                                     /* Punctuation.Marker */
+.cell .highlight .pm,                                    /* .Word */
+.highlight .ow {                                         /* .Word */
   color: var(--syntax-constant);
 }
 
 /* }}} / Operator */
+
 /* Other {{{                                                                            */
 /* ------------------------------------------------------------------------------------ */
+
 .highlight .x {
   color: var(--syntax-meta);
 }
 
 /* }}} / Other */
+
 /* Text {{{                                                                             */
 /* ------------------------------------------------------------------------------------ */
+
+
 /* Text */
 .cell .highlight .hll,
 .highlight {
@@ -387,8 +408,10 @@ html[data-theme=dark],
 }
 
 /* }}} / Text */
+
 /* Container Elements
  * ==================================================================================== */
+
 /* Highlighted line */
 .cell .highlight .hll,
 .highlight,
@@ -411,13 +434,13 @@ html[data-theme=dark],
 .highlight span.linenos.special,
 .cell .highlight td.linenos .special,
 .cell .highlight span.linenos.special {
-  color: var(--syntax-lineno-special);
-  background-color: var(--syntax-lineno-special-bg);
+    color: var(--syntax-lineno-special);
+    background-color: var(--syntax-lineno-special-bg);
 }
 
 /* <pre> */
-.highlight > pre {
-  background-color: var(--syntax-highlight-bg);
+.highlight>pre {
+    background-color: var(--syntax-highlight-bg);
 }
 
 /* <caption> */
@@ -425,5 +448,3 @@ html[data-theme=dark],
   background-color: var(--sytax-cap-bg);
   color: var(--sytax-text);
 }
-
-/*# sourceMappingURL=pygments.css.map */

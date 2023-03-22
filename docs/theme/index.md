@@ -16,13 +16,18 @@ Kitchen Sink
 
 ```{note}
 
-   The Kitchen Sink was generated from the `Sphinx Themes website <https://sphinx-themes.org/>`_, a community-supported showcase of themes for `Sphinx <http://sphinx-doc.org>`_.
-   Check it out to see other great themes.
+   The Kitchen Sink was originally generated from the [Sphinx Themes
+   website](https://sphinx-themes.org/), a community-supported showcase of
+   themes for [Sphinx](http://sphinx-doc.org). Check it out to see other great themes.
 
-   .. button-link:: https://sphinx-themes.org
+   :::{button-link} https://sphinx-themes.org
       :color: primary
-
+      :align: center
       Go to Sphinx Themes
+   :::
+
+   It has since been modified for Python Class.
+
 ```
 
 This section exists as a dump of all the things that Sphinx has.
