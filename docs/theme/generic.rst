@@ -53,14 +53,14 @@ If the ``--pep-references`` option was supplied, there should be a live link to
 PEP 258 here.
 
 GUI labels
-~~~~~~~~~~
+^^^^^^^^^^
 
 According to the RST demo, GUI labels (like :guilabel:`this label`) are a way to
 indicate that some action is to be taken by the user. Like inline code literals,
 GUI labels should not run over line height.
 
 Keys / Menu labels
-~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^
 
 Key-bindings indicate that the read is to press a button on the keyboard or
 mouse, for example :kbd:`MMB`, :kbd:`⌘+⇧+M` and :kbd:`Shift-MMB`. Another
@@ -71,7 +71,7 @@ For example, ``menuselection`` should break when it is too long to fit on a
 single line.
 
 Long inline code wrapping
-~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. DO NOT RE-WRAP THE FOLLOWING PARAGRAPH!
 
@@ -104,7 +104,7 @@ You can add a link to equations like the one above :eq:`This is a label` by usin
 
 
 Sidebar
-_______
+=======
 
 .. sidebar:: Ch'ien / The Creative
 

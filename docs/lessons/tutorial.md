@@ -874,7 +874,6 @@ They should be:
 
 ```{exercise} Hello Exercise
 :label: pypet-hello-exercise
-:class: calm
 
 Can you write a function named `hello` that prints `"Hello World!"`?
 
@@ -900,7 +899,6 @@ hello()
 
 ```{exercise} Goodbye Exercise
 :label: pypet-goodbye-exercise
-:class: calm
 
 Write a function named `goodbye` that takes one argument `name` and
 prints {samp}`Goodbye {NAME}!`
@@ -1157,4 +1155,3 @@ It was adapted from one that was originally available[^1] on
 %     [ ] highlight new code
 %     [ ] add exercises
 %     [ ] turn ordered lists into subheaders
-

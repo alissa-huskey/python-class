@@ -312,7 +312,8 @@ class HeadingRefDomain(Domain):
     def clear_doc(self, docname: str) -> None:
         """Remove traces of a document in the domain-specific inventories."""
         for label in self.heading_refs[docname]:
-            del self.headings[label]
+            if label in self.headings:
+                del self.headings[label]
         del self.heading_refs[docname]
 
     def merge_domaindata(self, docnames: List[str], otherdata: Dict) -> None:
