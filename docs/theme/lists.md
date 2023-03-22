@@ -126,7 +126,7 @@ Reading
   The process of taking information into ones mind through the use of eyes.
 
 Writing
-  The process of putting thoughts into a medium for other people to :term:`read <Reading>`.
+  The process of putting thoughts into a medium for other people to {term}`read <Reading>`.
 ```
 
 Examples

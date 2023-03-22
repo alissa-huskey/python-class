@@ -252,20 +252,86 @@ to the cell.
 print("This is a test.")
 ```
 
+Grid
+----
+
+* [Jupyter Book > Grids](https://jupyterbook.org/en/stable/content/components.html?highlight=cards#grids)
+* [Sphinx Design > Grids](https://sphinx-design.readthedocs.io/en/latest/grids.html)
+
+::::{grid}
+
+:::{grid-item}
+:outline:
+:columns: 3
+A
+:::
+:::{grid-item}
+:outline:
+:columns: 9
+B
+:::
+:::{grid-item}
+:outline:
+:columns: 6
+C
+:::
+:::{grid-item}
+:outline:
+:columns: 6
+D
+:::
+
+::::
+
 Cards
 -----
 
-TODO
+* [Sphinx Design > Cards](https://sphinx-design.readthedocs.io/en/latest/cards.html)
+
+:::{card} Card Title
+
+Card content
+:::
+
+:::{card} Card Title
+Header
+^^^
+Card content
++++
+Footer
+:::
 
 Tabs
 ----
 
-TODO
+* [Sphinx Design > Tabs](https://sphinx-design.readthedocs.io/en/latest/tabs.html)
+
+::::{tab-set}
+
+:::{tab-item} Label1
+Content 1
+:::
+
+:::{tab-item} Label2
+Content 2
+:::
+
+::::
+
+````{tab-set-code}
+
+```{code-block} ruby
+puts "hello"
+```
+
+```{code-block} python
+print("hello")
+```
+
+````
 
 
 TODO
 ----
 
 * announcement banners: https://pydata-sphinx-theme.readthedocs.io/en/latest/user_guide/announcements.html
-* badges and buttons
-* icons

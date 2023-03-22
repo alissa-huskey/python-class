@@ -1,26 +1,265 @@
 /* global
- * ---------------------------------------------------------------------*/
+ * ---------------------------------------------------------------------
+ * See: https://pydata-sphinx-theme.readthedocs.io/en/latest/user_guide/styling.html#color-variables
+ */
 :root,
 html.light,
 html[data-theme=light],
 html.dark,
 html[data-theme=dark] {
   /* dark theme
-   * ---------------------------------------------------------------------*/
+   * --------------------------------------------------------------------- */
   --color-scheme: "dark";
+  /* background
+   * --------------------------------------------------------------------
+   * currently editor background color from VS Code theme Andromeda
+   *    https://marketplace.visualstudio.com/items?itemName=eliverlara.andromeda
+   */
   --pst-color-background: #262A33 !important;
-  --pst-color-border: var(--pst-color-background) !important;
-  --syntax-text: #c9d1d9;
-  --syntax-highlight-bg: #2c283b;
+  /* text base
+   * --------------------------------------------------------------------
+   * currently
+   *
+   * text color of:
+   *    rubric title, body elements, nav title (Python Class and Lessons), nav collapse
+   *    and expand buttons, grid borders, card headers, titles, body, & footers, tab content,
+   *    table headers, heading 6, math, menuselect, most inline elements
+   *    blockquote text, literal block text, caption text, list text, topic and
+   *    admonition text, code caption, none highlighted code, code cell output,
+   *    code-cell show/hide text, previous/next links
+   *
+   * alternative: #d0d0d0, #D5D8DA, #C0C0CC
+   *
+   */
+  --pst-color-text-base: #D5D8DA !important;
+  /* muted
+   * --------------------------------------------------------------------
+   * currently set to a classy palette of inkpot
+   *    https://mycolor.space/?hex=%231E1E27&sub=1
+   *
+   * text color of:
+   *    headings, contents nav title
+   * alternative: #d0d0d0, #767687, #707788
+   *
+   */
+  --pst-color-muted: #767687 !important;
+  /* link
+   * --------------------------------------------------------------------
+   * currently set to a minty green color
+   *
+   * alternatives: #BA9BB5, #97cfbe, #79d3c7, #32687F
+   *
+   */
+  --pst-color-link: #79d3c7 !important;
+  /* link hover
+   * --------------------------------------------------------------------
+   * currently set to
+   *
+   * alternatives: #7788F3, #09ABB9
+   *
+   */
+  --pst-color-link-hover: #09ABB9 !important;
+  /* color primary
+   * --------------------------------------------------------------------
+   * currently set to a bright purple
+   *
+   * color of:
+   *    Next/Prev Chapter name links, right/left nav hover, active tab
+   *
+   * alternatives:
+   *
+   */
+  --pst-color-primary: #7788F3 !important;
+  /* text muted
+   * --------------------------------------------------------------------
+   * currently set to a soft palette of background color
+   *    https://mycolor.space/?hex=%23262A33&sub=1
+   *
+   * text color of:
+   *    nav links, header icon links, menu bar button,
+   *    < > links,
+   *
+   * alternative: #746f77, #535761, #807F8B
+   *
+   */
+  --pst-color-text-muted: #535761 !important;
+  /* inline code
+   * --------------------------------------------------------------------
+   * currently set to a randomly chosen peachy color
+   *
+   * text color of:
+   *    inline literal, sample role, file role, regexp role
+   *
+   * alternative: #D97C6C, #00C6C3, #C0C0CC, #D19F9E, #BA9BB5, #D09EA8, #BC9C99
+   *
+   */
+  --pst-color-inline-code: #BC9C99 !important;
+  /* surface
+   * --------------------------------------------------------------------
+   * currently the background color from the pygments "inkpot" style
+   * https://github.com/pygments/pygments/blob/f162631a2504b63799c9466f12072f9fd14611b1/pygments/styles/inkpot.py
+   * https://pygments.org/styles/
+   *
+   * background color of:
+   *    sidebars, code blocks, code cells, block quotes,
+   *    topics, literal blocks, nav button hover state
+   *
+   */
+  --pst-color-surface: #1e1e27 !important;
+  /* on-background
+   * --------------------------------------------------------------------
+   * currently Blue (Munsell) from
+   *    https://coolors.co/21252b-0892a5-d3bccc-b3f2dd-8e5572
+   *
+   * background color of:
+   *    kbd role
+   *
+   */
+  --pst-color-on-background: #3F51B5 !important;
+  /* on-surface
+   * --------------------------------------------------------------------
+   * currently a matching gradient of background color
+   *    https://mycolor.space/?hex=%23262A33&sub=1
+   *
+   * background color of:
+   *    scrollbars
+   *
+   * border color of:
+   *    inline literals
+   *
+   */
+  --pst-color-on-surface: #444553 !important;
+  /* border
+   * --------------------------------------------------------------------
+   * currently set to a gradient of the background color
+   *    https://mycolor.space/?hex=%23262A33&sub=1
+   *
+   * border color of:
+   *    cards, nav, code, rubric, sidebar
+   *
+   */
+  --pst-color-border: var(--pst-color-on-surface) !important;
+  /* shadow
+   * --------------------------------------------------------------------
+   * currently set to matching palette of the background color
+   *    https://mycolor.space/?hex=%23262A33&sub=1
+   *
+   * shadow color of:
+   *    dropdowns, topic
+   *
+   */
+  --pst-color-shadow: #404756 !important;
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    --pst-color-info: #459db9 !important;
+    --pst-color-warning: #ee9040 !important;
+    --pst-color-success: #28a745 !important;
+    --pst-color-attention: #ffc107 !important;
+    --pst-color-danger: #dc3545 !important;
+    --sd-color-light: #f8f9fa;
+    --sd-color-dark: #212529;
+    --sd-color-primary-highlight: #0069d9;
+    --sd-color-secondary-highlight: #5c636a;
+    --sd-color-success-highlight: #228e3b;
+    --sd-color-info-highlight: #148a9c;
+    --sd-color-warning-highlight: #cc986b;
+    --sd-color-danger-highlight: #bb2d3b;
+    --sd-color-light-highlight: #d3d4d5;
+    --sd-color-muted-highlight: #5c636a;
+    --sd-color-dark-highlight: #1c1f23;
+    --sd-color-primary-text: #fff;
+    --sd-color-secondary-text: #fff;
+    --sd-color-success-text: #fff;
+    --sd-color-info-text: #fff;
+    --sd-color-warning-text: #212529;
+    --sd-color-danger-text: #fff;
+    --sd-color-light-text: #212529;
+    --sd-color-muted-text: #fff;
+    --sd-color-dark-text: #fff;
+    --sd-color-card-border: rgba(0, 0, 0, 0.125);
+    --sd-color-card-border-hover: hsla(231, 99%, 66%, 1);
+    --sd-color-card-background: transparent;
+    --sd-color-card-text: inherit;
+    --sd-color-card-header: transparent;
+    --sd-color-card-footer: transparent;
+    --sd-color-tabs-label-active: hsla(231, 99%, 66%, 1);
+    --sd-color-tabs-label-hover: hsla(231, 99%, 66%, 1);
+    --sd-color-tabs-label-inactive: hsl(0, 0%, 66%);
+    --sd-color-tabs-underline-active: hsla(231, 99%, 66%, 1);
+    --sd-color-tabs-underline-hover: rgba(178, 206, 245, 0.62);
+    --sd-color-tabs-underline-inactive: transparent;
+    --sd-color-tabs-overline: rgb(222, 222, 222);
+    --sd-color-tabs-underline: rgb(222, 222, 222);
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
   /* --syntax-cap-bg: #342f47;
-
   /* --syntax-cap-bg: #342f47;
   /* --syntax-text: #c9d1d9; */
   /* --syntax-highlight-bg: #2a3447;            // dark blue
   /* --syntax-highlight-bg: #423551             // light purple
    * */
-  --pst-color-shadow: var(--pst-color-background) !important;
-  --pst-color-surface: #21252B !important;
+  /* --pst-color-primary: green !important;                         // active links, h2
+  /* --pst-color-secondary: purple !important;                      // selection
+
+  /* --pst-color-surface: #3b4252 !important;
+  /* --pst-color-surface: #262A33 !important;
+  /* --pst-color-surface: #282c35 !important;
+  /* --pst-color-on-background: #3f4254 !important;                 // kbd elements
+  /* --pst-color-on-surface: #6c6f934d !important;                  // scrollbars
+
+  /* --pst-color-primary: #459db9 !important;
+  /* --pst-color-secondary: #ee9040 !important;
+  /* --pst-color-info: #459db9 !important;
+  /* --pst-color-warning: #ee9040 !important;
+  /* --pst-color-success: #28a745 !important;
+  /* --pst-color-attention: #ffc107 !important;
+  /* --pst-color-danger: #dc3545 !important;
+
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  --sd-color-primary: #007bff;
+  --sd-color-secondary: #6c757d;
+  --sd-color-success: #28a745;
+  --sd-color-info: #17a2b8;
+  --sd-color-warning: #f0b37e;
+  --sd-color-danger: #dc3545;
+  --sd-color-light: #f8f9fa;
+  --sd-color-muted: #6c757d;
+  --sd-color-dark: #212529;
+  --sd-color-primary-highlight: #0069d9;
+  --sd-color-secondary-highlight: #5c636a;
+  --sd-color-success-highlight: #228e3b;
+  --sd-color-info-highlight: #148a9c;
+  --sd-color-warning-highlight: #cc986b;
+  --sd-color-danger-highlight: #bb2d3b;
+  --sd-color-light-highlight: #d3d4d5;
+  --sd-color-muted-highlight: #5c636a;
+  --sd-color-dark-highlight: #1c1f23;
+  --sd-color-primary-text: #fff;
+  --sd-color-secondary-text: #fff;
+  --sd-color-success-text: #fff;
+  --sd-color-info-text: #fff;
+  --sd-color-warning-text: #212529;
+  --sd-color-danger-text: #fff;
+  --sd-color-light-text: #212529;
+  --sd-color-muted-text: #fff;
+  --sd-color-dark-text: #fff;
+  --sd-color-shadow: rgba(0, 0, 0, 0.15);
+  --sd-color-card-border: rgba(0, 0, 0, 0.125);
+  --sd-color-card-border-hover: hsla(231, 99%, 66%, 1);
+  --sd-color-card-background: transparent;
+  --sd-color-card-text: inherit;
+  --sd-color-card-header: transparent;
+  --sd-color-card-footer: transparent;
+  --sd-color-tabs-label-active: hsla(231, 99%, 66%, 1);
+  --sd-color-tabs-label-hover: hsla(231, 99%, 66%, 1);
+  --sd-color-tabs-label-inactive: hsl(0, 0%, 66%);
+  --sd-color-tabs-underline-active: hsla(231, 99%, 66%, 1);
+  --sd-color-tabs-underline-hover: rgba(178, 206, 245, 0.62);
+  --sd-color-tabs-underline-inactive: transparent;
+  --sd-color-tabs-overline: rgb(222, 222, 222);
+  --sd-color-tabs-underline: rgb(222, 222, 222);
+  --sd-fontsize-tabs-label: 1rem
+  */
   /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   /* default colors
    * ~~~~~~~~~~~~~~ */
@@ -29,54 +268,16 @@ html[data-theme=dark] {
   /* --title-background-color: rgba(20 184 166 / "10%"); */
   /* --icon-bg-color: rgb(20 184 166); */
   /* --color-card-header: rgba(0 0 0 / "3%") !important; */
-  /* --pst-color-text-base: #ebf0f4 !important; */
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-/* --color-main-bg: #242429; */
-/* --color-sidebar-bg: #242429; */
-/* --color-inline-code-bg: #312f29; */
-/* --color-code-background: #202020; */
-/* --pst-color-background: #242429 !important; */
-/* --pst-color-background: #1f222d !important; */
-/* --pst-color-background: #1a1c22 !important; */
-/* --pst-color-background: #282C34 !important; */
-/* --pst-color-background: #1c1e26 !important; */
-/* --pst-color-text-base: #D5D8DA !important;                     // body
-/* --pst-color-muted: #b7c5d386 !important;                       // h1, h4, contents
-
-/* --pst-color-text-muted: brown !important;                      // navigation links
-
-/* --pst-color-primary: green !important;                         // active links, h2
-/* --pst-color-secondary: purple !important;                      // selection
-
-/* --pst-color-link: var(--pst-color-primary) !important;         // most headers, links
-/* --pst-color-link-hover: cyan !important; */
-/* --pst-color-surface: #3b4252 !important; */
-/* --pst-color-text-base: #eaeff7 !important; */
-/* --pst-color-text-base: #d0d0d0 !important; */
-/* --pst-color-muted: #eaeff7 !important; */
-/* --pst-color-muted-text: #746f77 !important; */
-/* --pst-color-muted-highlight: gray !important; */
-/* --pst-color-surface: #262A33 !important; */
-/* --pst-color-text-base: #d1d4e0 !important; */
-/* --pst-color-surface: #282c35 !important; */
-/* --pst-color-on-background: #3f4254 !important;                 // kbd elements
-/* --pst-color-on-surface: #6c6f934d !important;                  // scrollbars  */
-/* --pst-color-on-surface: blue !important;                       // scrollbars
-/* --pst-color-on-background: green !important; */
-/* --pst-color-inline-code: #e83e8c !important; */
-/* --pst-color-target: #fbe54e !important; */
-/* --pst-color-primary: #459db9 !important; */
-/* --pst-color-secondary: #ee9040 !important; */
-/* --pst-color-info: #459db9 !important; */
-/* --pst-color-warning: #ee9040 !important; */
-/* --pst-color-success: #28a745 !important; */
-/* --pst-color-attention: #ffc107 !important; */
-/* --pst-color-danger: #dc3545 !important; */
-/* link after headers ("#") that link to header */
-/* a.headerlink { */
-/* } */
+/* --color-main-bg: #242429;
+ * --color-sidebar-bg: #242429;
+ * --color-inline-code-bg: #312f29;
+ * --color-code-background: #202020; */
+/* link after headers ("#") that link to header
+ * a.headerlink {
+ * } */
 html[data-theme=dark] .bd-content img:not(.only-dark):not(.dark-light) {
   background: transparent;
 }
