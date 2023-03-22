@@ -192,6 +192,20 @@ Here's an example of an annotation inside a margin.
 
 ::::::
 
+Here is some general text
+
 {{ clear }}
 
-Also here's some general text.
+### Margin with text
+
+`````{margin}
+```{seealso}
+
+For how to pass all iterable items as arguments to a function see [Functions >
+Unpacking][arg-unpacking].
+
+```
+
+`````
+
+This is an example of an admonition in a margin with more text.

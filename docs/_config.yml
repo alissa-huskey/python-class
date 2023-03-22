@@ -47,7 +47,11 @@ parse: &parse
                               - substitution
                               - colon_fence
                               - deflist
-                                # - tasklist  # doesn't work with ul?
+                              - strikethrough
+                              - dollarmath
+                              # - attrs_block         # myst-parser 19.0
+                              # - attrs_inline        # myst-parser 19.0
+                              # - tasklist            # doesn't work with ul?
   myst_substitutions        :
     clear                   : '<div class="clearfix"></div>'
     leftcol                 : '<div class="row"><div class="col left-col">'
@@ -125,6 +129,8 @@ sphinx:
       # https://sphinx-book-theme.readthedocs.io/en/latest/configure.html
       show_navbar_depth     : 3
       home_page_in_toc      : false
+      # pygment_light_style   : murphy
+      # pygment_dark_style    : nord
 
       repository_url        : *repo
       repository_branch     : *branch
@@ -139,4 +145,3 @@ sphinx:
       # pydata-spyinx theme options
       # https://pydata-sphinx-theme.readthedocs.io/en/latest/user_guide/configuring.html
       navigation_with_keys  : false
-

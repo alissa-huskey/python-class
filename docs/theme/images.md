@@ -1,32 +1,41 @@
-..
-   Copyright (c) 2021 Pradyun Gedam
-   Licensed under Creative Commons Attribution-ShareAlike 4.0 International License
-   SPDX-License-Identifier: CC-BY-SA-4.0
-
-================
 Images & Figures
 ================
 
 Images
 ------
 
+{{ leftcol }}
+
 An image:
 
-.. image:: https://source.unsplash.com/200x200/daily?cute+puppy
-   :height: 200
-   :width: 200
+```{image} https://source.unsplash.com/250x250/daily?sleeping+puppy
+:height: 250
+:width: 250
+:align: center
+```
 
-A clickable image:
+{{ rightcol }}
 
-.. image:: https://source.unsplash.com/200x200/daily?cute+puppy
-   :target: https://unsplash.com/
-   :height: 200
-   :width: 200
+A linked image:
 
-.. image:: https://source.unsplash.com/200x200/daily?cute+puppy
-   :align: right
-   :height: 200
-   :width: 200
+```{image} https://source.unsplash.com/250x250/daily?flower
+:target: https://unsplash.com/
+:height: 250
+:width: 250
+:align: center
+```
+
+{{ endcols }}
+
+{{ clear }}
+
+{{ br }} {{ br }}
+
+```{image} https://source.unsplash.com/200x200/daily?mountain
+:align: right
+:height: 200
+:width: 200
+```
 
 This is a lot of text to go along with a right-aligned image, that is
 helping make this content feel less linear. It is important to have such
@@ -43,10 +52,11 @@ sapiente veritatis doloribus accusantium molestiae modi recusandae
 excepturi facere, corrupti expedita sit nihil temporibus eius sequi
 animi, illo libero labore fuga.
 
-.. image:: https://source.unsplash.com/200x200/daily?cute+puppy
-   :align: left
-   :height: 200
-   :width: 200
+```{image} https://source.unsplash.com/200x200/daily?fruit
+:align: left
+:height: 200
+:width: 200
+```
 
 This is a lot of text to go along with a left-aligned image, that is
 helping make this content feel less linear. It is important to have such
@@ -66,24 +76,19 @@ animi, illo libero labore fuga.
 Figures
 -------
 
-.. figure:: https://source.unsplash.com/200x200/daily?cute+puppy
-   :alt: reStructuredText, the markup syntax
+```{figure} https://source.unsplash.com/400x400/daily?map
+:alt: Find your way
+:width: 400
+:height: 400
 
-   A figure is an image with a caption and/or a legend:
+A figure is an image with a caption and/or a legend:
 
-   +------------+-----------------------------------------------+
-   | re         | Revised, revisited, based on 're' module.     |
-   +------------+-----------------------------------------------+
-   | Structured | Structure-enhanced text, structuredtext.      |
-   +------------+-----------------------------------------------+
-   | Text       | Well it is, isn't it?                         |
-   +------------+-----------------------------------------------+
+| Symbol | Meaning |
+|--------|---------|
+| `N`    | north   |
+| `S`    | south   |
+| `E`    | east    |
+| `W`    | west    |
 
-   This paragraph is also part of the legend.
-
-A figure directive with center alignment
-
-.. figure:: https://source.unsplash.com/200x200/daily?cute+puppy
-   :align: center
-
-   This caption should be centered.
+This paragraph is also part of the legend.
+```

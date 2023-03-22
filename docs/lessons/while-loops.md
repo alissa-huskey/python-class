@@ -38,7 +38,7 @@ The syntax for a `while` loop is:
 
 {{ leftcol | replace("col", "col-5") }}
 
-```{include} ../templates/syntax/while.md 
+```{include} ../templates/syntax/while.md
 ```
 
 {{ rightcol | replace("col", "col-7") }}
@@ -46,7 +46,7 @@ The syntax for a `while` loop is:
 ```{include} ../templates/desc/while.md
 ```
 
-{{ endcols }} 
+{{ endcols }}
 
 Here's a simple example that will keep asking the user for their name until
 they answer.
@@ -526,7 +526,6 @@ while x <= SIZE:
     x+=1
     print("\n")
 
-main()
 ```
 
 `````
