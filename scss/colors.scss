@@ -1,6 +1,10 @@
 /* global
  * ---------------------------------------------------------------------
- * See: https://pydata-sphinx-theme.readthedocs.io/en/latest/user_guide/styling.html#color-variables
+ * See also:
+ * - https://pydata-sphinx-theme.readthedocs.io/en/latest/user_guide/styling.html#color-variables
+ * - https://pydata-sphinx-theme.readthedocs.io/en/stable/user_guide/styling.html
+ * -
+ * -
  */
 
 :root,
@@ -44,6 +48,7 @@ html[data-theme="dark"] {
    *
    * text color of:
    *    headings, contents nav title
+   *
    * alternative: #d0d0d0, #767687, #707788
    *
    */
@@ -77,7 +82,7 @@ html[data-theme="dark"] {
    * alternatives:
    *
    */
-  --pst-color-primary: #7788F3 !important;                         // active links, h2
+  --pst-color-primary: #7788F3 !important;
 
   /* text muted
    * --------------------------------------------------------------------
@@ -123,11 +128,12 @@ html[data-theme="dark"] {
    * currently Blue (Munsell) from
    *    https://coolors.co/21252b-0892a5-d3bccc-b3f2dd-8e5572
    *
-   * background color of:
-   *    kbd role
+   * background color of: kbd role
+   *
+   * alternatives: #3F51B5, #B0E0EB
    *
    */
-  --pst-color-on-background: #3F51B5 !important;
+  --pst-color-on-background: #A4B5DB !important;
 
   /* on-surface
    * --------------------------------------------------------------------
@@ -140,8 +146,10 @@ html[data-theme="dark"] {
    * border color of:
    *    inline literals
    *
+   * alternatives: #444553
+   *
    */
-  --pst-color-on-surface: #444553 !important;
+  --pst-color-on-surface: #B88377 !important;
 
   /* border
    * --------------------------------------------------------------------
@@ -165,33 +173,88 @@ html[data-theme="dark"] {
    */
   --pst-color-shadow: #404756 !important;
 
+  /* target
+   * --------------------------------------------------------------------
+   * currently set to ___
+   *    ___
+   *
+   * background color of:
+   *    footnote target
+   *
+   */
+  // --pst-color-target: red !important;
+
+  /* ___
+   * --------------------------------------------------------------------
+   * currently set to ___
+   *    ___
+   *
+   * ___ color of:
+   *    ___
+   *
+   */
+
+  /* sd-dropdown-color
+   * --------------------------------------------------------------------
+   * currently set to ___
+   *    ___
+   *
+   * ___ color of:
+   *    ___
+   *
+   */
+    // details.sd-dropdown summary.sd-card-header,details.sd-dropdown summary.sd-card-header+div.sd-summary-content {
+    --pst-sd-dropdown-color: var(--sd-color-card-border) !important;
+
+   // --bs-body-bg: var(--pst-color-text-base) !important;
+
   /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    --pst-color-info: #459db9 !important;
-    --pst-color-warning: #ee9040 !important;
-    --pst-color-success: #28a745 !important;
-    --pst-color-attention: #ffc107 !important;
-    --pst-color-danger: #dc3545 !important;
-    --sd-color-light: #f8f9fa;
-    --sd-color-dark: #212529;
-    --sd-color-primary-highlight: #0069d9;
-    --sd-color-secondary-highlight: #5c636a;
-    --sd-color-success-highlight: #228e3b;
-    --sd-color-info-highlight: #148a9c;
-    --sd-color-warning-highlight: #cc986b;
-    --sd-color-danger-highlight: #bb2d3b;
-    --sd-color-light-highlight: #d3d4d5;
-    --sd-color-muted-highlight: #5c636a;
-    --sd-color-dark-highlight: #1c1f23;
-    --sd-color-primary-text: #fff;
-    --sd-color-secondary-text: #fff;
-    --sd-color-success-text: #fff;
-    --sd-color-info-text: #fff;
-    --sd-color-warning-text: #212529;
-    --sd-color-danger-text: #fff;
-    --sd-color-light-text: #212529;
-    --sd-color-muted-text: #fff;
-    --sd-color-dark-text: #fff;
-    --sd-color-card-border: rgba(0, 0, 0, 0.125);
+
+    --bs-highlight-color               // <mark> tag
+    --pst-color-panel-background       // tabs background
+
+    --pst-color-primary-text
+    --pst-color-primary-highlight
+    --pst-color-secondary
+    --pst-color-secondary-text
+    --pst-color-secondary-highlight
+
+    --pst-color-success
+    --pst-color-success-text
+    --pst-color-success-highlight
+
+    --pst-color-info
+    --pst-color-info-text
+    --pst-color-info-highlight
+
+    --pst-color-warning
+    --pst-color-warning-text
+    --pst-color-warning-highlight
+
+    --pst-color-attention
+    --pst-color-attention-text
+    --pst-color-attention-highlight
+
+    --pst-color-danger
+    --pst-color-danger-text
+    --pst-color-danger-highlight
+
+    --pst-color-light
+    --pst-color-light-text
+    --pst-color-light-highlight
+
+    --pst-color-dark
+    --pst-color-dark-text
+    --pst-color-dark-highlight
+
+    --pst-color-black
+    --pst-color-black-text
+    --pst-color-black-highlight
+
+    --pst-color-white
+    --pst-color-white-text
+    --pst-color-white-highlight
+
     --sd-color-card-border-hover: hsla(231, 99%, 66%, 1);
     --sd-color-card-background: transparent;
     --sd-color-card-text: inherit;
@@ -207,8 +270,6 @@ html[data-theme="dark"] {
     --sd-color-tabs-underline: rgb(222, 222, 222);
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-  // --pst-color-target: red !important;
-  // --pst-color-secondary: red !important;                         // active links, h2
   /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
   // --syntax-text: #c9d1d9;
@@ -319,3 +380,11 @@ html.light {
   --color-scheme: light;
   /* --pst-color-primary: black; */
 }
+
+//   --pst-sd-dropdown-color: #f00 !important;
+// details.sd-dropdown summary.sd-card-header {
+// .sd-bg-white,
+// .sd-bg-white+div.sd-summary-content
+// .sd-bg-secondary,
+// .sd-bg-secondary+div.sd-summary-content
+// }

@@ -146,7 +146,11 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit.
 ```{image} https://source.unsplash.com/200x200/daily?forest
 ```
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit.
+Lorem [^lorem] ipsum [^ipsum] dolor sit amet consectetur adipisicing elit.
+
+[^lorem]: footnote target
+[^ipsum]: footnote target two
+
 :::
 
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, sunt

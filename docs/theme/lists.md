@@ -19,12 +19,12 @@ Inline lists
 
 From bootstrap
 
-```{div} inline
-
 Hlists
 ------
 
-```{hlist}
+:::::{div} inline
+
+:::{hlist}
 :columns: 2
 
 - First item
@@ -33,7 +33,9 @@ Hlists
 - Forth item
 - Fifth item
 - Sixths item
-```
+:::
+
+:::::
 
 {{ clear }}
 

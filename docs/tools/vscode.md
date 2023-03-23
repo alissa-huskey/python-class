@@ -107,9 +107,9 @@ Resources
 Essential Keyboard Shortcuts
 ----------------------------
 
-```````{tabs}
+```````{tab-set}
 
-`````{tab} MacOS
+`````{tab-item} MacOS
 
 :::::{grid}
 :gutter: 2
@@ -182,12 +182,10 @@ Editor
 :::
 
 :::::
-% /grid
 
 `````
-% /MacOS tab
 
-`````{tab} Windows/Linux
+`````{tab-item} Windows/Linux
 
 :::::{grid}
 :gutter: 2
@@ -254,15 +252,12 @@ Editor
 | `↓`   | {kbd}`Down arrow`  |
 
 ```
-% /dropdown
 
 :::
 
 `````
-% /Windows/Linux tab
 
 ```````
-% /tab-set
 
 :::{seealso}
 
