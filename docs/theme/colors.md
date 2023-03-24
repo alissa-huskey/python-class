@@ -21,7 +21,7 @@ Colors
 | `--pst-color-border`              | ![][border]              | {span}`demo <pst-color-border>`                     | border | cards, nav, code, rubric, sidebar                         |
 | `--pst-color-shadow`              | ![][shadow]              | {span}`demo <pst-color-shadow>`                     | shadow | dropdowns, topic                                          |
 | `--pst-color-target`              | ![][target]              | {span}`demo <pst-color-target>`                     | bg     | footnote target                                           |
-| `--pst-color-primary`             | ![][primary]             | {span}`demo <pst-color-primary>`                    |        | _                                                         |
+| `--pst-color-primary`             | ![][primary]             | {span}`demo <pst-color-primary>`                    | fg     | nav link focused, next/prev names, right/left nav hover   |
 | `--pst-color-secondary`           | ![][secondary]           | {span}`demo <pst-color-secondary>`                  |        | _                                                         |
 | `--pst-color-secondary-text`      | ![][secondary-text]      | {span}`demo <pst-color-secondary-text>`             |        | _                                                         |
 | `--pst-color-secondary-highlight` | ![][secondary-highlight] | {span}`demo <pst-color-secondary-highlight>`        |        | _                                                         |

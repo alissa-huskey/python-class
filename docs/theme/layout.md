@@ -21,56 +21,27 @@ directive.
 ```{centered} This is centered text!
 ```
 
-Dropdowns
----------
+Full Width
+----------
 
-This is an example of a dropdown.
+Full-width content extends into the right margin, making it stand out against
+the rest of your book’s content. To add full-width content to your page, add
+the class `.full-width` to any of the elements in your documentation.
 
-{{ left }}
-
-`````{dropdown} Need help?
-
-1. `[ ]` Find where you assign `PLAYER_STATE`, `DEBUG_STATE`, etc. Just under
-         that set `adventure.DELAY` to `0`
-1. `[ ]` Run your tests. They should pass and be as fast as usual.
-
-`````
-
-{{ right }}
-
-`````{dropdown} Code
-
-```{literalinclude} ../../pythonclass/adventure/test_game-14.8.py
-:linenos:
-:lineno-match:
-:pyobject: setup_module
-:emphasize-lines: "9"
-:caption: test_game.py
-
+```{note}
+:class: full-width
+This content will be full-width
 ```
 
-`````
+### Code cells
 
-{{ endcols }}
+You can also trigger this behavior with a code cell by adding a full-width tag
+to the cell.
 
-Rubric
-------
-
-A rubric is like an informal heading that doesn't correspond to the document's
-structure.
-
-<https://docutils.sourceforge.io/docs/ref/rst/directives.html#rubric>
-
-```{rubric} This is a rubric
+```{code-cell} python
+:tags: ["full-width"]
+print("This is a test.")
 ```
-
-[Wikipedia](https://en.wikipedia.org/wiki/Rubric) says it is something different:
-
-A rubric is a word or section of text that is traditionally written or printed
-in red ink for emphasis.
-
-This is stylized as docutils tells us to stylize it, since it is used for
-footnote headers. ([More info](https://docs.python.org/3/reference/lexical_analysis.html).)
 
 Margin
 ------
@@ -134,6 +105,8 @@ This note will be in the margin!
 :::
 
 You can add the `.margin` class to any element to put it in the margin.
+
+{{ clear }}
 
 * * *
 
@@ -234,54 +207,50 @@ This note will be in the sidebar
 
 You can add the `.sidebar` class to any element to put it in the sidebar.
 
-Full-Width
-----------
+{{ clear }}
 
-Full-width content extends into the right margin, making it stand out against
-the rest of your book’s content. To add full-width content to your page, add
-the class `.full-width` to any of the elements in your documentation.
-
-```{note}
-:class: full-width
-This content will be full-width
-```
-
-### Code cells
-
-You can also trigger this behavior with a code cell by adding a full-width tag
-to the cell.
-
-```{code-cell} python
-:tags: ["full-width"]
-print("This is a test.")
-```
+* * *
 
 Grid
 ----
 
+:::{hlist}
+:columns: 3
+
 * [Jupyter Book > Grids](https://jupyterbook.org/en/stable/content/components.html?highlight=cards#grids)
 * [Sphinx Design > Grids](https://sphinx-design.readthedocs.io/en/latest/grids.html)
+* [Bootstrap > CSS Grid](https://getbootstrap.com/docs/5.3/layout/css-grid/)
+
+:::
+
+Grids allow you to structure arbitrary chunks of content in a grid-like system.
+You can also control things like the width of columns, the "gutters" between
+columns, etc.
 
 ::::{grid}
+:gutter: 2
 
-:::{grid-item}
-:outline:
+:::{grid-item-card}
 :columns: 3
+:padding: 2
 A
 :::
-:::{grid-item}
-:outline:
+
+:::{grid-item-card}
 :columns: 9
+:padding: 2
 B
 :::
-:::{grid-item}
-:outline:
+
+:::{grid-item-card}
 :columns: 6
+:padding: 2
 C
 :::
-:::{grid-item}
-:outline:
+
+:::{grid-item-card}
 :columns: 6
+:padding: 2
 D
 :::
 
@@ -290,25 +259,196 @@ D
 Cards
 -----
 
+:::{hlist}
+:columns: 2
+
+* [Jupyter Book > Cards](https://jupyterbook.org/en/stable/content/components.html?highlight=cards#cards)
+* [Jupyter Book > Grid Cards](https://jupyterbook.org/en/stable/content/components.html?highlight=cards#create-grids-of-cards)
 * [Sphinx Design > Cards](https://sphinx-design.readthedocs.io/en/latest/cards.html)
+* [Bootstrap > Cards](https://getbootstrap.com/docs/5.0/components/card/)
 
-:::{card} Card Title
-
-Card content
 :::
 
-:::{card} Card Title
+Cards provide an easy way for you to put content into a standard "header",
+"body", "footer" structure that has a similar alignment and visual style.
+
+:::{card}
+:margin: auto
+:width: 25%
+
+Basic Card
+
+:::
+
+{{ br }}
+{{ br }}
+
+### Card Options
+
+Here's how the various card options look that effect rendering arranged using
+[grid cards][].
+
+[grid cards]: https://jupyterbook.org/en/stable/content/components.html?highlight=cards#create-grids-of-cards
+
+:::::{grid} 2
+:gutter: 3
+
+:::{grid-item-card} Title {span}`Subtitle <text-muted>`
 Header
 ^^^
-Card content
+Content
 +++
 Footer
 :::
+
+:::{grid-item-card}
+:shadow: lg
+
+Shadow
+
+:::
+
+:::{grid-item-card}
+:link: http://example.com
+
+<h4 class="card-header">Styled Header</h4>
+
+Plus some content.
+
+:::
+
+:::{grid-item-card} Styled Title
+:class-title: card-title
+
+With some content.
+
+:::
+
+:::{grid-item-card}
+:link: http://example.com
+
+Clickable Link
+
+:::
+
+:::{grid-item-card}
+:img-top: https://source.unsplash.com/300x50/daily?banner+pattern+warm+background
+
+Image Top
+
+:::
+
+:::{grid-item-card}
+:img-bottom: https://source.unsplash.com/300x50/daily?banner+pattern+cool+background
+
+Image Bottom
+
+:::
+
+:::{grid-item-card}
+:img-background: https://source.unsplash.com/300x200/daily?banner+pattern+dark+background
+
+Image Background
+
+:::
+
+:::{grid-item-card} Left Aligned
+:text-align: left
+:columns: 4
+:::
+
+:::{grid-item-card} Center Aligned
+:text-align: center
+:columns: 4
+:::
+
+:::{grid-item-card} Right Aligned
+:text-align: right
+:columns: 4
+:::
+
+:::{grid-item-card} Primary
+:class-card: bg-primary
+:columns: 3
+:::
+
+:::{grid-item-card} Secondary
+:class-card: bg-secondary
+:columns: 3
+:::
+
+:::{grid-item-card} Success
+:class-card: bg-success
+:columns: 3
+:::
+
+:::{grid-item-card} Info
+:class-card: bg-info text-dark
+:columns: 3
+:::
+
+:::{grid-item-card} Warning
+:class-card: bg-warning text-dark
+:columns: 3
+:::
+
+:::{grid-item-card} Danger
+:class-card: bg-danger
+:columns: 3
+:::
+
+:::{grid-item-card} Light
+:class-card: bg-light text-dark
+:columns: 3
+:::
+
+:::{grid-item-card} Dark
+:class-card: bg-dark
+:columns: 3
+:::
+
+:::::
+
+### Card Carousel
+
+::::{card-carousel} 3
+
+:::{card} A
+:margin: 2
+:::
+
+:::{card} B
+:margin: 2
+:::
+
+:::{card} C
+:margin: 2
+:::
+
+:::{card} D
+:margin: 2
+Surprise!
+
+Content!
+:::
+
+:::{card} E
+:margin: 2
+:::
+
+:::{card} F
+:margin: 2
+:::
+
+::::
+
 
 Tabs
 ----
 
 * [Sphinx Design > Tabs](https://sphinx-design.readthedocs.io/en/latest/tabs.html)
+
+{{ leftcol }}
 
 ::::{tab-set}
 
@@ -322,6 +462,8 @@ Content 2
 
 ::::
 
+{{ rightcol }}
+
 ````{tab-set-code}
 
 ```{code-block} ruby
@@ -334,8 +476,36 @@ print("hello")
 
 ````
 
+{{ endcols }}
 
-TODO
-----
+Dropdowns
+---------
 
-* announcement banners: https://pydata-sphinx-theme.readthedocs.io/en/latest/user_guide/announcements.html
+This is an example of a dropdown.
+
+{{ left }}
+
+`````{dropdown} Need help?
+
+1. `[ ]` Find where you assign `PLAYER_STATE`, `DEBUG_STATE`, etc. Just under
+         that set `adventure.DELAY` to `0`
+1. `[ ]` Run your tests. They should pass and be as fast as usual.
+
+`````
+
+{{ right }}
+
+`````{dropdown} Code
+
+```{literalinclude} ../../pythonclass/adventure/test_game-14.8.py
+:linenos:
+:lineno-match:
+:pyobject: setup_module
+:emphasize-lines: "9"
+:caption: test_game.py
+
+```
+
+`````
+
+{{ endcols }}

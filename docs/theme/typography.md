@@ -1,11 +1,137 @@
 Typography
 ==========
 
-This is quite important, for a website where the majority of the content is going to be prose.
+Font Styles
+-----------
 
-Notice the font family being used for the prose, as well as the font family being used for the heading. Think about the spacing between the lines, as well as the spacing between various paragraphs. Also keep the font weight in mind, and consider if/how you want antialiasing and font-smoothing to work.
+:::::{grid} 2
 
-Multiple paragraphs are a common occurance, because you often need more than a single paragraph to describe a thing. The rest of this paragraph is gonna be the famous lorem-ipsum: Lorem ipsum **dolor** sit amet consectetur adipisicing elit. Accusamus, sunt voluptatum tenetur libero nulla esse veritatis accusantium earum commodi hic voluptatem officia culpa optio atque. Quaerat sed quibusdam ratione nam.
+:::{grid-item}
+
+```{rubric} Base
+```
+
+Fairy tales are more than true: not because they tell us that dragons exist,
+but because they tell us that dragons can be beaten.
+
+― Neil Gaiman, Coraline
+
+:::
+
+:::{grid-item}
+
+```{rubric} Monospace
+```
+
+    He who is brave is free.
+
+    --Seneca
+
+:::
+
+:::::
+
+Text Elements
+-------------
+
+### Lead
+
+```{rst-class} lead
+```
+
+It does not do to dwell on dreams and forget to live.
+
+### Rubric
+
+:::::{grid} 2
+
+:::{grid-item}
+
+* [reStructuredText Directives > Rubric](https://docutils.sourceforge.io/docs/ref/rst/directives.html#rubric)
+
+A rubric is like an informal heading that doesn't correspond to the document's
+structure.
+
+:::
+
+:::{grid-item}
+
+```{rubric} This is a rubric
+```
+
+[Wikipedia](https://en.wikipedia.org/wiki/Rubric) describes a rubric as:
+
+A rubric is a word or section of text that is traditionally written or printed
+in red ink for emphasis.
+
+:::
+
+:::::
+
+
+Headings
+--------
+
+Here's to the crazy ones. The misfits. The rebels. The troublemakers. The round
+pegs in the square holes. The ones who see things differently. They're not fond
+of rules. And they have no respect for the status quo. You can quote them,
+disagree with them, glorify or vilify them. About the only thing you can't do
+is ignore them. Because they change things. They push the human race forward.
+And while some may see them as the crazy ones, we see genius. Because the
+people who are crazy enough to think they can change the world, are the ones
+who do.
+
+― Rob Siltanen
+
+### Heading 3
+
+Sleep is good, he said, and books are better.
+
+― George R. R. Martin
+
+#### Heading 4
+
+Two things are infinite: the universe and human stupidity; and I'm not sure
+about the universe.
+
+― Albert Einstein
+
+##### Heading 5
+
+You've gotta dance like there's nobody watching, \
+Love like you'll never be hurt, \
+Sing like there's nobody listening, \
+And live like it's heaven on earth.
+
+― William W. Purkey
+
+###### Heading 6
+
+You only live once, but if you do it right, once is enough.
+
+― Mae West
+
+<h3>
+  Fancy Heading
+  <small class="text-muted">With secondary text</small>
+</h3>
+
+Note that these headings will not appear in the table of contents.
+
+<h3>Heading <span class="badge bg-info">With Badge</span></h3>
+
+Display Headings
+----------------
+
+* [Bootstrap > Text Utilities > Display Headings](https://getbootstrap.com/docs/5.0/content/typography/#display-headings)
+
+<h1 class="display-1">Display 1</h1>
+<h2 class="display-2">Display 2</h2>
+<h3 class="display-3">Display 3</h3>
+<h4 class="display-4">Display 4</h4>
+<h5 class="display-5">Display 5</h5>
+<h6 class="display-6">Display 6</h6>
+
 
 Variables
 ---------
@@ -23,7 +149,6 @@ Variables
 | `--pst-font-size-h5`                   | {span}`<value>` | <h5>demo</h5>                                     |
 | `--pst-font-size-h6`                   | {span}`<value>` | <h6>demo</h6>                                     |
 | `--pst-font-size-milli`                | {span}`<value>` | {span}`demo <pst-font-size-milli>`                |
-| `--pst-sidebar-secondary`              | {span}`<value>` |                                                   |
 | `--pst-sidebar-font-size`              | {span}`<value>` | {span}`demo <pst-sidebar-font-size-milli>`        |
 | `--pst-sidebar-font-size-mobile`       | {span}`<value>` | {span}`demo <pst-font-size-mobile>`               |
 | `--pst-sidebar-header-font-size`       | {span}`<value>` | {span}`demo <pst-sidebar-header-font-size>`       |
@@ -36,21 +161,13 @@ Variables
 | `--pst-font-family-base-system`        | {span}`<value>` | {span}`demo <pst-font-family-base-system>`        |
 | `--pst-font-family-monospace-system`   | {span}`<value>` | {span}`demo <pst-font-family-monospace-system>`   |
 | `--pst-font-family-monospace`          | {span}`<value>` | {span}`demo <pst-font-family-monospace>`          |
-| `--pst-header-height`                  | {span}`<value>` |                                                   |
-| `--pst-header-article-height`          | {span}`<value>` |                                                   |
 | `--pst-sidebar-secondary`              | {span}`<value>` |                                                   |
-|                                        |                 |                                                   |
 
+<!-- | `--pst-header-height`                  | {span}`<value>` |                                                   | -->
+<!-- | `--pst-header-article-height`          | {span}`<value>` |                                                   | -->
+<!-- |                                        |                 |                                                   | -->
 
-Headings
---------
+TODO
+----
 
-This next bit will explore how the various headings look. Think about how the content separation should work, and how the various headings should interact with the main content.
-
-### Heading 3
-
-#### Heading 4
-
-##### Heading 5
-
-###### Heading 6
+* announcement banners: <https://pydata-sphinx-theme.readthedocs.io/en/latest/user_guide/announcements.html>

@@ -1,7 +1,7 @@
 Tables
 ======
 
-## Markdown syntax
+## Pipe tables
 
 {{ left }}
 

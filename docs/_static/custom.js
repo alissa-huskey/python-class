@@ -205,3 +205,71 @@ window.addEventListener("DOMContentLoaded", (e) => {
     section.prepend(elm);
   }
 });
+
+// replace placeholder swatches with real ones
+window.addEventListener("DOMContentLoaded", (e) => {
+  if ($('body').attr('id') != "colors") {
+    return;
+  }
+
+  console.log("python-class:theme/colors> replace swatches");
+
+  var rows = $('table.variables tbody tr');
+
+  for (var i = 0; i < rows.length; i++) {
+    var row = jQuery(rows[i]);
+    var span = row.find('.pre')[0];
+    var img = row.find('img')[0];
+    console.log("python-class:theme/colors> row:", row);
+    console.log("python-class:theme/colors> span:", span);
+    console.log("python-class:theme/colors> img:", img);
+
+    if (!(span && img)) {
+      continue
+    }
+
+    var name = span.textContent;
+    var color = getComputedStyle(span).getPropertyValue(span.textContent).trim();
+
+    console.log("python-class:theme/colors> color:", color);
+
+    if (color.startsWith("#")) {
+      color = color.slice(1)
+    }
+
+    if (color.length == 3) {
+      color = color[0] + color[0] + color[1] + color[1] + color[2] + color[2]
+    }
+
+    var swatch = $(`<img src="https://singlecolorimage.com/get/${color}/25x25">`);
+    img.replaceWith(swatch[0])
+  }
+
+});
+
+// replace placeholder values and class with real ones
+window.addEventListener("DOMContentLoaded", (e) => {
+  if ($('body').attr('id') != "typography") {
+    return;
+  }
+
+  console.log("python-class:theme/typography> replace values");
+
+  var rows = $('table.variables tbody tr');
+
+  for (var i = 0; i < rows.length; i++) {
+    var row = jQuery(rows[i]);
+    var span = row.find('span.pre')[0];
+    var value_span = row.find('span.value')[0]
+    console.log("python-class:theme/typography> span:", span);
+
+    if (!span) {
+      continue
+    }
+
+    var name = span.textContent;
+    var value = getComputedStyle(span).getPropertyValue(span.textContent).trim();
+    value_span.textContent = value
+  }
+
+});

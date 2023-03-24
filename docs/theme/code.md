@@ -22,7 +22,7 @@ print('this is python')
 Code Blocks
 -----------
 
-https://docutils.sourceforge.io/docs/ref/rst/directives.html#code
+* [reStructuredText Directives > Code](https://docutils.sourceforge.io/docs/ref/rst/directives.html#code)
 
 The `code` directive constructs a literal block containing code. This has an
 alias of ``code-block``.
