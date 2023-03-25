@@ -12,6 +12,7 @@ kernelspec:
 Code
 ====
 
+
 Code Fence
 ----------
 
@@ -22,7 +23,10 @@ print('this is python')
 Code Blocks
 -----------
 
+* [Sphinx > rst Directives > code-block](https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-code-block)
+* [Sphinx > rst Directives > literalinclude](https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-literalinclude)
 * [reStructuredText Directives > Code](https://docutils.sourceforge.io/docs/ref/rst/directives.html#code)
+* [Bootstrap > Code Blocks](https://getbootstrap.com/docs/5.0/content/reboot/#code-blocks)
 
 The `code` directive constructs a literal block containing code. This has an
 alias of ``code-block``.
@@ -137,6 +141,11 @@ algorithm ford-fulkerson is
 Code Cells
 ----------
 
+* [Jupyter Book > Code Cells](https://jupyterbook.org/en/stable/file-types/myst-notebooks.html#code-cells)
+* [Jupyter Book > Formatting Code Outputs](https://jupyterbook.org/en/stable/content/code-outputs.html)
+* [Jupyter Book > Hide code Cell content](https://jupyterbook.org/en/stable/interactive/hiding.html#hide-code-cell-content)
+* [Jupyter Book > Remove code Cell content](https://jupyterbook.org/en/stable/interactive/hiding.html#removing-code-cell-content)
+
 ```{code-cell} python
 :linenos:
 import time
@@ -229,3 +238,12 @@ print("This is a test.")
 :tags: ["raises-exception"]
 while True print('Hello world')
 ```
+
+See Also
+--------
+
+:::{seealso}
+
+* [Sphinx > rst Directives > highlight](https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-highlight)
+
+:::

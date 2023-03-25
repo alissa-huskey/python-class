@@ -162,3 +162,17 @@ The `csv-table` directive is used to create a table from Comma-Separated-Values 
 "`<<`",      "left shift",    "multiplication by pow(2, n)"
 "`>>`",      "right shift",   "floor division by pow(2, n)"
 ```
+
+See Also
+--------
+
+:::{seealso}
+
+* [Bootstrap > Tables](https://getbootstrap.com/docs/5.0/content/images/)
+* [Bootstrap > Reboot > Tables](https://getbootstrap.com/docs/5.0/content/reboot/#tables)
+* [Sphinx > rst Directives > tablularcolumns](https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-tabularcolumns)
+* [Docutils > Directives > table](https://docutils.sourceforge.io/docs/ref/rst/directives.html#table)
+* [Docutils > Directives > csv table](https://docutils.sourceforge.io/docs/ref/rst/directives.html#csv-table)
+* [Docutils > Directives > list table](https://docutils.sourceforge.io/docs/ref/rst/directives.html#list-table)
+
+:::

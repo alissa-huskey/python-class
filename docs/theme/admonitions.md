@@ -6,6 +6,8 @@ Sphinx provides several different types of admonitions.
 topic
 -----
 
+* [Docutils > Directives > topic](https://docutils.sourceforge.io/docs/ref/rst/directives.html#topic)
+
 ```{topic} This is a topic.
 
    This is what admonitions are a special case of, according to the docutils
@@ -15,6 +17,8 @@ topic
 admonition
 ----------
 
+* [Docutils > Directives > Generic Admonition](https://docutils.sourceforge.io/docs/ref/rst/directives.html#generic-admonition)
+
 ```{admonition} The one with the custom titles
 
    It's got a certain charm to it.
@@ -22,6 +26,8 @@ admonition
 
 attention
 ---------
+
+* [Docutils > Directives > attention](https://docutils.sourceforge.io/docs/ref/rst/directives.html#attention)
 
 ```{attention}
 
@@ -31,6 +37,8 @@ attention
 caution
 -------
 
+* [Docutils > Directives > caution](https://docutils.sourceforge.io/docs/ref/rst/directives.html#caution)
+
 ```{caution}
 
    Cliff ahead: Don't drive off it.
@@ -38,6 +46,8 @@ caution
 
 danger
 ------
+
+* [Docutils > Directives > danger](https://docutils.sourceforge.io/docs/ref/rst/directives.html#danger)
 
 ```{danger}
 
@@ -47,6 +57,8 @@ danger
 error
 -----
 
+* [Docutils > Directives > error](https://docutils.sourceforge.io/docs/ref/rst/directives.html#error)
+
 ```{error}
 
    Does not compute.
@@ -54,6 +66,8 @@ error
 
 hint
 ----
+
+* [Docutils > Directives > hint](https://docutils.sourceforge.io/docs/ref/rst/directives.html#hint)
 
 ```{hint}
 
@@ -63,6 +77,8 @@ hint
 important
 ---------
 
+* [Docutils > Directives > important](https://docutils.sourceforge.io/docs/ref/rst/directives.html#important)
+
 ```{important}
 
    Tech is not neutral, nor is it apolitical.
@@ -70,6 +86,9 @@ important
 
 note
 ----
+
+* [Sphinx > rst Directives > note](https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-note)
+* [Docutils > Directives > note](https://docutils.sourceforge.io/docs/ref/rst/directives.html#note)
 
 ```{note}
 
@@ -79,6 +98,8 @@ note
 seealso
 -------
 
+* [Sphinx > rst Directives > seealso](https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-seealso)
+
 ```{seealso}
 
    Other relevant information.
@@ -86,6 +107,8 @@ seealso
 
 tip
 ---
+
+* [Docutils > Directives > tip](https://docutils.sourceforge.io/docs/ref/rst/directives.html#tip)
 
 ```{tip}
 
@@ -95,6 +118,9 @@ tip
 warning
 -------
 
+* [Sphinx > rst Directives > warning](https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-warning)
+* [Docutils > Directives > attention](https://docutils.sourceforge.io/docs/ref/rst/directives.html#warning)
+
 ```{warning}
 
    Reader discretion is strongly advised.
@@ -102,6 +128,8 @@ warning
 
 versionadded
 ------------
+
+* [Sphinx > rst Directives > versionadded](https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-versionadded)
 
 ```{versionadded} v0.1.1
 
@@ -111,6 +139,8 @@ versionadded
 versionchanged
 --------------
 
+* [Sphinx > rst Directives > versionchanged](https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-versionchanged)
+
 ```{versionchanged} v0.1.1
 
    Here's a version changed message.
@@ -118,6 +148,8 @@ versionchanged
 
 deprecated
 ----------
+
+* [Sphinx > rst Directives > deprecated](https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-deprecated)
 
 ```{deprecated} v0.1.1
 
@@ -209,3 +241,13 @@ Unpacking][arg-unpacking].
 `````
 
 This is an example of an admonition in a margin with more text.
+
+See Also
+--------
+
+:::{seealso}
+
+* [Jupyter Book > Notes, warnings, and other admonitions](https://jupyterbook.org/en/stable/content/content-blocks.html#notes-warnings-and-other-admonitions)
+* [Jupyter Book > Dropdown admonitions](https://jupyterbook.org/en/stable/content/components.html#dropdown-admonitions)
+
+:::

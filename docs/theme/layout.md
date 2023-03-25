@@ -15,6 +15,8 @@ Layout
 Centered text
 -------------
 
+* [Sphinx > rst Directives > centered](https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-centered)
+
 You can create a statement with centered text with the ``{centered}``
 directive.
 
@@ -23,6 +25,8 @@ directive.
 
 Full Width
 ----------
+
+* [Jupyter Book > Full-width content](https://jupyterbook.org/en/stable/content/layout.html#full-width-content)
 
 Full-width content extends into the right margin, making it stand out against
 the rest of your book’s content. To add full-width content to your page, add
@@ -45,6 +49,8 @@ print("This is a test.")
 
 Margin
 ------
+
+* [Jupyter Book > Margin Content](https://jupyterbook.org/en/stable/content/layout.html#margin-content)
 
 :::{margin} Ch'ien / The Creative
 Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -112,6 +118,8 @@ You can add the `.margin` class to any element to put it in the margin.
 
 Sidebar
 -------
+
+* [Jupyter Book > Sidebar Content](https://jupyterbook.org/en/stable/content/layout.html#sidebar-content)
 
 :::{sidebar} Ch'ien / The Creative
 Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -213,6 +221,12 @@ You can add the `.sidebar` class to any element to put it in the sidebar.
 
 Grid
 ----
+
+* [Sphinx Design > Grids](https://sphinx-design.readthedocs.io/en/latest/grids.html)
+* [Jupyter Book > Grids](https://jupyterbook.org/en/stable/content/components.html#grids)
+* [Bootstrap > Layout > Grid System](https://getbootstrap.com/docs/5.0/layout/grid/)
+* [Bootstrap > Layout > Columns](https://getbootstrap.com/docs/5.0/layout/columns/)
+* [Bootstrap > Layout > Gutters](https://getbootstrap.com/docs/5.0/layout/gutters/)
 
 :::{hlist}
 :columns: 3
@@ -446,6 +460,7 @@ Content!
 Tabs
 ----
 
+* [Jupyter Book > Tab Content](https://jupyterbook.org/en/stable/content/content-blocks.html#epigraphs)
 * [Sphinx Design > Tabs](https://sphinx-design.readthedocs.io/en/latest/tabs.html)
 
 {{ leftcol }}
@@ -481,6 +496,12 @@ print("hello")
 Dropdowns
 ---------
 
+* [Jupyter Book > Components and UI Elements > The {dropdown} directive](https://jupyterbook.org/en/stable/content/components.html?highlight=dropdown#the-dropdown-directive)
+* [Sphinx Design > Dropdowns](https://sphinx-design.readthedocs.io/en/latest/dropdowns.html)
+* [Bootstrap > Components > Dropdown](https://getbootstrap.com/docs/5.0/components/dropdowns/)
+* [Bootstrap > Layout > Breakpoints](https://getbootstrap.com/docs/5.0/layout/breakpoints/)
+* [Bootstrap > Layout > Containers](https://getbootstrap.com/docs/5.0/layout/containers/)
+
 This is an example of a dropdown.
 
 {{ left }}
@@ -509,3 +530,31 @@ This is an example of a dropdown.
 `````
 
 {{ endcols }}
+
+See Also
+--------
+
+:::{seealso}
+
+* [Bootstrap > Display Utilities](https://getbootstrap.com/docs/5.0/utilities/display/)
+* [Bootstrap > Flex Utilities](https://getbootstrap.com/docs/5.0/utilities/flex/)
+* [Bootstrap > Float Utilities](https://getbootstrap.com/docs/5.0/utilities/float/)
+* [Bootstrap > Overflow Utilities](https://getbootstrap.com/docs/5.0/utilities/overflow/)
+* [Bootstrap > Position Utilities](https://getbootstrap.com/docs/5.0/utilities/position/)
+* [Bootstrap > Sizing Utilities](https://getbootstrap.com/docs/5.0/utilities/sizing/)
+* [Bootstrap > Spacing Utilities](https://getbootstrap.com/docs/5.0/utilities/spacing/)
+* [Bootstrap > Vertical Alignment Utilities](https://getbootstrap.com/docs/5.0/utilities/vertical-align/)
+* [Bootstrap > Visibility Utilities](https://getbootstrap.com/docs/5.0/utilities/visibility/)
+* [Bootstrap > Components > Carosel](https://getbootstrap.com/docs/5.0/components/carousel/)
+* [Bootstrap > Layout > Z-index](https://getbootstrap.com/docs/5.0/layout/z-index/)
+* [Bootstrap > Helpers > Clearfix](https://getbootstrap.com/docs/5.0/helpers/clearfix/)
+* [Bootstrap > Helpers > Ratios](https://getbootstrap.com/docs/5.0/helpers/ratio/)
+* [Bootstrap > Helpers > Position](https://getbootstrap.com/docs/5.0/helpers/position/)
+* [Bootstrap > Helpers > Visually Hidden](https://getbootstrap.com/docs/5.0/helpers/visually-hidden/)
+
+:::
+
+TODO
+----
+
+* [Jupyter Book > The {toggle} directive](https://jupyterbook.org/en/stable/interactive/hiding.html#the-toggle-directive)

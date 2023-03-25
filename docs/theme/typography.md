@@ -4,6 +4,8 @@ Typography
 Font Styles
 -----------
 
+* [Bootstrap > Native Font Stack](https://getbootstrap.com/docs/5.0/content/reboot/#native-font-stack)
+
 :::::{grid} 2
 
 :::{grid-item}
@@ -36,12 +38,16 @@ Text Elements
 
 ### Lead
 
+* [Bootstrap > Typography > Lead](https://getbootstrap.com/docs/5.0/content/typography/#lead)
+
 ```{rst-class} lead
 ```
 
 It does not do to dwell on dreams and forget to live.
 
 ### Rubric
+
+* [Docutils > Directives > rubric](https://docutils.sourceforge.io/docs/ref/rst/directives.html#rubric)
 
 :::::{grid} 2
 
@@ -71,6 +77,9 @@ in red ink for emphasis.
 
 Headings
 --------
+
+* [Bootstrap > Typography > Headings](https://getbootstrap.com/docs/5.0/content/typography/#headings)
+* [Bootstrap > Reboot > Headings and Paragraphs](https://getbootstrap.com/docs/5.0/content/reboot/#headings-and-paragraphs)
 
 Here's to the crazy ones. The misfits. The rebels. The troublemakers. The round
 pegs in the square holes. The ones who see things differently. They're not fond
@@ -167,7 +176,14 @@ Variables
 <!-- | `--pst-header-article-height`          | {span}`<value>` |                                                   | -->
 <!-- |                                        |                 |                                                   | -->
 
-TODO
-----
+See Also
+--------
 
-* announcement banners: <https://pydata-sphinx-theme.readthedocs.io/en/latest/user_guide/announcements.html>
+:::{seealso}
+
+* [announcement banners](https://pydata-sphinx-theme.readthedocs.io/en/latest/user_guide/announcements.html)
+* [bootstrap text utilities](https://getbootstrap.com/docs/5.0/utilities/text/#text-decoration)
+* [Bootstrap > Typography](https://getbootstrap.com/docs/5.0/content/typography/)
+* [Bootstrap > Helpers > Text truncation](https://getbootstrap.com/docs/5.0/helpers/text-truncation/)
+
+:::

@@ -64,3 +64,23 @@ Semantic Roles
 | {program}`curl`               | program    | executable program                  |
 | {regexp}`([abc])+`            | regexp     | regular expression                  |
 |                               |            |                                     |
+
+See Also
+--------
+
+:::{seealso}
+
+* [Jupyter Book > Inline Tokens](https://myst-parser.readthedocs.io/en/latest/syntax/reference.html#span-inline-tokens)
+* [Jupyter Book > Extended Inline Tokens](https://myst-parser.readthedocs.io/en/latest/syntax/reference.html#extended-span-tokens)
+* [Jupyter Book > Commonmark Inline Tokens](https://myst-parser.readthedocs.io/en/latest/syntax/reference.html#commonmark-inline-tokens)
+* [Bootstrap > Typography > Inline text elements](https://getbootstrap.com/docs/5.0/content/typography/#lead)
+* [Bootstrap > Typography > Abbreviations](https://getbootstrap.com/docs/5.0/content/typography/#abbreviations)
+* [Bootstrap > Reboot > Inline Code](https://getbootstrap.com/docs/5.0/content/reboot/#inline-code)
+* [Bootstrap > Reboot > Variables](https://getbootstrap.com/docs/5.0/content/reboot/#variables)
+* [Bootstrap > Reboot > User Input](https://getbootstrap.com/docs/5.0/content/reboot/#user-input)
+* [Bootstrap > Reboot > Sample Output](https://getbootstrap.com/docs/5.0/content/reboot/#sample-output)
+* [Bootstrap > Reboot > Inline Elements > abbr](https://getbootstrap.com/docs/5.0/content/reboot/#inline-elements)
+* [Sphinx > The Standard Domain](https://www.sphinx-doc.org/en/master/usage/restructuredtext/domains.html#the-standard-domain)
+* [Sphinx > Roles > Standard Roles](https://docutils.sourceforge.io/docs/ref/rst/roles.html#standard-roles)
+
+:::

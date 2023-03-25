@@ -107,3 +107,23 @@ Colors
 [white-text]: https://singlecolorimage.com/get/FFFFFF/25x25
 [white-highlight]: https://singlecolorimage.com/get/FFFFFF/25x25
 [sd-dropdown-color]: https://singlecolorimage.com/get/FFFFFF/25x25
+
+See Also
+--------
+
+:::{seealso}
+
+* [Bootstrap > Borders](https://getbootstrap.com/docs/5.0/utilities/borders/)
+* [Bootstrap > Shadows](https://getbootstrap.com/docs/5.0/utilities/shadows/)
+* [Bootstrap > Customize > Color Schemes](https://getbootstrap.com/docs/5.0/customize/sass/#color-schemes)
+* [Bootstrap > Customize > Color](https://getbootstrap.com/docs/5.0/customize/color/)
+* [Bootstrap > Customize > Variables](https://getbootstrap.com/docs/5.0/customize/css-variables/)
+* [Bootstrap > Helpers > Colored Links](https://getbootstrap.com/docs/5.0/helpers/colored-links/)
+
+:::
+
+TODO
+----
+
+* [Sphinx Design > CSS Variables](https://sphinx-design.readthedocs.io/en/latest/css_variables.html)
+* [Sphinx Design > CSS Classes](https://sphinx-design.readthedocs.io/en/latest/css_classes.html)

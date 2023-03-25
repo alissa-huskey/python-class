@@ -16,6 +16,10 @@ Block Quotes
 ------------
 
 * [CommonMark Spec > 4.4 Indented code blocks](https://spec.commonmark.org/current/#indented-code-blocks)
+* [Bootstrap > Typography > Blockquotes](https://getbootstrap.com/docs/5.0/content/typography/#blockquotes)
+* [Bootstrap > Reboot > Block Quote](https://getbootstrap.com/docs/5.0/content/reboot/#blockquote)
+* [Jupyter Book > Quotations](https://jupyterbook.org/en/stable/content/content-blocks.html#quotations)
+* [Sphinx > rst > Literal blocks](https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#rst-doctest-blocks)
 
 Block quotes or literal blocks contain a block of text where line breaks and
 whitespace are significant and must be preserved. It is not processed in any
@@ -70,6 +74,8 @@ Epigraph
 --------
 
 * [reStructuredText Directives > Epigraph](https://docutils.sourceforge.io/docs/ref/rst/directives.html#epigraph)
+* [Jupyter Book > Epigraphs](https://jupyterbook.org/en/stable/content/content-blocks.html#epigraphs)
+* [Docutils > Directives > epigraph](https://docutils.sourceforge.io/docs/ref/rst/directives.html#epigraph)
 
 :::{epigraph}
 
@@ -84,6 +90,7 @@ Pull-Quotes
 -----------
 
 * [reStructuredText Directives > Pull-Quote](https://docutils.sourceforge.io/docs/ref/rst/directives.html#pull-quote)
+* [Docutils > Directives > pull-quote](https://docutils.sourceforge.io/docs/ref/rst/directives.html#pull-quote)
 
 ```{pull-quote}
 
@@ -97,6 +104,7 @@ Highlights
 ----------
 
 * [reStructuredText Directives > Highlights](https://docutils.sourceforge.io/docs/ref/rst/directives.html#highlights)
+* [Docutils > Directives > highlights](https://docutils.sourceforge.io/docs/ref/rst/directives.html#highlights)
 
 ```{highlights}
 
@@ -113,6 +121,7 @@ Parsed Literals
 ---------------
 
 * [reStructuredText Directives > Parsed Literal Block](https://docutils.sourceforge.io/docs/ref/rst/directives.html#parsed-literal-block)
+* [Docutils > Directives > parsed literal block](https://docutils.sourceforge.io/docs/ref/rst/directives.html#parsed-literal)
 
 Rendered like a literal block/block quote, but the markdown is parsed. Parsed
 literal blocks are useful for adding hyperlinks to code examples.
@@ -120,3 +129,12 @@ literal blocks are useful for adding hyperlinks to code examples.
 ```{parsed-literal}
 Download at [http://someurl/release-0.1.0.tar-gz](http://someurl/release-0.1.0.tar-gz).
 ```
+
+See Also
+--------
+
+:::{seealso}
+
+* [Docutils > Directives > Compound Paragraph](https://docutils.sourceforge.io/docs/ref/rst/directives.html#highlights)
+
+:::

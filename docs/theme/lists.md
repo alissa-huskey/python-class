@@ -22,6 +22,8 @@ From bootstrap
 Hlists
 ------
 
+* [Sphinx > rst Directives > hlist](https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-hlist)
+
 :::::{div} inline
 
 :::{hlist}
@@ -84,6 +86,8 @@ Hlists
 Field list
 ----------
 
+* [Sphinx > rst > Field Lists](https://www.sphinx-doc.org/en/master/usage/restructuredtext/field-lists.html)
+
 :::{fieldlist}
 
 :State:       Mutable
@@ -97,6 +101,8 @@ Field list
 
 Definition Lists
 ----------------
+
+* [Jupyter Book > Definition Lists](https://jupyterbook.org/en/stable/content/content-blocks.html#definition-lists)
 
 Term *with Markdown*
 : Definition [with reference](#definition-lists)
@@ -117,6 +123,11 @@ Term 3
 
 Glossary
 --------
+
+* [Sphinx > rst Directives > glossary](https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-glossary)
+* [Jupyter Book > Glossaries](https://jupyterbook.org/en/stable/content/content-blocks.html#definition-lists)
+* [markdown-it-py deflist plugin](https://mdit-py-plugins.readthedocs.io/en/latest/#definition-lists)
+* [pandoc definition_lists spec](https://jupyterbook.org/en/stable/content/content-blocks.html#definition-lists)
 
 This is a glossary with definition terms for thing like {term}`Writing`:
 
@@ -217,3 +228,18 @@ Examples
 
     - `yahoo <http://www.yahoo.com>`_ ``hi``
     - ``destiny``
+
+See Also
+--------
+
+:::{seealso}
+
+* [Bootstrap > Components > List Group](https://getbootstrap.com/docs/5.0/components/list-group/)
+* [Bootstrap > Typography > Lists](https://getbootstrap.com/docs/5.0/content/typography/#lists)
+
+:::
+
+TODO
+----
+
+* [Task Lists](https://mdit-py-plugins.readthedocs.io/en/latest/#task-lists)

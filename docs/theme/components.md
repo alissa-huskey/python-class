@@ -6,6 +6,8 @@ Components
 Badges
 ------
 
+* [Bootstrap > Components > Badges](https://getbootstrap.com/docs/5.0/components/badge/)
+
 |                            |                                      |
 |----------------------------|--------------------------------------|
 | {bdg-primary}`primary`     | {bdg-primary-line}`primary-line`     |
@@ -94,9 +96,11 @@ Light Expanded
 Icons
 -----
 
-* [Octicons](https://primer.style/octicons/) -- github's icons
+* [Bootstrap > Icons](https://icons.getbootstrap.com/)
 
 ### Octicon
+
+* [Octicons](https://primer.style/octicons/) -- github's icons
 
 :::{hlist}
 :columns: 3
@@ -276,3 +280,39 @@ Icons
 
 
 :::
+
+See Also
+--------
+
+:::{seealso}
+
+* [Bootstrap > Customize > Components](https://getbootstrap.com/docs/5.0/customize/components/)
+* [Bootstrap > Components > Close Button](https://getbootstrap.com/docs/5.0/components/close-button/)
+* [Bootstrap > Forms](https://getbootstrap.com/docs/5.0/forms)
+* [Bootstrap > Components > Close Button](https://getbootstrap.com/docs/5.0/components/close-button/)
+* [Bootstrap > Components > Accordian](https://getbootstrap.com/docs/5.0/components/accordion/)
+* [Bootstrap > Components > Alerts](https://getbootstrap.com/docs/5.0/components/alerts/)
+* [Bootstrap > Components > Breadcrumb](https://getbootstrap.com/docs/5.0/components/breadcrumb/)
+* [Bootstrap > Components > Buttons](https://getbootstrap.com/docs/5.0/components/buttons/)
+* [Bootstrap > Components > Button Group](https://getbootstrap.com/docs/5.0/components/button-group/)
+* [Bootstrap > Components > Modal](https://getbootstrap.com/docs/5.0/components/modal/)
+* [Bootstrap > Components > Navs and Tabs](https://getbootstrap.com/docs/5.0/components/navs-tabs/)
+* [Bootstrap > Components > Navbar](https://getbootstrap.com/docs/5.0/components/navbar/)
+* [Bootstrap > Components > Offcanvas](https://getbootstrap.com/docs/5.0/components/offcanvas/)
+* [Bootstrap > Components > Popovers](https://getbootstrap.com/docs/5.0/components/popovers/)
+* [Bootstrap > Components > Progress](https://getbootstrap.com/docs/5.0/components/progress/)
+* [Bootstrap > Components > Scrollspy](https://getbootstrap.com/docs/5.0/components/scrollspy/)
+* [Bootstrap > Components > Spinners](https://getbootstrap.com/docs/5.0/components/spinners/)
+* [Bootstrap > Components > Toast](https://getbootstrap.com/docs/5.0/components/toasts/)
+* [Bootstrap > Components > Tooltips](https://getbootstrap.com/docs/5.0/components/tooltips/)
+* [Bootstrap > Reboot > Forms](https://getbootstrap.com/docs/5.0/content/reboot/#forms)
+* [Bootstrap > Reboot > Address](https://getbootstrap.com/docs/5.0/content/reboot/#address)
+* [Bootstrap > Reboot > Summary](https://getbootstrap.com/docs/5.0/content/reboot/#summary)
+* [Bootstrap > Helpers > Stretched Link](https://getbootstrap.com/docs/5.0/helpers/stretched-link/)
+
+:::
+
+TODO
+----
+
+* [Sphinx Design > article-info](https://sphinx-design.readthedocs.io/en/latest/additional.html)

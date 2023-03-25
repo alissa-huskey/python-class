@@ -1,8 +1,12 @@
-Images & Figures
-================
+Media
+=====
 
 Images
 ------
+
+* [Jupyter Book > Adding Images](https://jupyterbook.org/en/stable/file-types/markdown.html#adding-images)
+* [Docutils > Directives > image](https://docutils.sourceforge.io/docs/ref/rst/directives.html#image)
+* [Bootstrap > Images](https://getbootstrap.com/docs/5.0/content/images/)
 
 {{ leftcol }}
 
@@ -76,6 +80,9 @@ animi, illo libero labore fuga.
 Figures
 -------
 
+* [Jupyter Book > Figures](https://jupyterbook.org/en/stable/content/content-blocks.html#figures)
+* [Docutils > Directives > figure](https://docutils.sourceforge.io/docs/ref/rst/directives.html#figure)
+
 ```{figure} https://source.unsplash.com/400x400/daily?map
 :alt: Find your way
 :width: 400
@@ -92,3 +99,19 @@ A figure is an image with a caption and/or a legend:
 
 This paragraph is also part of the legend.
 ```
+
+See Also
+--------
+
+:::{seealso}
+
+* [Bootstrap > Figures](https://getbootstrap.com/docs/5.0/content/figures/)
+
+:::
+
+TODO
+----
+
+* [Jupyter Book > Adding Movies](https://jupyterbook.org/en/stable/file-types/markdown.html#adding-movies)
+* [Jupyter Book > Code Outputs > Images](https://jupyterbook.org/en/stable/content/code-outputs.html#images)
+* [Jupyter Book > Images and Figures](https://jupyterbook.org/en/stable/content/figures.html)
