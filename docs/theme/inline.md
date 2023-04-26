@@ -27,8 +27,9 @@ Text formatting
 | <del>deleted</del>             | del tag                |
 | <ins>inserted</ins>            | ins tag                |
 | <small>small</small>           | small tag              |
-|                                |                        |
-|                                |                        |
+| {term}`Variable`               | term                   |
+| {term}`Missing Term`           | missing term           |
+% |                                |                        |
 
 
 Links & References
@@ -45,7 +46,7 @@ Links & References
 | {eq}`math-example`          | eq  role             | math equation       |
 | {title-reference}`title`    | title-reference role | internal title      |
 | {manpage}`program(section)` | manpage              | external manpage    |
-|                             |                      |                     |
+% |                             |                      |                     |
 
 [^f]: #
 
@@ -70,9 +71,9 @@ See Also
 
 :::{seealso}
 
-* [Jupyter Book > Inline Tokens](https://myst-parser.readthedocs.io/en/latest/syntax/reference.html#span-inline-tokens)
-* [Jupyter Book > Extended Inline Tokens](https://myst-parser.readthedocs.io/en/latest/syntax/reference.html#extended-span-tokens)
-* [Jupyter Book > Commonmark Inline Tokens](https://myst-parser.readthedocs.io/en/latest/syntax/reference.html#commonmark-inline-tokens)
+* [Myst Parser > Inline Tokens](https://myst-parser.readthedocs.io/en/latest/syntax/reference.html#span-inline-tokens)
+* [Myst Parser > Extended Inline Tokens](https://myst-parser.readthedocs.io/en/latest/syntax/reference.html#extended-span-tokens)
+* [Myst Parser > Commonmark Inline Tokens](https://myst-parser.readthedocs.io/en/latest/syntax/reference.html#commonmark-inline-tokens)
 * [Bootstrap > Typography > Inline text elements](https://getbootstrap.com/docs/5.0/content/typography/#lead)
 * [Bootstrap > Typography > Abbreviations](https://getbootstrap.com/docs/5.0/content/typography/#abbreviations)
 * [Bootstrap > Reboot > Inline Code](https://getbootstrap.com/docs/5.0/content/reboot/#inline-code)

@@ -8,6 +8,8 @@ Images
 * [Docutils > Directives > image](https://docutils.sourceforge.io/docs/ref/rst/directives.html#image)
 * [Bootstrap > Images](https://getbootstrap.com/docs/5.0/content/images/)
 
+You can add images using standard markdown as well as the `{image}` directive .
+
 {{ leftcol }}
 
 An image:

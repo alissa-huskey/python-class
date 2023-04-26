@@ -20,7 +20,7 @@ Colors
 | `--pst-color-on-surface`          | ![][on-surface]          | {span}`demo <pst-color-on-surface>`                 | bg     | scrollbars, inline literal color                          |
 | `--pst-color-border`              | ![][border]              | {span}`demo <pst-color-border>`                     | border | cards, nav, code, rubric, sidebar                         |
 | `--pst-color-shadow`              | ![][shadow]              | {span}`demo <pst-color-shadow>`                     | shadow | dropdowns, topic                                          |
-| `--pst-color-target`              | ![][target]              | {span}`demo <pst-color-target>`                     | bg     | footnote target                                           |
+| `--pst-color-target`              | ![][target]              | {span}`demo <pst-color-target>`                     | bg     | footnote target, clicked glossary term target             |
 | `--pst-color-primary`             | ![][primary]             | {span}`demo <pst-color-primary>`                    | fg     | nav link focused, next/prev names, right/left nav hover   |
 | `--pst-color-secondary`           | ![][secondary]           | {span}`demo <pst-color-secondary>`                  |        | _                                                         |
 | `--pst-color-secondary-text`      | ![][secondary-text]      | {span}`demo <pst-color-secondary-text>`             |        | _                                                         |
@@ -53,8 +53,7 @@ Colors
 | `--pst-color-white-text`          | ![][white-text]          | {span}`demo <pst-color-white-text>`                 |        | _                                                         |
 | `--pst-color-white-highlight`     | ![][white-highlight]     | {span}`demo <pst-color-white-highlight>`            |        | _                                                         |
 | `--pst-sd-dropdown-color`         | ![][sd-dropdown-color]   | {span}`demo <pst-sd-dropdown-color>`                |        | -                                                         |
-|                                   |                          |                                                     |        |                                                           |
-|                                   |                          |                                                     |        |                                                           |
+% |                                   |                          |                                                     |        |                                                           |
 
 <!-- | `--pst-color-_`                   | ![][_]                   | <span class="pst-color-_>`                                     | _      |                                                           | -->
 |                                   |                          |                                                                        |        |                                                           |

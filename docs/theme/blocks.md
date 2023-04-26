@@ -49,11 +49,8 @@ Block quotes consist text indented 4 spaces or a tab.
 Quoted Text
 -----------
 
-:::{hlist}
-:columns: 2
-* [reStructuredText Spec > ](https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html#quoted-literal-blocks)
+* [reStructuredText Spec > Quoted Literal Blocks](https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html#quoted-literal-blocks)
 * [Jupyter Book > Quotations](https://jupyterbook.org/en/stable/content/content-blocks.html?highlight=quote#quotations)
-:::
 
 Regular quotations are controlled with standard Markdown syntax, i.e., by
 inserting a caret (>) symbol in front of one or more lines of text.
@@ -130,11 +127,52 @@ literal blocks are useful for adding hyperlinks to code examples.
 Download at [http://someurl/release-0.1.0.tar-gz](http://someurl/release-0.1.0.tar-gz).
 ```
 
-See Also
---------
-
-:::{seealso}
+Compound Paragraph
+------------------
 
 * [Docutils > Directives > Compound Paragraph](https://docutils.sourceforge.io/docs/ref/rst/directives.html#highlights)
 
-:::
+In the example below, a literal block is embedded within a sentence that begins
+in one physical paragraph and ends in another.
+
+***
+
+`````{compound}
+
+The 'rm' command is very dangerous.  If you are logged
+in as root and enter:
+
+    cd /
+    rm -rf *
+
+you will erase the entire contents of your file system.
+
+`````
+
+***
+
+Line Blocks
+-----------
+
+* [Docutils > Line Blocks](https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html#line-blocks)
+* [Sphinx > reStructuredText Primer > Lists and Quote-like blocks](https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#lists-and-quote-like-blocks)
+* [Pandoc > Line blocks](https://pandoc.org/MANUAL.html#line-blocks)
+
+Line blocks, where each line is prefaced by a bar (`|`), are useful for address
+blocks, verse (poetry, song lyrics), and unadorned lists, where the structure
+of lines is significant. They preserve line breaks and indentation in text and
+support inline markup.
+
+They are not supported by `myst` and so must be in an `{eval-rst}` directive.
+
+***
+
+```{eval-rst}
+
+| The limerick packs laughs anatomical
+| In space that is quite economical.
+|    But the good ones I've seen
+|    So seldom are clean
+| And the clean ones so seldom are comical
+
+```

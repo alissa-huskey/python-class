@@ -531,6 +531,27 @@ This is an example of a dropdown.
 
 {{ endcols }}
 
+Toggle
+------
+
+* [Jupyter Book > The {toggle} directive](https://jupyterbook.org/en/stable/interactive/hiding.html#the-toggle-directive)
+
+You can hide content using the `{toggle}` directive.
+
+```{toggle}
+Some hidden content!
+
+![](https://source.unsplash.com/250x250/daily?secret)
+```
+
+Horizontal rules
+----------------
+
+A line containing a row of three or more *, -, or _ characters (optionally
+buffeted by blank lines) produces a horizontal rule:
+
+***
+
 See Also
 --------
 
@@ -553,8 +574,3 @@ See Also
 * [Bootstrap > Helpers > Visually Hidden](https://getbootstrap.com/docs/5.0/helpers/visually-hidden/)
 
 :::
-
-TODO
-----
-
-* [Jupyter Book > The {toggle} directive](https://jupyterbook.org/en/stable/interactive/hiding.html#the-toggle-directive)

@@ -12,9 +12,13 @@ kernelspec:
 Code
 ====
 
-
 Code Fence
 ----------
+
+* [Jupyter Book > MyST syntax cheat sheet > Code and syntax highlighting](https://jupyterbook.org/en/stable/reference/cheatsheet.html#code-and-syntax-highlighting)
+* [Myst Parser > Source code and APIs > Basic block syntax highlighting](https://myst-parser.readthedocs.io/en/latest/syntax/code_and_apis.html#basic-block-syntax-highlighting)
+* [Pandoc > Fenced code blocks](https://pandoc.org/MANUAL.html#fenced-code-blocks)
+* [CommonMark Spec > 4.5 Fenced Code Blocks](https://spec.commonmark.org/0.30/#fenced-code-blocks)
 
 ```python
 print('this is python')
@@ -32,86 +36,29 @@ The `code` directive constructs a literal block containing code. This has an
 alias of ``code-block``.
 
 ```{code-block} python
-    :linenos:
+:linenos:
 
-    from typing import Iterator
+from typing import Iterator
 
-    # This is an example
-    class Math:
-        @staticmethod
-        def fib(n: int) -> Iterator[int]:
-            """Fibonacci series up to n"""
-            a, b = 0, 1
-            while a < n:
-                yield a
-                a, b = b, a + b
+# This is an example
+class Math:
+    @staticmethod
+    def fib(n: int) -> Iterator[int]:
+        """Fibonacci series up to n"""
+        a, b = 0, 1
+        while a < n:
+            yield a
+            a, b = b, a + b
 
 
-    result = sum(Math.fib(42))
-    print("The answer is {}".format(result))
+result = sum(Math.fib(42))
+print("The answer is {}".format(result))
 ```
 
-Caption
--------
+### Plain text
 
-```{code-block} json
-    :caption: Code Blocks can have captions, which also adds a link to it.
-
-    {
-      "session_name": "shorthands",
-      "windows": [
-        {
-          "panes": [
-            {
-              "shell_command": "echo 'This is an intentionally very long line because I want to make sure that we are handling scrollable code blocks correctly.'"
-            }
-          ],
-          "window_name": "long form"
-        }
-      ]
-    }
-```
-
-
-Emphasized Lines
-----------------
-
-```{code-block} python
-    :linenos:
-    :emphasize-lines: 3,5
-
-    def some_function():
-        interesting = False
-        print("This line is highlighted.")
-        print("This one is not...")
-        print("...but this one is.")
-        print(
-            "This is an intentionally very long line because I want to make sure that we are handling scrollable code blocks correctly."
-        )
-```
-
-Doctest Blocks
---------------
-
-<https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html#doctest-blocks>
-
-Doctest blocks are interactive Python sessions cut-and-pasted into docstrings.
-They are meant to illustrate usage by example, and provide an elegant and
-powerful testing environment via the doctest module in the Python standard
-library.
-
-
-```{code-block} python
->>> print('Python-specific usage examples; begun with ">>>"')
-Python-specific usage examples; begun with ">>>"
->>> print("(cut and pasted from interactive Python sessions)")
-(cut and pasted from interactive Python sessions)
->>> print("This is an intentionally very long line because I want to make sure that we are handling scrollable code blocks correctly.")
-This is an intentionally very long line because I want to make sure that we are handling scrollable code blocks correctly.
-```
-
-``none`` highlighting
----------------------
+Code blocks with `none` or `text` specified as the language are rendered
+without syntax highlighting.
 
 ```{code-block} none
 
@@ -136,6 +83,66 @@ algorithm ford-fulkerson is
             f(v, u) ← −f(u, v)
 
     return f
+```
+
+### Caption
+
+```{code-block} json
+    :caption: Code Blocks can have captions, which also adds a link to it.
+
+    {
+      "session_name": "shorthands",
+      "windows": [
+        {
+          "panes": [
+            {
+              "shell_command": "echo 'This is an intentionally very long line because I want to make sure that we are handling scrollable code blocks correctly.'"
+            }
+          ],
+          "window_name": "long form"
+        }
+      ]
+    }
+```
+
+
+### Emphasized Lines
+
+```{code-block} python
+:linenos:
+:emphasize-lines: 3,5
+
+def some_function():
+    interesting = False
+    print("This line is highlighted.")
+    print("This one is not...")
+    print("...but this one is.")
+    print(
+        "This is an intentionally very long line because I want to make sure that we are handling scrollable code blocks correctly."
+    )
+```
+
+Doctest Blocks
+--------------
+
+* [Docutils > Doctest Blocks](https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html#doctest-blocks)
+* [Sphinx > reStructuredText Primer > Doctest blocks](https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#doctest-blocks)
+
+Doctest blocks are interactive Python sessions cut-and-pasted into docstrings.
+They are meant to illustrate usage by example, and provide an elegant and
+powerful testing environment via the doctest module in the Python standard
+library.
+
+
+```{eval-rst}
+
+>>> print('Python-specific usage examples; begun with ">>>"')
+Python-specific usage examples; begun with ">>>"
+>>> print("(cut and pasted from interactive Python sessions)")
+(cut and pasted from interactive Python sessions)
+>>> print("This is an intentionally very long line because I want to make sure that we are handling scrollable code blocks correctly.")
+This is an intentionally very long line because I want to make sure that we are handling scrollable code blocks correctly.
+
 ```
 
 Code Cells
