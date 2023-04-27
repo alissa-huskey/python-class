@@ -8,28 +8,29 @@ Text formatting
 :language: python
 ```
 
-| Rendered                       | Name                   |
-|--------------------------------|------------------------|
-| `a=1`                          | literal                |
-| **strong**                     | bold                   |
-| *emphasis*                     | italic                 |
-| ~~strike~~                     | strikethrough          |
-| $z=\sqrt{x^2+y^2}$             | math equation          |
-| {sub}`subscript`               | subscript role         |
-| {sup}`subscript`               | superscript role       |
-| {samp}`text {variable}`        | sample role            |
-| {guilabel}`this label`         | guilabel role          |
-| {kbd}`⌘M`                      | kbd role               |
-| {menuselection}`Menu --> item` | menuselection role     |
-| {abbr}`abbr (explanation)`     | abbr role              |
-| {python}`print("abc")`         | user-defined code role |
-| <mark>highlighted</mark>       | mark tag               |
-| <del>deleted</del>             | del tag                |
-| <ins>inserted</ins>            | ins tag                |
-| <small>small</small>           | small tag              |
-| {term}`Variable`               | term                   |
-| {term}`Missing Term`           | missing term           |
-% |                                |                        |
+| Rendered                             | Name                   |
+|--------------------------------------|------------------------|
+| `a=1`                                | literal                |
+| **strong**                           | bold                   |
+| *emphasis*                           | italic                 |
+| ~~strike~~                           | strikethrough          |
+| $z=\sqrt{x^2+y^2}$                   | math equation          |
+| {sub}`subscript`                     | subscript role         |
+| {sup}`subscript`                     | superscript role       |
+| {samp}`text {variable}`              | sample role            |
+| {guilabel}`this label`               | guilabel role          |
+| {kbd}`⌘M`                            | kbd role               |
+| {menuselection}`Menu --> item`       | menuselection role     |
+| {abbr}`abbr (explanation)`           | abbr role              |
+| {python}`print("abc")`               | user-defined code role |
+| <mark>highlighted</mark>             | mark tag               |
+| <del>deleted</del>                   | del tag                |
+| <ins>inserted</ins>                  | ins tag                |
+| <small>small</small>                 | small tag              |
+| {term}`Variable`                     | term                   |
+| {term}`Missing Term`                 | missing term           |
+| {span}`Target <pst-color-bg-target>` | target                 |
+% |                                      |                        |
 
 
 Links & References

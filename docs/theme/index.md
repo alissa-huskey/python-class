@@ -37,3 +37,4 @@ Toolchain
 * [Sphinx Book Theme](https://sphinx-book-theme.readthedocs.io/en/stable/content/content-blocks.html)
 * [PyData Sphinx Theme](https://pydata-sphinx-theme.readthedocs.io/en/latest/)
 * [Sphinx Design Extension](https://sphinx-design.readthedocs.io/en/latest/index.html)
+* [Shibuya Sphinx Theme](https://shibuya.lepture.com/) -- colors and styles (especially for admonitions) taken from this theme

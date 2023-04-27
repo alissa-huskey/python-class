@@ -53,12 +53,9 @@ Colors
 | `--pst-color-white-text`          | ![][white-text]          | {span}`demo <pst-color-white-text>`                 |        | _                                                         |
 | `--pst-color-white-highlight`     | ![][white-highlight]     | {span}`demo <pst-color-white-highlight>`            |        | _                                                         |
 | `--pst-sd-dropdown-color`         | ![][sd-dropdown-color]   | {span}`demo <pst-sd-dropdown-color>`                |        | -                                                         |
+% | `--pst-color-_`                   | ![][_]                   | {span}`demo "pst-color-_"`                        |        | -                                                           |
 % |                                   |                          |                                                     |        |                                                           |
 
-<!-- | `--pst-color-_`                   | ![][_]                   | <span class="pst-color-_>`                                     | _      |                                                           | -->
-|                                   |                          |                                                                        |        |                                                           |
-<!-- |                                   |                          |                                                                        |        |                                                           | -->
-<!-- |                                   |                          |                                                                        |        |                                                           | -->
 
 [background]: https://singlecolorimage.com/get/FFFFFF/25x25
 [text-base]: https://singlecolorimage.com/get/FFFFFF/25x25
@@ -126,3 +123,13 @@ TODO
 
 * [Sphinx Design > CSS Variables](https://sphinx-design.readthedocs.io/en/latest/css_variables.html)
 * [Sphinx Design > CSS Classes](https://sphinx-design.readthedocs.io/en/latest/css_classes.html)
+
+See Also
+--------
+
+```{seealso}
+
+* [PyData Sphinx Theme > Color Variables](https://pydata-sphinx-theme.readthedocs.io/en/stable/user_guide/styling.html#color-variables)
+* [PyData Sphinx Theme > Theme variables and CSS](https://pydata-sphinx-theme.readthedocs.io/en/stable/user_guide/styling.html)
+
+```
