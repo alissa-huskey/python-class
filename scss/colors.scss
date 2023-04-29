@@ -1,10 +1,62 @@
+@use "sass:list";
+
+$pst-colors: (
+  background,
+  text-base,
+  muted,
+  text-muted,
+  link,
+  link-hover,
+  primary,
+  inline-code,
+  surface,
+  on-background,
+  on-surface,
+  border,
+  shadow,
+  target,
+  primary,
+  secondary,
+  secondary-text,
+  secondary-highlight,
+  success,
+  success-text,
+  success-highlight,
+  info,
+  info-text,
+  info-highlight,
+  warning,
+  warning-text,
+  warning-highlight,
+  attention,
+  attention-text,
+  attention-highlight,
+  danger,
+  danger-text,
+  danger-highlight,
+  light,
+  light-text,
+  light-highlight,
+  dark,
+  dark-text,
+  dark-highlight,
+  background-secondary,
+  border-secondary,
+  // black,
+  // black-text,
+  // black-highlight,
+  // white,
+  // white-text,
+  // white-highlight,
+);
+
 /* global
  * ---------------------------------------------------------------------
  */
 
-:root,
-html.light,
-html[data-theme="light"],
+// :root,
+// html.light,
+// html[data-theme="light"],
 html.dark,
 html[data-theme="dark"] {
 /* dark theme
@@ -34,7 +86,7 @@ html[data-theme="dark"] {
    * alternative: #d0d0d0, #D5D8DA, #C0C0CC
    *
    */
-  --pst-color-text-base: #D5D8DA !important;
+  --pst-color-text-base: #adb5bd !important;
 
   /* muted
    * --------------------------------------------------------------------
@@ -81,7 +133,10 @@ html[data-theme="dark"] {
 
   /* text muted
    * --------------------------------------------------------------------
-   * currently set to a soft palette of background color
+   * currently set to bootstrap --bs-tertiary-color in dark mode
+   *    https://getbootstrap.com/docs/5.3/customize/color/
+   *
+   * previously set to a soft palette of background color
    *    https://mycolor.space/?hex=%23262A33&sub=1
    *
    * text color of:
@@ -91,7 +146,7 @@ html[data-theme="dark"] {
    * alternative: #746f77, #535761, #807F8B
    *
    */
-  --pst-color-text-muted: #535761 !important;
+  --pst-color-text-muted: #ADB5BD7F !important;
 
   /* inline code
    * --------------------------------------------------------------------
@@ -201,166 +256,11 @@ html[data-theme="dark"] {
     // details.sd-dropdown summary.sd-card-header,details.sd-dropdown summary.sd-card-header+div.sd-summary-content {
     --pst-sd-dropdown-color: var(--sd-color-card-border) !important;
 
-   // --bs-body-bg: var(--pst-color-text-base) !important;
+  // --pst-color-dark-highlight: #9ba3ab !important;
 
-  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    --bs-highlight-color               // <mark> tag
-    --pst-color-panel-background       // tabs background
-
-    --pst-color-primary-text
-    --pst-color-primary-highlight
-    --pst-color-secondary
-    --pst-color-secondary-text
-    --pst-color-secondary-highlight
-
-    --pst-color-success
-    --pst-color-success-text
-    --pst-color-success-highlight
-
-    --pst-color-info
-    --pst-color-info-text
-    --pst-color-info-highlight
-
-    --pst-color-warning
-    --pst-color-warning-text
-    --pst-color-warning-highlight
-
-    --pst-color-attention
-    --pst-color-attention-text
-    --pst-color-attention-highlight
-
-    --pst-color-danger
-    --pst-color-danger-text
-    --pst-color-danger-highlight
-
-    --pst-color-light
-    --pst-color-light-text
-    --pst-color-light-highlight
-
-    --pst-color-dark
-    --pst-color-dark-text
-    --pst-color-dark-highlight
-
-    --pst-color-black
-    --pst-color-black-text
-    --pst-color-black-highlight
-
-    --pst-color-white
-    --pst-color-white-text
-    --pst-color-white-highlight
-
-    --sd-color-card-border-hover: hsla(231, 99%, 66%, 1);
-    --sd-color-card-background: transparent;
-    --sd-color-card-text: inherit;
-    --sd-color-card-header: transparent;
-    --sd-color-card-footer: transparent;
-    --sd-color-tabs-label-active: hsla(231, 99%, 66%, 1);
-    --sd-color-tabs-label-hover: hsla(231, 99%, 66%, 1);
-    --sd-color-tabs-label-inactive: hsl(0, 0%, 66%);
-    --sd-color-tabs-underline-active: hsla(231, 99%, 66%, 1);
-    --sd-color-tabs-underline-hover: rgba(178, 206, 245, 0.62);
-    --sd-color-tabs-underline-inactive: transparent;
-    --sd-color-tabs-overline: rgb(222, 222, 222);
-    --sd-color-tabs-underline: rgb(222, 222, 222);
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-
-  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-
-  // --syntax-text: #c9d1d9;
-  // --syntax-highlight-bg: #2c283b;               // dark purple
-  /* --syntax-cap-bg: #342f47;
-  /* --syntax-cap-bg: #342f47;
-  /* --syntax-text: #c9d1d9; */
-  /* --syntax-highlight-bg: #2a3447;            // dark blue
-  /* --syntax-highlight-bg: #423551             // light purple
-   * */
-
-  /* --pst-color-primary: green !important;                         // active links, h2
-  /* --pst-color-secondary: purple !important;                      // selection
-
-  /* --pst-color-surface: #3b4252 !important;
-  /* --pst-color-surface: #262A33 !important;
-  /* --pst-color-surface: #282c35 !important;
-  /* --pst-color-on-background: #3f4254 !important;                 // kbd elements
-  /* --pst-color-on-surface: #6c6f934d !important;                  // scrollbars
-
-  /* --pst-color-primary: #459db9 !important;
-  /* --pst-color-secondary: #ee9040 !important;
-  /* --pst-color-info: #459db9 !important;
-  /* --pst-color-warning: #ee9040 !important;
-  /* --pst-color-success: #28a745 !important;
-  /* --pst-color-attention: #ffc107 !important;
-  /* --pst-color-danger: #dc3545 !important;
-
-  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  --sd-color-primary: #007bff;
-  --sd-color-secondary: #6c757d;
-  --sd-color-success: #28a745;
-  --sd-color-info: #17a2b8;
-  --sd-color-warning: #f0b37e;
-  --sd-color-danger: #dc3545;
-  --sd-color-light: #f8f9fa;
-  --sd-color-muted: #6c757d;
-  --sd-color-dark: #212529;
-  --sd-color-primary-highlight: #0069d9;
-  --sd-color-secondary-highlight: #5c636a;
-  --sd-color-success-highlight: #228e3b;
-  --sd-color-info-highlight: #148a9c;
-  --sd-color-warning-highlight: #cc986b;
-  --sd-color-danger-highlight: #bb2d3b;
-  --sd-color-light-highlight: #d3d4d5;
-  --sd-color-muted-highlight: #5c636a;
-  --sd-color-dark-highlight: #1c1f23;
-  --sd-color-primary-text: #fff;
-  --sd-color-secondary-text: #fff;
-  --sd-color-success-text: #fff;
-  --sd-color-info-text: #fff;
-  --sd-color-warning-text: #212529;
-  --sd-color-danger-text: #fff;
-  --sd-color-light-text: #212529;
-  --sd-color-muted-text: #fff;
-  --sd-color-dark-text: #fff;
-  --sd-color-shadow: rgba(0, 0, 0, 0.15);
-  --sd-color-card-border: rgba(0, 0, 0, 0.125);
-  --sd-color-card-border-hover: hsla(231, 99%, 66%, 1);
-  --sd-color-card-background: transparent;
-  --sd-color-card-text: inherit;
-  --sd-color-card-header: transparent;
-  --sd-color-card-footer: transparent;
-  --sd-color-tabs-label-active: hsla(231, 99%, 66%, 1);
-  --sd-color-tabs-label-hover: hsla(231, 99%, 66%, 1);
-  --sd-color-tabs-label-inactive: hsl(0, 0%, 66%);
-  --sd-color-tabs-underline-active: hsla(231, 99%, 66%, 1);
-  --sd-color-tabs-underline-hover: rgba(178, 206, 245, 0.62);
-  --sd-color-tabs-underline-inactive: transparent;
-  --sd-color-tabs-overline: rgb(222, 222, 222);
-  --sd-color-tabs-underline: rgb(222, 222, 222);
-  --sd-fontsize-tabs-label: 1rem
-  */
-
- /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-
-  /* default colors
-   * ~~~~~~~~~~~~~~ */
-  /* --border-color: rgb(20 184 166); */
-  /* --color: #fff; */
-  /* --title-background-color: rgba(20 184 166 / "10%"); */
-  /* --icon-bg-color: rgb(20 184 166); */
-  /* --color-card-header: rgba(0 0 0 / "3%") !important; */
+  --pst-color-background-secondary: #2f3542;
+  --pst-color-border-secondary: #3f4551;
 }
-
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-
-/* --color-main-bg: #242429;
- * --color-sidebar-bg: #242429;
- * --color-inline-code-bg: #312f29;
- * --color-code-background: #202020; */
-
-/* link after headers ("#") that link to header
- * a.headerlink {
- * } */
 
 html[data-theme=dark] .bd-content img:not(.only-dark):not(.dark-light) {
   background: transparent;
@@ -373,13 +273,43 @@ html[data-theme=dark] .bd-content img:not(.only-dark):not(.dark-light) {
 html[data-theme="light"],
 html.light {
   --color-scheme: light;
-  /* --pst-color-primary: black; */
+  --pst-color-background-secondary: #f3f8f9;
+  --pst-color-border-secondary: #e5eef2;
 }
 
-//   --pst-sd-dropdown-color: #f00 !important;
-// details.sd-dropdown summary.sd-card-header {
-// .sd-bg-white,
-// .sd-bg-white+div.sd-summary-content
-// .sd-bg-secondary,
-// .sd-bg-secondary+div.sd-summary-content
-// }
+@each $type in $pst-colors {
+  .pst-color-#{$type} {
+    color: var(--pst-color-#{$type}) !important;
+  }
+  .pst-color-bg-#{$type} {
+    background-color: var(--pst-color-#{$type}) !important;
+  }
+  .pst-color-border-#{$type} {
+    border-color: var(--pst-color-#{$type}) !important;
+    border-width: 1px;
+    border-style: solid;
+  }
+  .pst-color-shadow-#{$type} {
+    // box-shadow: var(--pst-color-#{$type}) 1px !important;
+    box-shadow: -3px -3px 6px var(--pst-color-#{$type}),
+                 3px  3px 6px var(--pst-color-#{$type})
+                !important;
+  }
+}
+
+.color-swatch {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1px dotted var(--pst-color-muted);
+  content: " ";
+  border-radius: 0.25rem;
+}
+
+.hex-code {
+  padding: 0.15rem;
+  display: block;
+  line-height: 1.5rem;
+  width: 8rem;
+  text-transform: uppercase;
+}

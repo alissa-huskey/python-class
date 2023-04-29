@@ -24,6 +24,7 @@
   --warning-color: 255 145 0;
   --versionadded-color: 0 200 80;
   --versionchanged-color: 255, 191, 0;
+  --docs-color: 179 127 235;
   /* -- admonition -> icon name -- */
   --admonition-icon: var(--i-bell-url);
   --attention-icon: var(--i-bang-triangle-url);
@@ -42,7 +43,9 @@
   --warning-icon: var(--i-megaphone-url);
   --versionadded-icon: var(--i-hash-mark-url);
   --versionchanged-icon: var(--i-clock-circle-url);
+  --docs-icon: var(--i-asterisk-url);
   /* -- icon name -> url  -- */
+  /* https://icon-sets.iconify.design/ */
   --i-asterisk-url: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="16" height="16" viewBox="0 0 16 16"%3E%3Cpath fill="currentColor" d="M0 2.75A2.75 2.75 0 0 1 2.75 0h10.5A2.75 2.75 0 0 1 16 2.75v10.5A2.75 2.75 0 0 1 13.25 16H2.75A2.75 2.75 0 0 1 0 13.25ZM2.75 1.5c-.69 0-1.25.56-1.25 1.25v10.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25V2.75c0-.69-.56-1.25-1.25-1.25Z"%2F%3E%3Cpath fill="currentColor" d="M8 4a.75.75 0 0 1 .75.75V6.7l1.69-.975a.75.75 0 0 1 .75 1.3L9.5 8l1.69.976a.75.75 0 0 1-.75 1.298L8.75 9.3v1.951a.75.75 0 0 1-1.5 0V9.299l-1.69.976a.75.75 0 0 1-.75-1.3L6.5 8l-1.69-.975a.75.75 0 0 1 .75-1.3l1.69.976V4.75A.75.75 0 0 1 8 4Z"%2F%3E%3C%2Fsvg%3E');
   --i-bang-comment-url: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="16" height="16" viewBox="0 0 16 16"%3E%3Cpath fill="white" d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0a1 1 0 0 1 2 0Z"%2F%3E%3C%2Fsvg%3E');
   --i-bang-stop-url: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="16" height="16" viewBox="0 0 16 16"%3E%3Cpath fill="white" d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2a1 1 0 0 1 0 2Z"%2F%3E%3C%2Fsvg%3E');
@@ -113,7 +116,11 @@ div.admonition {
   --color-rgb: var(--admonition-color);
   /* --- repeat for all admonition types --- */
 }
-.admonition > .admonition-title, .admonition.deprecated > .admonition-title, .admonition.versionchanged > .admonition-title, .admonition.versionadded > .admonition-title, .admonition.warning > .admonition-title, .admonition.todo > .admonition-title, .admonition.tip > .admonition-title, .admonition.solution > .admonition-title, .admonition.seealso > .admonition-title, .admonition.note > .admonition-title, .admonition.important > .admonition-title, .admonition.hint > .admonition-title, .admonition.exercise > .admonition-title, .admonition.error > .admonition-title, .admonition.danger > .admonition-title, .admonition.caution > .admonition-title, .admonition.attention > .admonition-title,
+.admonition.toggle-hidden,
+div.admonition.toggle-hidden {
+  padding-bottom: 0 !important;
+}
+.admonition > .admonition-title, .admonition.deprecated > .admonition-title, .admonition.versionchanged > .admonition-title, .admonition.versionadded > .admonition-title, .admonition.docs > .admonition-title, .admonition.warning > .admonition-title, .admonition.todo > .admonition-title, .admonition.tip > .admonition-title, .admonition.solution > .admonition-title, .admonition.seealso > .admonition-title, .admonition.note > .admonition-title, .admonition.important > .admonition-title, .admonition.hint > .admonition-title, .admonition.exercise > .admonition-title, .admonition.error > .admonition-title, .admonition.danger > .admonition-title, .admonition.caution > .admonition-title, .admonition.attention > .admonition-title,
 div.admonition > .admonition-title {
   /* -- colors & icons -- */
   color: rgb(var(--color-rgb));
@@ -123,7 +130,7 @@ div.admonition > .admonition-title {
   position: relative !important;
   overflow: visible !important;
 }
-.admonition > .admonition-title::before, .admonition.deprecated > .admonition-title::before, .admonition.versionchanged > .admonition-title::before, .admonition.versionadded > .admonition-title::before, .admonition.warning > .admonition-title::before, .admonition.todo > .admonition-title::before, .admonition.tip > .admonition-title::before, .admonition.solution > .admonition-title::before, .admonition.seealso > .admonition-title::before, .admonition.note > .admonition-title::before, .admonition.important > .admonition-title::before, .admonition.hint > .admonition-title::before, .admonition.exercise > .admonition-title::before, .admonition.error > .admonition-title::before, .admonition.danger > .admonition-title::before, .admonition.caution > .admonition-title::before, .admonition.attention > .admonition-title::before,
+.admonition > .admonition-title::before, .admonition.deprecated > .admonition-title::before, .admonition.versionchanged > .admonition-title::before, .admonition.versionadded > .admonition-title::before, .admonition.docs > .admonition-title::before, .admonition.warning > .admonition-title::before, .admonition.todo > .admonition-title::before, .admonition.tip > .admonition-title::before, .admonition.solution > .admonition-title::before, .admonition.seealso > .admonition-title::before, .admonition.note > .admonition-title::before, .admonition.important > .admonition-title::before, .admonition.hint > .admonition-title::before, .admonition.exercise > .admonition-title::before, .admonition.error > .admonition-title::before, .admonition.danger > .admonition-title::before, .admonition.caution > .admonition-title::before, .admonition.attention > .admonition-title::before,
 div.admonition > .admonition-title::before {
   /* -- colors & icons -- */
   background-color: #fff !important;
@@ -140,11 +147,11 @@ div.admonition > .admonition-title::before {
   top: var(--icon-v-center) !important;
   left: var(--icon-h-center) !important;
 }
-.admonition > .admonition-title::after, .admonition.deprecated > .admonition-title::after, .admonition.versionchanged > .admonition-title::after, .admonition.versionadded > .admonition-title::after, .admonition.warning > .admonition-title::after, .admonition.todo > .admonition-title::after, .admonition.tip > .admonition-title::after, .admonition.solution > .admonition-title::after, .admonition.seealso > .admonition-title::after, .admonition.note > .admonition-title::after, .admonition.important > .admonition-title::after, .admonition.hint > .admonition-title::after, .admonition.exercise > .admonition-title::after, .admonition.error > .admonition-title::after, .admonition.danger > .admonition-title::after, .admonition.caution > .admonition-title::after, .admonition.attention > .admonition-title::after,
+.admonition > .admonition-title::after, .admonition.deprecated > .admonition-title::after, .admonition.versionchanged > .admonition-title::after, .admonition.versionadded > .admonition-title::after, .admonition.docs > .admonition-title::after, .admonition.warning > .admonition-title::after, .admonition.todo > .admonition-title::after, .admonition.tip > .admonition-title::after, .admonition.solution > .admonition-title::after, .admonition.seealso > .admonition-title::after, .admonition.note > .admonition-title::after, .admonition.important > .admonition-title::after, .admonition.hint > .admonition-title::after, .admonition.exercise > .admonition-title::after, .admonition.error > .admonition-title::after, .admonition.danger > .admonition-title::after, .admonition.caution > .admonition-title::after, .admonition.attention > .admonition-title::after,
 div.admonition > .admonition-title::after {
   content: unset !important;
 }
-.admonition::before, .admonition .admonition.deprecated::before, .admonition .admonition.versionchanged::before, .admonition .admonition.versionadded::before, .admonition .admonition.warning::before, .admonition .admonition.todo::before, .admonition .admonition.tip::before, .admonition .admonition.solution::before, .admonition .admonition.seealso::before, .admonition .admonition.note::before, .admonition .admonition.important::before, .admonition .admonition.hint::before, .admonition .admonition.exercise::before, .admonition .admonition.error::before, .admonition .admonition.danger::before, .admonition .admonition.caution::before, .admonition .admonition.attention::before,
+.admonition::before, .admonition .admonition.deprecated::before, .admonition .admonition.versionchanged::before, .admonition .admonition.versionadded::before, .admonition .admonition.docs::before, .admonition .admonition.warning::before, .admonition .admonition.todo::before, .admonition .admonition.tip::before, .admonition .admonition.solution::before, .admonition .admonition.seealso::before, .admonition .admonition.note::before, .admonition .admonition.important::before, .admonition .admonition.hint::before, .admonition .admonition.exercise::before, .admonition .admonition.error::before, .admonition .admonition.danger::before, .admonition .admonition.caution::before, .admonition .admonition.attention::before,
 div.admonition::before {
   /* -- colors & icons -- */
   background-color: rgb(var(--color-rgb)) !important;
@@ -225,6 +232,11 @@ div.admonition.todo {
 div.admonition.warning {
   --color-rgb: var(--warning-color) !important;
   --icon-url: var(--warning-icon) !important;
+}
+.admonition.docs,
+div.admonition.docs {
+  --color-rgb: var(--docs-color) !important;
+  --icon-url: var(--docs-icon) !important;
 }
 .admonition.versionadded,
 div.admonition.versionadded {
@@ -676,6 +688,35 @@ aside.sidebar div.warning > .admonition-title::before {
   margin: 0 0.25rem !important;
 }
 aside.sidebar div.warning > .admonition-title::after {
+  content: unset !important;
+}
+aside.sidebar div.docs {
+  margin: 0 !important;
+  padding: 0 !important;
+  position: unset !important;
+}
+aside.sidebar div.docs::before {
+  content: unset !important;
+  position: unset !important;
+  width: unset !important;
+  height: unset !important;
+  top: unset !important;
+  left: unset !important;
+}
+aside.sidebar div.docs > .admonition-title {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+aside.sidebar div.docs > .admonition-title::before {
+  content: var(--icon-url) !important;
+  position: unset !important;
+  width: unset !important;
+  height: unset !important;
+  top: unset !important;
+  left: unset !important;
+  margin: 0 0.25rem !important;
+}
+aside.sidebar div.docs > .admonition-title::after {
   content: unset !important;
 }
 aside.sidebar div.versionadded {

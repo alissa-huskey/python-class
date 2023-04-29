@@ -6,103 +6,57 @@ Colors
 ```{rst-class} variables
 ```
 
-| Variable                          | Color                    | Example                                             | Aspect | Uses                                                      |
-|-----------------------------------|--------------------------|-----------------------------------------------------|--------|-----------------------------------------------------------|
-| `--pst-color-background`          | ![][background]          | {material-regular}`square;2em;pst-color-background` | bg     | body background                                           |
-| `--pst-color-text-base`           | ![][text-base]           | {span}`demo <pst-color-text-base>`                  | fg     | default text color                                        |
-| `--pst-color-muted`               | ![][muted]               | {span}`demo <pst-color-muted>`                      | fg     | headings                                                  |
-| `--pst-color-link`                | ![][link]                | {span}`demo <pst-color-link>`                       | fg     | links                                                     |
-| `--pst-color-link-hover`          | ![][link-hover]          | {span}`demo <pst-color-link-hover>`                 | fg     | hover on links                                            |
-| `--pst-color-text-muted`          | ![][text-muted]          | {span}`demo <pst-color-text-muted>`                 | fg     | nav links, header icon links, menu bar button             |
-| `--pst-color-inline-code`         | ![][inline-code]         | {span}`demo <pst-color-inline-code>`                | fg     | inline literal, samp role, file role                      |
-| `--pst-color-surface`             | ![][surface]             | {span}`demo <pst-color-surface>`                    | bg     | siebars, code blocks, code cells, block quotes...       . |
-| `--pst-color-on-background`       | ![][on-background]       | {span}`demo <pst-color-on-background>`              | bg     | kbd role                                                  |
-| `--pst-color-on-surface`          | ![][on-surface]          | {span}`demo <pst-color-on-surface>`                 | bg     | scrollbars, inline literal color                          |
-| `--pst-color-border`              | ![][border]              | {span}`demo <pst-color-border>`                     | border | cards, nav, code, rubric, sidebar                         |
-| `--pst-color-shadow`              | ![][shadow]              | {span}`demo <pst-color-shadow>`                     | shadow | dropdowns, topic                                          |
-| `--pst-color-target`              | ![][target]              | {span}`demo <pst-color-target>`                     | bg     | footnote target, clicked glossary term target             |
-| `--pst-color-primary`             | ![][primary]             | {span}`demo <pst-color-primary>`                    | fg     | nav link focused, next/prev names, right/left nav hover   |
-| `--pst-color-secondary`           | ![][secondary]           | {span}`demo <pst-color-secondary>`                  |        | _                                                         |
-| `--pst-color-secondary-text`      | ![][secondary-text]      | {span}`demo <pst-color-secondary-text>`             |        | _                                                         |
-| `--pst-color-secondary-highlight` | ![][secondary-highlight] | {span}`demo <pst-color-secondary-highlight>`        |        | _                                                         |
-| `--pst-color-success`             | ![][success]             | {span}`demo <pst-color-success>`                    |        | _                                                         |
-| `--pst-color-success-text`        | ![][success-text]        | {span}`demo <pst-color-success-text>`               |        | _                                                         |
-| `--pst-color-success-highlight`   | ![][success-highlight]   | {span}`demo <pst-color-success-highlight>`          |        | _                                                         |
-| `--pst-color-info`                | ![][info]                | {span}`demo <pst-color-info>`                       |        | _                                                         |
-| `--pst-color-info-text`           | ![][info-text]           | {span}`demo <pst-color-info-text>`                  |        | _                                                         |
-| `--pst-color-info-highlight`      | ![][info-highlight]      | {span}`demo <pst-color-info-highlight>`             |        | _                                                         |
-| `--pst-color-warning`             | ![][warning]             | {span}`demo <pst-color-warning>`                    |        | _                                                         |
-| `--pst-color-warning-text`        | ![][warning-text]        | {span}`demo <pst-color-warning-text>`               |        | _                                                         |
-| `--pst-color-warning-highlight`   | ![][warning-highlight]   | {span}`demo <pst-color-warning-highlight>`          |        | _                                                         |
-| `--pst-color-attention`           | ![][attention]           | {span}`demo <pst-color-attention>`                  |        | _                                                         |
-| `--pst-color-attention-text`      | ![][attention-text]      | {span}`demo <pst-color-attention-text>`             |        | _                                                         |
-| `--pst-color-attention-highlight` | ![][attention-highlight] | {span}`demo <pst-color-attention-highlight>`        |        | _                                                         |
-| `--pst-color-danger`              | ![][danger]              | {span}`demo <pst-color-danger>`                     |        | _                                                         |
-| `--pst-color-danger-text`         | ![][danger-text]         | {span}`demo <pst-color-danger-text>`                |        | _                                                         |
-| `--pst-color-danger-highlight`    | ![][danger-highlight]    | {span}`demo <pst-color-danger-highlight>`           |        | _                                                         |
-| `--pst-color-light`               | ![][light]               | {span}`demo <pst-color-light>`                      |        | _                                                         |
-| `--pst-color-light-text`          | ![][light-text]          | {span}`demo <pst-color-light-text>`                 |        | _                                                         |
-| `--pst-color-light-highlight`     | ![][light-highlight]     | {span}`demo <pst-color-light-highlight>`            |        | _                                                         |
-| `--pst-color-dark`                | ![][dark]                | {span}`demo <pst-color-dark>`                       |        | _                                                         |
-| `--pst-color-dark-text`           | ![][dark-text]           | {span}`demo <pst-color-dark-text>`                  |        | _                                                         |
-| `--pst-color-dark-highlight`      | ![][dark-highlight]      | {span}`demo <pst-color-dark-highlight>`             |        | _                                                         |
-| `--pst-color-black`               | ![][black]               | {span}`demo <pst-color-black>`                      |        | _                                                         |
-| `--pst-color-black-text`          | ![][black-text]          | {span}`demo <pst-color-black-text>`                 |        | _                                                         |
-| `--pst-color-black-highlight`     | ![][black-highlight]     | {span}`demo <pst-color-black-highlight>`            |        | _                                                         |
-| `--pst-color-white`               | ![][white]               | {span}`demo <pst-color-white>`                      |        | _                                                         |
-| `--pst-color-white-text`          | ![][white-text]          | {span}`demo <pst-color-white-text>`                 |        | _                                                         |
-| `--pst-color-white-highlight`     | ![][white-highlight]     | {span}`demo <pst-color-white-highlight>`            |        | _                                                         |
-| `--pst-sd-dropdown-color`         | ![][sd-dropdown-color]   | {span}`demo <pst-sd-dropdown-color>`                |        | -                                                         |
-% | `--pst-color-_`                   | ![][_]                   | {span}`demo "pst-color-_"`                        |        | -                                                           |
-% |                                   |                          |                                                     |        |                                                           |
+  | Variable                          | Color                                                   | Example                                                            | Aspect | Uses                                                      |
+  |-----------------------------------|---------------------------------------------------------|--------------------------------------------------------------------|--------|-----------------------------------------------------------|
+  |                                   |                                                         |                                                                    |        |                                                           |
+  | `--pst-color-background`          | {span}`<color-swatch pst-color-bg-background>`          | {span}`<hex-code pst-color-background pst-color-text-base>`        | bg     | body background                                           |
+  | `--pst-color-text-base`           | {span}`<color-swatch pst-color-bg-text-base>`           | {span}`<hex-code pst-color-text-base>`                             | fg     | default text color                                        |
+  | `--pst-color-muted`               | {span}`<color-swatch pst-color-bg-muted>`               | {span}`<hex-code pst-color-muted>`                                 | fg     | headings                                                  |
+  | `--pst-color-link`                | {span}`<color-swatch pst-color-bg-link>`                | {span}`<hex-code pst-color-link>`                                  | fg     | links                                                     |
+  | `--pst-color-link-hover`          | {span}`<color-swatch pst-color-bg-link-hover>`          | {span}`<hex-code pst-color-link-hover>`                            | fg     | hover on links                                            |
+  | `--pst-color-text-muted`          | {span}`<color-swatch pst-color-bg-text-muted>`          | {span}`<hex-code pst-color-text-muted>`                            | fg     | nav links, header icon links, menu bar button             |
+  | `--pst-color-inline-code`         | {span}`<color-swatch pst-color-bg-inline-code>`         | {span}`<hex-code pst-color-inline-code>`                           | fg     | inline literal, samp role, file role                      |
+  | `--pst-color-surface`             | {span}`<color-swatch pst-color-bg-surface>`             | {span}`<hex-code pst-color-bg-surface>`                            | bg     | sidebars, code blocks, code cells, block quotes...        |
+  | `--pst-color-on-background`       | {span}`<color-swatch pst-color-bg-on-background>`       | {span}`<hex-code pst-color-bg-on-background pst-color-light-text>` | bg     | kbd role                                                  |
+  | `--pst-color-on-surface`          | {span}`<color-swatch pst-color-bg-on-surface>`          | {span}`<hex-code pst-color-on-surface>`                            | fg     | scrollbars, inline literal color                          |
+  | `--pst-color-border`              | {span}`<color-swatch pst-color-bg-border>`              | {span}`<hex-code pst-color-border pst-color-border-border>`        | border | cards, nav, code, rubric, sidebar                         |
+  | `--pst-color-shadow`              | {span}`<color-swatch pst-color-bg-shadow>`              | {span}`<hex-code pst-color-shadow pst-color-shadow-shadow>`        | shadow | dropdowns, topic                                          |
+  | `--pst-color-target`              | {span}`<color-swatch pst-color-bg-target>`              | {span}`<hex-code pst-color-bg-target>`                             | bg     | footnote target, clicked glossary term target             |
+  | `--pst-color-primary`             | {span}`<color-swatch pst-color-bg-primary>`             | {span}`<hex-code pst-color-primary>`                               | fg     | nav link focused, next/prev names, right/left nav hover   |
+  | `--pst-color-secondary`           | {span}`<color-swatch pst-color-bg-secondary>`           | {span}`<hex-code pst-color-secondary>`                             |        | _                                                         |
+  | `--pst-color-secondary-text`      | {span}`<color-swatch pst-color-bg-secondary-text>`      | {span}`<hex-code pst-color-secondary-text>`                        |        | _                                                         |
+  | `--pst-color-secondary-highlight` | {span}`<color-swatch pst-color-bg-secondary-highlight>` | {span}`<hex-code pst-color-secondary-highlight>`                   |        | _                                                         |
+  | `--pst-color-success`             | {span}`<color-swatch pst-color-bg-success>`             | {span}`<hex-code pst-color-success>`                               |        | _                                                         |
+  | `--pst-color-success-text`        | {span}`<color-swatch pst-color-bg-success-text>`        | {span}`<hex-code pst-color-success-text>`                          |        | _                                                         |
+  | `--pst-color-success-highlight`   | {span}`<color-swatch pst-color-bg-success-highlight>`   | {span}`<hex-code pst-color-success-highlight>`                     |        | _                                                         |
+  | `--pst-color-info`                | {span}`<color-swatch pst-color-bg-info>`                | {span}`<hex-code pst-color-info>`                                  |        | _                                                         |
+  | `--pst-color-info-text`           | {span}`<color-swatch pst-color-bg-info-text>`           | {span}`<hex-code pst-color-info-text>`                             |        | _                                                         |
+  | `--pst-color-info-highlight`      | {span}`<color-swatch pst-color-bg-info-highlight>`      | {span}`<hex-code pst-color-info-highlight>`                        |        | _                                                         |
+  | `--pst-color-warning`             | {span}`<color-swatch pst-color-bg-warning>`             | {span}`<hex-code pst-color-warning>`                               |        | _                                                         |
+  | `--pst-color-warning-text`        | {span}`<color-swatch pst-color-bg-warning-text>`        | {span}`<hex-code pst-color-warning-text>`                          |        | _                                                         |
+  | `--pst-color-warning-highlight`   | {span}`<color-swatch pst-color-bg-warning-highlight>`   | {span}`<hex-code pst-color-warning-highlight>`                     |        | _                                                         |
+  | `--pst-color-attention`           | {span}`<color-swatch pst-color-bg-attention>`           | {span}`<hex-code pst-color-attention>`                             |        | _                                                         |
+  | `--pst-color-attention-text`      | {span}`<color-swatch pst-color-bg-attention-text>`      | {span}`<hex-code pst-color-attention-text>`                        |        | _                                                         |
+  | `--pst-color-attention-highlight` | {span}`<color-swatch pst-color-bg-attention-highlight>` | {span}`<hex-code pst-color-attention-highlight>`                   |        | _                                                         |
+  | `--pst-color-danger`              | {span}`<color-swatch pst-color-bg-danger>`              | {span}`<hex-code pst-color-danger>`                                |        | _                                                         |
+  | `--pst-color-danger-text`         | {span}`<color-swatch pst-color-bg-danger-text>`         | {span}`<hex-code pst-color-danger-text>`                           |        | _                                                         |
+  | `--pst-color-danger-highlight`    | {span}`<color-swatch pst-color-bg-danger-highlight>`    | {span}`<hex-code pst-color-danger-highlight>`                      |        | _                                                         |
+  | `--pst-color-light`               | {span}`<color-swatch pst-color-bg-light>`               | {span}`<hex-code pst-color-light>`                                 |        | _                                                         |
+  | `--pst-color-light-text`          | {span}`<color-swatch pst-color-bg-light-text>`          | {span}`<hex-code pst-color-light-text>`                            |        | _                                                         |
+  | `--pst-color-light-highlight`     | {span}`<color-swatch pst-color-bg-light-highlight>`     | {span}`<hex-code pst-color-light-highlight>`                       |        | _                                                         |
+  | `--pst-color-dark`                | {span}`<color-swatch pst-color-bg-dark>`                | {span}`<hex-code pst-color-dark>`                                  |        | _                                                         |
+  | `--pst-color-dark-text`           | {span}`<color-swatch pst-color-bg-dark-text>`           | {span}`<hex-code pst-color-dark-text>`                             |        | _                                                         |
+  | `--pst-color-dark-highlight`      | {span}`<color-swatch pst-color-bg-dark-highlight>`      | {span}`<hex-code pst-color-dark-highlight>`                        |        | _                                                         |
+  | `--pst-color-black`               | {span}`<color-swatch pst-color-bg-black>`               | {span}`<hex-code pst-color-black>`                                 |        | _                                                         |
+  | `--pst-color-black-text`          | {span}`<color-swatch pst-color-bg-black-text>`          | {span}`<hex-code pst-color-black-text>`                            |        | _                                                         |
+  | `--pst-color-black-highlight`     | {span}`<color-swatch pst-color-bg-black-highlight>`     | {span}`<hex-code pst-color-black-highlight>`                       |        | _                                                         |
+  | `--pst-color-white`               | {span}`<color-swatch pst-color-bg-white>`               | {span}`<hex-code pst-color-white>`                                 |        | _                                                         |
+  | `--pst-color-white-text`          | {span}`<color-swatch pst-color-bg-white-text>`          | {span}`<hex-code pst-color-white-text>`                            |        | _                                                         |
+  | `--pst-color-white-highlight`     | {span}`<color-swatch pst-color-bg-white-highlight>`     | {span}`<hex-code pst-color-white-highlight>`                       |        | _                                                         |
+  | `--pst-sd-dropdown-color`         | {span}`<color-swatch pst-color-bg-sd-dropdown-color>`   | {span}`<hex-code pst-sd-dropdown-color>`                           |        | -                                                         |
+% | `--pst-color-_`                   | ![][_]                                                  | {span}`demo "<code pst-color-_>"`                                  |        | -                                                         |
+% |                                   |                                                         |                                                                    |        |                                                           |
 
-
-[background]: https://singlecolorimage.com/get/FFFFFF/25x25
-[text-base]: https://singlecolorimage.com/get/FFFFFF/25x25
-[muted]: https://singlecolorimage.com/get/FFFFFF/25x25
-[link]: https://singlecolorimage.com/get/FFFFFF/25x25
-[link-hover]: https://singlecolorimage.com/get/FFFFFF/25x25
-[hover]: https://singlecolorimage.com/get/FFFFFF/25x25
-[primary]: https://singlecolorimage.com/get/FFFFFF/25x25
-[text-muted]: https://singlecolorimage.com/get/FFFFFF/25x25
-[inline-code]: https://singlecolorimage.com/get/FFFFFF/25x25
-[surface]: https://singlecolorimage.com/get/FFFFFF/25x25
-[on-background]: https://singlecolorimage.com/get/FFFFFF/25x25
-[on-surface]: https://singlecolorimage.com/get/FFFFFF/25x25
-[border]: https://singlecolorimage.com/get/FFFFFF/25x25
-[shadow]: https://singlecolorimage.com/get/FFFFFF/25x25
-[target]: https://singlecolorimage.com/get/FFFFFF/25x25
-[secondary]: https://singlecolorimage.com/get/FFFFFF/25x25
-[secondary-text]: https://singlecolorimage.com/get/FFFFFF/25x25
-[secondary-highlight]: https://singlecolorimage.com/get/FFFFFF/25x25
-[success]: https://singlecolorimage.com/get/FFFFFF/25x25
-[success-text]: https://singlecolorimage.com/get/FFFFFF/25x25
-[success-highlight]: https://singlecolorimage.com/get/FFFFFF/25x25
-[info]: https://singlecolorimage.com/get/FFFFFF/25x25
-[info-text]: https://singlecolorimage.com/get/FFFFFF/25x25
-[info-highlight]: https://singlecolorimage.com/get/FFFFFF/25x25
-[warning]: https://singlecolorimage.com/get/FFFFFF/25x25
-[warning-text]: https://singlecolorimage.com/get/FFFFFF/25x25
-[warning-highlight]: https://singlecolorimage.com/get/FFFFFF/25x25
-[attention]: https://singlecolorimage.com/get/FFFFFF/25x25
-[attention-text]: https://singlecolorimage.com/get/FFFFFF/25x25
-[attention-highlight]: https://singlecolorimage.com/get/FFFFFF/25x25
-[danger]: https://singlecolorimage.com/get/FFFFFF/25x25
-[danger-text]: https://singlecolorimage.com/get/FFFFFF/25x25
-[danger-highlight]: https://singlecolorimage.com/get/FFFFFF/25x25
-[light]: https://singlecolorimage.com/get/FFFFFF/25x25
-[light-text]: https://singlecolorimage.com/get/FFFFFF/25x25
-[light-highlight]: https://singlecolorimage.com/get/FFFFFF/25x25
-[dark]: https://singlecolorimage.com/get/FFFFFF/25x25
-[dark-text]: https://singlecolorimage.com/get/FFFFFF/25x25
-[dark-highlight]: https://singlecolorimage.com/get/FFFFFF/25x25
-[black]: https://singlecolorimage.com/get/FFFFFF/25x25
-[black-text]: https://singlecolorimage.com/get/FFFFFF/25x25
-[black-highlight]: https://singlecolorimage.com/get/FFFFFF/25x25
-[white]: https://singlecolorimage.com/get/FFFFFF/25x25
-[white-text]: https://singlecolorimage.com/get/FFFFFF/25x25
-[white-highlight]: https://singlecolorimage.com/get/FFFFFF/25x25
-[sd-dropdown-color]: https://singlecolorimage.com/get/FFFFFF/25x25
 
 See Also
 --------

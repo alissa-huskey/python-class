@@ -8,9 +8,9 @@
 
 @use "sass:list";
 
-$admonitions: (attention, caution, danger, error, exercise, hint, important, note, seealso, solution, tip, todo, warning);
+$admonitions: (attention, caution, danger, error, exercise, hint, important, note, seealso, solution, tip, todo, warning, docs);
 $versions: (versionadded, versionchanged, deprecated);
-$all_admonitions: list.join($admonitions, $versions);
+$all-admonitions: list.join($admonitions, $versions);
 
 :root {
   /* -- admonition -> colors -- */
@@ -32,6 +32,7 @@ $all_admonitions: list.join($admonitions, $versions);
     --warning-color: 255 145 0;
     --versionadded-color: 0 200 80;
     --versionchanged-color: 255, 191, 0;
+    --docs-color: 179 127 235;
 
   /* -- admonition -> icon name -- */
 
@@ -52,8 +53,10 @@ $all_admonitions: list.join($admonitions, $versions);
     --warning-icon: var(--i-megaphone-url);
     --versionadded-icon: var(--i-hash-mark-url);
     --versionchanged-icon: var(--i-clock-circle-url);
+    --docs-icon: var(--i-asterisk-url);
 
   /* -- icon name -> url  -- */
+    /* https://icon-sets.iconify.design/ */
 
     --i-asterisk-url: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="16" height="16" viewBox="0 0 16 16"%3E%3Cpath fill="currentColor" d="M0 2.75A2.75 2.75 0 0 1 2.75 0h10.5A2.75 2.75 0 0 1 16 2.75v10.5A2.75 2.75 0 0 1 13.25 16H2.75A2.75 2.75 0 0 1 0 13.25ZM2.75 1.5c-.69 0-1.25.56-1.25 1.25v10.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25V2.75c0-.69-.56-1.25-1.25-1.25Z"%2F%3E%3Cpath fill="currentColor" d="M8 4a.75.75 0 0 1 .75.75V6.7l1.69-.975a.75.75 0 0 1 .75 1.3L9.5 8l1.69.976a.75.75 0 0 1-.75 1.298L8.75 9.3v1.951a.75.75 0 0 1-1.5 0V9.299l-1.69.976a.75.75 0 0 1-.75-1.3L6.5 8l-1.69-.975a.75.75 0 0 1 .75-1.3l1.69.976V4.75A.75.75 0 0 1 8 4Z"%2F%3E%3C%2Fsvg%3E');
     --i-bang-comment-url: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="16" height="16" viewBox="0 0 16 16"%3E%3Cpath fill="white" d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0a1 1 0 0 1 2 0Z"%2F%3E%3C%2Fsvg%3E');
@@ -112,6 +115,10 @@ html.dark {
 
 .admonition,
 div.admonition {
+  &.toggle-hidden {
+    padding-bottom: 0 !important;
+  }
+
   >.admonition-title, %admonition-title {
 
     /* -- colors & icons -- */
@@ -193,7 +200,7 @@ div.admonition {
 
   /* --- repeat for all admonition types --- */
 
-  @each $type in $all_admonitions {
+  @each $type in $all-admonitions {
     &.#{$type} {
       --color-rgb: var(--#{$type}-color) !important;
       --icon-url: var(--#{$type}-icon) !important;
@@ -263,7 +270,7 @@ div.versionadded, div.versionchanged, div.deprecated {
 aside.sidebar {
   border-radius: 0 !important;
 
-  @each $type in $all_admonitions {
+  @each $type in $all-admonitions {
     div.#{$type} {
       margin: 0 !important;
       padding: 0 !important;
@@ -303,8 +310,8 @@ aside.sidebar {
     p {
       padding: unset !important;
 
-      &::before {
-      }
+      // &::before {
+      // }
     }
   }
 

@@ -102,6 +102,89 @@ A figure is an image with a caption and/or a legend:
 This paragraph is also part of the legend.
 ```
 
+Diagrams
+--------
+
+* [kroki.io](https://kroki.io/)
+* [sphinx-contrib/kroki](https://github.com/sphinx-contrib/kroki/)
+
+You can create diagrams from textual descriptions in a number of formats using
+the `{kroki}` directive.
+
+```{rubric} kroki
+```
+
+{{ leftcol }}
+
+```{kroki} mermaid
+pie title Pie Status
+    "Eaten": 80
+    "Left": 20
+```
+
+{{ rightcol }}
+
+```{kroki} mermaid
+flowchart TD
+  should[Should I...]
+  should -- stay --> trouble{Trouble}
+  should -- go --> double{Double}
+  style trouble fill:#f9f,stroke:#333,stroke-width:4px
+  style double fill:#bbf,stroke:#f66,stroke-width:2px,color:#fff,stroke-dasharray: 5 5
+```
+
+{{ endcols }}
+
+Math
+----
+
+* [Myst Parser > Math and equations](https://myst-parser.readthedocs.io/en/latest/syntax/math.html)
+* [Jupyter Book > Math and equations](https://jupyterbook.org/en/stable/content/math.html)
+
+Math equation blocks can be written in common LaTeX markup using the `{math}`
+role or `$$` dollar math blocks.
+
+```{rubric} math
+```
+
+:::::{grid}
+
+:::{grid-item}
+
+```{math}
+:label: math-example-a
+
+(a + b)^2 = a^2 + 2ab + b^2
+
+(a + b)^2  &=  (a + b)(a + b) \\
+           &=  a^2 + 2ab + b^2
+```
+
+:::
+
+:::{grid-item}
+
+$$
+wow = its^{math}
+$$(math-example-b)
+
+:::
+
+:::{grid-item}
+
+```{math}
+:label: math-example-c
+
+\begin{align*}
+yep = its_{more}^{math}
+\end{align*}
+```
+
+:::
+
+:::::
+
+
 See Also
 --------
 

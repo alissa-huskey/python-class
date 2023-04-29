@@ -12,6 +12,41 @@ kernelspec:
 Code
 ====
 
+Literal Blocks
+--------------
+
+:::{admonition} Docs
+:class: seealso dropdown margin
+
+* [CommonMark Spec > 4.4 Indented code blocks](https://spec.commonmark.org/current/#indented-code-blocks)
+* [Sphinx > reStructuredText Primer > Literal blocks](https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#literal-blocks)
+* [reStructuredText Markup Specification > Indented Literal Blocks](https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html#indented-literal-blocks)
+
+:::
+
+While more often used for code, literal blocks where each line is indented four
+spaces, will be rendered as monospaced raw text. it is Analogous to the HTML
+`<pre>` tag.
+
+    -a            command-line option "a"
+    -b file       options can have arguments
+                  and long descriptions
+    --long        options can be long also
+    --input=file  long options can also have
+                  arguments
+
+    --very-long-option
+                  The description can also start on the next line.
+
+                  The description may contain multiple body elements,
+                  regardless of where it starts.
+
+    -x, -y, -z    Multiple options are an "option group".
+    -v, --verbose  Commonly-seen: short & long options.
+    -1 file, --one=file, --two file
+                  Multiple options with arguments.
+    /V            DOS/VMS-style options too
+
 Code Fence
 ----------
 

@@ -3,17 +3,6 @@ Admonitions
 
 Sphinx provides several different types of admonitions.
 
-topic
------
-
-* [Docutils > Directives > topic](https://docutils.sourceforge.io/docs/ref/rst/directives.html#topic)
-
-```{topic} This is a topic.
-
-   This is what admonitions are a special case of, according to the docutils
-   documentation.
-```
-
 admonition
 ----------
 

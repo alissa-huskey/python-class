@@ -206,7 +206,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
   }
 });
 
-// replace placeholder swatches with real ones
+// replace placeholder hex color code with real ones
 window.addEventListener("DOMContentLoaded", (e) => {
   if ($('body').attr('id') != "colors") {
     return;
@@ -218,33 +218,31 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
   for (var i = 0; i < rows.length; i++) {
     var row = jQuery(rows[i]);
-    var span = row.find('.pre')[0];
-    var img = row.find('img')[0];
-    console.log("python-class:theme/colors> row:", row);
-    console.log("python-class:theme/colors> span:", span);
-    console.log("python-class:theme/colors> img:", img);
 
-    if (!(span && img)) {
-      continue
+    var label = row.find('.pre')[0];
+    var code = row.find('.hex-code')[0];
+
+    console.log("python-class:theme/colors> row", i+":", row);
+    console.log("python-class:theme/colors> label:", label);
+    console.log("python-class:theme/colors> code:", code);
+
+    if (!(label && code)) {
+      continue;
     }
 
-    var name = span.textContent;
-    var color = getComputedStyle(span).getPropertyValue(span.textContent).trim();
+    var name = label.textContent;
+    var color = getComputedStyle(label).getPropertyValue(label.textContent).trim();
+
+    if (!color) {
+      var swatch = jQuery(row.find('.color-swatch')[0]);
+      swatch.remove();
+      continue;
+    }
 
     console.log("python-class:theme/colors> color:", color);
 
-    if (color.startsWith("#")) {
-      color = color.slice(1)
-    }
-
-    if (color.length == 3) {
-      color = color[0] + color[0] + color[1] + color[1] + color[2] + color[2]
-    }
-
-    var swatch = $(`<img src="https://singlecolorimage.com/get/${color}/25x25">`);
-    img.replaceWith(swatch[0])
+    code.textContent = color;
   }
-
 });
 
 // replace placeholder values and class with real ones
@@ -271,5 +269,4 @@ window.addEventListener("DOMContentLoaded", (e) => {
     var value = getComputedStyle(span).getPropertyValue(span.textContent).trim();
     value_span.textContent = value
   }
-
 });
