@@ -917,15 +917,14 @@ increased.
 
 {{ left }}
 
-3\. Modify *AND: There is one dragon*
+1\. Modify *AND: There is one dragon*
 
 {{ br }}
 
 {{ right }}
 
    ```{dropdown} ...
-    * `[ ]` Add a `"treasure"` key to the dragon dictionaries in `DRAGONS` for
-           * the `"cheerful"` and `"lonely"` dragons:
+    * `[ ]` Add a `"treasure"` key to the dragon dictionary in `DRAGONS` for
       * `[ ]` The key should be `"treasure"`
       * `[ ]` The value should a tuple with two numbers representing the
               minimum and maximum possible treasure. ie `(10, 20)`.
@@ -941,7 +940,7 @@ increased.
 
 {{ newrow }}
 
-5\. After *WHEN* add *AND: The player has some gems*
+2\. After *WHEN* add *AND: The player has some gems*
 
 {{ right }}
 
@@ -951,7 +950,7 @@ increased.
 
 {{ newrow }}
 
-5\. After *THEN* add *AND: The player should get treasure*
+3\. After *THEN* add *AND: The player should get treasure*
 
 {{ right }}
 
@@ -961,7 +960,7 @@ increased.
 
 {{ newrow }}
 
-5\. After *THEN* add *AND: The player should see a message about what happened*
+4\. After *THEN* add *AND: The player should see a message about what happened*
 
 {{ right }}
 
@@ -971,7 +970,7 @@ increased.
 
 {{ endcols }}
 
-6\. Run your tests. They should fail.
+5\. Run your tests. They should fail.
 
 `````
 
@@ -1150,10 +1149,10 @@ sure that the player's health does not change.
 
 ### B. In `test_game.py` define `test_do_pet_cranky_dragon()`
 
-In this section we'll define the `test_do_pet_cranky_dragon()` test. It
-will be very similar to `test_do_pet_cheerful_dragon()`, except we'll add a
-dragon dictionary to `DRAGONS` that has a `"damage"` key with a tuple of two
-negative numbers and we'll assert that `PLAYER["health"]` has decreased.
+In this section we'll define the `test_do_pet_cranky_dragon()` test. It will be
+very similar to `test_do_pet_cheerful_dragon()`, except in the `DRAGONS`
+dictionary we'll add a dragon dictionary that has a `"damage"` key with a tuple
+of two negative numbers and we'll assert that `PLAYER["health"]` has decreased.
 
 `````{dropdown} Need help?
 
@@ -1269,13 +1268,14 @@ negative numbers and we'll assert that `PLAYER["health"]` has decreased.
 {{ right }}
 
    ```{dropdown} ...
-    * `[ ]` assert that an debug message like samp`"caused you {DAMAGE}" damage` is in `output`
+    * `[ ]` assert that an debug message like
+      {samp}`"caused you {DAMAGE}" damage` is in `output`
    ```
 
 
 {{ endcols }}
 
-6\. Run your tests. They should fail.
+11\. Run your tests. They should fail.
 
 `````
 
@@ -1486,7 +1486,7 @@ That is, the dragon dictionary in `DRAGONS` should have *both* `"treasure"` and
 
 {{ endcols }}
 
-6\. Run your tests. They should pass.
+11\. Run your tests. They should pass.
 
 `````
 
