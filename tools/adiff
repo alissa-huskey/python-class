@@ -6,11 +6,11 @@
 #
 # usage:
 #
-# adiff -h|--help [--last|--fin|--version VERSION] FILE
+# adiff -h|--help [--last|--fin|--version VERSION] [FILE]
 
 parse() {
   local sn=1
-  echo "$@"
+  # echo "$@"
 
   while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -22,7 +22,7 @@ parse() {
         [[ -z "${file}" ]] && file="$1"
                                                            ;;
     esac
-    echo $# "${@}"
+    # echo $# "${@}"
     shift $sn
     sn=1
   done
@@ -59,20 +59,22 @@ usage() {
 
    usage:
 
-   adiff [--last|--fin|--version VERSION] FILE
-   adiff -h|--help
+     adiff [--last|--fin|--version VERSION] [FILE]
+     adiff -h|--help
 EOF
 }
 
 help() {
   usage
   cat <<EOF
+
      -l,--last      diff the last version of this FILE
      -f,--fin       diff the final version of this FILE
      -v,--version   diff the specific version VERSION of FILE
      -h,--help      print this help
      FILE           which file to generate the diff for
                     adventure|test[_game]
+                    (default: adventure)
 EOF
 }
 
@@ -93,10 +95,12 @@ main() {
     help)     help ; exit   ;;
   esac
 
-  if [[ ! -f "${srcdir}/${diff_file}" ]]; then
-    echo "file not found: ${diff_file}"
-    exit 1
-  fi
+  for f in "${diff_file}" "${current}"; do
+    if [[ ! -f "${srcdir}/${f}" ]]; then
+      echo "file not found: ${f}"
+      exit 1
+    fi
+  done
 
   vimdiff "${srcdir}/${diff_file}" "${srcdir}/${current}"
 }

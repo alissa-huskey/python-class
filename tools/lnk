@@ -3,16 +3,46 @@
 # create a symbolic link to a particular version of the adventure
 # game and test file if it exists
 #
+# usage: lnk VERSION
+#
+
+setopt nullglob
+setopt extendedglob
 
 rootdir="$(cd "${0%/*}/.." && pwd -P)"
 
-main() {
-  local version="$1" srcdir="${rootdir}/pythonclass/adventure" name file
+usage() {
+  cat <<EOF
+lnk -- create a symbolic link to a particular version of the adventure
+       game and test file if it exists
 
-  for name in adventure test_game; do
+usage: lnk VERSION
+
+EOF
+}
+
+main() {
+  local version="$1" srcdir="${rootdir}/pythonclass/adventure" ec=0 mode name files file
+
+  [[ $# -ne 1 ]] && mode=usage ec=1
+  [[ "$*" =~ (-h|--help) ]] && mode=usage
+
+  if [[ "$mode" == "usage" ]]; then
+    usage
+    exit $ec
+  fi
+
+  files=( ${srcdir}/*-${version}.py )
+
+  if [[ ${#files} -eq 0 ]]; then
+    echo "Error: No files found for version '${version}'"
+    exit 1
+  fi
+
+  for file in adventure test_game; do
     file="${srcdir}/${name}-${version}.py"
     if [[ -f "$file" ]] ; then
-      ln -sf "${file}" "${rootdir}/${name}.py"
+      ln -vsf "${file}" "${rootdir}/${name}.py"
     fi
   done
 

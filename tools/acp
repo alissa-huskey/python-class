@@ -8,8 +8,17 @@
 rootdir="$(cd "${0%/*}/.." && pwd -P)"
 
 main() {
-  local from_version="$1" to_version="$2" srcdir="${rootdir}/pythonclass/adventure" major minor
+  local from_version="$1" to_version="$2" srcdir="${rootdir}/pythonclass/adventure" major minor exit_code
   autoload -U zmv
+
+  if [[ $# -ne 2 ]] || [[ "$*" =~ (-h|--help) ]]; then
+    echo "acp -- copy adventure files by version"
+      echo
+      echo "  Usage: acp [FROM_VERSION] [TO_VERSION]"
+      echo
+     [[ "$*" =~ (-h|--help) ]] && exit_code=0 || exit_code=1
+     exit $exit_code
+  fi
 
   if [[ -z "${to_version}" ]]; then
     major=${from_version%%.*}
@@ -19,7 +28,7 @@ main() {
     to_version="${major}.${minor}"
   fi
 
-  zmv -CW "pythonclass/adventure/*-${from_version}.py" "pythonclass/adventure/*-${to_version}.py"
+  zmv -vCW "pythonclass/adventure/*-${from_version}.py" "pythonclass/adventure/*-${to_version}.py"
 }
 
 main ${1:+"$@"}
