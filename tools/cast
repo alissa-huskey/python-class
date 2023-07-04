@@ -1,8 +1,50 @@
 #!/usr/bin/env zsh
+#
+# cast - record a screencast of the adventure game
+#
+# usage: cast VERSION [COMMAND...]
+#
+
+usage() {
+  cat <<EOF
+
+  cast - record a screencast of the adventure game
+
+   usage:
+
+     cast VERSION [COMMAND...]
+     cast -h|--help
+
+EOF
+}
+
+help() {
+  usage
+  cat <<EOF
+  Arguments:
+
+     VERSION        Version of adventure game to record
+     COMMAND        Command to run instead of adventure game
+
+EOF
+}
 
 main() {
-  local version="$1" cast prog
+  local version="$1" cast prog mode
   local -a cmd
+
+  if [[ $# -eq 0 ]]; then
+    usage
+    exit 1
+  fi
+
+  [[ "-h" =~ "${*}" ]] && mode=help
+  [[ "--help" =~ "${*}" ]] && mode=help
+
+  if [[ "${mode}" == "help" ]]; then
+    help
+    exit
+  fi
 
   DISABLE_RPROMPT=true ; export DISABLE_RPROMPT
 

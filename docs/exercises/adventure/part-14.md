@@ -43,7 +43,7 @@ you call `do_pet()` a debug message is printed.
 
 `````{dropdown} Need help?
 
-1. `[ ]` Import the `do_read` function
+1. `[ ]` Import the `do_pet` function
 2. `[ ]` Add `test_do_pet()` function with one parameter `capsys`
 3. `[ ]` Call `do_pet()` with an empty list as an argument
 4. `[ ]` Assign the results of `capsys.readouterr().out` to the variable `output`
@@ -86,7 +86,7 @@ message like {samp}`Trying to pet: `
 `````{dropdown} Need help?
 
 1. `[ ]` Add a `do_pet()` function with one parameter `args`
-1. `[ ]` In it, use the `debug()` function to print something like `"Trying to read args."`.
+1. `[ ]` In it, use the `debug()` function to print something like `"Trying to pet args."`.
 1. `[ ]` Run your tests again. They should now pass.
 
 `````
@@ -106,7 +106,7 @@ message like {samp}`Trying to pet: `
 
 {{ endcols }}
 
-### C. In `adventure.py` modify `main()`: add delay
+### C. In `adventure.py` modify `main()`: add pet
 
 Finally, add the code in `main()` so that when the player types `"pet"`, the
 `do_pet()` function will be called.

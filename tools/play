@@ -1,0 +1,52 @@
+#!/usr/bin/env zsh
+
+usage() {
+  cat <<EOF
+
+  play - watch a screencast of the adventure game
+
+   usage:
+
+     play VERSION
+     play -h|--help
+
+EOF
+}
+
+help() {
+  usage
+  cat <<EOF
+  Arguments:
+
+     VERSION        Version of adventure game to record
+
+EOF
+}
+
+main() {
+  local version="$1" cast mode
+
+  if [[ $# -eq 0 ]]; then
+    usage
+    exit 1
+  fi
+
+  [[ "-h" =~ "${*}" ]] && mode=help
+  [[ "--help" =~ "${*}" ]] && mode=help
+
+  if [[ "${mode}" == "help" ]]; then
+    help
+    exit
+  fi
+
+  cast="docs/exercises/adventure/assets/adventure-${version}.cast"
+
+  if ! [[ -f "${cast}" ]]; then
+    echo "Error: No such file found: '${cast}'."
+    exit 1
+  fi
+
+  poetry run asciinema play "${cast}"
+}
+
+main ${1:+"$@"}

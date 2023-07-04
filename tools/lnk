@@ -34,18 +34,23 @@ main() {
 
   files=( ${srcdir}/*-${version}.py )
 
-  if [[ ${#files} -eq 0 ]]; then
+  if [[ ${#files[@]} -eq 0 ]]; then
     echo "Error: No files found for version '${version}'"
     exit 1
   fi
 
-  for file in adventure test_game; do
+  for name in adventure test_game; do
     file="${srcdir}/${name}-${version}.py"
-    if [[ -f "$file" ]] ; then
-      ln -vsf "${file}" "${rootdir}/${name}.py"
+    if ! [[ -f "$file" ]] ; then
+      echo "Error: File not found: '${file}'."
+      ec=1
+      continue
     fi
+
+    ln -vsf "${file}" "${rootdir}/${name}.py"
   done
 
+  exit $ec
 }
 
 main ${1:+"$@"}

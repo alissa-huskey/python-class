@@ -12,6 +12,8 @@ parse() {
   local sn=1
   # echo "$@"
 
+  [[ $# -eq 0 ]] && mode=usage
+
   while [[ $# -gt 0 ]]; do
     case "$1" in
       -l|--last)       mode=last                           ;;
@@ -89,6 +91,7 @@ main() {
   current="${current##*/}"
 
   case "${mode}" in
+    usage)    usage; exit 1 ;;
     last)     get_last      ;;
     fin)      get_final     ;;
     version)  get_version   ;;
