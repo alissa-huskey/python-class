@@ -1743,7 +1743,7 @@ string that contains the f-string style variables `{gems}` and/or `{health}`.
 
 {{ endcols  }}
 
-2\. Run your tests. They should fail.
+2\. Run your tests. They should pass.
 
 `````
 
