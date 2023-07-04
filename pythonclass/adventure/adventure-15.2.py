@@ -88,7 +88,7 @@ PLACES = {
         "name": "Your Cottage",
         "east": "town-square",
         "description": "A cozy stone cottage with a desk and a neatly made bed.",
-        "items": ["desk", "book", "water"],
+        "items": ["desk", "book"],
     },
     "town-square": {
         "key": "town-square",
@@ -172,20 +172,6 @@ ITEMS = {
         "name": "a dagger",
         "description": "a 14 inch dagger with a double-edged blade",
         "price": -25,
-    },
-    "water": {
-        "key": "water",
-        "name": "bottle of water",
-        "can_take": True,
-        "description": (
-            "A bottle of water."
-        ),
-        "drink-message": (
-            "You pull the cork from the waxed leather bottle.",
-            "You take a deep drink of the cool liquid.",
-            "You feel refreshed.",
-        ),
-        "health": 1,
     },
     "desk": {
         "key": "desk",
@@ -346,14 +332,8 @@ def get_item(key):
     return item
 
 
-def health_change(amount: int) -> int:
-    """Add the (positive or negative) amount to health, but limit to 0-100.
-    Return the actual amount added to player health."""
-
-    # save the current player health
-    before = PLAYER["health"]
-
-    # change the player health
+def health_change(amount: int):
+    """Add the following (positive or negative) amount to health, but limit to 0-100"""
     PLAYER["health"] += amount
 
     # don't let health go below zero
@@ -363,9 +343,6 @@ def health_change(amount: int) -> int:
     # cap health
     if PLAYER["health"] > MAX_HEALTH:
         PLAYER["health"] = MAX_HEALTH
-
-    # return the difference
-    return PLAYER["health"] - before
 
 
 def inventory_change(key, quantity=1):
@@ -774,29 +751,6 @@ def do_consume(action, args):
     if not player_has(name):
         error(f"Sorry, you don't have any {name!r} to {action}.")
         return
-
-    # get the item dictionary
-    item = get_item(name)
-
-    # make sure it is an item you can consume
-    if f"{action}-message" not in item:
-        error(f"Sorry, you can't {action} {name!r}.")
-        return
-
-    health = item.get("health", 0)
-    inventory_change(name, -1)
-    difference = health_change(health)
-
-    print()
-    for sentence in item[f"{action}-message"]:
-        wrap(sentence)
-        print()
-        sleep(DELAY)
-
-    if health < 0:
-        print(f"You lost {abs(difference)} point(s).")
-    elif health > 0:
-        print(f"You gained {difference} point(s).")
 
 
 def do_pet(args):

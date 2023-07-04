@@ -67,14 +67,10 @@ def test_health_change(start, amount, health, diff, message):
     adventure.PLAYER["health"] = start
 
     # WHEN: You call health_change()
-    result = health_change(amount)
+    health_change(amount)
 
     # THEN: The player health should be adjusted
     assert adventure.PLAYER["health"] == health, message
-
-    # AND: The value returned should be the difference in points
-    assert result == diff, \
-        "The value returned should be the difference in health"
 
 
 def test_is_for_sale():
@@ -685,109 +681,3 @@ def test_do_consume_not_in_inventory(capsys, action):
     # THEN: An error message should be printed
     assert f"Sorry, you don't have any 'something tasty' to {action}." in output, \
         "User error should be in output"
-
-
-@pytest.mark.parametrize(
-    "action, name, message",
-    [
-        (
-            "drink",
-            "atmosphere",
-            "You drink in the warm and cheerful atmosphere.",
-        ),
-        (
-            "eat",
-            "your feelings",
-            "It's the wee hours of the morning, and "
-            "you're eating your feelings."
-        ),
-    ]
-)
-def test_do_consume_next(capsys, action, name, message):
-    # GIVEN: An item exists that is not in inventory
-    adventure.ITEMS[name] = {
-        "name": name,
-        f"{action}-message": message,
-    }
-
-    # WHEN: You call do_consume() with that item
-    do_consume(action, [name])
-
-    output = capsys.readouterr().out
-
-    # THEN: An error message should be printed
-    assert f"Error Sorry, you don't have any '{name}' to {action}." in output, \
-        "User error should be in output"
-
-
-def test_do_drink_not_drinkable(capsys):
-    adventure.ITEMS["x"] = {
-        "name": "x",
-    }
-    inventory_change("x")
-
-    do_consume("drink", ["x"])
-
-    output = capsys.readouterr().out
-
-    assert "Error Sorry, you can't drink 'x'." in output, \
-        "User error should be in output"
-
-
-def test_do_drink(capsys):
-    adventure.DELAY = 0
-    adventure.ITEMS["praise"] = {
-        "name": "praise",
-        "drink-message": (
-            "You stand back and admire your handwork...",
-            "As you drink in the praise of your adoring fans."
-        ),
-    }
-    inventory_change("praise")
-
-    do_consume("drink", ["praise"])
-
-    output = capsys.readouterr().out
-
-    assert "Trying to drink: ['praise']" in output, \
-        "Debug message should be in output"
-
-    assert "(" not in output, \
-        "output should not contain parenthesis representing a tuple"
-
-    assert "You stand back" in output, \
-        "The drink message should be in output"
-
-    assert "\n\n  As you drink in" in output, \
-        "The drink message should be in output"
-
-    assert not player_has("praise"), \
-        "The item should be removed from inventory."
-
-
-def test_do_eat(capsys):
-    adventure.DELAY = 0
-    adventure.ITEMS["your feelings"] = {
-        "name": "your feelings",
-        "eat-message": (
-            "It's the wee hours of the morning, and "
-            "you're eating your feelings.",
-        )
-    }
-    inventory_change("your feelings")
-
-    do_consume("eat", ["your feelings"])
-
-    output = capsys.readouterr().out
-
-    assert "Trying to eat: ['your feelings']" in output, \
-        "Debug message should be in output"
-
-    assert "(" not in output, \
-        "The eat message should be in output"
-
-    assert "eating your feelings" in output, \
-        "The eat message should be in output"
-
-    assert not player_has("your feelings"), \
-        "The item should be removed from inventory."
