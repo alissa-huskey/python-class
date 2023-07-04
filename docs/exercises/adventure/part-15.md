@@ -279,3 +279,147 @@ function will return.
 ```
 
 `````
+
+Part 15.3: Is the item consumable?
+----------------------------------
+
+{{ sources.format("15.3") }}
+
+{{ left }}
+
+In this section we'll check to make sure the item can be eaten or drunk, based
+on if it has a `"eat-message"` or `"drink-message"` key.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-15.3.cast
+:poster: npt:0:06
+```
+
+`````
+
+{{ endcols }}
+
+
+### A. In `test_game.py` define `test_do_consume_cant_consume()`
+
+In this section we'll write a parametrized test which we expect to fail. It
+will have one parameter `action` with the two cases `"eat"` and `"drink"`.
+
+The function should test that if the player tries to eat or drink an item that
+does not have a {samp}`"{action}-message"` key an error message will be printed.
+
+`````{dropdown} Need help?
+
+{{ left }}
+
+1\. Define a parametrized `test_do_consume_cant_consume()` function
+
+{{ br }}
+
+{{ right }}
+
+   ```{dropdown} ...
+    1. `[ ]` Add `test_do_consume_cant_consume()` function with two parameters: `capsys` and `action`.
+    1. `[ ]` Immediately above the `def` line call `@pytest.mark.parametrize()` with the
+      following arguments:
+        * The string `"action"`
+        * A list that contains the strings `"eat"` and `"drink"`
+   ```
+
+{{ newrow }}
+
+2\. *GIVEN: An item exists with no eat-message or drink-message key*
+
+{{ br }}
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Create a fake item in `adventure.ITEMS` with a key like `"something tasty"`. The value should be a dictionary containing:
+      - `[ ]` the key `"name"` and a value like `"something tasty"`
+   ```
+
+{{ newrow }}
+
+3\. *AND: That item is in the player's inventory*
+
+{{ br }}
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Add the item to the player's inventory
+   ```
+
+{{ newrow }}
+
+4\. *WHEN: You call do_consume() with that item*
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Call `do_consume()` with two arguments: `action`, and a list containing the key to your fake item, ie `"something tasty"`
+    * `[ ]` Assign the results of `capsys.readouterr().out` to the variable `output`
+   ```
+
+{{ newrow }}
+
+4\. *THEN: An error message should be printed*
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` assert that an error message like {samp}`"Sorry, you can't {action} 'something tasty'."` is in `output`
+   ```
+
+{{ endcols }}
+
+4\. Run your tests. They should fail.
+
+`````
+
+`````{dropdown} test_do_consume_cant_consume()
+
+```{literalinclude} ../../../pythonclass/adventure/test_game-15.3.py
+:linenos:
+:lineno-match:
+:pyobject: "test_do_consume_cant_consume"
+:caption: test_game.py
+
+```
+
+`````
+
+### B. In `adventure.py` modify `do_consume()`: check item
+
+Now we'll modify `do_consume()` function to check to make sure the item can be
+eaten or drunk, based on if it has a `"eat-message"` or `"drink-message"` key.
+If not an error message will be printed and the function will return.
+
+`````{dropdown} Need help?
+
+1. `[ ]` Get the item using by calling `get_item()` with the argument `name` and assign the result to the variable `item`.
+1. `[ ]` Write an if statement that checks if the key {samp}`"{action}-message"` is in the `item` dictionary. If not:
+    * `[ ]` Use the `error()` function to print a message like: \
+      {samp}`"Sorry, you can't {action} '{name}'.'"`
+    * `[ ]` return
+1. `[ ]` Run your tests. They should pass.
+
+`````
+
+`````{dropdown} do_consume()
+
+```{literalinclude} ../../../pythonclass/adventure/adventure-15.3.py
+:linenos:
+:lineno-match:
+:pyobject: "do_consume"
+:emphasize-lines: "17-"
+:caption: adventure.py
+
+```
+
+`````

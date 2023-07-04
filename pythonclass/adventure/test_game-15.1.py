@@ -646,10 +646,7 @@ def test_do_pet_lonely_dragon(capsys):
     assert "-10 damage" in output
 
 
-@pytest.mark.parametrize(
-    "action",
-    ["eat", "drink"]
-)
+@pytest.mark.parametrize("action", ["eat", "drink"])
 def test_do_consume_no_args(capsys, action):
     # WHEN: The player types drink without an item
     do_consume(action, [])

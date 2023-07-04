@@ -675,3 +675,23 @@ def test_do_consume_not_in_inventory(capsys, action):
     # THEN: An error message should be printed
     assert f"Sorry, you don't have any 'something tasty' to {action}." in output, \
         "User error should be in output"
+
+
+@pytest.mark.parametrize("action", ["eat", "drink"])
+def test_do_consume_cant_consume(capsys, action):
+    # GIVEN: An item exists with no eat-message or drink-message key
+    adventure.ITEMS["something tasty"] = {
+        "name": "something tasty"
+    }
+
+    # AND: That item is in the player's inventory
+    inventory_change("something tasty")
+
+    # WHEN: You call do_consume() with that item
+    do_consume(action, ["something tasty"])
+
+    output = capsys.readouterr().out
+
+    # THEN: An error message should be printed
+    assert f"Sorry, you can't {action} 'something tasty'." in output, \
+        "User error should be in output"

@@ -650,10 +650,7 @@ def test_do_pet_lonely_dragon(capsys):
     assert "-10 damage" in output
 
 
-@pytest.mark.parametrize(
-    "action",
-    ["eat", "drink"]
-)
+@pytest.mark.parametrize("action", ["eat", "drink"])
 def test_do_consume_no_args(capsys, action):
     # WHEN: The player types drink without an item
     do_consume(action, [])
@@ -669,10 +666,7 @@ def test_do_consume_no_args(capsys, action):
         "User error should be in output"
 
 
-@pytest.mark.parametrize(
-    "action",
-    ["eat", "drink"]
-)
+@pytest.mark.parametrize("action", ["eat", "drink"])
 def test_do_consume_not_in_inventory(capsys, action):
     # GIVEN: The player does not have an item in inventory
     adventure.PLAYER["inventory"] = {}
@@ -684,6 +678,26 @@ def test_do_consume_not_in_inventory(capsys, action):
 
     # THEN: An error message should be printed
     assert f"Sorry, you don't have any 'something tasty' to {action}." in output, \
+        "User error should be in output"
+
+
+@pytest.mark.parametrize("action", ["eat", "drink"])
+def test_do_consume_cant_consume(capsys, action):
+    # GIVEN: An item exists with no eat-message or drink-message key
+    adventure.ITEMS["something tasty"] = {
+        "name": "something tasty"
+    }
+
+    # AND: That item is in the player's inventory
+    inventory_change("something tasty")
+
+    # WHEN: You call do_consume() with that item
+    do_consume(action, ["something tasty"])
+
+    output = capsys.readouterr().out
+
+    # THEN: An error message should be printed
+    assert f"Sorry, you can't {action} 'something tasty'." in output, \
         "User error should be in output"
 
 
