@@ -55,22 +55,26 @@ def test_teardown():
 
 
 @pytest.mark.parametrize(
-    "start, amount, result, message", [
-        (50, 10, 60, "a positive number should be added"),
-        (50, -10, 40, "a negative number should be subtracted"),
-        (20, -30, 0, "the min health should be 0"),
-        (90, 20, MAX_HEALTH, f"the max health should be {MAX_HEALTH}"),
+    "start, amount, health, diff, message", [
+        (50, 10, 60, 10, "a positive number should be added"),
+        (50, -10, 40, -10, "a negative number should be subtracted"),
+        (20, -30, 0, -20, "the min health should be 0"),
+        (90, 20, MAX_HEALTH, 10, f"the max health should be {MAX_HEALTH}"),
     ]
 )
-def test_health_change(start, amount, result, message):
+def test_health_change(start, amount, health, diff, message):
     # GIVEN: The player has some health
     adventure.PLAYER["health"] = start
 
     # WHEN: You call health_change()
-    health_change(amount)
+    result = health_change(amount)
 
     # THEN: The player health should be adjusted
-    assert adventure.PLAYER["health"] == result, message
+    assert adventure.PLAYER["health"] == health, message
+
+    # AND: The value returned should be the difference in points
+    assert result == diff, \
+        "The value returned should be the difference in health"
 
 
 def test_is_for_sale():

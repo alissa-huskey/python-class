@@ -185,7 +185,6 @@ ITEMS = {
             "You take a deep drink of the cool liquid.",
             "You feel refreshed.",
         ),
-        "health": 1,
     },
     "desk": {
         "key": "desk",
@@ -782,21 +781,6 @@ def do_consume(action, args):
     if f"{action}-message" not in item:
         error(f"Sorry, you can't {action} {name!r}.")
         return
-
-    inventory_change(name, -1)
-    health = item.get("health", 0)
-    difference = health_change(health)
-
-    print()
-    for sentence in item[f"{action}-message"]:
-        wrap(sentence)
-        print()
-        sleep(DELAY)
-
-    if health < 0:
-        print(f"You lost {abs(difference)} point(s).")
-    elif health > 0:
-        print(f"You gained {difference} point(s).")
 
 
 def do_pet(args):

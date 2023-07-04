@@ -423,3 +423,177 @@ If not an error message will be printed and the function will return.
 ```
 
 `````
+
+Part 15.4: Modify `health_change()`
+----------------------------------
+
+{{ sources.format("15.4") }}
+
+In this section we're going to modify the `health_change()` function so that it
+returns the amount that health was actually changed, which may be different
+than the `amount` argument.
+
+This is so that if, for example, the player's health is at `90` and they
+drink a potion that is `+20` health, we can tell the player that they
+gained `10` health points.
+
+### A. In `test_game.py` modify `test_health_change()`
+
+In this section, we'll add a parameter `diff` to the parametrization of the
+`test_health_change()` function. Then we'll need to save the result of calling
+`health_change()` and assert that it is equal to `diff`.
+
+(You may also want to rename `result` to `health`, so we can use the variable
+name `result` for the returned value.)
+
+`````{dropdown} Need help?
+
+1. `[ ]` Change the name `result` to `health` in:
+  - The first argument to `@pytest.mark.parametrize`
+  - The parameters to the `test_health_change()` function
+  - The assert statement
+1. `[ ]` Add a parameter `diff` to:
+  - The first argument to `@pytest.mark.parametrize`
+  - The parameters to the `test_health_change()` function
+1. `[ ]` Add a number for `diff` to each of the parametrization tuples, which
+    should be the difference between their start health and end health.
+1. `[ ]` Assign the value returned from of `health_change()` to the variable `result`
+1. `[ ]` In the `THEN` section, add: *AND: The value returned should be the difference in points* \
+  - assert that `result` is equal to `diff`
+1. Run your tests. They should fail.
+
+`````
+
+`````{dropdown} test_health_change()
+
+```{literalinclude} ../../../pythonclass/adventure/test_game-15.4.py
+:linenos:
+:lineno-match:
+:pyobject: "test_health_change"
+:caption: test_game.py
+:emphasize-lines: "1-9, 14, 17, 19-"
+
+```
+
+`````
+
+### B. In `adventure.py` modify `health_change()`: return difference
+
+Now we'll modify the `health_change()` function to return the difference
+between the player's health before and after it is changed.
+
+`````{dropdown} Need help?
+
+1. `[ ]` At the beginning of the function, save the value of `PLAYER["health"]` to the variable `before`.
+1. `[ ]` At the end of the function return the result of subtracting `before` from `PLAYER["health"]`
+
+`````
+
+`````{dropdown} health_change()
+
+```{literalinclude} ../../../pythonclass/adventure/adventure-15.4.py
+:linenos:
+:lineno-match:
+:pyobject: "health_change"
+:emphasize-lines: "5-6, 19-"
+:caption: adventure.py
+
+```
+
+`````
+
+
+
+xxx
+---
+
+### X. In `test_game.py` define `test_do_consume_cant_consume()`
+
+In this section we'll write a `test_do_consume_not_in_inventory()` function
+parametrized with three params:
+
+* `action`: `"eat"` or `"drink"`
+* `name`: We'll use this for the key in `adventure.ITEMS`, the name in the fake
+  item dictionary, and in the `args` list passed to `do_consume()`.
+* `message`: The fake item dictionary will have either an `"eat-message"` or
+  `"drink-message"` key and this will be the value.
+
+The function should test that if the player tries to eat or drink something
+that is not in inventory an error message will be printed.
+
+`````{dropdown} Need help?
+
+{{ left }}
+
+1\. Define a parametrized `test_do_consume_not_in_inventory()` function
+
+{{ br }}
+
+{{ right }}
+
+   ```{dropdown} ...
+    1. `[ ]` Add `test_do_consume_not_in_inventory()` function with four parameters: `capsys`, `action`, `name` and `message`.
+    1. `[ ]` Immediately above the `def` line call `@pytest.mark.parametrize()` with the
+      following arguments:
+        * The string `"action, name, message"`
+        * A list of tuples with each tuple on its own line, with values for:
+          - `action`: `"eat"` or `"drink"`
+          - `name`: a string to use as the item key among other things, like `"tea"`
+          - `message`: a string containing the message that would be printed
+            when you eat or drink the item, like `"You drink the steaming mug of tea."`
+
+          Make two tuples, one for `"eat"` and one for `"drink"`.
+   ```
+
+{{ newrow }}
+
+2\. *GIVEN: An item exists that is not in inventory*
+
+{{ br }}
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Create a fake item in `adventure.ITEMS` with the key `name`. The value should be a dictionary containing:
+      - `[ ]` the key `"name"` and the value `name`
+      - `[ ]` the key {samp}`"{action}-message"` and the value a list containing `message`
+   ```
+
+{{ newrow }}
+
+3\. *WHEN: You call do_consume() with that item*
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` Call `do_consume()` two arguments: `action`, and a list containing `name`
+    * `[ ]` Assign the results of `capsys.readouterr().out` to the variable `output`
+   ```
+
+{{ newrow }}
+
+4\. *THEN: An error message should be printed*
+
+{{ right }}
+
+   ```{dropdown} ...
+    * `[ ]` assert that an error message like {samp}`"Sorry, you don't have any '{NAME}' to {ACTION}."` is in `output`
+   ```
+
+{{ endcols }}
+
+4\. Run your tests. They should fail.
+
+`````
+
+`````{dropdown} test_do_consume_not_in_inventory()
+
+```{literalinclude} ../../../pythonclass/adventure/test_game-15.2.py
+:linenos:
+:lineno-match:
+:pyobject: "test_do_consume_not_in_inventory"
+:caption: test_game.py
+
+```
+
+`````
