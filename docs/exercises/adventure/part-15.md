@@ -502,96 +502,270 @@ between the player's health before and after it is changed.
 
 `````
 
+Part 15.5: Print message with delay
+-----------------------------------
 
-
-xxx
----
-
-### X. In `test_game.py` define `test_do_consume_cant_consume()`
-
-In this section we'll write a `test_do_consume_not_in_inventory()` function
-parametrized with three params:
-
-* `action`: `"eat"` or `"drink"`
-* `name`: We'll use this for the key in `adventure.ITEMS`, the name in the fake
-  item dictionary, and in the `args` list passed to `do_consume()`.
-* `message`: The fake item dictionary will have either an `"eat-message"` or
-  `"drink-message"` key and this will be the value.
-
-The function should test that if the player tries to eat or drink something
-that is not in inventory an error message will be printed.
-
-`````{dropdown} Need help?
+{{ sources.format("15.6") }}
 
 {{ left }}
 
-1\. Define a parametrized `test_do_consume_not_in_inventory()` function
-
-{{ br }}
+In this section we're going to print the eat or drink message.
 
 {{ right }}
 
-   ```{dropdown} ...
-    1. `[ ]` Add `test_do_consume_not_in_inventory()` function with four parameters: `capsys`, `action`, `name` and `message`.
-    1. `[ ]` Immediately above the `def` line call `@pytest.mark.parametrize()` with the
-      following arguments:
-        * The string `"action, name, message"`
-        * A list of tuples with each tuple on its own line, with values for:
-          - `action`: `"eat"` or `"drink"`
-          - `name`: a string to use as the item key among other things, like `"tea"`
-          - `message`: a string containing the message that would be printed
-            when you eat or drink the item, like `"You drink the steaming mug of tea."`
+`````{dropdown} Demo
+:open:
 
-          Make two tuples, one for `"eat"` and one for `"drink"`.
-   ```
-
-{{ newrow }}
-
-2\. *GIVEN: An item exists that is not in inventory*
-
-{{ br }}
-
-{{ right }}
-
-   ```{dropdown} ...
-    * `[ ]` Create a fake item in `adventure.ITEMS` with the key `name`. The value should be a dictionary containing:
-      - `[ ]` the key `"name"` and the value `name`
-      - `[ ]` the key {samp}`"{action}-message"` and the value a list containing `message`
-   ```
-
-{{ newrow }}
-
-3\. *WHEN: You call do_consume() with that item*
-
-{{ right }}
-
-   ```{dropdown} ...
-    * `[ ]` Call `do_consume()` two arguments: `action`, and a list containing `name`
-    * `[ ]` Assign the results of `capsys.readouterr().out` to the variable `output`
-   ```
-
-{{ newrow }}
-
-4\. *THEN: An error message should be printed*
-
-{{ right }}
-
-   ```{dropdown} ...
-    * `[ ]` assert that an error message like {samp}`"Sorry, you don't have any '{NAME}' to {ACTION}."` is in `output`
-   ```
-
-{{ endcols }}
-
-4\. Run your tests. They should fail.
+```{screencast} assets/adventure-15.5.cast
+:poster: npt:0:09
+```
 
 `````
 
-`````{dropdown} test_do_consume_not_in_inventory()
+{{ endcols }}
 
-```{literalinclude} ../../../pythonclass/adventure/test_game-15.2.py
+### A. In `test_game.py` define `test_do_consume()`
+
+In this section we'll write a `test_do_consume()` function.
+
+The function should test that when a player tries to eat or drink a consumable
+item, the `"eat-message"` or `"drink-message"` is printed.
+
+We'll parameratize the test with the parameters `action` (`"eat"`" or
+`"drink`), and `item` (a dictionary to add to `adventure.ITEMS`).
+
+:::{tip}
+
+You can set `adventure.WIDTH` to extra wide to avoid wrapping. That way when
+you assert `"some string" in ouput` you can be sure that all words are on the
+same line.
+
+:::
+
+`````{dropdown} Need help?
+
+1\. Define a parametrized `test_do_consume()` function.
+
+{{ br }}
+
+```{dropdown} ...
+1. `[ ]` Add `test_do_consume()` function with four parameters: `capsys`, `action`, and `item`.
+1. `[ ]` Immediately above the `def` line call `@pytest.mark.parametrize()` with the
+  following arguments:
+    * The string `"action, item"`
+    * A list of tuples with each tuple on its own line, with values for:
+      - `action`: `"eat"` or `"drink"`
+      - `item`: a dictionary for the fake item to add to `adventure.ITEMS`.
+         it should include keys for: `"name"`, `"health"`, and `"eat-message"`
+         or `"drink-message"`
+
+1. `[ ]` Make two tuples, one for `"eat"` and one for `"drink"`.
+```
+
+2\. *GIVEN: An item exists*
+
+{{ br }}
+
+```{dropdown} ...
+* `[ ]` Assign the variable `name` to the value `item["name"]`
+* `[ ]` Create a fake item in `adventure.ITEMS` with the key `name`. The
+  value should be the `item` dictionary (from params).
+```
+
+3\. *AND: The player has the item in their inventory*
+
+```{dropdown} ...
+* `[ ]` Call `inventory_change()` with the argument `name`
+```
+
+4\. *AND: The width is set wide to avoid wrapping*
+
+
+```{dropdown} ...
+* `[ ]` set `adventure.WIDTH` to a large number like `200`
+```
+
+5\. *WHEN: You call do_consume() with that item*
+
+
+```{dropdown} ...
+* `[ ]` call `do_consume` with the arguments `action`, and a list
+  containing the item `name`.
+* `[ ]` assign the varible `output` to the results of calling `capsys.readouterr().out`
+```
+
+6\. *THEN: The message contents should be in output*
+
+
+```{dropdown} ...
+* `[ ]` assign the varible `line` to the first item in the
+  `item[f"{action}-message"] tuple`
+* `[ ]` assert that `line` is in output
+```
+
+7\. Run your tests. They should fail.
+
+`````
+
+`````{dropdown} test_do_consume()
+
+```{literalinclude} ../../../pythonclass/adventure/test_game-15.5.py
 :linenos:
 :lineno-match:
-:pyobject: "test_do_consume_not_in_inventory"
+:pyobject: "test_do_consume"
+:caption: test_game.py
+
+```
+
+`````
+
+### B. In `adventure.py` modify `do_consume()`, at the end
+
+In this section we'll modify the `do_consume()` function to wrap and print each
+item in the `"eat-message"` or `"drink-message"` and then sleep.
+
+`````{dropdown} Need help?
+
+1. `[ ]` print a blank line
+1. `[ ]` Iterate over `item[f"{action}-message"]` with the variable `sentence`.
+   In the for loop:
+   * `[ ]` print `sentence` by calling the `wrap()` function
+   * `[ ]` print a blank line
+   * `[ ]` sleep for `DELAY` seconds
+1. `[ ]` Run your tests. They should pass.
+
+`````
+
+`````{dropdown} do_consume()
+
+```{literalinclude} ../../../pythonclass/adventure/adventure-15.5.py
+:linenos:
+:lineno-match:
+:pyobject: "do_consume"
+:caption: adventure.py
+:emphasize-lines: "24-"
+
+```
+
+`````
+
+### C. In `adventure.py` modify `ITEMS`
+
+In this section we'll add or modify items in `ITEMS` to include an
+`"eat-message"` or `"drink-message"` key. Then if needed we'll add those items
+to `PLACES`.
+
+`````{dropdown} ITEMS
+
+```{literalinclude} ../../../pythonclass/adventure/adventure-15.5.py
+:linenos:
+:lineno-match:
+:start-at: "ITEMS ="
+:end-before: "# Message functions"
+:caption: adventure.py
+:emphasize-lines: "7-16, 24-49"
+
+```
+
+`````
+
+`````{dropdown} PLACES
+
+```{literalinclude} ../../../pythonclass/adventure/adventure-15.5.py
+:linenos:
+:lineno-match:
+:start-at: "PLACES ="
+:end-before: "ITEMS ="
+:caption: adventure.py
+:emphasize-lines: "7, 47"
+
+```
+
+`````
+
+Part 15.6:
+-----------------------------------
+
+{{ sources.format("15.6") }}
+
+In this section
+
+### A. In `test_game.py` define `test_do_consume()`
+
+In this section we'll
+
+
+`````{dropdown} Need help?
+
+1\. Define a parametrized `test_do_consume()` function.
+
+{{ br }}
+
+```{dropdown} ...
+1. `[ ]` Add `test_do_consume()` function with four parameters: `capsys`, `action`, and `item`.
+1. `[ ]` Immediately above the `def` line call `@pytest.mark.parametrize()` with the
+  following arguments:
+    * The string `"action, item"`
+    * A list of tuples with each tuple on its own line, with values for:
+      - `action`: `"eat"` or `"drink"`
+      - `item`: a dictionary for the fake item to add to `adventure.ITEMS`.
+         it should include keys for: `"name"`, `"health"`, and `"eat-message"`
+         or `"drink-message"`
+
+1. `[ ]` Make two tuples, one for `"eat"` and one for `"drink"`.
+```
+
+2\. *GIVEN: An item exists*
+
+{{ br }}
+
+```{dropdown} ...
+* `[ ]` Assign the variable `name` to the value `item["name"]`
+* `[ ]` Create a fake item in `adventure.ITEMS` with the key `name`. The
+  value should be the `item` dictionary (from params).
+```
+
+3\. *AND: The player has the item in their inventory*
+
+```{dropdown} ...
+* `[ ]` Call `inventory_change()` with the argument `name`
+```
+
+4\. *AND: The width is set wide to avoid wrapping*
+
+
+```{dropdown} ...
+* `[ ]` set `adventure.WIDTH` to a large number like `200`
+```
+
+5\. *WHEN: You call do_consume() with that item*
+
+
+```{dropdown} ...
+* `[ ]` call `do_consume` with the arguments `action`, and a list
+  containing the item `name`.
+* `[ ]` assign the varible `output` to the results of calling `capsys.readouterr().out`
+```
+
+6\. *THEN: The message contents should be in output*
+
+
+```{dropdown} ...
+* `[ ]` assign the varible `line` to the first item in the
+  `item[f"{action}-message"] tuple`
+* `[ ]` assert that `line` is in output
+```
+
+7\. Run your tests. They should fail.
+
+`````
+
+`````{dropdown} test_do_consume()
+
+```{literalinclude} ../../../pythonclass/adventure/test_game-15.5.py
+:linenos:
+:lineno-match:
+:pyobject: "test_do_consume"
 :caption: test_game.py
 
 ```

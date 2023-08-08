@@ -166,7 +166,6 @@ ITEMS = {
         "name": "healing elixir",
         "description": "a magical elixir that will heal what ails ya",
         "price": -10,
-        "health": 20,
         "drink-message": (
             "You uncork the bottle.",
             "The swirling green liquid starts to bubble.",
@@ -196,7 +195,6 @@ ITEMS = {
             "You take a deep drink of the cool liquid.",
             "You feel refreshed.",
         ),
-        "health": 5,
     },
     "mushroom": {
         "key": "mushroom",
@@ -210,7 +208,6 @@ ITEMS = {
             "Things start to look swirllllly...",
             "Your tummy doesn't feel so good.",
         ),
-        "health": -25,
     },
     "desk": {
         "key": "desk",
@@ -557,31 +554,20 @@ def do_examine(args):
     # get the item dictionary
     item = get_item(name)
 
-    # variable for the health/price/inventory line
-    stats = []
-
-    # the price if we're in the market
-    if place_can("shop") and place_has(name) and is_for_sale(item):
-        stats.append(f"Price: {abs(item['price'])} gems")
-
-    # the quantity if the item is from inventory
-    elif player_has(name):
-        stats.append(f"(x{PLAYER['inventory'][name]})")
-
-    # add the health if applicable
-    if "health" in item:
-        stats.append(f"{item['health']:+} health")
-
     # print the item information
     header(item["name"].title())
 
-    # right-justify the price/quantity
-    if stats:
-        text = " | " + " | ".join(stats) + " | "
-        print(text.rjust(WIDTH - MARGIN))
+    # print the price if we're in the market
+    if place_can("shop") and place_has(name) and is_for_sale(item):
+        write(f"{abs(item['price'])} gems".rjust(WIDTH - MARGIN))
         print()
 
-    wrap(item["description"].capitalize().rstrip(".") + ".")
+    # print the quantity if the item is from inventory
+    elif player_has(name):
+        write(f"(x{PLAYER['inventory'][name]})".rjust(WIDTH - MARGIN))
+        print()
+
+    wrap(item["description"])
 
 
 def do_go(args):
@@ -819,20 +805,11 @@ def do_consume(action, args):
         error(f"Sorry, you can't {action} {name!r}.")
         return
 
-    inventory_change(name, -1)
-    health = item.get("health", 0)
-    difference = health_change(health)
-
     print()
     for sentence in item[f"{action}-message"]:
         wrap(sentence)
         print()
         sleep(DELAY)
-
-    if health < 0:
-        print(f"You lost {abs(difference)} point(s).")
-    elif health > 0:
-        print(f"You gained {difference} point(s).")
 
 
 def do_pet(args):

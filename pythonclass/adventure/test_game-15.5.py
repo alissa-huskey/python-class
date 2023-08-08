@@ -8,7 +8,6 @@ from adventure import (
     debug,
     do_consume,
     do_drop,
-    do_examine,
     do_pet,
     do_read,
     error,
@@ -362,49 +361,6 @@ def test_do_read_no_args(capsys):
         "User error should be in output"
 
 
-def test_do_examine(capsys):
-    # GIVEN: An item exists
-    adventure.PLAYER["place"] = "bakery"
-    adventure.PLACES["bakery"] = {
-        "name": "bakery",
-        "can": ["shop"],
-        "items": ["cookie"],
-    }
-
-    item = {
-        "name": "a cookie",
-        "description": "A chocolate chip cookie.",
-        "health": 5,
-        "price": 5,
-    }
-    adventure.ITEMS["cookie"] = item
-
-    # WHEN: do_examine() is called
-    do_examine(["cookie"])
-
-    output = capsys.readouterr().out
-
-    # THEN: a debug message should be printed
-    assert "Trying to examine: ['cookie']" in output, \
-        "Debug message should be in output"
-
-    # AND: The item name should be printed
-    assert "A Cookie" in output, \
-        "The item name should be printed"
-
-    # AND: The item description should be printed
-    assert item["description"] in output, \
-        "The item description should be printed"
-
-    # AND: The health points should be printed
-    assert "+5 health" in output, \
-        "The health points should be printed"
-
-    # AND: The price should be printed
-    assert "5 gems" in output, \
-        "The price should be printed"
-
-
 def test_do_read_missing_item(capsys):
     do_read(["missing"])
 
@@ -746,7 +702,7 @@ def test_do_consume_cant_consume(capsys, action):
 
 
 @pytest.mark.parametrize(
-    "action, item, health, message",
+    "action, item",
     [
         (
             "drink",
@@ -757,8 +713,6 @@ def test_do_consume_cant_consume(capsys, action):
                 ),
                 "health": 5,
             },
-            55,
-            "gained 5",
         ),
         (
             "eat",
@@ -770,21 +724,16 @@ def test_do_consume_cant_consume(capsys, action):
                 ),
                 "health": -5,
             },
-            45,
-            "lost 5",
         ),
     ]
 )
-def test_do_consume(capsys, action, item, health, message):
+def test_do_consume(capsys, action, item):
     # GIVEN: An item exists
     name = item["name"]
     adventure.ITEMS[name] = item
 
     # AND: The player has the item in their inventory
     inventory_change(name)
-
-    # AND: The player has a certain amount of health
-    adventure.PLAYER["health"] = 50
 
     # AND: The width is set wide to avoid wrapping
     adventure.WIDTH = 200
@@ -798,15 +747,3 @@ def test_do_consume(capsys, action, item, health, message):
     line = item[f"{action}-message"][0]
     assert f"  {line}" in output, \
         f"The {action}-message should be printed."
-
-    # AND: The player's health should be changed
-    assert adventure.PLAYER["health"] == health, \
-        "The player's health should be changed."
-
-    # AND: The item should be removed from inventory
-    assert not player_has(name), \
-        "The item should be removed from inventory."
-
-    # AND: A message about the action take should be printed
-    assert "You {message} points." in output, \
-        "A message about the action take should be printed"
