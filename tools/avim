@@ -30,7 +30,36 @@ parse() {
     sn=1
   done
 
+  : "${mode:=symlinkd}"
+
   [[ ${#files} -eq 0 ]] && files=( adventure )
+}
+
+get_symlinkd() {
+  local file version _path
+
+  for file in ${files[@]}; do
+      if [[ "${file}" == "doc" ]]; then
+        get_final
+        _path="${docdir}/part-${versions}.md"
+      else
+        _path="${file}.py"
+      fi
+
+
+    if [[ ! -f "${_path}" ]]; then
+      err "File not found: ${_path}"
+      exit 1
+    fi
+
+    paths+=( "${_path}" )
+  done
+
+  if [[ ${#paths[@]} -eq 0 ]]; then
+    err "No files found." >&2 && echo
+    usage
+    exit 1
+  fi
 }
 
 get_last() {
@@ -70,55 +99,66 @@ get_versions() {
 }
 
 usage() {
-  cat <<EOF
-
-   avim -- and start a vimdiff between the two versions of
-            adventure.py or test_game.py
-
-   usage:
-
-   avim [--last|--fin|--version VERSION] FILE
-   avim -h|--help
+  <<EOF
+     Usage: avim [--last|--fin|--version VERSION] [FILE]
+            avim -h|--help
 EOF
 }
 
 help() {
+  <<EOF
+
+   avim -- and open adventure.py and/or test_game.py using nvim
+
+EOF
+
   usage
-  cat <<EOF
+
+  <<EOF
+
+     OPTIONS
+
      -l,--last      diff the last version of this FILE
      -f,--fin       diff the final version of this FILE
      -v,--version   diff the specific version VERSION of FILE
      -h,--help      print this help
      FILE           which file to generate the diff for
                     adventure|test[_game]
+                    (defaults to adventure, in current dir without -l|-f|-v)
+
 EOF
 }
 
 get_paths() {
-  local file version path
+  local file version _path
 
   for file in ${files[@]}; do
     for version in ${versions}; do
       if [[ "${file}" == "doc" ]]; then
-        path="${docdir}/part-${version}.md"
+        _path="${docdir}/part-${version}.md"
       else
-        path="${srcdir}/${file}-${version}.py"
+        _path="${srcdir}/${file}-${version}.py"
       fi
 
 
-      if [[ ! -f "${path}" ]]; then
-        echo "file not found: ${path}" >&2
+      if [[ ! -f "${_path}" ]]; then
+        err "file not found: ${_path}"
         exit 1
       fi
 
-      paths+=( "${path}" )
-
+      paths+=( "${_path}" )
     done
   done
+
+  if [[ ${#paths[@]} -eq 0 ]]; then
+    err "No files found." && echo
+    usage
+    exit 1
+  fi
 }
 
 err() {
-  :
+    printf "\e[31mError\e[0m %s\n" "${*}"
 }
 
 cmd() {
@@ -134,14 +174,14 @@ main() {
   srcdir="pythonclass/adventure"
   docdir="docs/exercises/adventure"
 
-  current="$(readlink -f "${file}.py")"
+  current="$(readlink -f "adventure.py")"
   current="${current##*/}"
 
   case "${mode}" in
-
     last)     get_last      ;;
     fin)      get_final     ;;
     version)  get_versions  ;;
+    symlinkd) get_symlinkd  ;;
     help)     help ; exit   ;;
   esac
 

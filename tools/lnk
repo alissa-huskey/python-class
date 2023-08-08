@@ -17,6 +17,7 @@ lnk -- create a symbolic link to a particular version of the adventure
        game and test file if it exists
 
 usage: lnk VERSION
+       lnk [-l|-h]
 
 EOF
 }
@@ -26,11 +27,20 @@ main() {
 
   [[ $# -ne 1 ]] && mode=usage ec=1
   [[ "$*" =~ (-h|--help) ]] && mode=usage
+  [[ "$*" =~ (-l|--list) ]] && mode=list
 
-  if [[ "$mode" == "usage" ]]; then
-    usage
-    exit $ec
-  fi
+  case "${mode}" in
+    usage)
+      usage
+      exit $ec
+      ;;
+    list)
+      file=$(readlink adventure.py)
+      version="${file##*-}"
+      echo "${version%%.py}"
+      exit
+      ;;
+  esac
 
   files=( ${srcdir}/*-${version}.py )
 

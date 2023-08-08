@@ -3,7 +3,7 @@
 usage() {
   cat <<EOF
 
-  $0 - play the game
+  $0 - watch a screencast of the adventure game
 
    usage:
 
@@ -18,13 +18,13 @@ help() {
   cat <<EOF
   Arguments:
 
-     VERSION        Version of adventure game to play
+     VERSION        Version of adventure game to record
 
 EOF
 }
 
 main() {
-  local version="$1" game mode
+  local version="$1" cast mode
 
   if [[ $# -eq 0 ]]; then
     usage
@@ -39,14 +39,14 @@ main() {
     exit
   fi
 
-  game="pythonclass/adventure/adventure-${version}.py"
+  cast="docs/exercises/adventure/assets/adventure-${version}.cast"
 
-  if ! [[ -f "${game}" ]]; then
-    echo "Error: No such file found: '${game}'."
+  if ! [[ -f "${cast}" ]]; then
+    echo "Error: No such file found: '${cast}'."
     exit 1
   fi
 
-  python "${game}"
+  poetry run asciinema play "${cast}"
 }
 
 main ${1:+"$@"}
