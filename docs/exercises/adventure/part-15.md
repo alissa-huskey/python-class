@@ -505,7 +505,7 @@ between the player's health before and after it is changed.
 Part 15.5: Print message with delay
 -----------------------------------
 
-{{ sources.format("15.6") }}
+{{ sources.format("15.5") }}
 
 {{ left }}
 
@@ -827,6 +827,180 @@ Play your game and eat or drink the relevant items to test it out!
 :end-before: "# Message functions"
 :caption: adventure.py
 :emphasize-lines: "17, 37, 51"
+
+```
+
+`````
+
+Part 15.7: Add health to examine
+--------------------------------
+
+{{ sources.format("15.7") }}
+
+{{ left }}
+
+In this section we'll add health to the examine command.
+
+{{ right }}
+
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-15.7.cast
+:poster: npt:0:04
+```
+
+`````
+
+{{ endcols }}
+
+### A. In `test_game.py` add `test_examine()`
+
+In this section we'll add a test for the `do_examine()` function if it does not
+already exist. Then we'll modify the test to make sure that the health is
+displayed.
+
+`````{dropdown} Need help? (skip if test_do_examine is defined)
+
+1\. Import `do_examine`
+
+2\. Define the `test_do_examine()` function and include the `capsys` fixture.
+
+{{ br }}
+
+````{dropdown} ...
+`[ ]` Define `test_do_examine()` with the parameter `capsys`
+````
+
+3\. `[ ]` *GIVEN: An item exists*
+
+````{dropdown} ...
+* `[ ]` Create a dictionary for a fake item and assign it to the variable `item`.
+      The dictionary should include keys for: `"name"`, `"description"` and
+      `"price"`.
+* `[ ]` Add the `item` to the `adventure.ITEMS` dictionary
+````
+
+4\. `[ ]` *AND: A place has the item*
+
+````{dropdown} ...
+`[ ]` Add a fake place to the `adventure.PLACES` dictionary. It should include
+      keys for `"name"` and `"items"`. Make sure to add the fake item to the place.
+````
+
+5\. `[ ]` *AND: The player is that place*
+
+````{dropdown} ...
+`[ ]` Modify `adventure.PLAYER` to put the player in your fake place.
+````
+
+6\. `[ ]` *WHEN: do_examine() is called*
+
+````{dropdown} ...
+* `[ ]` Call `do_examine()` with a list containing the key to your fake item.
+* `[ ]` Assign the variable `output` to the result of calling `capsys.readouterr().out`
+````
+
+7\. `[ ]` *THEN: a debug message should be printed*
+
+````{dropdown} ...
+`[ ]` Assert that a string like `"Trying to examine: ['cookie']"` is in `output`
+````
+
+8\. `[ ]` *AND: The item name should be printed*
+
+````{dropdown} ...
+`[ ]` Assert that `item["name"]` is in `output`
+````
+
+9\. `[ ]` *AND: The item description should be printed*
+
+````{dropdown} ...
+`[ ]` Assert that `item["description"]` is in `output`
+````
+
+10\. `[ ]` *AND: The price should be printed*
+
+````{dropdown} ...
+`[ ]` Assert that a string like `"5 gems"` is in `output`
+````
+
+11\. `[ ]` Run your tests. They should pass.
+
+`````
+
+`````{dropdown} Need help?
+
+1\. `[ ]` Modify: *GIVEN: An item exists* to add `"health"`
+
+{{ br }}
+
+````{dropdown} ...
+`[ ]` Modify your fake item dictionary to include a key for `"health"`
+````
+
+2\. `[ ]` Under *THEN* add : *AND: The health points should be printed*
+
+````{dropdown} ...
+`[ ]` Assert that a string like `"+5 health"` is in `output`
+````
+
+3\. `[ ]` Run your tests. They should fail.
+
+`````
+
+`````{dropdown} test_do_examine()
+
+```{literalinclude} ../../../pythonclass/adventure/test_game-15.7.py
+:linenos:
+:lineno-match:
+:pyobject: "test_do_examine"
+:caption: test_game.py
+:emphasize-lines: "6, 41-"
+
+```
+
+`````
+
+### B. In `adventure.py` modify `do_examine()`
+
+In this section we'll modify the `do_examine()` function to print the health
+gained or lost from an item, if any.
+
+In my examine display I have the item price, inventory quantity, and health all
+on the same line, right aligned.
+
+To accomplish this I put them all in a list named `stats`, then joined them
+with the `|` character, then called `.rjust()` on the result to print it.
+Depending how you want to format your examine output, you may or may not want
+to do it the same way.
+
+`````{dropdown} Need help?
+
+1. `[ ]` Create an empty list assigned to the variable `stats`.
+1. `[ ]` If the place can `"shop"` and the place has the item and the item is for sale:
+   * `[ ]` Append a string like {samp}`"Price: {PRICE} gems"` to `stats`.
+1. `[ ]` Otherwise, if the item is in the player's inventory:
+   * `[ ]` Append a string like {samp}`"(x {QUANTITY})"` to `stats`.
+1. `[ ]` If the item has a `"health"` key:
+   * `[ ]` Append a string like {samp}`"+{HEALTH} health"` to `stats`
+1. `[ ]` If the `stats` list is not empty:
+   * `[ ]` Assign the variable `text` to the `stats` list joined by a string like: \
+     `" | "`.
+   * `[ ]` Call the `.rjust()` method with the argument `WIDTH - MARGIN` and print it.
+   * `[ ]` Print a blank line.
+1. `[ ]` Run your tests. They should pass.
+
+`````
+
+`````{dropdown} do_examine()
+
+```{literalinclude} ../../../pythonclass/adventure/adventure-15.7.py
+:linenos:
+:lineno-match:
+:pyobject: "do_examine"
+:caption: adventure.py
+:emphasize-lines: "22-35, 40-44"
 
 ```
 
