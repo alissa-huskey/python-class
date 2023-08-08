@@ -557,31 +557,20 @@ def do_examine(args):
     # get the item dictionary
     item = get_item(name)
 
-    # variable for the health/price/inventory line
-    stats = []
-
-    # the price if we're in the market
-    if place_can("shop") and place_has(name) and is_for_sale(item):
-        stats.append(f"Price: {abs(item['price'])} gems")
-
-    # the quantity if the item is from inventory
-    elif player_has(name):
-        stats.append(f"(x{PLAYER['inventory'][name]})")
-
-    # add the health if applicable
-    if "health" in item:
-        stats.append(f"{item['health']:+} health")
-
     # print the item information
     header(item["name"].title())
 
-    # right-justify the price/quantity
-    if stats:
-        text = " | " + " | ".join(stats) + " | "
-        print(text.rjust(WIDTH - MARGIN))
+    # print the price if we're in the market
+    if place_can("shop") and place_has(name) and is_for_sale(item):
+        write(f"{abs(item['price'])} gems".rjust(WIDTH - MARGIN))
         print()
 
-    wrap(item["description"].capitalize().rstrip(".") + ".")
+    # print the quantity if the item is from inventory
+    elif player_has(name):
+        write(f"(x{PLAYER['inventory'][name]})".rjust(WIDTH - MARGIN))
+        print()
+
+    wrap(item["description"])
 
 
 def do_go(args):

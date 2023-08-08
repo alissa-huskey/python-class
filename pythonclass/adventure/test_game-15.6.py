@@ -8,7 +8,6 @@ from adventure import (
     debug,
     do_consume,
     do_drop,
-    do_examine,
     do_pet,
     do_read,
     error,
@@ -360,49 +359,6 @@ def test_do_read_no_args(capsys):
 
     assert "What do you want to read?" in output, \
         "User error should be in output"
-
-
-def test_do_examine(capsys):
-    # GIVEN: An item exists
-    adventure.PLAYER["place"] = "bakery"
-    adventure.PLACES["bakery"] = {
-        "name": "bakery",
-        "can": ["shop"],
-        "items": ["cookie"],
-    }
-
-    item = {
-        "name": "a cookie",
-        "description": "A chocolate chip cookie.",
-        "health": 5,
-        "price": 5,
-    }
-    adventure.ITEMS["cookie"] = item
-
-    # WHEN: do_examine() is called
-    do_examine(["cookie"])
-
-    output = capsys.readouterr().out
-
-    # THEN: a debug message should be printed
-    assert "Trying to examine: ['cookie']" in output, \
-        "Debug message should be in output"
-
-    # AND: The item name should be printed
-    assert "A Cookie" in output, \
-        "The item name should be printed"
-
-    # AND: The item description should be printed
-    assert item["description"] in output, \
-        "The item description should be printed"
-
-    # AND: The health points should be printed
-    assert "+5 health" in output, \
-        "The health points should be printed"
-
-    # AND: The price should be printed
-    assert "5 gems" in output, \
-        "The price should be printed"
 
 
 def test_do_read_missing_item(capsys):
@@ -808,5 +764,5 @@ def test_do_consume(capsys, action, item, health, message):
         "The item should be removed from inventory."
 
     # AND: A message about the action take should be printed
-    assert f"You {message} points." in output, \
+    assert f"You {message} point" in output, \
         "A message about the action take should be printed"

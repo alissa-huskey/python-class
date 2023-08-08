@@ -649,7 +649,7 @@ item in the `"eat-message"` or `"drink-message"` and then sleep.
 
 `````
 
-### C. In `adventure.py` modify `ITEMS`
+### C. In `adventure.py` modify `ITEMS` and `PLACES`
 
 In this section we'll add or modify items in `ITEMS` to include an
 `"eat-message"` or `"drink-message"` key. Then if needed we'll add those items
@@ -683,90 +683,150 @@ to `PLACES`.
 
 `````
 
-Part 15.6:
------------------------------------
+Part 15.6: Consume
+------------------
 
 {{ sources.format("15.6") }}
 
-In this section
+{{ left }}
 
-### A. In `test_game.py` define `test_do_consume()`
+In this section we'll make sure that when you eat or drink something it is
+removed from inventory and your health is changed accordingly.
 
-In this section we'll
+{{ right }}
 
+`````{dropdown} Demo
+:open:
+
+```{screencast} assets/adventure-15.6.cast
+:poster: npt:0:10
+```
+
+`````
+
+{{ endcols }}
+
+### A. In `test_game.py` modify `test_do_consume()`
+
+In this section we'll modify the `test_do_consume()` function to test that the
+player's health and inventory has changed and that a message is printed to tell
+them so.
+
+In order to do so we'll add two parameters to the test: `health` (for the
+player's health after consuming) and `message` for the text that will be
+printed about the change.
 
 `````{dropdown} Need help?
 
-1\. Define a parametrized `test_do_consume()` function.
+1\. Modify `test_do_consume()` to add parameters for `health` and `message`.
 
 {{ br }}
 
-```{dropdown} ...
-1. `[ ]` Add `test_do_consume()` function with four parameters: `capsys`, `action`, and `item`.
-1. `[ ]` Immediately above the `def` line call `@pytest.mark.parametrize()` with the
-  following arguments:
-    * The string `"action, item"`
-    * A list of tuples with each tuple on its own line, with values for:
-      - `action`: `"eat"` or `"drink"`
-      - `item`: a dictionary for the fake item to add to `adventure.ITEMS`.
-         it should include keys for: `"name"`, `"health"`, and `"eat-message"`
-         or `"drink-message"`
+````{dropdown} ...
+1. `[ ]` In the first argument of `@pytest.mark.parametrize()` add the
+parameters `"health, message"` to the end of the string.
+1. `[ ]` Add values for each tuple:
+   * A number like `55`, for the amount of health the player will have after
+     consuming the item
+   * A string like `"lost 5"` for part of the text that the player will see
+1. `[ ]` In the definition of `test_do_consume()` add the parameters `health`
+   and `message`.
+````
 
-1. `[ ]` Make two tuples, one for `"eat"` and one for `"drink"`.
-```
+2\. `[ ]` Under *GIVEN* add : *AND: The player has a certain amount of health*
 
-2\. *GIVEN: An item exists*
+````{dropdown} ...
+`[ ]` Set `adventure.PLAYER["health"]` to a specific number like `50`
+````
 
-{{ br }}
+3\. `[ ]` Under *THEN* add : *The player's health should be changed*
 
-```{dropdown} ...
-* `[ ]` Assign the variable `name` to the value `item["name"]`
-* `[ ]` Create a fake item in `adventure.ITEMS` with the key `name`. The
-  value should be the `item` dictionary (from params).
-```
+````{dropdown} ...
+`[ ]` Assert that `adventure.PLAYER["health"]` equals `health`
+````
 
-3\. *AND: The player has the item in their inventory*
+4\. `[ ]` Under *THEN* add : *The item should be removed from inventory*
 
-```{dropdown} ...
-* `[ ]` Call `inventory_change()` with the argument `name`
-```
+````{dropdown} ...
+`[ ]` Assert that the player does not have `name`
+````
 
-4\. *AND: The width is set wide to avoid wrapping*
+5\. `[ ]` Under *THEN* add : *A message about the action take should be printed*
 
+````{dropdown} ...
+`[ ]` Assert that `f"You {message} point"` is not in `output`
+````
 
-```{dropdown} ...
-* `[ ]` set `adventure.WIDTH` to a large number like `200`
-```
-
-5\. *WHEN: You call do_consume() with that item*
-
-
-```{dropdown} ...
-* `[ ]` call `do_consume` with the arguments `action`, and a list
-  containing the item `name`.
-* `[ ]` assign the varible `output` to the results of calling `capsys.readouterr().out`
-```
-
-6\. *THEN: The message contents should be in output*
-
-
-```{dropdown} ...
-* `[ ]` assign the varible `line` to the first item in the
-  `item[f"{action}-message"] tuple`
-* `[ ]` assert that `line` is in output
-```
-
-7\. Run your tests. They should fail.
+6\. `[ ]` Run your tests. They should fail.
 
 `````
 
 `````{dropdown} test_do_consume()
 
-```{literalinclude} ../../../pythonclass/adventure/test_game-15.5.py
+```{literalinclude} ../../../pythonclass/adventure/test_game-15.6.py
 :linenos:
 :lineno-match:
 :pyobject: "test_do_consume"
 :caption: test_game.py
+:emphasize-lines: "2, 13-14, 26-27, 31, 39-41, 55-"
+
+```
+
+`````
+
+### B. In `adventure.py` modify `do_consume()`
+
+In this section we'll modify the `do_consume()` function so that it removes the
+item from inventory, modifies the player's health, and prints a message about
+what happened.
+
+`````{dropdown} Need help?
+
+1. `[ ]` Call `inventory_change()` with the arguments `name` and `-1`.
+1. `[ ]` Call `item.get()` with the arguments `"health"` and `0` and assign the
+         returned value to the variable `health`.
+1. `[ ]` Call `health_change()` with the argument `health` and assign the
+         returned result to the variable `difference`.
+1. `[ ]` If `health` is greater than zero:
+    * `[ ]` Print a message like: \
+    * {samp}`"You lost {POINTS} point(s)."`
+1. `[ ]` Otherwise, if `health` is less than zero:
+    * {samp}`"You gained {difference} point(s)."`
+1. `[ ]` Run your tests. They should pass.
+
+`````
+
+`````{dropdown} do_consume()
+
+```{literalinclude} ../../../pythonclass/adventure/adventure-15.6.py
+:linenos:
+:lineno-match:
+:pyobject: "do_consume"
+:caption: adventure.py
+:emphasize-lines: "25-27, 35-"
+
+```
+
+`````
+
+### C. In `adventure.py` modify `ITEMS`
+
+In this section we'll modify any of the item dictionaries in `ITEMS` that have
+a `"eat-message"` or `"drink-message"` key to add a `"health"` key. The value
+should be the number of health points to add or remove.
+
+Play your game and eat or drink the relevant items to test it out!
+
+
+`````{dropdown} ITEMS
+
+```{literalinclude} ../../../pythonclass/adventure/adventure-15.6.py
+:linenos:
+:lineno-match:
+:start-at: "ITEMS ="
+:end-before: "# Message functions"
+:caption: adventure.py
+:emphasize-lines: "17, 37, 51"
 
 ```
 
