@@ -41,13 +41,8 @@ jupyter-book build docs
 
 ([more info][jb-pages])
 
-Python modules needed for production docs are stored in `docs/.requirements.txt`.
-
-To deploy manually:
-
-```bash
-ghp-import -n -p -f docs/_build/html
-```
+Production requirements are exported from the pyproject.toml using poetry as
+configured in the github action.
 
 ##### Github Config
 
