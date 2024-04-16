@@ -84,7 +84,7 @@ systems would be something like this:
 flowchart LR
 
   subgraph Version Control
-    subgraph Centeralized
+    subgraph Centralized
       direction TB
       central[Central Repo] <--> a1[Alissa] & j1[Jayson] & s1[Sean]
     end
@@ -94,7 +94,6 @@ flowchart LR
       Remote & Alissa <--> Jayson & Sean
     end
   end
-
 ```
 
 

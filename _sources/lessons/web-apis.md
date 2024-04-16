@@ -347,10 +347,10 @@ We talked about how the resources you access through the browser are known as
 `web pages`. API resources commonly referred to as `endpoints`.
 
 For this exercise, we'll use the
-[hellosalut](https://fourtonfish.com/hellosalut/hello/) API, which tells you
+[hellosalut](https://stefanbohacek.com/project/hellosalut-api/) API, which tells you
 how to say "hello" in a given language.
 
-The `endpoint` is `https://fourtonfish.com/hellosalut/`. We'll pass it the
+The `endpoint` is `https://hellosalut.stefanbohacek.dev/`. We'll pass it the
 `lang` parameter, starting with the language code `de` for German.
 
 #### Step 1: Try it using `curl`
@@ -359,7 +359,7 @@ The `endpoint` is `https://fourtonfish.com/hellosalut/`. We'll pass it the
 ---
 caption: command line
 ---
-curl "https://fourtonfish.com/hellosalut/?lang=de"
+curl "https://hellosalut.stefanbohacek.dev/?lang=de"
 ```
 
 Now we'll do the same thing in Python using the `requests` module. The
@@ -374,9 +374,9 @@ caption: apis.py
 ---
 def request_hello():
     """Say "hello" in another language using the hellosalut API
-    https://fourtonfish.com/hellosalut/hello/
+    https://hellosalut.stefanbohacek.dev/
     """
-    url = "https://fourtonfish.com/hellosalut/"
+    url = "https://hellosalut.stefanbohacek.dev/"
     response = requests.get(url, params={'lang': 'de'})
     data = response.json()
     # print(data)
@@ -608,20 +608,17 @@ our lessons.
 
 **Exercise Options:**
 
-* Use the [Shakespere API](https://rapidapi.com/orthosie/api/shakespeare1?endpoint=apiendpoint_01bc580b-1a71-406e-b97a-817bc71fc96e) to generate a random insult \
-  Endpoint URL: `https://shakespeare1.p.rapidapi.com/shakespeare/generate/insult`  \
-  Parameters: `limit` = `1` \
-  Print: `contents` -> `quote`
-
-* Use the [WorldPopulation API](https://rapidapi.com/aldair.sr99/api/world-population?endpoint=apiendpoint_4edc9a8e-1609-4dcc-9c83-aefe45b51a5f) to find out the population of a country \
-  Endpoint URL: `https://world-population.p.rapidapi.com/population` \
-  Parameters: `country_name` = `Iceland` \
-  Print: `body` -> `population`
-  > Note: Country names are capitalized.
-
-* Use the [Quotable Quotes API](https://rapidapi.com/dev.jpsison/api/quotable-quotes?endpoint=apiendpoint_20722ca2-124e-44d6-ac21-ae384ee5c69d) to get a random quote \
-  Endpoint URL: `https://quotable-quotes.p.rapidapi.com/randomQuotes` \
-  Print: `quote` and `author`
+* Use the [Shakespere API](https://rapidapi.com/orthosie/api/shakespeare1?endpoint=apiendpoint_01bc580b-1a71-406e-b97a-817bc71fc96e) to generate a random insult
+  - Endpoint URL: `https://shakespeare1.p.rapidapi.com/shakespeare/generate/insult`
+  - Parameters: `limit` = `1`
+  - Print: `contents` -> `taunts -> 0`
+* Use the [Random Cat Fact API](https://rapidapi.com/maketest-1YGgU5ZOtA/api/random-cat-fact/) to get a random cat fact
+  - Endpoint URL: `https://random-cat-fact.p.rapidapi.com/`
+  - Print: `fact`
+* Use the [Population API](https://rapidapi.com/evikza/api/get-population/) to get a random quote
+  - Endpoint URL: `https://get-population.p.rapidapi.com/population/country`
+  - Parameters: `country` = `"Mexico"`
+  - Print: `count` or `readable_format`
 
 ```
 
