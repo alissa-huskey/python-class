@@ -15,7 +15,8 @@ Python Class
 
 Welcome to the new and improved Python class.
 
-:::{tip}
+:::{admonition}
+:class: tip
 
 * Use the left sidebar to navigate lessons, guides and all of the other class content.
 

@@ -649,3 +649,45 @@ Themes
 [One Dark Raincoat Light]: ../assets/raincoat-light.png
 [Dolch Light]: ../assets/dolch-light.png
 
+
+How-To
+------
+
+### Open a Repository
+
+:::::{margin}
+
+:::{note}
+
+This how-to assumes you have already cloned the repository locally.
+
+:::
+
+:::::
+
+1. Open a new VS Code window.
+    - **Using the keyboard shortcut**: {kbd}`⌃⇧N` (Windows/Linux) or {kbd}`⌘⇧N` (Mac).
+    - **Or from the top VS Code menu bar**: Select {guilabel}`File › New Window`.
+2. Open the repository.
+    - If you have opened the repository at some point in the past, go to the
+      top VS Code Menu Bar and select {guilabel}`File › Open Recent` then
+      choose the repository you wish to open from the drop-down list.
+    - Otherwise, open the folder:
+        - **Using the Command Pallet**: Use {kbd}`⌃⇧P` (Windows/Linux) or {kbd}`⌘⇧P` (Mac) to open the command pallet, then use the {guilabel}`File: Open Folder...` command.
+        - **Or from the top VS Code menu bar**: Go to {guilabel}`File › Open Folder`.
+    - ::::{margin}
+
+      :::{caution}
+
+      Make sure you open the folder, not an individual file.
+
+      :::
+
+      :::::
+      Your system's Open File Dialog Box will appear. Navigate to the location of
+      the repository on your computer, select the folder , then click
+      {guilabel}`Open`.
+3. Pull repository updates using git.
+    - **Using the Command Pallet**: Use {kbd}`⌃⇧P` (Windows/Linux) or {kbd}`⌘⇧P` (Mac) to open the command pallet, then use the {guilabel}`Git: Pull` command.
+    - **Or from the {guilabel}`Source Control` sidebar**: On the {guilabel}`Repositories` sub-header, click on the second icon from the left to pull.
+    - **Or from the terminal**: Open the terminal using {{ ctrltick }} then type `git pull`.
